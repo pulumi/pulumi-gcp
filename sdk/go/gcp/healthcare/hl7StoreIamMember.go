@@ -268,7 +268,7 @@ type Hl7StoreIamMemberInput interface {
 }
 
 func (*Hl7StoreIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7StoreIamMember)(nil))
+	return reflect.TypeOf((**Hl7StoreIamMember)(nil)).Elem()
 }
 
 func (i *Hl7StoreIamMember) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput {
@@ -277,35 +277,6 @@ func (i *Hl7StoreIamMember) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput 
 
 func (i *Hl7StoreIamMember) ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberOutput)
-}
-
-func (i *Hl7StoreIamMember) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput {
-	return i.ToHl7StoreIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *Hl7StoreIamMember) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberPtrOutput)
-}
-
-type Hl7StoreIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput
-	ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput
-}
-
-type hl7StoreIamMemberPtrType Hl7StoreIamMemberArgs
-
-func (*hl7StoreIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hl7StoreIamMember)(nil))
-}
-
-func (i *hl7StoreIamMemberPtrType) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput {
-	return i.ToHl7StoreIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *hl7StoreIamMemberPtrType) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberPtrOutput)
 }
 
 // Hl7StoreIamMemberArrayInput is an input type that accepts Hl7StoreIamMemberArray and Hl7StoreIamMemberArrayOutput values.
@@ -361,7 +332,7 @@ func (i Hl7StoreIamMemberMap) ToHl7StoreIamMemberMapOutputWithContext(ctx contex
 type Hl7StoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7StoreIamMember)(nil))
+	return reflect.TypeOf((**Hl7StoreIamMember)(nil)).Elem()
 }
 
 func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput {
@@ -372,44 +343,10 @@ func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutputWithContext(ctx contex
 	return o
 }
 
-func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput {
-	return o.ToHl7StoreIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hl7StoreIamMember) *Hl7StoreIamMember {
-		return &v
-	}).(Hl7StoreIamMemberPtrOutput)
-}
-
-type Hl7StoreIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (Hl7StoreIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hl7StoreIamMember)(nil))
-}
-
-func (o Hl7StoreIamMemberPtrOutput) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput {
-	return o
-}
-
-func (o Hl7StoreIamMemberPtrOutput) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
-	return o
-}
-
-func (o Hl7StoreIamMemberPtrOutput) Elem() Hl7StoreIamMemberOutput {
-	return o.ApplyT(func(v *Hl7StoreIamMember) Hl7StoreIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret Hl7StoreIamMember
-		return ret
-	}).(Hl7StoreIamMemberOutput)
-}
-
 type Hl7StoreIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hl7StoreIamMember)(nil))
+	return reflect.TypeOf((*[]*Hl7StoreIamMember)(nil)).Elem()
 }
 
 func (o Hl7StoreIamMemberArrayOutput) ToHl7StoreIamMemberArrayOutput() Hl7StoreIamMemberArrayOutput {
@@ -421,15 +358,15 @@ func (o Hl7StoreIamMemberArrayOutput) ToHl7StoreIamMemberArrayOutputWithContext(
 }
 
 func (o Hl7StoreIamMemberArrayOutput) Index(i pulumi.IntInput) Hl7StoreIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hl7StoreIamMember {
-		return vs[0].([]Hl7StoreIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hl7StoreIamMember {
+		return vs[0].([]*Hl7StoreIamMember)[vs[1].(int)]
 	}).(Hl7StoreIamMemberOutput)
 }
 
 type Hl7StoreIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Hl7StoreIamMember)(nil))
+	return reflect.TypeOf((*map[string]*Hl7StoreIamMember)(nil)).Elem()
 }
 
 func (o Hl7StoreIamMemberMapOutput) ToHl7StoreIamMemberMapOutput() Hl7StoreIamMemberMapOutput {
@@ -441,18 +378,16 @@ func (o Hl7StoreIamMemberMapOutput) ToHl7StoreIamMemberMapOutputWithContext(ctx 
 }
 
 func (o Hl7StoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Hl7StoreIamMember {
-		return vs[0].(map[string]Hl7StoreIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Hl7StoreIamMember {
+		return vs[0].(map[string]*Hl7StoreIamMember)[vs[1].(string)]
 	}).(Hl7StoreIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamMemberInput)(nil)).Elem(), &Hl7StoreIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamMemberPtrInput)(nil)).Elem(), &Hl7StoreIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamMemberArrayInput)(nil)).Elem(), Hl7StoreIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamMemberMapInput)(nil)).Elem(), Hl7StoreIamMemberMap{})
 	pulumi.RegisterOutputType(Hl7StoreIamMemberOutput{})
-	pulumi.RegisterOutputType(Hl7StoreIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamMemberMapOutput{})
 }

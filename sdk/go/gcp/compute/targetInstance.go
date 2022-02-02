@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewInstance(ctx, "target_vm", &compute.InstanceArgs{
+// 		_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
 // 			MachineType: pulumi.String("e2-medium"),
 // 			Zone:        pulumi.String("us-central1-a"),
 // 			BootDisk: &compute.InstanceBootDiskArgs{
@@ -63,7 +63,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewTargetInstance(ctx, "_default", &compute.TargetInstanceArgs{
+// 		_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
 // 			Instance: target_vm.ID(),
 // 		})
 // 		if err != nil {
@@ -100,7 +100,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewInstance(ctx, "target_vmInstance", &compute.InstanceArgs{
+// 		_, err = compute.NewInstance(ctx, "target-vmInstance", &compute.InstanceArgs{
 // 			MachineType: pulumi.String("e2-medium"),
 // 			Zone:        pulumi.String("us-central1-a"),
 // 			BootDisk: &compute.InstanceBootDiskArgs{
@@ -370,7 +370,7 @@ type TargetInstanceInput interface {
 }
 
 func (*TargetInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetInstance)(nil))
+	return reflect.TypeOf((**TargetInstance)(nil)).Elem()
 }
 
 func (i *TargetInstance) ToTargetInstanceOutput() TargetInstanceOutput {
@@ -379,35 +379,6 @@ func (i *TargetInstance) ToTargetInstanceOutput() TargetInstanceOutput {
 
 func (i *TargetInstance) ToTargetInstanceOutputWithContext(ctx context.Context) TargetInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceOutput)
-}
-
-func (i *TargetInstance) ToTargetInstancePtrOutput() TargetInstancePtrOutput {
-	return i.ToTargetInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *TargetInstance) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetInstancePtrOutput)
-}
-
-type TargetInstancePtrInput interface {
-	pulumi.Input
-
-	ToTargetInstancePtrOutput() TargetInstancePtrOutput
-	ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput
-}
-
-type targetInstancePtrType TargetInstanceArgs
-
-func (*targetInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetInstance)(nil))
-}
-
-func (i *targetInstancePtrType) ToTargetInstancePtrOutput() TargetInstancePtrOutput {
-	return i.ToTargetInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *targetInstancePtrType) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetInstancePtrOutput)
 }
 
 // TargetInstanceArrayInput is an input type that accepts TargetInstanceArray and TargetInstanceArrayOutput values.
@@ -463,7 +434,7 @@ func (i TargetInstanceMap) ToTargetInstanceMapOutputWithContext(ctx context.Cont
 type TargetInstanceOutput struct{ *pulumi.OutputState }
 
 func (TargetInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetInstance)(nil))
+	return reflect.TypeOf((**TargetInstance)(nil)).Elem()
 }
 
 func (o TargetInstanceOutput) ToTargetInstanceOutput() TargetInstanceOutput {
@@ -474,44 +445,10 @@ func (o TargetInstanceOutput) ToTargetInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TargetInstanceOutput) ToTargetInstancePtrOutput() TargetInstancePtrOutput {
-	return o.ToTargetInstancePtrOutputWithContext(context.Background())
-}
-
-func (o TargetInstanceOutput) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetInstance) *TargetInstance {
-		return &v
-	}).(TargetInstancePtrOutput)
-}
-
-type TargetInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (TargetInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetInstance)(nil))
-}
-
-func (o TargetInstancePtrOutput) ToTargetInstancePtrOutput() TargetInstancePtrOutput {
-	return o
-}
-
-func (o TargetInstancePtrOutput) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
-	return o
-}
-
-func (o TargetInstancePtrOutput) Elem() TargetInstanceOutput {
-	return o.ApplyT(func(v *TargetInstance) TargetInstance {
-		if v != nil {
-			return *v
-		}
-		var ret TargetInstance
-		return ret
-	}).(TargetInstanceOutput)
-}
-
 type TargetInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (TargetInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetInstance)(nil))
+	return reflect.TypeOf((*[]*TargetInstance)(nil)).Elem()
 }
 
 func (o TargetInstanceArrayOutput) ToTargetInstanceArrayOutput() TargetInstanceArrayOutput {
@@ -523,15 +460,15 @@ func (o TargetInstanceArrayOutput) ToTargetInstanceArrayOutputWithContext(ctx co
 }
 
 func (o TargetInstanceArrayOutput) Index(i pulumi.IntInput) TargetInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetInstance {
-		return vs[0].([]TargetInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetInstance {
+		return vs[0].([]*TargetInstance)[vs[1].(int)]
 	}).(TargetInstanceOutput)
 }
 
 type TargetInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (TargetInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TargetInstance)(nil))
+	return reflect.TypeOf((*map[string]*TargetInstance)(nil)).Elem()
 }
 
 func (o TargetInstanceMapOutput) ToTargetInstanceMapOutput() TargetInstanceMapOutput {
@@ -543,18 +480,16 @@ func (o TargetInstanceMapOutput) ToTargetInstanceMapOutputWithContext(ctx contex
 }
 
 func (o TargetInstanceMapOutput) MapIndex(k pulumi.StringInput) TargetInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetInstance {
-		return vs[0].(map[string]TargetInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TargetInstance {
+		return vs[0].(map[string]*TargetInstance)[vs[1].(string)]
 	}).(TargetInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInstanceInput)(nil)).Elem(), &TargetInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TargetInstancePtrInput)(nil)).Elem(), &TargetInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInstanceArrayInput)(nil)).Elem(), TargetInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInstanceMapInput)(nil)).Elem(), TargetInstanceMap{})
 	pulumi.RegisterOutputType(TargetInstanceOutput{})
-	pulumi.RegisterOutputType(TargetInstancePtrOutput{})
 	pulumi.RegisterOutputType(TargetInstanceArrayOutput{})
 	pulumi.RegisterOutputType(TargetInstanceMapOutput{})
 }

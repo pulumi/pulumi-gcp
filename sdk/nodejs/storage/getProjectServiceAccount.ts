@@ -80,9 +80,7 @@ export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, op
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
         "project": args.project,
         "userProject": args.userProject,

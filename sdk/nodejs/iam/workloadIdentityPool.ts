@@ -133,34 +133,32 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkloadIdentityPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkloadIdentityPoolArgs | WorkloadIdentityPoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
         } else {
             const args = argsOrState as WorkloadIdentityPoolArgs | undefined;
             if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WorkloadIdentityPool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WorkloadIdentityPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

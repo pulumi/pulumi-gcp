@@ -153,17 +153,17 @@ export class RuntimeIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: RuntimeIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuntimeIamMemberArgs | RuntimeIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuntimeIamMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["runtimeName"] = state ? state.runtimeName : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["runtimeName"] = state ? state.runtimeName : undefined;
         } else {
             const args = argsOrState as RuntimeIamMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
@@ -175,18 +175,16 @@ export class RuntimeIamMember extends pulumi.CustomResource {
             if ((!args || args.runtimeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeName'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["runtimeName"] = args ? args.runtimeName : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["runtimeName"] = args ? args.runtimeName : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RuntimeIamMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RuntimeIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

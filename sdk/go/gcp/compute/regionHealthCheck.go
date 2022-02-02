@@ -41,7 +41,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "tcp_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "tcp-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
@@ -67,7 +67,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "tcp_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "tcp-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			Description:      pulumi.String("Health check via tcp"),
 // 			HealthyThreshold: pulumi.Int(4),
@@ -100,7 +100,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "ssl_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "ssl-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			SslHealthCheck: &compute.RegionHealthCheckSslHealthCheckArgs{
 // 				Port: pulumi.Int(443),
@@ -126,7 +126,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "ssl_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "ssl-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			Description:      pulumi.String("Health check via ssl"),
 // 			HealthyThreshold: pulumi.Int(4),
@@ -159,7 +159,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "http_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "http-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
@@ -185,7 +185,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "http_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "http-region-health-check", &compute.RegionHealthCheckArgs{
 // 			TimeoutSec:       pulumi.Int(1),
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
@@ -214,7 +214,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "http_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "http-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			Description:      pulumi.String("Health check via http"),
 // 			HealthyThreshold: pulumi.Int(4),
@@ -248,7 +248,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "https_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "https-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			HttpsHealthCheck: &compute.RegionHealthCheckHttpsHealthCheckArgs{
 // 				Port: pulumi.Int(443),
@@ -274,7 +274,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "https_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "https-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			Description:      pulumi.String("Health check via https"),
 // 			HealthyThreshold: pulumi.Int(4),
@@ -308,7 +308,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "http2_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "http2-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			Http2HealthCheck: &compute.RegionHealthCheckHttp2HealthCheckArgs{
 // 				Port: pulumi.Int(443),
@@ -334,7 +334,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "http2_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "http2-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			Description:      pulumi.String("Health check via http2"),
 // 			HealthyThreshold: pulumi.Int(4),
@@ -368,7 +368,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "grpc_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "grpc-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			GrpcHealthCheck: &compute.RegionHealthCheckGrpcHealthCheckArgs{
 // 				Port: pulumi.Int(443),
@@ -394,7 +394,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewRegionHealthCheck(ctx, "grpc_region_health_check", &compute.RegionHealthCheckArgs{
+// 		_, err := compute.NewRegionHealthCheck(ctx, "grpc-region-health-check", &compute.RegionHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			GrpcHealthCheck: &compute.RegionHealthCheckGrpcHealthCheckArgs{
 // 				GrpcServiceName:   pulumi.String("testservice"),
@@ -765,7 +765,7 @@ type RegionHealthCheckInput interface {
 }
 
 func (*RegionHealthCheck) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionHealthCheck)(nil))
+	return reflect.TypeOf((**RegionHealthCheck)(nil)).Elem()
 }
 
 func (i *RegionHealthCheck) ToRegionHealthCheckOutput() RegionHealthCheckOutput {
@@ -774,35 +774,6 @@ func (i *RegionHealthCheck) ToRegionHealthCheckOutput() RegionHealthCheckOutput 
 
 func (i *RegionHealthCheck) ToRegionHealthCheckOutputWithContext(ctx context.Context) RegionHealthCheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckOutput)
-}
-
-func (i *RegionHealthCheck) ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput {
-	return i.ToRegionHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *RegionHealthCheck) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckPtrOutput)
-}
-
-type RegionHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput
-	ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput
-}
-
-type regionHealthCheckPtrType RegionHealthCheckArgs
-
-func (*regionHealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionHealthCheck)(nil))
-}
-
-func (i *regionHealthCheckPtrType) ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput {
-	return i.ToRegionHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *regionHealthCheckPtrType) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckPtrOutput)
 }
 
 // RegionHealthCheckArrayInput is an input type that accepts RegionHealthCheckArray and RegionHealthCheckArrayOutput values.
@@ -858,7 +829,7 @@ func (i RegionHealthCheckMap) ToRegionHealthCheckMapOutputWithContext(ctx contex
 type RegionHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionHealthCheck)(nil))
+	return reflect.TypeOf((**RegionHealthCheck)(nil)).Elem()
 }
 
 func (o RegionHealthCheckOutput) ToRegionHealthCheckOutput() RegionHealthCheckOutput {
@@ -869,44 +840,10 @@ func (o RegionHealthCheckOutput) ToRegionHealthCheckOutputWithContext(ctx contex
 	return o
 }
 
-func (o RegionHealthCheckOutput) ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput {
-	return o.ToRegionHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o RegionHealthCheckOutput) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionHealthCheck) *RegionHealthCheck {
-		return &v
-	}).(RegionHealthCheckPtrOutput)
-}
-
-type RegionHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionHealthCheck)(nil))
-}
-
-func (o RegionHealthCheckPtrOutput) ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput {
-	return o
-}
-
-func (o RegionHealthCheckPtrOutput) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
-	return o
-}
-
-func (o RegionHealthCheckPtrOutput) Elem() RegionHealthCheckOutput {
-	return o.ApplyT(func(v *RegionHealthCheck) RegionHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret RegionHealthCheck
-		return ret
-	}).(RegionHealthCheckOutput)
-}
-
 type RegionHealthCheckArrayOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionHealthCheck)(nil))
+	return reflect.TypeOf((*[]*RegionHealthCheck)(nil)).Elem()
 }
 
 func (o RegionHealthCheckArrayOutput) ToRegionHealthCheckArrayOutput() RegionHealthCheckArrayOutput {
@@ -918,15 +855,15 @@ func (o RegionHealthCheckArrayOutput) ToRegionHealthCheckArrayOutputWithContext(
 }
 
 func (o RegionHealthCheckArrayOutput) Index(i pulumi.IntInput) RegionHealthCheckOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionHealthCheck {
-		return vs[0].([]RegionHealthCheck)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionHealthCheck {
+		return vs[0].([]*RegionHealthCheck)[vs[1].(int)]
 	}).(RegionHealthCheckOutput)
 }
 
 type RegionHealthCheckMapOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RegionHealthCheck)(nil))
+	return reflect.TypeOf((*map[string]*RegionHealthCheck)(nil)).Elem()
 }
 
 func (o RegionHealthCheckMapOutput) ToRegionHealthCheckMapOutput() RegionHealthCheckMapOutput {
@@ -938,18 +875,16 @@ func (o RegionHealthCheckMapOutput) ToRegionHealthCheckMapOutputWithContext(ctx 
 }
 
 func (o RegionHealthCheckMapOutput) MapIndex(k pulumi.StringInput) RegionHealthCheckOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionHealthCheck {
-		return vs[0].(map[string]RegionHealthCheck)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RegionHealthCheck {
+		return vs[0].(map[string]*RegionHealthCheck)[vs[1].(string)]
 	}).(RegionHealthCheckOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckInput)(nil)).Elem(), &RegionHealthCheck{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckPtrInput)(nil)).Elem(), &RegionHealthCheck{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckArrayInput)(nil)).Elem(), RegionHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckMapInput)(nil)).Elem(), RegionHealthCheckMap{})
 	pulumi.RegisterOutputType(RegionHealthCheckOutput{})
-	pulumi.RegisterOutputType(RegionHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckMapOutput{})
 }

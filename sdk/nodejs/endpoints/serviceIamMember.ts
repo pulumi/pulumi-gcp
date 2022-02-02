@@ -135,15 +135,15 @@ export class ServiceIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceIamMemberArgs | ServiceIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIamMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as ServiceIamMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
@@ -155,16 +155,14 @@ export class ServiceIamMember extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceIamMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

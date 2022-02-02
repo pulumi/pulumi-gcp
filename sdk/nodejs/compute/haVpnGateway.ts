@@ -324,34 +324,32 @@ export class HaVpnGateway extends pulumi.CustomResource {
      */
     constructor(name: string, args: HaVpnGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HaVpnGatewayArgs | HaVpnGatewayState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HaVpnGatewayState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["vpnInterfaces"] = state ? state.vpnInterfaces : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["vpnInterfaces"] = state ? state.vpnInterfaces : undefined;
         } else {
             const args = argsOrState as HaVpnGatewayArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["vpnInterfaces"] = args ? args.vpnInterfaces : undefined;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["vpnInterfaces"] = args ? args.vpnInterfaces : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HaVpnGateway.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HaVpnGateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

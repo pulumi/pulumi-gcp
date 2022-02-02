@@ -37,7 +37,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "image_store", &storage.BucketArgs{
+// 		_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
 // 			Location: pulumi.String("EU"),
 // 		})
 // 		if err != nil {
@@ -50,7 +50,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = storage.NewObjectACL(ctx, "image_store_acl", &storage.ObjectACLArgs{
+// 		_, err = storage.NewObjectACL(ctx, "image-store-acl", &storage.ObjectACLArgs{
 // 			Bucket: image_store.Name,
 // 			Object: image.OutputName,
 // 			RoleEntities: pulumi.StringArray{
@@ -182,7 +182,7 @@ type ObjectACLInput interface {
 }
 
 func (*ObjectACL) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectACL)(nil))
+	return reflect.TypeOf((**ObjectACL)(nil)).Elem()
 }
 
 func (i *ObjectACL) ToObjectACLOutput() ObjectACLOutput {
@@ -191,35 +191,6 @@ func (i *ObjectACL) ToObjectACLOutput() ObjectACLOutput {
 
 func (i *ObjectACL) ToObjectACLOutputWithContext(ctx context.Context) ObjectACLOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLOutput)
-}
-
-func (i *ObjectACL) ToObjectACLPtrOutput() ObjectACLPtrOutput {
-	return i.ToObjectACLPtrOutputWithContext(context.Background())
-}
-
-func (i *ObjectACL) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLPtrOutput)
-}
-
-type ObjectACLPtrInput interface {
-	pulumi.Input
-
-	ToObjectACLPtrOutput() ObjectACLPtrOutput
-	ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput
-}
-
-type objectACLPtrType ObjectACLArgs
-
-func (*objectACLPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectACL)(nil))
-}
-
-func (i *objectACLPtrType) ToObjectACLPtrOutput() ObjectACLPtrOutput {
-	return i.ToObjectACLPtrOutputWithContext(context.Background())
-}
-
-func (i *objectACLPtrType) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLPtrOutput)
 }
 
 // ObjectACLArrayInput is an input type that accepts ObjectACLArray and ObjectACLArrayOutput values.
@@ -275,7 +246,7 @@ func (i ObjectACLMap) ToObjectACLMapOutputWithContext(ctx context.Context) Objec
 type ObjectACLOutput struct{ *pulumi.OutputState }
 
 func (ObjectACLOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectACL)(nil))
+	return reflect.TypeOf((**ObjectACL)(nil)).Elem()
 }
 
 func (o ObjectACLOutput) ToObjectACLOutput() ObjectACLOutput {
@@ -286,44 +257,10 @@ func (o ObjectACLOutput) ToObjectACLOutputWithContext(ctx context.Context) Objec
 	return o
 }
 
-func (o ObjectACLOutput) ToObjectACLPtrOutput() ObjectACLPtrOutput {
-	return o.ToObjectACLPtrOutputWithContext(context.Background())
-}
-
-func (o ObjectACLOutput) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectACL) *ObjectACL {
-		return &v
-	}).(ObjectACLPtrOutput)
-}
-
-type ObjectACLPtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectACLPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectACL)(nil))
-}
-
-func (o ObjectACLPtrOutput) ToObjectACLPtrOutput() ObjectACLPtrOutput {
-	return o
-}
-
-func (o ObjectACLPtrOutput) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
-	return o
-}
-
-func (o ObjectACLPtrOutput) Elem() ObjectACLOutput {
-	return o.ApplyT(func(v *ObjectACL) ObjectACL {
-		if v != nil {
-			return *v
-		}
-		var ret ObjectACL
-		return ret
-	}).(ObjectACLOutput)
-}
-
 type ObjectACLArrayOutput struct{ *pulumi.OutputState }
 
 func (ObjectACLArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ObjectACL)(nil))
+	return reflect.TypeOf((*[]*ObjectACL)(nil)).Elem()
 }
 
 func (o ObjectACLArrayOutput) ToObjectACLArrayOutput() ObjectACLArrayOutput {
@@ -335,15 +272,15 @@ func (o ObjectACLArrayOutput) ToObjectACLArrayOutputWithContext(ctx context.Cont
 }
 
 func (o ObjectACLArrayOutput) Index(i pulumi.IntInput) ObjectACLOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectACL {
-		return vs[0].([]ObjectACL)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ObjectACL {
+		return vs[0].([]*ObjectACL)[vs[1].(int)]
 	}).(ObjectACLOutput)
 }
 
 type ObjectACLMapOutput struct{ *pulumi.OutputState }
 
 func (ObjectACLMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ObjectACL)(nil))
+	return reflect.TypeOf((*map[string]*ObjectACL)(nil)).Elem()
 }
 
 func (o ObjectACLMapOutput) ToObjectACLMapOutput() ObjectACLMapOutput {
@@ -355,18 +292,16 @@ func (o ObjectACLMapOutput) ToObjectACLMapOutputWithContext(ctx context.Context)
 }
 
 func (o ObjectACLMapOutput) MapIndex(k pulumi.StringInput) ObjectACLOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ObjectACL {
-		return vs[0].(map[string]ObjectACL)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ObjectACL {
+		return vs[0].(map[string]*ObjectACL)[vs[1].(string)]
 	}).(ObjectACLOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectACLInput)(nil)).Elem(), &ObjectACL{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectACLPtrInput)(nil)).Elem(), &ObjectACL{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectACLArrayInput)(nil)).Elem(), ObjectACLArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectACLMapInput)(nil)).Elem(), ObjectACLMap{})
 	pulumi.RegisterOutputType(ObjectACLOutput{})
-	pulumi.RegisterOutputType(ObjectACLPtrOutput{})
 	pulumi.RegisterOutputType(ObjectACLArrayOutput{})
 	pulumi.RegisterOutputType(ObjectACLMapOutput{})
 }

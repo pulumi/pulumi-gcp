@@ -207,58 +207,56 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["dataprocServiceAccount"] = state ? state.dataprocServiceAccount : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
-            inputs["enableStackdriverMonitoring"] = state ? state.enableStackdriverMonitoring : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkConfig"] = state ? state.networkConfig : undefined;
-            inputs["options"] = state ? state.options : undefined;
-            inputs["privateInstance"] = state ? state.privateInstance : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["serviceEndpoint"] = state ? state.serviceEndpoint : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["stateMessage"] = state ? state.stateMessage : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["dataprocServiceAccount"] = state ? state.dataprocServiceAccount : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
+            resourceInputs["enableStackdriverMonitoring"] = state ? state.enableStackdriverMonitoring : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["privateInstance"] = state ? state.privateInstance : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["serviceEndpoint"] = state ? state.serviceEndpoint : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
-            inputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["privateInstance"] = args ? args.privateInstance : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["serviceEndpoint"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateMessage"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
+            resourceInputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["privateInstance"] = args ? args.privateInstance : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["serviceEndpoint"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

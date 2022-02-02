@@ -108,17 +108,17 @@ export class TagKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagKeyArgs | TagKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagKeyState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespacedName"] = state ? state.namespacedName : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["shortName"] = state ? state.shortName : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespacedName"] = state ? state.namespacedName : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["shortName"] = state ? state.shortName : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as TagKeyArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -127,18 +127,16 @@ export class TagKey extends pulumi.CustomResource {
             if ((!args || args.shortName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shortName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["shortName"] = args ? args.shortName : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["namespacedName"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["namespacedName"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TagKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TagKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

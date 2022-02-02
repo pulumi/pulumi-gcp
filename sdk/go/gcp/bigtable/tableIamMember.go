@@ -279,7 +279,7 @@ type TableIamMemberInput interface {
 }
 
 func (*TableIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableIamMember)(nil))
+	return reflect.TypeOf((**TableIamMember)(nil)).Elem()
 }
 
 func (i *TableIamMember) ToTableIamMemberOutput() TableIamMemberOutput {
@@ -288,35 +288,6 @@ func (i *TableIamMember) ToTableIamMemberOutput() TableIamMemberOutput {
 
 func (i *TableIamMember) ToTableIamMemberOutputWithContext(ctx context.Context) TableIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberOutput)
-}
-
-func (i *TableIamMember) ToTableIamMemberPtrOutput() TableIamMemberPtrOutput {
-	return i.ToTableIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *TableIamMember) ToTableIamMemberPtrOutputWithContext(ctx context.Context) TableIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberPtrOutput)
-}
-
-type TableIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToTableIamMemberPtrOutput() TableIamMemberPtrOutput
-	ToTableIamMemberPtrOutputWithContext(ctx context.Context) TableIamMemberPtrOutput
-}
-
-type tableIamMemberPtrType TableIamMemberArgs
-
-func (*tableIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableIamMember)(nil))
-}
-
-func (i *tableIamMemberPtrType) ToTableIamMemberPtrOutput() TableIamMemberPtrOutput {
-	return i.ToTableIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *tableIamMemberPtrType) ToTableIamMemberPtrOutputWithContext(ctx context.Context) TableIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberPtrOutput)
 }
 
 // TableIamMemberArrayInput is an input type that accepts TableIamMemberArray and TableIamMemberArrayOutput values.
@@ -372,7 +343,7 @@ func (i TableIamMemberMap) ToTableIamMemberMapOutputWithContext(ctx context.Cont
 type TableIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TableIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableIamMember)(nil))
+	return reflect.TypeOf((**TableIamMember)(nil)).Elem()
 }
 
 func (o TableIamMemberOutput) ToTableIamMemberOutput() TableIamMemberOutput {
@@ -383,44 +354,10 @@ func (o TableIamMemberOutput) ToTableIamMemberOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TableIamMemberOutput) ToTableIamMemberPtrOutput() TableIamMemberPtrOutput {
-	return o.ToTableIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o TableIamMemberOutput) ToTableIamMemberPtrOutputWithContext(ctx context.Context) TableIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableIamMember) *TableIamMember {
-		return &v
-	}).(TableIamMemberPtrOutput)
-}
-
-type TableIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (TableIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableIamMember)(nil))
-}
-
-func (o TableIamMemberPtrOutput) ToTableIamMemberPtrOutput() TableIamMemberPtrOutput {
-	return o
-}
-
-func (o TableIamMemberPtrOutput) ToTableIamMemberPtrOutputWithContext(ctx context.Context) TableIamMemberPtrOutput {
-	return o
-}
-
-func (o TableIamMemberPtrOutput) Elem() TableIamMemberOutput {
-	return o.ApplyT(func(v *TableIamMember) TableIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret TableIamMember
-		return ret
-	}).(TableIamMemberOutput)
-}
-
 type TableIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (TableIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TableIamMember)(nil))
+	return reflect.TypeOf((*[]*TableIamMember)(nil)).Elem()
 }
 
 func (o TableIamMemberArrayOutput) ToTableIamMemberArrayOutput() TableIamMemberArrayOutput {
@@ -432,15 +369,15 @@ func (o TableIamMemberArrayOutput) ToTableIamMemberArrayOutputWithContext(ctx co
 }
 
 func (o TableIamMemberArrayOutput) Index(i pulumi.IntInput) TableIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableIamMember {
-		return vs[0].([]TableIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TableIamMember {
+		return vs[0].([]*TableIamMember)[vs[1].(int)]
 	}).(TableIamMemberOutput)
 }
 
 type TableIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (TableIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TableIamMember)(nil))
+	return reflect.TypeOf((*map[string]*TableIamMember)(nil)).Elem()
 }
 
 func (o TableIamMemberMapOutput) ToTableIamMemberMapOutput() TableIamMemberMapOutput {
@@ -452,18 +389,16 @@ func (o TableIamMemberMapOutput) ToTableIamMemberMapOutputWithContext(ctx contex
 }
 
 func (o TableIamMemberMapOutput) MapIndex(k pulumi.StringInput) TableIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TableIamMember {
-		return vs[0].(map[string]TableIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TableIamMember {
+		return vs[0].(map[string]*TableIamMember)[vs[1].(string)]
 	}).(TableIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberInput)(nil)).Elem(), &TableIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberPtrInput)(nil)).Elem(), &TableIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberArrayInput)(nil)).Elem(), TableIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableIamMemberMapInput)(nil)).Elem(), TableIamMemberMap{})
 	pulumi.RegisterOutputType(TableIamMemberOutput{})
-	pulumi.RegisterOutputType(TableIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(TableIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(TableIamMemberMapOutput{})
 }

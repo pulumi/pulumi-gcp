@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -36,7 +35,7 @@ namespace Pulumi.Gcp.Compute
         /// ```
         /// </summary>
         public static Task<GetInstanceGroupResult> InvokeAsync(GetInstanceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a Compute Instance Group within GCE.
@@ -62,7 +61,7 @@ namespace Pulumi.Gcp.Compute
         /// ```
         /// </summary>
         public static Output<GetInstanceGroupResult> Invoke(GetInstanceGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupInvokeArgs(), options.WithDefaults());
     }
 
 

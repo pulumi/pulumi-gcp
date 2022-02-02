@@ -197,22 +197,22 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: UptimeCheckConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UptimeCheckConfigArgs | UptimeCheckConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UptimeCheckConfigState | undefined;
-            inputs["contentMatchers"] = state ? state.contentMatchers : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["httpCheck"] = state ? state.httpCheck : undefined;
-            inputs["monitoredResource"] = state ? state.monitoredResource : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["resourceGroup"] = state ? state.resourceGroup : undefined;
-            inputs["selectedRegions"] = state ? state.selectedRegions : undefined;
-            inputs["tcpCheck"] = state ? state.tcpCheck : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
-            inputs["uptimeCheckId"] = state ? state.uptimeCheckId : undefined;
+            resourceInputs["contentMatchers"] = state ? state.contentMatchers : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["httpCheck"] = state ? state.httpCheck : undefined;
+            resourceInputs["monitoredResource"] = state ? state.monitoredResource : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["resourceGroup"] = state ? state.resourceGroup : undefined;
+            resourceInputs["selectedRegions"] = state ? state.selectedRegions : undefined;
+            resourceInputs["tcpCheck"] = state ? state.tcpCheck : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["uptimeCheckId"] = state ? state.uptimeCheckId : undefined;
         } else {
             const args = argsOrState as UptimeCheckConfigArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -221,23 +221,21 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             if ((!args || args.timeout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            inputs["contentMatchers"] = args ? args.contentMatchers : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["httpCheck"] = args ? args.httpCheck : undefined;
-            inputs["monitoredResource"] = args ? args.monitoredResource : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["resourceGroup"] = args ? args.resourceGroup : undefined;
-            inputs["selectedRegions"] = args ? args.selectedRegions : undefined;
-            inputs["tcpCheck"] = args ? args.tcpCheck : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["uptimeCheckId"] = undefined /*out*/;
+            resourceInputs["contentMatchers"] = args ? args.contentMatchers : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["httpCheck"] = args ? args.httpCheck : undefined;
+            resourceInputs["monitoredResource"] = args ? args.monitoredResource : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resourceGroup"] = args ? args.resourceGroup : undefined;
+            resourceInputs["selectedRegions"] = args ? args.selectedRegions : undefined;
+            resourceInputs["tcpCheck"] = args ? args.tcpCheck : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["uptimeCheckId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(UptimeCheckConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(UptimeCheckConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

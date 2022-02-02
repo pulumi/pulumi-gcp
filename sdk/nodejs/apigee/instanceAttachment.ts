@@ -78,13 +78,13 @@ export class InstanceAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceAttachmentArgs | InstanceAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
             if ((!args || args.environment === undefined) && !opts.urn) {
@@ -93,14 +93,12 @@ export class InstanceAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -217,17 +217,17 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: TunnelInstanceIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TunnelInstanceIAMBindingArgs | TunnelInstanceIAMBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelInstanceIAMBindingState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as TunnelInstanceIAMBindingArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
@@ -239,18 +239,16 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TunnelInstanceIAMBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TunnelInstanceIAMBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

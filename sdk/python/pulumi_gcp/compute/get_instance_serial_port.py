@@ -148,7 +148,7 @@ def get_instance_serial_port(instance: Optional[str] = None,
                 "storage-ro",
             ],
         ))
-    serial = pulumi.Output.all(windows.name, windows.zone).apply(lambda name, zone: gcp.compute.get_instance_serial_port(instance=name,
+    serial = pulumi.Output.all(windows.name, windows.zone).apply(lambda name, zone: gcp.compute.get_instance_serial_port_output(instance=name,
         zone=zone,
         port=4))
     pulumi.export("serialOut", serial.contents)
@@ -240,7 +240,7 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
                 "storage-ro",
             ],
         ))
-    serial = pulumi.Output.all(windows.name, windows.zone).apply(lambda name, zone: gcp.compute.get_instance_serial_port(instance=name,
+    serial = pulumi.Output.all(windows.name, windows.zone).apply(lambda name, zone: gcp.compute.get_instance_serial_port_output(instance=name,
         zone=zone,
         port=4))
     pulumi.export("serialOut", serial.contents)

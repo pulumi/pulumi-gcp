@@ -460,7 +460,7 @@ type InstanceGroupManagerInput interface {
 }
 
 func (*InstanceGroupManager) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManager)(nil))
+	return reflect.TypeOf((**InstanceGroupManager)(nil)).Elem()
 }
 
 func (i *InstanceGroupManager) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {
@@ -469,35 +469,6 @@ func (i *InstanceGroupManager) ToInstanceGroupManagerOutput() InstanceGroupManag
 
 func (i *InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerOutput)
-}
-
-func (i *InstanceGroupManager) ToInstanceGroupManagerPtrOutput() InstanceGroupManagerPtrOutput {
-	return i.ToInstanceGroupManagerPtrOutputWithContext(context.Background())
-}
-
-func (i *InstanceGroupManager) ToInstanceGroupManagerPtrOutputWithContext(ctx context.Context) InstanceGroupManagerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerPtrOutput)
-}
-
-type InstanceGroupManagerPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerPtrOutput() InstanceGroupManagerPtrOutput
-	ToInstanceGroupManagerPtrOutputWithContext(ctx context.Context) InstanceGroupManagerPtrOutput
-}
-
-type instanceGroupManagerPtrType InstanceGroupManagerArgs
-
-func (*instanceGroupManagerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManager)(nil))
-}
-
-func (i *instanceGroupManagerPtrType) ToInstanceGroupManagerPtrOutput() InstanceGroupManagerPtrOutput {
-	return i.ToInstanceGroupManagerPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGroupManagerPtrType) ToInstanceGroupManagerPtrOutputWithContext(ctx context.Context) InstanceGroupManagerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerPtrOutput)
 }
 
 // InstanceGroupManagerArrayInput is an input type that accepts InstanceGroupManagerArray and InstanceGroupManagerArrayOutput values.
@@ -553,7 +524,7 @@ func (i InstanceGroupManagerMap) ToInstanceGroupManagerMapOutputWithContext(ctx 
 type InstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManager)(nil))
+	return reflect.TypeOf((**InstanceGroupManager)(nil)).Elem()
 }
 
 func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {
@@ -564,44 +535,10 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx 
 	return o
 }
 
-func (o InstanceGroupManagerOutput) ToInstanceGroupManagerPtrOutput() InstanceGroupManagerPtrOutput {
-	return o.ToInstanceGroupManagerPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerOutput) ToInstanceGroupManagerPtrOutputWithContext(ctx context.Context) InstanceGroupManagerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManager) *InstanceGroupManager {
-		return &v
-	}).(InstanceGroupManagerPtrOutput)
-}
-
-type InstanceGroupManagerPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManager)(nil))
-}
-
-func (o InstanceGroupManagerPtrOutput) ToInstanceGroupManagerPtrOutput() InstanceGroupManagerPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerPtrOutput) ToInstanceGroupManagerPtrOutputWithContext(ctx context.Context) InstanceGroupManagerPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerPtrOutput) Elem() InstanceGroupManagerOutput {
-	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManager {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceGroupManager
-		return ret
-	}).(InstanceGroupManagerOutput)
-}
-
 type InstanceGroupManagerArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceGroupManager)(nil))
+	return reflect.TypeOf((*[]*InstanceGroupManager)(nil)).Elem()
 }
 
 func (o InstanceGroupManagerArrayOutput) ToInstanceGroupManagerArrayOutput() InstanceGroupManagerArrayOutput {
@@ -613,15 +550,15 @@ func (o InstanceGroupManagerArrayOutput) ToInstanceGroupManagerArrayOutputWithCo
 }
 
 func (o InstanceGroupManagerArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManager {
-		return vs[0].([]InstanceGroupManager)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceGroupManager {
+		return vs[0].([]*InstanceGroupManager)[vs[1].(int)]
 	}).(InstanceGroupManagerOutput)
 }
 
 type InstanceGroupManagerMapOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]InstanceGroupManager)(nil))
+	return reflect.TypeOf((*map[string]*InstanceGroupManager)(nil)).Elem()
 }
 
 func (o InstanceGroupManagerMapOutput) ToInstanceGroupManagerMapOutput() InstanceGroupManagerMapOutput {
@@ -633,18 +570,16 @@ func (o InstanceGroupManagerMapOutput) ToInstanceGroupManagerMapOutputWithContex
 }
 
 func (o InstanceGroupManagerMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupManagerOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceGroupManager {
-		return vs[0].(map[string]InstanceGroupManager)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceGroupManager {
+		return vs[0].(map[string]*InstanceGroupManager)[vs[1].(string)]
 	}).(InstanceGroupManagerOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInput)(nil)).Elem(), &InstanceGroupManager{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerPtrInput)(nil)).Elem(), &InstanceGroupManager{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerArrayInput)(nil)).Elem(), InstanceGroupManagerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerMapInput)(nil)).Elem(), InstanceGroupManagerMap{})
 	pulumi.RegisterOutputType(InstanceGroupManagerOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerMapOutput{})
 }

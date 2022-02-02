@@ -42,7 +42,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access_policy", &accesscontextmanager.AccessPolicyArgs{
+// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
 // 			Parent: pulumi.String("organizations/123456789"),
 // 			Title:  pulumi.String("my policy"),
 // 		})
@@ -172,7 +172,7 @@ type AccessPolicyInput interface {
 }
 
 func (*AccessPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessPolicy)(nil))
+	return reflect.TypeOf((**AccessPolicy)(nil)).Elem()
 }
 
 func (i *AccessPolicy) ToAccessPolicyOutput() AccessPolicyOutput {
@@ -181,35 +181,6 @@ func (i *AccessPolicy) ToAccessPolicyOutput() AccessPolicyOutput {
 
 func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
-}
-
-func (i *AccessPolicy) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
-	return i.ToAccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *AccessPolicy) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyPtrOutput)
-}
-
-type AccessPolicyPtrInput interface {
-	pulumi.Input
-
-	ToAccessPolicyPtrOutput() AccessPolicyPtrOutput
-	ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput
-}
-
-type accessPolicyPtrType AccessPolicyArgs
-
-func (*accessPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessPolicy)(nil))
-}
-
-func (i *accessPolicyPtrType) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
-	return i.ToAccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *accessPolicyPtrType) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyPtrOutput)
 }
 
 // AccessPolicyArrayInput is an input type that accepts AccessPolicyArray and AccessPolicyArrayOutput values.
@@ -265,7 +236,7 @@ func (i AccessPolicyMap) ToAccessPolicyMapOutputWithContext(ctx context.Context)
 type AccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessPolicy)(nil))
+	return reflect.TypeOf((**AccessPolicy)(nil)).Elem()
 }
 
 func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
@@ -276,44 +247,10 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o AccessPolicyOutput) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
-	return o.ToAccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o AccessPolicyOutput) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicy) *AccessPolicy {
-		return &v
-	}).(AccessPolicyPtrOutput)
-}
-
-type AccessPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (AccessPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessPolicy)(nil))
-}
-
-func (o AccessPolicyPtrOutput) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
-	return o
-}
-
-func (o AccessPolicyPtrOutput) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
-	return o
-}
-
-func (o AccessPolicyPtrOutput) Elem() AccessPolicyOutput {
-	return o.ApplyT(func(v *AccessPolicy) AccessPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret AccessPolicy
-		return ret
-	}).(AccessPolicyOutput)
-}
-
 type AccessPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessPolicy)(nil))
+	return reflect.TypeOf((*[]*AccessPolicy)(nil)).Elem()
 }
 
 func (o AccessPolicyArrayOutput) ToAccessPolicyArrayOutput() AccessPolicyArrayOutput {
@@ -325,15 +262,15 @@ func (o AccessPolicyArrayOutput) ToAccessPolicyArrayOutputWithContext(ctx contex
 }
 
 func (o AccessPolicyArrayOutput) Index(i pulumi.IntInput) AccessPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicy {
-		return vs[0].([]AccessPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPolicy {
+		return vs[0].([]*AccessPolicy)[vs[1].(int)]
 	}).(AccessPolicyOutput)
 }
 
 type AccessPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AccessPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AccessPolicy)(nil)).Elem()
 }
 
 func (o AccessPolicyMapOutput) ToAccessPolicyMapOutput() AccessPolicyMapOutput {
@@ -345,18 +282,16 @@ func (o AccessPolicyMapOutput) ToAccessPolicyMapOutputWithContext(ctx context.Co
 }
 
 func (o AccessPolicyMapOutput) MapIndex(k pulumi.StringInput) AccessPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessPolicy {
-		return vs[0].(map[string]AccessPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AccessPolicy {
+		return vs[0].(map[string]*AccessPolicy)[vs[1].(string)]
 	}).(AccessPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyInput)(nil)).Elem(), &AccessPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyPtrInput)(nil)).Elem(), &AccessPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyArrayInput)(nil)).Elem(), AccessPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyMapInput)(nil)).Elem(), AccessPolicyMap{})
 	pulumi.RegisterOutputType(AccessPolicyOutput{})
-	pulumi.RegisterOutputType(AccessPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyMapOutput{})
 }

@@ -416,7 +416,7 @@ type SubnetworkIAMMemberInput interface {
 }
 
 func (*SubnetworkIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkIAMMember)(nil))
+	return reflect.TypeOf((**SubnetworkIAMMember)(nil)).Elem()
 }
 
 func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberOutput() SubnetworkIAMMemberOutput {
@@ -425,35 +425,6 @@ func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberOutput() SubnetworkIAMMemberO
 
 func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberOutputWithContext(ctx context.Context) SubnetworkIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberOutput)
-}
-
-func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput {
-	return i.ToSubnetworkIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberPtrOutput)
-}
-
-type SubnetworkIAMMemberPtrInput interface {
-	pulumi.Input
-
-	ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput
-	ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput
-}
-
-type subnetworkIAMMemberPtrType SubnetworkIAMMemberArgs
-
-func (*subnetworkIAMMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubnetworkIAMMember)(nil))
-}
-
-func (i *subnetworkIAMMemberPtrType) ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput {
-	return i.ToSubnetworkIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *subnetworkIAMMemberPtrType) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberPtrOutput)
 }
 
 // SubnetworkIAMMemberArrayInput is an input type that accepts SubnetworkIAMMemberArray and SubnetworkIAMMemberArrayOutput values.
@@ -509,7 +480,7 @@ func (i SubnetworkIAMMemberMap) ToSubnetworkIAMMemberMapOutputWithContext(ctx co
 type SubnetworkIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkIAMMember)(nil))
+	return reflect.TypeOf((**SubnetworkIAMMember)(nil)).Elem()
 }
 
 func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberOutput() SubnetworkIAMMemberOutput {
@@ -520,44 +491,10 @@ func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberOutputWithContext(ctx co
 	return o
 }
 
-func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput {
-	return o.ToSubnetworkIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetworkIAMMember) *SubnetworkIAMMember {
-		return &v
-	}).(SubnetworkIAMMemberPtrOutput)
-}
-
-type SubnetworkIAMMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkIAMMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubnetworkIAMMember)(nil))
-}
-
-func (o SubnetworkIAMMemberPtrOutput) ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput {
-	return o
-}
-
-func (o SubnetworkIAMMemberPtrOutput) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
-	return o
-}
-
-func (o SubnetworkIAMMemberPtrOutput) Elem() SubnetworkIAMMemberOutput {
-	return o.ApplyT(func(v *SubnetworkIAMMember) SubnetworkIAMMember {
-		if v != nil {
-			return *v
-		}
-		var ret SubnetworkIAMMember
-		return ret
-	}).(SubnetworkIAMMemberOutput)
-}
-
 type SubnetworkIAMMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubnetworkIAMMember)(nil))
+	return reflect.TypeOf((*[]*SubnetworkIAMMember)(nil)).Elem()
 }
 
 func (o SubnetworkIAMMemberArrayOutput) ToSubnetworkIAMMemberArrayOutput() SubnetworkIAMMemberArrayOutput {
@@ -569,15 +506,15 @@ func (o SubnetworkIAMMemberArrayOutput) ToSubnetworkIAMMemberArrayOutputWithCont
 }
 
 func (o SubnetworkIAMMemberArrayOutput) Index(i pulumi.IntInput) SubnetworkIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkIAMMember {
-		return vs[0].([]SubnetworkIAMMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubnetworkIAMMember {
+		return vs[0].([]*SubnetworkIAMMember)[vs[1].(int)]
 	}).(SubnetworkIAMMemberOutput)
 }
 
 type SubnetworkIAMMemberMapOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SubnetworkIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*SubnetworkIAMMember)(nil)).Elem()
 }
 
 func (o SubnetworkIAMMemberMapOutput) ToSubnetworkIAMMemberMapOutput() SubnetworkIAMMemberMapOutput {
@@ -589,18 +526,16 @@ func (o SubnetworkIAMMemberMapOutput) ToSubnetworkIAMMemberMapOutputWithContext(
 }
 
 func (o SubnetworkIAMMemberMapOutput) MapIndex(k pulumi.StringInput) SubnetworkIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubnetworkIAMMember {
-		return vs[0].(map[string]SubnetworkIAMMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubnetworkIAMMember {
+		return vs[0].(map[string]*SubnetworkIAMMember)[vs[1].(string)]
 	}).(SubnetworkIAMMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMMemberInput)(nil)).Elem(), &SubnetworkIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMMemberPtrInput)(nil)).Elem(), &SubnetworkIAMMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMMemberArrayInput)(nil)).Elem(), SubnetworkIAMMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMMemberMapInput)(nil)).Elem(), SubnetworkIAMMemberMap{})
 	pulumi.RegisterOutputType(SubnetworkIAMMemberOutput{})
-	pulumi.RegisterOutputType(SubnetworkIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkIAMMemberArrayOutput{})
 	pulumi.RegisterOutputType(SubnetworkIAMMemberMapOutput{})
 }

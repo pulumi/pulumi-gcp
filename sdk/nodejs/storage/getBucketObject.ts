@@ -31,9 +31,7 @@ export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:storage/getBucketObject:getBucketObject", {
         "bucket": args.bucket,
         "name": args.name,

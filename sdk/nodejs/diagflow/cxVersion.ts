@@ -129,34 +129,32 @@ export class CxVersion extends pulumi.CustomResource {
      */
     constructor(name: string, args: CxVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CxVersionArgs | CxVersionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxVersionState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nluSettings"] = state ? state.nluSettings : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nluSettings"] = state ? state.nluSettings : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as CxVersionArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nluSettings"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nluSettings"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CxVersion.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CxVersion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

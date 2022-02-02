@@ -154,16 +154,16 @@ export class PolicyTag extends pulumi.CustomResource {
      */
     constructor(name: string, args: PolicyTagArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyTagArgs | PolicyTagState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyTagState | undefined;
-            inputs["childPolicyTags"] = state ? state.childPolicyTags : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentPolicyTag"] = state ? state.parentPolicyTag : undefined;
-            inputs["taxonomy"] = state ? state.taxonomy : undefined;
+            resourceInputs["childPolicyTags"] = state ? state.childPolicyTags : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentPolicyTag"] = state ? state.parentPolicyTag : undefined;
+            resourceInputs["taxonomy"] = state ? state.taxonomy : undefined;
         } else {
             const args = argsOrState as PolicyTagArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -172,17 +172,15 @@ export class PolicyTag extends pulumi.CustomResource {
             if ((!args || args.taxonomy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taxonomy'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["parentPolicyTag"] = args ? args.parentPolicyTag : undefined;
-            inputs["taxonomy"] = args ? args.taxonomy : undefined;
-            inputs["childPolicyTags"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["parentPolicyTag"] = args ? args.parentPolicyTag : undefined;
+            resourceInputs["taxonomy"] = args ? args.taxonomy : undefined;
+            resourceInputs["childPolicyTags"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PolicyTag.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PolicyTag.__pulumiType, name, resourceInputs, opts);
     }
 }
 

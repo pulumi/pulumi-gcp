@@ -124,19 +124,19 @@ export class ProjectFeed extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectFeedArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectFeedArgs | ProjectFeedState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectFeedState | undefined;
-            inputs["assetNames"] = state ? state.assetNames : undefined;
-            inputs["assetTypes"] = state ? state.assetTypes : undefined;
-            inputs["billingProject"] = state ? state.billingProject : undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["feedId"] = state ? state.feedId : undefined;
-            inputs["feedOutputConfig"] = state ? state.feedOutputConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["assetNames"] = state ? state.assetNames : undefined;
+            resourceInputs["assetTypes"] = state ? state.assetTypes : undefined;
+            resourceInputs["billingProject"] = state ? state.billingProject : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["feedId"] = state ? state.feedId : undefined;
+            resourceInputs["feedOutputConfig"] = state ? state.feedOutputConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectFeedArgs | undefined;
             if ((!args || args.feedId === undefined) && !opts.urn) {
@@ -145,20 +145,18 @@ export class ProjectFeed extends pulumi.CustomResource {
             if ((!args || args.feedOutputConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feedOutputConfig'");
             }
-            inputs["assetNames"] = args ? args.assetNames : undefined;
-            inputs["assetTypes"] = args ? args.assetTypes : undefined;
-            inputs["billingProject"] = args ? args.billingProject : undefined;
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["feedId"] = args ? args.feedId : undefined;
-            inputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["assetNames"] = args ? args.assetNames : undefined;
+            resourceInputs["assetTypes"] = args ? args.assetTypes : undefined;
+            resourceInputs["billingProject"] = args ? args.billingProject : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["feedId"] = args ? args.feedId : undefined;
+            resourceInputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectFeed.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectFeed.__pulumiType, name, resourceInputs, opts);
     }
 }
 

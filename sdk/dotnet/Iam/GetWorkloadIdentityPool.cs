@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Iam
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Gcp.Iam
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetWorkloadIdentityPoolResult> InvokeAsync(GetWorkloadIdentityPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a IAM workload identity pool from Google Cloud by its id.
@@ -68,7 +67,7 @@ namespace Pulumi.Gcp.Iam
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetWorkloadIdentityPoolResult> Invoke(GetWorkloadIdentityPoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolInvokeArgs(), options.WithDefaults());
     }
 
 

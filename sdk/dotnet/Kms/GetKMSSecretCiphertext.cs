@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Kms
 {
@@ -27,7 +26,7 @@ namespace Pulumi.Gcp.Kms
         /// data outside of resource definitions.
         /// </summary>
         public static Task<GetKMSSecretCiphertextResult> InvokeAsync(GetKMSSecretCiphertextArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretCiphertextResult>("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args ?? new GetKMSSecretCiphertextArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretCiphertextResult>("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args ?? new GetKMSSecretCiphertextArgs(), options.WithDefaults());
 
         /// <summary>
         /// !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
@@ -44,7 +43,7 @@ namespace Pulumi.Gcp.Kms
         /// data outside of resource definitions.
         /// </summary>
         public static Output<GetKMSSecretCiphertextResult> Invoke(GetKMSSecretCiphertextInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretCiphertextResult>("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args ?? new GetKMSSecretCiphertextInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretCiphertextResult>("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args ?? new GetKMSSecretCiphertextInvokeArgs(), options.WithDefaults());
     }
 
 

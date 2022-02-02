@@ -272,7 +272,7 @@ type DatasetIamMemberInput interface {
 }
 
 func (*DatasetIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamMember)(nil))
+	return reflect.TypeOf((**DatasetIamMember)(nil)).Elem()
 }
 
 func (i *DatasetIamMember) ToDatasetIamMemberOutput() DatasetIamMemberOutput {
@@ -281,35 +281,6 @@ func (i *DatasetIamMember) ToDatasetIamMemberOutput() DatasetIamMemberOutput {
 
 func (i *DatasetIamMember) ToDatasetIamMemberOutputWithContext(ctx context.Context) DatasetIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberOutput)
-}
-
-func (i *DatasetIamMember) ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput {
-	return i.ToDatasetIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *DatasetIamMember) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberPtrOutput)
-}
-
-type DatasetIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput
-	ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput
-}
-
-type datasetIamMemberPtrType DatasetIamMemberArgs
-
-func (*datasetIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetIamMember)(nil))
-}
-
-func (i *datasetIamMemberPtrType) ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput {
-	return i.ToDatasetIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *datasetIamMemberPtrType) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberPtrOutput)
 }
 
 // DatasetIamMemberArrayInput is an input type that accepts DatasetIamMemberArray and DatasetIamMemberArrayOutput values.
@@ -365,7 +336,7 @@ func (i DatasetIamMemberMap) ToDatasetIamMemberMapOutputWithContext(ctx context.
 type DatasetIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamMember)(nil))
+	return reflect.TypeOf((**DatasetIamMember)(nil)).Elem()
 }
 
 func (o DatasetIamMemberOutput) ToDatasetIamMemberOutput() DatasetIamMemberOutput {
@@ -376,44 +347,10 @@ func (o DatasetIamMemberOutput) ToDatasetIamMemberOutputWithContext(ctx context.
 	return o
 }
 
-func (o DatasetIamMemberOutput) ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput {
-	return o.ToDatasetIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o DatasetIamMemberOutput) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetIamMember) *DatasetIamMember {
-		return &v
-	}).(DatasetIamMemberPtrOutput)
-}
-
-type DatasetIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (DatasetIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetIamMember)(nil))
-}
-
-func (o DatasetIamMemberPtrOutput) ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput {
-	return o
-}
-
-func (o DatasetIamMemberPtrOutput) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
-	return o
-}
-
-func (o DatasetIamMemberPtrOutput) Elem() DatasetIamMemberOutput {
-	return o.ApplyT(func(v *DatasetIamMember) DatasetIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret DatasetIamMember
-		return ret
-	}).(DatasetIamMemberOutput)
-}
-
 type DatasetIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetIamMember)(nil))
+	return reflect.TypeOf((*[]*DatasetIamMember)(nil)).Elem()
 }
 
 func (o DatasetIamMemberArrayOutput) ToDatasetIamMemberArrayOutput() DatasetIamMemberArrayOutput {
@@ -425,15 +362,15 @@ func (o DatasetIamMemberArrayOutput) ToDatasetIamMemberArrayOutputWithContext(ct
 }
 
 func (o DatasetIamMemberArrayOutput) Index(i pulumi.IntInput) DatasetIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetIamMember {
-		return vs[0].([]DatasetIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatasetIamMember {
+		return vs[0].([]*DatasetIamMember)[vs[1].(int)]
 	}).(DatasetIamMemberOutput)
 }
 
 type DatasetIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatasetIamMember)(nil))
+	return reflect.TypeOf((*map[string]*DatasetIamMember)(nil)).Elem()
 }
 
 func (o DatasetIamMemberMapOutput) ToDatasetIamMemberMapOutput() DatasetIamMemberMapOutput {
@@ -445,18 +382,16 @@ func (o DatasetIamMemberMapOutput) ToDatasetIamMemberMapOutputWithContext(ctx co
 }
 
 func (o DatasetIamMemberMapOutput) MapIndex(k pulumi.StringInput) DatasetIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetIamMember {
-		return vs[0].(map[string]DatasetIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatasetIamMember {
+		return vs[0].(map[string]*DatasetIamMember)[vs[1].(string)]
 	}).(DatasetIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberInput)(nil)).Elem(), &DatasetIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberPtrInput)(nil)).Elem(), &DatasetIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberArrayInput)(nil)).Elem(), DatasetIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberMapInput)(nil)).Elem(), DatasetIamMemberMap{})
 	pulumi.RegisterOutputType(DatasetIamMemberOutput{})
-	pulumi.RegisterOutputType(DatasetIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(DatasetIamMemberMapOutput{})
 }

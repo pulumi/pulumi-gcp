@@ -153,41 +153,39 @@ export class HttpHealthCheck extends pulumi.CustomResource {
      */
     constructor(name: string, args?: HttpHealthCheckArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HttpHealthCheckArgs | HttpHealthCheckState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HttpHealthCheckState | undefined;
-            inputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["requestPath"] = state ? state.requestPath : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["timeoutSec"] = state ? state.timeoutSec : undefined;
-            inputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
+            resourceInputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["requestPath"] = state ? state.requestPath : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
+            resourceInputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
         } else {
             const args = argsOrState as HttpHealthCheckArgs | undefined;
-            inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestPath"] = args ? args.requestPath : undefined;
-            inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
-            inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestPath"] = args ? args.requestPath : undefined;
+            resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HttpHealthCheck.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HttpHealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }
 

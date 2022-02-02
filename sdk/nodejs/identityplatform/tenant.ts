@@ -108,32 +108,30 @@ export class Tenant extends pulumi.CustomResource {
      */
     constructor(name: string, args: TenantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TenantArgs | TenantState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TenantState | undefined;
-            inputs["allowPasswordSignup"] = state ? state.allowPasswordSignup : undefined;
-            inputs["disableAuth"] = state ? state.disableAuth : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enableEmailLinkSignin"] = state ? state.enableEmailLinkSignin : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["allowPasswordSignup"] = state ? state.allowPasswordSignup : undefined;
+            resourceInputs["disableAuth"] = state ? state.disableAuth : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enableEmailLinkSignin"] = state ? state.enableEmailLinkSignin : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as TenantArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["allowPasswordSignup"] = args ? args.allowPasswordSignup : undefined;
-            inputs["disableAuth"] = args ? args.disableAuth : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableEmailLinkSignin"] = args ? args.enableEmailLinkSignin : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["allowPasswordSignup"] = args ? args.allowPasswordSignup : undefined;
+            resourceInputs["disableAuth"] = args ? args.disableAuth : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableEmailLinkSignin"] = args ? args.enableEmailLinkSignin : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Tenant.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Tenant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

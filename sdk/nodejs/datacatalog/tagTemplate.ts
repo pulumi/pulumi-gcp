@@ -143,17 +143,17 @@ export class TagTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagTemplateArgs | TagTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagTemplateState | undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["forceDelete"] = state ? state.forceDelete : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tagTemplateId"] = state ? state.tagTemplateId : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tagTemplateId"] = state ? state.tagTemplateId : undefined;
         } else {
             const args = argsOrState as TagTemplateArgs | undefined;
             if ((!args || args.fields === undefined) && !opts.urn) {
@@ -162,18 +162,16 @@ export class TagTemplate extends pulumi.CustomResource {
             if ((!args || args.tagTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagTemplateId'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["forceDelete"] = args ? args.forceDelete : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TagTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TagTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

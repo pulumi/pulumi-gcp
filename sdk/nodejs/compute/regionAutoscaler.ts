@@ -175,18 +175,18 @@ export class RegionAutoscaler extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegionAutoscalerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionAutoscalerArgs | RegionAutoscalerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionAutoscalerState | undefined;
-            inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["target"] = state ? state.target : undefined;
+            resourceInputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as RegionAutoscalerArgs | undefined;
             if ((!args || args.autoscalingPolicy === undefined) && !opts.urn) {
@@ -195,19 +195,17 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RegionAutoscaler.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RegionAutoscaler.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -147,16 +147,16 @@ export class ConsentStoreIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConsentStoreIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConsentStoreIamMemberArgs | ConsentStoreIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsentStoreIamMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["consentStoreId"] = state ? state.consentStoreId : undefined;
-            inputs["dataset"] = state ? state.dataset : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["consentStoreId"] = state ? state.consentStoreId : undefined;
+            resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ConsentStoreIamMemberArgs | undefined;
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
@@ -171,17 +171,15 @@ export class ConsentStoreIamMember extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
-            inputs["dataset"] = args ? args.dataset : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["consentStoreId"] = args ? args.consentStoreId : undefined;
+            resourceInputs["dataset"] = args ? args.dataset : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ConsentStoreIamMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ConsentStoreIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

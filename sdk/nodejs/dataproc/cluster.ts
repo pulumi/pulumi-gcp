@@ -181,29 +181,27 @@ export class Cluster extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            inputs["clusterConfig"] = state ? state.clusterConfig : undefined;
-            inputs["gracefulDecommissionTimeout"] = state ? state.gracefulDecommissionTimeout : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["clusterConfig"] = state ? state.clusterConfig : undefined;
+            resourceInputs["gracefulDecommissionTimeout"] = state ? state.gracefulDecommissionTimeout : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            inputs["clusterConfig"] = args ? args.clusterConfig : undefined;
-            inputs["gracefulDecommissionTimeout"] = args ? args.gracefulDecommissionTimeout : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["clusterConfig"] = args ? args.clusterConfig : undefined;
+            resourceInputs["gracefulDecommissionTimeout"] = args ? args.gracefulDecommissionTimeout : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

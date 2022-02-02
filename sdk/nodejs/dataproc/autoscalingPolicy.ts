@@ -128,34 +128,32 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AutoscalingPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutoscalingPolicyArgs | AutoscalingPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoscalingPolicyState | undefined;
-            inputs["basicAlgorithm"] = state ? state.basicAlgorithm : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["policyId"] = state ? state.policyId : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["secondaryWorkerConfig"] = state ? state.secondaryWorkerConfig : undefined;
-            inputs["workerConfig"] = state ? state.workerConfig : undefined;
+            resourceInputs["basicAlgorithm"] = state ? state.basicAlgorithm : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["secondaryWorkerConfig"] = state ? state.secondaryWorkerConfig : undefined;
+            resourceInputs["workerConfig"] = state ? state.workerConfig : undefined;
         } else {
             const args = argsOrState as AutoscalingPolicyArgs | undefined;
             if ((!args || args.policyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            inputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["policyId"] = args ? args.policyId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["secondaryWorkerConfig"] = args ? args.secondaryWorkerConfig : undefined;
-            inputs["workerConfig"] = args ? args.workerConfig : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["secondaryWorkerConfig"] = args ? args.secondaryWorkerConfig : undefined;
+            resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AutoscalingPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AutoscalingPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -116,14 +116,14 @@ export class SecretCiphertext extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretCiphertextArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretCiphertextArgs | SecretCiphertextState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretCiphertextState | undefined;
-            inputs["additionalAuthenticatedData"] = state ? state.additionalAuthenticatedData : undefined;
-            inputs["ciphertext"] = state ? state.ciphertext : undefined;
-            inputs["cryptoKey"] = state ? state.cryptoKey : undefined;
-            inputs["plaintext"] = state ? state.plaintext : undefined;
+            resourceInputs["additionalAuthenticatedData"] = state ? state.additionalAuthenticatedData : undefined;
+            resourceInputs["ciphertext"] = state ? state.ciphertext : undefined;
+            resourceInputs["cryptoKey"] = state ? state.cryptoKey : undefined;
+            resourceInputs["plaintext"] = state ? state.plaintext : undefined;
         } else {
             const args = argsOrState as SecretCiphertextArgs | undefined;
             if ((!args || args.cryptoKey === undefined) && !opts.urn) {
@@ -132,15 +132,13 @@ export class SecretCiphertext extends pulumi.CustomResource {
             if ((!args || args.plaintext === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'plaintext'");
             }
-            inputs["additionalAuthenticatedData"] = args ? args.additionalAuthenticatedData : undefined;
-            inputs["cryptoKey"] = args ? args.cryptoKey : undefined;
-            inputs["plaintext"] = args ? args.plaintext : undefined;
-            inputs["ciphertext"] = undefined /*out*/;
+            resourceInputs["additionalAuthenticatedData"] = args ? args.additionalAuthenticatedData : undefined;
+            resourceInputs["cryptoKey"] = args ? args.cryptoKey : undefined;
+            resourceInputs["plaintext"] = args ? args.plaintext : undefined;
+            resourceInputs["ciphertext"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecretCiphertext.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecretCiphertext.__pulumiType, name, resourceInputs, opts);
     }
 }
 

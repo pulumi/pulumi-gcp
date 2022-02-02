@@ -147,15 +147,15 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
      */
     constructor(name: string, args: GameServerDeploymentRolloutArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GameServerDeploymentRolloutArgs | GameServerDeploymentRolloutState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GameServerDeploymentRolloutState | undefined;
-            inputs["defaultGameServerConfig"] = state ? state.defaultGameServerConfig : undefined;
-            inputs["deploymentId"] = state ? state.deploymentId : undefined;
-            inputs["gameServerConfigOverrides"] = state ? state.gameServerConfigOverrides : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["defaultGameServerConfig"] = state ? state.defaultGameServerConfig : undefined;
+            resourceInputs["deploymentId"] = state ? state.deploymentId : undefined;
+            resourceInputs["gameServerConfigOverrides"] = state ? state.gameServerConfigOverrides : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as GameServerDeploymentRolloutArgs | undefined;
             if ((!args || args.defaultGameServerConfig === undefined) && !opts.urn) {
@@ -164,16 +164,14 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
             if ((!args || args.deploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deploymentId'");
             }
-            inputs["defaultGameServerConfig"] = args ? args.defaultGameServerConfig : undefined;
-            inputs["deploymentId"] = args ? args.deploymentId : undefined;
-            inputs["gameServerConfigOverrides"] = args ? args.gameServerConfigOverrides : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["defaultGameServerConfig"] = args ? args.defaultGameServerConfig : undefined;
+            resourceInputs["deploymentId"] = args ? args.deploymentId : undefined;
+            resourceInputs["gameServerConfigOverrides"] = args ? args.gameServerConfigOverrides : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GameServerDeploymentRollout.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GameServerDeploymentRollout.__pulumiType, name, resourceInputs, opts);
     }
 }
 

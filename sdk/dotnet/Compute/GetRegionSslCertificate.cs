@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -48,7 +47,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionSslCertificateResult> InvokeAsync(GetRegionSslCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get info about a Region Google Compute SSL Certificate from its name.
@@ -86,7 +85,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionSslCertificateResult> Invoke(GetRegionSslCertificateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateInvokeArgs(), options.WithDefaults());
     }
 
 

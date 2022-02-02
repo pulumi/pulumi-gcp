@@ -250,7 +250,7 @@ type DicomStoreIamPolicyInput interface {
 }
 
 func (*DicomStoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStoreIamPolicy)(nil))
+	return reflect.TypeOf((**DicomStoreIamPolicy)(nil)).Elem()
 }
 
 func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyOutput() DicomStoreIamPolicyOutput {
@@ -259,35 +259,6 @@ func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyOutput() DicomStoreIamPolicyO
 
 func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyOutputWithContext(ctx context.Context) DicomStoreIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyOutput)
-}
-
-func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyPtrOutput() DicomStoreIamPolicyPtrOutput {
-	return i.ToDicomStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyPtrOutputWithContext(ctx context.Context) DicomStoreIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyPtrOutput)
-}
-
-type DicomStoreIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToDicomStoreIamPolicyPtrOutput() DicomStoreIamPolicyPtrOutput
-	ToDicomStoreIamPolicyPtrOutputWithContext(ctx context.Context) DicomStoreIamPolicyPtrOutput
-}
-
-type dicomStoreIamPolicyPtrType DicomStoreIamPolicyArgs
-
-func (*dicomStoreIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DicomStoreIamPolicy)(nil))
-}
-
-func (i *dicomStoreIamPolicyPtrType) ToDicomStoreIamPolicyPtrOutput() DicomStoreIamPolicyPtrOutput {
-	return i.ToDicomStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *dicomStoreIamPolicyPtrType) ToDicomStoreIamPolicyPtrOutputWithContext(ctx context.Context) DicomStoreIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyPtrOutput)
 }
 
 // DicomStoreIamPolicyArrayInput is an input type that accepts DicomStoreIamPolicyArray and DicomStoreIamPolicyArrayOutput values.
@@ -343,7 +314,7 @@ func (i DicomStoreIamPolicyMap) ToDicomStoreIamPolicyMapOutputWithContext(ctx co
 type DicomStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStoreIamPolicy)(nil))
+	return reflect.TypeOf((**DicomStoreIamPolicy)(nil)).Elem()
 }
 
 func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyOutput() DicomStoreIamPolicyOutput {
@@ -354,44 +325,10 @@ func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyOutputWithContext(ctx co
 	return o
 }
 
-func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyPtrOutput() DicomStoreIamPolicyPtrOutput {
-	return o.ToDicomStoreIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyPtrOutputWithContext(ctx context.Context) DicomStoreIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStoreIamPolicy) *DicomStoreIamPolicy {
-		return &v
-	}).(DicomStoreIamPolicyPtrOutput)
-}
-
-type DicomStoreIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (DicomStoreIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DicomStoreIamPolicy)(nil))
-}
-
-func (o DicomStoreIamPolicyPtrOutput) ToDicomStoreIamPolicyPtrOutput() DicomStoreIamPolicyPtrOutput {
-	return o
-}
-
-func (o DicomStoreIamPolicyPtrOutput) ToDicomStoreIamPolicyPtrOutputWithContext(ctx context.Context) DicomStoreIamPolicyPtrOutput {
-	return o
-}
-
-func (o DicomStoreIamPolicyPtrOutput) Elem() DicomStoreIamPolicyOutput {
-	return o.ApplyT(func(v *DicomStoreIamPolicy) DicomStoreIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret DicomStoreIamPolicy
-		return ret
-	}).(DicomStoreIamPolicyOutput)
-}
-
 type DicomStoreIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DicomStoreIamPolicy)(nil))
+	return reflect.TypeOf((*[]*DicomStoreIamPolicy)(nil)).Elem()
 }
 
 func (o DicomStoreIamPolicyArrayOutput) ToDicomStoreIamPolicyArrayOutput() DicomStoreIamPolicyArrayOutput {
@@ -403,15 +340,15 @@ func (o DicomStoreIamPolicyArrayOutput) ToDicomStoreIamPolicyArrayOutputWithCont
 }
 
 func (o DicomStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) DicomStoreIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DicomStoreIamPolicy {
-		return vs[0].([]DicomStoreIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DicomStoreIamPolicy {
+		return vs[0].([]*DicomStoreIamPolicy)[vs[1].(int)]
 	}).(DicomStoreIamPolicyOutput)
 }
 
 type DicomStoreIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DicomStoreIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*DicomStoreIamPolicy)(nil)).Elem()
 }
 
 func (o DicomStoreIamPolicyMapOutput) ToDicomStoreIamPolicyMapOutput() DicomStoreIamPolicyMapOutput {
@@ -423,18 +360,16 @@ func (o DicomStoreIamPolicyMapOutput) ToDicomStoreIamPolicyMapOutputWithContext(
 }
 
 func (o DicomStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DicomStoreIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DicomStoreIamPolicy {
-		return vs[0].(map[string]DicomStoreIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DicomStoreIamPolicy {
+		return vs[0].(map[string]*DicomStoreIamPolicy)[vs[1].(string)]
 	}).(DicomStoreIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamPolicyInput)(nil)).Elem(), &DicomStoreIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamPolicyPtrInput)(nil)).Elem(), &DicomStoreIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamPolicyArrayInput)(nil)).Elem(), DicomStoreIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreIamPolicyMapInput)(nil)).Elem(), DicomStoreIamPolicyMap{})
 	pulumi.RegisterOutputType(DicomStoreIamPolicyOutput{})
-	pulumi.RegisterOutputType(DicomStoreIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DicomStoreIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(DicomStoreIamPolicyMapOutput{})
 }

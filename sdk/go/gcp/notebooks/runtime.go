@@ -334,7 +334,7 @@ type RuntimeInput interface {
 }
 
 func (*Runtime) ElementType() reflect.Type {
-	return reflect.TypeOf((*Runtime)(nil))
+	return reflect.TypeOf((**Runtime)(nil)).Elem()
 }
 
 func (i *Runtime) ToRuntimeOutput() RuntimeOutput {
@@ -343,35 +343,6 @@ func (i *Runtime) ToRuntimeOutput() RuntimeOutput {
 
 func (i *Runtime) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeOutput)
-}
-
-func (i *Runtime) ToRuntimePtrOutput() RuntimePtrOutput {
-	return i.ToRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *Runtime) ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimePtrOutput)
-}
-
-type RuntimePtrInput interface {
-	pulumi.Input
-
-	ToRuntimePtrOutput() RuntimePtrOutput
-	ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput
-}
-
-type runtimePtrType RuntimeArgs
-
-func (*runtimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Runtime)(nil))
-}
-
-func (i *runtimePtrType) ToRuntimePtrOutput() RuntimePtrOutput {
-	return i.ToRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *runtimePtrType) ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimePtrOutput)
 }
 
 // RuntimeArrayInput is an input type that accepts RuntimeArray and RuntimeArrayOutput values.
@@ -427,7 +398,7 @@ func (i RuntimeMap) ToRuntimeMapOutputWithContext(ctx context.Context) RuntimeMa
 type RuntimeOutput struct{ *pulumi.OutputState }
 
 func (RuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Runtime)(nil))
+	return reflect.TypeOf((**Runtime)(nil)).Elem()
 }
 
 func (o RuntimeOutput) ToRuntimeOutput() RuntimeOutput {
@@ -438,44 +409,10 @@ func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOu
 	return o
 }
 
-func (o RuntimeOutput) ToRuntimePtrOutput() RuntimePtrOutput {
-	return o.ToRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o RuntimeOutput) ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Runtime) *Runtime {
-		return &v
-	}).(RuntimePtrOutput)
-}
-
-type RuntimePtrOutput struct{ *pulumi.OutputState }
-
-func (RuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Runtime)(nil))
-}
-
-func (o RuntimePtrOutput) ToRuntimePtrOutput() RuntimePtrOutput {
-	return o
-}
-
-func (o RuntimePtrOutput) ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput {
-	return o
-}
-
-func (o RuntimePtrOutput) Elem() RuntimeOutput {
-	return o.ApplyT(func(v *Runtime) Runtime {
-		if v != nil {
-			return *v
-		}
-		var ret Runtime
-		return ret
-	}).(RuntimeOutput)
-}
-
 type RuntimeArrayOutput struct{ *pulumi.OutputState }
 
 func (RuntimeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Runtime)(nil))
+	return reflect.TypeOf((*[]*Runtime)(nil)).Elem()
 }
 
 func (o RuntimeArrayOutput) ToRuntimeArrayOutput() RuntimeArrayOutput {
@@ -487,15 +424,15 @@ func (o RuntimeArrayOutput) ToRuntimeArrayOutputWithContext(ctx context.Context)
 }
 
 func (o RuntimeArrayOutput) Index(i pulumi.IntInput) RuntimeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Runtime {
-		return vs[0].([]Runtime)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Runtime {
+		return vs[0].([]*Runtime)[vs[1].(int)]
 	}).(RuntimeOutput)
 }
 
 type RuntimeMapOutput struct{ *pulumi.OutputState }
 
 func (RuntimeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Runtime)(nil))
+	return reflect.TypeOf((*map[string]*Runtime)(nil)).Elem()
 }
 
 func (o RuntimeMapOutput) ToRuntimeMapOutput() RuntimeMapOutput {
@@ -507,18 +444,16 @@ func (o RuntimeMapOutput) ToRuntimeMapOutputWithContext(ctx context.Context) Run
 }
 
 func (o RuntimeMapOutput) MapIndex(k pulumi.StringInput) RuntimeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Runtime {
-		return vs[0].(map[string]Runtime)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Runtime {
+		return vs[0].(map[string]*Runtime)[vs[1].(string)]
 	}).(RuntimeOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeInput)(nil)).Elem(), &Runtime{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuntimePtrInput)(nil)).Elem(), &Runtime{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeArrayInput)(nil)).Elem(), RuntimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMapInput)(nil)).Elem(), RuntimeMap{})
 	pulumi.RegisterOutputType(RuntimeOutput{})
-	pulumi.RegisterOutputType(RuntimePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeMapOutput{})
 }

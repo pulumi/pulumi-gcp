@@ -164,42 +164,40 @@ export class Deployment extends pulumi.CustomResource {
      */
     constructor(name: string, args: DeploymentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeploymentArgs | DeploymentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeploymentState | undefined;
-            inputs["createPolicy"] = state ? state.createPolicy : undefined;
-            inputs["deletePolicy"] = state ? state.deletePolicy : undefined;
-            inputs["deploymentId"] = state ? state.deploymentId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["manifest"] = state ? state.manifest : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["preview"] = state ? state.preview : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["target"] = state ? state.target : undefined;
+            resourceInputs["createPolicy"] = state ? state.createPolicy : undefined;
+            resourceInputs["deletePolicy"] = state ? state.deletePolicy : undefined;
+            resourceInputs["deploymentId"] = state ? state.deploymentId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["manifest"] = state ? state.manifest : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["preview"] = state ? state.preview : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as DeploymentArgs | undefined;
             if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            inputs["createPolicy"] = args ? args.createPolicy : undefined;
-            inputs["deletePolicy"] = args ? args.deletePolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["preview"] = args ? args.preview : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["deploymentId"] = undefined /*out*/;
-            inputs["manifest"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["createPolicy"] = args ? args.createPolicy : undefined;
+            resourceInputs["deletePolicy"] = args ? args.deletePolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["preview"] = args ? args.preview : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["deploymentId"] = undefined /*out*/;
+            resourceInputs["manifest"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Deployment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Deployment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

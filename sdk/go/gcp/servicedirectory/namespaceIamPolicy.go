@@ -227,7 +227,7 @@ type NamespaceIamPolicyInput interface {
 }
 
 func (*NamespaceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamPolicy)(nil))
+	return reflect.TypeOf((**NamespaceIamPolicy)(nil)).Elem()
 }
 
 func (i *NamespaceIamPolicy) ToNamespaceIamPolicyOutput() NamespaceIamPolicyOutput {
@@ -236,35 +236,6 @@ func (i *NamespaceIamPolicy) ToNamespaceIamPolicyOutput() NamespaceIamPolicyOutp
 
 func (i *NamespaceIamPolicy) ToNamespaceIamPolicyOutputWithContext(ctx context.Context) NamespaceIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyOutput)
-}
-
-func (i *NamespaceIamPolicy) ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput {
-	return i.ToNamespaceIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *NamespaceIamPolicy) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyPtrOutput)
-}
-
-type NamespaceIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput
-	ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput
-}
-
-type namespaceIamPolicyPtrType NamespaceIamPolicyArgs
-
-func (*namespaceIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceIamPolicy)(nil))
-}
-
-func (i *namespaceIamPolicyPtrType) ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput {
-	return i.ToNamespaceIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *namespaceIamPolicyPtrType) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyPtrOutput)
 }
 
 // NamespaceIamPolicyArrayInput is an input type that accepts NamespaceIamPolicyArray and NamespaceIamPolicyArrayOutput values.
@@ -320,7 +291,7 @@ func (i NamespaceIamPolicyMap) ToNamespaceIamPolicyMapOutputWithContext(ctx cont
 type NamespaceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamPolicy)(nil))
+	return reflect.TypeOf((**NamespaceIamPolicy)(nil)).Elem()
 }
 
 func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyOutput() NamespaceIamPolicyOutput {
@@ -331,44 +302,10 @@ func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyOutputWithContext(ctx cont
 	return o
 }
 
-func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput {
-	return o.ToNamespaceIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamPolicy) *NamespaceIamPolicy {
-		return &v
-	}).(NamespaceIamPolicyPtrOutput)
-}
-
-type NamespaceIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (NamespaceIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceIamPolicy)(nil))
-}
-
-func (o NamespaceIamPolicyPtrOutput) ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput {
-	return o
-}
-
-func (o NamespaceIamPolicyPtrOutput) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
-	return o
-}
-
-func (o NamespaceIamPolicyPtrOutput) Elem() NamespaceIamPolicyOutput {
-	return o.ApplyT(func(v *NamespaceIamPolicy) NamespaceIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret NamespaceIamPolicy
-		return ret
-	}).(NamespaceIamPolicyOutput)
-}
-
 type NamespaceIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamespaceIamPolicy)(nil))
+	return reflect.TypeOf((*[]*NamespaceIamPolicy)(nil)).Elem()
 }
 
 func (o NamespaceIamPolicyArrayOutput) ToNamespaceIamPolicyArrayOutput() NamespaceIamPolicyArrayOutput {
@@ -380,15 +317,15 @@ func (o NamespaceIamPolicyArrayOutput) ToNamespaceIamPolicyArrayOutputWithContex
 }
 
 func (o NamespaceIamPolicyArrayOutput) Index(i pulumi.IntInput) NamespaceIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceIamPolicy {
-		return vs[0].([]NamespaceIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamespaceIamPolicy {
+		return vs[0].([]*NamespaceIamPolicy)[vs[1].(int)]
 	}).(NamespaceIamPolicyOutput)
 }
 
 type NamespaceIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NamespaceIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*NamespaceIamPolicy)(nil)).Elem()
 }
 
 func (o NamespaceIamPolicyMapOutput) ToNamespaceIamPolicyMapOutput() NamespaceIamPolicyMapOutput {
@@ -400,18 +337,16 @@ func (o NamespaceIamPolicyMapOutput) ToNamespaceIamPolicyMapOutputWithContext(ct
 }
 
 func (o NamespaceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) NamespaceIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamespaceIamPolicy {
-		return vs[0].(map[string]NamespaceIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NamespaceIamPolicy {
+		return vs[0].(map[string]*NamespaceIamPolicy)[vs[1].(string)]
 	}).(NamespaceIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamPolicyInput)(nil)).Elem(), &NamespaceIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamPolicyPtrInput)(nil)).Elem(), &NamespaceIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamPolicyArrayInput)(nil)).Elem(), NamespaceIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceIamPolicyMapInput)(nil)).Elem(), NamespaceIamPolicyMap{})
 	pulumi.RegisterOutputType(NamespaceIamPolicyOutput{})
-	pulumi.RegisterOutputType(NamespaceIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceIamPolicyMapOutput{})
 }

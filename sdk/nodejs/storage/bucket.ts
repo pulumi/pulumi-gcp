@@ -196,58 +196,56 @@ export class Bucket extends pulumi.CustomResource {
      */
     constructor(name: string, args: BucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketArgs | BucketState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
-            inputs["cors"] = state ? state.cors : undefined;
-            inputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
-            inputs["encryption"] = state ? state.encryption : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["logging"] = state ? state.logging : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["publicAccessPrevention"] = state ? state.publicAccessPrevention : undefined;
-            inputs["requesterPays"] = state ? state.requesterPays : undefined;
-            inputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["storageClass"] = state ? state.storageClass : undefined;
-            inputs["uniformBucketLevelAccess"] = state ? state.uniformBucketLevelAccess : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["versioning"] = state ? state.versioning : undefined;
-            inputs["website"] = state ? state.website : undefined;
+            resourceInputs["cors"] = state ? state.cors : undefined;
+            resourceInputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
+            resourceInputs["encryption"] = state ? state.encryption : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["logging"] = state ? state.logging : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["publicAccessPrevention"] = state ? state.publicAccessPrevention : undefined;
+            resourceInputs["requesterPays"] = state ? state.requesterPays : undefined;
+            resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
+            resourceInputs["uniformBucketLevelAccess"] = state ? state.uniformBucketLevelAccess : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["website"] = state ? state.website : undefined;
         } else {
             const args = argsOrState as BucketArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["cors"] = args ? args.cors : undefined;
-            inputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
-            inputs["encryption"] = args ? args.encryption : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["logging"] = args ? args.logging : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["publicAccessPrevention"] = args ? args.publicAccessPrevention : undefined;
-            inputs["requesterPays"] = args ? args.requesterPays : undefined;
-            inputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
-            inputs["storageClass"] = args ? args.storageClass : undefined;
-            inputs["uniformBucketLevelAccess"] = args ? args.uniformBucketLevelAccess : undefined;
-            inputs["versioning"] = args ? args.versioning : undefined;
-            inputs["website"] = args ? args.website : undefined;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["cors"] = args ? args.cors : undefined;
+            resourceInputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["publicAccessPrevention"] = args ? args.publicAccessPrevention : undefined;
+            resourceInputs["requesterPays"] = args ? args.requesterPays : undefined;
+            resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
+            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
+            resourceInputs["uniformBucketLevelAccess"] = args ? args.uniformBucketLevelAccess : undefined;
+            resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["website"] = args ? args.website : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Bucket.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Bucket.__pulumiType, name, resourceInputs, opts);
     }
 }
 

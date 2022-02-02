@@ -281,30 +281,30 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubnetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetworkArgs | SubnetworkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetworkState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["externalIpv6Prefix"] = state ? state.externalIpv6Prefix : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
-            inputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
-            inputs["ipv6AccessType"] = state ? state.ipv6AccessType : undefined;
-            inputs["ipv6CidrRange"] = state ? state.ipv6CidrRange : undefined;
-            inputs["logConfig"] = state ? state.logConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["privateIpGoogleAccess"] = state ? state.privateIpGoogleAccess : undefined;
-            inputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["purpose"] = state ? state.purpose : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["secondaryIpRanges"] = state ? state.secondaryIpRanges : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["stackType"] = state ? state.stackType : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["externalIpv6Prefix"] = state ? state.externalIpv6Prefix : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
+            resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
+            resourceInputs["ipv6AccessType"] = state ? state.ipv6AccessType : undefined;
+            resourceInputs["ipv6CidrRange"] = state ? state.ipv6CidrRange : undefined;
+            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["privateIpGoogleAccess"] = state ? state.privateIpGoogleAccess : undefined;
+            resourceInputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["purpose"] = state ? state.purpose : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["secondaryIpRanges"] = state ? state.secondaryIpRanges : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["stackType"] = state ? state.stackType : undefined;
         } else {
             const args = argsOrState as SubnetworkArgs | undefined;
             if ((!args || args.ipCidrRange === undefined) && !opts.urn) {
@@ -313,31 +313,29 @@ export class Subnetwork extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            inputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
-            inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["purpose"] = args ? args.purpose : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
-            inputs["stackType"] = args ? args.stackType : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["externalIpv6Prefix"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["gatewayAddress"] = undefined /*out*/;
-            inputs["ipv6CidrRange"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
+            resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
+            resourceInputs["stackType"] = args ? args.stackType : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["gatewayAddress"] = undefined /*out*/;
+            resourceInputs["ipv6CidrRange"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Subnetwork.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Subnetwork.__pulumiType, name, resourceInputs, opts);
     }
 }
 

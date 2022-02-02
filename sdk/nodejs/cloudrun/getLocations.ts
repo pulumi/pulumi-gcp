@@ -28,9 +28,7 @@ export function getLocations(args?: GetLocationsArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:cloudrun/getLocations:getLocations", {
         "project": args.project,
     }, opts);

@@ -104,28 +104,26 @@ export class LiteReservation extends pulumi.CustomResource {
      */
     constructor(name: string, args: LiteReservationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LiteReservationArgs | LiteReservationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LiteReservationState | undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["throughputCapacity"] = state ? state.throughputCapacity : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["throughputCapacity"] = state ? state.throughputCapacity : undefined;
         } else {
             const args = argsOrState as LiteReservationArgs | undefined;
             if ((!args || args.throughputCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'throughputCapacity'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["throughputCapacity"] = args ? args.throughputCapacity : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["throughputCapacity"] = args ? args.throughputCapacity : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LiteReservation.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LiteReservation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

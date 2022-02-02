@@ -152,43 +152,41 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     constructor(name: string, args?: GlobalAddressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalAddressArgs | GlobalAddressState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalAddressState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["addressType"] = state ? state.addressType : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["prefixLength"] = state ? state.prefixLength : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["purpose"] = state ? state.purpose : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["addressType"] = state ? state.addressType : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["prefixLength"] = state ? state.prefixLength : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["purpose"] = state ? state.purpose : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as GlobalAddressArgs | undefined;
-            inputs["address"] = args ? args.address : undefined;
-            inputs["addressType"] = args ? args.addressType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["prefixLength"] = args ? args.prefixLength : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["purpose"] = args ? args.purpose : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["addressType"] = args ? args.addressType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GlobalAddress.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GlobalAddress.__pulumiType, name, resourceInputs, opts);
     }
 }
 

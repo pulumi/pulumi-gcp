@@ -205,36 +205,34 @@ export class Connection extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            inputs["cloudSql"] = state ? state.cloudSql : undefined;
-            inputs["connectionId"] = state ? state.connectionId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["friendlyName"] = state ? state.friendlyName : undefined;
-            inputs["hasCredential"] = state ? state.hasCredential : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["cloudSql"] = state ? state.cloudSql : undefined;
+            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
+            resourceInputs["hasCredential"] = state ? state.hasCredential : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if ((!args || args.cloudSql === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cloudSql'");
             }
-            inputs["cloudSql"] = args ? args.cloudSql : undefined;
-            inputs["connectionId"] = args ? args.connectionId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["hasCredential"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["cloudSql"] = args ? args.cloudSql : undefined;
+            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["hasCredential"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Connection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -269,7 +269,7 @@ type TopicIAMMemberInput interface {
 }
 
 func (*TopicIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMMember)(nil))
+	return reflect.TypeOf((**TopicIAMMember)(nil)).Elem()
 }
 
 func (i *TopicIAMMember) ToTopicIAMMemberOutput() TopicIAMMemberOutput {
@@ -278,35 +278,6 @@ func (i *TopicIAMMember) ToTopicIAMMemberOutput() TopicIAMMemberOutput {
 
 func (i *TopicIAMMember) ToTopicIAMMemberOutputWithContext(ctx context.Context) TopicIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberOutput)
-}
-
-func (i *TopicIAMMember) ToTopicIAMMemberPtrOutput() TopicIAMMemberPtrOutput {
-	return i.ToTopicIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *TopicIAMMember) ToTopicIAMMemberPtrOutputWithContext(ctx context.Context) TopicIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberPtrOutput)
-}
-
-type TopicIAMMemberPtrInput interface {
-	pulumi.Input
-
-	ToTopicIAMMemberPtrOutput() TopicIAMMemberPtrOutput
-	ToTopicIAMMemberPtrOutputWithContext(ctx context.Context) TopicIAMMemberPtrOutput
-}
-
-type topicIAMMemberPtrType TopicIAMMemberArgs
-
-func (*topicIAMMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMMember)(nil))
-}
-
-func (i *topicIAMMemberPtrType) ToTopicIAMMemberPtrOutput() TopicIAMMemberPtrOutput {
-	return i.ToTopicIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *topicIAMMemberPtrType) ToTopicIAMMemberPtrOutputWithContext(ctx context.Context) TopicIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberPtrOutput)
 }
 
 // TopicIAMMemberArrayInput is an input type that accepts TopicIAMMemberArray and TopicIAMMemberArrayOutput values.
@@ -362,7 +333,7 @@ func (i TopicIAMMemberMap) ToTopicIAMMemberMapOutputWithContext(ctx context.Cont
 type TopicIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMMember)(nil))
+	return reflect.TypeOf((**TopicIAMMember)(nil)).Elem()
 }
 
 func (o TopicIAMMemberOutput) ToTopicIAMMemberOutput() TopicIAMMemberOutput {
@@ -373,44 +344,10 @@ func (o TopicIAMMemberOutput) ToTopicIAMMemberOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TopicIAMMemberOutput) ToTopicIAMMemberPtrOutput() TopicIAMMemberPtrOutput {
-	return o.ToTopicIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (o TopicIAMMemberOutput) ToTopicIAMMemberPtrOutputWithContext(ctx context.Context) TopicIAMMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIAMMember) *TopicIAMMember {
-		return &v
-	}).(TopicIAMMemberPtrOutput)
-}
-
-type TopicIAMMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (TopicIAMMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMMember)(nil))
-}
-
-func (o TopicIAMMemberPtrOutput) ToTopicIAMMemberPtrOutput() TopicIAMMemberPtrOutput {
-	return o
-}
-
-func (o TopicIAMMemberPtrOutput) ToTopicIAMMemberPtrOutputWithContext(ctx context.Context) TopicIAMMemberPtrOutput {
-	return o
-}
-
-func (o TopicIAMMemberPtrOutput) Elem() TopicIAMMemberOutput {
-	return o.ApplyT(func(v *TopicIAMMember) TopicIAMMember {
-		if v != nil {
-			return *v
-		}
-		var ret TopicIAMMember
-		return ret
-	}).(TopicIAMMemberOutput)
-}
-
 type TopicIAMMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TopicIAMMember)(nil))
+	return reflect.TypeOf((*[]*TopicIAMMember)(nil)).Elem()
 }
 
 func (o TopicIAMMemberArrayOutput) ToTopicIAMMemberArrayOutput() TopicIAMMemberArrayOutput {
@@ -422,15 +359,15 @@ func (o TopicIAMMemberArrayOutput) ToTopicIAMMemberArrayOutputWithContext(ctx co
 }
 
 func (o TopicIAMMemberArrayOutput) Index(i pulumi.IntInput) TopicIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TopicIAMMember {
-		return vs[0].([]TopicIAMMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicIAMMember {
+		return vs[0].([]*TopicIAMMember)[vs[1].(int)]
 	}).(TopicIAMMemberOutput)
 }
 
 type TopicIAMMemberMapOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TopicIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*TopicIAMMember)(nil)).Elem()
 }
 
 func (o TopicIAMMemberMapOutput) ToTopicIAMMemberMapOutput() TopicIAMMemberMapOutput {
@@ -442,18 +379,16 @@ func (o TopicIAMMemberMapOutput) ToTopicIAMMemberMapOutputWithContext(ctx contex
 }
 
 func (o TopicIAMMemberMapOutput) MapIndex(k pulumi.StringInput) TopicIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TopicIAMMember {
-		return vs[0].(map[string]TopicIAMMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TopicIAMMember {
+		return vs[0].(map[string]*TopicIAMMember)[vs[1].(string)]
 	}).(TopicIAMMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMMemberInput)(nil)).Elem(), &TopicIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMMemberPtrInput)(nil)).Elem(), &TopicIAMMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMMemberArrayInput)(nil)).Elem(), TopicIAMMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMMemberMapInput)(nil)).Elem(), TopicIAMMemberMap{})
 	pulumi.RegisterOutputType(TopicIAMMemberOutput{})
-	pulumi.RegisterOutputType(TopicIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(TopicIAMMemberArrayOutput{})
 	pulumi.RegisterOutputType(TopicIAMMemberMapOutput{})
 }

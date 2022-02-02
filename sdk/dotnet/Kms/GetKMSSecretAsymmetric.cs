@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Kms
 {
     public static class GetKMSSecretAsymmetric
     {
         public static Task<GetKMSSecretAsymmetricResult> InvokeAsync(GetKMSSecretAsymmetricArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricArgs(), options.WithDefaults());
 
         public static Output<GetKMSSecretAsymmetricResult> Invoke(GetKMSSecretAsymmetricInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricInvokeArgs(), options.WithDefaults());
     }
 
 

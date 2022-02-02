@@ -37,7 +37,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNodeTemplate(ctx, "soletenant_tmpl", &compute.NodeTemplateArgs{
+// 		_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 // 			Region:   pulumi.String("us-central1"),
 // 			NodeType: pulumi.String("n1-node-96-624"),
 // 		})
@@ -69,7 +69,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNodeTemplate(ctx, "soletenant_tmpl", &compute.NodeTemplateArgs{
+// 		_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 // 			Region:   pulumi.String("us-central1"),
 // 			NodeType: pulumi.String("n1-node-96-624"),
 // 		})
@@ -315,7 +315,7 @@ type NodeGroupInput interface {
 }
 
 func (*NodeGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeGroup)(nil))
+	return reflect.TypeOf((**NodeGroup)(nil)).Elem()
 }
 
 func (i *NodeGroup) ToNodeGroupOutput() NodeGroupOutput {
@@ -324,35 +324,6 @@ func (i *NodeGroup) ToNodeGroupOutput() NodeGroupOutput {
 
 func (i *NodeGroup) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupOutput)
-}
-
-func (i *NodeGroup) ToNodeGroupPtrOutput() NodeGroupPtrOutput {
-	return i.ToNodeGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *NodeGroup) ToNodeGroupPtrOutputWithContext(ctx context.Context) NodeGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupPtrOutput)
-}
-
-type NodeGroupPtrInput interface {
-	pulumi.Input
-
-	ToNodeGroupPtrOutput() NodeGroupPtrOutput
-	ToNodeGroupPtrOutputWithContext(ctx context.Context) NodeGroupPtrOutput
-}
-
-type nodeGroupPtrType NodeGroupArgs
-
-func (*nodeGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeGroup)(nil))
-}
-
-func (i *nodeGroupPtrType) ToNodeGroupPtrOutput() NodeGroupPtrOutput {
-	return i.ToNodeGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *nodeGroupPtrType) ToNodeGroupPtrOutputWithContext(ctx context.Context) NodeGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupPtrOutput)
 }
 
 // NodeGroupArrayInput is an input type that accepts NodeGroupArray and NodeGroupArrayOutput values.
@@ -408,7 +379,7 @@ func (i NodeGroupMap) ToNodeGroupMapOutputWithContext(ctx context.Context) NodeG
 type NodeGroupOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeGroup)(nil))
+	return reflect.TypeOf((**NodeGroup)(nil)).Elem()
 }
 
 func (o NodeGroupOutput) ToNodeGroupOutput() NodeGroupOutput {
@@ -419,44 +390,10 @@ func (o NodeGroupOutput) ToNodeGroupOutputWithContext(ctx context.Context) NodeG
 	return o
 }
 
-func (o NodeGroupOutput) ToNodeGroupPtrOutput() NodeGroupPtrOutput {
-	return o.ToNodeGroupPtrOutputWithContext(context.Background())
-}
-
-func (o NodeGroupOutput) ToNodeGroupPtrOutputWithContext(ctx context.Context) NodeGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeGroup) *NodeGroup {
-		return &v
-	}).(NodeGroupPtrOutput)
-}
-
-type NodeGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (NodeGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeGroup)(nil))
-}
-
-func (o NodeGroupPtrOutput) ToNodeGroupPtrOutput() NodeGroupPtrOutput {
-	return o
-}
-
-func (o NodeGroupPtrOutput) ToNodeGroupPtrOutputWithContext(ctx context.Context) NodeGroupPtrOutput {
-	return o
-}
-
-func (o NodeGroupPtrOutput) Elem() NodeGroupOutput {
-	return o.ApplyT(func(v *NodeGroup) NodeGroup {
-		if v != nil {
-			return *v
-		}
-		var ret NodeGroup
-		return ret
-	}).(NodeGroupOutput)
-}
-
 type NodeGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodeGroup)(nil))
+	return reflect.TypeOf((*[]*NodeGroup)(nil)).Elem()
 }
 
 func (o NodeGroupArrayOutput) ToNodeGroupArrayOutput() NodeGroupArrayOutput {
@@ -468,15 +405,15 @@ func (o NodeGroupArrayOutput) ToNodeGroupArrayOutputWithContext(ctx context.Cont
 }
 
 func (o NodeGroupArrayOutput) Index(i pulumi.IntInput) NodeGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroup {
-		return vs[0].([]NodeGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeGroup {
+		return vs[0].([]*NodeGroup)[vs[1].(int)]
 	}).(NodeGroupOutput)
 }
 
 type NodeGroupMapOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NodeGroup)(nil))
+	return reflect.TypeOf((*map[string]*NodeGroup)(nil)).Elem()
 }
 
 func (o NodeGroupMapOutput) ToNodeGroupMapOutput() NodeGroupMapOutput {
@@ -488,18 +425,16 @@ func (o NodeGroupMapOutput) ToNodeGroupMapOutputWithContext(ctx context.Context)
 }
 
 func (o NodeGroupMapOutput) MapIndex(k pulumi.StringInput) NodeGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodeGroup {
-		return vs[0].(map[string]NodeGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NodeGroup {
+		return vs[0].(map[string]*NodeGroup)[vs[1].(string)]
 	}).(NodeGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupInput)(nil)).Elem(), &NodeGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupPtrInput)(nil)).Elem(), &NodeGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupArrayInput)(nil)).Elem(), NodeGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMapInput)(nil)).Elem(), NodeGroupMap{})
 	pulumi.RegisterOutputType(NodeGroupOutput{})
-	pulumi.RegisterOutputType(NodeGroupPtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupMapOutput{})
 }

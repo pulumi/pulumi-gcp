@@ -193,39 +193,37 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ManagedSslCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ManagedSslCertificateArgs | ManagedSslCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedSslCertificateState | undefined;
-            inputs["certificateId"] = state ? state.certificateId : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["expireTime"] = state ? state.expireTime : undefined;
-            inputs["managed"] = state ? state.managed : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["subjectAlternativeNames"] = state ? state.subjectAlternativeNames : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
+            resourceInputs["managed"] = state ? state.managed : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["subjectAlternativeNames"] = state ? state.subjectAlternativeNames : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ManagedSslCertificateArgs | undefined;
-            inputs["certificateId"] = args ? args.certificateId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["managed"] = args ? args.managed : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["subjectAlternativeNames"] = undefined /*out*/;
+            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["managed"] = args ? args.managed : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "gcp:compute/mangedSslCertificate:MangedSslCertificate" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(ManagedSslCertificate.__pulumiType, name, inputs, opts);
+        super(ManagedSslCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

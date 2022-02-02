@@ -40,9 +40,7 @@ export function getIstioCanonicalService(args: GetIstioCanonicalServiceArgs, opt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", {
         "canonicalService": args.canonicalService,
         "canonicalServiceNamespace": args.canonicalServiceNamespace,

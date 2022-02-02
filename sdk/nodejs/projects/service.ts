@@ -103,28 +103,26 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            inputs["disableDependentServices"] = state ? state.disableDependentServices : undefined;
-            inputs["disableOnDestroy"] = state ? state.disableOnDestroy : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["service"] = state ? state.service : undefined;
+            resourceInputs["disableDependentServices"] = state ? state.disableDependentServices : undefined;
+            resourceInputs["disableOnDestroy"] = state ? state.disableOnDestroy : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["disableDependentServices"] = args ? args.disableDependentServices : undefined;
-            inputs["disableOnDestroy"] = args ? args.disableOnDestroy : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["service"] = args ? args.service : undefined;
+            resourceInputs["disableDependentServices"] = args ? args.disableDependentServices : undefined;
+            resourceInputs["disableOnDestroy"] = args ? args.disableOnDestroy : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Service.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

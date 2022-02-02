@@ -127,16 +127,16 @@ export class EntityType extends pulumi.CustomResource {
      */
     constructor(name: string, args: EntityTypeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EntityTypeArgs | EntityTypeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntityTypeState | undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enableFuzzyExtraction"] = state ? state.enableFuzzyExtraction : undefined;
-            inputs["entities"] = state ? state.entities : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enableFuzzyExtraction"] = state ? state.enableFuzzyExtraction : undefined;
+            resourceInputs["entities"] = state ? state.entities : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as EntityTypeArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -145,17 +145,15 @@ export class EntityType extends pulumi.CustomResource {
             if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
-            inputs["entities"] = args ? args.entities : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
+            resourceInputs["entities"] = args ? args.entities : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EntityType.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EntityType.__pulumiType, name, resourceInputs, opts);
     }
 }
 

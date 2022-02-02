@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Folder
 {
@@ -45,7 +44,7 @@ namespace Pulumi.Gcp.Folder
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrganizationPolicyResult> InvokeAsync(GetOrganizationPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Allows management of Organization policies for a Google Folder. For more information see
@@ -80,7 +79,7 @@ namespace Pulumi.Gcp.Folder
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOrganizationPolicyResult> Invoke(GetOrganizationPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -109,34 +109,32 @@ export class RouterInterface extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterInterfaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
-            inputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
-            inputs["ipRange"] = state ? state.ipRange : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["router"] = state ? state.router : undefined;
-            inputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
+            resourceInputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
+            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["router"] = state ? state.router : undefined;
+            resourceInputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
             if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            inputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
-            inputs["ipRange"] = args ? args.ipRange : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["router"] = args ? args.router : undefined;
-            inputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
+            resourceInputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
+            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouterInterface.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouterInterface.__pulumiType, name, resourceInputs, opts);
     }
 }
 

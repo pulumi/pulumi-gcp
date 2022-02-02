@@ -136,19 +136,19 @@ export class ObjectAccessControl extends pulumi.CustomResource {
      */
     constructor(name: string, args: ObjectAccessControlArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ObjectAccessControlArgs | ObjectAccessControlState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObjectAccessControlState | undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["entity"] = state ? state.entity : undefined;
-            inputs["entityId"] = state ? state.entityId : undefined;
-            inputs["generation"] = state ? state.generation : undefined;
-            inputs["object"] = state ? state.object : undefined;
-            inputs["projectTeams"] = state ? state.projectTeams : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["entity"] = state ? state.entity : undefined;
+            resourceInputs["entityId"] = state ? state.entityId : undefined;
+            resourceInputs["generation"] = state ? state.generation : undefined;
+            resourceInputs["object"] = state ? state.object : undefined;
+            resourceInputs["projectTeams"] = state ? state.projectTeams : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ObjectAccessControlArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
@@ -163,20 +163,18 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["entity"] = args ? args.entity : undefined;
-            inputs["object"] = args ? args.object : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["domain"] = undefined /*out*/;
-            inputs["email"] = undefined /*out*/;
-            inputs["entityId"] = undefined /*out*/;
-            inputs["generation"] = undefined /*out*/;
-            inputs["projectTeams"] = undefined /*out*/;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["entity"] = args ? args.entity : undefined;
+            resourceInputs["object"] = args ? args.object : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["domain"] = undefined /*out*/;
+            resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["entityId"] = undefined /*out*/;
+            resourceInputs["generation"] = undefined /*out*/;
+            resourceInputs["projectTeams"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ObjectAccessControl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ObjectAccessControl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

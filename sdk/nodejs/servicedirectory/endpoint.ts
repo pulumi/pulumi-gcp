@@ -169,17 +169,17 @@ export class Endpoint extends pulumi.CustomResource {
      */
     constructor(name: string, args: EndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointArgs | EndpointState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["endpointId"] = state ? state.endpointId : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["service"] = state ? state.service : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
             if ((!args || args.endpointId === undefined) && !opts.urn) {
@@ -188,18 +188,16 @@ export class Endpoint extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["endpointId"] = args ? args.endpointId : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["endpointId"] = args ? args.endpointId : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Endpoint.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Endpoint.__pulumiType, name, resourceInputs, opts);
     }
 }
 

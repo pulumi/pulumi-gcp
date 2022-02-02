@@ -229,66 +229,64 @@ export class Function extends pulumi.CustomResource {
      */
     constructor(name: string, args: FunctionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
-            inputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
-            inputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["entryPoint"] = state ? state.entryPoint : undefined;
-            inputs["environmentVariables"] = state ? state.environmentVariables : undefined;
-            inputs["eventTrigger"] = state ? state.eventTrigger : undefined;
-            inputs["httpsTriggerUrl"] = state ? state.httpsTriggerUrl : undefined;
-            inputs["ingressSettings"] = state ? state.ingressSettings : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["maxInstances"] = state ? state.maxInstances : undefined;
-            inputs["minInstances"] = state ? state.minInstances : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["runtime"] = state ? state.runtime : undefined;
-            inputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            inputs["sourceArchiveBucket"] = state ? state.sourceArchiveBucket : undefined;
-            inputs["sourceArchiveObject"] = state ? state.sourceArchiveObject : undefined;
-            inputs["sourceRepository"] = state ? state.sourceRepository : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
-            inputs["triggerHttp"] = state ? state.triggerHttp : undefined;
-            inputs["vpcConnector"] = state ? state.vpcConnector : undefined;
-            inputs["vpcConnectorEgressSettings"] = state ? state.vpcConnectorEgressSettings : undefined;
+            resourceInputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
+            resourceInputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["entryPoint"] = state ? state.entryPoint : undefined;
+            resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
+            resourceInputs["eventTrigger"] = state ? state.eventTrigger : undefined;
+            resourceInputs["httpsTriggerUrl"] = state ? state.httpsTriggerUrl : undefined;
+            resourceInputs["ingressSettings"] = state ? state.ingressSettings : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maxInstances"] = state ? state.maxInstances : undefined;
+            resourceInputs["minInstances"] = state ? state.minInstances : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
+            resourceInputs["sourceArchiveBucket"] = state ? state.sourceArchiveBucket : undefined;
+            resourceInputs["sourceArchiveObject"] = state ? state.sourceArchiveObject : undefined;
+            resourceInputs["sourceRepository"] = state ? state.sourceRepository : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["triggerHttp"] = state ? state.triggerHttp : undefined;
+            resourceInputs["vpcConnector"] = state ? state.vpcConnector : undefined;
+            resourceInputs["vpcConnectorEgressSettings"] = state ? state.vpcConnectorEgressSettings : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
             if ((!args || args.runtime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
-            inputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["entryPoint"] = args ? args.entryPoint : undefined;
-            inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
-            inputs["eventTrigger"] = args ? args.eventTrigger : undefined;
-            inputs["httpsTriggerUrl"] = args ? args.httpsTriggerUrl : undefined;
-            inputs["ingressSettings"] = args ? args.ingressSettings : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["maxInstances"] = args ? args.maxInstances : undefined;
-            inputs["minInstances"] = args ? args.minInstances : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["runtime"] = args ? args.runtime : undefined;
-            inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            inputs["sourceArchiveBucket"] = args ? args.sourceArchiveBucket : undefined;
-            inputs["sourceArchiveObject"] = args ? args.sourceArchiveObject : undefined;
-            inputs["sourceRepository"] = args ? args.sourceRepository : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["triggerHttp"] = args ? args.triggerHttp : undefined;
-            inputs["vpcConnector"] = args ? args.vpcConnector : undefined;
-            inputs["vpcConnectorEgressSettings"] = args ? args.vpcConnectorEgressSettings : undefined;
+            resourceInputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
+            resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["entryPoint"] = args ? args.entryPoint : undefined;
+            resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
+            resourceInputs["eventTrigger"] = args ? args.eventTrigger : undefined;
+            resourceInputs["httpsTriggerUrl"] = args ? args.httpsTriggerUrl : undefined;
+            resourceInputs["ingressSettings"] = args ? args.ingressSettings : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maxInstances"] = args ? args.maxInstances : undefined;
+            resourceInputs["minInstances"] = args ? args.minInstances : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            resourceInputs["sourceArchiveBucket"] = args ? args.sourceArchiveBucket : undefined;
+            resourceInputs["sourceArchiveObject"] = args ? args.sourceArchiveObject : undefined;
+            resourceInputs["sourceRepository"] = args ? args.sourceRepository : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["triggerHttp"] = args ? args.triggerHttp : undefined;
+            resourceInputs["vpcConnector"] = args ? args.vpcConnector : undefined;
+            resourceInputs["vpcConnectorEgressSettings"] = args ? args.vpcConnectorEgressSettings : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Function.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Function.__pulumiType, name, resourceInputs, opts);
     }
 }
 

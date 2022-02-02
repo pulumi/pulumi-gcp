@@ -207,7 +207,7 @@ type SourceRepresentationInstanceInput interface {
 }
 
 func (*SourceRepresentationInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceRepresentationInstance)(nil))
+	return reflect.TypeOf((**SourceRepresentationInstance)(nil)).Elem()
 }
 
 func (i *SourceRepresentationInstance) ToSourceRepresentationInstanceOutput() SourceRepresentationInstanceOutput {
@@ -216,35 +216,6 @@ func (i *SourceRepresentationInstance) ToSourceRepresentationInstanceOutput() So
 
 func (i *SourceRepresentationInstance) ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceOutput)
-}
-
-func (i *SourceRepresentationInstance) ToSourceRepresentationInstancePtrOutput() SourceRepresentationInstancePtrOutput {
-	return i.ToSourceRepresentationInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *SourceRepresentationInstance) ToSourceRepresentationInstancePtrOutputWithContext(ctx context.Context) SourceRepresentationInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstancePtrOutput)
-}
-
-type SourceRepresentationInstancePtrInput interface {
-	pulumi.Input
-
-	ToSourceRepresentationInstancePtrOutput() SourceRepresentationInstancePtrOutput
-	ToSourceRepresentationInstancePtrOutputWithContext(ctx context.Context) SourceRepresentationInstancePtrOutput
-}
-
-type sourceRepresentationInstancePtrType SourceRepresentationInstanceArgs
-
-func (*sourceRepresentationInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceRepresentationInstance)(nil))
-}
-
-func (i *sourceRepresentationInstancePtrType) ToSourceRepresentationInstancePtrOutput() SourceRepresentationInstancePtrOutput {
-	return i.ToSourceRepresentationInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceRepresentationInstancePtrType) ToSourceRepresentationInstancePtrOutputWithContext(ctx context.Context) SourceRepresentationInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstancePtrOutput)
 }
 
 // SourceRepresentationInstanceArrayInput is an input type that accepts SourceRepresentationInstanceArray and SourceRepresentationInstanceArrayOutput values.
@@ -300,7 +271,7 @@ func (i SourceRepresentationInstanceMap) ToSourceRepresentationInstanceMapOutput
 type SourceRepresentationInstanceOutput struct{ *pulumi.OutputState }
 
 func (SourceRepresentationInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceRepresentationInstance)(nil))
+	return reflect.TypeOf((**SourceRepresentationInstance)(nil)).Elem()
 }
 
 func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutput() SourceRepresentationInstanceOutput {
@@ -311,44 +282,10 @@ func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutput
 	return o
 }
 
-func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstancePtrOutput() SourceRepresentationInstancePtrOutput {
-	return o.ToSourceRepresentationInstancePtrOutputWithContext(context.Background())
-}
-
-func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstancePtrOutputWithContext(ctx context.Context) SourceRepresentationInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceRepresentationInstance) *SourceRepresentationInstance {
-		return &v
-	}).(SourceRepresentationInstancePtrOutput)
-}
-
-type SourceRepresentationInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceRepresentationInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceRepresentationInstance)(nil))
-}
-
-func (o SourceRepresentationInstancePtrOutput) ToSourceRepresentationInstancePtrOutput() SourceRepresentationInstancePtrOutput {
-	return o
-}
-
-func (o SourceRepresentationInstancePtrOutput) ToSourceRepresentationInstancePtrOutputWithContext(ctx context.Context) SourceRepresentationInstancePtrOutput {
-	return o
-}
-
-func (o SourceRepresentationInstancePtrOutput) Elem() SourceRepresentationInstanceOutput {
-	return o.ApplyT(func(v *SourceRepresentationInstance) SourceRepresentationInstance {
-		if v != nil {
-			return *v
-		}
-		var ret SourceRepresentationInstance
-		return ret
-	}).(SourceRepresentationInstanceOutput)
-}
-
 type SourceRepresentationInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (SourceRepresentationInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SourceRepresentationInstance)(nil))
+	return reflect.TypeOf((*[]*SourceRepresentationInstance)(nil)).Elem()
 }
 
 func (o SourceRepresentationInstanceArrayOutput) ToSourceRepresentationInstanceArrayOutput() SourceRepresentationInstanceArrayOutput {
@@ -360,15 +297,15 @@ func (o SourceRepresentationInstanceArrayOutput) ToSourceRepresentationInstanceA
 }
 
 func (o SourceRepresentationInstanceArrayOutput) Index(i pulumi.IntInput) SourceRepresentationInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SourceRepresentationInstance {
-		return vs[0].([]SourceRepresentationInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SourceRepresentationInstance {
+		return vs[0].([]*SourceRepresentationInstance)[vs[1].(int)]
 	}).(SourceRepresentationInstanceOutput)
 }
 
 type SourceRepresentationInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (SourceRepresentationInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SourceRepresentationInstance)(nil))
+	return reflect.TypeOf((*map[string]*SourceRepresentationInstance)(nil)).Elem()
 }
 
 func (o SourceRepresentationInstanceMapOutput) ToSourceRepresentationInstanceMapOutput() SourceRepresentationInstanceMapOutput {
@@ -380,18 +317,16 @@ func (o SourceRepresentationInstanceMapOutput) ToSourceRepresentationInstanceMap
 }
 
 func (o SourceRepresentationInstanceMapOutput) MapIndex(k pulumi.StringInput) SourceRepresentationInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SourceRepresentationInstance {
-		return vs[0].(map[string]SourceRepresentationInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SourceRepresentationInstance {
+		return vs[0].(map[string]*SourceRepresentationInstance)[vs[1].(string)]
 	}).(SourceRepresentationInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepresentationInstanceInput)(nil)).Elem(), &SourceRepresentationInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepresentationInstancePtrInput)(nil)).Elem(), &SourceRepresentationInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepresentationInstanceArrayInput)(nil)).Elem(), SourceRepresentationInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceRepresentationInstanceMapInput)(nil)).Elem(), SourceRepresentationInstanceMap{})
 	pulumi.RegisterOutputType(SourceRepresentationInstanceOutput{})
-	pulumi.RegisterOutputType(SourceRepresentationInstancePtrOutput{})
 	pulumi.RegisterOutputType(SourceRepresentationInstanceArrayOutput{})
 	pulumi.RegisterOutputType(SourceRepresentationInstanceMapOutput{})
 }

@@ -238,7 +238,7 @@ type LiteTopicInput interface {
 }
 
 func (*LiteTopic) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteTopic)(nil))
+	return reflect.TypeOf((**LiteTopic)(nil)).Elem()
 }
 
 func (i *LiteTopic) ToLiteTopicOutput() LiteTopicOutput {
@@ -247,35 +247,6 @@ func (i *LiteTopic) ToLiteTopicOutput() LiteTopicOutput {
 
 func (i *LiteTopic) ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicOutput)
-}
-
-func (i *LiteTopic) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
-	return i.ToLiteTopicPtrOutputWithContext(context.Background())
-}
-
-func (i *LiteTopic) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPtrOutput)
-}
-
-type LiteTopicPtrInput interface {
-	pulumi.Input
-
-	ToLiteTopicPtrOutput() LiteTopicPtrOutput
-	ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput
-}
-
-type liteTopicPtrType LiteTopicArgs
-
-func (*liteTopicPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LiteTopic)(nil))
-}
-
-func (i *liteTopicPtrType) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
-	return i.ToLiteTopicPtrOutputWithContext(context.Background())
-}
-
-func (i *liteTopicPtrType) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPtrOutput)
 }
 
 // LiteTopicArrayInput is an input type that accepts LiteTopicArray and LiteTopicArrayOutput values.
@@ -331,7 +302,7 @@ func (i LiteTopicMap) ToLiteTopicMapOutputWithContext(ctx context.Context) LiteT
 type LiteTopicOutput struct{ *pulumi.OutputState }
 
 func (LiteTopicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteTopic)(nil))
+	return reflect.TypeOf((**LiteTopic)(nil)).Elem()
 }
 
 func (o LiteTopicOutput) ToLiteTopicOutput() LiteTopicOutput {
@@ -342,44 +313,10 @@ func (o LiteTopicOutput) ToLiteTopicOutputWithContext(ctx context.Context) LiteT
 	return o
 }
 
-func (o LiteTopicOutput) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
-	return o.ToLiteTopicPtrOutputWithContext(context.Background())
-}
-
-func (o LiteTopicOutput) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteTopic) *LiteTopic {
-		return &v
-	}).(LiteTopicPtrOutput)
-}
-
-type LiteTopicPtrOutput struct{ *pulumi.OutputState }
-
-func (LiteTopicPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LiteTopic)(nil))
-}
-
-func (o LiteTopicPtrOutput) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
-	return o
-}
-
-func (o LiteTopicPtrOutput) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
-	return o
-}
-
-func (o LiteTopicPtrOutput) Elem() LiteTopicOutput {
-	return o.ApplyT(func(v *LiteTopic) LiteTopic {
-		if v != nil {
-			return *v
-		}
-		var ret LiteTopic
-		return ret
-	}).(LiteTopicOutput)
-}
-
 type LiteTopicArrayOutput struct{ *pulumi.OutputState }
 
 func (LiteTopicArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LiteTopic)(nil))
+	return reflect.TypeOf((*[]*LiteTopic)(nil)).Elem()
 }
 
 func (o LiteTopicArrayOutput) ToLiteTopicArrayOutput() LiteTopicArrayOutput {
@@ -391,15 +328,15 @@ func (o LiteTopicArrayOutput) ToLiteTopicArrayOutputWithContext(ctx context.Cont
 }
 
 func (o LiteTopicArrayOutput) Index(i pulumi.IntInput) LiteTopicOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiteTopic {
-		return vs[0].([]LiteTopic)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LiteTopic {
+		return vs[0].([]*LiteTopic)[vs[1].(int)]
 	}).(LiteTopicOutput)
 }
 
 type LiteTopicMapOutput struct{ *pulumi.OutputState }
 
 func (LiteTopicMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LiteTopic)(nil))
+	return reflect.TypeOf((*map[string]*LiteTopic)(nil)).Elem()
 }
 
 func (o LiteTopicMapOutput) ToLiteTopicMapOutput() LiteTopicMapOutput {
@@ -411,18 +348,16 @@ func (o LiteTopicMapOutput) ToLiteTopicMapOutputWithContext(ctx context.Context)
 }
 
 func (o LiteTopicMapOutput) MapIndex(k pulumi.StringInput) LiteTopicOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LiteTopic {
-		return vs[0].(map[string]LiteTopic)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *LiteTopic {
+		return vs[0].(map[string]*LiteTopic)[vs[1].(string)]
 	}).(LiteTopicOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicInput)(nil)).Elem(), &LiteTopic{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicPtrInput)(nil)).Elem(), &LiteTopic{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicArrayInput)(nil)).Elem(), LiteTopicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicMapInput)(nil)).Elem(), LiteTopicMap{})
 	pulumi.RegisterOutputType(LiteTopicOutput{})
-	pulumi.RegisterOutputType(LiteTopicPtrOutput{})
 	pulumi.RegisterOutputType(LiteTopicArrayOutput{})
 	pulumi.RegisterOutputType(LiteTopicMapOutput{})
 }

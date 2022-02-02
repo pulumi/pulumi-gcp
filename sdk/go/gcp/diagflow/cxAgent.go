@@ -320,7 +320,7 @@ type CxAgentInput interface {
 }
 
 func (*CxAgent) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxAgent)(nil))
+	return reflect.TypeOf((**CxAgent)(nil)).Elem()
 }
 
 func (i *CxAgent) ToCxAgentOutput() CxAgentOutput {
@@ -329,35 +329,6 @@ func (i *CxAgent) ToCxAgentOutput() CxAgentOutput {
 
 func (i *CxAgent) ToCxAgentOutputWithContext(ctx context.Context) CxAgentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentOutput)
-}
-
-func (i *CxAgent) ToCxAgentPtrOutput() CxAgentPtrOutput {
-	return i.ToCxAgentPtrOutputWithContext(context.Background())
-}
-
-func (i *CxAgent) ToCxAgentPtrOutputWithContext(ctx context.Context) CxAgentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxAgentPtrOutput)
-}
-
-type CxAgentPtrInput interface {
-	pulumi.Input
-
-	ToCxAgentPtrOutput() CxAgentPtrOutput
-	ToCxAgentPtrOutputWithContext(ctx context.Context) CxAgentPtrOutput
-}
-
-type cxAgentPtrType CxAgentArgs
-
-func (*cxAgentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxAgent)(nil))
-}
-
-func (i *cxAgentPtrType) ToCxAgentPtrOutput() CxAgentPtrOutput {
-	return i.ToCxAgentPtrOutputWithContext(context.Background())
-}
-
-func (i *cxAgentPtrType) ToCxAgentPtrOutputWithContext(ctx context.Context) CxAgentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CxAgentPtrOutput)
 }
 
 // CxAgentArrayInput is an input type that accepts CxAgentArray and CxAgentArrayOutput values.
@@ -413,7 +384,7 @@ func (i CxAgentMap) ToCxAgentMapOutputWithContext(ctx context.Context) CxAgentMa
 type CxAgentOutput struct{ *pulumi.OutputState }
 
 func (CxAgentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CxAgent)(nil))
+	return reflect.TypeOf((**CxAgent)(nil)).Elem()
 }
 
 func (o CxAgentOutput) ToCxAgentOutput() CxAgentOutput {
@@ -424,44 +395,10 @@ func (o CxAgentOutput) ToCxAgentOutputWithContext(ctx context.Context) CxAgentOu
 	return o
 }
 
-func (o CxAgentOutput) ToCxAgentPtrOutput() CxAgentPtrOutput {
-	return o.ToCxAgentPtrOutputWithContext(context.Background())
-}
-
-func (o CxAgentOutput) ToCxAgentPtrOutputWithContext(ctx context.Context) CxAgentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgent) *CxAgent {
-		return &v
-	}).(CxAgentPtrOutput)
-}
-
-type CxAgentPtrOutput struct{ *pulumi.OutputState }
-
-func (CxAgentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CxAgent)(nil))
-}
-
-func (o CxAgentPtrOutput) ToCxAgentPtrOutput() CxAgentPtrOutput {
-	return o
-}
-
-func (o CxAgentPtrOutput) ToCxAgentPtrOutputWithContext(ctx context.Context) CxAgentPtrOutput {
-	return o
-}
-
-func (o CxAgentPtrOutput) Elem() CxAgentOutput {
-	return o.ApplyT(func(v *CxAgent) CxAgent {
-		if v != nil {
-			return *v
-		}
-		var ret CxAgent
-		return ret
-	}).(CxAgentOutput)
-}
-
 type CxAgentArrayOutput struct{ *pulumi.OutputState }
 
 func (CxAgentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CxAgent)(nil))
+	return reflect.TypeOf((*[]*CxAgent)(nil)).Elem()
 }
 
 func (o CxAgentArrayOutput) ToCxAgentArrayOutput() CxAgentArrayOutput {
@@ -473,15 +410,15 @@ func (o CxAgentArrayOutput) ToCxAgentArrayOutputWithContext(ctx context.Context)
 }
 
 func (o CxAgentArrayOutput) Index(i pulumi.IntInput) CxAgentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxAgent {
-		return vs[0].([]CxAgent)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxAgent {
+		return vs[0].([]*CxAgent)[vs[1].(int)]
 	}).(CxAgentOutput)
 }
 
 type CxAgentMapOutput struct{ *pulumi.OutputState }
 
 func (CxAgentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CxAgent)(nil))
+	return reflect.TypeOf((*map[string]*CxAgent)(nil)).Elem()
 }
 
 func (o CxAgentMapOutput) ToCxAgentMapOutput() CxAgentMapOutput {
@@ -493,18 +430,16 @@ func (o CxAgentMapOutput) ToCxAgentMapOutputWithContext(ctx context.Context) CxA
 }
 
 func (o CxAgentMapOutput) MapIndex(k pulumi.StringInput) CxAgentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CxAgent {
-		return vs[0].(map[string]CxAgent)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CxAgent {
+		return vs[0].(map[string]*CxAgent)[vs[1].(string)]
 	}).(CxAgentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentInput)(nil)).Elem(), &CxAgent{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentPtrInput)(nil)).Elem(), &CxAgent{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentArrayInput)(nil)).Elem(), CxAgentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentMapInput)(nil)).Elem(), CxAgentMap{})
 	pulumi.RegisterOutputType(CxAgentOutput{})
-	pulumi.RegisterOutputType(CxAgentPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentArrayOutput{})
 	pulumi.RegisterOutputType(CxAgentMapOutput{})
 }

@@ -250,7 +250,7 @@ type WorkflowInput interface {
 }
 
 func (*Workflow) ElementType() reflect.Type {
-	return reflect.TypeOf((*Workflow)(nil))
+	return reflect.TypeOf((**Workflow)(nil)).Elem()
 }
 
 func (i *Workflow) ToWorkflowOutput() WorkflowOutput {
@@ -259,35 +259,6 @@ func (i *Workflow) ToWorkflowOutput() WorkflowOutput {
 
 func (i *Workflow) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowOutput)
-}
-
-func (i *Workflow) ToWorkflowPtrOutput() WorkflowPtrOutput {
-	return i.ToWorkflowPtrOutputWithContext(context.Background())
-}
-
-func (i *Workflow) ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowPtrOutput)
-}
-
-type WorkflowPtrInput interface {
-	pulumi.Input
-
-	ToWorkflowPtrOutput() WorkflowPtrOutput
-	ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput
-}
-
-type workflowPtrType WorkflowArgs
-
-func (*workflowPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Workflow)(nil))
-}
-
-func (i *workflowPtrType) ToWorkflowPtrOutput() WorkflowPtrOutput {
-	return i.ToWorkflowPtrOutputWithContext(context.Background())
-}
-
-func (i *workflowPtrType) ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowPtrOutput)
 }
 
 // WorkflowArrayInput is an input type that accepts WorkflowArray and WorkflowArrayOutput values.
@@ -343,7 +314,7 @@ func (i WorkflowMap) ToWorkflowMapOutputWithContext(ctx context.Context) Workflo
 type WorkflowOutput struct{ *pulumi.OutputState }
 
 func (WorkflowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Workflow)(nil))
+	return reflect.TypeOf((**Workflow)(nil)).Elem()
 }
 
 func (o WorkflowOutput) ToWorkflowOutput() WorkflowOutput {
@@ -354,44 +325,10 @@ func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) Workflo
 	return o
 }
 
-func (o WorkflowOutput) ToWorkflowPtrOutput() WorkflowPtrOutput {
-	return o.ToWorkflowPtrOutputWithContext(context.Background())
-}
-
-func (o WorkflowOutput) ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Workflow) *Workflow {
-		return &v
-	}).(WorkflowPtrOutput)
-}
-
-type WorkflowPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkflowPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Workflow)(nil))
-}
-
-func (o WorkflowPtrOutput) ToWorkflowPtrOutput() WorkflowPtrOutput {
-	return o
-}
-
-func (o WorkflowPtrOutput) ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput {
-	return o
-}
-
-func (o WorkflowPtrOutput) Elem() WorkflowOutput {
-	return o.ApplyT(func(v *Workflow) Workflow {
-		if v != nil {
-			return *v
-		}
-		var ret Workflow
-		return ret
-	}).(WorkflowOutput)
-}
-
 type WorkflowArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkflowArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Workflow)(nil))
+	return reflect.TypeOf((*[]*Workflow)(nil)).Elem()
 }
 
 func (o WorkflowArrayOutput) ToWorkflowArrayOutput() WorkflowArrayOutput {
@@ -403,15 +340,15 @@ func (o WorkflowArrayOutput) ToWorkflowArrayOutputWithContext(ctx context.Contex
 }
 
 func (o WorkflowArrayOutput) Index(i pulumi.IntInput) WorkflowOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Workflow {
-		return vs[0].([]Workflow)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Workflow {
+		return vs[0].([]*Workflow)[vs[1].(int)]
 	}).(WorkflowOutput)
 }
 
 type WorkflowMapOutput struct{ *pulumi.OutputState }
 
 func (WorkflowMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Workflow)(nil))
+	return reflect.TypeOf((*map[string]*Workflow)(nil)).Elem()
 }
 
 func (o WorkflowMapOutput) ToWorkflowMapOutput() WorkflowMapOutput {
@@ -423,18 +360,16 @@ func (o WorkflowMapOutput) ToWorkflowMapOutputWithContext(ctx context.Context) W
 }
 
 func (o WorkflowMapOutput) MapIndex(k pulumi.StringInput) WorkflowOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Workflow {
-		return vs[0].(map[string]Workflow)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Workflow {
+		return vs[0].(map[string]*Workflow)[vs[1].(string)]
 	}).(WorkflowOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowInput)(nil)).Elem(), &Workflow{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPtrInput)(nil)).Elem(), &Workflow{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowArrayInput)(nil)).Elem(), WorkflowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowMapInput)(nil)).Elem(), WorkflowMap{})
 	pulumi.RegisterOutputType(WorkflowOutput{})
-	pulumi.RegisterOutputType(WorkflowPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowMapOutput{})
 }

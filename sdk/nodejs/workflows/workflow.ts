@@ -153,41 +153,39 @@ export class Workflow extends pulumi.CustomResource {
      */
     constructor(name: string, args?: WorkflowArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkflowArgs | WorkflowState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["revisionId"] = state ? state.revisionId : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["sourceContents"] = state ? state.sourceContents : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["revisionId"] = state ? state.revisionId : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["sourceContents"] = state ? state.sourceContents : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["sourceContents"] = args ? args.sourceContents : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["revisionId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["sourceContents"] = args ? args.sourceContents : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Workflow.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Workflow.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -269,7 +269,7 @@ type AttestorIamMemberInput interface {
 }
 
 func (*AttestorIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestorIamMember)(nil))
+	return reflect.TypeOf((**AttestorIamMember)(nil)).Elem()
 }
 
 func (i *AttestorIamMember) ToAttestorIamMemberOutput() AttestorIamMemberOutput {
@@ -278,35 +278,6 @@ func (i *AttestorIamMember) ToAttestorIamMemberOutput() AttestorIamMemberOutput 
 
 func (i *AttestorIamMember) ToAttestorIamMemberOutputWithContext(ctx context.Context) AttestorIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberOutput)
-}
-
-func (i *AttestorIamMember) ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput {
-	return i.ToAttestorIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *AttestorIamMember) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberPtrOutput)
-}
-
-type AttestorIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput
-	ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput
-}
-
-type attestorIamMemberPtrType AttestorIamMemberArgs
-
-func (*attestorIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttestorIamMember)(nil))
-}
-
-func (i *attestorIamMemberPtrType) ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput {
-	return i.ToAttestorIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *attestorIamMemberPtrType) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberPtrOutput)
 }
 
 // AttestorIamMemberArrayInput is an input type that accepts AttestorIamMemberArray and AttestorIamMemberArrayOutput values.
@@ -362,7 +333,7 @@ func (i AttestorIamMemberMap) ToAttestorIamMemberMapOutputWithContext(ctx contex
 type AttestorIamMemberOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestorIamMember)(nil))
+	return reflect.TypeOf((**AttestorIamMember)(nil)).Elem()
 }
 
 func (o AttestorIamMemberOutput) ToAttestorIamMemberOutput() AttestorIamMemberOutput {
@@ -373,44 +344,10 @@ func (o AttestorIamMemberOutput) ToAttestorIamMemberOutputWithContext(ctx contex
 	return o
 }
 
-func (o AttestorIamMemberOutput) ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput {
-	return o.ToAttestorIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o AttestorIamMemberOutput) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorIamMember) *AttestorIamMember {
-		return &v
-	}).(AttestorIamMemberPtrOutput)
-}
-
-type AttestorIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (AttestorIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AttestorIamMember)(nil))
-}
-
-func (o AttestorIamMemberPtrOutput) ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput {
-	return o
-}
-
-func (o AttestorIamMemberPtrOutput) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
-	return o
-}
-
-func (o AttestorIamMemberPtrOutput) Elem() AttestorIamMemberOutput {
-	return o.ApplyT(func(v *AttestorIamMember) AttestorIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret AttestorIamMember
-		return ret
-	}).(AttestorIamMemberOutput)
-}
-
 type AttestorIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AttestorIamMember)(nil))
+	return reflect.TypeOf((*[]*AttestorIamMember)(nil)).Elem()
 }
 
 func (o AttestorIamMemberArrayOutput) ToAttestorIamMemberArrayOutput() AttestorIamMemberArrayOutput {
@@ -422,15 +359,15 @@ func (o AttestorIamMemberArrayOutput) ToAttestorIamMemberArrayOutputWithContext(
 }
 
 func (o AttestorIamMemberArrayOutput) Index(i pulumi.IntInput) AttestorIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttestorIamMember {
-		return vs[0].([]AttestorIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AttestorIamMember {
+		return vs[0].([]*AttestorIamMember)[vs[1].(int)]
 	}).(AttestorIamMemberOutput)
 }
 
 type AttestorIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AttestorIamMember)(nil))
+	return reflect.TypeOf((*map[string]*AttestorIamMember)(nil)).Elem()
 }
 
 func (o AttestorIamMemberMapOutput) ToAttestorIamMemberMapOutput() AttestorIamMemberMapOutput {
@@ -442,18 +379,16 @@ func (o AttestorIamMemberMapOutput) ToAttestorIamMemberMapOutputWithContext(ctx 
 }
 
 func (o AttestorIamMemberMapOutput) MapIndex(k pulumi.StringInput) AttestorIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AttestorIamMember {
-		return vs[0].(map[string]AttestorIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AttestorIamMember {
+		return vs[0].(map[string]*AttestorIamMember)[vs[1].(string)]
 	}).(AttestorIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberInput)(nil)).Elem(), &AttestorIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberPtrInput)(nil)).Elem(), &AttestorIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberArrayInput)(nil)).Elem(), AttestorIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestorIamMemberMapInput)(nil)).Elem(), AttestorIamMemberMap{})
 	pulumi.RegisterOutputType(AttestorIamMemberOutput{})
-	pulumi.RegisterOutputType(AttestorIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(AttestorIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(AttestorIamMemberMapOutput{})
 }

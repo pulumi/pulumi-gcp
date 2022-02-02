@@ -368,7 +368,7 @@ type TunnelInstanceIAMPolicyInput interface {
 }
 
 func (*TunnelInstanceIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMPolicy)(nil))
+	return reflect.TypeOf((**TunnelInstanceIAMPolicy)(nil)).Elem()
 }
 
 func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutput() TunnelInstanceIAMPolicyOutput {
@@ -377,35 +377,6 @@ func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutput() TunnelInstan
 
 func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyOutput)
-}
-
-func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyPtrOutput() TunnelInstanceIAMPolicyPtrOutput {
-	return i.ToTunnelInstanceIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyPtrOutput)
-}
-
-type TunnelInstanceIAMPolicyPtrInput interface {
-	pulumi.Input
-
-	ToTunnelInstanceIAMPolicyPtrOutput() TunnelInstanceIAMPolicyPtrOutput
-	ToTunnelInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyPtrOutput
-}
-
-type tunnelInstanceIAMPolicyPtrType TunnelInstanceIAMPolicyArgs
-
-func (*tunnelInstanceIAMPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMPolicy)(nil))
-}
-
-func (i *tunnelInstanceIAMPolicyPtrType) ToTunnelInstanceIAMPolicyPtrOutput() TunnelInstanceIAMPolicyPtrOutput {
-	return i.ToTunnelInstanceIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *tunnelInstanceIAMPolicyPtrType) ToTunnelInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyPtrOutput)
 }
 
 // TunnelInstanceIAMPolicyArrayInput is an input type that accepts TunnelInstanceIAMPolicyArray and TunnelInstanceIAMPolicyArrayOutput values.
@@ -461,7 +432,7 @@ func (i TunnelInstanceIAMPolicyMap) ToTunnelInstanceIAMPolicyMapOutputWithContex
 type TunnelInstanceIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMPolicy)(nil))
+	return reflect.TypeOf((**TunnelInstanceIAMPolicy)(nil)).Elem()
 }
 
 func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyOutput() TunnelInstanceIAMPolicyOutput {
@@ -472,44 +443,10 @@ func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyOutputWithContex
 	return o
 }
 
-func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyPtrOutput() TunnelInstanceIAMPolicyPtrOutput {
-	return o.ToTunnelInstanceIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIAMPolicy) *TunnelInstanceIAMPolicy {
-		return &v
-	}).(TunnelInstanceIAMPolicyPtrOutput)
-}
-
-type TunnelInstanceIAMPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (TunnelInstanceIAMPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMPolicy)(nil))
-}
-
-func (o TunnelInstanceIAMPolicyPtrOutput) ToTunnelInstanceIAMPolicyPtrOutput() TunnelInstanceIAMPolicyPtrOutput {
-	return o
-}
-
-func (o TunnelInstanceIAMPolicyPtrOutput) ToTunnelInstanceIAMPolicyPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyPtrOutput {
-	return o
-}
-
-func (o TunnelInstanceIAMPolicyPtrOutput) Elem() TunnelInstanceIAMPolicyOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMPolicy) TunnelInstanceIAMPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret TunnelInstanceIAMPolicy
-		return ret
-	}).(TunnelInstanceIAMPolicyOutput)
-}
-
 type TunnelInstanceIAMPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TunnelInstanceIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*TunnelInstanceIAMPolicy)(nil)).Elem()
 }
 
 func (o TunnelInstanceIAMPolicyArrayOutput) ToTunnelInstanceIAMPolicyArrayOutput() TunnelInstanceIAMPolicyArrayOutput {
@@ -521,15 +458,15 @@ func (o TunnelInstanceIAMPolicyArrayOutput) ToTunnelInstanceIAMPolicyArrayOutput
 }
 
 func (o TunnelInstanceIAMPolicyArrayOutput) Index(i pulumi.IntInput) TunnelInstanceIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelInstanceIAMPolicy {
-		return vs[0].([]TunnelInstanceIAMPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelInstanceIAMPolicy {
+		return vs[0].([]*TunnelInstanceIAMPolicy)[vs[1].(int)]
 	}).(TunnelInstanceIAMPolicyOutput)
 }
 
 type TunnelInstanceIAMPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TunnelInstanceIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*TunnelInstanceIAMPolicy)(nil)).Elem()
 }
 
 func (o TunnelInstanceIAMPolicyMapOutput) ToTunnelInstanceIAMPolicyMapOutput() TunnelInstanceIAMPolicyMapOutput {
@@ -541,18 +478,16 @@ func (o TunnelInstanceIAMPolicyMapOutput) ToTunnelInstanceIAMPolicyMapOutputWith
 }
 
 func (o TunnelInstanceIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) TunnelInstanceIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TunnelInstanceIAMPolicy {
-		return vs[0].(map[string]TunnelInstanceIAMPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TunnelInstanceIAMPolicy {
+		return vs[0].(map[string]*TunnelInstanceIAMPolicy)[vs[1].(string)]
 	}).(TunnelInstanceIAMPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMPolicyInput)(nil)).Elem(), &TunnelInstanceIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMPolicyPtrInput)(nil)).Elem(), &TunnelInstanceIAMPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMPolicyArrayInput)(nil)).Elem(), TunnelInstanceIAMPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMPolicyMapInput)(nil)).Elem(), TunnelInstanceIAMPolicyMap{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMPolicyOutput{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMPolicyArrayOutput{})
 	pulumi.RegisterOutputType(TunnelInstanceIAMPolicyMapOutput{})
 }

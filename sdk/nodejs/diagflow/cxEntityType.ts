@@ -170,20 +170,20 @@ export class CxEntityType extends pulumi.CustomResource {
      */
     constructor(name: string, args: CxEntityTypeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CxEntityTypeArgs | CxEntityTypeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxEntityTypeState | undefined;
-            inputs["autoExpansionMode"] = state ? state.autoExpansionMode : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enableFuzzyExtraction"] = state ? state.enableFuzzyExtraction : undefined;
-            inputs["entities"] = state ? state.entities : undefined;
-            inputs["excludedPhrases"] = state ? state.excludedPhrases : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["languageCode"] = state ? state.languageCode : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["redact"] = state ? state.redact : undefined;
+            resourceInputs["autoExpansionMode"] = state ? state.autoExpansionMode : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enableFuzzyExtraction"] = state ? state.enableFuzzyExtraction : undefined;
+            resourceInputs["entities"] = state ? state.entities : undefined;
+            resourceInputs["excludedPhrases"] = state ? state.excludedPhrases : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["redact"] = state ? state.redact : undefined;
         } else {
             const args = argsOrState as CxEntityTypeArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -195,21 +195,19 @@ export class CxEntityType extends pulumi.CustomResource {
             if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            inputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
-            inputs["entities"] = args ? args.entities : undefined;
-            inputs["excludedPhrases"] = args ? args.excludedPhrases : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["redact"] = args ? args.redact : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
+            resourceInputs["entities"] = args ? args.entities : undefined;
+            resourceInputs["excludedPhrases"] = args ? args.excludedPhrases : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["redact"] = args ? args.redact : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CxEntityType.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CxEntityType.__pulumiType, name, resourceInputs, opts);
     }
 }
 

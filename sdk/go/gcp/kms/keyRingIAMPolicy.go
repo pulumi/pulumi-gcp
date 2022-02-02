@@ -367,7 +367,7 @@ type KeyRingIAMPolicyInput interface {
 }
 
 func (*KeyRingIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingIAMPolicy)(nil))
+	return reflect.TypeOf((**KeyRingIAMPolicy)(nil)).Elem()
 }
 
 func (i *KeyRingIAMPolicy) ToKeyRingIAMPolicyOutput() KeyRingIAMPolicyOutput {
@@ -376,35 +376,6 @@ func (i *KeyRingIAMPolicy) ToKeyRingIAMPolicyOutput() KeyRingIAMPolicyOutput {
 
 func (i *KeyRingIAMPolicy) ToKeyRingIAMPolicyOutputWithContext(ctx context.Context) KeyRingIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyOutput)
-}
-
-func (i *KeyRingIAMPolicy) ToKeyRingIAMPolicyPtrOutput() KeyRingIAMPolicyPtrOutput {
-	return i.ToKeyRingIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *KeyRingIAMPolicy) ToKeyRingIAMPolicyPtrOutputWithContext(ctx context.Context) KeyRingIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyPtrOutput)
-}
-
-type KeyRingIAMPolicyPtrInput interface {
-	pulumi.Input
-
-	ToKeyRingIAMPolicyPtrOutput() KeyRingIAMPolicyPtrOutput
-	ToKeyRingIAMPolicyPtrOutputWithContext(ctx context.Context) KeyRingIAMPolicyPtrOutput
-}
-
-type keyRingIAMPolicyPtrType KeyRingIAMPolicyArgs
-
-func (*keyRingIAMPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMPolicy)(nil))
-}
-
-func (i *keyRingIAMPolicyPtrType) ToKeyRingIAMPolicyPtrOutput() KeyRingIAMPolicyPtrOutput {
-	return i.ToKeyRingIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *keyRingIAMPolicyPtrType) ToKeyRingIAMPolicyPtrOutputWithContext(ctx context.Context) KeyRingIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyPtrOutput)
 }
 
 // KeyRingIAMPolicyArrayInput is an input type that accepts KeyRingIAMPolicyArray and KeyRingIAMPolicyArrayOutput values.
@@ -460,7 +431,7 @@ func (i KeyRingIAMPolicyMap) ToKeyRingIAMPolicyMapOutputWithContext(ctx context.
 type KeyRingIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingIAMPolicy)(nil))
+	return reflect.TypeOf((**KeyRingIAMPolicy)(nil)).Elem()
 }
 
 func (o KeyRingIAMPolicyOutput) ToKeyRingIAMPolicyOutput() KeyRingIAMPolicyOutput {
@@ -471,44 +442,10 @@ func (o KeyRingIAMPolicyOutput) ToKeyRingIAMPolicyOutputWithContext(ctx context.
 	return o
 }
 
-func (o KeyRingIAMPolicyOutput) ToKeyRingIAMPolicyPtrOutput() KeyRingIAMPolicyPtrOutput {
-	return o.ToKeyRingIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o KeyRingIAMPolicyOutput) ToKeyRingIAMPolicyPtrOutputWithContext(ctx context.Context) KeyRingIAMPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIAMPolicy) *KeyRingIAMPolicy {
-		return &v
-	}).(KeyRingIAMPolicyPtrOutput)
-}
-
-type KeyRingIAMPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (KeyRingIAMPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMPolicy)(nil))
-}
-
-func (o KeyRingIAMPolicyPtrOutput) ToKeyRingIAMPolicyPtrOutput() KeyRingIAMPolicyPtrOutput {
-	return o
-}
-
-func (o KeyRingIAMPolicyPtrOutput) ToKeyRingIAMPolicyPtrOutputWithContext(ctx context.Context) KeyRingIAMPolicyPtrOutput {
-	return o
-}
-
-func (o KeyRingIAMPolicyPtrOutput) Elem() KeyRingIAMPolicyOutput {
-	return o.ApplyT(func(v *KeyRingIAMPolicy) KeyRingIAMPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret KeyRingIAMPolicy
-		return ret
-	}).(KeyRingIAMPolicyOutput)
-}
-
 type KeyRingIAMPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KeyRingIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*KeyRingIAMPolicy)(nil)).Elem()
 }
 
 func (o KeyRingIAMPolicyArrayOutput) ToKeyRingIAMPolicyArrayOutput() KeyRingIAMPolicyArrayOutput {
@@ -520,15 +457,15 @@ func (o KeyRingIAMPolicyArrayOutput) ToKeyRingIAMPolicyArrayOutputWithContext(ct
 }
 
 func (o KeyRingIAMPolicyArrayOutput) Index(i pulumi.IntInput) KeyRingIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyRingIAMPolicy {
-		return vs[0].([]KeyRingIAMPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingIAMPolicy {
+		return vs[0].([]*KeyRingIAMPolicy)[vs[1].(int)]
 	}).(KeyRingIAMPolicyOutput)
 }
 
 type KeyRingIAMPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KeyRingIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*KeyRingIAMPolicy)(nil)).Elem()
 }
 
 func (o KeyRingIAMPolicyMapOutput) ToKeyRingIAMPolicyMapOutput() KeyRingIAMPolicyMapOutput {
@@ -540,18 +477,16 @@ func (o KeyRingIAMPolicyMapOutput) ToKeyRingIAMPolicyMapOutputWithContext(ctx co
 }
 
 func (o KeyRingIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) KeyRingIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KeyRingIAMPolicy {
-		return vs[0].(map[string]KeyRingIAMPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyRingIAMPolicy {
+		return vs[0].(map[string]*KeyRingIAMPolicy)[vs[1].(string)]
 	}).(KeyRingIAMPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyInput)(nil)).Elem(), &KeyRingIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyPtrInput)(nil)).Elem(), &KeyRingIAMPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyArrayInput)(nil)).Elem(), KeyRingIAMPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyMapInput)(nil)).Elem(), KeyRingIAMPolicyMap{})
 	pulumi.RegisterOutputType(KeyRingIAMPolicyOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMPolicyArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMPolicyMapOutput{})
 }

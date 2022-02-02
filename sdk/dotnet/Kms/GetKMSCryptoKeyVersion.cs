@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Kms
 {
@@ -54,7 +53,7 @@ namespace Pulumi.Gcp.Kms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSCryptoKeyVersionResult> InvokeAsync(GetKMSCryptoKeyVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? new GetKMSCryptoKeyVersionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? new GetKMSCryptoKeyVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
@@ -98,7 +97,7 @@ namespace Pulumi.Gcp.Kms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKMSCryptoKeyVersionResult> Invoke(GetKMSCryptoKeyVersionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? new GetKMSCryptoKeyVersionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? new GetKMSCryptoKeyVersionInvokeArgs(), options.WithDefaults());
     }
 
 

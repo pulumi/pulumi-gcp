@@ -55,6 +55,7 @@ setup(name='pulumi_gcp',
       package_data={
           'pulumi_gcp': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

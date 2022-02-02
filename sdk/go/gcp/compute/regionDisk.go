@@ -540,7 +540,7 @@ type RegionDiskInput interface {
 }
 
 func (*RegionDisk) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDisk)(nil))
+	return reflect.TypeOf((**RegionDisk)(nil)).Elem()
 }
 
 func (i *RegionDisk) ToRegionDiskOutput() RegionDiskOutput {
@@ -549,35 +549,6 @@ func (i *RegionDisk) ToRegionDiskOutput() RegionDiskOutput {
 
 func (i *RegionDisk) ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskOutput)
-}
-
-func (i *RegionDisk) ToRegionDiskPtrOutput() RegionDiskPtrOutput {
-	return i.ToRegionDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *RegionDisk) ToRegionDiskPtrOutputWithContext(ctx context.Context) RegionDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskPtrOutput)
-}
-
-type RegionDiskPtrInput interface {
-	pulumi.Input
-
-	ToRegionDiskPtrOutput() RegionDiskPtrOutput
-	ToRegionDiskPtrOutputWithContext(ctx context.Context) RegionDiskPtrOutput
-}
-
-type regionDiskPtrType RegionDiskArgs
-
-func (*regionDiskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDisk)(nil))
-}
-
-func (i *regionDiskPtrType) ToRegionDiskPtrOutput() RegionDiskPtrOutput {
-	return i.ToRegionDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *regionDiskPtrType) ToRegionDiskPtrOutputWithContext(ctx context.Context) RegionDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskPtrOutput)
 }
 
 // RegionDiskArrayInput is an input type that accepts RegionDiskArray and RegionDiskArrayOutput values.
@@ -633,7 +604,7 @@ func (i RegionDiskMap) ToRegionDiskMapOutputWithContext(ctx context.Context) Reg
 type RegionDiskOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDisk)(nil))
+	return reflect.TypeOf((**RegionDisk)(nil)).Elem()
 }
 
 func (o RegionDiskOutput) ToRegionDiskOutput() RegionDiskOutput {
@@ -644,44 +615,10 @@ func (o RegionDiskOutput) ToRegionDiskOutputWithContext(ctx context.Context) Reg
 	return o
 }
 
-func (o RegionDiskOutput) ToRegionDiskPtrOutput() RegionDiskPtrOutput {
-	return o.ToRegionDiskPtrOutputWithContext(context.Background())
-}
-
-func (o RegionDiskOutput) ToRegionDiskPtrOutputWithContext(ctx context.Context) RegionDiskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDisk) *RegionDisk {
-		return &v
-	}).(RegionDiskPtrOutput)
-}
-
-type RegionDiskPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionDiskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDisk)(nil))
-}
-
-func (o RegionDiskPtrOutput) ToRegionDiskPtrOutput() RegionDiskPtrOutput {
-	return o
-}
-
-func (o RegionDiskPtrOutput) ToRegionDiskPtrOutputWithContext(ctx context.Context) RegionDiskPtrOutput {
-	return o
-}
-
-func (o RegionDiskPtrOutput) Elem() RegionDiskOutput {
-	return o.ApplyT(func(v *RegionDisk) RegionDisk {
-		if v != nil {
-			return *v
-		}
-		var ret RegionDisk
-		return ret
-	}).(RegionDiskOutput)
-}
-
 type RegionDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionDisk)(nil))
+	return reflect.TypeOf((*[]*RegionDisk)(nil)).Elem()
 }
 
 func (o RegionDiskArrayOutput) ToRegionDiskArrayOutput() RegionDiskArrayOutput {
@@ -693,15 +630,15 @@ func (o RegionDiskArrayOutput) ToRegionDiskArrayOutputWithContext(ctx context.Co
 }
 
 func (o RegionDiskArrayOutput) Index(i pulumi.IntInput) RegionDiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionDisk {
-		return vs[0].([]RegionDisk)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDisk {
+		return vs[0].([]*RegionDisk)[vs[1].(int)]
 	}).(RegionDiskOutput)
 }
 
 type RegionDiskMapOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RegionDisk)(nil))
+	return reflect.TypeOf((*map[string]*RegionDisk)(nil)).Elem()
 }
 
 func (o RegionDiskMapOutput) ToRegionDiskMapOutput() RegionDiskMapOutput {
@@ -713,18 +650,16 @@ func (o RegionDiskMapOutput) ToRegionDiskMapOutputWithContext(ctx context.Contex
 }
 
 func (o RegionDiskMapOutput) MapIndex(k pulumi.StringInput) RegionDiskOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionDisk {
-		return vs[0].(map[string]RegionDisk)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RegionDisk {
+		return vs[0].(map[string]*RegionDisk)[vs[1].(string)]
 	}).(RegionDiskOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskInput)(nil)).Elem(), &RegionDisk{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskPtrInput)(nil)).Elem(), &RegionDisk{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskArrayInput)(nil)).Elem(), RegionDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskMapInput)(nil)).Elem(), RegionDiskMap{})
 	pulumi.RegisterOutputType(RegionDiskOutput{})
-	pulumi.RegisterOutputType(RegionDiskPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskArrayOutput{})
 	pulumi.RegisterOutputType(RegionDiskMapOutput{})
 }

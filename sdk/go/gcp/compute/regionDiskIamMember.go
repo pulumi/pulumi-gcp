@@ -271,7 +271,7 @@ type RegionDiskIamMemberInput interface {
 }
 
 func (*RegionDiskIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskIamMember)(nil))
+	return reflect.TypeOf((**RegionDiskIamMember)(nil)).Elem()
 }
 
 func (i *RegionDiskIamMember) ToRegionDiskIamMemberOutput() RegionDiskIamMemberOutput {
@@ -280,35 +280,6 @@ func (i *RegionDiskIamMember) ToRegionDiskIamMemberOutput() RegionDiskIamMemberO
 
 func (i *RegionDiskIamMember) ToRegionDiskIamMemberOutputWithContext(ctx context.Context) RegionDiskIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberOutput)
-}
-
-func (i *RegionDiskIamMember) ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput {
-	return i.ToRegionDiskIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *RegionDiskIamMember) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberPtrOutput)
-}
-
-type RegionDiskIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput
-	ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput
-}
-
-type regionDiskIamMemberPtrType RegionDiskIamMemberArgs
-
-func (*regionDiskIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskIamMember)(nil))
-}
-
-func (i *regionDiskIamMemberPtrType) ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput {
-	return i.ToRegionDiskIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *regionDiskIamMemberPtrType) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberPtrOutput)
 }
 
 // RegionDiskIamMemberArrayInput is an input type that accepts RegionDiskIamMemberArray and RegionDiskIamMemberArrayOutput values.
@@ -364,7 +335,7 @@ func (i RegionDiskIamMemberMap) ToRegionDiskIamMemberMapOutputWithContext(ctx co
 type RegionDiskIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskIamMember)(nil))
+	return reflect.TypeOf((**RegionDiskIamMember)(nil)).Elem()
 }
 
 func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberOutput() RegionDiskIamMemberOutput {
@@ -375,44 +346,10 @@ func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberOutputWithContext(ctx co
 	return o
 }
 
-func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput {
-	return o.ToRegionDiskIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskIamMember) *RegionDiskIamMember {
-		return &v
-	}).(RegionDiskIamMemberPtrOutput)
-}
-
-type RegionDiskIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionDiskIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskIamMember)(nil))
-}
-
-func (o RegionDiskIamMemberPtrOutput) ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput {
-	return o
-}
-
-func (o RegionDiskIamMemberPtrOutput) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
-	return o
-}
-
-func (o RegionDiskIamMemberPtrOutput) Elem() RegionDiskIamMemberOutput {
-	return o.ApplyT(func(v *RegionDiskIamMember) RegionDiskIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret RegionDiskIamMember
-		return ret
-	}).(RegionDiskIamMemberOutput)
-}
-
 type RegionDiskIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionDiskIamMember)(nil))
+	return reflect.TypeOf((*[]*RegionDiskIamMember)(nil)).Elem()
 }
 
 func (o RegionDiskIamMemberArrayOutput) ToRegionDiskIamMemberArrayOutput() RegionDiskIamMemberArrayOutput {
@@ -424,15 +361,15 @@ func (o RegionDiskIamMemberArrayOutput) ToRegionDiskIamMemberArrayOutputWithCont
 }
 
 func (o RegionDiskIamMemberArrayOutput) Index(i pulumi.IntInput) RegionDiskIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionDiskIamMember {
-		return vs[0].([]RegionDiskIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDiskIamMember {
+		return vs[0].([]*RegionDiskIamMember)[vs[1].(int)]
 	}).(RegionDiskIamMemberOutput)
 }
 
 type RegionDiskIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RegionDiskIamMember)(nil))
+	return reflect.TypeOf((*map[string]*RegionDiskIamMember)(nil)).Elem()
 }
 
 func (o RegionDiskIamMemberMapOutput) ToRegionDiskIamMemberMapOutput() RegionDiskIamMemberMapOutput {
@@ -444,18 +381,16 @@ func (o RegionDiskIamMemberMapOutput) ToRegionDiskIamMemberMapOutputWithContext(
 }
 
 func (o RegionDiskIamMemberMapOutput) MapIndex(k pulumi.StringInput) RegionDiskIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionDiskIamMember {
-		return vs[0].(map[string]RegionDiskIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RegionDiskIamMember {
+		return vs[0].(map[string]*RegionDiskIamMember)[vs[1].(string)]
 	}).(RegionDiskIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamMemberInput)(nil)).Elem(), &RegionDiskIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamMemberPtrInput)(nil)).Elem(), &RegionDiskIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamMemberArrayInput)(nil)).Elem(), RegionDiskIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskIamMemberMapInput)(nil)).Elem(), RegionDiskIamMemberMap{})
 	pulumi.RegisterOutputType(RegionDiskIamMemberOutput{})
-	pulumi.RegisterOutputType(RegionDiskIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(RegionDiskIamMemberMapOutput{})
 }

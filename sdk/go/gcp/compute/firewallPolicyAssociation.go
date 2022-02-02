@@ -162,7 +162,7 @@ type FirewallPolicyAssociationInput interface {
 }
 
 func (*FirewallPolicyAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallPolicyAssociation)(nil))
+	return reflect.TypeOf((**FirewallPolicyAssociation)(nil)).Elem()
 }
 
 func (i *FirewallPolicyAssociation) ToFirewallPolicyAssociationOutput() FirewallPolicyAssociationOutput {
@@ -171,35 +171,6 @@ func (i *FirewallPolicyAssociation) ToFirewallPolicyAssociationOutput() Firewall
 
 func (i *FirewallPolicyAssociation) ToFirewallPolicyAssociationOutputWithContext(ctx context.Context) FirewallPolicyAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyAssociationOutput)
-}
-
-func (i *FirewallPolicyAssociation) ToFirewallPolicyAssociationPtrOutput() FirewallPolicyAssociationPtrOutput {
-	return i.ToFirewallPolicyAssociationPtrOutputWithContext(context.Background())
-}
-
-func (i *FirewallPolicyAssociation) ToFirewallPolicyAssociationPtrOutputWithContext(ctx context.Context) FirewallPolicyAssociationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyAssociationPtrOutput)
-}
-
-type FirewallPolicyAssociationPtrInput interface {
-	pulumi.Input
-
-	ToFirewallPolicyAssociationPtrOutput() FirewallPolicyAssociationPtrOutput
-	ToFirewallPolicyAssociationPtrOutputWithContext(ctx context.Context) FirewallPolicyAssociationPtrOutput
-}
-
-type firewallPolicyAssociationPtrType FirewallPolicyAssociationArgs
-
-func (*firewallPolicyAssociationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FirewallPolicyAssociation)(nil))
-}
-
-func (i *firewallPolicyAssociationPtrType) ToFirewallPolicyAssociationPtrOutput() FirewallPolicyAssociationPtrOutput {
-	return i.ToFirewallPolicyAssociationPtrOutputWithContext(context.Background())
-}
-
-func (i *firewallPolicyAssociationPtrType) ToFirewallPolicyAssociationPtrOutputWithContext(ctx context.Context) FirewallPolicyAssociationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyAssociationPtrOutput)
 }
 
 // FirewallPolicyAssociationArrayInput is an input type that accepts FirewallPolicyAssociationArray and FirewallPolicyAssociationArrayOutput values.
@@ -255,7 +226,7 @@ func (i FirewallPolicyAssociationMap) ToFirewallPolicyAssociationMapOutputWithCo
 type FirewallPolicyAssociationOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallPolicyAssociation)(nil))
+	return reflect.TypeOf((**FirewallPolicyAssociation)(nil)).Elem()
 }
 
 func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationOutput() FirewallPolicyAssociationOutput {
@@ -266,44 +237,10 @@ func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationOutputWithCo
 	return o
 }
 
-func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationPtrOutput() FirewallPolicyAssociationPtrOutput {
-	return o.ToFirewallPolicyAssociationPtrOutputWithContext(context.Background())
-}
-
-func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationPtrOutputWithContext(ctx context.Context) FirewallPolicyAssociationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallPolicyAssociation) *FirewallPolicyAssociation {
-		return &v
-	}).(FirewallPolicyAssociationPtrOutput)
-}
-
-type FirewallPolicyAssociationPtrOutput struct{ *pulumi.OutputState }
-
-func (FirewallPolicyAssociationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FirewallPolicyAssociation)(nil))
-}
-
-func (o FirewallPolicyAssociationPtrOutput) ToFirewallPolicyAssociationPtrOutput() FirewallPolicyAssociationPtrOutput {
-	return o
-}
-
-func (o FirewallPolicyAssociationPtrOutput) ToFirewallPolicyAssociationPtrOutputWithContext(ctx context.Context) FirewallPolicyAssociationPtrOutput {
-	return o
-}
-
-func (o FirewallPolicyAssociationPtrOutput) Elem() FirewallPolicyAssociationOutput {
-	return o.ApplyT(func(v *FirewallPolicyAssociation) FirewallPolicyAssociation {
-		if v != nil {
-			return *v
-		}
-		var ret FirewallPolicyAssociation
-		return ret
-	}).(FirewallPolicyAssociationOutput)
-}
-
 type FirewallPolicyAssociationArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyAssociationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FirewallPolicyAssociation)(nil))
+	return reflect.TypeOf((*[]*FirewallPolicyAssociation)(nil)).Elem()
 }
 
 func (o FirewallPolicyAssociationArrayOutput) ToFirewallPolicyAssociationArrayOutput() FirewallPolicyAssociationArrayOutput {
@@ -315,15 +252,15 @@ func (o FirewallPolicyAssociationArrayOutput) ToFirewallPolicyAssociationArrayOu
 }
 
 func (o FirewallPolicyAssociationArrayOutput) Index(i pulumi.IntInput) FirewallPolicyAssociationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallPolicyAssociation {
-		return vs[0].([]FirewallPolicyAssociation)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallPolicyAssociation {
+		return vs[0].([]*FirewallPolicyAssociation)[vs[1].(int)]
 	}).(FirewallPolicyAssociationOutput)
 }
 
 type FirewallPolicyAssociationMapOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyAssociationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FirewallPolicyAssociation)(nil))
+	return reflect.TypeOf((*map[string]*FirewallPolicyAssociation)(nil)).Elem()
 }
 
 func (o FirewallPolicyAssociationMapOutput) ToFirewallPolicyAssociationMapOutput() FirewallPolicyAssociationMapOutput {
@@ -335,18 +272,16 @@ func (o FirewallPolicyAssociationMapOutput) ToFirewallPolicyAssociationMapOutput
 }
 
 func (o FirewallPolicyAssociationMapOutput) MapIndex(k pulumi.StringInput) FirewallPolicyAssociationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FirewallPolicyAssociation {
-		return vs[0].(map[string]FirewallPolicyAssociation)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FirewallPolicyAssociation {
+		return vs[0].(map[string]*FirewallPolicyAssociation)[vs[1].(string)]
 	}).(FirewallPolicyAssociationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyAssociationInput)(nil)).Elem(), &FirewallPolicyAssociation{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyAssociationPtrInput)(nil)).Elem(), &FirewallPolicyAssociation{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyAssociationArrayInput)(nil)).Elem(), FirewallPolicyAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPolicyAssociationMapInput)(nil)).Elem(), FirewallPolicyAssociationMap{})
 	pulumi.RegisterOutputType(FirewallPolicyAssociationOutput{})
-	pulumi.RegisterOutputType(FirewallPolicyAssociationPtrOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyAssociationArrayOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyAssociationMapOutput{})
 }

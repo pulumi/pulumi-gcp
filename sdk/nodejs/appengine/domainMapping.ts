@@ -113,32 +113,30 @@ export class DomainMapping extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainMappingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainMappingArgs | DomainMappingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainMappingState | undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["overrideStrategy"] = state ? state.overrideStrategy : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["resourceRecords"] = state ? state.resourceRecords : undefined;
-            inputs["sslSettings"] = state ? state.sslSettings : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["overrideStrategy"] = state ? state.overrideStrategy : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["resourceRecords"] = state ? state.resourceRecords : undefined;
+            resourceInputs["sslSettings"] = state ? state.sslSettings : undefined;
         } else {
             const args = argsOrState as DomainMappingArgs | undefined;
             if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["sslSettings"] = args ? args.sslSettings : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["resourceRecords"] = undefined /*out*/;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sslSettings"] = args ? args.sslSettings : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceRecords"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DomainMapping.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DomainMapping.__pulumiType, name, resourceInputs, opts);
     }
 }
 

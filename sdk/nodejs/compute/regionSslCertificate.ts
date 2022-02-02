@@ -34,6 +34,35 @@ import * as utilities from "../utilities";
  *     certificate: fs.readFileSync("path/to/certificate.crt"),
  * });
  * ```
+ * ### Region Ssl Certificate Random Provider
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as crypto from "crypto";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ * import * from "fs";
+ *
+ * func computeFilebase64sha256(path string) string {
+ * 	const fileData = Buffer.from(fs.readFileSync(path), 'binary')
+ * 	return crypto.createHash('sha256').update(fileData).digest('hex')
+ * }
+ *
+ * // You may also want to control name generation explicitly:
+ * const _default = new gcp.compute.RegionSslCertificate("default", {
+ *     region: "us-central1",
+ *     privateKey: fs.readFileSync("path/to/private.key"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ * });
+ * const certificate = new random.RandomId("certificate", {
+ *     byteLength: 4,
+ *     prefix: "my-certificate-",
+ *     keepers: {
+ *         private_key: computeFilebase64sha256("path/to/private.key"),
+ *         certificate: computeFilebase64sha256("path/to/certificate.crt"),
+ *     },
+ * });
+ * ```
  * ### Region Ssl Certificate Target Https Proxies
  *
  * ```typescript
@@ -204,20 +233,20 @@ export class RegionSslCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegionSslCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionSslCertificateArgs | RegionSslCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionSslCertificateState | undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["certificateId"] = state ? state.certificateId : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as RegionSslCertificateArgs | undefined;
             if ((!args || args.certificate === undefined) && !opts.urn) {
@@ -226,21 +255,19 @@ export class RegionSslCertificate extends pulumi.CustomResource {
             if ((!args || args.privateKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            inputs["certificate"] = args ? args.certificate : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["privateKey"] = args ? args.privateKey : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["certificateId"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["certificateId"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RegionSslCertificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RegionSslCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

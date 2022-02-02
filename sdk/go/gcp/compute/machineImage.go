@@ -109,7 +109,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = projects.NewIAMMember(ctx, "kms_project_binding", &projects.IAMMemberArgs{
+// 		_, err = projects.NewIAMMember(ctx, "kms-project-binding", &projects.IAMMemberArgs{
 // 			Project: pulumi.String(project.ProjectId),
 // 			Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 // 			Member:  pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:service-", project.Number, "@compute-system.iam.gserviceaccount.com")),
@@ -315,7 +315,7 @@ type MachineImageInput interface {
 }
 
 func (*MachineImage) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImage)(nil))
+	return reflect.TypeOf((**MachineImage)(nil)).Elem()
 }
 
 func (i *MachineImage) ToMachineImageOutput() MachineImageOutput {
@@ -324,35 +324,6 @@ func (i *MachineImage) ToMachineImageOutput() MachineImageOutput {
 
 func (i *MachineImage) ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageOutput)
-}
-
-func (i *MachineImage) ToMachineImagePtrOutput() MachineImagePtrOutput {
-	return i.ToMachineImagePtrOutputWithContext(context.Background())
-}
-
-func (i *MachineImage) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MachineImagePtrOutput)
-}
-
-type MachineImagePtrInput interface {
-	pulumi.Input
-
-	ToMachineImagePtrOutput() MachineImagePtrOutput
-	ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput
-}
-
-type machineImagePtrType MachineImageArgs
-
-func (*machineImagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MachineImage)(nil))
-}
-
-func (i *machineImagePtrType) ToMachineImagePtrOutput() MachineImagePtrOutput {
-	return i.ToMachineImagePtrOutputWithContext(context.Background())
-}
-
-func (i *machineImagePtrType) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MachineImagePtrOutput)
 }
 
 // MachineImageArrayInput is an input type that accepts MachineImageArray and MachineImageArrayOutput values.
@@ -408,7 +379,7 @@ func (i MachineImageMap) ToMachineImageMapOutputWithContext(ctx context.Context)
 type MachineImageOutput struct{ *pulumi.OutputState }
 
 func (MachineImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImage)(nil))
+	return reflect.TypeOf((**MachineImage)(nil)).Elem()
 }
 
 func (o MachineImageOutput) ToMachineImageOutput() MachineImageOutput {
@@ -419,44 +390,10 @@ func (o MachineImageOutput) ToMachineImageOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o MachineImageOutput) ToMachineImagePtrOutput() MachineImagePtrOutput {
-	return o.ToMachineImagePtrOutputWithContext(context.Background())
-}
-
-func (o MachineImageOutput) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineImage) *MachineImage {
-		return &v
-	}).(MachineImagePtrOutput)
-}
-
-type MachineImagePtrOutput struct{ *pulumi.OutputState }
-
-func (MachineImagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MachineImage)(nil))
-}
-
-func (o MachineImagePtrOutput) ToMachineImagePtrOutput() MachineImagePtrOutput {
-	return o
-}
-
-func (o MachineImagePtrOutput) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
-	return o
-}
-
-func (o MachineImagePtrOutput) Elem() MachineImageOutput {
-	return o.ApplyT(func(v *MachineImage) MachineImage {
-		if v != nil {
-			return *v
-		}
-		var ret MachineImage
-		return ret
-	}).(MachineImageOutput)
-}
-
 type MachineImageArrayOutput struct{ *pulumi.OutputState }
 
 func (MachineImageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MachineImage)(nil))
+	return reflect.TypeOf((*[]*MachineImage)(nil)).Elem()
 }
 
 func (o MachineImageArrayOutput) ToMachineImageArrayOutput() MachineImageArrayOutput {
@@ -468,15 +405,15 @@ func (o MachineImageArrayOutput) ToMachineImageArrayOutputWithContext(ctx contex
 }
 
 func (o MachineImageArrayOutput) Index(i pulumi.IntInput) MachineImageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineImage {
-		return vs[0].([]MachineImage)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MachineImage {
+		return vs[0].([]*MachineImage)[vs[1].(int)]
 	}).(MachineImageOutput)
 }
 
 type MachineImageMapOutput struct{ *pulumi.OutputState }
 
 func (MachineImageMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MachineImage)(nil))
+	return reflect.TypeOf((*map[string]*MachineImage)(nil)).Elem()
 }
 
 func (o MachineImageMapOutput) ToMachineImageMapOutput() MachineImageMapOutput {
@@ -488,18 +425,16 @@ func (o MachineImageMapOutput) ToMachineImageMapOutputWithContext(ctx context.Co
 }
 
 func (o MachineImageMapOutput) MapIndex(k pulumi.StringInput) MachineImageOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MachineImage {
-		return vs[0].(map[string]MachineImage)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MachineImage {
+		return vs[0].(map[string]*MachineImage)[vs[1].(string)]
 	}).(MachineImageOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageInput)(nil)).Elem(), &MachineImage{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MachineImagePtrInput)(nil)).Elem(), &MachineImage{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageArrayInput)(nil)).Elem(), MachineImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageMapInput)(nil)).Elem(), MachineImageMap{})
 	pulumi.RegisterOutputType(MachineImageOutput{})
-	pulumi.RegisterOutputType(MachineImagePtrOutput{})
 	pulumi.RegisterOutputType(MachineImageArrayOutput{})
 	pulumi.RegisterOutputType(MachineImageMapOutput{})
 }

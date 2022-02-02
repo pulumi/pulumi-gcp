@@ -10,9 +10,7 @@ export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:sourcerepo/getRepository:getRepository", {
         "name": args.name,
         "project": args.project,

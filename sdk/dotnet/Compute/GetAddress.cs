@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -55,7 +54,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressResult> InvokeAsync(GetAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the IP address from a static address. For more information see
@@ -100,7 +99,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAddressResult> Invoke(GetAddressInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressInvokeArgs(), options.WithDefaults());
     }
 
 

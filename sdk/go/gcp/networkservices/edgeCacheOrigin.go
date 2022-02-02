@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networkservices.NewEdgeCacheOrigin(ctx, "_default", &networkservices.EdgeCacheOriginArgs{
+// 		_, err := networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
 // 			Description:   pulumi.String("The default bucket for media edge test"),
 // 			OriginAddress: pulumi.String("gs://media-edge-default"),
 // 		})
@@ -69,7 +69,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = networkservices.NewEdgeCacheOrigin(ctx, "_default", &networkservices.EdgeCacheOriginArgs{
+// 		_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
 // 			OriginAddress:  pulumi.String("gs://media-edge-default"),
 // 			FailoverOrigin: fallback.ID(),
 // 			Description:    pulumi.String("The default bucket for media edge test"),
@@ -439,7 +439,7 @@ type EdgeCacheOriginInput interface {
 }
 
 func (*EdgeCacheOrigin) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheOrigin)(nil))
+	return reflect.TypeOf((**EdgeCacheOrigin)(nil)).Elem()
 }
 
 func (i *EdgeCacheOrigin) ToEdgeCacheOriginOutput() EdgeCacheOriginOutput {
@@ -448,35 +448,6 @@ func (i *EdgeCacheOrigin) ToEdgeCacheOriginOutput() EdgeCacheOriginOutput {
 
 func (i *EdgeCacheOrigin) ToEdgeCacheOriginOutputWithContext(ctx context.Context) EdgeCacheOriginOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOutput)
-}
-
-func (i *EdgeCacheOrigin) ToEdgeCacheOriginPtrOutput() EdgeCacheOriginPtrOutput {
-	return i.ToEdgeCacheOriginPtrOutputWithContext(context.Background())
-}
-
-func (i *EdgeCacheOrigin) ToEdgeCacheOriginPtrOutputWithContext(ctx context.Context) EdgeCacheOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginPtrOutput)
-}
-
-type EdgeCacheOriginPtrInput interface {
-	pulumi.Input
-
-	ToEdgeCacheOriginPtrOutput() EdgeCacheOriginPtrOutput
-	ToEdgeCacheOriginPtrOutputWithContext(ctx context.Context) EdgeCacheOriginPtrOutput
-}
-
-type edgeCacheOriginPtrType EdgeCacheOriginArgs
-
-func (*edgeCacheOriginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeCacheOrigin)(nil))
-}
-
-func (i *edgeCacheOriginPtrType) ToEdgeCacheOriginPtrOutput() EdgeCacheOriginPtrOutput {
-	return i.ToEdgeCacheOriginPtrOutputWithContext(context.Background())
-}
-
-func (i *edgeCacheOriginPtrType) ToEdgeCacheOriginPtrOutputWithContext(ctx context.Context) EdgeCacheOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginPtrOutput)
 }
 
 // EdgeCacheOriginArrayInput is an input type that accepts EdgeCacheOriginArray and EdgeCacheOriginArrayOutput values.
@@ -532,7 +503,7 @@ func (i EdgeCacheOriginMap) ToEdgeCacheOriginMapOutputWithContext(ctx context.Co
 type EdgeCacheOriginOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheOrigin)(nil))
+	return reflect.TypeOf((**EdgeCacheOrigin)(nil)).Elem()
 }
 
 func (o EdgeCacheOriginOutput) ToEdgeCacheOriginOutput() EdgeCacheOriginOutput {
@@ -543,44 +514,10 @@ func (o EdgeCacheOriginOutput) ToEdgeCacheOriginOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EdgeCacheOriginOutput) ToEdgeCacheOriginPtrOutput() EdgeCacheOriginPtrOutput {
-	return o.ToEdgeCacheOriginPtrOutputWithContext(context.Background())
-}
-
-func (o EdgeCacheOriginOutput) ToEdgeCacheOriginPtrOutputWithContext(ctx context.Context) EdgeCacheOriginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOrigin) *EdgeCacheOrigin {
-		return &v
-	}).(EdgeCacheOriginPtrOutput)
-}
-
-type EdgeCacheOriginPtrOutput struct{ *pulumi.OutputState }
-
-func (EdgeCacheOriginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeCacheOrigin)(nil))
-}
-
-func (o EdgeCacheOriginPtrOutput) ToEdgeCacheOriginPtrOutput() EdgeCacheOriginPtrOutput {
-	return o
-}
-
-func (o EdgeCacheOriginPtrOutput) ToEdgeCacheOriginPtrOutputWithContext(ctx context.Context) EdgeCacheOriginPtrOutput {
-	return o
-}
-
-func (o EdgeCacheOriginPtrOutput) Elem() EdgeCacheOriginOutput {
-	return o.ApplyT(func(v *EdgeCacheOrigin) EdgeCacheOrigin {
-		if v != nil {
-			return *v
-		}
-		var ret EdgeCacheOrigin
-		return ret
-	}).(EdgeCacheOriginOutput)
-}
-
 type EdgeCacheOriginArrayOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EdgeCacheOrigin)(nil))
+	return reflect.TypeOf((*[]*EdgeCacheOrigin)(nil)).Elem()
 }
 
 func (o EdgeCacheOriginArrayOutput) ToEdgeCacheOriginArrayOutput() EdgeCacheOriginArrayOutput {
@@ -592,15 +529,15 @@ func (o EdgeCacheOriginArrayOutput) ToEdgeCacheOriginArrayOutputWithContext(ctx 
 }
 
 func (o EdgeCacheOriginArrayOutput) Index(i pulumi.IntInput) EdgeCacheOriginOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeCacheOrigin {
-		return vs[0].([]EdgeCacheOrigin)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EdgeCacheOrigin {
+		return vs[0].([]*EdgeCacheOrigin)[vs[1].(int)]
 	}).(EdgeCacheOriginOutput)
 }
 
 type EdgeCacheOriginMapOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EdgeCacheOrigin)(nil))
+	return reflect.TypeOf((*map[string]*EdgeCacheOrigin)(nil)).Elem()
 }
 
 func (o EdgeCacheOriginMapOutput) ToEdgeCacheOriginMapOutput() EdgeCacheOriginMapOutput {
@@ -612,18 +549,16 @@ func (o EdgeCacheOriginMapOutput) ToEdgeCacheOriginMapOutputWithContext(ctx cont
 }
 
 func (o EdgeCacheOriginMapOutput) MapIndex(k pulumi.StringInput) EdgeCacheOriginOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EdgeCacheOrigin {
-		return vs[0].(map[string]EdgeCacheOrigin)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EdgeCacheOrigin {
+		return vs[0].(map[string]*EdgeCacheOrigin)[vs[1].(string)]
 	}).(EdgeCacheOriginOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginInput)(nil)).Elem(), &EdgeCacheOrigin{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginPtrInput)(nil)).Elem(), &EdgeCacheOrigin{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginArrayInput)(nil)).Elem(), EdgeCacheOriginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginMapInput)(nil)).Elem(), EdgeCacheOriginMap{})
 	pulumi.RegisterOutputType(EdgeCacheOriginOutput{})
-	pulumi.RegisterOutputType(EdgeCacheOriginPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginMapOutput{})
 }

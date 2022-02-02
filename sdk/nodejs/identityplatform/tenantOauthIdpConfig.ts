@@ -116,18 +116,18 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: TenantOauthIdpConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TenantOauthIdpConfigArgs | TenantOauthIdpConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TenantOauthIdpConfigState | undefined;
-            inputs["clientId"] = state ? state.clientId : undefined;
-            inputs["clientSecret"] = state ? state.clientSecret : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["issuer"] = state ? state.issuer : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["tenant"] = state ? state.tenant : undefined;
+            resourceInputs["clientId"] = state ? state.clientId : undefined;
+            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["tenant"] = state ? state.tenant : undefined;
         } else {
             const args = argsOrState as TenantOauthIdpConfigArgs | undefined;
             if ((!args || args.clientId === undefined) && !opts.urn) {
@@ -142,19 +142,17 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
             if ((!args || args.tenant === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenant'");
             }
-            inputs["clientId"] = args ? args.clientId : undefined;
-            inputs["clientSecret"] = args ? args.clientSecret : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["issuer"] = args ? args.issuer : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tenant"] = args ? args.tenant : undefined;
+            resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["issuer"] = args ? args.issuer : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tenant"] = args ? args.tenant : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TenantOauthIdpConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TenantOauthIdpConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

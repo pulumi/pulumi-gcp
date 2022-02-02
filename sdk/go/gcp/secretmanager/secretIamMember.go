@@ -264,7 +264,7 @@ type SecretIamMemberInput interface {
 }
 
 func (*SecretIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamMember)(nil))
+	return reflect.TypeOf((**SecretIamMember)(nil)).Elem()
 }
 
 func (i *SecretIamMember) ToSecretIamMemberOutput() SecretIamMemberOutput {
@@ -273,35 +273,6 @@ func (i *SecretIamMember) ToSecretIamMemberOutput() SecretIamMemberOutput {
 
 func (i *SecretIamMember) ToSecretIamMemberOutputWithContext(ctx context.Context) SecretIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberOutput)
-}
-
-func (i *SecretIamMember) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput {
-	return i.ToSecretIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *SecretIamMember) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberPtrOutput)
-}
-
-type SecretIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput
-	ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput
-}
-
-type secretIamMemberPtrType SecretIamMemberArgs
-
-func (*secretIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretIamMember)(nil))
-}
-
-func (i *secretIamMemberPtrType) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput {
-	return i.ToSecretIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *secretIamMemberPtrType) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberPtrOutput)
 }
 
 // SecretIamMemberArrayInput is an input type that accepts SecretIamMemberArray and SecretIamMemberArrayOutput values.
@@ -357,7 +328,7 @@ func (i SecretIamMemberMap) ToSecretIamMemberMapOutputWithContext(ctx context.Co
 type SecretIamMemberOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamMember)(nil))
+	return reflect.TypeOf((**SecretIamMember)(nil)).Elem()
 }
 
 func (o SecretIamMemberOutput) ToSecretIamMemberOutput() SecretIamMemberOutput {
@@ -368,44 +339,10 @@ func (o SecretIamMemberOutput) ToSecretIamMemberOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SecretIamMemberOutput) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput {
-	return o.ToSecretIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o SecretIamMemberOutput) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamMember) *SecretIamMember {
-		return &v
-	}).(SecretIamMemberPtrOutput)
-}
-
-type SecretIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (SecretIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretIamMember)(nil))
-}
-
-func (o SecretIamMemberPtrOutput) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput {
-	return o
-}
-
-func (o SecretIamMemberPtrOutput) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
-	return o
-}
-
-func (o SecretIamMemberPtrOutput) Elem() SecretIamMemberOutput {
-	return o.ApplyT(func(v *SecretIamMember) SecretIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret SecretIamMember
-		return ret
-	}).(SecretIamMemberOutput)
-}
-
 type SecretIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecretIamMember)(nil))
+	return reflect.TypeOf((*[]*SecretIamMember)(nil)).Elem()
 }
 
 func (o SecretIamMemberArrayOutput) ToSecretIamMemberArrayOutput() SecretIamMemberArrayOutput {
@@ -417,15 +354,15 @@ func (o SecretIamMemberArrayOutput) ToSecretIamMemberArrayOutputWithContext(ctx 
 }
 
 func (o SecretIamMemberArrayOutput) Index(i pulumi.IntInput) SecretIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretIamMember {
-		return vs[0].([]SecretIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretIamMember {
+		return vs[0].([]*SecretIamMember)[vs[1].(int)]
 	}).(SecretIamMemberOutput)
 }
 
 type SecretIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecretIamMember)(nil))
+	return reflect.TypeOf((*map[string]*SecretIamMember)(nil)).Elem()
 }
 
 func (o SecretIamMemberMapOutput) ToSecretIamMemberMapOutput() SecretIamMemberMapOutput {
@@ -437,18 +374,16 @@ func (o SecretIamMemberMapOutput) ToSecretIamMemberMapOutputWithContext(ctx cont
 }
 
 func (o SecretIamMemberMapOutput) MapIndex(k pulumi.StringInput) SecretIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecretIamMember {
-		return vs[0].(map[string]SecretIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SecretIamMember {
+		return vs[0].(map[string]*SecretIamMember)[vs[1].(string)]
 	}).(SecretIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberInput)(nil)).Elem(), &SecretIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberPtrInput)(nil)).Elem(), &SecretIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberArrayInput)(nil)).Elem(), SecretIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberMapInput)(nil)).Elem(), SecretIamMemberMap{})
 	pulumi.RegisterOutputType(SecretIamMemberOutput{})
-	pulumi.RegisterOutputType(SecretIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(SecretIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(SecretIamMemberMapOutput{})
 }

@@ -32,9 +32,7 @@ export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:dns/getManagedZone:getManagedZone", {
         "name": args.name,
         "project": args.project,

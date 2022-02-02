@@ -23,9 +23,7 @@ export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", {
         "project": args.project,
         "workloadIdentityPoolId": args.workloadIdentityPoolId,

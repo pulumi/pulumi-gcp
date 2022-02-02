@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.PubSub
 {
@@ -41,7 +40,7 @@ namespace Pulumi.Gcp.PubSub
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a Google Cloud Pub/Sub Topic. For more information see
@@ -72,7 +71,7 @@ namespace Pulumi.Gcp.PubSub
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicInvokeArgs(), options.WithDefaults());
     }
 
 

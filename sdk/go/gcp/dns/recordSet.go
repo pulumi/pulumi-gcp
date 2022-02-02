@@ -187,7 +187,7 @@ type RecordSetInput interface {
 }
 
 func (*RecordSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecordSet)(nil))
+	return reflect.TypeOf((**RecordSet)(nil)).Elem()
 }
 
 func (i *RecordSet) ToRecordSetOutput() RecordSetOutput {
@@ -196,35 +196,6 @@ func (i *RecordSet) ToRecordSetOutput() RecordSetOutput {
 
 func (i *RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetOutput)
-}
-
-func (i *RecordSet) ToRecordSetPtrOutput() RecordSetPtrOutput {
-	return i.ToRecordSetPtrOutputWithContext(context.Background())
-}
-
-func (i *RecordSet) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecordSetPtrOutput)
-}
-
-type RecordSetPtrInput interface {
-	pulumi.Input
-
-	ToRecordSetPtrOutput() RecordSetPtrOutput
-	ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput
-}
-
-type recordSetPtrType RecordSetArgs
-
-func (*recordSetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecordSet)(nil))
-}
-
-func (i *recordSetPtrType) ToRecordSetPtrOutput() RecordSetPtrOutput {
-	return i.ToRecordSetPtrOutputWithContext(context.Background())
-}
-
-func (i *recordSetPtrType) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecordSetPtrOutput)
 }
 
 // RecordSetArrayInput is an input type that accepts RecordSetArray and RecordSetArrayOutput values.
@@ -280,7 +251,7 @@ func (i RecordSetMap) ToRecordSetMapOutputWithContext(ctx context.Context) Recor
 type RecordSetOutput struct{ *pulumi.OutputState }
 
 func (RecordSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecordSet)(nil))
+	return reflect.TypeOf((**RecordSet)(nil)).Elem()
 }
 
 func (o RecordSetOutput) ToRecordSetOutput() RecordSetOutput {
@@ -291,44 +262,10 @@ func (o RecordSetOutput) ToRecordSetOutputWithContext(ctx context.Context) Recor
 	return o
 }
 
-func (o RecordSetOutput) ToRecordSetPtrOutput() RecordSetPtrOutput {
-	return o.ToRecordSetPtrOutputWithContext(context.Background())
-}
-
-func (o RecordSetOutput) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSet) *RecordSet {
-		return &v
-	}).(RecordSetPtrOutput)
-}
-
-type RecordSetPtrOutput struct{ *pulumi.OutputState }
-
-func (RecordSetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RecordSet)(nil))
-}
-
-func (o RecordSetPtrOutput) ToRecordSetPtrOutput() RecordSetPtrOutput {
-	return o
-}
-
-func (o RecordSetPtrOutput) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
-	return o
-}
-
-func (o RecordSetPtrOutput) Elem() RecordSetOutput {
-	return o.ApplyT(func(v *RecordSet) RecordSet {
-		if v != nil {
-			return *v
-		}
-		var ret RecordSet
-		return ret
-	}).(RecordSetOutput)
-}
-
 type RecordSetArrayOutput struct{ *pulumi.OutputState }
 
 func (RecordSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RecordSet)(nil))
+	return reflect.TypeOf((*[]*RecordSet)(nil)).Elem()
 }
 
 func (o RecordSetArrayOutput) ToRecordSetArrayOutput() RecordSetArrayOutput {
@@ -340,15 +277,15 @@ func (o RecordSetArrayOutput) ToRecordSetArrayOutputWithContext(ctx context.Cont
 }
 
 func (o RecordSetArrayOutput) Index(i pulumi.IntInput) RecordSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSet {
-		return vs[0].([]RecordSet)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RecordSet {
+		return vs[0].([]*RecordSet)[vs[1].(int)]
 	}).(RecordSetOutput)
 }
 
 type RecordSetMapOutput struct{ *pulumi.OutputState }
 
 func (RecordSetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RecordSet)(nil))
+	return reflect.TypeOf((*map[string]*RecordSet)(nil)).Elem()
 }
 
 func (o RecordSetMapOutput) ToRecordSetMapOutput() RecordSetMapOutput {
@@ -360,18 +297,16 @@ func (o RecordSetMapOutput) ToRecordSetMapOutputWithContext(ctx context.Context)
 }
 
 func (o RecordSetMapOutput) MapIndex(k pulumi.StringInput) RecordSetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RecordSet {
-		return vs[0].(map[string]RecordSet)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RecordSet {
+		return vs[0].(map[string]*RecordSet)[vs[1].(string)]
 	}).(RecordSetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetInput)(nil)).Elem(), &RecordSet{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetPtrInput)(nil)).Elem(), &RecordSet{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetArrayInput)(nil)).Elem(), RecordSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetMapInput)(nil)).Elem(), RecordSetMap{})
 	pulumi.RegisterOutputType(RecordSetOutput{})
-	pulumi.RegisterOutputType(RecordSetPtrOutput{})
 	pulumi.RegisterOutputType(RecordSetArrayOutput{})
 	pulumi.RegisterOutputType(RecordSetMapOutput{})
 }

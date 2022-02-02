@@ -248,7 +248,7 @@ type DatasetAccessInput interface {
 }
 
 func (*DatasetAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccess)(nil))
+	return reflect.TypeOf((**DatasetAccess)(nil)).Elem()
 }
 
 func (i *DatasetAccess) ToDatasetAccessOutput() DatasetAccessOutput {
@@ -257,35 +257,6 @@ func (i *DatasetAccess) ToDatasetAccessOutput() DatasetAccessOutput {
 
 func (i *DatasetAccess) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessOutput)
-}
-
-func (i *DatasetAccess) ToDatasetAccessPtrOutput() DatasetAccessPtrOutput {
-	return i.ToDatasetAccessPtrOutputWithContext(context.Background())
-}
-
-func (i *DatasetAccess) ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessPtrOutput)
-}
-
-type DatasetAccessPtrInput interface {
-	pulumi.Input
-
-	ToDatasetAccessPtrOutput() DatasetAccessPtrOutput
-	ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput
-}
-
-type datasetAccessPtrType DatasetAccessArgs
-
-func (*datasetAccessPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetAccess)(nil))
-}
-
-func (i *datasetAccessPtrType) ToDatasetAccessPtrOutput() DatasetAccessPtrOutput {
-	return i.ToDatasetAccessPtrOutputWithContext(context.Background())
-}
-
-func (i *datasetAccessPtrType) ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessPtrOutput)
 }
 
 // DatasetAccessArrayInput is an input type that accepts DatasetAccessArray and DatasetAccessArrayOutput values.
@@ -341,7 +312,7 @@ func (i DatasetAccessMap) ToDatasetAccessMapOutputWithContext(ctx context.Contex
 type DatasetAccessOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccess)(nil))
+	return reflect.TypeOf((**DatasetAccess)(nil)).Elem()
 }
 
 func (o DatasetAccessOutput) ToDatasetAccessOutput() DatasetAccessOutput {
@@ -352,44 +323,10 @@ func (o DatasetAccessOutput) ToDatasetAccessOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DatasetAccessOutput) ToDatasetAccessPtrOutput() DatasetAccessPtrOutput {
-	return o.ToDatasetAccessPtrOutputWithContext(context.Background())
-}
-
-func (o DatasetAccessOutput) ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccess) *DatasetAccess {
-		return &v
-	}).(DatasetAccessPtrOutput)
-}
-
-type DatasetAccessPtrOutput struct{ *pulumi.OutputState }
-
-func (DatasetAccessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetAccess)(nil))
-}
-
-func (o DatasetAccessPtrOutput) ToDatasetAccessPtrOutput() DatasetAccessPtrOutput {
-	return o
-}
-
-func (o DatasetAccessPtrOutput) ToDatasetAccessPtrOutputWithContext(ctx context.Context) DatasetAccessPtrOutput {
-	return o
-}
-
-func (o DatasetAccessPtrOutput) Elem() DatasetAccessOutput {
-	return o.ApplyT(func(v *DatasetAccess) DatasetAccess {
-		if v != nil {
-			return *v
-		}
-		var ret DatasetAccess
-		return ret
-	}).(DatasetAccessOutput)
-}
-
 type DatasetAccessArrayOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccess)(nil))
+	return reflect.TypeOf((*[]*DatasetAccess)(nil)).Elem()
 }
 
 func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutput() DatasetAccessArrayOutput {
@@ -401,15 +338,15 @@ func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutputWithContext(ctx cont
 }
 
 func (o DatasetAccessArrayOutput) Index(i pulumi.IntInput) DatasetAccessOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccess {
-		return vs[0].([]DatasetAccess)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatasetAccess {
+		return vs[0].([]*DatasetAccess)[vs[1].(int)]
 	}).(DatasetAccessOutput)
 }
 
 type DatasetAccessMapOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatasetAccess)(nil))
+	return reflect.TypeOf((*map[string]*DatasetAccess)(nil)).Elem()
 }
 
 func (o DatasetAccessMapOutput) ToDatasetAccessMapOutput() DatasetAccessMapOutput {
@@ -421,18 +358,16 @@ func (o DatasetAccessMapOutput) ToDatasetAccessMapOutputWithContext(ctx context.
 }
 
 func (o DatasetAccessMapOutput) MapIndex(k pulumi.StringInput) DatasetAccessOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetAccess {
-		return vs[0].(map[string]DatasetAccess)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatasetAccess {
+		return vs[0].(map[string]*DatasetAccess)[vs[1].(string)]
 	}).(DatasetAccessOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessInput)(nil)).Elem(), &DatasetAccess{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessPtrInput)(nil)).Elem(), &DatasetAccess{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessArrayInput)(nil)).Elem(), DatasetAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessMapInput)(nil)).Elem(), DatasetAccessMap{})
 	pulumi.RegisterOutputType(DatasetAccessOutput{})
-	pulumi.RegisterOutputType(DatasetAccessPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessMapOutput{})
 }

@@ -114,16 +114,16 @@ export class Folder extends pulumi.CustomResource {
      */
     constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderArgs | FolderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -132,17 +132,15 @@ export class Folder extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["folderId"] = undefined /*out*/;
-            inputs["lifecycleState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["folderId"] = undefined /*out*/;
+            resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Folder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Folder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -144,19 +144,19 @@ export class Document extends pulumi.CustomResource {
      */
     constructor(name: string, args: DocumentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DocumentArgs | DocumentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DocumentState | undefined;
-            inputs["collection"] = state ? state.collection : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["documentId"] = state ? state.documentId : undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["path"] = state ? state.path : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["collection"] = state ? state.collection : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["documentId"] = state ? state.documentId : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as DocumentArgs | undefined;
             if ((!args || args.collection === undefined) && !opts.urn) {
@@ -168,20 +168,18 @@ export class Document extends pulumi.CustomResource {
             if ((!args || args.fields === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
-            inputs["collection"] = args ? args.collection : undefined;
-            inputs["database"] = args ? args.database : undefined;
-            inputs["documentId"] = args ? args.documentId : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["path"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["collection"] = args ? args.collection : undefined;
+            resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["documentId"] = args ? args.documentId : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["path"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Document.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Document.__pulumiType, name, resourceInputs, opts);
     }
 }
 

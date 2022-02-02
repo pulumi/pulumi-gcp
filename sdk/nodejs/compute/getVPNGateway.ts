@@ -23,9 +23,7 @@ export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getVPNGateway:getVPNGateway", {
         "name": args.name,
         "project": args.project,

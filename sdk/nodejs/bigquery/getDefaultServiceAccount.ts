@@ -35,9 +35,7 @@ export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, op
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", {
         "project": args.project,
     }, opts);

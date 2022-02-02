@@ -26,9 +26,7 @@ export function getGroupMemberships(args: GetGroupMembershipsArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", {
         "group": args.group,
     }, opts);

@@ -40,9 +40,7 @@ export function getMeshIstioService(args: GetMeshIstioServiceArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:monitoring/getMeshIstioService:getMeshIstioService", {
         "meshUid": args.meshUid,
         "project": args.project,

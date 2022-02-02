@@ -366,7 +366,7 @@ type TunnelIamBindingInput interface {
 }
 
 func (*TunnelIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelIamBinding)(nil))
+	return reflect.TypeOf((**TunnelIamBinding)(nil)).Elem()
 }
 
 func (i *TunnelIamBinding) ToTunnelIamBindingOutput() TunnelIamBindingOutput {
@@ -375,35 +375,6 @@ func (i *TunnelIamBinding) ToTunnelIamBindingOutput() TunnelIamBindingOutput {
 
 func (i *TunnelIamBinding) ToTunnelIamBindingOutputWithContext(ctx context.Context) TunnelIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingOutput)
-}
-
-func (i *TunnelIamBinding) ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput {
-	return i.ToTunnelIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *TunnelIamBinding) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingPtrOutput)
-}
-
-type TunnelIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput
-	ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput
-}
-
-type tunnelIamBindingPtrType TunnelIamBindingArgs
-
-func (*tunnelIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelIamBinding)(nil))
-}
-
-func (i *tunnelIamBindingPtrType) ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput {
-	return i.ToTunnelIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *tunnelIamBindingPtrType) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingPtrOutput)
 }
 
 // TunnelIamBindingArrayInput is an input type that accepts TunnelIamBindingArray and TunnelIamBindingArrayOutput values.
@@ -459,7 +430,7 @@ func (i TunnelIamBindingMap) ToTunnelIamBindingMapOutputWithContext(ctx context.
 type TunnelIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TunnelIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelIamBinding)(nil))
+	return reflect.TypeOf((**TunnelIamBinding)(nil)).Elem()
 }
 
 func (o TunnelIamBindingOutput) ToTunnelIamBindingOutput() TunnelIamBindingOutput {
@@ -470,44 +441,10 @@ func (o TunnelIamBindingOutput) ToTunnelIamBindingOutputWithContext(ctx context.
 	return o
 }
 
-func (o TunnelIamBindingOutput) ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput {
-	return o.ToTunnelIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o TunnelIamBindingOutput) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelIamBinding) *TunnelIamBinding {
-		return &v
-	}).(TunnelIamBindingPtrOutput)
-}
-
-type TunnelIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (TunnelIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelIamBinding)(nil))
-}
-
-func (o TunnelIamBindingPtrOutput) ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput {
-	return o
-}
-
-func (o TunnelIamBindingPtrOutput) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
-	return o
-}
-
-func (o TunnelIamBindingPtrOutput) Elem() TunnelIamBindingOutput {
-	return o.ApplyT(func(v *TunnelIamBinding) TunnelIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret TunnelIamBinding
-		return ret
-	}).(TunnelIamBindingOutput)
-}
-
 type TunnelIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (TunnelIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TunnelIamBinding)(nil))
+	return reflect.TypeOf((*[]*TunnelIamBinding)(nil)).Elem()
 }
 
 func (o TunnelIamBindingArrayOutput) ToTunnelIamBindingArrayOutput() TunnelIamBindingArrayOutput {
@@ -519,15 +456,15 @@ func (o TunnelIamBindingArrayOutput) ToTunnelIamBindingArrayOutputWithContext(ct
 }
 
 func (o TunnelIamBindingArrayOutput) Index(i pulumi.IntInput) TunnelIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelIamBinding {
-		return vs[0].([]TunnelIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelIamBinding {
+		return vs[0].([]*TunnelIamBinding)[vs[1].(int)]
 	}).(TunnelIamBindingOutput)
 }
 
 type TunnelIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (TunnelIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TunnelIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*TunnelIamBinding)(nil)).Elem()
 }
 
 func (o TunnelIamBindingMapOutput) ToTunnelIamBindingMapOutput() TunnelIamBindingMapOutput {
@@ -539,18 +476,16 @@ func (o TunnelIamBindingMapOutput) ToTunnelIamBindingMapOutputWithContext(ctx co
 }
 
 func (o TunnelIamBindingMapOutput) MapIndex(k pulumi.StringInput) TunnelIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TunnelIamBinding {
-		return vs[0].(map[string]TunnelIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TunnelIamBinding {
+		return vs[0].(map[string]*TunnelIamBinding)[vs[1].(string)]
 	}).(TunnelIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingInput)(nil)).Elem(), &TunnelIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingPtrInput)(nil)).Elem(), &TunnelIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingArrayInput)(nil)).Elem(), TunnelIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingMapInput)(nil)).Elem(), TunnelIamBindingMap{})
 	pulumi.RegisterOutputType(TunnelIamBindingOutput{})
-	pulumi.RegisterOutputType(TunnelIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(TunnelIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(TunnelIamBindingMapOutput{})
 }

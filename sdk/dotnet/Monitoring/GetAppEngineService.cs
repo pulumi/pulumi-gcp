@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Monitoring
 {
@@ -78,10 +77,10 @@ namespace Pulumi.Gcp.Monitoring
         ///             },
         ///             DeleteServiceOnDestroy = false,
         ///         });
-        ///         var srv = myapp.Service.Apply(service =&gt; Gcp.Monitoring.GetAppEngineService.InvokeAsync(new Gcp.Monitoring.GetAppEngineServiceArgs
+        ///         var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new Gcp.Monitoring.GetAppEngineServiceInvokeArgs
         ///         {
-        ///             ModuleId = service,
-        ///         }));
+        ///             ModuleId = myapp.Service,
+        ///         });
         ///     }
         /// 
         /// }
@@ -90,7 +89,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppEngineServiceResult> InvokeAsync(GetAppEngineServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// A Monitoring Service is the root resource under which operational aspects of a
@@ -158,10 +157,10 @@ namespace Pulumi.Gcp.Monitoring
         ///             },
         ///             DeleteServiceOnDestroy = false,
         ///         });
-        ///         var srv = myapp.Service.Apply(service =&gt; Gcp.Monitoring.GetAppEngineService.InvokeAsync(new Gcp.Monitoring.GetAppEngineServiceArgs
+        ///         var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new Gcp.Monitoring.GetAppEngineServiceInvokeArgs
         ///         {
-        ///             ModuleId = service,
-        ///         }));
+        ///             ModuleId = myapp.Service,
+        ///         });
         ///     }
         /// 
         /// }
@@ -170,7 +169,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppEngineServiceResult> Invoke(GetAppEngineServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceInvokeArgs(), options.WithDefaults());
     }
 
 

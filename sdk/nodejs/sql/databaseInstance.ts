@@ -240,60 +240,58 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseInstanceArgs | DatabaseInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
-            inputs["clone"] = state ? state.clone : undefined;
-            inputs["connectionName"] = state ? state.connectionName : undefined;
-            inputs["databaseVersion"] = state ? state.databaseVersion : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
-            inputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
-            inputs["ipAddresses"] = state ? state.ipAddresses : undefined;
-            inputs["masterInstanceName"] = state ? state.masterInstanceName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
-            inputs["restoreBackupContext"] = state ? state.restoreBackupContext : undefined;
-            inputs["rootPassword"] = state ? state.rootPassword : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
-            inputs["serviceAccountEmailAddress"] = state ? state.serviceAccountEmailAddress : undefined;
-            inputs["settings"] = state ? state.settings : undefined;
+            resourceInputs["clone"] = state ? state.clone : undefined;
+            resourceInputs["connectionName"] = state ? state.connectionName : undefined;
+            resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
+            resourceInputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
+            resourceInputs["ipAddresses"] = state ? state.ipAddresses : undefined;
+            resourceInputs["masterInstanceName"] = state ? state.masterInstanceName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
+            resourceInputs["restoreBackupContext"] = state ? state.restoreBackupContext : undefined;
+            resourceInputs["rootPassword"] = state ? state.rootPassword : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
+            resourceInputs["serviceAccountEmailAddress"] = state ? state.serviceAccountEmailAddress : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
             if ((!args || args.databaseVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseVersion'");
             }
-            inputs["clone"] = args ? args.clone : undefined;
-            inputs["databaseVersion"] = args ? args.databaseVersion : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["encryptionKeyName"] = args ? args.encryptionKeyName : undefined;
-            inputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["replicaConfiguration"] = args ? args.replicaConfiguration : undefined;
-            inputs["restoreBackupContext"] = args ? args.restoreBackupContext : undefined;
-            inputs["rootPassword"] = args ? args.rootPassword : undefined;
-            inputs["settings"] = args ? args.settings : undefined;
-            inputs["connectionName"] = undefined /*out*/;
-            inputs["firstIpAddress"] = undefined /*out*/;
-            inputs["ipAddresses"] = undefined /*out*/;
-            inputs["privateIpAddress"] = undefined /*out*/;
-            inputs["publicIpAddress"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["serverCaCerts"] = undefined /*out*/;
-            inputs["serviceAccountEmailAddress"] = undefined /*out*/;
+            resourceInputs["clone"] = args ? args.clone : undefined;
+            resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["encryptionKeyName"] = args ? args.encryptionKeyName : undefined;
+            resourceInputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["replicaConfiguration"] = args ? args.replicaConfiguration : undefined;
+            resourceInputs["restoreBackupContext"] = args ? args.restoreBackupContext : undefined;
+            resourceInputs["rootPassword"] = args ? args.rootPassword : undefined;
+            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["connectionName"] = undefined /*out*/;
+            resourceInputs["firstIpAddress"] = undefined /*out*/;
+            resourceInputs["ipAddresses"] = undefined /*out*/;
+            resourceInputs["privateIpAddress"] = undefined /*out*/;
+            resourceInputs["publicIpAddress"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serverCaCerts"] = undefined /*out*/;
+            resourceInputs["serviceAccountEmailAddress"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DatabaseInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DatabaseInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

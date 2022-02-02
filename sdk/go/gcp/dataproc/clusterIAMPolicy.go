@@ -256,7 +256,7 @@ type ClusterIAMPolicyInput interface {
 }
 
 func (*ClusterIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMPolicy)(nil))
+	return reflect.TypeOf((**ClusterIAMPolicy)(nil)).Elem()
 }
 
 func (i *ClusterIAMPolicy) ToClusterIAMPolicyOutput() ClusterIAMPolicyOutput {
@@ -265,35 +265,6 @@ func (i *ClusterIAMPolicy) ToClusterIAMPolicyOutput() ClusterIAMPolicyOutput {
 
 func (i *ClusterIAMPolicy) ToClusterIAMPolicyOutputWithContext(ctx context.Context) ClusterIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyOutput)
-}
-
-func (i *ClusterIAMPolicy) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput {
-	return i.ToClusterIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterIAMPolicy) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyPtrOutput)
-}
-
-type ClusterIAMPolicyPtrInput interface {
-	pulumi.Input
-
-	ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput
-	ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput
-}
-
-type clusterIAMPolicyPtrType ClusterIAMPolicyArgs
-
-func (*clusterIAMPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMPolicy)(nil))
-}
-
-func (i *clusterIAMPolicyPtrType) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput {
-	return i.ToClusterIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterIAMPolicyPtrType) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyPtrOutput)
 }
 
 // ClusterIAMPolicyArrayInput is an input type that accepts ClusterIAMPolicyArray and ClusterIAMPolicyArrayOutput values.
@@ -349,7 +320,7 @@ func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutputWithContext(ctx context.
 type ClusterIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMPolicy)(nil))
+	return reflect.TypeOf((**ClusterIAMPolicy)(nil)).Elem()
 }
 
 func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutput() ClusterIAMPolicyOutput {
@@ -360,44 +331,10 @@ func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutputWithContext(ctx context.
 	return o
 }
 
-func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput {
-	return o.ToClusterIAMPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMPolicy) *ClusterIAMPolicy {
-		return &v
-	}).(ClusterIAMPolicyPtrOutput)
-}
-
-type ClusterIAMPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterIAMPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMPolicy)(nil))
-}
-
-func (o ClusterIAMPolicyPtrOutput) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput {
-	return o
-}
-
-func (o ClusterIAMPolicyPtrOutput) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
-	return o
-}
-
-func (o ClusterIAMPolicyPtrOutput) Elem() ClusterIAMPolicyOutput {
-	return o.ApplyT(func(v *ClusterIAMPolicy) ClusterIAMPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterIAMPolicy
-		return ret
-	}).(ClusterIAMPolicyOutput)
-}
-
 type ClusterIAMPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterIAMPolicy)(nil))
+	return reflect.TypeOf((*[]*ClusterIAMPolicy)(nil)).Elem()
 }
 
 func (o ClusterIAMPolicyArrayOutput) ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyArrayOutput {
@@ -409,15 +346,15 @@ func (o ClusterIAMPolicyArrayOutput) ToClusterIAMPolicyArrayOutputWithContext(ct
 }
 
 func (o ClusterIAMPolicyArrayOutput) Index(i pulumi.IntInput) ClusterIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIAMPolicy {
-		return vs[0].([]ClusterIAMPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIAMPolicy {
+		return vs[0].([]*ClusterIAMPolicy)[vs[1].(int)]
 	}).(ClusterIAMPolicyOutput)
 }
 
 type ClusterIAMPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterIAMPolicy)(nil))
+	return reflect.TypeOf((*map[string]*ClusterIAMPolicy)(nil)).Elem()
 }
 
 func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutput() ClusterIAMPolicyMapOutput {
@@ -429,18 +366,16 @@ func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutputWithContext(ctx co
 }
 
 func (o ClusterIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterIAMPolicy {
-		return vs[0].(map[string]ClusterIAMPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterIAMPolicy {
+		return vs[0].(map[string]*ClusterIAMPolicy)[vs[1].(string)]
 	}).(ClusterIAMPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyInput)(nil)).Elem(), &ClusterIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyPtrInput)(nil)).Elem(), &ClusterIAMPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyArrayInput)(nil)).Elem(), ClusterIAMPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyMapInput)(nil)).Elem(), ClusterIAMPolicyMap{})
 	pulumi.RegisterOutputType(ClusterIAMPolicyOutput{})
-	pulumi.RegisterOutputType(ClusterIAMPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIAMPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ClusterIAMPolicyMapOutput{})
 }

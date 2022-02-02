@@ -423,7 +423,7 @@ type AppEngineVersionIamMemberInput interface {
 }
 
 func (*AppEngineVersionIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineVersionIamMember)(nil))
+	return reflect.TypeOf((**AppEngineVersionIamMember)(nil)).Elem()
 }
 
 func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutput() AppEngineVersionIamMemberOutput {
@@ -432,35 +432,6 @@ func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutput() AppEngin
 
 func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutputWithContext(ctx context.Context) AppEngineVersionIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberOutput)
-}
-
-func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput {
-	return i.ToAppEngineVersionIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberPtrOutput)
-}
-
-type AppEngineVersionIamMemberPtrInput interface {
-	pulumi.Input
-
-	ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput
-	ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput
-}
-
-type appEngineVersionIamMemberPtrType AppEngineVersionIamMemberArgs
-
-func (*appEngineVersionIamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineVersionIamMember)(nil))
-}
-
-func (i *appEngineVersionIamMemberPtrType) ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput {
-	return i.ToAppEngineVersionIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *appEngineVersionIamMemberPtrType) ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberPtrOutput)
 }
 
 // AppEngineVersionIamMemberArrayInput is an input type that accepts AppEngineVersionIamMemberArray and AppEngineVersionIamMemberArrayOutput values.
@@ -516,7 +487,7 @@ func (i AppEngineVersionIamMemberMap) ToAppEngineVersionIamMemberMapOutputWithCo
 type AppEngineVersionIamMemberOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineVersionIamMember)(nil))
+	return reflect.TypeOf((**AppEngineVersionIamMember)(nil)).Elem()
 }
 
 func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberOutput() AppEngineVersionIamMemberOutput {
@@ -527,44 +498,10 @@ func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberOutputWithCo
 	return o
 }
 
-func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput {
-	return o.ToAppEngineVersionIamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineVersionIamMember) *AppEngineVersionIamMember {
-		return &v
-	}).(AppEngineVersionIamMemberPtrOutput)
-}
-
-type AppEngineVersionIamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (AppEngineVersionIamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineVersionIamMember)(nil))
-}
-
-func (o AppEngineVersionIamMemberPtrOutput) ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput {
-	return o
-}
-
-func (o AppEngineVersionIamMemberPtrOutput) ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput {
-	return o
-}
-
-func (o AppEngineVersionIamMemberPtrOutput) Elem() AppEngineVersionIamMemberOutput {
-	return o.ApplyT(func(v *AppEngineVersionIamMember) AppEngineVersionIamMember {
-		if v != nil {
-			return *v
-		}
-		var ret AppEngineVersionIamMember
-		return ret
-	}).(AppEngineVersionIamMemberOutput)
-}
-
 type AppEngineVersionIamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppEngineVersionIamMember)(nil))
+	return reflect.TypeOf((*[]*AppEngineVersionIamMember)(nil)).Elem()
 }
 
 func (o AppEngineVersionIamMemberArrayOutput) ToAppEngineVersionIamMemberArrayOutput() AppEngineVersionIamMemberArrayOutput {
@@ -576,15 +513,15 @@ func (o AppEngineVersionIamMemberArrayOutput) ToAppEngineVersionIamMemberArrayOu
 }
 
 func (o AppEngineVersionIamMemberArrayOutput) Index(i pulumi.IntInput) AppEngineVersionIamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppEngineVersionIamMember {
-		return vs[0].([]AppEngineVersionIamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppEngineVersionIamMember {
+		return vs[0].([]*AppEngineVersionIamMember)[vs[1].(int)]
 	}).(AppEngineVersionIamMemberOutput)
 }
 
 type AppEngineVersionIamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AppEngineVersionIamMember)(nil))
+	return reflect.TypeOf((*map[string]*AppEngineVersionIamMember)(nil)).Elem()
 }
 
 func (o AppEngineVersionIamMemberMapOutput) ToAppEngineVersionIamMemberMapOutput() AppEngineVersionIamMemberMapOutput {
@@ -596,18 +533,16 @@ func (o AppEngineVersionIamMemberMapOutput) ToAppEngineVersionIamMemberMapOutput
 }
 
 func (o AppEngineVersionIamMemberMapOutput) MapIndex(k pulumi.StringInput) AppEngineVersionIamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppEngineVersionIamMember {
-		return vs[0].(map[string]AppEngineVersionIamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AppEngineVersionIamMember {
+		return vs[0].(map[string]*AppEngineVersionIamMember)[vs[1].(string)]
 	}).(AppEngineVersionIamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberInput)(nil)).Elem(), &AppEngineVersionIamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberPtrInput)(nil)).Elem(), &AppEngineVersionIamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberArrayInput)(nil)).Elem(), AppEngineVersionIamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberMapInput)(nil)).Elem(), AppEngineVersionIamMemberMap{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberOutput{})
-	pulumi.RegisterOutputType(AppEngineVersionIamMemberPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberArrayOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberMapOutput{})
 }

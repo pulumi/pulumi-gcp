@@ -244,7 +244,7 @@ type EnvironmentIamPolicyInput interface {
 }
 
 func (*EnvironmentIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentIamPolicy)(nil))
+	return reflect.TypeOf((**EnvironmentIamPolicy)(nil)).Elem()
 }
 
 func (i *EnvironmentIamPolicy) ToEnvironmentIamPolicyOutput() EnvironmentIamPolicyOutput {
@@ -253,35 +253,6 @@ func (i *EnvironmentIamPolicy) ToEnvironmentIamPolicyOutput() EnvironmentIamPoli
 
 func (i *EnvironmentIamPolicy) ToEnvironmentIamPolicyOutputWithContext(ctx context.Context) EnvironmentIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamPolicyOutput)
-}
-
-func (i *EnvironmentIamPolicy) ToEnvironmentIamPolicyPtrOutput() EnvironmentIamPolicyPtrOutput {
-	return i.ToEnvironmentIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *EnvironmentIamPolicy) ToEnvironmentIamPolicyPtrOutputWithContext(ctx context.Context) EnvironmentIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamPolicyPtrOutput)
-}
-
-type EnvironmentIamPolicyPtrInput interface {
-	pulumi.Input
-
-	ToEnvironmentIamPolicyPtrOutput() EnvironmentIamPolicyPtrOutput
-	ToEnvironmentIamPolicyPtrOutputWithContext(ctx context.Context) EnvironmentIamPolicyPtrOutput
-}
-
-type environmentIamPolicyPtrType EnvironmentIamPolicyArgs
-
-func (*environmentIamPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentIamPolicy)(nil))
-}
-
-func (i *environmentIamPolicyPtrType) ToEnvironmentIamPolicyPtrOutput() EnvironmentIamPolicyPtrOutput {
-	return i.ToEnvironmentIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *environmentIamPolicyPtrType) ToEnvironmentIamPolicyPtrOutputWithContext(ctx context.Context) EnvironmentIamPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamPolicyPtrOutput)
 }
 
 // EnvironmentIamPolicyArrayInput is an input type that accepts EnvironmentIamPolicyArray and EnvironmentIamPolicyArrayOutput values.
@@ -337,7 +308,7 @@ func (i EnvironmentIamPolicyMap) ToEnvironmentIamPolicyMapOutputWithContext(ctx 
 type EnvironmentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentIamPolicy)(nil))
+	return reflect.TypeOf((**EnvironmentIamPolicy)(nil)).Elem()
 }
 
 func (o EnvironmentIamPolicyOutput) ToEnvironmentIamPolicyOutput() EnvironmentIamPolicyOutput {
@@ -348,44 +319,10 @@ func (o EnvironmentIamPolicyOutput) ToEnvironmentIamPolicyOutputWithContext(ctx 
 	return o
 }
 
-func (o EnvironmentIamPolicyOutput) ToEnvironmentIamPolicyPtrOutput() EnvironmentIamPolicyPtrOutput {
-	return o.ToEnvironmentIamPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o EnvironmentIamPolicyOutput) ToEnvironmentIamPolicyPtrOutputWithContext(ctx context.Context) EnvironmentIamPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentIamPolicy) *EnvironmentIamPolicy {
-		return &v
-	}).(EnvironmentIamPolicyPtrOutput)
-}
-
-type EnvironmentIamPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentIamPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentIamPolicy)(nil))
-}
-
-func (o EnvironmentIamPolicyPtrOutput) ToEnvironmentIamPolicyPtrOutput() EnvironmentIamPolicyPtrOutput {
-	return o
-}
-
-func (o EnvironmentIamPolicyPtrOutput) ToEnvironmentIamPolicyPtrOutputWithContext(ctx context.Context) EnvironmentIamPolicyPtrOutput {
-	return o
-}
-
-func (o EnvironmentIamPolicyPtrOutput) Elem() EnvironmentIamPolicyOutput {
-	return o.ApplyT(func(v *EnvironmentIamPolicy) EnvironmentIamPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret EnvironmentIamPolicy
-		return ret
-	}).(EnvironmentIamPolicyOutput)
-}
-
 type EnvironmentIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvironmentIamPolicy)(nil))
+	return reflect.TypeOf((*[]*EnvironmentIamPolicy)(nil)).Elem()
 }
 
 func (o EnvironmentIamPolicyArrayOutput) ToEnvironmentIamPolicyArrayOutput() EnvironmentIamPolicyArrayOutput {
@@ -397,15 +334,15 @@ func (o EnvironmentIamPolicyArrayOutput) ToEnvironmentIamPolicyArrayOutputWithCo
 }
 
 func (o EnvironmentIamPolicyArrayOutput) Index(i pulumi.IntInput) EnvironmentIamPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentIamPolicy {
-		return vs[0].([]EnvironmentIamPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvironmentIamPolicy {
+		return vs[0].([]*EnvironmentIamPolicy)[vs[1].(int)]
 	}).(EnvironmentIamPolicyOutput)
 }
 
 type EnvironmentIamPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EnvironmentIamPolicy)(nil))
+	return reflect.TypeOf((*map[string]*EnvironmentIamPolicy)(nil)).Elem()
 }
 
 func (o EnvironmentIamPolicyMapOutput) ToEnvironmentIamPolicyMapOutput() EnvironmentIamPolicyMapOutput {
@@ -417,18 +354,16 @@ func (o EnvironmentIamPolicyMapOutput) ToEnvironmentIamPolicyMapOutputWithContex
 }
 
 func (o EnvironmentIamPolicyMapOutput) MapIndex(k pulumi.StringInput) EnvironmentIamPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnvironmentIamPolicy {
-		return vs[0].(map[string]EnvironmentIamPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EnvironmentIamPolicy {
+		return vs[0].(map[string]*EnvironmentIamPolicy)[vs[1].(string)]
 	}).(EnvironmentIamPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamPolicyInput)(nil)).Elem(), &EnvironmentIamPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamPolicyPtrInput)(nil)).Elem(), &EnvironmentIamPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamPolicyArrayInput)(nil)).Elem(), EnvironmentIamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamPolicyMapInput)(nil)).Elem(), EnvironmentIamPolicyMap{})
 	pulumi.RegisterOutputType(EnvironmentIamPolicyOutput{})
-	pulumi.RegisterOutputType(EnvironmentIamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamPolicyMapOutput{})
 }

@@ -302,51 +302,49 @@ export class Trigger extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TriggerArgs | TriggerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
-            inputs["build"] = state ? state.build : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["filename"] = state ? state.filename : undefined;
-            inputs["github"] = state ? state.github : undefined;
-            inputs["ignoredFiles"] = state ? state.ignoredFiles : undefined;
-            inputs["includedFiles"] = state ? state.includedFiles : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["pubsubConfig"] = state ? state.pubsubConfig : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["substitutions"] = state ? state.substitutions : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["triggerId"] = state ? state.triggerId : undefined;
-            inputs["triggerTemplate"] = state ? state.triggerTemplate : undefined;
-            inputs["webhookConfig"] = state ? state.webhookConfig : undefined;
+            resourceInputs["build"] = state ? state.build : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["filename"] = state ? state.filename : undefined;
+            resourceInputs["github"] = state ? state.github : undefined;
+            resourceInputs["ignoredFiles"] = state ? state.ignoredFiles : undefined;
+            resourceInputs["includedFiles"] = state ? state.includedFiles : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pubsubConfig"] = state ? state.pubsubConfig : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["substitutions"] = state ? state.substitutions : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
+            resourceInputs["triggerTemplate"] = state ? state.triggerTemplate : undefined;
+            resourceInputs["webhookConfig"] = state ? state.webhookConfig : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            inputs["build"] = args ? args.build : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["filename"] = args ? args.filename : undefined;
-            inputs["github"] = args ? args.github : undefined;
-            inputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
-            inputs["includedFiles"] = args ? args.includedFiles : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["substitutions"] = args ? args.substitutions : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
-            inputs["webhookConfig"] = args ? args.webhookConfig : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["triggerId"] = undefined /*out*/;
+            resourceInputs["build"] = args ? args.build : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["filename"] = args ? args.filename : undefined;
+            resourceInputs["github"] = args ? args.github : undefined;
+            resourceInputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
+            resourceInputs["includedFiles"] = args ? args.includedFiles : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["substitutions"] = args ? args.substitutions : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
+            resourceInputs["webhookConfig"] = args ? args.webhookConfig : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["triggerId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Trigger.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Trigger.__pulumiType, name, resourceInputs, opts);
     }
 }
 

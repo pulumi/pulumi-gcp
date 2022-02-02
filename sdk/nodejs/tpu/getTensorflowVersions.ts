@@ -36,9 +36,7 @@ export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
         "project": args.project,
         "zone": args.zone,

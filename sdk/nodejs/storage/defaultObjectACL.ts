@@ -89,24 +89,22 @@ export class DefaultObjectACL extends pulumi.CustomResource {
      */
     constructor(name: string, args: DefaultObjectACLArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DefaultObjectACLArgs | DefaultObjectACLState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultObjectACLState | undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["roleEntities"] = state ? state.roleEntities : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["roleEntities"] = state ? state.roleEntities : undefined;
         } else {
             const args = argsOrState as DefaultObjectACLArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["roleEntities"] = args ? args.roleEntities : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["roleEntities"] = args ? args.roleEntities : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DefaultObjectACL.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DefaultObjectACL.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -23,9 +23,7 @@ export function getTransferProjectServieAccount(args?: GetTransferProjectServieA
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", {
         "project": args.project,
     }, opts);

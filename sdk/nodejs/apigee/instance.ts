@@ -116,20 +116,20 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskEncryptionKeyName"] = state ? state.diskEncryptionKeyName : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["ipRange"] = state ? state.ipRange : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["orgId"] = state ? state.orgId : undefined;
-            inputs["peeringCidrRange"] = state ? state.peeringCidrRange : undefined;
-            inputs["port"] = state ? state.port : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskEncryptionKeyName"] = state ? state.diskEncryptionKeyName : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["peeringCidrRange"] = state ? state.peeringCidrRange : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -138,21 +138,19 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["ipRange"] = args ? args.ipRange : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["orgId"] = args ? args.orgId : undefined;
-            inputs["peeringCidrRange"] = args ? args.peeringCidrRange : undefined;
-            inputs["host"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["peeringCidrRange"] = args ? args.peeringCidrRange : undefined;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

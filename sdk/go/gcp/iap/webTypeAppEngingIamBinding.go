@@ -385,7 +385,7 @@ type WebTypeAppEngingIamBindingInput interface {
 }
 
 func (*WebTypeAppEngingIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeAppEngingIamBinding)(nil))
+	return reflect.TypeOf((**WebTypeAppEngingIamBinding)(nil)).Elem()
 }
 
 func (i *WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingOutput() WebTypeAppEngingIamBindingOutput {
@@ -394,35 +394,6 @@ func (i *WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingOutput() WebTyp
 
 func (i *WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamBindingOutput)
-}
-
-func (i *WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingPtrOutput() WebTypeAppEngingIamBindingPtrOutput {
-	return i.ToWebTypeAppEngingIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamBindingPtrOutput)
-}
-
-type WebTypeAppEngingIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToWebTypeAppEngingIamBindingPtrOutput() WebTypeAppEngingIamBindingPtrOutput
-	ToWebTypeAppEngingIamBindingPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingPtrOutput
-}
-
-type webTypeAppEngingIamBindingPtrType WebTypeAppEngingIamBindingArgs
-
-func (*webTypeAppEngingIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeAppEngingIamBinding)(nil))
-}
-
-func (i *webTypeAppEngingIamBindingPtrType) ToWebTypeAppEngingIamBindingPtrOutput() WebTypeAppEngingIamBindingPtrOutput {
-	return i.ToWebTypeAppEngingIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *webTypeAppEngingIamBindingPtrType) ToWebTypeAppEngingIamBindingPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamBindingPtrOutput)
 }
 
 // WebTypeAppEngingIamBindingArrayInput is an input type that accepts WebTypeAppEngingIamBindingArray and WebTypeAppEngingIamBindingArrayOutput values.
@@ -478,7 +449,7 @@ func (i WebTypeAppEngingIamBindingMap) ToWebTypeAppEngingIamBindingMapOutputWith
 type WebTypeAppEngingIamBindingOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeAppEngingIamBinding)(nil))
+	return reflect.TypeOf((**WebTypeAppEngingIamBinding)(nil)).Elem()
 }
 
 func (o WebTypeAppEngingIamBindingOutput) ToWebTypeAppEngingIamBindingOutput() WebTypeAppEngingIamBindingOutput {
@@ -489,44 +460,10 @@ func (o WebTypeAppEngingIamBindingOutput) ToWebTypeAppEngingIamBindingOutputWith
 	return o
 }
 
-func (o WebTypeAppEngingIamBindingOutput) ToWebTypeAppEngingIamBindingPtrOutput() WebTypeAppEngingIamBindingPtrOutput {
-	return o.ToWebTypeAppEngingIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o WebTypeAppEngingIamBindingOutput) ToWebTypeAppEngingIamBindingPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTypeAppEngingIamBinding) *WebTypeAppEngingIamBinding {
-		return &v
-	}).(WebTypeAppEngingIamBindingPtrOutput)
-}
-
-type WebTypeAppEngingIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (WebTypeAppEngingIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebTypeAppEngingIamBinding)(nil))
-}
-
-func (o WebTypeAppEngingIamBindingPtrOutput) ToWebTypeAppEngingIamBindingPtrOutput() WebTypeAppEngingIamBindingPtrOutput {
-	return o
-}
-
-func (o WebTypeAppEngingIamBindingPtrOutput) ToWebTypeAppEngingIamBindingPtrOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingPtrOutput {
-	return o
-}
-
-func (o WebTypeAppEngingIamBindingPtrOutput) Elem() WebTypeAppEngingIamBindingOutput {
-	return o.ApplyT(func(v *WebTypeAppEngingIamBinding) WebTypeAppEngingIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret WebTypeAppEngingIamBinding
-		return ret
-	}).(WebTypeAppEngingIamBindingOutput)
-}
-
 type WebTypeAppEngingIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WebTypeAppEngingIamBinding)(nil))
+	return reflect.TypeOf((*[]*WebTypeAppEngingIamBinding)(nil)).Elem()
 }
 
 func (o WebTypeAppEngingIamBindingArrayOutput) ToWebTypeAppEngingIamBindingArrayOutput() WebTypeAppEngingIamBindingArrayOutput {
@@ -538,15 +475,15 @@ func (o WebTypeAppEngingIamBindingArrayOutput) ToWebTypeAppEngingIamBindingArray
 }
 
 func (o WebTypeAppEngingIamBindingArrayOutput) Index(i pulumi.IntInput) WebTypeAppEngingIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebTypeAppEngingIamBinding {
-		return vs[0].([]WebTypeAppEngingIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeAppEngingIamBinding {
+		return vs[0].([]*WebTypeAppEngingIamBinding)[vs[1].(int)]
 	}).(WebTypeAppEngingIamBindingOutput)
 }
 
 type WebTypeAppEngingIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WebTypeAppEngingIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*WebTypeAppEngingIamBinding)(nil)).Elem()
 }
 
 func (o WebTypeAppEngingIamBindingMapOutput) ToWebTypeAppEngingIamBindingMapOutput() WebTypeAppEngingIamBindingMapOutput {
@@ -558,18 +495,16 @@ func (o WebTypeAppEngingIamBindingMapOutput) ToWebTypeAppEngingIamBindingMapOutp
 }
 
 func (o WebTypeAppEngingIamBindingMapOutput) MapIndex(k pulumi.StringInput) WebTypeAppEngingIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebTypeAppEngingIamBinding {
-		return vs[0].(map[string]WebTypeAppEngingIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WebTypeAppEngingIamBinding {
+		return vs[0].(map[string]*WebTypeAppEngingIamBinding)[vs[1].(string)]
 	}).(WebTypeAppEngingIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamBindingInput)(nil)).Elem(), &WebTypeAppEngingIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamBindingPtrInput)(nil)).Elem(), &WebTypeAppEngingIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamBindingArrayInput)(nil)).Elem(), WebTypeAppEngingIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamBindingMapInput)(nil)).Elem(), WebTypeAppEngingIamBindingMap{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamBindingOutput{})
-	pulumi.RegisterOutputType(WebTypeAppEngingIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamBindingMapOutput{})
 }

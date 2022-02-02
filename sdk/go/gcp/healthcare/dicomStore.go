@@ -44,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = healthcare.NewDicomStore(ctx, "_default", &healthcare.DicomStoreArgs{
+// 		_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
 // 			Dataset: dataset.ID(),
 // 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
 // 				PubsubTopic: topic.ID(),
@@ -104,7 +104,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = healthcare.NewDicomStore(ctx, "_default", &healthcare.DicomStoreArgs{
+// 		_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
 // 			Dataset: dataset.ID(),
 // 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
 // 				PubsubTopic: topic.ID(),
@@ -325,7 +325,7 @@ type DicomStoreInput interface {
 }
 
 func (*DicomStore) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStore)(nil))
+	return reflect.TypeOf((**DicomStore)(nil)).Elem()
 }
 
 func (i *DicomStore) ToDicomStoreOutput() DicomStoreOutput {
@@ -334,35 +334,6 @@ func (i *DicomStore) ToDicomStoreOutput() DicomStoreOutput {
 
 func (i *DicomStore) ToDicomStoreOutputWithContext(ctx context.Context) DicomStoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreOutput)
-}
-
-func (i *DicomStore) ToDicomStorePtrOutput() DicomStorePtrOutput {
-	return i.ToDicomStorePtrOutputWithContext(context.Background())
-}
-
-func (i *DicomStore) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DicomStorePtrOutput)
-}
-
-type DicomStorePtrInput interface {
-	pulumi.Input
-
-	ToDicomStorePtrOutput() DicomStorePtrOutput
-	ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput
-}
-
-type dicomStorePtrType DicomStoreArgs
-
-func (*dicomStorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DicomStore)(nil))
-}
-
-func (i *dicomStorePtrType) ToDicomStorePtrOutput() DicomStorePtrOutput {
-	return i.ToDicomStorePtrOutputWithContext(context.Background())
-}
-
-func (i *dicomStorePtrType) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DicomStorePtrOutput)
 }
 
 // DicomStoreArrayInput is an input type that accepts DicomStoreArray and DicomStoreArrayOutput values.
@@ -418,7 +389,7 @@ func (i DicomStoreMap) ToDicomStoreMapOutputWithContext(ctx context.Context) Dic
 type DicomStoreOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStore)(nil))
+	return reflect.TypeOf((**DicomStore)(nil)).Elem()
 }
 
 func (o DicomStoreOutput) ToDicomStoreOutput() DicomStoreOutput {
@@ -429,44 +400,10 @@ func (o DicomStoreOutput) ToDicomStoreOutputWithContext(ctx context.Context) Dic
 	return o
 }
 
-func (o DicomStoreOutput) ToDicomStorePtrOutput() DicomStorePtrOutput {
-	return o.ToDicomStorePtrOutputWithContext(context.Background())
-}
-
-func (o DicomStoreOutput) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomStore) *DicomStore {
-		return &v
-	}).(DicomStorePtrOutput)
-}
-
-type DicomStorePtrOutput struct{ *pulumi.OutputState }
-
-func (DicomStorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DicomStore)(nil))
-}
-
-func (o DicomStorePtrOutput) ToDicomStorePtrOutput() DicomStorePtrOutput {
-	return o
-}
-
-func (o DicomStorePtrOutput) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
-	return o
-}
-
-func (o DicomStorePtrOutput) Elem() DicomStoreOutput {
-	return o.ApplyT(func(v *DicomStore) DicomStore {
-		if v != nil {
-			return *v
-		}
-		var ret DicomStore
-		return ret
-	}).(DicomStoreOutput)
-}
-
 type DicomStoreArrayOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DicomStore)(nil))
+	return reflect.TypeOf((*[]*DicomStore)(nil)).Elem()
 }
 
 func (o DicomStoreArrayOutput) ToDicomStoreArrayOutput() DicomStoreArrayOutput {
@@ -478,15 +415,15 @@ func (o DicomStoreArrayOutput) ToDicomStoreArrayOutputWithContext(ctx context.Co
 }
 
 func (o DicomStoreArrayOutput) Index(i pulumi.IntInput) DicomStoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DicomStore {
-		return vs[0].([]DicomStore)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DicomStore {
+		return vs[0].([]*DicomStore)[vs[1].(int)]
 	}).(DicomStoreOutput)
 }
 
 type DicomStoreMapOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DicomStore)(nil))
+	return reflect.TypeOf((*map[string]*DicomStore)(nil)).Elem()
 }
 
 func (o DicomStoreMapOutput) ToDicomStoreMapOutput() DicomStoreMapOutput {
@@ -498,18 +435,16 @@ func (o DicomStoreMapOutput) ToDicomStoreMapOutputWithContext(ctx context.Contex
 }
 
 func (o DicomStoreMapOutput) MapIndex(k pulumi.StringInput) DicomStoreOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DicomStore {
-		return vs[0].(map[string]DicomStore)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DicomStore {
+		return vs[0].(map[string]*DicomStore)[vs[1].(string)]
 	}).(DicomStoreOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreInput)(nil)).Elem(), &DicomStore{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DicomStorePtrInput)(nil)).Elem(), &DicomStore{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreArrayInput)(nil)).Elem(), DicomStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreMapInput)(nil)).Elem(), DicomStoreMap{})
 	pulumi.RegisterOutputType(DicomStoreOutput{})
-	pulumi.RegisterOutputType(DicomStorePtrOutput{})
 	pulumi.RegisterOutputType(DicomStoreArrayOutput{})
 	pulumi.RegisterOutputType(DicomStoreMapOutput{})
 }

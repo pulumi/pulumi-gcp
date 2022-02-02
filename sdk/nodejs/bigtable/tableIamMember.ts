@@ -147,17 +147,17 @@ export class TableIamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: TableIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TableIamMemberArgs | TableIamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableIamMemberState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["table"] = state ? state.table : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as TableIamMemberArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
@@ -172,18 +172,16 @@ export class TableIamMember extends pulumi.CustomResource {
             if ((!args || args.table === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'table'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["table"] = args ? args.table : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["table"] = args ? args.table : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TableIamMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TableIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

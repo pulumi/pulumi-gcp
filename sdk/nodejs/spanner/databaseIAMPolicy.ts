@@ -149,15 +149,15 @@ export class DatabaseIAMPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseIAMPolicyArgs | DatabaseIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseIAMPolicyState | undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as DatabaseIAMPolicyArgs | undefined;
             if ((!args || args.database === undefined) && !opts.urn) {
@@ -169,16 +169,14 @@ export class DatabaseIAMPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["database"] = args ? args.database : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DatabaseIAMPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DatabaseIAMPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -1116,63 +1116,61 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ForwardingRuleArgs | ForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ForwardingRuleState | undefined;
-            inputs["allPorts"] = state ? state.allPorts : undefined;
-            inputs["allowGlobalAccess"] = state ? state.allowGlobalAccess : undefined;
-            inputs["backendService"] = state ? state.backendService : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["isMirroringCollector"] = state ? state.isMirroringCollector : undefined;
-            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["networkTier"] = state ? state.networkTier : undefined;
-            inputs["portRange"] = state ? state.portRange : undefined;
-            inputs["ports"] = state ? state.ports : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["serviceLabel"] = state ? state.serviceLabel : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["subnetwork"] = state ? state.subnetwork : undefined;
-            inputs["target"] = state ? state.target : undefined;
+            resourceInputs["allPorts"] = state ? state.allPorts : undefined;
+            resourceInputs["allowGlobalAccess"] = state ? state.allowGlobalAccess : undefined;
+            resourceInputs["backendService"] = state ? state.backendService : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["isMirroringCollector"] = state ? state.isMirroringCollector : undefined;
+            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["networkTier"] = state ? state.networkTier : undefined;
+            resourceInputs["portRange"] = state ? state.portRange : undefined;
+            resourceInputs["ports"] = state ? state.ports : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serviceLabel"] = state ? state.serviceLabel : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as ForwardingRuleArgs | undefined;
-            inputs["allPorts"] = args ? args.allPorts : undefined;
-            inputs["allowGlobalAccess"] = args ? args.allowGlobalAccess : undefined;
-            inputs["backendService"] = args ? args.backendService : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["networkTier"] = args ? args.networkTier : undefined;
-            inputs["portRange"] = args ? args.portRange : undefined;
-            inputs["ports"] = args ? args.ports : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["serviceLabel"] = args ? args.serviceLabel : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["serviceName"] = undefined /*out*/;
+            resourceInputs["allPorts"] = args ? args.allPorts : undefined;
+            resourceInputs["allowGlobalAccess"] = args ? args.allowGlobalAccess : undefined;
+            resourceInputs["backendService"] = args ? args.backendService : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkTier"] = args ? args.networkTier : undefined;
+            resourceInputs["portRange"] = args ? args.portRange : undefined;
+            resourceInputs["ports"] = args ? args.ports : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceLabel"] = args ? args.serviceLabel : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serviceName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ForwardingRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ForwardingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

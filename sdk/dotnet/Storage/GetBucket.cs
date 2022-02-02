@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Storage
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Gcp.Storage
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketResult> InvokeAsync(GetBucketArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an existing bucket in Google Cloud Storage service (GCS).
@@ -76,7 +75,7 @@ namespace Pulumi.Gcp.Storage
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBucketResult> Invoke(GetBucketInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketInvokeArgs(), options.WithDefaults());
     }
 
 

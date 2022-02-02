@@ -116,20 +116,20 @@ export class SslCert extends pulumi.CustomResource {
      */
     constructor(name: string, args: SslCertArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SslCertArgs | SslCertState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SslCertState | undefined;
-            inputs["cert"] = state ? state.cert : undefined;
-            inputs["certSerialNumber"] = state ? state.certSerialNumber : undefined;
-            inputs["commonName"] = state ? state.commonName : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["expirationTime"] = state ? state.expirationTime : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serverCaCert"] = state ? state.serverCaCert : undefined;
-            inputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
+            resourceInputs["cert"] = state ? state.cert : undefined;
+            resourceInputs["certSerialNumber"] = state ? state.certSerialNumber : undefined;
+            resourceInputs["commonName"] = state ? state.commonName : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serverCaCert"] = state ? state.serverCaCert : undefined;
+            resourceInputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
         } else {
             const args = argsOrState as SslCertArgs | undefined;
             if ((!args || args.commonName === undefined) && !opts.urn) {
@@ -138,21 +138,19 @@ export class SslCert extends pulumi.CustomResource {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            inputs["commonName"] = args ? args.commonName : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["cert"] = undefined /*out*/;
-            inputs["certSerialNumber"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["expirationTime"] = undefined /*out*/;
-            inputs["privateKey"] = undefined /*out*/;
-            inputs["serverCaCert"] = undefined /*out*/;
-            inputs["sha1Fingerprint"] = undefined /*out*/;
+            resourceInputs["commonName"] = args ? args.commonName : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["cert"] = undefined /*out*/;
+            resourceInputs["certSerialNumber"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["expirationTime"] = undefined /*out*/;
+            resourceInputs["privateKey"] = undefined /*out*/;
+            resourceInputs["serverCaCert"] = undefined /*out*/;
+            resourceInputs["sha1Fingerprint"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SslCert.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SslCert.__pulumiType, name, resourceInputs, opts);
     }
 }
 

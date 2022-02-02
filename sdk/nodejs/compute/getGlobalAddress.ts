@@ -32,9 +32,7 @@ export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getGlobalAddress:getGlobalAddress", {
         "name": args.name,
         "project": args.project,

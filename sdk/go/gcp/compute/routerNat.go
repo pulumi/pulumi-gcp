@@ -432,7 +432,7 @@ type RouterNatInput interface {
 }
 
 func (*RouterNat) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterNat)(nil))
+	return reflect.TypeOf((**RouterNat)(nil)).Elem()
 }
 
 func (i *RouterNat) ToRouterNatOutput() RouterNatOutput {
@@ -441,35 +441,6 @@ func (i *RouterNat) ToRouterNatOutput() RouterNatOutput {
 
 func (i *RouterNat) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatOutput)
-}
-
-func (i *RouterNat) ToRouterNatPtrOutput() RouterNatPtrOutput {
-	return i.ToRouterNatPtrOutputWithContext(context.Background())
-}
-
-func (i *RouterNat) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterNatPtrOutput)
-}
-
-type RouterNatPtrInput interface {
-	pulumi.Input
-
-	ToRouterNatPtrOutput() RouterNatPtrOutput
-	ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput
-}
-
-type routerNatPtrType RouterNatArgs
-
-func (*routerNatPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouterNat)(nil))
-}
-
-func (i *routerNatPtrType) ToRouterNatPtrOutput() RouterNatPtrOutput {
-	return i.ToRouterNatPtrOutputWithContext(context.Background())
-}
-
-func (i *routerNatPtrType) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterNatPtrOutput)
 }
 
 // RouterNatArrayInput is an input type that accepts RouterNatArray and RouterNatArrayOutput values.
@@ -525,7 +496,7 @@ func (i RouterNatMap) ToRouterNatMapOutputWithContext(ctx context.Context) Route
 type RouterNatOutput struct{ *pulumi.OutputState }
 
 func (RouterNatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterNat)(nil))
+	return reflect.TypeOf((**RouterNat)(nil)).Elem()
 }
 
 func (o RouterNatOutput) ToRouterNatOutput() RouterNatOutput {
@@ -536,44 +507,10 @@ func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) Route
 	return o
 }
 
-func (o RouterNatOutput) ToRouterNatPtrOutput() RouterNatPtrOutput {
-	return o.ToRouterNatPtrOutputWithContext(context.Background())
-}
-
-func (o RouterNatOutput) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterNat) *RouterNat {
-		return &v
-	}).(RouterNatPtrOutput)
-}
-
-type RouterNatPtrOutput struct{ *pulumi.OutputState }
-
-func (RouterNatPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouterNat)(nil))
-}
-
-func (o RouterNatPtrOutput) ToRouterNatPtrOutput() RouterNatPtrOutput {
-	return o
-}
-
-func (o RouterNatPtrOutput) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
-	return o
-}
-
-func (o RouterNatPtrOutput) Elem() RouterNatOutput {
-	return o.ApplyT(func(v *RouterNat) RouterNat {
-		if v != nil {
-			return *v
-		}
-		var ret RouterNat
-		return ret
-	}).(RouterNatOutput)
-}
-
 type RouterNatArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterNatArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouterNat)(nil))
+	return reflect.TypeOf((*[]*RouterNat)(nil)).Elem()
 }
 
 func (o RouterNatArrayOutput) ToRouterNatArrayOutput() RouterNatArrayOutput {
@@ -585,15 +522,15 @@ func (o RouterNatArrayOutput) ToRouterNatArrayOutputWithContext(ctx context.Cont
 }
 
 func (o RouterNatArrayOutput) Index(i pulumi.IntInput) RouterNatOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNat {
-		return vs[0].([]RouterNat)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouterNat {
+		return vs[0].([]*RouterNat)[vs[1].(int)]
 	}).(RouterNatOutput)
 }
 
 type RouterNatMapOutput struct{ *pulumi.OutputState }
 
 func (RouterNatMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RouterNat)(nil))
+	return reflect.TypeOf((*map[string]*RouterNat)(nil)).Elem()
 }
 
 func (o RouterNatMapOutput) ToRouterNatMapOutput() RouterNatMapOutput {
@@ -605,18 +542,16 @@ func (o RouterNatMapOutput) ToRouterNatMapOutputWithContext(ctx context.Context)
 }
 
 func (o RouterNatMapOutput) MapIndex(k pulumi.StringInput) RouterNatOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouterNat {
-		return vs[0].(map[string]RouterNat)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RouterNat {
+		return vs[0].(map[string]*RouterNat)[vs[1].(string)]
 	}).(RouterNatOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatInput)(nil)).Elem(), &RouterNat{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatPtrInput)(nil)).Elem(), &RouterNat{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatArrayInput)(nil)).Elem(), RouterNatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatMapInput)(nil)).Elem(), RouterNatMap{})
 	pulumi.RegisterOutputType(RouterNatOutput{})
-	pulumi.RegisterOutputType(RouterNatPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatMapOutput{})
 }

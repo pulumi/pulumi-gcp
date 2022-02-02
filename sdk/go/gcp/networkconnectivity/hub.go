@@ -196,7 +196,7 @@ type HubInput interface {
 }
 
 func (*Hub) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hub)(nil))
+	return reflect.TypeOf((**Hub)(nil)).Elem()
 }
 
 func (i *Hub) ToHubOutput() HubOutput {
@@ -205,35 +205,6 @@ func (i *Hub) ToHubOutput() HubOutput {
 
 func (i *Hub) ToHubOutputWithContext(ctx context.Context) HubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HubOutput)
-}
-
-func (i *Hub) ToHubPtrOutput() HubPtrOutput {
-	return i.ToHubPtrOutputWithContext(context.Background())
-}
-
-func (i *Hub) ToHubPtrOutputWithContext(ctx context.Context) HubPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HubPtrOutput)
-}
-
-type HubPtrInput interface {
-	pulumi.Input
-
-	ToHubPtrOutput() HubPtrOutput
-	ToHubPtrOutputWithContext(ctx context.Context) HubPtrOutput
-}
-
-type hubPtrType HubArgs
-
-func (*hubPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hub)(nil))
-}
-
-func (i *hubPtrType) ToHubPtrOutput() HubPtrOutput {
-	return i.ToHubPtrOutputWithContext(context.Background())
-}
-
-func (i *hubPtrType) ToHubPtrOutputWithContext(ctx context.Context) HubPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HubPtrOutput)
 }
 
 // HubArrayInput is an input type that accepts HubArray and HubArrayOutput values.
@@ -289,7 +260,7 @@ func (i HubMap) ToHubMapOutputWithContext(ctx context.Context) HubMapOutput {
 type HubOutput struct{ *pulumi.OutputState }
 
 func (HubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hub)(nil))
+	return reflect.TypeOf((**Hub)(nil)).Elem()
 }
 
 func (o HubOutput) ToHubOutput() HubOutput {
@@ -300,44 +271,10 @@ func (o HubOutput) ToHubOutputWithContext(ctx context.Context) HubOutput {
 	return o
 }
 
-func (o HubOutput) ToHubPtrOutput() HubPtrOutput {
-	return o.ToHubPtrOutputWithContext(context.Background())
-}
-
-func (o HubOutput) ToHubPtrOutputWithContext(ctx context.Context) HubPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hub) *Hub {
-		return &v
-	}).(HubPtrOutput)
-}
-
-type HubPtrOutput struct{ *pulumi.OutputState }
-
-func (HubPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hub)(nil))
-}
-
-func (o HubPtrOutput) ToHubPtrOutput() HubPtrOutput {
-	return o
-}
-
-func (o HubPtrOutput) ToHubPtrOutputWithContext(ctx context.Context) HubPtrOutput {
-	return o
-}
-
-func (o HubPtrOutput) Elem() HubOutput {
-	return o.ApplyT(func(v *Hub) Hub {
-		if v != nil {
-			return *v
-		}
-		var ret Hub
-		return ret
-	}).(HubOutput)
-}
-
 type HubArrayOutput struct{ *pulumi.OutputState }
 
 func (HubArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hub)(nil))
+	return reflect.TypeOf((*[]*Hub)(nil)).Elem()
 }
 
 func (o HubArrayOutput) ToHubArrayOutput() HubArrayOutput {
@@ -349,15 +286,15 @@ func (o HubArrayOutput) ToHubArrayOutputWithContext(ctx context.Context) HubArra
 }
 
 func (o HubArrayOutput) Index(i pulumi.IntInput) HubOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hub {
-		return vs[0].([]Hub)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hub {
+		return vs[0].([]*Hub)[vs[1].(int)]
 	}).(HubOutput)
 }
 
 type HubMapOutput struct{ *pulumi.OutputState }
 
 func (HubMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Hub)(nil))
+	return reflect.TypeOf((*map[string]*Hub)(nil)).Elem()
 }
 
 func (o HubMapOutput) ToHubMapOutput() HubMapOutput {
@@ -369,18 +306,16 @@ func (o HubMapOutput) ToHubMapOutputWithContext(ctx context.Context) HubMapOutpu
 }
 
 func (o HubMapOutput) MapIndex(k pulumi.StringInput) HubOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Hub {
-		return vs[0].(map[string]Hub)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Hub {
+		return vs[0].(map[string]*Hub)[vs[1].(string)]
 	}).(HubOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HubInput)(nil)).Elem(), &Hub{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HubPtrInput)(nil)).Elem(), &Hub{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubArrayInput)(nil)).Elem(), HubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubMapInput)(nil)).Elem(), HubMap{})
 	pulumi.RegisterOutputType(HubOutput{})
-	pulumi.RegisterOutputType(HubPtrOutput{})
 	pulumi.RegisterOutputType(HubArrayOutput{})
 	pulumi.RegisterOutputType(HubMapOutput{})
 }

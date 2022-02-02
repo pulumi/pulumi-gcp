@@ -215,15 +215,15 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubnetworkIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetworkIAMPolicyArgs | SubnetworkIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetworkIAMPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
         } else {
             const args = argsOrState as SubnetworkIAMPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
@@ -232,16 +232,14 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
             if ((!args || args.subnetwork === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetwork'");
             }
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SubnetworkIAMPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SubnetworkIAMPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

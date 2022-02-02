@@ -110,18 +110,18 @@ export class AzureClient extends pulumi.CustomResource {
      */
     constructor(name: string, args: AzureClientArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AzureClientArgs | AzureClientState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureClientState | undefined;
-            inputs["applicationId"] = state ? state.applicationId : undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as AzureClientArgs | undefined;
             if ((!args || args.applicationId === undefined) && !opts.urn) {
@@ -133,19 +133,17 @@ export class AzureClient extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            inputs["applicationId"] = args ? args.applicationId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["certificate"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["certificate"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AzureClient.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AzureClient.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -143,16 +143,16 @@ export class SecretIamBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretIamBindingArgs | SecretIamBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretIamBindingState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["secretId"] = state ? state.secretId : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["secretId"] = state ? state.secretId : undefined;
         } else {
             const args = argsOrState as SecretIamBindingArgs | undefined;
             if ((!args || args.members === undefined) && !opts.urn) {
@@ -164,17 +164,15 @@ export class SecretIamBinding extends pulumi.CustomResource {
             if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["secretId"] = args ? args.secretId : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["secretId"] = args ? args.secretId : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecretIamBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecretIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

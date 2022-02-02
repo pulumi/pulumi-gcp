@@ -411,71 +411,69 @@ export class BackendService extends pulumi.CustomResource {
      */
     constructor(name: string, args?: BackendServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendServiceArgs | BackendServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendServiceState | undefined;
-            inputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
-            inputs["backends"] = state ? state.backends : undefined;
-            inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
-            inputs["circuitBreakers"] = state ? state.circuitBreakers : undefined;
-            inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
-            inputs["consistentHash"] = state ? state.consistentHash : undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["customRequestHeaders"] = state ? state.customRequestHeaders : undefined;
-            inputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableCdn"] = state ? state.enableCdn : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["healthChecks"] = state ? state.healthChecks : undefined;
-            inputs["iap"] = state ? state.iap : undefined;
-            inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            inputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
-            inputs["logConfig"] = state ? state.logConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["outlierDetection"] = state ? state.outlierDetection : undefined;
-            inputs["portName"] = state ? state.portName : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["securityPolicy"] = state ? state.securityPolicy : undefined;
-            inputs["securitySettings"] = state ? state.securitySettings : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
-            inputs["timeoutSec"] = state ? state.timeoutSec : undefined;
+            resourceInputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
+            resourceInputs["backends"] = state ? state.backends : undefined;
+            resourceInputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
+            resourceInputs["circuitBreakers"] = state ? state.circuitBreakers : undefined;
+            resourceInputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
+            resourceInputs["consistentHash"] = state ? state.consistentHash : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["customRequestHeaders"] = state ? state.customRequestHeaders : undefined;
+            resourceInputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
+            resourceInputs["iap"] = state ? state.iap : undefined;
+            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
+            resourceInputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
+            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["outlierDetection"] = state ? state.outlierDetection : undefined;
+            resourceInputs["portName"] = state ? state.portName : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
+            resourceInputs["securitySettings"] = state ? state.securitySettings : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
+            resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
         } else {
             const args = argsOrState as BackendServiceArgs | undefined;
-            inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
-            inputs["backends"] = args ? args.backends : undefined;
-            inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
-            inputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
-            inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
-            inputs["consistentHash"] = args ? args.consistentHash : undefined;
-            inputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
-            inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableCdn"] = args ? args.enableCdn : undefined;
-            inputs["healthChecks"] = args ? args.healthChecks : undefined;
-            inputs["iap"] = args ? args.iap : undefined;
-            inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            inputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["outlierDetection"] = args ? args.outlierDetection : undefined;
-            inputs["portName"] = args ? args.portName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
-            inputs["securitySettings"] = args ? args.securitySettings : undefined;
-            inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
-            inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
+            resourceInputs["backends"] = args ? args.backends : undefined;
+            resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            resourceInputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
+            resourceInputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
+            resourceInputs["consistentHash"] = args ? args.consistentHash : undefined;
+            resourceInputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
+            resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
+            resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
+            resourceInputs["iap"] = args ? args.iap : undefined;
+            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
+            resourceInputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outlierDetection"] = args ? args.outlierDetection : undefined;
+            resourceInputs["portName"] = args ? args.portName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
+            resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
+            resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BackendService.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BackendService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

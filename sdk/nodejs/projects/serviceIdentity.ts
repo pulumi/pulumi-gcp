@@ -94,26 +94,24 @@ export class ServiceIdentity extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceIdentityArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceIdentityArgs | ServiceIdentityState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIdentityState | undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["service"] = state ? state.service : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ServiceIdentityArgs | undefined;
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["project"] = args ? args.project : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["email"] = undefined /*out*/;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["email"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceIdentity.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceIdentity.__pulumiType, name, resourceInputs, opts);
     }
 }
 

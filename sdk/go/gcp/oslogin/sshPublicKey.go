@@ -184,7 +184,7 @@ type SshPublicKeyInput interface {
 }
 
 func (*SshPublicKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*SshPublicKey)(nil))
+	return reflect.TypeOf((**SshPublicKey)(nil)).Elem()
 }
 
 func (i *SshPublicKey) ToSshPublicKeyOutput() SshPublicKeyOutput {
@@ -193,35 +193,6 @@ func (i *SshPublicKey) ToSshPublicKeyOutput() SshPublicKeyOutput {
 
 func (i *SshPublicKey) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyOutput)
-}
-
-func (i *SshPublicKey) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
-	return i.ToSshPublicKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *SshPublicKey) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyPtrOutput)
-}
-
-type SshPublicKeyPtrInput interface {
-	pulumi.Input
-
-	ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput
-	ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput
-}
-
-type sshPublicKeyPtrType SshPublicKeyArgs
-
-func (*sshPublicKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SshPublicKey)(nil))
-}
-
-func (i *sshPublicKeyPtrType) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
-	return i.ToSshPublicKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *sshPublicKeyPtrType) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyPtrOutput)
 }
 
 // SshPublicKeyArrayInput is an input type that accepts SshPublicKeyArray and SshPublicKeyArrayOutput values.
@@ -277,7 +248,7 @@ func (i SshPublicKeyMap) ToSshPublicKeyMapOutputWithContext(ctx context.Context)
 type SshPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SshPublicKey)(nil))
+	return reflect.TypeOf((**SshPublicKey)(nil)).Elem()
 }
 
 func (o SshPublicKeyOutput) ToSshPublicKeyOutput() SshPublicKeyOutput {
@@ -288,44 +259,10 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o SshPublicKeyOutput) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
-	return o.ToSshPublicKeyPtrOutputWithContext(context.Background())
-}
-
-func (o SshPublicKeyOutput) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SshPublicKey) *SshPublicKey {
-		return &v
-	}).(SshPublicKeyPtrOutput)
-}
-
-type SshPublicKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (SshPublicKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SshPublicKey)(nil))
-}
-
-func (o SshPublicKeyPtrOutput) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
-	return o
-}
-
-func (o SshPublicKeyPtrOutput) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
-	return o
-}
-
-func (o SshPublicKeyPtrOutput) Elem() SshPublicKeyOutput {
-	return o.ApplyT(func(v *SshPublicKey) SshPublicKey {
-		if v != nil {
-			return *v
-		}
-		var ret SshPublicKey
-		return ret
-	}).(SshPublicKeyOutput)
-}
-
 type SshPublicKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SshPublicKey)(nil))
+	return reflect.TypeOf((*[]*SshPublicKey)(nil)).Elem()
 }
 
 func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
@@ -337,15 +274,15 @@ func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutputWithContext(ctx contex
 }
 
 func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshPublicKey {
-		return vs[0].([]SshPublicKey)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SshPublicKey {
+		return vs[0].([]*SshPublicKey)[vs[1].(int)]
 	}).(SshPublicKeyOutput)
 }
 
 type SshPublicKeyMapOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SshPublicKey)(nil))
+	return reflect.TypeOf((*map[string]*SshPublicKey)(nil)).Elem()
 }
 
 func (o SshPublicKeyMapOutput) ToSshPublicKeyMapOutput() SshPublicKeyMapOutput {
@@ -357,18 +294,16 @@ func (o SshPublicKeyMapOutput) ToSshPublicKeyMapOutputWithContext(ctx context.Co
 }
 
 func (o SshPublicKeyMapOutput) MapIndex(k pulumi.StringInput) SshPublicKeyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SshPublicKey {
-		return vs[0].(map[string]SshPublicKey)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SshPublicKey {
+		return vs[0].(map[string]*SshPublicKey)[vs[1].(string)]
 	}).(SshPublicKeyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyInput)(nil)).Elem(), &SshPublicKey{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyPtrInput)(nil)).Elem(), &SshPublicKey{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyArrayInput)(nil)).Elem(), SshPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyMapInput)(nil)).Elem(), SshPublicKeyMap{})
 	pulumi.RegisterOutputType(SshPublicKeyOutput{})
-	pulumi.RegisterOutputType(SshPublicKeyPtrOutput{})
 	pulumi.RegisterOutputType(SshPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(SshPublicKeyMapOutput{})
 }

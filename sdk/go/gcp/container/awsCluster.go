@@ -365,7 +365,7 @@ type AwsClusterInput interface {
 }
 
 func (*AwsCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*AwsCluster)(nil))
+	return reflect.TypeOf((**AwsCluster)(nil)).Elem()
 }
 
 func (i *AwsCluster) ToAwsClusterOutput() AwsClusterOutput {
@@ -374,35 +374,6 @@ func (i *AwsCluster) ToAwsClusterOutput() AwsClusterOutput {
 
 func (i *AwsCluster) ToAwsClusterOutputWithContext(ctx context.Context) AwsClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterOutput)
-}
-
-func (i *AwsCluster) ToAwsClusterPtrOutput() AwsClusterPtrOutput {
-	return i.ToAwsClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *AwsCluster) ToAwsClusterPtrOutputWithContext(ctx context.Context) AwsClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterPtrOutput)
-}
-
-type AwsClusterPtrInput interface {
-	pulumi.Input
-
-	ToAwsClusterPtrOutput() AwsClusterPtrOutput
-	ToAwsClusterPtrOutputWithContext(ctx context.Context) AwsClusterPtrOutput
-}
-
-type awsClusterPtrType AwsClusterArgs
-
-func (*awsClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AwsCluster)(nil))
-}
-
-func (i *awsClusterPtrType) ToAwsClusterPtrOutput() AwsClusterPtrOutput {
-	return i.ToAwsClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *awsClusterPtrType) ToAwsClusterPtrOutputWithContext(ctx context.Context) AwsClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterPtrOutput)
 }
 
 // AwsClusterArrayInput is an input type that accepts AwsClusterArray and AwsClusterArrayOutput values.
@@ -458,7 +429,7 @@ func (i AwsClusterMap) ToAwsClusterMapOutputWithContext(ctx context.Context) Aws
 type AwsClusterOutput struct{ *pulumi.OutputState }
 
 func (AwsClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AwsCluster)(nil))
+	return reflect.TypeOf((**AwsCluster)(nil)).Elem()
 }
 
 func (o AwsClusterOutput) ToAwsClusterOutput() AwsClusterOutput {
@@ -469,44 +440,10 @@ func (o AwsClusterOutput) ToAwsClusterOutputWithContext(ctx context.Context) Aws
 	return o
 }
 
-func (o AwsClusterOutput) ToAwsClusterPtrOutput() AwsClusterPtrOutput {
-	return o.ToAwsClusterPtrOutputWithContext(context.Background())
-}
-
-func (o AwsClusterOutput) ToAwsClusterPtrOutputWithContext(ctx context.Context) AwsClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCluster) *AwsCluster {
-		return &v
-	}).(AwsClusterPtrOutput)
-}
-
-type AwsClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (AwsClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AwsCluster)(nil))
-}
-
-func (o AwsClusterPtrOutput) ToAwsClusterPtrOutput() AwsClusterPtrOutput {
-	return o
-}
-
-func (o AwsClusterPtrOutput) ToAwsClusterPtrOutputWithContext(ctx context.Context) AwsClusterPtrOutput {
-	return o
-}
-
-func (o AwsClusterPtrOutput) Elem() AwsClusterOutput {
-	return o.ApplyT(func(v *AwsCluster) AwsCluster {
-		if v != nil {
-			return *v
-		}
-		var ret AwsCluster
-		return ret
-	}).(AwsClusterOutput)
-}
-
 type AwsClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (AwsClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AwsCluster)(nil))
+	return reflect.TypeOf((*[]*AwsCluster)(nil)).Elem()
 }
 
 func (o AwsClusterArrayOutput) ToAwsClusterArrayOutput() AwsClusterArrayOutput {
@@ -518,15 +455,15 @@ func (o AwsClusterArrayOutput) ToAwsClusterArrayOutputWithContext(ctx context.Co
 }
 
 func (o AwsClusterArrayOutput) Index(i pulumi.IntInput) AwsClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsCluster {
-		return vs[0].([]AwsCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsCluster {
+		return vs[0].([]*AwsCluster)[vs[1].(int)]
 	}).(AwsClusterOutput)
 }
 
 type AwsClusterMapOutput struct{ *pulumi.OutputState }
 
 func (AwsClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AwsCluster)(nil))
+	return reflect.TypeOf((*map[string]*AwsCluster)(nil)).Elem()
 }
 
 func (o AwsClusterMapOutput) ToAwsClusterMapOutput() AwsClusterMapOutput {
@@ -538,18 +475,16 @@ func (o AwsClusterMapOutput) ToAwsClusterMapOutputWithContext(ctx context.Contex
 }
 
 func (o AwsClusterMapOutput) MapIndex(k pulumi.StringInput) AwsClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AwsCluster {
-		return vs[0].(map[string]AwsCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AwsCluster {
+		return vs[0].(map[string]*AwsCluster)[vs[1].(string)]
 	}).(AwsClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterInput)(nil)).Elem(), &AwsCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterPtrInput)(nil)).Elem(), &AwsCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterArrayInput)(nil)).Elem(), AwsClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterMapInput)(nil)).Elem(), AwsClusterMap{})
 	pulumi.RegisterOutputType(AwsClusterOutput{})
-	pulumi.RegisterOutputType(AwsClusterPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterArrayOutput{})
 	pulumi.RegisterOutputType(AwsClusterMapOutput{})
 }

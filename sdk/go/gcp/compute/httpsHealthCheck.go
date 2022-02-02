@@ -38,7 +38,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewHttpsHealthCheck(ctx, "_default", &compute.HttpsHealthCheckArgs{
+// 		_, err := compute.NewHttpsHealthCheck(ctx, "default", &compute.HttpsHealthCheckArgs{
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			RequestPath:      pulumi.String("/health_check"),
 // 			TimeoutSec:       pulumi.Int(1),
@@ -325,7 +325,7 @@ type HttpsHealthCheckInput interface {
 }
 
 func (*HttpsHealthCheck) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpsHealthCheck)(nil))
+	return reflect.TypeOf((**HttpsHealthCheck)(nil)).Elem()
 }
 
 func (i *HttpsHealthCheck) ToHttpsHealthCheckOutput() HttpsHealthCheckOutput {
@@ -334,35 +334,6 @@ func (i *HttpsHealthCheck) ToHttpsHealthCheckOutput() HttpsHealthCheckOutput {
 
 func (i *HttpsHealthCheck) ToHttpsHealthCheckOutputWithContext(ctx context.Context) HttpsHealthCheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpsHealthCheckOutput)
-}
-
-func (i *HttpsHealthCheck) ToHttpsHealthCheckPtrOutput() HttpsHealthCheckPtrOutput {
-	return i.ToHttpsHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *HttpsHealthCheck) ToHttpsHealthCheckPtrOutputWithContext(ctx context.Context) HttpsHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpsHealthCheckPtrOutput)
-}
-
-type HttpsHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToHttpsHealthCheckPtrOutput() HttpsHealthCheckPtrOutput
-	ToHttpsHealthCheckPtrOutputWithContext(ctx context.Context) HttpsHealthCheckPtrOutput
-}
-
-type httpsHealthCheckPtrType HttpsHealthCheckArgs
-
-func (*httpsHealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpsHealthCheck)(nil))
-}
-
-func (i *httpsHealthCheckPtrType) ToHttpsHealthCheckPtrOutput() HttpsHealthCheckPtrOutput {
-	return i.ToHttpsHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *httpsHealthCheckPtrType) ToHttpsHealthCheckPtrOutputWithContext(ctx context.Context) HttpsHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpsHealthCheckPtrOutput)
 }
 
 // HttpsHealthCheckArrayInput is an input type that accepts HttpsHealthCheckArray and HttpsHealthCheckArrayOutput values.
@@ -418,7 +389,7 @@ func (i HttpsHealthCheckMap) ToHttpsHealthCheckMapOutputWithContext(ctx context.
 type HttpsHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (HttpsHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpsHealthCheck)(nil))
+	return reflect.TypeOf((**HttpsHealthCheck)(nil)).Elem()
 }
 
 func (o HttpsHealthCheckOutput) ToHttpsHealthCheckOutput() HttpsHealthCheckOutput {
@@ -429,44 +400,10 @@ func (o HttpsHealthCheckOutput) ToHttpsHealthCheckOutputWithContext(ctx context.
 	return o
 }
 
-func (o HttpsHealthCheckOutput) ToHttpsHealthCheckPtrOutput() HttpsHealthCheckPtrOutput {
-	return o.ToHttpsHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o HttpsHealthCheckOutput) ToHttpsHealthCheckPtrOutputWithContext(ctx context.Context) HttpsHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpsHealthCheck) *HttpsHealthCheck {
-		return &v
-	}).(HttpsHealthCheckPtrOutput)
-}
-
-type HttpsHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (HttpsHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpsHealthCheck)(nil))
-}
-
-func (o HttpsHealthCheckPtrOutput) ToHttpsHealthCheckPtrOutput() HttpsHealthCheckPtrOutput {
-	return o
-}
-
-func (o HttpsHealthCheckPtrOutput) ToHttpsHealthCheckPtrOutputWithContext(ctx context.Context) HttpsHealthCheckPtrOutput {
-	return o
-}
-
-func (o HttpsHealthCheckPtrOutput) Elem() HttpsHealthCheckOutput {
-	return o.ApplyT(func(v *HttpsHealthCheck) HttpsHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret HttpsHealthCheck
-		return ret
-	}).(HttpsHealthCheckOutput)
-}
-
 type HttpsHealthCheckArrayOutput struct{ *pulumi.OutputState }
 
 func (HttpsHealthCheckArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HttpsHealthCheck)(nil))
+	return reflect.TypeOf((*[]*HttpsHealthCheck)(nil)).Elem()
 }
 
 func (o HttpsHealthCheckArrayOutput) ToHttpsHealthCheckArrayOutput() HttpsHealthCheckArrayOutput {
@@ -478,15 +415,15 @@ func (o HttpsHealthCheckArrayOutput) ToHttpsHealthCheckArrayOutputWithContext(ct
 }
 
 func (o HttpsHealthCheckArrayOutput) Index(i pulumi.IntInput) HttpsHealthCheckOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpsHealthCheck {
-		return vs[0].([]HttpsHealthCheck)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HttpsHealthCheck {
+		return vs[0].([]*HttpsHealthCheck)[vs[1].(int)]
 	}).(HttpsHealthCheckOutput)
 }
 
 type HttpsHealthCheckMapOutput struct{ *pulumi.OutputState }
 
 func (HttpsHealthCheckMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HttpsHealthCheck)(nil))
+	return reflect.TypeOf((*map[string]*HttpsHealthCheck)(nil)).Elem()
 }
 
 func (o HttpsHealthCheckMapOutput) ToHttpsHealthCheckMapOutput() HttpsHealthCheckMapOutput {
@@ -498,18 +435,16 @@ func (o HttpsHealthCheckMapOutput) ToHttpsHealthCheckMapOutputWithContext(ctx co
 }
 
 func (o HttpsHealthCheckMapOutput) MapIndex(k pulumi.StringInput) HttpsHealthCheckOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HttpsHealthCheck {
-		return vs[0].(map[string]HttpsHealthCheck)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HttpsHealthCheck {
+		return vs[0].(map[string]*HttpsHealthCheck)[vs[1].(string)]
 	}).(HttpsHealthCheckOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpsHealthCheckInput)(nil)).Elem(), &HttpsHealthCheck{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpsHealthCheckPtrInput)(nil)).Elem(), &HttpsHealthCheck{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpsHealthCheckArrayInput)(nil)).Elem(), HttpsHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpsHealthCheckMapInput)(nil)).Elem(), HttpsHealthCheckMap{})
 	pulumi.RegisterOutputType(HttpsHealthCheckOutput{})
-	pulumi.RegisterOutputType(HttpsHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HttpsHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(HttpsHealthCheckMapOutput{})
 }

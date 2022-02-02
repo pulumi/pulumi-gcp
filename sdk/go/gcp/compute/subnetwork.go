@@ -54,13 +54,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewSubnetwork(ctx, "network_with_private_secondary_ip_ranges", &compute.SubnetworkArgs{
+// 		_, err = compute.NewSubnetwork(ctx, "network-with-private-secondary-ip-ranges", &compute.SubnetworkArgs{
 // 			IpCidrRange: pulumi.String("10.2.0.0/16"),
 // 			Region:      pulumi.String("us-central1"),
 // 			Network:     custom_test.ID(),
@@ -90,13 +90,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewSubnetwork(ctx, "subnet_with_logging", &compute.SubnetworkArgs{
+// 		_, err = compute.NewSubnetwork(ctx, "subnet-with-logging", &compute.SubnetworkArgs{
 // 			IpCidrRange: pulumi.String("10.2.0.0/16"),
 // 			Region:      pulumi.String("us-central1"),
 // 			Network:     custom_test.ID(),
@@ -125,13 +125,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewSubnetwork(ctx, "network_for_l7lb", &compute.SubnetworkArgs{
+// 		_, err = compute.NewSubnetwork(ctx, "network-for-l7lb", &compute.SubnetworkArgs{
 // 			IpCidrRange: pulumi.String("10.0.0.0/22"),
 // 			Region:      pulumi.String("us-central1"),
 // 			Purpose:     pulumi.String("INTERNAL_HTTPS_LOAD_BALANCER"),
@@ -157,13 +157,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewSubnetwork(ctx, "subnetwork_ipv6", &compute.SubnetworkArgs{
+// 		_, err = compute.NewSubnetwork(ctx, "subnetwork-ipv6", &compute.SubnetworkArgs{
 // 			IpCidrRange:    pulumi.String("10.0.0.0/22"),
 // 			Region:         pulumi.String("us-west2"),
 // 			StackType:      pulumi.String("IPV4_IPV6"),
@@ -617,7 +617,7 @@ type SubnetworkInput interface {
 }
 
 func (*Subnetwork) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subnetwork)(nil))
+	return reflect.TypeOf((**Subnetwork)(nil)).Elem()
 }
 
 func (i *Subnetwork) ToSubnetworkOutput() SubnetworkOutput {
@@ -626,35 +626,6 @@ func (i *Subnetwork) ToSubnetworkOutput() SubnetworkOutput {
 
 func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) SubnetworkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkOutput)
-}
-
-func (i *Subnetwork) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
-	return i.ToSubnetworkPtrOutputWithContext(context.Background())
-}
-
-func (i *Subnetwork) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkPtrOutput)
-}
-
-type SubnetworkPtrInput interface {
-	pulumi.Input
-
-	ToSubnetworkPtrOutput() SubnetworkPtrOutput
-	ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput
-}
-
-type subnetworkPtrType SubnetworkArgs
-
-func (*subnetworkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Subnetwork)(nil))
-}
-
-func (i *subnetworkPtrType) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
-	return i.ToSubnetworkPtrOutputWithContext(context.Background())
-}
-
-func (i *subnetworkPtrType) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkPtrOutput)
 }
 
 // SubnetworkArrayInput is an input type that accepts SubnetworkArray and SubnetworkArrayOutput values.
@@ -710,7 +681,7 @@ func (i SubnetworkMap) ToSubnetworkMapOutputWithContext(ctx context.Context) Sub
 type SubnetworkOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subnetwork)(nil))
+	return reflect.TypeOf((**Subnetwork)(nil)).Elem()
 }
 
 func (o SubnetworkOutput) ToSubnetworkOutput() SubnetworkOutput {
@@ -721,44 +692,10 @@ func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
-func (o SubnetworkOutput) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
-	return o.ToSubnetworkPtrOutputWithContext(context.Background())
-}
-
-func (o SubnetworkOutput) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subnetwork) *Subnetwork {
-		return &v
-	}).(SubnetworkPtrOutput)
-}
-
-type SubnetworkPtrOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Subnetwork)(nil))
-}
-
-func (o SubnetworkPtrOutput) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
-	return o
-}
-
-func (o SubnetworkPtrOutput) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
-	return o
-}
-
-func (o SubnetworkPtrOutput) Elem() SubnetworkOutput {
-	return o.ApplyT(func(v *Subnetwork) Subnetwork {
-		if v != nil {
-			return *v
-		}
-		var ret Subnetwork
-		return ret
-	}).(SubnetworkOutput)
-}
-
 type SubnetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Subnetwork)(nil))
+	return reflect.TypeOf((*[]*Subnetwork)(nil)).Elem()
 }
 
 func (o SubnetworkArrayOutput) ToSubnetworkArrayOutput() SubnetworkArrayOutput {
@@ -770,15 +707,15 @@ func (o SubnetworkArrayOutput) ToSubnetworkArrayOutputWithContext(ctx context.Co
 }
 
 func (o SubnetworkArrayOutput) Index(i pulumi.IntInput) SubnetworkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Subnetwork {
-		return vs[0].([]Subnetwork)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Subnetwork {
+		return vs[0].([]*Subnetwork)[vs[1].(int)]
 	}).(SubnetworkOutput)
 }
 
 type SubnetworkMapOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Subnetwork)(nil))
+	return reflect.TypeOf((*map[string]*Subnetwork)(nil)).Elem()
 }
 
 func (o SubnetworkMapOutput) ToSubnetworkMapOutput() SubnetworkMapOutput {
@@ -790,18 +727,16 @@ func (o SubnetworkMapOutput) ToSubnetworkMapOutputWithContext(ctx context.Contex
 }
 
 func (o SubnetworkMapOutput) MapIndex(k pulumi.StringInput) SubnetworkOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Subnetwork {
-		return vs[0].(map[string]Subnetwork)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Subnetwork {
+		return vs[0].(map[string]*Subnetwork)[vs[1].(string)]
 	}).(SubnetworkOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkInput)(nil)).Elem(), &Subnetwork{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkPtrInput)(nil)).Elem(), &Subnetwork{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkArrayInput)(nil)).Elem(), SubnetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkMapInput)(nil)).Elem(), SubnetworkMap{})
 	pulumi.RegisterOutputType(SubnetworkOutput{})
-	pulumi.RegisterOutputType(SubnetworkPtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkArrayOutput{})
 	pulumi.RegisterOutputType(SubnetworkMapOutput{})
 }

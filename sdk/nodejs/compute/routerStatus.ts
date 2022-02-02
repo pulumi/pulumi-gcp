@@ -29,9 +29,7 @@ export function routerStatus(args: RouterStatusArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/routerStatus:RouterStatus", {
         "name": args.name,
         "project": args.project,

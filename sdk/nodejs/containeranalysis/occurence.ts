@@ -166,19 +166,19 @@ export class Occurence extends pulumi.CustomResource {
      */
     constructor(name: string, args: OccurenceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OccurenceArgs | OccurenceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OccurenceState | undefined;
-            inputs["attestation"] = state ? state.attestation : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["noteName"] = state ? state.noteName : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["remediation"] = state ? state.remediation : undefined;
-            inputs["resourceUri"] = state ? state.resourceUri : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["attestation"] = state ? state.attestation : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["noteName"] = state ? state.noteName : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["remediation"] = state ? state.remediation : undefined;
+            resourceInputs["resourceUri"] = state ? state.resourceUri : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as OccurenceArgs | undefined;
             if ((!args || args.attestation === undefined) && !opts.urn) {
@@ -190,20 +190,18 @@ export class Occurence extends pulumi.CustomResource {
             if ((!args || args.resourceUri === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceUri'");
             }
-            inputs["attestation"] = args ? args.attestation : undefined;
-            inputs["noteName"] = args ? args.noteName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["remediation"] = args ? args.remediation : undefined;
-            inputs["resourceUri"] = args ? args.resourceUri : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["attestation"] = args ? args.attestation : undefined;
+            resourceInputs["noteName"] = args ? args.noteName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["remediation"] = args ? args.remediation : undefined;
+            resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Occurence.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Occurence.__pulumiType, name, resourceInputs, opts);
     }
 }
 

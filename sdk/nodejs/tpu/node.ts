@@ -157,23 +157,23 @@ export class Node extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeArgs | NodeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
-            inputs["acceleratorType"] = state ? state.acceleratorType : undefined;
-            inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["networkEndpoints"] = state ? state.networkEndpoints : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["schedulingConfig"] = state ? state.schedulingConfig : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["tensorflowVersion"] = state ? state.tensorflowVersion : undefined;
-            inputs["useServiceNetworking"] = state ? state.useServiceNetworking : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["acceleratorType"] = state ? state.acceleratorType : undefined;
+            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["networkEndpoints"] = state ? state.networkEndpoints : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["schedulingConfig"] = state ? state.schedulingConfig : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["tensorflowVersion"] = state ? state.tensorflowVersion : undefined;
+            resourceInputs["useServiceNetworking"] = state ? state.useServiceNetworking : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NodeArgs | undefined;
             if ((!args || args.acceleratorType === undefined) && !opts.urn) {
@@ -182,24 +182,22 @@ export class Node extends pulumi.CustomResource {
             if ((!args || args.tensorflowVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tensorflowVersion'");
             }
-            inputs["acceleratorType"] = args ? args.acceleratorType : undefined;
-            inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
-            inputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
-            inputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["networkEndpoints"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["acceleratorType"] = args ? args.acceleratorType : undefined;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
+            resourceInputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
+            resourceInputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Node.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }
 

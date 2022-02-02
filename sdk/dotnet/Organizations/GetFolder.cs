@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Organizations
 {
@@ -44,7 +43,7 @@ namespace Pulumi.Gcp.Organizations
         /// ```
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Google Cloud Folder.
@@ -78,7 +77,7 @@ namespace Pulumi.Gcp.Organizations
         /// ```
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
     }
 
 

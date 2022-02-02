@@ -41,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewGlobalNetworkEndpoint(ctx, "default_endpoint", &compute.GlobalNetworkEndpointArgs{
+// 		_, err = compute.NewGlobalNetworkEndpoint(ctx, "default-endpoint", &compute.GlobalNetworkEndpointArgs{
 // 			GlobalNetworkEndpointGroup: neg.Name,
 // 			Fqdn:                       pulumi.String("www.example.com"),
 // 			Port:                       pulumi.Int(90),
@@ -197,7 +197,7 @@ type GlobalNetworkEndpointInput interface {
 }
 
 func (*GlobalNetworkEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalNetworkEndpoint)(nil))
+	return reflect.TypeOf((**GlobalNetworkEndpoint)(nil)).Elem()
 }
 
 func (i *GlobalNetworkEndpoint) ToGlobalNetworkEndpointOutput() GlobalNetworkEndpointOutput {
@@ -206,35 +206,6 @@ func (i *GlobalNetworkEndpoint) ToGlobalNetworkEndpointOutput() GlobalNetworkEnd
 
 func (i *GlobalNetworkEndpoint) ToGlobalNetworkEndpointOutputWithContext(ctx context.Context) GlobalNetworkEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointOutput)
-}
-
-func (i *GlobalNetworkEndpoint) ToGlobalNetworkEndpointPtrOutput() GlobalNetworkEndpointPtrOutput {
-	return i.ToGlobalNetworkEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i *GlobalNetworkEndpoint) ToGlobalNetworkEndpointPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointPtrOutput)
-}
-
-type GlobalNetworkEndpointPtrInput interface {
-	pulumi.Input
-
-	ToGlobalNetworkEndpointPtrOutput() GlobalNetworkEndpointPtrOutput
-	ToGlobalNetworkEndpointPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointPtrOutput
-}
-
-type globalNetworkEndpointPtrType GlobalNetworkEndpointArgs
-
-func (*globalNetworkEndpointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalNetworkEndpoint)(nil))
-}
-
-func (i *globalNetworkEndpointPtrType) ToGlobalNetworkEndpointPtrOutput() GlobalNetworkEndpointPtrOutput {
-	return i.ToGlobalNetworkEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i *globalNetworkEndpointPtrType) ToGlobalNetworkEndpointPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointPtrOutput)
 }
 
 // GlobalNetworkEndpointArrayInput is an input type that accepts GlobalNetworkEndpointArray and GlobalNetworkEndpointArrayOutput values.
@@ -290,7 +261,7 @@ func (i GlobalNetworkEndpointMap) ToGlobalNetworkEndpointMapOutputWithContext(ct
 type GlobalNetworkEndpointOutput struct{ *pulumi.OutputState }
 
 func (GlobalNetworkEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalNetworkEndpoint)(nil))
+	return reflect.TypeOf((**GlobalNetworkEndpoint)(nil)).Elem()
 }
 
 func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointOutput() GlobalNetworkEndpointOutput {
@@ -301,44 +272,10 @@ func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointOutputWithContext(ct
 	return o
 }
 
-func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointPtrOutput() GlobalNetworkEndpointPtrOutput {
-	return o.ToGlobalNetworkEndpointPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalNetworkEndpoint) *GlobalNetworkEndpoint {
-		return &v
-	}).(GlobalNetworkEndpointPtrOutput)
-}
-
-type GlobalNetworkEndpointPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalNetworkEndpointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalNetworkEndpoint)(nil))
-}
-
-func (o GlobalNetworkEndpointPtrOutput) ToGlobalNetworkEndpointPtrOutput() GlobalNetworkEndpointPtrOutput {
-	return o
-}
-
-func (o GlobalNetworkEndpointPtrOutput) ToGlobalNetworkEndpointPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointPtrOutput {
-	return o
-}
-
-func (o GlobalNetworkEndpointPtrOutput) Elem() GlobalNetworkEndpointOutput {
-	return o.ApplyT(func(v *GlobalNetworkEndpoint) GlobalNetworkEndpoint {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalNetworkEndpoint
-		return ret
-	}).(GlobalNetworkEndpointOutput)
-}
-
 type GlobalNetworkEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (GlobalNetworkEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GlobalNetworkEndpoint)(nil))
+	return reflect.TypeOf((*[]*GlobalNetworkEndpoint)(nil)).Elem()
 }
 
 func (o GlobalNetworkEndpointArrayOutput) ToGlobalNetworkEndpointArrayOutput() GlobalNetworkEndpointArrayOutput {
@@ -350,15 +287,15 @@ func (o GlobalNetworkEndpointArrayOutput) ToGlobalNetworkEndpointArrayOutputWith
 }
 
 func (o GlobalNetworkEndpointArrayOutput) Index(i pulumi.IntInput) GlobalNetworkEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalNetworkEndpoint {
-		return vs[0].([]GlobalNetworkEndpoint)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalNetworkEndpoint {
+		return vs[0].([]*GlobalNetworkEndpoint)[vs[1].(int)]
 	}).(GlobalNetworkEndpointOutput)
 }
 
 type GlobalNetworkEndpointMapOutput struct{ *pulumi.OutputState }
 
 func (GlobalNetworkEndpointMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GlobalNetworkEndpoint)(nil))
+	return reflect.TypeOf((*map[string]*GlobalNetworkEndpoint)(nil)).Elem()
 }
 
 func (o GlobalNetworkEndpointMapOutput) ToGlobalNetworkEndpointMapOutput() GlobalNetworkEndpointMapOutput {
@@ -370,18 +307,16 @@ func (o GlobalNetworkEndpointMapOutput) ToGlobalNetworkEndpointMapOutputWithCont
 }
 
 func (o GlobalNetworkEndpointMapOutput) MapIndex(k pulumi.StringInput) GlobalNetworkEndpointOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GlobalNetworkEndpoint {
-		return vs[0].(map[string]GlobalNetworkEndpoint)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GlobalNetworkEndpoint {
+		return vs[0].(map[string]*GlobalNetworkEndpoint)[vs[1].(string)]
 	}).(GlobalNetworkEndpointOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointInput)(nil)).Elem(), &GlobalNetworkEndpoint{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointPtrInput)(nil)).Elem(), &GlobalNetworkEndpoint{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointArrayInput)(nil)).Elem(), GlobalNetworkEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointMapInput)(nil)).Elem(), GlobalNetworkEndpointMap{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointOutput{})
-	pulumi.RegisterOutputType(GlobalNetworkEndpointPtrOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointMapOutput{})
 }

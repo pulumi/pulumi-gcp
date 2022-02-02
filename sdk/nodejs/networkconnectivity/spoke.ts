@@ -167,23 +167,23 @@ export class Spoke extends pulumi.CustomResource {
      */
     constructor(name: string, args: SpokeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SpokeArgs | SpokeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpokeState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["hub"] = state ? state.hub : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["linkedInterconnectAttachments"] = state ? state.linkedInterconnectAttachments : undefined;
-            inputs["linkedRouterApplianceInstances"] = state ? state.linkedRouterApplianceInstances : undefined;
-            inputs["linkedVpnTunnels"] = state ? state.linkedVpnTunnels : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["uniqueId"] = state ? state.uniqueId : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["hub"] = state ? state.hub : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["linkedInterconnectAttachments"] = state ? state.linkedInterconnectAttachments : undefined;
+            resourceInputs["linkedRouterApplianceInstances"] = state ? state.linkedRouterApplianceInstances : undefined;
+            resourceInputs["linkedVpnTunnels"] = state ? state.linkedVpnTunnels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as SpokeArgs | undefined;
             if ((!args || args.hub === undefined) && !opts.urn) {
@@ -192,24 +192,22 @@ export class Spoke extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["hub"] = args ? args.hub : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
-            inputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
-            inputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uniqueId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["hub"] = args ? args.hub : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
+            resourceInputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
+            resourceInputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uniqueId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Spoke.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Spoke.__pulumiType, name, resourceInputs, opts);
     }
 }
 

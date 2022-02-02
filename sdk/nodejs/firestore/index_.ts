@@ -125,16 +125,16 @@ export class Index extends pulumi.CustomResource {
      */
     constructor(name: string, args: IndexArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IndexArgs | IndexState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndexState | undefined;
-            inputs["collection"] = state ? state.collection : undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["queryScope"] = state ? state.queryScope : undefined;
+            resourceInputs["collection"] = state ? state.collection : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["queryScope"] = state ? state.queryScope : undefined;
         } else {
             const args = argsOrState as IndexArgs | undefined;
             if ((!args || args.collection === undefined) && !opts.urn) {
@@ -143,17 +143,15 @@ export class Index extends pulumi.CustomResource {
             if ((!args || args.fields === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
-            inputs["collection"] = args ? args.collection : undefined;
-            inputs["database"] = args ? args.database : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["queryScope"] = args ? args.queryScope : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["collection"] = args ? args.collection : undefined;
+            resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["queryScope"] = args ? args.queryScope : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Index.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Index.__pulumiType, name, resourceInputs, opts);
     }
 }
 

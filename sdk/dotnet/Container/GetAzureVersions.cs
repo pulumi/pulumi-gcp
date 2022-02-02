@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Container
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Gcp.Container
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAzureVersionsResult> InvokeAsync(GetAzureVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available Kubernetes versions in a location for a given project.
@@ -76,7 +75,7 @@ namespace Pulumi.Gcp.Container
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAzureVersionsResult> Invoke(GetAzureVersionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

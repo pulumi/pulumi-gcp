@@ -136,7 +136,7 @@ type ProjectLocationInput interface {
 }
 
 func (*ProjectLocation) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectLocation)(nil))
+	return reflect.TypeOf((**ProjectLocation)(nil)).Elem()
 }
 
 func (i *ProjectLocation) ToProjectLocationOutput() ProjectLocationOutput {
@@ -145,35 +145,6 @@ func (i *ProjectLocation) ToProjectLocationOutput() ProjectLocationOutput {
 
 func (i *ProjectLocation) ToProjectLocationOutputWithContext(ctx context.Context) ProjectLocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLocationOutput)
-}
-
-func (i *ProjectLocation) ToProjectLocationPtrOutput() ProjectLocationPtrOutput {
-	return i.ToProjectLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectLocation) ToProjectLocationPtrOutputWithContext(ctx context.Context) ProjectLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLocationPtrOutput)
-}
-
-type ProjectLocationPtrInput interface {
-	pulumi.Input
-
-	ToProjectLocationPtrOutput() ProjectLocationPtrOutput
-	ToProjectLocationPtrOutputWithContext(ctx context.Context) ProjectLocationPtrOutput
-}
-
-type projectLocationPtrType ProjectLocationArgs
-
-func (*projectLocationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectLocation)(nil))
-}
-
-func (i *projectLocationPtrType) ToProjectLocationPtrOutput() ProjectLocationPtrOutput {
-	return i.ToProjectLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *projectLocationPtrType) ToProjectLocationPtrOutputWithContext(ctx context.Context) ProjectLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLocationPtrOutput)
 }
 
 // ProjectLocationArrayInput is an input type that accepts ProjectLocationArray and ProjectLocationArrayOutput values.
@@ -229,7 +200,7 @@ func (i ProjectLocationMap) ToProjectLocationMapOutputWithContext(ctx context.Co
 type ProjectLocationOutput struct{ *pulumi.OutputState }
 
 func (ProjectLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectLocation)(nil))
+	return reflect.TypeOf((**ProjectLocation)(nil)).Elem()
 }
 
 func (o ProjectLocationOutput) ToProjectLocationOutput() ProjectLocationOutput {
@@ -240,44 +211,10 @@ func (o ProjectLocationOutput) ToProjectLocationOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ProjectLocationOutput) ToProjectLocationPtrOutput() ProjectLocationPtrOutput {
-	return o.ToProjectLocationPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectLocationOutput) ToProjectLocationPtrOutputWithContext(ctx context.Context) ProjectLocationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectLocation) *ProjectLocation {
-		return &v
-	}).(ProjectLocationPtrOutput)
-}
-
-type ProjectLocationPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectLocationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectLocation)(nil))
-}
-
-func (o ProjectLocationPtrOutput) ToProjectLocationPtrOutput() ProjectLocationPtrOutput {
-	return o
-}
-
-func (o ProjectLocationPtrOutput) ToProjectLocationPtrOutputWithContext(ctx context.Context) ProjectLocationPtrOutput {
-	return o
-}
-
-func (o ProjectLocationPtrOutput) Elem() ProjectLocationOutput {
-	return o.ApplyT(func(v *ProjectLocation) ProjectLocation {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectLocation
-		return ret
-	}).(ProjectLocationOutput)
-}
-
 type ProjectLocationArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectLocation)(nil))
+	return reflect.TypeOf((*[]*ProjectLocation)(nil)).Elem()
 }
 
 func (o ProjectLocationArrayOutput) ToProjectLocationArrayOutput() ProjectLocationArrayOutput {
@@ -289,15 +226,15 @@ func (o ProjectLocationArrayOutput) ToProjectLocationArrayOutputWithContext(ctx 
 }
 
 func (o ProjectLocationArrayOutput) Index(i pulumi.IntInput) ProjectLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectLocation {
-		return vs[0].([]ProjectLocation)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectLocation {
+		return vs[0].([]*ProjectLocation)[vs[1].(int)]
 	}).(ProjectLocationOutput)
 }
 
 type ProjectLocationMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectLocationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectLocation)(nil))
+	return reflect.TypeOf((*map[string]*ProjectLocation)(nil)).Elem()
 }
 
 func (o ProjectLocationMapOutput) ToProjectLocationMapOutput() ProjectLocationMapOutput {
@@ -309,18 +246,16 @@ func (o ProjectLocationMapOutput) ToProjectLocationMapOutputWithContext(ctx cont
 }
 
 func (o ProjectLocationMapOutput) MapIndex(k pulumi.StringInput) ProjectLocationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectLocation {
-		return vs[0].(map[string]ProjectLocation)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectLocation {
+		return vs[0].(map[string]*ProjectLocation)[vs[1].(string)]
 	}).(ProjectLocationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLocationInput)(nil)).Elem(), &ProjectLocation{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLocationPtrInput)(nil)).Elem(), &ProjectLocation{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLocationArrayInput)(nil)).Elem(), ProjectLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectLocationMapInput)(nil)).Elem(), ProjectLocationMap{})
 	pulumi.RegisterOutputType(ProjectLocationOutput{})
-	pulumi.RegisterOutputType(ProjectLocationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectLocationArrayOutput{})
 	pulumi.RegisterOutputType(ProjectLocationMapOutput{})
 }

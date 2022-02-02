@@ -158,37 +158,35 @@ export class SSLPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SSLPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SSLPolicyArgs | SSLPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SSLPolicyState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["customFeatures"] = state ? state.customFeatures : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabledFeatures"] = state ? state.enabledFeatures : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["minTlsVersion"] = state ? state.minTlsVersion : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["profile"] = state ? state.profile : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["customFeatures"] = state ? state.customFeatures : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabledFeatures"] = state ? state.enabledFeatures : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["minTlsVersion"] = state ? state.minTlsVersion : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["profile"] = state ? state.profile : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as SSLPolicyArgs | undefined;
-            inputs["customFeatures"] = args ? args.customFeatures : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["profile"] = args ? args.profile : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["enabledFeatures"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["customFeatures"] = args ? args.customFeatures : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["profile"] = args ? args.profile : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["enabledFeatures"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SSLPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SSLPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

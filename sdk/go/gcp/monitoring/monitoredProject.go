@@ -150,7 +150,7 @@ type MonitoredProjectInput interface {
 }
 
 func (*MonitoredProject) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitoredProject)(nil))
+	return reflect.TypeOf((**MonitoredProject)(nil)).Elem()
 }
 
 func (i *MonitoredProject) ToMonitoredProjectOutput() MonitoredProjectOutput {
@@ -159,35 +159,6 @@ func (i *MonitoredProject) ToMonitoredProjectOutput() MonitoredProjectOutput {
 
 func (i *MonitoredProject) ToMonitoredProjectOutputWithContext(ctx context.Context) MonitoredProjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredProjectOutput)
-}
-
-func (i *MonitoredProject) ToMonitoredProjectPtrOutput() MonitoredProjectPtrOutput {
-	return i.ToMonitoredProjectPtrOutputWithContext(context.Background())
-}
-
-func (i *MonitoredProject) ToMonitoredProjectPtrOutputWithContext(ctx context.Context) MonitoredProjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitoredProjectPtrOutput)
-}
-
-type MonitoredProjectPtrInput interface {
-	pulumi.Input
-
-	ToMonitoredProjectPtrOutput() MonitoredProjectPtrOutput
-	ToMonitoredProjectPtrOutputWithContext(ctx context.Context) MonitoredProjectPtrOutput
-}
-
-type monitoredProjectPtrType MonitoredProjectArgs
-
-func (*monitoredProjectPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonitoredProject)(nil))
-}
-
-func (i *monitoredProjectPtrType) ToMonitoredProjectPtrOutput() MonitoredProjectPtrOutput {
-	return i.ToMonitoredProjectPtrOutputWithContext(context.Background())
-}
-
-func (i *monitoredProjectPtrType) ToMonitoredProjectPtrOutputWithContext(ctx context.Context) MonitoredProjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitoredProjectPtrOutput)
 }
 
 // MonitoredProjectArrayInput is an input type that accepts MonitoredProjectArray and MonitoredProjectArrayOutput values.
@@ -243,7 +214,7 @@ func (i MonitoredProjectMap) ToMonitoredProjectMapOutputWithContext(ctx context.
 type MonitoredProjectOutput struct{ *pulumi.OutputState }
 
 func (MonitoredProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitoredProject)(nil))
+	return reflect.TypeOf((**MonitoredProject)(nil)).Elem()
 }
 
 func (o MonitoredProjectOutput) ToMonitoredProjectOutput() MonitoredProjectOutput {
@@ -254,44 +225,10 @@ func (o MonitoredProjectOutput) ToMonitoredProjectOutputWithContext(ctx context.
 	return o
 }
 
-func (o MonitoredProjectOutput) ToMonitoredProjectPtrOutput() MonitoredProjectPtrOutput {
-	return o.ToMonitoredProjectPtrOutputWithContext(context.Background())
-}
-
-func (o MonitoredProjectOutput) ToMonitoredProjectPtrOutputWithContext(ctx context.Context) MonitoredProjectPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoredProject) *MonitoredProject {
-		return &v
-	}).(MonitoredProjectPtrOutput)
-}
-
-type MonitoredProjectPtrOutput struct{ *pulumi.OutputState }
-
-func (MonitoredProjectPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonitoredProject)(nil))
-}
-
-func (o MonitoredProjectPtrOutput) ToMonitoredProjectPtrOutput() MonitoredProjectPtrOutput {
-	return o
-}
-
-func (o MonitoredProjectPtrOutput) ToMonitoredProjectPtrOutputWithContext(ctx context.Context) MonitoredProjectPtrOutput {
-	return o
-}
-
-func (o MonitoredProjectPtrOutput) Elem() MonitoredProjectOutput {
-	return o.ApplyT(func(v *MonitoredProject) MonitoredProject {
-		if v != nil {
-			return *v
-		}
-		var ret MonitoredProject
-		return ret
-	}).(MonitoredProjectOutput)
-}
-
 type MonitoredProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitoredProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitoredProject)(nil))
+	return reflect.TypeOf((*[]*MonitoredProject)(nil)).Elem()
 }
 
 func (o MonitoredProjectArrayOutput) ToMonitoredProjectArrayOutput() MonitoredProjectArrayOutput {
@@ -303,15 +240,15 @@ func (o MonitoredProjectArrayOutput) ToMonitoredProjectArrayOutputWithContext(ct
 }
 
 func (o MonitoredProjectArrayOutput) Index(i pulumi.IntInput) MonitoredProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredProject {
-		return vs[0].([]MonitoredProject)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitoredProject {
+		return vs[0].([]*MonitoredProject)[vs[1].(int)]
 	}).(MonitoredProjectOutput)
 }
 
 type MonitoredProjectMapOutput struct{ *pulumi.OutputState }
 
 func (MonitoredProjectMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MonitoredProject)(nil))
+	return reflect.TypeOf((*map[string]*MonitoredProject)(nil)).Elem()
 }
 
 func (o MonitoredProjectMapOutput) ToMonitoredProjectMapOutput() MonitoredProjectMapOutput {
@@ -323,18 +260,16 @@ func (o MonitoredProjectMapOutput) ToMonitoredProjectMapOutputWithContext(ctx co
 }
 
 func (o MonitoredProjectMapOutput) MapIndex(k pulumi.StringInput) MonitoredProjectOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MonitoredProject {
-		return vs[0].(map[string]MonitoredProject)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MonitoredProject {
+		return vs[0].(map[string]*MonitoredProject)[vs[1].(string)]
 	}).(MonitoredProjectOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredProjectInput)(nil)).Elem(), &MonitoredProject{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredProjectPtrInput)(nil)).Elem(), &MonitoredProject{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredProjectArrayInput)(nil)).Elem(), MonitoredProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredProjectMapInput)(nil)).Elem(), MonitoredProjectMap{})
 	pulumi.RegisterOutputType(MonitoredProjectOutput{})
-	pulumi.RegisterOutputType(MonitoredProjectPtrOutput{})
 	pulumi.RegisterOutputType(MonitoredProjectArrayOutput{})
 	pulumi.RegisterOutputType(MonitoredProjectMapOutput{})
 }

@@ -196,7 +196,7 @@ type AzureClientInput interface {
 }
 
 func (*AzureClient) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureClient)(nil))
+	return reflect.TypeOf((**AzureClient)(nil)).Elem()
 }
 
 func (i *AzureClient) ToAzureClientOutput() AzureClientOutput {
@@ -205,35 +205,6 @@ func (i *AzureClient) ToAzureClientOutput() AzureClientOutput {
 
 func (i *AzureClient) ToAzureClientOutputWithContext(ctx context.Context) AzureClientOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzureClientOutput)
-}
-
-func (i *AzureClient) ToAzureClientPtrOutput() AzureClientPtrOutput {
-	return i.ToAzureClientPtrOutputWithContext(context.Background())
-}
-
-func (i *AzureClient) ToAzureClientPtrOutputWithContext(ctx context.Context) AzureClientPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureClientPtrOutput)
-}
-
-type AzureClientPtrInput interface {
-	pulumi.Input
-
-	ToAzureClientPtrOutput() AzureClientPtrOutput
-	ToAzureClientPtrOutputWithContext(ctx context.Context) AzureClientPtrOutput
-}
-
-type azureClientPtrType AzureClientArgs
-
-func (*azureClientPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureClient)(nil))
-}
-
-func (i *azureClientPtrType) ToAzureClientPtrOutput() AzureClientPtrOutput {
-	return i.ToAzureClientPtrOutputWithContext(context.Background())
-}
-
-func (i *azureClientPtrType) ToAzureClientPtrOutputWithContext(ctx context.Context) AzureClientPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureClientPtrOutput)
 }
 
 // AzureClientArrayInput is an input type that accepts AzureClientArray and AzureClientArrayOutput values.
@@ -289,7 +260,7 @@ func (i AzureClientMap) ToAzureClientMapOutputWithContext(ctx context.Context) A
 type AzureClientOutput struct{ *pulumi.OutputState }
 
 func (AzureClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureClient)(nil))
+	return reflect.TypeOf((**AzureClient)(nil)).Elem()
 }
 
 func (o AzureClientOutput) ToAzureClientOutput() AzureClientOutput {
@@ -300,44 +271,10 @@ func (o AzureClientOutput) ToAzureClientOutputWithContext(ctx context.Context) A
 	return o
 }
 
-func (o AzureClientOutput) ToAzureClientPtrOutput() AzureClientPtrOutput {
-	return o.ToAzureClientPtrOutputWithContext(context.Background())
-}
-
-func (o AzureClientOutput) ToAzureClientPtrOutputWithContext(ctx context.Context) AzureClientPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClient) *AzureClient {
-		return &v
-	}).(AzureClientPtrOutput)
-}
-
-type AzureClientPtrOutput struct{ *pulumi.OutputState }
-
-func (AzureClientPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureClient)(nil))
-}
-
-func (o AzureClientPtrOutput) ToAzureClientPtrOutput() AzureClientPtrOutput {
-	return o
-}
-
-func (o AzureClientPtrOutput) ToAzureClientPtrOutputWithContext(ctx context.Context) AzureClientPtrOutput {
-	return o
-}
-
-func (o AzureClientPtrOutput) Elem() AzureClientOutput {
-	return o.ApplyT(func(v *AzureClient) AzureClient {
-		if v != nil {
-			return *v
-		}
-		var ret AzureClient
-		return ret
-	}).(AzureClientOutput)
-}
-
 type AzureClientArrayOutput struct{ *pulumi.OutputState }
 
 func (AzureClientArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AzureClient)(nil))
+	return reflect.TypeOf((*[]*AzureClient)(nil)).Elem()
 }
 
 func (o AzureClientArrayOutput) ToAzureClientArrayOutput() AzureClientArrayOutput {
@@ -349,15 +286,15 @@ func (o AzureClientArrayOutput) ToAzureClientArrayOutputWithContext(ctx context.
 }
 
 func (o AzureClientArrayOutput) Index(i pulumi.IntInput) AzureClientOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureClient {
-		return vs[0].([]AzureClient)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzureClient {
+		return vs[0].([]*AzureClient)[vs[1].(int)]
 	}).(AzureClientOutput)
 }
 
 type AzureClientMapOutput struct{ *pulumi.OutputState }
 
 func (AzureClientMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AzureClient)(nil))
+	return reflect.TypeOf((*map[string]*AzureClient)(nil)).Elem()
 }
 
 func (o AzureClientMapOutput) ToAzureClientMapOutput() AzureClientMapOutput {
@@ -369,18 +306,16 @@ func (o AzureClientMapOutput) ToAzureClientMapOutputWithContext(ctx context.Cont
 }
 
 func (o AzureClientMapOutput) MapIndex(k pulumi.StringInput) AzureClientOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AzureClient {
-		return vs[0].(map[string]AzureClient)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AzureClient {
+		return vs[0].(map[string]*AzureClient)[vs[1].(string)]
 	}).(AzureClientOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClientInput)(nil)).Elem(), &AzureClient{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AzureClientPtrInput)(nil)).Elem(), &AzureClient{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClientArrayInput)(nil)).Elem(), AzureClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClientMapInput)(nil)).Elem(), AzureClientMap{})
 	pulumi.RegisterOutputType(AzureClientOutput{})
-	pulumi.RegisterOutputType(AzureClientPtrOutput{})
 	pulumi.RegisterOutputType(AzureClientArrayOutput{})
 	pulumi.RegisterOutputType(AzureClientMapOutput{})
 }

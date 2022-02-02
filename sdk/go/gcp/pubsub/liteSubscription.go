@@ -222,7 +222,7 @@ type LiteSubscriptionInput interface {
 }
 
 func (*LiteSubscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteSubscription)(nil))
+	return reflect.TypeOf((**LiteSubscription)(nil)).Elem()
 }
 
 func (i *LiteSubscription) ToLiteSubscriptionOutput() LiteSubscriptionOutput {
@@ -231,35 +231,6 @@ func (i *LiteSubscription) ToLiteSubscriptionOutput() LiteSubscriptionOutput {
 
 func (i *LiteSubscription) ToLiteSubscriptionOutputWithContext(ctx context.Context) LiteSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionOutput)
-}
-
-func (i *LiteSubscription) ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput {
-	return i.ToLiteSubscriptionPtrOutputWithContext(context.Background())
-}
-
-func (i *LiteSubscription) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionPtrOutput)
-}
-
-type LiteSubscriptionPtrInput interface {
-	pulumi.Input
-
-	ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput
-	ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput
-}
-
-type liteSubscriptionPtrType LiteSubscriptionArgs
-
-func (*liteSubscriptionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LiteSubscription)(nil))
-}
-
-func (i *liteSubscriptionPtrType) ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput {
-	return i.ToLiteSubscriptionPtrOutputWithContext(context.Background())
-}
-
-func (i *liteSubscriptionPtrType) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionPtrOutput)
 }
 
 // LiteSubscriptionArrayInput is an input type that accepts LiteSubscriptionArray and LiteSubscriptionArrayOutput values.
@@ -315,7 +286,7 @@ func (i LiteSubscriptionMap) ToLiteSubscriptionMapOutputWithContext(ctx context.
 type LiteSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (LiteSubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteSubscription)(nil))
+	return reflect.TypeOf((**LiteSubscription)(nil)).Elem()
 }
 
 func (o LiteSubscriptionOutput) ToLiteSubscriptionOutput() LiteSubscriptionOutput {
@@ -326,44 +297,10 @@ func (o LiteSubscriptionOutput) ToLiteSubscriptionOutputWithContext(ctx context.
 	return o
 }
 
-func (o LiteSubscriptionOutput) ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput {
-	return o.ToLiteSubscriptionPtrOutputWithContext(context.Background())
-}
-
-func (o LiteSubscriptionOutput) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LiteSubscription) *LiteSubscription {
-		return &v
-	}).(LiteSubscriptionPtrOutput)
-}
-
-type LiteSubscriptionPtrOutput struct{ *pulumi.OutputState }
-
-func (LiteSubscriptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LiteSubscription)(nil))
-}
-
-func (o LiteSubscriptionPtrOutput) ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput {
-	return o
-}
-
-func (o LiteSubscriptionPtrOutput) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
-	return o
-}
-
-func (o LiteSubscriptionPtrOutput) Elem() LiteSubscriptionOutput {
-	return o.ApplyT(func(v *LiteSubscription) LiteSubscription {
-		if v != nil {
-			return *v
-		}
-		var ret LiteSubscription
-		return ret
-	}).(LiteSubscriptionOutput)
-}
-
 type LiteSubscriptionArrayOutput struct{ *pulumi.OutputState }
 
 func (LiteSubscriptionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LiteSubscription)(nil))
+	return reflect.TypeOf((*[]*LiteSubscription)(nil)).Elem()
 }
 
 func (o LiteSubscriptionArrayOutput) ToLiteSubscriptionArrayOutput() LiteSubscriptionArrayOutput {
@@ -375,15 +312,15 @@ func (o LiteSubscriptionArrayOutput) ToLiteSubscriptionArrayOutputWithContext(ct
 }
 
 func (o LiteSubscriptionArrayOutput) Index(i pulumi.IntInput) LiteSubscriptionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiteSubscription {
-		return vs[0].([]LiteSubscription)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LiteSubscription {
+		return vs[0].([]*LiteSubscription)[vs[1].(int)]
 	}).(LiteSubscriptionOutput)
 }
 
 type LiteSubscriptionMapOutput struct{ *pulumi.OutputState }
 
 func (LiteSubscriptionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LiteSubscription)(nil))
+	return reflect.TypeOf((*map[string]*LiteSubscription)(nil)).Elem()
 }
 
 func (o LiteSubscriptionMapOutput) ToLiteSubscriptionMapOutput() LiteSubscriptionMapOutput {
@@ -395,18 +332,16 @@ func (o LiteSubscriptionMapOutput) ToLiteSubscriptionMapOutputWithContext(ctx co
 }
 
 func (o LiteSubscriptionMapOutput) MapIndex(k pulumi.StringInput) LiteSubscriptionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LiteSubscription {
-		return vs[0].(map[string]LiteSubscription)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *LiteSubscription {
+		return vs[0].(map[string]*LiteSubscription)[vs[1].(string)]
 	}).(LiteSubscriptionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteSubscriptionInput)(nil)).Elem(), &LiteSubscription{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LiteSubscriptionPtrInput)(nil)).Elem(), &LiteSubscription{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteSubscriptionArrayInput)(nil)).Elem(), LiteSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteSubscriptionMapInput)(nil)).Elem(), LiteSubscriptionMap{})
 	pulumi.RegisterOutputType(LiteSubscriptionOutput{})
-	pulumi.RegisterOutputType(LiteSubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(LiteSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(LiteSubscriptionMapOutput{})
 }

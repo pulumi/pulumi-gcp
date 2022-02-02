@@ -636,48 +636,46 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: GlobalForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalForwardingRuleArgs | GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalForwardingRuleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            inputs["metadataFilters"] = state ? state.metadataFilters : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["portRange"] = state ? state.portRange : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["target"] = state ? state.target : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
+            resourceInputs["metadataFilters"] = state ? state.metadataFilters : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["portRange"] = state ? state.portRange : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
             if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            inputs["metadataFilters"] = args ? args.metadataFilters : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["portRange"] = args ? args.portRange : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
+            resourceInputs["metadataFilters"] = args ? args.metadataFilters : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["portRange"] = args ? args.portRange : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GlobalForwardingRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GlobalForwardingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

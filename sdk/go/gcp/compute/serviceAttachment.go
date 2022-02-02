@@ -508,7 +508,7 @@ type ServiceAttachmentInput interface {
 }
 
 func (*ServiceAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceAttachment)(nil))
+	return reflect.TypeOf((**ServiceAttachment)(nil)).Elem()
 }
 
 func (i *ServiceAttachment) ToServiceAttachmentOutput() ServiceAttachmentOutput {
@@ -517,35 +517,6 @@ func (i *ServiceAttachment) ToServiceAttachmentOutput() ServiceAttachmentOutput 
 
 func (i *ServiceAttachment) ToServiceAttachmentOutputWithContext(ctx context.Context) ServiceAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentOutput)
-}
-
-func (i *ServiceAttachment) ToServiceAttachmentPtrOutput() ServiceAttachmentPtrOutput {
-	return i.ToServiceAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *ServiceAttachment) ToServiceAttachmentPtrOutputWithContext(ctx context.Context) ServiceAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentPtrOutput)
-}
-
-type ServiceAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToServiceAttachmentPtrOutput() ServiceAttachmentPtrOutput
-	ToServiceAttachmentPtrOutputWithContext(ctx context.Context) ServiceAttachmentPtrOutput
-}
-
-type serviceAttachmentPtrType ServiceAttachmentArgs
-
-func (*serviceAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceAttachment)(nil))
-}
-
-func (i *serviceAttachmentPtrType) ToServiceAttachmentPtrOutput() ServiceAttachmentPtrOutput {
-	return i.ToServiceAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceAttachmentPtrType) ToServiceAttachmentPtrOutputWithContext(ctx context.Context) ServiceAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentPtrOutput)
 }
 
 // ServiceAttachmentArrayInput is an input type that accepts ServiceAttachmentArray and ServiceAttachmentArrayOutput values.
@@ -601,7 +572,7 @@ func (i ServiceAttachmentMap) ToServiceAttachmentMapOutputWithContext(ctx contex
 type ServiceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceAttachment)(nil))
+	return reflect.TypeOf((**ServiceAttachment)(nil)).Elem()
 }
 
 func (o ServiceAttachmentOutput) ToServiceAttachmentOutput() ServiceAttachmentOutput {
@@ -612,44 +583,10 @@ func (o ServiceAttachmentOutput) ToServiceAttachmentOutputWithContext(ctx contex
 	return o
 }
 
-func (o ServiceAttachmentOutput) ToServiceAttachmentPtrOutput() ServiceAttachmentPtrOutput {
-	return o.ToServiceAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceAttachmentOutput) ToServiceAttachmentPtrOutputWithContext(ctx context.Context) ServiceAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAttachment) *ServiceAttachment {
-		return &v
-	}).(ServiceAttachmentPtrOutput)
-}
-
-type ServiceAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceAttachment)(nil))
-}
-
-func (o ServiceAttachmentPtrOutput) ToServiceAttachmentPtrOutput() ServiceAttachmentPtrOutput {
-	return o
-}
-
-func (o ServiceAttachmentPtrOutput) ToServiceAttachmentPtrOutputWithContext(ctx context.Context) ServiceAttachmentPtrOutput {
-	return o
-}
-
-func (o ServiceAttachmentPtrOutput) Elem() ServiceAttachmentOutput {
-	return o.ApplyT(func(v *ServiceAttachment) ServiceAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceAttachment
-		return ret
-	}).(ServiceAttachmentOutput)
-}
-
 type ServiceAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceAttachment)(nil))
+	return reflect.TypeOf((*[]*ServiceAttachment)(nil)).Elem()
 }
 
 func (o ServiceAttachmentArrayOutput) ToServiceAttachmentArrayOutput() ServiceAttachmentArrayOutput {
@@ -661,15 +598,15 @@ func (o ServiceAttachmentArrayOutput) ToServiceAttachmentArrayOutputWithContext(
 }
 
 func (o ServiceAttachmentArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachment {
-		return vs[0].([]ServiceAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceAttachment {
+		return vs[0].([]*ServiceAttachment)[vs[1].(int)]
 	}).(ServiceAttachmentOutput)
 }
 
 type ServiceAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServiceAttachment)(nil))
+	return reflect.TypeOf((*map[string]*ServiceAttachment)(nil)).Elem()
 }
 
 func (o ServiceAttachmentMapOutput) ToServiceAttachmentMapOutput() ServiceAttachmentMapOutput {
@@ -681,18 +618,16 @@ func (o ServiceAttachmentMapOutput) ToServiceAttachmentMapOutputWithContext(ctx 
 }
 
 func (o ServiceAttachmentMapOutput) MapIndex(k pulumi.StringInput) ServiceAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceAttachment {
-		return vs[0].(map[string]ServiceAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServiceAttachment {
+		return vs[0].(map[string]*ServiceAttachment)[vs[1].(string)]
 	}).(ServiceAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentInput)(nil)).Elem(), &ServiceAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentPtrInput)(nil)).Elem(), &ServiceAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentArrayInput)(nil)).Elem(), ServiceAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentMapInput)(nil)).Elem(), ServiceAttachmentMap{})
 	pulumi.RegisterOutputType(ServiceAttachmentOutput{})
-	pulumi.RegisterOutputType(ServiceAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentMapOutput{})
 }

@@ -364,7 +364,7 @@ type BucketIAMMemberInput interface {
 }
 
 func (*BucketIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMMember)(nil))
+	return reflect.TypeOf((**BucketIAMMember)(nil)).Elem()
 }
 
 func (i *BucketIAMMember) ToBucketIAMMemberOutput() BucketIAMMemberOutput {
@@ -373,35 +373,6 @@ func (i *BucketIAMMember) ToBucketIAMMemberOutput() BucketIAMMemberOutput {
 
 func (i *BucketIAMMember) ToBucketIAMMemberOutputWithContext(ctx context.Context) BucketIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberOutput)
-}
-
-func (i *BucketIAMMember) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput {
-	return i.ToBucketIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *BucketIAMMember) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberPtrOutput)
-}
-
-type BucketIAMMemberPtrInput interface {
-	pulumi.Input
-
-	ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput
-	ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput
-}
-
-type bucketIAMMemberPtrType BucketIAMMemberArgs
-
-func (*bucketIAMMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMMember)(nil))
-}
-
-func (i *bucketIAMMemberPtrType) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput {
-	return i.ToBucketIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *bucketIAMMemberPtrType) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberPtrOutput)
 }
 
 // BucketIAMMemberArrayInput is an input type that accepts BucketIAMMemberArray and BucketIAMMemberArrayOutput values.
@@ -457,7 +428,7 @@ func (i BucketIAMMemberMap) ToBucketIAMMemberMapOutputWithContext(ctx context.Co
 type BucketIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMMember)(nil))
+	return reflect.TypeOf((**BucketIAMMember)(nil)).Elem()
 }
 
 func (o BucketIAMMemberOutput) ToBucketIAMMemberOutput() BucketIAMMemberOutput {
@@ -468,44 +439,10 @@ func (o BucketIAMMemberOutput) ToBucketIAMMemberOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BucketIAMMemberOutput) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput {
-	return o.ToBucketIAMMemberPtrOutputWithContext(context.Background())
-}
-
-func (o BucketIAMMemberOutput) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMMember) *BucketIAMMember {
-		return &v
-	}).(BucketIAMMemberPtrOutput)
-}
-
-type BucketIAMMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (BucketIAMMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMMember)(nil))
-}
-
-func (o BucketIAMMemberPtrOutput) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput {
-	return o
-}
-
-func (o BucketIAMMemberPtrOutput) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
-	return o
-}
-
-func (o BucketIAMMemberPtrOutput) Elem() BucketIAMMemberOutput {
-	return o.ApplyT(func(v *BucketIAMMember) BucketIAMMember {
-		if v != nil {
-			return *v
-		}
-		var ret BucketIAMMember
-		return ret
-	}).(BucketIAMMemberOutput)
-}
-
 type BucketIAMMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketIAMMember)(nil))
+	return reflect.TypeOf((*[]*BucketIAMMember)(nil)).Elem()
 }
 
 func (o BucketIAMMemberArrayOutput) ToBucketIAMMemberArrayOutput() BucketIAMMemberArrayOutput {
@@ -517,15 +454,15 @@ func (o BucketIAMMemberArrayOutput) ToBucketIAMMemberArrayOutputWithContext(ctx 
 }
 
 func (o BucketIAMMemberArrayOutput) Index(i pulumi.IntInput) BucketIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketIAMMember {
-		return vs[0].([]BucketIAMMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIAMMember {
+		return vs[0].([]*BucketIAMMember)[vs[1].(int)]
 	}).(BucketIAMMemberOutput)
 }
 
 type BucketIAMMemberMapOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BucketIAMMember)(nil))
+	return reflect.TypeOf((*map[string]*BucketIAMMember)(nil)).Elem()
 }
 
 func (o BucketIAMMemberMapOutput) ToBucketIAMMemberMapOutput() BucketIAMMemberMapOutput {
@@ -537,18 +474,16 @@ func (o BucketIAMMemberMapOutput) ToBucketIAMMemberMapOutputWithContext(ctx cont
 }
 
 func (o BucketIAMMemberMapOutput) MapIndex(k pulumi.StringInput) BucketIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BucketIAMMember {
-		return vs[0].(map[string]BucketIAMMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BucketIAMMember {
+		return vs[0].(map[string]*BucketIAMMember)[vs[1].(string)]
 	}).(BucketIAMMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberInput)(nil)).Elem(), &BucketIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberPtrInput)(nil)).Elem(), &BucketIAMMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberArrayInput)(nil)).Elem(), BucketIAMMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberMapInput)(nil)).Elem(), BucketIAMMemberMap{})
 	pulumi.RegisterOutputType(BucketIAMMemberOutput{})
-	pulumi.RegisterOutputType(BucketIAMMemberPtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMMemberArrayOutput{})
 	pulumi.RegisterOutputType(BucketIAMMemberMapOutput{})
 }

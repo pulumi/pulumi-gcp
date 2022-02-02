@@ -269,7 +269,7 @@ type ApiConfigInput interface {
 }
 
 func (*ApiConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiConfig)(nil))
+	return reflect.TypeOf((**ApiConfig)(nil)).Elem()
 }
 
 func (i *ApiConfig) ToApiConfigOutput() ApiConfigOutput {
@@ -278,35 +278,6 @@ func (i *ApiConfig) ToApiConfigOutput() ApiConfigOutput {
 
 func (i *ApiConfig) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigOutput)
-}
-
-func (i *ApiConfig) ToApiConfigPtrOutput() ApiConfigPtrOutput {
-	return i.ToApiConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *ApiConfig) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigPtrOutput)
-}
-
-type ApiConfigPtrInput interface {
-	pulumi.Input
-
-	ToApiConfigPtrOutput() ApiConfigPtrOutput
-	ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput
-}
-
-type apiConfigPtrType ApiConfigArgs
-
-func (*apiConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiConfig)(nil))
-}
-
-func (i *apiConfigPtrType) ToApiConfigPtrOutput() ApiConfigPtrOutput {
-	return i.ToApiConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *apiConfigPtrType) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigPtrOutput)
 }
 
 // ApiConfigArrayInput is an input type that accepts ApiConfigArray and ApiConfigArrayOutput values.
@@ -362,7 +333,7 @@ func (i ApiConfigMap) ToApiConfigMapOutputWithContext(ctx context.Context) ApiCo
 type ApiConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiConfig)(nil))
+	return reflect.TypeOf((**ApiConfig)(nil)).Elem()
 }
 
 func (o ApiConfigOutput) ToApiConfigOutput() ApiConfigOutput {
@@ -373,44 +344,10 @@ func (o ApiConfigOutput) ToApiConfigOutputWithContext(ctx context.Context) ApiCo
 	return o
 }
 
-func (o ApiConfigOutput) ToApiConfigPtrOutput() ApiConfigPtrOutput {
-	return o.ToApiConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ApiConfigOutput) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfig) *ApiConfig {
-		return &v
-	}).(ApiConfigPtrOutput)
-}
-
-type ApiConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ApiConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiConfig)(nil))
-}
-
-func (o ApiConfigPtrOutput) ToApiConfigPtrOutput() ApiConfigPtrOutput {
-	return o
-}
-
-func (o ApiConfigPtrOutput) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
-	return o
-}
-
-func (o ApiConfigPtrOutput) Elem() ApiConfigOutput {
-	return o.ApplyT(func(v *ApiConfig) ApiConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ApiConfig
-		return ret
-	}).(ApiConfigOutput)
-}
-
 type ApiConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApiConfig)(nil))
+	return reflect.TypeOf((*[]*ApiConfig)(nil)).Elem()
 }
 
 func (o ApiConfigArrayOutput) ToApiConfigArrayOutput() ApiConfigArrayOutput {
@@ -422,15 +359,15 @@ func (o ApiConfigArrayOutput) ToApiConfigArrayOutputWithContext(ctx context.Cont
 }
 
 func (o ApiConfigArrayOutput) Index(i pulumi.IntInput) ApiConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiConfig {
-		return vs[0].([]ApiConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiConfig {
+		return vs[0].([]*ApiConfig)[vs[1].(int)]
 	}).(ApiConfigOutput)
 }
 
 type ApiConfigMapOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ApiConfig)(nil))
+	return reflect.TypeOf((*map[string]*ApiConfig)(nil)).Elem()
 }
 
 func (o ApiConfigMapOutput) ToApiConfigMapOutput() ApiConfigMapOutput {
@@ -442,18 +379,16 @@ func (o ApiConfigMapOutput) ToApiConfigMapOutputWithContext(ctx context.Context)
 }
 
 func (o ApiConfigMapOutput) MapIndex(k pulumi.StringInput) ApiConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApiConfig {
-		return vs[0].(map[string]ApiConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ApiConfig {
+		return vs[0].(map[string]*ApiConfig)[vs[1].(string)]
 	}).(ApiConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigInput)(nil)).Elem(), &ApiConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigPtrInput)(nil)).Elem(), &ApiConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigArrayInput)(nil)).Elem(), ApiConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConfigMapInput)(nil)).Elem(), ApiConfigMap{})
 	pulumi.RegisterOutputType(ApiConfigOutput{})
-	pulumi.RegisterOutputType(ApiConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApiConfigArrayOutput{})
 	pulumi.RegisterOutputType(ApiConfigMapOutput{})
 }

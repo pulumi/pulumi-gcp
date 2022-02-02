@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Composer
 {
@@ -47,7 +46,7 @@ namespace Pulumi.Gcp.Composer
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageVersionsResult> InvokeAsync(GetImageVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available Cloud Composer versions in a region for a given project.
@@ -84,7 +83,7 @@ namespace Pulumi.Gcp.Composer
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageVersionsResult> Invoke(GetImageVersionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

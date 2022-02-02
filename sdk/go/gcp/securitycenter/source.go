@@ -188,7 +188,7 @@ type SourceInput interface {
 }
 
 func (*Source) ElementType() reflect.Type {
-	return reflect.TypeOf((*Source)(nil))
+	return reflect.TypeOf((**Source)(nil)).Elem()
 }
 
 func (i *Source) ToSourceOutput() SourceOutput {
@@ -197,35 +197,6 @@ func (i *Source) ToSourceOutput() SourceOutput {
 
 func (i *Source) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
-}
-
-func (i *Source) ToSourcePtrOutput() SourcePtrOutput {
-	return i.ToSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *Source) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourcePtrOutput)
-}
-
-type SourcePtrInput interface {
-	pulumi.Input
-
-	ToSourcePtrOutput() SourcePtrOutput
-	ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput
-}
-
-type sourcePtrType SourceArgs
-
-func (*sourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Source)(nil))
-}
-
-func (i *sourcePtrType) ToSourcePtrOutput() SourcePtrOutput {
-	return i.ToSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *sourcePtrType) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourcePtrOutput)
 }
 
 // SourceArrayInput is an input type that accepts SourceArray and SourceArrayOutput values.
@@ -281,7 +252,7 @@ func (i SourceMap) ToSourceMapOutputWithContext(ctx context.Context) SourceMapOu
 type SourceOutput struct{ *pulumi.OutputState }
 
 func (SourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Source)(nil))
+	return reflect.TypeOf((**Source)(nil)).Elem()
 }
 
 func (o SourceOutput) ToSourceOutput() SourceOutput {
@@ -292,44 +263,10 @@ func (o SourceOutput) ToSourceOutputWithContext(ctx context.Context) SourceOutpu
 	return o
 }
 
-func (o SourceOutput) ToSourcePtrOutput() SourcePtrOutput {
-	return o.ToSourcePtrOutputWithContext(context.Background())
-}
-
-func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Source) *Source {
-		return &v
-	}).(SourcePtrOutput)
-}
-
-type SourcePtrOutput struct{ *pulumi.OutputState }
-
-func (SourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Source)(nil))
-}
-
-func (o SourcePtrOutput) ToSourcePtrOutput() SourcePtrOutput {
-	return o
-}
-
-func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o
-}
-
-func (o SourcePtrOutput) Elem() SourceOutput {
-	return o.ApplyT(func(v *Source) Source {
-		if v != nil {
-			return *v
-		}
-		var ret Source
-		return ret
-	}).(SourceOutput)
-}
-
 type SourceArrayOutput struct{ *pulumi.OutputState }
 
 func (SourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Source)(nil))
+	return reflect.TypeOf((*[]*Source)(nil)).Elem()
 }
 
 func (o SourceArrayOutput) ToSourceArrayOutput() SourceArrayOutput {
@@ -341,15 +278,15 @@ func (o SourceArrayOutput) ToSourceArrayOutputWithContext(ctx context.Context) S
 }
 
 func (o SourceArrayOutput) Index(i pulumi.IntInput) SourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Source {
-		return vs[0].([]Source)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Source {
+		return vs[0].([]*Source)[vs[1].(int)]
 	}).(SourceOutput)
 }
 
 type SourceMapOutput struct{ *pulumi.OutputState }
 
 func (SourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Source)(nil))
+	return reflect.TypeOf((*map[string]*Source)(nil)).Elem()
 }
 
 func (o SourceMapOutput) ToSourceMapOutput() SourceMapOutput {
@@ -361,18 +298,16 @@ func (o SourceMapOutput) ToSourceMapOutputWithContext(ctx context.Context) Sourc
 }
 
 func (o SourceMapOutput) MapIndex(k pulumi.StringInput) SourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Source {
-		return vs[0].(map[string]Source)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Source {
+		return vs[0].(map[string]*Source)[vs[1].(string)]
 	}).(SourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), &Source{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), &Source{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceArrayInput)(nil)).Elem(), SourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceMapInput)(nil)).Elem(), SourceMap{})
 	pulumi.RegisterOutputType(SourceOutput{})
-	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceArrayOutput{})
 	pulumi.RegisterOutputType(SourceMapOutput{})
 }

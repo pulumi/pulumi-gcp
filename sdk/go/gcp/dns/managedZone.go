@@ -34,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewManagedZone(ctx, "example_zone", &dns.ManagedZoneArgs{
+// 		_, err := dns.NewManagedZone(ctx, "example-zone", &dns.ManagedZoneArgs{
 // 			Description: pulumi.String("Example DNS zone"),
 // 			DnsName:     pulumi.String("my-domain.com."),
 // 			Labels: pulumi.StringMap{
@@ -61,19 +61,19 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "network_1", &compute.NetworkArgs{
+// 		_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewNetwork(ctx, "network_2", &compute.NetworkArgs{
+// 		_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = dns.NewManagedZone(ctx, "private_zone", &dns.ManagedZoneArgs{
+// 		_, err = dns.NewManagedZone(ctx, "private-zone", &dns.ManagedZoneArgs{
 // 			DnsName:     pulumi.String("private.example.com."),
 // 			Description: pulumi.String("Example private DNS zone"),
 // 			Labels: pulumi.StringMap{
@@ -111,19 +111,19 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "network_1", &compute.NetworkArgs{
+// 		_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewNetwork(ctx, "network_2", &compute.NetworkArgs{
+// 		_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = dns.NewManagedZone(ctx, "private_zone", &dns.ManagedZoneArgs{
+// 		_, err = dns.NewManagedZone(ctx, "private-zone", &dns.ManagedZoneArgs{
 // 			DnsName:     pulumi.String("private.example.com."),
 // 			Description: pulumi.String("Example private DNS zone"),
 // 			Labels: pulumi.StringMap{
@@ -171,19 +171,19 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "network_source", &compute.NetworkArgs{
+// 		_, err := compute.NewNetwork(ctx, "network-source", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = compute.NewNetwork(ctx, "network_target", &compute.NetworkArgs{
+// 		_, err = compute.NewNetwork(ctx, "network-target", &compute.NetworkArgs{
 // 			AutoCreateSubnetworks: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = dns.NewManagedZone(ctx, "peering_zone", &dns.ManagedZoneArgs{
+// 		_, err = dns.NewManagedZone(ctx, "peering-zone", &dns.ManagedZoneArgs{
 // 			DnsName:     pulumi.String("peering.example.com."),
 // 			Description: pulumi.String("Example private DNS peering zone"),
 // 			Visibility:  pulumi.String("private"),
@@ -228,7 +228,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = dns.NewManagedZone(ctx, "sd_zone", &dns.ManagedZoneArgs{
+// 		_, err = dns.NewManagedZone(ctx, "sd-zone", &dns.ManagedZoneArgs{
 // 			DnsName:     pulumi.String("services.example.com."),
 // 			Description: pulumi.String("Example private DNS Service Directory zone"),
 // 			Visibility:  pulumi.String("private"),
@@ -326,7 +326,7 @@ func NewManagedZone(ctx *pulumi.Context,
 	if args.DnsName == nil {
 		return nil, errors.New("invalid value for required argument 'DnsName'")
 	}
-	if args.Description == nil {
+	if isZero(args.Description) {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
 	var resource ManagedZone
@@ -551,7 +551,7 @@ type ManagedZoneInput interface {
 }
 
 func (*ManagedZone) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedZone)(nil))
+	return reflect.TypeOf((**ManagedZone)(nil)).Elem()
 }
 
 func (i *ManagedZone) ToManagedZoneOutput() ManagedZoneOutput {
@@ -560,35 +560,6 @@ func (i *ManagedZone) ToManagedZoneOutput() ManagedZoneOutput {
 
 func (i *ManagedZone) ToManagedZoneOutputWithContext(ctx context.Context) ManagedZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneOutput)
-}
-
-func (i *ManagedZone) ToManagedZonePtrOutput() ManagedZonePtrOutput {
-	return i.ToManagedZonePtrOutputWithContext(context.Background())
-}
-
-func (i *ManagedZone) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePtrOutput)
-}
-
-type ManagedZonePtrInput interface {
-	pulumi.Input
-
-	ToManagedZonePtrOutput() ManagedZonePtrOutput
-	ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput
-}
-
-type managedZonePtrType ManagedZoneArgs
-
-func (*managedZonePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedZone)(nil))
-}
-
-func (i *managedZonePtrType) ToManagedZonePtrOutput() ManagedZonePtrOutput {
-	return i.ToManagedZonePtrOutputWithContext(context.Background())
-}
-
-func (i *managedZonePtrType) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePtrOutput)
 }
 
 // ManagedZoneArrayInput is an input type that accepts ManagedZoneArray and ManagedZoneArrayOutput values.
@@ -644,7 +615,7 @@ func (i ManagedZoneMap) ToManagedZoneMapOutputWithContext(ctx context.Context) M
 type ManagedZoneOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedZone)(nil))
+	return reflect.TypeOf((**ManagedZone)(nil)).Elem()
 }
 
 func (o ManagedZoneOutput) ToManagedZoneOutput() ManagedZoneOutput {
@@ -655,44 +626,10 @@ func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) M
 	return o
 }
 
-func (o ManagedZoneOutput) ToManagedZonePtrOutput() ManagedZonePtrOutput {
-	return o.ToManagedZonePtrOutputWithContext(context.Background())
-}
-
-func (o ManagedZoneOutput) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZone) *ManagedZone {
-		return &v
-	}).(ManagedZonePtrOutput)
-}
-
-type ManagedZonePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedZonePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedZone)(nil))
-}
-
-func (o ManagedZonePtrOutput) ToManagedZonePtrOutput() ManagedZonePtrOutput {
-	return o
-}
-
-func (o ManagedZonePtrOutput) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
-	return o
-}
-
-func (o ManagedZonePtrOutput) Elem() ManagedZoneOutput {
-	return o.ApplyT(func(v *ManagedZone) ManagedZone {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedZone
-		return ret
-	}).(ManagedZoneOutput)
-}
-
 type ManagedZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedZone)(nil))
+	return reflect.TypeOf((*[]*ManagedZone)(nil)).Elem()
 }
 
 func (o ManagedZoneArrayOutput) ToManagedZoneArrayOutput() ManagedZoneArrayOutput {
@@ -704,15 +641,15 @@ func (o ManagedZoneArrayOutput) ToManagedZoneArrayOutputWithContext(ctx context.
 }
 
 func (o ManagedZoneArrayOutput) Index(i pulumi.IntInput) ManagedZoneOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZone {
-		return vs[0].([]ManagedZone)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ManagedZone {
+		return vs[0].([]*ManagedZone)[vs[1].(int)]
 	}).(ManagedZoneOutput)
 }
 
 type ManagedZoneMapOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ManagedZone)(nil))
+	return reflect.TypeOf((*map[string]*ManagedZone)(nil)).Elem()
 }
 
 func (o ManagedZoneMapOutput) ToManagedZoneMapOutput() ManagedZoneMapOutput {
@@ -724,18 +661,16 @@ func (o ManagedZoneMapOutput) ToManagedZoneMapOutputWithContext(ctx context.Cont
 }
 
 func (o ManagedZoneMapOutput) MapIndex(k pulumi.StringInput) ManagedZoneOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ManagedZone {
-		return vs[0].(map[string]ManagedZone)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ManagedZone {
+		return vs[0].(map[string]*ManagedZone)[vs[1].(string)]
 	}).(ManagedZoneOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneInput)(nil)).Elem(), &ManagedZone{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePtrInput)(nil)).Elem(), &ManagedZone{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneArrayInput)(nil)).Elem(), ManagedZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneMapInput)(nil)).Elem(), ManagedZoneMap{})
 	pulumi.RegisterOutputType(ManagedZoneOutput{})
-	pulumi.RegisterOutputType(ManagedZonePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZoneMapOutput{})
 }

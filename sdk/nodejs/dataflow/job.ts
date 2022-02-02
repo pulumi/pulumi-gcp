@@ -196,32 +196,32 @@ export class Job extends pulumi.CustomResource {
      */
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            inputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
-            inputs["enableStreamingEngine"] = state ? state.enableStreamingEngine : undefined;
-            inputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
-            inputs["jobId"] = state ? state.jobId : undefined;
-            inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["machineType"] = state ? state.machineType : undefined;
-            inputs["maxWorkers"] = state ? state.maxWorkers : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["onDelete"] = state ? state.onDelete : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["subnetwork"] = state ? state.subnetwork : undefined;
-            inputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
-            inputs["templateGcsPath"] = state ? state.templateGcsPath : undefined;
-            inputs["transformNameMapping"] = state ? state.transformNameMapping : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
+            resourceInputs["enableStreamingEngine"] = state ? state.enableStreamingEngine : undefined;
+            resourceInputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
+            resourceInputs["jobId"] = state ? state.jobId : undefined;
+            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["machineType"] = state ? state.machineType : undefined;
+            resourceInputs["maxWorkers"] = state ? state.maxWorkers : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["onDelete"] = state ? state.onDelete : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
+            resourceInputs["templateGcsPath"] = state ? state.templateGcsPath : undefined;
+            resourceInputs["transformNameMapping"] = state ? state.transformNameMapping : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
             if ((!args || args.tempGcsLocation === undefined) && !opts.urn) {
@@ -230,33 +230,31 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.templateGcsPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
-            inputs["additionalExperiments"] = args ? args.additionalExperiments : undefined;
-            inputs["enableStreamingEngine"] = args ? args.enableStreamingEngine : undefined;
-            inputs["ipConfiguration"] = args ? args.ipConfiguration : undefined;
-            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["machineType"] = args ? args.machineType : undefined;
-            inputs["maxWorkers"] = args ? args.maxWorkers : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["onDelete"] = args ? args.onDelete : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
-            inputs["tempGcsLocation"] = args ? args.tempGcsLocation : undefined;
-            inputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
-            inputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["jobId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["additionalExperiments"] = args ? args.additionalExperiments : undefined;
+            resourceInputs["enableStreamingEngine"] = args ? args.enableStreamingEngine : undefined;
+            resourceInputs["ipConfiguration"] = args ? args.ipConfiguration : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["machineType"] = args ? args.machineType : undefined;
+            resourceInputs["maxWorkers"] = args ? args.maxWorkers : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["onDelete"] = args ? args.onDelete : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["tempGcsLocation"] = args ? args.tempGcsLocation : undefined;
+            resourceInputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
+            resourceInputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["jobId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Job.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

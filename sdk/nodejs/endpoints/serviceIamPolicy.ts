@@ -131,13 +131,13 @@ export class ServiceIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceIamPolicyArgs | ServiceIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIamPolicyState | undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as ServiceIamPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
@@ -146,14 +146,12 @@ export class ServiceIamPolicy extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceIamPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

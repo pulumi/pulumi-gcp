@@ -274,48 +274,46 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     constructor(name: string, args: ManagedZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ManagedZoneArgs | ManagedZoneState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedZoneState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dnsName"] = state ? state.dnsName : undefined;
-            inputs["dnssecConfig"] = state ? state.dnssecConfig : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nameServers"] = state ? state.nameServers : undefined;
-            inputs["peeringConfig"] = state ? state.peeringConfig : undefined;
-            inputs["privateVisibilityConfig"] = state ? state.privateVisibilityConfig : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["reverseLookup"] = state ? state.reverseLookup : undefined;
-            inputs["serviceDirectoryConfig"] = state ? state.serviceDirectoryConfig : undefined;
-            inputs["visibility"] = state ? state.visibility : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
+            resourceInputs["dnssecConfig"] = state ? state.dnssecConfig : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nameServers"] = state ? state.nameServers : undefined;
+            resourceInputs["peeringConfig"] = state ? state.peeringConfig : undefined;
+            resourceInputs["privateVisibilityConfig"] = state ? state.privateVisibilityConfig : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["reverseLookup"] = state ? state.reverseLookup : undefined;
+            resourceInputs["serviceDirectoryConfig"] = state ? state.serviceDirectoryConfig : undefined;
+            resourceInputs["visibility"] = state ? state.visibility : undefined;
         } else {
             const args = argsOrState as ManagedZoneArgs | undefined;
             if ((!args || args.dnsName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dnsName'");
             }
-            inputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
-            inputs["dnsName"] = args ? args.dnsName : undefined;
-            inputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["peeringConfig"] = args ? args.peeringConfig : undefined;
-            inputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reverseLookup"] = args ? args.reverseLookup : undefined;
-            inputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
-            inputs["visibility"] = args ? args.visibility : undefined;
-            inputs["nameServers"] = undefined /*out*/;
+            resourceInputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
+            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
+            resourceInputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["peeringConfig"] = args ? args.peeringConfig : undefined;
+            resourceInputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reverseLookup"] = args ? args.reverseLookup : undefined;
+            resourceInputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
+            resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["nameServers"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ManagedZone.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ManagedZone.__pulumiType, name, resourceInputs, opts);
     }
 }
 

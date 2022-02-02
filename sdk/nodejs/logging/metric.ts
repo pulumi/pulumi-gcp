@@ -195,18 +195,18 @@ export class Metric extends pulumi.CustomResource {
      */
     constructor(name: string, args: MetricArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MetricArgs | MetricState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricState | undefined;
-            inputs["bucketOptions"] = state ? state.bucketOptions : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["filter"] = state ? state.filter : undefined;
-            inputs["labelExtractors"] = state ? state.labelExtractors : undefined;
-            inputs["metricDescriptor"] = state ? state.metricDescriptor : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["valueExtractor"] = state ? state.valueExtractor : undefined;
+            resourceInputs["bucketOptions"] = state ? state.bucketOptions : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["filter"] = state ? state.filter : undefined;
+            resourceInputs["labelExtractors"] = state ? state.labelExtractors : undefined;
+            resourceInputs["metricDescriptor"] = state ? state.metricDescriptor : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["valueExtractor"] = state ? state.valueExtractor : undefined;
         } else {
             const args = argsOrState as MetricArgs | undefined;
             if ((!args || args.filter === undefined) && !opts.urn) {
@@ -215,19 +215,17 @@ export class Metric extends pulumi.CustomResource {
             if ((!args || args.metricDescriptor === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metricDescriptor'");
             }
-            inputs["bucketOptions"] = args ? args.bucketOptions : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["labelExtractors"] = args ? args.labelExtractors : undefined;
-            inputs["metricDescriptor"] = args ? args.metricDescriptor : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["valueExtractor"] = args ? args.valueExtractor : undefined;
+            resourceInputs["bucketOptions"] = args ? args.bucketOptions : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["labelExtractors"] = args ? args.labelExtractors : undefined;
+            resourceInputs["metricDescriptor"] = args ? args.metricDescriptor : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["valueExtractor"] = args ? args.valueExtractor : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Metric.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Metric.__pulumiType, name, resourceInputs, opts);
     }
 }
 

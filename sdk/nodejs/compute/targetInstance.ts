@@ -187,38 +187,36 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetInstanceArgs | TargetInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetInstanceState | undefined;
-            inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["instance"] = state ? state.instance : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["natPolicy"] = state ? state.natPolicy : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["natPolicy"] = state ? state.natPolicy : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as TargetInstanceArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["natPolicy"] = args ? args.natPolicy : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["natPolicy"] = args ? args.natPolicy : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TargetInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TargetInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

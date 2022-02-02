@@ -47,15 +47,15 @@ export class FunctionIamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: FunctionIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionIamPolicyArgs | FunctionIamPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionIamPolicyState | undefined;
-            inputs["cloudFunction"] = state ? state.cloudFunction : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["policyData"] = state ? state.policyData : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["cloudFunction"] = state ? state.cloudFunction : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FunctionIamPolicyArgs | undefined;
             if ((!args || args.cloudFunction === undefined) && !opts.urn) {
@@ -64,16 +64,14 @@ export class FunctionIamPolicy extends pulumi.CustomResource {
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
-            inputs["policyData"] = args ? args.policyData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["etag"] = undefined /*out*/;
+            resourceInputs["cloudFunction"] = args ? args.cloudFunction : undefined;
+            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FunctionIamPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FunctionIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

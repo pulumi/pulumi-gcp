@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Dns
 {
@@ -48,7 +47,7 @@ namespace Pulumi.Gcp.Dns
         /// ```
         /// </summary>
         public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to a zone's attributes within Google Cloud DNS.
@@ -86,7 +85,7 @@ namespace Pulumi.Gcp.Dns
         /// ```
         /// </summary>
         public static Output<GetManagedZoneResult> Invoke(GetManagedZoneInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithDefaults());
     }
 
 

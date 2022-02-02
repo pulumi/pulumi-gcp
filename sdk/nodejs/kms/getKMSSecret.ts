@@ -21,9 +21,7 @@ export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:kms/getKMSSecret:getKMSSecret", {
         "additionalAuthenticatedData": args.additionalAuthenticatedData,
         "ciphertext": args.ciphertext,

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.CloudRun
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Gcp.CloudRun
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLocationsResult> InvokeAsync(GetLocationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get Cloud Run locations available for a project. 
@@ -76,7 +75,7 @@ namespace Pulumi.Gcp.CloudRun
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLocationsResult> Invoke(GetLocationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Storage
 {
@@ -118,7 +117,7 @@ namespace Pulumi.Gcp.Storage
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectServiceAccountResult> InvokeAsync(GetProjectServiceAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the email address of a project's unique [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts).
@@ -226,7 +225,7 @@ namespace Pulumi.Gcp.Storage
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectServiceAccountResult> Invoke(GetProjectServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountInvokeArgs(), options.WithDefaults());
     }
 
 

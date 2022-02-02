@@ -35,9 +35,7 @@ export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", {
         "keyRing": args.keyRing,
         "name": args.name,

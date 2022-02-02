@@ -278,7 +278,7 @@ type FlexTemplateJobInput interface {
 }
 
 func (*FlexTemplateJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexTemplateJob)(nil))
+	return reflect.TypeOf((**FlexTemplateJob)(nil)).Elem()
 }
 
 func (i *FlexTemplateJob) ToFlexTemplateJobOutput() FlexTemplateJobOutput {
@@ -287,35 +287,6 @@ func (i *FlexTemplateJob) ToFlexTemplateJobOutput() FlexTemplateJobOutput {
 
 func (i *FlexTemplateJob) ToFlexTemplateJobOutputWithContext(ctx context.Context) FlexTemplateJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobOutput)
-}
-
-func (i *FlexTemplateJob) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput {
-	return i.ToFlexTemplateJobPtrOutputWithContext(context.Background())
-}
-
-func (i *FlexTemplateJob) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobPtrOutput)
-}
-
-type FlexTemplateJobPtrInput interface {
-	pulumi.Input
-
-	ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput
-	ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput
-}
-
-type flexTemplateJobPtrType FlexTemplateJobArgs
-
-func (*flexTemplateJobPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexTemplateJob)(nil))
-}
-
-func (i *flexTemplateJobPtrType) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput {
-	return i.ToFlexTemplateJobPtrOutputWithContext(context.Background())
-}
-
-func (i *flexTemplateJobPtrType) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobPtrOutput)
 }
 
 // FlexTemplateJobArrayInput is an input type that accepts FlexTemplateJobArray and FlexTemplateJobArrayOutput values.
@@ -371,7 +342,7 @@ func (i FlexTemplateJobMap) ToFlexTemplateJobMapOutputWithContext(ctx context.Co
 type FlexTemplateJobOutput struct{ *pulumi.OutputState }
 
 func (FlexTemplateJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexTemplateJob)(nil))
+	return reflect.TypeOf((**FlexTemplateJob)(nil)).Elem()
 }
 
 func (o FlexTemplateJobOutput) ToFlexTemplateJobOutput() FlexTemplateJobOutput {
@@ -382,44 +353,10 @@ func (o FlexTemplateJobOutput) ToFlexTemplateJobOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o FlexTemplateJobOutput) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput {
-	return o.ToFlexTemplateJobPtrOutputWithContext(context.Background())
-}
-
-func (o FlexTemplateJobOutput) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexTemplateJob) *FlexTemplateJob {
-		return &v
-	}).(FlexTemplateJobPtrOutput)
-}
-
-type FlexTemplateJobPtrOutput struct{ *pulumi.OutputState }
-
-func (FlexTemplateJobPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexTemplateJob)(nil))
-}
-
-func (o FlexTemplateJobPtrOutput) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput {
-	return o
-}
-
-func (o FlexTemplateJobPtrOutput) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
-	return o
-}
-
-func (o FlexTemplateJobPtrOutput) Elem() FlexTemplateJobOutput {
-	return o.ApplyT(func(v *FlexTemplateJob) FlexTemplateJob {
-		if v != nil {
-			return *v
-		}
-		var ret FlexTemplateJob
-		return ret
-	}).(FlexTemplateJobOutput)
-}
-
 type FlexTemplateJobArrayOutput struct{ *pulumi.OutputState }
 
 func (FlexTemplateJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FlexTemplateJob)(nil))
+	return reflect.TypeOf((*[]*FlexTemplateJob)(nil)).Elem()
 }
 
 func (o FlexTemplateJobArrayOutput) ToFlexTemplateJobArrayOutput() FlexTemplateJobArrayOutput {
@@ -431,15 +368,15 @@ func (o FlexTemplateJobArrayOutput) ToFlexTemplateJobArrayOutputWithContext(ctx 
 }
 
 func (o FlexTemplateJobArrayOutput) Index(i pulumi.IntInput) FlexTemplateJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlexTemplateJob {
-		return vs[0].([]FlexTemplateJob)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlexTemplateJob {
+		return vs[0].([]*FlexTemplateJob)[vs[1].(int)]
 	}).(FlexTemplateJobOutput)
 }
 
 type FlexTemplateJobMapOutput struct{ *pulumi.OutputState }
 
 func (FlexTemplateJobMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FlexTemplateJob)(nil))
+	return reflect.TypeOf((*map[string]*FlexTemplateJob)(nil)).Elem()
 }
 
 func (o FlexTemplateJobMapOutput) ToFlexTemplateJobMapOutput() FlexTemplateJobMapOutput {
@@ -451,18 +388,16 @@ func (o FlexTemplateJobMapOutput) ToFlexTemplateJobMapOutputWithContext(ctx cont
 }
 
 func (o FlexTemplateJobMapOutput) MapIndex(k pulumi.StringInput) FlexTemplateJobOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FlexTemplateJob {
-		return vs[0].(map[string]FlexTemplateJob)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FlexTemplateJob {
+		return vs[0].(map[string]*FlexTemplateJob)[vs[1].(string)]
 	}).(FlexTemplateJobOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexTemplateJobInput)(nil)).Elem(), &FlexTemplateJob{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FlexTemplateJobPtrInput)(nil)).Elem(), &FlexTemplateJob{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexTemplateJobArrayInput)(nil)).Elem(), FlexTemplateJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexTemplateJobMapInput)(nil)).Elem(), FlexTemplateJobMap{})
 	pulumi.RegisterOutputType(FlexTemplateJobOutput{})
-	pulumi.RegisterOutputType(FlexTemplateJobPtrOutput{})
 	pulumi.RegisterOutputType(FlexTemplateJobArrayOutput{})
 	pulumi.RegisterOutputType(FlexTemplateJobMapOutput{})
 }

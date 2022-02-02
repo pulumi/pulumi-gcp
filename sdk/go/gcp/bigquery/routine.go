@@ -361,7 +361,7 @@ type RoutineInput interface {
 }
 
 func (*Routine) ElementType() reflect.Type {
-	return reflect.TypeOf((*Routine)(nil))
+	return reflect.TypeOf((**Routine)(nil)).Elem()
 }
 
 func (i *Routine) ToRoutineOutput() RoutineOutput {
@@ -370,35 +370,6 @@ func (i *Routine) ToRoutineOutput() RoutineOutput {
 
 func (i *Routine) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineOutput)
-}
-
-func (i *Routine) ToRoutinePtrOutput() RoutinePtrOutput {
-	return i.ToRoutinePtrOutputWithContext(context.Background())
-}
-
-func (i *Routine) ToRoutinePtrOutputWithContext(ctx context.Context) RoutinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutinePtrOutput)
-}
-
-type RoutinePtrInput interface {
-	pulumi.Input
-
-	ToRoutinePtrOutput() RoutinePtrOutput
-	ToRoutinePtrOutputWithContext(ctx context.Context) RoutinePtrOutput
-}
-
-type routinePtrType RoutineArgs
-
-func (*routinePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Routine)(nil))
-}
-
-func (i *routinePtrType) ToRoutinePtrOutput() RoutinePtrOutput {
-	return i.ToRoutinePtrOutputWithContext(context.Background())
-}
-
-func (i *routinePtrType) ToRoutinePtrOutputWithContext(ctx context.Context) RoutinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutinePtrOutput)
 }
 
 // RoutineArrayInput is an input type that accepts RoutineArray and RoutineArrayOutput values.
@@ -454,7 +425,7 @@ func (i RoutineMap) ToRoutineMapOutputWithContext(ctx context.Context) RoutineMa
 type RoutineOutput struct{ *pulumi.OutputState }
 
 func (RoutineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Routine)(nil))
+	return reflect.TypeOf((**Routine)(nil)).Elem()
 }
 
 func (o RoutineOutput) ToRoutineOutput() RoutineOutput {
@@ -465,44 +436,10 @@ func (o RoutineOutput) ToRoutineOutputWithContext(ctx context.Context) RoutineOu
 	return o
 }
 
-func (o RoutineOutput) ToRoutinePtrOutput() RoutinePtrOutput {
-	return o.ToRoutinePtrOutputWithContext(context.Background())
-}
-
-func (o RoutineOutput) ToRoutinePtrOutputWithContext(ctx context.Context) RoutinePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Routine) *Routine {
-		return &v
-	}).(RoutinePtrOutput)
-}
-
-type RoutinePtrOutput struct{ *pulumi.OutputState }
-
-func (RoutinePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Routine)(nil))
-}
-
-func (o RoutinePtrOutput) ToRoutinePtrOutput() RoutinePtrOutput {
-	return o
-}
-
-func (o RoutinePtrOutput) ToRoutinePtrOutputWithContext(ctx context.Context) RoutinePtrOutput {
-	return o
-}
-
-func (o RoutinePtrOutput) Elem() RoutineOutput {
-	return o.ApplyT(func(v *Routine) Routine {
-		if v != nil {
-			return *v
-		}
-		var ret Routine
-		return ret
-	}).(RoutineOutput)
-}
-
 type RoutineArrayOutput struct{ *pulumi.OutputState }
 
 func (RoutineArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Routine)(nil))
+	return reflect.TypeOf((*[]*Routine)(nil)).Elem()
 }
 
 func (o RoutineArrayOutput) ToRoutineArrayOutput() RoutineArrayOutput {
@@ -514,15 +451,15 @@ func (o RoutineArrayOutput) ToRoutineArrayOutputWithContext(ctx context.Context)
 }
 
 func (o RoutineArrayOutput) Index(i pulumi.IntInput) RoutineOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Routine {
-		return vs[0].([]Routine)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Routine {
+		return vs[0].([]*Routine)[vs[1].(int)]
 	}).(RoutineOutput)
 }
 
 type RoutineMapOutput struct{ *pulumi.OutputState }
 
 func (RoutineMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Routine)(nil))
+	return reflect.TypeOf((*map[string]*Routine)(nil)).Elem()
 }
 
 func (o RoutineMapOutput) ToRoutineMapOutput() RoutineMapOutput {
@@ -534,18 +471,16 @@ func (o RoutineMapOutput) ToRoutineMapOutputWithContext(ctx context.Context) Rou
 }
 
 func (o RoutineMapOutput) MapIndex(k pulumi.StringInput) RoutineOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Routine {
-		return vs[0].(map[string]Routine)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Routine {
+		return vs[0].(map[string]*Routine)[vs[1].(string)]
 	}).(RoutineOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineInput)(nil)).Elem(), &Routine{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoutinePtrInput)(nil)).Elem(), &Routine{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArrayInput)(nil)).Elem(), RoutineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineMapInput)(nil)).Elem(), RoutineMap{})
 	pulumi.RegisterOutputType(RoutineOutput{})
-	pulumi.RegisterOutputType(RoutinePtrOutput{})
 	pulumi.RegisterOutputType(RoutineArrayOutput{})
 	pulumi.RegisterOutputType(RoutineMapOutput{})
 }

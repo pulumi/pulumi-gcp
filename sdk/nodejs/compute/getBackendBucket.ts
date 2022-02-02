@@ -24,9 +24,7 @@ export function getBackendBucket(args: GetBackendBucketArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:compute/getBackendBucket:getBackendBucket", {
         "name": args.name,
         "project": args.project,

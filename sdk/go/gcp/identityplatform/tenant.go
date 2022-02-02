@@ -196,7 +196,7 @@ type TenantInput interface {
 }
 
 func (*Tenant) ElementType() reflect.Type {
-	return reflect.TypeOf((*Tenant)(nil))
+	return reflect.TypeOf((**Tenant)(nil)).Elem()
 }
 
 func (i *Tenant) ToTenantOutput() TenantOutput {
@@ -205,35 +205,6 @@ func (i *Tenant) ToTenantOutput() TenantOutput {
 
 func (i *Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOutput)
-}
-
-func (i *Tenant) ToTenantPtrOutput() TenantPtrOutput {
-	return i.ToTenantPtrOutputWithContext(context.Background())
-}
-
-func (i *Tenant) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantPtrOutput)
-}
-
-type TenantPtrInput interface {
-	pulumi.Input
-
-	ToTenantPtrOutput() TenantPtrOutput
-	ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput
-}
-
-type tenantPtrType TenantArgs
-
-func (*tenantPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Tenant)(nil))
-}
-
-func (i *tenantPtrType) ToTenantPtrOutput() TenantPtrOutput {
-	return i.ToTenantPtrOutputWithContext(context.Background())
-}
-
-func (i *tenantPtrType) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TenantPtrOutput)
 }
 
 // TenantArrayInput is an input type that accepts TenantArray and TenantArrayOutput values.
@@ -289,7 +260,7 @@ func (i TenantMap) ToTenantMapOutputWithContext(ctx context.Context) TenantMapOu
 type TenantOutput struct{ *pulumi.OutputState }
 
 func (TenantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Tenant)(nil))
+	return reflect.TypeOf((**Tenant)(nil)).Elem()
 }
 
 func (o TenantOutput) ToTenantOutput() TenantOutput {
@@ -300,44 +271,10 @@ func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutpu
 	return o
 }
 
-func (o TenantOutput) ToTenantPtrOutput() TenantPtrOutput {
-	return o.ToTenantPtrOutputWithContext(context.Background())
-}
-
-func (o TenantOutput) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Tenant) *Tenant {
-		return &v
-	}).(TenantPtrOutput)
-}
-
-type TenantPtrOutput struct{ *pulumi.OutputState }
-
-func (TenantPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Tenant)(nil))
-}
-
-func (o TenantPtrOutput) ToTenantPtrOutput() TenantPtrOutput {
-	return o
-}
-
-func (o TenantPtrOutput) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
-	return o
-}
-
-func (o TenantPtrOutput) Elem() TenantOutput {
-	return o.ApplyT(func(v *Tenant) Tenant {
-		if v != nil {
-			return *v
-		}
-		var ret Tenant
-		return ret
-	}).(TenantOutput)
-}
-
 type TenantArrayOutput struct{ *pulumi.OutputState }
 
 func (TenantArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Tenant)(nil))
+	return reflect.TypeOf((*[]*Tenant)(nil)).Elem()
 }
 
 func (o TenantArrayOutput) ToTenantArrayOutput() TenantArrayOutput {
@@ -349,15 +286,15 @@ func (o TenantArrayOutput) ToTenantArrayOutputWithContext(ctx context.Context) T
 }
 
 func (o TenantArrayOutput) Index(i pulumi.IntInput) TenantOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Tenant {
-		return vs[0].([]Tenant)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Tenant {
+		return vs[0].([]*Tenant)[vs[1].(int)]
 	}).(TenantOutput)
 }
 
 type TenantMapOutput struct{ *pulumi.OutputState }
 
 func (TenantMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Tenant)(nil))
+	return reflect.TypeOf((*map[string]*Tenant)(nil)).Elem()
 }
 
 func (o TenantMapOutput) ToTenantMapOutput() TenantMapOutput {
@@ -369,18 +306,16 @@ func (o TenantMapOutput) ToTenantMapOutputWithContext(ctx context.Context) Tenan
 }
 
 func (o TenantMapOutput) MapIndex(k pulumi.StringInput) TenantOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Tenant {
-		return vs[0].(map[string]Tenant)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Tenant {
+		return vs[0].(map[string]*Tenant)[vs[1].(string)]
 	}).(TenantOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInput)(nil)).Elem(), &Tenant{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TenantPtrInput)(nil)).Elem(), &Tenant{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantArrayInput)(nil)).Elem(), TenantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantMapInput)(nil)).Elem(), TenantMap{})
 	pulumi.RegisterOutputType(TenantOutput{})
-	pulumi.RegisterOutputType(TenantPtrOutput{})
 	pulumi.RegisterOutputType(TenantArrayOutput{})
 	pulumi.RegisterOutputType(TenantMapOutput{})
 }

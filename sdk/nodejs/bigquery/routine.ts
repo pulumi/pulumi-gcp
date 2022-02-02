@@ -159,24 +159,24 @@ export class Routine extends pulumi.CustomResource {
      */
     constructor(name: string, args: RoutineArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoutineArgs | RoutineState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoutineState | undefined;
-            inputs["arguments"] = state ? state.arguments : undefined;
-            inputs["creationTime"] = state ? state.creationTime : undefined;
-            inputs["datasetId"] = state ? state.datasetId : undefined;
-            inputs["definitionBody"] = state ? state.definitionBody : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["determinismLevel"] = state ? state.determinismLevel : undefined;
-            inputs["importedLibraries"] = state ? state.importedLibraries : undefined;
-            inputs["language"] = state ? state.language : undefined;
-            inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["returnTableType"] = state ? state.returnTableType : undefined;
-            inputs["returnType"] = state ? state.returnType : undefined;
-            inputs["routineId"] = state ? state.routineId : undefined;
-            inputs["routineType"] = state ? state.routineType : undefined;
+            resourceInputs["arguments"] = state ? state.arguments : undefined;
+            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
+            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
+            resourceInputs["definitionBody"] = state ? state.definitionBody : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["determinismLevel"] = state ? state.determinismLevel : undefined;
+            resourceInputs["importedLibraries"] = state ? state.importedLibraries : undefined;
+            resourceInputs["language"] = state ? state.language : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["returnTableType"] = state ? state.returnTableType : undefined;
+            resourceInputs["returnType"] = state ? state.returnType : undefined;
+            resourceInputs["routineId"] = state ? state.routineId : undefined;
+            resourceInputs["routineType"] = state ? state.routineType : undefined;
         } else {
             const args = argsOrState as RoutineArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
@@ -188,25 +188,23 @@ export class Routine extends pulumi.CustomResource {
             if ((!args || args.routineId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routineId'");
             }
-            inputs["arguments"] = args ? args.arguments : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["definitionBody"] = args ? args.definitionBody : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["determinismLevel"] = args ? args.determinismLevel : undefined;
-            inputs["importedLibraries"] = args ? args.importedLibraries : undefined;
-            inputs["language"] = args ? args.language : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["returnTableType"] = args ? args.returnTableType : undefined;
-            inputs["returnType"] = args ? args.returnType : undefined;
-            inputs["routineId"] = args ? args.routineId : undefined;
-            inputs["routineType"] = args ? args.routineType : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["arguments"] = args ? args.arguments : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["definitionBody"] = args ? args.definitionBody : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["determinismLevel"] = args ? args.determinismLevel : undefined;
+            resourceInputs["importedLibraries"] = args ? args.importedLibraries : undefined;
+            resourceInputs["language"] = args ? args.language : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["returnTableType"] = args ? args.returnTableType : undefined;
+            resourceInputs["returnType"] = args ? args.returnType : undefined;
+            resourceInputs["routineId"] = args ? args.routineId : undefined;
+            resourceInputs["routineType"] = args ? args.routineType : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Routine.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Routine.__pulumiType, name, resourceInputs, opts);
     }
 }
 

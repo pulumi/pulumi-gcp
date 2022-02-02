@@ -227,7 +227,7 @@ type RegionDiskResourcePolicyAttachmentInput interface {
 }
 
 func (*RegionDiskResourcePolicyAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskResourcePolicyAttachment)(nil))
+	return reflect.TypeOf((**RegionDiskResourcePolicyAttachment)(nil)).Elem()
 }
 
 func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmentOutput() RegionDiskResourcePolicyAttachmentOutput {
@@ -236,35 +236,6 @@ func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmen
 
 func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmentOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentOutput)
-}
-
-func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput {
-	return i.ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentPtrOutput)
-}
-
-type RegionDiskResourcePolicyAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput
-	ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput
-}
-
-type regionDiskResourcePolicyAttachmentPtrType RegionDiskResourcePolicyAttachmentArgs
-
-func (*regionDiskResourcePolicyAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskResourcePolicyAttachment)(nil))
-}
-
-func (i *regionDiskResourcePolicyAttachmentPtrType) ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput {
-	return i.ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *regionDiskResourcePolicyAttachmentPtrType) ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentPtrOutput)
 }
 
 // RegionDiskResourcePolicyAttachmentArrayInput is an input type that accepts RegionDiskResourcePolicyAttachmentArray and RegionDiskResourcePolicyAttachmentArrayOutput values.
@@ -320,7 +291,7 @@ func (i RegionDiskResourcePolicyAttachmentMap) ToRegionDiskResourcePolicyAttachm
 type RegionDiskResourcePolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskResourcePolicyAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskResourcePolicyAttachment)(nil))
+	return reflect.TypeOf((**RegionDiskResourcePolicyAttachment)(nil)).Elem()
 }
 
 func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentOutput() RegionDiskResourcePolicyAttachmentOutput {
@@ -331,44 +302,10 @@ func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAtta
 	return o
 }
 
-func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput {
-	return o.ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskResourcePolicyAttachment) *RegionDiskResourcePolicyAttachment {
-		return &v
-	}).(RegionDiskResourcePolicyAttachmentPtrOutput)
-}
-
-type RegionDiskResourcePolicyAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionDiskResourcePolicyAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionDiskResourcePolicyAttachment)(nil))
-}
-
-func (o RegionDiskResourcePolicyAttachmentPtrOutput) ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput {
-	return o
-}
-
-func (o RegionDiskResourcePolicyAttachmentPtrOutput) ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput {
-	return o
-}
-
-func (o RegionDiskResourcePolicyAttachmentPtrOutput) Elem() RegionDiskResourcePolicyAttachmentOutput {
-	return o.ApplyT(func(v *RegionDiskResourcePolicyAttachment) RegionDiskResourcePolicyAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret RegionDiskResourcePolicyAttachment
-		return ret
-	}).(RegionDiskResourcePolicyAttachmentOutput)
-}
-
 type RegionDiskResourcePolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskResourcePolicyAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionDiskResourcePolicyAttachment)(nil))
+	return reflect.TypeOf((*[]*RegionDiskResourcePolicyAttachment)(nil)).Elem()
 }
 
 func (o RegionDiskResourcePolicyAttachmentArrayOutput) ToRegionDiskResourcePolicyAttachmentArrayOutput() RegionDiskResourcePolicyAttachmentArrayOutput {
@@ -380,15 +317,15 @@ func (o RegionDiskResourcePolicyAttachmentArrayOutput) ToRegionDiskResourcePolic
 }
 
 func (o RegionDiskResourcePolicyAttachmentArrayOutput) Index(i pulumi.IntInput) RegionDiskResourcePolicyAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionDiskResourcePolicyAttachment {
-		return vs[0].([]RegionDiskResourcePolicyAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDiskResourcePolicyAttachment {
+		return vs[0].([]*RegionDiskResourcePolicyAttachment)[vs[1].(int)]
 	}).(RegionDiskResourcePolicyAttachmentOutput)
 }
 
 type RegionDiskResourcePolicyAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskResourcePolicyAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RegionDiskResourcePolicyAttachment)(nil))
+	return reflect.TypeOf((*map[string]*RegionDiskResourcePolicyAttachment)(nil)).Elem()
 }
 
 func (o RegionDiskResourcePolicyAttachmentMapOutput) ToRegionDiskResourcePolicyAttachmentMapOutput() RegionDiskResourcePolicyAttachmentMapOutput {
@@ -400,18 +337,16 @@ func (o RegionDiskResourcePolicyAttachmentMapOutput) ToRegionDiskResourcePolicyA
 }
 
 func (o RegionDiskResourcePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) RegionDiskResourcePolicyAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionDiskResourcePolicyAttachment {
-		return vs[0].(map[string]RegionDiskResourcePolicyAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RegionDiskResourcePolicyAttachment {
+		return vs[0].(map[string]*RegionDiskResourcePolicyAttachment)[vs[1].(string)]
 	}).(RegionDiskResourcePolicyAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskResourcePolicyAttachmentInput)(nil)).Elem(), &RegionDiskResourcePolicyAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskResourcePolicyAttachmentPtrInput)(nil)).Elem(), &RegionDiskResourcePolicyAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskResourcePolicyAttachmentArrayInput)(nil)).Elem(), RegionDiskResourcePolicyAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskResourcePolicyAttachmentMapInput)(nil)).Elem(), RegionDiskResourcePolicyAttachmentMap{})
 	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentOutput{})
-	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentMapOutput{})
 }

@@ -176,36 +176,34 @@ export class MachineImage extends pulumi.CustomResource {
      */
     constructor(name: string, args: MachineImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MachineImageArgs | MachineImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MachineImageState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["guestFlush"] = state ? state.guestFlush : undefined;
-            inputs["machineImageEncryptionKey"] = state ? state.machineImageEncryptionKey : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["selfLink"] = state ? state.selfLink : undefined;
-            inputs["sourceInstance"] = state ? state.sourceInstance : undefined;
-            inputs["storageLocations"] = state ? state.storageLocations : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["guestFlush"] = state ? state.guestFlush : undefined;
+            resourceInputs["machineImageEncryptionKey"] = state ? state.machineImageEncryptionKey : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sourceInstance"] = state ? state.sourceInstance : undefined;
+            resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
         } else {
             const args = argsOrState as MachineImageArgs | undefined;
             if ((!args || args.sourceInstance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceInstance'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["guestFlush"] = args ? args.guestFlush : undefined;
-            inputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["storageLocations"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["guestFlush"] = args ? args.guestFlush : undefined;
+            resourceInputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sourceInstance"] = args ? args.sourceInstance : undefined;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["storageLocations"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MachineImage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MachineImage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

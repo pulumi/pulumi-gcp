@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Sql
 {
@@ -40,7 +39,7 @@ namespace Pulumi.Gcp.Sql
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupRunResult> InvokeAsync(GetBackupRunArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupRunResult>("gcp:sql/getBackupRun:getBackupRun", args ?? new GetBackupRunArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupRunResult>("gcp:sql/getBackupRun:getBackupRun", args ?? new GetBackupRunArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Cloud SQL instance backup run.
@@ -70,7 +69,7 @@ namespace Pulumi.Gcp.Sql
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupRunResult> Invoke(GetBackupRunInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupRunResult>("gcp:sql/getBackupRun:getBackupRun", args ?? new GetBackupRunInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBackupRunResult>("gcp:sql/getBackupRun:getBackupRun", args ?? new GetBackupRunInvokeArgs(), options.WithDefaults());
     }
 
 

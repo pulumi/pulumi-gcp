@@ -188,21 +188,21 @@ export class Slo extends pulumi.CustomResource {
      */
     constructor(name: string, args: SloArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SloArgs | SloState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SloState | undefined;
-            inputs["basicSli"] = state ? state.basicSli : undefined;
-            inputs["calendarPeriod"] = state ? state.calendarPeriod : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["goal"] = state ? state.goal : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["requestBasedSli"] = state ? state.requestBasedSli : undefined;
-            inputs["rollingPeriodDays"] = state ? state.rollingPeriodDays : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["sloId"] = state ? state.sloId : undefined;
-            inputs["windowsBasedSli"] = state ? state.windowsBasedSli : undefined;
+            resourceInputs["basicSli"] = state ? state.basicSli : undefined;
+            resourceInputs["calendarPeriod"] = state ? state.calendarPeriod : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["goal"] = state ? state.goal : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["requestBasedSli"] = state ? state.requestBasedSli : undefined;
+            resourceInputs["rollingPeriodDays"] = state ? state.rollingPeriodDays : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["sloId"] = state ? state.sloId : undefined;
+            resourceInputs["windowsBasedSli"] = state ? state.windowsBasedSli : undefined;
         } else {
             const args = argsOrState as SloArgs | undefined;
             if ((!args || args.goal === undefined) && !opts.urn) {
@@ -211,22 +211,20 @@ export class Slo extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["basicSli"] = args ? args.basicSli : undefined;
-            inputs["calendarPeriod"] = args ? args.calendarPeriod : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["goal"] = args ? args.goal : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestBasedSli"] = args ? args.requestBasedSli : undefined;
-            inputs["rollingPeriodDays"] = args ? args.rollingPeriodDays : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["sloId"] = args ? args.sloId : undefined;
-            inputs["windowsBasedSli"] = args ? args.windowsBasedSli : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["basicSli"] = args ? args.basicSli : undefined;
+            resourceInputs["calendarPeriod"] = args ? args.calendarPeriod : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["goal"] = args ? args.goal : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestBasedSli"] = args ? args.requestBasedSli : undefined;
+            resourceInputs["rollingPeriodDays"] = args ? args.rollingPeriodDays : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["sloId"] = args ? args.sloId : undefined;
+            resourceInputs["windowsBasedSli"] = args ? args.windowsBasedSli : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Slo.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Slo.__pulumiType, name, resourceInputs, opts);
     }
 }
 

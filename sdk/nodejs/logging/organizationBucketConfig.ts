@@ -102,17 +102,17 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrganizationBucketConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationBucketConfigArgs | OrganizationBucketConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationBucketConfigState | undefined;
-            inputs["bucketId"] = state ? state.bucketId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["organization"] = state ? state.organization : undefined;
-            inputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["bucketId"] = state ? state.bucketId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["organization"] = state ? state.organization : undefined;
+            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
         } else {
             const args = argsOrState as OrganizationBucketConfigArgs | undefined;
             if ((!args || args.bucketId === undefined) && !opts.urn) {
@@ -124,18 +124,16 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
             if ((!args || args.organization === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            inputs["bucketId"] = args ? args.bucketId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["organization"] = args ? args.organization : undefined;
-            inputs["retentionDays"] = args ? args.retentionDays : undefined;
-            inputs["lifecycleState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["bucketId"] = args ? args.bucketId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["organization"] = args ? args.organization : undefined;
+            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OrganizationBucketConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OrganizationBucketConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

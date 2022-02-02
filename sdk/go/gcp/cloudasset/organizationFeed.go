@@ -272,7 +272,7 @@ type OrganizationFeedInput interface {
 }
 
 func (*OrganizationFeed) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationFeed)(nil))
+	return reflect.TypeOf((**OrganizationFeed)(nil)).Elem()
 }
 
 func (i *OrganizationFeed) ToOrganizationFeedOutput() OrganizationFeedOutput {
@@ -281,35 +281,6 @@ func (i *OrganizationFeed) ToOrganizationFeedOutput() OrganizationFeedOutput {
 
 func (i *OrganizationFeed) ToOrganizationFeedOutputWithContext(ctx context.Context) OrganizationFeedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedOutput)
-}
-
-func (i *OrganizationFeed) ToOrganizationFeedPtrOutput() OrganizationFeedPtrOutput {
-	return i.ToOrganizationFeedPtrOutputWithContext(context.Background())
-}
-
-func (i *OrganizationFeed) ToOrganizationFeedPtrOutputWithContext(ctx context.Context) OrganizationFeedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedPtrOutput)
-}
-
-type OrganizationFeedPtrInput interface {
-	pulumi.Input
-
-	ToOrganizationFeedPtrOutput() OrganizationFeedPtrOutput
-	ToOrganizationFeedPtrOutputWithContext(ctx context.Context) OrganizationFeedPtrOutput
-}
-
-type organizationFeedPtrType OrganizationFeedArgs
-
-func (*organizationFeedPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationFeed)(nil))
-}
-
-func (i *organizationFeedPtrType) ToOrganizationFeedPtrOutput() OrganizationFeedPtrOutput {
-	return i.ToOrganizationFeedPtrOutputWithContext(context.Background())
-}
-
-func (i *organizationFeedPtrType) ToOrganizationFeedPtrOutputWithContext(ctx context.Context) OrganizationFeedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedPtrOutput)
 }
 
 // OrganizationFeedArrayInput is an input type that accepts OrganizationFeedArray and OrganizationFeedArrayOutput values.
@@ -365,7 +336,7 @@ func (i OrganizationFeedMap) ToOrganizationFeedMapOutputWithContext(ctx context.
 type OrganizationFeedOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationFeed)(nil))
+	return reflect.TypeOf((**OrganizationFeed)(nil)).Elem()
 }
 
 func (o OrganizationFeedOutput) ToOrganizationFeedOutput() OrganizationFeedOutput {
@@ -376,44 +347,10 @@ func (o OrganizationFeedOutput) ToOrganizationFeedOutputWithContext(ctx context.
 	return o
 }
 
-func (o OrganizationFeedOutput) ToOrganizationFeedPtrOutput() OrganizationFeedPtrOutput {
-	return o.ToOrganizationFeedPtrOutputWithContext(context.Background())
-}
-
-func (o OrganizationFeedOutput) ToOrganizationFeedPtrOutputWithContext(ctx context.Context) OrganizationFeedPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationFeed) *OrganizationFeed {
-		return &v
-	}).(OrganizationFeedPtrOutput)
-}
-
-type OrganizationFeedPtrOutput struct{ *pulumi.OutputState }
-
-func (OrganizationFeedPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrganizationFeed)(nil))
-}
-
-func (o OrganizationFeedPtrOutput) ToOrganizationFeedPtrOutput() OrganizationFeedPtrOutput {
-	return o
-}
-
-func (o OrganizationFeedPtrOutput) ToOrganizationFeedPtrOutputWithContext(ctx context.Context) OrganizationFeedPtrOutput {
-	return o
-}
-
-func (o OrganizationFeedPtrOutput) Elem() OrganizationFeedOutput {
-	return o.ApplyT(func(v *OrganizationFeed) OrganizationFeed {
-		if v != nil {
-			return *v
-		}
-		var ret OrganizationFeed
-		return ret
-	}).(OrganizationFeedOutput)
-}
-
 type OrganizationFeedArrayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OrganizationFeed)(nil))
+	return reflect.TypeOf((*[]*OrganizationFeed)(nil)).Elem()
 }
 
 func (o OrganizationFeedArrayOutput) ToOrganizationFeedArrayOutput() OrganizationFeedArrayOutput {
@@ -425,15 +362,15 @@ func (o OrganizationFeedArrayOutput) ToOrganizationFeedArrayOutputWithContext(ct
 }
 
 func (o OrganizationFeedArrayOutput) Index(i pulumi.IntInput) OrganizationFeedOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationFeed {
-		return vs[0].([]OrganizationFeed)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationFeed {
+		return vs[0].([]*OrganizationFeed)[vs[1].(int)]
 	}).(OrganizationFeedOutput)
 }
 
 type OrganizationFeedMapOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OrganizationFeed)(nil))
+	return reflect.TypeOf((*map[string]*OrganizationFeed)(nil)).Elem()
 }
 
 func (o OrganizationFeedMapOutput) ToOrganizationFeedMapOutput() OrganizationFeedMapOutput {
@@ -445,18 +382,16 @@ func (o OrganizationFeedMapOutput) ToOrganizationFeedMapOutputWithContext(ctx co
 }
 
 func (o OrganizationFeedMapOutput) MapIndex(k pulumi.StringInput) OrganizationFeedOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrganizationFeed {
-		return vs[0].(map[string]OrganizationFeed)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OrganizationFeed {
+		return vs[0].(map[string]*OrganizationFeed)[vs[1].(string)]
 	}).(OrganizationFeedOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedInput)(nil)).Elem(), &OrganizationFeed{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedPtrInput)(nil)).Elem(), &OrganizationFeed{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedArrayInput)(nil)).Elem(), OrganizationFeedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationFeedMapInput)(nil)).Elem(), OrganizationFeedMap{})
 	pulumi.RegisterOutputType(OrganizationFeedOutput{})
-	pulumi.RegisterOutputType(OrganizationFeedPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationFeedMapOutput{})
 }

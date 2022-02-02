@@ -173,25 +173,25 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["discoveryEndpoint"] = state ? state.discoveryEndpoint : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["memcacheFullVersion"] = state ? state.memcacheFullVersion : undefined;
-            inputs["memcacheNodes"] = state ? state.memcacheNodes : undefined;
-            inputs["memcacheParameters"] = state ? state.memcacheParameters : undefined;
-            inputs["memcacheVersion"] = state ? state.memcacheVersion : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            inputs["nodeCount"] = state ? state.nodeCount : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["zones"] = state ? state.zones : undefined;
+            resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["discoveryEndpoint"] = state ? state.discoveryEndpoint : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["memcacheFullVersion"] = state ? state.memcacheFullVersion : undefined;
+            resourceInputs["memcacheNodes"] = state ? state.memcacheNodes : undefined;
+            resourceInputs["memcacheParameters"] = state ? state.memcacheParameters : undefined;
+            resourceInputs["memcacheVersion"] = state ? state.memcacheVersion : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
+            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.nodeConfig === undefined) && !opts.urn) {
@@ -200,26 +200,24 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.nodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["memcacheParameters"] = args ? args.memcacheParameters : undefined;
-            inputs["memcacheVersion"] = args ? args.memcacheVersion : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            inputs["nodeCount"] = args ? args.nodeCount : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["zones"] = args ? args.zones : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["discoveryEndpoint"] = undefined /*out*/;
-            inputs["memcacheFullVersion"] = undefined /*out*/;
-            inputs["memcacheNodes"] = undefined /*out*/;
+            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["memcacheParameters"] = args ? args.memcacheParameters : undefined;
+            resourceInputs["memcacheVersion"] = args ? args.memcacheVersion : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
+            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["discoveryEndpoint"] = undefined /*out*/;
+            resourceInputs["memcacheFullVersion"] = undefined /*out*/;
+            resourceInputs["memcacheNodes"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

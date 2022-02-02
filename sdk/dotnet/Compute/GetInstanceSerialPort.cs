@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Gcp.Compute
 {
@@ -102,7 +101,7 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             var name = values.Item1;
         ///             var zone = values.Item2;
-        ///             return Gcp.Compute.GetInstanceSerialPort.InvokeAsync(new Gcp.Compute.GetInstanceSerialPortArgs
+        ///             return Gcp.Compute.GetInstanceSerialPort.Invoke(new Gcp.Compute.GetInstanceSerialPortInvokeArgs
         ///             {
         ///                 Instance = name,
         ///                 Zone = zone,
@@ -120,7 +119,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceSerialPortResult> InvokeAsync(GetInstanceSerialPortArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the serial port output from a Compute Instance. For more information see
@@ -212,7 +211,7 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             var name = values.Item1;
         ///             var zone = values.Item2;
-        ///             return Gcp.Compute.GetInstanceSerialPort.InvokeAsync(new Gcp.Compute.GetInstanceSerialPortArgs
+        ///             return Gcp.Compute.GetInstanceSerialPort.Invoke(new Gcp.Compute.GetInstanceSerialPortInvokeArgs
         ///             {
         ///                 Instance = name,
         ///                 Zone = zone,
@@ -230,7 +229,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceSerialPortResult> Invoke(GetInstanceSerialPortInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortInvokeArgs(), options.WithDefaults());
     }
 
 

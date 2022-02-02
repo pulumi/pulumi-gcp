@@ -105,16 +105,16 @@ export class Lien extends pulumi.CustomResource {
      */
     constructor(name: string, args: LienArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LienArgs | LienState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LienState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["origin"] = state ? state.origin : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["reason"] = state ? state.reason : undefined;
-            inputs["restrictions"] = state ? state.restrictions : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["origin"] = state ? state.origin : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["reason"] = state ? state.reason : undefined;
+            resourceInputs["restrictions"] = state ? state.restrictions : undefined;
         } else {
             const args = argsOrState as LienArgs | undefined;
             if ((!args || args.origin === undefined) && !opts.urn) {
@@ -129,17 +129,15 @@ export class Lien extends pulumi.CustomResource {
             if ((!args || args.restrictions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'restrictions'");
             }
-            inputs["origin"] = args ? args.origin : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["reason"] = args ? args.reason : undefined;
-            inputs["restrictions"] = args ? args.restrictions : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["reason"] = args ? args.reason : undefined;
+            resourceInputs["restrictions"] = args ? args.restrictions : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Lien.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Lien.__pulumiType, name, resourceInputs, opts);
     }
 }
 

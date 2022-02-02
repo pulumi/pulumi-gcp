@@ -404,7 +404,7 @@ type AppEngineServiceIamBindingInput interface {
 }
 
 func (*AppEngineServiceIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineServiceIamBinding)(nil))
+	return reflect.TypeOf((**AppEngineServiceIamBinding)(nil)).Elem()
 }
 
 func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutput() AppEngineServiceIamBindingOutput {
@@ -413,35 +413,6 @@ func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutput() AppEng
 
 func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutputWithContext(ctx context.Context) AppEngineServiceIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingOutput)
-}
-
-func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput {
-	return i.ToAppEngineServiceIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingPtrOutput)
-}
-
-type AppEngineServiceIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput
-	ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput
-}
-
-type appEngineServiceIamBindingPtrType AppEngineServiceIamBindingArgs
-
-func (*appEngineServiceIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineServiceIamBinding)(nil))
-}
-
-func (i *appEngineServiceIamBindingPtrType) ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput {
-	return i.ToAppEngineServiceIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *appEngineServiceIamBindingPtrType) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingPtrOutput)
 }
 
 // AppEngineServiceIamBindingArrayInput is an input type that accepts AppEngineServiceIamBindingArray and AppEngineServiceIamBindingArrayOutput values.
@@ -497,7 +468,7 @@ func (i AppEngineServiceIamBindingMap) ToAppEngineServiceIamBindingMapOutputWith
 type AppEngineServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineServiceIamBinding)(nil))
+	return reflect.TypeOf((**AppEngineServiceIamBinding)(nil)).Elem()
 }
 
 func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingOutput() AppEngineServiceIamBindingOutput {
@@ -508,44 +479,10 @@ func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingOutputWith
 	return o
 }
 
-func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput {
-	return o.ToAppEngineServiceIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineServiceIamBinding) *AppEngineServiceIamBinding {
-		return &v
-	}).(AppEngineServiceIamBindingPtrOutput)
-}
-
-type AppEngineServiceIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (AppEngineServiceIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineServiceIamBinding)(nil))
-}
-
-func (o AppEngineServiceIamBindingPtrOutput) ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput {
-	return o
-}
-
-func (o AppEngineServiceIamBindingPtrOutput) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
-	return o
-}
-
-func (o AppEngineServiceIamBindingPtrOutput) Elem() AppEngineServiceIamBindingOutput {
-	return o.ApplyT(func(v *AppEngineServiceIamBinding) AppEngineServiceIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret AppEngineServiceIamBinding
-		return ret
-	}).(AppEngineServiceIamBindingOutput)
-}
-
 type AppEngineServiceIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppEngineServiceIamBinding)(nil))
+	return reflect.TypeOf((*[]*AppEngineServiceIamBinding)(nil)).Elem()
 }
 
 func (o AppEngineServiceIamBindingArrayOutput) ToAppEngineServiceIamBindingArrayOutput() AppEngineServiceIamBindingArrayOutput {
@@ -557,15 +494,15 @@ func (o AppEngineServiceIamBindingArrayOutput) ToAppEngineServiceIamBindingArray
 }
 
 func (o AppEngineServiceIamBindingArrayOutput) Index(i pulumi.IntInput) AppEngineServiceIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppEngineServiceIamBinding {
-		return vs[0].([]AppEngineServiceIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppEngineServiceIamBinding {
+		return vs[0].([]*AppEngineServiceIamBinding)[vs[1].(int)]
 	}).(AppEngineServiceIamBindingOutput)
 }
 
 type AppEngineServiceIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AppEngineServiceIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*AppEngineServiceIamBinding)(nil)).Elem()
 }
 
 func (o AppEngineServiceIamBindingMapOutput) ToAppEngineServiceIamBindingMapOutput() AppEngineServiceIamBindingMapOutput {
@@ -577,18 +514,16 @@ func (o AppEngineServiceIamBindingMapOutput) ToAppEngineServiceIamBindingMapOutp
 }
 
 func (o AppEngineServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) AppEngineServiceIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppEngineServiceIamBinding {
-		return vs[0].(map[string]AppEngineServiceIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AppEngineServiceIamBinding {
+		return vs[0].(map[string]*AppEngineServiceIamBinding)[vs[1].(string)]
 	}).(AppEngineServiceIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamBindingInput)(nil)).Elem(), &AppEngineServiceIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamBindingPtrInput)(nil)).Elem(), &AppEngineServiceIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamBindingArrayInput)(nil)).Elem(), AppEngineServiceIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineServiceIamBindingMapInput)(nil)).Elem(), AppEngineServiceIamBindingMap{})
 	pulumi.RegisterOutputType(AppEngineServiceIamBindingOutput{})
-	pulumi.RegisterOutputType(AppEngineServiceIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(AppEngineServiceIamBindingMapOutput{})
 }

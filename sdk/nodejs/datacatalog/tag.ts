@@ -360,16 +360,16 @@ export class Tag extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagArgs | TagState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
-            inputs["column"] = state ? state.column : undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
-            inputs["template"] = state ? state.template : undefined;
-            inputs["templateDisplayname"] = state ? state.templateDisplayname : undefined;
+            resourceInputs["column"] = state ? state.column : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["templateDisplayname"] = state ? state.templateDisplayname : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
             if ((!args || args.fields === undefined) && !opts.urn) {
@@ -378,17 +378,15 @@ export class Tag extends pulumi.CustomResource {
             if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
-            inputs["column"] = args ? args.column : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["template"] = args ? args.template : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["templateDisplayname"] = undefined /*out*/;
+            resourceInputs["column"] = args ? args.column : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["templateDisplayname"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Tag.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Tag.__pulumiType, name, resourceInputs, opts);
     }
 }
 

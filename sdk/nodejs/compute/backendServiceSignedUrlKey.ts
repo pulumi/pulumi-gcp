@@ -128,14 +128,14 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackendServiceSignedUrlKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendServiceSignedUrlKeyArgs | BackendServiceSignedUrlKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendServiceSignedUrlKeyState | undefined;
-            inputs["backendService"] = state ? state.backendService : undefined;
-            inputs["keyValue"] = state ? state.keyValue : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["backendService"] = state ? state.backendService : undefined;
+            resourceInputs["keyValue"] = state ? state.keyValue : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as BackendServiceSignedUrlKeyArgs | undefined;
             if ((!args || args.backendService === undefined) && !opts.urn) {
@@ -144,15 +144,13 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
             if ((!args || args.keyValue === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyValue'");
             }
-            inputs["backendService"] = args ? args.backendService : undefined;
-            inputs["keyValue"] = args ? args.keyValue : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["backendService"] = args ? args.backendService : undefined;
+            resourceInputs["keyValue"] = args ? args.keyValue : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BackendServiceSignedUrlKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BackendServiceSignedUrlKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

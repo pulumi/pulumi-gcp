@@ -286,7 +286,7 @@ type CaPoolIamBindingInput interface {
 }
 
 func (*CaPoolIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPoolIamBinding)(nil))
+	return reflect.TypeOf((**CaPoolIamBinding)(nil)).Elem()
 }
 
 func (i *CaPoolIamBinding) ToCaPoolIamBindingOutput() CaPoolIamBindingOutput {
@@ -295,35 +295,6 @@ func (i *CaPoolIamBinding) ToCaPoolIamBindingOutput() CaPoolIamBindingOutput {
 
 func (i *CaPoolIamBinding) ToCaPoolIamBindingOutputWithContext(ctx context.Context) CaPoolIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamBindingOutput)
-}
-
-func (i *CaPoolIamBinding) ToCaPoolIamBindingPtrOutput() CaPoolIamBindingPtrOutput {
-	return i.ToCaPoolIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *CaPoolIamBinding) ToCaPoolIamBindingPtrOutputWithContext(ctx context.Context) CaPoolIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamBindingPtrOutput)
-}
-
-type CaPoolIamBindingPtrInput interface {
-	pulumi.Input
-
-	ToCaPoolIamBindingPtrOutput() CaPoolIamBindingPtrOutput
-	ToCaPoolIamBindingPtrOutputWithContext(ctx context.Context) CaPoolIamBindingPtrOutput
-}
-
-type caPoolIamBindingPtrType CaPoolIamBindingArgs
-
-func (*caPoolIamBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaPoolIamBinding)(nil))
-}
-
-func (i *caPoolIamBindingPtrType) ToCaPoolIamBindingPtrOutput() CaPoolIamBindingPtrOutput {
-	return i.ToCaPoolIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *caPoolIamBindingPtrType) ToCaPoolIamBindingPtrOutputWithContext(ctx context.Context) CaPoolIamBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIamBindingPtrOutput)
 }
 
 // CaPoolIamBindingArrayInput is an input type that accepts CaPoolIamBindingArray and CaPoolIamBindingArrayOutput values.
@@ -379,7 +350,7 @@ func (i CaPoolIamBindingMap) ToCaPoolIamBindingMapOutputWithContext(ctx context.
 type CaPoolIamBindingOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPoolIamBinding)(nil))
+	return reflect.TypeOf((**CaPoolIamBinding)(nil)).Elem()
 }
 
 func (o CaPoolIamBindingOutput) ToCaPoolIamBindingOutput() CaPoolIamBindingOutput {
@@ -390,44 +361,10 @@ func (o CaPoolIamBindingOutput) ToCaPoolIamBindingOutputWithContext(ctx context.
 	return o
 }
 
-func (o CaPoolIamBindingOutput) ToCaPoolIamBindingPtrOutput() CaPoolIamBindingPtrOutput {
-	return o.ToCaPoolIamBindingPtrOutputWithContext(context.Background())
-}
-
-func (o CaPoolIamBindingOutput) ToCaPoolIamBindingPtrOutputWithContext(ctx context.Context) CaPoolIamBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIamBinding) *CaPoolIamBinding {
-		return &v
-	}).(CaPoolIamBindingPtrOutput)
-}
-
-type CaPoolIamBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (CaPoolIamBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CaPoolIamBinding)(nil))
-}
-
-func (o CaPoolIamBindingPtrOutput) ToCaPoolIamBindingPtrOutput() CaPoolIamBindingPtrOutput {
-	return o
-}
-
-func (o CaPoolIamBindingPtrOutput) ToCaPoolIamBindingPtrOutputWithContext(ctx context.Context) CaPoolIamBindingPtrOutput {
-	return o
-}
-
-func (o CaPoolIamBindingPtrOutput) Elem() CaPoolIamBindingOutput {
-	return o.ApplyT(func(v *CaPoolIamBinding) CaPoolIamBinding {
-		if v != nil {
-			return *v
-		}
-		var ret CaPoolIamBinding
-		return ret
-	}).(CaPoolIamBindingOutput)
-}
-
 type CaPoolIamBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CaPoolIamBinding)(nil))
+	return reflect.TypeOf((*[]*CaPoolIamBinding)(nil)).Elem()
 }
 
 func (o CaPoolIamBindingArrayOutput) ToCaPoolIamBindingArrayOutput() CaPoolIamBindingArrayOutput {
@@ -439,15 +376,15 @@ func (o CaPoolIamBindingArrayOutput) ToCaPoolIamBindingArrayOutputWithContext(ct
 }
 
 func (o CaPoolIamBindingArrayOutput) Index(i pulumi.IntInput) CaPoolIamBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CaPoolIamBinding {
-		return vs[0].([]CaPoolIamBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CaPoolIamBinding {
+		return vs[0].([]*CaPoolIamBinding)[vs[1].(int)]
 	}).(CaPoolIamBindingOutput)
 }
 
 type CaPoolIamBindingMapOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CaPoolIamBinding)(nil))
+	return reflect.TypeOf((*map[string]*CaPoolIamBinding)(nil)).Elem()
 }
 
 func (o CaPoolIamBindingMapOutput) ToCaPoolIamBindingMapOutput() CaPoolIamBindingMapOutput {
@@ -459,18 +396,16 @@ func (o CaPoolIamBindingMapOutput) ToCaPoolIamBindingMapOutputWithContext(ctx co
 }
 
 func (o CaPoolIamBindingMapOutput) MapIndex(k pulumi.StringInput) CaPoolIamBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CaPoolIamBinding {
-		return vs[0].(map[string]CaPoolIamBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CaPoolIamBinding {
+		return vs[0].(map[string]*CaPoolIamBinding)[vs[1].(string)]
 	}).(CaPoolIamBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingInput)(nil)).Elem(), &CaPoolIamBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingPtrInput)(nil)).Elem(), &CaPoolIamBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingArrayInput)(nil)).Elem(), CaPoolIamBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingMapInput)(nil)).Elem(), CaPoolIamBindingMap{})
 	pulumi.RegisterOutputType(CaPoolIamBindingOutput{})
-	pulumi.RegisterOutputType(CaPoolIamBindingPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingArrayOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingMapOutput{})
 }

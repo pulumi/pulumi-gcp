@@ -97,14 +97,14 @@ export class Connection extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["peering"] = state ? state.peering : undefined;
-            inputs["reservedPeeringRanges"] = state ? state.reservedPeeringRanges : undefined;
-            inputs["service"] = state ? state.service : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["peering"] = state ? state.peering : undefined;
+            resourceInputs["reservedPeeringRanges"] = state ? state.reservedPeeringRanges : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
@@ -116,15 +116,13 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["network"] = args ? args.network : undefined;
-            inputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["peering"] = undefined /*out*/;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["peering"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Connection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

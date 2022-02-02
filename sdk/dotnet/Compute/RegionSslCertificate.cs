@@ -47,6 +47,48 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Region Ssl Certificate Random Provider
+    /// 
+    /// ```csharp
+    /// using System;
+    /// using System.IO;
+    /// using System.Security.Cryptography;
+    /// using System.Text;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    /// 	private static string ComputeFileBase64Sha256(string path) {
+    /// 		var fileData = Encoding.UTF8.GetBytes(File.ReadAllText(path));
+    /// 		var hashData = SHA256.Create().ComputeHash(fileData);
+    /// 		return Convert.ToBase64String(hashData);
+    /// 	}
+    /// 
+    ///     public MyStack()
+    ///     {
+    ///         // You may also want to control name generation explicitly:
+    ///         var @default = new Gcp.Compute.RegionSslCertificate("default", new Gcp.Compute.RegionSslCertificateArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///         });
+    ///         var certificate = new Random.RandomId("certificate", new Random.RandomIdArgs
+    ///         {
+    ///             ByteLength = 4,
+    ///             Prefix = "my-certificate-",
+    ///             Keepers = 
+    ///             {
+    ///                 { "private_key", ComputeFileBase64Sha256("path/to/private.key") },
+    ///                 { "certificate", ComputeFileBase64Sha256("path/to/certificate.crt") },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Region Ssl Certificate Target Https Proxies
     /// 
     /// ```csharp

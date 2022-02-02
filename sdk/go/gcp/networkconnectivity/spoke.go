@@ -298,7 +298,7 @@ type SpokeInput interface {
 }
 
 func (*Spoke) ElementType() reflect.Type {
-	return reflect.TypeOf((*Spoke)(nil))
+	return reflect.TypeOf((**Spoke)(nil)).Elem()
 }
 
 func (i *Spoke) ToSpokeOutput() SpokeOutput {
@@ -307,35 +307,6 @@ func (i *Spoke) ToSpokeOutput() SpokeOutput {
 
 func (i *Spoke) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeOutput)
-}
-
-func (i *Spoke) ToSpokePtrOutput() SpokePtrOutput {
-	return i.ToSpokePtrOutputWithContext(context.Background())
-}
-
-func (i *Spoke) ToSpokePtrOutputWithContext(ctx context.Context) SpokePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpokePtrOutput)
-}
-
-type SpokePtrInput interface {
-	pulumi.Input
-
-	ToSpokePtrOutput() SpokePtrOutput
-	ToSpokePtrOutputWithContext(ctx context.Context) SpokePtrOutput
-}
-
-type spokePtrType SpokeArgs
-
-func (*spokePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Spoke)(nil))
-}
-
-func (i *spokePtrType) ToSpokePtrOutput() SpokePtrOutput {
-	return i.ToSpokePtrOutputWithContext(context.Background())
-}
-
-func (i *spokePtrType) ToSpokePtrOutputWithContext(ctx context.Context) SpokePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpokePtrOutput)
 }
 
 // SpokeArrayInput is an input type that accepts SpokeArray and SpokeArrayOutput values.
@@ -391,7 +362,7 @@ func (i SpokeMap) ToSpokeMapOutputWithContext(ctx context.Context) SpokeMapOutpu
 type SpokeOutput struct{ *pulumi.OutputState }
 
 func (SpokeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Spoke)(nil))
+	return reflect.TypeOf((**Spoke)(nil)).Elem()
 }
 
 func (o SpokeOutput) ToSpokeOutput() SpokeOutput {
@@ -402,44 +373,10 @@ func (o SpokeOutput) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return o
 }
 
-func (o SpokeOutput) ToSpokePtrOutput() SpokePtrOutput {
-	return o.ToSpokePtrOutputWithContext(context.Background())
-}
-
-func (o SpokeOutput) ToSpokePtrOutputWithContext(ctx context.Context) SpokePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Spoke) *Spoke {
-		return &v
-	}).(SpokePtrOutput)
-}
-
-type SpokePtrOutput struct{ *pulumi.OutputState }
-
-func (SpokePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Spoke)(nil))
-}
-
-func (o SpokePtrOutput) ToSpokePtrOutput() SpokePtrOutput {
-	return o
-}
-
-func (o SpokePtrOutput) ToSpokePtrOutputWithContext(ctx context.Context) SpokePtrOutput {
-	return o
-}
-
-func (o SpokePtrOutput) Elem() SpokeOutput {
-	return o.ApplyT(func(v *Spoke) Spoke {
-		if v != nil {
-			return *v
-		}
-		var ret Spoke
-		return ret
-	}).(SpokeOutput)
-}
-
 type SpokeArrayOutput struct{ *pulumi.OutputState }
 
 func (SpokeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Spoke)(nil))
+	return reflect.TypeOf((*[]*Spoke)(nil)).Elem()
 }
 
 func (o SpokeArrayOutput) ToSpokeArrayOutput() SpokeArrayOutput {
@@ -451,15 +388,15 @@ func (o SpokeArrayOutput) ToSpokeArrayOutputWithContext(ctx context.Context) Spo
 }
 
 func (o SpokeArrayOutput) Index(i pulumi.IntInput) SpokeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Spoke {
-		return vs[0].([]Spoke)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Spoke {
+		return vs[0].([]*Spoke)[vs[1].(int)]
 	}).(SpokeOutput)
 }
 
 type SpokeMapOutput struct{ *pulumi.OutputState }
 
 func (SpokeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Spoke)(nil))
+	return reflect.TypeOf((*map[string]*Spoke)(nil)).Elem()
 }
 
 func (o SpokeMapOutput) ToSpokeMapOutput() SpokeMapOutput {
@@ -471,18 +408,16 @@ func (o SpokeMapOutput) ToSpokeMapOutputWithContext(ctx context.Context) SpokeMa
 }
 
 func (o SpokeMapOutput) MapIndex(k pulumi.StringInput) SpokeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Spoke {
-		return vs[0].(map[string]Spoke)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Spoke {
+		return vs[0].(map[string]*Spoke)[vs[1].(string)]
 	}).(SpokeOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeInput)(nil)).Elem(), &Spoke{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SpokePtrInput)(nil)).Elem(), &Spoke{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeArrayInput)(nil)).Elem(), SpokeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeMapInput)(nil)).Elem(), SpokeMap{})
 	pulumi.RegisterOutputType(SpokeOutput{})
-	pulumi.RegisterOutputType(SpokePtrOutput{})
 	pulumi.RegisterOutputType(SpokeArrayOutput{})
 	pulumi.RegisterOutputType(SpokeMapOutput{})
 }

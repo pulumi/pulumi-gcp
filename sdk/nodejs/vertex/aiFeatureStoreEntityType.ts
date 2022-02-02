@@ -84,34 +84,32 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
      */
     constructor(name: string, args: AiFeatureStoreEntityTypeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AiFeatureStoreEntityTypeArgs | AiFeatureStoreEntityTypeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreEntityTypeState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["featurestore"] = state ? state.featurestore : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["featurestore"] = state ? state.featurestore : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiFeatureStoreEntityTypeArgs | undefined;
             if ((!args || args.featurestore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'featurestore'");
             }
-            inputs["featurestore"] = args ? args.featurestore : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["featurestore"] = args ? args.featurestore : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AiFeatureStoreEntityType.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AiFeatureStoreEntityType.__pulumiType, name, resourceInputs, opts);
     }
 }
 
