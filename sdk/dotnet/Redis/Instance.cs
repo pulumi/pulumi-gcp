@@ -66,6 +66,23 @@ namespace Pulumi.Gcp.Redis
     ///                 { "my_key", "my_val" },
     ///                 { "other_key", "other_val" },
     ///             },
+    ///             MaintenancePolicy = new Gcp.Redis.Inputs.InstanceMaintenancePolicyArgs
+    ///             {
+    ///                 WeeklyMaintenanceWindows = 
+    ///                 {
+    ///                     new Gcp.Redis.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                     {
+    ///                         Day = "TUESDAY",
+    ///                         StartTime = new Gcp.Redis.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                         {
+    ///                             Hours = 0,
+    ///                             Minutes = 30,
+    ///                             Seconds = 0,
+    ///                             Nanos = 0,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -225,7 +242,10 @@ namespace Pulumi.Gcp.Redis
         public Output<string?> ConnectMode { get; private set; } = null!;
 
         /// <summary>
-        /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// -
+        /// Output only. The time when the policy was created.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -265,6 +285,20 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("locationId")]
         public Output<string> LocationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.InstanceMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Upcoming maintenance schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenanceSchedule")]
+        public Output<Outputs.InstanceMaintenanceSchedule?> MaintenanceSchedule { get; private set; } = null!;
 
         /// <summary>
         /// Redis memory size in GiB.
@@ -503,6 +537,20 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? LocationId { get; set; }
 
         /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// Upcoming maintenance schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenanceSchedule")]
+        public Input<Inputs.InstanceMaintenanceScheduleArgs>? MaintenanceSchedule { get; set; }
+
+        /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
         [Input("memorySizeGb", required: true)]
@@ -643,7 +691,10 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? ConnectMode { get; set; }
 
         /// <summary>
-        /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// -
+        /// Output only. The time when the policy was created.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -689,6 +740,20 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("locationId")]
         public Input<string>? LocationId { get; set; }
+
+        /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// Upcoming maintenance schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenanceSchedule")]
+        public Input<Inputs.InstanceMaintenanceScheduleGetArgs>? MaintenanceSchedule { get; set; }
 
         /// <summary>
         /// Redis memory size in GiB.

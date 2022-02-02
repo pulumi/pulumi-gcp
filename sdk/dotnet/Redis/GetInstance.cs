@@ -163,6 +163,8 @@ namespace Pulumi.Gcp.Redis
         public readonly string Id;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string LocationId;
+        public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> MaintenancePolicies;
+        public readonly ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> MaintenanceSchedules;
         public readonly int MemorySizeGb;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetInstanceNodeResult> Nodes;
@@ -206,6 +208,10 @@ namespace Pulumi.Gcp.Redis
             ImmutableDictionary<string, string> labels,
 
             string locationId,
+
+            ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> maintenancePolicies,
+
+            ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> maintenanceSchedules,
 
             int memorySizeGb,
 
@@ -253,6 +259,8 @@ namespace Pulumi.Gcp.Redis
             Id = id;
             Labels = labels;
             LocationId = locationId;
+            MaintenancePolicies = maintenancePolicies;
+            MaintenanceSchedules = maintenanceSchedules;
             MemorySizeGb = memorySizeGb;
             Name = name;
             Nodes = nodes;

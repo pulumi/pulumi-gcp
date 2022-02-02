@@ -1074,10 +1074,12 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "awsAccessKey":
-            suggest = "aws_access_key"
-        elif key == "bucketName":
+        if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "awsAccessKey":
+            suggest = "aws_access_key"
+        elif key == "roleArn":
+            suggest = "role_arn"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAwsS3DataSource. Access the value via the '{suggest}' property getter instead.")
@@ -1091,22 +1093,19 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 aws_access_key: 'outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey',
-                 bucket_name: str):
+                 bucket_name: str,
+                 aws_access_key: Optional['outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey'] = None,
+                 role_arn: Optional[str] = None):
         """
-        :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs' aws_access_key: AWS credentials block.
         :param str bucket_name: S3 Bucket name.
+        :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs' aws_access_key: AWS credentials block.
+        :param str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
-        pulumi.set(__self__, "aws_access_key", aws_access_key)
         pulumi.set(__self__, "bucket_name", bucket_name)
-
-    @property
-    @pulumi.getter(name="awsAccessKey")
-    def aws_access_key(self) -> 'outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey':
-        """
-        AWS credentials block.
-        """
-        return pulumi.get(self, "aws_access_key")
+        if aws_access_key is not None:
+            pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -1115,6 +1114,22 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         S3 Bucket name.
         """
         return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="awsAccessKey")
+    def aws_access_key(self) -> Optional['outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey']:
+        """
+        AWS credentials block.
+        """
+        return pulumi.get(self, "aws_access_key")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+        """
+        return pulumi.get(self, "role_arn")
 
 
 @pulumi.output_type

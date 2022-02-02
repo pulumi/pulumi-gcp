@@ -29,6 +29,7 @@ const (
 	gcpApigee               = "Apigee"               // Apigee resources
 	gcpAppEngine            = "AppEngine"            // AppEngine resources
 	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
+	gcpAssuredWorkloads     = "AssuredWorkloads"     // AssuredWorkloads resources
 	gcpBigQuery             = "BigQuery"             // BigQuery resources
 	gcpBigTable             = "BigTable"             // BitTable resources
 	gcpBilling              = "Billing"              // Billing resources
@@ -83,6 +84,7 @@ const (
 	gcpOsLogin              = "OsLogin"              // OsLogin resources
 	gcpProject              = "Projects"             // Project resources
 	gcpPubSub               = "PubSub"               // PubSub resources
+	gcpRecaptcha            = "Recaptcha"            //Recaptcha resources
 	gcpRedis                = "Redis"                // Redis resources
 	gcpResourceManager      = "ResourceManager"      // Resource Manager resources
 	gcpRuntimeConfig        = "RuntimeConfig"        // Runtime Config resources
@@ -244,6 +246,10 @@ func Provider() tfbridge.ProviderInfo {
 			"google_app_engine_service_split_traffic":    {Tok: gcpResource(gcpAppEngine, "EngineSplitTraffic")},
 			"google_app_engine_flexible_app_version":     {Tok: gcpResource(gcpAppEngine, "FlexibleAppVersion")},
 			"google_app_engine_service_network_settings": {Tok: gcpResource(gcpAppEngine, "ServiceNetworkSettings")},
+			
+			// AssuredWorkloads
+			"google_assured_workloads_workload": {Tok: gcpResource(gcpAssuredWorkloads, "Workload")},
+
 
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -1670,6 +1676,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_os_config_patch_deployment":     {Tok: gcpResource(gcpOsConfig, "PatchDeployment")},
 			"google_os_config_guest_policies":       {Tok: gcpResource(gcpOsConfig, "GuestPolicies")},
 			"google_os_config_os_policy_assignment": {Tok: gcpResource(gcpOsConfig, "OsPolicyAssignment")},
+
+			// Recaptcha
+			"google_recaptcha_enterprise_key": {Tok: gcpResource(gcpRecaptcha, "EnterpriseKey")},
 
 			// Service Directory
 			"google_service_directory_endpoint":  {Tok: gcpResource(gcpServiceDirectory, "Endpoint")},

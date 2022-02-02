@@ -74,6 +74,19 @@ import (
 // 				"my_key":    pulumi.String("my_val"),
 // 				"other_key": pulumi.String("other_val"),
 // 			},
+// 			MaintenancePolicy: &redis.InstanceMaintenancePolicyArgs{
+// 				WeeklyMaintenanceWindows: redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
+// 					&redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{
+// 						Day: pulumi.String("TUESDAY"),
+// 						StartTime: &redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+// 							Hours:   pulumi.Int(0),
+// 							Minutes: pulumi.Int(30),
+// 							Seconds: pulumi.Int(0),
+// 							Nanos:   pulumi.Int(0),
+// 						},
+// 					},
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -224,7 +237,10 @@ type Instance struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrOutput `pulumi:"connectMode"`
-	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// -
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
 	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
@@ -242,6 +258,12 @@ type Instance struct {
 	// zonal failures. If [alternativeLocationId] is also provided, it must
 	// be different from [locationId].
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedule InstanceMaintenanceSchedulePtrOutput `pulumi:"maintenanceSchedule"`
 	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
@@ -356,7 +378,10 @@ type instanceState struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
-	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// -
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
 	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
 	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
@@ -374,6 +399,12 @@ type instanceState struct {
 	// zonal failures. If [alternativeLocationId] is also provided, it must
 	// be different from [locationId].
 	LocationId *string `pulumi:"locationId"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedule *InstanceMaintenanceSchedule `pulumi:"maintenanceSchedule"`
 	// Redis memory size in GiB.
 	MemorySizeGb *int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
@@ -457,7 +488,10 @@ type InstanceState struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
-	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// -
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
 	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
 	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
@@ -475,6 +509,12 @@ type InstanceState struct {
 	// zonal failures. If [alternativeLocationId] is also provided, it must
 	// be different from [locationId].
 	LocationId pulumi.StringPtrInput
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedule InstanceMaintenanceSchedulePtrInput
 	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
@@ -570,6 +610,12 @@ type instanceArgs struct {
 	// zonal failures. If [alternativeLocationId] is also provided, it must
 	// be different from [locationId].
 	LocationId *string `pulumi:"locationId"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedule *InstanceMaintenanceSchedule `pulumi:"maintenanceSchedule"`
 	// Redis memory size in GiB.
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
@@ -645,6 +691,12 @@ type InstanceArgs struct {
 	// zonal failures. If [alternativeLocationId] is also provided, it must
 	// be different from [locationId].
 	LocationId pulumi.StringPtrInput
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedule InstanceMaintenanceSchedulePtrInput
 	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntInput
 	// The ID of the instance or a fully qualified identifier for the instance.

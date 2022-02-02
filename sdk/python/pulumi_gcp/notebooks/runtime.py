@@ -709,7 +709,7 @@ class Runtime(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> pulumi.Output[Optional['outputs.RuntimeSoftwareConfig']]:
+    def software_config(self) -> pulumi.Output['outputs.RuntimeSoftwareConfig']:
         """
         The config settings for software inside the runtime.
         Structure is documented below.

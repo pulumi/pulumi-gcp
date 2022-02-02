@@ -187,7 +187,7 @@ export class Runtime extends pulumi.CustomResource {
      * The config settings for software inside the runtime.
      * Structure is documented below.
      */
-    public readonly softwareConfig!: pulumi.Output<outputs.notebooks.RuntimeSoftwareConfig | undefined>;
+    public readonly softwareConfig!: pulumi.Output<outputs.notebooks.RuntimeSoftwareConfig>;
     /**
      * The state of this runtime.
      */

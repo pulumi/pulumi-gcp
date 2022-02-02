@@ -16,20 +16,27 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// <summary>
         /// AWS credentials block.
         /// </summary>
-        public readonly Outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey AwsAccessKey;
+        public readonly Outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey? AwsAccessKey;
         /// <summary>
         /// S3 Bucket name.
         /// </summary>
         public readonly string BucketName;
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+        /// </summary>
+        public readonly string? RoleArn;
 
         [OutputConstructor]
         private TransferJobTransferSpecAwsS3DataSource(
-            Outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey,
+            Outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey? awsAccessKey,
 
-            string bucketName)
+            string bucketName,
+
+            string? roleArn)
         {
             AwsAccessKey = awsAccessKey;
             BucketName = bucketName;
+            RoleArn = roleArn;
         }
     }
 }

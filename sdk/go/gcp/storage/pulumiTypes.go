@@ -2855,9 +2855,11 @@ func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferS
 
 type TransferJobTransferSpecAwsS3DataSource struct {
 	// AWS credentials block.
-	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
+	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
+	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+	RoleArn *string `pulumi:"roleArn"`
 }
 
 // TransferJobTransferSpecAwsS3DataSourceInput is an input type that accepts TransferJobTransferSpecAwsS3DataSourceArgs and TransferJobTransferSpecAwsS3DataSourceOutput values.
@@ -2873,9 +2875,11 @@ type TransferJobTransferSpecAwsS3DataSourceInput interface {
 
 type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	// AWS credentials block.
-	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput `pulumi:"awsAccessKey"`
+	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 }
 
 func (TransferJobTransferSpecAwsS3DataSourceArgs) ElementType() reflect.Type {
@@ -2956,15 +2960,20 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) ToTransferJobTransferSpecA
 }
 
 // AWS credentials block.
-func (o TransferJobTransferSpecAwsS3DataSourceOutput) AwsAccessKey() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
+func (o TransferJobTransferSpecAwsS3DataSourceOutput) AwsAccessKey() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
 		return v.AwsAccessKey
-	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
+	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
 // S3 Bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+func (o TransferJobTransferSpecAwsS3DataSourceOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecAwsS3DataSourcePtrOutput struct{ *pulumi.OutputState }
@@ -2997,7 +3006,7 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) AwsAccessKey() Transfer
 		if v == nil {
 			return nil
 		}
-		return &v.AwsAccessKey
+		return v.AwsAccessKey
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
@@ -3008,6 +3017,16 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.Str
 			return nil
 		}
 		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
 	}).(pulumi.StringPtrOutput)
 }
 

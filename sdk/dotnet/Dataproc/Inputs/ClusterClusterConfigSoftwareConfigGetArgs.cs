@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// * HBASE
         /// * HIVE_WEBHCAT
         /// * JUPYTER
-        /// * KERBEROS
         /// * PRESTO
         /// * RANGER
         /// * SOLR

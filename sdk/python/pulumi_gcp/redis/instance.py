@@ -23,6 +23,8 @@ class InstanceArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_schedule: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  read_replicas_mode: Optional[pulumi.Input[str]] = None,
@@ -56,6 +58,10 @@ class InstanceArgs:
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
+        :param pulumi.Input['InstanceMaintenanceScheduleArgs'] maintenance_schedule: Upcoming maintenance schedule.
+               Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -104,6 +110,10 @@ class InstanceArgs:
             pulumi.set(__self__, "labels", labels)
         if location_id is not None:
             pulumi.set(__self__, "location_id", location_id)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_schedule is not None:
+            pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -233,6 +243,32 @@ class InstanceArgs:
     @location_id.setter
     def location_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location_id", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]:
+        """
+        Upcoming maintenance schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_schedule")
+
+    @maintenance_schedule.setter
+    def maintenance_schedule(self, value: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]):
+        pulumi.set(self, "maintenance_schedule", value)
 
     @property
     @pulumi.getter
@@ -391,6 +427,8 @@ class _InstanceState:
                  host: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_schedule: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
@@ -424,7 +462,10 @@ class _InstanceState:
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
-        :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        :param pulumi.Input[str] create_time: -
+               Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
                [alternativeLocationId] and can change after a failover event.
@@ -436,6 +477,10 @@ class _InstanceState:
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
+        :param pulumi.Input['InstanceMaintenanceScheduleArgs'] maintenance_schedule: Upcoming maintenance schedule.
+               Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Output only. Info per node.
@@ -503,6 +548,10 @@ class _InstanceState:
             pulumi.set(__self__, "labels", labels)
         if location_id is not None:
             pulumi.set(__self__, "location_id", location_id)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_schedule is not None:
+            pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
         if memory_size_gb is not None:
             pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if name is not None:
@@ -611,7 +660,10 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        -
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -684,6 +736,32 @@ class _InstanceState:
     @location_id.setter
     def location_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location_id", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]:
+        """
+        Upcoming maintenance schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_schedule")
+
+    @maintenance_schedule.setter
+    def maintenance_schedule(self, value: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]):
+        pulumi.set(self, "maintenance_schedule", value)
 
     @property
     @pulumi.getter(name="memorySizeGb")
@@ -929,6 +1007,8 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
+                 maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -978,7 +1058,18 @@ class Instance(pulumi.CustomResource):
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
-            })
+            },
+            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArgs(
+                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+                    day="TUESDAY",
+                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                        hours=0,
+                        minutes=30,
+                        seconds=0,
+                        nanos=0,
+                    ),
+                )],
+            ))
         ```
         ### Redis Instance Private Service
 
@@ -1074,6 +1165,10 @@ class Instance(pulumi.CustomResource):
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']] maintenance_schedule: Upcoming maintenance schedule.
+               Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1151,7 +1246,18 @@ class Instance(pulumi.CustomResource):
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
-            })
+            },
+            maintenance_policy=gcp.redis.InstanceMaintenancePolicyArgs(
+                weekly_maintenance_windows=[gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+                    day="TUESDAY",
+                    start_time=gcp.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                        hours=0,
+                        minutes=30,
+                        seconds=0,
+                        nanos=0,
+                    ),
+                )],
+            ))
         ```
         ### Redis Instance Private Service
 
@@ -1247,6 +1353,8 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
+                 maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1277,6 +1385,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_id"] = location_id
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["maintenance_schedule"] = maintenance_schedule
             if memory_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
@@ -1321,6 +1431,8 @@ class Instance(pulumi.CustomResource):
             host: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location_id: Optional[pulumi.Input[str]] = None,
+            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
+            maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
             memory_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]]] = None,
@@ -1359,7 +1471,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
-        :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        :param pulumi.Input[str] create_time: -
+               Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
                [alternativeLocationId] and can change after a failover event.
@@ -1371,6 +1486,10 @@ class Instance(pulumi.CustomResource):
                instances will be created across two zones for protection against
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']] maintenance_schedule: Upcoming maintenance schedule.
+               Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]] nodes: Output only. Info per node.
@@ -1431,6 +1550,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["host"] = host
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location_id"] = location_id
+        __props__.__dict__["maintenance_policy"] = maintenance_policy
+        __props__.__dict__["maintenance_schedule"] = maintenance_schedule
         __props__.__dict__["memory_size_gb"] = memory_size_gb
         __props__.__dict__["name"] = name
         __props__.__dict__["nodes"] = nodes
@@ -1503,7 +1624,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        -
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -1552,6 +1676,24 @@ class Instance(pulumi.CustomResource):
         be different from [locationId].
         """
         return pulumi.get(self, "location_id")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output[Optional['outputs.InstanceMaintenancePolicy']]:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> pulumi.Output[Optional['outputs.InstanceMaintenanceSchedule']]:
+        """
+        Upcoming maintenance schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_schedule")
 
     @property
     @pulumi.getter(name="memorySizeGb")

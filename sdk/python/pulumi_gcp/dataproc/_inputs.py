@@ -1857,7 +1857,6 @@ class ClusterClusterConfigSoftwareConfigArgs:
                * HBASE
                * HIVE_WEBHCAT
                * JUPYTER
-               * KERBEROS
                * PRESTO
                * RANGER
                * SOLR
@@ -1905,7 +1904,6 @@ class ClusterClusterConfigSoftwareConfigArgs:
         * HBASE
         * HIVE_WEBHCAT
         * JUPYTER
-        * KERBEROS
         * PRESTO
         * RANGER
         * SOLR

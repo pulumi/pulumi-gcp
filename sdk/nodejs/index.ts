@@ -15,6 +15,7 @@ import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
+import * as assuredworkloads from "./assuredworkloads";
 import * as bigquery from "./bigquery";
 import * as bigtable from "./bigtable";
 import * as billing from "./billing";
@@ -70,6 +71,7 @@ import * as osconfig from "./osconfig";
 import * as oslogin from "./oslogin";
 import * as projects from "./projects";
 import * as pubsub from "./pubsub";
+import * as recaptcha from "./recaptcha";
 import * as redis from "./redis";
 import * as resourcemanager from "./resourcemanager";
 import * as runtimeconfig from "./runtimeconfig";
@@ -97,6 +99,7 @@ export {
     apigee,
     appengine,
     artifactregistry,
+    assuredworkloads,
     bigquery,
     bigtable,
     billing,
@@ -152,6 +155,7 @@ export {
     oslogin,
     projects,
     pubsub,
+    recaptcha,
     redis,
     resourcemanager,
     runtimeconfig,

@@ -2371,6 +2371,41 @@ export namespace artifactregistry {
     }
 }
 
+export namespace assuredworkloads {
+    export interface WorkloadKmsSettings {
+        /**
+         * Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+         */
+        nextRotationTime: pulumi.Input<string>;
+        /**
+         * Required. Input only. Immutable. will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+         */
+        rotationPeriod: pulumi.Input<string>;
+    }
+
+    export interface WorkloadResource {
+        /**
+         * Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+         */
+        resourceId?: pulumi.Input<number>;
+        /**
+         * Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+         */
+        resourceType?: pulumi.Input<string>;
+    }
+
+    export interface WorkloadResourceSetting {
+        /**
+         * Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+         */
+        resourceId?: pulumi.Input<string>;
+        /**
+         * Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
+         */
+        resourceType?: pulumi.Input<string>;
+    }
+}
+
 export namespace bigquery {
     export interface AppProfileSingleClusterRouting {
         /**
@@ -18759,7 +18794,6 @@ export namespace dataproc {
          * * HBASE
          * * HIVE_WEBHCAT
          * * JUPYTER
-         * * KERBEROS
          * * PRESTO
          * * RANGER
          * * SOLR
@@ -27298,7 +27332,172 @@ export namespace pubsub {
     }
 }
 
+export namespace recaptcha {
+    export interface EnterpriseKeyAndroidSettings {
+        /**
+         * If set to true, it means allowedPackageNames will not be enforced.
+         */
+        allowAllPackageNames?: pulumi.Input<boolean>;
+        /**
+         * Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+         */
+        allowedPackageNames?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EnterpriseKeyIosSettings {
+        /**
+         * If set to true, it means allowedBundleIds will not be enforced.
+         */
+        allowAllBundleIds?: pulumi.Input<boolean>;
+        /**
+         * iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+         */
+        allowedBundleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EnterpriseKeyTestingOptions {
+        /**
+         * For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
+         */
+        testingChallenge?: pulumi.Input<string>;
+        /**
+         * All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
+         */
+        testingScore?: pulumi.Input<number>;
+    }
+
+    export interface EnterpriseKeyWebSettings {
+        /**
+         * If set to true, it means allowedDomains will not be enforced.
+         */
+        allowAllDomains?: pulumi.Input<boolean>;
+        /**
+         * If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+         */
+        allowAmpTraffic?: pulumi.Input<boolean>;
+        /**
+         * Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
+         */
+        allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
+         */
+        challengeSecurityPreference?: pulumi.Input<string>;
+        /**
+         * Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+         */
+        integrationType: pulumi.Input<string>;
+    }
+}
+
 export namespace redis {
+    export interface InstanceMaintenancePolicy {
+        /**
+         * -
+         * Output only. The time when the policy was created.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        createTime?: pulumi.Input<string>;
+        /**
+         * Optional. Description of what this policy is for.
+         * Create/Update methods return INVALID_ARGUMENT if the
+         * length is greater than 512.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * -
+         * Output only. The time when the policy was last updated.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        updateTime?: pulumi.Input<string>;
+        /**
+         * Optional. Maintenance window that is applied to resources covered by this policy.
+         * Minimum 1. For the current version, the maximum number
+         * of weeklyWindow is expected to be one.
+         * Structure is documented below.
+         */
+        weeklyMaintenanceWindows?: pulumi.Input<pulumi.Input<inputs.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindow>[]>;
+    }
+
+    export interface InstanceMaintenancePolicyWeeklyMaintenanceWindow {
+        /**
+         * Required. The day of week that maintenance updates occur.
+         * - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+         * - MONDAY: Monday
+         * - TUESDAY: Tuesday
+         * - WEDNESDAY: Wednesday
+         * - THURSDAY: Thursday
+         * - FRIDAY: Friday
+         * - SATURDAY: Saturday
+         * - SUNDAY: Sunday
+         * Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        day: pulumi.Input<string>;
+        /**
+         * -
+         * Output only. Duration of the maintenance window.
+         * The current window is fixed at 1 hour.
+         * A duration in seconds with up to nine fractional digits,
+         * terminated by 's'. Example: "3.5s".
+         */
+        duration?: pulumi.Input<string>;
+        /**
+         * -
+         * Output only. The start time of any upcoming scheduled maintenance for this instance.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        startTime: pulumi.Input<inputs.redis.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime>;
+    }
+
+    export interface InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         * An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface InstanceMaintenanceSchedule {
+        /**
+         * -
+         * Output only. The end time of any upcoming scheduled maintenance for this instance.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * -
+         * Output only. The deadline that the maintenance schedule start time
+         * can not go beyond, including reschedule.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        scheduleDeadlineTime?: pulumi.Input<string>;
+        /**
+         * -
+         * Output only. The start time of any upcoming scheduled maintenance for this instance.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        startTime?: pulumi.Input<string>;
+    }
+
     export interface InstanceNode {
         /**
          * an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
@@ -27309,11 +27508,18 @@ export namespace redis {
 
     export interface InstanceServerCaCert {
         cert?: pulumi.Input<string>;
+        /**
+         * -
+         * Output only. The time when the policy was created.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
         createTime?: pulumi.Input<string>;
         expireTime?: pulumi.Input<string>;
         serialNumber?: pulumi.Input<string>;
         sha1Fingerprint?: pulumi.Input<string>;
     }
+
 }
 
 export namespace runtimeconfig {
@@ -28143,11 +28349,15 @@ export namespace storage {
         /**
          * AWS credentials block.
          */
-        awsAccessKey: pulumi.Input<inputs.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey>;
+        awsAccessKey?: pulumi.Input<inputs.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey>;
         /**
          * S3 Bucket name.
          */
         bucketName: pulumi.Input<string>;
+        /**
+         * The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+         */
+        roleArn?: pulumi.Input<string>;
     }
 
     export interface TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {

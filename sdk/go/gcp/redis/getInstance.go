@@ -70,26 +70,28 @@ type LookupInstanceResult struct {
 	DisplayName           string `pulumi:"displayName"`
 	Host                  string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string                    `pulumi:"id"`
-	Labels                 map[string]string         `pulumi:"labels"`
-	LocationId             string                    `pulumi:"locationId"`
-	MemorySizeGb           int                       `pulumi:"memorySizeGb"`
-	Name                   string                    `pulumi:"name"`
-	Nodes                  []GetInstanceNode         `pulumi:"nodes"`
-	PersistenceIamIdentity string                    `pulumi:"persistenceIamIdentity"`
-	Port                   int                       `pulumi:"port"`
-	Project                *string                   `pulumi:"project"`
-	ReadEndpoint           string                    `pulumi:"readEndpoint"`
-	ReadEndpointPort       int                       `pulumi:"readEndpointPort"`
-	ReadReplicasMode       string                    `pulumi:"readReplicasMode"`
-	RedisConfigs           map[string]string         `pulumi:"redisConfigs"`
-	RedisVersion           string                    `pulumi:"redisVersion"`
-	Region                 *string                   `pulumi:"region"`
-	ReplicaCount           int                       `pulumi:"replicaCount"`
-	ReservedIpRange        string                    `pulumi:"reservedIpRange"`
-	ServerCaCerts          []GetInstanceServerCaCert `pulumi:"serverCaCerts"`
-	Tier                   string                    `pulumi:"tier"`
-	TransitEncryptionMode  string                    `pulumi:"transitEncryptionMode"`
+	Id                     string                           `pulumi:"id"`
+	Labels                 map[string]string                `pulumi:"labels"`
+	LocationId             string                           `pulumi:"locationId"`
+	MaintenancePolicies    []GetInstanceMaintenancePolicy   `pulumi:"maintenancePolicies"`
+	MaintenanceSchedules   []GetInstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
+	MemorySizeGb           int                              `pulumi:"memorySizeGb"`
+	Name                   string                           `pulumi:"name"`
+	Nodes                  []GetInstanceNode                `pulumi:"nodes"`
+	PersistenceIamIdentity string                           `pulumi:"persistenceIamIdentity"`
+	Port                   int                              `pulumi:"port"`
+	Project                *string                          `pulumi:"project"`
+	ReadEndpoint           string                           `pulumi:"readEndpoint"`
+	ReadEndpointPort       int                              `pulumi:"readEndpointPort"`
+	ReadReplicasMode       string                           `pulumi:"readReplicasMode"`
+	RedisConfigs           map[string]string                `pulumi:"redisConfigs"`
+	RedisVersion           string                           `pulumi:"redisVersion"`
+	Region                 *string                          `pulumi:"region"`
+	ReplicaCount           int                              `pulumi:"replicaCount"`
+	ReservedIpRange        string                           `pulumi:"reservedIpRange"`
+	ServerCaCerts          []GetInstanceServerCaCert        `pulumi:"serverCaCerts"`
+	Tier                   string                           `pulumi:"tier"`
+	TransitEncryptionMode  string                           `pulumi:"transitEncryptionMode"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -179,6 +181,14 @@ func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o LookupInstanceResultOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.LocationId }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) MaintenancePolicies() GetInstanceMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceMaintenancePolicy { return v.MaintenancePolicies }).(GetInstanceMaintenancePolicyArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) MaintenanceSchedules() GetInstanceMaintenanceScheduleArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceMaintenanceSchedule { return v.MaintenanceSchedules }).(GetInstanceMaintenanceScheduleArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) MemorySizeGb() pulumi.IntOutput {

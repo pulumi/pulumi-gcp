@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Redis.Outputs
     public sealed class InstanceServerCaCert
     {
         public readonly string? Cert;
+        /// <summary>
+        /// -
+        /// Output only. The time when the policy was created.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits.
+        /// </summary>
         public readonly string? CreateTime;
         public readonly string? ExpireTime;
         public readonly string? SerialNumber;
