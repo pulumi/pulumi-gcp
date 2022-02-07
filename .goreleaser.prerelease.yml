@@ -24,6 +24,7 @@ builds:
   - darwin
   - windows
   - linux
+  ignore: []
   ldflags:
   - -X github.com/pulumi/pulumi-gcp/provider/v6/pkg/version.Version={{.Tag}}
   - -X github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion={{.Tag}}

@@ -222,6 +222,13 @@ jobs:
       with:
         args: -p 2 release --rm-dist --timeout 60m0s
         version: latest
+    - if: failure() && github.event_name == 'push'
+      name: Notify Slack
+      uses: 8398a7/action-slack@v3
+      with:
+        author_name: Failure in publishing binaries
+        fields: repo,commit,author,action
+        status: ${{ job.status }}
     strategy:
       fail-fast: true
       matrix:
