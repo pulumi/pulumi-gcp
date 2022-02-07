@@ -64,9 +64,12 @@ class GlobalForwardingRuleArgs:
                will be used for External Global Load Balancing (HTTP(S) LB,
                External TCP/UDP LB, SSL Proxy)
                Note: This field must be set "" if the global address is
+               External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+               that this will be used for Global external HTTP(S) load balancers.
+               Note: This field must be set "" if the global address is
                configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -237,9 +240,12 @@ class GlobalForwardingRuleArgs:
         will be used for External Global Load Balancing (HTTP(S) LB,
         External TCP/UDP LB, SSL Proxy)
         Note: This field must be set "" if the global address is
+        External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+        that this will be used for Global external HTTP(S) load balancers.
+        Note: This field must be set "" if the global address is
         configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -392,9 +398,12 @@ class _GlobalForwardingRuleState:
                will be used for External Global Load Balancing (HTTP(S) LB,
                External TCP/UDP LB, SSL Proxy)
                Note: This field must be set "" if the global address is
+               External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+               that this will be used for Global external HTTP(S) load balancers.
+               Note: This field must be set "" if the global address is
                configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -572,9 +581,12 @@ class _GlobalForwardingRuleState:
         will be used for External Global Load Balancing (HTTP(S) LB,
         External TCP/UDP LB, SSL Proxy)
         Note: This field must be set "" if the global address is
+        External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+        that this will be used for Global external HTTP(S) load balancers.
+        Note: This field must be set "" if the global address is
         configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -732,7 +744,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         balancing.
 
         For more information, see
-        https://cloud.google.com/compute/docs/load-balancing/http/
+        <https://cloud.google.com/compute/docs/load-balancing/http/>
 
         ## Example Usage
         ### External Tcp Proxy Lb Mig Backend
@@ -1081,6 +1093,40 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 )],
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Global Forwarding Rule External Managed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            target=default_target_http_proxy.id,
+            port_range="80",
+            load_balancing_scheme="EXTERNAL_MANAGED")
         ```
         ### Private Service Connect Google Apis
 
@@ -1162,9 +1208,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
                will be used for External Global Load Balancing (HTTP(S) LB,
                External TCP/UDP LB, SSL Proxy)
                Note: This field must be set "" if the global address is
+               External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+               that this will be used for Global external HTTP(S) load balancers.
+               Note: This field must be set "" if the global address is
                configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -1225,7 +1274,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         balancing.
 
         For more information, see
-        https://cloud.google.com/compute/docs/load-balancing/http/
+        <https://cloud.google.com/compute/docs/load-balancing/http/>
 
         ## Example Usage
         ### External Tcp Proxy Lb Mig Backend
@@ -1574,6 +1623,40 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 )],
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Global Forwarding Rule External Managed
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED")
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            target=default_target_http_proxy.id,
+            port_range="80",
+            load_balancing_scheme="EXTERNAL_MANAGED")
         ```
         ### Private Service Connect Google Apis
 
@@ -1740,9 +1823,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
                will be used for External Global Load Balancing (HTTP(S) LB,
                External TCP/UDP LB, SSL Proxy)
                Note: This field must be set "" if the global address is
+               External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+               that this will be used for Global external HTTP(S) load balancers.
+               Note: This field must be set "" if the global address is
                configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -1887,9 +1973,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
         will be used for External Global Load Balancing (HTTP(S) LB,
         External TCP/UDP LB, SSL Proxy)
         Note: This field must be set "" if the global address is
+        External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+        that this will be used for Global external HTTP(S) load balancers.
+        Note: This field must be set "" if the global address is
         configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 

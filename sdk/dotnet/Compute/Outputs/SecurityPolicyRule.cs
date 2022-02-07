@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Action to take when `match` matches the request. Valid values:
         /// * "allow" : allow access to target
         /// * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+        /// * "rate_based_ban" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+        /// * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         /// </summary>
         public readonly string Action;
         /// <summary>
@@ -38,6 +40,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         /// </summary>
         public readonly int Priority;
+        /// <summary>
+        /// )
+        /// Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRuleRateLimitOptions? RateLimitOptions;
 
         [OutputConstructor]
         private SecurityPolicyRule(
@@ -49,13 +56,16 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             bool? preview,
 
-            int priority)
+            int priority,
+
+            Outputs.SecurityPolicyRuleRateLimitOptions? rateLimitOptions)
         {
             Action = action;
             Description = description;
             Match = match;
             Preview = preview;
             Priority = priority;
+            RateLimitOptions = rateLimitOptions;
         }
     }
 }

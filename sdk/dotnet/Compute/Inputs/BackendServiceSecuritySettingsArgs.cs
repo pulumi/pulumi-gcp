@@ -12,11 +12,22 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class BackendServiceSecuritySettingsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ClientTlsPolicy is a resource that specifies how a client should authenticate
+        /// connections to backends of a service. This resource itself does not affect
+        /// configuration unless it is attached to a backend service resource.
+        /// </summary>
         [Input("clientTlsPolicy", required: true)]
         public Input<string> ClientTlsPolicy { get; set; } = null!;
 
         [Input("subjectAltNames", required: true)]
         private InputList<string>? _subjectAltNames;
+
+        /// <summary>
+        /// A list of alternate names to verify the subject identity in the certificate.
+        /// If specified, the client will verify that the server certificate's subject
+        /// alt name matches one of the specified values.
+        /// </summary>
         public InputList<string> SubjectAltNames
         {
             get => _subjectAltNames ?? (_subjectAltNames = new InputList<string>());

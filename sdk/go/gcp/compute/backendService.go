@@ -287,7 +287,7 @@ import (
 // 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -296,7 +296,7 @@ import (
 // 				defaultHealthCheck.ID(),
 // 			},
 // 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

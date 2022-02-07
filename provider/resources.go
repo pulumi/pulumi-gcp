@@ -246,10 +246,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_app_engine_service_split_traffic":    {Tok: gcpResource(gcpAppEngine, "EngineSplitTraffic")},
 			"google_app_engine_flexible_app_version":     {Tok: gcpResource(gcpAppEngine, "FlexibleAppVersion")},
 			"google_app_engine_service_network_settings": {Tok: gcpResource(gcpAppEngine, "ServiceNetworkSettings")},
-			
+
 			// AssuredWorkloads
 			"google_assured_workloads_workload": {Tok: gcpResource(gcpAssuredWorkloads, "Workload")},
-
 
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -867,8 +866,10 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_organization_security_policy": {
 				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicy"),
 			},
-			"google_compute_service_attachment": {Tok: gcpResource(gcpCompute, "ServiceAttachment")},
-			"google_compute_router_status":      {Tok: gcpResource(gcpCompute, "RouterStatus")},
+			"google_compute_service_attachment":          {Tok: gcpResource(gcpCompute, "ServiceAttachment")},
+			"google_compute_backend_service_iam_binding": {Tok: gcpResource(gcpCompute, "BackendServiceIamBinding")},
+			"google_compute_backend_service_iam_member":  {Tok: gcpResource(gcpCompute, "BackendServiceIamMember")},
+			"google_compute_backend_service_iam_policy":  {Tok: gcpResource(gcpCompute, "BackendServiceIamPolicy")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -1953,7 +1954,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "apigee_environment_iam.html.markdown",
 				},
 			},
-			"google_apigee_nat_address": {Tok: gcpResource(gcpApigee, "NatAddress")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {

@@ -51,6 +51,7 @@ __all__ = [
     'ClusterAddonsConfigConfigConnectorConfigArgs',
     'ClusterAddonsConfigDnsCacheConfigArgs',
     'ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs',
+    'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs',
     'ClusterAddonsConfigHorizontalPodAutoscalingArgs',
     'ClusterAddonsConfigHttpLoadBalancingArgs',
     'ClusterAddonsConfigIstioConfigArgs',
@@ -1861,6 +1862,7 @@ class ClusterAddonsConfigArgs:
                  config_connector_config: Optional[pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArgs']] = None,
                  dns_cache_config: Optional[pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs']] = None,
                  gce_persistent_disk_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs']] = None,
+                 gcp_filestore_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']] = None,
                  horizontal_pod_autoscaling: Optional[pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs']] = None,
                  http_load_balancing: Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs']] = None,
                  istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']] = None,
@@ -1875,6 +1877,9 @@ class ClusterAddonsConfigArgs:
                Set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs'] gce_persistent_disk_csi_driver_config: .
                Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+        :param pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
+               which allows the usage of filestore instance as volumes.
+               It is disbaled by default; set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
@@ -1902,6 +1907,8 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "dns_cache_config", dns_cache_config)
         if gce_persistent_disk_csi_driver_config is not None:
             pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
+        if gcp_filestore_csi_driver_config is not None:
+            pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
         if horizontal_pod_autoscaling is not None:
             pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         if http_load_balancing is not None:
@@ -1964,6 +1971,20 @@ class ClusterAddonsConfigArgs:
     @gce_persistent_disk_csi_driver_config.setter
     def gce_persistent_disk_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs']]):
         pulumi.set(self, "gce_persistent_disk_csi_driver_config", value)
+
+    @property
+    @pulumi.getter(name="gcpFilestoreCsiDriverConfig")
+    def gcp_filestore_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']]:
+        """
+        The status of the Filestore CSI driver addon,
+        which allows the usage of filestore instance as volumes.
+        It is disbaled by default; set `enabled = true` to enable.
+        """
+        return pulumi.get(self, "gcp_filestore_csi_driver_config")
+
+    @gcp_filestore_csi_driver_config.setter
+    def gcp_filestore_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']]):
+        pulumi.set(self, "gcp_filestore_csi_driver_config", value)
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -2131,6 +2152,30 @@ class ClusterAddonsConfigDnsCacheConfigArgs:
 
 @pulumi.input_type
 class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -2400,10 +2445,13 @@ class ClusterClusterAutoscalingArgs:
 @pulumi.input_type
 class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
     def __init__(__self__, *,
+                 image_type: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
+               will delete and recreate all nodes in the node pool.
         :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to be used by this instance.
                The instance may be scheduled on the specified or newer CPU platform. Applicable
                values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -2415,12 +2463,27 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         """
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image type to use for this node. Note that changing the image type
+        will delete and recreate all nodes in the node pool.
+        """
+        return pulumi.get(self, "image_type")
+
+    @image_type.setter
+    def image_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_type", value)
 
     @property
     @pulumi.getter(name="minCpuPlatform")
@@ -3223,7 +3286,7 @@ class ClusterNodeConfigArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs']] = None):
         """
-        :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
@@ -3267,13 +3330,12 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[bool] preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param pulumi.Input['ClusterNodeConfigSandboxConfigArgs'] sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-               >>>>>>> v4.3.0
+        :param pulumi.Input['ClusterNodeConfigSandboxConfigArgs'] sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param pulumi.Input[bool] spot: ) A boolean 
+        :param pulumi.Input[bool] spot: ) A boolean
                that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
@@ -3342,7 +3404,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -3573,8 +3635,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArgs']]:
         """
-        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-        >>>>>>> v4.3.0
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
         Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
@@ -3612,7 +3673,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter
     def spot(self) -> Optional[pulumi.Input[bool]]:
         """
-        ) A boolean 
+        ) A boolean
         that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         for more information. Defaults to false.
         """
@@ -4365,7 +4426,7 @@ class ClusterNodePoolNodeConfigArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
         """
-        :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
@@ -4409,13 +4470,12 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[bool] preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs'] sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-               >>>>>>> v4.3.0
+        :param pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs'] sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param pulumi.Input[bool] spot: ) A boolean 
+        :param pulumi.Input[bool] spot: ) A boolean
                that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
@@ -4484,7 +4544,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -4715,8 +4775,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs']]:
         """
-        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-        >>>>>>> v4.3.0
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
         Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
@@ -4754,7 +4813,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter
     def spot(self) -> Optional[pulumi.Input[bool]]:
         """
-        ) A boolean 
+        ) A boolean
         that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         for more information. Defaults to false.
         """

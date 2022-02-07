@@ -36,7 +36,7 @@ class ConnectorArgs:
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
                https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
-        :param pulumi.Input[str] network: Name of the VPC network. Required if `ip_cidr_range` is set.
+        :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
@@ -155,7 +155,7 @@ class ConnectorArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the VPC network. Required if `ip_cidr_range` is set.
+        Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         """
         return pulumi.get(self, "network")
 
@@ -228,7 +228,7 @@ class _ConnectorState:
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
                https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
-        :param pulumi.Input[str] network: Name of the VPC network. Required if `ip_cidr_range` is set.
+        :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
@@ -353,7 +353,7 @@ class _ConnectorState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the VPC network. Required if `ip_cidr_range` is set.
+        Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         """
         return pulumi.get(self, "network")
 
@@ -570,7 +570,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
                https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
-        :param pulumi.Input[str] network: Name of the VPC network. Required if `ip_cidr_range` is set.
+        :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
@@ -791,7 +791,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
                https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
-        :param pulumi.Input[str] network: Name of the VPC network. Required if `ip_cidr_range` is set.
+        :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
@@ -880,7 +880,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of the VPC network. Required if `ip_cidr_range` is set.
+        Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         """
         return pulumi.get(self, "network")
 

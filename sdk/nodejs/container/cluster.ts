@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  *  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
  * ```
  *
- *  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
+ *  For example, the following fields will show diffs if set in config* `min_master_version` * `remove_default_node_pool`
  */
 export class Cluster extends pulumi.CustomResource {
     /**

@@ -13,18 +13,22 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterClusterAutoscalingAutoProvisioningDefaultResult
     {
+        public readonly string ImageType;
         public readonly string MinCpuPlatform;
         public readonly ImmutableArray<string> OauthScopes;
         public readonly string ServiceAccount;
 
         [OutputConstructor]
         private GetClusterClusterAutoscalingAutoProvisioningDefaultResult(
+            string imageType,
+
             string minCpuPlatform,
 
             ImmutableArray<string> oauthScopes,
 
             string serviceAccount)
         {
+            ImageType = imageType;
             MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;

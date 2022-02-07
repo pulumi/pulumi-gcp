@@ -1148,6 +1148,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/backendServiceIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/backendServiceIamBinding:BackendServiceIamBinding": "BackendServiceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/backendServiceIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/backendServiceIamMember:BackendServiceIamMember": "BackendServiceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/backendServiceIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy": "BackendServiceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/backendServiceSignedUrlKey",
   "fqn": "pulumi_gcp.compute",
   "classes": {

@@ -207,7 +207,7 @@ type Connector struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
 	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Name of the VPC network. Required if `ipCidrRange` is set.
+	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -267,7 +267,7 @@ type connectorState struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
 	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name *string `pulumi:"name"`
-	// Name of the VPC network. Required if `ipCidrRange` is set.
+	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -299,7 +299,7 @@ type ConnectorState struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
 	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name pulumi.StringPtrInput
-	// Name of the VPC network. Required if `ipCidrRange` is set.
+	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -335,7 +335,7 @@ type connectorArgs struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
 	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name *string `pulumi:"name"`
-	// Name of the VPC network. Required if `ipCidrRange` is set.
+	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -364,7 +364,7 @@ type ConnectorArgs struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
 	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name pulumi.StringPtrInput
-	// Name of the VPC network. Required if `ipCidrRange` is set.
+	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

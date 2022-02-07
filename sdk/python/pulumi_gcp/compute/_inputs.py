@@ -38,6 +38,8 @@ __all__ = [
     'BackendServiceConsistentHashArgs',
     'BackendServiceConsistentHashHttpCookieArgs',
     'BackendServiceConsistentHashHttpCookieTtlArgs',
+    'BackendServiceIamBindingConditionArgs',
+    'BackendServiceIamMemberConditionArgs',
     'BackendServiceIapArgs',
     'BackendServiceLogConfigArgs',
     'BackendServiceOutlierDetectionArgs',
@@ -302,6 +304,10 @@ __all__ = [
     'SecurityPolicyRuleMatchArgs',
     'SecurityPolicyRuleMatchConfigArgs',
     'SecurityPolicyRuleMatchExprArgs',
+    'SecurityPolicyRuleRateLimitOptionsArgs',
+    'SecurityPolicyRuleRateLimitOptionsBanThresholdArgs',
+    'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs',
+    'SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs',
     'SecurityScanConfigAuthenticationArgs',
     'SecurityScanConfigAuthenticationCustomAccountArgs',
     'SecurityScanConfigAuthenticationGoogleAccountArgs',
@@ -3047,6 +3053,84 @@ class BackendServiceConsistentHashHttpCookieTtlArgs:
 
 
 @pulumi.input_type
+class BackendServiceIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class BackendServiceIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
 class BackendServiceIapArgs:
     def __init__(__self__, *,
                  oauth2_client_id: pulumi.Input[str],
@@ -3482,12 +3566,25 @@ class BackendServiceSecuritySettingsArgs:
     def __init__(__self__, *,
                  client_tls_policy: pulumi.Input[str],
                  subject_alt_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] client_tls_policy: ClientTlsPolicy is a resource that specifies how a client should authenticate
+               connections to backends of a service. This resource itself does not affect
+               configuration unless it is attached to a backend service resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alt_names: A list of alternate names to verify the subject identity in the certificate.
+               If specified, the client will verify that the server certificate's subject
+               alt name matches one of the specified values.
+        """
         pulumi.set(__self__, "client_tls_policy", client_tls_policy)
         pulumi.set(__self__, "subject_alt_names", subject_alt_names)
 
     @property
     @pulumi.getter(name="clientTlsPolicy")
     def client_tls_policy(self) -> pulumi.Input[str]:
+        """
+        ClientTlsPolicy is a resource that specifies how a client should authenticate
+        connections to backends of a service. This resource itself does not affect
+        configuration unless it is attached to a backend service resource.
+        """
         return pulumi.get(self, "client_tls_policy")
 
     @client_tls_policy.setter
@@ -3497,6 +3594,11 @@ class BackendServiceSecuritySettingsArgs:
     @property
     @pulumi.getter(name="subjectAltNames")
     def subject_alt_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of alternate names to verify the subject identity in the certificate.
+        If specified, the client will verify that the server certificate's subject
+        alt name matches one of the specified values.
+        """
         return pulumi.get(self, "subject_alt_names")
 
     @subject_alt_names.setter
@@ -20552,11 +20654,14 @@ class SecurityPolicyRuleArgs:
                  match: pulumi.Input['SecurityPolicyRuleMatchArgs'],
                  priority: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
-                 preview: Optional[pulumi.Input[bool]] = None):
+                 preview: Optional[pulumi.Input[bool]] = None,
+                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None):
         """
         :param pulumi.Input[str] action: Action to take when `match` matches the request. Valid values:
                * "allow" : allow access to target
                * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+               * "rate_based_ban" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+               * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input['SecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
         :param pulumi.Input[int] priority: An unique positive integer indicating the priority of evaluation for a rule.
@@ -20564,6 +20669,8 @@ class SecurityPolicyRuleArgs:
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[bool] preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: )
+               Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "match", match)
@@ -20572,6 +20679,8 @@ class SecurityPolicyRuleArgs:
             pulumi.set(__self__, "description", description)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
+        if rate_limit_options is not None:
+            pulumi.set(__self__, "rate_limit_options", rate_limit_options)
 
     @property
     @pulumi.getter
@@ -20580,6 +20689,8 @@ class SecurityPolicyRuleArgs:
         Action to take when `match` matches the request. Valid values:
         * "allow" : allow access to target
         * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+        * "rate_based_ban" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+        * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         """
         return pulumi.get(self, "action")
 
@@ -20637,6 +20748,19 @@ class SecurityPolicyRuleArgs:
     @preview.setter
     def preview(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preview", value)
+
+    @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]:
+        """
+        )
+        Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+    @rate_limit_options.setter
+    def rate_limit_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]):
+        pulumi.set(self, "rate_limit_options", value)
 
 
 @pulumi.input_type
@@ -20754,6 +20878,246 @@ class SecurityPolicyRuleMatchExprArgs:
     @expression.setter
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleRateLimitOptionsArgs:
+    def __init__(__self__, *,
+                 conform_action: pulumi.Input[str],
+                 exceed_action: pulumi.Input[str],
+                 rate_limit_threshold: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'],
+                 ban_duration_sec: Optional[pulumi.Input[int]] = None,
+                 ban_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']] = None,
+                 enforce_on_key: Optional[pulumi.Input[str]] = None,
+                 enforce_on_key_name: Optional[pulumi.Input[str]] = None,
+                 exceed_redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']] = None):
+        """
+        :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        :param pulumi.Input[str] exceed_action: When a request is denied, returns the HTTP response code specified.
+               Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting. Structure is documented below.
+        :param pulumi.Input[int] ban_duration_sec: Can only be specified if the `action` for the rule is "rate_based_ban".
+               If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs'] ban_threshold: Can only be specified if the `action` for the rule is "rate_based_ban".
+               If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
+               exceed this 'ban_threshold'. Structure is documented below.
+        :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on.
+               Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
+        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+        """
+        pulumi.set(__self__, "conform_action", conform_action)
+        pulumi.set(__self__, "exceed_action", exceed_action)
+        pulumi.set(__self__, "rate_limit_threshold", rate_limit_threshold)
+        if ban_duration_sec is not None:
+            pulumi.set(__self__, "ban_duration_sec", ban_duration_sec)
+        if ban_threshold is not None:
+            pulumi.set(__self__, "ban_threshold", ban_threshold)
+        if enforce_on_key is not None:
+            pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        if enforce_on_key_name is not None:
+            pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        if exceed_redirect_options is not None:
+            pulumi.set(__self__, "exceed_redirect_options", exceed_redirect_options)
+
+    @property
+    @pulumi.getter(name="conformAction")
+    def conform_action(self) -> pulumi.Input[str]:
+        """
+        Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        """
+        return pulumi.get(self, "conform_action")
+
+    @conform_action.setter
+    def conform_action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "conform_action", value)
+
+    @property
+    @pulumi.getter(name="exceedAction")
+    def exceed_action(self) -> pulumi.Input[str]:
+        """
+        When a request is denied, returns the HTTP response code specified.
+        Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        """
+        return pulumi.get(self, "exceed_action")
+
+    @exceed_action.setter
+    def exceed_action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "exceed_action", value)
+
+    @property
+    @pulumi.getter(name="rateLimitThreshold")
+    def rate_limit_threshold(self) -> pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']:
+        """
+        Threshold at which to begin ratelimiting. Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_threshold")
+
+    @rate_limit_threshold.setter
+    def rate_limit_threshold(self, value: pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs']):
+        pulumi.set(self, "rate_limit_threshold", value)
+
+    @property
+    @pulumi.getter(name="banDurationSec")
+    def ban_duration_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Can only be specified if the `action` for the rule is "rate_based_ban".
+        If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        """
+        return pulumi.get(self, "ban_duration_sec")
+
+    @ban_duration_sec.setter
+    def ban_duration_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ban_duration_sec", value)
+
+    @property
+    @pulumi.getter(name="banThreshold")
+    def ban_threshold(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']]:
+        """
+        Can only be specified if the `action` for the rule is "rate_based_ban".
+        If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
+        exceed this 'ban_threshold'. Structure is documented below.
+        """
+        return pulumi.get(self, "ban_threshold")
+
+    @ban_threshold.setter
+    def ban_threshold(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']]):
+        pulumi.set(self, "ban_threshold", value)
+
+    @property
+    @pulumi.getter(name="enforceOnKey")
+    def enforce_on_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines the key to enforce the rate_limit_threshold on.
+        Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
+        """
+        return pulumi.get(self, "enforce_on_key")
+
+    @enforce_on_key.setter
+    def enforce_on_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enforce_on_key", value)
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @enforce_on_key_name.setter
+    def enforce_on_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enforce_on_key_name", value)
+
+    @property
+    @pulumi.getter(name="exceedRedirectOptions")
+    def exceed_redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']]:
+        return pulumi.get(self, "exceed_redirect_options")
+
+    @exceed_redirect_options.setter
+    def exceed_redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']]):
+        pulumi.set(self, "exceed_redirect_options", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[int],
+                 interval_sec: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] count: Number of HTTP(S) requests for calculating the threshold.
+        :param pulumi.Input[int] interval_sec: Interval over which the threshold is computed.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[int]:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> pulumi.Input[int]:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
+
+    @interval_sec.setter
+    def interval_sec(self, value: pulumi.Input[int]):
+        pulumi.set(self, "interval_sec", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 target: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "type", type)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[int],
+                 interval_sec: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] count: Number of HTTP(S) requests for calculating the threshold.
+        :param pulumi.Input[int] interval_sec: Interval over which the threshold is computed.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[int]:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> pulumi.Input[int]:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
+
+    @interval_sec.setter
+    def interval_sec(self, value: pulumi.Input[int]):
+        pulumi.set(self, "interval_sec", value)
 
 
 @pulumi.input_type

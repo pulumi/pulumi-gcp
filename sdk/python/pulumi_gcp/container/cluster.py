@@ -2392,7 +2392,7 @@ class Cluster(pulumi.CustomResource):
          $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
         ```
 
-         For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
+         For example, the following fields will show diffs if set in config* `min_master_version` * `remove_default_node_pool`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2636,7 +2636,7 @@ class Cluster(pulumi.CustomResource):
          $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
         ```
 
-         For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
+         For example, the following fields will show diffs if set in config* `min_master_version` * `remove_default_node_pool`
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * balancing.
  *
  * For more information, see
- * https://cloud.google.com/compute/docs/load-balancing/http/
+ * <https://cloud.google.com/compute/docs/load-balancing/http/>
  *
  * ## Example Usage
  * ### External Tcp Proxy Lb Mig Backend
@@ -419,6 +419,44 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Global Forwarding Rule External Managed
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {
+ *     description: "a description",
+ *     urlMap: defaultURLMap.id,
+ * });
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     target: defaultTargetHttpProxy.id,
+ *     portRange: "80",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ * });
+ * ```
  * ### Private Service Connect Google Apis
  *
  * ```typescript
@@ -553,9 +591,12 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * will be used for External Global Load Balancing (HTTP(S) LB,
      * External TCP/UDP LB, SSL Proxy)
      * Note: This field must be set "" if the global address is
+     * External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+     * that this will be used for Global external HTTP(S) load balancers.
+     * Note: This field must be set "" if the global address is
      * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -732,9 +773,12 @@ export interface GlobalForwardingRuleState {
      * will be used for External Global Load Balancing (HTTP(S) LB,
      * External TCP/UDP LB, SSL Proxy)
      * Note: This field must be set "" if the global address is
+     * External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+     * that this will be used for Global external HTTP(S) load balancers.
+     * Note: This field must be set "" if the global address is
      * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -856,9 +900,12 @@ export interface GlobalForwardingRuleArgs {
      * will be used for External Global Load Balancing (HTTP(S) LB,
      * External TCP/UDP LB, SSL Proxy)
      * Note: This field must be set "" if the global address is
+     * External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+     * that this will be used for Global external HTTP(S) load balancers.
+     * Note: This field must be set "" if the global address is
      * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**

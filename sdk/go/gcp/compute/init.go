@@ -35,6 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackendBucketSignedUrlKey{}
 	case "gcp:compute/backendService:BackendService":
 		r = &BackendService{}
+	case "gcp:compute/backendServiceIamBinding:BackendServiceIamBinding":
+		r = &BackendServiceIamBinding{}
+	case "gcp:compute/backendServiceIamMember:BackendServiceIamMember":
+		r = &BackendServiceIamMember{}
+	case "gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy":
+		r = &BackendServiceIamPolicy{}
 	case "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey":
 		r = &BackendServiceSignedUrlKey{}
 	case "gcp:compute/disk:Disk":
@@ -281,6 +287,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/backendService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/backendServiceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/backendServiceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/backendServiceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

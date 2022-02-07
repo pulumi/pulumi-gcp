@@ -12,6 +12,9 @@ from .autoscaler import *
 from .backend_bucket import *
 from .backend_bucket_signed_url_key import *
 from .backend_service import *
+from .backend_service_iam_binding import *
+from .backend_service_iam_member import *
+from .backend_service_iam_policy import *
 from .backend_service_signed_url_key import *
 from .disk import *
 from .disk_iam_binding import *

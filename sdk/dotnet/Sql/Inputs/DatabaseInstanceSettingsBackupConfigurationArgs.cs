@@ -19,8 +19,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<Inputs.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs>? BackupRetentionSettings { get; set; }
 
         /// <summary>
-        /// True if binary logging is enabled. If
-        /// `settings.backup_configuration.enabled` is false, this must be as well.
+        /// True if binary logging is enabled.
         /// Cannot be used with Postgres.
         /// </summary>
         [Input("binaryLogEnabled")]
