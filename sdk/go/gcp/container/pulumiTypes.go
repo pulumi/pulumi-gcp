@@ -5899,6 +5899,10 @@ type ClusterAddonsConfig struct {
 	// .
 	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
 	GcePersistentDiskCsiDriverConfig *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
+	// The status of the Filestore CSI driver addon,
+	// which allows the usage of filestore instance as volumes.
+	// It is disbaled by default; set `enabled = true` to enable.
+	GcpFilestoreCsiDriverConfig *ClusterAddonsConfigGcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
 	// has based on the resource usage of the existing pods.
@@ -5948,6 +5952,10 @@ type ClusterAddonsConfigArgs struct {
 	// .
 	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
 	GcePersistentDiskCsiDriverConfig ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
+	// The status of the Filestore CSI driver addon,
+	// which allows the usage of filestore instance as volumes.
+	// It is disbaled by default; set `enabled = true` to enable.
+	GcpFilestoreCsiDriverConfig ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
 	// has based on the resource usage of the existing pods.
@@ -6076,6 +6084,15 @@ func (o ClusterAddonsConfigOutput) GcePersistentDiskCsiDriverConfig() ClusterAdd
 	}).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput)
 }
 
+// The status of the Filestore CSI driver addon,
+// which allows the usage of filestore instance as volumes.
+// It is disbaled by default; set `enabled = true` to enable.
+func (o ClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+		return v.GcpFilestoreCsiDriverConfig
+	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
+}
+
 // The status of the Horizontal Pod Autoscaling
 // addon, which increases or decreases the number of replica pods a replication controller
 // has based on the resource usage of the existing pods.
@@ -6182,6 +6199,18 @@ func (o ClusterAddonsConfigPtrOutput) GcePersistentDiskCsiDriverConfig() Cluster
 		}
 		return v.GcePersistentDiskCsiDriverConfig
 	}).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput)
+}
+
+// The status of the Filestore CSI driver addon,
+// which allows the usage of filestore instance as volumes.
+// It is disbaled by default; set `enabled = true` to enable.
+func (o ClusterAddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcpFilestoreCsiDriverConfig
+	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
 }
 
 // The status of the Horizontal Pod Autoscaling
@@ -6827,6 +6856,147 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Elem() Clu
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigGcpFilestoreCsiDriverConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigGcpFilestoreCsiDriverConfigInput is an input type that accepts ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs and ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigGcpFilestoreCsiDriverConfigInput` via:
+//
+//          ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{...}
+type ClusterAddonsConfigGcpFilestoreCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput() ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput
+	ToClusterAddonsConfigGcpFilestoreCsiDriverConfigOutputWithContext(context.Context) ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput
+}
+
+type ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigGcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput() ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return i.ToClusterAddonsConfigGcpFilestoreCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput)
+}
+
+func (i ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput).ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput is an input type that accepts ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs, ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtr and ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput` via:
+//
+//          ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput
+	ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput
+}
+
+type clusterAddonsConfigGcpFilestoreCsiDriverConfigPtrType ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs
+
+func ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtr(v *ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput {
+	return (*clusterAddonsConfigGcpFilestoreCsiDriverConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigGcpFilestoreCsiDriverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigGcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigGcpFilestoreCsiDriverConfigPtrType) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigGcpFilestoreCsiDriverConfigPtrType) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
+}
+
+type ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigGcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput() ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return o.ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigGcpFilestoreCsiDriverConfig) *ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+		return &v
+	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigGcpFilestoreCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigGcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) ToClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Elem() ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigGcpFilestoreCsiDriverConfig) ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigGcpFilestoreCsiDriverConfig
+		return ret
+	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigGcpFilestoreCsiDriverConfig) *bool {
 		if v == nil {
 			return nil
 		}
@@ -7924,6 +8094,9 @@ func (o ClusterClusterAutoscalingPtrOutput) ResourceLimits() ClusterClusterAutos
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
+	// The image type to use for this node. Note that changing the image type
+	// will delete and recreate all nodes in the node pool.
+	ImageType *string `pulumi:"imageType"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
 	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -7951,6 +8124,9 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
+	// The image type to use for this node. Note that changing the image type
+	// will delete and recreate all nodes in the node pool.
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
 	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -8043,6 +8219,12 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ToClusterCluste
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
+// The image type to use for this node. Note that changing the image type
+// will delete and recreate all nodes in the node pool.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+}
+
 // Minimum CPU platform to be used by this instance.
 // The instance may be scheduled on the specified or newer CPU platform. Applicable
 // values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -8087,6 +8269,17 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) Elem() Clust
 		var ret ClusterClusterAutoscalingAutoProvisioningDefaults
 		return ret
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsOutput)
+}
+
+// The image type to use for this node. Note that changing the image type
+// will delete and recreate all nodes in the node pool.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Minimum CPU platform to be used by this instance.
@@ -10990,7 +11183,7 @@ func (o ClusterNetworkPolicyPtrOutput) Provider() pulumi.StringPtrOutput {
 }
 
 type ClusterNodeConfig struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -11051,8 +11244,7 @@ type ClusterNodeConfig struct {
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
 	Preemptible *bool `pulumi:"preemptible"`
-	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-	// > > > > > > > v4.3.0
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
 	// Structure is documented below.
 	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -11093,7 +11285,7 @@ type ClusterNodeConfigInput interface {
 }
 
 type ClusterNodeConfigArgs struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -11154,8 +11346,7 @@ type ClusterNodeConfigArgs struct {
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-	// > > > > > > > v4.3.0
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
 	// Structure is documented below.
 	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -11261,7 +11452,7 @@ func (o ClusterNodeConfigOutput) ToClusterNodeConfigPtrOutputWithContext(ctx con
 	}).(ClusterNodeConfigPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -11373,8 +11564,7 @@ func (o ClusterNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-// > > > > > > > v4.3.0
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
 // Structure is documented below.
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
@@ -11446,7 +11636,7 @@ func (o ClusterNodeConfigPtrOutput) Elem() ClusterNodeConfigOutput {
 	}).(ClusterNodeConfigOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -11643,8 +11833,7 @@ func (o ClusterNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-// > > > > > > > v4.3.0
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
 // Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSandboxConfig {
@@ -13730,7 +13919,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput
 }
 
 type ClusterNodePoolNodeConfig struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -13791,8 +13980,7 @@ type ClusterNodePoolNodeConfig struct {
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
 	Preemptible *bool `pulumi:"preemptible"`
-	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-	// > > > > > > > v4.3.0
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
 	// Structure is documented below.
 	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -13833,7 +14021,7 @@ type ClusterNodePoolNodeConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigArgs struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -13894,8 +14082,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-	// > > > > > > > v4.3.0
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
 	// Structure is documented below.
 	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
@@ -14001,7 +14188,7 @@ func (o ClusterNodePoolNodeConfigOutput) ToClusterNodePoolNodeConfigPtrOutputWit
 	}).(ClusterNodePoolNodeConfigPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -14117,8 +14304,7 @@ func (o ClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-// > > > > > > > v4.3.0
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
@@ -14194,7 +14380,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Elem() ClusterNodePoolNodeConfigOutp
 	}).(ClusterNodePoolNodeConfigOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
 		if v == nil {
@@ -14391,8 +14577,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-// > > > > > > > v4.3.0
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig {
@@ -19900,6 +20085,7 @@ type GetClusterAddonsConfig struct {
 	ConfigConnectorConfigs            []GetClusterAddonsConfigConfigConnectorConfig            `pulumi:"configConnectorConfigs"`
 	DnsCacheConfigs                   []GetClusterAddonsConfigDnsCacheConfig                   `pulumi:"dnsCacheConfigs"`
 	GcePersistentDiskCsiDriverConfigs []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfigs"`
+	GcpFilestoreCsiDriverConfigs      []GetClusterAddonsConfigGcpFilestoreCsiDriverConfig      `pulumi:"gcpFilestoreCsiDriverConfigs"`
 	HorizontalPodAutoscalings         []GetClusterAddonsConfigHorizontalPodAutoscaling         `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings                []GetClusterAddonsConfigHttpLoadBalancing                `pulumi:"httpLoadBalancings"`
 	IstioConfigs                      []GetClusterAddonsConfigIstioConfig                      `pulumi:"istioConfigs"`
@@ -19923,6 +20109,7 @@ type GetClusterAddonsConfigArgs struct {
 	ConfigConnectorConfigs            GetClusterAddonsConfigConfigConnectorConfigArrayInput            `pulumi:"configConnectorConfigs"`
 	DnsCacheConfigs                   GetClusterAddonsConfigDnsCacheConfigArrayInput                   `pulumi:"dnsCacheConfigs"`
 	GcePersistentDiskCsiDriverConfigs GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput `pulumi:"gcePersistentDiskCsiDriverConfigs"`
+	GcpFilestoreCsiDriverConfigs      GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput      `pulumi:"gcpFilestoreCsiDriverConfigs"`
 	HorizontalPodAutoscalings         GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput         `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings                GetClusterAddonsConfigHttpLoadBalancingArrayInput                `pulumi:"httpLoadBalancings"`
 	IstioConfigs                      GetClusterAddonsConfigIstioConfigArrayInput                      `pulumi:"istioConfigs"`
@@ -19999,6 +20186,12 @@ func (o GetClusterAddonsConfigOutput) GcePersistentDiskCsiDriverConfigs() GetClu
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 		return v.GcePersistentDiskCsiDriverConfigs
 	}).(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput)
+}
+
+func (o GetClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfigs() GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+		return v.GcpFilestoreCsiDriverConfigs
+	}).(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) HorizontalPodAutoscalings() GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput {
@@ -20425,6 +20618,100 @@ func (o GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 		return vs[0].([]GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput)
+}
+
+type GetClusterAddonsConfigGcpFilestoreCsiDriverConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigGcpFilestoreCsiDriverConfigInput is an input type that accepts GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs and GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigGcpFilestoreCsiDriverConfigInput` via:
+//
+//          GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{...}
+type GetClusterAddonsConfigGcpFilestoreCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput() GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput
+	ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutputWithContext(context.Context) GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput
+}
+
+type GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigGcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput() GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return i.ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs) ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput)
+}
+
+// GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput is an input type that accepts GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray and GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput` via:
+//
+//          GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray{ GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{...} }
+type GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput
+	ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput
+}
+
+type GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray []GetClusterAddonsConfigGcpFilestoreCsiDriverConfigInput
+
+func (GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigGcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray) ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray) ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigGcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput() GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigGcpFilestoreCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigGcpFilestoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+		return vs[0].([]GetClusterAddonsConfigGcpFilestoreCsiDriverConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput)
 }
 
 type GetClusterAddonsConfigHorizontalPodAutoscaling struct {
@@ -21114,6 +21401,7 @@ func (o GetClusterClusterAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefault struct {
+	ImageType      string   `pulumi:"imageType"`
 	MinCpuPlatform string   `pulumi:"minCpuPlatform"`
 	OauthScopes    []string `pulumi:"oauthScopes"`
 	ServiceAccount string   `pulumi:"serviceAccount"`
@@ -21131,6 +21419,7 @@ type GetClusterClusterAutoscalingAutoProvisioningDefaultInput interface {
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefaultArgs struct {
+	ImageType      pulumi.StringInput      `pulumi:"imageType"`
 	MinCpuPlatform pulumi.StringInput      `pulumi:"minCpuPlatform"`
 	OauthScopes    pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	ServiceAccount pulumi.StringInput      `pulumi:"serviceAccount"`
@@ -21185,6 +21474,10 @@ func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ToGetClusterC
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultOutput {
 	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) MinCpuPlatform() pulumi.StringOutput {
@@ -27059,6 +27352,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigDnsCacheConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigDnsCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcpFilestoreCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHorizontalPodAutoscalingInput)(nil)).Elem(), ClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHorizontalPodAutoscalingPtrInput)(nil)).Elem(), ClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHttpLoadBalancingInput)(nil)).Elem(), ClusterAddonsConfigHttpLoadBalancingArgs{})
@@ -27221,6 +27516,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigDnsCacheConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigDnsCacheConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHorizontalPodAutoscalingInput)(nil)).Elem(), GetClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterAddonsConfigHorizontalPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHttpLoadBalancingInput)(nil)).Elem(), GetClusterAddonsConfigHttpLoadBalancingArgs{})
@@ -27429,6 +27726,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHttpLoadBalancingOutput{})
@@ -27591,6 +27890,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHttpLoadBalancingOutput{})

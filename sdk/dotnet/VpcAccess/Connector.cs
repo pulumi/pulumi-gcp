@@ -250,7 +250,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the VPC network. Required if `ip_cidr_range` is set.
+        /// Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
@@ -377,7 +377,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of the VPC network. Required if `ip_cidr_range` is set.
+        /// Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -453,7 +453,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of the VPC network. Required if `ip_cidr_range` is set.
+        /// Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

@@ -702,8 +702,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
                  transaction_log_retention_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs'] backup_retention_settings: Backup retention settings. The configuration is detailed below.
-        :param pulumi.Input[bool] binary_log_enabled: True if binary logging is enabled. If
-               `settings.backup_configuration.enabled` is false, this must be as well.
+        :param pulumi.Input[bool] binary_log_enabled: True if binary logging is enabled.
                Cannot be used with Postgres.
         :param pulumi.Input[bool] enabled: True if backup configuration is enabled.
         :param pulumi.Input[str] location: The region where the backup will be stored
@@ -743,8 +742,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
     @pulumi.getter(name="binaryLogEnabled")
     def binary_log_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        True if binary logging is enabled. If
-        `settings.backup_configuration.enabled` is false, this must be as well.
+        True if binary logging is enabled.
         Cannot be used with Postgres.
         """
         return pulumi.get(self, "binary_log_enabled")

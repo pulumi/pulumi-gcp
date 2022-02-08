@@ -8195,6 +8195,18 @@ export namespace compute {
         seconds: number;
     }
 
+    export interface BackendServiceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface BackendServiceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface BackendServiceIap {
         /**
          * OAuth2 Client ID for IAP
@@ -8331,7 +8343,17 @@ export namespace compute {
     }
 
     export interface BackendServiceSecuritySettings {
+        /**
+         * ClientTlsPolicy is a resource that specifies how a client should authenticate
+         * connections to backends of a service. This resource itself does not affect
+         * configuration unless it is attached to a backend service resource.
+         */
         clientTlsPolicy: string;
+        /**
+         * A list of alternate names to verify the subject identity in the certificate.
+         * If specified, the client will verify that the server certificate's subject
+         * alt name matches one of the specified values.
+         */
         subjectAltNames: string[];
     }
 
@@ -14272,6 +14294,8 @@ export namespace compute {
          * Action to take when `match` matches the request. Valid values:
          * * "allow" : allow access to target
          * * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+         * * "rateBasedBan" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+         * * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
          */
         action: string;
         /**
@@ -14293,6 +14317,11 @@ export namespace compute {
          * Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
          */
         priority: number;
+        /**
+         * )
+         * Must be specified if the `action` is "rateBasedBad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+         */
+        rateLimitOptions?: outputs.compute.SecurityPolicyRuleRateLimitOptions;
     }
 
     export interface SecurityPolicyRuleMatch {
@@ -14331,6 +14360,70 @@ export namespace compute {
          * The application context of the containing message determines which well-known feature set of CEL is supported.
          */
         expression: string;
+    }
+
+    export interface SecurityPolicyRuleRateLimitOptions {
+        /**
+         * Can only be specified if the `action` for the rule is "rateBasedBan".
+         * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+         */
+        banDurationSec?: number;
+        /**
+         * Can only be specified if the `action` for the rule is "rateBasedBan".
+         * If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
+         * exceed this 'ban_threshold'. Structure is documented below.
+         */
+        banThreshold?: outputs.compute.SecurityPolicyRuleRateLimitOptionsBanThreshold;
+        /**
+         * Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+         */
+        conformAction: string;
+        /**
+         * Determines the key to enforce the rateLimitThreshold on.
+         * Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
+         */
+        enforceOnKey?: string;
+        /**
+         * Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+         */
+        enforceOnKeyName?: string;
+        /**
+         * When a request is denied, returns the HTTP response code specified.
+         * Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+         */
+        exceedAction: string;
+        exceedRedirectOptions?: outputs.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions;
+        /**
+         * Threshold at which to begin ratelimiting. Structure is documented below.
+         */
+        rateLimitThreshold: outputs.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThreshold;
+    }
+
+    export interface SecurityPolicyRuleRateLimitOptionsBanThreshold {
+        /**
+         * Number of HTTP(S) requests for calculating the threshold.
+         */
+        count: number;
+        /**
+         * Interval over which the threshold is computed.
+         */
+        intervalSec: number;
+    }
+
+    export interface SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
+        target?: string;
+        type: string;
+    }
+
+    export interface SecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
+        /**
+         * Number of HTTP(S) requests for calculating the threshold.
+         */
+        count: number;
+        /**
+         * Interval over which the threshold is computed.
+         */
+        intervalSec: number;
     }
 
     export interface SecurityScanConfigAuthentication {
@@ -16468,7 +16561,6 @@ export namespace compute {
          */
         service: string;
     }
-
 }
 
 export namespace config {
@@ -16981,6 +17073,12 @@ export namespace container {
          */
         gcePersistentDiskCsiDriverConfig: outputs.container.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig;
         /**
+         * The status of the Filestore CSI driver addon,
+         * which allows the usage of filestore instance as volumes.
+         * It is disbaled by default; set `enabled = true` to enable.
+         */
+        gcpFilestoreCsiDriverConfig: outputs.container.ClusterAddonsConfigGcpFilestoreCsiDriverConfig;
+        /**
          * The status of the Horizontal Pod Autoscaling
          * addon, which increases or decreases the number of replica pods a replication controller
          * has based on the resource usage of the existing pods.
@@ -17045,6 +17143,14 @@ export namespace container {
     }
 
     export interface ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
+    }
+
+    export interface ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
         /**
          * Enable the PodSecurityPolicy controller for this cluster.
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -17131,6 +17237,11 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        /**
+         * The image type to use for this node. Note that changing the image type
+         * will delete and recreate all nodes in the node pool.
+         */
+        imageType?: string;
         /**
          * Minimum CPU platform to be used by this instance.
          * The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -17354,7 +17465,7 @@ export namespace container {
 
     export interface ClusterNodeConfig {
         /**
-         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
          */
         bootDiskKmsKey?: string;
         /**
@@ -17449,8 +17560,7 @@ export namespace container {
          */
         preemptible?: boolean;
         /**
-         * ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-         * >>>>>>> v4.3.0
+         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
          * Structure is documented below.
          */
         sandboxConfig?: outputs.container.ClusterNodeConfigSandboxConfig;
@@ -17464,7 +17574,7 @@ export namespace container {
          */
         shieldedInstanceConfig: outputs.container.ClusterNodeConfigShieldedInstanceConfig;
         /**
-         * ) A boolean 
+         * ) A boolean
          * that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
          * for more information. Defaults to false.
          */
@@ -17670,7 +17780,7 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfig {
         /**
-         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
          */
         bootDiskKmsKey?: string;
         /**
@@ -17765,8 +17875,7 @@ export namespace container {
          */
         preemptible?: boolean;
         /**
-         * ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-         * >>>>>>> v4.3.0
+         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
          * Structure is documented below.
          */
         sandboxConfig?: outputs.container.ClusterNodePoolNodeConfigSandboxConfig;
@@ -17780,7 +17889,7 @@ export namespace container {
          */
         shieldedInstanceConfig: outputs.container.ClusterNodePoolNodeConfigShieldedInstanceConfig;
         /**
-         * ) A boolean 
+         * ) A boolean
          * that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
          * for more information. Defaults to false.
          */
@@ -18054,6 +18163,7 @@ export namespace container {
         configConnectorConfigs: outputs.container.GetClusterAddonsConfigConfigConnectorConfig[];
         dnsCacheConfigs: outputs.container.GetClusterAddonsConfigDnsCacheConfig[];
         gcePersistentDiskCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig[];
+        gcpFilestoreCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcpFilestoreCsiDriverConfig[];
         horizontalPodAutoscalings: outputs.container.GetClusterAddonsConfigHorizontalPodAutoscaling[];
         httpLoadBalancings: outputs.container.GetClusterAddonsConfigHttpLoadBalancing[];
         istioConfigs: outputs.container.GetClusterAddonsConfigIstioConfig[];
@@ -18075,6 +18185,10 @@ export namespace container {
     }
 
     export interface GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
+        enabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
         enabled: boolean;
     }
 
@@ -18111,6 +18225,7 @@ export namespace container {
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefault {
+        imageType: string;
         minCpuPlatform: string;
         oauthScopes: string[];
         serviceAccount: string;
@@ -18555,7 +18670,6 @@ export namespace container {
          */
         maxUnavailable: number;
     }
-
 }
 
 export namespace containeranalysis {
@@ -29991,8 +30105,7 @@ export namespace sql {
          */
         backupRetentionSettings: outputs.sql.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings;
         /**
-         * True if binary logging is enabled. If
-         * `settings.backup_configuration.enabled` is false, this must be as well.
+         * True if binary logging is enabled.
          * Cannot be used with Postgres.
          */
         binaryLogEnabled?: boolean;

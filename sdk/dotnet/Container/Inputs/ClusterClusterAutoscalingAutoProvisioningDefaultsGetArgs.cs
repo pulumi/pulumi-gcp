@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaultsGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The image type to use for this node. Note that changing the image type
+        /// will delete and recreate all nodes in the node pool.
+        /// </summary>
+        [Input("imageType")]
+        public Input<string>? ImageType { get; set; }
+
+        /// <summary>
         /// Minimum CPU platform to be used by this instance.
         /// The instance may be scheduled on the specified or newer CPU platform. Applicable
         /// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the

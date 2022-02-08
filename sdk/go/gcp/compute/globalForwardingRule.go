@@ -17,7 +17,7 @@ import (
 // balancing.
 //
 // For more information, see
-// https://cloud.google.com/compute/docs/load-balancing/http/
+// <https://cloud.google.com/compute/docs/load-balancing/http/>
 //
 // ## Example Usage
 // ### External Tcp Proxy Lb Mig Backend
@@ -549,6 +549,75 @@ import (
 // 	})
 // }
 // ```
+// ### Global Forwarding Rule External Managed
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			PortName:            pulumi.String("http"),
+// 			Protocol:            pulumi.String("HTTP"),
+// 			TimeoutSec:          pulumi.Int(10),
+// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			Description:    pulumi.String("a description"),
+// 			DefaultService: defaultBackendService.ID(),
+// 			HostRules: compute.URLMapHostRuleArray{
+// 				&compute.URLMapHostRuleArgs{
+// 					Hosts: pulumi.StringArray{
+// 						pulumi.String("mysite.com"),
+// 					},
+// 					PathMatcher: pulumi.String("allpaths"),
+// 				},
+// 			},
+// 			PathMatchers: compute.URLMapPathMatcherArray{
+// 				&compute.URLMapPathMatcherArgs{
+// 					Name:           pulumi.String("allpaths"),
+// 					DefaultService: defaultBackendService.ID(),
+// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
+// 						&compute.URLMapPathMatcherPathRuleArgs{
+// 							Paths: pulumi.StringArray{
+// 								pulumi.String("/*"),
+// 							},
+// 							Service: defaultBackendService.ID(),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
+// 			Description: pulumi.String("a description"),
+// 			UrlMap:      defaultURLMap.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
+// 			Target:              defaultTargetHttpProxy.ID(),
+// 			PortRange:           pulumi.String("80"),
+// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Private Service Connect Google Apis
 //
 // ```go
@@ -657,9 +726,12 @@ type GlobalForwardingRule struct {
 	// will be used for External Global Load Balancing (HTTP(S) LB,
 	// External TCP/UDP LB, SSL Proxy)
 	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -785,9 +857,12 @@ type globalForwardingRuleState struct {
 	// will be used for External Global Load Balancing (HTTP(S) LB,
 	// External TCP/UDP LB, SSL Proxy)
 	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -882,9 +957,12 @@ type GlobalForwardingRuleState struct {
 	// will be used for External Global Load Balancing (HTTP(S) LB,
 	// External TCP/UDP LB, SSL Proxy)
 	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -981,9 +1059,12 @@ type globalForwardingRuleArgs struct {
 	// will be used for External Global Load Balancing (HTTP(S) LB,
 	// External TCP/UDP LB, SSL Proxy)
 	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -1075,9 +1156,12 @@ type GlobalForwardingRuleArgs struct {
 	// will be used for External Global Load Balancing (HTTP(S) LB,
 	// External TCP/UDP LB, SSL Proxy)
 	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS

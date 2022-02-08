@@ -1380,8 +1380,7 @@ func (o DatabaseInstanceSettingsPtrOutput) Version() pulumi.IntPtrOutput {
 type DatabaseInstanceSettingsBackupConfiguration struct {
 	// Backup retention settings. The configuration is detailed below.
 	BackupRetentionSettings *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings `pulumi:"backupRetentionSettings"`
-	// True if binary logging is enabled. If
-	// `settings.backup_configuration.enabled` is false, this must be as well.
+	// True if binary logging is enabled.
 	// Cannot be used with Postgres.
 	BinaryLogEnabled *bool `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
@@ -1411,8 +1410,7 @@ type DatabaseInstanceSettingsBackupConfigurationInput interface {
 type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	// Backup retention settings. The configuration is detailed below.
 	BackupRetentionSettings DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput `pulumi:"backupRetentionSettings"`
-	// True if binary logging is enabled. If
-	// `settings.backup_configuration.enabled` is false, this must be as well.
+	// True if binary logging is enabled.
 	// Cannot be used with Postgres.
 	BinaryLogEnabled pulumi.BoolPtrInput `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
@@ -1512,8 +1510,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) BackupRetentionSettin
 	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
 }
 
-// True if binary logging is enabled. If
-// `settings.backup_configuration.enabled` is false, this must be as well.
+// True if binary logging is enabled.
 // Cannot be used with Postgres.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.BinaryLogEnabled }).(pulumi.BoolPtrOutput)
@@ -1579,8 +1576,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BackupRetentionSet
 	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
 }
 
-// True if binary logging is enabled. If
-// `settings.backup_configuration.enabled` is false, this must be as well.
+// True if binary logging is enabled.
 // Cannot be used with Postgres.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *bool {

@@ -284,9 +284,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Port = 80,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
     ///         {
@@ -295,9 +292,6 @@ namespace Pulumi.Gcp.Compute
     ///                 defaultHealthCheck.Id,
     ///             },
     ///             LoadBalancingScheme = "EXTERNAL_MANAGED",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

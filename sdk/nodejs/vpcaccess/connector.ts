@@ -199,7 +199,7 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Name of the VPC network. Required if `ipCidrRange` is set.
+     * Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
@@ -306,7 +306,7 @@ export interface ConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Name of the VPC network. Required if `ipCidrRange` is set.
+     * Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      */
     network?: pulumi.Input<string>;
     /**
@@ -367,7 +367,7 @@ export interface ConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Name of the VPC network. Required if `ipCidrRange` is set.
+     * Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      */
     network?: pulumi.Input<string>;
     /**

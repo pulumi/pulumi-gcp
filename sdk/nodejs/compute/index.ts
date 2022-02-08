@@ -12,6 +12,9 @@ export * from "./autoscaler";
 export * from "./backendBucket";
 export * from "./backendBucketSignedUrlKey";
 export * from "./backendService";
+export * from "./backendServiceIamBinding";
+export * from "./backendServiceIamMember";
+export * from "./backendServiceIamPolicy";
 export * from "./backendServiceSignedUrlKey";
 export * from "./disk";
 export * from "./diskIamBinding";
@@ -151,6 +154,9 @@ import { Autoscaler } from "./autoscaler";
 import { BackendBucket } from "./backendBucket";
 import { BackendBucketSignedUrlKey } from "./backendBucketSignedUrlKey";
 import { BackendService } from "./backendService";
+import { BackendServiceIamBinding } from "./backendServiceIamBinding";
+import { BackendServiceIamMember } from "./backendServiceIamMember";
+import { BackendServiceIamPolicy } from "./backendServiceIamPolicy";
 import { BackendServiceSignedUrlKey } from "./backendServiceSignedUrlKey";
 import { Disk } from "./disk";
 import { DiskIamBinding } from "./diskIamBinding";
@@ -270,6 +276,12 @@ const _module = {
                 return new BackendBucketSignedUrlKey(name, <any>undefined, { urn })
             case "gcp:compute/backendService:BackendService":
                 return new BackendService(name, <any>undefined, { urn })
+            case "gcp:compute/backendServiceIamBinding:BackendServiceIamBinding":
+                return new BackendServiceIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/backendServiceIamMember:BackendServiceIamMember":
+                return new BackendServiceIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy":
+                return new BackendServiceIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey":
                 return new BackendServiceSignedUrlKey(name, <any>undefined, { urn })
             case "gcp:compute/disk:Disk":
@@ -482,6 +494,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/autoscaler", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendBucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendBucketSignedUrlKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendService", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceSignedUrlKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/disk", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/diskIamBinding", _module)

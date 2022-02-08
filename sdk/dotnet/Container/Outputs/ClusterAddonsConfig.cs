@@ -34,6 +34,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig? GcePersistentDiskCsiDriverConfig;
         /// <summary>
+        /// The status of the Filestore CSI driver addon,
+        /// which allows the usage of filestore instance as volumes.
+        /// It is disbaled by default; set `enabled = true` to enable.
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? GcpFilestoreCsiDriverConfig;
+        /// <summary>
         /// The status of the Horizontal Pod Autoscaling
         /// addon, which increases or decreases the number of replica pods a replication controller
         /// has based on the resource usage of the existing pods.
@@ -77,6 +83,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig? gcePersistentDiskCsiDriverConfig,
 
+            Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? gcpFilestoreCsiDriverConfig,
+
             Outputs.ClusterAddonsConfigHorizontalPodAutoscaling? horizontalPodAutoscaling,
 
             Outputs.ClusterAddonsConfigHttpLoadBalancing? httpLoadBalancing,
@@ -91,6 +99,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ConfigConnectorConfig = configConnectorConfig;
             DnsCacheConfig = dnsCacheConfig;
             GcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
+            GcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;

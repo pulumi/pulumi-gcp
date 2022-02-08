@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Container
     ///  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
     /// ```
     /// 
-    ///  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
+    ///  For example, the following fields will show diffs if set in config* `min_master_version` * `remove_default_node_pool`
     /// </summary>
     [GcpResourceType("gcp:container/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource

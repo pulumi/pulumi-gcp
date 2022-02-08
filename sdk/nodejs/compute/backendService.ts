@@ -170,14 +170,10 @@ import * as utilities from "../utilities";
  *
  * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {httpHealthCheck: {
  *     port: 80,
- * }}, {
- *     provider: google_beta,
- * });
+ * }});
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
  *     healthChecks: [defaultHealthCheck.id],
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -1294,12 +1294,10 @@ class BackendService(pulumi.CustomResource):
 
         default_health_check = gcp.compute.HealthCheck("defaultHealthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
             port=80,
-        ),
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        ))
         default_backend_service = gcp.compute.BackendService("defaultBackendService",
             health_checks=[default_health_check.id],
-            load_balancing_scheme="EXTERNAL_MANAGED",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            load_balancing_scheme="EXTERNAL_MANAGED")
         ```
 
         ## Import
@@ -1567,12 +1565,10 @@ class BackendService(pulumi.CustomResource):
 
         default_health_check = gcp.compute.HealthCheck("defaultHealthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
             port=80,
-        ),
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        ))
         default_backend_service = gcp.compute.BackendService("defaultBackendService",
             health_checks=[default_health_check.id],
-            load_balancing_scheme="EXTERNAL_MANAGED",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            load_balancing_scheme="EXTERNAL_MANAGED")
         ```
 
         ## Import

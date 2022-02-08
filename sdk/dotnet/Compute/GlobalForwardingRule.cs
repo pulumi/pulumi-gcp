@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// balancing.
     /// 
     /// For more information, see
-    /// https://cloud.google.com/compute/docs/load-balancing/http/
+    /// &lt;https://cloud.google.com/compute/docs/load-balancing/http/&gt;
     /// 
     /// ## Example Usage
     /// ### External Tcp Proxy Lb Mig Backend
@@ -678,6 +678,73 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Global Forwarding Rule External Managed
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             PortName = "http",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         });
+    ///         var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new Gcp.Compute.URLMapArgs
+    ///         {
+    ///             Description = "a description",
+    ///             DefaultService = defaultBackendService.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = defaultBackendService.Id,
+    ///                     PathRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/*",
+    ///                             },
+    ///                             Service = defaultBackendService.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var defaultTargetHttpProxy = new Gcp.Compute.TargetHttpProxy("defaultTargetHttpProxy", new Gcp.Compute.TargetHttpProxyArgs
+    ///         {
+    ///             Description = "a description",
+    ///             UrlMap = defaultURLMap.Id,
+    ///         });
+    ///         var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
+    ///         {
+    ///             Target = defaultTargetHttpProxy.Id,
+    ///             PortRange = "80",
+    ///             LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Private Service Connect Google Apis
     /// 
     /// ```csharp
@@ -814,9 +881,12 @@ namespace Pulumi.Gcp.Compute
         /// will be used for External Global Load Balancing (HTTP(S) LB,
         /// External TCP/UDP LB, SSL Proxy)
         /// Note: This field must be set "" if the global address is
+        /// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+        /// that this will be used for Global external HTTP(S) load balancers.
+        /// Note: This field must be set "" if the global address is
         /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -1010,9 +1080,12 @@ namespace Pulumi.Gcp.Compute
         /// will be used for External Global Load Balancing (HTTP(S) LB,
         /// External TCP/UDP LB, SSL Proxy)
         /// Note: This field must be set "" if the global address is
+        /// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+        /// that this will be used for Global external HTTP(S) load balancers.
+        /// Note: This field must be set "" if the global address is
         /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -1173,9 +1246,12 @@ namespace Pulumi.Gcp.Compute
         /// will be used for External Global Load Balancing (HTTP(S) LB,
         /// External TCP/UDP LB, SSL Proxy)
         /// Note: This field must be set "" if the global address is
+        /// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+        /// that this will be used for Global external HTTP(S) load balancers.
+        /// Note: This field must be set "" if the global address is
         /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
