@@ -225,6 +225,7 @@ __all__ = [
     'RegionNetworkEndpointGroupAppEngine',
     'RegionNetworkEndpointGroupCloudFunction',
     'RegionNetworkEndpointGroupCloudRun',
+    'RegionNetworkEndpointGroupServerlessDeployment',
     'RegionPerInstanceConfigPreservedState',
     'RegionPerInstanceConfigPreservedStateDisk',
     'RegionUrlMapDefaultUrlRedirect',
@@ -15141,15 +15142,12 @@ class RegionNetworkEndpointGroupAppEngine(dict):
         :param str service: Optional serving service.
                The service name must be 1-63 characters long, and comply with RFC1035.
                Example value: "default", "my-service".
-        :param str url_mask: A template to parse function field from a request URL. URL mask allows
-               for routing to multiple Cloud Functions without having to create
-               multiple Network Endpoint Groups and backend services.
-               For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-               can be backed by the same Serverless NEG with URL mask "/". The URL mask
-               will parse them to { function = "function1" } and { function = "function2" } respectively.
-        :param str version: Optional serving version.
-               The version must be 1-63 characters long, and comply with RFC1035.
-               Example value: "v1", "v2".
+        :param str url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+               on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+               The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+               App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+        :param str version: The optional resource version. The version identified by this value is platform-specific and is follows:
+               API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -15172,12 +15170,10 @@ class RegionNetworkEndpointGroupAppEngine(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[str]:
         """
-        A template to parse function field from a request URL. URL mask allows
-        for routing to multiple Cloud Functions without having to create
-        multiple Network Endpoint Groups and backend services.
-        For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-        can be backed by the same Serverless NEG with URL mask "/". The URL mask
-        will parse them to { function = "function1" } and { function = "function2" } respectively.
+        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+        on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+        The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+        App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
         """
         return pulumi.get(self, "url_mask")
 
@@ -15185,9 +15181,8 @@ class RegionNetworkEndpointGroupAppEngine(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        Optional serving version.
-        The version must be 1-63 characters long, and comply with RFC1035.
-        Example value: "v1", "v2".
+        The optional resource version. The version identified by this value is platform-specific and is follows:
+        API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
         """
         return pulumi.get(self, "version")
 
@@ -15218,12 +15213,10 @@ class RegionNetworkEndpointGroupCloudFunction(dict):
         :param str function: A user-defined name of the Cloud Function.
                The function name is case-sensitive and must be 1-63 characters long.
                Example value: "func1".
-        :param str url_mask: A template to parse function field from a request URL. URL mask allows
-               for routing to multiple Cloud Functions without having to create
-               multiple Network Endpoint Groups and backend services.
-               For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-               can be backed by the same Serverless NEG with URL mask "/". The URL mask
-               will parse them to { function = "function1" } and { function = "function2" } respectively.
+        :param str url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+               on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+               The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+               App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
         """
         if function is not None:
             pulumi.set(__self__, "function", function)
@@ -15244,12 +15237,10 @@ class RegionNetworkEndpointGroupCloudFunction(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[str]:
         """
-        A template to parse function field from a request URL. URL mask allows
-        for routing to multiple Cloud Functions without having to create
-        multiple Network Endpoint Groups and backend services.
-        For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-        can be backed by the same Serverless NEG with URL mask "/". The URL mask
-        will parse them to { function = "function1" } and { function = "function2" } respectively.
+        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+        on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+        The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+        App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
         """
         return pulumi.get(self, "url_mask")
 
@@ -15285,12 +15276,10 @@ class RegionNetworkEndpointGroupCloudRun(dict):
                additional fine-grained traffic routing information.
                The tag must be 1-63 characters long, and comply with RFC1035.
                Example value: "revision-0010".
-        :param str url_mask: A template to parse function field from a request URL. URL mask allows
-               for routing to multiple Cloud Functions without having to create
-               multiple Network Endpoint Groups and backend services.
-               For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-               can be backed by the same Serverless NEG with URL mask "/". The URL mask
-               will parse them to { function = "function1" } and { function = "function2" } respectively.
+        :param str url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+               on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+               The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+               App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -15324,14 +15313,96 @@ class RegionNetworkEndpointGroupCloudRun(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[str]:
         """
-        A template to parse function field from a request URL. URL mask allows
-        for routing to multiple Cloud Functions without having to create
-        multiple Network Endpoint Groups and backend services.
-        For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-        can be backed by the same Serverless NEG with URL mask "/". The URL mask
-        will parse them to { function = "function1" } and { function = "function2" } respectively.
+        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+        on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+        The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+        App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
         """
         return pulumi.get(self, "url_mask")
+
+
+@pulumi.output_type
+class RegionNetworkEndpointGroupServerlessDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlMask":
+            suggest = "url_mask"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkEndpointGroupServerlessDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkEndpointGroupServerlessDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkEndpointGroupServerlessDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 platform: str,
+                 url_mask: str,
+                 resource: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str platform: The platform of the NEG backend target(s). Possible values:
+               API Gateway: apigateway.googleapis.com
+        :param str url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+               on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+               The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+               App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+        :param str resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+               The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+               Cloud Functions: The function name, Cloud Run: The service name
+        :param str version: The optional resource version. The version identified by this value is platform-specific and is follows:
+               API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+        """
+        pulumi.set(__self__, "platform", platform)
+        pulumi.set(__self__, "url_mask", url_mask)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def platform(self) -> str:
+        """
+        The platform of the NEG backend target(s). Possible values:
+        API Gateway: apigateway.googleapis.com
+        """
+        return pulumi.get(self, "platform")
+
+    @property
+    @pulumi.getter(name="urlMask")
+    def url_mask(self) -> str:
+        """
+        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+        on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+        The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+        App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+        """
+        return pulumi.get(self, "url_mask")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[str]:
+        """
+        The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+        The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+        Cloud Functions: The function name, Cloud Run: The service name
+        """
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        The optional resource version. The version identified by this value is platform-specific and is follows:
+        API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

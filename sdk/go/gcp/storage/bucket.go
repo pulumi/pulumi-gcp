@@ -122,7 +122,8 @@ type Bucket struct {
 	pulumi.CustomResourceState
 
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  BucketCorArrayOutput `pulumi:"cors"`
+	Cors BucketCorArrayOutput `pulumi:"cors"`
+	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
@@ -196,8 +197,9 @@ func GetBucket(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Bucket resources.
 type bucketState struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  []BucketCor `pulumi:"cors"`
-	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
+	Cors []BucketCor `pulumi:"cors"`
+	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -239,7 +241,8 @@ type bucketState struct {
 
 type BucketState struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  BucketCorArrayInput
+	Cors BucketCorArrayInput
+	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput
@@ -286,8 +289,9 @@ func (BucketState) ElementType() reflect.Type {
 
 type bucketArgs struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  []BucketCor `pulumi:"cors"`
-	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
+	Cors []BucketCor `pulumi:"cors"`
+	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -326,7 +330,8 @@ type bucketArgs struct {
 // The set of arguments for constructing a Bucket resource.
 type BucketArgs struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  BucketCorArrayInput
+	Cors BucketCorArrayInput
+	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput

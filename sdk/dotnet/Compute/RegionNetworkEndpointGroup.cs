@@ -230,7 +230,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("appEngine")]
@@ -238,7 +238,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("cloudFunction")]
@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Output("cloudRun")]
@@ -298,6 +298,13 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+        /// serverlessDeployment may be set.
+        /// </summary>
+        [Output("serverlessDeployment")]
+        public Output<Outputs.RegionNetworkEndpointGroupServerlessDeployment?> ServerlessDeployment { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a RegionNetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -346,7 +353,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("appEngine")]
@@ -354,7 +361,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudFunction")]
@@ -362,7 +369,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudRun")]
@@ -408,6 +415,13 @@ namespace Pulumi.Gcp.Compute
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+        /// serverlessDeployment may be set.
+        /// </summary>
+        [Input("serverlessDeployment")]
+        public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentArgs>? ServerlessDeployment { get; set; }
+
         public RegionNetworkEndpointGroupArgs()
         {
         }
@@ -417,7 +431,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("appEngine")]
@@ -425,7 +439,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudFunction")]
@@ -433,7 +447,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Only valid when networkEndpointType is "SERVERLESS".
-        /// Only one of cloud_run, app_engine or cloud_function may be set.
+        /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudRun")]
@@ -484,6 +498,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+        /// serverlessDeployment may be set.
+        /// </summary>
+        [Input("serverlessDeployment")]
+        public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentGetArgs>? ServerlessDeployment { get; set; }
 
         public RegionNetworkEndpointGroupState()
         {

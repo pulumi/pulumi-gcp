@@ -36,6 +36,7 @@ class BucketArgs:
         The set of arguments for constructing a Bucket resource.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -115,6 +116,9 @@ class BucketArgs:
     @property
     @pulumi.getter(name="defaultEventBasedHold")
     def default_event_based_hold(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        """
         return pulumi.get(self, "default_event_based_hold")
 
     @default_event_based_hold.setter
@@ -318,6 +322,7 @@ class _BucketState:
         """
         Input properties used for looking up and filtering Bucket resources.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -393,6 +398,9 @@ class _BucketState:
     @property
     @pulumi.getter(name="defaultEventBasedHold")
     def default_event_based_hold(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        """
         return pulumi.get(self, "default_event_based_hold")
 
     @default_event_based_hold.setter
@@ -708,6 +716,7 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -910,6 +919,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -967,6 +977,9 @@ class Bucket(pulumi.CustomResource):
     @property
     @pulumi.getter(name="defaultEventBasedHold")
     def default_event_based_hold(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        """
         return pulumi.get(self, "default_event_based_hold")
 
     @property

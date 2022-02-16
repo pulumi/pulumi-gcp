@@ -238,15 +238,15 @@ type RegionNetworkEndpointGroup struct {
 	pulumi.CustomResourceState
 
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine RegionNetworkEndpointGroupAppEnginePtrOutput `pulumi:"appEngine"`
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction RegionNetworkEndpointGroupCloudFunctionPtrOutput `pulumi:"cloudFunction"`
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrOutput `pulumi:"cloudRun"`
 	// An optional description of this resource. Provide this property when
@@ -271,6 +271,9 @@ type RegionNetworkEndpointGroup struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+	// serverlessDeployment may be set.
+	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrOutput `pulumi:"serverlessDeployment"`
 }
 
 // NewRegionNetworkEndpointGroup registers a new resource with the given unique name, arguments, and options.
@@ -306,15 +309,15 @@ func GetRegionNetworkEndpointGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RegionNetworkEndpointGroup resources.
 type regionNetworkEndpointGroupState struct {
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine *RegionNetworkEndpointGroupAppEngine `pulumi:"appEngine"`
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction *RegionNetworkEndpointGroupCloudFunction `pulumi:"cloudFunction"`
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun *RegionNetworkEndpointGroupCloudRun `pulumi:"cloudRun"`
 	// An optional description of this resource. Provide this property when
@@ -339,19 +342,22 @@ type regionNetworkEndpointGroupState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+	// serverlessDeployment may be set.
+	ServerlessDeployment *RegionNetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
 }
 
 type RegionNetworkEndpointGroupState struct {
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine RegionNetworkEndpointGroupAppEnginePtrInput
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction RegionNetworkEndpointGroupCloudFunctionPtrInput
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrInput
 	// An optional description of this resource. Provide this property when
@@ -376,6 +382,9 @@ type RegionNetworkEndpointGroupState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+	// serverlessDeployment may be set.
+	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrInput
 }
 
 func (RegionNetworkEndpointGroupState) ElementType() reflect.Type {
@@ -384,15 +393,15 @@ func (RegionNetworkEndpointGroupState) ElementType() reflect.Type {
 
 type regionNetworkEndpointGroupArgs struct {
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine *RegionNetworkEndpointGroupAppEngine `pulumi:"appEngine"`
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction *RegionNetworkEndpointGroupCloudFunction `pulumi:"cloudFunction"`
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun *RegionNetworkEndpointGroupCloudRun `pulumi:"cloudRun"`
 	// An optional description of this resource. Provide this property when
@@ -415,20 +424,23 @@ type regionNetworkEndpointGroupArgs struct {
 	Project *string `pulumi:"project"`
 	// A reference to the region where the Serverless NEGs Reside.
 	Region string `pulumi:"region"`
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+	// serverlessDeployment may be set.
+	ServerlessDeployment *RegionNetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
 }
 
 // The set of arguments for constructing a RegionNetworkEndpointGroup resource.
 type RegionNetworkEndpointGroupArgs struct {
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine RegionNetworkEndpointGroupAppEnginePtrInput
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction RegionNetworkEndpointGroupCloudFunctionPtrInput
 	// Only valid when networkEndpointType is "SERVERLESS".
-	// Only one of cloud_run, appEngine or cloudFunction may be set.
+	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrInput
 	// An optional description of this resource. Provide this property when
@@ -451,6 +463,9 @@ type RegionNetworkEndpointGroupArgs struct {
 	Project pulumi.StringPtrInput
 	// A reference to the region where the Serverless NEGs Reside.
 	Region pulumi.StringInput
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+	// serverlessDeployment may be set.
+	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrInput
 }
 
 func (RegionNetworkEndpointGroupArgs) ElementType() reflect.Type {

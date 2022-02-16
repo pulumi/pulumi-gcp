@@ -14,9 +14,15 @@ __all__ = [
     'FunctionEventTriggerFailurePolicy',
     'FunctionIamBindingCondition',
     'FunctionIamMemberCondition',
+    'FunctionSecretEnvironmentVariable',
+    'FunctionSecretVolume',
+    'FunctionSecretVolumeVersion',
     'FunctionSourceRepository',
     'GetFunctionEventTriggerResult',
     'GetFunctionEventTriggerFailurePolicyResult',
+    'GetFunctionSecretEnvironmentVariableResult',
+    'GetFunctionSecretVolumeResult',
+    'GetFunctionSecretVolumeVersionResult',
     'GetFunctionSourceRepositoryResult',
 ]
 
@@ -159,6 +165,176 @@ class FunctionIamMemberCondition(dict):
 
 
 @pulumi.output_type
+class FunctionSecretEnvironmentVariable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionSecretEnvironmentVariable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionSecretEnvironmentVariable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionSecretEnvironmentVariable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: str,
+                 secret: str,
+                 version: str,
+                 project_id: Optional[str] = None):
+        """
+        :param str key: Name of the environment variable.
+        :param str secret: ID of the secret in secret manager (not the full resource name).
+        :param str version: Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        :param str project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        """
+        ID of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class FunctionSecretVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionSecretVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionSecretVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionSecretVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: str,
+                 secret: str,
+                 project_id: Optional[str] = None,
+                 versions: Optional[Sequence['outputs.FunctionSecretVolumeVersion']] = None):
+        """
+        :param str mount_path: The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+        :param str secret: ID of the secret in secret manager (not the full resource name).
+        :param str project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        :param Sequence['FunctionSecretVolumeVersionArgs'] versions: List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "secret", secret)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        """
+        ID of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Optional[Sequence['outputs.FunctionSecretVolumeVersion']]:
+        """
+        List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
+        """
+        return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class FunctionSecretVolumeVersion(dict):
+    def __init__(__self__, *,
+                 path: str,
+                 version: str):
+        """
+        :param str path: Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+        :param str version: Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class FunctionSourceRepository(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -261,6 +437,91 @@ class GetFunctionEventTriggerFailurePolicyResult(dict):
         Whether the function should be retried on failure.
         """
         return pulumi.get(self, "retry")
+
+
+@pulumi.output_type
+class GetFunctionSecretEnvironmentVariableResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 project_id: str,
+                 secret: str,
+                 version: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetFunctionSecretVolumeResult(dict):
+    def __init__(__self__, *,
+                 mount_path: str,
+                 project_id: str,
+                 secret: str,
+                 versions: Sequence['outputs.GetFunctionSecretVolumeVersionResult']):
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Sequence['outputs.GetFunctionSecretVolumeVersionResult']:
+        return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class GetFunctionSecretVolumeVersionResult(dict):
+    def __init__(__self__, *,
+                 path: str,
+                 version: str):
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

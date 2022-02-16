@@ -73,6 +73,7 @@ type Connection struct {
 
 	// Name of VPC network connected with service producers using VPC peering.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
 	Peering pulumi.StringOutput `pulumi:"peering"`
 	// Named IP address range(s) of PEERING type reserved for
 	// this service provider. Note that invoking this method with a different range when connection
@@ -124,6 +125,7 @@ func GetConnection(ctx *pulumi.Context,
 type connectionState struct {
 	// Name of VPC network connected with service producers using VPC peering.
 	Network *string `pulumi:"network"`
+	// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
 	Peering *string `pulumi:"peering"`
 	// Named IP address range(s) of PEERING type reserved for
 	// this service provider. Note that invoking this method with a different range when connection
@@ -138,6 +140,7 @@ type connectionState struct {
 type ConnectionState struct {
 	// Name of VPC network connected with service producers using VPC peering.
 	Network pulumi.StringPtrInput
+	// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
 	Peering pulumi.StringPtrInput
 	// Named IP address range(s) of PEERING type reserved for
 	// this service provider. Note that invoking this method with a different range when connection

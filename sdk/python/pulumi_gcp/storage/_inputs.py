@@ -36,6 +36,8 @@ __all__ = [
     'TransferJobTransferSpecGcsDataSourceArgs',
     'TransferJobTransferSpecHttpDataSourceArgs',
     'TransferJobTransferSpecObjectConditionsArgs',
+    'TransferJobTransferSpecPosixDataSinkArgs',
+    'TransferJobTransferSpecPosixDataSourceArgs',
     'TransferJobTransferSpecTransferOptionsArgs',
 ]
 
@@ -931,6 +933,8 @@ class TransferJobTransferSpecArgs:
                  gcs_data_source: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']] = None,
                  http_data_source: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']] = None,
                  object_conditions: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']] = None,
+                 posix_data_sink: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']] = None,
+                 posix_data_source: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']] = None,
                  transfer_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']] = None):
         """
         :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs'] aws_s3_data_source: An AWS S3 data source. Structure documented below.
@@ -939,6 +943,8 @@ class TransferJobTransferSpecArgs:
         :param pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs'] gcs_data_source: A Google Cloud Storage data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs'] http_data_source: A HTTP URL data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecObjectConditionsArgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs'] posix_data_sink: A POSIX data sink. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs'] posix_data_source: A POSIX filesystem data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecTransferOptionsArgs'] transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_data_source is not None:
@@ -953,6 +959,10 @@ class TransferJobTransferSpecArgs:
             pulumi.set(__self__, "http_data_source", http_data_source)
         if object_conditions is not None:
             pulumi.set(__self__, "object_conditions", object_conditions)
+        if posix_data_sink is not None:
+            pulumi.set(__self__, "posix_data_sink", posix_data_sink)
+        if posix_data_source is not None:
+            pulumi.set(__self__, "posix_data_source", posix_data_source)
         if transfer_options is not None:
             pulumi.set(__self__, "transfer_options", transfer_options)
 
@@ -1027,6 +1037,30 @@ class TransferJobTransferSpecArgs:
     @object_conditions.setter
     def object_conditions(self, value: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']]):
         pulumi.set(self, "object_conditions", value)
+
+    @property
+    @pulumi.getter(name="posixDataSink")
+    def posix_data_sink(self) -> Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']]:
+        """
+        A POSIX data sink. Structure documented below.
+        """
+        return pulumi.get(self, "posix_data_sink")
+
+    @posix_data_sink.setter
+    def posix_data_sink(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']]):
+        pulumi.set(self, "posix_data_sink", value)
+
+    @property
+    @pulumi.getter(name="posixDataSource")
+    def posix_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']]:
+        """
+        A POSIX filesystem data source. Structure documented below.
+        """
+        return pulumi.get(self, "posix_data_source")
+
+    @posix_data_source.setter
+    def posix_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']]):
+        pulumi.set(self, "posix_data_source", value)
 
     @property
     @pulumi.getter(name="transferOptions")
@@ -1389,6 +1423,50 @@ class TransferJobTransferSpecObjectConditionsArgs:
     @min_time_elapsed_since_last_modification.setter
     def min_time_elapsed_since_last_modification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_time_elapsed_since_last_modification", value)
+
+
+@pulumi.input_type
+class TransferJobTransferSpecPosixDataSinkArgs:
+    def __init__(__self__, *,
+                 root_directory: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] root_directory: Root directory path to the filesystem.
+        """
+        pulumi.set(__self__, "root_directory", root_directory)
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> pulumi.Input[str]:
+        """
+        Root directory path to the filesystem.
+        """
+        return pulumi.get(self, "root_directory")
+
+    @root_directory.setter
+    def root_directory(self, value: pulumi.Input[str]):
+        pulumi.set(self, "root_directory", value)
+
+
+@pulumi.input_type
+class TransferJobTransferSpecPosixDataSourceArgs:
+    def __init__(__self__, *,
+                 root_directory: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] root_directory: Root directory path to the filesystem.
+        """
+        pulumi.set(__self__, "root_directory", root_directory)
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> pulumi.Input[str]:
+        """
+        Root directory path to the filesystem.
+        """
+        return pulumi.get(self, "root_directory")
+
+    @root_directory.setter
+    def root_directory(self, value: pulumi.Input[str]):
+        pulumi.set(self, "root_directory", value)
 
 
 @pulumi.input_type

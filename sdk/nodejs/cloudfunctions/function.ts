@@ -187,6 +187,14 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
+     * Secret environment variables configuration. Structure is documented below.
+     */
+    public readonly secretEnvironmentVariables!: pulumi.Output<outputs.cloudfunctions.FunctionSecretEnvironmentVariable[] | undefined>;
+    /**
+     * Secret volumes configuration. Structure is documented below.
+     */
+    public readonly secretVolumes!: pulumi.Output<outputs.cloudfunctions.FunctionSecretVolume[] | undefined>;
+    /**
      * If provided, the self-provided service account to run the function with.
      */
     public readonly serviceAccountEmail!: pulumi.Output<string>;
@@ -248,6 +256,8 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["secretEnvironmentVariables"] = state ? state.secretEnvironmentVariables : undefined;
+            resourceInputs["secretVolumes"] = state ? state.secretVolumes : undefined;
             resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
             resourceInputs["sourceArchiveBucket"] = state ? state.sourceArchiveBucket : undefined;
             resourceInputs["sourceArchiveObject"] = state ? state.sourceArchiveObject : undefined;
@@ -276,6 +286,8 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["secretEnvironmentVariables"] = args ? args.secretEnvironmentVariables : undefined;
+            resourceInputs["secretVolumes"] = args ? args.secretVolumes : undefined;
             resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
             resourceInputs["sourceArchiveBucket"] = args ? args.sourceArchiveBucket : undefined;
             resourceInputs["sourceArchiveObject"] = args ? args.sourceArchiveObject : undefined;
@@ -355,6 +367,14 @@ export interface FunctionState {
      * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
     runtime?: pulumi.Input<string>;
+    /**
+     * Secret environment variables configuration. Structure is documented below.
+     */
+    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretEnvironmentVariable>[]>;
+    /**
+     * Secret volumes configuration. Structure is documented below.
+     */
+    secretVolumes?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretVolume>[]>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
@@ -455,6 +475,14 @@ export interface FunctionArgs {
      * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
     runtime: pulumi.Input<string>;
+    /**
+     * Secret environment variables configuration. Structure is documented below.
+     */
+    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretEnvironmentVariable>[]>;
+    /**
+     * Secret volumes configuration. Structure is documented below.
+     */
+    secretVolumes?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretVolume>[]>;
     /**
      * If provided, the self-provided service account to run the function with.
      */

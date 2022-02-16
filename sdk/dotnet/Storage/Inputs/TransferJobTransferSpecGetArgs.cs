@@ -49,6 +49,18 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<Inputs.TransferJobTransferSpecObjectConditionsGetArgs>? ObjectConditions { get; set; }
 
         /// <summary>
+        /// A POSIX data sink. Structure documented below.
+        /// </summary>
+        [Input("posixDataSink")]
+        public Input<Inputs.TransferJobTransferSpecPosixDataSinkGetArgs>? PosixDataSink { get; set; }
+
+        /// <summary>
+        /// A POSIX filesystem data source. Structure documented below.
+        /// </summary>
+        [Input("posixDataSource")]
+        public Input<Inputs.TransferJobTransferSpecPosixDataSourceGetArgs>? PosixDataSource { get; set; }
+
+        /// <summary>
         /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         /// </summary>
         [Input("transferOptions")]

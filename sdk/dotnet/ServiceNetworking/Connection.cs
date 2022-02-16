@@ -70,6 +70,9 @@ namespace Pulumi.Gcp.ServiceNetworking
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
+        /// </summary>
         [Output("peering")]
         public Output<string> Peering { get; private set; } = null!;
 
@@ -176,6 +179,9 @@ namespace Pulumi.Gcp.ServiceNetworking
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
+        /// </summary>
         [Input("peering")]
         public Input<string>? Peering { get; set; }
 

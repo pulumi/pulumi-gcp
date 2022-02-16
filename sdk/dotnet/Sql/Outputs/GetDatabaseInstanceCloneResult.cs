@@ -13,15 +13,19 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceCloneResult
     {
+        public readonly string AllocatedIpRange;
         public readonly string PointInTime;
         public readonly string SourceInstanceName;
 
         [OutputConstructor]
         private GetDatabaseInstanceCloneResult(
+            string allocatedIpRange,
+
             string pointInTime,
 
             string sourceInstanceName)
         {
+            AllocatedIpRange = allocatedIpRange;
             PointInTime = pointInTime;
             SourceInstanceName = sourceInstanceName;
         }

@@ -11,6 +11,8 @@ import (
 )
 
 type DatabaseInstanceClone struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
 	// The timestamp of the point in time that should be restored.
 	PointInTime *string `pulumi:"pointInTime"`
 	// Name of the source instance which will be cloned.
@@ -29,6 +31,8 @@ type DatabaseInstanceCloneInput interface {
 }
 
 type DatabaseInstanceCloneArgs struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
 	// The timestamp of the point in time that should be restored.
 	PointInTime pulumi.StringPtrInput `pulumi:"pointInTime"`
 	// Name of the source instance which will be cloned.
@@ -112,6 +116,11 @@ func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceClonePtrOutputWithContext
 	}).(DatabaseInstanceClonePtrOutput)
 }
 
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o DatabaseInstanceCloneOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
+}
+
 // The timestamp of the point in time that should be restored.
 func (o DatabaseInstanceCloneOutput) PointInTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.PointInTime }).(pulumi.StringPtrOutput)
@@ -144,6 +153,16 @@ func (o DatabaseInstanceClonePtrOutput) Elem() DatabaseInstanceCloneOutput {
 		var ret DatabaseInstanceClone
 		return ret
 	}).(DatabaseInstanceCloneOutput)
+}
+
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o DatabaseInstanceClonePtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedIpRange
+	}).(pulumi.StringPtrOutput)
 }
 
 // The timestamp of the point in time that should be restored.
@@ -2109,7 +2128,7 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordClientAddress() p
 }
 
 type DatabaseInstanceSettingsIpConfiguration struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   *string                                                    `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
 	// Whether this Cloud SQL instance should be assigned
@@ -2138,7 +2157,7 @@ type DatabaseInstanceSettingsIpConfigurationInput interface {
 }
 
 type DatabaseInstanceSettingsIpConfigurationArgs struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   pulumi.StringPtrInput                                              `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
 	// Whether this Cloud SQL instance should be assigned
@@ -2232,7 +2251,7 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) ToDatabaseInstanceSetting
 	}).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
@@ -2288,7 +2307,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Elem() DatabaseInstanc
 	}).(DatabaseInstanceSettingsIpConfigurationOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {
 		if v == nil {
@@ -2944,6 +2963,7 @@ func (o GetCaCertsCertArrayOutput) Index(i pulumi.IntInput) GetCaCertsCertOutput
 }
 
 type GetDatabaseInstanceClone struct {
+	AllocatedIpRange   string `pulumi:"allocatedIpRange"`
 	PointInTime        string `pulumi:"pointInTime"`
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -2960,6 +2980,7 @@ type GetDatabaseInstanceCloneInput interface {
 }
 
 type GetDatabaseInstanceCloneArgs struct {
+	AllocatedIpRange   pulumi.StringInput `pulumi:"allocatedIpRange"`
 	PointInTime        pulumi.StringInput `pulumi:"pointInTime"`
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -3013,6 +3034,10 @@ func (o GetDatabaseInstanceCloneOutput) ToGetDatabaseInstanceCloneOutput() GetDa
 
 func (o GetDatabaseInstanceCloneOutput) ToGetDatabaseInstanceCloneOutputWithContext(ctx context.Context) GetDatabaseInstanceCloneOutput {
 	return o
+}
+
+func (o GetDatabaseInstanceCloneOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstanceCloneOutput) PointInTime() pulumi.StringOutput {

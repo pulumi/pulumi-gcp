@@ -5858,6 +5858,55 @@ export namespace cloudfunctions {
         title: pulumi.Input<string>;
     }
 
+    export interface FunctionSecretEnvironmentVariable {
+        /**
+         * Name of the environment variable.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * ID of the secret in secret manager (not the full resource name).
+         */
+        secret: pulumi.Input<string>;
+        /**
+         * Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+         */
+        version: pulumi.Input<string>;
+    }
+
+    export interface FunctionSecretVolume {
+        /**
+         * The path within the container to mount the secret volume. For example, setting the mountPath as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * ID of the secret in secret manager (not the full resource name).
+         */
+        secret: pulumi.Input<string>;
+        /**
+         * List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
+         */
+        versions?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretVolumeVersion>[]>;
+    }
+
+    export interface FunctionSecretVolumeVersion {
+        /**
+         * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+         */
+        path: pulumi.Input<string>;
+        /**
+         * Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+         */
+        version: pulumi.Input<string>;
+    }
+
     export interface FunctionSourceRepository {
         deployedUrl?: pulumi.Input<string>;
         /**
@@ -6418,15 +6467,15 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerPort {
         /**
-         * Port number.
+         * Port number the container listens on. This must be a valid port number, 0 < x < 65536.
          */
-        containerPort: pulumi.Input<number>;
+        containerPort?: pulumi.Input<number>;
         /**
          * Volume's name.
          */
         name?: pulumi.Input<string>;
         /**
-         * Protocol used on port. Defaults to TCP.
+         * Protocol for port. Must be "TCP". Defaults to "TCP".
          */
         protocol?: pulumi.Input<string>;
     }
@@ -11205,18 +11254,15 @@ export namespace compute {
          */
         service?: pulumi.Input<string>;
         /**
-         * A template to parse function field from a request URL. URL mask allows
-         * for routing to multiple Cloud Functions without having to create
-         * multiple Network Endpoint Groups and backend services.
-         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
-         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
          */
         urlMask?: pulumi.Input<string>;
         /**
-         * Optional serving version.
-         * The version must be 1-63 characters long, and comply with RFC1035.
-         * Example value: "v1", "v2".
+         * The optional resource version. The version identified by this value is platform-specific and is follows:
+         * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
          */
         version?: pulumi.Input<string>;
     }
@@ -11229,12 +11275,10 @@ export namespace compute {
          */
         function?: pulumi.Input<string>;
         /**
-         * A template to parse function field from a request URL. URL mask allows
-         * for routing to multiple Cloud Functions without having to create
-         * multiple Network Endpoint Groups and backend services.
-         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
-         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
          */
         urlMask?: pulumi.Input<string>;
     }
@@ -11254,14 +11298,38 @@ export namespace compute {
          */
         tag?: pulumi.Input<string>;
         /**
-         * A template to parse function field from a request URL. URL mask allows
-         * for routing to multiple Cloud Functions without having to create
-         * multiple Network Endpoint Groups and backend services.
-         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
-         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
          */
         urlMask?: pulumi.Input<string>;
+    }
+
+    export interface RegionNetworkEndpointGroupServerlessDeployment {
+        /**
+         * The platform of the NEG backend target(s). Possible values:
+         * API Gateway: apigateway.googleapis.com
+         */
+        platform: pulumi.Input<string>;
+        /**
+         * The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+         * The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+         * Cloud Functions: The function name, Cloud Run: The service name
+         */
+        resource?: pulumi.Input<string>;
+        /**
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+         */
+        urlMask: pulumi.Input<string>;
+        /**
+         * The optional resource version. The version identified by this value is platform-specific and is follows:
+         * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface RegionPerInstanceConfigPreservedState {
@@ -15240,7 +15308,6 @@ export namespace compute {
          */
         service: pulumi.Input<string>;
     }
-
 }
 
 export namespace config {
@@ -27878,6 +27945,10 @@ export namespace spanner {
 export namespace sql {
     export interface DatabaseInstanceClone {
         /**
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         */
+        allocatedIpRange?: pulumi.Input<string>;
+        /**
          * The timestamp of the point in time that should be restored.
          */
         pointInTime?: pulumi.Input<string>;
@@ -28107,7 +28178,7 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsIpConfiguration {
         /**
-         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
          */
         allocatedIpRange?: pulumi.Input<string>;
         authorizedNetworks?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>[]>;
@@ -28449,6 +28520,14 @@ export namespace storage {
          */
         objectConditions?: pulumi.Input<inputs.storage.TransferJobTransferSpecObjectConditions>;
         /**
+         * A POSIX data sink. Structure documented below.
+         */
+        posixDataSink?: pulumi.Input<inputs.storage.TransferJobTransferSpecPosixDataSink>;
+        /**
+         * A POSIX filesystem data source. Structure documented below.
+         */
+        posixDataSource?: pulumi.Input<inputs.storage.TransferJobTransferSpecPosixDataSource>;
+        /**
          * Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
          */
         transferOptions?: pulumi.Input<inputs.storage.TransferJobTransferSpecTransferOptions>;
@@ -28552,6 +28631,20 @@ export namespace storage {
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
          */
         minTimeElapsedSinceLastModification?: pulumi.Input<string>;
+    }
+
+    export interface TransferJobTransferSpecPosixDataSink {
+        /**
+         * Root directory path to the filesystem.
+         */
+        rootDirectory: pulumi.Input<string>;
+    }
+
+    export interface TransferJobTransferSpecPosixDataSource {
+        /**
+         * Root directory path to the filesystem.
+         */
+        rootDirectory: pulumi.Input<string>;
     }
 
     export interface TransferJobTransferSpecTransferOptions {

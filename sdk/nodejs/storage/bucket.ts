@@ -114,6 +114,9 @@ export class Bucket extends pulumi.CustomResource {
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     public readonly cors!: pulumi.Output<outputs.storage.BucketCor[] | undefined>;
+    /**
+     * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+     */
     public readonly defaultEventBasedHold!: pulumi.Output<boolean | undefined>;
     /**
      * The bucket's encryption configuration. Structure is documented below.
@@ -257,6 +260,9 @@ export interface BucketState {
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
+    /**
+     * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+     */
     defaultEventBasedHold?: pulumi.Input<boolean>;
     /**
      * The bucket's encryption configuration. Structure is documented below.
@@ -339,6 +345,9 @@ export interface BucketArgs {
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
+    /**
+     * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+     */
     defaultEventBasedHold?: pulumi.Input<boolean>;
     /**
      * The bucket's encryption configuration. Structure is documented below.

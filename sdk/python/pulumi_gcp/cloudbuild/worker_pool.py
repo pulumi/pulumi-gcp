@@ -351,8 +351,6 @@ class WorkerPool(pulumi.CustomResource):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
 
-        > This resource is not currently public, and requires allow-listing of projects prior to use.
-
         ## Example Usage
 
         ```python
@@ -436,8 +434,6 @@ class WorkerPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
-
-        > This resource is not currently public, and requires allow-listing of projects prior to use.
 
         ## Example Usage
 

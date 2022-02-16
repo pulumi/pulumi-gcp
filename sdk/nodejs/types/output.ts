@@ -5862,6 +5862,55 @@ export namespace cloudfunctions {
         title: string;
     }
 
+    export interface FunctionSecretEnvironmentVariable {
+        /**
+         * Name of the environment variable.
+         */
+        key: string;
+        /**
+         * Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+         */
+        projectId: string;
+        /**
+         * ID of the secret in secret manager (not the full resource name).
+         */
+        secret: string;
+        /**
+         * Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+         */
+        version: string;
+    }
+
+    export interface FunctionSecretVolume {
+        /**
+         * The path within the container to mount the secret volume. For example, setting the mountPath as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+         */
+        mountPath: string;
+        /**
+         * Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+         */
+        projectId: string;
+        /**
+         * ID of the secret in secret manager (not the full resource name).
+         */
+        secret: string;
+        /**
+         * List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
+         */
+        versions?: outputs.cloudfunctions.FunctionSecretVolumeVersion[];
+    }
+
+    export interface FunctionSecretVolumeVersion {
+        /**
+         * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+         */
+        path: string;
+        /**
+         * Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+         */
+        version: string;
+    }
+
     export interface FunctionSourceRepository {
         deployedUrl: string;
         /**
@@ -5892,6 +5941,25 @@ export namespace cloudfunctions {
          * Whether the function should be retried on failure.
          */
         retry: boolean;
+    }
+
+    export interface GetFunctionSecretEnvironmentVariable {
+        key: string;
+        projectId: string;
+        secret: string;
+        version: string;
+    }
+
+    export interface GetFunctionSecretVolume {
+        mountPath: string;
+        projectId: string;
+        secret: string;
+        versions: outputs.cloudfunctions.GetFunctionSecretVolumeVersion[];
+    }
+
+    export interface GetFunctionSecretVolumeVersion {
+        path: string;
+        version: string;
     }
 
     export interface GetFunctionSourceRepository {
@@ -6696,15 +6764,15 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerPort {
         /**
-         * Port number.
+         * Port number the container listens on. This must be a valid port number, 0 < x < 65536.
          */
-        containerPort: number;
+        containerPort?: number;
         /**
          * Volume's name.
          */
         name: string;
         /**
-         * Protocol used on port. Defaults to TCP.
+         * Protocol for port. Must be "TCP". Defaults to "TCP".
          */
         protocol?: string;
     }
@@ -12468,18 +12536,15 @@ export namespace compute {
          */
         service?: string;
         /**
-         * A template to parse function field from a request URL. URL mask allows
-         * for routing to multiple Cloud Functions without having to create
-         * multiple Network Endpoint Groups and backend services.
-         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
-         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
          */
         urlMask?: string;
         /**
-         * Optional serving version.
-         * The version must be 1-63 characters long, and comply with RFC1035.
-         * Example value: "v1", "v2".
+         * The optional resource version. The version identified by this value is platform-specific and is follows:
+         * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
          */
         version?: string;
     }
@@ -12492,12 +12557,10 @@ export namespace compute {
          */
         function?: string;
         /**
-         * A template to parse function field from a request URL. URL mask allows
-         * for routing to multiple Cloud Functions without having to create
-         * multiple Network Endpoint Groups and backend services.
-         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
-         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
          */
         urlMask?: string;
     }
@@ -12517,14 +12580,38 @@ export namespace compute {
          */
         tag?: string;
         /**
-         * A template to parse function field from a request URL. URL mask allows
-         * for routing to multiple Cloud Functions without having to create
-         * multiple Network Endpoint Groups and backend services.
-         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
-         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
          */
         urlMask?: string;
+    }
+
+    export interface RegionNetworkEndpointGroupServerlessDeployment {
+        /**
+         * The platform of the NEG backend target(s). Possible values:
+         * API Gateway: apigateway.googleapis.com
+         */
+        platform: string;
+        /**
+         * The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+         * The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+         * Cloud Functions: The function name, Cloud Run: The service name
+         */
+        resource?: string;
+        /**
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+         */
+        urlMask: string;
+        /**
+         * The optional resource version. The version identified by this value is platform-specific and is follows:
+         * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+         */
+        version?: string;
     }
 
     export interface RegionPerInstanceConfigPreservedState {
@@ -16561,6 +16648,7 @@ export namespace compute {
          */
         service: string;
     }
+
 }
 
 export namespace config {
@@ -29949,6 +30037,10 @@ export namespace spanner {
 export namespace sql {
     export interface DatabaseInstanceClone {
         /**
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         */
+        allocatedIpRange?: string;
+        /**
          * The timestamp of the point in time that should be restored.
          */
         pointInTime?: string;
@@ -30178,7 +30270,7 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsIpConfiguration {
         /**
-         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
          */
         allocatedIpRange?: string;
         authorizedNetworks?: outputs.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork[];
@@ -30273,6 +30365,7 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceClone {
+        allocatedIpRange: string;
         pointInTime: string;
         sourceInstanceName: string;
     }
@@ -30725,6 +30818,14 @@ export namespace storage {
          */
         objectConditions?: outputs.storage.TransferJobTransferSpecObjectConditions;
         /**
+         * A POSIX data sink. Structure documented below.
+         */
+        posixDataSink?: outputs.storage.TransferJobTransferSpecPosixDataSink;
+        /**
+         * A POSIX filesystem data source. Structure documented below.
+         */
+        posixDataSource?: outputs.storage.TransferJobTransferSpecPosixDataSource;
+        /**
          * Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
          */
         transferOptions?: outputs.storage.TransferJobTransferSpecTransferOptions;
@@ -30830,6 +30931,20 @@ export namespace storage {
         minTimeElapsedSinceLastModification?: string;
     }
 
+    export interface TransferJobTransferSpecPosixDataSink {
+        /**
+         * Root directory path to the filesystem.
+         */
+        rootDirectory: string;
+    }
+
+    export interface TransferJobTransferSpecPosixDataSource {
+        /**
+         * Root directory path to the filesystem.
+         */
+        rootDirectory: string;
+    }
+
     export interface TransferJobTransferSpecTransferOptions {
         /**
          * Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
@@ -30845,7 +30960,6 @@ export namespace storage {
          */
         overwriteObjectsAlreadyExistingInSink?: boolean;
     }
-
 }
 
 export namespace tags {

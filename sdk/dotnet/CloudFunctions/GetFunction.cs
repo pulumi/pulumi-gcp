@@ -182,6 +182,8 @@ namespace Pulumi.Gcp.CloudFunctions
         /// The runtime in which the function is running.
         /// </summary>
         public readonly string Runtime;
+        public readonly ImmutableArray<Outputs.GetFunctionSecretEnvironmentVariableResult> SecretEnvironmentVariables;
+        public readonly ImmutableArray<Outputs.GetFunctionSecretVolumeResult> SecretVolumes;
         /// <summary>
         /// The service account email to be assumed by the cloud function.
         /// </summary>
@@ -249,6 +251,10 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string runtime,
 
+            ImmutableArray<Outputs.GetFunctionSecretEnvironmentVariableResult> secretEnvironmentVariables,
+
+            ImmutableArray<Outputs.GetFunctionSecretVolumeResult> secretVolumes,
+
             string serviceAccountEmail,
 
             string sourceArchiveBucket,
@@ -281,6 +287,8 @@ namespace Pulumi.Gcp.CloudFunctions
             Project = project;
             Region = region;
             Runtime = runtime;
+            SecretEnvironmentVariables = secretEnvironmentVariables;
+            SecretVolumes = secretVolumes;
             ServiceAccountEmail = serviceAccountEmail;
             SourceArchiveBucket = sourceArchiveBucket;
             SourceArchiveObject = sourceArchiveObject;

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class DatabaseInstanceClone
     {
         /// <summary>
+        /// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        /// </summary>
+        public readonly string? AllocatedIpRange;
+        /// <summary>
         /// The timestamp of the point in time that should be restored.
         /// </summary>
         public readonly string? PointInTime;
@@ -24,10 +28,13 @@ namespace Pulumi.Gcp.Sql.Outputs
 
         [OutputConstructor]
         private DatabaseInstanceClone(
+            string? allocatedIpRange,
+
             string? pointInTime,
 
             string sourceInstanceName)
         {
+            AllocatedIpRange = allocatedIpRange;
             PointInTime = pointInTime;
             SourceInstanceName = sourceInstanceName;
         }
