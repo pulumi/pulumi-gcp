@@ -30,6 +30,8 @@ class FunctionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
@@ -56,6 +58,8 @@ class FunctionArgs:
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -95,6 +99,10 @@ class FunctionArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if secret_environment_variables is not None:
+            pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        if secret_volumes is not None:
+            pulumi.set(__self__, "secret_volumes", secret_volumes)
         if service_account_email is not None:
             pulumi.set(__self__, "service_account_email", service_account_email)
         if source_archive_bucket is not None:
@@ -294,6 +302,30 @@ class FunctionArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]]:
+        """
+        Secret environment variables configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @secret_environment_variables.setter
+    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]]):
+        pulumi.set(self, "secret_environment_variables", value)
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]]:
+        """
+        Secret volumes configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "secret_volumes")
+
+    @secret_volumes.setter
+    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]]):
+        pulumi.set(self, "secret_volumes", value)
+
+    @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
@@ -409,6 +441,8 @@ class _FunctionState:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
@@ -435,6 +469,8 @@ class _FunctionState:
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -475,6 +511,10 @@ class _FunctionState:
             pulumi.set(__self__, "region", region)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
+        if secret_environment_variables is not None:
+            pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        if secret_volumes is not None:
+            pulumi.set(__self__, "secret_volumes", secret_volumes)
         if service_account_email is not None:
             pulumi.set(__self__, "service_account_email", service_account_email)
         if source_archive_bucket is not None:
@@ -674,6 +714,30 @@ class _FunctionState:
         pulumi.set(self, "runtime", value)
 
     @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]]:
+        """
+        Secret environment variables configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @secret_environment_variables.setter
+    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]]):
+        pulumi.set(self, "secret_environment_variables", value)
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]]:
+        """
+        Secret volumes configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "secret_volumes")
+
+    @secret_volumes.setter
+    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]]]):
+        pulumi.set(self, "secret_volumes", value)
+
+    @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
@@ -791,6 +855,8 @@ class Function(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
@@ -904,6 +970,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -1036,6 +1104,8 @@ class Function(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
@@ -1073,6 +1143,8 @@ class Function(pulumi.CustomResource):
             if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
             __props__.__dict__["runtime"] = runtime
+            __props__.__dict__["secret_environment_variables"] = secret_environment_variables
+            __props__.__dict__["secret_volumes"] = secret_volumes
             __props__.__dict__["service_account_email"] = service_account_email
             __props__.__dict__["source_archive_bucket"] = source_archive_bucket
             __props__.__dict__["source_archive_object"] = source_archive_object
@@ -1106,6 +1178,8 @@ class Function(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             runtime: Optional[pulumi.Input[str]] = None,
+            secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]]] = None,
+            secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]]] = None,
             service_account_email: Optional[pulumi.Input[str]] = None,
             source_archive_bucket: Optional[pulumi.Input[str]] = None,
             source_archive_object: Optional[pulumi.Input[str]] = None,
@@ -1137,6 +1211,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -1166,6 +1242,8 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["runtime"] = runtime
+        __props__.__dict__["secret_environment_variables"] = secret_environment_variables
+        __props__.__dict__["secret_volumes"] = secret_volumes
         __props__.__dict__["service_account_email"] = service_account_email
         __props__.__dict__["source_archive_bucket"] = source_archive_bucket
         __props__.__dict__["source_archive_object"] = source_archive_object
@@ -1296,6 +1374,22 @@ class Function(pulumi.CustomResource):
         Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         """
         return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> pulumi.Output[Optional[Sequence['outputs.FunctionSecretEnvironmentVariable']]]:
+        """
+        Secret environment variables configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> pulumi.Output[Optional[Sequence['outputs.FunctionSecretVolume']]]:
+        """
+        Secret volumes configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "secret_volumes")
 
     @property
     @pulumi.getter(name="serviceAccountEmail")

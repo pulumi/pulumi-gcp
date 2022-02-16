@@ -14,21 +14,21 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class ServiceTemplateSpecContainerPort
     {
         /// <summary>
-        /// Port number.
+        /// Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
         /// </summary>
-        public readonly int ContainerPort;
+        public readonly int? ContainerPort;
         /// <summary>
         /// Volume's name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Protocol used on port. Defaults to TCP.
+        /// Protocol for port. Must be "TCP". Defaults to "TCP".
         /// </summary>
         public readonly string? Protocol;
 
         [OutputConstructor]
         private ServiceTemplateSpecContainerPort(
-            int containerPort,
+            int? containerPort,
 
             string? name,
 

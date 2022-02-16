@@ -28,7 +28,8 @@ import * as utilities from "../utilities";
  * }));
  * ```
  */
-export function getInstanceTemplate(args: GetInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateResult> {
+export function getInstanceTemplate(args?: GetInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateResult> {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -64,7 +65,7 @@ export interface GetInstanceTemplateArgs {
      * The ID of the project in which the resource belongs.
      * If `project` is not provided, the provider project is used.
      */
-    project: string;
+    project?: string;
 }
 
 /**
@@ -166,7 +167,7 @@ export interface GetInstanceTemplateResult {
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    readonly project: string;
+    readonly project?: string;
     /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -205,7 +206,7 @@ export interface GetInstanceTemplateResult {
     readonly tagsFingerprint: string;
 }
 
-export function getInstanceTemplateOutput(args: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
+export function getInstanceTemplateOutput(args?: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
     return pulumi.output(args).apply(a => getInstanceTemplate(a, opts))
 }
 
@@ -231,5 +232,5 @@ export interface GetInstanceTemplateOutputArgs {
      * The ID of the project in which the resource belongs.
      * If `project` is not provided, the provider project is used.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

@@ -4071,11 +4071,11 @@ func (o ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput) Name() pu
 }
 
 type ServiceTemplateSpecContainerPort struct {
-	// Port number.
-	ContainerPort int `pulumi:"containerPort"`
+	// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	ContainerPort *int `pulumi:"containerPort"`
 	// Volume's name.
 	Name *string `pulumi:"name"`
-	// Protocol used on port. Defaults to TCP.
+	// Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -4091,11 +4091,11 @@ type ServiceTemplateSpecContainerPortInput interface {
 }
 
 type ServiceTemplateSpecContainerPortArgs struct {
-	// Port number.
-	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+	// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
 	// Volume's name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Protocol used on port. Defaults to TCP.
+	// Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -4150,9 +4150,9 @@ func (o ServiceTemplateSpecContainerPortOutput) ToServiceTemplateSpecContainerPo
 	return o
 }
 
-// Port number.
-func (o ServiceTemplateSpecContainerPortOutput) ContainerPort() pulumi.IntOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
+// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+func (o ServiceTemplateSpecContainerPortOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }
 
 // Volume's name.
@@ -4160,7 +4160,7 @@ func (o ServiceTemplateSpecContainerPortOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Protocol used on port. Defaults to TCP.
+// Protocol for port. Must be "TCP". Defaults to "TCP".
 func (o ServiceTemplateSpecContainerPortOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }

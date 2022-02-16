@@ -107,6 +107,8 @@ export interface GetFunctionResult {
      * The runtime in which the function is running.
      */
     readonly runtime: string;
+    readonly secretEnvironmentVariables: outputs.cloudfunctions.GetFunctionSecretEnvironmentVariable[];
+    readonly secretVolumes: outputs.cloudfunctions.GetFunctionSecretVolume[];
     /**
      * The service account email to be assumed by the cloud function.
      */

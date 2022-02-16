@@ -181,6 +181,10 @@ type Function struct {
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
+	// Secret environment variables configuration. Structure is documented below.
+	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayOutput `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration. Structure is documented below.
+	SecretVolumes FunctionSecretVolumeArrayOutput `pulumi:"secretVolumes"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
 	// The GCS bucket containing the zip archive which contains the function.
@@ -263,6 +267,10 @@ type functionState struct {
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime *string `pulumi:"runtime"`
+	// Secret environment variables configuration. Structure is documented below.
+	SecretEnvironmentVariables []FunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration. Structure is documented below.
+	SecretVolumes []FunctionSecretVolume `pulumi:"secretVolumes"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The GCS bucket containing the zip archive which contains the function.
@@ -314,6 +322,10 @@ type FunctionState struct {
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringPtrInput
+	// Secret environment variables configuration. Structure is documented below.
+	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayInput
+	// Secret volumes configuration. Structure is documented below.
+	SecretVolumes FunctionSecretVolumeArrayInput
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The GCS bucket containing the zip archive which contains the function.
@@ -369,6 +381,10 @@ type functionArgs struct {
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime string `pulumi:"runtime"`
+	// Secret environment variables configuration. Structure is documented below.
+	SecretEnvironmentVariables []FunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration. Structure is documented below.
+	SecretVolumes []FunctionSecretVolume `pulumi:"secretVolumes"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The GCS bucket containing the zip archive which contains the function.
@@ -421,6 +437,10 @@ type FunctionArgs struct {
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringInput
+	// Secret environment variables configuration. Structure is documented below.
+	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayInput
+	// Secret volumes configuration. Structure is documented below.
+	SecretVolumes FunctionSecretVolumeArrayInput
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The GCS bucket containing the zip archive which contains the function.

@@ -85,7 +85,9 @@ type LookupFunctionResult struct {
 	Project *string `pulumi:"project"`
 	Region  *string `pulumi:"region"`
 	// The runtime in which the function is running.
-	Runtime string `pulumi:"runtime"`
+	Runtime                    string                                 `pulumi:"runtime"`
+	SecretEnvironmentVariables []GetFunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
+	SecretVolumes              []GetFunctionSecretVolume              `pulumi:"secretVolumes"`
 	// The service account email to be assumed by the cloud function.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// The GCS bucket containing the zip archive which contains the function.
@@ -217,6 +219,16 @@ func (o LookupFunctionResultOutput) Region() pulumi.StringPtrOutput {
 // The runtime in which the function is running.
 func (o LookupFunctionResultOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Runtime }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) SecretEnvironmentVariables() GetFunctionSecretEnvironmentVariableArrayOutput {
+	return o.ApplyT(func(v LookupFunctionResult) []GetFunctionSecretEnvironmentVariable {
+		return v.SecretEnvironmentVariables
+	}).(GetFunctionSecretEnvironmentVariableArrayOutput)
+}
+
+func (o LookupFunctionResultOutput) SecretVolumes() GetFunctionSecretVolumeArrayOutput {
+	return o.ApplyT(func(v LookupFunctionResult) []GetFunctionSecretVolume { return v.SecretVolumes }).(GetFunctionSecretVolumeArrayOutput)
 }
 
 // The service account email to be assumed by the cloud function.

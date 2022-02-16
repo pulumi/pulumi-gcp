@@ -37,6 +37,8 @@ __all__ = [
     'TransferJobTransferSpecGcsDataSource',
     'TransferJobTransferSpecHttpDataSource',
     'TransferJobTransferSpecObjectConditions',
+    'TransferJobTransferSpecPosixDataSink',
+    'TransferJobTransferSpecPosixDataSource',
     'TransferJobTransferSpecTransferOptions',
     'GetBucketCorResult',
     'GetBucketEncryptionResult',
@@ -966,6 +968,10 @@ class TransferJobTransferSpec(dict):
             suggest = "http_data_source"
         elif key == "objectConditions":
             suggest = "object_conditions"
+        elif key == "posixDataSink":
+            suggest = "posix_data_sink"
+        elif key == "posixDataSource":
+            suggest = "posix_data_source"
         elif key == "transferOptions":
             suggest = "transfer_options"
 
@@ -987,6 +993,8 @@ class TransferJobTransferSpec(dict):
                  gcs_data_source: Optional['outputs.TransferJobTransferSpecGcsDataSource'] = None,
                  http_data_source: Optional['outputs.TransferJobTransferSpecHttpDataSource'] = None,
                  object_conditions: Optional['outputs.TransferJobTransferSpecObjectConditions'] = None,
+                 posix_data_sink: Optional['outputs.TransferJobTransferSpecPosixDataSink'] = None,
+                 posix_data_source: Optional['outputs.TransferJobTransferSpecPosixDataSource'] = None,
                  transfer_options: Optional['outputs.TransferJobTransferSpecTransferOptions'] = None):
         """
         :param 'TransferJobTransferSpecAwsS3DataSourceArgs' aws_s3_data_source: An AWS S3 data source. Structure documented below.
@@ -995,6 +1003,8 @@ class TransferJobTransferSpec(dict):
         :param 'TransferJobTransferSpecGcsDataSourceArgs' gcs_data_source: A Google Cloud Storage data source. Structure documented below.
         :param 'TransferJobTransferSpecHttpDataSourceArgs' http_data_source: A HTTP URL data source. Structure documented below.
         :param 'TransferJobTransferSpecObjectConditionsArgs' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        :param 'TransferJobTransferSpecPosixDataSinkArgs' posix_data_sink: A POSIX data sink. Structure documented below.
+        :param 'TransferJobTransferSpecPosixDataSourceArgs' posix_data_source: A POSIX filesystem data source. Structure documented below.
         :param 'TransferJobTransferSpecTransferOptionsArgs' transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_data_source is not None:
@@ -1009,6 +1019,10 @@ class TransferJobTransferSpec(dict):
             pulumi.set(__self__, "http_data_source", http_data_source)
         if object_conditions is not None:
             pulumi.set(__self__, "object_conditions", object_conditions)
+        if posix_data_sink is not None:
+            pulumi.set(__self__, "posix_data_sink", posix_data_sink)
+        if posix_data_source is not None:
+            pulumi.set(__self__, "posix_data_source", posix_data_source)
         if transfer_options is not None:
             pulumi.set(__self__, "transfer_options", transfer_options)
 
@@ -1059,6 +1073,22 @@ class TransferJobTransferSpec(dict):
         Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         """
         return pulumi.get(self, "object_conditions")
+
+    @property
+    @pulumi.getter(name="posixDataSink")
+    def posix_data_sink(self) -> Optional['outputs.TransferJobTransferSpecPosixDataSink']:
+        """
+        A POSIX data sink. Structure documented below.
+        """
+        return pulumi.get(self, "posix_data_sink")
+
+    @property
+    @pulumi.getter(name="posixDataSource")
+    def posix_data_source(self) -> Optional['outputs.TransferJobTransferSpecPosixDataSource']:
+        """
+        A POSIX filesystem data source. Structure documented below.
+        """
+        return pulumi.get(self, "posix_data_source")
 
     @property
     @pulumi.getter(name="transferOptions")
@@ -1491,6 +1521,76 @@ class TransferJobTransferSpecObjectConditions(dict):
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "min_time_elapsed_since_last_modification")
+
+
+@pulumi.output_type
+class TransferJobTransferSpecPosixDataSink(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rootDirectory":
+            suggest = "root_directory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecPosixDataSink. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecPosixDataSink.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecPosixDataSink.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 root_directory: str):
+        """
+        :param str root_directory: Root directory path to the filesystem.
+        """
+        pulumi.set(__self__, "root_directory", root_directory)
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> str:
+        """
+        Root directory path to the filesystem.
+        """
+        return pulumi.get(self, "root_directory")
+
+
+@pulumi.output_type
+class TransferJobTransferSpecPosixDataSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rootDirectory":
+            suggest = "root_directory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecPosixDataSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecPosixDataSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecPosixDataSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 root_directory: str):
+        """
+        :param str root_directory: Root directory path to the filesystem.
+        """
+        pulumi.set(__self__, "root_directory", root_directory)
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> str:
+        """
+        Root directory path to the filesystem.
+        """
+        return pulumi.get(self, "root_directory")
 
 
 @pulumi.output_type

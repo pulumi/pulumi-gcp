@@ -2613,6 +2613,10 @@ type TransferJobTransferSpec struct {
 	HttpDataSource *TransferJobTransferSpecHttpDataSource `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 	ObjectConditions *TransferJobTransferSpecObjectConditions `pulumi:"objectConditions"`
+	// A POSIX data sink. Structure documented below.
+	PosixDataSink *TransferJobTransferSpecPosixDataSink `pulumi:"posixDataSink"`
+	// A POSIX filesystem data source. Structure documented below.
+	PosixDataSource *TransferJobTransferSpecPosixDataSource `pulumi:"posixDataSource"`
 	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 	TransferOptions *TransferJobTransferSpecTransferOptions `pulumi:"transferOptions"`
 }
@@ -2641,6 +2645,10 @@ type TransferJobTransferSpecArgs struct {
 	HttpDataSource TransferJobTransferSpecHttpDataSourcePtrInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 	ObjectConditions TransferJobTransferSpecObjectConditionsPtrInput `pulumi:"objectConditions"`
+	// A POSIX data sink. Structure documented below.
+	PosixDataSink TransferJobTransferSpecPosixDataSinkPtrInput `pulumi:"posixDataSink"`
+	// A POSIX filesystem data source. Structure documented below.
+	PosixDataSource TransferJobTransferSpecPosixDataSourcePtrInput `pulumi:"posixDataSource"`
 	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 	TransferOptions TransferJobTransferSpecTransferOptionsPtrInput `pulumi:"transferOptions"`
 }
@@ -2754,6 +2762,16 @@ func (o TransferJobTransferSpecOutput) ObjectConditions() TransferJobTransferSpe
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions { return v.ObjectConditions }).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 
+// A POSIX data sink. Structure documented below.
+func (o TransferJobTransferSpecOutput) PosixDataSink() TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecPosixDataSink { return v.PosixDataSink }).(TransferJobTransferSpecPosixDataSinkPtrOutput)
+}
+
+// A POSIX filesystem data source. Structure documented below.
+func (o TransferJobTransferSpecOutput) PosixDataSource() TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecPosixDataSource { return v.PosixDataSource }).(TransferJobTransferSpecPosixDataSourcePtrOutput)
+}
+
 // Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 func (o TransferJobTransferSpecOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
@@ -2841,6 +2859,26 @@ func (o TransferJobTransferSpecPtrOutput) ObjectConditions() TransferJobTransfer
 		}
 		return v.ObjectConditions
 	}).(TransferJobTransferSpecObjectConditionsPtrOutput)
+}
+
+// A POSIX data sink. Structure documented below.
+func (o TransferJobTransferSpecPtrOutput) PosixDataSink() TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecPosixDataSink {
+		if v == nil {
+			return nil
+		}
+		return v.PosixDataSink
+	}).(TransferJobTransferSpecPosixDataSinkPtrOutput)
+}
+
+// A POSIX filesystem data source. Structure documented below.
+func (o TransferJobTransferSpecPtrOutput) PosixDataSource() TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecPosixDataSource {
+		if v == nil {
+			return nil
+		}
+		return v.PosixDataSource
+	}).(TransferJobTransferSpecPosixDataSourcePtrOutput)
 }
 
 // Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
@@ -4159,6 +4197,280 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) MinTimeElapsedSinceLas
 			return nil
 		}
 		return v.MinTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobTransferSpecPosixDataSink struct {
+	// Root directory path to the filesystem.
+	RootDirectory string `pulumi:"rootDirectory"`
+}
+
+// TransferJobTransferSpecPosixDataSinkInput is an input type that accepts TransferJobTransferSpecPosixDataSinkArgs and TransferJobTransferSpecPosixDataSinkOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecPosixDataSinkInput` via:
+//
+//          TransferJobTransferSpecPosixDataSinkArgs{...}
+type TransferJobTransferSpecPosixDataSinkInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecPosixDataSinkOutput() TransferJobTransferSpecPosixDataSinkOutput
+	ToTransferJobTransferSpecPosixDataSinkOutputWithContext(context.Context) TransferJobTransferSpecPosixDataSinkOutput
+}
+
+type TransferJobTransferSpecPosixDataSinkArgs struct {
+	// Root directory path to the filesystem.
+	RootDirectory pulumi.StringInput `pulumi:"rootDirectory"`
+}
+
+func (TransferJobTransferSpecPosixDataSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecPosixDataSink)(nil)).Elem()
+}
+
+func (i TransferJobTransferSpecPosixDataSinkArgs) ToTransferJobTransferSpecPosixDataSinkOutput() TransferJobTransferSpecPosixDataSinkOutput {
+	return i.ToTransferJobTransferSpecPosixDataSinkOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecPosixDataSinkArgs) ToTransferJobTransferSpecPosixDataSinkOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecPosixDataSinkOutput)
+}
+
+func (i TransferJobTransferSpecPosixDataSinkArgs) ToTransferJobTransferSpecPosixDataSinkPtrOutput() TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return i.ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecPosixDataSinkArgs) ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecPosixDataSinkOutput).ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecPosixDataSinkPtrInput is an input type that accepts TransferJobTransferSpecPosixDataSinkArgs, TransferJobTransferSpecPosixDataSinkPtr and TransferJobTransferSpecPosixDataSinkPtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecPosixDataSinkPtrInput` via:
+//
+//          TransferJobTransferSpecPosixDataSinkArgs{...}
+//
+//  or:
+//
+//          nil
+type TransferJobTransferSpecPosixDataSinkPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecPosixDataSinkPtrOutput() TransferJobTransferSpecPosixDataSinkPtrOutput
+	ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(context.Context) TransferJobTransferSpecPosixDataSinkPtrOutput
+}
+
+type transferJobTransferSpecPosixDataSinkPtrType TransferJobTransferSpecPosixDataSinkArgs
+
+func TransferJobTransferSpecPosixDataSinkPtr(v *TransferJobTransferSpecPosixDataSinkArgs) TransferJobTransferSpecPosixDataSinkPtrInput {
+	return (*transferJobTransferSpecPosixDataSinkPtrType)(v)
+}
+
+func (*transferJobTransferSpecPosixDataSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecPosixDataSink)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecPosixDataSinkPtrType) ToTransferJobTransferSpecPosixDataSinkPtrOutput() TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return i.ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecPosixDataSinkPtrType) ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecPosixDataSinkPtrOutput)
+}
+
+type TransferJobTransferSpecPosixDataSinkOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecPosixDataSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecPosixDataSink)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecPosixDataSinkOutput) ToTransferJobTransferSpecPosixDataSinkOutput() TransferJobTransferSpecPosixDataSinkOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecPosixDataSinkOutput) ToTransferJobTransferSpecPosixDataSinkOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSinkOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecPosixDataSinkOutput) ToTransferJobTransferSpecPosixDataSinkPtrOutput() TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return o.ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecPosixDataSinkOutput) ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecPosixDataSink) *TransferJobTransferSpecPosixDataSink {
+		return &v
+	}).(TransferJobTransferSpecPosixDataSinkPtrOutput)
+}
+
+// Root directory path to the filesystem.
+func (o TransferJobTransferSpecPosixDataSinkOutput) RootDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecPosixDataSink) string { return v.RootDirectory }).(pulumi.StringOutput)
+}
+
+type TransferJobTransferSpecPosixDataSinkPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecPosixDataSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecPosixDataSink)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecPosixDataSinkPtrOutput) ToTransferJobTransferSpecPosixDataSinkPtrOutput() TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecPosixDataSinkPtrOutput) ToTransferJobTransferSpecPosixDataSinkPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSinkPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecPosixDataSinkPtrOutput) Elem() TransferJobTransferSpecPosixDataSinkOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecPosixDataSink) TransferJobTransferSpecPosixDataSink {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecPosixDataSink
+		return ret
+	}).(TransferJobTransferSpecPosixDataSinkOutput)
+}
+
+// Root directory path to the filesystem.
+func (o TransferJobTransferSpecPosixDataSinkPtrOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecPosixDataSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RootDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobTransferSpecPosixDataSource struct {
+	// Root directory path to the filesystem.
+	RootDirectory string `pulumi:"rootDirectory"`
+}
+
+// TransferJobTransferSpecPosixDataSourceInput is an input type that accepts TransferJobTransferSpecPosixDataSourceArgs and TransferJobTransferSpecPosixDataSourceOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecPosixDataSourceInput` via:
+//
+//          TransferJobTransferSpecPosixDataSourceArgs{...}
+type TransferJobTransferSpecPosixDataSourceInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecPosixDataSourceOutput() TransferJobTransferSpecPosixDataSourceOutput
+	ToTransferJobTransferSpecPosixDataSourceOutputWithContext(context.Context) TransferJobTransferSpecPosixDataSourceOutput
+}
+
+type TransferJobTransferSpecPosixDataSourceArgs struct {
+	// Root directory path to the filesystem.
+	RootDirectory pulumi.StringInput `pulumi:"rootDirectory"`
+}
+
+func (TransferJobTransferSpecPosixDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecPosixDataSource)(nil)).Elem()
+}
+
+func (i TransferJobTransferSpecPosixDataSourceArgs) ToTransferJobTransferSpecPosixDataSourceOutput() TransferJobTransferSpecPosixDataSourceOutput {
+	return i.ToTransferJobTransferSpecPosixDataSourceOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecPosixDataSourceArgs) ToTransferJobTransferSpecPosixDataSourceOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecPosixDataSourceOutput)
+}
+
+func (i TransferJobTransferSpecPosixDataSourceArgs) ToTransferJobTransferSpecPosixDataSourcePtrOutput() TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return i.ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecPosixDataSourceArgs) ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecPosixDataSourceOutput).ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecPosixDataSourcePtrInput is an input type that accepts TransferJobTransferSpecPosixDataSourceArgs, TransferJobTransferSpecPosixDataSourcePtr and TransferJobTransferSpecPosixDataSourcePtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecPosixDataSourcePtrInput` via:
+//
+//          TransferJobTransferSpecPosixDataSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type TransferJobTransferSpecPosixDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecPosixDataSourcePtrOutput() TransferJobTransferSpecPosixDataSourcePtrOutput
+	ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(context.Context) TransferJobTransferSpecPosixDataSourcePtrOutput
+}
+
+type transferJobTransferSpecPosixDataSourcePtrType TransferJobTransferSpecPosixDataSourceArgs
+
+func TransferJobTransferSpecPosixDataSourcePtr(v *TransferJobTransferSpecPosixDataSourceArgs) TransferJobTransferSpecPosixDataSourcePtrInput {
+	return (*transferJobTransferSpecPosixDataSourcePtrType)(v)
+}
+
+func (*transferJobTransferSpecPosixDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecPosixDataSource)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecPosixDataSourcePtrType) ToTransferJobTransferSpecPosixDataSourcePtrOutput() TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return i.ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecPosixDataSourcePtrType) ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecPosixDataSourcePtrOutput)
+}
+
+type TransferJobTransferSpecPosixDataSourceOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecPosixDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecPosixDataSource)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecPosixDataSourceOutput) ToTransferJobTransferSpecPosixDataSourceOutput() TransferJobTransferSpecPosixDataSourceOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecPosixDataSourceOutput) ToTransferJobTransferSpecPosixDataSourceOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSourceOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecPosixDataSourceOutput) ToTransferJobTransferSpecPosixDataSourcePtrOutput() TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return o.ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecPosixDataSourceOutput) ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecPosixDataSource) *TransferJobTransferSpecPosixDataSource {
+		return &v
+	}).(TransferJobTransferSpecPosixDataSourcePtrOutput)
+}
+
+// Root directory path to the filesystem.
+func (o TransferJobTransferSpecPosixDataSourceOutput) RootDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecPosixDataSource) string { return v.RootDirectory }).(pulumi.StringOutput)
+}
+
+type TransferJobTransferSpecPosixDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecPosixDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecPosixDataSource)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecPosixDataSourcePtrOutput) ToTransferJobTransferSpecPosixDataSourcePtrOutput() TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecPosixDataSourcePtrOutput) ToTransferJobTransferSpecPosixDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecPosixDataSourcePtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecPosixDataSourcePtrOutput) Elem() TransferJobTransferSpecPosixDataSourceOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecPosixDataSource) TransferJobTransferSpecPosixDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecPosixDataSource
+		return ret
+	}).(TransferJobTransferSpecPosixDataSourceOutput)
+}
+
+// Root directory path to the filesystem.
+func (o TransferJobTransferSpecPosixDataSourcePtrOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecPosixDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RootDirectory
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5536,6 +5848,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecHttpDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecHttpDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecObjectConditionsInput)(nil)).Elem(), TransferJobTransferSpecObjectConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecObjectConditionsPtrInput)(nil)).Elem(), TransferJobTransferSpecObjectConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPosixDataSinkInput)(nil)).Elem(), TransferJobTransferSpecPosixDataSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPosixDataSinkPtrInput)(nil)).Elem(), TransferJobTransferSpecPosixDataSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPosixDataSourceInput)(nil)).Elem(), TransferJobTransferSpecPosixDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPosixDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecPosixDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsPtrInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketCorInput)(nil)).Elem(), GetBucketCorArgs{})
@@ -5612,6 +5928,10 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecHttpDataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecObjectConditionsOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecObjectConditionsPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecPosixDataSinkOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecPosixDataSinkPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecPosixDataSourceOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecPosixDataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GetBucketCorOutput{})

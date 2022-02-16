@@ -129,6 +129,9 @@ namespace Pulumi.Gcp.Storage
         [Output("cors")]
         public Output<ImmutableArray<Outputs.BucketCor>> Cors { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        /// </summary>
         [Output("defaultEventBasedHold")]
         public Output<bool?> DefaultEventBasedHold { get; private set; } = null!;
 
@@ -295,6 +298,9 @@ namespace Pulumi.Gcp.Storage
             set => _cors = value;
         }
 
+        /// <summary>
+        /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        /// </summary>
         [Input("defaultEventBasedHold")]
         public Input<bool>? DefaultEventBasedHold { get; set; }
 
@@ -422,6 +428,9 @@ namespace Pulumi.Gcp.Storage
             set => _cors = value;
         }
 
+        /// <summary>
+        /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        /// </summary>
         [Input("defaultEventBasedHold")]
         public Input<bool>? DefaultEventBasedHold { get; set; }
 

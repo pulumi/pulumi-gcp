@@ -13,10 +13,10 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     public sealed class ServiceTemplateSpecContainerPortArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Port number.
+        /// Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
         /// </summary>
-        [Input("containerPort", required: true)]
-        public Input<int> ContainerPort { get; set; } = null!;
+        [Input("containerPort")]
+        public Input<int>? ContainerPort { get; set; }
 
         /// <summary>
         /// Volume's name.
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Protocol used on port. Defaults to TCP.
+        /// Protocol for port. Must be "TCP". Defaults to "TCP".
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

@@ -20,18 +20,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Service;
         /// <summary>
-        /// A template to parse function field from a request URL. URL mask allows
-        /// for routing to multiple Cloud Functions without having to create
-        /// multiple Network Endpoint Groups and backend services.
-        /// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
-        /// can be backed by the same Serverless NEG with URL mask "/". The URL mask
-        /// will parse them to { function = "function1" } and { function = "function2" } respectively.
+        /// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+        /// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+        /// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+        /// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
         /// </summary>
         public readonly string? UrlMask;
         /// <summary>
-        /// Optional serving version.
-        /// The version must be 1-63 characters long, and comply with RFC1035.
-        /// Example value: "v1", "v2".
+        /// The optional resource version. The version identified by this value is platform-specific and is follows:
+        /// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
         /// </summary>
         public readonly string? Version;
 

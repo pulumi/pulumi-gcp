@@ -185,19 +185,19 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
 
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     public readonly appEngine!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupAppEngine | undefined>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     public readonly cloudFunction!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupCloudFunction | undefined>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     public readonly cloudRun!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupCloudRun | undefined>;
@@ -235,6 +235,11 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+     * serverlessDeployment may be set.
+     */
+    public readonly serverlessDeployment!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupServerlessDeployment | undefined>;
 
     /**
      * Create a RegionNetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -258,6 +263,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serverlessDeployment"] = state ? state.serverlessDeployment : undefined;
         } else {
             const args = argsOrState as RegionNetworkEndpointGroupArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
@@ -271,6 +277,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -284,19 +291,19 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
 export interface RegionNetworkEndpointGroupState {
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     appEngine?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupAppEngine>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     cloudFunction?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupCloudFunction>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     cloudRun?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupCloudRun>;
@@ -334,6 +341,11 @@ export interface RegionNetworkEndpointGroupState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+     * serverlessDeployment may be set.
+     */
+    serverlessDeployment?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupServerlessDeployment>;
 }
 
 /**
@@ -342,19 +354,19 @@ export interface RegionNetworkEndpointGroupState {
 export interface RegionNetworkEndpointGroupArgs {
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     appEngine?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupAppEngine>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     cloudFunction?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupCloudFunction>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS".
-     * Only one of cloud_run, appEngine or cloudFunction may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
     cloudRun?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupCloudRun>;
@@ -388,4 +400,9 @@ export interface RegionNetworkEndpointGroupArgs {
      * A reference to the region where the Serverless NEGs Reside.
      */
     region: pulumi.Input<string>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
+     * serverlessDeployment may be set.
+     */
+    serverlessDeployment?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupServerlessDeployment>;
 }

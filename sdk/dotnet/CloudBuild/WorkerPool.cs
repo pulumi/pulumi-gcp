@@ -12,8 +12,6 @@ namespace Pulumi.Gcp.CloudBuild
     /// <summary>
     /// Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
     /// 
-    /// &gt; This resource is not currently public, and requires allow-listing of projects prior to use.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

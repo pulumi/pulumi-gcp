@@ -21,7 +21,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -70,6 +70,12 @@ class GetFunctionResult:
         if runtime and not isinstance(runtime, str):
             raise TypeError("Expected argument 'runtime' to be a str")
         pulumi.set(__self__, "runtime", runtime)
+        if secret_environment_variables and not isinstance(secret_environment_variables, list):
+            raise TypeError("Expected argument 'secret_environment_variables' to be a list")
+        pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        if secret_volumes and not isinstance(secret_volumes, list):
+            raise TypeError("Expected argument 'secret_volumes' to be a list")
+        pulumi.set(__self__, "secret_volumes", secret_volumes)
         if service_account_email and not isinstance(service_account_email, str):
             raise TypeError("Expected argument 'service_account_email' to be a str")
         pulumi.set(__self__, "service_account_email", service_account_email)
@@ -209,6 +215,16 @@ class GetFunctionResult:
         return pulumi.get(self, "runtime")
 
     @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Sequence['outputs.GetFunctionSecretEnvironmentVariableResult']:
+        return pulumi.get(self, "secret_environment_variables")
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Sequence['outputs.GetFunctionSecretVolumeResult']:
+        return pulumi.get(self, "secret_volumes")
+
+    @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> str:
         """
@@ -295,6 +311,8 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             project=self.project,
             region=self.region,
             runtime=self.runtime,
+            secret_environment_variables=self.secret_environment_variables,
+            secret_volumes=self.secret_volumes,
             service_account_email=self.service_account_email,
             source_archive_bucket=self.source_archive_bucket,
             source_archive_object=self.source_archive_object,
@@ -357,6 +375,8 @@ def get_function(name: Optional[str] = None,
         project=__ret__.project,
         region=__ret__.region,
         runtime=__ret__.runtime,
+        secret_environment_variables=__ret__.secret_environment_variables,
+        secret_volumes=__ret__.secret_volumes,
         service_account_email=__ret__.service_account_email,
         source_archive_bucket=__ret__.source_archive_bucket,
         source_archive_object=__ret__.source_archive_object,

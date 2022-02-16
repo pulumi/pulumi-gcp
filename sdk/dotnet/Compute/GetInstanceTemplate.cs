@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetInstanceTemplateResult> InvokeAsync(GetInstanceTemplateArgs args, InvokeOptions? options = null)
+        public static Task<GetInstanceTemplateResult> InvokeAsync(GetInstanceTemplateArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithDefaults());
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetInstanceTemplateResult> Invoke(GetInstanceTemplateInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetInstanceTemplateResult> Invoke(GetInstanceTemplateInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("gcp:compute/getInstanceTemplate:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithDefaults());
     }
 
@@ -113,8 +113,8 @@ namespace Pulumi.Gcp.Compute
         /// The ID of the project in which the resource belongs.
         /// If `project` is not provided, the provider project is used.
         /// </summary>
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetInstanceTemplateArgs()
         {
@@ -147,8 +147,8 @@ namespace Pulumi.Gcp.Compute
         /// The ID of the project in which the resource belongs.
         /// If `project` is not provided, the provider project is used.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public GetInstanceTemplateInvokeArgs()
         {
@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.Compute
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
-        public readonly string Project;
+        public readonly string? Project;
         /// <summary>
         /// An instance template is a global resource that is not
         /// bound to a zone or a region. However, you can still specify some regional
@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetInstanceTemplateNetworkPerformanceConfigResult> networkPerformanceConfigs,
 
-            string project,
+            string? project,
 
             string region,
 

@@ -224,6 +224,18 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
+        /// Secret environment variables configuration. Structure is documented below.
+        /// </summary>
+        [Output("secretEnvironmentVariables")]
+        public Output<ImmutableArray<Outputs.FunctionSecretEnvironmentVariable>> SecretEnvironmentVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// Secret volumes configuration. Structure is documented below.
+        /// </summary>
+        [Output("secretVolumes")]
+        public Output<ImmutableArray<Outputs.FunctionSecretVolume>> SecretVolumes { get; private set; } = null!;
+
+        /// <summary>
         /// If provided, the self-provided service account to run the function with.
         /// </summary>
         [Output("serviceAccountEmail")]
@@ -427,6 +439,30 @@ namespace Pulumi.Gcp.CloudFunctions
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
 
+        [Input("secretEnvironmentVariables")]
+        private InputList<Inputs.FunctionSecretEnvironmentVariableArgs>? _secretEnvironmentVariables;
+
+        /// <summary>
+        /// Secret environment variables configuration. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FunctionSecretEnvironmentVariableArgs> SecretEnvironmentVariables
+        {
+            get => _secretEnvironmentVariables ?? (_secretEnvironmentVariables = new InputList<Inputs.FunctionSecretEnvironmentVariableArgs>());
+            set => _secretEnvironmentVariables = value;
+        }
+
+        [Input("secretVolumes")]
+        private InputList<Inputs.FunctionSecretVolumeArgs>? _secretVolumes;
+
+        /// <summary>
+        /// Secret volumes configuration. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FunctionSecretVolumeArgs> SecretVolumes
+        {
+            get => _secretVolumes ?? (_secretVolumes = new InputList<Inputs.FunctionSecretVolumeArgs>());
+            set => _secretVolumes = value;
+        }
+
         /// <summary>
         /// If provided, the self-provided service account to run the function with.
         /// </summary>
@@ -591,6 +627,30 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
+
+        [Input("secretEnvironmentVariables")]
+        private InputList<Inputs.FunctionSecretEnvironmentVariableGetArgs>? _secretEnvironmentVariables;
+
+        /// <summary>
+        /// Secret environment variables configuration. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FunctionSecretEnvironmentVariableGetArgs> SecretEnvironmentVariables
+        {
+            get => _secretEnvironmentVariables ?? (_secretEnvironmentVariables = new InputList<Inputs.FunctionSecretEnvironmentVariableGetArgs>());
+            set => _secretEnvironmentVariables = value;
+        }
+
+        [Input("secretVolumes")]
+        private InputList<Inputs.FunctionSecretVolumeGetArgs>? _secretVolumes;
+
+        /// <summary>
+        /// Secret volumes configuration. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FunctionSecretVolumeGetArgs> SecretVolumes
+        {
+            get => _secretVolumes ?? (_secretVolumes = new InputList<Inputs.FunctionSecretVolumeGetArgs>());
+            set => _secretVolumes = value;
+        }
 
         /// <summary>
         /// If provided, the self-provided service account to run the function with.

@@ -74,6 +74,9 @@ export class Connection extends pulumi.CustomResource {
      * Name of VPC network connected with service producers using VPC peering.
      */
     public readonly network!: pulumi.Output<string>;
+    /**
+     * (Computed) The name of the VPC Network Peering connection that was created by the service producer.
+     */
     public /*out*/ readonly peering!: pulumi.Output<string>;
     /**
      * Named IP address range(s) of PEERING type reserved for
@@ -134,6 +137,9 @@ export interface ConnectionState {
      * Name of VPC network connected with service producers using VPC peering.
      */
     network?: pulumi.Input<string>;
+    /**
+     * (Computed) The name of the VPC Network Peering connection that was created by the service producer.
+     */
     peering?: pulumi.Input<string>;
     /**
      * Named IP address range(s) of PEERING type reserved for

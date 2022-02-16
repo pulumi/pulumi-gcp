@@ -68,7 +68,7 @@ type LookupInstanceTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If `project` is not provided, the provider project is used.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getInstanceTemplate.
@@ -130,7 +130,7 @@ type LookupInstanceTemplateResult struct {
 	NetworkPerformanceConfigs []GetInstanceTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfigs"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// An instance template is a global resource that is not
 	// bound to a zone or a region. However, you can still specify some regional
 	// resources in an instance template, which restricts the template to the
@@ -176,7 +176,7 @@ type LookupInstanceTemplateOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If `project` is not provided, the provider project is used.
-	Project pulumi.StringInput `pulumi:"project"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupInstanceTemplateOutputArgs) ElementType() reflect.Type {
@@ -324,8 +324,8 @@ func (o LookupInstanceTemplateResultOutput) NetworkPerformanceConfigs() GetInsta
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (o LookupInstanceTemplateResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupInstanceTemplateResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // An instance template is a global resource that is not

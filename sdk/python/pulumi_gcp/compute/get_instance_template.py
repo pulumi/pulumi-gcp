@@ -290,7 +290,7 @@ class GetInstanceTemplateResult:
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> Optional[str]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -483,7 +483,7 @@ def get_instance_template(filter: Optional[str] = None,
 def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                                  most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
-                                 project: Optional[pulumi.Input[str]] = None,
+                                 project: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
     """
     Get information about a VM instance template resource within GCE. For more information see

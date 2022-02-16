@@ -1648,15 +1648,16 @@ class ServiceTemplateSpecContainerPort(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 container_port: int,
+                 container_port: Optional[int] = None,
                  name: Optional[str] = None,
                  protocol: Optional[str] = None):
         """
-        :param int container_port: Port number.
+        :param int container_port: Port number the container listens on. This must be a valid port number, 0 < x < 65536.
         :param str name: Volume's name.
-        :param str protocol: Protocol used on port. Defaults to TCP.
+        :param str protocol: Protocol for port. Must be "TCP". Defaults to "TCP".
         """
-        pulumi.set(__self__, "container_port", container_port)
+        if container_port is not None:
+            pulumi.set(__self__, "container_port", container_port)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protocol is not None:
@@ -1664,9 +1665,9 @@ class ServiceTemplateSpecContainerPort(dict):
 
     @property
     @pulumi.getter(name="containerPort")
-    def container_port(self) -> int:
+    def container_port(self) -> Optional[int]:
         """
-        Port number.
+        Port number the container listens on. This must be a valid port number, 0 < x < 65536.
         """
         return pulumi.get(self, "container_port")
 
@@ -1682,7 +1683,7 @@ class ServiceTemplateSpecContainerPort(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        Protocol used on port. Defaults to TCP.
+        Protocol for port. Must be "TCP". Defaults to "TCP".
         """
         return pulumi.get(self, "protocol")
 
