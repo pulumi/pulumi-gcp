@@ -234,9 +234,6 @@ async function computeCodePaths(
     codePathOptions.extraIncludePackages = codePathOptions.extraIncludePackages || [];
     codePathOptions.extraExcludePackages = codePathOptions.extraExcludePackages || [];
 
-    if (codePathOptions.extraIncludePaths.length > 0) {
-        throw new pulumi.ResourceError("codePathOptions.extraIncludePaths not currently supported in GCP.", codePathOptions.logResource);
-    }
     if (codePathOptions.extraIncludePackages.length > 0) {
         throw new pulumi.ResourceError("codePathOptions.extraIncludePackages not currently supported in GCP.", codePathOptions.logResource);
     }
@@ -255,7 +252,9 @@ async function computeCodePaths(
         // Always include the serialized function.
         [serializedFileNameNoExtension + ".js"]: new pulumi.asset.StringAsset(serializedFunction.text),
         // Include package.json and GCP will install packages for us
-        ["package.json"]: new pulumi.asset.StringAsset(packageJson)
+        ["package.json"]: new pulumi.asset.StringAsset(packageJson),
+        // Include files added by user
+        ...processExtraIncludePaths(codePathOptions.extraIncludePaths)
     };
 }
 
@@ -283,6 +282,20 @@ function producePackageJson(excludedPackages: Set<string>): Promise<string> {
             }));
         });
     });
+}
+
+// Create file assets from specified by user list,
+// files will be added to the main directory under the file name thus duplicates will be overridden
+// e.g. ['./dir1/file1', './file1'] will add only the last file.
+function processExtraIncludePaths(extraIncludePaths: string[]): Record<string, pulumi.asset.FileAsset> {
+    const filesToInclude: Record<string, pulumi.asset.FileAsset> = {};
+
+    for (const fullPath of extraIncludePaths){
+        const fileName = filepath.basename(fullPath);
+        filesToInclude[fileName] = new pulumi.asset.FileAsset(fullPath);
+    }
+
+    return filesToInclude;
 }
 
 /**
@@ -341,7 +354,8 @@ export interface CallbackFunctionArgs {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT,
+     * GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
      */
     triggerHttp?: pulumi.Input<boolean>;
 
