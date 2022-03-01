@@ -10,6 +10,85 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Bigquery Dataset Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bqowner = new Gcp.ServiceAccount.Account("bqowner", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "bqowner",
+    ///         });
+    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "example_dataset",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "EU",
+    ///             DefaultTableExpirationMs = 3600000,
+    ///             Labels = 
+    ///             {
+    ///                 { "env", "default" },
+    ///             },
+    ///             Accesses = 
+    ///             {
+    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///                 {
+    ///                     Role = "OWNER",
+    ///                     UserByEmail = bqowner.Email,
+    ///                 },
+    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///                 {
+    ///                     Role = "READER",
+    ///                     Domain = "hashicorp.com",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Bigquery Dataset Cmek
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "us",
+    ///         });
+    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyRing.Id,
+    ///         });
+    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "example_dataset",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "US",
+    ///             DefaultTableExpirationMs = 3600000,
+    ///             DefaultEncryptionConfiguration = new Gcp.BigQuery.Inputs.DatasetDefaultEncryptionConfigurationArgs
+    ///             {
+    ///                 KmsKeyName = cryptoKey.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Dataset can be imported using any of these accepted formats

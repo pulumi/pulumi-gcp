@@ -79,11 +79,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "debian-9"
-// 		opt1 := "debian-cloud"
 // 		_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  &opt0,
-// 			Project: &opt1,
+// 			Family:  pulumi.StringRef("debian-9"),
+// 			Project: pulumi.StringRef("debian-cloud"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

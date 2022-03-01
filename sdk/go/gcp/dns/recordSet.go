@@ -11,6 +11,225 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Binding a DNS name to the ephemeral IP of a new instance:
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		frontendInstance, err := compute.NewInstance(ctx, "frontendInstance", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("g1-small"),
+// 			Zone:        pulumi.String("us-central1-b"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("debian-cloud/debian-9"),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "frontendRecordSet", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
+// 			Type:        pulumi.String("A"),
+// 			Ttl:         pulumi.Int(300),
+// 			ManagedZone: prod.Name,
+// 			Rrdatas: pulumi.StringArray{
+// 				frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
+// 					return networkInterfaces[0].AccessConfigs[0].NatIp, nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Adding an A record
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "recordSet", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "backend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
+// 			ManagedZone: prod.Name,
+// 			Type:        pulumi.String("A"),
+// 			Ttl:         pulumi.Int(300),
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String("8.8.8.8"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Adding an MX record
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "mx", &dns.RecordSetArgs{
+// 			Name:        prod.DnsName,
+// 			ManagedZone: prod.Name,
+// 			Type:        pulumi.String("MX"),
+// 			Ttl:         pulumi.Int(3600),
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String("1 aspmx.l.google.com."),
+// 				pulumi.String("5 alt1.aspmx.l.google.com."),
+// 				pulumi.String("5 alt2.aspmx.l.google.com."),
+// 				pulumi.String("10 alt3.aspmx.l.google.com."),
+// 				pulumi.String("10 alt4.aspmx.l.google.com."),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Adding an SPF record
+//
+// Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "spf", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
+// 			ManagedZone: prod.Name,
+// 			Type:        pulumi.String("TXT"),
+// 			Ttl:         pulumi.Int(300),
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String("\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Adding a CNAME record
+//
+//  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "cname", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
+// 			ManagedZone: prod.Name,
+// 			Type:        pulumi.String("CNAME"),
+// 			Ttl:         pulumi.Int(300),
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String("frontend.mydomain.com."),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // DNS record sets can be imported using either of these accepted formats

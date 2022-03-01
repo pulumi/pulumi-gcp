@@ -35,9 +35,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Test Notification Channel"
 // 		basic, err := monitoring.LookupNotificationChannel(ctx, &monitoring.LookupNotificationChannelArgs{
-// 			DisplayName: &opt0,
+// 			DisplayName: pulumi.StringRef("Test Notification Channel"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

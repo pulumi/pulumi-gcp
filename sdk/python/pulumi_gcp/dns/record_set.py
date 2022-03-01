@@ -247,6 +247,100 @@ class RecordSet(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Binding a DNS name to the ephemeral IP of a new instance:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        frontend_instance = gcp.compute.Instance("frontendInstance",
+            machine_type="g1-small",
+            zone="us-central1-b",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-9",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            type="A",
+            ttl=300,
+            managed_zone=prod.name,
+            rrdatas=[frontend_instance.network_interfaces[0].access_configs[0].nat_ip])
+        ```
+        ### Adding an A record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        record_set = gcp.dns.RecordSet("recordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod.name,
+            type="A",
+            ttl=300,
+            rrdatas=["8.8.8.8"])
+        ```
+        ### Adding an MX record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        mx = gcp.dns.RecordSet("mx",
+            name=prod.dns_name,
+            managed_zone=prod.name,
+            type="MX",
+            ttl=3600,
+            rrdatas=[
+                "1 aspmx.l.google.com.",
+                "5 alt1.aspmx.l.google.com.",
+                "5 alt2.aspmx.l.google.com.",
+                "10 alt3.aspmx.l.google.com.",
+                "10 alt4.aspmx.l.google.com.",
+            ])
+        ```
+        ### Adding an SPF record
+
+        Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        spf = gcp.dns.RecordSet("spf",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            managed_zone=prod.name,
+            type="TXT",
+            ttl=300,
+            rrdatas=["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""])
+        ```
+        ### Adding a CNAME record
+
+         The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        cname = gcp.dns.RecordSet("cname",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            managed_zone=prod.name,
+            type="CNAME",
+            ttl=300,
+            rrdatas=["frontend.mydomain.com."])
+        ```
+
         ## Import
 
         DNS record sets can be imported using either of these accepted formats
@@ -286,6 +380,100 @@ class RecordSet(pulumi.CustomResource):
                  args: RecordSetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Binding a DNS name to the ephemeral IP of a new instance:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        frontend_instance = gcp.compute.Instance("frontendInstance",
+            machine_type="g1-small",
+            zone="us-central1-b",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-9",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            type="A",
+            ttl=300,
+            managed_zone=prod.name,
+            rrdatas=[frontend_instance.network_interfaces[0].access_configs[0].nat_ip])
+        ```
+        ### Adding an A record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        record_set = gcp.dns.RecordSet("recordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod.name,
+            type="A",
+            ttl=300,
+            rrdatas=["8.8.8.8"])
+        ```
+        ### Adding an MX record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        mx = gcp.dns.RecordSet("mx",
+            name=prod.dns_name,
+            managed_zone=prod.name,
+            type="MX",
+            ttl=3600,
+            rrdatas=[
+                "1 aspmx.l.google.com.",
+                "5 alt1.aspmx.l.google.com.",
+                "5 alt2.aspmx.l.google.com.",
+                "10 alt3.aspmx.l.google.com.",
+                "10 alt4.aspmx.l.google.com.",
+            ])
+        ```
+        ### Adding an SPF record
+
+        Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        spf = gcp.dns.RecordSet("spf",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            managed_zone=prod.name,
+            type="TXT",
+            ttl=300,
+            rrdatas=["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""])
+        ```
+        ### Adding a CNAME record
+
+         The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        cname = gcp.dns.RecordSet("cname",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
+            managed_zone=prod.name,
+            type="CNAME",
+            ttl=300,
+            rrdatas=["frontend.mydomain.com."])
+        ```
+
         ## Import
 
         DNS record sets can be imported using either of these accepted formats

@@ -30,9 +30,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "123456789"
 // 		_default, err := organizations.GetOrganization(ctx, &organizations.GetOrganizationArgs{
-// 			Organization: &opt0,
+// 			Organization: pulumi.StringRef("123456789"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

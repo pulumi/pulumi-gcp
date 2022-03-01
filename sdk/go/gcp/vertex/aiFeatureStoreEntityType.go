@@ -11,6 +11,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Vertex Ai Featurestore Entitytype
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		featurestore, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			Region: pulumi.String("us-central1"),
+// 			OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+// 				FixedNodeCount: pulumi.Int(2),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vertex.NewAiFeatureStoreEntityType(ctx, "entity", &vertex.AiFeatureStoreEntityTypeArgs{
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			Featurestore: featurestore.ID(),
+// 			MonitoringConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs{
+// 				SnapshotAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{
+// 					Disabled:           pulumi.Bool(false),
+// 					MonitoringInterval: pulumi.String("86400s"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // FeaturestoreEntitytype can be imported using any of these accepted formats

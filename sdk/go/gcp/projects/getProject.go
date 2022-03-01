@@ -34,9 +34,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := my_org_projects.Projects[0].ProjectId
 // 		_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// 			ProjectId: &opt0,
+// 			ProjectId: pulumi.StringRef(my_org_projects.Projects[0].ProjectId),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

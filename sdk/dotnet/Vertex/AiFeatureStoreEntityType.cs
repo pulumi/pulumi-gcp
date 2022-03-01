@@ -10,6 +10,56 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Vertex Ai Featurestore Entitytype
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new Gcp.Vertex.AiFeatureStoreArgs
+    ///         {
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             Region = "us-central1",
+    ///             OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///             {
+    ///                 FixedNodeCount = 2,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new Gcp.Vertex.AiFeatureStoreEntityTypeArgs
+    ///         {
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             Featurestore = featurestore.Id,
+    ///             MonitoringConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs
+    ///             {
+    ///                 SnapshotAnalysis = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs
+    ///                 {
+    ///                     Disabled = false,
+    ///                     MonitoringInterval = "86400s",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// FeaturestoreEntitytype can be imported using any of these accepted formats

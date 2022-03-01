@@ -29,11 +29,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "image-store"
-// 		opt1 := "folder/butterfly01.jpg"
 // 		_, err := storage.LookupBucketObject(ctx, &storage.LookupBucketObjectArgs{
-// 			Bucket: &opt0,
-// 			Name:   &opt1,
+// 			Bucket: pulumi.StringRef("image-store"),
+// 			Name:   pulumi.StringRef("folder/butterfly01.jpg"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

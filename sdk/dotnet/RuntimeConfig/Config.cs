@@ -10,6 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.RuntimeConfig
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Example creating a RuntimeConfig resource.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new Gcp.RuntimeConfig.ConfigArgs
+    ///         {
+    ///             Description = "Runtime configuration values for my service",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Runtime Configs can be imported using the `name` or full config name, e.g.

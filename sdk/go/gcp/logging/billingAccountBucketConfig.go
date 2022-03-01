@@ -30,9 +30,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "00AA00-000AAA-00AA0A"
 // 		_default, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
-// 			BillingAccount: &opt0,
+// 			BillingAccount: pulumi.StringRef("00AA00-000AAA-00AA0A"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

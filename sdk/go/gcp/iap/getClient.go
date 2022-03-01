@@ -27,9 +27,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "foobar"
 // 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// 			ProjectId: &opt0,
+// 			ProjectId: pulumi.StringRef("foobar"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

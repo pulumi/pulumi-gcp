@@ -6,6 +6,55 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ * ### Bigquery Dataset Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bqowner = new gcp.serviceaccount.Account("bqowner", {accountId: "bqowner"});
+ * const dataset = new gcp.bigquery.Dataset("dataset", {
+ *     datasetId: "example_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "EU",
+ *     defaultTableExpirationMs: 3600000,
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     accesses: [
+ *         {
+ *             role: "OWNER",
+ *             userByEmail: bqowner.email,
+ *         },
+ *         {
+ *             role: "READER",
+ *             domain: "hashicorp.com",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Bigquery Dataset Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const dataset = new gcp.bigquery.Dataset("dataset", {
+ *     datasetId: "example_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     defaultTableExpirationMs: 3600000,
+ *     defaultEncryptionConfiguration: {
+ *         kmsKeyName: cryptoKey.id,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Dataset can be imported using any of these accepted formats

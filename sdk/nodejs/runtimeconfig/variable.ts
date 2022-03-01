@@ -5,6 +5,38 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Example creating a RuntimeConfig variable.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {description: "Runtime configuration values for my service"});
+ * const environment = new gcp.runtimeconfig.Variable("environment", {
+ *     parent: my_runtime_config.name,
+ *     text: "example.com",
+ * });
+ * ```
+ *
+ * You can also encode binary content using the `value` argument instead. The
+ * value must be base64 encoded.
+ *
+ * Example of using the `value` argument.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {description: "Runtime configuration values for my service"});
+ * const my_secret = new gcp.runtimeconfig.Variable("my-secret", {
+ *     parent: my_runtime_config.name,
+ *     value: Buffer.from(fs.readFileSync("my-encrypted-secret.dat"), 'binary').toString('base64'),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Runtime Config Variables can be imported using the `name` or full variable name, e.g.

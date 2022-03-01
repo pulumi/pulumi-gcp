@@ -102,7 +102,16 @@ def get_variable(name: Optional[str] = None,
                  project: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVariableResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    run_service = gcp.runtimeconfig.get_variable(name="prod-variables/hostname",
+        parent="my-service")
+    ```
+
 
     :param str name: The name of the Runtime Configurator configuration.
     :param str parent: The name of the RuntimeConfig resource containing this variable.
@@ -135,7 +144,16 @@ def get_variable_output(name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVariableResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    run_service = gcp.runtimeconfig.get_variable(name="prod-variables/hostname",
+        parent="my-service")
+    ```
+
 
     :param str name: The name of the Runtime Configurator configuration.
     :param str parent: The name of the RuntimeConfig resource containing this variable.

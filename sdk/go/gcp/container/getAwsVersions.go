@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "us-west1"
-// 		opt1 := "my-project"
 // 		_, err := container.GetAwsVersions(ctx, &container.GetAwsVersionsArgs{
-// 			Location: &opt0,
-// 			Project:  &opt1,
+// 			Location: pulumi.StringRef("us-west1"),
+// 			Project:  pulumi.StringRef("my-project"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

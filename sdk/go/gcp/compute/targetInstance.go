@@ -37,11 +37,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "debian-9"
-// 		opt1 := "debian-cloud"
 // 		vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  &opt0,
-// 			Project: &opt1,
+// 			Family:  pulumi.StringRef("debian-9"),
+// 			Project: pulumi.StringRef("debian-cloud"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -91,11 +89,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "debian-10"
-// 		opt1 := "debian-cloud"
 // 		vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  &opt0,
-// 			Project: &opt1,
+// 			Family:  pulumi.StringRef("debian-10"),
+// 			Project: pulumi.StringRef("debian-cloud"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

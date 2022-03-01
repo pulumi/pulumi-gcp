@@ -279,6 +279,49 @@ class Feature(pulumi.CustomResource):
                  spec: Optional[pulumi.Input[pulumi.InputType['FeatureSpecArgs']]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Multi Cluster Ingress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            description="Membership",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            spec=gcp.gkehub.FeatureSpecArgs(
+                multiclusteringress=gcp.gkehub.FeatureSpecMulticlusteringressArgs(
+                    config_membership=membership.id,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Multi Cluster Service Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            labels={
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Feature can be imported using any of these accepted formats
@@ -310,6 +353,49 @@ class Feature(pulumi.CustomResource):
                  args: FeatureArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Multi Cluster Ingress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            description="Membership",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            spec=gcp.gkehub.FeatureSpecArgs(
+                multiclusteringress=gcp.gkehub.FeatureSpecMulticlusteringressArgs(
+                    config_membership=membership.id,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Multi Cluster Service Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            labels={
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Feature can be imported using any of these accepted formats
