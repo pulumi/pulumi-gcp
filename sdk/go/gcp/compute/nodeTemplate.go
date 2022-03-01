@@ -56,9 +56,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "us-central1-a"
 // 		_, err := compute.GetNodeTypes(ctx, &compute.GetNodeTypesArgs{
-// 			Zone: &opt0,
+// 			Zone: pulumi.StringRef("us-central1-a"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

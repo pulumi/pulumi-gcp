@@ -30,11 +30,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "us-central1-b"
-// 		opt1 := "1.12."
 // 		central1b, err := container.GetEngineVersions(ctx, &container.GetEngineVersionsArgs{
-// 			Location:      &opt0,
-// 			VersionPrefix: &opt1,
+// 			Location:      pulumi.StringRef("us-central1-b"),
+// 			VersionPrefix: pulumi.StringRef("1.12."),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

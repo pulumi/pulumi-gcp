@@ -39,9 +39,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "000000-0000000-0000000-000000"
 // 		account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
-// 			BillingAccount: &opt0,
+// 			BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -83,9 +82,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "000000-0000000-0000000-000000"
 // 		account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
-// 			BillingAccount: &opt0,
+// 			BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -133,9 +131,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "000000-0000000-0000000-000000"
 // 		account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
-// 			BillingAccount: &opt0,
+// 			BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -195,9 +192,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "000000-0000000-0000000-000000"
 // 		account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
-// 			BillingAccount: &opt0,
+// 			BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

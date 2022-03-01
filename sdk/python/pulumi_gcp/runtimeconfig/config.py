@@ -140,6 +140,17 @@ class Config(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Example creating a RuntimeConfig resource.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        ```
+
         ## Import
 
         Runtime Configs can be imported using the `name` or full config name, e.g.
@@ -169,6 +180,17 @@ class Config(pulumi.CustomResource):
                  args: Optional[ConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Example creating a RuntimeConfig resource.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        ```
+
         ## Import
 
         Runtime Configs can be imported using the `name` or full config name, e.g.

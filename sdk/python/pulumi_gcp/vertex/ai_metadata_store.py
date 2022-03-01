@@ -260,6 +260,18 @@ class AiMetadataStore(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Vertex Ai Metadata Store
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        store = gcp.vertex.AiMetadataStore("store",
+            description="Store to test the terraform module",
+            region="us-central1")
+        ```
+
         ## Import
 
         MetadataStore can be imported using any of these accepted formats
@@ -297,6 +309,18 @@ class AiMetadataStore(pulumi.CustomResource):
                  args: Optional[AiMetadataStoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Vertex Ai Metadata Store
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        store = gcp.vertex.AiMetadataStore("store",
+            description="Store to test the terraform module",
+            region="us-central1")
+        ```
+
         ## Import
 
         MetadataStore can be imported using any of these accepted formats

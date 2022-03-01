@@ -22,11 +22,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "My Billing Account"
-// 		opt1 := true
 // 		acct, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
-// 			DisplayName: &opt0,
-// 			Open:        &opt1,
+// 			DisplayName: pulumi.StringRef("My Billing Account"),
+// 			Open:        pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

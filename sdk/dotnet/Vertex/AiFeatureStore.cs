@@ -10,6 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Vertex Ai Featurestore
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new Gcp.Vertex.AiFeatureStoreArgs
+    ///         {
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             Region = "us-central1",
+    ///             OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///             {
+    ///                 FixedNodeCount = 2,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Featurestore can be imported using any of these accepted formats

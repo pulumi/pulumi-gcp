@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "default-us-east1"
-// 		opt1 := "us-east1"
 // 		_, err := compute.LookupSubnetwork(ctx, &compute.LookupSubnetworkArgs{
-// 			Name:   &opt0,
-// 			Region: &opt1,
+// 			Name:   pulumi.StringRef("default-us-east1"),
+// 			Region: pulumi.StringRef("us-east1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

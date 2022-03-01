@@ -132,11 +132,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "default"
-// 		opt1 := "us-central1"
 // 		mySubnetwork, err := compute.LookupSubnetwork(ctx, &compute.LookupSubnetworkArgs{
-// 			Name:   &opt0,
-// 			Region: &opt1,
+// 			Name:   pulumi.StringRef("default"),
+// 			Region: pulumi.StringRef("us-central1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -226,6 +226,36 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Vertex Ai Featurestore Entitytype
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            featurestore=featurestore.id,
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+                    disabled=False,
+                    monitoring_interval="86400s",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         FeaturestoreEntitytype can be imported using any of these accepted formats
@@ -250,6 +280,36 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  args: AiFeatureStoreEntityTypeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Vertex Ai Featurestore Entitytype
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            featurestore=featurestore.id,
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+                    disabled=False,
+                    monitoring_interval="86400s",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         FeaturestoreEntitytype can be imported using any of these accepted formats

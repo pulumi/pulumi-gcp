@@ -11,9 +11,59 @@ namespace Pulumi.Gcp.RuntimeConfig
 {
     public static class GetVariable
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var run_service = Output.Create(Gcp.RuntimeConfig.GetVariable.InvokeAsync(new Gcp.RuntimeConfig.GetVariableArgs
+        ///         {
+        ///             Name = "prod-variables/hostname",
+        ///             Parent = "my-service",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetVariableResult> InvokeAsync(GetVariableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var run_service = Output.Create(Gcp.RuntimeConfig.GetVariable.InvokeAsync(new Gcp.RuntimeConfig.GetVariableArgs
+        ///         {
+        ///             Name = "prod-variables/hostname",
+        ///             Parent = "my-service",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetVariableResult> Invoke(GetVariableInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetVariableResult>("gcp:runtimeconfig/getVariable:getVariable", args ?? new GetVariableInvokeArgs(), options.WithDefaults());
     }

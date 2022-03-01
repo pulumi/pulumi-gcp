@@ -505,6 +505,53 @@ class Dataset(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Bigquery Dataset Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+            ])
+        ```
+        ### Bigquery Dataset Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            default_table_expiration_ms=3600000,
+            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        ```
+
         ## Import
 
         Dataset can be imported using any of these accepted formats
@@ -553,6 +600,53 @@ class Dataset(pulumi.CustomResource):
                  args: DatasetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Bigquery Dataset Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+            ])
+        ```
+        ### Bigquery Dataset Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            default_table_expiration_ms=3600000,
+            default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        ```
+
         ## Import
 
         Dataset can be imported using any of these accepted formats

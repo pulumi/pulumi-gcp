@@ -27,18 +27,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "generic-tpl-20200107"
 // 		_, err := compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("generic-tpl-20200107"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "name != generic-tpl-20200107"
-// 		opt2 := true
 // 		_, err = compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
-// 			Filter:     &opt1,
-// 			MostRecent: &opt2,
+// 			Filter:     pulumi.StringRef("name != generic-tpl-20200107"),
+// 			MostRecent: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -22,10 +22,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "us-central1"
 // 		_, err := compute.LookupResourcePolicy(ctx, &compute.LookupResourcePolicyArgs{
 // 			Name:   "daily",
-// 			Region: &opt0,
+// 			Region: pulumi.StringRef("us-central1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

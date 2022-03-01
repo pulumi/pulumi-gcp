@@ -293,6 +293,24 @@ class AiFeatureStore(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Vertex Ai Featurestore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Featurestore can be imported using any of these accepted formats
@@ -331,6 +349,24 @@ class AiFeatureStore(pulumi.CustomResource):
                  args: Optional[AiFeatureStoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Vertex Ai Featurestore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Featurestore can be imported using any of these accepted formats

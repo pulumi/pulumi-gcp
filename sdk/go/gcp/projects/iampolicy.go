@@ -88,7 +88,7 @@ import (
 // 			Bindings: []organizations.GetIAMPolicyBinding{
 // 				organizations.GetIAMPolicyBinding{
 // 					Condition: organizations.GetIAMPolicyBindingCondition{
-// 						Description: "Expiring at midnight of 2019-12-31",
+// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
 // 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
 // 						Title:       "expires_after_2019_12_31",
 // 					},

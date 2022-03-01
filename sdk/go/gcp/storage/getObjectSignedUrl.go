@@ -64,17 +64,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "pRviqwS4c4OTJRTe03FD1w=="
-// 		opt1 := "text/plain"
-// 		opt2 := "2d"
-// 		opt3 := readFileOrPanic("path/to/credentials.json")
 // 		_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
 // 			Bucket:      "fried_chicken",
 // 			Path:        "path/to/file",
-// 			ContentMd5:  &opt0,
-// 			ContentType: &opt1,
-// 			Duration:    &opt2,
-// 			Credentials: &opt3,
+// 			ContentMd5:  pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),
+// 			ContentType: pulumi.StringRef("text/plain"),
+// 			Duration:    pulumi.StringRef("2d"),
+// 			Credentials: pulumi.StringRef(readFileOrPanic("path/to/credentials.json")),
 // 			ExtensionHeaders: map[string]interface{}{
 // 				"x-goog-if-generation-match": "1",
 // 			},

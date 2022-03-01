@@ -11,6 +11,84 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Multi Cluster Ingress
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+// 			Location:         pulumi.String("us-central1-a"),
+// 			InitialNodeCount: pulumi.Int(1),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+// 			MembershipId: pulumi.String("my-membership"),
+// 			Endpoint: &gkehub.MembershipEndpointArgs{
+// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+// 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+// 						return fmt.Sprintf("%v%v", "//container.googleapis.com/", id), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			Description: pulumi.String("Membership"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+// 			Location: pulumi.String("global"),
+// 			Spec: &gkehub.FeatureSpecArgs{
+// 				Multiclusteringress: &gkehub.FeatureSpecMulticlusteringressArgs{
+// 					ConfigMembership: membership.ID(),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Multi Cluster Service Discovery
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+// 			Location: pulumi.String("global"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Feature can be imported using any of these accepted formats

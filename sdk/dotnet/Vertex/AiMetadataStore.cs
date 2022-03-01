@@ -10,6 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Vertex Ai Metadata Store
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var store = new Gcp.Vertex.AiMetadataStore("store", new Gcp.Vertex.AiMetadataStoreArgs
+    ///         {
+    ///             Description = "Store to test the terraform module",
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// MetadataStore can be imported using any of these accepted formats

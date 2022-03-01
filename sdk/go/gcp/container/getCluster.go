@@ -24,10 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "us-east1-a"
 // 		myCluster, err := container.LookupCluster(ctx, &container.LookupClusterArgs{
 // 			Name:     "my-cluster",
-// 			Location: &opt0,
+// 			Location: pulumi.StringRef("us-east1-a"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -405,6 +405,45 @@ class DatasetAccess(pulumi.CustomResource):
                  view: Optional[pulumi.Input[pulumi.InputType['DatasetAccessViewArgs']]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Bigquery Dataset Access Basic User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=dataset.dataset_id,
+            role="OWNER",
+            user_by_email=bqowner.email)
+        ```
+        ### Bigquery Dataset Access View
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        private = gcp.bigquery.Dataset("private", dataset_id="example_dataset")
+        public_dataset = gcp.bigquery.Dataset("publicDataset", dataset_id="example_dataset2")
+        public_table = gcp.bigquery.Table("publicTable",
+            deletion_protection=False,
+            dataset_id=public_dataset.dataset_id,
+            table_id="example_table",
+            view=gcp.bigquery.TableViewArgs(
+                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                use_legacy_sql=False,
+            ))
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=private.dataset_id,
+            view=gcp.bigquery.DatasetAccessViewArgs(
+                project_id=public_table.project,
+                dataset_id=public_dataset.dataset_id,
+                table_id=public_table.table_id,
+            ))
+        ```
+
         ## Import
 
         This resource does not support import.
@@ -442,6 +481,45 @@ class DatasetAccess(pulumi.CustomResource):
                  args: DatasetAccessInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Bigquery Dataset Access Basic User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset", dataset_id="example_dataset")
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=dataset.dataset_id,
+            role="OWNER",
+            user_by_email=bqowner.email)
+        ```
+        ### Bigquery Dataset Access View
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        private = gcp.bigquery.Dataset("private", dataset_id="example_dataset")
+        public_dataset = gcp.bigquery.Dataset("publicDataset", dataset_id="example_dataset2")
+        public_table = gcp.bigquery.Table("publicTable",
+            deletion_protection=False,
+            dataset_id=public_dataset.dataset_id,
+            table_id="example_table",
+            view=gcp.bigquery.TableViewArgs(
+                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                use_legacy_sql=False,
+            ))
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=private.dataset_id,
+            view=gcp.bigquery.DatasetAccessViewArgs(
+                project_id=public_table.project,
+                dataset_id=public_dataset.dataset_id,
+                table_id=public_table.table_id,
+            ))
+        ```
+
         ## Import
 
         This resource does not support import.

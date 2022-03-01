@@ -48,9 +48,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "legacy-health-checkers"
 // 		legacy_hcs, err := compute.GetNetblockIPRanges(ctx, &compute.GetNetblockIPRangesArgs{
-// 			RangeType: &opt0,
+// 			RangeType: pulumi.StringRef("legacy-health-checkers"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

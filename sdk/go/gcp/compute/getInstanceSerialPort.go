@@ -25,10 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "us-central1-a"
 // 		serial, err := compute.GetInstanceSerialPort(ctx, &compute.GetInstanceSerialPortArgs{
 // 			Instance: "my-instance",
-// 			Zone:     &opt0,
+// 			Zone:     pulumi.StringRef("us-central1-a"),
 // 			Port:     1,
 // 		}, nil)
 // 		if err != nil {

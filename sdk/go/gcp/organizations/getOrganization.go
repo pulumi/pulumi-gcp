@@ -22,9 +22,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example.com"
 // 		org, err := organizations.GetOrganization(ctx, &organizations.GetOrganizationArgs{
-// 			Domain: &opt0,
+// 			Domain: pulumi.StringRef("example.com"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

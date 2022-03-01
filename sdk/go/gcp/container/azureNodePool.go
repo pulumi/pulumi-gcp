@@ -30,11 +30,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-project-name"
-// 		opt1 := "us-west1"
 // 		versions, err := container.GetAzureVersions(ctx, &container.GetAzureVersionsArgs{
-// 			Project:  &opt0,
-// 			Location: &opt1,
+// 			Project:  pulumi.StringRef("my-project-name"),
+// 			Location: pulumi.StringRef("us-west1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

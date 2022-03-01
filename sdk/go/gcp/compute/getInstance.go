@@ -27,11 +27,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "primary-application-server"
-// 		opt1 := "us-central1-a"
 // 		_, err := compute.LookupInstance(ctx, &compute.LookupInstanceArgs{
-// 			Name: &opt0,
-// 			Zone: &opt1,
+// 			Name: pulumi.StringRef("primary-application-server"),
+// 			Zone: pulumi.StringRef("us-central1-a"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
