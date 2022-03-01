@@ -1832,6 +1832,380 @@ func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
 	}).(PolicyNetworkOutput)
 }
 
+type ResponsePolicyNetwork struct {
+	// The fully qualified URL of the VPC network to bind to.
+	// This should be formatted like
+	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+	NetworkUrl string `pulumi:"networkUrl"`
+}
+
+// ResponsePolicyNetworkInput is an input type that accepts ResponsePolicyNetworkArgs and ResponsePolicyNetworkOutput values.
+// You can construct a concrete instance of `ResponsePolicyNetworkInput` via:
+//
+//          ResponsePolicyNetworkArgs{...}
+type ResponsePolicyNetworkInput interface {
+	pulumi.Input
+
+	ToResponsePolicyNetworkOutput() ResponsePolicyNetworkOutput
+	ToResponsePolicyNetworkOutputWithContext(context.Context) ResponsePolicyNetworkOutput
+}
+
+type ResponsePolicyNetworkArgs struct {
+	// The fully qualified URL of the VPC network to bind to.
+	// This should be formatted like
+	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+}
+
+func (ResponsePolicyNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyNetwork)(nil)).Elem()
+}
+
+func (i ResponsePolicyNetworkArgs) ToResponsePolicyNetworkOutput() ResponsePolicyNetworkOutput {
+	return i.ToResponsePolicyNetworkOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyNetworkArgs) ToResponsePolicyNetworkOutputWithContext(ctx context.Context) ResponsePolicyNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyNetworkOutput)
+}
+
+// ResponsePolicyNetworkArrayInput is an input type that accepts ResponsePolicyNetworkArray and ResponsePolicyNetworkArrayOutput values.
+// You can construct a concrete instance of `ResponsePolicyNetworkArrayInput` via:
+//
+//          ResponsePolicyNetworkArray{ ResponsePolicyNetworkArgs{...} }
+type ResponsePolicyNetworkArrayInput interface {
+	pulumi.Input
+
+	ToResponsePolicyNetworkArrayOutput() ResponsePolicyNetworkArrayOutput
+	ToResponsePolicyNetworkArrayOutputWithContext(context.Context) ResponsePolicyNetworkArrayOutput
+}
+
+type ResponsePolicyNetworkArray []ResponsePolicyNetworkInput
+
+func (ResponsePolicyNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyNetwork)(nil)).Elem()
+}
+
+func (i ResponsePolicyNetworkArray) ToResponsePolicyNetworkArrayOutput() ResponsePolicyNetworkArrayOutput {
+	return i.ToResponsePolicyNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyNetworkArray) ToResponsePolicyNetworkArrayOutputWithContext(ctx context.Context) ResponsePolicyNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyNetworkArrayOutput)
+}
+
+type ResponsePolicyNetworkOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyNetwork)(nil)).Elem()
+}
+
+func (o ResponsePolicyNetworkOutput) ToResponsePolicyNetworkOutput() ResponsePolicyNetworkOutput {
+	return o
+}
+
+func (o ResponsePolicyNetworkOutput) ToResponsePolicyNetworkOutputWithContext(ctx context.Context) ResponsePolicyNetworkOutput {
+	return o
+}
+
+// The fully qualified URL of the VPC network to bind to.
+// This should be formatted like
+// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+func (o ResponsePolicyNetworkOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+type ResponsePolicyNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyNetwork)(nil)).Elem()
+}
+
+func (o ResponsePolicyNetworkArrayOutput) ToResponsePolicyNetworkArrayOutput() ResponsePolicyNetworkArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyNetworkArrayOutput) ToResponsePolicyNetworkArrayOutputWithContext(ctx context.Context) ResponsePolicyNetworkArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyNetworkArrayOutput) Index(i pulumi.IntInput) ResponsePolicyNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponsePolicyNetwork {
+		return vs[0].([]ResponsePolicyNetwork)[vs[1].(int)]
+	}).(ResponsePolicyNetworkOutput)
+}
+
+type ResponsePolicyRuleLocalData struct {
+	// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+	// Structure is documented below.
+	LocalDatas []ResponsePolicyRuleLocalDataLocalData `pulumi:"localDatas"`
+}
+
+// ResponsePolicyRuleLocalDataInput is an input type that accepts ResponsePolicyRuleLocalDataArgs and ResponsePolicyRuleLocalDataOutput values.
+// You can construct a concrete instance of `ResponsePolicyRuleLocalDataInput` via:
+//
+//          ResponsePolicyRuleLocalDataArgs{...}
+type ResponsePolicyRuleLocalDataInput interface {
+	pulumi.Input
+
+	ToResponsePolicyRuleLocalDataOutput() ResponsePolicyRuleLocalDataOutput
+	ToResponsePolicyRuleLocalDataOutputWithContext(context.Context) ResponsePolicyRuleLocalDataOutput
+}
+
+type ResponsePolicyRuleLocalDataArgs struct {
+	// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+	// Structure is documented below.
+	LocalDatas ResponsePolicyRuleLocalDataLocalDataArrayInput `pulumi:"localDatas"`
+}
+
+func (ResponsePolicyRuleLocalDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyRuleLocalData)(nil)).Elem()
+}
+
+func (i ResponsePolicyRuleLocalDataArgs) ToResponsePolicyRuleLocalDataOutput() ResponsePolicyRuleLocalDataOutput {
+	return i.ToResponsePolicyRuleLocalDataOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyRuleLocalDataArgs) ToResponsePolicyRuleLocalDataOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataOutput)
+}
+
+func (i ResponsePolicyRuleLocalDataArgs) ToResponsePolicyRuleLocalDataPtrOutput() ResponsePolicyRuleLocalDataPtrOutput {
+	return i.ToResponsePolicyRuleLocalDataPtrOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyRuleLocalDataArgs) ToResponsePolicyRuleLocalDataPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataOutput).ToResponsePolicyRuleLocalDataPtrOutputWithContext(ctx)
+}
+
+// ResponsePolicyRuleLocalDataPtrInput is an input type that accepts ResponsePolicyRuleLocalDataArgs, ResponsePolicyRuleLocalDataPtr and ResponsePolicyRuleLocalDataPtrOutput values.
+// You can construct a concrete instance of `ResponsePolicyRuleLocalDataPtrInput` via:
+//
+//          ResponsePolicyRuleLocalDataArgs{...}
+//
+//  or:
+//
+//          nil
+type ResponsePolicyRuleLocalDataPtrInput interface {
+	pulumi.Input
+
+	ToResponsePolicyRuleLocalDataPtrOutput() ResponsePolicyRuleLocalDataPtrOutput
+	ToResponsePolicyRuleLocalDataPtrOutputWithContext(context.Context) ResponsePolicyRuleLocalDataPtrOutput
+}
+
+type responsePolicyRuleLocalDataPtrType ResponsePolicyRuleLocalDataArgs
+
+func ResponsePolicyRuleLocalDataPtr(v *ResponsePolicyRuleLocalDataArgs) ResponsePolicyRuleLocalDataPtrInput {
+	return (*responsePolicyRuleLocalDataPtrType)(v)
+}
+
+func (*responsePolicyRuleLocalDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResponsePolicyRuleLocalData)(nil)).Elem()
+}
+
+func (i *responsePolicyRuleLocalDataPtrType) ToResponsePolicyRuleLocalDataPtrOutput() ResponsePolicyRuleLocalDataPtrOutput {
+	return i.ToResponsePolicyRuleLocalDataPtrOutputWithContext(context.Background())
+}
+
+func (i *responsePolicyRuleLocalDataPtrType) ToResponsePolicyRuleLocalDataPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataPtrOutput)
+}
+
+type ResponsePolicyRuleLocalDataOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyRuleLocalDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyRuleLocalData)(nil)).Elem()
+}
+
+func (o ResponsePolicyRuleLocalDataOutput) ToResponsePolicyRuleLocalDataOutput() ResponsePolicyRuleLocalDataOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataOutput) ToResponsePolicyRuleLocalDataOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataOutput) ToResponsePolicyRuleLocalDataPtrOutput() ResponsePolicyRuleLocalDataPtrOutput {
+	return o.ToResponsePolicyRuleLocalDataPtrOutputWithContext(context.Background())
+}
+
+func (o ResponsePolicyRuleLocalDataOutput) ToResponsePolicyRuleLocalDataPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResponsePolicyRuleLocalData) *ResponsePolicyRuleLocalData {
+		return &v
+	}).(ResponsePolicyRuleLocalDataPtrOutput)
+}
+
+// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+// Structure is documented below.
+func (o ResponsePolicyRuleLocalDataOutput) LocalDatas() ResponsePolicyRuleLocalDataLocalDataArrayOutput {
+	return o.ApplyT(func(v ResponsePolicyRuleLocalData) []ResponsePolicyRuleLocalDataLocalData { return v.LocalDatas }).(ResponsePolicyRuleLocalDataLocalDataArrayOutput)
+}
+
+type ResponsePolicyRuleLocalDataPtrOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyRuleLocalDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResponsePolicyRuleLocalData)(nil)).Elem()
+}
+
+func (o ResponsePolicyRuleLocalDataPtrOutput) ToResponsePolicyRuleLocalDataPtrOutput() ResponsePolicyRuleLocalDataPtrOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataPtrOutput) ToResponsePolicyRuleLocalDataPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataPtrOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataPtrOutput) Elem() ResponsePolicyRuleLocalDataOutput {
+	return o.ApplyT(func(v *ResponsePolicyRuleLocalData) ResponsePolicyRuleLocalData {
+		if v != nil {
+			return *v
+		}
+		var ret ResponsePolicyRuleLocalData
+		return ret
+	}).(ResponsePolicyRuleLocalDataOutput)
+}
+
+// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+// Structure is documented below.
+func (o ResponsePolicyRuleLocalDataPtrOutput) LocalDatas() ResponsePolicyRuleLocalDataLocalDataArrayOutput {
+	return o.ApplyT(func(v *ResponsePolicyRuleLocalData) []ResponsePolicyRuleLocalDataLocalData {
+		if v == nil {
+			return nil
+		}
+		return v.LocalDatas
+	}).(ResponsePolicyRuleLocalDataLocalDataArrayOutput)
+}
+
+type ResponsePolicyRuleLocalDataLocalData struct {
+	// For example, www.example.com.
+	Name string `pulumi:"name"`
+	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+	Rrdatas []string `pulumi:"rrdatas"`
+	// Number of seconds that this ResourceRecordSet can be cached by
+	// resolvers.
+	Ttl *int `pulumi:"ttl"`
+	// One of valid DNS resource types.
+	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+	Type string `pulumi:"type"`
+}
+
+// ResponsePolicyRuleLocalDataLocalDataInput is an input type that accepts ResponsePolicyRuleLocalDataLocalDataArgs and ResponsePolicyRuleLocalDataLocalDataOutput values.
+// You can construct a concrete instance of `ResponsePolicyRuleLocalDataLocalDataInput` via:
+//
+//          ResponsePolicyRuleLocalDataLocalDataArgs{...}
+type ResponsePolicyRuleLocalDataLocalDataInput interface {
+	pulumi.Input
+
+	ToResponsePolicyRuleLocalDataLocalDataOutput() ResponsePolicyRuleLocalDataLocalDataOutput
+	ToResponsePolicyRuleLocalDataLocalDataOutputWithContext(context.Context) ResponsePolicyRuleLocalDataLocalDataOutput
+}
+
+type ResponsePolicyRuleLocalDataLocalDataArgs struct {
+	// For example, www.example.com.
+	Name pulumi.StringInput `pulumi:"name"`
+	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
+	// Number of seconds that this ResourceRecordSet can be cached by
+	// resolvers.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+	// One of valid DNS resource types.
+	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ResponsePolicyRuleLocalDataLocalDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyRuleLocalDataLocalData)(nil)).Elem()
+}
+
+func (i ResponsePolicyRuleLocalDataLocalDataArgs) ToResponsePolicyRuleLocalDataLocalDataOutput() ResponsePolicyRuleLocalDataLocalDataOutput {
+	return i.ToResponsePolicyRuleLocalDataLocalDataOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyRuleLocalDataLocalDataArgs) ToResponsePolicyRuleLocalDataLocalDataOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataLocalDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataLocalDataOutput)
+}
+
+// ResponsePolicyRuleLocalDataLocalDataArrayInput is an input type that accepts ResponsePolicyRuleLocalDataLocalDataArray and ResponsePolicyRuleLocalDataLocalDataArrayOutput values.
+// You can construct a concrete instance of `ResponsePolicyRuleLocalDataLocalDataArrayInput` via:
+//
+//          ResponsePolicyRuleLocalDataLocalDataArray{ ResponsePolicyRuleLocalDataLocalDataArgs{...} }
+type ResponsePolicyRuleLocalDataLocalDataArrayInput interface {
+	pulumi.Input
+
+	ToResponsePolicyRuleLocalDataLocalDataArrayOutput() ResponsePolicyRuleLocalDataLocalDataArrayOutput
+	ToResponsePolicyRuleLocalDataLocalDataArrayOutputWithContext(context.Context) ResponsePolicyRuleLocalDataLocalDataArrayOutput
+}
+
+type ResponsePolicyRuleLocalDataLocalDataArray []ResponsePolicyRuleLocalDataLocalDataInput
+
+func (ResponsePolicyRuleLocalDataLocalDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyRuleLocalDataLocalData)(nil)).Elem()
+}
+
+func (i ResponsePolicyRuleLocalDataLocalDataArray) ToResponsePolicyRuleLocalDataLocalDataArrayOutput() ResponsePolicyRuleLocalDataLocalDataArrayOutput {
+	return i.ToResponsePolicyRuleLocalDataLocalDataArrayOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyRuleLocalDataLocalDataArray) ToResponsePolicyRuleLocalDataLocalDataArrayOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataLocalDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataLocalDataArrayOutput)
+}
+
+type ResponsePolicyRuleLocalDataLocalDataOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyRuleLocalDataLocalDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyRuleLocalDataLocalData)(nil)).Elem()
+}
+
+func (o ResponsePolicyRuleLocalDataLocalDataOutput) ToResponsePolicyRuleLocalDataLocalDataOutput() ResponsePolicyRuleLocalDataLocalDataOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataLocalDataOutput) ToResponsePolicyRuleLocalDataLocalDataOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataLocalDataOutput {
+	return o
+}
+
+// For example, www.example.com.
+func (o ResponsePolicyRuleLocalDataLocalDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyRuleLocalDataLocalData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+func (o ResponsePolicyRuleLocalDataLocalDataOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResponsePolicyRuleLocalDataLocalData) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+}
+
+// Number of seconds that this ResourceRecordSet can be cached by
+// resolvers.
+func (o ResponsePolicyRuleLocalDataLocalDataOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResponsePolicyRuleLocalDataLocalData) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+// One of valid DNS resource types.
+// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+func (o ResponsePolicyRuleLocalDataLocalDataOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyRuleLocalDataLocalData) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ResponsePolicyRuleLocalDataLocalDataArrayOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyRuleLocalDataLocalDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyRuleLocalDataLocalData)(nil)).Elem()
+}
+
+func (o ResponsePolicyRuleLocalDataLocalDataArrayOutput) ToResponsePolicyRuleLocalDataLocalDataArrayOutput() ResponsePolicyRuleLocalDataLocalDataArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataLocalDataArrayOutput) ToResponsePolicyRuleLocalDataLocalDataArrayOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataLocalDataArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataLocalDataArrayOutput) Index(i pulumi.IntInput) ResponsePolicyRuleLocalDataLocalDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponsePolicyRuleLocalDataLocalData {
+		return vs[0].([]ResponsePolicyRuleLocalDataLocalData)[vs[1].(int)]
+	}).(ResponsePolicyRuleLocalDataLocalDataOutput)
+}
+
 type GetKeysKeySigningKey struct {
 	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
 	Algorithm string `pulumi:"algorithm"`
@@ -2418,6 +2792,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerArrayInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyNetworkInput)(nil)).Elem(), PolicyNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyNetworkArrayInput)(nil)).Elem(), PolicyNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyNetworkInput)(nil)).Elem(), ResponsePolicyNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyNetworkArrayInput)(nil)).Elem(), ResponsePolicyNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataInput)(nil)).Elem(), ResponsePolicyRuleLocalDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataPtrInput)(nil)).Elem(), ResponsePolicyRuleLocalDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataLocalDataInput)(nil)).Elem(), ResponsePolicyRuleLocalDataLocalDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataLocalDataArrayInput)(nil)).Elem(), ResponsePolicyRuleLocalDataLocalDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeySigningKeyInput)(nil)).Elem(), GetKeysKeySigningKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeySigningKeyArrayInput)(nil)).Elem(), GetKeysKeySigningKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeySigningKeyDigestInput)(nil)).Elem(), GetKeysKeySigningKeyDigestArgs{})
@@ -2452,6 +2832,12 @@ func init() {
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyNetworkOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataPtrOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataLocalDataOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataLocalDataArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysKeySigningKeyOutput{})
 	pulumi.RegisterOutputType(GetKeysKeySigningKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysKeySigningKeyDigestOutput{})

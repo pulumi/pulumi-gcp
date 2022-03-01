@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Eventarc.Outputs
     public sealed class TriggerDestination
     {
         /// <summary>
-        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        /// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
         /// </summary>
         public readonly string? CloudFunction;
         /// <summary>

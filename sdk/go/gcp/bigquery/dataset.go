@@ -100,6 +100,86 @@ import (
 // 	})
 // }
 // ```
+// ### Bigquery Dataset Authorized Dataset
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bqowner, err := serviceAccount.NewAccount(ctx, "bqowner", &serviceAccount.AccountArgs{
+// 			AccountId: pulumi.String("bqowner"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
+// 			DatasetId:                pulumi.String("public"),
+// 			FriendlyName:             pulumi.String("test"),
+// 			Description:              pulumi.String("This dataset is public"),
+// 			Location:                 pulumi.String("EU"),
+// 			DefaultTableExpirationMs: pulumi.Int(3600000),
+// 			Labels: pulumi.StringMap{
+// 				"env": pulumi.String("default"),
+// 			},
+// 			Accesses: bigquery.DatasetAccessArray{
+// 				&bigquery.DatasetAccessArgs{
+// 					Role:        pulumi.String("OWNER"),
+// 					UserByEmail: bqowner.Email,
+// 				},
+// 				&bigquery.DatasetAccessArgs{
+// 					Role:   pulumi.String("READER"),
+// 					Domain: pulumi.String("hashicorp.com"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+// 			DatasetId:                pulumi.String("private"),
+// 			FriendlyName:             pulumi.String("test"),
+// 			Description:              pulumi.String("This dataset is private"),
+// 			Location:                 pulumi.String("EU"),
+// 			DefaultTableExpirationMs: pulumi.Int(3600000),
+// 			Labels: pulumi.StringMap{
+// 				"env": pulumi.String("default"),
+// 			},
+// 			Accesses: bigquery.DatasetAccessArray{
+// 				&bigquery.DatasetAccessArgs{
+// 					Role:        pulumi.String("OWNER"),
+// 					UserByEmail: bqowner.Email,
+// 				},
+// 				&bigquery.DatasetAccessArgs{
+// 					Role:   pulumi.String("READER"),
+// 					Domain: pulumi.String("hashicorp.com"),
+// 				},
+// 				&bigquery.DatasetAccessArgs{
+// 					Dataset: &bigquery.DatasetAccessDatasetArgs{
+// 						Dataset: &bigquery.DatasetAccessDatasetDatasetArgs{
+// 							ProjectId: public.Project,
+// 							DatasetId: public.DatasetId,
+// 						},
+// 						TargetTypes: pulumi.StringArray{
+// 							pulumi.String("VIEWS"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

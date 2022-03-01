@@ -17,6 +17,10 @@ __all__ = [
     'DataTransferConfigScheduleOptions',
     'DataTransferConfigSensitiveParams',
     'DatasetAccess',
+    'DatasetAccessAuthorizedDataset',
+    'DatasetAccessAuthorizedDatasetDataset',
+    'DatasetAccessDataset',
+    'DatasetAccessDatasetDataset',
     'DatasetAccessView',
     'DatasetDefaultEncryptionConfiguration',
     'DatasetIamBindingCondition',
@@ -392,6 +396,7 @@ class DatasetAccess(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 dataset: Optional['outputs.DatasetAccessDataset'] = None,
                  domain: Optional[str] = None,
                  group_by_email: Optional[str] = None,
                  role: Optional[str] = None,
@@ -399,6 +404,8 @@ class DatasetAccess(dict):
                  user_by_email: Optional[str] = None,
                  view: Optional['outputs.DatasetAccessView'] = None):
         """
+        :param 'DatasetAccessDatasetArgs' dataset: The dataset this entry applies to
+               Structure is documented below.
         :param str domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param str group_by_email: An email address of a Google Group to grant access to.
@@ -417,6 +424,8 @@ class DatasetAccess(dict):
                needs to be granted again via an update operation.
                Structure is documented below.
         """
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
@@ -429,6 +438,15 @@ class DatasetAccess(dict):
             pulumi.set(__self__, "user_by_email", user_by_email)
         if view is not None:
             pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional['outputs.DatasetAccessDataset']:
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset")
 
     @property
     @pulumi.getter
@@ -488,6 +506,202 @@ class DatasetAccess(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "view")
+
+
+@pulumi.output_type
+class DatasetAccessAuthorizedDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetTypes":
+            suggest = "target_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessAuthorizedDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetAccessAuthorizedDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetAccessAuthorizedDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset: 'outputs.DatasetAccessAuthorizedDatasetDataset',
+                 target_types: Sequence[str]):
+        """
+        :param 'DatasetAccessAuthorizedDatasetDatasetArgs' dataset: The dataset this entry applies to
+               Structure is documented below.
+        :param Sequence[str] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
+               but additional target types may be added in the future. Possible values: VIEWS
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "target_types", target_types)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> 'outputs.DatasetAccessAuthorizedDatasetDataset':
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset")
+
+    @property
+    @pulumi.getter(name="targetTypes")
+    def target_types(self) -> Sequence[str]:
+        """
+        Which resources in the dataset this entry applies to. Currently, only views are supported,
+        but additional target types may be added in the future. Possible values: VIEWS
+        """
+        return pulumi.get(self, "target_types")
+
+
+@pulumi.output_type
+class DatasetAccessAuthorizedDatasetDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessAuthorizedDatasetDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetAccessAuthorizedDatasetDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetAccessAuthorizedDatasetDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 project_id: str):
+        """
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        The ID of the dataset containing this table.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The ID of the project containing this table.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class DatasetAccessDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetTypes":
+            suggest = "target_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetAccessDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetAccessDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset: 'outputs.DatasetAccessDatasetDataset',
+                 target_types: Sequence[str]):
+        """
+        :param 'DatasetAccessDatasetDatasetArgs' dataset: The dataset this entry applies to
+               Structure is documented below.
+        :param Sequence[str] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
+               but additional target types may be added in the future. Possible values: VIEWS
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "target_types", target_types)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> 'outputs.DatasetAccessDatasetDataset':
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset")
+
+    @property
+    @pulumi.getter(name="targetTypes")
+    def target_types(self) -> Sequence[str]:
+        """
+        Which resources in the dataset this entry applies to. Currently, only views are supported,
+        but additional target types may be added in the future. Possible values: VIEWS
+        """
+        return pulumi.get(self, "target_types")
+
+
+@pulumi.output_type
+class DatasetAccessDatasetDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessDatasetDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetAccessDatasetDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetAccessDatasetDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 project_id: str):
+        """
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        The ID of the dataset containing this table.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The ID of the project containing this table.
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type

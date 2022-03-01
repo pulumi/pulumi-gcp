@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("gpuPartitionSize")]
         public Input<string>? GpuPartitionSize { get; set; }
 
+        /// <summary>
+        /// The type of the policy. Supports a single value: COMPACT.
+        /// Specifying COMPACT placement policy type places node pool's nodes in a closer
+        /// physical proximity in order to reduce network latency between nodes.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

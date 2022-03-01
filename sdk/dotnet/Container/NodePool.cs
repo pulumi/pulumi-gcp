@@ -179,6 +179,13 @@ namespace Pulumi.Gcp.Container
         public Output<string> Operation { get; private set; } = null!;
 
         /// <summary>
+        /// ) Specifies a custom placement policy for the
+        /// nodes.
+        /// </summary>
+        [Output("placementPolicy")]
+        public Output<Outputs.NodePoolPlacementPolicy?> PlacementPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which to create the node pool. If blank,
         /// the provider-configured project will be used.
         /// </summary>
@@ -349,6 +356,13 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
+        /// ) Specifies a custom placement policy for the
+        /// nodes.
+        /// </summary>
+        [Input("placementPolicy")]
+        public Input<Inputs.NodePoolPlacementPolicyArgs>? PlacementPolicy { get; set; }
+
+        /// <summary>
         /// The ID of the project in which to create the node pool. If blank,
         /// the provider-configured project will be used.
         /// </summary>
@@ -505,6 +519,13 @@ namespace Pulumi.Gcp.Container
 
         [Input("operation")]
         public Input<string>? Operation { get; set; }
+
+        /// <summary>
+        /// ) Specifies a custom placement policy for the
+        /// nodes.
+        /// </summary>
+        [Input("placementPolicy")]
+        public Input<Inputs.NodePoolPlacementPolicyGetArgs>? PlacementPolicy { get; set; }
 
         /// <summary>
         /// The ID of the project in which to create the node pool. If blank,

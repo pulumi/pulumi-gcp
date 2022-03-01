@@ -76,8 +76,11 @@ type Key struct {
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType pulumi.StringPtrOutput `pulumi:"publicKeyType"`
 	// The Service account id of the Key. This can be a string in the format
-	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
-	// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. If the `{ACCOUNT}`-only syntax is used, either
+	// the **full** email address of the service account or its name can be specified as a value, in which case the project will
+	// automatically be inferred from the account. Otherwise, if the `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`
+	// syntax is used, the `{ACCOUNT}` specified can be the full email address of the service account or the service account's
+	// unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
 	ServiceAccountId pulumi.StringOutput `pulumi:"serviceAccountId"`
 	// The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	ValidAfter pulumi.StringOutput `pulumi:"validAfter"`
@@ -139,8 +142,11 @@ type keyState struct {
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType *string `pulumi:"publicKeyType"`
 	// The Service account id of the Key. This can be a string in the format
-	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
-	// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. If the `{ACCOUNT}`-only syntax is used, either
+	// the **full** email address of the service account or its name can be specified as a value, in which case the project will
+	// automatically be inferred from the account. Otherwise, if the `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`
+	// syntax is used, the `{ACCOUNT}` specified can be the full email address of the service account or the service account's
+	// unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 	// The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	ValidAfter *string `pulumi:"validAfter"`
@@ -171,8 +177,11 @@ type KeyState struct {
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType pulumi.StringPtrInput
 	// The Service account id of the Key. This can be a string in the format
-	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
-	// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. If the `{ACCOUNT}`-only syntax is used, either
+	// the **full** email address of the service account or its name can be specified as a value, in which case the project will
+	// automatically be inferred from the account. Otherwise, if the `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`
+	// syntax is used, the `{ACCOUNT}` specified can be the full email address of the service account or the service account's
+	// unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
 	ServiceAccountId pulumi.StringPtrInput
 	// The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	ValidAfter pulumi.StringPtrInput
@@ -200,8 +209,11 @@ type keyArgs struct {
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType *string `pulumi:"publicKeyType"`
 	// The Service account id of the Key. This can be a string in the format
-	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
-	// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. If the `{ACCOUNT}`-only syntax is used, either
+	// the **full** email address of the service account or its name can be specified as a value, in which case the project will
+	// automatically be inferred from the account. Otherwise, if the `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`
+	// syntax is used, the `{ACCOUNT}` specified can be the full email address of the service account or the service account's
+	// unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
 	ServiceAccountId string `pulumi:"serviceAccountId"`
 }
 
@@ -221,8 +233,11 @@ type KeyArgs struct {
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType pulumi.StringPtrInput
 	// The Service account id of the Key. This can be a string in the format
-	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
-	// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
+	// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. If the `{ACCOUNT}`-only syntax is used, either
+	// the **full** email address of the service account or its name can be specified as a value, in which case the project will
+	// automatically be inferred from the account. Otherwise, if the `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`
+	// syntax is used, the `{ACCOUNT}` specified can be the full email address of the service account or the service account's
+	// unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
 	ServiceAccountId pulumi.StringInput
 }
 

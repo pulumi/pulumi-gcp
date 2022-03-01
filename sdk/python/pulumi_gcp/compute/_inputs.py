@@ -6568,7 +6568,8 @@ class InstanceFromMachineImageSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
-                 preemptible: Optional[pulumi.Input[bool]] = None):
+                 preemptible: Optional[pulumi.Input[bool]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None):
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if min_node_cpus is not None:
@@ -6579,6 +6580,8 @@ class InstanceFromMachineImageSchedulingArgs:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -6624,6 +6627,15 @@ class InstanceFromMachineImageSchedulingArgs:
     @preemptible.setter
     def preemptible(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preemptible", value)
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
 
 
 @pulumi.input_type
@@ -7407,7 +7419,8 @@ class InstanceFromTemplateSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
-                 preemptible: Optional[pulumi.Input[bool]] = None):
+                 preemptible: Optional[pulumi.Input[bool]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None):
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if min_node_cpus is not None:
@@ -7418,6 +7431,8 @@ class InstanceFromTemplateSchedulingArgs:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -7463,6 +7478,15 @@ class InstanceFromTemplateSchedulingArgs:
     @preemptible.setter
     def preemptible(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preemptible", value)
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
 
 
 @pulumi.input_type
@@ -8778,7 +8802,8 @@ class InstanceSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
-                 preemptible: Optional[pulumi.Input[bool]] = None):
+                 preemptible: Optional[pulumi.Input[bool]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
@@ -8806,6 +8831,8 @@ class InstanceSchedulingArgs:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -8876,6 +8903,15 @@ class InstanceSchedulingArgs:
     @preemptible.setter
     def preemptible(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preemptible", value)
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
 
 
 @pulumi.input_type
@@ -9954,7 +9990,8 @@ class InstanceTemplateSchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
-                 preemptible: Optional[pulumi.Input[bool]] = None):
+                 preemptible: Optional[pulumi.Input[bool]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
@@ -9980,6 +10017,8 @@ class InstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -10046,6 +10085,15 @@ class InstanceTemplateSchedulingArgs:
     @preemptible.setter
     def preemptible(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preemptible", value)
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
 
 
 @pulumi.input_type
@@ -20728,10 +20776,11 @@ class SecurityPolicyRuleArgs:
                  rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None):
         """
         :param pulumi.Input[str] action: Action to take when `match` matches the request. Valid values:
-               * "allow" : allow access to target
-               * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-               * "rate_based_ban" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-               * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+               * allow: allow access to target.
+               * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
+               * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+               * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
+               * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input['SecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
         :param pulumi.Input[int] priority: An unique positive integer indicating the priority of evaluation for a rule.
@@ -20757,10 +20806,11 @@ class SecurityPolicyRuleArgs:
     def action(self) -> pulumi.Input[str]:
         """
         Action to take when `match` matches the request. Valid values:
-        * "allow" : allow access to target
-        * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-        * "rate_based_ban" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-        * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        * allow: allow access to target.
+        * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
+        * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+        * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
+        * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         """
         return pulumi.get(self, "action")
 
@@ -20971,9 +21021,8 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs'] ban_threshold: Can only be specified if the `action` for the rule is "rate_based_ban".
                If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
                exceed this 'ban_threshold'. Structure is documented below.
-        :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on.
-               Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
-        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+        :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
+        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         """
         pulumi.set(__self__, "conform_action", conform_action)
         pulumi.set(__self__, "exceed_action", exceed_action)
@@ -21057,8 +21106,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines the key to enforce the rate_limit_threshold on.
-        Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
+        Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -21070,7 +21118,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKeyName")
     def enforce_on_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         """
         return pulumi.get(self, "enforce_on_key_name")
 

@@ -46,6 +46,25 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
+ * ### Network Endpoint Group Non Gcp
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {});
+ * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
+ *     network: _default.id,
+ *     defaultPort: "90",
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "NON_GCP_PRIVATE_IP_PORT",
+ * });
+ * const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
+ *     networkEndpointGroup: neg.name,
+ *     port: neg.defaultPort,
+ *     ipAddress: "127.0.0.1",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -122,8 +141,14 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
     public readonly network!: pulumi.Output<string>;
     /**
      * Type of network endpoints in this network endpoint group.
+     * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+     * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+     * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+     * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+     * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+     * CONNECTION balancing modes.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP_PORT`.
+     * Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
      */
     public readonly networkEndpointType!: pulumi.Output<string | undefined>;
     /**
@@ -223,8 +248,14 @@ export interface NetworkEndpointGroupState {
     network?: pulumi.Input<string>;
     /**
      * Type of network endpoints in this network endpoint group.
+     * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+     * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+     * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+     * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+     * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+     * CONNECTION balancing modes.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP_PORT`.
+     * Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**
@@ -281,8 +312,14 @@ export interface NetworkEndpointGroupArgs {
     network: pulumi.Input<string>;
     /**
      * Type of network endpoints in this network endpoint group.
+     * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+     * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+     * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+     * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+     * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+     * CONNECTION balancing modes.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP_PORT`.
+     * Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**

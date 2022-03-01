@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Compute
         /// The instance must be in the same zone of network endpoint group.
         /// </summary>
         [Output("instance")]
-        public Output<string> Instance { get; private set; } = null!;
+        public Output<string?> Instance { get; private set; } = null!;
 
         /// <summary>
         /// IPv4 address of network endpoint. The IP address must belong
@@ -204,8 +204,8 @@ namespace Pulumi.Gcp.Compute
         /// This is required for network endpoints of type GCE_VM_IP_PORT.
         /// The instance must be in the same zone of network endpoint group.
         /// </summary>
-        [Input("instance", required: true)]
-        public Input<string> Instance { get; set; } = null!;
+        [Input("instance")]
+        public Input<string>? Instance { get; set; }
 
         /// <summary>
         /// IPv4 address of network endpoint. The IP address must belong

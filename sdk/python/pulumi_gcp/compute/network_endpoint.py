@@ -13,48 +13,35 @@ __all__ = ['NetworkEndpointArgs', 'NetworkEndpoint']
 @pulumi.input_type
 class NetworkEndpointArgs:
     def __init__(__self__, *,
-                 instance: pulumi.Input[str],
                  ip_address: pulumi.Input[str],
                  network_endpoint_group: pulumi.Input[str],
                  port: pulumi.Input[int],
+                 instance: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NetworkEndpoint resource.
-        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
-               This is required for network endpoints of type GCE_VM_IP_PORT.
-               The instance must be in the same zone of network endpoint group.
         :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[int] port: Port number of network endpoint.
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORT.
+               The instance must be in the same zone of network endpoint group.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
         """
-        pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "network_endpoint_group", network_endpoint_group)
         pulumi.set(__self__, "port", port)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter
-    def instance(self) -> pulumi.Input[str]:
-        """
-        The name for a specific VM instance that the IP address belongs to.
-        This is required for network endpoints of type GCE_VM_IP_PORT.
-        The instance must be in the same zone of network endpoint group.
-        """
-        return pulumi.get(self, "instance")
-
-    @instance.setter
-    def instance(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -93,6 +80,20 @@ class NetworkEndpointArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for a specific VM instance that the IP address belongs to.
+        This is required for network endpoints of type GCE_VM_IP_PORT.
+        The instance must be in the same zone of network endpoint group.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
 
     @property
     @pulumi.getter
@@ -439,8 +440,6 @@ class NetworkEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NetworkEndpointArgs.__new__(NetworkEndpointArgs)
 
-            if instance is None and not opts.urn:
-                raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
             if ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_address'")
@@ -502,7 +501,7 @@ class NetworkEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def instance(self) -> pulumi.Output[str]:
+    def instance(self) -> pulumi.Output[Optional[str]]:
         """
         The name for a specific VM instance that the IP address belongs to.
         This is required for network endpoints of type GCE_VM_IP_PORT.

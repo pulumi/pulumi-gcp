@@ -6565,6 +6565,8 @@ class InstanceFromMachineImageScheduling(dict):
             suggest = "node_affinities"
         elif key == "onHostMaintenance":
             suggest = "on_host_maintenance"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageScheduling. Access the value via the '{suggest}' property getter instead.")
@@ -6582,7 +6584,8 @@ class InstanceFromMachineImageScheduling(dict):
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceFromMachineImageSchedulingNodeAffinity']] = None,
                  on_host_maintenance: Optional[str] = None,
-                 preemptible: Optional[bool] = None):
+                 preemptible: Optional[bool] = None,
+                 provisioning_model: Optional[str] = None):
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if min_node_cpus is not None:
@@ -6593,6 +6596,8 @@ class InstanceFromMachineImageScheduling(dict):
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -6618,6 +6623,11 @@ class InstanceFromMachineImageScheduling(dict):
     @pulumi.getter
     def preemptible(self) -> Optional[bool]:
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[str]:
+        return pulumi.get(self, "provisioning_model")
 
 
 @pulumi.output_type
@@ -7412,6 +7422,8 @@ class InstanceFromTemplateScheduling(dict):
             suggest = "node_affinities"
         elif key == "onHostMaintenance":
             suggest = "on_host_maintenance"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateScheduling. Access the value via the '{suggest}' property getter instead.")
@@ -7429,7 +7441,8 @@ class InstanceFromTemplateScheduling(dict):
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceFromTemplateSchedulingNodeAffinity']] = None,
                  on_host_maintenance: Optional[str] = None,
-                 preemptible: Optional[bool] = None):
+                 preemptible: Optional[bool] = None,
+                 provisioning_model: Optional[str] = None):
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if min_node_cpus is not None:
@@ -7440,6 +7453,8 @@ class InstanceFromTemplateScheduling(dict):
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -7465,6 +7480,11 @@ class InstanceFromTemplateScheduling(dict):
     @pulumi.getter
     def preemptible(self) -> Optional[bool]:
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[str]:
+        return pulumi.get(self, "provisioning_model")
 
 
 @pulumi.output_type
@@ -8811,6 +8831,8 @@ class InstanceScheduling(dict):
             suggest = "node_affinities"
         elif key == "onHostMaintenance":
             suggest = "on_host_maintenance"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceScheduling. Access the value via the '{suggest}' property getter instead.")
@@ -8828,7 +8850,8 @@ class InstanceScheduling(dict):
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceSchedulingNodeAffinity']] = None,
                  on_host_maintenance: Optional[str] = None,
-                 preemptible: Optional[bool] = None):
+                 preemptible: Optional[bool] = None,
+                 provisioning_model: Optional[str] = None):
         """
         :param bool automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
@@ -8856,6 +8879,8 @@ class InstanceScheduling(dict):
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -8906,6 +8931,11 @@ class InstanceScheduling(dict):
         set to false.  Defaults to false.
         """
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[str]:
+        return pulumi.get(self, "provisioning_model")
 
 
 @pulumi.output_type
@@ -10005,6 +10035,8 @@ class InstanceTemplateScheduling(dict):
             suggest = "node_affinities"
         elif key == "onHostMaintenance":
             suggest = "on_host_maintenance"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceTemplateScheduling. Access the value via the '{suggest}' property getter instead.")
@@ -10022,7 +10054,8 @@ class InstanceTemplateScheduling(dict):
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceTemplateSchedulingNodeAffinity']] = None,
                  on_host_maintenance: Optional[str] = None,
-                 preemptible: Optional[bool] = None):
+                 preemptible: Optional[bool] = None,
+                 provisioning_model: Optional[str] = None):
         """
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
@@ -10048,6 +10081,8 @@ class InstanceTemplateScheduling(dict):
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -10094,6 +10129,11 @@ class InstanceTemplateScheduling(dict):
         [here](https://cloud.google.com/compute/docs/instances/preemptible).
         """
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[str]:
+        return pulumi.get(self, "provisioning_model")
 
 
 @pulumi.output_type
@@ -21307,10 +21347,11 @@ class SecurityPolicyRule(dict):
                  rate_limit_options: Optional['outputs.SecurityPolicyRuleRateLimitOptions'] = None):
         """
         :param str action: Action to take when `match` matches the request. Valid values:
-               * "allow" : allow access to target
-               * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-               * "rate_based_ban" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-               * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+               * allow: allow access to target.
+               * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
+               * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+               * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
+               * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param 'SecurityPolicyRuleMatchArgs' match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
         :param int priority: An unique positive integer indicating the priority of evaluation for a rule.
@@ -21336,10 +21377,11 @@ class SecurityPolicyRule(dict):
     def action(self) -> str:
         """
         Action to take when `match` matches the request. Valid values:
-        * "allow" : allow access to target
-        * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-        * "rate_based_ban" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-        * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        * allow: allow access to target.
+        * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
+        * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+        * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
+        * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         """
         return pulumi.get(self, "action")
 
@@ -21571,9 +21613,8 @@ class SecurityPolicyRuleRateLimitOptions(dict):
         :param 'SecurityPolicyRuleRateLimitOptionsBanThresholdArgs' ban_threshold: Can only be specified if the `action` for the rule is "rate_based_ban".
                If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
                exceed this 'ban_threshold'. Structure is documented below.
-        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on.
-               Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
-        :param str enforce_on_key_name: Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         """
         pulumi.set(__self__, "conform_action", conform_action)
         pulumi.set(__self__, "exceed_action", exceed_action)
@@ -21637,8 +21678,7 @@ class SecurityPolicyRuleRateLimitOptions(dict):
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[str]:
         """
-        Determines the key to enforce the rate_limit_threshold on.
-        Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
+        Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -21646,7 +21686,7 @@ class SecurityPolicyRuleRateLimitOptions(dict):
     @pulumi.getter(name="enforceOnKeyName")
     def enforce_on_key_name(self) -> Optional[str]:
         """
-        Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -30482,7 +30522,8 @@ class GetInstanceSchedulingResult(dict):
                  min_node_cpus: int,
                  node_affinities: Sequence['outputs.GetInstanceSchedulingNodeAffinityResult'],
                  on_host_maintenance: str,
-                 preemptible: bool):
+                 preemptible: bool,
+                 provisioning_model: str):
         """
         :param bool automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
@@ -30496,6 +30537,7 @@ class GetInstanceSchedulingResult(dict):
         pulumi.set(__self__, "node_affinities", node_affinities)
         pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         pulumi.set(__self__, "preemptible", preemptible)
+        pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -30533,6 +30575,11 @@ class GetInstanceSchedulingResult(dict):
         Whether the instance is preemptible.
         """
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> str:
+        return pulumi.get(self, "provisioning_model")
 
 
 @pulumi.output_type
@@ -31257,7 +31304,8 @@ class GetInstanceTemplateSchedulingResult(dict):
                  min_node_cpus: int,
                  node_affinities: Sequence['outputs.GetInstanceTemplateSchedulingNodeAffinityResult'],
                  on_host_maintenance: str,
-                 preemptible: bool):
+                 preemptible: bool,
+                 provisioning_model: str):
         """
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
@@ -31278,6 +31326,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         pulumi.set(__self__, "node_affinities", node_affinities)
         pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         pulumi.set(__self__, "preemptible", preemptible)
+        pulumi.set(__self__, "provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -31324,6 +31373,11 @@ class GetInstanceTemplateSchedulingResult(dict):
         [here](https://cloud.google.com/compute/docs/instances/preemptible).
         """
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> str:
+        return pulumi.get(self, "provisioning_model")
 
 
 @pulumi.output_type

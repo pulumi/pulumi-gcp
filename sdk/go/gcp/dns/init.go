@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Policy{}
 	case "gcp:dns/recordSet:RecordSet":
 		r = &RecordSet{}
+	case "gcp:dns/responsePolicy:ResponsePolicy":
+		r = &ResponsePolicy{}
+	case "gcp:dns/responsePolicyRule:ResponsePolicyRule":
+		r = &ResponsePolicyRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +57,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dns/recordSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dns/responsePolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dns/responsePolicyRule",
 		&module{version},
 	)
 }

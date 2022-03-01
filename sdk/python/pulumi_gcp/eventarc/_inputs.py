@@ -22,7 +22,7 @@ class TriggerDestinationArgs:
                  cloud_function: Optional[pulumi.Input[str]] = None,
                  cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']] = None):
         """
-        :param pulumi.Input[str] cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        :param pulumi.Input[str] cloud_function: [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
         :param pulumi.Input['TriggerDestinationCloudRunServiceArgs'] cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         """
         if cloud_function is not None:
@@ -34,7 +34,7 @@ class TriggerDestinationArgs:
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> Optional[pulumi.Input[str]]:
         """
-        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
         """
         return pulumi.get(self, "cloud_function")
 
@@ -177,7 +177,7 @@ class TriggerTransportPubsubArgs:
         """
         :param pulumi.Input[str] subscription: -
                Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-        :param pulumi.Input[str] topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        :param pulumi.Input[str] topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         if subscription is not None:
             pulumi.set(__self__, "subscription", subscription)
@@ -201,7 +201,7 @@ class TriggerTransportPubsubArgs:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         return pulumi.get(self, "topic")
 

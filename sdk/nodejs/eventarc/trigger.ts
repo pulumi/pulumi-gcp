@@ -122,7 +122,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly matchingCriterias!: pulumi.Output<outputs.eventarc.TriggerMatchingCriteria[]>;
     /**
-     * Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+     * Required. The resource name of the trigger. Must be unique within the location on the project.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -231,7 +231,7 @@ export interface TriggerState {
      */
     matchingCriterias?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerMatchingCriteria>[]>;
     /**
-     * Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+     * Required. The resource name of the trigger. Must be unique within the location on the project.
      */
     name?: pulumi.Input<string>;
     /**
@@ -278,7 +278,7 @@ export interface TriggerArgs {
      */
     matchingCriterias: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerMatchingCriteria>[]>;
     /**
-     * Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+     * Required. The resource name of the trigger. Must be unique within the location on the project.
      */
     name?: pulumi.Input<string>;
     /**

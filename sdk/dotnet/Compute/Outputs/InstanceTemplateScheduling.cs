@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
         /// </summary>
         public readonly bool? Preemptible;
+        public readonly string? ProvisioningModel;
 
         [OutputConstructor]
         private InstanceTemplateScheduling(
@@ -50,13 +51,16 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? onHostMaintenance,
 
-            bool? preemptible)
+            bool? preemptible,
+
+            string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
             Preemptible = preemptible;
+            ProvisioningModel = provisioningModel;
         }
     }
 }

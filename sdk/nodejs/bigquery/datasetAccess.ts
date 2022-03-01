@@ -47,6 +47,25 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Dataset Access Authorized Dataset
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _private = new gcp.bigquery.Dataset("private", {datasetId: "private"});
+ * const _public = new gcp.bigquery.Dataset("public", {datasetId: "public"});
+ * const access = new gcp.bigquery.DatasetAccess("access", {
+ *     datasetId: _private.datasetId,
+ *     authorizedDataset: {
+ *         dataset: {
+ *             projectId: _public.project,
+ *             datasetId: _public.datasetId,
+ *         },
+ *         targetTypes: ["VIEWS"],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -85,6 +104,11 @@ export class DatasetAccess extends pulumi.CustomResource {
      * stored in state as a different member type
      */
     public /*out*/ readonly apiUpdatedMember!: pulumi.Output<boolean>;
+    /**
+     * The dataset this entry applies to
+     * Structure is documented below.
+     */
+    public readonly authorizedDataset!: pulumi.Output<outputs.bigquery.DatasetAccessAuthorizedDataset | undefined>;
     /**
      * The ID of the dataset containing this table.
      */
@@ -150,6 +174,7 @@ export class DatasetAccess extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DatasetAccessState | undefined;
             resourceInputs["apiUpdatedMember"] = state ? state.apiUpdatedMember : undefined;
+            resourceInputs["authorizedDataset"] = state ? state.authorizedDataset : undefined;
             resourceInputs["datasetId"] = state ? state.datasetId : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["groupByEmail"] = state ? state.groupByEmail : undefined;
@@ -164,6 +189,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
+            resourceInputs["authorizedDataset"] = args ? args.authorizedDataset : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["groupByEmail"] = args ? args.groupByEmail : undefined;
@@ -189,6 +215,11 @@ export interface DatasetAccessState {
      * stored in state as a different member type
      */
     apiUpdatedMember?: pulumi.Input<boolean>;
+    /**
+     * The dataset this entry applies to
+     * Structure is documented below.
+     */
+    authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset>;
     /**
      * The ID of the dataset containing this table.
      */
@@ -245,6 +276,11 @@ export interface DatasetAccessState {
  * The set of arguments for constructing a DatasetAccess resource.
  */
 export interface DatasetAccessArgs {
+    /**
+     * The dataset this entry applies to
+     * Structure is documented below.
+     */
+    authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset>;
     /**
      * The ID of the dataset containing this table.
      */

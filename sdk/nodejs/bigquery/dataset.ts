@@ -54,6 +54,63 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Dataset Authorized Dataset
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bqowner = new gcp.serviceaccount.Account("bqowner", {accountId: "bqowner"});
+ * const _public = new gcp.bigquery.Dataset("public", {
+ *     datasetId: "public",
+ *     friendlyName: "test",
+ *     description: "This dataset is public",
+ *     location: "EU",
+ *     defaultTableExpirationMs: 3600000,
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     accesses: [
+ *         {
+ *             role: "OWNER",
+ *             userByEmail: bqowner.email,
+ *         },
+ *         {
+ *             role: "READER",
+ *             domain: "hashicorp.com",
+ *         },
+ *     ],
+ * });
+ * const dataset = new gcp.bigquery.Dataset("dataset", {
+ *     datasetId: "private",
+ *     friendlyName: "test",
+ *     description: "This dataset is private",
+ *     location: "EU",
+ *     defaultTableExpirationMs: 3600000,
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     accesses: [
+ *         {
+ *             role: "OWNER",
+ *             userByEmail: bqowner.email,
+ *         },
+ *         {
+ *             role: "READER",
+ *             domain: "hashicorp.com",
+ *         },
+ *         {
+ *             dataset: {
+ *                 dataset: {
+ *                     projectId: _public.project,
+ *                     datasetId: _public.datasetId,
+ *                 },
+ *                 targetTypes: ["VIEWS"],
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

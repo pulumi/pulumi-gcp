@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<Outputs.InstanceFromTemplateSchedulingNodeAffinity> NodeAffinities;
         public readonly string? OnHostMaintenance;
         public readonly bool? Preemptible;
+        public readonly string? ProvisioningModel;
 
         [OutputConstructor]
         private InstanceFromTemplateScheduling(
@@ -29,13 +30,16 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? onHostMaintenance,
 
-            bool? preemptible)
+            bool? preemptible,
+
+            string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
             Preemptible = preemptible;
+            ProvisioningModel = provisioningModel;
         }
     }
 }

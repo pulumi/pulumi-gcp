@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// a zonal cluster, omit the cluster's zone.
         /// </summary>
         public readonly ImmutableArray<string> NodeLocations;
+        public readonly Outputs.ClusterNodePoolPlacementPolicy? PlacementPolicy;
         public readonly Outputs.ClusterNodePoolUpgradeSettings? UpgradeSettings;
         public readonly string? Version;
 
@@ -83,6 +84,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<string> nodeLocations,
 
+            Outputs.ClusterNodePoolPlacementPolicy? placementPolicy,
+
             Outputs.ClusterNodePoolUpgradeSettings? upgradeSettings,
 
             string? version)
@@ -99,6 +102,7 @@ namespace Pulumi.Gcp.Container.Outputs
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             NodeLocations = nodeLocations;
+            PlacementPolicy = placementPolicy;
             UpgradeSettings = upgradeSettings;
             Version = version;
         }

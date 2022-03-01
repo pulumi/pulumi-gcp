@@ -274,7 +274,7 @@ type Cluster struct {
 	NetworkPolicy ClusterNetworkPolicyOutput `pulumi:"networkPolicy"`
 	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
 	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	// and requires the `ipAllocationPolicy` block to be defined. By default, when this field is unspecified and no `ipAllocationPolicy` blocks are set, GKE will create a `ROUTES`-based cluster.
 	NetworkingMode pulumi.StringOutput `pulumi:"networkingMode"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
@@ -542,7 +542,7 @@ type clusterState struct {
 	NetworkPolicy *ClusterNetworkPolicy `pulumi:"networkPolicy"`
 	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
 	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	// and requires the `ipAllocationPolicy` block to be defined. By default, when this field is unspecified and no `ipAllocationPolicy` blocks are set, GKE will create a `ROUTES`-based cluster.
 	NetworkingMode *string `pulumi:"networkingMode"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
@@ -782,7 +782,7 @@ type ClusterState struct {
 	NetworkPolicy ClusterNetworkPolicyPtrInput
 	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
 	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	// and requires the `ipAllocationPolicy` block to be defined. By default, when this field is unspecified and no `ipAllocationPolicy` blocks are set, GKE will create a `ROUTES`-based cluster.
 	NetworkingMode pulumi.StringPtrInput
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
@@ -1018,7 +1018,7 @@ type clusterArgs struct {
 	NetworkPolicy *ClusterNetworkPolicy `pulumi:"networkPolicy"`
 	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
 	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	// and requires the `ipAllocationPolicy` block to be defined. By default, when this field is unspecified and no `ipAllocationPolicy` blocks are set, GKE will create a `ROUTES`-based cluster.
 	NetworkingMode *string `pulumi:"networkingMode"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
@@ -1239,7 +1239,7 @@ type ClusterArgs struct {
 	NetworkPolicy ClusterNetworkPolicyPtrInput
 	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
 	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	// and requires the `ipAllocationPolicy` block to be defined. By default, when this field is unspecified and no `ipAllocationPolicy` blocks are set, GKE will create a `ROUTES`-based cluster.
 	NetworkingMode pulumi.StringPtrInput
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a

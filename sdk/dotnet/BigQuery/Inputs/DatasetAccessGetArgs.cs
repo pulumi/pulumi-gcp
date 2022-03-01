@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class DatasetAccessGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The dataset this entry applies to
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dataset")]
+        public Input<Inputs.DatasetAccessDatasetGetArgs>? Dataset { get; set; }
+
+        /// <summary>
         /// A domain to grant access to. Any users signed in with the
         /// domain specified will be granted the specified access
         /// </summary>

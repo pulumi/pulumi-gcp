@@ -256,9 +256,21 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigquery_data_transfer_config": {Tok: gcpResource(gcpBigQuery, "DataTransferConfig")},
 			"google_bigquery_reservation":          {Tok: gcpResource(gcpBigQuery, "Reservation")},
 			"google_bigtable_app_profile":          {Tok: gcpResource(gcpBigQuery, "AppProfile")},
-			"google_bigquery_dataset_access":       {Tok: gcpResource(gcpBigQuery, "DatasetAccess")},
-			"google_bigquery_job":                  {Tok: gcpResource(gcpBigQuery, "Job")},
-			"google_bigquery_connection":           {Tok: gcpResource(gcpBigQuery, "Connection")},
+			"google_bigquery_dataset_access": {
+				Tok: gcpResource(gcpBigQuery, "DatasetAccess"),
+				// The upstream provider has nested attributes, both called "dataset", which causes a panic in the
+				// bridge due to the duplicated names. In order to resolve the panic (and also to clarify the meaning of
+				// the field), we use the name "authorizedDataset", which is derived from the title of the example code
+				// in the upstream docs:
+				// https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/bigquery_dataset_access#example-usage---bigquery-dataset-access-authorized-dataset
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"dataset": {
+						Name: "authorizedDataset",
+					},
+				},
+			},
+			"google_bigquery_job":        {Tok: gcpResource(gcpBigQuery, "Job")},
+			"google_bigquery_connection": {Tok: gcpResource(gcpBigQuery, "Connection")},
 			"google_bigquery_dataset_iam_binding": {
 				Tok: gcpResource(gcpBigQuery, "DatasetIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -961,6 +973,8 @@ func Provider() tfbridge.ProviderInfo {
 					"name": {Name: "name"},
 				},
 			},
+			"google_dns_response_policy":      {Tok: gcpResource(gcpDNS, "ResponsePolicy")},
+			"google_dns_response_policy_rule": {Tok: gcpResource(gcpDNS, "ResponsePolicyRule")},
 
 			// EndPoints resources
 			"google_endpoints_service": {Tok: gcpResource(gcpEndPoints, "Service")},

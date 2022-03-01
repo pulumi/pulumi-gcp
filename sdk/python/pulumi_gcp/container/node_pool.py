@@ -27,6 +27,7 @@ class NodePoolArgs:
                  node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 placement_policy: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -64,6 +65,8 @@ class NodePoolArgs:
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
+        :param pulumi.Input['NodePoolPlacementPolicyArgs'] placement_policy: ) Specifies a custom placement policy for the
+               nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
@@ -99,6 +102,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "node_count", node_count)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if upgrade_settings is not None:
@@ -271,6 +276,19 @@ class NodePoolArgs:
         pulumi.set(self, "node_locations", value)
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional[pulumi.Input['NodePoolPlacementPolicyArgs']]:
+        """
+        ) Specifies a custom placement policy for the
+        nodes.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @placement_policy.setter
+    def placement_policy(self, value: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']]):
+        pulumi.set(self, "placement_policy", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -333,6 +351,7 @@ class _NodePoolState:
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operation: Optional[pulumi.Input[str]] = None,
+                 placement_policy: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -372,6 +391,8 @@ class _NodePoolState:
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
+        :param pulumi.Input['NodePoolPlacementPolicyArgs'] placement_policy: ) Specifies a custom placement policy for the
+               nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
@@ -414,6 +435,8 @@ class _NodePoolState:
             pulumi.set(__self__, "node_locations", node_locations)
         if operation is not None:
             pulumi.set(__self__, "operation", operation)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if upgrade_settings is not None:
@@ -619,6 +642,19 @@ class _NodePoolState:
         pulumi.set(self, "operation", value)
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional[pulumi.Input['NodePoolPlacementPolicyArgs']]:
+        """
+        ) Specifies a custom placement policy for the
+        nodes.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @placement_policy.setter
+    def placement_policy(self, value: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']]):
+        pulumi.set(self, "placement_policy", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -680,6 +716,7 @@ class NodePool(pulumi.CustomResource):
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 placement_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -760,6 +797,8 @@ class NodePool(pulumi.CustomResource):
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
+        :param pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']] placement_policy: ) Specifies a custom placement policy for the
+               nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
         :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
@@ -847,6 +886,7 @@ class NodePool(pulumi.CustomResource):
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 placement_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -876,6 +916,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["node_locations"] = node_locations
+            __props__.__dict__["placement_policy"] = placement_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
@@ -907,6 +948,7 @@ class NodePool(pulumi.CustomResource):
             node_count: Optional[pulumi.Input[int]] = None,
             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             operation: Optional[pulumi.Input[str]] = None,
+            placement_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             upgrade_settings: Optional[pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'NodePool':
@@ -951,6 +993,8 @@ class NodePool(pulumi.CustomResource):
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
+        :param pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']] placement_policy: ) Specifies a custom placement policy for the
+               nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
         :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
@@ -982,6 +1026,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["node_locations"] = node_locations
         __props__.__dict__["operation"] = operation
+        __props__.__dict__["placement_policy"] = placement_policy
         __props__.__dict__["project"] = project
         __props__.__dict__["upgrade_settings"] = upgrade_settings
         __props__.__dict__["version"] = version
@@ -1123,6 +1168,15 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def operation(self) -> pulumi.Output[str]:
         return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> pulumi.Output[Optional['outputs.NodePoolPlacementPolicy']]:
+        """
+        ) Specifies a custom placement policy for the
+        nodes.
+        """
+        return pulumi.get(self, "placement_policy")
 
     @property
     @pulumi.getter

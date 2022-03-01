@@ -44,7 +44,6 @@ class JobArgs:
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
                Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
-               <<<<<<< HEAD
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -56,7 +55,6 @@ class JobArgs:
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-               >>>>>>> v4.1.0
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
         pulumi.set(__self__, "temp_gcs_location", temp_gcs_location)
@@ -176,7 +174,6 @@ class JobArgs:
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
         Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
-        <<<<<<< HEAD
         """
         return pulumi.get(self, "labels")
 
@@ -309,7 +306,6 @@ class JobArgs:
     def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-        >>>>>>> v4.1.0
         """
         return pulumi.get(self, "transform_name_mapping")
 
@@ -366,7 +362,6 @@ class _JobState:
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
                Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
-               <<<<<<< HEAD
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -381,7 +376,6 @@ class _JobState:
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-               >>>>>>> v4.1.0
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
@@ -498,7 +492,6 @@ class _JobState:
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
         Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
-        <<<<<<< HEAD
         """
         return pulumi.get(self, "labels")
 
@@ -667,7 +660,6 @@ class _JobState:
     def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-        >>>>>>> v4.1.0
         """
         return pulumi.get(self, "transform_name_mapping")
 
@@ -745,6 +737,7 @@ class Job(pulumi.CustomResource):
             template_gcs_path="gs://my-bucket/templates/template_file")
         ```
         ### Streaming Job
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -792,7 +785,6 @@ class Job(pulumi.CustomResource):
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
                Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
-               <<<<<<< HEAD
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -806,7 +798,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-               >>>>>>> v4.1.0
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
         ...
@@ -835,6 +826,7 @@ class Job(pulumi.CustomResource):
             template_gcs_path="gs://my-bucket/templates/template_file")
         ```
         ### Streaming Job
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -992,7 +984,6 @@ class Job(pulumi.CustomResource):
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
                Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
-               <<<<<<< HEAD
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -1007,7 +998,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-               >>>>>>> v4.1.0
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
@@ -1087,7 +1077,6 @@ class Job(pulumi.CustomResource):
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
         Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
-        <<<<<<< HEAD
         """
         return pulumi.get(self, "labels")
 
@@ -1200,7 +1189,6 @@ class Job(pulumi.CustomResource):
     def transform_name_mapping(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-        >>>>>>> v4.1.0
         """
         return pulumi.get(self, "transform_name_mapping")
 

@@ -29,7 +29,7 @@ class TriggerArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
-        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
@@ -100,7 +100,7 @@ class TriggerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        Required. The resource name of the trigger. Must be unique within the location on the project.
         """
         return pulumi.get(self, "name")
 
@@ -169,7 +169,7 @@ class _TriggerState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
-        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
@@ -279,7 +279,7 @@ class _TriggerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        Required. The resource name of the trigger. Must be unique within the location on the project.
         """
         return pulumi.get(self, "name")
 
@@ -430,7 +430,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
-        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
@@ -591,7 +591,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
-        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
@@ -670,7 +670,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        Required. The resource name of the trigger. Must be unique within the location on the project.
         """
         return pulumi.get(self, "name")
 

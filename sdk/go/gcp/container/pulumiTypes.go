@@ -13250,6 +13250,7 @@ type ClusterNodePool struct {
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations   []string                        `pulumi:"nodeLocations"`
+	PlacementPolicy *ClusterNodePoolPlacementPolicy `pulumi:"placementPolicy"`
 	UpgradeSettings *ClusterNodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	Version         *string                         `pulumi:"version"`
 }
@@ -13297,6 +13298,7 @@ type ClusterNodePoolArgs struct {
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations   pulumi.StringArrayInput                `pulumi:"nodeLocations"`
+	PlacementPolicy ClusterNodePoolPlacementPolicyPtrInput `pulumi:"placementPolicy"`
 	UpgradeSettings ClusterNodePoolUpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 	Version         pulumi.StringPtrInput                  `pulumi:"version"`
 }
@@ -13417,6 +13419,10 @@ func (o ClusterNodePoolOutput) NodeCount() pulumi.IntPtrOutput {
 // a zonal cluster, omit the cluster's zone.
 func (o ClusterNodePoolOutput) NodeLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePool) []string { return v.NodeLocations }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterNodePoolOutput) PlacementPolicy() ClusterNodePoolPlacementPolicyPtrOutput {
+	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolPlacementPolicy { return v.PlacementPolicy }).(ClusterNodePoolPlacementPolicyPtrOutput)
 }
 
 func (o ClusterNodePoolOutput) UpgradeSettings() ClusterNodePoolUpgradeSettingsPtrOutput {
@@ -15959,6 +15965,143 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.
 			return nil
 		}
 		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolPlacementPolicy struct {
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// ClusterNodePoolPlacementPolicyInput is an input type that accepts ClusterNodePoolPlacementPolicyArgs and ClusterNodePoolPlacementPolicyOutput values.
+// You can construct a concrete instance of `ClusterNodePoolPlacementPolicyInput` via:
+//
+//          ClusterNodePoolPlacementPolicyArgs{...}
+type ClusterNodePoolPlacementPolicyInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolPlacementPolicyOutput() ClusterNodePoolPlacementPolicyOutput
+	ToClusterNodePoolPlacementPolicyOutputWithContext(context.Context) ClusterNodePoolPlacementPolicyOutput
+}
+
+type ClusterNodePoolPlacementPolicyArgs struct {
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ClusterNodePoolPlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (i ClusterNodePoolPlacementPolicyArgs) ToClusterNodePoolPlacementPolicyOutput() ClusterNodePoolPlacementPolicyOutput {
+	return i.ToClusterNodePoolPlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolPlacementPolicyArgs) ToClusterNodePoolPlacementPolicyOutputWithContext(ctx context.Context) ClusterNodePoolPlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolPlacementPolicyOutput)
+}
+
+func (i ClusterNodePoolPlacementPolicyArgs) ToClusterNodePoolPlacementPolicyPtrOutput() ClusterNodePoolPlacementPolicyPtrOutput {
+	return i.ToClusterNodePoolPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolPlacementPolicyArgs) ToClusterNodePoolPlacementPolicyPtrOutputWithContext(ctx context.Context) ClusterNodePoolPlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolPlacementPolicyOutput).ToClusterNodePoolPlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolPlacementPolicyPtrInput is an input type that accepts ClusterNodePoolPlacementPolicyArgs, ClusterNodePoolPlacementPolicyPtr and ClusterNodePoolPlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolPlacementPolicyPtrInput` via:
+//
+//          ClusterNodePoolPlacementPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodePoolPlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolPlacementPolicyPtrOutput() ClusterNodePoolPlacementPolicyPtrOutput
+	ToClusterNodePoolPlacementPolicyPtrOutputWithContext(context.Context) ClusterNodePoolPlacementPolicyPtrOutput
+}
+
+type clusterNodePoolPlacementPolicyPtrType ClusterNodePoolPlacementPolicyArgs
+
+func ClusterNodePoolPlacementPolicyPtr(v *ClusterNodePoolPlacementPolicyArgs) ClusterNodePoolPlacementPolicyPtrInput {
+	return (*clusterNodePoolPlacementPolicyPtrType)(v)
+}
+
+func (*clusterNodePoolPlacementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (i *clusterNodePoolPlacementPolicyPtrType) ToClusterNodePoolPlacementPolicyPtrOutput() ClusterNodePoolPlacementPolicyPtrOutput {
+	return i.ToClusterNodePoolPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolPlacementPolicyPtrType) ToClusterNodePoolPlacementPolicyPtrOutputWithContext(ctx context.Context) ClusterNodePoolPlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolPlacementPolicyPtrOutput)
+}
+
+type ClusterNodePoolPlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolPlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (o ClusterNodePoolPlacementPolicyOutput) ToClusterNodePoolPlacementPolicyOutput() ClusterNodePoolPlacementPolicyOutput {
+	return o
+}
+
+func (o ClusterNodePoolPlacementPolicyOutput) ToClusterNodePoolPlacementPolicyOutputWithContext(ctx context.Context) ClusterNodePoolPlacementPolicyOutput {
+	return o
+}
+
+func (o ClusterNodePoolPlacementPolicyOutput) ToClusterNodePoolPlacementPolicyPtrOutput() ClusterNodePoolPlacementPolicyPtrOutput {
+	return o.ToClusterNodePoolPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolPlacementPolicyOutput) ToClusterNodePoolPlacementPolicyPtrOutputWithContext(ctx context.Context) ClusterNodePoolPlacementPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolPlacementPolicy) *ClusterNodePoolPlacementPolicy {
+		return &v
+	}).(ClusterNodePoolPlacementPolicyPtrOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o ClusterNodePoolPlacementPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolPlacementPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ClusterNodePoolPlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolPlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (o ClusterNodePoolPlacementPolicyPtrOutput) ToClusterNodePoolPlacementPolicyPtrOutput() ClusterNodePoolPlacementPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolPlacementPolicyPtrOutput) ToClusterNodePoolPlacementPolicyPtrOutputWithContext(ctx context.Context) ClusterNodePoolPlacementPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolPlacementPolicyPtrOutput) Elem() ClusterNodePoolPlacementPolicyOutput {
+	return o.ApplyT(func(v *ClusterNodePoolPlacementPolicy) ClusterNodePoolPlacementPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolPlacementPolicy
+		return ret
+	}).(ClusterNodePoolPlacementPolicyOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o ClusterNodePoolPlacementPolicyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolPlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18989,7 +19132,10 @@ func (o NodePoolNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type NodePoolNodeConfigGuestAccelerator struct {
 	Count            int     `pulumi:"count"`
 	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
-	Type             string  `pulumi:"type"`
+	// The type of the policy. Supports a single value: COMPACT.
+	// Specifying COMPACT placement policy type places node pool's nodes in a closer
+	// physical proximity in order to reduce network latency between nodes.
+	Type string `pulumi:"type"`
 }
 
 // NodePoolNodeConfigGuestAcceleratorInput is an input type that accepts NodePoolNodeConfigGuestAcceleratorArgs and NodePoolNodeConfigGuestAcceleratorOutput values.
@@ -19006,7 +19152,10 @@ type NodePoolNodeConfigGuestAcceleratorInput interface {
 type NodePoolNodeConfigGuestAcceleratorArgs struct {
 	Count            pulumi.IntInput       `pulumi:"count"`
 	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
-	Type             pulumi.StringInput    `pulumi:"type"`
+	// The type of the policy. Supports a single value: COMPACT.
+	// Specifying COMPACT placement policy type places node pool's nodes in a closer
+	// physical proximity in order to reduce network latency between nodes.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (NodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -19068,6 +19217,9 @@ func (o NodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.Stri
 	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
 
+// The type of the policy. Supports a single value: COMPACT.
+// Specifying COMPACT placement policy type places node pool's nodes in a closer
+// physical proximity in order to reduce network latency between nodes.
 func (o NodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -19905,6 +20057,151 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringP
 			return nil
 		}
 		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolPlacementPolicy struct {
+	// The type of the policy. Supports a single value: COMPACT.
+	// Specifying COMPACT placement policy type places node pool's nodes in a closer
+	// physical proximity in order to reduce network latency between nodes.
+	Type string `pulumi:"type"`
+}
+
+// NodePoolPlacementPolicyInput is an input type that accepts NodePoolPlacementPolicyArgs and NodePoolPlacementPolicyOutput values.
+// You can construct a concrete instance of `NodePoolPlacementPolicyInput` via:
+//
+//          NodePoolPlacementPolicyArgs{...}
+type NodePoolPlacementPolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolPlacementPolicyOutput() NodePoolPlacementPolicyOutput
+	ToNodePoolPlacementPolicyOutputWithContext(context.Context) NodePoolPlacementPolicyOutput
+}
+
+type NodePoolPlacementPolicyArgs struct {
+	// The type of the policy. Supports a single value: COMPACT.
+	// Specifying COMPACT placement policy type places node pool's nodes in a closer
+	// physical proximity in order to reduce network latency between nodes.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (NodePoolPlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (i NodePoolPlacementPolicyArgs) ToNodePoolPlacementPolicyOutput() NodePoolPlacementPolicyOutput {
+	return i.ToNodePoolPlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i NodePoolPlacementPolicyArgs) ToNodePoolPlacementPolicyOutputWithContext(ctx context.Context) NodePoolPlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPlacementPolicyOutput)
+}
+
+func (i NodePoolPlacementPolicyArgs) ToNodePoolPlacementPolicyPtrOutput() NodePoolPlacementPolicyPtrOutput {
+	return i.ToNodePoolPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolPlacementPolicyArgs) ToNodePoolPlacementPolicyPtrOutputWithContext(ctx context.Context) NodePoolPlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPlacementPolicyOutput).ToNodePoolPlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// NodePoolPlacementPolicyPtrInput is an input type that accepts NodePoolPlacementPolicyArgs, NodePoolPlacementPolicyPtr and NodePoolPlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `NodePoolPlacementPolicyPtrInput` via:
+//
+//          NodePoolPlacementPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolPlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolPlacementPolicyPtrOutput() NodePoolPlacementPolicyPtrOutput
+	ToNodePoolPlacementPolicyPtrOutputWithContext(context.Context) NodePoolPlacementPolicyPtrOutput
+}
+
+type nodePoolPlacementPolicyPtrType NodePoolPlacementPolicyArgs
+
+func NodePoolPlacementPolicyPtr(v *NodePoolPlacementPolicyArgs) NodePoolPlacementPolicyPtrInput {
+	return (*nodePoolPlacementPolicyPtrType)(v)
+}
+
+func (*nodePoolPlacementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (i *nodePoolPlacementPolicyPtrType) ToNodePoolPlacementPolicyPtrOutput() NodePoolPlacementPolicyPtrOutput {
+	return i.ToNodePoolPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolPlacementPolicyPtrType) ToNodePoolPlacementPolicyPtrOutputWithContext(ctx context.Context) NodePoolPlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPlacementPolicyPtrOutput)
+}
+
+type NodePoolPlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolPlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (o NodePoolPlacementPolicyOutput) ToNodePoolPlacementPolicyOutput() NodePoolPlacementPolicyOutput {
+	return o
+}
+
+func (o NodePoolPlacementPolicyOutput) ToNodePoolPlacementPolicyOutputWithContext(ctx context.Context) NodePoolPlacementPolicyOutput {
+	return o
+}
+
+func (o NodePoolPlacementPolicyOutput) ToNodePoolPlacementPolicyPtrOutput() NodePoolPlacementPolicyPtrOutput {
+	return o.ToNodePoolPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolPlacementPolicyOutput) ToNodePoolPlacementPolicyPtrOutputWithContext(ctx context.Context) NodePoolPlacementPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolPlacementPolicy) *NodePoolPlacementPolicy {
+		return &v
+	}).(NodePoolPlacementPolicyPtrOutput)
+}
+
+// The type of the policy. Supports a single value: COMPACT.
+// Specifying COMPACT placement policy type places node pool's nodes in a closer
+// physical proximity in order to reduce network latency between nodes.
+func (o NodePoolPlacementPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolPlacementPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type NodePoolPlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolPlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (o NodePoolPlacementPolicyPtrOutput) ToNodePoolPlacementPolicyPtrOutput() NodePoolPlacementPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolPlacementPolicyPtrOutput) ToNodePoolPlacementPolicyPtrOutputWithContext(ctx context.Context) NodePoolPlacementPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolPlacementPolicyPtrOutput) Elem() NodePoolPlacementPolicyOutput {
+	return o.ApplyT(func(v *NodePoolPlacementPolicy) NodePoolPlacementPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolPlacementPolicy
+		return ret
+	}).(NodePoolPlacementPolicyOutput)
+}
+
+// The type of the policy. Supports a single value: COMPACT.
+// Specifying COMPACT placement policy type places node pool's nodes in a closer
+// physical proximity in order to reduce network latency between nodes.
+func (o NodePoolPlacementPolicyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolPlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24562,14 +24859,15 @@ type GetClusterNodePool struct {
 	Managements              []GetClusterNodePoolManagement  `pulumi:"managements"`
 	MaxPodsPerNode           int                             `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
-	Name            string                             `pulumi:"name"`
-	NamePrefix      string                             `pulumi:"namePrefix"`
-	NetworkConfigs  []GetClusterNodePoolNetworkConfig  `pulumi:"networkConfigs"`
-	NodeConfigs     []GetClusterNodePoolNodeConfig     `pulumi:"nodeConfigs"`
-	NodeCount       int                                `pulumi:"nodeCount"`
-	NodeLocations   []string                           `pulumi:"nodeLocations"`
-	UpgradeSettings []GetClusterNodePoolUpgradeSetting `pulumi:"upgradeSettings"`
-	Version         string                             `pulumi:"version"`
+	Name              string                              `pulumi:"name"`
+	NamePrefix        string                              `pulumi:"namePrefix"`
+	NetworkConfigs    []GetClusterNodePoolNetworkConfig   `pulumi:"networkConfigs"`
+	NodeConfigs       []GetClusterNodePoolNodeConfig      `pulumi:"nodeConfigs"`
+	NodeCount         int                                 `pulumi:"nodeCount"`
+	NodeLocations     []string                            `pulumi:"nodeLocations"`
+	PlacementPolicies []GetClusterNodePoolPlacementPolicy `pulumi:"placementPolicies"`
+	UpgradeSettings   []GetClusterNodePoolUpgradeSetting  `pulumi:"upgradeSettings"`
+	Version           string                              `pulumi:"version"`
 }
 
 // GetClusterNodePoolInput is an input type that accepts GetClusterNodePoolArgs and GetClusterNodePoolOutput values.
@@ -24591,14 +24889,15 @@ type GetClusterNodePoolArgs struct {
 	Managements              GetClusterNodePoolManagementArrayInput  `pulumi:"managements"`
 	MaxPodsPerNode           pulumi.IntInput                         `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
-	Name            pulumi.StringInput                         `pulumi:"name"`
-	NamePrefix      pulumi.StringInput                         `pulumi:"namePrefix"`
-	NetworkConfigs  GetClusterNodePoolNetworkConfigArrayInput  `pulumi:"networkConfigs"`
-	NodeConfigs     GetClusterNodePoolNodeConfigArrayInput     `pulumi:"nodeConfigs"`
-	NodeCount       pulumi.IntInput                            `pulumi:"nodeCount"`
-	NodeLocations   pulumi.StringArrayInput                    `pulumi:"nodeLocations"`
-	UpgradeSettings GetClusterNodePoolUpgradeSettingArrayInput `pulumi:"upgradeSettings"`
-	Version         pulumi.StringInput                         `pulumi:"version"`
+	Name              pulumi.StringInput                          `pulumi:"name"`
+	NamePrefix        pulumi.StringInput                          `pulumi:"namePrefix"`
+	NetworkConfigs    GetClusterNodePoolNetworkConfigArrayInput   `pulumi:"networkConfigs"`
+	NodeConfigs       GetClusterNodePoolNodeConfigArrayInput      `pulumi:"nodeConfigs"`
+	NodeCount         pulumi.IntInput                             `pulumi:"nodeCount"`
+	NodeLocations     pulumi.StringArrayInput                     `pulumi:"nodeLocations"`
+	PlacementPolicies GetClusterNodePoolPlacementPolicyArrayInput `pulumi:"placementPolicies"`
+	UpgradeSettings   GetClusterNodePoolUpgradeSettingArrayInput  `pulumi:"upgradeSettings"`
+	Version           pulumi.StringInput                          `pulumi:"version"`
 }
 
 func (GetClusterNodePoolArgs) ElementType() reflect.Type {
@@ -24699,6 +24998,10 @@ func (o GetClusterNodePoolOutput) NodeCount() pulumi.IntOutput {
 
 func (o GetClusterNodePoolOutput) NodeLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePool) []string { return v.NodeLocations }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterNodePoolOutput) PlacementPolicies() GetClusterNodePoolPlacementPolicyArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolPlacementPolicy { return v.PlacementPolicies }).(GetClusterNodePoolPlacementPolicyArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) UpgradeSettings() GetClusterNodePoolUpgradeSettingArrayOutput {
@@ -26169,6 +26472,100 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput) Index(i p
 	}).(GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput)
 }
 
+type GetClusterNodePoolPlacementPolicy struct {
+	Type string `pulumi:"type"`
+}
+
+// GetClusterNodePoolPlacementPolicyInput is an input type that accepts GetClusterNodePoolPlacementPolicyArgs and GetClusterNodePoolPlacementPolicyOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolPlacementPolicyInput` via:
+//
+//          GetClusterNodePoolPlacementPolicyArgs{...}
+type GetClusterNodePoolPlacementPolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolPlacementPolicyOutput() GetClusterNodePoolPlacementPolicyOutput
+	ToGetClusterNodePoolPlacementPolicyOutputWithContext(context.Context) GetClusterNodePoolPlacementPolicyOutput
+}
+
+type GetClusterNodePoolPlacementPolicyArgs struct {
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetClusterNodePoolPlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolPlacementPolicyArgs) ToGetClusterNodePoolPlacementPolicyOutput() GetClusterNodePoolPlacementPolicyOutput {
+	return i.ToGetClusterNodePoolPlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolPlacementPolicyArgs) ToGetClusterNodePoolPlacementPolicyOutputWithContext(ctx context.Context) GetClusterNodePoolPlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolPlacementPolicyOutput)
+}
+
+// GetClusterNodePoolPlacementPolicyArrayInput is an input type that accepts GetClusterNodePoolPlacementPolicyArray and GetClusterNodePoolPlacementPolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolPlacementPolicyArrayInput` via:
+//
+//          GetClusterNodePoolPlacementPolicyArray{ GetClusterNodePoolPlacementPolicyArgs{...} }
+type GetClusterNodePoolPlacementPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolPlacementPolicyArrayOutput() GetClusterNodePoolPlacementPolicyArrayOutput
+	ToGetClusterNodePoolPlacementPolicyArrayOutputWithContext(context.Context) GetClusterNodePoolPlacementPolicyArrayOutput
+}
+
+type GetClusterNodePoolPlacementPolicyArray []GetClusterNodePoolPlacementPolicyInput
+
+func (GetClusterNodePoolPlacementPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolPlacementPolicyArray) ToGetClusterNodePoolPlacementPolicyArrayOutput() GetClusterNodePoolPlacementPolicyArrayOutput {
+	return i.ToGetClusterNodePoolPlacementPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolPlacementPolicyArray) ToGetClusterNodePoolPlacementPolicyArrayOutputWithContext(ctx context.Context) GetClusterNodePoolPlacementPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolPlacementPolicyArrayOutput)
+}
+
+type GetClusterNodePoolPlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolPlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolPlacementPolicyOutput) ToGetClusterNodePoolPlacementPolicyOutput() GetClusterNodePoolPlacementPolicyOutput {
+	return o
+}
+
+func (o GetClusterNodePoolPlacementPolicyOutput) ToGetClusterNodePoolPlacementPolicyOutputWithContext(ctx context.Context) GetClusterNodePoolPlacementPolicyOutput {
+	return o
+}
+
+func (o GetClusterNodePoolPlacementPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolPlacementPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolPlacementPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolPlacementPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolPlacementPolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolPlacementPolicyArrayOutput) ToGetClusterNodePoolPlacementPolicyArrayOutput() GetClusterNodePoolPlacementPolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolPlacementPolicyArrayOutput) ToGetClusterNodePoolPlacementPolicyArrayOutputWithContext(ctx context.Context) GetClusterNodePoolPlacementPolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolPlacementPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolPlacementPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolPlacementPolicy {
+		return vs[0].([]GetClusterNodePoolPlacementPolicy)[vs[1].(int)]
+	}).(GetClusterNodePoolPlacementPolicyOutput)
+}
+
 type GetClusterNodePoolUpgradeSetting struct {
 	MaxSurge       int `pulumi:"maxSurge"`
 	MaxUnavailable int `pulumi:"maxUnavailable"`
@@ -27456,6 +27853,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigTaintArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolPlacementPolicyInput)(nil)).Elem(), ClusterNodePoolPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolPlacementPolicyPtrInput)(nil)).Elem(), ClusterNodePoolPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolUpgradeSettingsInput)(nil)).Elem(), ClusterNodePoolUpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolUpgradeSettingsPtrInput)(nil)).Elem(), ClusterNodePoolUpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigInput)(nil)).Elem(), ClusterNotificationConfigArgs{})
@@ -27504,6 +27903,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigTaintArrayInput)(nil)).Elem(), NodePoolNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), NodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigWorkloadMetadataConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigWorkloadMetadataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPlacementPolicyInput)(nil)).Elem(), NodePoolPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPlacementPolicyPtrInput)(nil)).Elem(), NodePoolPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolUpgradeSettingsInput)(nil)).Elem(), NodePoolUpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolUpgradeSettingsPtrInput)(nil)).Elem(), NodePoolUpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigInput)(nil)).Elem(), GetClusterAddonsConfigArgs{})
@@ -27620,6 +28021,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigTaintArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigWorkloadMetadataConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolPlacementPolicyInput)(nil)).Elem(), GetClusterNodePoolPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolPlacementPolicyArrayInput)(nil)).Elem(), GetClusterNodePoolPlacementPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolUpgradeSettingInput)(nil)).Elem(), GetClusterNodePoolUpgradeSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolUpgradeSettingArrayInput)(nil)).Elem(), GetClusterNodePoolUpgradeSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigInput)(nil)).Elem(), GetClusterNotificationConfigArgs{})
@@ -27830,6 +28233,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolPlacementPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolUpgradeSettingsOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolUpgradeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNotificationConfigOutput{})
@@ -27878,6 +28283,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolPlacementPolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolUpgradeSettingsOutput{})
 	pulumi.RegisterOutputType(NodePoolUpgradeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigOutput{})
@@ -27994,6 +28401,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolPlacementPolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolPlacementPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolUpgradeSettingOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolUpgradeSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNotificationConfigOutput{})

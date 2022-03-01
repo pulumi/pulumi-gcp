@@ -100,6 +100,49 @@ import (
 // 	})
 // }
 // ```
+// ### Bigquery Dataset Access Authorized Dataset
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		private, err := bigquery.NewDataset(ctx, "private", &bigquery.DatasetArgs{
+// 			DatasetId: pulumi.String("private"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		public, err := bigquery.NewDataset(ctx, "public", &bigquery.DatasetArgs{
+// 			DatasetId: pulumi.String("public"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDatasetAccess(ctx, "access", &bigquery.DatasetAccessArgs{
+// 			DatasetId: private.DatasetId,
+// 			AuthorizedDataset: &bigquery.DatasetAccessAuthorizedDatasetArgs{
+// 				Dataset: &bigquery.DatasetAccessAuthorizedDatasetDatasetArgs{
+// 					ProjectId: public.Project,
+// 					DatasetId: public.DatasetId,
+// 				},
+// 				TargetTypes: pulumi.StringArray{
+// 					pulumi.String("VIEWS"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -110,6 +153,9 @@ type DatasetAccess struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
 	// stored in state as a different member type
 	ApiUpdatedMember pulumi.BoolOutput `pulumi:"apiUpdatedMember"`
+	// The dataset this entry applies to
+	// Structure is documented below.
+	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrOutput `pulumi:"authorizedDataset"`
 	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
@@ -179,6 +225,9 @@ type datasetAccessState struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
 	// stored in state as a different member type
 	ApiUpdatedMember *bool `pulumi:"apiUpdatedMember"`
+	// The dataset this entry applies to
+	// Structure is documented below.
+	AuthorizedDataset *DatasetAccessAuthorizedDataset `pulumi:"authorizedDataset"`
 	// The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
@@ -217,6 +266,9 @@ type DatasetAccessState struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
 	// stored in state as a different member type
 	ApiUpdatedMember pulumi.BoolPtrInput
+	// The dataset this entry applies to
+	// Structure is documented below.
+	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrInput
 	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput
 	// A domain to grant access to. Any users signed in with the
@@ -256,6 +308,9 @@ func (DatasetAccessState) ElementType() reflect.Type {
 }
 
 type datasetAccessArgs struct {
+	// The dataset this entry applies to
+	// Structure is documented below.
+	AuthorizedDataset *DatasetAccessAuthorizedDataset `pulumi:"authorizedDataset"`
 	// The ID of the dataset containing this table.
 	DatasetId string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
@@ -292,6 +347,9 @@ type datasetAccessArgs struct {
 
 // The set of arguments for constructing a DatasetAccess resource.
 type DatasetAccessArgs struct {
+	// The dataset this entry applies to
+	// Structure is documented below.
+	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrInput
 	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringInput
 	// A domain to grant access to. Any users signed in with the

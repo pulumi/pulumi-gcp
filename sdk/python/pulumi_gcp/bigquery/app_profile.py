@@ -19,6 +19,7 @@ class AppProfileArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
+                 multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None):
@@ -28,6 +29,8 @@ class AppProfileArgs:
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_cluster_routing_cluster_ids: The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+               clusters are eligible.
         :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
                in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
                consistency to improve availability.
@@ -43,6 +46,8 @@ class AppProfileArgs:
             pulumi.set(__self__, "ignore_warnings", ignore_warnings)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
+        if multi_cluster_routing_cluster_ids is not None:
+            pulumi.set(__self__, "multi_cluster_routing_cluster_ids", multi_cluster_routing_cluster_ids)
         if multi_cluster_routing_use_any is not None:
             pulumi.set(__self__, "multi_cluster_routing_use_any", multi_cluster_routing_use_any)
         if project is not None:
@@ -99,6 +104,19 @@ class AppProfileArgs:
         pulumi.set(self, "instance", value)
 
     @property
+    @pulumi.getter(name="multiClusterRoutingClusterIds")
+    def multi_cluster_routing_cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+        clusters are eligible.
+        """
+        return pulumi.get(self, "multi_cluster_routing_cluster_ids")
+
+    @multi_cluster_routing_cluster_ids.setter
+    def multi_cluster_routing_cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "multi_cluster_routing_cluster_ids", value)
+
+    @property
     @pulumi.getter(name="multiClusterRoutingUseAny")
     def multi_cluster_routing_use_any(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -146,6 +164,7 @@ class _AppProfileState:
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
+                 multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -156,6 +175,8 @@ class _AppProfileState:
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_cluster_routing_cluster_ids: The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+               clusters are eligible.
         :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
                in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
                consistency to improve availability.
@@ -174,6 +195,8 @@ class _AppProfileState:
             pulumi.set(__self__, "ignore_warnings", ignore_warnings)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
+        if multi_cluster_routing_cluster_ids is not None:
+            pulumi.set(__self__, "multi_cluster_routing_cluster_ids", multi_cluster_routing_cluster_ids)
         if multi_cluster_routing_use_any is not None:
             pulumi.set(__self__, "multi_cluster_routing_use_any", multi_cluster_routing_use_any)
         if name is not None:
@@ -230,6 +253,19 @@ class _AppProfileState:
     @instance.setter
     def instance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter(name="multiClusterRoutingClusterIds")
+    def multi_cluster_routing_cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+        clusters are eligible.
+        """
+        return pulumi.get(self, "multi_cluster_routing_cluster_ids")
+
+    @multi_cluster_routing_cluster_ids.setter
+    def multi_cluster_routing_cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "multi_cluster_routing_cluster_ids", value)
 
     @property
     @pulumi.getter(name="multiClusterRoutingUseAny")
@@ -294,6 +330,7 @@ class AppProfile(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
+                 multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
@@ -372,6 +409,8 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_cluster_routing_cluster_ids: The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+               clusters are eligible.
         :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
                in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
                consistency to improve availability.
@@ -473,6 +512,7 @@ class AppProfile(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
+                 multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
@@ -494,6 +534,7 @@ class AppProfile(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["ignore_warnings"] = ignore_warnings
             __props__.__dict__["instance"] = instance
+            __props__.__dict__["multi_cluster_routing_cluster_ids"] = multi_cluster_routing_cluster_ids
             __props__.__dict__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
             __props__.__dict__["project"] = project
             __props__.__dict__["single_cluster_routing"] = single_cluster_routing
@@ -512,6 +553,7 @@ class AppProfile(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             ignore_warnings: Optional[pulumi.Input[bool]] = None,
             instance: Optional[pulumi.Input[str]] = None,
+            multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -527,6 +569,8 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_cluster_routing_cluster_ids: The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+               clusters are eligible.
         :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
                in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
                consistency to improve availability.
@@ -545,6 +589,7 @@ class AppProfile(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["ignore_warnings"] = ignore_warnings
         __props__.__dict__["instance"] = instance
+        __props__.__dict__["multi_cluster_routing_cluster_ids"] = multi_cluster_routing_cluster_ids
         __props__.__dict__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -582,6 +627,15 @@ class AppProfile(pulumi.CustomResource):
         The name of the instance to create the app profile within.
         """
         return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter(name="multiClusterRoutingClusterIds")
+    def multi_cluster_routing_cluster_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+        clusters are eligible.
+        """
+        return pulumi.get(self, "multi_cluster_routing_cluster_ids")
 
     @property
     @pulumi.getter(name="multiClusterRoutingUseAny")

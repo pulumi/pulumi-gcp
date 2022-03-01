@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
  * * How-to Guides
- *     * [Managing Zones](https://cloud.google.com/dns/zones/)
+ *   * [Managing Zones](https://cloud.google.com/dns/zones/)
  *
  * ## Example Usage
  * ### Dns Managed Zone Basic
