@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class DatasetAccess
     {
         /// <summary>
+        /// The dataset this entry applies to
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DatasetAccessDataset? Dataset;
+        /// <summary>
         /// A domain to grant access to. Any users signed in with the
         /// domain specified will be granted the specified access
         /// </summary>
@@ -51,6 +56,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
         [OutputConstructor]
         private DatasetAccess(
+            Outputs.DatasetAccessDataset? dataset,
+
             string? domain,
 
             string? groupByEmail,
@@ -63,6 +70,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             Outputs.DatasetAccessView? view)
         {
+            Dataset = dataset;
             Domain = domain;
             GroupByEmail = groupByEmail;
             Role = role;

@@ -369,7 +369,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
      * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+     * and requires the `ipAllocationPolicy` block to be defined. By default, when this field is unspecified and no `ipAllocationPolicy` blocks are set, GKE will create a `ROUTES`-based cluster.
      */
     public readonly networkingMode!: pulumi.Output<string>;
     /**
@@ -866,7 +866,7 @@ export interface ClusterState {
     /**
      * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
      * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+     * and requires the `ipAllocationPolicy` block to be defined. By default, when this field is unspecified and no `ipAllocationPolicy` blocks are set, GKE will create a `ROUTES`-based cluster.
      */
     networkingMode?: pulumi.Input<string>;
     /**
@@ -1211,7 +1211,7 @@ export interface ClusterArgs {
     /**
      * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
      * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-     * and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+     * and requires the `ipAllocationPolicy` block to be defined. By default, when this field is unspecified and no `ipAllocationPolicy` blocks are set, GKE will create a `ROUTES`-based cluster.
      */
     networkingMode?: pulumi.Input<string>;
     /**

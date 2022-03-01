@@ -457,6 +457,96 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
  * });
  * ```
+ * ### Global Forwarding Rule Hybrid
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Roughly mirrors https://cloud.google.com/load-balancing/docs/https/setting-up-ext-https-hybrid
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * // Zonal NEG with GCE_VM_IP_PORT
+ * const defaultNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("defaultNetworkEndpointGroup", {
+ *     network: defaultNetwork.id,
+ *     defaultPort: "90",
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "GCE_VM_IP_PORT",
+ * });
+ * // Hybrid connectivity NEG
+ * const hybridNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("hybridNetworkEndpointGroup", {
+ *     network: defaultNetwork.id,
+ *     defaultPort: "90",
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "NON_GCP_PRIVATE_IP_PORT",
+ * });
+ * const hybrid_endpoint = new gcp.compute.NetworkEndpoint("hybrid-endpoint", {
+ *     networkEndpointGroup: hybridNetworkEndpointGroup.name,
+ *     port: hybridNetworkEndpointGroup.defaultPort,
+ *     ipAddress: "127.0.0.1",
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: "80",
+ *     },
+ * });
+ * // Backend service for Zonal NEG
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     backends: [{
+ *         group: defaultNetworkEndpointGroup.id,
+ *         balancingMode: "RATE",
+ *         maxRatePerEndpoint: 10,
+ *     }],
+ *     healthChecks: [defaultHealthCheck.id],
+ * });
+ * // Backgend service for Hybrid NEG
+ * const hybridBackendService = new gcp.compute.BackendService("hybridBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     backends: [{
+ *         group: hybridNetworkEndpointGroup.id,
+ *         balancingMode: "RATE",
+ *         maxRatePerEndpoint: 10,
+ *     }],
+ *     healthChecks: [defaultHealthCheck.id],
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [
+ *             {
+ *                 paths: ["/*"],
+ *                 service: defaultBackendService.id,
+ *             },
+ *             {
+ *                 paths: ["/hybrid"],
+ *                 service: hybridBackendService.id,
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {
+ *     description: "a description",
+ *     urlMap: defaultURLMap.id,
+ * });
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     target: defaultTargetHttpProxy.id,
+ *     portRange: "80",
+ * });
+ * ```
+ * ### Private Service Connect Google Apis
  * ### Private Service Connect Google Apis
  *
  * ```typescript

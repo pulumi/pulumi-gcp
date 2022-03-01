@@ -127,6 +127,9 @@ type NodePool struct {
 	// `nodeLocations` will be used.
 	NodeLocations pulumi.StringArrayOutput `pulumi:"nodeLocations"`
 	Operation     pulumi.StringOutput      `pulumi:"operation"`
+	// ) Specifies a custom placement policy for the
+	// nodes.
+	PlacementPolicy NodePoolPlacementPolicyPtrOutput `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -224,6 +227,9 @@ type nodePoolState struct {
 	// `nodeLocations` will be used.
 	NodeLocations []string `pulumi:"nodeLocations"`
 	Operation     *string  `pulumi:"operation"`
+	// ) Specifies a custom placement policy for the
+	// nodes.
+	PlacementPolicy *NodePoolPlacementPolicy `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project *string `pulumi:"project"`
@@ -290,6 +296,9 @@ type NodePoolState struct {
 	// `nodeLocations` will be used.
 	NodeLocations pulumi.StringArrayInput
 	Operation     pulumi.StringPtrInput
+	// ) Specifies a custom placement policy for the
+	// nodes.
+	PlacementPolicy NodePoolPlacementPolicyPtrInput
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project pulumi.StringPtrInput
@@ -355,6 +364,9 @@ type nodePoolArgs struct {
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
 	NodeLocations []string `pulumi:"nodeLocations"`
+	// ) Specifies a custom placement policy for the
+	// nodes.
+	PlacementPolicy *NodePoolPlacementPolicy `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project *string `pulumi:"project"`
@@ -417,6 +429,9 @@ type NodePoolArgs struct {
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
 	NodeLocations pulumi.StringArrayInput
+	// ) Specifies a custom placement policy for the
+	// nodes.
+	PlacementPolicy NodePoolPlacementPolicyPtrInput
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project pulumi.StringPtrInput

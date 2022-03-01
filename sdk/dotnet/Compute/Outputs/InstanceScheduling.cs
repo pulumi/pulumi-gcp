@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// set to false.  Defaults to false.
         /// </summary>
         public readonly bool? Preemptible;
+        public readonly string? ProvisioningModel;
 
         [OutputConstructor]
         private InstanceScheduling(
@@ -54,13 +55,16 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? onHostMaintenance,
 
-            bool? preemptible)
+            bool? preemptible,
+
+            string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
             Preemptible = preemptible;
+            ProvisioningModel = provisioningModel;
         }
     }
 }

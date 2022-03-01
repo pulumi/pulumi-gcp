@@ -82,6 +82,44 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// }
     /// ```
+    /// ### Bigquery Dataset Access Authorized Dataset
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @private = new Gcp.BigQuery.Dataset("private", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "private",
+    ///         });
+    ///         var @public = new Gcp.BigQuery.Dataset("public", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "public",
+    ///         });
+    ///         var access = new Gcp.BigQuery.DatasetAccess("access", new Gcp.BigQuery.DatasetAccessArgs
+    ///         {
+    ///             DatasetId = @private.DatasetId,
+    ///             AuthorizedDataset = new Gcp.BigQuery.Inputs.DatasetAccessAuthorizedDatasetArgs
+    ///             {
+    ///                 Dataset = new Gcp.BigQuery.Inputs.DatasetAccessAuthorizedDatasetDatasetArgs
+    ///                 {
+    ///                     ProjectId = @public.Project,
+    ///                     DatasetId = @public.DatasetId,
+    ///                 },
+    ///                 TargetTypes = 
+    ///                 {
+    ///                     "VIEWS",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -96,6 +134,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("apiUpdatedMember")]
         public Output<bool> ApiUpdatedMember { get; private set; } = null!;
+
+        /// <summary>
+        /// The dataset this entry applies to
+        /// Structure is documented below.
+        /// </summary>
+        [Output("authorizedDataset")]
+        public Output<Outputs.DatasetAccessAuthorizedDataset?> AuthorizedDataset { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the dataset containing this table.
@@ -212,6 +257,13 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DatasetAccessArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The dataset this entry applies to
+        /// Structure is documented below.
+        /// </summary>
+        [Input("authorizedDataset")]
+        public Input<Inputs.DatasetAccessAuthorizedDatasetArgs>? AuthorizedDataset { get; set; }
+
+        /// <summary>
         /// The ID of the dataset containing this table.
         /// </summary>
         [Input("datasetId", required: true)]
@@ -292,6 +344,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("apiUpdatedMember")]
         public Input<bool>? ApiUpdatedMember { get; set; }
+
+        /// <summary>
+        /// The dataset this entry applies to
+        /// Structure is documented below.
+        /// </summary>
+        [Input("authorizedDataset")]
+        public Input<Inputs.DatasetAccessAuthorizedDatasetGetArgs>? AuthorizedDataset { get; set; }
 
         /// <summary>
         /// The ID of the dataset containing this table.

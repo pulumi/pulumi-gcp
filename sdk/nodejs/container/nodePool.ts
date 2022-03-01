@@ -192,6 +192,11 @@ export class NodePool extends pulumi.CustomResource {
     public readonly nodeLocations!: pulumi.Output<string[]>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
+     * ) Specifies a custom placement policy for the
+     * nodes.
+     */
+    public readonly placementPolicy!: pulumi.Output<outputs.container.NodePoolPlacementPolicy | undefined>;
+    /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
      */
@@ -240,6 +245,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
             resourceInputs["nodeLocations"] = state ? state.nodeLocations : undefined;
             resourceInputs["operation"] = state ? state.operation : undefined;
+            resourceInputs["placementPolicy"] = state ? state.placementPolicy : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["upgradeSettings"] = state ? state.upgradeSettings : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -260,6 +266,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["nodeLocations"] = args ? args.nodeLocations : undefined;
+            resourceInputs["placementPolicy"] = args ? args.placementPolicy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -354,6 +361,11 @@ export interface NodePoolState {
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     operation?: pulumi.Input<string>;
     /**
+     * ) Specifies a custom placement policy for the
+     * nodes.
+     */
+    placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
+    /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
      */
@@ -447,6 +459,11 @@ export interface NodePoolArgs {
      * `nodeLocations` will be used.
      */
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ) Specifies a custom placement policy for the
+     * nodes.
+     */
+    placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.

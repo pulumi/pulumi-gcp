@@ -15,6 +15,11 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly int Count;
         public readonly string? GpuPartitionSize;
+        /// <summary>
+        /// The type of the policy. Supports a single value: COMPACT.
+        /// Specifying COMPACT placement policy type places node pool's nodes in a closer
+        /// physical proximity in order to reduce network latency between nodes.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

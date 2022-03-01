@@ -88,6 +88,89 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// }
     /// ```
+    /// ### Bigquery Dataset Authorized Dataset
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bqowner = new Gcp.ServiceAccount.Account("bqowner", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "bqowner",
+    ///         });
+    ///         var @public = new Gcp.BigQuery.Dataset("public", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "public",
+    ///             FriendlyName = "test",
+    ///             Description = "This dataset is public",
+    ///             Location = "EU",
+    ///             DefaultTableExpirationMs = 3600000,
+    ///             Labels = 
+    ///             {
+    ///                 { "env", "default" },
+    ///             },
+    ///             Accesses = 
+    ///             {
+    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///                 {
+    ///                     Role = "OWNER",
+    ///                     UserByEmail = bqowner.Email,
+    ///                 },
+    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///                 {
+    ///                     Role = "READER",
+    ///                     Domain = "hashicorp.com",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "private",
+    ///             FriendlyName = "test",
+    ///             Description = "This dataset is private",
+    ///             Location = "EU",
+    ///             DefaultTableExpirationMs = 3600000,
+    ///             Labels = 
+    ///             {
+    ///                 { "env", "default" },
+    ///             },
+    ///             Accesses = 
+    ///             {
+    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///                 {
+    ///                     Role = "OWNER",
+    ///                     UserByEmail = bqowner.Email,
+    ///                 },
+    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///                 {
+    ///                     Role = "READER",
+    ///                     Domain = "hashicorp.com",
+    ///                 },
+    ///                 new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///                 {
+    ///                     Dataset = new Gcp.BigQuery.Inputs.DatasetAccessDatasetArgs
+    ///                     {
+    ///                         Dataset = new Gcp.BigQuery.Inputs.DatasetAccessDatasetDatasetArgs
+    ///                         {
+    ///                             ProjectId = @public.Project,
+    ///                             DatasetId = @public.DatasetId,
+    ///                         },
+    ///                         TargetTypes = 
+    ///                         {
+    ///                             "VIEWS",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

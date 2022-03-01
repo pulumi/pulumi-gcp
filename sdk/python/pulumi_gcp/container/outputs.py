@@ -104,6 +104,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigShieldedInstanceConfig',
     'ClusterNodePoolNodeConfigTaint',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfig',
+    'ClusterNodePoolPlacementPolicy',
     'ClusterNodePoolUpgradeSettings',
     'ClusterNotificationConfig',
     'ClusterNotificationConfigPubsub',
@@ -128,6 +129,7 @@ __all__ = [
     'NodePoolNodeConfigShieldedInstanceConfig',
     'NodePoolNodeConfigTaint',
     'NodePoolNodeConfigWorkloadMetadataConfig',
+    'NodePoolPlacementPolicy',
     'NodePoolUpgradeSettings',
     'GetClusterAddonsConfigResult',
     'GetClusterAddonsConfigCloudrunConfigResult',
@@ -186,6 +188,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigShieldedInstanceConfigResult',
     'GetClusterNodePoolNodeConfigTaintResult',
     'GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult',
+    'GetClusterNodePoolPlacementPolicyResult',
     'GetClusterNodePoolUpgradeSettingResult',
     'GetClusterNotificationConfigResult',
     'GetClusterNotificationConfigPubsubResult',
@@ -4486,6 +4489,8 @@ class ClusterNodePool(dict):
             suggest = "node_count"
         elif key == "nodeLocations":
             suggest = "node_locations"
+        elif key == "placementPolicy":
+            suggest = "placement_policy"
         elif key == "upgradeSettings":
             suggest = "upgrade_settings"
 
@@ -4513,6 +4518,7 @@ class ClusterNodePool(dict):
                  node_config: Optional['outputs.ClusterNodePoolNodeConfig'] = None,
                  node_count: Optional[int] = None,
                  node_locations: Optional[Sequence[str]] = None,
+                 placement_policy: Optional['outputs.ClusterNodePoolPlacementPolicy'] = None,
                  upgrade_settings: Optional['outputs.ClusterNodePoolUpgradeSettings'] = None,
                  version: Optional[str] = None):
         """
@@ -4560,6 +4566,8 @@ class ClusterNodePool(dict):
             pulumi.set(__self__, "node_count", node_count)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -4653,6 +4661,11 @@ class ClusterNodePool(dict):
         a zonal cluster, omit the cluster's zone.
         """
         return pulumi.get(self, "node_locations")
+
+    @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional['outputs.ClusterNodePoolPlacementPolicy']:
+        return pulumi.get(self, "placement_policy")
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -5596,6 +5609,24 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolPlacementPolicy(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class ClusterNodePoolUpgradeSettings(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6517,6 +6548,11 @@ class NodePoolNodeConfigGuestAccelerator(dict):
                  count: int,
                  type: str,
                  gpu_partition_size: Optional[str] = None):
+        """
+        :param str type: The type of the policy. Supports a single value: COMPACT.
+               Specifying COMPACT placement policy type places node pool's nodes in a closer
+               physical proximity in order to reduce network latency between nodes.
+        """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
         if gpu_partition_size is not None:
@@ -6530,6 +6566,11 @@ class NodePoolNodeConfigGuestAccelerator(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the policy. Supports a single value: COMPACT.
+        Specifying COMPACT placement policy type places node pool's nodes in a closer
+        physical proximity in order to reduce network latency between nodes.
+        """
         return pulumi.get(self, "type")
 
     @property
@@ -6704,6 +6745,28 @@ class NodePoolNodeConfigWorkloadMetadataConfig(dict):
     @pulumi.getter
     def mode(self) -> str:
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class NodePoolPlacementPolicy(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: The type of the policy. Supports a single value: COMPACT.
+               Specifying COMPACT placement policy type places node pool's nodes in a closer
+               physical proximity in order to reduce network latency between nodes.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the policy. Supports a single value: COMPACT.
+        Specifying COMPACT placement policy type places node pool's nodes in a closer
+        physical proximity in order to reduce network latency between nodes.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -7762,6 +7825,7 @@ class GetClusterNodePoolResult(dict):
                  node_configs: Sequence['outputs.GetClusterNodePoolNodeConfigResult'],
                  node_count: int,
                  node_locations: Sequence[str],
+                 placement_policies: Sequence['outputs.GetClusterNodePoolPlacementPolicyResult'],
                  upgrade_settings: Sequence['outputs.GetClusterNodePoolUpgradeSettingResult'],
                  version: str):
         """
@@ -7779,6 +7843,7 @@ class GetClusterNodePoolResult(dict):
         pulumi.set(__self__, "node_configs", node_configs)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_locations", node_locations)
+        pulumi.set(__self__, "placement_policies", placement_policies)
         pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         pulumi.set(__self__, "version", version)
 
@@ -7844,6 +7909,11 @@ class GetClusterNodePoolResult(dict):
     @pulumi.getter(name="nodeLocations")
     def node_locations(self) -> Sequence[str]:
         return pulumi.get(self, "node_locations")
+
+    @property
+    @pulumi.getter(name="placementPolicies")
+    def placement_policies(self) -> Sequence['outputs.GetClusterNodePoolPlacementPolicyResult']:
+        return pulumi.get(self, "placement_policies")
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -8248,6 +8318,18 @@ class GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
     @pulumi.getter
     def mode(self) -> str:
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class GetClusterNodePoolPlacementPolicyResult(dict):
+    def __init__(__self__, *,
+                 type: str):
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

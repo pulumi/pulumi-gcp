@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Eventarc.Inputs
     public sealed class TriggerDestinationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+        /// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
         /// </summary>
         [Input("cloudFunction")]
         public Input<string>? CloudFunction { get; set; }

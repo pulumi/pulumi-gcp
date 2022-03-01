@@ -11,7 +11,7 @@ import (
 )
 
 type TriggerDestination struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+	// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
 	CloudFunction *string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
 	CloudRunService *TriggerDestinationCloudRunService `pulumi:"cloudRunService"`
@@ -29,7 +29,7 @@ type TriggerDestinationInput interface {
 }
 
 type TriggerDestinationArgs struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+	// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
 	CloudFunction pulumi.StringPtrInput `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
 	CloudRunService TriggerDestinationCloudRunServicePtrInput `pulumi:"cloudRunService"`
@@ -112,7 +112,7 @@ func (o TriggerDestinationOutput) ToTriggerDestinationPtrOutputWithContext(ctx c
 	}).(TriggerDestinationPtrOutput)
 }
 
-// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
 func (o TriggerDestinationOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *string { return v.CloudFunction }).(pulumi.StringPtrOutput)
 }
@@ -146,7 +146,7 @@ func (o TriggerDestinationPtrOutput) Elem() TriggerDestinationOutput {
 	}).(TriggerDestinationOutput)
 }
 
-// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
 func (o TriggerDestinationPtrOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestination) *string {
 		if v == nil {
@@ -548,7 +548,7 @@ type TriggerTransportPubsub struct {
 	// -
 	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription *string `pulumi:"subscription"`
-	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 	Topic *string `pulumi:"topic"`
 }
 
@@ -567,7 +567,7 @@ type TriggerTransportPubsubArgs struct {
 	// -
 	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
-	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
 
@@ -628,7 +628,7 @@ func (o TriggerTransportPubsubOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTransportPubsub) *string { return v.Subscription }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 func (o TriggerTransportPubsubOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTransportPubsub) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }

@@ -93,6 +93,9 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _nodeLocations = value;
         }
 
+        [Input("placementPolicy")]
+        public Input<Inputs.ClusterNodePoolPlacementPolicyGetArgs>? PlacementPolicy { get; set; }
+
         [Input("upgradeSettings")]
         public Input<Inputs.ClusterNodePoolUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }
 

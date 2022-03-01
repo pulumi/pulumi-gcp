@@ -371,6 +371,8 @@
         "dns/managedZone.ts",
         "dns/policy.ts",
         "dns/recordSet.ts",
+        "dns/responsePolicy.ts",
+        "dns/responsePolicyRule.ts",
         "endpoints/index.ts",
         "endpoints/service.ts",
         "endpoints/serviceIamBinding.ts",

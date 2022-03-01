@@ -10,5 +10,7 @@ from .get_managed_zone import *
 from .managed_zone import *
 from .policy import *
 from .record_set import *
+from .response_policy import *
+from .response_policy_rule import *
 from ._inputs import *
 from . import outputs

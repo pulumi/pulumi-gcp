@@ -126,7 +126,7 @@ type NetworkEndpoint struct {
 	// The name for a specific VM instance that the IP address belongs to.
 	// This is required for network endpoints of type GCE_VM_IP_PORT.
 	// The instance must be in the same zone of network endpoint group.
-	Instance pulumi.StringOutput `pulumi:"instance"`
+	Instance pulumi.StringPtrOutput `pulumi:"instance"`
 	// IPv4 address of network endpoint. The IP address must belong
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).
@@ -149,9 +149,6 @@ func NewNetworkEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Instance == nil {
-		return nil, errors.New("invalid value for required argument 'Instance'")
-	}
 	if args.IpAddress == nil {
 		return nil, errors.New("invalid value for required argument 'IpAddress'")
 	}
@@ -230,7 +227,7 @@ type networkEndpointArgs struct {
 	// The name for a specific VM instance that the IP address belongs to.
 	// This is required for network endpoints of type GCE_VM_IP_PORT.
 	// The instance must be in the same zone of network endpoint group.
-	Instance string `pulumi:"instance"`
+	Instance *string `pulumi:"instance"`
 	// IPv4 address of network endpoint. The IP address must belong
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).
@@ -251,7 +248,7 @@ type NetworkEndpointArgs struct {
 	// The name for a specific VM instance that the IP address belongs to.
 	// This is required for network endpoints of type GCE_VM_IP_PORT.
 	// The instance must be in the same zone of network endpoint group.
-	Instance pulumi.StringInput
+	Instance pulumi.StringPtrInput
 	// IPv4 address of network endpoint. The IP address must belong
 	// to a VM in GCE (either the primary IP or as part of an aliased IP
 	// range).

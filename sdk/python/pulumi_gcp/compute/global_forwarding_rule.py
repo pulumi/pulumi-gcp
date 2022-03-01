@@ -1128,6 +1128,87 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_range="80",
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
+        ### Global Forwarding Rule Hybrid
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Roughly mirrors https://cloud.google.com/load-balancing/docs/https/setting-up-ext-https-hybrid
+        default_network = gcp.compute.Network("defaultNetwork")
+        # Zonal NEG with GCE_VM_IP_PORT
+        default_network_endpoint_group = gcp.compute.NetworkEndpointGroup("defaultNetworkEndpointGroup",
+            network=default_network.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP_PORT")
+        # Hybrid connectivity NEG
+        hybrid_network_endpoint_group = gcp.compute.NetworkEndpointGroup("hybridNetworkEndpointGroup",
+            network=default_network.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="NON_GCP_PRIVATE_IP_PORT")
+        hybrid_endpoint = gcp.compute.NetworkEndpoint("hybrid-endpoint",
+            network_endpoint_group=hybrid_network_endpoint_group.name,
+            port=hybrid_network_endpoint_group.default_port,
+            ip_address="127.0.0.1")
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        # Backend service for Zonal NEG
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_network_endpoint_group.id,
+                balancing_mode="RATE",
+                max_rate_per_endpoint=10,
+            )],
+            health_checks=[default_health_check.id])
+        # Backgend service for Hybrid NEG
+        hybrid_backend_service = gcp.compute.BackendService("hybridBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=hybrid_network_endpoint_group.id,
+                balancing_mode="RATE",
+                max_rate_per_endpoint=10,
+            )],
+            health_checks=[default_health_check.id])
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[
+                    gcp.compute.URLMapPathMatcherPathRuleArgs(
+                        paths=["/*"],
+                        service=default_backend_service.id,
+                    ),
+                    gcp.compute.URLMapPathMatcherPathRuleArgs(
+                        paths=["/hybrid"],
+                        service=hybrid_backend_service.id,
+                    ),
+                ],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            target=default_target_http_proxy.id,
+            port_range="80")
+        ```
+        ### Private Service Connect Google Apis
         ### Private Service Connect Google Apis
 
         ```python
@@ -1658,6 +1739,87 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_range="80",
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
+        ### Global Forwarding Rule Hybrid
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Roughly mirrors https://cloud.google.com/load-balancing/docs/https/setting-up-ext-https-hybrid
+        default_network = gcp.compute.Network("defaultNetwork")
+        # Zonal NEG with GCE_VM_IP_PORT
+        default_network_endpoint_group = gcp.compute.NetworkEndpointGroup("defaultNetworkEndpointGroup",
+            network=default_network.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP_PORT")
+        # Hybrid connectivity NEG
+        hybrid_network_endpoint_group = gcp.compute.NetworkEndpointGroup("hybridNetworkEndpointGroup",
+            network=default_network.id,
+            default_port=90,
+            zone="us-central1-a",
+            network_endpoint_type="NON_GCP_PRIVATE_IP_PORT")
+        hybrid_endpoint = gcp.compute.NetworkEndpoint("hybrid-endpoint",
+            network_endpoint_group=hybrid_network_endpoint_group.name,
+            port=hybrid_network_endpoint_group.default_port,
+            ip_address="127.0.0.1")
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ))
+        # Backend service for Zonal NEG
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=default_network_endpoint_group.id,
+                balancing_mode="RATE",
+                max_rate_per_endpoint=10,
+            )],
+            health_checks=[default_health_check.id])
+        # Backgend service for Hybrid NEG
+        hybrid_backend_service = gcp.compute.BackendService("hybridBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=hybrid_network_endpoint_group.id,
+                balancing_mode="RATE",
+                max_rate_per_endpoint=10,
+            )],
+            health_checks=[default_health_check.id])
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[
+                    gcp.compute.URLMapPathMatcherPathRuleArgs(
+                        paths=["/*"],
+                        service=default_backend_service.id,
+                    ),
+                    gcp.compute.URLMapPathMatcherPathRuleArgs(
+                        paths=["/hybrid"],
+                        service=hybrid_backend_service.id,
+                    ),
+                ],
+            )])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
+            description="a description",
+            url_map=default_url_map.id)
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            target=default_target_http_proxy.id,
+            port_range="80")
+        ```
+        ### Private Service Connect Google Apis
         ### Private Service Connect Google Apis
 
         ```python

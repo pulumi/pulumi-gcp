@@ -29,12 +29,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string ConformAction;
         /// <summary>
-        /// Determines the key to enforce the rate_limit_threshold on.
-        /// Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
+        /// Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
         /// </summary>
         public readonly string? EnforceOnKey;
         /// <summary>
-        /// Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+        /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         /// </summary>
         public readonly string? EnforceOnKeyName;
         /// <summary>

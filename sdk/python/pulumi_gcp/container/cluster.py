@@ -177,7 +177,7 @@ class ClusterArgs:
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
                Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+               and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         :param pulumi.Input['ClusterNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -837,7 +837,7 @@ class ClusterArgs:
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+        and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         """
         return pulumi.get(self, "networking_mode")
 
@@ -1255,7 +1255,7 @@ class _ClusterState:
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
                Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+               and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         :param pulumi.Input['ClusterNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -1975,7 +1975,7 @@ class _ClusterState:
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+        and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         """
         return pulumi.get(self, "networking_mode")
 
@@ -2504,7 +2504,7 @@ class Cluster(pulumi.CustomResource):
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
                Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+               and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         :param pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -2965,7 +2965,7 @@ class Cluster(pulumi.CustomResource):
                feature. Structure is documented below.
         :param pulumi.Input[str] networking_mode: Determines whether alias IPs or routes will be used for pod IPs in the cluster.
                Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-               and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+               and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         :param pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
@@ -3479,7 +3479,7 @@ class Cluster(pulumi.CustomResource):
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+        and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         """
         return pulumi.get(self, "networking_mode")
 

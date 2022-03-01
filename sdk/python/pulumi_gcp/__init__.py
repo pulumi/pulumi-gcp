@@ -2468,6 +2468,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dns/responsePolicy",
+  "fqn": "pulumi_gcp.dns",
+  "classes": {
+   "gcp:dns/responsePolicy:ResponsePolicy": "ResponsePolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dns/responsePolicyRule",
+  "fqn": "pulumi_gcp.dns",
+  "classes": {
+   "gcp:dns/responsePolicyRule:ResponsePolicyRule": "ResponsePolicyRule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "endpoints/service",
   "fqn": "pulumi_gcp.endpoints",
   "classes": {

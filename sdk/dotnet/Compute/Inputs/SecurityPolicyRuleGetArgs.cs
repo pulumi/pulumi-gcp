@@ -14,10 +14,11 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// Action to take when `match` matches the request. Valid values:
-        /// * "allow" : allow access to target
-        /// * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-        /// * "rate_based_ban" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-        /// * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        /// * allow: allow access to target.
+        /// * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
+        /// * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+        /// * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
+        /// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;

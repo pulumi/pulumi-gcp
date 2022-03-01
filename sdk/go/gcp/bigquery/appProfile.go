@@ -128,6 +128,9 @@ type AppProfile struct {
 	IgnoreWarnings pulumi.BoolPtrOutput `pulumi:"ignoreWarnings"`
 	// The name of the instance to create the app profile within.
 	Instance pulumi.StringPtrOutput `pulumi:"instance"`
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+	// clusters are eligible.
+	MultiClusterRoutingClusterIds pulumi.StringArrayOutput `pulumi:"multiClusterRoutingClusterIds"`
 	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
 	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
 	// consistency to improve availability.
@@ -183,6 +186,9 @@ type appProfileState struct {
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the instance to create the app profile within.
 	Instance *string `pulumi:"instance"`
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+	// clusters are eligible.
+	MultiClusterRoutingClusterIds []string `pulumi:"multiClusterRoutingClusterIds"`
 	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
 	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
 	// consistency to improve availability.
@@ -207,6 +213,9 @@ type AppProfileState struct {
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the instance to create the app profile within.
 	Instance pulumi.StringPtrInput
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+	// clusters are eligible.
+	MultiClusterRoutingClusterIds pulumi.StringArrayInput
 	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
 	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
 	// consistency to improve availability.
@@ -235,6 +244,9 @@ type appProfileArgs struct {
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the instance to create the app profile within.
 	Instance *string `pulumi:"instance"`
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+	// clusters are eligible.
+	MultiClusterRoutingClusterIds []string `pulumi:"multiClusterRoutingClusterIds"`
 	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
 	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
 	// consistency to improve availability.
@@ -257,6 +269,9 @@ type AppProfileArgs struct {
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the instance to create the app profile within.
 	Instance pulumi.StringPtrInput
+	// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+	// clusters are eligible.
+	MultiClusterRoutingClusterIds pulumi.StringArrayInput
 	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
 	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
 	// consistency to improve availability.

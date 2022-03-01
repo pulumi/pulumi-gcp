@@ -23,6 +23,9 @@ __all__ = [
     'PolicyAlternativeNameServerConfig',
     'PolicyAlternativeNameServerConfigTargetNameServer',
     'PolicyNetwork',
+    'ResponsePolicyNetwork',
+    'ResponsePolicyRuleLocalData',
+    'ResponsePolicyRuleLocalDataLocalData',
     'GetKeysKeySigningKeyResult',
     'GetKeysKeySigningKeyDigestResult',
     'GetKeysZoneSigningKeyResult',
@@ -624,6 +627,139 @@ class PolicyNetwork(dict):
         `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         return pulumi.get(self, "network_url")
+
+
+@pulumi.output_type
+class ResponsePolicyNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkUrl":
+            suggest = "network_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponsePolicyNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponsePolicyNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponsePolicyNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_url: str):
+        """
+        :param str network_url: The fully qualified URL of the VPC network to bind to.
+               This should be formatted like
+               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+        """
+        pulumi.set(__self__, "network_url", network_url)
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> str:
+        """
+        The fully qualified URL of the VPC network to bind to.
+        This should be formatted like
+        `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+        """
+        return pulumi.get(self, "network_url")
+
+
+@pulumi.output_type
+class ResponsePolicyRuleLocalData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localDatas":
+            suggest = "local_datas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponsePolicyRuleLocalData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponsePolicyRuleLocalData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponsePolicyRuleLocalData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_datas: Sequence['outputs.ResponsePolicyRuleLocalDataLocalData']):
+        """
+        :param Sequence['ResponsePolicyRuleLocalDataLocalDataArgs'] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "local_datas", local_datas)
+
+    @property
+    @pulumi.getter(name="localDatas")
+    def local_datas(self) -> Sequence['outputs.ResponsePolicyRuleLocalDataLocalData']:
+        """
+        All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "local_datas")
+
+
+@pulumi.output_type
+class ResponsePolicyRuleLocalDataLocalData(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str,
+                 rrdatas: Optional[Sequence[str]] = None,
+                 ttl: Optional[int] = None):
+        """
+        :param str name: For example, www.example.com.
+        :param str type: One of valid DNS resource types.
+               Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+        :param Sequence[str] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+        :param int ttl: Number of seconds that this ResourceRecordSet can be cached by
+               resolvers.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        For example, www.example.com.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        One of valid DNS resource types.
+        Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Optional[Sequence[str]]:
+        """
+        As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[int]:
+        """
+        Number of seconds that this ResourceRecordSet can be cached by
+        resolvers.
+        """
+        return pulumi.get(self, "ttl")
 
 
 @pulumi.output_type

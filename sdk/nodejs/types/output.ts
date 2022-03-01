@@ -2495,6 +2495,11 @@ export namespace bigquery {
 
     export interface DatasetAccess {
         /**
+         * The dataset this entry applies to
+         * Structure is documented below.
+         */
+        dataset?: outputs.bigquery.DatasetAccessDataset;
+        /**
          * A domain to grant access to. Any users signed in with the
          * domain specified will be granted the specified access
          */
@@ -2529,6 +2534,54 @@ export namespace bigquery {
          * Structure is documented below.
          */
         view?: outputs.bigquery.DatasetAccessView;
+    }
+
+    export interface DatasetAccessAuthorizedDataset {
+        /**
+         * The dataset this entry applies to
+         * Structure is documented below.
+         */
+        dataset: outputs.bigquery.DatasetAccessAuthorizedDatasetDataset;
+        /**
+         * Which resources in the dataset this entry applies to. Currently, only views are supported,
+         * but additional target types may be added in the future. Possible values: VIEWS
+         */
+        targetTypes: string[];
+    }
+
+    export interface DatasetAccessAuthorizedDatasetDataset {
+        /**
+         * The ID of the dataset containing this table.
+         */
+        datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
+        projectId: string;
+    }
+
+    export interface DatasetAccessDataset {
+        /**
+         * The dataset this entry applies to
+         * Structure is documented below.
+         */
+        dataset: outputs.bigquery.DatasetAccessDatasetDataset;
+        /**
+         * Which resources in the dataset this entry applies to. Currently, only views are supported,
+         * but additional target types may be added in the future. Possible values: VIEWS
+         */
+        targetTypes: string[];
+    }
+
+    export interface DatasetAccessDatasetDataset {
+        /**
+         * The ID of the dataset containing this table.
+         */
+        datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
+        projectId: string;
     }
 
     export interface DatasetAccessView {
@@ -9029,6 +9082,7 @@ export namespace compute {
          * Whether the instance is preemptible.
          */
         preemptible: boolean;
+        provisioningModel: string;
     }
 
     export interface GetInstanceSchedulingNodeAffinity {
@@ -9308,6 +9362,7 @@ export namespace compute {
          * [here](https://cloud.google.com/compute/docs/instances/preemptible).
          */
         preemptible: boolean;
+        provisioningModel: string;
     }
 
     export interface GetInstanceTemplateSchedulingNodeAffinity {
@@ -10090,6 +10145,7 @@ export namespace compute {
         nodeAffinities: outputs.compute.InstanceFromMachineImageSchedulingNodeAffinity[];
         onHostMaintenance: string;
         preemptible: boolean;
+        provisioningModel: string;
     }
 
     export interface InstanceFromMachineImageSchedulingNodeAffinity {
@@ -10211,6 +10267,7 @@ export namespace compute {
         nodeAffinities: outputs.compute.InstanceFromTemplateSchedulingNodeAffinity[];
         onHostMaintenance: string;
         preemptible: boolean;
+        provisioningModel: string;
     }
 
     export interface InstanceFromTemplateSchedulingNodeAffinity {
@@ -10607,6 +10664,7 @@ export namespace compute {
          * set to false.  Defaults to false.
          */
         preemptible?: boolean;
+        provisioningModel: string;
     }
 
     export interface InstanceSchedulingNodeAffinity {
@@ -10945,6 +11003,7 @@ export namespace compute {
          * [here](https://cloud.google.com/compute/docs/instances/preemptible).
          */
         preemptible?: boolean;
+        provisioningModel: string;
     }
 
     export interface InstanceTemplateSchedulingNodeAffinity {
@@ -14379,10 +14438,11 @@ export namespace compute {
     export interface SecurityPolicyRule {
         /**
          * Action to take when `match` matches the request. Valid values:
-         * * "allow" : allow access to target
-         * * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-         * * "rateBasedBan" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-         * * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+         * * allow: allow access to target.
+         * * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
+         * * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+         * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
+         * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
          */
         action: string;
         /**
@@ -14466,12 +14526,11 @@ export namespace compute {
          */
         conformAction: string;
         /**
-         * Determines the key to enforce the rateLimitThreshold on.
-         * Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
+         * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to "ALL".
          */
         enforceOnKey?: string;
         /**
-         * Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+         * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
          */
         enforceOnKeyName?: string;
         /**
@@ -17837,6 +17896,7 @@ export namespace container {
          * a zonal cluster, omit the cluster's zone.
          */
         nodeLocations: string[];
+        placementPolicy?: outputs.container.ClusterNodePoolPlacementPolicy;
         upgradeSettings: outputs.container.ClusterNodePoolUpgradeSettings;
         version: string;
     }
@@ -18108,6 +18168,13 @@ export namespace container {
          * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
          */
         mode: string;
+    }
+
+    export interface ClusterNodePoolPlacementPolicy {
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
     }
 
     export interface ClusterNodePoolUpgradeSettings {
@@ -18501,6 +18568,7 @@ export namespace container {
         nodeConfigs: outputs.container.GetClusterNodePoolNodeConfig[];
         nodeCount: number;
         nodeLocations: string[];
+        placementPolicies: outputs.container.GetClusterNodePoolPlacementPolicy[];
         upgradeSettings: outputs.container.GetClusterNodePoolUpgradeSetting[];
         version: string;
     }
@@ -18589,6 +18657,10 @@ export namespace container {
 
     export interface GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
         mode: string;
+    }
+
+    export interface GetClusterNodePoolPlacementPolicy {
+        type: string;
     }
 
     export interface GetClusterNodePoolUpgradeSetting {
@@ -18712,6 +18784,11 @@ export namespace container {
     export interface NodePoolNodeConfigGuestAccelerator {
         count: number;
         gpuPartitionSize?: string;
+        /**
+         * The type of the policy. Supports a single value: COMPACT.
+         * Specifying COMPACT placement policy type places node pool's nodes in a closer
+         * physical proximity in order to reduce network latency between nodes.
+         */
         type: string;
     }
 
@@ -18744,6 +18821,15 @@ export namespace container {
         mode: string;
     }
 
+    export interface NodePoolPlacementPolicy {
+        /**
+         * The type of the policy. Supports a single value: COMPACT.
+         * Specifying COMPACT placement policy type places node pool's nodes in a closer
+         * physical proximity in order to reduce network latency between nodes.
+         */
+        type: string;
+    }
+
     export interface NodePoolUpgradeSettings {
         /**
          * The number of additional nodes that can be added to the node pool during
@@ -18758,6 +18844,7 @@ export namespace container {
          */
         maxUnavailable: number;
     }
+
 }
 
 export namespace containeranalysis {
@@ -22998,6 +23085,45 @@ export namespace dns {
          */
         networkUrl: string;
     }
+
+    export interface ResponsePolicyNetwork {
+        /**
+         * The fully qualified URL of the VPC network to bind to.
+         * This should be formatted like
+         * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+         */
+        networkUrl: string;
+    }
+
+    export interface ResponsePolicyRuleLocalData {
+        /**
+         * All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+         * Structure is documented below.
+         */
+        localDatas: outputs.dns.ResponsePolicyRuleLocalDataLocalData[];
+    }
+
+    export interface ResponsePolicyRuleLocalDataLocalData {
+        /**
+         * For example, www.example.com.
+         */
+        name: string;
+        /**
+         * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+         */
+        rrdatas?: string[];
+        /**
+         * Number of seconds that this ResourceRecordSet can be cached by
+         * resolvers.
+         */
+        ttl?: number;
+        /**
+         * One of valid DNS resource types.
+         * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+         */
+        type: string;
+    }
+
 }
 
 export namespace endpoints {
@@ -23037,7 +23163,7 @@ export namespace endpoints {
 export namespace eventarc {
     export interface TriggerDestination {
         /**
-         * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+         * [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
          */
         cloudFunction?: string;
         /**
@@ -23086,7 +23212,7 @@ export namespace eventarc {
          */
         subscription: string;
         /**
-         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
          */
         topic?: string;
     }
@@ -23488,7 +23614,7 @@ export namespace gkehub {
         /**
          * Version of ACM installed.
          */
-        version?: string;
+        version: string;
     }
 
     export interface FeatureMembershipConfigmanagementBinauthz {

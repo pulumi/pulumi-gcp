@@ -113,7 +113,7 @@ export class NetworkEndpoint extends pulumi.CustomResource {
      * This is required for network endpoints of type GCE_VM_IP_PORT.
      * The instance must be in the same zone of network endpoint group.
      */
-    public readonly instance!: pulumi.Output<string>;
+    public readonly instance!: pulumi.Output<string | undefined>;
     /**
      * IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
@@ -159,9 +159,6 @@ export class NetworkEndpoint extends pulumi.CustomResource {
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NetworkEndpointArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instance'");
-            }
             if ((!args || args.ipAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipAddress'");
             }
@@ -227,7 +224,7 @@ export interface NetworkEndpointArgs {
      * This is required for network endpoints of type GCE_VM_IP_PORT.
      * The instance must be in the same zone of network endpoint group.
      */
-    instance: pulumi.Input<string>;
+    instance?: pulumi.Input<string>;
     /**
      * IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP

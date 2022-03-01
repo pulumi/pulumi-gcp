@@ -616,6 +616,148 @@ import (
 // 	})
 // }
 // ```
+// ### Global Forwarding Rule Hybrid
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetworkEndpointGroup, err := compute.NewNetworkEndpointGroup(ctx, "defaultNetworkEndpointGroup", &compute.NetworkEndpointGroupArgs{
+// 			Network:             defaultNetwork.ID(),
+// 			DefaultPort:         pulumi.Int(90),
+// 			Zone:                pulumi.String("us-central1-a"),
+// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		hybridNetworkEndpointGroup, err := compute.NewNetworkEndpointGroup(ctx, "hybridNetworkEndpointGroup", &compute.NetworkEndpointGroupArgs{
+// 			Network:             defaultNetwork.ID(),
+// 			DefaultPort:         pulumi.Int(90),
+// 			Zone:                pulumi.String("us-central1-a"),
+// 			NetworkEndpointType: pulumi.String("NON_GCP_PRIVATE_IP_PORT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkEndpoint(ctx, "hybrid-endpoint", &compute.NetworkEndpointArgs{
+// 			NetworkEndpointGroup: hybridNetworkEndpointGroup.Name,
+// 			Port:                 hybridNetworkEndpointGroup.DefaultPort,
+// 			IpAddress:            pulumi.String("127.0.0.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "defaultHealthCheck", &compute.HealthCheckArgs{
+// 			TimeoutSec:       pulumi.Int(1),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+// 				Port: pulumi.Int(80),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			PortName:   pulumi.String("http"),
+// 			Protocol:   pulumi.String("HTTP"),
+// 			TimeoutSec: pulumi.Int(10),
+// 			Backends: compute.BackendServiceBackendArray{
+// 				&compute.BackendServiceBackendArgs{
+// 					Group:              defaultNetworkEndpointGroup.ID(),
+// 					BalancingMode:      pulumi.String("RATE"),
+// 					MaxRatePerEndpoint: pulumi.Float64(10),
+// 				},
+// 			},
+// 			HealthChecks: pulumi.String{
+// 				defaultHealthCheck.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		hybridBackendService, err := compute.NewBackendService(ctx, "hybridBackendService", &compute.BackendServiceArgs{
+// 			PortName:   pulumi.String("http"),
+// 			Protocol:   pulumi.String("HTTP"),
+// 			TimeoutSec: pulumi.Int(10),
+// 			Backends: compute.BackendServiceBackendArray{
+// 				&compute.BackendServiceBackendArgs{
+// 					Group:              hybridNetworkEndpointGroup.ID(),
+// 					BalancingMode:      pulumi.String("RATE"),
+// 					MaxRatePerEndpoint: pulumi.Float64(10),
+// 				},
+// 			},
+// 			HealthChecks: pulumi.String{
+// 				defaultHealthCheck.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			Description:    pulumi.String("a description"),
+// 			DefaultService: defaultBackendService.ID(),
+// 			HostRules: compute.URLMapHostRuleArray{
+// 				&compute.URLMapHostRuleArgs{
+// 					Hosts: pulumi.StringArray{
+// 						pulumi.String("mysite.com"),
+// 					},
+// 					PathMatcher: pulumi.String("allpaths"),
+// 				},
+// 			},
+// 			PathMatchers: compute.URLMapPathMatcherArray{
+// 				&compute.URLMapPathMatcherArgs{
+// 					Name:           pulumi.String("allpaths"),
+// 					DefaultService: defaultBackendService.ID(),
+// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
+// 						&compute.URLMapPathMatcherPathRuleArgs{
+// 							Paths: pulumi.StringArray{
+// 								pulumi.String("/*"),
+// 							},
+// 							Service: defaultBackendService.ID(),
+// 						},
+// 						&compute.URLMapPathMatcherPathRuleArgs{
+// 							Paths: pulumi.StringArray{
+// 								pulumi.String("/hybrid"),
+// 							},
+// 							Service: hybridBackendService.ID(),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
+// 			Description: pulumi.String("a description"),
+// 			UrlMap:      defaultURLMap.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
+// 			Target:    defaultTargetHttpProxy.ID(),
+// 			PortRange: pulumi.String("80"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Private Service Connect Google Apis
 // ### Private Service Connect Google Apis
 //
 // ```go

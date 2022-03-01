@@ -32,6 +32,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
+        [Input("provisioningModel")]
+        public Input<string>? ProvisioningModel { get; set; }
+
         public InstanceFromTemplateSchedulingGetArgs()
         {
         }

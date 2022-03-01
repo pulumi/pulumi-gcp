@@ -414,7 +414,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+        /// and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         /// </summary>
         [Output("networkingMode")]
         public Output<string> NetworkingMode { get; private set; } = null!;
@@ -911,7 +911,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+        /// and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         /// </summary>
         [Input("networkingMode")]
         public Input<string>? NetworkingMode { get; set; }
@@ -1381,7 +1381,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
-        /// and requires the `ip_allocation_policy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+        /// and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
         /// </summary>
         [Input("networkingMode")]
         public Input<string>? NetworkingMode { get; set; }

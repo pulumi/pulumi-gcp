@@ -2495,6 +2495,11 @@ export namespace bigquery {
 
     export interface DatasetAccess {
         /**
+         * The dataset this entry applies to
+         * Structure is documented below.
+         */
+        dataset?: pulumi.Input<inputs.bigquery.DatasetAccessDataset>;
+        /**
          * A domain to grant access to. Any users signed in with the
          * domain specified will be granted the specified access
          */
@@ -2529,6 +2534,54 @@ export namespace bigquery {
          * Structure is documented below.
          */
         view?: pulumi.Input<inputs.bigquery.DatasetAccessView>;
+    }
+
+    export interface DatasetAccessAuthorizedDataset {
+        /**
+         * The dataset this entry applies to
+         * Structure is documented below.
+         */
+        dataset: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDatasetDataset>;
+        /**
+         * Which resources in the dataset this entry applies to. Currently, only views are supported,
+         * but additional target types may be added in the future. Possible values: VIEWS
+         */
+        targetTypes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DatasetAccessAuthorizedDatasetDataset {
+        /**
+         * The ID of the dataset containing this table.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this table.
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface DatasetAccessDataset {
+        /**
+         * The dataset this entry applies to
+         * Structure is documented below.
+         */
+        dataset: pulumi.Input<inputs.bigquery.DatasetAccessDatasetDataset>;
+        /**
+         * Which resources in the dataset this entry applies to. Currently, only views are supported,
+         * but additional target types may be added in the future. Possible values: VIEWS
+         */
+        targetTypes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DatasetAccessDatasetDataset {
+        /**
+         * The ID of the dataset containing this table.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this table.
+         */
+        projectId: pulumi.Input<string>;
     }
 
     export interface DatasetAccessView {
@@ -8808,6 +8861,7 @@ export namespace compute {
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingNodeAffinity>[]>;
         onHostMaintenance?: pulumi.Input<string>;
         preemptible?: pulumi.Input<boolean>;
+        provisioningModel?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageSchedulingNodeAffinity {
@@ -8929,6 +8983,7 @@ export namespace compute {
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingNodeAffinity>[]>;
         onHostMaintenance?: pulumi.Input<string>;
         preemptible?: pulumi.Input<boolean>;
+        provisioningModel?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateSchedulingNodeAffinity {
@@ -9325,6 +9380,7 @@ export namespace compute {
          * set to false.  Defaults to false.
          */
         preemptible?: pulumi.Input<boolean>;
+        provisioningModel?: pulumi.Input<string>;
     }
 
     export interface InstanceSchedulingNodeAffinity {
@@ -9663,6 +9719,7 @@ export namespace compute {
          * [here](https://cloud.google.com/compute/docs/instances/preemptible).
          */
         preemptible?: pulumi.Input<boolean>;
+        provisioningModel?: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateSchedulingNodeAffinity {
@@ -13039,10 +13096,11 @@ export namespace compute {
     export interface SecurityPolicyRule {
         /**
          * Action to take when `match` matches the request. Valid values:
-         * * "allow" : allow access to target
-         * * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-         * * "rateBasedBan" : limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-         * * "threshold" : limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+         * * allow: allow access to target.
+         * * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
+         * * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+         * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
+         * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
          */
         action: pulumi.Input<string>;
         /**
@@ -13126,12 +13184,11 @@ export namespace compute {
          */
         conformAction: pulumi.Input<string>;
         /**
-         * Determines the key to enforce the rateLimitThreshold on.
-         * Possible values incude "ALL", "ALL_IPS", "HTTP_HEADER", "IP", "XFF_IP". If not specified, defaults to "ALL".
+         * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to "ALL".
          */
         enforceOnKey?: pulumi.Input<string>;
         /**
-         * Rate limit key name applicable only for HTTP_HEADER key types. Name of the HTTP header whose value is taken as the key value.
+         * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
          */
         enforceOnKeyName?: pulumi.Input<string>;
         /**
@@ -16491,6 +16548,7 @@ export namespace container {
          * a zonal cluster, omit the cluster's zone.
          */
         nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
+        placementPolicy?: pulumi.Input<inputs.container.ClusterNodePoolPlacementPolicy>;
         upgradeSettings?: pulumi.Input<inputs.container.ClusterNodePoolUpgradeSettings>;
         version?: pulumi.Input<string>;
     }
@@ -16764,6 +16822,13 @@ export namespace container {
         mode: pulumi.Input<string>;
     }
 
+    export interface ClusterNodePoolPlacementPolicy {
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface ClusterNodePoolUpgradeSettings {
         maxSurge: pulumi.Input<number>;
         maxUnavailable: pulumi.Input<number>;
@@ -16967,6 +17032,11 @@ export namespace container {
     export interface NodePoolNodeConfigGuestAccelerator {
         count: pulumi.Input<number>;
         gpuPartitionSize?: pulumi.Input<string>;
+        /**
+         * The type of the policy. Supports a single value: COMPACT.
+         * Specifying COMPACT placement policy type places node pool's nodes in a closer
+         * physical proximity in order to reduce network latency between nodes.
+         */
         type: pulumi.Input<string>;
     }
 
@@ -16999,6 +17069,15 @@ export namespace container {
         mode: pulumi.Input<string>;
     }
 
+    export interface NodePoolPlacementPolicy {
+        /**
+         * The type of the policy. Supports a single value: COMPACT.
+         * Specifying COMPACT placement policy type places node pool's nodes in a closer
+         * physical proximity in order to reduce network latency between nodes.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface NodePoolUpgradeSettings {
         /**
          * The number of additional nodes that can be added to the node pool during
@@ -17013,6 +17092,7 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
+
 }
 
 export namespace containeranalysis {
@@ -21144,6 +21224,43 @@ export namespace dns {
         networkUrl: pulumi.Input<string>;
     }
 
+    export interface ResponsePolicyNetwork {
+        /**
+         * The fully qualified URL of the VPC network to bind to.
+         * This should be formatted like
+         * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+         */
+        networkUrl: pulumi.Input<string>;
+    }
+
+    export interface ResponsePolicyRuleLocalData {
+        /**
+         * All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+         * Structure is documented below.
+         */
+        localDatas: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyRuleLocalDataLocalData>[]>;
+    }
+
+    export interface ResponsePolicyRuleLocalDataLocalData {
+        /**
+         * For example, www.example.com.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+         */
+        rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Number of seconds that this ResourceRecordSet can be cached by
+         * resolvers.
+         */
+        ttl?: pulumi.Input<number>;
+        /**
+         * One of valid DNS resource types.
+         * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+         */
+        type: pulumi.Input<string>;
+    }
 }
 
 export namespace endpoints {
@@ -21182,7 +21299,7 @@ export namespace endpoints {
 export namespace eventarc {
     export interface TriggerDestination {
         /**
-         * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: projects/{project}/locations/{location}/functions/{function}
+         * [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
          */
         cloudFunction?: pulumi.Input<string>;
         /**
@@ -21231,7 +21348,7 @@ export namespace eventarc {
          */
         subscription?: pulumi.Input<string>;
         /**
-         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+         * Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
          */
         topic?: pulumi.Input<string>;
     }

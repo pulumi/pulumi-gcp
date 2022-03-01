@@ -72,6 +72,43 @@ import (
 // 	})
 // }
 // ```
+// ### Network Endpoint Group Non Gcp
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewNetwork(ctx, "default", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+// 			Network:             _default.ID(),
+// 			DefaultPort:         pulumi.Int(90),
+// 			Zone:                pulumi.String("us-central1-a"),
+// 			NetworkEndpointType: pulumi.String("NON_GCP_PRIVATE_IP_PORT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkEndpoint(ctx, "default-endpoint", &compute.NetworkEndpointArgs{
+// 			NetworkEndpointGroup: neg.Name,
+// 			Port:                 neg.DefaultPort,
+// 			IpAddress:            pulumi.String("127.0.0.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -113,8 +150,14 @@ type NetworkEndpointGroup struct {
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
+	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+	// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+	// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+	// CONNECTION balancing modes.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -179,8 +222,14 @@ type networkEndpointGroupState struct {
 	// Uses "default" project network if unspecified.
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
+	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+	// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+	// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+	// CONNECTION balancing modes.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -214,8 +263,14 @@ type NetworkEndpointGroupState struct {
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group.
+	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+	// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+	// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+	// CONNECTION balancing modes.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -253,8 +308,14 @@ type networkEndpointGroupArgs struct {
 	// Uses "default" project network if unspecified.
 	Network string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
+	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+	// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+	// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+	// CONNECTION balancing modes.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -285,8 +346,14 @@ type NetworkEndpointGroupArgs struct {
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringInput
 	// Type of network endpoints in this network endpoint group.
+	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
+	// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+	// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
+	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
+	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
+	// CONNECTION balancing modes.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

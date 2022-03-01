@@ -16,6 +16,7 @@ __all__ = ['DatasetAccessInitArgs', 'DatasetAccess']
 class DatasetAccessInitArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
+                 authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
                  iam_member: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,8 @@ class DatasetAccessInitArgs:
         """
         The set of arguments for constructing a DatasetAccess resource.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: The dataset this entry applies to
+               Structure is documented below.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
@@ -51,6 +54,8 @@ class DatasetAccessInitArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
+        if authorized_dataset is not None:
+            pulumi.set(__self__, "authorized_dataset", authorized_dataset)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
@@ -79,6 +84,19 @@ class DatasetAccessInitArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="authorizedDataset")
+    def authorized_dataset(self) -> Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]:
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorized_dataset")
+
+    @authorized_dataset.setter
+    def authorized_dataset(self, value: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]):
+        pulumi.set(self, "authorized_dataset", value)
 
     @property
     @pulumi.getter
@@ -195,6 +213,7 @@ class DatasetAccessInitArgs:
 class _DatasetAccessState:
     def __init__(__self__, *,
                  api_updated_member: Optional[pulumi.Input[bool]] = None,
+                 authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
@@ -208,6 +227,8 @@ class _DatasetAccessState:
         Input properties used for looking up and filtering DatasetAccess resources.
         :param pulumi.Input[bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
                stored in state as a different member type
+        :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: The dataset this entry applies to
+               Structure is documented below.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -234,6 +255,8 @@ class _DatasetAccessState:
         """
         if api_updated_member is not None:
             pulumi.set(__self__, "api_updated_member", api_updated_member)
+        if authorized_dataset is not None:
+            pulumi.set(__self__, "authorized_dataset", authorized_dataset)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
         if domain is not None:
@@ -265,6 +288,19 @@ class _DatasetAccessState:
     @api_updated_member.setter
     def api_updated_member(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "api_updated_member", value)
+
+    @property
+    @pulumi.getter(name="authorizedDataset")
+    def authorized_dataset(self) -> Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]:
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorized_dataset")
+
+    @authorized_dataset.setter
+    def authorized_dataset(self, value: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]):
+        pulumi.set(self, "authorized_dataset", value)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -394,6 +430,7 @@ class DatasetAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 authorized_dataset: Optional[pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
@@ -443,6 +480,24 @@ class DatasetAccess(pulumi.CustomResource):
                 table_id=public_table.table_id,
             ))
         ```
+        ### Bigquery Dataset Access Authorized Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        private = gcp.bigquery.Dataset("private", dataset_id="private")
+        public = gcp.bigquery.Dataset("public", dataset_id="public")
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=private.dataset_id,
+            authorized_dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetArgs(
+                dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetDatasetArgs(
+                    project_id=public.project,
+                    dataset_id=public.dataset_id,
+                ),
+                target_types=["VIEWS"],
+            ))
+        ```
 
         ## Import
 
@@ -450,6 +505,8 @@ class DatasetAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']] authorized_dataset: The dataset this entry applies to
+               Structure is documented below.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -519,6 +576,24 @@ class DatasetAccess(pulumi.CustomResource):
                 table_id=public_table.table_id,
             ))
         ```
+        ### Bigquery Dataset Access Authorized Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        private = gcp.bigquery.Dataset("private", dataset_id="private")
+        public = gcp.bigquery.Dataset("public", dataset_id="public")
+        access = gcp.bigquery.DatasetAccess("access",
+            dataset_id=private.dataset_id,
+            authorized_dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetArgs(
+                dataset=gcp.bigquery.DatasetAccessAuthorizedDatasetDatasetArgs(
+                    project_id=public.project,
+                    dataset_id=public.dataset_id,
+                ),
+                target_types=["VIEWS"],
+            ))
+        ```
 
         ## Import
 
@@ -539,6 +614,7 @@ class DatasetAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 authorized_dataset: Optional[pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
@@ -560,6 +636,7 @@ class DatasetAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetAccessInitArgs.__new__(DatasetAccessInitArgs)
 
+            __props__.__dict__["authorized_dataset"] = authorized_dataset
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
@@ -583,6 +660,7 @@ class DatasetAccess(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_updated_member: Optional[pulumi.Input[bool]] = None,
+            authorized_dataset: Optional[pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             group_by_email: Optional[pulumi.Input[str]] = None,
@@ -601,6 +679,8 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
                stored in state as a different member type
+        :param pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']] authorized_dataset: The dataset this entry applies to
+               Structure is documented below.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -630,6 +710,7 @@ class DatasetAccess(pulumi.CustomResource):
         __props__ = _DatasetAccessState.__new__(_DatasetAccessState)
 
         __props__.__dict__["api_updated_member"] = api_updated_member
+        __props__.__dict__["authorized_dataset"] = authorized_dataset
         __props__.__dict__["dataset_id"] = dataset_id
         __props__.__dict__["domain"] = domain
         __props__.__dict__["group_by_email"] = group_by_email
@@ -649,6 +730,15 @@ class DatasetAccess(pulumi.CustomResource):
         stored in state as a different member type
         """
         return pulumi.get(self, "api_updated_member")
+
+    @property
+    @pulumi.getter(name="authorizedDataset")
+    def authorized_dataset(self) -> pulumi.Output[Optional['outputs.DatasetAccessAuthorizedDataset']]:
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorized_dataset")
 
     @property
     @pulumi.getter(name="datasetId")

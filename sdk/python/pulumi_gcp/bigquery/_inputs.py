@@ -16,6 +16,10 @@ __all__ = [
     'DataTransferConfigScheduleOptionsArgs',
     'DataTransferConfigSensitiveParamsArgs',
     'DatasetAccessArgs',
+    'DatasetAccessAuthorizedDatasetArgs',
+    'DatasetAccessAuthorizedDatasetDatasetArgs',
+    'DatasetAccessDatasetArgs',
+    'DatasetAccessDatasetDatasetArgs',
     'DatasetAccessViewArgs',
     'DatasetDefaultEncryptionConfigurationArgs',
     'DatasetIamBindingConditionArgs',
@@ -331,6 +335,7 @@ class DataTransferConfigSensitiveParamsArgs:
 @pulumi.input_type
 class DatasetAccessArgs:
     def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input['DatasetAccessDatasetArgs']] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -338,6 +343,8 @@ class DatasetAccessArgs:
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
         """
+        :param pulumi.Input['DatasetAccessDatasetArgs'] dataset: The dataset this entry applies to
+               Structure is documented below.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
@@ -356,6 +363,8 @@ class DatasetAccessArgs:
                needs to be granted again via an update operation.
                Structure is documented below.
         """
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
@@ -368,6 +377,19 @@ class DatasetAccessArgs:
             pulumi.set(__self__, "user_by_email", user_by_email)
         if view is not None:
             pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['DatasetAccessDatasetArgs']]:
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['DatasetAccessDatasetArgs']]):
+        pulumi.set(self, "dataset", value)
 
     @property
     @pulumi.getter
@@ -451,6 +473,162 @@ class DatasetAccessArgs:
     @view.setter
     def view(self, value: Optional[pulumi.Input['DatasetAccessViewArgs']]):
         pulumi.set(self, "view", value)
+
+
+@pulumi.input_type
+class DatasetAccessAuthorizedDatasetArgs:
+    def __init__(__self__, *,
+                 dataset: pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgs'],
+                 target_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgs'] dataset: The dataset this entry applies to
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
+               but additional target types may be added in the future. Possible values: VIEWS
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "target_types", target_types)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgs']:
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgs']):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter(name="targetTypes")
+    def target_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Which resources in the dataset this entry applies to. Currently, only views are supported,
+        but additional target types may be added in the future. Possible values: VIEWS
+        """
+        return pulumi.get(self, "target_types")
+
+    @target_types.setter
+    def target_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "target_types", value)
+
+
+@pulumi.input_type
+class DatasetAccessAuthorizedDatasetDatasetArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] project_id: The ID of the project containing this table.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the dataset containing this table.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the project containing this table.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+
+@pulumi.input_type
+class DatasetAccessDatasetArgs:
+    def __init__(__self__, *,
+                 dataset: pulumi.Input['DatasetAccessDatasetDatasetArgs'],
+                 target_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input['DatasetAccessDatasetDatasetArgs'] dataset: The dataset this entry applies to
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
+               but additional target types may be added in the future. Possible values: VIEWS
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "target_types", target_types)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> pulumi.Input['DatasetAccessDatasetDatasetArgs']:
+        """
+        The dataset this entry applies to
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: pulumi.Input['DatasetAccessDatasetDatasetArgs']):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter(name="targetTypes")
+    def target_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Which resources in the dataset this entry applies to. Currently, only views are supported,
+        but additional target types may be added in the future. Possible values: VIEWS
+        """
+        return pulumi.get(self, "target_types")
+
+    @target_types.setter
+    def target_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "target_types", value)
+
+
+@pulumi.input_type
+class DatasetAccessDatasetDatasetArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] project_id: The ID of the project containing this table.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the dataset containing this table.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the project containing this table.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
 
 
 @pulumi.input_type

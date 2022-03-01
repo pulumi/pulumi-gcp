@@ -136,6 +136,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Instance { get; private set; } = null!;
 
         /// <summary>
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+        /// clusters are eligible.
+        /// </summary>
+        [Output("multiClusterRoutingClusterIds")]
+        public Output<ImmutableArray<string>> MultiClusterRoutingClusterIds { get; private set; } = null!;
+
+        /// <summary>
         /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
         /// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
         /// consistency to improve availability.
@@ -234,6 +241,19 @@ namespace Pulumi.Gcp.BigQuery
         [Input("instance")]
         public Input<string>? Instance { get; set; }
 
+        [Input("multiClusterRoutingClusterIds")]
+        private InputList<string>? _multiClusterRoutingClusterIds;
+
+        /// <summary>
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+        /// clusters are eligible.
+        /// </summary>
+        public InputList<string> MultiClusterRoutingClusterIds
+        {
+            get => _multiClusterRoutingClusterIds ?? (_multiClusterRoutingClusterIds = new InputList<string>());
+            set => _multiClusterRoutingClusterIds = value;
+        }
+
         /// <summary>
         /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
         /// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
@@ -286,6 +306,19 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
+
+        [Input("multiClusterRoutingClusterIds")]
+        private InputList<string>? _multiClusterRoutingClusterIds;
+
+        /// <summary>
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+        /// clusters are eligible.
+        /// </summary>
+        public InputList<string> MultiClusterRoutingClusterIds
+        {
+            get => _multiClusterRoutingClusterIds ?? (_multiClusterRoutingClusterIds = new InputList<string>());
+            set => _multiClusterRoutingClusterIds = value;
+        }
 
         /// <summary>
         /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available

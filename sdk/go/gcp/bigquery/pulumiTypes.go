@@ -1030,6 +1030,9 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.Str
 }
 
 type DatasetAccessType struct {
+	// The dataset this entry applies to
+	// Structure is documented below.
+	Dataset *DatasetAccessDataset `pulumi:"dataset"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
 	Domain *string `pulumi:"domain"`
@@ -1067,6 +1070,9 @@ type DatasetAccessTypeInput interface {
 }
 
 type DatasetAccessTypeArgs struct {
+	// The dataset this entry applies to
+	// Structure is documented below.
+	Dataset DatasetAccessDatasetPtrInput `pulumi:"dataset"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
@@ -1143,6 +1149,12 @@ func (o DatasetAccessTypeOutput) ToDatasetAccessTypeOutputWithContext(ctx contex
 	return o
 }
 
+// The dataset this entry applies to
+// Structure is documented below.
+func (o DatasetAccessTypeOutput) Dataset() DatasetAccessDatasetPtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *DatasetAccessDataset { return v.Dataset }).(DatasetAccessDatasetPtrOutput)
+}
+
 // A domain to grant access to. Any users signed in with the
 // domain specified will be granted the specified access
 func (o DatasetAccessTypeOutput) Domain() pulumi.StringPtrOutput {
@@ -1202,6 +1214,646 @@ func (o DatasetAccessTypeArrayOutput) Index(i pulumi.IntInput) DatasetAccessType
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessType {
 		return vs[0].([]DatasetAccessType)[vs[1].(int)]
 	}).(DatasetAccessTypeOutput)
+}
+
+type DatasetAccessAuthorizedDataset struct {
+	// The dataset this entry applies to
+	// Structure is documented below.
+	Dataset DatasetAccessAuthorizedDatasetDataset `pulumi:"dataset"`
+	// Which resources in the dataset this entry applies to. Currently, only views are supported,
+	// but additional target types may be added in the future. Possible values: VIEWS
+	TargetTypes []string `pulumi:"targetTypes"`
+}
+
+// DatasetAccessAuthorizedDatasetInput is an input type that accepts DatasetAccessAuthorizedDatasetArgs and DatasetAccessAuthorizedDatasetOutput values.
+// You can construct a concrete instance of `DatasetAccessAuthorizedDatasetInput` via:
+//
+//          DatasetAccessAuthorizedDatasetArgs{...}
+type DatasetAccessAuthorizedDatasetInput interface {
+	pulumi.Input
+
+	ToDatasetAccessAuthorizedDatasetOutput() DatasetAccessAuthorizedDatasetOutput
+	ToDatasetAccessAuthorizedDatasetOutputWithContext(context.Context) DatasetAccessAuthorizedDatasetOutput
+}
+
+type DatasetAccessAuthorizedDatasetArgs struct {
+	// The dataset this entry applies to
+	// Structure is documented below.
+	Dataset DatasetAccessAuthorizedDatasetDatasetInput `pulumi:"dataset"`
+	// Which resources in the dataset this entry applies to. Currently, only views are supported,
+	// but additional target types may be added in the future. Possible values: VIEWS
+	TargetTypes pulumi.StringArrayInput `pulumi:"targetTypes"`
+}
+
+func (DatasetAccessAuthorizedDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessAuthorizedDataset)(nil)).Elem()
+}
+
+func (i DatasetAccessAuthorizedDatasetArgs) ToDatasetAccessAuthorizedDatasetOutput() DatasetAccessAuthorizedDatasetOutput {
+	return i.ToDatasetAccessAuthorizedDatasetOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessAuthorizedDatasetArgs) ToDatasetAccessAuthorizedDatasetOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessAuthorizedDatasetOutput)
+}
+
+func (i DatasetAccessAuthorizedDatasetArgs) ToDatasetAccessAuthorizedDatasetPtrOutput() DatasetAccessAuthorizedDatasetPtrOutput {
+	return i.ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessAuthorizedDatasetArgs) ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessAuthorizedDatasetOutput).ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(ctx)
+}
+
+// DatasetAccessAuthorizedDatasetPtrInput is an input type that accepts DatasetAccessAuthorizedDatasetArgs, DatasetAccessAuthorizedDatasetPtr and DatasetAccessAuthorizedDatasetPtrOutput values.
+// You can construct a concrete instance of `DatasetAccessAuthorizedDatasetPtrInput` via:
+//
+//          DatasetAccessAuthorizedDatasetArgs{...}
+//
+//  or:
+//
+//          nil
+type DatasetAccessAuthorizedDatasetPtrInput interface {
+	pulumi.Input
+
+	ToDatasetAccessAuthorizedDatasetPtrOutput() DatasetAccessAuthorizedDatasetPtrOutput
+	ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(context.Context) DatasetAccessAuthorizedDatasetPtrOutput
+}
+
+type datasetAccessAuthorizedDatasetPtrType DatasetAccessAuthorizedDatasetArgs
+
+func DatasetAccessAuthorizedDatasetPtr(v *DatasetAccessAuthorizedDatasetArgs) DatasetAccessAuthorizedDatasetPtrInput {
+	return (*datasetAccessAuthorizedDatasetPtrType)(v)
+}
+
+func (*datasetAccessAuthorizedDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessAuthorizedDataset)(nil)).Elem()
+}
+
+func (i *datasetAccessAuthorizedDatasetPtrType) ToDatasetAccessAuthorizedDatasetPtrOutput() DatasetAccessAuthorizedDatasetPtrOutput {
+	return i.ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetAccessAuthorizedDatasetPtrType) ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessAuthorizedDatasetPtrOutput)
+}
+
+type DatasetAccessAuthorizedDatasetOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessAuthorizedDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessAuthorizedDataset)(nil)).Elem()
+}
+
+func (o DatasetAccessAuthorizedDatasetOutput) ToDatasetAccessAuthorizedDatasetOutput() DatasetAccessAuthorizedDatasetOutput {
+	return o
+}
+
+func (o DatasetAccessAuthorizedDatasetOutput) ToDatasetAccessAuthorizedDatasetOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetOutput {
+	return o
+}
+
+func (o DatasetAccessAuthorizedDatasetOutput) ToDatasetAccessAuthorizedDatasetPtrOutput() DatasetAccessAuthorizedDatasetPtrOutput {
+	return o.ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessAuthorizedDatasetOutput) ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessAuthorizedDataset) *DatasetAccessAuthorizedDataset {
+		return &v
+	}).(DatasetAccessAuthorizedDatasetPtrOutput)
+}
+
+// The dataset this entry applies to
+// Structure is documented below.
+func (o DatasetAccessAuthorizedDatasetOutput) Dataset() DatasetAccessAuthorizedDatasetDatasetOutput {
+	return o.ApplyT(func(v DatasetAccessAuthorizedDataset) DatasetAccessAuthorizedDatasetDataset { return v.Dataset }).(DatasetAccessAuthorizedDatasetDatasetOutput)
+}
+
+// Which resources in the dataset this entry applies to. Currently, only views are supported,
+// but additional target types may be added in the future. Possible values: VIEWS
+func (o DatasetAccessAuthorizedDatasetOutput) TargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatasetAccessAuthorizedDataset) []string { return v.TargetTypes }).(pulumi.StringArrayOutput)
+}
+
+type DatasetAccessAuthorizedDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessAuthorizedDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessAuthorizedDataset)(nil)).Elem()
+}
+
+func (o DatasetAccessAuthorizedDatasetPtrOutput) ToDatasetAccessAuthorizedDatasetPtrOutput() DatasetAccessAuthorizedDatasetPtrOutput {
+	return o
+}
+
+func (o DatasetAccessAuthorizedDatasetPtrOutput) ToDatasetAccessAuthorizedDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetPtrOutput {
+	return o
+}
+
+func (o DatasetAccessAuthorizedDatasetPtrOutput) Elem() DatasetAccessAuthorizedDatasetOutput {
+	return o.ApplyT(func(v *DatasetAccessAuthorizedDataset) DatasetAccessAuthorizedDataset {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessAuthorizedDataset
+		return ret
+	}).(DatasetAccessAuthorizedDatasetOutput)
+}
+
+// The dataset this entry applies to
+// Structure is documented below.
+func (o DatasetAccessAuthorizedDatasetPtrOutput) Dataset() DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessAuthorizedDataset) *DatasetAccessAuthorizedDatasetDataset {
+		if v == nil {
+			return nil
+		}
+		return &v.Dataset
+	}).(DatasetAccessAuthorizedDatasetDatasetPtrOutput)
+}
+
+// Which resources in the dataset this entry applies to. Currently, only views are supported,
+// but additional target types may be added in the future. Possible values: VIEWS
+func (o DatasetAccessAuthorizedDatasetPtrOutput) TargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatasetAccessAuthorizedDataset) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type DatasetAccessAuthorizedDatasetDataset struct {
+	// The ID of the dataset containing this table.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this table.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// DatasetAccessAuthorizedDatasetDatasetInput is an input type that accepts DatasetAccessAuthorizedDatasetDatasetArgs and DatasetAccessAuthorizedDatasetDatasetOutput values.
+// You can construct a concrete instance of `DatasetAccessAuthorizedDatasetDatasetInput` via:
+//
+//          DatasetAccessAuthorizedDatasetDatasetArgs{...}
+type DatasetAccessAuthorizedDatasetDatasetInput interface {
+	pulumi.Input
+
+	ToDatasetAccessAuthorizedDatasetDatasetOutput() DatasetAccessAuthorizedDatasetDatasetOutput
+	ToDatasetAccessAuthorizedDatasetDatasetOutputWithContext(context.Context) DatasetAccessAuthorizedDatasetDatasetOutput
+}
+
+type DatasetAccessAuthorizedDatasetDatasetArgs struct {
+	// The ID of the dataset containing this table.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this table.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (DatasetAccessAuthorizedDatasetDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessAuthorizedDatasetDataset)(nil)).Elem()
+}
+
+func (i DatasetAccessAuthorizedDatasetDatasetArgs) ToDatasetAccessAuthorizedDatasetDatasetOutput() DatasetAccessAuthorizedDatasetDatasetOutput {
+	return i.ToDatasetAccessAuthorizedDatasetDatasetOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessAuthorizedDatasetDatasetArgs) ToDatasetAccessAuthorizedDatasetDatasetOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessAuthorizedDatasetDatasetOutput)
+}
+
+func (i DatasetAccessAuthorizedDatasetDatasetArgs) ToDatasetAccessAuthorizedDatasetDatasetPtrOutput() DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return i.ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessAuthorizedDatasetDatasetArgs) ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessAuthorizedDatasetDatasetOutput).ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(ctx)
+}
+
+// DatasetAccessAuthorizedDatasetDatasetPtrInput is an input type that accepts DatasetAccessAuthorizedDatasetDatasetArgs, DatasetAccessAuthorizedDatasetDatasetPtr and DatasetAccessAuthorizedDatasetDatasetPtrOutput values.
+// You can construct a concrete instance of `DatasetAccessAuthorizedDatasetDatasetPtrInput` via:
+//
+//          DatasetAccessAuthorizedDatasetDatasetArgs{...}
+//
+//  or:
+//
+//          nil
+type DatasetAccessAuthorizedDatasetDatasetPtrInput interface {
+	pulumi.Input
+
+	ToDatasetAccessAuthorizedDatasetDatasetPtrOutput() DatasetAccessAuthorizedDatasetDatasetPtrOutput
+	ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(context.Context) DatasetAccessAuthorizedDatasetDatasetPtrOutput
+}
+
+type datasetAccessAuthorizedDatasetDatasetPtrType DatasetAccessAuthorizedDatasetDatasetArgs
+
+func DatasetAccessAuthorizedDatasetDatasetPtr(v *DatasetAccessAuthorizedDatasetDatasetArgs) DatasetAccessAuthorizedDatasetDatasetPtrInput {
+	return (*datasetAccessAuthorizedDatasetDatasetPtrType)(v)
+}
+
+func (*datasetAccessAuthorizedDatasetDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessAuthorizedDatasetDataset)(nil)).Elem()
+}
+
+func (i *datasetAccessAuthorizedDatasetDatasetPtrType) ToDatasetAccessAuthorizedDatasetDatasetPtrOutput() DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return i.ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetAccessAuthorizedDatasetDatasetPtrType) ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessAuthorizedDatasetDatasetPtrOutput)
+}
+
+type DatasetAccessAuthorizedDatasetDatasetOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessAuthorizedDatasetDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessAuthorizedDatasetDataset)(nil)).Elem()
+}
+
+func (o DatasetAccessAuthorizedDatasetDatasetOutput) ToDatasetAccessAuthorizedDatasetDatasetOutput() DatasetAccessAuthorizedDatasetDatasetOutput {
+	return o
+}
+
+func (o DatasetAccessAuthorizedDatasetDatasetOutput) ToDatasetAccessAuthorizedDatasetDatasetOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetDatasetOutput {
+	return o
+}
+
+func (o DatasetAccessAuthorizedDatasetDatasetOutput) ToDatasetAccessAuthorizedDatasetDatasetPtrOutput() DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return o.ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessAuthorizedDatasetDatasetOutput) ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessAuthorizedDatasetDataset) *DatasetAccessAuthorizedDatasetDataset {
+		return &v
+	}).(DatasetAccessAuthorizedDatasetDatasetPtrOutput)
+}
+
+// The ID of the dataset containing this table.
+func (o DatasetAccessAuthorizedDatasetDatasetOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessAuthorizedDatasetDataset) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this table.
+func (o DatasetAccessAuthorizedDatasetDatasetOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessAuthorizedDatasetDataset) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type DatasetAccessAuthorizedDatasetDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessAuthorizedDatasetDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessAuthorizedDatasetDataset)(nil)).Elem()
+}
+
+func (o DatasetAccessAuthorizedDatasetDatasetPtrOutput) ToDatasetAccessAuthorizedDatasetDatasetPtrOutput() DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return o
+}
+
+func (o DatasetAccessAuthorizedDatasetDatasetPtrOutput) ToDatasetAccessAuthorizedDatasetDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessAuthorizedDatasetDatasetPtrOutput {
+	return o
+}
+
+func (o DatasetAccessAuthorizedDatasetDatasetPtrOutput) Elem() DatasetAccessAuthorizedDatasetDatasetOutput {
+	return o.ApplyT(func(v *DatasetAccessAuthorizedDatasetDataset) DatasetAccessAuthorizedDatasetDataset {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessAuthorizedDatasetDataset
+		return ret
+	}).(DatasetAccessAuthorizedDatasetDatasetOutput)
+}
+
+// The ID of the dataset containing this table.
+func (o DatasetAccessAuthorizedDatasetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessAuthorizedDatasetDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this table.
+func (o DatasetAccessAuthorizedDatasetDatasetPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessAuthorizedDatasetDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatasetAccessDataset struct {
+	// The dataset this entry applies to
+	// Structure is documented below.
+	Dataset DatasetAccessDatasetDataset `pulumi:"dataset"`
+	// Which resources in the dataset this entry applies to. Currently, only views are supported,
+	// but additional target types may be added in the future. Possible values: VIEWS
+	TargetTypes []string `pulumi:"targetTypes"`
+}
+
+// DatasetAccessDatasetInput is an input type that accepts DatasetAccessDatasetArgs and DatasetAccessDatasetOutput values.
+// You can construct a concrete instance of `DatasetAccessDatasetInput` via:
+//
+//          DatasetAccessDatasetArgs{...}
+type DatasetAccessDatasetInput interface {
+	pulumi.Input
+
+	ToDatasetAccessDatasetOutput() DatasetAccessDatasetOutput
+	ToDatasetAccessDatasetOutputWithContext(context.Context) DatasetAccessDatasetOutput
+}
+
+type DatasetAccessDatasetArgs struct {
+	// The dataset this entry applies to
+	// Structure is documented below.
+	Dataset DatasetAccessDatasetDatasetInput `pulumi:"dataset"`
+	// Which resources in the dataset this entry applies to. Currently, only views are supported,
+	// but additional target types may be added in the future. Possible values: VIEWS
+	TargetTypes pulumi.StringArrayInput `pulumi:"targetTypes"`
+}
+
+func (DatasetAccessDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessDataset)(nil)).Elem()
+}
+
+func (i DatasetAccessDatasetArgs) ToDatasetAccessDatasetOutput() DatasetAccessDatasetOutput {
+	return i.ToDatasetAccessDatasetOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessDatasetArgs) ToDatasetAccessDatasetOutputWithContext(ctx context.Context) DatasetAccessDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessDatasetOutput)
+}
+
+func (i DatasetAccessDatasetArgs) ToDatasetAccessDatasetPtrOutput() DatasetAccessDatasetPtrOutput {
+	return i.ToDatasetAccessDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessDatasetArgs) ToDatasetAccessDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessDatasetOutput).ToDatasetAccessDatasetPtrOutputWithContext(ctx)
+}
+
+// DatasetAccessDatasetPtrInput is an input type that accepts DatasetAccessDatasetArgs, DatasetAccessDatasetPtr and DatasetAccessDatasetPtrOutput values.
+// You can construct a concrete instance of `DatasetAccessDatasetPtrInput` via:
+//
+//          DatasetAccessDatasetArgs{...}
+//
+//  or:
+//
+//          nil
+type DatasetAccessDatasetPtrInput interface {
+	pulumi.Input
+
+	ToDatasetAccessDatasetPtrOutput() DatasetAccessDatasetPtrOutput
+	ToDatasetAccessDatasetPtrOutputWithContext(context.Context) DatasetAccessDatasetPtrOutput
+}
+
+type datasetAccessDatasetPtrType DatasetAccessDatasetArgs
+
+func DatasetAccessDatasetPtr(v *DatasetAccessDatasetArgs) DatasetAccessDatasetPtrInput {
+	return (*datasetAccessDatasetPtrType)(v)
+}
+
+func (*datasetAccessDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessDataset)(nil)).Elem()
+}
+
+func (i *datasetAccessDatasetPtrType) ToDatasetAccessDatasetPtrOutput() DatasetAccessDatasetPtrOutput {
+	return i.ToDatasetAccessDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetAccessDatasetPtrType) ToDatasetAccessDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessDatasetPtrOutput)
+}
+
+type DatasetAccessDatasetOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessDataset)(nil)).Elem()
+}
+
+func (o DatasetAccessDatasetOutput) ToDatasetAccessDatasetOutput() DatasetAccessDatasetOutput {
+	return o
+}
+
+func (o DatasetAccessDatasetOutput) ToDatasetAccessDatasetOutputWithContext(ctx context.Context) DatasetAccessDatasetOutput {
+	return o
+}
+
+func (o DatasetAccessDatasetOutput) ToDatasetAccessDatasetPtrOutput() DatasetAccessDatasetPtrOutput {
+	return o.ToDatasetAccessDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessDatasetOutput) ToDatasetAccessDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessDataset) *DatasetAccessDataset {
+		return &v
+	}).(DatasetAccessDatasetPtrOutput)
+}
+
+// The dataset this entry applies to
+// Structure is documented below.
+func (o DatasetAccessDatasetOutput) Dataset() DatasetAccessDatasetDatasetOutput {
+	return o.ApplyT(func(v DatasetAccessDataset) DatasetAccessDatasetDataset { return v.Dataset }).(DatasetAccessDatasetDatasetOutput)
+}
+
+// Which resources in the dataset this entry applies to. Currently, only views are supported,
+// but additional target types may be added in the future. Possible values: VIEWS
+func (o DatasetAccessDatasetOutput) TargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatasetAccessDataset) []string { return v.TargetTypes }).(pulumi.StringArrayOutput)
+}
+
+type DatasetAccessDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessDataset)(nil)).Elem()
+}
+
+func (o DatasetAccessDatasetPtrOutput) ToDatasetAccessDatasetPtrOutput() DatasetAccessDatasetPtrOutput {
+	return o
+}
+
+func (o DatasetAccessDatasetPtrOutput) ToDatasetAccessDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessDatasetPtrOutput {
+	return o
+}
+
+func (o DatasetAccessDatasetPtrOutput) Elem() DatasetAccessDatasetOutput {
+	return o.ApplyT(func(v *DatasetAccessDataset) DatasetAccessDataset {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessDataset
+		return ret
+	}).(DatasetAccessDatasetOutput)
+}
+
+// The dataset this entry applies to
+// Structure is documented below.
+func (o DatasetAccessDatasetPtrOutput) Dataset() DatasetAccessDatasetDatasetPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessDataset) *DatasetAccessDatasetDataset {
+		if v == nil {
+			return nil
+		}
+		return &v.Dataset
+	}).(DatasetAccessDatasetDatasetPtrOutput)
+}
+
+// Which resources in the dataset this entry applies to. Currently, only views are supported,
+// but additional target types may be added in the future. Possible values: VIEWS
+func (o DatasetAccessDatasetPtrOutput) TargetTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatasetAccessDataset) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type DatasetAccessDatasetDataset struct {
+	// The ID of the dataset containing this table.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this table.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// DatasetAccessDatasetDatasetInput is an input type that accepts DatasetAccessDatasetDatasetArgs and DatasetAccessDatasetDatasetOutput values.
+// You can construct a concrete instance of `DatasetAccessDatasetDatasetInput` via:
+//
+//          DatasetAccessDatasetDatasetArgs{...}
+type DatasetAccessDatasetDatasetInput interface {
+	pulumi.Input
+
+	ToDatasetAccessDatasetDatasetOutput() DatasetAccessDatasetDatasetOutput
+	ToDatasetAccessDatasetDatasetOutputWithContext(context.Context) DatasetAccessDatasetDatasetOutput
+}
+
+type DatasetAccessDatasetDatasetArgs struct {
+	// The ID of the dataset containing this table.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this table.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (DatasetAccessDatasetDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessDatasetDataset)(nil)).Elem()
+}
+
+func (i DatasetAccessDatasetDatasetArgs) ToDatasetAccessDatasetDatasetOutput() DatasetAccessDatasetDatasetOutput {
+	return i.ToDatasetAccessDatasetDatasetOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessDatasetDatasetArgs) ToDatasetAccessDatasetDatasetOutputWithContext(ctx context.Context) DatasetAccessDatasetDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessDatasetDatasetOutput)
+}
+
+func (i DatasetAccessDatasetDatasetArgs) ToDatasetAccessDatasetDatasetPtrOutput() DatasetAccessDatasetDatasetPtrOutput {
+	return i.ToDatasetAccessDatasetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessDatasetDatasetArgs) ToDatasetAccessDatasetDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessDatasetDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessDatasetDatasetOutput).ToDatasetAccessDatasetDatasetPtrOutputWithContext(ctx)
+}
+
+// DatasetAccessDatasetDatasetPtrInput is an input type that accepts DatasetAccessDatasetDatasetArgs, DatasetAccessDatasetDatasetPtr and DatasetAccessDatasetDatasetPtrOutput values.
+// You can construct a concrete instance of `DatasetAccessDatasetDatasetPtrInput` via:
+//
+//          DatasetAccessDatasetDatasetArgs{...}
+//
+//  or:
+//
+//          nil
+type DatasetAccessDatasetDatasetPtrInput interface {
+	pulumi.Input
+
+	ToDatasetAccessDatasetDatasetPtrOutput() DatasetAccessDatasetDatasetPtrOutput
+	ToDatasetAccessDatasetDatasetPtrOutputWithContext(context.Context) DatasetAccessDatasetDatasetPtrOutput
+}
+
+type datasetAccessDatasetDatasetPtrType DatasetAccessDatasetDatasetArgs
+
+func DatasetAccessDatasetDatasetPtr(v *DatasetAccessDatasetDatasetArgs) DatasetAccessDatasetDatasetPtrInput {
+	return (*datasetAccessDatasetDatasetPtrType)(v)
+}
+
+func (*datasetAccessDatasetDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessDatasetDataset)(nil)).Elem()
+}
+
+func (i *datasetAccessDatasetDatasetPtrType) ToDatasetAccessDatasetDatasetPtrOutput() DatasetAccessDatasetDatasetPtrOutput {
+	return i.ToDatasetAccessDatasetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetAccessDatasetDatasetPtrType) ToDatasetAccessDatasetDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessDatasetDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessDatasetDatasetPtrOutput)
+}
+
+type DatasetAccessDatasetDatasetOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessDatasetDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessDatasetDataset)(nil)).Elem()
+}
+
+func (o DatasetAccessDatasetDatasetOutput) ToDatasetAccessDatasetDatasetOutput() DatasetAccessDatasetDatasetOutput {
+	return o
+}
+
+func (o DatasetAccessDatasetDatasetOutput) ToDatasetAccessDatasetDatasetOutputWithContext(ctx context.Context) DatasetAccessDatasetDatasetOutput {
+	return o
+}
+
+func (o DatasetAccessDatasetDatasetOutput) ToDatasetAccessDatasetDatasetPtrOutput() DatasetAccessDatasetDatasetPtrOutput {
+	return o.ToDatasetAccessDatasetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessDatasetDatasetOutput) ToDatasetAccessDatasetDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessDatasetDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessDatasetDataset) *DatasetAccessDatasetDataset {
+		return &v
+	}).(DatasetAccessDatasetDatasetPtrOutput)
+}
+
+// The ID of the dataset containing this table.
+func (o DatasetAccessDatasetDatasetOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessDatasetDataset) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this table.
+func (o DatasetAccessDatasetDatasetOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessDatasetDataset) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type DatasetAccessDatasetDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessDatasetDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessDatasetDataset)(nil)).Elem()
+}
+
+func (o DatasetAccessDatasetDatasetPtrOutput) ToDatasetAccessDatasetDatasetPtrOutput() DatasetAccessDatasetDatasetPtrOutput {
+	return o
+}
+
+func (o DatasetAccessDatasetDatasetPtrOutput) ToDatasetAccessDatasetDatasetPtrOutputWithContext(ctx context.Context) DatasetAccessDatasetDatasetPtrOutput {
+	return o
+}
+
+func (o DatasetAccessDatasetDatasetPtrOutput) Elem() DatasetAccessDatasetDatasetOutput {
+	return o.ApplyT(func(v *DatasetAccessDatasetDataset) DatasetAccessDatasetDataset {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessDatasetDataset
+		return ret
+	}).(DatasetAccessDatasetDatasetOutput)
+}
+
+// The ID of the dataset containing this table.
+func (o DatasetAccessDatasetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessDatasetDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this table.
+func (o DatasetAccessDatasetDatasetPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessDatasetDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatasetAccessView struct {
@@ -8862,6 +9514,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsPtrInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessTypeInput)(nil)).Elem(), DatasetAccessTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessTypeArrayInput)(nil)).Elem(), DatasetAccessTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessAuthorizedDatasetInput)(nil)).Elem(), DatasetAccessAuthorizedDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessAuthorizedDatasetPtrInput)(nil)).Elem(), DatasetAccessAuthorizedDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessAuthorizedDatasetDatasetInput)(nil)).Elem(), DatasetAccessAuthorizedDatasetDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessAuthorizedDatasetDatasetPtrInput)(nil)).Elem(), DatasetAccessAuthorizedDatasetDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetInput)(nil)).Elem(), DatasetAccessDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetPtrInput)(nil)).Elem(), DatasetAccessDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetDatasetInput)(nil)).Elem(), DatasetAccessDatasetDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetDatasetPtrInput)(nil)).Elem(), DatasetAccessDatasetDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessViewInput)(nil)).Elem(), DatasetAccessViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessViewPtrInput)(nil)).Elem(), DatasetAccessViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDefaultEncryptionConfigurationInput)(nil)).Elem(), DatasetDefaultEncryptionConfigurationArgs{})
@@ -8950,6 +9610,14 @@ func init() {
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeArrayOutput{})
+	pulumi.RegisterOutputType(DatasetAccessAuthorizedDatasetOutput{})
+	pulumi.RegisterOutputType(DatasetAccessAuthorizedDatasetPtrOutput{})
+	pulumi.RegisterOutputType(DatasetAccessAuthorizedDatasetDatasetOutput{})
+	pulumi.RegisterOutputType(DatasetAccessAuthorizedDatasetDatasetPtrOutput{})
+	pulumi.RegisterOutputType(DatasetAccessDatasetOutput{})
+	pulumi.RegisterOutputType(DatasetAccessDatasetPtrOutput{})
+	pulumi.RegisterOutputType(DatasetAccessDatasetDatasetOutput{})
+	pulumi.RegisterOutputType(DatasetAccessDatasetDatasetPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessViewOutput{})
 	pulumi.RegisterOutputType(DatasetAccessViewPtrOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationOutput{})

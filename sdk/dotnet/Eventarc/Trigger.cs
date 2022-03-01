@@ -145,7 +145,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<ImmutableArray<Outputs.TriggerMatchingCriteria>> MatchingCriterias { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// Required. The resource name of the trigger. Must be unique within the location on the project.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// Required. The resource name of the trigger. Must be unique within the location on the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// Required. The resource name of the trigger. Must be unique within the location on the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

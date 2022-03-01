@@ -745,6 +745,149 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Global Forwarding Rule Hybrid
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Roughly mirrors https://cloud.google.com/load-balancing/docs/https/setting-up-ext-https-hybrid
+    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         // Zonal NEG with GCE_VM_IP_PORT
+    ///         var defaultNetworkEndpointGroup = new Gcp.Compute.NetworkEndpointGroup("defaultNetworkEndpointGroup", new Gcp.Compute.NetworkEndpointGroupArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///             DefaultPort = 90,
+    ///             Zone = "us-central1-a",
+    ///             NetworkEndpointType = "GCE_VM_IP_PORT",
+    ///         });
+    ///         // Hybrid connectivity NEG
+    ///         var hybridNetworkEndpointGroup = new Gcp.Compute.NetworkEndpointGroup("hybridNetworkEndpointGroup", new Gcp.Compute.NetworkEndpointGroupArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///             DefaultPort = 90,
+    ///             Zone = "us-central1-a",
+    ///             NetworkEndpointType = "NON_GCP_PRIVATE_IP_PORT",
+    ///         });
+    ///         var hybrid_endpoint = new Gcp.Compute.NetworkEndpoint("hybrid-endpoint", new Gcp.Compute.NetworkEndpointArgs
+    ///         {
+    ///             NetworkEndpointGroup = hybridNetworkEndpointGroup.Name,
+    ///             Port = hybridNetworkEndpointGroup.DefaultPort,
+    ///             IpAddress = "127.0.0.1",
+    ///         });
+    ///         var defaultHealthCheck = new Gcp.Compute.HealthCheck("defaultHealthCheck", new Gcp.Compute.HealthCheckArgs
+    ///         {
+    ///             TimeoutSec = 1,
+    ///             CheckIntervalSec = 1,
+    ///             TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         // Backend service for Zonal NEG
+    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             PortName = "http",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///                 {
+    ///                     Group = defaultNetworkEndpointGroup.Id,
+    ///                     BalancingMode = "RATE",
+    ///                     MaxRatePerEndpoint = 10,
+    ///                 },
+    ///             },
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHealthCheck.Id,
+    ///             },
+    ///         });
+    ///         // Backgend service for Hybrid NEG
+    ///         var hybridBackendService = new Gcp.Compute.BackendService("hybridBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             PortName = "http",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///                 {
+    ///                     Group = hybridNetworkEndpointGroup.Id,
+    ///                     BalancingMode = "RATE",
+    ///                     MaxRatePerEndpoint = 10,
+    ///                 },
+    ///             },
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHealthCheck.Id,
+    ///             },
+    ///         });
+    ///         var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new Gcp.Compute.URLMapArgs
+    ///         {
+    ///             Description = "a description",
+    ///             DefaultService = defaultBackendService.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = defaultBackendService.Id,
+    ///                     PathRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/*",
+    ///                             },
+    ///                             Service = defaultBackendService.Id,
+    ///                         },
+    ///                         new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/hybrid",
+    ///                             },
+    ///                             Service = hybridBackendService.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var defaultTargetHttpProxy = new Gcp.Compute.TargetHttpProxy("defaultTargetHttpProxy", new Gcp.Compute.TargetHttpProxyArgs
+    ///         {
+    ///             Description = "a description",
+    ///             UrlMap = defaultURLMap.Id,
+    ///         });
+    ///         var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
+    ///         {
+    ///             Target = defaultTargetHttpProxy.Id,
+    ///             PortRange = "80",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Private Service Connect Google Apis
     /// ### Private Service Connect Google Apis
     /// 
     /// ```csharp

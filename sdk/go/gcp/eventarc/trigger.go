@@ -116,7 +116,7 @@ type Trigger struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayOutput `pulumi:"matchingCriterias"`
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// Required. The resource name of the trigger. Must be unique within the location on the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -182,7 +182,7 @@ type triggerState struct {
 	Location *string `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias []TriggerMatchingCriteria `pulumi:"matchingCriterias"`
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// Required. The resource name of the trigger. Must be unique within the location on the project.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -211,7 +211,7 @@ type TriggerState struct {
 	Location pulumi.StringPtrInput
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayInput
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// Required. The resource name of the trigger. Must be unique within the location on the project.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -239,7 +239,7 @@ type triggerArgs struct {
 	Location string `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias []TriggerMatchingCriteria `pulumi:"matchingCriterias"`
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// Required. The resource name of the trigger. Must be unique within the location on the project.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -259,7 +259,7 @@ type TriggerArgs struct {
 	Location pulumi.StringInput
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayInput
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// Required. The resource name of the trigger. Must be unique within the location on the project.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput

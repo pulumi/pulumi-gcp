@@ -122,6 +122,11 @@ export class AppProfile extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string | undefined>;
     /**
+     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+     * clusters are eligible.
+     */
+    public readonly multiClusterRoutingClusterIds!: pulumi.Output<string[] | undefined>;
+    /**
      * If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
      * in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
      * consistency to improve availability.
@@ -160,6 +165,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ignoreWarnings"] = state ? state.ignoreWarnings : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["multiClusterRoutingClusterIds"] = state ? state.multiClusterRoutingClusterIds : undefined;
             resourceInputs["multiClusterRoutingUseAny"] = state ? state.multiClusterRoutingUseAny : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -173,6 +179,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["multiClusterRoutingClusterIds"] = args ? args.multiClusterRoutingClusterIds : undefined;
             resourceInputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
@@ -203,6 +210,11 @@ export interface AppProfileState {
      * The name of the instance to create the app profile within.
      */
     instance?: pulumi.Input<string>;
+    /**
+     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+     * clusters are eligible.
+     */
+    multiClusterRoutingClusterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
      * in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
@@ -246,6 +258,11 @@ export interface AppProfileArgs {
      * The name of the instance to create the app profile within.
      */
     instance?: pulumi.Input<string>;
+    /**
+     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
+     * clusters are eligible.
+     */
+    multiClusterRoutingClusterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
      * in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes

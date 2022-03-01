@@ -551,6 +551,61 @@ class Dataset(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
+        ### Bigquery Dataset Authorized Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        public = gcp.bigquery.Dataset("public",
+            dataset_id="public",
+            friendly_name="test",
+            description="This dataset is public",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+            ])
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="private",
+            friendly_name="test",
+            description="This dataset is private",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
+                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
+                            project_id=public.project,
+                            dataset_id=public.dataset_id,
+                        ),
+                        target_types=["VIEWS"],
+                    ),
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -645,6 +700,61 @@ class Dataset(pulumi.CustomResource):
             default_encryption_configuration=gcp.bigquery.DatasetDefaultEncryptionConfigurationArgs(
                 kms_key_name=crypto_key.id,
             ))
+        ```
+        ### Bigquery Dataset Authorized Dataset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        public = gcp.bigquery.Dataset("public",
+            dataset_id="public",
+            friendly_name="test",
+            description="This dataset is public",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+            ])
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="private",
+            friendly_name="test",
+            description="This dataset is private",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email=bqowner.email,
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    role="READER",
+                    domain="hashicorp.com",
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    dataset=gcp.bigquery.DatasetAccessDatasetArgs(
+                        dataset=gcp.bigquery.DatasetAccessDatasetDatasetArgs(
+                            project_id=public.project,
+                            dataset_id=public.dataset_id,
+                        ),
+                        target_types=["VIEWS"],
+                    ),
+                ),
+            ])
         ```
 
         ## Import
