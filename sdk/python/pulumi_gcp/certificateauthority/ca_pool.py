@@ -406,6 +406,93 @@ class CaPool(pulumi.CustomResource):
             ),
             tier="ENTERPRISE")
         ```
+        ### Privateca Quickstart
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_tls as tls
+
+        example_private_key = tls.PrivateKey("examplePrivateKey", algorithm="RSA")
+        example_cert_request = tls.CertRequest("exampleCertRequest",
+            key_algorithm="RSA",
+            private_key_pem=example_private_key.private_key_pem,
+            subjects=[tls.CertRequestSubjectArgs(
+                common_name="example.com",
+                organization="ACME Examples, Inc",
+            )])
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            project="project-id",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=True,
+                publish_crl=True,
+            ),
+            labels={
+                "foo": "bar",
+            },
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                        is_ca=False,
+                    ),
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(
+                            digital_signature=True,
+                            key_encipherment=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ))
+        test_ca = gcp.certificateauthority.Authority("test-ca",
+            certificate_authority_id="my-authority",
+            location="us-central1",
+            project="project-id",
+            pool=google_privateca_ca_pool["pool"]["name"],
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        country_code="us",
+                        organization="google",
+                        organizational_unit="enterprise",
+                        locality="mountain view",
+                        province="california",
+                        street_address="1600 amphitheatre parkway",
+                        postal_code="94109",
+                        common_name="my-certificate-authority",
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            type="SELF_SIGNED",
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ))
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
+            pool=google_privateca_ca_pool["pool"]["name"],
+            certificate_authority=test_ca.certificate_authority_id,
+            project="project-id",
+            location="us-central1",
+            lifetime="860s",
+            pem_csr=example_cert_request.cert_request_pem)
+        ```
 
         ## Import
 
@@ -563,6 +650,93 @@ class CaPool(pulumi.CustomResource):
                 publish_crl=True,
             ),
             tier="ENTERPRISE")
+        ```
+        ### Privateca Quickstart
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_tls as tls
+
+        example_private_key = tls.PrivateKey("examplePrivateKey", algorithm="RSA")
+        example_cert_request = tls.CertRequest("exampleCertRequest",
+            key_algorithm="RSA",
+            private_key_pem=example_private_key.private_key_pem,
+            subjects=[tls.CertRequestSubjectArgs(
+                common_name="example.com",
+                organization="ACME Examples, Inc",
+            )])
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            project="project-id",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=True,
+                publish_crl=True,
+            ),
+            labels={
+                "foo": "bar",
+            },
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                        is_ca=False,
+                    ),
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(
+                            digital_signature=True,
+                            key_encipherment=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ))
+        test_ca = gcp.certificateauthority.Authority("test-ca",
+            certificate_authority_id="my-authority",
+            location="us-central1",
+            project="project-id",
+            pool=google_privateca_ca_pool["pool"]["name"],
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        country_code="us",
+                        organization="google",
+                        organizational_unit="enterprise",
+                        locality="mountain view",
+                        province="california",
+                        street_address="1600 amphitheatre parkway",
+                        postal_code="94109",
+                        common_name="my-certificate-authority",
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            type="SELF_SIGNED",
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ))
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
+            pool=google_privateca_ca_pool["pool"]["name"],
+            certificate_authority=test_ca.certificate_authority_id,
+            project="project-id",
+            location="us-central1",
+            lifetime="860s",
+            pem_csr=example_cert_request.cert_request_pem)
         ```
 
         ## Import

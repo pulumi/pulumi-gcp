@@ -126,6 +126,97 @@ import * as utilities from "../utilities";
  *     tier: "ENTERPRISE",
  * });
  * ```
+ * ### Privateca Quickstart
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as tls from "@pulumi/tls";
+ *
+ * const examplePrivateKey = new tls.PrivateKey("examplePrivateKey", {algorithm: "RSA"});
+ * const exampleCertRequest = new tls.CertRequest("exampleCertRequest", {
+ *     keyAlgorithm: "RSA",
+ *     privateKeyPem: examplePrivateKey.privateKeyPem,
+ *     subjects: [{
+ *         commonName: "example.com",
+ *         organization: "ACME Examples, Inc",
+ *     }],
+ * });
+ * const defaultCaPool = new gcp.certificateauthority.CaPool("defaultCaPool", {
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     project: "project-id",
+ *     publishingOptions: {
+ *         publishCaCert: true,
+ *         publishCrl: true,
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     issuancePolicy: {
+ *         baselineValues: {
+ *             caOptions: {
+ *                 isCa: false,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     digitalSignature: true,
+ *                     keyEncipherment: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * const test_ca = new gcp.certificateauthority.Authority("test-ca", {
+ *     certificateAuthorityId: "my-authority",
+ *     location: "us-central1",
+ *     project: "project-id",
+ *     pool: google_privateca_ca_pool.pool.name,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 countryCode: "us",
+ *                 organization: "google",
+ *                 organizationalUnit: "enterprise",
+ *                 locality: "mountain view",
+ *                 province: "california",
+ *                 streetAddress: "1600 amphitheatre parkway",
+ *                 postalCode: "94109",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     type: "SELF_SIGNED",
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * });
+ * const defaultCertificate = new gcp.certificateauthority.Certificate("defaultCertificate", {
+ *     pool: google_privateca_ca_pool.pool.name,
+ *     certificateAuthority: test_ca.certificateAuthorityId,
+ *     project: "project-id",
+ *     location: "us-central1",
+ *     lifetime: "860s",
+ *     pemCsr: exampleCertRequest.certRequestPem,
+ * });
+ * ```
  *
  * ## Import
  *
