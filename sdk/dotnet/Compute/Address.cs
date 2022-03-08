@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.Compute
         /// The static external IP address represented by this resource. Only
         /// IPv4 is supported. An address may only be specified for INTERNAL
         /// address types. The IP address must be inside the specified subnetwork,
-        /// if any.
+        /// if any. Set by the API if undefined.
         /// </summary>
         [Output("address")]
         public Output<string> IPAddress { get; private set; } = null!;
@@ -373,7 +373,7 @@ namespace Pulumi.Gcp.Compute
         /// The static external IP address represented by this resource. Only
         /// IPv4 is supported. An address may only be specified for INTERNAL
         /// address types. The IP address must be inside the specified subnetwork,
-        /// if any.
+        /// if any. Set by the API if undefined.
         /// </summary>
         [Input("address")]
         public Input<string>? IPAddress { get; set; }
@@ -489,7 +489,7 @@ namespace Pulumi.Gcp.Compute
         /// The static external IP address represented by this resource. Only
         /// IPv4 is supported. An address may only be specified for INTERNAL
         /// address types. The IP address must be inside the specified subnetwork,
-        /// if any.
+        /// if any. Set by the API if undefined.
         /// </summary>
         [Input("address")]
         public Input<string>? IPAddress { get; set; }

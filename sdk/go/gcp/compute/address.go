@@ -219,7 +219,7 @@ type Address struct {
 	// The static external IP address represented by this resource. Only
 	// IPv4 is supported. An address may only be specified for INTERNAL
 	// address types. The IP address must be inside the specified subnetwork,
-	// if any.
+	// if any. Set by the API if undefined.
 	Address pulumi.StringOutput `pulumi:"address"`
 	// The type of address to reserve.
 	// Default value is `EXTERNAL`.
@@ -313,7 +313,7 @@ type addressState struct {
 	// The static external IP address represented by this resource. Only
 	// IPv4 is supported. An address may only be specified for INTERNAL
 	// address types. The IP address must be inside the specified subnetwork,
-	// if any.
+	// if any. Set by the API if undefined.
 	Address *string `pulumi:"address"`
 	// The type of address to reserve.
 	// Default value is `EXTERNAL`.
@@ -379,7 +379,7 @@ type AddressState struct {
 	// The static external IP address represented by this resource. Only
 	// IPv4 is supported. An address may only be specified for INTERNAL
 	// address types. The IP address must be inside the specified subnetwork,
-	// if any.
+	// if any. Set by the API if undefined.
 	Address pulumi.StringPtrInput
 	// The type of address to reserve.
 	// Default value is `EXTERNAL`.
@@ -449,7 +449,7 @@ type addressArgs struct {
 	// The static external IP address represented by this resource. Only
 	// IPv4 is supported. An address may only be specified for INTERNAL
 	// address types. The IP address must be inside the specified subnetwork,
-	// if any.
+	// if any. Set by the API if undefined.
 	Address *string `pulumi:"address"`
 	// The type of address to reserve.
 	// Default value is `EXTERNAL`.
@@ -508,7 +508,7 @@ type AddressArgs struct {
 	// The static external IP address represented by this resource. Only
 	// IPv4 is supported. An address may only be specified for INTERNAL
 	// address types. The IP address must be inside the specified subnetwork,
-	// if any.
+	// if any. Set by the API if undefined.
 	Address pulumi.StringPtrInput
 	// The type of address to reserve.
 	// Default value is `EXTERNAL`.

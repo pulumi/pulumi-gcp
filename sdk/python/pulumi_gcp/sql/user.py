@@ -33,7 +33,8 @@ class UserArgs:
         :param pulumi.Input[str] name: The name of the user. Changing this forces a new resource
                to be created.
         :param pulumi.Input[str] password: The password for the user. Can be updated. For Postgres
-               instances this is a Required field.
+               instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+               or CLOUD_IAM_SERVICE_ACCOUNT.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
@@ -113,7 +114,8 @@ class UserArgs:
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         The password for the user. Can be updated. For Postgres
-        instances this is a Required field.
+        instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+        or CLOUD_IAM_SERVICE_ACCOUNT.
         """
         return pulumi.get(self, "password")
 
@@ -172,7 +174,8 @@ class _UserState:
         :param pulumi.Input[str] name: The name of the user. Changing this forces a new resource
                to be created.
         :param pulumi.Input[str] password: The password for the user. Can be updated. For Postgres
-               instances this is a Required field.
+               instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+               or CLOUD_IAM_SERVICE_ACCOUNT.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
@@ -253,7 +256,8 @@ class _UserState:
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         The password for the user. Can be updated. For Postgres
-        instances this is a Required field.
+        instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+        or CLOUD_IAM_SERVICE_ACCOUNT.
         """
         return pulumi.get(self, "password")
 
@@ -375,7 +379,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the user. Changing this forces a new resource
                to be created.
         :param pulumi.Input[str] password: The password for the user. Can be updated. For Postgres
-               instances this is a Required field.
+               instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+               or CLOUD_IAM_SERVICE_ACCOUNT.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
@@ -526,7 +531,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the user. Changing this forces a new resource
                to be created.
         :param pulumi.Input[str] password: The password for the user. Can be updated. For Postgres
-               instances this is a Required field.
+               instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+               or CLOUD_IAM_SERVICE_ACCOUNT.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
@@ -589,7 +595,8 @@ class User(pulumi.CustomResource):
     def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password for the user. Can be updated. For Postgres
-        instances this is a Required field.
+        instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+        or CLOUD_IAM_SERVICE_ACCOUNT.
         """
         return pulumi.get(self, "password")
 

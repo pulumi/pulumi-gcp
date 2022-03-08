@@ -102,6 +102,9 @@ from .project_metadata import *
 from .project_metadata_item import *
 from .region_autoscaler import *
 from .region_backend_service import *
+from .region_backend_service_iam_binding import *
+from .region_backend_service_iam_member import *
+from .region_backend_service_iam_policy import *
 from .region_disk import *
 from .region_disk_iam_binding import *
 from .region_disk_iam_member import *

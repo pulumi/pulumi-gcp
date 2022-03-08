@@ -102,6 +102,9 @@ export * from "./projectMetadata";
 export * from "./projectMetadataItem";
 export * from "./regionAutoscaler";
 export * from "./regionBackendService";
+export * from "./regionBackendServiceIamBinding";
+export * from "./regionBackendServiceIamMember";
+export * from "./regionBackendServiceIamPolicy";
 export * from "./regionDisk";
 export * from "./regionDiskIamBinding";
 export * from "./regionDiskIamMember";
@@ -215,6 +218,9 @@ import { ProjectMetadata } from "./projectMetadata";
 import { ProjectMetadataItem } from "./projectMetadataItem";
 import { RegionAutoscaler } from "./regionAutoscaler";
 import { RegionBackendService } from "./regionBackendService";
+import { RegionBackendServiceIamBinding } from "./regionBackendServiceIamBinding";
+import { RegionBackendServiceIamMember } from "./regionBackendServiceIamMember";
+import { RegionBackendServiceIamPolicy } from "./regionBackendServiceIamPolicy";
 import { RegionDisk } from "./regionDisk";
 import { RegionDiskIamBinding } from "./regionDiskIamBinding";
 import { RegionDiskIamMember } from "./regionDiskIamMember";
@@ -398,6 +404,12 @@ const _module = {
                 return new RegionAutoscaler(name, <any>undefined, { urn })
             case "gcp:compute/regionBackendService:RegionBackendService":
                 return new RegionBackendService(name, <any>undefined, { urn })
+            case "gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding":
+                return new RegionBackendServiceIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember":
+                return new RegionBackendServiceIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy":
+                return new RegionBackendServiceIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionDisk:RegionDisk":
                 return new RegionDisk(name, <any>undefined, { urn })
             case "gcp:compute/regionDiskIamBinding:RegionDiskIamBinding":
@@ -555,6 +567,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/projectMetadata", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectMetadataItem", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionAutoscaler", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendService", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDisk", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamMember", _module)

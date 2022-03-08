@@ -107,18 +107,18 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         });
     ///         var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new Gcp.ServiceAccount.IAMBindingArgs
     ///         {
-    ///             Condition = new Gcp.ServiceAccount.Inputs.IAMBindingConditionArgs
-    ///             {
-    ///                 Description = "Expiring at midnight of 2019-12-31",
-    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                 Title = "expires_after_2019_12_31",
-    ///             },
+    ///             ServiceAccountId = sa.Name,
+    ///             Role = "roles/iam.serviceAccountUser",
     ///             Members = 
     ///             {
     ///                 "user:jane@example.com",
     ///             },
-    ///             Role = "roles/iam.serviceAccountUser",
-    ///             ServiceAccountId = sa.Name,
+    ///             Condition = new Gcp.ServiceAccount.Inputs.IAMBindingConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -176,15 +176,15 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         });
     ///         var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new Gcp.ServiceAccount.IAMMemberArgs
     ///         {
+    ///             ServiceAccountId = sa.Name,
+    ///             Role = "roles/iam.serviceAccountUser",
+    ///             Member = "user:jane@example.com",
     ///             Condition = new Gcp.ServiceAccount.Inputs.IAMMemberConditionArgs
     ///             {
+    ///                 Title = "expires_after_2019_12_31",
     ///                 Description = "Expiring at midnight of 2019-12-31",
     ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
-    ///                 Title = "expires_after_2019_12_31",
     ///             },
-    ///             Member = "user:jane@example.com",
-    ///             Role = "roles/iam.serviceAccountUser",
-    ///             ServiceAccountId = sa.Name,
     ///         });
     ///     }
     /// 

@@ -45,6 +45,7 @@ type Provider struct {
 	CloudRunCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudRunCustomEndpoint"`
 	CloudSchedulerCustomEndpoint       pulumi.StringPtrOutput `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudTasksCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudTasksCustomEndpoint"`
+	Cloudfunctions2CustomEndpoint      pulumi.StringPtrOutput `pulumi:"cloudfunctions2CustomEndpoint"`
 	ComposerCustomEndpoint             pulumi.StringPtrOutput `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint              pulumi.StringPtrOutput `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint    pulumi.StringPtrOutput `pulumi:"containerAnalysisCustomEndpoint"`
@@ -178,6 +179,7 @@ type providerArgs struct {
 	CloudRunCustomEndpoint             *string           `pulumi:"cloudRunCustomEndpoint"`
 	CloudSchedulerCustomEndpoint       *string           `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudTasksCustomEndpoint           *string           `pulumi:"cloudTasksCustomEndpoint"`
+	Cloudfunctions2CustomEndpoint      *string           `pulumi:"cloudfunctions2CustomEndpoint"`
 	ComposerCustomEndpoint             *string           `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint              *string           `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint    *string           `pulumi:"containerAnalysisCustomEndpoint"`
@@ -292,6 +294,7 @@ type ProviderArgs struct {
 	CloudRunCustomEndpoint             pulumi.StringPtrInput
 	CloudSchedulerCustomEndpoint       pulumi.StringPtrInput
 	CloudTasksCustomEndpoint           pulumi.StringPtrInput
+	Cloudfunctions2CustomEndpoint      pulumi.StringPtrInput
 	ComposerCustomEndpoint             pulumi.StringPtrInput
 	ComputeCustomEndpoint              pulumi.StringPtrInput
 	ContainerAnalysisCustomEndpoint    pulumi.StringPtrInput

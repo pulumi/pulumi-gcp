@@ -38,6 +38,7 @@ const (
 	gcpCloudAsset           = "CloudAsset"           // CloudAsset resources
 	gcpCloudBuild           = "CloudBuild"           // CloudBuild resources
 	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
+	gcpCloudFunctionsV2     = "CloudFunctionsV2"     // CloudFunction (2nd Gen) resources
 	gcpCloudIdentity        = "CloudIdentity"        // CloudIdentity resources
 	gcpCloudRun             = "CloudRun"             // CloudRun resources
 	gcpCloudScheduler       = "CloudScheduler"       // Cloud Scheduler resources
@@ -445,6 +446,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cloudfunctions_cloud_function_iam.html.markdown",
 				},
 			},
+
+			// Cloud Functions (2nd gen)
+			"google_cloudfunctions2_function": {Tok: gcpResource(gcpCloudFunctionsV2, "Function")},
 
 			// Cloud Scheduler
 			"google_cloud_scheduler_job": {Tok: gcpResource(gcpCloudScheduler, "Job")},
@@ -878,10 +882,13 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_organization_security_policy": {
 				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicy"),
 			},
-			"google_compute_service_attachment":          {Tok: gcpResource(gcpCompute, "ServiceAttachment")},
-			"google_compute_backend_service_iam_binding": {Tok: gcpResource(gcpCompute, "BackendServiceIamBinding")},
-			"google_compute_backend_service_iam_member":  {Tok: gcpResource(gcpCompute, "BackendServiceIamMember")},
-			"google_compute_backend_service_iam_policy":  {Tok: gcpResource(gcpCompute, "BackendServiceIamPolicy")},
+			"google_compute_service_attachment":                 {Tok: gcpResource(gcpCompute, "ServiceAttachment")},
+			"google_compute_backend_service_iam_binding":        {Tok: gcpResource(gcpCompute, "BackendServiceIamBinding")},
+			"google_compute_backend_service_iam_member":         {Tok: gcpResource(gcpCompute, "BackendServiceIamMember")},
+			"google_compute_backend_service_iam_policy":         {Tok: gcpResource(gcpCompute, "BackendServiceIamPolicy")},
+			"google_compute_region_backend_service_iam_binding": {Tok: gcpResource(gcpCompute, "RegionBackendServiceIamBinding")},
+			"google_compute_region_backend_service_iam_member":  {Tok: gcpResource(gcpCompute, "RegionBackendServiceIamMember")},
+			"google_compute_region_backend_service_iam_policy":  {Tok: gcpResource(gcpCompute, "RegionBackendServiceIamPolicy")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -1968,6 +1975,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "apigee_environment_iam.html.markdown",
 				},
 			},
+			"google_apigee_endpoint_attachment": {Tok: gcpResource(gcpApigee, "EndpointAttachment")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {
@@ -2363,6 +2371,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "container_azure_versions.html.markdown",
 				},
 			},
+
 			"google_dns_managed_zone": {
 				Tok: gcpDataSource(gcpDNS, "getManagedZone"),
 				Docs: &tfbridge.DocInfo{
@@ -2375,6 +2384,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_dns_keys.html.markdown",
 				},
 			},
+			"google_dns_record_set": {Tok: gcpDataSource(gcpDNS, "getRecordSet")},
+
 			"google_active_folder": {
 				Tok: gcpDataSource(gcpOrganization, "getActiveFolder"),
 				Docs: &tfbridge.DocInfo{
@@ -2426,6 +2437,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_organization.html.markdown",
 				},
 			},
+
+			"google_privateca_certificate_authority": {Tok: gcpDataSource(gcpCertificateAuthority, "getAuthority")},
+
 			"google_projects": {
 				Tok: gcpDataSource(gcpProject, "getProject"),
 				Docs: &tfbridge.DocInfo{

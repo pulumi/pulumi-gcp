@@ -44,7 +44,7 @@ export interface GetTransferProjectServieAccountArgs {
  */
 export interface GetTransferProjectServieAccountResult {
     /**
-     * Email address of the default service account used by Storage Transfer Jobs running in this project
+     * Email address of the default service account used by Storage Transfer Jobs running in this project.
      */
     readonly email: string;
     /**
@@ -52,6 +52,10 @@ export interface GetTransferProjectServieAccountResult {
      */
     readonly id: string;
     readonly project: string;
+    /**
+     * Unique identifier for the service account.
+     */
+    readonly subjectId: string;
 }
 
 export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServieAccountResult> {

@@ -30,7 +30,7 @@ class AddressArgs:
         :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
                IPv4 is supported. An address may only be specified for INTERNAL
                address types. The IP address must be inside the specified subnetwork,
-               if any.
+               if any. Set by the API if undefined.
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Default value is `EXTERNAL`.
                Possible values are `INTERNAL` and `EXTERNAL`.
@@ -103,7 +103,7 @@ class AddressArgs:
         The static external IP address represented by this resource. Only
         IPv4 is supported. An address may only be specified for INTERNAL
         address types. The IP address must be inside the specified subnetwork,
-        if any.
+        if any. Set by the API if undefined.
         """
         return pulumi.get(self, "address")
 
@@ -296,7 +296,7 @@ class _AddressState:
         :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
                IPv4 is supported. An address may only be specified for INTERNAL
                address types. The IP address must be inside the specified subnetwork,
-               if any.
+               if any. Set by the API if undefined.
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Default value is `EXTERNAL`.
                Possible values are `INTERNAL` and `EXTERNAL`.
@@ -381,7 +381,7 @@ class _AddressState:
         The static external IP address represented by this resource. Only
         IPv4 is supported. An address may only be specified for INTERNAL
         address types. The IP address must be inside the specified subnetwork,
-        if any.
+        if any. Set by the API if undefined.
         """
         return pulumi.get(self, "address")
 
@@ -738,7 +738,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
                IPv4 is supported. An address may only be specified for INTERNAL
                address types. The IP address must be inside the specified subnetwork,
-               if any.
+               if any. Set by the API if undefined.
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Default value is `EXTERNAL`.
                Possible values are `INTERNAL` and `EXTERNAL`.
@@ -993,7 +993,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
                IPv4 is supported. An address may only be specified for INTERNAL
                address types. The IP address must be inside the specified subnetwork,
-               if any.
+               if any. Set by the API if undefined.
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Default value is `EXTERNAL`.
                Possible values are `INTERNAL` and `EXTERNAL`.
@@ -1067,7 +1067,7 @@ class Address(pulumi.CustomResource):
         The static external IP address represented by this resource. Only
         IPv4 is supported. An address may only be specified for INTERNAL
         address types. The IP address must be inside the specified subnetwork,
-        if any.
+        if any. Set by the API if undefined.
         """
         return pulumi.get(self, "address")
 

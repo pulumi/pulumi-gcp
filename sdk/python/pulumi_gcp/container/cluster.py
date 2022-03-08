@@ -3668,7 +3668,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="verticalPodAutoscaling")
-    def vertical_pod_autoscaling(self) -> pulumi.Output[Optional['outputs.ClusterVerticalPodAutoscaling']]:
+    def vertical_pod_autoscaling(self) -> pulumi.Output['outputs.ClusterVerticalPodAutoscaling']:
         """
         Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         Structure is documented below.

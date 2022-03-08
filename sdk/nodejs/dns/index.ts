@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./getKeys";
 export * from "./getManagedZone";
+export * from "./getRecordSet";
 export * from "./managedZone";
 export * from "./policy";
 export * from "./recordSet";

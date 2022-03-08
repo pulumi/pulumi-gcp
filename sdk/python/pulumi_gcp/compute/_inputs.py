@@ -195,6 +195,8 @@ __all__ = [
     'RegionBackendServiceConsistentHashHttpCookieArgs',
     'RegionBackendServiceConsistentHashHttpCookieTtlArgs',
     'RegionBackendServiceFailoverPolicyArgs',
+    'RegionBackendServiceIamBindingConditionArgs',
+    'RegionBackendServiceIamMemberConditionArgs',
     'RegionBackendServiceIapArgs',
     'RegionBackendServiceLogConfigArgs',
     'RegionBackendServiceOutlierDetectionArgs',
@@ -5542,7 +5544,7 @@ class InstanceAttachedDiskArgs:
         :param pulumi.Input[str] device_name: Name with which the attached disk will be accessible
                under `/dev/disk/by-id/google-*`
         :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
-               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is
@@ -5595,7 +5597,7 @@ class InstanceAttachedDiskArgs:
     def disk_encryption_key_raw(self) -> Optional[pulumi.Input[str]]:
         """
         A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         """
@@ -5661,7 +5663,7 @@ class InstanceBootDiskArgs:
         :param pulumi.Input[str] device_name: Name with which the attached disk will be accessible
                under `/dev/disk/by-id/google-*`
         :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
-               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         :param pulumi.Input['InstanceBootDiskInitializeParamsArgs'] initialize_params: Parameters for a new disk that will be created
@@ -5724,7 +5726,7 @@ class InstanceBootDiskArgs:
     def disk_encryption_key_raw(self) -> Optional[pulumi.Input[str]]:
         """
         A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         """
@@ -8820,6 +8822,10 @@ class InstanceSchedulingArgs:
         :param pulumi.Input[bool] preemptible: Specifies if the instance is preemptible.
                If this field is set to true, then `automatic_restart` must be
                set to false.  Defaults to false.
+        :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+               `preemptible` should be `true` and `auto_restart` should be
+               `false`. For more info about
+               `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -8907,6 +8913,12 @@ class InstanceSchedulingArgs:
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        `preemptible` should be `true` and `auto_restart` should be
+        `false`. For more info about
+        `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
@@ -10006,6 +10018,10 @@ class InstanceTemplateSchedulingArgs:
         :param pulumi.Input[bool] preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+               `preemptible` should be `true` and `auto_restart` should be
+               `false`. For more info about
+               `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -10089,6 +10105,12 @@ class InstanceTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        `preemptible` should be `true` and `auto_restart` should be
+        `false`. For more info about
+        `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
@@ -13117,6 +13139,84 @@ class RegionBackendServiceFailoverPolicyArgs:
     @failover_ratio.setter
     def failover_ratio(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "failover_ratio", value)
+
+
+@pulumi.input_type
+class RegionBackendServiceIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class RegionBackendServiceIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
@@ -20325,7 +20425,8 @@ class RouterBgpArgs:
                  asn: pulumi.Input[int],
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]] = None):
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]] = None,
+                 keepalive_interval: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] asn: Local BGP Autonomous System Number (ASN). Must be an RFC6996
                private ASN, either 16-bit or 32-bit. The value will be fixed for
@@ -20346,6 +20447,11 @@ class RouterBgpArgs:
                ranges will be advertised in addition to any specified groups.
                Leave this field blank to advertise no custom IP ranges.
                Structure is documented below.
+        :param pulumi.Input[int] keepalive_interval: The interval in seconds between BGP keepalive messages that are sent to the peer.
+               Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
+               maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
+               BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
+               the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
         """
         pulumi.set(__self__, "asn", asn)
         if advertise_mode is not None:
@@ -20354,6 +20460,8 @@ class RouterBgpArgs:
             pulumi.set(__self__, "advertised_groups", advertised_groups)
         if advertised_ip_ranges is not None:
             pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
+        if keepalive_interval is not None:
+            pulumi.set(__self__, "keepalive_interval", keepalive_interval)
 
     @property
     @pulumi.getter
@@ -20417,6 +20525,22 @@ class RouterBgpArgs:
     @advertised_ip_ranges.setter
     def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]]):
         pulumi.set(self, "advertised_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="keepaliveInterval")
+    def keepalive_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval in seconds between BGP keepalive messages that are sent to the peer.
+        Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
+        maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
+        BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
+        the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+        """
+        return pulumi.get(self, "keepalive_interval")
+
+    @keepalive_interval.setter
+    def keepalive_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keepalive_interval", value)
 
 
 @pulumi.input_type

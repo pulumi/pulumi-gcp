@@ -6115,20 +6115,19 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 executable_file: Optional[str] = None,
+                 executable_file: str,
                  execution_timeout: Optional[str] = None):
         """
         :param str executable_file: Required. Cloud Storage URI of executable file.
         :param str execution_timeout: Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
         """
-        if executable_file is not None:
-            pulumi.set(__self__, "executable_file", executable_file)
+        pulumi.set(__self__, "executable_file", executable_file)
         if execution_timeout is not None:
             pulumi.set(__self__, "execution_timeout", execution_timeout)
 
     @property
     @pulumi.getter(name="executableFile")
-    def executable_file(self) -> Optional[str]:
+    def executable_file(self) -> str:
         """
         Required. Cloud Storage URI of executable file.
         """

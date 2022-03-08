@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .get_keys import *
 from .get_managed_zone import *
+from .get_record_set import *
 from .managed_zone import *
 from .policy import *
 from .record_set import *

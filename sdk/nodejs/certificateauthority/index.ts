@@ -12,6 +12,7 @@ export * from "./caPoolIamMember";
 export * from "./caPoolIamPolicy";
 export * from "./certificate";
 export * from "./certificateTemplate";
+export * from "./getAuthority";
 
 // Import resources to register:
 import { Authority } from "./authority";

@@ -89,6 +89,21 @@ __all__ = [
     'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage',
     'CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage',
     'CertificateTemplatePredefinedValuesPolicyId',
+    'GetAuthorityAccessUrlResult',
+    'GetAuthorityConfigResult',
+    'GetAuthorityConfigSubjectConfigResult',
+    'GetAuthorityConfigSubjectConfigSubjectResult',
+    'GetAuthorityConfigSubjectConfigSubjectAltNameResult',
+    'GetAuthorityConfigX509ConfigResult',
+    'GetAuthorityConfigX509ConfigAdditionalExtensionResult',
+    'GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult',
+    'GetAuthorityConfigX509ConfigCaOptionResult',
+    'GetAuthorityConfigX509ConfigKeyUsageResult',
+    'GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult',
+    'GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult',
+    'GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult',
+    'GetAuthorityConfigX509ConfigPolicyIdResult',
+    'GetAuthorityKeySpecResult',
 ]
 
 @pulumi.output_type
@@ -5363,5 +5378,451 @@ class CertificateTemplatePredefinedValuesPolicyId(dict):
         Required. The parts of an OID path. The most significant parts of the path come first.
         """
         return pulumi.get(self, "object_id_paths")
+
+
+@pulumi.output_type
+class GetAuthorityAccessUrlResult(dict):
+    def __init__(__self__, *,
+                 ca_certificate_access_url: str,
+                 crl_access_urls: Sequence[str]):
+        pulumi.set(__self__, "ca_certificate_access_url", ca_certificate_access_url)
+        pulumi.set(__self__, "crl_access_urls", crl_access_urls)
+
+    @property
+    @pulumi.getter(name="caCertificateAccessUrl")
+    def ca_certificate_access_url(self) -> str:
+        return pulumi.get(self, "ca_certificate_access_url")
+
+    @property
+    @pulumi.getter(name="crlAccessUrls")
+    def crl_access_urls(self) -> Sequence[str]:
+        return pulumi.get(self, "crl_access_urls")
+
+
+@pulumi.output_type
+class GetAuthorityConfigResult(dict):
+    def __init__(__self__, *,
+                 subject_configs: Sequence['outputs.GetAuthorityConfigSubjectConfigResult'],
+                 x509_configs: Sequence['outputs.GetAuthorityConfigX509ConfigResult']):
+        pulumi.set(__self__, "subject_configs", subject_configs)
+        pulumi.set(__self__, "x509_configs", x509_configs)
+
+    @property
+    @pulumi.getter(name="subjectConfigs")
+    def subject_configs(self) -> Sequence['outputs.GetAuthorityConfigSubjectConfigResult']:
+        return pulumi.get(self, "subject_configs")
+
+    @property
+    @pulumi.getter(name="x509Configs")
+    def x509_configs(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigResult']:
+        return pulumi.get(self, "x509_configs")
+
+
+@pulumi.output_type
+class GetAuthorityConfigSubjectConfigResult(dict):
+    def __init__(__self__, *,
+                 subject_alt_names: Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectAltNameResult'],
+                 subjects: Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectResult']):
+        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+        pulumi.set(__self__, "subjects", subjects)
+
+    @property
+    @pulumi.getter(name="subjectAltNames")
+    def subject_alt_names(self) -> Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectAltNameResult']:
+        return pulumi.get(self, "subject_alt_names")
+
+    @property
+    @pulumi.getter
+    def subjects(self) -> Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectResult']:
+        return pulumi.get(self, "subjects")
+
+
+@pulumi.output_type
+class GetAuthorityConfigSubjectConfigSubjectResult(dict):
+    def __init__(__self__, *,
+                 common_name: str,
+                 country_code: str,
+                 locality: str,
+                 organization: str,
+                 organizational_unit: str,
+                 postal_code: str,
+                 province: str,
+                 street_address: str):
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "country_code", country_code)
+        pulumi.set(__self__, "locality", locality)
+        pulumi.set(__self__, "organization", organization)
+        pulumi.set(__self__, "organizational_unit", organizational_unit)
+        pulumi.set(__self__, "postal_code", postal_code)
+        pulumi.set(__self__, "province", province)
+        pulumi.set(__self__, "street_address", street_address)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> str:
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> str:
+        return pulumi.get(self, "country_code")
+
+    @property
+    @pulumi.getter
+    def locality(self) -> str:
+        return pulumi.get(self, "locality")
+
+    @property
+    @pulumi.getter
+    def organization(self) -> str:
+        return pulumi.get(self, "organization")
+
+    @property
+    @pulumi.getter(name="organizationalUnit")
+    def organizational_unit(self) -> str:
+        return pulumi.get(self, "organizational_unit")
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> str:
+        return pulumi.get(self, "postal_code")
+
+    @property
+    @pulumi.getter
+    def province(self) -> str:
+        return pulumi.get(self, "province")
+
+    @property
+    @pulumi.getter(name="streetAddress")
+    def street_address(self) -> str:
+        return pulumi.get(self, "street_address")
+
+
+@pulumi.output_type
+class GetAuthorityConfigSubjectConfigSubjectAltNameResult(dict):
+    def __init__(__self__, *,
+                 dns_names: Sequence[str],
+                 email_addresses: Sequence[str],
+                 ip_addresses: Sequence[str],
+                 uris: Sequence[str]):
+        pulumi.set(__self__, "dns_names", dns_names)
+        pulumi.set(__self__, "email_addresses", email_addresses)
+        pulumi.set(__self__, "ip_addresses", ip_addresses)
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="dnsNames")
+    def dns_names(self) -> Sequence[str]:
+        return pulumi.get(self, "dns_names")
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "email_addresses")
+
+    @property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "ip_addresses")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigResult(dict):
+    def __init__(__self__, *,
+                 additional_extensions: Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionResult'],
+                 aia_ocsp_servers: Sequence[str],
+                 ca_options: Sequence['outputs.GetAuthorityConfigX509ConfigCaOptionResult'],
+                 key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageResult'],
+                 policy_ids: Sequence['outputs.GetAuthorityConfigX509ConfigPolicyIdResult']):
+        pulumi.set(__self__, "additional_extensions", additional_extensions)
+        pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
+        pulumi.set(__self__, "ca_options", ca_options)
+        pulumi.set(__self__, "key_usages", key_usages)
+        pulumi.set(__self__, "policy_ids", policy_ids)
+
+    @property
+    @pulumi.getter(name="additionalExtensions")
+    def additional_extensions(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionResult']:
+        return pulumi.get(self, "additional_extensions")
+
+    @property
+    @pulumi.getter(name="aiaOcspServers")
+    def aia_ocsp_servers(self) -> Sequence[str]:
+        return pulumi.get(self, "aia_ocsp_servers")
+
+    @property
+    @pulumi.getter(name="caOptions")
+    def ca_options(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigCaOptionResult']:
+        return pulumi.get(self, "ca_options")
+
+    @property
+    @pulumi.getter(name="keyUsages")
+    def key_usages(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageResult']:
+        return pulumi.get(self, "key_usages")
+
+    @property
+    @pulumi.getter(name="policyIds")
+    def policy_ids(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigPolicyIdResult']:
+        return pulumi.get(self, "policy_ids")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
+    def __init__(__self__, *,
+                 critical: bool,
+                 object_ids: Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult'],
+                 value: str):
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "object_ids", object_ids)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> bool:
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter(name="objectIds")
+    def object_ids(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult']:
+        return pulumi.get(self, "object_ids")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult(dict):
+    def __init__(__self__, *,
+                 object_id_paths: Sequence[int]):
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Sequence[int]:
+        return pulumi.get(self, "object_id_paths")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigCaOptionResult(dict):
+    def __init__(__self__, *,
+                 is_ca: bool,
+                 max_issuer_path_length: int,
+                 non_ca: bool,
+                 zero_max_issuer_path_length: bool):
+        pulumi.set(__self__, "is_ca", is_ca)
+        pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
+        pulumi.set(__self__, "non_ca", non_ca)
+        pulumi.set(__self__, "zero_max_issuer_path_length", zero_max_issuer_path_length)
+
+    @property
+    @pulumi.getter(name="isCa")
+    def is_ca(self) -> bool:
+        return pulumi.get(self, "is_ca")
+
+    @property
+    @pulumi.getter(name="maxIssuerPathLength")
+    def max_issuer_path_length(self) -> int:
+        return pulumi.get(self, "max_issuer_path_length")
+
+    @property
+    @pulumi.getter(name="nonCa")
+    def non_ca(self) -> bool:
+        return pulumi.get(self, "non_ca")
+
+    @property
+    @pulumi.getter(name="zeroMaxIssuerPathLength")
+    def zero_max_issuer_path_length(self) -> bool:
+        return pulumi.get(self, "zero_max_issuer_path_length")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigKeyUsageResult(dict):
+    def __init__(__self__, *,
+                 base_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult'],
+                 extended_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult'],
+                 unknown_extended_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult']):
+        pulumi.set(__self__, "base_key_usages", base_key_usages)
+        pulumi.set(__self__, "extended_key_usages", extended_key_usages)
+        pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
+
+    @property
+    @pulumi.getter(name="baseKeyUsages")
+    def base_key_usages(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult']:
+        return pulumi.get(self, "base_key_usages")
+
+    @property
+    @pulumi.getter(name="extendedKeyUsages")
+    def extended_key_usages(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult']:
+        return pulumi.get(self, "extended_key_usages")
+
+    @property
+    @pulumi.getter(name="unknownExtendedKeyUsages")
+    def unknown_extended_key_usages(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult']:
+        return pulumi.get(self, "unknown_extended_key_usages")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult(dict):
+    def __init__(__self__, *,
+                 cert_sign: bool,
+                 content_commitment: bool,
+                 crl_sign: bool,
+                 data_encipherment: bool,
+                 decipher_only: bool,
+                 digital_signature: bool,
+                 encipher_only: bool,
+                 key_agreement: bool,
+                 key_encipherment: bool):
+        pulumi.set(__self__, "cert_sign", cert_sign)
+        pulumi.set(__self__, "content_commitment", content_commitment)
+        pulumi.set(__self__, "crl_sign", crl_sign)
+        pulumi.set(__self__, "data_encipherment", data_encipherment)
+        pulumi.set(__self__, "decipher_only", decipher_only)
+        pulumi.set(__self__, "digital_signature", digital_signature)
+        pulumi.set(__self__, "encipher_only", encipher_only)
+        pulumi.set(__self__, "key_agreement", key_agreement)
+        pulumi.set(__self__, "key_encipherment", key_encipherment)
+
+    @property
+    @pulumi.getter(name="certSign")
+    def cert_sign(self) -> bool:
+        return pulumi.get(self, "cert_sign")
+
+    @property
+    @pulumi.getter(name="contentCommitment")
+    def content_commitment(self) -> bool:
+        return pulumi.get(self, "content_commitment")
+
+    @property
+    @pulumi.getter(name="crlSign")
+    def crl_sign(self) -> bool:
+        return pulumi.get(self, "crl_sign")
+
+    @property
+    @pulumi.getter(name="dataEncipherment")
+    def data_encipherment(self) -> bool:
+        return pulumi.get(self, "data_encipherment")
+
+    @property
+    @pulumi.getter(name="decipherOnly")
+    def decipher_only(self) -> bool:
+        return pulumi.get(self, "decipher_only")
+
+    @property
+    @pulumi.getter(name="digitalSignature")
+    def digital_signature(self) -> bool:
+        return pulumi.get(self, "digital_signature")
+
+    @property
+    @pulumi.getter(name="encipherOnly")
+    def encipher_only(self) -> bool:
+        return pulumi.get(self, "encipher_only")
+
+    @property
+    @pulumi.getter(name="keyAgreement")
+    def key_agreement(self) -> bool:
+        return pulumi.get(self, "key_agreement")
+
+    @property
+    @pulumi.getter(name="keyEncipherment")
+    def key_encipherment(self) -> bool:
+        return pulumi.get(self, "key_encipherment")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
+    def __init__(__self__, *,
+                 client_auth: bool,
+                 code_signing: bool,
+                 email_protection: bool,
+                 ocsp_signing: bool,
+                 server_auth: bool,
+                 time_stamping: bool):
+        pulumi.set(__self__, "client_auth", client_auth)
+        pulumi.set(__self__, "code_signing", code_signing)
+        pulumi.set(__self__, "email_protection", email_protection)
+        pulumi.set(__self__, "ocsp_signing", ocsp_signing)
+        pulumi.set(__self__, "server_auth", server_auth)
+        pulumi.set(__self__, "time_stamping", time_stamping)
+
+    @property
+    @pulumi.getter(name="clientAuth")
+    def client_auth(self) -> bool:
+        return pulumi.get(self, "client_auth")
+
+    @property
+    @pulumi.getter(name="codeSigning")
+    def code_signing(self) -> bool:
+        return pulumi.get(self, "code_signing")
+
+    @property
+    @pulumi.getter(name="emailProtection")
+    def email_protection(self) -> bool:
+        return pulumi.get(self, "email_protection")
+
+    @property
+    @pulumi.getter(name="ocspSigning")
+    def ocsp_signing(self) -> bool:
+        return pulumi.get(self, "ocsp_signing")
+
+    @property
+    @pulumi.getter(name="serverAuth")
+    def server_auth(self) -> bool:
+        return pulumi.get(self, "server_auth")
+
+    @property
+    @pulumi.getter(name="timeStamping")
+    def time_stamping(self) -> bool:
+        return pulumi.get(self, "time_stamping")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult(dict):
+    def __init__(__self__, *,
+                 object_id_paths: Sequence[int]):
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Sequence[int]:
+        return pulumi.get(self, "object_id_paths")
+
+
+@pulumi.output_type
+class GetAuthorityConfigX509ConfigPolicyIdResult(dict):
+    def __init__(__self__, *,
+                 object_id_paths: Sequence[int]):
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Sequence[int]:
+        return pulumi.get(self, "object_id_paths")
+
+
+@pulumi.output_type
+class GetAuthorityKeySpecResult(dict):
+    def __init__(__self__, *,
+                 algorithm: str,
+                 cloud_kms_key_version: str):
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "cloud_kms_key_version", cloud_kms_key_version)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="cloudKmsKeyVersion")
+    def cloud_kms_key_version(self) -> str:
+        return pulumi.get(self, "cloud_kms_key_version")
 
 

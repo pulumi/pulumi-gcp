@@ -24,6 +24,7 @@ import * as certificateauthority from "./certificateauthority";
 import * as cloudasset from "./cloudasset";
 import * as cloudbuild from "./cloudbuild";
 import * as cloudfunctions from "./cloudfunctions";
+import * as cloudfunctionsv2 from "./cloudfunctionsv2";
 import * as cloudidentity from "./cloudidentity";
 import * as cloudrun from "./cloudrun";
 import * as cloudscheduler from "./cloudscheduler";
@@ -108,6 +109,7 @@ export {
     cloudasset,
     cloudbuild,
     cloudfunctions,
+    cloudfunctionsv2,
     cloudidentity,
     cloudrun,
     cloudscheduler,

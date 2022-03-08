@@ -571,7 +571,7 @@ namespace Pulumi.Gcp.Container
         /// Structure is documented below.
         /// </summary>
         [Output("verticalPodAutoscaling")]
-        public Output<Outputs.ClusterVerticalPodAutoscaling?> VerticalPodAutoscaling { get; private set; } = null!;
+        public Output<Outputs.ClusterVerticalPodAutoscaling> VerticalPodAutoscaling { get; private set; } = null!;
 
         /// <summary>
         /// Workload Identity allows Kubernetes service accounts to act as a user-managed

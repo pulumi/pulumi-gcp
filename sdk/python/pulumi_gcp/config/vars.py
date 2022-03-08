@@ -132,6 +132,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('cloudTasksCustomEndpoint')
 
     @property
+    def cloudfunctions2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudfunctions2CustomEndpoint')
+
+    @property
     def composer_custom_endpoint(self) -> Optional[str]:
         return __config__.get('composerCustomEndpoint')
 

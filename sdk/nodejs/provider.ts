@@ -54,6 +54,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudRunCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudSchedulerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudTasksCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly cloudfunctions2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly composerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly computeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAnalysisCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -172,6 +173,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cloudRunCustomEndpoint"] = args ? args.cloudRunCustomEndpoint : undefined;
             resourceInputs["cloudSchedulerCustomEndpoint"] = args ? args.cloudSchedulerCustomEndpoint : undefined;
             resourceInputs["cloudTasksCustomEndpoint"] = args ? args.cloudTasksCustomEndpoint : undefined;
+            resourceInputs["cloudfunctions2CustomEndpoint"] = args ? args.cloudfunctions2CustomEndpoint : undefined;
             resourceInputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
             resourceInputs["computeCustomEndpoint"] = args ? args.computeCustomEndpoint : undefined;
             resourceInputs["containerAnalysisCustomEndpoint"] = args ? args.containerAnalysisCustomEndpoint : undefined;
@@ -292,6 +294,7 @@ export interface ProviderArgs {
     cloudRunCustomEndpoint?: pulumi.Input<string>;
     cloudSchedulerCustomEndpoint?: pulumi.Input<string>;
     cloudTasksCustomEndpoint?: pulumi.Input<string>;
+    cloudfunctions2CustomEndpoint?: pulumi.Input<string>;
     composerCustomEndpoint?: pulumi.Input<string>;
     computeCustomEndpoint?: pulumi.Input<string>;
     containerAnalysisCustomEndpoint?: pulumi.Input<string>;

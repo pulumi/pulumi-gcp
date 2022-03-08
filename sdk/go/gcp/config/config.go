@@ -95,6 +95,9 @@ func GetCloudSchedulerCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudTasksCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudTasksCustomEndpoint")
 }
+func GetCloudfunctions2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudfunctions2CustomEndpoint")
+}
 func GetComposerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:composerCustomEndpoint")
 }

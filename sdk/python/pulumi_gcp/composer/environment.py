@@ -385,7 +385,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> pulumi.Output[Optional[str]]:
+    def region(self) -> pulumi.Output[str]:
         """
         The location or Compute Engine region for the environment.
         """

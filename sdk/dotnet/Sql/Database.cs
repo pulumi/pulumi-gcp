@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Sql
     /// {
     ///     public MyStack()
     ///     {
+    ///         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
     ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
     ///         {
     ///             Region = "us-central1",

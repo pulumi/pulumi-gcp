@@ -67,6 +67,8 @@ cloudSchedulerCustomEndpoint: Optional[str]
 
 cloudTasksCustomEndpoint: Optional[str]
 
+cloudfunctions2CustomEndpoint: Optional[str]
+
 composerCustomEndpoint: Optional[str]
 
 computeCustomEndpoint: Optional[str]

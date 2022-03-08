@@ -41,7 +41,7 @@ type Environment struct {
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The location or Compute Engine region for the environment.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.

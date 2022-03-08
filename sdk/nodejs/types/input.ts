@@ -5970,6 +5970,211 @@ export namespace cloudfunctions {
 
 }
 
+export namespace cloudfunctionsv2 {
+    export interface FunctionBuildConfig {
+        /**
+         * -
+         * The Cloud Build name of the latest successful
+         * deployment of the function.
+         */
+        build?: pulumi.Input<string>;
+        /**
+         * User managed repository created in Artifact Registry optionally with a customer managed encryption key.
+         */
+        dockerRepository?: pulumi.Input<string>;
+        /**
+         * The name of the function (as defined in source code) that will be executed.
+         * Defaults to the resource name suffix, if not specified. For backward
+         * compatibility, if function with given name is not found, then the system
+         * will try to use function named "function". For Node.js this is name of a
+         * function exported by the module specified in source_location.
+         */
+        entryPoint?: pulumi.Input<string>;
+        /**
+         * Environment variables that shall be available during function execution.
+         */
+        environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The runtime in which to run the function. Required when deploying a new
+         * function, optional when updating an existing function.
+         */
+        runtime?: pulumi.Input<string>;
+        /**
+         * The location of the function source code.
+         * Structure is documented below.
+         */
+        source?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfigSource>;
+        /**
+         * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+         */
+        workerPool?: pulumi.Input<string>;
+    }
+
+    export interface FunctionBuildConfigSource {
+        /**
+         * If provided, get the source from this location in a Cloud Source Repository.
+         * Structure is documented below.
+         */
+        repoSource?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfigSourceRepoSource>;
+        /**
+         * If provided, get the source from this location in Google Cloud Storage.
+         * Structure is documented below.
+         */
+        storageSource?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfigSourceStorageSource>;
+    }
+
+    export interface FunctionBuildConfigSourceRepoSource {
+        /**
+         * Regex matching branches to build.
+         */
+        branchName?: pulumi.Input<string>;
+        /**
+         * Regex matching tags to build.
+         */
+        commitSha?: pulumi.Input<string>;
+        /**
+         * Directory, relative to the source root, in which to run the build.
+         */
+        dir?: pulumi.Input<string>;
+        /**
+         * Only trigger a build if the revision regex does
+         * NOT match the revision regex.
+         */
+        invertRegex?: pulumi.Input<boolean>;
+        /**
+         * ID of the project that owns the Cloud Source Repository. If omitted, the
+         * project ID requesting the build is assumed.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * Name of the Cloud Source Repository.
+         */
+        repoName?: pulumi.Input<string>;
+        /**
+         * Regex matching tags to build.
+         */
+        tagName?: pulumi.Input<string>;
+    }
+
+    export interface FunctionBuildConfigSourceStorageSource {
+        /**
+         * Google Cloud Storage bucket containing the source
+         */
+        bucket?: pulumi.Input<string>;
+        /**
+         * Google Cloud Storage generation for the object. If the generation
+         * is omitted, the latest generation will be used.
+         */
+        generation?: pulumi.Input<number>;
+        /**
+         * Google Cloud Storage object containing the source.
+         */
+        object?: pulumi.Input<string>;
+    }
+
+    export interface FunctionEventTrigger {
+        /**
+         * Required. The type of event to observe.
+         */
+        eventType?: pulumi.Input<string>;
+        /**
+         * The name of a Pub/Sub topic in the same project that will be used
+         * as the transport topic for the event delivery.
+         */
+        pubsubTopic?: pulumi.Input<string>;
+        /**
+         * Describes the retry policy in case of function's execution failure.
+         * Retried execution is charged as any other execution.
+         * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+         */
+        retryPolicy?: pulumi.Input<string>;
+        /**
+         * -
+         * The email of the service account for this function.
+         */
+        serviceAccountEmail?: pulumi.Input<string>;
+        /**
+         * -
+         * The resource name of the Eventarc trigger.
+         */
+        trigger?: pulumi.Input<string>;
+        /**
+         * The region that the trigger will be in. The trigger will only receive
+         * events originating in this region. It can be the same
+         * region as the function, a different region or multi-region, or the global
+         * region. If not provided, defaults to the same region as the function.
+         */
+        triggerRegion?: pulumi.Input<string>;
+    }
+
+    export interface FunctionServiceConfig {
+        /**
+         * Whether 100% of traffic is routed to the latest revision. Defaults to true.
+         */
+        allTrafficOnLatestRevision?: pulumi.Input<boolean>;
+        /**
+         * The amount of memory available for a function.
+         * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
+         * supplied the value is interpreted as bytes.
+         */
+        availableMemory?: pulumi.Input<string>;
+        /**
+         * Environment variables that shall be available during function execution.
+         */
+        environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * -
+         * URIs of the Service deployed
+         */
+        gcfUri?: pulumi.Input<string>;
+        /**
+         * Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
+         * Default value is `ALLOW_ALL`.
+         * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+         */
+        ingressSettings?: pulumi.Input<string>;
+        /**
+         * The limit on the maximum number of function instances that may coexist at a
+         * given time.
+         */
+        maxInstanceCount?: pulumi.Input<number>;
+        /**
+         * The limit on the minimum number of function instances that may coexist at a
+         * given time.
+         */
+        minInstanceCount?: pulumi.Input<number>;
+        /**
+         * Name of the service associated with a Function.
+         */
+        service?: pulumi.Input<string>;
+        /**
+         * -
+         * The email of the service account for this function.
+         */
+        serviceAccountEmail?: pulumi.Input<string>;
+        /**
+         * The function execution timeout. Execution is considered failed and
+         * can be terminated if the function is not completed at the end of the
+         * timeout period. Defaults to 60 seconds.
+         */
+        timeoutSeconds?: pulumi.Input<number>;
+        /**
+         * -
+         * URI of the Service deployed.
+         */
+        uri?: pulumi.Input<string>;
+        /**
+         * The Serverless VPC Access connector that this cloud function can connect to.
+         */
+        vpcConnector?: pulumi.Input<string>;
+        /**
+         * Available egress settings.
+         * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+         */
+        vpcConnectorEgressSettings?: pulumi.Input<string>;
+    }
+}
+
 export namespace cloudidentity {
     export interface GroupGroupKey {
         /**
@@ -8659,7 +8864,7 @@ export namespace compute {
         deviceName?: pulumi.Input<string>;
         /**
          * A 256-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * to encrypt this disk. Only one of `kmsKeySelfLink` and `diskEncryptionKeyRaw` may be set.
          */
@@ -8697,7 +8902,7 @@ export namespace compute {
         deviceName?: pulumi.Input<string>;
         /**
          * A 256-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * to encrypt this disk. Only one of `kmsKeySelfLink` and `diskEncryptionKeyRaw` may be set.
          */
@@ -9380,6 +9585,12 @@ export namespace compute {
          * set to false.  Defaults to false.
          */
         preemptible?: pulumi.Input<boolean>;
+        /**
+         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+         * `preemptible` should be `true` and `autoRestart` should be
+         * `false`. For more info about
+         * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+         */
         provisioningModel?: pulumi.Input<string>;
     }
 
@@ -9719,6 +9930,12 @@ export namespace compute {
          * [here](https://cloud.google.com/compute/docs/instances/preemptible).
          */
         preemptible?: pulumi.Input<boolean>;
+        /**
+         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+         * `preemptible` should be `true` and `autoRestart` should be
+         * `false`. For more info about
+         * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+         */
         provisioningModel?: pulumi.Input<string>;
     }
 
@@ -10682,6 +10899,18 @@ export namespace compute {
          * This field is only used with l4 load balancing.
          */
         failoverRatio?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface RegionBackendServiceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface RegionBackendServiceIap {
@@ -12982,6 +13211,14 @@ export namespace compute {
          * will have the same local ASN.
          */
         asn: pulumi.Input<number>;
+        /**
+         * The interval in seconds between BGP keepalive messages that are sent to the peer.
+         * Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
+         * maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
+         * BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
+         * the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+         */
+        keepaliveInterval?: pulumi.Input<number>;
     }
 
     export interface RouterBgpAdvertisedIpRange {
@@ -15365,6 +15602,7 @@ export namespace compute {
          */
         service: pulumi.Input<string>;
     }
+
 }
 
 export namespace config {
@@ -20081,7 +20319,7 @@ export namespace dataproc {
         /**
          * Required. Cloud Storage URI of executable file.
          */
-        executableFile?: pulumi.Input<string>;
+        executableFile: pulumi.Input<string>;
         /**
          * Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
          */

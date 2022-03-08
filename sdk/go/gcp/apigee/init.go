@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:apigee/endpointAttachment:EndpointAttachment":
+		r = &EndpointAttachment{}
 	case "gcp:apigee/envGroup:EnvGroup":
 		r = &EnvGroup{}
 	case "gcp:apigee/envGroupAttachment:EnvGroupAttachment":
@@ -52,6 +54,11 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/endpointAttachment",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/envGroup",

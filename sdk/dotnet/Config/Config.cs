@@ -235,6 +235,13 @@ namespace Pulumi.Gcp
             set => _cloudTasksCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _cloudfunctions2CustomEndpoint = new __Value<string?>(() => __config.Get("cloudfunctions2CustomEndpoint"));
+        public static string? Cloudfunctions2CustomEndpoint
+        {
+            get => _cloudfunctions2CustomEndpoint.Get();
+            set => _cloudfunctions2CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _composerCustomEndpoint = new __Value<string?>(() => __config.Get("composerCustomEndpoint"));
         public static string? ComposerCustomEndpoint
         {

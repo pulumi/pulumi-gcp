@@ -240,6 +240,14 @@ Object.defineProperty(exports, "cloudTasksCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const cloudfunctions2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudfunctions2CustomEndpoint", {
+    get() {
+        return __config.get("cloudfunctions2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const composerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "composerCustomEndpoint", {
     get() {

@@ -138,7 +138,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The password for the user. Can be updated. For Postgres
-        /// instances this is a Required field.
+        /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+        /// or CLOUD_IAM_SERVICE_ACCOUNT.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -236,7 +237,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The password for the user. Can be updated. For Postgres
-        /// instances this is a Required field.
+        /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+        /// or CLOUD_IAM_SERVICE_ACCOUNT.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -295,7 +297,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The password for the user. Can be updated. For Postgres
-        /// instances this is a Required field.
+        /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+        /// or CLOUD_IAM_SERVICE_ACCOUNT.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }

@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<string> AdvertisedGroups;
         public readonly ImmutableArray<Outputs.GetRouterBgpAdvertisedIpRangeResult> AdvertisedIpRanges;
         public readonly int Asn;
+        public readonly int KeepaliveInterval;
 
         [OutputConstructor]
         private GetRouterBgpResult(
@@ -26,12 +27,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.GetRouterBgpAdvertisedIpRangeResult> advertisedIpRanges,
 
-            int asn)
+            int asn,
+
+            int keepaliveInterval)
         {
             AdvertiseMode = advertiseMode;
             AdvertisedGroups = advertisedGroups;
             AdvertisedIpRanges = advertisedIpRanges;
             Asn = asn;
+            KeepaliveInterval = keepaliveInterval;
         }
     }
 }
