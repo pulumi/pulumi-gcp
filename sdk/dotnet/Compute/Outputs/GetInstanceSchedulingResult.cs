@@ -30,6 +30,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Whether the instance is preemptible.
         /// </summary>
         public readonly bool Preemptible;
+        /// <summary>
+        /// (Beta) Describe the type of preemptible VM.
+        /// </summary>
         public readonly string ProvisioningModel;
 
         [OutputConstructor]

@@ -73,7 +73,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The location or Compute Engine region for the environment.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.

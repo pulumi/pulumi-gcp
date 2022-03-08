@@ -157,6 +157,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionAutoscaler{}
 	case "gcp:compute/regionBackendService:RegionBackendService":
 		r = &RegionBackendService{}
+	case "gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding":
+		r = &RegionBackendServiceIamBinding{}
+	case "gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember":
+		r = &RegionBackendServiceIamMember{}
+	case "gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy":
+		r = &RegionBackendServiceIamPolicy{}
 	case "gcp:compute/regionDisk:RegionDisk":
 		r = &RegionDisk{}
 	case "gcp:compute/regionDiskIamBinding:RegionDiskIamBinding":
@@ -592,6 +598,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionBackendService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionBackendServiceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionBackendServiceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionBackendServiceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

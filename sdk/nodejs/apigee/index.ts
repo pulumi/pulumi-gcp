@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./endpointAttachment";
 export * from "./envGroup";
 export * from "./envGroupAttachment";
 export * from "./environment";
@@ -16,6 +17,7 @@ export * from "./instanceAttachment";
 export * from "./organization";
 
 // Import resources to register:
+import { EndpointAttachment } from "./endpointAttachment";
 import { EnvGroup } from "./envGroup";
 import { EnvGroupAttachment } from "./envGroupAttachment";
 import { Environment } from "./environment";
@@ -30,6 +32,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:apigee/endpointAttachment:EndpointAttachment":
+                return new EndpointAttachment(name, <any>undefined, { urn })
             case "gcp:apigee/envGroup:EnvGroup":
                 return new EnvGroup(name, <any>undefined, { urn })
             case "gcp:apigee/envGroupAttachment:EnvGroupAttachment":
@@ -53,6 +57,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "apigee/endpointAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environment", _module)

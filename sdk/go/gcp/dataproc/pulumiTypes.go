@@ -16058,7 +16058,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 
 type WorkflowTemplatePlacementManagedClusterConfigInitializationAction struct {
 	// Required. Cloud Storage URI of executable file.
-	ExecutableFile *string `pulumi:"executableFile"`
+	ExecutableFile string `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	ExecutionTimeout *string `pulumi:"executionTimeout"`
 }
@@ -16076,7 +16076,7 @@ type WorkflowTemplatePlacementManagedClusterConfigInitializationActionInput inte
 
 type WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs struct {
 	// Required. Cloud Storage URI of executable file.
-	ExecutableFile pulumi.StringPtrInput `pulumi:"executableFile"`
+	ExecutableFile pulumi.StringInput `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
 }
@@ -16133,10 +16133,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput)
 }
 
 // Required. Cloud Storage URI of executable file.
-func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ExecutableFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigInitializationAction) *string {
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ExecutableFile() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigInitializationAction) string {
 		return v.ExecutableFile
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 // Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.

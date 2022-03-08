@@ -40,6 +40,8 @@ if typing.TYPE_CHECKING:
     cloudbuild = __cloudbuild
     import pulumi_gcp.cloudfunctions as __cloudfunctions
     cloudfunctions = __cloudfunctions
+    import pulumi_gcp.cloudfunctionsv2 as __cloudfunctionsv2
+    cloudfunctionsv2 = __cloudfunctionsv2
     import pulumi_gcp.cloudidentity as __cloudidentity
     cloudidentity = __cloudidentity
     import pulumi_gcp.cloudrun as __cloudrun
@@ -188,6 +190,7 @@ else:
     cloudasset = _utilities.lazy_import('pulumi_gcp.cloudasset')
     cloudbuild = _utilities.lazy_import('pulumi_gcp.cloudbuild')
     cloudfunctions = _utilities.lazy_import('pulumi_gcp.cloudfunctions')
+    cloudfunctionsv2 = _utilities.lazy_import('pulumi_gcp.cloudfunctionsv2')
     cloudidentity = _utilities.lazy_import('pulumi_gcp.cloudidentity')
     cloudrun = _utilities.lazy_import('pulumi_gcp.cloudrun')
     cloudscheduler = _utilities.lazy_import('pulumi_gcp.cloudscheduler')
@@ -432,6 +435,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigateway",
   "classes": {
    "gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy": "GatewayIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/endpointAttachment",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/endpointAttachment:EndpointAttachment": "EndpointAttachment"
   }
  },
  {
@@ -1008,6 +1019,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudfunctions",
   "classes": {
    "gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy": "FunctionIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudfunctionsv2/function",
+  "fqn": "pulumi_gcp.cloudfunctionsv2",
+  "classes": {
+   "gcp:cloudfunctionsv2/function:Function": "Function"
   }
  },
  {
@@ -1632,6 +1651,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionBackendService:RegionBackendService": "RegionBackendService"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionBackendServiceIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding": "RegionBackendServiceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionBackendServiceIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember": "RegionBackendServiceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionBackendServiceIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy": "RegionBackendServiceIamPolicy"
   }
  },
  {

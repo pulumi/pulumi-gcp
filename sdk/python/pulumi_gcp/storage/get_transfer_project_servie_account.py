@@ -20,7 +20,7 @@ class GetTransferProjectServieAccountResult:
     """
     A collection of values returned by getTransferProjectServieAccount.
     """
-    def __init__(__self__, email=None, id=None, project=None):
+    def __init__(__self__, email=None, id=None, project=None, subject_id=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
@@ -30,12 +30,15 @@ class GetTransferProjectServieAccountResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if subject_id and not isinstance(subject_id, str):
+            raise TypeError("Expected argument 'subject_id' to be a str")
+        pulumi.set(__self__, "subject_id", subject_id)
 
     @property
     @pulumi.getter
     def email(self) -> str:
         """
-        Email address of the default service account used by Storage Transfer Jobs running in this project
+        Email address of the default service account used by Storage Transfer Jobs running in this project.
         """
         return pulumi.get(self, "email")
 
@@ -52,6 +55,14 @@ class GetTransferProjectServieAccountResult:
     def project(self) -> str:
         return pulumi.get(self, "project")
 
+    @property
+    @pulumi.getter(name="subjectId")
+    def subject_id(self) -> str:
+        """
+        Unique identifier for the service account.
+        """
+        return pulumi.get(self, "subject_id")
+
 
 class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAccountResult):
     # pylint: disable=using-constant-test
@@ -61,7 +72,8 @@ class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAcc
         return GetTransferProjectServieAccountResult(
             email=self.email,
             id=self.id,
-            project=self.project)
+            project=self.project,
+            subject_id=self.subject_id)
 
 
 def get_transfer_project_servie_account(project: Optional[str] = None,
@@ -93,7 +105,8 @@ def get_transfer_project_servie_account(project: Optional[str] = None,
     return AwaitableGetTransferProjectServieAccountResult(
         email=__ret__.email,
         id=__ret__.id,
-        project=__ret__.project)
+        project=__ret__.project,
+        subject_id=__ret__.subject_id)
 
 
 @_utilities.lift_output_func(get_transfer_project_servie_account)

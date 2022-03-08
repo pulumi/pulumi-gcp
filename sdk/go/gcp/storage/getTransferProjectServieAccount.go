@@ -50,11 +50,13 @@ type GetTransferProjectServieAccountArgs struct {
 
 // A collection of values returned by getTransferProjectServieAccount.
 type GetTransferProjectServieAccountResult struct {
-	// Email address of the default service account used by Storage Transfer Jobs running in this project
+	// Email address of the default service account used by Storage Transfer Jobs running in this project.
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string `pulumi:"id"`
 	Project string `pulumi:"project"`
+	// Unique identifier for the service account.
+	SubjectId string `pulumi:"subjectId"`
 }
 
 func GetTransferProjectServieAccountOutput(ctx *pulumi.Context, args GetTransferProjectServieAccountOutputArgs, opts ...pulumi.InvokeOption) GetTransferProjectServieAccountResultOutput {
@@ -91,7 +93,7 @@ func (o GetTransferProjectServieAccountResultOutput) ToGetTransferProjectServieA
 	return o
 }
 
-// Email address of the default service account used by Storage Transfer Jobs running in this project
+// Email address of the default service account used by Storage Transfer Jobs running in this project.
 func (o GetTransferProjectServieAccountResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -103,6 +105,11 @@ func (o GetTransferProjectServieAccountResultOutput) Id() pulumi.StringOutput {
 
 func (o GetTransferProjectServieAccountResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the service account.
+func (o GetTransferProjectServieAccountResultOutput) SubjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.SubjectId }).(pulumi.StringOutput)
 }
 
 func init() {

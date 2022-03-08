@@ -133,7 +133,8 @@ type User struct {
 	// to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The password for the user. Can be updated. For Postgres
-	// instances this is a Required field.
+	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+	// or CLOUD_IAM_SERVICE_ACCOUNT.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -191,7 +192,8 @@ type userState struct {
 	// to be created.
 	Name *string `pulumi:"name"`
 	// The password for the user. Can be updated. For Postgres
-	// instances this is a Required field.
+	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+	// or CLOUD_IAM_SERVICE_ACCOUNT.
 	Password *string `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -218,7 +220,8 @@ type UserState struct {
 	// to be created.
 	Name pulumi.StringPtrInput
 	// The password for the user. Can be updated. For Postgres
-	// instances this is a Required field.
+	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+	// or CLOUD_IAM_SERVICE_ACCOUNT.
 	Password pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -249,7 +252,8 @@ type userArgs struct {
 	// to be created.
 	Name *string `pulumi:"name"`
 	// The password for the user. Can be updated. For Postgres
-	// instances this is a Required field.
+	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+	// or CLOUD_IAM_SERVICE_ACCOUNT.
 	Password *string `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -277,7 +281,8 @@ type UserArgs struct {
 	// to be created.
 	Name pulumi.StringPtrInput
 	// The password for the user. Can be updated. For Postgres
-	// instances this is a Required field.
+	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+	// or CLOUD_IAM_SERVICE_ACCOUNT.
 	Password pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

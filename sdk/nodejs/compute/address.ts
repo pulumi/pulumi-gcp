@@ -160,7 +160,7 @@ export class Address extends pulumi.CustomResource {
      * The static external IP address represented by this resource. Only
      * IPv4 is supported. An address may only be specified for INTERNAL
      * address types. The IP address must be inside the specified subnetwork,
-     * if any.
+     * if any. Set by the API if undefined.
      */
     public readonly address!: pulumi.Output<string>;
     /**
@@ -313,7 +313,7 @@ export interface AddressState {
      * The static external IP address represented by this resource. Only
      * IPv4 is supported. An address may only be specified for INTERNAL
      * address types. The IP address must be inside the specified subnetwork,
-     * if any.
+     * if any. Set by the API if undefined.
      */
     address?: pulumi.Input<string>;
     /**
@@ -414,7 +414,7 @@ export interface AddressArgs {
      * The static external IP address represented by this resource. Only
      * IPv4 is supported. An address may only be specified for INTERNAL
      * address types. The IP address must be inside the specified subnetwork,
-     * if any.
+     * if any. Set by the API if undefined.
      */
     address?: pulumi.Input<string>;
     /**

@@ -355,7 +355,7 @@ type Cluster struct {
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
-	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrOutput `pulumi:"verticalPodAutoscaling"`
+	VerticalPodAutoscaling ClusterVerticalPodAutoscalingOutput `pulumi:"verticalPodAutoscaling"`
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.

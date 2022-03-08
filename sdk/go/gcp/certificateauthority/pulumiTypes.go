@@ -12608,6 +12608,1656 @@ func (o CertificateTemplatePredefinedValuesPolicyIdArrayOutput) Index(i pulumi.I
 	}).(CertificateTemplatePredefinedValuesPolicyIdOutput)
 }
 
+type GetAuthorityAccessUrl struct {
+	CaCertificateAccessUrl string   `pulumi:"caCertificateAccessUrl"`
+	CrlAccessUrls          []string `pulumi:"crlAccessUrls"`
+}
+
+// GetAuthorityAccessUrlInput is an input type that accepts GetAuthorityAccessUrlArgs and GetAuthorityAccessUrlOutput values.
+// You can construct a concrete instance of `GetAuthorityAccessUrlInput` via:
+//
+//          GetAuthorityAccessUrlArgs{...}
+type GetAuthorityAccessUrlInput interface {
+	pulumi.Input
+
+	ToGetAuthorityAccessUrlOutput() GetAuthorityAccessUrlOutput
+	ToGetAuthorityAccessUrlOutputWithContext(context.Context) GetAuthorityAccessUrlOutput
+}
+
+type GetAuthorityAccessUrlArgs struct {
+	CaCertificateAccessUrl pulumi.StringInput      `pulumi:"caCertificateAccessUrl"`
+	CrlAccessUrls          pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
+}
+
+func (GetAuthorityAccessUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityAccessUrl)(nil)).Elem()
+}
+
+func (i GetAuthorityAccessUrlArgs) ToGetAuthorityAccessUrlOutput() GetAuthorityAccessUrlOutput {
+	return i.ToGetAuthorityAccessUrlOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityAccessUrlArgs) ToGetAuthorityAccessUrlOutputWithContext(ctx context.Context) GetAuthorityAccessUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityAccessUrlOutput)
+}
+
+// GetAuthorityAccessUrlArrayInput is an input type that accepts GetAuthorityAccessUrlArray and GetAuthorityAccessUrlArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityAccessUrlArrayInput` via:
+//
+//          GetAuthorityAccessUrlArray{ GetAuthorityAccessUrlArgs{...} }
+type GetAuthorityAccessUrlArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityAccessUrlArrayOutput() GetAuthorityAccessUrlArrayOutput
+	ToGetAuthorityAccessUrlArrayOutputWithContext(context.Context) GetAuthorityAccessUrlArrayOutput
+}
+
+type GetAuthorityAccessUrlArray []GetAuthorityAccessUrlInput
+
+func (GetAuthorityAccessUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityAccessUrl)(nil)).Elem()
+}
+
+func (i GetAuthorityAccessUrlArray) ToGetAuthorityAccessUrlArrayOutput() GetAuthorityAccessUrlArrayOutput {
+	return i.ToGetAuthorityAccessUrlArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityAccessUrlArray) ToGetAuthorityAccessUrlArrayOutputWithContext(ctx context.Context) GetAuthorityAccessUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityAccessUrlArrayOutput)
+}
+
+type GetAuthorityAccessUrlOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityAccessUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityAccessUrl)(nil)).Elem()
+}
+
+func (o GetAuthorityAccessUrlOutput) ToGetAuthorityAccessUrlOutput() GetAuthorityAccessUrlOutput {
+	return o
+}
+
+func (o GetAuthorityAccessUrlOutput) ToGetAuthorityAccessUrlOutputWithContext(ctx context.Context) GetAuthorityAccessUrlOutput {
+	return o
+}
+
+func (o GetAuthorityAccessUrlOutput) CaCertificateAccessUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityAccessUrl) string { return v.CaCertificateAccessUrl }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityAccessUrlOutput) CrlAccessUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityAccessUrl) []string { return v.CrlAccessUrls }).(pulumi.StringArrayOutput)
+}
+
+type GetAuthorityAccessUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityAccessUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityAccessUrl)(nil)).Elem()
+}
+
+func (o GetAuthorityAccessUrlArrayOutput) ToGetAuthorityAccessUrlArrayOutput() GetAuthorityAccessUrlArrayOutput {
+	return o
+}
+
+func (o GetAuthorityAccessUrlArrayOutput) ToGetAuthorityAccessUrlArrayOutputWithContext(ctx context.Context) GetAuthorityAccessUrlArrayOutput {
+	return o
+}
+
+func (o GetAuthorityAccessUrlArrayOutput) Index(i pulumi.IntInput) GetAuthorityAccessUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityAccessUrl {
+		return vs[0].([]GetAuthorityAccessUrl)[vs[1].(int)]
+	}).(GetAuthorityAccessUrlOutput)
+}
+
+type GetAuthorityConfig struct {
+	SubjectConfigs []GetAuthorityConfigSubjectConfig `pulumi:"subjectConfigs"`
+	X509Configs    []GetAuthorityConfigX509Config    `pulumi:"x509Configs"`
+}
+
+// GetAuthorityConfigInput is an input type that accepts GetAuthorityConfigArgs and GetAuthorityConfigOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigInput` via:
+//
+//          GetAuthorityConfigArgs{...}
+type GetAuthorityConfigInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigOutput() GetAuthorityConfigOutput
+	ToGetAuthorityConfigOutputWithContext(context.Context) GetAuthorityConfigOutput
+}
+
+type GetAuthorityConfigArgs struct {
+	SubjectConfigs GetAuthorityConfigSubjectConfigArrayInput `pulumi:"subjectConfigs"`
+	X509Configs    GetAuthorityConfigX509ConfigArrayInput    `pulumi:"x509Configs"`
+}
+
+func (GetAuthorityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfig)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigArgs) ToGetAuthorityConfigOutput() GetAuthorityConfigOutput {
+	return i.ToGetAuthorityConfigOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigArgs) ToGetAuthorityConfigOutputWithContext(ctx context.Context) GetAuthorityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigOutput)
+}
+
+// GetAuthorityConfigArrayInput is an input type that accepts GetAuthorityConfigArray and GetAuthorityConfigArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigArrayInput` via:
+//
+//          GetAuthorityConfigArray{ GetAuthorityConfigArgs{...} }
+type GetAuthorityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigArrayOutput() GetAuthorityConfigArrayOutput
+	ToGetAuthorityConfigArrayOutputWithContext(context.Context) GetAuthorityConfigArrayOutput
+}
+
+type GetAuthorityConfigArray []GetAuthorityConfigInput
+
+func (GetAuthorityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfig)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigArray) ToGetAuthorityConfigArrayOutput() GetAuthorityConfigArrayOutput {
+	return i.ToGetAuthorityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigArray) ToGetAuthorityConfigArrayOutputWithContext(ctx context.Context) GetAuthorityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigArrayOutput)
+}
+
+type GetAuthorityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfig)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigOutput) ToGetAuthorityConfigOutput() GetAuthorityConfigOutput {
+	return o
+}
+
+func (o GetAuthorityConfigOutput) ToGetAuthorityConfigOutputWithContext(ctx context.Context) GetAuthorityConfigOutput {
+	return o
+}
+
+func (o GetAuthorityConfigOutput) SubjectConfigs() GetAuthorityConfigSubjectConfigArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfig) []GetAuthorityConfigSubjectConfig { return v.SubjectConfigs }).(GetAuthorityConfigSubjectConfigArrayOutput)
+}
+
+func (o GetAuthorityConfigOutput) X509Configs() GetAuthorityConfigX509ConfigArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfig) []GetAuthorityConfigX509Config { return v.X509Configs }).(GetAuthorityConfigX509ConfigArrayOutput)
+}
+
+type GetAuthorityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfig)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigArrayOutput) ToGetAuthorityConfigArrayOutput() GetAuthorityConfigArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigArrayOutput) ToGetAuthorityConfigArrayOutputWithContext(ctx context.Context) GetAuthorityConfigArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfig {
+		return vs[0].([]GetAuthorityConfig)[vs[1].(int)]
+	}).(GetAuthorityConfigOutput)
+}
+
+type GetAuthorityConfigSubjectConfig struct {
+	SubjectAltNames []GetAuthorityConfigSubjectConfigSubjectAltName `pulumi:"subjectAltNames"`
+	Subjects        []GetAuthorityConfigSubjectConfigSubject        `pulumi:"subjects"`
+}
+
+// GetAuthorityConfigSubjectConfigInput is an input type that accepts GetAuthorityConfigSubjectConfigArgs and GetAuthorityConfigSubjectConfigOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigSubjectConfigInput` via:
+//
+//          GetAuthorityConfigSubjectConfigArgs{...}
+type GetAuthorityConfigSubjectConfigInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigSubjectConfigOutput() GetAuthorityConfigSubjectConfigOutput
+	ToGetAuthorityConfigSubjectConfigOutputWithContext(context.Context) GetAuthorityConfigSubjectConfigOutput
+}
+
+type GetAuthorityConfigSubjectConfigArgs struct {
+	SubjectAltNames GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput `pulumi:"subjectAltNames"`
+	Subjects        GetAuthorityConfigSubjectConfigSubjectArrayInput        `pulumi:"subjects"`
+}
+
+func (GetAuthorityConfigSubjectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigSubjectConfig)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigSubjectConfigArgs) ToGetAuthorityConfigSubjectConfigOutput() GetAuthorityConfigSubjectConfigOutput {
+	return i.ToGetAuthorityConfigSubjectConfigOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigSubjectConfigArgs) ToGetAuthorityConfigSubjectConfigOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigSubjectConfigOutput)
+}
+
+// GetAuthorityConfigSubjectConfigArrayInput is an input type that accepts GetAuthorityConfigSubjectConfigArray and GetAuthorityConfigSubjectConfigArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigSubjectConfigArrayInput` via:
+//
+//          GetAuthorityConfigSubjectConfigArray{ GetAuthorityConfigSubjectConfigArgs{...} }
+type GetAuthorityConfigSubjectConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigSubjectConfigArrayOutput() GetAuthorityConfigSubjectConfigArrayOutput
+	ToGetAuthorityConfigSubjectConfigArrayOutputWithContext(context.Context) GetAuthorityConfigSubjectConfigArrayOutput
+}
+
+type GetAuthorityConfigSubjectConfigArray []GetAuthorityConfigSubjectConfigInput
+
+func (GetAuthorityConfigSubjectConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigSubjectConfig)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigSubjectConfigArray) ToGetAuthorityConfigSubjectConfigArrayOutput() GetAuthorityConfigSubjectConfigArrayOutput {
+	return i.ToGetAuthorityConfigSubjectConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigSubjectConfigArray) ToGetAuthorityConfigSubjectConfigArrayOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigSubjectConfigArrayOutput)
+}
+
+type GetAuthorityConfigSubjectConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigSubjectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigSubjectConfig)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigSubjectConfigOutput) ToGetAuthorityConfigSubjectConfigOutput() GetAuthorityConfigSubjectConfigOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigOutput) ToGetAuthorityConfigSubjectConfigOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigOutput) SubjectAltNames() GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfig) []GetAuthorityConfigSubjectConfigSubjectAltName {
+		return v.SubjectAltNames
+	}).(GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigOutput) Subjects() GetAuthorityConfigSubjectConfigSubjectArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfig) []GetAuthorityConfigSubjectConfigSubject { return v.Subjects }).(GetAuthorityConfigSubjectConfigSubjectArrayOutput)
+}
+
+type GetAuthorityConfigSubjectConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigSubjectConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigSubjectConfig)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigSubjectConfigArrayOutput) ToGetAuthorityConfigSubjectConfigArrayOutput() GetAuthorityConfigSubjectConfigArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigArrayOutput) ToGetAuthorityConfigSubjectConfigArrayOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigSubjectConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigSubjectConfig {
+		return vs[0].([]GetAuthorityConfigSubjectConfig)[vs[1].(int)]
+	}).(GetAuthorityConfigSubjectConfigOutput)
+}
+
+type GetAuthorityConfigSubjectConfigSubject struct {
+	CommonName         string `pulumi:"commonName"`
+	CountryCode        string `pulumi:"countryCode"`
+	Locality           string `pulumi:"locality"`
+	Organization       string `pulumi:"organization"`
+	OrganizationalUnit string `pulumi:"organizationalUnit"`
+	PostalCode         string `pulumi:"postalCode"`
+	Province           string `pulumi:"province"`
+	StreetAddress      string `pulumi:"streetAddress"`
+}
+
+// GetAuthorityConfigSubjectConfigSubjectInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectArgs and GetAuthorityConfigSubjectConfigSubjectOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigSubjectConfigSubjectInput` via:
+//
+//          GetAuthorityConfigSubjectConfigSubjectArgs{...}
+type GetAuthorityConfigSubjectConfigSubjectInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigSubjectConfigSubjectOutput() GetAuthorityConfigSubjectConfigSubjectOutput
+	ToGetAuthorityConfigSubjectConfigSubjectOutputWithContext(context.Context) GetAuthorityConfigSubjectConfigSubjectOutput
+}
+
+type GetAuthorityConfigSubjectConfigSubjectArgs struct {
+	CommonName         pulumi.StringInput `pulumi:"commonName"`
+	CountryCode        pulumi.StringInput `pulumi:"countryCode"`
+	Locality           pulumi.StringInput `pulumi:"locality"`
+	Organization       pulumi.StringInput `pulumi:"organization"`
+	OrganizationalUnit pulumi.StringInput `pulumi:"organizationalUnit"`
+	PostalCode         pulumi.StringInput `pulumi:"postalCode"`
+	Province           pulumi.StringInput `pulumi:"province"`
+	StreetAddress      pulumi.StringInput `pulumi:"streetAddress"`
+}
+
+func (GetAuthorityConfigSubjectConfigSubjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubject)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigSubjectConfigSubjectArgs) ToGetAuthorityConfigSubjectConfigSubjectOutput() GetAuthorityConfigSubjectConfigSubjectOutput {
+	return i.ToGetAuthorityConfigSubjectConfigSubjectOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigSubjectConfigSubjectArgs) ToGetAuthorityConfigSubjectConfigSubjectOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigSubjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigSubjectConfigSubjectOutput)
+}
+
+// GetAuthorityConfigSubjectConfigSubjectArrayInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectArray and GetAuthorityConfigSubjectConfigSubjectArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigSubjectConfigSubjectArrayInput` via:
+//
+//          GetAuthorityConfigSubjectConfigSubjectArray{ GetAuthorityConfigSubjectConfigSubjectArgs{...} }
+type GetAuthorityConfigSubjectConfigSubjectArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigSubjectConfigSubjectArrayOutput() GetAuthorityConfigSubjectConfigSubjectArrayOutput
+	ToGetAuthorityConfigSubjectConfigSubjectArrayOutputWithContext(context.Context) GetAuthorityConfigSubjectConfigSubjectArrayOutput
+}
+
+type GetAuthorityConfigSubjectConfigSubjectArray []GetAuthorityConfigSubjectConfigSubjectInput
+
+func (GetAuthorityConfigSubjectConfigSubjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigSubjectConfigSubject)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigSubjectConfigSubjectArray) ToGetAuthorityConfigSubjectConfigSubjectArrayOutput() GetAuthorityConfigSubjectConfigSubjectArrayOutput {
+	return i.ToGetAuthorityConfigSubjectConfigSubjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigSubjectConfigSubjectArray) ToGetAuthorityConfigSubjectConfigSubjectArrayOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigSubjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigSubjectConfigSubjectArrayOutput)
+}
+
+type GetAuthorityConfigSubjectConfigSubjectOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigSubjectConfigSubjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubject)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) ToGetAuthorityConfigSubjectConfigSubjectOutput() GetAuthorityConfigSubjectConfigSubjectOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) ToGetAuthorityConfigSubjectConfigSubjectOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigSubjectOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) Locality() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.Locality }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) OrganizationalUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.OrganizationalUnit }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) PostalCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.PostalCode }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) Province() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.Province }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectOutput) StreetAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.StreetAddress }).(pulumi.StringOutput)
+}
+
+type GetAuthorityConfigSubjectConfigSubjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigSubjectConfigSubjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigSubjectConfigSubject)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectArrayOutput) ToGetAuthorityConfigSubjectConfigSubjectArrayOutput() GetAuthorityConfigSubjectConfigSubjectArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectArrayOutput) ToGetAuthorityConfigSubjectConfigSubjectArrayOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigSubjectArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigSubjectConfigSubjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigSubjectConfigSubject {
+		return vs[0].([]GetAuthorityConfigSubjectConfigSubject)[vs[1].(int)]
+	}).(GetAuthorityConfigSubjectConfigSubjectOutput)
+}
+
+type GetAuthorityConfigSubjectConfigSubjectAltName struct {
+	DnsNames       []string `pulumi:"dnsNames"`
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	IpAddresses    []string `pulumi:"ipAddresses"`
+	Uris           []string `pulumi:"uris"`
+}
+
+// GetAuthorityConfigSubjectConfigSubjectAltNameInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectAltNameArgs and GetAuthorityConfigSubjectConfigSubjectAltNameOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigSubjectConfigSubjectAltNameInput` via:
+//
+//          GetAuthorityConfigSubjectConfigSubjectAltNameArgs{...}
+type GetAuthorityConfigSubjectConfigSubjectAltNameInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigSubjectConfigSubjectAltNameOutput() GetAuthorityConfigSubjectConfigSubjectAltNameOutput
+	ToGetAuthorityConfigSubjectConfigSubjectAltNameOutputWithContext(context.Context) GetAuthorityConfigSubjectConfigSubjectAltNameOutput
+}
+
+type GetAuthorityConfigSubjectConfigSubjectAltNameArgs struct {
+	DnsNames       pulumi.StringArrayInput `pulumi:"dnsNames"`
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	IpAddresses    pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	Uris           pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (GetAuthorityConfigSubjectConfigSubjectAltNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectAltName)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigSubjectConfigSubjectAltNameArgs) ToGetAuthorityConfigSubjectConfigSubjectAltNameOutput() GetAuthorityConfigSubjectConfigSubjectAltNameOutput {
+	return i.ToGetAuthorityConfigSubjectConfigSubjectAltNameOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigSubjectConfigSubjectAltNameArgs) ToGetAuthorityConfigSubjectConfigSubjectAltNameOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigSubjectAltNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigSubjectConfigSubjectAltNameOutput)
+}
+
+// GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectAltNameArray and GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput` via:
+//
+//          GetAuthorityConfigSubjectConfigSubjectAltNameArray{ GetAuthorityConfigSubjectConfigSubjectAltNameArgs{...} }
+type GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput() GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput
+	ToGetAuthorityConfigSubjectConfigSubjectAltNameArrayOutputWithContext(context.Context) GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput
+}
+
+type GetAuthorityConfigSubjectConfigSubjectAltNameArray []GetAuthorityConfigSubjectConfigSubjectAltNameInput
+
+func (GetAuthorityConfigSubjectConfigSubjectAltNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigSubjectConfigSubjectAltName)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigSubjectConfigSubjectAltNameArray) ToGetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput() GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput {
+	return i.ToGetAuthorityConfigSubjectConfigSubjectAltNameArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigSubjectConfigSubjectAltNameArray) ToGetAuthorityConfigSubjectConfigSubjectAltNameArrayOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput)
+}
+
+type GetAuthorityConfigSubjectConfigSubjectAltNameOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigSubjectConfigSubjectAltNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectAltName)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) ToGetAuthorityConfigSubjectConfigSubjectAltNameOutput() GetAuthorityConfigSubjectConfigSubjectAltNameOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) ToGetAuthorityConfigSubjectConfigSubjectAltNameOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigSubjectAltNameOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) DnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubjectAltName) []string { return v.DnsNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubjectAltName) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubjectAltName) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubjectAltName) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigSubjectConfigSubjectAltName)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput) ToGetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput() GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput) ToGetAuthorityConfigSubjectConfigSubjectAltNameArrayOutputWithContext(ctx context.Context) GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigSubjectConfigSubjectAltNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigSubjectConfigSubjectAltName {
+		return vs[0].([]GetAuthorityConfigSubjectConfigSubjectAltName)[vs[1].(int)]
+	}).(GetAuthorityConfigSubjectConfigSubjectAltNameOutput)
+}
+
+type GetAuthorityConfigX509Config struct {
+	AdditionalExtensions []GetAuthorityConfigX509ConfigAdditionalExtension `pulumi:"additionalExtensions"`
+	AiaOcspServers       []string                                          `pulumi:"aiaOcspServers"`
+	CaOptions            []GetAuthorityConfigX509ConfigCaOption            `pulumi:"caOptions"`
+	KeyUsages            []GetAuthorityConfigX509ConfigKeyUsage            `pulumi:"keyUsages"`
+	PolicyIds            []GetAuthorityConfigX509ConfigPolicyId            `pulumi:"policyIds"`
+}
+
+// GetAuthorityConfigX509ConfigInput is an input type that accepts GetAuthorityConfigX509ConfigArgs and GetAuthorityConfigX509ConfigOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigInput` via:
+//
+//          GetAuthorityConfigX509ConfigArgs{...}
+type GetAuthorityConfigX509ConfigInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigOutput() GetAuthorityConfigX509ConfigOutput
+	ToGetAuthorityConfigX509ConfigOutputWithContext(context.Context) GetAuthorityConfigX509ConfigOutput
+}
+
+type GetAuthorityConfigX509ConfigArgs struct {
+	AdditionalExtensions GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
+	AiaOcspServers       pulumi.StringArrayInput                                   `pulumi:"aiaOcspServers"`
+	CaOptions            GetAuthorityConfigX509ConfigCaOptionArrayInput            `pulumi:"caOptions"`
+	KeyUsages            GetAuthorityConfigX509ConfigKeyUsageArrayInput            `pulumi:"keyUsages"`
+	PolicyIds            GetAuthorityConfigX509ConfigPolicyIdArrayInput            `pulumi:"policyIds"`
+}
+
+func (GetAuthorityConfigX509ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509Config)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigArgs) ToGetAuthorityConfigX509ConfigOutput() GetAuthorityConfigX509ConfigOutput {
+	return i.ToGetAuthorityConfigX509ConfigOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigArgs) ToGetAuthorityConfigX509ConfigOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigOutput)
+}
+
+// GetAuthorityConfigX509ConfigArrayInput is an input type that accepts GetAuthorityConfigX509ConfigArray and GetAuthorityConfigX509ConfigArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigArray{ GetAuthorityConfigX509ConfigArgs{...} }
+type GetAuthorityConfigX509ConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigArrayOutput() GetAuthorityConfigX509ConfigArrayOutput
+	ToGetAuthorityConfigX509ConfigArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigArray []GetAuthorityConfigX509ConfigInput
+
+func (GetAuthorityConfigX509ConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509Config)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigArray) ToGetAuthorityConfigX509ConfigArrayOutput() GetAuthorityConfigX509ConfigArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigArray) ToGetAuthorityConfigX509ConfigArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509Config)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigOutput) ToGetAuthorityConfigX509ConfigOutput() GetAuthorityConfigX509ConfigOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigOutput) ToGetAuthorityConfigX509ConfigOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigOutput) AdditionalExtensions() GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigAdditionalExtension {
+		return v.AdditionalExtensions
+	}).(GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigOutput) AiaOcspServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509Config) []string { return v.AiaOcspServers }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigOutput) CaOptions() GetAuthorityConfigX509ConfigCaOptionArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigCaOption { return v.CaOptions }).(GetAuthorityConfigX509ConfigCaOptionArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigOutput) KeyUsages() GetAuthorityConfigX509ConfigKeyUsageArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigKeyUsage { return v.KeyUsages }).(GetAuthorityConfigX509ConfigKeyUsageArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigOutput) PolicyIds() GetAuthorityConfigX509ConfigPolicyIdArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigPolicyId { return v.PolicyIds }).(GetAuthorityConfigX509ConfigPolicyIdArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509Config)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigArrayOutput) ToGetAuthorityConfigX509ConfigArrayOutput() GetAuthorityConfigX509ConfigArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigArrayOutput) ToGetAuthorityConfigX509ConfigArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509Config {
+		return vs[0].([]GetAuthorityConfigX509Config)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigOutput)
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtension struct {
+	Critical  bool                                                      `pulumi:"critical"`
+	ObjectIds []GetAuthorityConfigX509ConfigAdditionalExtensionObjectId `pulumi:"objectIds"`
+	Value     string                                                    `pulumi:"value"`
+}
+
+// GetAuthorityConfigX509ConfigAdditionalExtensionInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionArgs and GetAuthorityConfigX509ConfigAdditionalExtensionOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigAdditionalExtensionInput` via:
+//
+//          GetAuthorityConfigX509ConfigAdditionalExtensionArgs{...}
+type GetAuthorityConfigX509ConfigAdditionalExtensionInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigAdditionalExtensionOutput() GetAuthorityConfigX509ConfigAdditionalExtensionOutput
+	ToGetAuthorityConfigX509ConfigAdditionalExtensionOutputWithContext(context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionOutput
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionArgs struct {
+	Critical  pulumi.BoolInput                                                  `pulumi:"critical"`
+	ObjectIds GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput `pulumi:"objectIds"`
+	Value     pulumi.StringInput                                                `pulumi:"value"`
+}
+
+func (GetAuthorityConfigX509ConfigAdditionalExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtension)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigAdditionalExtensionArgs) ToGetAuthorityConfigX509ConfigAdditionalExtensionOutput() GetAuthorityConfigX509ConfigAdditionalExtensionOutput {
+	return i.ToGetAuthorityConfigX509ConfigAdditionalExtensionOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigAdditionalExtensionArgs) ToGetAuthorityConfigX509ConfigAdditionalExtensionOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigAdditionalExtensionOutput)
+}
+
+// GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionArray and GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigAdditionalExtensionArray{ GetAuthorityConfigX509ConfigAdditionalExtensionArgs{...} }
+type GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput() GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput
+	ToGetAuthorityConfigX509ConfigAdditionalExtensionArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionArray []GetAuthorityConfigX509ConfigAdditionalExtensionInput
+
+func (GetAuthorityConfigX509ConfigAdditionalExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigAdditionalExtension)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigAdditionalExtensionArray) ToGetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput() GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigAdditionalExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigAdditionalExtensionArray) ToGetAuthorityConfigX509ConfigAdditionalExtensionArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigAdditionalExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtension)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) ToGetAuthorityConfigX509ConfigAdditionalExtensionOutput() GetAuthorityConfigX509ConfigAdditionalExtensionOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) ToGetAuthorityConfigX509ConfigAdditionalExtensionOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigAdditionalExtension) bool { return v.Critical }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) ObjectIds() GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigAdditionalExtension) []GetAuthorityConfigX509ConfigAdditionalExtensionObjectId {
+		return v.ObjectIds
+	}).(GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigAdditionalExtension) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigAdditionalExtension)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput) ToGetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput() GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput) ToGetAuthorityConfigX509ConfigAdditionalExtensionArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigAdditionalExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigAdditionalExtension {
+		return vs[0].([]GetAuthorityConfigX509ConfigAdditionalExtension)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigAdditionalExtensionOutput)
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionObjectId struct {
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs and GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput` via:
+//
+//          GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{...}
+type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput() GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput
+	ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutputWithContext(context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs struct {
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs) ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput() GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput {
+	return i.ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs) ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput)
+}
+
+// GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray and GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray{ GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{...} }
+type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput() GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput
+	ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray []GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput
+
+func (GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray) ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput() GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray) ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput) ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput() GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput) ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigAdditionalExtensionObjectId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput) ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput() GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput) ToGetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigAdditionalExtensionObjectId {
+		return vs[0].([]GetAuthorityConfigX509ConfigAdditionalExtensionObjectId)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput)
+}
+
+type GetAuthorityConfigX509ConfigCaOption struct {
+	IsCa                    bool `pulumi:"isCa"`
+	MaxIssuerPathLength     int  `pulumi:"maxIssuerPathLength"`
+	NonCa                   bool `pulumi:"nonCa"`
+	ZeroMaxIssuerPathLength bool `pulumi:"zeroMaxIssuerPathLength"`
+}
+
+// GetAuthorityConfigX509ConfigCaOptionInput is an input type that accepts GetAuthorityConfigX509ConfigCaOptionArgs and GetAuthorityConfigX509ConfigCaOptionOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigCaOptionInput` via:
+//
+//          GetAuthorityConfigX509ConfigCaOptionArgs{...}
+type GetAuthorityConfigX509ConfigCaOptionInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigCaOptionOutput() GetAuthorityConfigX509ConfigCaOptionOutput
+	ToGetAuthorityConfigX509ConfigCaOptionOutputWithContext(context.Context) GetAuthorityConfigX509ConfigCaOptionOutput
+}
+
+type GetAuthorityConfigX509ConfigCaOptionArgs struct {
+	IsCa                    pulumi.BoolInput `pulumi:"isCa"`
+	MaxIssuerPathLength     pulumi.IntInput  `pulumi:"maxIssuerPathLength"`
+	NonCa                   pulumi.BoolInput `pulumi:"nonCa"`
+	ZeroMaxIssuerPathLength pulumi.BoolInput `pulumi:"zeroMaxIssuerPathLength"`
+}
+
+func (GetAuthorityConfigX509ConfigCaOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigCaOption)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigCaOptionArgs) ToGetAuthorityConfigX509ConfigCaOptionOutput() GetAuthorityConfigX509ConfigCaOptionOutput {
+	return i.ToGetAuthorityConfigX509ConfigCaOptionOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigCaOptionArgs) ToGetAuthorityConfigX509ConfigCaOptionOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigCaOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigCaOptionOutput)
+}
+
+// GetAuthorityConfigX509ConfigCaOptionArrayInput is an input type that accepts GetAuthorityConfigX509ConfigCaOptionArray and GetAuthorityConfigX509ConfigCaOptionArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigCaOptionArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigCaOptionArray{ GetAuthorityConfigX509ConfigCaOptionArgs{...} }
+type GetAuthorityConfigX509ConfigCaOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigCaOptionArrayOutput() GetAuthorityConfigX509ConfigCaOptionArrayOutput
+	ToGetAuthorityConfigX509ConfigCaOptionArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigCaOptionArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigCaOptionArray []GetAuthorityConfigX509ConfigCaOptionInput
+
+func (GetAuthorityConfigX509ConfigCaOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigCaOption)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigCaOptionArray) ToGetAuthorityConfigX509ConfigCaOptionArrayOutput() GetAuthorityConfigX509ConfigCaOptionArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigCaOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigCaOptionArray) ToGetAuthorityConfigX509ConfigCaOptionArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigCaOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigCaOptionArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigCaOptionOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigCaOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigCaOption)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionOutput) ToGetAuthorityConfigX509ConfigCaOptionOutput() GetAuthorityConfigX509ConfigCaOptionOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionOutput) ToGetAuthorityConfigX509ConfigCaOptionOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigCaOptionOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionOutput) IsCa() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigCaOption) bool { return v.IsCa }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionOutput) MaxIssuerPathLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigCaOption) int { return v.MaxIssuerPathLength }).(pulumi.IntOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionOutput) NonCa() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigCaOption) bool { return v.NonCa }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionOutput) ZeroMaxIssuerPathLength() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigCaOption) bool { return v.ZeroMaxIssuerPathLength }).(pulumi.BoolOutput)
+}
+
+type GetAuthorityConfigX509ConfigCaOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigCaOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigCaOption)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionArrayOutput) ToGetAuthorityConfigX509ConfigCaOptionArrayOutput() GetAuthorityConfigX509ConfigCaOptionArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionArrayOutput) ToGetAuthorityConfigX509ConfigCaOptionArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigCaOptionArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigCaOptionArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigCaOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigCaOption {
+		return vs[0].([]GetAuthorityConfigX509ConfigCaOption)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigCaOptionOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsage struct {
+	BaseKeyUsages            []GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage            `pulumi:"baseKeyUsages"`
+	ExtendedKeyUsages        []GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage        `pulumi:"extendedKeyUsages"`
+	UnknownExtendedKeyUsages []GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage `pulumi:"unknownExtendedKeyUsages"`
+}
+
+// GetAuthorityConfigX509ConfigKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageInput` via:
+//
+//          GetAuthorityConfigX509ConfigKeyUsageArgs{...}
+type GetAuthorityConfigX509ConfigKeyUsageInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageOutput
+	ToGetAuthorityConfigX509ConfigKeyUsageOutputWithContext(context.Context) GetAuthorityConfigX509ConfigKeyUsageOutput
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageArgs struct {
+	BaseKeyUsages            GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput            `pulumi:"baseKeyUsages"`
+	ExtendedKeyUsages        GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput        `pulumi:"extendedKeyUsages"`
+	UnknownExtendedKeyUsages GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput `pulumi:"unknownExtendedKeyUsages"`
+}
+
+func (GetAuthorityConfigX509ConfigKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsage)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageArgs) ToGetAuthorityConfigX509ConfigKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageOutput {
+	return i.ToGetAuthorityConfigX509ConfigKeyUsageOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageArgs) ToGetAuthorityConfigX509ConfigKeyUsageOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigKeyUsageOutput)
+}
+
+// GetAuthorityConfigX509ConfigKeyUsageArrayInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageArray and GetAuthorityConfigX509ConfigKeyUsageArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageArgs{...} }
+type GetAuthorityConfigX509ConfigKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageArrayOutput
+	ToGetAuthorityConfigX509ConfigKeyUsageArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigKeyUsageArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageArray []GetAuthorityConfigX509ConfigKeyUsageInput
+
+func (GetAuthorityConfigX509ConfigKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigKeyUsage)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageArray) ToGetAuthorityConfigX509ConfigKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageArray) ToGetAuthorityConfigX509ConfigKeyUsageArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigKeyUsageArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsage)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageOutput) ToGetAuthorityConfigX509ConfigKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageOutput) ToGetAuthorityConfigX509ConfigKeyUsageOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageOutput) BaseKeyUsages() GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsage) []GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
+		return v.BaseKeyUsages
+	}).(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageOutput) ExtendedKeyUsages() GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsage) []GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
+		return v.ExtendedKeyUsages
+	}).(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageOutput) UnknownExtendedKeyUsages() GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsage) []GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
+		return v.UnknownExtendedKeyUsages
+	}).(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigKeyUsage)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageArrayOutput) ToGetAuthorityConfigX509ConfigKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageArrayOutput) ToGetAuthorityConfigX509ConfigKeyUsageArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigKeyUsage {
+		return vs[0].([]GetAuthorityConfigX509ConfigKeyUsage)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigKeyUsageOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage struct {
+	CertSign          bool `pulumi:"certSign"`
+	ContentCommitment bool `pulumi:"contentCommitment"`
+	CrlSign           bool `pulumi:"crlSign"`
+	DataEncipherment  bool `pulumi:"dataEncipherment"`
+	DecipherOnly      bool `pulumi:"decipherOnly"`
+	DigitalSignature  bool `pulumi:"digitalSignature"`
+	EncipherOnly      bool `pulumi:"encipherOnly"`
+	KeyAgreement      bool `pulumi:"keyAgreement"`
+	KeyEncipherment   bool `pulumi:"keyEncipherment"`
+}
+
+// GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput` via:
+//
+//          GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...}
+type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput
+	ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutputWithContext(context.Context) GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs struct {
+	CertSign          pulumi.BoolInput `pulumi:"certSign"`
+	ContentCommitment pulumi.BoolInput `pulumi:"contentCommitment"`
+	CrlSign           pulumi.BoolInput `pulumi:"crlSign"`
+	DataEncipherment  pulumi.BoolInput `pulumi:"dataEncipherment"`
+	DecipherOnly      pulumi.BoolInput `pulumi:"decipherOnly"`
+	DigitalSignature  pulumi.BoolInput `pulumi:"digitalSignature"`
+	EncipherOnly      pulumi.BoolInput `pulumi:"encipherOnly"`
+	KeyAgreement      pulumi.BoolInput `pulumi:"keyAgreement"`
+	KeyEncipherment   pulumi.BoolInput `pulumi:"keyEncipherment"`
+}
+
+func (GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput {
+	return i.ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput)
+}
+
+// GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray and GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{...} }
+type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput
+	ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray []GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput
+
+func (GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray) ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray) ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) CertSign() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.CertSign }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ContentCommitment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.ContentCommitment }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) CrlSign() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.CrlSign }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) DataEncipherment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.DataEncipherment }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) DecipherOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.DecipherOnly }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) DigitalSignature() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.DigitalSignature }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) EncipherOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.EncipherOnly }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) KeyAgreement() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.KeyAgreement }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) KeyEncipherment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.KeyEncipherment }).(pulumi.BoolOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput) ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput) ToGetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
+		return vs[0].([]GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage struct {
+	ClientAuth      bool `pulumi:"clientAuth"`
+	CodeSigning     bool `pulumi:"codeSigning"`
+	EmailProtection bool `pulumi:"emailProtection"`
+	OcspSigning     bool `pulumi:"ocspSigning"`
+	ServerAuth      bool `pulumi:"serverAuth"`
+	TimeStamping    bool `pulumi:"timeStamping"`
+}
+
+// GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput` via:
+//
+//          GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...}
+type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput
+	ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutputWithContext(context.Context) GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs struct {
+	ClientAuth      pulumi.BoolInput `pulumi:"clientAuth"`
+	CodeSigning     pulumi.BoolInput `pulumi:"codeSigning"`
+	EmailProtection pulumi.BoolInput `pulumi:"emailProtection"`
+	OcspSigning     pulumi.BoolInput `pulumi:"ocspSigning"`
+	ServerAuth      pulumi.BoolInput `pulumi:"serverAuth"`
+	TimeStamping    pulumi.BoolInput `pulumi:"timeStamping"`
+}
+
+func (GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
+	return i.ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput)
+}
+
+// GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray and GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{...} }
+type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput
+	ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray []GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput
+
+func (GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray) ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray) ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ClientAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.ClientAuth }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) CodeSigning() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.CodeSigning }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) EmailProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.EmailProtection }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) OcspSigning() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.OcspSigning }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ServerAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.ServerAuth }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) TimeStamping() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.TimeStamping }).(pulumi.BoolOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput) ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput) ToGetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
+		return vs[0].([]GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage struct {
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput` via:
+//
+//          GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...}
+type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput
+	ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutputWithContext(context.Context) GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs struct {
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs) ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput {
+	return i.ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs) ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+// GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray and GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{ GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{...} }
+type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput
+	ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray []GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput
+
+func (GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray) ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray) ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput) ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput() GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput) ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput) ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput() GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput) ToGetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
+		return vs[0].([]GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+type GetAuthorityConfigX509ConfigPolicyId struct {
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// GetAuthorityConfigX509ConfigPolicyIdInput is an input type that accepts GetAuthorityConfigX509ConfigPolicyIdArgs and GetAuthorityConfigX509ConfigPolicyIdOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigPolicyIdInput` via:
+//
+//          GetAuthorityConfigX509ConfigPolicyIdArgs{...}
+type GetAuthorityConfigX509ConfigPolicyIdInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigPolicyIdOutput() GetAuthorityConfigX509ConfigPolicyIdOutput
+	ToGetAuthorityConfigX509ConfigPolicyIdOutputWithContext(context.Context) GetAuthorityConfigX509ConfigPolicyIdOutput
+}
+
+type GetAuthorityConfigX509ConfigPolicyIdArgs struct {
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (GetAuthorityConfigX509ConfigPolicyIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigPolicyId)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigPolicyIdArgs) ToGetAuthorityConfigX509ConfigPolicyIdOutput() GetAuthorityConfigX509ConfigPolicyIdOutput {
+	return i.ToGetAuthorityConfigX509ConfigPolicyIdOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigPolicyIdArgs) ToGetAuthorityConfigX509ConfigPolicyIdOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigPolicyIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigPolicyIdOutput)
+}
+
+// GetAuthorityConfigX509ConfigPolicyIdArrayInput is an input type that accepts GetAuthorityConfigX509ConfigPolicyIdArray and GetAuthorityConfigX509ConfigPolicyIdArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigPolicyIdArrayInput` via:
+//
+//          GetAuthorityConfigX509ConfigPolicyIdArray{ GetAuthorityConfigX509ConfigPolicyIdArgs{...} }
+type GetAuthorityConfigX509ConfigPolicyIdArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigPolicyIdArrayOutput() GetAuthorityConfigX509ConfigPolicyIdArrayOutput
+	ToGetAuthorityConfigX509ConfigPolicyIdArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigPolicyIdArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigPolicyIdArray []GetAuthorityConfigX509ConfigPolicyIdInput
+
+func (GetAuthorityConfigX509ConfigPolicyIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigPolicyId)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigPolicyIdArray) ToGetAuthorityConfigX509ConfigPolicyIdArrayOutput() GetAuthorityConfigX509ConfigPolicyIdArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigPolicyIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigPolicyIdArray) ToGetAuthorityConfigX509ConfigPolicyIdArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigPolicyIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigPolicyIdArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigPolicyIdOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigPolicyIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigPolicyId)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigPolicyIdOutput) ToGetAuthorityConfigX509ConfigPolicyIdOutput() GetAuthorityConfigX509ConfigPolicyIdOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigPolicyIdOutput) ToGetAuthorityConfigX509ConfigPolicyIdOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigPolicyIdOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigPolicyIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigPolicyId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigPolicyIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigPolicyIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigPolicyId)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigPolicyIdArrayOutput) ToGetAuthorityConfigX509ConfigPolicyIdArrayOutput() GetAuthorityConfigX509ConfigPolicyIdArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigPolicyIdArrayOutput) ToGetAuthorityConfigX509ConfigPolicyIdArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigPolicyIdArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigPolicyIdArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigPolicyIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigPolicyId {
+		return vs[0].([]GetAuthorityConfigX509ConfigPolicyId)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigPolicyIdOutput)
+}
+
+type GetAuthorityKeySpec struct {
+	Algorithm          string `pulumi:"algorithm"`
+	CloudKmsKeyVersion string `pulumi:"cloudKmsKeyVersion"`
+}
+
+// GetAuthorityKeySpecInput is an input type that accepts GetAuthorityKeySpecArgs and GetAuthorityKeySpecOutput values.
+// You can construct a concrete instance of `GetAuthorityKeySpecInput` via:
+//
+//          GetAuthorityKeySpecArgs{...}
+type GetAuthorityKeySpecInput interface {
+	pulumi.Input
+
+	ToGetAuthorityKeySpecOutput() GetAuthorityKeySpecOutput
+	ToGetAuthorityKeySpecOutputWithContext(context.Context) GetAuthorityKeySpecOutput
+}
+
+type GetAuthorityKeySpecArgs struct {
+	Algorithm          pulumi.StringInput `pulumi:"algorithm"`
+	CloudKmsKeyVersion pulumi.StringInput `pulumi:"cloudKmsKeyVersion"`
+}
+
+func (GetAuthorityKeySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityKeySpec)(nil)).Elem()
+}
+
+func (i GetAuthorityKeySpecArgs) ToGetAuthorityKeySpecOutput() GetAuthorityKeySpecOutput {
+	return i.ToGetAuthorityKeySpecOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityKeySpecArgs) ToGetAuthorityKeySpecOutputWithContext(ctx context.Context) GetAuthorityKeySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityKeySpecOutput)
+}
+
+// GetAuthorityKeySpecArrayInput is an input type that accepts GetAuthorityKeySpecArray and GetAuthorityKeySpecArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityKeySpecArrayInput` via:
+//
+//          GetAuthorityKeySpecArray{ GetAuthorityKeySpecArgs{...} }
+type GetAuthorityKeySpecArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityKeySpecArrayOutput() GetAuthorityKeySpecArrayOutput
+	ToGetAuthorityKeySpecArrayOutputWithContext(context.Context) GetAuthorityKeySpecArrayOutput
+}
+
+type GetAuthorityKeySpecArray []GetAuthorityKeySpecInput
+
+func (GetAuthorityKeySpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityKeySpec)(nil)).Elem()
+}
+
+func (i GetAuthorityKeySpecArray) ToGetAuthorityKeySpecArrayOutput() GetAuthorityKeySpecArrayOutput {
+	return i.ToGetAuthorityKeySpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityKeySpecArray) ToGetAuthorityKeySpecArrayOutputWithContext(ctx context.Context) GetAuthorityKeySpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityKeySpecArrayOutput)
+}
+
+type GetAuthorityKeySpecOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityKeySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityKeySpec)(nil)).Elem()
+}
+
+func (o GetAuthorityKeySpecOutput) ToGetAuthorityKeySpecOutput() GetAuthorityKeySpecOutput {
+	return o
+}
+
+func (o GetAuthorityKeySpecOutput) ToGetAuthorityKeySpecOutputWithContext(ctx context.Context) GetAuthorityKeySpecOutput {
+	return o
+}
+
+func (o GetAuthorityKeySpecOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityKeySpec) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+func (o GetAuthorityKeySpecOutput) CloudKmsKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthorityKeySpec) string { return v.CloudKmsKeyVersion }).(pulumi.StringOutput)
+}
+
+type GetAuthorityKeySpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityKeySpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityKeySpec)(nil)).Elem()
+}
+
+func (o GetAuthorityKeySpecArrayOutput) ToGetAuthorityKeySpecArrayOutput() GetAuthorityKeySpecArrayOutput {
+	return o
+}
+
+func (o GetAuthorityKeySpecArrayOutput) ToGetAuthorityKeySpecArrayOutputWithContext(ctx context.Context) GetAuthorityKeySpecArrayOutput {
+	return o
+}
+
+func (o GetAuthorityKeySpecArrayOutput) Index(i pulumi.IntInput) GetAuthorityKeySpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityKeySpec {
+		return vs[0].([]GetAuthorityKeySpec)[vs[1].(int)]
+	}).(GetAuthorityKeySpecOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityAccessUrlInput)(nil)).Elem(), AuthorityAccessUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityAccessUrlArrayInput)(nil)).Elem(), AuthorityAccessUrlArray{})
@@ -12763,6 +14413,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplatePredefinedValuesPolicyIdInput)(nil)).Elem(), CertificateTemplatePredefinedValuesPolicyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplatePredefinedValuesPolicyIdArrayInput)(nil)).Elem(), CertificateTemplatePredefinedValuesPolicyIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityAccessUrlInput)(nil)).Elem(), GetAuthorityAccessUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityAccessUrlArrayInput)(nil)).Elem(), GetAuthorityAccessUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigInput)(nil)).Elem(), GetAuthorityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigArrayInput)(nil)).Elem(), GetAuthorityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigArrayInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigSubjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectArrayInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigSubjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectAltNameInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigSubjectAltNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput)(nil)).Elem(), GetAuthorityConfigSubjectConfigSubjectAltNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigInput)(nil)).Elem(), GetAuthorityConfigX509ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtensionInput)(nil)).Elem(), GetAuthorityConfigX509ConfigAdditionalExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigAdditionalExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput)(nil)).Elem(), GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigCaOptionInput)(nil)).Elem(), GetAuthorityConfigX509ConfigCaOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigCaOptionArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigCaOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigPolicyIdInput)(nil)).Elem(), GetAuthorityConfigX509ConfigPolicyIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigPolicyIdArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigPolicyIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityKeySpecInput)(nil)).Elem(), GetAuthorityKeySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityKeySpecArrayInput)(nil)).Elem(), GetAuthorityKeySpecArray{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlOutput{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigOutput{})
@@ -12917,4 +14597,34 @@ func init() {
 	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrayOutput{})
 	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesPolicyIdOutput{})
 	pulumi.RegisterOutputType(CertificateTemplatePredefinedValuesPolicyIdArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityAccessUrlOutput{})
+	pulumi.RegisterOutputType(GetAuthorityAccessUrlArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigSubjectOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigSubjectArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigSubjectAltNameOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigAdditionalExtensionOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigCaOptionOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigCaOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigPolicyIdOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigPolicyIdArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityKeySpecOutput{})
+	pulumi.RegisterOutputType(GetAuthorityKeySpecArrayOutput{})
 }

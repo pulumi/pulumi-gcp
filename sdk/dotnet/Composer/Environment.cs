@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Composer
         /// The location or Compute Engine region for the environment.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
 
         /// <summary>

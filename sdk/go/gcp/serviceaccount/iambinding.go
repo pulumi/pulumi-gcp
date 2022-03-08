@@ -122,16 +122,16 @@ import (
 // 			return err
 // 		}
 // 		_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
-// 			Condition: &serviceaccount.IAMBindingConditionArgs{
-// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-// 				Title:       pulumi.String("expires_after_2019_12_31"),
-// 			},
+// 			ServiceAccountId: sa.Name,
+// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
 // 			},
-// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
-// 			ServiceAccountId: sa.Name,
+// 			Condition: &serviceaccount.IAMBindingConditionArgs{
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -210,14 +210,14 @@ import (
 // 			return err
 // 		}
 // 		_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
+// 			ServiceAccountId: sa.Name,
+// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
+// 			Member:           pulumi.String("user:jane@example.com"),
 // 			Condition: &serviceaccount.IAMMemberConditionArgs{
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 // 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-// 				Title:       pulumi.String("expires_after_2019_12_31"),
 // 			},
-// 			Member:           pulumi.String("user:jane@example.com"),
-// 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
-// 			ServiceAccountId: sa.Name,
 // 		})
 // 		if err != nil {
 // 			return err

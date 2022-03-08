@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .endpoint_attachment import *
 from .env_group import *
 from .env_group_attachment import *
 from .environment import *

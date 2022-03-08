@@ -39,6 +39,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
         /// </summary>
         public readonly bool? Preemptible;
+        /// <summary>
+        /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        /// `preemptible` should be `true` and `auto_restart` should be
+        /// `false`. For more info about
+        /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        /// </summary>
         public readonly string? ProvisioningModel;
 
         [OutputConstructor]

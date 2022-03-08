@@ -43,6 +43,7 @@ class ProviderArgs:
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -185,6 +186,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_scheduler_custom_endpoint", cloud_scheduler_custom_endpoint)
         if cloud_tasks_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_tasks_custom_endpoint", cloud_tasks_custom_endpoint)
+        if cloudfunctions2_custom_endpoint is not None:
+            pulumi.set(__self__, "cloudfunctions2_custom_endpoint", cloudfunctions2_custom_endpoint)
         if composer_custom_endpoint is not None:
             pulumi.set(__self__, "composer_custom_endpoint", composer_custom_endpoint)
         if compute_custom_endpoint is not None:
@@ -614,6 +617,15 @@ class ProviderArgs:
     @cloud_tasks_custom_endpoint.setter
     def cloud_tasks_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_tasks_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudfunctions2CustomEndpoint")
+    def cloudfunctions2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloudfunctions2_custom_endpoint")
+
+    @cloudfunctions2_custom_endpoint.setter
+    def cloudfunctions2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloudfunctions2_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="composerCustomEndpoint")
@@ -1379,6 +1391,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1526,6 +1539,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1648,6 +1662,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_run_custom_endpoint"] = cloud_run_custom_endpoint
             __props__.__dict__["cloud_scheduler_custom_endpoint"] = cloud_scheduler_custom_endpoint
             __props__.__dict__["cloud_tasks_custom_endpoint"] = cloud_tasks_custom_endpoint
+            __props__.__dict__["cloudfunctions2_custom_endpoint"] = cloudfunctions2_custom_endpoint
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
             __props__.__dict__["compute_custom_endpoint"] = compute_custom_endpoint
             __props__.__dict__["container_analysis_custom_endpoint"] = container_analysis_custom_endpoint
@@ -1880,6 +1895,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudTasksCustomEndpoint")
     def cloud_tasks_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_tasks_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="cloudfunctions2CustomEndpoint")
+    def cloudfunctions2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cloudfunctions2_custom_endpoint")
 
     @property
     @pulumi.getter(name="composerCustomEndpoint")

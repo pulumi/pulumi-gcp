@@ -196,6 +196,8 @@ __all__ = [
     'RegionBackendServiceConsistentHashHttpCookie',
     'RegionBackendServiceConsistentHashHttpCookieTtl',
     'RegionBackendServiceFailoverPolicy',
+    'RegionBackendServiceIamBindingCondition',
+    'RegionBackendServiceIamMemberCondition',
     'RegionBackendServiceIap',
     'RegionBackendServiceLogConfig',
     'RegionBackendServiceOutlierDetection',
@@ -5545,7 +5547,7 @@ class InstanceAttachedDisk(dict):
         :param str device_name: Name with which the attached disk will be accessible
                under `/dev/disk/by-id/google-*`
         :param str disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
-               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         :param str kms_key_self_link: The self_link of the encryption key that is
@@ -5590,7 +5592,7 @@ class InstanceAttachedDisk(dict):
     def disk_encryption_key_raw(self) -> Optional[str]:
         """
         A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         """
@@ -5667,7 +5669,7 @@ class InstanceBootDisk(dict):
         :param str device_name: Name with which the attached disk will be accessible
                under `/dev/disk/by-id/google-*`
         :param str disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
-               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         :param 'InstanceBootDiskInitializeParamsArgs' initialize_params: Parameters for a new disk that will be created
@@ -5722,7 +5724,7 @@ class InstanceBootDisk(dict):
     def disk_encryption_key_raw(self) -> Optional[str]:
         """
         A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         """
@@ -8868,6 +8870,10 @@ class InstanceScheduling(dict):
         :param bool preemptible: Specifies if the instance is preemptible.
                If this field is set to true, then `automatic_restart` must be
                set to false.  Defaults to false.
+        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+               `preemptible` should be `true` and `auto_restart` should be
+               `false`. For more info about
+               `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -8935,6 +8941,12 @@ class InstanceScheduling(dict):
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
+        """
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        `preemptible` should be `true` and `auto_restart` should be
+        `false`. For more info about
+        `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
         return pulumi.get(self, "provisioning_model")
 
 
@@ -10070,6 +10082,10 @@ class InstanceTemplateScheduling(dict):
         :param bool preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+               `preemptible` should be `true` and `auto_restart` should be
+               `false`. For more info about
+               `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -10133,6 +10149,12 @@ class InstanceTemplateScheduling(dict):
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
+        """
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        `preemptible` should be `true` and `auto_restart` should be
+        `false`. For more info about
+        `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
         return pulumi.get(self, "provisioning_model")
 
 
@@ -13106,6 +13128,60 @@ class RegionBackendServiceFailoverPolicy(dict):
         This field is only used with l4 load balancing.
         """
         return pulumi.get(self, "failover_ratio")
+
+
+@pulumi.output_type
+class RegionBackendServiceIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RegionBackendServiceIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -20613,6 +20689,8 @@ class RouterBgp(dict):
             suggest = "advertised_groups"
         elif key == "advertisedIpRanges":
             suggest = "advertised_ip_ranges"
+        elif key == "keepaliveInterval":
+            suggest = "keepalive_interval"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RouterBgp. Access the value via the '{suggest}' property getter instead.")
@@ -20629,7 +20707,8 @@ class RouterBgp(dict):
                  asn: int,
                  advertise_mode: Optional[str] = None,
                  advertised_groups: Optional[Sequence[str]] = None,
-                 advertised_ip_ranges: Optional[Sequence['outputs.RouterBgpAdvertisedIpRange']] = None):
+                 advertised_ip_ranges: Optional[Sequence['outputs.RouterBgpAdvertisedIpRange']] = None,
+                 keepalive_interval: Optional[int] = None):
         """
         :param int asn: Local BGP Autonomous System Number (ASN). Must be an RFC6996
                private ASN, either 16-bit or 32-bit. The value will be fixed for
@@ -20650,6 +20729,11 @@ class RouterBgp(dict):
                ranges will be advertised in addition to any specified groups.
                Leave this field blank to advertise no custom IP ranges.
                Structure is documented below.
+        :param int keepalive_interval: The interval in seconds between BGP keepalive messages that are sent to the peer.
+               Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
+               maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
+               BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
+               the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
         """
         pulumi.set(__self__, "asn", asn)
         if advertise_mode is not None:
@@ -20658,6 +20742,8 @@ class RouterBgp(dict):
             pulumi.set(__self__, "advertised_groups", advertised_groups)
         if advertised_ip_ranges is not None:
             pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
+        if keepalive_interval is not None:
+            pulumi.set(__self__, "keepalive_interval", keepalive_interval)
 
     @property
     @pulumi.getter
@@ -20705,6 +20791,18 @@ class RouterBgp(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "advertised_ip_ranges")
+
+    @property
+    @pulumi.getter(name="keepaliveInterval")
+    def keepalive_interval(self) -> Optional[int]:
+        """
+        The interval in seconds between BGP keepalive messages that are sent to the peer.
+        Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
+        maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
+        BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
+        the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+        """
+        return pulumi.get(self, "keepalive_interval")
 
 
 @pulumi.output_type
@@ -30531,6 +30629,7 @@ class GetInstanceSchedulingResult(dict):
                instance. One of `MIGRATE` or `TERMINATE`, for more info, read
                [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
         :param bool preemptible: Whether the instance is preemptible.
+        :param str provisioning_model: (Beta) Describe the type of preemptible VM.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
@@ -30579,6 +30678,9 @@ class GetInstanceSchedulingResult(dict):
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> str:
+        """
+        (Beta) Describe the type of preemptible VM.
+        """
         return pulumi.get(self, "provisioning_model")
 
 
@@ -31320,6 +31422,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         :param bool preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        :param str provisioning_model: (Beta) Describe the type of preemptible VM.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
@@ -31377,6 +31480,9 @@ class GetInstanceTemplateSchedulingResult(dict):
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> str:
+        """
+        (Beta) Describe the type of preemptible VM.
+        """
         return pulumi.get(self, "provisioning_model")
 
 
@@ -31810,11 +31916,13 @@ class GetRouterBgpResult(dict):
                  advertise_mode: str,
                  advertised_groups: Sequence[str],
                  advertised_ip_ranges: Sequence['outputs.GetRouterBgpAdvertisedIpRangeResult'],
-                 asn: int):
+                 asn: int,
+                 keepalive_interval: int):
         pulumi.set(__self__, "advertise_mode", advertise_mode)
         pulumi.set(__self__, "advertised_groups", advertised_groups)
         pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
         pulumi.set(__self__, "asn", asn)
+        pulumi.set(__self__, "keepalive_interval", keepalive_interval)
 
     @property
     @pulumi.getter(name="advertiseMode")
@@ -31835,6 +31943,11 @@ class GetRouterBgpResult(dict):
     @pulumi.getter
     def asn(self) -> int:
         return pulumi.get(self, "asn")
+
+    @property
+    @pulumi.getter(name="keepaliveInterval")
+    def keepalive_interval(self) -> int:
+        return pulumi.get(self, "keepalive_interval")
 
 
 @pulumi.output_type

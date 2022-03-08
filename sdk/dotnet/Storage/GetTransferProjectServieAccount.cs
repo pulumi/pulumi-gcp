@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class GetTransferProjectServieAccountResult
     {
         /// <summary>
-        /// Email address of the default service account used by Storage Transfer Jobs running in this project
+        /// Email address of the default service account used by Storage Transfer Jobs running in this project.
         /// </summary>
         public readonly string Email;
         /// <summary>
@@ -110,6 +110,10 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public readonly string Id;
         public readonly string Project;
+        /// <summary>
+        /// Unique identifier for the service account.
+        /// </summary>
+        public readonly string SubjectId;
 
         [OutputConstructor]
         private GetTransferProjectServieAccountResult(
@@ -117,11 +121,14 @@ namespace Pulumi.Gcp.Storage
 
             string id,
 
-            string project)
+            string project,
+
+            string subjectId)
         {
             Email = email;
             Id = id;
             Project = project;
+            SubjectId = subjectId;
         }
     }
 }

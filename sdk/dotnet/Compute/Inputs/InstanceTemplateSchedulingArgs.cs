@@ -54,6 +54,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
+        /// <summary>
+        /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        /// `preemptible` should be `true` and `auto_restart` should be
+        /// `false`. For more info about
+        /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        /// </summary>
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }
 
