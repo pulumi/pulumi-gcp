@@ -11,9 +11,69 @@ namespace Pulumi.Gcp.SourceRepo
 {
     public static class GetRepository
     {
+        /// <summary>
+        /// Get infomation about an existing Google Cloud Source Repository.
+        /// For more information see [the official documentation](https://cloud.google.com/source-repositories)
+        /// and
+        /// [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_repo = Output.Create(Gcp.SourceRepo.GetRepository.InvokeAsync(new Gcp.SourceRepo.GetRepositoryArgs
+        ///         {
+        ///             Name = "my-repository",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Get infomation about an existing Google Cloud Source Repository.
+        /// For more information see [the official documentation](https://cloud.google.com/source-repositories)
+        /// and
+        /// [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_repo = Output.Create(Gcp.SourceRepo.GetRepository.InvokeAsync(new Gcp.SourceRepo.GetRepositoryArgs
+        ///         {
+        ///             Name = "my-repository",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
     }
@@ -21,9 +81,15 @@ namespace Pulumi.Gcp.SourceRepo
 
     public sealed class GetRepositoryArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -34,9 +100,15 @@ namespace Pulumi.Gcp.SourceRepo
 
     public sealed class GetRepositoryInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

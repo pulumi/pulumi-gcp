@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Kms.Inputs
     {
         [Input("publicKeyCertificate", required: true)]
         private InputMap<object>? _publicKeyCertificate;
+
+        /// <summary>
+        /// A public key certificate format and data.
+        /// </summary>
         public InputMap<object> PublicKeyCertificate
         {
             get => _publicKeyCertificate ?? (_publicKeyCertificate = new InputMap<object>());

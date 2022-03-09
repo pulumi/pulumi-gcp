@@ -5,6 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * Get infomation about an existing Google Cloud Source Repository.
+ * For more information see [the official documentation](https://cloud.google.com/source-repositories)
+ * and
+ * [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = pulumi.output(gcp.sourcerepo.getRepository({
+ *     name: "my-repository",
+ * }));
+ * ```
+ */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
     if (!opts) {
         opts = {}
@@ -21,7 +38,13 @@ export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getRepository.
  */
 export interface GetRepositoryArgs {
+    /**
+     * Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
+     */
     name: string;
+    /**
+     * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+     */
     project?: string;
 }
 
@@ -48,6 +71,12 @@ export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getRepository.
  */
 export interface GetRepositoryOutputArgs {
+    /**
+     * Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
+     */
     name: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

@@ -4,6 +4,192 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
+ *
+ * * `gcp.organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+ * * `gcp.organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+ * * `gcp.organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+ * * `gcp.organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+ *
+ * > **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_organization\_iam\_policy
+ *
+ * !> **Warning:** New organizations have several default policies which will,
+ *    without extreme caution, be **overwritten** by use of this resource.
+ *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+ *    resources. This resource makes it easy to remove your own access to
+ *    an organization, which will require a call to Google Support to have
+ *    fixed, and can take multiple days to resolve.
+ *
+ *    In general, this resource should only be used with organizations
+ *    fully managed by this provider.I f you do use this resource,
+ *    the best way to be sure that you are not making dangerous changes is to start
+ *    by **importing** your existing policy, and examining the diff very closely.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const organization = new gcp.organizations.IAMPolicy("organization", {
+ *     orgId: "your-organization-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         condition: {
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *             title: "expires_after_2019_12_31",
+ *         },
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/editor",
+ *     }],
+ * }));
+ * const organization = new gcp.organizations.IAMPolicy("organization", {
+ *     orgId: "your-organization-id",
+ *     policyData: admin.policyData,
+ * });
+ * ```
+ *
+ * ## google\_organization\_iam\_binding
+ *
+ * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     members: ["user:jane@example.com"],
+ *     orgId: "your-organization-id",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     members: ["user:jane@example.com"],
+ *     orgId: "your-organization-id",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## google\_organization\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     member: "user:jane@example.com",
+ *     orgId: "your-organization-id",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     member: "user:jane@example.com",
+ *     orgId: "your-organization-id",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## google\_organization\_iam\_audit\_config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IamAuditConfig("organization", {
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             exemptedMembers: ["user:joebloggs@hashicorp.com"],
+ *             logType: "DATA_READ",
+ *         },
+ *     ],
+ *     orgId: "your-organization-id",
+ *     service: "allServices",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+ *
+ * This member resource can be imported using the `org_id`, role, and member e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy my_organization "your-orgid roles/viewer user:foo@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+ *
+ * This binding resource can be imported using the `org_id` and role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy my_organization "your-org-id roles/viewer"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question.
+ *
+ * This policy resource can be imported using the `org_id`.
+ *
+ * ```sh
+ *  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy my_organization your-org-id
+ * ```
+ *
+ *  IAM audit config imports use the identifier of the resource in question and the service, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy my_organization "your-organization-id foo.googleapis.com"
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
+ */
 export class IAMPolicy extends pulumi.CustomResource {
     /**
      * Get an existing IAMPolicy resource's state with the given name, ID, and optional extra
@@ -32,11 +218,21 @@ export class IAMPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === IAMPolicy.__pulumiType;
     }
 
+    /**
+     * (Computed) The etag of the organization's IAM policy.
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      */
     public readonly orgId!: pulumi.Output<string>;
+    /**
+     * The `gcp.organizations.getIAMPolicy` data source that represents
+     * the IAM policy that will be applied to the organization. The policy will be
+     * merged with any existing policy applied to the organization.
+     */
     public readonly policyData!: pulumi.Output<string>;
 
     /**
@@ -76,11 +272,21 @@ export class IAMPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMPolicy resources.
  */
 export interface IAMPolicyState {
+    /**
+     * (Computed) The etag of the organization's IAM policy.
+     */
     etag?: pulumi.Input<string>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      */
     orgId?: pulumi.Input<string>;
+    /**
+     * The `gcp.organizations.getIAMPolicy` data source that represents
+     * the IAM policy that will be applied to the organization. The policy will be
+     * merged with any existing policy applied to the organization.
+     */
     policyData?: pulumi.Input<string>;
 }
 
@@ -89,8 +295,15 @@ export interface IAMPolicyState {
  */
 export interface IAMPolicyArgs {
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      */
     orgId: pulumi.Input<string>;
+    /**
+     * The `gcp.organizations.getIAMPolicy` data source that represents
+     * the IAM policy that will be applied to the organization. The policy will be
+     * merged with any existing policy applied to the organization.
+     */
     policyData: pulumi.Input<string>;
 }

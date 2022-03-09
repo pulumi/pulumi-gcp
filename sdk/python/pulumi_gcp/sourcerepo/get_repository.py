@@ -93,7 +93,23 @@ def get_repository(name: Optional[str] = None,
                    project: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepositoryResult:
     """
-    Use this data source to access information about an existing resource.
+    Get infomation about an existing Google Cloud Source Repository.
+    For more information see [the official documentation](https://cloud.google.com/source-repositories)
+    and
+    [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_repo = gcp.sourcerepo.get_repository(name="my-repository")
+    ```
+
+
+    :param str name: Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
+    :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -118,6 +134,22 @@ def get_repository_output(name: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get infomation about an existing Google Cloud Source Repository.
+    For more information see [the official documentation](https://cloud.google.com/source-repositories)
+    and
+    [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_repo = gcp.sourcerepo.get_repository(name="my-repository")
+    ```
+
+
+    :param str name: Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
+    :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
     """
     ...

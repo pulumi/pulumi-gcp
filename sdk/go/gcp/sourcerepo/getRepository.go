@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get infomation about an existing Google Cloud Source Repository.
+// For more information see [the official documentation](https://cloud.google.com/source-repositories)
+// and
+// [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sourcerepo"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sourcerepo.LookupRepository(ctx, &sourcerepo.LookupRepositoryArgs{
+// 			Name: "my-repository",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupRepository(ctx *pulumi.Context, args *LookupRepositoryArgs, opts ...pulumi.InvokeOption) (*LookupRepositoryResult, error) {
 	var rv LookupRepositoryResult
 	err := ctx.Invoke("gcp:sourcerepo/getRepository:getRepository", args, &rv, opts...)
@@ -21,7 +48,9 @@ func LookupRepository(ctx *pulumi.Context, args *LookupRepositoryArgs, opts ...p
 
 // A collection of arguments for invoking getRepository.
 type LookupRepositoryArgs struct {
-	Name    string  `pulumi:"name"`
+	// Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
+	Name string `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -47,7 +76,9 @@ func LookupRepositoryOutput(ctx *pulumi.Context, args LookupRepositoryOutputArgs
 
 // A collection of arguments for invoking getRepository.
 type LookupRepositoryOutputArgs struct {
-	Name    pulumi.StringInput    `pulumi:"name"`
+	// Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 

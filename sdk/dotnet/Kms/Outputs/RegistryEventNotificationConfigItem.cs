@@ -13,7 +13,17 @@ namespace Pulumi.Gcp.Kms.Outputs
     [OutputType]
     public sealed class RegistryEventNotificationConfigItem
     {
+        /// <summary>
+        /// PubSub topic name to publish device events.
+        /// </summary>
         public readonly string PubsubTopicName;
+        /// <summary>
+        /// If the subfolder name matches this string exactly, this
+        /// configuration will be used. The string must not include the
+        /// leading '/' character. If empty, all strings are matched. Empty
+        /// value can only be used for the last `event_notification_configs`
+        /// item.
+        /// </summary>
         public readonly string? SubfolderMatches;
 
         [OutputConstructor]

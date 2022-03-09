@@ -8621,14 +8621,32 @@ export namespace compute {
     }
 
     export interface BackendServiceIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
     export interface BackendServiceIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
@@ -11440,6 +11458,10 @@ export namespace compute {
     }
 
     export interface MangedSslCertificateManaged {
+        /**
+         * Domains for which a managed SSL certificate will be valid.  Currently,
+         * there can be up to 100 domains in this list.
+         */
         domains: string[];
     }
 
@@ -12292,14 +12314,32 @@ export namespace compute {
     }
 
     export interface RegionBackendServiceIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
     export interface RegionBackendServiceIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
@@ -23739,13 +23779,28 @@ export namespace folder {
     }
 
     export interface IAMMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
     export interface IamAuditConfigAuditLogConfig {
+        /**
+         * Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+         */
         exemptedMembers?: string[];
+        /**
+         * Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+         */
         logType: string;
     }
 
@@ -24914,11 +24969,24 @@ export namespace kms {
     }
 
     export interface RegistryCredential {
+        /**
+         * A public key certificate format and data.
+         */
         publicKeyCertificate: {[key: string]: any};
     }
 
     export interface RegistryEventNotificationConfigItem {
+        /**
+         * PubSub topic name to publish device events.
+         */
         pubsubTopicName: string;
+        /**
+         * If the subfolder name matches this string exactly, this
+         * configuration will be used. The string must not include the
+         * leading '/' character. If empty, all strings are matched. Empty
+         * value can only be used for the last `eventNotificationConfigs`
+         * item.
+         */
         subfolderMatches?: string;
     }
 
@@ -27719,8 +27787,17 @@ export namespace organizations {
     }
 
     export interface IAMMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 

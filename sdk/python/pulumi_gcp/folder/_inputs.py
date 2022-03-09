@@ -151,6 +151,11 @@ class IAMMemberConditionArgs:
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -159,6 +164,9 @@ class IAMMemberConditionArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -168,6 +176,9 @@ class IAMMemberConditionArgs:
     @property
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -177,6 +188,9 @@ class IAMMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -189,6 +203,10 @@ class IamAuditConfigAuditLogConfigArgs:
     def __init__(__self__, *,
                  log_type: pulumi.Input[str],
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        """
         pulumi.set(__self__, "log_type", log_type)
         if exempted_members is not None:
             pulumi.set(__self__, "exempted_members", exempted_members)
@@ -196,6 +214,9 @@ class IamAuditConfigAuditLogConfigArgs:
     @property
     @pulumi.getter(name="logType")
     def log_type(self) -> pulumi.Input[str]:
+        """
+        Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+        """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
@@ -205,6 +226,9 @@ class IamAuditConfigAuditLogConfigArgs:
     @property
     @pulumi.getter(name="exemptedMembers")
     def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        """
         return pulumi.get(self, "exempted_members")
 
     @exempted_members.setter

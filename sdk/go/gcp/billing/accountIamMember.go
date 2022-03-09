@@ -11,14 +11,138 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
+//
+// * `billing.AccountIamPolicy`: Authoritative. Sets the IAM policy for the billing accounts and replaces any existing policy already attached.
+// * `billing.AccountIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
+// * `billing.AccountIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role of the billing accounts are preserved.
+//
+// > **Note:** `billing.AccountIamPolicy` **cannot** be used in conjunction with `billing.AccountIamBinding` and `billing.AccountIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the billing account as `billing.AccountIamPolicy` replaces the entire policy.
+//
+// > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_billing\_account\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/billing.viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = billing.NewAccountIamPolicy(ctx, "editor", &billing.AccountIamPolicyArgs{
+// 			BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
+// 			PolicyData:       pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_billing\_account\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := billing.NewAccountIamBinding(ctx, "editor", &billing.AccountIamBindingArgs{
+// 			BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/billing.viewer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_billing\_account\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/billing"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := billing.NewAccountIamMember(ctx, "editor", &billing.AccountIamMemberArgs{
+// 			BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
+// 			Member:           pulumi.String("user:jane@example.com"),
+// 			Role:             pulumi.String("roles/billing.viewer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Instance IAM resources can be imported using the project, table name, role and/or member.
+//
+// ```sh
+//  $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id"
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id roles/billing.user"
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id roles/billing.user user:jane@example.com"
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
 type AccountIamMember struct {
 	pulumi.CustomResourceState
 
+	// The billing account id.
 	BillingAccountId pulumi.StringOutput                `pulumi:"billingAccountId"`
 	Condition        AccountIamMemberConditionPtrOutput `pulumi:"condition"`
-	Etag             pulumi.StringOutput                `pulumi:"etag"`
-	Member           pulumi.StringOutput                `pulumi:"member"`
-	Role             pulumi.StringOutput                `pulumi:"role"`
+	// (Computed) The etag of the billing account's IAM policy.
+	Etag   pulumi.StringOutput `pulumi:"etag"`
+	Member pulumi.StringOutput `pulumi:"member"`
+	// The role that should be applied. Only one
+	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	Role pulumi.StringOutput `pulumi:"role"`
 }
 
 // NewAccountIamMember registers a new resource with the given unique name, arguments, and options.
@@ -59,19 +183,29 @@ func GetAccountIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountIamMember resources.
 type accountIamMemberState struct {
+	// The billing account id.
 	BillingAccountId *string                    `pulumi:"billingAccountId"`
 	Condition        *AccountIamMemberCondition `pulumi:"condition"`
-	Etag             *string                    `pulumi:"etag"`
-	Member           *string                    `pulumi:"member"`
-	Role             *string                    `pulumi:"role"`
+	// (Computed) The etag of the billing account's IAM policy.
+	Etag   *string `pulumi:"etag"`
+	Member *string `pulumi:"member"`
+	// The role that should be applied. Only one
+	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	Role *string `pulumi:"role"`
 }
 
 type AccountIamMemberState struct {
+	// The billing account id.
 	BillingAccountId pulumi.StringPtrInput
 	Condition        AccountIamMemberConditionPtrInput
-	Etag             pulumi.StringPtrInput
-	Member           pulumi.StringPtrInput
-	Role             pulumi.StringPtrInput
+	// (Computed) The etag of the billing account's IAM policy.
+	Etag   pulumi.StringPtrInput
+	Member pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	Role pulumi.StringPtrInput
 }
 
 func (AccountIamMemberState) ElementType() reflect.Type {
@@ -79,18 +213,26 @@ func (AccountIamMemberState) ElementType() reflect.Type {
 }
 
 type accountIamMemberArgs struct {
+	// The billing account id.
 	BillingAccountId string                     `pulumi:"billingAccountId"`
 	Condition        *AccountIamMemberCondition `pulumi:"condition"`
 	Member           string                     `pulumi:"member"`
-	Role             string                     `pulumi:"role"`
+	// The role that should be applied. Only one
+	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a AccountIamMember resource.
 type AccountIamMemberArgs struct {
+	// The billing account id.
 	BillingAccountId pulumi.StringInput
 	Condition        AccountIamMemberConditionPtrInput
 	Member           pulumi.StringInput
-	Role             pulumi.StringInput
+	// The role that should be applied. Only one
+	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	Role pulumi.StringInput
 }
 
 func (AccountIamMemberArgs) ElementType() reflect.Type {

@@ -1065,6 +1065,7 @@ func (o KeyRingImportJobPublicKeyArrayOutput) Index(i pulumi.IntInput) KeyRingIm
 }
 
 type RegistryCredential struct {
+	// A public key certificate format and data.
 	PublicKeyCertificate map[string]interface{} `pulumi:"publicKeyCertificate"`
 }
 
@@ -1080,6 +1081,7 @@ type RegistryCredentialInput interface {
 }
 
 type RegistryCredentialArgs struct {
+	// A public key certificate format and data.
 	PublicKeyCertificate pulumi.MapInput `pulumi:"publicKeyCertificate"`
 }
 
@@ -1134,6 +1136,7 @@ func (o RegistryCredentialOutput) ToRegistryCredentialOutputWithContext(ctx cont
 	return o
 }
 
+// A public key certificate format and data.
 func (o RegistryCredentialOutput) PublicKeyCertificate() pulumi.MapOutput {
 	return o.ApplyT(func(v RegistryCredential) map[string]interface{} { return v.PublicKeyCertificate }).(pulumi.MapOutput)
 }
@@ -1159,7 +1162,13 @@ func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredenti
 }
 
 type RegistryEventNotificationConfigItem struct {
-	PubsubTopicName  string  `pulumi:"pubsubTopicName"`
+	// PubSub topic name to publish device events.
+	PubsubTopicName string `pulumi:"pubsubTopicName"`
+	// If the subfolder name matches this string exactly, this
+	// configuration will be used. The string must not include the
+	// leading '/' character. If empty, all strings are matched. Empty
+	// value can only be used for the last `eventNotificationConfigs`
+	// item.
 	SubfolderMatches *string `pulumi:"subfolderMatches"`
 }
 
@@ -1175,7 +1184,13 @@ type RegistryEventNotificationConfigItemInput interface {
 }
 
 type RegistryEventNotificationConfigItemArgs struct {
-	PubsubTopicName  pulumi.StringInput    `pulumi:"pubsubTopicName"`
+	// PubSub topic name to publish device events.
+	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
+	// If the subfolder name matches this string exactly, this
+	// configuration will be used. The string must not include the
+	// leading '/' character. If empty, all strings are matched. Empty
+	// value can only be used for the last `eventNotificationConfigs`
+	// item.
 	SubfolderMatches pulumi.StringPtrInput `pulumi:"subfolderMatches"`
 }
 
@@ -1230,10 +1245,16 @@ func (o RegistryEventNotificationConfigItemOutput) ToRegistryEventNotificationCo
 	return o
 }
 
+// PubSub topic name to publish device events.
 func (o RegistryEventNotificationConfigItemOutput) PubsubTopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryEventNotificationConfigItem) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }
 
+// If the subfolder name matches this string exactly, this
+// configuration will be used. The string must not include the
+// leading '/' character. If empty, all strings are matched. Empty
+// value can only be used for the last `eventNotificationConfigs`
+// item.
 func (o RegistryEventNotificationConfigItemOutput) SubfolderMatches() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryEventNotificationConfigItem) *string { return v.SubfolderMatches }).(pulumi.StringPtrOutput)
 }

@@ -21,6 +21,10 @@ class AccountIamMemberArgs:
                  condition: Optional[pulumi.Input['AccountIamMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a AccountIamMember resource.
+        :param pulumi.Input[str] billing_account_id: The billing account id.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         """
         pulumi.set(__self__, "billing_account_id", billing_account_id)
         pulumi.set(__self__, "member", member)
@@ -31,6 +35,9 @@ class AccountIamMemberArgs:
     @property
     @pulumi.getter(name="billingAccountId")
     def billing_account_id(self) -> pulumi.Input[str]:
+        """
+        The billing account id.
+        """
         return pulumi.get(self, "billing_account_id")
 
     @billing_account_id.setter
@@ -49,6 +56,11 @@ class AccountIamMemberArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+        """
+        The role that should be applied. Only one
+        `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -75,6 +87,11 @@ class _AccountIamMemberState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccountIamMember resources.
+        :param pulumi.Input[str] billing_account_id: The billing account id.
+        :param pulumi.Input[str] etag: (Computed) The etag of the billing account's IAM policy.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         """
         if billing_account_id is not None:
             pulumi.set(__self__, "billing_account_id", billing_account_id)
@@ -90,6 +107,9 @@ class _AccountIamMemberState:
     @property
     @pulumi.getter(name="billingAccountId")
     def billing_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing account id.
+        """
         return pulumi.get(self, "billing_account_id")
 
     @billing_account_id.setter
@@ -108,6 +128,9 @@ class _AccountIamMemberState:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the billing account's IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -126,6 +149,11 @@ class _AccountIamMemberState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -144,9 +172,81 @@ class AccountIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AccountIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
+
+        * `billing.AccountIamPolicy`: Authoritative. Sets the IAM policy for the billing accounts and replaces any existing policy already attached.
+        * `billing.AccountIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
+        * `billing.AccountIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role of the billing accounts are preserved.
+
+        > **Note:** `billing.AccountIamPolicy` **cannot** be used in conjunction with `billing.AccountIamBinding` and `billing.AccountIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the billing account as `billing.AccountIamPolicy` replaces the entire policy.
+
+        > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_billing\_account\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/billing.viewer",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.billing.AccountIamPolicy("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_billing\_account\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.billing.AccountIamBinding("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            members=["user:jane@example.com"],
+            role="roles/billing.viewer")
+        ```
+
+        ## google\_billing\_account\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.billing.AccountIamMember("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            member="user:jane@example.com",
+            role="roles/billing.viewer")
+        ```
+
+        ## Import
+
+        Instance IAM resources can be imported using the project, table name, role and/or member.
+
+        ```sh
+         $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id"
+        ```
+
+        ```sh
+         $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id roles/billing.user"
+        ```
+
+        ```sh
+         $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id roles/billing.user user:jane@example.com"
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] billing_account_id: The billing account id.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         """
         ...
     @overload
@@ -155,7 +255,75 @@ class AccountIamMember(pulumi.CustomResource):
                  args: AccountIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AccountIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
+
+        * `billing.AccountIamPolicy`: Authoritative. Sets the IAM policy for the billing accounts and replaces any existing policy already attached.
+        * `billing.AccountIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
+        * `billing.AccountIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role of the billing accounts are preserved.
+
+        > **Note:** `billing.AccountIamPolicy` **cannot** be used in conjunction with `billing.AccountIamBinding` and `billing.AccountIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the billing account as `billing.AccountIamPolicy` replaces the entire policy.
+
+        > **Note:** `billing.AccountIamBinding` resources **can be** used in conjunction with `billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_billing\_account\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/billing.viewer",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.billing.AccountIamPolicy("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_billing\_account\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.billing.AccountIamBinding("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            members=["user:jane@example.com"],
+            role="roles/billing.viewer")
+        ```
+
+        ## google\_billing\_account\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.billing.AccountIamMember("editor",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            member="user:jane@example.com",
+            role="roles/billing.viewer")
+        ```
+
+        ## Import
+
+        Instance IAM resources can be imported using the project, table name, role and/or member.
+
+        ```sh
+         $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id"
+        ```
+
+        ```sh
+         $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id roles/billing.user"
+        ```
+
+        ```sh
+         $ pulumi import gcp:billing/accountIamMember:AccountIamMember binding "your-billing-account-id roles/billing.user user:jane@example.com"
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param AccountIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -220,6 +388,11 @@ class AccountIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] billing_account_id: The billing account id.
+        :param pulumi.Input[str] etag: (Computed) The etag of the billing account's IAM policy.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -235,6 +408,9 @@ class AccountIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter(name="billingAccountId")
     def billing_account_id(self) -> pulumi.Output[str]:
+        """
+        The billing account id.
+        """
         return pulumi.get(self, "billing_account_id")
 
     @property
@@ -245,6 +421,9 @@ class AccountIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
+        """
+        (Computed) The etag of the billing account's IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @property
@@ -255,5 +434,10 @@ class AccountIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        The role that should be applied. Only one
+        `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        """
         return pulumi.get(self, "role")
 

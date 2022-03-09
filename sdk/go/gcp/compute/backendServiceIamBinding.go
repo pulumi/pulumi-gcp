@@ -11,15 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/backendServices/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine backendservice IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/backendServiceIamBinding:BackendServiceIamBinding editor projects/{{project}}/global/backendServices/{{backend_service}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type BackendServiceIamBinding struct {
 	pulumi.CustomResourceState
 
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition BackendServiceIamBindingConditionPtrOutput `pulumi:"condition"`
-	Etag      pulumi.StringOutput                        `pulumi:"etag"`
-	Members   pulumi.StringArrayOutput                   `pulumi:"members"`
-	Name      pulumi.StringOutput                        `pulumi:"name"`
-	Project   pulumi.StringOutput                        `pulumi:"project"`
-	Role      pulumi.StringOutput                        `pulumi:"role"`
+	// (Computed) The etag of the IAM policy.
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
+	Members pulumi.StringArrayOutput `pulumi:"members"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `compute.BackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringOutput `pulumi:"role"`
 }
 
 // NewBackendServiceIamBinding registers a new resource with the given unique name, arguments, and options.
@@ -57,21 +89,39 @@ func GetBackendServiceIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackendServiceIamBinding resources.
 type backendServiceIamBindingState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *BackendServiceIamBindingCondition `pulumi:"condition"`
-	Etag      *string                            `pulumi:"etag"`
-	Members   []string                           `pulumi:"members"`
-	Name      *string                            `pulumi:"name"`
-	Project   *string                            `pulumi:"project"`
-	Role      *string                            `pulumi:"role"`
+	// (Computed) The etag of the IAM policy.
+	Etag    *string  `pulumi:"etag"`
+	Members []string `pulumi:"members"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `compute.BackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role *string `pulumi:"role"`
 }
 
 type BackendServiceIamBindingState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition BackendServiceIamBindingConditionPtrInput
-	Etag      pulumi.StringPtrInput
-	Members   pulumi.StringArrayInput
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
-	Role      pulumi.StringPtrInput
+	// (Computed) The etag of the IAM policy.
+	Etag    pulumi.StringPtrInput
+	Members pulumi.StringArrayInput
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `compute.BackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringPtrInput
 }
 
 func (BackendServiceIamBindingState) ElementType() reflect.Type {
@@ -79,20 +129,36 @@ func (BackendServiceIamBindingState) ElementType() reflect.Type {
 }
 
 type backendServiceIamBindingArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *BackendServiceIamBindingCondition `pulumi:"condition"`
 	Members   []string                           `pulumi:"members"`
-	Name      *string                            `pulumi:"name"`
-	Project   *string                            `pulumi:"project"`
-	Role      string                             `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `compute.BackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a BackendServiceIamBinding resource.
 type BackendServiceIamBindingArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition BackendServiceIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
-	Role      pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `compute.BackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringInput
 }
 
 func (BackendServiceIamBindingArgs) ElementType() reflect.Type {

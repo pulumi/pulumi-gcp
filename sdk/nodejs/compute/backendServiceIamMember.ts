@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/backendServices/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine backendservice IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendServiceIamMember:BackendServiceIamMember editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin user:jane@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendServiceIamMember:BackendServiceIamMember editor "projects/{{project}}/global/backendServices/{{backend_service}} roles/compute.admin"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendServiceIamMember:BackendServiceIamMember editor projects/{{project}}/global/backendServices/{{backend_service}}
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ */
 export class BackendServiceIamMember extends pulumi.CustomResource {
     /**
      * Get an existing BackendServiceIamMember resource's state with the given name, ID, and optional extra
@@ -33,11 +58,30 @@ export class BackendServiceIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackendServiceIamMember.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.compute.BackendServiceIamMemberCondition | undefined>;
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.compute.BackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -83,11 +127,30 @@ export class BackendServiceIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackendServiceIamMember resources.
  */
 export interface BackendServiceIamMemberState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.compute.BackendServiceIamMemberCondition>;
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
     etag?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     */
     project?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.compute.BackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     role?: pulumi.Input<string>;
 }
 
@@ -95,9 +158,25 @@ export interface BackendServiceIamMemberState {
  * The set of arguments for constructing a BackendServiceIamMember resource.
  */
 export interface BackendServiceIamMemberArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.compute.BackendServiceIamMemberCondition>;
     member: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     */
     project?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.compute.BackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     role: pulumi.Input<string>;
 }

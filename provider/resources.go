@@ -360,19 +360,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_billing_account_iam_binding": {
 				Tok: gcpResource(gcpBilling, "AccountIamBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_billing_account_iam_binding.md",
+					Source: "billing_account_iam.html.markdown",
 				},
 			},
 			"google_billing_account_iam_member": {
 				Tok: gcpResource(gcpBilling, "AccountIamMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_billing_account_iam_member.md",
+					Source: "billing_account_iam.html.markdown",
 				},
 			},
 			"google_billing_account_iam_policy": {
 				Tok: gcpResource(gcpBilling, "AccountIamPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_billing_account_iam_policy.md",
+					Source: "billing_account_iam.html.markdown",
 				},
 			},
 			"google_billing_budget":     {Tok: gcpResource(gcpBilling, "Budget")},
@@ -431,19 +431,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_cloudfunctions_function_iam_binding": {
 				Tok: gcpResource(gcpCloudFunctions, "FunctionIamBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "cloudfunctions_cloud_function_iam.html.markdown",
+					Source: "cloudfunctions_function_iam.html.markdown",
 				},
 			},
 			"google_cloudfunctions_function_iam_member": {
 				Tok: gcpResource(gcpCloudFunctions, "FunctionIamMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "cloudfunctions_cloud_function_iam.html.markdown",
+					Source: "cloudfunctions_function_iam.html.markdown",
 				},
 			},
 			"google_cloudfunctions_function_iam_policy": {
 				Tok: gcpResource(gcpCloudFunctions, "FunctionIamPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "cloudfunctions_cloud_function_iam.html.markdown",
+					Source: "cloudfunctions_function_iam.html.markdown",
 				},
 			},
 
@@ -466,19 +466,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_folder_iam_binding": {
 				Tok: gcpResource(gcpFolder, "IAMBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_folder_iam_binding.html.markdown",
+					Source: "google_folder_iam.html.markdown",
 				},
 			},
 			"google_folder_iam_member": {
 				Tok: gcpResource(gcpFolder, "IAMMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_folder_iam_member.html.markdown",
+					Source: "google_folder_iam.html.markdown",
 				},
 			},
 			"google_folder_iam_policy": {
 				Tok: gcpResource(gcpFolder, "IAMPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_folder_iam_policy.html.markdown",
+					Source: "google_folder_iam.html.markdown",
 				},
 			},
 			"google_folder_organization_policy": {
@@ -487,7 +487,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_folder_organization_policy.html.markdown",
 				},
 			},
-			"google_folder_iam_audit_config":         {Tok: gcpResource(gcpFolder, "IamAuditConfig")},
+			"google_folder_iam_audit_config": {
+				Tok: gcpResource(gcpFolder, "IamAuditConfig"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_folder_iam.html.markdown",
+				},
+			},
 			"google_folder_access_approval_settings": {Tok: gcpResource(gcpFolder, "AccessApprovalSettings")},
 
 			"google_organization_policy": {
@@ -499,7 +504,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_organization_iam_binding": {
 				Tok: gcpResource(gcpOrganization, "IAMBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_organization_iam_binding.md",
+					Source: "google_organization_iam.html.markdown",
 				},
 			},
 			"google_organization_iam_custom_role": {
@@ -511,17 +516,20 @@ func Provider() tfbridge.ProviderInfo {
 			"google_organization_iam_member": {
 				Tok: gcpResource(gcpOrganization, "IAMMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_organization_iam_member.md",
+					Source: "google_organization_iam.html.markdown",
 				},
 			},
 			"google_organization_iam_policy": {
 				Tok: gcpResource(gcpOrganization, "IAMPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_organization_iam_policy.md",
+					Source: "google_organization_iam.html.markdown",
 				},
 			},
 			"google_organization_iam_audit_config": {
 				Tok: gcpResource(gcpOrganization, "IamAuditConfig"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_organization_iam.html.markdown",
+				},
 			},
 			"google_organization_access_approval_settings": {
 				Tok: gcpResource(gcpOrganization, "AccessApprovalSettings"),
@@ -882,13 +890,43 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_organization_security_policy": {
 				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicy"),
 			},
-			"google_compute_service_attachment":                 {Tok: gcpResource(gcpCompute, "ServiceAttachment")},
-			"google_compute_backend_service_iam_binding":        {Tok: gcpResource(gcpCompute, "BackendServiceIamBinding")},
-			"google_compute_backend_service_iam_member":         {Tok: gcpResource(gcpCompute, "BackendServiceIamMember")},
-			"google_compute_backend_service_iam_policy":         {Tok: gcpResource(gcpCompute, "BackendServiceIamPolicy")},
-			"google_compute_region_backend_service_iam_binding": {Tok: gcpResource(gcpCompute, "RegionBackendServiceIamBinding")},
-			"google_compute_region_backend_service_iam_member":  {Tok: gcpResource(gcpCompute, "RegionBackendServiceIamMember")},
-			"google_compute_region_backend_service_iam_policy":  {Tok: gcpResource(gcpCompute, "RegionBackendServiceIamPolicy")},
+			"google_compute_service_attachment": {Tok: gcpResource(gcpCompute, "ServiceAttachment")},
+			"google_compute_backend_service_iam_binding": {
+				Tok: gcpResource(gcpCompute, "BackendServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_service_iam.html.markdown",
+				},
+			},
+			"google_compute_backend_service_iam_member": {
+				Tok: gcpResource(gcpCompute, "BackendServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_service_iam.html.markdown",
+				},
+			},
+			"google_compute_backend_service_iam_policy": {
+				Tok: gcpResource(gcpCompute, "BackendServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_service_iam.html.markdown",
+				},
+			},
+			"google_compute_region_backend_service_iam_binding": {
+				Tok: gcpResource(gcpCompute, "RegionBackendServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_region_backend_service_iam.html.markdown",
+				},
+			},
+			"google_compute_region_backend_service_iam_member": {
+				Tok: gcpResource(gcpCompute, "RegionBackendServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_region_backend_service_iam.html.markdown",
+				},
+			},
+			"google_compute_region_backend_service_iam_policy": {
+				Tok: gcpResource(gcpCompute, "RegionBackendServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_region_backend_service_iam.html.markdown",
+				},
+			},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -1838,19 +1876,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_data_catalog_tag_template_iam_binding": {
 				Tok: gcpResource(gcpDataCatalog, "TagTemplateIamBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "data_catalog_tag_template_iam.html.markdown ",
+					Source: "data_catalog_tag_template_iam.html.markdown",
 				},
 			},
 			"google_data_catalog_tag_template_iam_member": {
 				Tok: gcpResource(gcpDataCatalog, "TagTemplateIamMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "data_catalog_tag_template_iam.html.markdown ",
+					Source: "data_catalog_tag_template_iam.html.markdown",
 				},
 			},
 			"google_data_catalog_tag_template_iam_policy": {
 				Tok: gcpResource(gcpDataCatalog, "TagTemplateIamPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "data_catalog_tag_template_iam.html.markdown ",
+					Source: "data_catalog_tag_template_iam.html.markdown",
 				},
 			},
 
@@ -2537,6 +2575,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_service_networking_peered_dns_domain": {
 				Tok: gcpDataSource(gcpServiceNetworking, "getPeeredDnsDomain"),
+				// At the time of writing this data source does not have any upstream docs at all, so we override
+				// with blank contents.
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
 			},
 			"google_sql_backup_run": {Tok: gcpDataSource(gcpSQL, "getBackupRun")},
 			"google_monitoring_notification_channel": {
@@ -2608,7 +2651,12 @@ func Provider() tfbridge.ProviderInfo {
 			"google_app_engine_default_service_account": {Tok: gcpDataSource(gcpAppEngine, "getDefaultServiceAccount")},
 
 			// Source repo
-			"google_sourcerepo_repository": {Tok: gcpDataSource(gcpSourceRepo, "getRepository")},
+			"google_sourcerepo_repository": {
+				Tok: gcpDataSource(gcpSourceRepo, "getRepository"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_source_sourcerepo_repository.html.markdown",
+				},
+			},
 
 			// Spanner
 			"google_spanner_instance": {Tok: gcpDataSource(gcpSpanner, "getInstance")},
@@ -2691,12 +2739,18 @@ func Provider() tfbridge.ProviderInfo {
 	})
 
 	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,
-		"MangedSslCertificate"), gcpResource(gcpCompute, "ManagedSslCertificate"), gcpCompute, gcpCompute, nil)
+		"MangedSslCertificate"), gcpResource(gcpCompute, "ManagedSslCertificate"), gcpCompute, gcpCompute,
+		&tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "compute_managed_ssl_certificate.html.markdown",
+			},
+		})
 
 	prov.RenameDataSource("google_secret_manager_secret_version", gcpDataSource(gcpMonitoring, "getSecretVersion"),
-		gcpDataSource(gcpSecretManager, "getSecretVersion"), gcpMonitoring, gcpSecretManager, &tfbridge.DataSourceInfo{
+		gcpDataSource(gcpSecretManager, "getSecretVersion"), gcpMonitoring, gcpSecretManager,
+		&tfbridge.DataSourceInfo{
 			Docs: &tfbridge.DocInfo{
-				Source: "datasource_google_secret_manager_secret_version.html.markdown",
+				Source: "secret_manager_secret_version.html.markdown",
 			},
 		})
 
@@ -2715,7 +2769,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Docs: &tfbridge.DocInfo{
-			Source: "cloudiot_device_registry.html.markdown",
+			Source: "cloudiot_registry.html.markdown",
 		},
 	})
 

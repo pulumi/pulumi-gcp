@@ -6,6 +6,103 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * An SslCertificate resource, used for HTTPS load balancing.  This resource
+ * represents a certificate for which the certificate secrets are created and
+ * managed by Google.
+ *
+ * For a resource where you provide the key, see the
+ * SSL Certificate resource.
+ *
+ * To get more information about ManagedSslCertificate, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+ *
+ * > **Warning:** This resource should be used with extreme caution!  Provisioning an SSL
+ * certificate is complex.  Ensure that you understand the lifecycle of a
+ * certificate before attempting complex tasks like cert rotation automatically.
+ * This resource will "return" as soon as the certificate object is created,
+ * but post-creation the certificate object will go through a "provisioning"
+ * process.  The provisioning process can complete only when the domain name
+ * for which the certificate is created points to a target pool which, itself,
+ * points at the certificate.  Depending on your DNS provider, this may take
+ * some time, and migrating from self-managed certificates to Google-managed
+ * certificates may entail some downtime while the certificate provisions.
+ *
+ * In conclusion: Be extremely cautious.
+ *
+ * ## Example Usage
+ * ### Managed Ssl Certificate Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultManagedSslCertificate = new gcp.compute.ManagedSslCertificate("defaultManagedSslCertificate", {managed: {
+ *     domains: ["sslcert.tf-test.club."],
+ * }});
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["sslcert.tf-test.club"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [defaultManagedSslCertificate.id],
+ * });
+ * const zone = new gcp.dns.ManagedZone("zone", {dnsName: "sslcert.tf-test.club."});
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     target: defaultTargetHttpsProxy.id,
+ *     portRange: 443,
+ * });
+ * const set = new gcp.dns.RecordSet("set", {
+ *     name: "sslcert.tf-test.club.",
+ *     type: "A",
+ *     ttl: 3600,
+ *     managedZone: zone.name,
+ *     rrdatas: [defaultGlobalForwardingRule.ipAddress],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ManagedSslCertificate can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default {{name}}
+ * ```
+ *
  * @deprecated gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate
  */
 export class MangedSslCertificate extends pulumi.CustomResource {
@@ -54,27 +151,39 @@ export class MangedSslCertificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
-     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
-     * of 'MANAGED' in 'type').
+     * Properties relevant to a managed certificate.  These will be used if the
+     * certificate is managed (as indicated by a value of `MANAGED` in `type`).
+     * Structure is documented below.
      */
     public readonly managed!: pulumi.Output<outputs.compute.MangedSslCertificateManaged | undefined>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-     * comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-     * must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-     * namespace as the managed SSL certificates.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Domains associated with the certificate via Subject Alternative Name.
      */
     public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
     /**
-     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
-     * Possible values: ["MANAGED"]
+     * Enum field whose value is always `MANAGED` - used to signal to the API
+     * which type this is.
+     * Default value is `MANAGED`.
+     * Possible values are `MANAGED`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -143,27 +252,39 @@ export interface MangedSslCertificateState {
      */
     expireTime?: pulumi.Input<string>;
     /**
-     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
-     * of 'MANAGED' in 'type').
+     * Properties relevant to a managed certificate.  These will be used if the
+     * certificate is managed (as indicated by a value of `MANAGED` in `type`).
+     * Structure is documented below.
      */
     managed?: pulumi.Input<inputs.compute.MangedSslCertificateManaged>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-     * comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-     * must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-     * namespace as the managed SSL certificates.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     selfLink?: pulumi.Input<string>;
     /**
      * Domains associated with the certificate via Subject Alternative Name.
      */
     subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
-     * Possible values: ["MANAGED"]
+     * Enum field whose value is always `MANAGED` - used to signal to the API
+     * which type this is.
+     * Default value is `MANAGED`.
+     * Possible values are `MANAGED`.
      */
     type?: pulumi.Input<string>;
 }
@@ -181,22 +302,31 @@ export interface MangedSslCertificateArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
-     * of 'MANAGED' in 'type').
+     * Properties relevant to a managed certificate.  These will be used if the
+     * certificate is managed (as indicated by a value of `MANAGED` in `type`).
+     * Structure is documented below.
      */
     managed?: pulumi.Input<inputs.compute.MangedSslCertificateManaged>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-     * comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-     * must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-     * namespace as the managed SSL certificates.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
-     * Possible values: ["MANAGED"]
+     * Enum field whose value is always `MANAGED` - used to signal to the API
+     * which type this is.
+     * Default value is `MANAGED`.
+     * Possible values are `MANAGED`.
      */
     type?: pulumi.Input<string>;
 }
