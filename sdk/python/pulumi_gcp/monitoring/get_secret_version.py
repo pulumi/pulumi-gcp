@@ -54,16 +54,25 @@ class GetSecretVersionResult:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        The time at which the Secret was created.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="destroyTime")
     def destroy_time(self) -> str:
+        """
+        The time at which the Secret was destroyed. Only present if state is DESTROYED.
+        """
         return pulumi.get(self, "destroy_time")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        True if the current state of the SecretVersion is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -77,6 +86,10 @@ class GetSecretVersionResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The resource name of the SecretVersion. Format:
+        `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -92,6 +105,9 @@ class GetSecretVersionResult:
     @property
     @pulumi.getter(name="secretData")
     def secret_data(self) -> str:
+        """
+        The secret data. No larger than 64KiB.
+        """
         return pulumi.get(self, "secret_data")
 
     @property
@@ -122,7 +138,23 @@ def get_secret_version(project: Optional[str] = None,
                        version: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretVersionResult:
     """
-    Use this data source to access information about an existing resource.
+    Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    basic = gcp.secretmanager.get_secret_version(secret="my-secret")
+    ```
+
+
+    :param str project: The project to get the secret version for. If it
+           is not provided, the provider project is used.
+    :param str secret: The secret to get the secret version for.
+    :param str version: The version of the secret to get. If it
+           is not provided, the latest version is retrieved.
     """
     pulumi.log.warn("""get_secret_version is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion""")
     __args__ = dict()
@@ -153,7 +185,23 @@ def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = N
                               version: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    basic = gcp.secretmanager.get_secret_version(secret="my-secret")
+    ```
+
+
+    :param str project: The project to get the secret version for. If it
+           is not provided, the provider project is used.
+    :param str secret: The secret to get the secret version for.
+    :param str version: The version of the secret to get. If it
+           is not provided, the latest version is retrieved.
     """
     pulumi.log.warn("""get_secret_version is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion""")
     ...

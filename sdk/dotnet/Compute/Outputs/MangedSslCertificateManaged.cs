@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class MangedSslCertificateManaged
     {
+        /// <summary>
+        /// Domains for which a managed SSL certificate will be valid.  Currently,
+        /// there can be up to 100 domains in this list.
+        /// </summary>
         public readonly ImmutableArray<string> Domains;
 
         [OutputConstructor]

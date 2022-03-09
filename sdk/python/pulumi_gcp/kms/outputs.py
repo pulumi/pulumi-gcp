@@ -290,11 +290,17 @@ class RegistryCredential(dict):
 
     def __init__(__self__, *,
                  public_key_certificate: Mapping[str, Any]):
+        """
+        :param Mapping[str, Any] public_key_certificate: A public key certificate format and data.
+        """
         pulumi.set(__self__, "public_key_certificate", public_key_certificate)
 
     @property
     @pulumi.getter(name="publicKeyCertificate")
     def public_key_certificate(self) -> Mapping[str, Any]:
+        """
+        A public key certificate format and data.
+        """
         return pulumi.get(self, "public_key_certificate")
 
 
@@ -322,6 +328,14 @@ class RegistryEventNotificationConfigItem(dict):
     def __init__(__self__, *,
                  pubsub_topic_name: str,
                  subfolder_matches: Optional[str] = None):
+        """
+        :param str pubsub_topic_name: PubSub topic name to publish device events.
+        :param str subfolder_matches: If the subfolder name matches this string exactly, this
+               configuration will be used. The string must not include the
+               leading '/' character. If empty, all strings are matched. Empty
+               value can only be used for the last `event_notification_configs`
+               item.
+        """
         pulumi.set(__self__, "pubsub_topic_name", pubsub_topic_name)
         if subfolder_matches is not None:
             pulumi.set(__self__, "subfolder_matches", subfolder_matches)
@@ -329,11 +343,21 @@ class RegistryEventNotificationConfigItem(dict):
     @property
     @pulumi.getter(name="pubsubTopicName")
     def pubsub_topic_name(self) -> str:
+        """
+        PubSub topic name to publish device events.
+        """
         return pulumi.get(self, "pubsub_topic_name")
 
     @property
     @pulumi.getter(name="subfolderMatches")
     def subfolder_matches(self) -> Optional[str]:
+        """
+        If the subfolder name matches this string exactly, this
+        configuration will be used. The string must not include the
+        leading '/' character. If empty, all strings are matched. Empty
+        value can only be used for the last `event_notification_configs`
+        item.
+        """
         return pulumi.get(self, "subfolder_matches")
 
 

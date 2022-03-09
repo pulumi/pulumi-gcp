@@ -5,6 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
+ *
+ * * `gcp.billing.AccountIamPolicy`: Authoritative. Sets the IAM policy for the billing accounts and replaces any existing policy already attached.
+ * * `gcp.billing.AccountIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
+ * * `gcp.billing.AccountIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role of the billing accounts are preserved.
+ *
+ * > **Note:** `gcp.billing.AccountIamPolicy` **cannot** be used in conjunction with `gcp.billing.AccountIamBinding` and `gcp.billing.AccountIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the billing account as `gcp.billing.AccountIamPolicy` replaces the entire policy.
+ *
+ * > **Note:** `gcp.billing.AccountIamBinding` resources **can be** used in conjunction with `gcp.billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_billing\_account\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/billing.viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const editor = new gcp.billing.AccountIamPolicy("editor", {
+ *     billingAccountId: "00AA00-000AAA-00AA0A",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_billing\_account\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.billing.AccountIamBinding("editor", {
+ *     billingAccountId: "00AA00-000AAA-00AA0A",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/billing.viewer",
+ * });
+ * ```
+ *
+ * ## google\_billing\_account\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.billing.AccountIamMember("editor", {
+ *     billingAccountId: "00AA00-000AAA-00AA0A",
+ *     member: "user:jane@example.com",
+ *     role: "roles/billing.viewer",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instance IAM resources can be imported using the project, table name, role and/or member.
+ *
+ * ```sh
+ *  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id"
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id roles/billing.user"
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id roles/billing.user user:jane@example.com"
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
+ */
 export class AccountIamBinding extends pulumi.CustomResource {
     /**
      * Get an existing AccountIamBinding resource's state with the given name, ID, and optional extra
@@ -33,10 +108,21 @@ export class AccountIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccountIamBinding.__pulumiType;
     }
 
+    /**
+     * The billing account id.
+     */
     public readonly billingAccountId!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.billing.AccountIamBindingCondition | undefined>;
+    /**
+     * (Computed) The etag of the billing account's IAM policy.
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -83,10 +169,21 @@ export class AccountIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccountIamBinding resources.
  */
 export interface AccountIamBindingState {
+    /**
+     * The billing account id.
+     */
     billingAccountId?: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
+    /**
+     * (Computed) The etag of the billing account's IAM policy.
+     */
     etag?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+     */
     role?: pulumi.Input<string>;
 }
 
@@ -94,8 +191,16 @@ export interface AccountIamBindingState {
  * The set of arguments for constructing a AccountIamBinding resource.
  */
 export interface AccountIamBindingArgs {
+    /**
+     * The billing account id.
+     */
     billingAccountId: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
     members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+     */
     role: pulumi.Input<string>;
 }

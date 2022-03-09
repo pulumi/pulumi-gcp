@@ -9,15 +9,134 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Billing
 {
+    /// <summary>
+    /// Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.billing.AccountIamPolicy`: Authoritative. Sets the IAM policy for the billing accounts and replaces any existing policy already attached.
+    /// * `gcp.billing.AccountIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
+    /// * `gcp.billing.AccountIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role of the billing accounts are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.billing.AccountIamPolicy` **cannot** be used in conjunction with `gcp.billing.AccountIamBinding` and `gcp.billing.AccountIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the billing account as `gcp.billing.AccountIamPolicy` replaces the entire policy.
+    /// 
+    /// &gt; **Note:** `gcp.billing.AccountIamBinding` resources **can be** used in conjunction with `gcp.billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_billing\_account\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/billing.viewer",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var editor = new Gcp.Billing.AccountIamPolicy("editor", new Gcp.Billing.AccountIamPolicyArgs
+    ///         {
+    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_billing\_account\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var editor = new Gcp.Billing.AccountIamBinding("editor", new Gcp.Billing.AccountIamBindingArgs
+    ///         {
+    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Role = "roles/billing.viewer",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_billing\_account\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var editor = new Gcp.Billing.AccountIamMember("editor", new Gcp.Billing.AccountIamMemberArgs
+    ///         {
+    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
+    ///             Member = "user:jane@example.com",
+    ///             Role = "roles/billing.viewer",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance IAM resources can be imported using the project, table name, role and/or member.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:billing/accountIamPolicy:AccountIamPolicy binding "your-billing-account-id"
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:billing/accountIamPolicy:AccountIamPolicy binding "your-billing-account-id roles/billing.user"
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:billing/accountIamPolicy:AccountIamPolicy binding "your-billing-account-id roles/billing.user user:jane@example.com"
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
+    /// </summary>
     [GcpResourceType("gcp:billing/accountIamPolicy:AccountIamPolicy")]
     public partial class AccountIamPolicy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The billing account id.
+        /// </summary>
         [Output("billingAccountId")]
         public Output<string> BillingAccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The etag of the billing account's IAM policy.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+        /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
@@ -67,9 +186,15 @@ namespace Pulumi.Gcp.Billing
 
     public sealed class AccountIamPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The billing account id.
+        /// </summary>
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
 
+        /// <summary>
+        /// The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+        /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
@@ -80,12 +205,21 @@ namespace Pulumi.Gcp.Billing
 
     public sealed class AccountIamPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The billing account id.
+        /// </summary>
         [Input("billingAccountId")]
         public Input<string>? BillingAccountId { get; set; }
 
+        /// <summary>
+        /// (Computed) The etag of the billing account's IAM policy.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+        /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 

@@ -322,11 +322,17 @@ class KeyRingImportJobPublicKeyArgs:
 class RegistryCredentialArgs:
     def __init__(__self__, *,
                  public_key_certificate: pulumi.Input[Mapping[str, Any]]):
+        """
+        :param pulumi.Input[Mapping[str, Any]] public_key_certificate: A public key certificate format and data.
+        """
         pulumi.set(__self__, "public_key_certificate", public_key_certificate)
 
     @property
     @pulumi.getter(name="publicKeyCertificate")
     def public_key_certificate(self) -> pulumi.Input[Mapping[str, Any]]:
+        """
+        A public key certificate format and data.
+        """
         return pulumi.get(self, "public_key_certificate")
 
     @public_key_certificate.setter
@@ -339,6 +345,14 @@ class RegistryEventNotificationConfigItemArgs:
     def __init__(__self__, *,
                  pubsub_topic_name: pulumi.Input[str],
                  subfolder_matches: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] pubsub_topic_name: PubSub topic name to publish device events.
+        :param pulumi.Input[str] subfolder_matches: If the subfolder name matches this string exactly, this
+               configuration will be used. The string must not include the
+               leading '/' character. If empty, all strings are matched. Empty
+               value can only be used for the last `event_notification_configs`
+               item.
+        """
         pulumi.set(__self__, "pubsub_topic_name", pubsub_topic_name)
         if subfolder_matches is not None:
             pulumi.set(__self__, "subfolder_matches", subfolder_matches)
@@ -346,6 +360,9 @@ class RegistryEventNotificationConfigItemArgs:
     @property
     @pulumi.getter(name="pubsubTopicName")
     def pubsub_topic_name(self) -> pulumi.Input[str]:
+        """
+        PubSub topic name to publish device events.
+        """
         return pulumi.get(self, "pubsub_topic_name")
 
     @pubsub_topic_name.setter
@@ -355,6 +372,13 @@ class RegistryEventNotificationConfigItemArgs:
     @property
     @pulumi.getter(name="subfolderMatches")
     def subfolder_matches(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the subfolder name matches this string exactly, this
+        configuration will be used. The string must not include the
+        leading '/' character. If empty, all strings are matched. Empty
+        value can only be used for the last `event_notification_configs`
+        item.
+        """
         return pulumi.get(self, "subfolder_matches")
 
     @subfolder_matches.setter

@@ -352,9 +352,12 @@ func (o IAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type IAMMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // IAMMemberConditionInput is an input type that accepts IAMMemberConditionArgs and IAMMemberConditionOutput values.
@@ -369,9 +372,12 @@ type IAMMemberConditionInput interface {
 }
 
 type IAMMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (IAMMemberConditionArgs) ElementType() reflect.Type {
@@ -451,14 +457,17 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 	}).(IAMMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o IAMMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o IAMMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -487,6 +496,7 @@ func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
 	}).(IAMMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMMemberCondition) *string {
 		if v == nil {
@@ -496,6 +506,7 @@ func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMMemberCondition) *string {
 		if v == nil {
@@ -505,6 +516,7 @@ func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o IAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMMemberCondition) *string {
 		if v == nil {
@@ -515,8 +527,10 @@ func (o IAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type IamAuditConfigAuditLogConfig struct {
+	// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
-	LogType         string   `pulumi:"logType"`
+	// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+	LogType string `pulumi:"logType"`
 }
 
 // IamAuditConfigAuditLogConfigInput is an input type that accepts IamAuditConfigAuditLogConfigArgs and IamAuditConfigAuditLogConfigOutput values.
@@ -531,8 +545,10 @@ type IamAuditConfigAuditLogConfigInput interface {
 }
 
 type IamAuditConfigAuditLogConfigArgs struct {
+	// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	LogType         pulumi.StringInput      `pulumi:"logType"`
+	// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+	LogType pulumi.StringInput `pulumi:"logType"`
 }
 
 func (IamAuditConfigAuditLogConfigArgs) ElementType() reflect.Type {
@@ -586,10 +602,12 @@ func (o IamAuditConfigAuditLogConfigOutput) ToIamAuditConfigAuditLogConfigOutput
 	return o
 }
 
+// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
 func (o IamAuditConfigAuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IamAuditConfigAuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
 }
 
+// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
 func (o IamAuditConfigAuditLogConfigOutput) LogType() pulumi.StringOutput {
 	return o.ApplyT(func(v IamAuditConfigAuditLogConfig) string { return v.LogType }).(pulumi.StringOutput)
 }

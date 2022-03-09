@@ -11,13 +11,142 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Data catalog TagTemplate. Each of these resources serves a different use case:
+//
+// * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
+// * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
+// * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+//
+// > **Note:** `datacatalog.TagTemplateIamPolicy` **cannot** be used in conjunction with `datacatalog.TagTemplateIamBinding` and `datacatalog.TagTemplateIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_data\_catalog\_tag\_template\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = datacatalog.NewTagTemplateIamPolicy(ctx, "policy", &datacatalog.TagTemplateIamPolicyArgs{
+// 			TagTemplate: pulumi.Any(google_data_catalog_tag_template.Basic_tag_template.Name),
+// 			PolicyData:  pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_data\_catalog\_tag\_template\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datacatalog.NewTagTemplateIamBinding(ctx, "binding", &datacatalog.TagTemplateIamBindingArgs{
+// 			TagTemplate: pulumi.Any(google_data_catalog_tag_template.Basic_tag_template.Name),
+// 			Role:        pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_data\_catalog\_tag\_template\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datacatalog.NewTagTemplateIamMember(ctx, "member", &datacatalog.TagTemplateIamMemberArgs{
+// 			TagTemplate: pulumi.Any(google_data_catalog_tag_template.Basic_tag_template.Name),
+// 			Role:        pulumi.String("roles/viewer"),
+// 			Member:      pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} * {{project}}/{{region}}/{{tag_template}} * {{region}}/{{tag_template}} * {{tag_template}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog tagtemplate IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy editor "projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} roles/viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy editor "projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy editor projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type TagTemplateIamPolicy struct {
 	pulumi.CustomResourceState
 
-	Etag        pulumi.StringOutput `pulumi:"etag"`
-	PolicyData  pulumi.StringOutput `pulumi:"policyData"`
-	Project     pulumi.StringOutput `pulumi:"project"`
-	Region      pulumi.StringOutput `pulumi:"region"`
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData pulumi.StringOutput `pulumi:"policyData"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
+	Region  pulumi.StringOutput `pulumi:"region"`
+	// Used to find the parent resource to bind the IAM policy to
 	TagTemplate pulumi.StringOutput `pulumi:"tagTemplate"`
 }
 
@@ -56,18 +185,30 @@ func GetTagTemplateIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagTemplateIamPolicy resources.
 type tagTemplateIamPolicyState struct {
-	Etag        *string `pulumi:"etag"`
-	PolicyData  *string `pulumi:"policyData"`
-	Project     *string `pulumi:"project"`
-	Region      *string `pulumi:"region"`
+	// (Computed) The etag of the IAM policy.
+	Etag *string `pulumi:"etag"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData *string `pulumi:"policyData"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
+	Region  *string `pulumi:"region"`
+	// Used to find the parent resource to bind the IAM policy to
 	TagTemplate *string `pulumi:"tagTemplate"`
 }
 
 type TagTemplateIamPolicyState struct {
-	Etag        pulumi.StringPtrInput
-	PolicyData  pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
-	Region      pulumi.StringPtrInput
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringPtrInput
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
+	Region  pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	TagTemplate pulumi.StringPtrInput
 }
 
@@ -76,17 +217,27 @@ func (TagTemplateIamPolicyState) ElementType() reflect.Type {
 }
 
 type tagTemplateIamPolicyArgs struct {
-	PolicyData  string  `pulumi:"policyData"`
-	Project     *string `pulumi:"project"`
-	Region      *string `pulumi:"region"`
-	TagTemplate string  `pulumi:"tagTemplate"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData string `pulumi:"policyData"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
+	Region  *string `pulumi:"region"`
+	// Used to find the parent resource to bind the IAM policy to
+	TagTemplate string `pulumi:"tagTemplate"`
 }
 
 // The set of arguments for constructing a TagTemplateIamPolicy resource.
 type TagTemplateIamPolicyArgs struct {
-	PolicyData  pulumi.StringInput
-	Project     pulumi.StringPtrInput
-	Region      pulumi.StringPtrInput
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
+	Region  pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	TagTemplate pulumi.StringInput
 }
 
