@@ -11,6 +11,7 @@ env:
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  PULUMI_MISSING_DOCS_ERROR: true
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TRAVIS_OS_NAME: linux
@@ -333,8 +334,8 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Add SDK version tag
-      run: git tag sdk/$(pulumictl get version --language generic) && git push origin
-        sdk/$(pulumictl get version --language generic)
+      run: git tag sdk/v$(pulumictl get version --language generic) && git push origin
+        sdk/v$(pulumictl get version --language generic)
   test:
     name: test
     needs: build_sdk
