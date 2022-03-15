@@ -40,6 +40,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('apigeeCustomEndpoint')
 
     @property
+    def apikeys_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('apikeysCustomEndpoint')
+
+    @property
     def app_engine_custom_endpoint(self) -> Optional[str]:
         return __config__.get('appEngineCustomEndpoint')
 

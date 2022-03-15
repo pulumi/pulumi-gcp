@@ -270,14 +270,14 @@ class SslCert(pulumi.CustomResource):
         import pulumi_random as random
 
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        master = gcp.sql.DatabaseInstance("master",
+        main = gcp.sql.DatabaseInstance("main",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ))
         client_cert = gcp.sql.SslCert("clientCert",
             common_name="client-name",
-            instance=master.name)
+            instance=main.name)
         ```
 
         ## Import
@@ -312,14 +312,14 @@ class SslCert(pulumi.CustomResource):
         import pulumi_random as random
 
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        master = gcp.sql.DatabaseInstance("master",
+        main = gcp.sql.DatabaseInstance("main",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ))
         client_cert = gcp.sql.SslCert("clientCert",
             common_name="client-name",
-            instance=master.name)
+            instance=main.name)
         ```
 
         ## Import

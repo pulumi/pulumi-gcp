@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// In the context of a Revision, we disallow a number of the fields of
         /// this Container, including: name, ports, and volumeMounts.
         /// The runtime contract is documented here:
-        /// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+        /// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTemplateSpecContainerGetArgs> Containers

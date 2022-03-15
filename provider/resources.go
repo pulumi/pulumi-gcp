@@ -308,7 +308,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "bigquery_table_iam.html.markdown",
 				},
 			},
-			"google_bigquery_routine": {Tok: gcpResource(gcpBigQuery, "Routine")},
+			"google_bigquery_routine":                {Tok: gcpResource(gcpBigQuery, "Routine")},
+			"google_bigquery_reservation_assignment": {Tok: gcpResource(gcpBigQuery, "ReservationAssignment")},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -540,6 +541,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_project.html.markdown",
 				},
 			},
+
 			"google_project_iam_audit_config": {
 				Tok: gcpResource(gcpProject, "IAMAuditConfig"),
 				Docs: &tfbridge.DocInfo{
@@ -600,6 +602,11 @@ func Provider() tfbridge.ProviderInfo {
 			"google_project_access_approval_settings": {
 				Tok: gcpResource(gcpProject, "AccessApprovalSettings"),
 			},
+			// This resource is in the root namespace in the TF provider at the time of writing. The GCP SDK does not
+			// give an obvious namespace choice either. Since an API key authenticates an application, we put it under
+			// the gcpProject module:
+			"google_apikeys_key": {Tok: gcpResource(gcpProject, "ApiKey")},
+
 			"google_service_account": {
 				Tok: gcpResource(gcpServiceAccount, "Account"),
 				Docs: &tfbridge.DocInfo{

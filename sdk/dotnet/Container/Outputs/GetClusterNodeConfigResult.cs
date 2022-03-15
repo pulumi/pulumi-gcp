@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigEphemeralStorageConfigResult> EphemeralStorageConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigGcfsConfigResult> GcfsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigGuestAcceleratorResult> GuestAccelerators;
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigGvnicResult> Gvnics;
         public readonly string ImageType;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigKubeletConfigResult> KubeletConfigs;
         public readonly ImmutableDictionary<string, string> Labels;
@@ -51,6 +52,8 @@ namespace Pulumi.Gcp.Container.Outputs
             ImmutableArray<Outputs.GetClusterNodeConfigGcfsConfigResult> gcfsConfigs,
 
             ImmutableArray<Outputs.GetClusterNodeConfigGuestAcceleratorResult> guestAccelerators,
+
+            ImmutableArray<Outputs.GetClusterNodeConfigGvnicResult> gvnics,
 
             string imageType,
 
@@ -94,6 +97,7 @@ namespace Pulumi.Gcp.Container.Outputs
             EphemeralStorageConfigs = ephemeralStorageConfigs;
             GcfsConfigs = gcfsConfigs;
             GuestAccelerators = guestAccelerators;
+            Gvnics = gvnics;
             ImageType = imageType;
             KubeletConfigs = kubeletConfigs;
             Labels = labels;

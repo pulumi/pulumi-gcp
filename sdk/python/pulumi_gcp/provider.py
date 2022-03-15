@@ -20,6 +20,7 @@ class ProviderArgs:
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -140,6 +141,8 @@ class ProviderArgs:
             pulumi.set(__self__, "api_gateway_custom_endpoint", api_gateway_custom_endpoint)
         if apigee_custom_endpoint is not None:
             pulumi.set(__self__, "apigee_custom_endpoint", apigee_custom_endpoint)
+        if apikeys_custom_endpoint is not None:
+            pulumi.set(__self__, "apikeys_custom_endpoint", apikeys_custom_endpoint)
         if app_engine_custom_endpoint is not None:
             pulumi.set(__self__, "app_engine_custom_endpoint", app_engine_custom_endpoint)
         if artifact_registry_custom_endpoint is not None:
@@ -410,6 +413,15 @@ class ProviderArgs:
     @apigee_custom_endpoint.setter
     def apigee_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "apigee_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="apikeysCustomEndpoint")
+    def apikeys_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "apikeys_custom_endpoint")
+
+    @apikeys_custom_endpoint.setter
+    def apikeys_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "apikeys_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="appEngineCustomEndpoint")
@@ -1368,6 +1380,7 @@ class Provider(pulumi.ProviderResource):
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1516,6 +1529,7 @@ class Provider(pulumi.ProviderResource):
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1639,6 +1653,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["active_directory_custom_endpoint"] = active_directory_custom_endpoint
             __props__.__dict__["api_gateway_custom_endpoint"] = api_gateway_custom_endpoint
             __props__.__dict__["apigee_custom_endpoint"] = apigee_custom_endpoint
+            __props__.__dict__["apikeys_custom_endpoint"] = apikeys_custom_endpoint
             __props__.__dict__["app_engine_custom_endpoint"] = app_engine_custom_endpoint
             __props__.__dict__["artifact_registry_custom_endpoint"] = artifact_registry_custom_endpoint
             __props__.__dict__["assured_workloads_custom_endpoint"] = assured_workloads_custom_endpoint
@@ -1785,6 +1800,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apigeeCustomEndpoint")
     def apigee_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "apigee_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="apikeysCustomEndpoint")
+    def apikeys_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "apikeys_custom_endpoint")
 
     @property
     @pulumi.getter(name="appEngineCustomEndpoint")

@@ -11,6 +11,7 @@ from .. import _utilities
 __all__ = [
     'RepositoryIamBindingConditionArgs',
     'RepositoryIamMemberConditionArgs',
+    'RepositoryMavenConfigArgs',
 ]
 
 @pulumi.input_type
@@ -89,5 +90,50 @@ class RepositoryIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class RepositoryMavenConfigArgs:
+    def __init__(__self__, *,
+                 allow_snapshot_overwrites: Optional[pulumi.Input[bool]] = None,
+                 version_policy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_snapshot_overwrites: The repository with this flag will allow publishing the same
+               snapshot versions.
+        :param pulumi.Input[str] version_policy: Version policy defines the versions that the registry will accept.
+               Default value is `VERSION_POLICY_UNSPECIFIED`.
+               Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+        """
+        if allow_snapshot_overwrites is not None:
+            pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
+        if version_policy is not None:
+            pulumi.set(__self__, "version_policy", version_policy)
+
+    @property
+    @pulumi.getter(name="allowSnapshotOverwrites")
+    def allow_snapshot_overwrites(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The repository with this flag will allow publishing the same
+        snapshot versions.
+        """
+        return pulumi.get(self, "allow_snapshot_overwrites")
+
+    @allow_snapshot_overwrites.setter
+    def allow_snapshot_overwrites(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_snapshot_overwrites", value)
+
+    @property
+    @pulumi.getter(name="versionPolicy")
+    def version_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version policy defines the versions that the registry will accept.
+        Default value is `VERSION_POLICY_UNSPECIFIED`.
+        Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+        """
+        return pulumi.get(self, "version_policy")
+
+    @version_policy.setter
+    def version_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_policy", value)
 
 

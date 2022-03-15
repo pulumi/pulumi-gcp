@@ -23,10 +23,12 @@ __all__ = [
     'TriggerBuildSourceStorageSourceArgs',
     'TriggerBuildStepArgs',
     'TriggerBuildStepVolumeArgs',
+    'TriggerGitFileSourceArgs',
     'TriggerGithubArgs',
     'TriggerGithubPullRequestArgs',
     'TriggerGithubPushArgs',
     'TriggerPubsubConfigArgs',
+    'TriggerSourceToBuildArgs',
     'TriggerTriggerTemplateArgs',
     'TriggerWebhookConfigArgs',
     'WorkerPoolNetworkConfigArgs',
@@ -1397,6 +1399,85 @@ class TriggerBuildStepVolumeArgs:
 
 
 @pulumi.input_type
+class TriggerGitFileSourceArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 repo_type: pulumi.Input[str],
+                 revision: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] path: Path at which to mount the volume.
+               Paths must be absolute and cannot conflict with other volume paths on the same
+               build step or with certain reserved volume paths.
+        :param pulumi.Input[str] repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        :param pulumi.Input[str] revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+               filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+               If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        :param pulumi.Input[str] uri: The URI of the repo (required).
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "repo_type", repo_type)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Path at which to mount the volume.
+        Paths must be absolute and cannot conflict with other volume paths on the same
+        build step or with certain reserved volume paths.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> pulumi.Input[str]:
+        """
+        The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @repo_type.setter
+    def repo_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo_type", value)
+
+    @property
+    @pulumi.getter
+    def revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+        filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+        If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the repo (required).
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class TriggerGithubArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1662,6 +1743,60 @@ class TriggerPubsubConfigArgs:
     @subscription.setter
     def subscription(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subscription", value)
+
+
+@pulumi.input_type
+class TriggerSourceToBuildArgs:
+    def __init__(__self__, *,
+                 ref: pulumi.Input[str],
+                 repo_type: pulumi.Input[str],
+                 uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ref: The branch or tag to use. Must start with "refs/" (required).
+        :param pulumi.Input[str] repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        :param pulumi.Input[str] uri: The URI of the repo (required).
+        """
+        pulumi.set(__self__, "ref", ref)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> pulumi.Input[str]:
+        """
+        The branch or tag to use. Must start with "refs/" (required).
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ref", value)
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> pulumi.Input[str]:
+        """
+        The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @repo_type.setter
+    def repo_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo_type", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The URI of the repo (required).
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
 
 @pulumi.input_type

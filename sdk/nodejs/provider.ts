@@ -32,6 +32,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly activeDirectoryCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apiGatewayCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apigeeCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly apikeysCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly appEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly artifactRegistryCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly assuredWorkloadsCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -150,6 +151,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["activeDirectoryCustomEndpoint"] = args ? args.activeDirectoryCustomEndpoint : undefined;
             resourceInputs["apiGatewayCustomEndpoint"] = args ? args.apiGatewayCustomEndpoint : undefined;
             resourceInputs["apigeeCustomEndpoint"] = args ? args.apigeeCustomEndpoint : undefined;
+            resourceInputs["apikeysCustomEndpoint"] = args ? args.apikeysCustomEndpoint : undefined;
             resourceInputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
             resourceInputs["artifactRegistryCustomEndpoint"] = args ? args.artifactRegistryCustomEndpoint : undefined;
             resourceInputs["assuredWorkloadsCustomEndpoint"] = args ? args.assuredWorkloadsCustomEndpoint : undefined;
@@ -271,6 +273,7 @@ export interface ProviderArgs {
     activeDirectoryCustomEndpoint?: pulumi.Input<string>;
     apiGatewayCustomEndpoint?: pulumi.Input<string>;
     apigeeCustomEndpoint?: pulumi.Input<string>;
+    apikeysCustomEndpoint?: pulumi.Input<string>;
     appEngineCustomEndpoint?: pulumi.Input<string>;
     artifactRegistryCustomEndpoint?: pulumi.Input<string>;
     assuredWorkloadsCustomEndpoint?: pulumi.Input<string>;

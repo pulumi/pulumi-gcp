@@ -63,6 +63,16 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
+        /// Google Virtual NIC (gVNIC) is a virtual network interface.
+        /// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+        /// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+        /// GKE node version 1.15.11-gke.15 or later
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gvnic")]
+        public Input<Inputs.ClusterNodePoolNodeConfigGvnicArgs>? Gvnic { get; set; }
+
+        /// <summary>
         /// The image type to use for this node. Note that changing the image type
         /// will delete and recreate all nodes in the node pool.
         /// </summary>

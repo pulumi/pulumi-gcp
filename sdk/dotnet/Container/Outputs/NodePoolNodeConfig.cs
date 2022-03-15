@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly Outputs.NodePoolNodeConfigEphemeralStorageConfig? EphemeralStorageConfig;
         public readonly Outputs.NodePoolNodeConfigGcfsConfig? GcfsConfig;
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigGuestAccelerator> GuestAccelerators;
+        public readonly Outputs.NodePoolNodeConfigGvnic? Gvnic;
         public readonly string? ImageType;
         public readonly Outputs.NodePoolNodeConfigKubeletConfig? KubeletConfig;
         public readonly ImmutableDictionary<string, string>? Labels;
@@ -51,6 +52,8 @@ namespace Pulumi.Gcp.Container.Outputs
             Outputs.NodePoolNodeConfigGcfsConfig? gcfsConfig,
 
             ImmutableArray<Outputs.NodePoolNodeConfigGuestAccelerator> guestAccelerators,
+
+            Outputs.NodePoolNodeConfigGvnic? gvnic,
 
             string? imageType,
 
@@ -94,6 +97,7 @@ namespace Pulumi.Gcp.Container.Outputs
             EphemeralStorageConfig = ephemeralStorageConfig;
             GcfsConfig = gcfsConfig;
             GuestAccelerators = guestAccelerators;
+            Gvnic = gvnic;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;
             Labels = labels;

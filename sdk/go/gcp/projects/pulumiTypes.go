@@ -152,6 +152,981 @@ func (o AccessApprovalSettingsEnrolledServiceArrayOutput) Index(i pulumi.IntInpu
 	}).(AccessApprovalSettingsEnrolledServiceOutput)
 }
 
+type ApiKeyRestrictions struct {
+	// The Android apps that are allowed to use the key.
+	AndroidKeyRestrictions *ApiKeyRestrictionsAndroidKeyRestrictions `pulumi:"androidKeyRestrictions"`
+	// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+	ApiTargets []ApiKeyRestrictionsApiTarget `pulumi:"apiTargets"`
+	// The HTTP referrers (websites) that are allowed to use the key.
+	BrowserKeyRestrictions *ApiKeyRestrictionsBrowserKeyRestrictions `pulumi:"browserKeyRestrictions"`
+	// The iOS apps that are allowed to use the key.
+	IosKeyRestrictions *ApiKeyRestrictionsIosKeyRestrictions `pulumi:"iosKeyRestrictions"`
+	// The IP addresses of callers that are allowed to use the key.
+	ServerKeyRestrictions *ApiKeyRestrictionsServerKeyRestrictions `pulumi:"serverKeyRestrictions"`
+}
+
+// ApiKeyRestrictionsInput is an input type that accepts ApiKeyRestrictionsArgs and ApiKeyRestrictionsOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsInput` via:
+//
+//          ApiKeyRestrictionsArgs{...}
+type ApiKeyRestrictionsInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsOutput() ApiKeyRestrictionsOutput
+	ToApiKeyRestrictionsOutputWithContext(context.Context) ApiKeyRestrictionsOutput
+}
+
+type ApiKeyRestrictionsArgs struct {
+	// The Android apps that are allowed to use the key.
+	AndroidKeyRestrictions ApiKeyRestrictionsAndroidKeyRestrictionsPtrInput `pulumi:"androidKeyRestrictions"`
+	// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+	ApiTargets ApiKeyRestrictionsApiTargetArrayInput `pulumi:"apiTargets"`
+	// The HTTP referrers (websites) that are allowed to use the key.
+	BrowserKeyRestrictions ApiKeyRestrictionsBrowserKeyRestrictionsPtrInput `pulumi:"browserKeyRestrictions"`
+	// The iOS apps that are allowed to use the key.
+	IosKeyRestrictions ApiKeyRestrictionsIosKeyRestrictionsPtrInput `pulumi:"iosKeyRestrictions"`
+	// The IP addresses of callers that are allowed to use the key.
+	ServerKeyRestrictions ApiKeyRestrictionsServerKeyRestrictionsPtrInput `pulumi:"serverKeyRestrictions"`
+}
+
+func (ApiKeyRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictions)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsArgs) ToApiKeyRestrictionsOutput() ApiKeyRestrictionsOutput {
+	return i.ToApiKeyRestrictionsOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsArgs) ToApiKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsOutput)
+}
+
+func (i ApiKeyRestrictionsArgs) ToApiKeyRestrictionsPtrOutput() ApiKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsArgs) ToApiKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsOutput).ToApiKeyRestrictionsPtrOutputWithContext(ctx)
+}
+
+// ApiKeyRestrictionsPtrInput is an input type that accepts ApiKeyRestrictionsArgs, ApiKeyRestrictionsPtr and ApiKeyRestrictionsPtrOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsPtrInput` via:
+//
+//          ApiKeyRestrictionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ApiKeyRestrictionsPtrInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsPtrOutput() ApiKeyRestrictionsPtrOutput
+	ToApiKeyRestrictionsPtrOutputWithContext(context.Context) ApiKeyRestrictionsPtrOutput
+}
+
+type apiKeyRestrictionsPtrType ApiKeyRestrictionsArgs
+
+func ApiKeyRestrictionsPtr(v *ApiKeyRestrictionsArgs) ApiKeyRestrictionsPtrInput {
+	return (*apiKeyRestrictionsPtrType)(v)
+}
+
+func (*apiKeyRestrictionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictions)(nil)).Elem()
+}
+
+func (i *apiKeyRestrictionsPtrType) ToApiKeyRestrictionsPtrOutput() ApiKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i *apiKeyRestrictionsPtrType) ToApiKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsPtrOutput)
+}
+
+type ApiKeyRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsOutput) ToApiKeyRestrictionsOutput() ApiKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsOutput) ToApiKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsOutput) ToApiKeyRestrictionsPtrOutput() ApiKeyRestrictionsPtrOutput {
+	return o.ToApiKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (o ApiKeyRestrictionsOutput) ToApiKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiKeyRestrictions) *ApiKeyRestrictions {
+		return &v
+	}).(ApiKeyRestrictionsPtrOutput)
+}
+
+// The Android apps that are allowed to use the key.
+func (o ApiKeyRestrictionsOutput) AndroidKeyRestrictions() ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return o.ApplyT(func(v ApiKeyRestrictions) *ApiKeyRestrictionsAndroidKeyRestrictions { return v.AndroidKeyRestrictions }).(ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput)
+}
+
+// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+func (o ApiKeyRestrictionsOutput) ApiTargets() ApiKeyRestrictionsApiTargetArrayOutput {
+	return o.ApplyT(func(v ApiKeyRestrictions) []ApiKeyRestrictionsApiTarget { return v.ApiTargets }).(ApiKeyRestrictionsApiTargetArrayOutput)
+}
+
+// The HTTP referrers (websites) that are allowed to use the key.
+func (o ApiKeyRestrictionsOutput) BrowserKeyRestrictions() ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return o.ApplyT(func(v ApiKeyRestrictions) *ApiKeyRestrictionsBrowserKeyRestrictions { return v.BrowserKeyRestrictions }).(ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput)
+}
+
+// The iOS apps that are allowed to use the key.
+func (o ApiKeyRestrictionsOutput) IosKeyRestrictions() ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return o.ApplyT(func(v ApiKeyRestrictions) *ApiKeyRestrictionsIosKeyRestrictions { return v.IosKeyRestrictions }).(ApiKeyRestrictionsIosKeyRestrictionsPtrOutput)
+}
+
+// The IP addresses of callers that are allowed to use the key.
+func (o ApiKeyRestrictionsOutput) ServerKeyRestrictions() ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return o.ApplyT(func(v ApiKeyRestrictions) *ApiKeyRestrictionsServerKeyRestrictions { return v.ServerKeyRestrictions }).(ApiKeyRestrictionsServerKeyRestrictionsPtrOutput)
+}
+
+type ApiKeyRestrictionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsPtrOutput) ToApiKeyRestrictionsPtrOutput() ApiKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsPtrOutput) ToApiKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsPtrOutput) Elem() ApiKeyRestrictionsOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictions) ApiKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret ApiKeyRestrictions
+		return ret
+	}).(ApiKeyRestrictionsOutput)
+}
+
+// The Android apps that are allowed to use the key.
+func (o ApiKeyRestrictionsPtrOutput) AndroidKeyRestrictions() ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictions) *ApiKeyRestrictionsAndroidKeyRestrictions {
+		if v == nil {
+			return nil
+		}
+		return v.AndroidKeyRestrictions
+	}).(ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput)
+}
+
+// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+func (o ApiKeyRestrictionsPtrOutput) ApiTargets() ApiKeyRestrictionsApiTargetArrayOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictions) []ApiKeyRestrictionsApiTarget {
+		if v == nil {
+			return nil
+		}
+		return v.ApiTargets
+	}).(ApiKeyRestrictionsApiTargetArrayOutput)
+}
+
+// The HTTP referrers (websites) that are allowed to use the key.
+func (o ApiKeyRestrictionsPtrOutput) BrowserKeyRestrictions() ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictions) *ApiKeyRestrictionsBrowserKeyRestrictions {
+		if v == nil {
+			return nil
+		}
+		return v.BrowserKeyRestrictions
+	}).(ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput)
+}
+
+// The iOS apps that are allowed to use the key.
+func (o ApiKeyRestrictionsPtrOutput) IosKeyRestrictions() ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictions) *ApiKeyRestrictionsIosKeyRestrictions {
+		if v == nil {
+			return nil
+		}
+		return v.IosKeyRestrictions
+	}).(ApiKeyRestrictionsIosKeyRestrictionsPtrOutput)
+}
+
+// The IP addresses of callers that are allowed to use the key.
+func (o ApiKeyRestrictionsPtrOutput) ServerKeyRestrictions() ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictions) *ApiKeyRestrictionsServerKeyRestrictions {
+		if v == nil {
+			return nil
+		}
+		return v.ServerKeyRestrictions
+	}).(ApiKeyRestrictionsServerKeyRestrictionsPtrOutput)
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictions struct {
+	// A list of Android applications that are allowed to make API calls with this key.
+	AllowedApplications []ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication `pulumi:"allowedApplications"`
+}
+
+// ApiKeyRestrictionsAndroidKeyRestrictionsInput is an input type that accepts ApiKeyRestrictionsAndroidKeyRestrictionsArgs and ApiKeyRestrictionsAndroidKeyRestrictionsOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsAndroidKeyRestrictionsInput` via:
+//
+//          ApiKeyRestrictionsAndroidKeyRestrictionsArgs{...}
+type ApiKeyRestrictionsAndroidKeyRestrictionsInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsAndroidKeyRestrictionsOutput() ApiKeyRestrictionsAndroidKeyRestrictionsOutput
+	ToApiKeyRestrictionsAndroidKeyRestrictionsOutputWithContext(context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsOutput
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictionsArgs struct {
+	// A list of Android applications that are allowed to make API calls with this key.
+	AllowedApplications ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayInput `pulumi:"allowedApplications"`
+}
+
+func (ApiKeyRestrictionsAndroidKeyRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsAndroidKeyRestrictions)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsAndroidKeyRestrictionsArgs) ToApiKeyRestrictionsAndroidKeyRestrictionsOutput() ApiKeyRestrictionsAndroidKeyRestrictionsOutput {
+	return i.ToApiKeyRestrictionsAndroidKeyRestrictionsOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsAndroidKeyRestrictionsArgs) ToApiKeyRestrictionsAndroidKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsAndroidKeyRestrictionsOutput)
+}
+
+func (i ApiKeyRestrictionsAndroidKeyRestrictionsArgs) ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput() ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsAndroidKeyRestrictionsArgs) ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsAndroidKeyRestrictionsOutput).ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(ctx)
+}
+
+// ApiKeyRestrictionsAndroidKeyRestrictionsPtrInput is an input type that accepts ApiKeyRestrictionsAndroidKeyRestrictionsArgs, ApiKeyRestrictionsAndroidKeyRestrictionsPtr and ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsAndroidKeyRestrictionsPtrInput` via:
+//
+//          ApiKeyRestrictionsAndroidKeyRestrictionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ApiKeyRestrictionsAndroidKeyRestrictionsPtrInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput() ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput
+	ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput
+}
+
+type apiKeyRestrictionsAndroidKeyRestrictionsPtrType ApiKeyRestrictionsAndroidKeyRestrictionsArgs
+
+func ApiKeyRestrictionsAndroidKeyRestrictionsPtr(v *ApiKeyRestrictionsAndroidKeyRestrictionsArgs) ApiKeyRestrictionsAndroidKeyRestrictionsPtrInput {
+	return (*apiKeyRestrictionsAndroidKeyRestrictionsPtrType)(v)
+}
+
+func (*apiKeyRestrictionsAndroidKeyRestrictionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictionsAndroidKeyRestrictions)(nil)).Elem()
+}
+
+func (i *apiKeyRestrictionsAndroidKeyRestrictionsPtrType) ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput() ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i *apiKeyRestrictionsAndroidKeyRestrictionsPtrType) ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput)
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsAndroidKeyRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsAndroidKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsOutput() ApiKeyRestrictionsAndroidKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput() ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return o.ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiKeyRestrictionsAndroidKeyRestrictions) *ApiKeyRestrictionsAndroidKeyRestrictions {
+		return &v
+	}).(ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput)
+}
+
+// A list of Android applications that are allowed to make API calls with this key.
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsOutput) AllowedApplications() ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput {
+	return o.ApplyT(func(v ApiKeyRestrictionsAndroidKeyRestrictions) []ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication {
+		return v.AllowedApplications
+	}).(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput)
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictionsAndroidKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput() ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput) Elem() ApiKeyRestrictionsAndroidKeyRestrictionsOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictionsAndroidKeyRestrictions) ApiKeyRestrictionsAndroidKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret ApiKeyRestrictionsAndroidKeyRestrictions
+		return ret
+	}).(ApiKeyRestrictionsAndroidKeyRestrictionsOutput)
+}
+
+// A list of Android applications that are allowed to make API calls with this key.
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput) AllowedApplications() ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictionsAndroidKeyRestrictions) []ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedApplications
+	}).(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput)
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication struct {
+	// The package name of the application.
+	PackageName string `pulumi:"packageName"`
+	// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
+}
+
+// ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationInput is an input type that accepts ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs and ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationInput` via:
+//
+//          ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs{...}
+type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput() ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput
+	ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutputWithContext(context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs struct {
+	// The package name of the application.
+	PackageName pulumi.StringInput `pulumi:"packageName"`
+	// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
+}
+
+func (ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs) ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput() ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput {
+	return i.ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs) ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput)
+}
+
+// ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayInput is an input type that accepts ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray and ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayInput` via:
+//
+//          ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray{ ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs{...} }
+type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput() ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput
+	ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutputWithContext(context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray []ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationInput
+
+func (ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray) ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput() ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput {
+	return i.ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray) ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput)
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput() ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput {
+	return o
+}
+
+// The package name of the application.
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) PackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication) string { return v.PackageName }).(pulumi.StringOutput)
+}
+
+// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) Sha1Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
+}
+
+type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput() ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput) ToApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutputWithContext(ctx context.Context) ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput) Index(i pulumi.IntInput) ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication {
+		return vs[0].([]ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication)[vs[1].(int)]
+	}).(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput)
+}
+
+type ApiKeyRestrictionsApiTarget struct {
+	// Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
+	Methods []string `pulumi:"methods"`
+	// The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
+	Service string `pulumi:"service"`
+}
+
+// ApiKeyRestrictionsApiTargetInput is an input type that accepts ApiKeyRestrictionsApiTargetArgs and ApiKeyRestrictionsApiTargetOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsApiTargetInput` via:
+//
+//          ApiKeyRestrictionsApiTargetArgs{...}
+type ApiKeyRestrictionsApiTargetInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsApiTargetOutput() ApiKeyRestrictionsApiTargetOutput
+	ToApiKeyRestrictionsApiTargetOutputWithContext(context.Context) ApiKeyRestrictionsApiTargetOutput
+}
+
+type ApiKeyRestrictionsApiTargetArgs struct {
+	// Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ApiKeyRestrictionsApiTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsApiTarget)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsApiTargetArgs) ToApiKeyRestrictionsApiTargetOutput() ApiKeyRestrictionsApiTargetOutput {
+	return i.ToApiKeyRestrictionsApiTargetOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsApiTargetArgs) ToApiKeyRestrictionsApiTargetOutputWithContext(ctx context.Context) ApiKeyRestrictionsApiTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsApiTargetOutput)
+}
+
+// ApiKeyRestrictionsApiTargetArrayInput is an input type that accepts ApiKeyRestrictionsApiTargetArray and ApiKeyRestrictionsApiTargetArrayOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsApiTargetArrayInput` via:
+//
+//          ApiKeyRestrictionsApiTargetArray{ ApiKeyRestrictionsApiTargetArgs{...} }
+type ApiKeyRestrictionsApiTargetArrayInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsApiTargetArrayOutput() ApiKeyRestrictionsApiTargetArrayOutput
+	ToApiKeyRestrictionsApiTargetArrayOutputWithContext(context.Context) ApiKeyRestrictionsApiTargetArrayOutput
+}
+
+type ApiKeyRestrictionsApiTargetArray []ApiKeyRestrictionsApiTargetInput
+
+func (ApiKeyRestrictionsApiTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiKeyRestrictionsApiTarget)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsApiTargetArray) ToApiKeyRestrictionsApiTargetArrayOutput() ApiKeyRestrictionsApiTargetArrayOutput {
+	return i.ToApiKeyRestrictionsApiTargetArrayOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsApiTargetArray) ToApiKeyRestrictionsApiTargetArrayOutputWithContext(ctx context.Context) ApiKeyRestrictionsApiTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsApiTargetArrayOutput)
+}
+
+type ApiKeyRestrictionsApiTargetOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsApiTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsApiTarget)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsApiTargetOutput) ToApiKeyRestrictionsApiTargetOutput() ApiKeyRestrictionsApiTargetOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsApiTargetOutput) ToApiKeyRestrictionsApiTargetOutputWithContext(ctx context.Context) ApiKeyRestrictionsApiTargetOutput {
+	return o
+}
+
+// Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
+func (o ApiKeyRestrictionsApiTargetOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiKeyRestrictionsApiTarget) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
+func (o ApiKeyRestrictionsApiTargetOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyRestrictionsApiTarget) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ApiKeyRestrictionsApiTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsApiTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiKeyRestrictionsApiTarget)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsApiTargetArrayOutput) ToApiKeyRestrictionsApiTargetArrayOutput() ApiKeyRestrictionsApiTargetArrayOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsApiTargetArrayOutput) ToApiKeyRestrictionsApiTargetArrayOutputWithContext(ctx context.Context) ApiKeyRestrictionsApiTargetArrayOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsApiTargetArrayOutput) Index(i pulumi.IntInput) ApiKeyRestrictionsApiTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiKeyRestrictionsApiTarget {
+		return vs[0].([]ApiKeyRestrictionsApiTarget)[vs[1].(int)]
+	}).(ApiKeyRestrictionsApiTargetOutput)
+}
+
+type ApiKeyRestrictionsBrowserKeyRestrictions struct {
+	// A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+	AllowedReferrers []string `pulumi:"allowedReferrers"`
+}
+
+// ApiKeyRestrictionsBrowserKeyRestrictionsInput is an input type that accepts ApiKeyRestrictionsBrowserKeyRestrictionsArgs and ApiKeyRestrictionsBrowserKeyRestrictionsOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsBrowserKeyRestrictionsInput` via:
+//
+//          ApiKeyRestrictionsBrowserKeyRestrictionsArgs{...}
+type ApiKeyRestrictionsBrowserKeyRestrictionsInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsBrowserKeyRestrictionsOutput() ApiKeyRestrictionsBrowserKeyRestrictionsOutput
+	ToApiKeyRestrictionsBrowserKeyRestrictionsOutputWithContext(context.Context) ApiKeyRestrictionsBrowserKeyRestrictionsOutput
+}
+
+type ApiKeyRestrictionsBrowserKeyRestrictionsArgs struct {
+	// A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+	AllowedReferrers pulumi.StringArrayInput `pulumi:"allowedReferrers"`
+}
+
+func (ApiKeyRestrictionsBrowserKeyRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsBrowserKeyRestrictions)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsBrowserKeyRestrictionsArgs) ToApiKeyRestrictionsBrowserKeyRestrictionsOutput() ApiKeyRestrictionsBrowserKeyRestrictionsOutput {
+	return i.ToApiKeyRestrictionsBrowserKeyRestrictionsOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsBrowserKeyRestrictionsArgs) ToApiKeyRestrictionsBrowserKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsBrowserKeyRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsBrowserKeyRestrictionsOutput)
+}
+
+func (i ApiKeyRestrictionsBrowserKeyRestrictionsArgs) ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput() ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsBrowserKeyRestrictionsArgs) ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsBrowserKeyRestrictionsOutput).ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(ctx)
+}
+
+// ApiKeyRestrictionsBrowserKeyRestrictionsPtrInput is an input type that accepts ApiKeyRestrictionsBrowserKeyRestrictionsArgs, ApiKeyRestrictionsBrowserKeyRestrictionsPtr and ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsBrowserKeyRestrictionsPtrInput` via:
+//
+//          ApiKeyRestrictionsBrowserKeyRestrictionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ApiKeyRestrictionsBrowserKeyRestrictionsPtrInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput() ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput
+	ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(context.Context) ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput
+}
+
+type apiKeyRestrictionsBrowserKeyRestrictionsPtrType ApiKeyRestrictionsBrowserKeyRestrictionsArgs
+
+func ApiKeyRestrictionsBrowserKeyRestrictionsPtr(v *ApiKeyRestrictionsBrowserKeyRestrictionsArgs) ApiKeyRestrictionsBrowserKeyRestrictionsPtrInput {
+	return (*apiKeyRestrictionsBrowserKeyRestrictionsPtrType)(v)
+}
+
+func (*apiKeyRestrictionsBrowserKeyRestrictionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictionsBrowserKeyRestrictions)(nil)).Elem()
+}
+
+func (i *apiKeyRestrictionsBrowserKeyRestrictionsPtrType) ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput() ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i *apiKeyRestrictionsBrowserKeyRestrictionsPtrType) ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput)
+}
+
+type ApiKeyRestrictionsBrowserKeyRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsBrowserKeyRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsBrowserKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsOutput) ToApiKeyRestrictionsBrowserKeyRestrictionsOutput() ApiKeyRestrictionsBrowserKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsOutput) ToApiKeyRestrictionsBrowserKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsBrowserKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsOutput) ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput() ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return o.ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsOutput) ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiKeyRestrictionsBrowserKeyRestrictions) *ApiKeyRestrictionsBrowserKeyRestrictions {
+		return &v
+	}).(ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput)
+}
+
+// A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsOutput) AllowedReferrers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiKeyRestrictionsBrowserKeyRestrictions) []string { return v.AllowedReferrers }).(pulumi.StringArrayOutput)
+}
+
+type ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictionsBrowserKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput) ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput() ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput) ToApiKeyRestrictionsBrowserKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput) Elem() ApiKeyRestrictionsBrowserKeyRestrictionsOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictionsBrowserKeyRestrictions) ApiKeyRestrictionsBrowserKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret ApiKeyRestrictionsBrowserKeyRestrictions
+		return ret
+	}).(ApiKeyRestrictionsBrowserKeyRestrictionsOutput)
+}
+
+// A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+func (o ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput) AllowedReferrers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictionsBrowserKeyRestrictions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedReferrers
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApiKeyRestrictionsIosKeyRestrictions struct {
+	// A list of bundle IDs that are allowed when making API calls with this key.
+	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
+}
+
+// ApiKeyRestrictionsIosKeyRestrictionsInput is an input type that accepts ApiKeyRestrictionsIosKeyRestrictionsArgs and ApiKeyRestrictionsIosKeyRestrictionsOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsIosKeyRestrictionsInput` via:
+//
+//          ApiKeyRestrictionsIosKeyRestrictionsArgs{...}
+type ApiKeyRestrictionsIosKeyRestrictionsInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsIosKeyRestrictionsOutput() ApiKeyRestrictionsIosKeyRestrictionsOutput
+	ToApiKeyRestrictionsIosKeyRestrictionsOutputWithContext(context.Context) ApiKeyRestrictionsIosKeyRestrictionsOutput
+}
+
+type ApiKeyRestrictionsIosKeyRestrictionsArgs struct {
+	// A list of bundle IDs that are allowed when making API calls with this key.
+	AllowedBundleIds pulumi.StringArrayInput `pulumi:"allowedBundleIds"`
+}
+
+func (ApiKeyRestrictionsIosKeyRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsIosKeyRestrictions)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsIosKeyRestrictionsArgs) ToApiKeyRestrictionsIosKeyRestrictionsOutput() ApiKeyRestrictionsIosKeyRestrictionsOutput {
+	return i.ToApiKeyRestrictionsIosKeyRestrictionsOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsIosKeyRestrictionsArgs) ToApiKeyRestrictionsIosKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsIosKeyRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsIosKeyRestrictionsOutput)
+}
+
+func (i ApiKeyRestrictionsIosKeyRestrictionsArgs) ToApiKeyRestrictionsIosKeyRestrictionsPtrOutput() ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsIosKeyRestrictionsArgs) ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsIosKeyRestrictionsOutput).ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(ctx)
+}
+
+// ApiKeyRestrictionsIosKeyRestrictionsPtrInput is an input type that accepts ApiKeyRestrictionsIosKeyRestrictionsArgs, ApiKeyRestrictionsIosKeyRestrictionsPtr and ApiKeyRestrictionsIosKeyRestrictionsPtrOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsIosKeyRestrictionsPtrInput` via:
+//
+//          ApiKeyRestrictionsIosKeyRestrictionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ApiKeyRestrictionsIosKeyRestrictionsPtrInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsIosKeyRestrictionsPtrOutput() ApiKeyRestrictionsIosKeyRestrictionsPtrOutput
+	ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(context.Context) ApiKeyRestrictionsIosKeyRestrictionsPtrOutput
+}
+
+type apiKeyRestrictionsIosKeyRestrictionsPtrType ApiKeyRestrictionsIosKeyRestrictionsArgs
+
+func ApiKeyRestrictionsIosKeyRestrictionsPtr(v *ApiKeyRestrictionsIosKeyRestrictionsArgs) ApiKeyRestrictionsIosKeyRestrictionsPtrInput {
+	return (*apiKeyRestrictionsIosKeyRestrictionsPtrType)(v)
+}
+
+func (*apiKeyRestrictionsIosKeyRestrictionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictionsIosKeyRestrictions)(nil)).Elem()
+}
+
+func (i *apiKeyRestrictionsIosKeyRestrictionsPtrType) ToApiKeyRestrictionsIosKeyRestrictionsPtrOutput() ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i *apiKeyRestrictionsIosKeyRestrictionsPtrType) ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsIosKeyRestrictionsPtrOutput)
+}
+
+type ApiKeyRestrictionsIosKeyRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsIosKeyRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsIosKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsIosKeyRestrictionsOutput) ToApiKeyRestrictionsIosKeyRestrictionsOutput() ApiKeyRestrictionsIosKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsIosKeyRestrictionsOutput) ToApiKeyRestrictionsIosKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsIosKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsIosKeyRestrictionsOutput) ToApiKeyRestrictionsIosKeyRestrictionsPtrOutput() ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return o.ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (o ApiKeyRestrictionsIosKeyRestrictionsOutput) ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiKeyRestrictionsIosKeyRestrictions) *ApiKeyRestrictionsIosKeyRestrictions {
+		return &v
+	}).(ApiKeyRestrictionsIosKeyRestrictionsPtrOutput)
+}
+
+// A list of bundle IDs that are allowed when making API calls with this key.
+func (o ApiKeyRestrictionsIosKeyRestrictionsOutput) AllowedBundleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiKeyRestrictionsIosKeyRestrictions) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
+}
+
+type ApiKeyRestrictionsIosKeyRestrictionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsIosKeyRestrictionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictionsIosKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsIosKeyRestrictionsPtrOutput) ToApiKeyRestrictionsIosKeyRestrictionsPtrOutput() ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsIosKeyRestrictionsPtrOutput) ToApiKeyRestrictionsIosKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsIosKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsIosKeyRestrictionsPtrOutput) Elem() ApiKeyRestrictionsIosKeyRestrictionsOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictionsIosKeyRestrictions) ApiKeyRestrictionsIosKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret ApiKeyRestrictionsIosKeyRestrictions
+		return ret
+	}).(ApiKeyRestrictionsIosKeyRestrictionsOutput)
+}
+
+// A list of bundle IDs that are allowed when making API calls with this key.
+func (o ApiKeyRestrictionsIosKeyRestrictionsPtrOutput) AllowedBundleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictionsIosKeyRestrictions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedBundleIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApiKeyRestrictionsServerKeyRestrictions struct {
+	// A list of the caller IP addresses that are allowed to make API calls with this key.
+	AllowedIps []string `pulumi:"allowedIps"`
+}
+
+// ApiKeyRestrictionsServerKeyRestrictionsInput is an input type that accepts ApiKeyRestrictionsServerKeyRestrictionsArgs and ApiKeyRestrictionsServerKeyRestrictionsOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsServerKeyRestrictionsInput` via:
+//
+//          ApiKeyRestrictionsServerKeyRestrictionsArgs{...}
+type ApiKeyRestrictionsServerKeyRestrictionsInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsServerKeyRestrictionsOutput() ApiKeyRestrictionsServerKeyRestrictionsOutput
+	ToApiKeyRestrictionsServerKeyRestrictionsOutputWithContext(context.Context) ApiKeyRestrictionsServerKeyRestrictionsOutput
+}
+
+type ApiKeyRestrictionsServerKeyRestrictionsArgs struct {
+	// A list of the caller IP addresses that are allowed to make API calls with this key.
+	AllowedIps pulumi.StringArrayInput `pulumi:"allowedIps"`
+}
+
+func (ApiKeyRestrictionsServerKeyRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsServerKeyRestrictions)(nil)).Elem()
+}
+
+func (i ApiKeyRestrictionsServerKeyRestrictionsArgs) ToApiKeyRestrictionsServerKeyRestrictionsOutput() ApiKeyRestrictionsServerKeyRestrictionsOutput {
+	return i.ToApiKeyRestrictionsServerKeyRestrictionsOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsServerKeyRestrictionsArgs) ToApiKeyRestrictionsServerKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsServerKeyRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsServerKeyRestrictionsOutput)
+}
+
+func (i ApiKeyRestrictionsServerKeyRestrictionsArgs) ToApiKeyRestrictionsServerKeyRestrictionsPtrOutput() ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i ApiKeyRestrictionsServerKeyRestrictionsArgs) ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsServerKeyRestrictionsOutput).ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(ctx)
+}
+
+// ApiKeyRestrictionsServerKeyRestrictionsPtrInput is an input type that accepts ApiKeyRestrictionsServerKeyRestrictionsArgs, ApiKeyRestrictionsServerKeyRestrictionsPtr and ApiKeyRestrictionsServerKeyRestrictionsPtrOutput values.
+// You can construct a concrete instance of `ApiKeyRestrictionsServerKeyRestrictionsPtrInput` via:
+//
+//          ApiKeyRestrictionsServerKeyRestrictionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ApiKeyRestrictionsServerKeyRestrictionsPtrInput interface {
+	pulumi.Input
+
+	ToApiKeyRestrictionsServerKeyRestrictionsPtrOutput() ApiKeyRestrictionsServerKeyRestrictionsPtrOutput
+	ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(context.Context) ApiKeyRestrictionsServerKeyRestrictionsPtrOutput
+}
+
+type apiKeyRestrictionsServerKeyRestrictionsPtrType ApiKeyRestrictionsServerKeyRestrictionsArgs
+
+func ApiKeyRestrictionsServerKeyRestrictionsPtr(v *ApiKeyRestrictionsServerKeyRestrictionsArgs) ApiKeyRestrictionsServerKeyRestrictionsPtrInput {
+	return (*apiKeyRestrictionsServerKeyRestrictionsPtrType)(v)
+}
+
+func (*apiKeyRestrictionsServerKeyRestrictionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictionsServerKeyRestrictions)(nil)).Elem()
+}
+
+func (i *apiKeyRestrictionsServerKeyRestrictionsPtrType) ToApiKeyRestrictionsServerKeyRestrictionsPtrOutput() ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return i.ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i *apiKeyRestrictionsServerKeyRestrictionsPtrType) ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyRestrictionsServerKeyRestrictionsPtrOutput)
+}
+
+type ApiKeyRestrictionsServerKeyRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsServerKeyRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyRestrictionsServerKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsServerKeyRestrictionsOutput) ToApiKeyRestrictionsServerKeyRestrictionsOutput() ApiKeyRestrictionsServerKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsServerKeyRestrictionsOutput) ToApiKeyRestrictionsServerKeyRestrictionsOutputWithContext(ctx context.Context) ApiKeyRestrictionsServerKeyRestrictionsOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsServerKeyRestrictionsOutput) ToApiKeyRestrictionsServerKeyRestrictionsPtrOutput() ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return o.ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (o ApiKeyRestrictionsServerKeyRestrictionsOutput) ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiKeyRestrictionsServerKeyRestrictions) *ApiKeyRestrictionsServerKeyRestrictions {
+		return &v
+	}).(ApiKeyRestrictionsServerKeyRestrictionsPtrOutput)
+}
+
+// A list of the caller IP addresses that are allowed to make API calls with this key.
+func (o ApiKeyRestrictionsServerKeyRestrictionsOutput) AllowedIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiKeyRestrictionsServerKeyRestrictions) []string { return v.AllowedIps }).(pulumi.StringArrayOutput)
+}
+
+type ApiKeyRestrictionsServerKeyRestrictionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyRestrictionsServerKeyRestrictionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyRestrictionsServerKeyRestrictions)(nil)).Elem()
+}
+
+func (o ApiKeyRestrictionsServerKeyRestrictionsPtrOutput) ToApiKeyRestrictionsServerKeyRestrictionsPtrOutput() ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsServerKeyRestrictionsPtrOutput) ToApiKeyRestrictionsServerKeyRestrictionsPtrOutputWithContext(ctx context.Context) ApiKeyRestrictionsServerKeyRestrictionsPtrOutput {
+	return o
+}
+
+func (o ApiKeyRestrictionsServerKeyRestrictionsPtrOutput) Elem() ApiKeyRestrictionsServerKeyRestrictionsOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictionsServerKeyRestrictions) ApiKeyRestrictionsServerKeyRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret ApiKeyRestrictionsServerKeyRestrictions
+		return ret
+	}).(ApiKeyRestrictionsServerKeyRestrictionsOutput)
+}
+
+// A list of the caller IP addresses that are allowed to make API calls with this key.
+func (o ApiKeyRestrictionsServerKeyRestrictionsPtrOutput) AllowedIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApiKeyRestrictionsServerKeyRestrictions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedIps
+	}).(pulumi.StringArrayOutput)
+}
+
 type IAMAuditConfigAuditLogConfig struct {
 	// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
@@ -2024,6 +2999,20 @@ func (o GetProjectProjectArrayOutput) Index(i pulumi.IntInput) GetProjectProject
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsEnrolledServiceInput)(nil)).Elem(), AccessApprovalSettingsEnrolledServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsEnrolledServiceArrayInput)(nil)).Elem(), AccessApprovalSettingsEnrolledServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsInput)(nil)).Elem(), ApiKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsPtrInput)(nil)).Elem(), ApiKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsAndroidKeyRestrictionsInput)(nil)).Elem(), ApiKeyRestrictionsAndroidKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsAndroidKeyRestrictionsPtrInput)(nil)).Elem(), ApiKeyRestrictionsAndroidKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationInput)(nil)).Elem(), ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayInput)(nil)).Elem(), ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsApiTargetInput)(nil)).Elem(), ApiKeyRestrictionsApiTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsApiTargetArrayInput)(nil)).Elem(), ApiKeyRestrictionsApiTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsBrowserKeyRestrictionsInput)(nil)).Elem(), ApiKeyRestrictionsBrowserKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsBrowserKeyRestrictionsPtrInput)(nil)).Elem(), ApiKeyRestrictionsBrowserKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsIosKeyRestrictionsInput)(nil)).Elem(), ApiKeyRestrictionsIosKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsIosKeyRestrictionsPtrInput)(nil)).Elem(), ApiKeyRestrictionsIosKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsServerKeyRestrictionsInput)(nil)).Elem(), ApiKeyRestrictionsServerKeyRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiKeyRestrictionsServerKeyRestrictionsPtrInput)(nil)).Elem(), ApiKeyRestrictionsServerKeyRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMAuditConfigAuditLogConfigInput)(nil)).Elem(), IAMAuditConfigAuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMAuditConfigAuditLogConfigArrayInput)(nil)).Elem(), IAMAuditConfigAuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionInput)(nil)).Elem(), IAMBindingConditionArgs{})
@@ -2054,6 +3043,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectProjectArrayInput)(nil)).Elem(), GetProjectProjectArray{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceOutput{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceArrayOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsPtrOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsAndroidKeyRestrictionsOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsAndroidKeyRestrictionsPtrOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrayOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsApiTargetOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsApiTargetArrayOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsBrowserKeyRestrictionsOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsBrowserKeyRestrictionsPtrOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsIosKeyRestrictionsOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsIosKeyRestrictionsPtrOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsServerKeyRestrictionsOutput{})
+	pulumi.RegisterOutputType(ApiKeyRestrictionsServerKeyRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(IAMAuditConfigAuditLogConfigOutput{})
 	pulumi.RegisterOutputType(IAMAuditConfigAuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(IAMBindingConditionOutput{})

@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Sql
     /// {
     ///     public MyStack()
     ///     {
-    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
+    ///         var main = new Gcp.Sql.DatabaseInstance("main", new Gcp.Sql.DatabaseInstanceArgs
     ///         {
     ///             DatabaseVersion = "POSTGRES_11",
     ///             Region = "us-central1",
@@ -121,15 +121,15 @@ namespace Pulumi.Gcp.Sql
     /// Database instances can be imported using one of any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master projects/{{project}}/instances/{{name}}
+    ///  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main projects/{{project}}/instances/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{project}}/{{name}}
+    ///  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{name}}
+    ///  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{name}}
     /// ```
     /// 
     ///  config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.

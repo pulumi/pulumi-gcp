@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RepositoryArgs', 'Repository']
 
@@ -19,6 +21,7 @@ class RepositoryArgs:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maven_config: Optional[pulumi.Input['RepositoryMavenConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Repository resource.
@@ -44,6 +47,10 @@ class RepositoryArgs:
                and may only contain lowercase letters, numeric characters, underscores,
                and dashes.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input['RepositoryMavenConfigArgs'] maven_config: MavenRepositoryConfig is maven related repository details.
+               Provides additional configuration details for repositories of the maven
+               format type.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -57,6 +64,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maven_config is not None:
+            pulumi.set(__self__, "maven_config", maven_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -149,6 +158,21 @@ class RepositoryArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="mavenConfig")
+    def maven_config(self) -> Optional[pulumi.Input['RepositoryMavenConfigArgs']]:
+        """
+        MavenRepositoryConfig is maven related repository details.
+        Provides additional configuration details for repositories of the maven
+        format type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maven_config")
+
+    @maven_config.setter
+    def maven_config(self, value: Optional[pulumi.Input['RepositoryMavenConfigArgs']]):
+        pulumi.set(self, "maven_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -171,6 +195,7 @@ class _RepositoryState:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maven_config: Optional[pulumi.Input['RepositoryMavenConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -198,6 +223,10 @@ class _RepositoryState:
                and may only contain lowercase letters, numeric characters, underscores,
                and dashes.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input['RepositoryMavenConfigArgs'] maven_config: MavenRepositoryConfig is maven related repository details.
+               Provides additional configuration details for repositories of the maven
+               format type.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -217,6 +246,8 @@ class _RepositoryState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maven_config is not None:
+            pulumi.set(__self__, "maven_config", maven_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -314,6 +345,21 @@ class _RepositoryState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="mavenConfig")
+    def maven_config(self) -> Optional[pulumi.Input['RepositoryMavenConfigArgs']]:
+        """
+        MavenRepositoryConfig is maven related repository details.
+        Provides additional configuration details for repositories of the maven
+        format type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maven_config")
+
+    @maven_config.setter
+    def maven_config(self, value: Optional[pulumi.Input['RepositoryMavenConfigArgs']]):
+        pulumi.set(self, "maven_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -374,6 +420,7 @@ class Repository(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -480,6 +527,10 @@ class Repository(pulumi.CustomResource):
                and may only contain lowercase letters, numeric characters, underscores,
                and dashes.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']] maven_config: MavenRepositoryConfig is maven related repository details.
+               Provides additional configuration details for repositories of the maven
+               format type.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
@@ -592,6 +643,7 @@ class Repository(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -613,6 +665,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["maven_config"] = maven_config
             __props__.__dict__["project"] = project
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
@@ -636,6 +689,7 @@ class Repository(pulumi.CustomResource):
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             repository_id: Optional[pulumi.Input[str]] = None,
@@ -668,6 +722,10 @@ class Repository(pulumi.CustomResource):
                and may only contain lowercase letters, numeric characters, underscores,
                and dashes.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']] maven_config: MavenRepositoryConfig is maven related repository details.
+               Provides additional configuration details for repositories of the maven
+               format type.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -685,6 +743,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["maven_config"] = maven_config
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["repository_id"] = repository_id
@@ -753,6 +812,17 @@ class Repository(pulumi.CustomResource):
         The name of the location this repository is located in.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="mavenConfig")
+    def maven_config(self) -> pulumi.Output[Optional['outputs.RepositoryMavenConfig']]:
+        """
+        MavenRepositoryConfig is maven related repository details.
+        Provides additional configuration details for repositories of the maven
+        format type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maven_config")
 
     @property
     @pulumi.getter

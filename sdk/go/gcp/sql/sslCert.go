@@ -34,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		master, err := sql.NewDatabaseInstance(ctx, "master", &sql.DatabaseInstanceArgs{
+// 		main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
 // 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
@@ -45,7 +45,7 @@ import (
 // 		}
 // 		_, err = sql.NewSslCert(ctx, "clientCert", &sql.SslCertArgs{
 // 			CommonName: pulumi.String("client-name"),
-// 			Instance:   master.Name,
+// 			Instance:   main.Name,
 // 		})
 // 		if err != nil {
 // 			return err

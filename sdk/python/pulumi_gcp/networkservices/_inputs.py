@@ -226,9 +226,16 @@ class EdgeCacheServiceRoutingHostRuleArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of host patterns to match.
-               Host patterns must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
-               The only accepted ports are :80 and :443.
+               Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
+               When multiple hosts are specified, hosts are matched in the following priority:
+               1. Exact domain names: ``www.foo.com``.
+               2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
+               3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
+               4. Special wildcard ``*`` matching any domain.
+               Notes:
+               The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
                Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+               You may specify up to 10 hosts.
         :param pulumi.Input[str] path_matcher: The name of the pathMatcher associated with this hostRule.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         """
@@ -242,9 +249,16 @@ class EdgeCacheServiceRoutingHostRuleArgs:
     def hosts(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The list of host patterns to match.
-        Host patterns must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
-        The only accepted ports are :80 and :443.
+        Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
+        When multiple hosts are specified, hosts are matched in the following priority:
+        1. Exact domain names: ``www.foo.com``.
+        2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
+        3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
+        4. Special wildcard ``*`` matching any domain.
+        Notes:
+        The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
         Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+        You may specify up to 10 hosts.
         """
         return pulumi.get(self, "hosts")
 
@@ -1070,28 +1084,28 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                - The TTL must be > 0 and <= 86400s (1 day)
                - The clientTtl cannot be larger than the defaultTtl (if set)
                - Fractions of a second are not allowed.
-               - Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+               Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
                When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               A duration in seconds terminated by 's'. Example: "3s".
         :param pulumi.Input[str] default_ttl: Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
                Defaults to 3600s (1 hour).
-               - The TTL must be >= 0 and <= 2592000s (1 month)
+               - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
                - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
                - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
                - Fractions of a second are not allowed.
                - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
                Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
                When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               A duration in seconds terminated by 's'. Example: "3s".
         :param pulumi.Input[str] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
                Defaults to 86400s (1 day).
                Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
-               - The TTL must be >= 0 and <= 2592000s (1 month)
+               - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
                - Setting a TTL of "0" means "always revalidate"
                - The value of maxTtl must be equal to or greater than defaultTtl.
                - Fractions of a second are not allowed.
-               - When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+               A duration in seconds terminated by 's'. Example: "3s".
         :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
                By default, the CDNPolicy will apply the following default TTLs to these status codes:
                - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
@@ -1162,9 +1176,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         - The TTL must be > 0 and <= 86400s (1 day)
         - The clientTtl cannot be larger than the defaultTtl (if set)
         - Fractions of a second are not allowed.
-        - Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+        Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
         When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        A duration in seconds terminated by 's'. Example: "3s".
         """
         return pulumi.get(self, "client_ttl")
 
@@ -1178,14 +1192,14 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         """
         Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
         Defaults to 3600s (1 hour).
-        - The TTL must be >= 0 and <= 2592000s (1 month)
+        - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
         - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
         - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
         - Fractions of a second are not allowed.
         - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
         Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
         When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        A duration in seconds terminated by 's'. Example: "3s".
         """
         return pulumi.get(self, "default_ttl")
 
@@ -1200,12 +1214,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         Specifies the maximum allowed TTL for cached content served by this origin.
         Defaults to 86400s (1 day).
         Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
-        - The TTL must be >= 0 and <= 2592000s (1 month)
+        - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
         - Setting a TTL of "0" means "always revalidate"
         - The value of maxTtl must be equal to or greater than defaultTtl.
         - Fractions of a second are not allowed.
-        - When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+        A duration in seconds terminated by 's'. Example: "3s".
         """
         return pulumi.get(self, "max_ttl")
 
@@ -1284,7 +1298,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
                  included_query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] exclude_host: If true, requests to different hosts will be cached separately.
-               Note: this should only be enabled if hosts share the same origin and content Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
+               Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
         :param pulumi.Input[bool] exclude_query_string: If true, exclude query string parameters from the cache key
                If false (the default), include the query string parameters in
                the cache key according to includeQueryParameters and
@@ -1320,7 +1334,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
     def exclude_host(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, requests to different hosts will be cached separately.
-        Note: this should only be enabled if hosts share the same origin and content Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
+        Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
         """
         return pulumi.get(self, "exclude_host")
 

@@ -6,12 +6,8 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * A scheduled job that can publish a pubsub message or a http request
- * every X interval of time, using crontab format string.
- *
- * To use Cloud Scheduler your project must contain an App Engine app
- * that is located in one of the supported regions. If your project
- * does not have an App Engine app, you must create one.
+ * A scheduled job that can publish a PubSub message or an HTTP request
+ * every X interval of time, using a crontab format string.
  *
  * To get more information about Job, see:
  *

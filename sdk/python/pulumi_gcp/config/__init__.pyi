@@ -21,6 +21,8 @@ apiGatewayCustomEndpoint: Optional[str]
 
 apigeeCustomEndpoint: Optional[str]
 
+apikeysCustomEndpoint: Optional[str]
+
 appEngineCustomEndpoint: Optional[str]
 
 artifactRegistryCustomEndpoint: Optional[str]

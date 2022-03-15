@@ -33,6 +33,16 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("numInstances")]
         public Input<int>? NumInstances { get; set; }
 
+        /// <summary>
+        /// Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+        /// Accepted values are:
+        /// * PREEMPTIBILITY_UNSPECIFIED
+        /// * NON_PREEMPTIBLE
+        /// * PREEMPTIBLE
+        /// </summary>
+        [Input("preemptibility")]
+        public Input<string>? Preemptibility { get; set; }
+
         public ClusterClusterConfigPreemptibleWorkerConfigArgs()
         {
         }

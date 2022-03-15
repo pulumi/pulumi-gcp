@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -163,6 +164,13 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * MavenRepositoryConfig is maven related repository details.
+     * Provides additional configuration details for repositories of the maven
+     * format type.
+     * Structure is documented below.
+     */
+    public readonly mavenConfig!: pulumi.Output<outputs.artifactregistry.RepositoryMavenConfig | undefined>;
+    /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -200,6 +208,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["mavenConfig"] = state ? state.mavenConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
@@ -217,6 +226,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["mavenConfig"] = args ? args.mavenConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -271,6 +281,13 @@ export interface RepositoryState {
      * The name of the location this repository is located in.
      */
     location?: pulumi.Input<string>;
+    /**
+     * MavenRepositoryConfig is maven related repository details.
+     * Provides additional configuration details for repositories of the maven
+     * format type.
+     * Structure is documented below.
+     */
+    mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
     /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
      */
@@ -330,6 +347,13 @@ export interface RepositoryArgs {
      * The name of the location this repository is located in.
      */
     location?: pulumi.Input<string>;
+    /**
+     * MavenRepositoryConfig is maven related repository details.
+     * Provides additional configuration details for repositories of the maven
+     * format type.
+     * Structure is documented below.
+     */
+    mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

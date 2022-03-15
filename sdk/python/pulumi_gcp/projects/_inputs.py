@@ -10,6 +10,13 @@ from .. import _utilities
 
 __all__ = [
     'AccessApprovalSettingsEnrolledServiceArgs',
+    'ApiKeyRestrictionsArgs',
+    'ApiKeyRestrictionsAndroidKeyRestrictionsArgs',
+    'ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs',
+    'ApiKeyRestrictionsApiTargetArgs',
+    'ApiKeyRestrictionsBrowserKeyRestrictionsArgs',
+    'ApiKeyRestrictionsIosKeyRestrictionsArgs',
+    'ApiKeyRestrictionsServerKeyRestrictionsArgs',
     'IAMAuditConfigAuditLogConfigArgs',
     'IAMBindingConditionArgs',
     'IAMMemberConditionArgs',
@@ -80,6 +87,256 @@ class AccessApprovalSettingsEnrolledServiceArgs:
     @enrollment_level.setter
     def enrollment_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "enrollment_level", value)
+
+
+@pulumi.input_type
+class ApiKeyRestrictionsArgs:
+    def __init__(__self__, *,
+                 android_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgs']] = None,
+                 api_targets: Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]]] = None,
+                 browser_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgs']] = None,
+                 ios_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgs']] = None,
+                 server_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgs']] = None):
+        """
+        :param pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgs'] android_key_restrictions: The Android apps that are allowed to use the key.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]] api_targets: A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+        :param pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgs'] browser_key_restrictions: The HTTP referrers (websites) that are allowed to use the key.
+        :param pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgs'] ios_key_restrictions: The iOS apps that are allowed to use the key.
+        :param pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgs'] server_key_restrictions: The IP addresses of callers that are allowed to use the key.
+        """
+        if android_key_restrictions is not None:
+            pulumi.set(__self__, "android_key_restrictions", android_key_restrictions)
+        if api_targets is not None:
+            pulumi.set(__self__, "api_targets", api_targets)
+        if browser_key_restrictions is not None:
+            pulumi.set(__self__, "browser_key_restrictions", browser_key_restrictions)
+        if ios_key_restrictions is not None:
+            pulumi.set(__self__, "ios_key_restrictions", ios_key_restrictions)
+        if server_key_restrictions is not None:
+            pulumi.set(__self__, "server_key_restrictions", server_key_restrictions)
+
+    @property
+    @pulumi.getter(name="androidKeyRestrictions")
+    def android_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgs']]:
+        """
+        The Android apps that are allowed to use the key.
+        """
+        return pulumi.get(self, "android_key_restrictions")
+
+    @android_key_restrictions.setter
+    def android_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgs']]):
+        pulumi.set(self, "android_key_restrictions", value)
+
+    @property
+    @pulumi.getter(name="apiTargets")
+    def api_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]]]:
+        """
+        A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+        """
+        return pulumi.get(self, "api_targets")
+
+    @api_targets.setter
+    def api_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]]]):
+        pulumi.set(self, "api_targets", value)
+
+    @property
+    @pulumi.getter(name="browserKeyRestrictions")
+    def browser_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgs']]:
+        """
+        The HTTP referrers (websites) that are allowed to use the key.
+        """
+        return pulumi.get(self, "browser_key_restrictions")
+
+    @browser_key_restrictions.setter
+    def browser_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgs']]):
+        pulumi.set(self, "browser_key_restrictions", value)
+
+    @property
+    @pulumi.getter(name="iosKeyRestrictions")
+    def ios_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgs']]:
+        """
+        The iOS apps that are allowed to use the key.
+        """
+        return pulumi.get(self, "ios_key_restrictions")
+
+    @ios_key_restrictions.setter
+    def ios_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgs']]):
+        pulumi.set(self, "ios_key_restrictions", value)
+
+    @property
+    @pulumi.getter(name="serverKeyRestrictions")
+    def server_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgs']]:
+        """
+        The IP addresses of callers that are allowed to use the key.
+        """
+        return pulumi.get(self, "server_key_restrictions")
+
+    @server_key_restrictions.setter
+    def server_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgs']]):
+        pulumi.set(self, "server_key_restrictions", value)
+
+
+@pulumi.input_type
+class ApiKeyRestrictionsAndroidKeyRestrictionsArgs:
+    def __init__(__self__, *,
+                 allowed_applications: pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs']]] allowed_applications: A list of Android applications that are allowed to make API calls with this key.
+        """
+        pulumi.set(__self__, "allowed_applications", allowed_applications)
+
+    @property
+    @pulumi.getter(name="allowedApplications")
+    def allowed_applications(self) -> pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs']]]:
+        """
+        A list of Android applications that are allowed to make API calls with this key.
+        """
+        return pulumi.get(self, "allowed_applications")
+
+    @allowed_applications.setter
+    def allowed_applications(self, value: pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs']]]):
+        pulumi.set(self, "allowed_applications", value)
+
+
+@pulumi.input_type
+class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs:
+    def __init__(__self__, *,
+                 package_name: pulumi.Input[str],
+                 sha1_fingerprint: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] package_name: The package name of the application.
+        :param pulumi.Input[str] sha1_fingerprint: The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+        """
+        pulumi.set(__self__, "package_name", package_name)
+        pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+
+    @property
+    @pulumi.getter(name="packageName")
+    def package_name(self) -> pulumi.Input[str]:
+        """
+        The package name of the application.
+        """
+        return pulumi.get(self, "package_name")
+
+    @package_name.setter
+    def package_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package_name", value)
+
+    @property
+    @pulumi.getter(name="sha1Fingerprint")
+    def sha1_fingerprint(self) -> pulumi.Input[str]:
+        """
+        The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+        """
+        return pulumi.get(self, "sha1_fingerprint")
+
+    @sha1_fingerprint.setter
+    def sha1_fingerprint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sha1_fingerprint", value)
+
+
+@pulumi.input_type
+class ApiKeyRestrictionsApiTargetArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[str],
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] service: The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
+        """
+        pulumi.set(__self__, "service", service)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
+        """
+        return pulumi.get(self, "methods")
+
+    @methods.setter
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "methods", value)
+
+
+@pulumi.input_type
+class ApiKeyRestrictionsBrowserKeyRestrictionsArgs:
+    def __init__(__self__, *,
+                 allowed_referrers: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_referrers: A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+        """
+        pulumi.set(__self__, "allowed_referrers", allowed_referrers)
+
+    @property
+    @pulumi.getter(name="allowedReferrers")
+    def allowed_referrers(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+        """
+        return pulumi.get(self, "allowed_referrers")
+
+    @allowed_referrers.setter
+    def allowed_referrers(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "allowed_referrers", value)
+
+
+@pulumi.input_type
+class ApiKeyRestrictionsIosKeyRestrictionsArgs:
+    def __init__(__self__, *,
+                 allowed_bundle_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_bundle_ids: A list of bundle IDs that are allowed when making API calls with this key.
+        """
+        pulumi.set(__self__, "allowed_bundle_ids", allowed_bundle_ids)
+
+    @property
+    @pulumi.getter(name="allowedBundleIds")
+    def allowed_bundle_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of bundle IDs that are allowed when making API calls with this key.
+        """
+        return pulumi.get(self, "allowed_bundle_ids")
+
+    @allowed_bundle_ids.setter
+    def allowed_bundle_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "allowed_bundle_ids", value)
+
+
+@pulumi.input_type
+class ApiKeyRestrictionsServerKeyRestrictionsArgs:
+    def __init__(__self__, *,
+                 allowed_ips: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_ips: A list of the caller IP addresses that are allowed to make API calls with this key.
+        """
+        pulumi.set(__self__, "allowed_ips", allowed_ips)
+
+    @property
+    @pulumi.getter(name="allowedIps")
+    def allowed_ips(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of the caller IP addresses that are allowed to make API calls with this key.
+        """
+        return pulumi.get(self, "allowed_ips")
+
+    @allowed_ips.setter
+    def allowed_ips(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "allowed_ips", value)
 
 
 @pulumi.input_type

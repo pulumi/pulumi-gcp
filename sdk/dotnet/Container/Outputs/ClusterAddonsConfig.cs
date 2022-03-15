@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// The status of the Filestore CSI driver addon,
         /// which allows the usage of filestore instance as volumes.
-        /// It is disbaled by default; set `enabled = true` to enable.
+        /// It is disabled by default; set `enabled = true` to enable.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? GcpFilestoreCsiDriverConfig;
         /// <summary>

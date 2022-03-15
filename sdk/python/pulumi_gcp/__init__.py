@@ -727,6 +727,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigquery/reservationAssignment",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/reservationAssignment:ReservationAssignment": "ReservationAssignment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigquery/routine",
   "fqn": "pulumi_gcp.bigquery",
   "classes": {
@@ -3715,6 +3723,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.projects",
   "classes": {
    "gcp:projects/accessApprovalSettings:AccessApprovalSettings": "AccessApprovalSettings"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "projects/apiKey",
+  "fqn": "pulumi_gcp.projects",
+  "classes": {
+   "gcp:projects/apiKey:ApiKey": "ApiKey"
   }
  },
  {

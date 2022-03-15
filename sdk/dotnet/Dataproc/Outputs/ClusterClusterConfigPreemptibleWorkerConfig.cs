@@ -23,6 +23,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Defaults to 0.
         /// </summary>
         public readonly int? NumInstances;
+        /// <summary>
+        /// Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+        /// Accepted values are:
+        /// * PREEMPTIBILITY_UNSPECIFIED
+        /// * NON_PREEMPTIBLE
+        /// * PREEMPTIBLE
+        /// </summary>
+        public readonly string? Preemptibility;
 
         [OutputConstructor]
         private ClusterClusterConfigPreemptibleWorkerConfig(
@@ -30,11 +38,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             ImmutableArray<string> instanceNames,
 
-            int? numInstances)
+            int? numInstances,
+
+            string? preemptibility)
         {
             DiskConfig = diskConfig;
             InstanceNames = instanceNames;
             NumInstances = numInstances;
+            Preemptibility = preemptibility;
         }
     }
 }

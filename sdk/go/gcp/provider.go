@@ -23,6 +23,7 @@ type Provider struct {
 	ActiveDirectoryCustomEndpoint      pulumi.StringPtrOutput `pulumi:"activeDirectoryCustomEndpoint"`
 	ApiGatewayCustomEndpoint           pulumi.StringPtrOutput `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint               pulumi.StringPtrOutput `pulumi:"apigeeCustomEndpoint"`
+	ApikeysCustomEndpoint              pulumi.StringPtrOutput `pulumi:"apikeysCustomEndpoint"`
 	AppEngineCustomEndpoint            pulumi.StringPtrOutput `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint     pulumi.StringPtrOutput `pulumi:"artifactRegistryCustomEndpoint"`
 	AssuredWorkloadsCustomEndpoint     pulumi.StringPtrOutput `pulumi:"assuredWorkloadsCustomEndpoint"`
@@ -156,6 +157,7 @@ type providerArgs struct {
 	ActiveDirectoryCustomEndpoint      *string           `pulumi:"activeDirectoryCustomEndpoint"`
 	ApiGatewayCustomEndpoint           *string           `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint               *string           `pulumi:"apigeeCustomEndpoint"`
+	ApikeysCustomEndpoint              *string           `pulumi:"apikeysCustomEndpoint"`
 	AppEngineCustomEndpoint            *string           `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint     *string           `pulumi:"artifactRegistryCustomEndpoint"`
 	AssuredWorkloadsCustomEndpoint     *string           `pulumi:"assuredWorkloadsCustomEndpoint"`
@@ -271,6 +273,7 @@ type ProviderArgs struct {
 	ActiveDirectoryCustomEndpoint      pulumi.StringPtrInput
 	ApiGatewayCustomEndpoint           pulumi.StringPtrInput
 	ApigeeCustomEndpoint               pulumi.StringPtrInput
+	ApikeysCustomEndpoint              pulumi.StringPtrInput
 	AppEngineCustomEndpoint            pulumi.StringPtrInput
 	ArtifactRegistryCustomEndpoint     pulumi.StringPtrInput
 	AssuredWorkloadsCustomEndpoint     pulumi.StringPtrInput

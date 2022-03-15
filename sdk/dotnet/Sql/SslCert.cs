@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Sql
     ///         {
     ///             ByteLength = 4,
     ///         });
-    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
+    ///         var main = new Gcp.Sql.DatabaseInstance("main", new Gcp.Sql.DatabaseInstanceArgs
     ///         {
     ///             DatabaseVersion = "MYSQL_5_7",
     ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Sql
     ///         var clientCert = new Gcp.Sql.SslCert("clientCert", new Gcp.Sql.SslCertArgs
     ///         {
     ///             CommonName = "client-name",
-    ///             Instance = master.Name,
+    ///             Instance = main.Name,
     ///         });
     ///     }
     /// 

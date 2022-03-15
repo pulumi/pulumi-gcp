@@ -2322,7 +2322,7 @@ type ServiceTemplateSpec struct {
 	// In the context of a Revision, we disallow a number of the fields of
 	// this Container, including: name, ports, and volumeMounts.
 	// The runtime contract is documented here:
-	// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+	// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 	// Structure is documented below.
 	Containers []ServiceTemplateSpecContainer `pulumi:"containers"`
 	// Email address of the IAM service account associated with the revision of the
@@ -2364,7 +2364,7 @@ type ServiceTemplateSpecArgs struct {
 	// In the context of a Revision, we disallow a number of the fields of
 	// this Container, including: name, ports, and volumeMounts.
 	// The runtime contract is documented here:
-	// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+	// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 	// Structure is documented below.
 	Containers ServiceTemplateSpecContainerArrayInput `pulumi:"containers"`
 	// Email address of the IAM service account associated with the revision of the
@@ -2474,7 +2474,7 @@ func (o ServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 // In the context of a Revision, we disallow a number of the fields of
 // this Container, including: name, ports, and volumeMounts.
 // The runtime contract is documented here:
-// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 // Structure is documented below.
 func (o ServiceTemplateSpecOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
@@ -2549,7 +2549,7 @@ func (o ServiceTemplateSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput
 // In the context of a Revision, we disallow a number of the fields of
 // this Container, including: name, ports, and volumeMounts.
 // The runtime contract is documented here:
-// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
 // Structure is documented below.
 func (o ServiceTemplateSpecPtrOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) []ServiceTemplateSpecContainer {

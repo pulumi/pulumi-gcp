@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
- * const master = new gcp.sql.DatabaseInstance("master", {
+ * const main = new gcp.sql.DatabaseInstance("main", {
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * });
  * const clientCert = new gcp.sql.SslCert("clientCert", {
  *     commonName: "client-name",
- *     instance: master.name,
+ *     instance: main.name,
  * });
  * ```
  *

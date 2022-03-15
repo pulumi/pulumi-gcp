@@ -83,6 +83,7 @@ __all__ = [
     'ClusterNodeConfigEphemeralStorageConfigArgs',
     'ClusterNodeConfigGcfsConfigArgs',
     'ClusterNodeConfigGuestAcceleratorArgs',
+    'ClusterNodeConfigGvnicArgs',
     'ClusterNodeConfigKubeletConfigArgs',
     'ClusterNodeConfigLinuxNodeConfigArgs',
     'ClusterNodeConfigSandboxConfigArgs',
@@ -97,6 +98,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs',
     'ClusterNodePoolNodeConfigGcfsConfigArgs',
     'ClusterNodePoolNodeConfigGuestAcceleratorArgs',
+    'ClusterNodePoolNodeConfigGvnicArgs',
     'ClusterNodePoolNodeConfigKubeletConfigArgs',
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgs',
     'ClusterNodePoolNodeConfigSandboxConfigArgs',
@@ -122,6 +124,7 @@ __all__ = [
     'NodePoolNodeConfigEphemeralStorageConfigArgs',
     'NodePoolNodeConfigGcfsConfigArgs',
     'NodePoolNodeConfigGuestAcceleratorArgs',
+    'NodePoolNodeConfigGvnicArgs',
     'NodePoolNodeConfigKubeletConfigArgs',
     'NodePoolNodeConfigLinuxNodeConfigArgs',
     'NodePoolNodeConfigSandboxConfigArgs',
@@ -1881,7 +1884,7 @@ class ClusterAddonsConfigArgs:
                Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
-               It is disbaled by default; set `enabled = true` to enable.
+               It is disabled by default; set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
@@ -1980,7 +1983,7 @@ class ClusterAddonsConfigArgs:
         """
         The status of the Filestore CSI driver addon,
         which allows the usage of filestore instance as volumes.
-        It is disbaled by default; set `enabled = true` to enable.
+        It is disabled by default; set `enabled = true` to enable.
         """
         return pulumi.get(self, "gcp_filestore_csi_driver_config")
 
@@ -3269,6 +3272,7 @@ class ClusterNodeConfigArgs:
                  ephemeral_storage_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']] = None,
                  gcfs_config: Optional[pulumi.Input['ClusterNodeConfigGcfsConfigArgs']] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]] = None,
+                 gvnic: Optional[pulumi.Input['ClusterNodeConfigGvnicArgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -3302,6 +3306,11 @@ class ClusterNodeConfigArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
+        :param pulumi.Input['ClusterNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
+               Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+               gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+               GKE node version 1.15.11-gke.15 or later
+               Structure is documented below.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param pulumi.Input['ClusterNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -3365,6 +3374,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if gvnic is not None:
+            pulumi.set(__self__, "gvnic", gvnic)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if kubelet_config is not None:
@@ -3481,6 +3492,22 @@ class ClusterNodeConfigArgs:
     @guest_accelerators.setter
     def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter
+    def gvnic(self) -> Optional[pulumi.Input['ClusterNodeConfigGvnicArgs']]:
+        """
+        Google Virtual NIC (gVNIC) is a virtual network interface.
+        Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+        gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+        GKE node version 1.15.11-gke.15 or later
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gvnic")
+
+    @gvnic.setter
+    def gvnic(self, value: Optional[pulumi.Input['ClusterNodeConfigGvnicArgs']]):
+        pulumi.set(self, "gvnic", value)
 
     @property
     @pulumi.getter(name="imageType")
@@ -3828,6 +3855,30 @@ class ClusterNodeConfigGuestAcceleratorArgs:
     @gpu_partition_size.setter
     def gpu_partition_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gpu_partition_size", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigGvnicArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -4421,6 +4472,7 @@ class ClusterNodePoolNodeConfigArgs:
                  ephemeral_storage_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
                  gcfs_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArgs']] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
+                 gvnic: Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -4454,6 +4506,11 @@ class ClusterNodePoolNodeConfigArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
+               Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+               gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+               GKE node version 1.15.11-gke.15 or later
+               Structure is documented below.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -4517,6 +4574,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if gvnic is not None:
+            pulumi.set(__self__, "gvnic", gvnic)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if kubelet_config is not None:
@@ -4633,6 +4692,22 @@ class ClusterNodePoolNodeConfigArgs:
     @guest_accelerators.setter
     def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter
+    def gvnic(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs']]:
+        """
+        Google Virtual NIC (gVNIC) is a virtual network interface.
+        Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+        gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+        GKE node version 1.15.11-gke.15 or later
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gvnic")
+
+    @gvnic.setter
+    def gvnic(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs']]):
+        pulumi.set(self, "gvnic", value)
 
     @property
     @pulumi.getter(name="imageType")
@@ -4980,6 +5055,30 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
     @gpu_partition_size.setter
     def gpu_partition_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gpu_partition_size", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigGvnicArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -5810,6 +5909,7 @@ class NodePoolNodeConfigArgs:
                  ephemeral_storage_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
                  gcfs_config: Optional[pulumi.Input['NodePoolNodeConfigGcfsConfigArgs']] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
+                 gvnic: Optional[pulumi.Input['NodePoolNodeConfigGvnicArgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -5840,6 +5940,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if gvnic is not None:
+            pulumi.set(__self__, "gvnic", gvnic)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if kubelet_config is not None:
@@ -5930,6 +6032,15 @@ class NodePoolNodeConfigArgs:
     @guest_accelerators.setter
     def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter
+    def gvnic(self) -> Optional[pulumi.Input['NodePoolNodeConfigGvnicArgs']]:
+        return pulumi.get(self, "gvnic")
+
+    @gvnic.setter
+    def gvnic(self, value: Optional[pulumi.Input['NodePoolNodeConfigGvnicArgs']]):
+        pulumi.set(self, "gvnic", value)
 
     @property
     @pulumi.getter(name="imageType")
@@ -6173,6 +6284,22 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
     @gpu_partition_size.setter
     def gpu_partition_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gpu_partition_size", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigGvnicArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

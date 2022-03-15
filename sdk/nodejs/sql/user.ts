@@ -17,14 +17,14 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
- * const master = new gcp.sql.DatabaseInstance("master", {
+ * const main = new gcp.sql.DatabaseInstance("main", {
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-f1-micro",
  *     },
  * });
  * const users = new gcp.sql.User("users", {
- *     instance: master.name,
+ *     instance: main.name,
  *     host: "me.com",
  *     password: "changeme",
  * });
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
- * const master = new gcp.sql.DatabaseInstance("master", {
+ * const main = new gcp.sql.DatabaseInstance("main", {
  *     databaseVersion: "POSTGRES_9_6",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const users = new gcp.sql.User("users", {
- *     instance: master.name,
+ *     instance: main.name,
  *     type: "CLOUD_IAM_USER",
  * });
  * ```
@@ -59,13 +59,13 @@ import * as utilities from "../utilities";
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:sql/user:User users my-project/master-instance/my-domain.com/me
+ *  $ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
  * ```
  *
  *  SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:sql/user:User users my-project/master-instance/me
+ *  $ pulumi import gcp:sql/user:User users my-project/main-instance/me
  * ```
  */
 export class User extends pulumi.CustomResource {

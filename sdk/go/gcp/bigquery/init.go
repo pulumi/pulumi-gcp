@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Job{}
 	case "gcp:bigquery/reservation:Reservation":
 		r = &Reservation{}
+	case "gcp:bigquery/reservationAssignment:ReservationAssignment":
+		r = &ReservationAssignment{}
 	case "gcp:bigquery/routine:Routine":
 		r = &Routine{}
 	case "gcp:bigquery/table:Table":
@@ -127,6 +129,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigquery/reservation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/reservationAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

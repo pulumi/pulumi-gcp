@@ -319,13 +319,13 @@ class User(pulumi.CustomResource):
         import pulumi_random as random
 
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        master = gcp.sql.DatabaseInstance("master",
+        main = gcp.sql.DatabaseInstance("main",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ))
         users = gcp.sql.User("users",
-            instance=master.name,
+            instance=main.name,
             host="me.com",
             password="changeme")
         ```
@@ -338,7 +338,7 @@ class User(pulumi.CustomResource):
         import pulumi_random as random
 
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        master = gcp.sql.DatabaseInstance("master",
+        main = gcp.sql.DatabaseInstance("main",
             database_version="POSTGRES_9_6",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
@@ -348,7 +348,7 @@ class User(pulumi.CustomResource):
                 )],
             ))
         users = gcp.sql.User("users",
-            instance=master.name,
+            instance=main.name,
             type="CLOUD_IAM_USER")
         ```
 
@@ -357,13 +357,13 @@ class User(pulumi.CustomResource):
         SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
 
         ```sh
-         $ pulumi import gcp:sql/user:User users my-project/master-instance/my-domain.com/me
+         $ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
         ```
 
          SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
 
         ```sh
-         $ pulumi import gcp:sql/user:User users my-project/master-instance/me
+         $ pulumi import gcp:sql/user:User users my-project/main-instance/me
         ```
 
         :param str resource_name: The name of the resource.
@@ -406,13 +406,13 @@ class User(pulumi.CustomResource):
         import pulumi_random as random
 
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        master = gcp.sql.DatabaseInstance("master",
+        main = gcp.sql.DatabaseInstance("main",
             database_version="MYSQL_5_7",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ))
         users = gcp.sql.User("users",
-            instance=master.name,
+            instance=main.name,
             host="me.com",
             password="changeme")
         ```
@@ -425,7 +425,7 @@ class User(pulumi.CustomResource):
         import pulumi_random as random
 
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        master = gcp.sql.DatabaseInstance("master",
+        main = gcp.sql.DatabaseInstance("main",
             database_version="POSTGRES_9_6",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
@@ -435,7 +435,7 @@ class User(pulumi.CustomResource):
                 )],
             ))
         users = gcp.sql.User("users",
-            instance=master.name,
+            instance=main.name,
             type="CLOUD_IAM_USER")
         ```
 
@@ -444,13 +444,13 @@ class User(pulumi.CustomResource):
         SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
 
         ```sh
-         $ pulumi import gcp:sql/user:User users my-project/master-instance/my-domain.com/me
+         $ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
         ```
 
          SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
 
         ```sh
-         $ pulumi import gcp:sql/user:User users my-project/master-instance/me
+         $ pulumi import gcp:sql/user:User users my-project/main-instance/me
         ```
 
         :param str resource_name: The name of the resource.

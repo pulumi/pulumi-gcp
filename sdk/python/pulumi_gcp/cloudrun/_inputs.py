@@ -1026,7 +1026,7 @@ class ServiceTemplateSpecArgs:
                In the context of a Revision, we disallow a number of the fields of
                this Container, including: name, ports, and volumeMounts.
                The runtime contract is documented here:
-               https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+               https://github.com/knative/serving/blob/main/docs/runtime-contract.md
                Structure is documented below.
         :param pulumi.Input[str] service_account_name: Email address of the IAM service account associated with the revision of the
                service. The service account represents the identity of the running revision,
@@ -1078,7 +1078,7 @@ class ServiceTemplateSpecArgs:
         In the context of a Revision, we disallow a number of the fields of
         this Container, including: name, ports, and volumeMounts.
         The runtime contract is documented here:
-        https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+        https://github.com/knative/serving/blob/main/docs/runtime-contract.md
         Structure is documented below.
         """
         return pulumi.get(self, "containers")

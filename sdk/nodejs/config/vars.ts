@@ -56,6 +56,14 @@ Object.defineProperty(exports, "apigeeCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const apikeysCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "apikeysCustomEndpoint", {
+    get() {
+        return __config.get("apikeysCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const appEngineCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "appEngineCustomEndpoint", {
     get() {
