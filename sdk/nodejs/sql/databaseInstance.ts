@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const master = new gcp.sql.DatabaseInstance("master", {
+ * const main = new gcp.sql.DatabaseInstance("main", {
  *     databaseVersion: "POSTGRES_11",
  *     region: "us-central1",
  *     settings: {
@@ -83,15 +83,15 @@ import * as utilities from "../utilities";
  * Database instances can be imported using one of any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master projects/{{project}}/instances/{{name}}
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main projects/{{project}}/instances/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{project}}/{{name}}
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{name}}
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{name}}
  * ```
  *
  *  config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.

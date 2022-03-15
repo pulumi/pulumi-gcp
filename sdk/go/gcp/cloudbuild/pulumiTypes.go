@@ -2940,6 +2940,220 @@ func (o TriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuild
 	}).(TriggerBuildStepVolumeOutput)
 }
 
+type TriggerGitFileSource struct {
+	// Path at which to mount the volume.
+	// Paths must be absolute and cannot conflict with other volume paths on the same
+	// build step or with certain reserved volume paths.
+	Path string `pulumi:"path"`
+	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+	RepoType string `pulumi:"repoType"`
+	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+	// If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+	Revision *string `pulumi:"revision"`
+	// The URI of the repo (required).
+	Uri *string `pulumi:"uri"`
+}
+
+// TriggerGitFileSourceInput is an input type that accepts TriggerGitFileSourceArgs and TriggerGitFileSourceOutput values.
+// You can construct a concrete instance of `TriggerGitFileSourceInput` via:
+//
+//          TriggerGitFileSourceArgs{...}
+type TriggerGitFileSourceInput interface {
+	pulumi.Input
+
+	ToTriggerGitFileSourceOutput() TriggerGitFileSourceOutput
+	ToTriggerGitFileSourceOutputWithContext(context.Context) TriggerGitFileSourceOutput
+}
+
+type TriggerGitFileSourceArgs struct {
+	// Path at which to mount the volume.
+	// Paths must be absolute and cannot conflict with other volume paths on the same
+	// build step or with certain reserved volume paths.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+	RepoType pulumi.StringInput `pulumi:"repoType"`
+	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+	// If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// The URI of the repo (required).
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (TriggerGitFileSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerGitFileSource)(nil)).Elem()
+}
+
+func (i TriggerGitFileSourceArgs) ToTriggerGitFileSourceOutput() TriggerGitFileSourceOutput {
+	return i.ToTriggerGitFileSourceOutputWithContext(context.Background())
+}
+
+func (i TriggerGitFileSourceArgs) ToTriggerGitFileSourceOutputWithContext(ctx context.Context) TriggerGitFileSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerGitFileSourceOutput)
+}
+
+func (i TriggerGitFileSourceArgs) ToTriggerGitFileSourcePtrOutput() TriggerGitFileSourcePtrOutput {
+	return i.ToTriggerGitFileSourcePtrOutputWithContext(context.Background())
+}
+
+func (i TriggerGitFileSourceArgs) ToTriggerGitFileSourcePtrOutputWithContext(ctx context.Context) TriggerGitFileSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerGitFileSourceOutput).ToTriggerGitFileSourcePtrOutputWithContext(ctx)
+}
+
+// TriggerGitFileSourcePtrInput is an input type that accepts TriggerGitFileSourceArgs, TriggerGitFileSourcePtr and TriggerGitFileSourcePtrOutput values.
+// You can construct a concrete instance of `TriggerGitFileSourcePtrInput` via:
+//
+//          TriggerGitFileSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerGitFileSourcePtrInput interface {
+	pulumi.Input
+
+	ToTriggerGitFileSourcePtrOutput() TriggerGitFileSourcePtrOutput
+	ToTriggerGitFileSourcePtrOutputWithContext(context.Context) TriggerGitFileSourcePtrOutput
+}
+
+type triggerGitFileSourcePtrType TriggerGitFileSourceArgs
+
+func TriggerGitFileSourcePtr(v *TriggerGitFileSourceArgs) TriggerGitFileSourcePtrInput {
+	return (*triggerGitFileSourcePtrType)(v)
+}
+
+func (*triggerGitFileSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerGitFileSource)(nil)).Elem()
+}
+
+func (i *triggerGitFileSourcePtrType) ToTriggerGitFileSourcePtrOutput() TriggerGitFileSourcePtrOutput {
+	return i.ToTriggerGitFileSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *triggerGitFileSourcePtrType) ToTriggerGitFileSourcePtrOutputWithContext(ctx context.Context) TriggerGitFileSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerGitFileSourcePtrOutput)
+}
+
+type TriggerGitFileSourceOutput struct{ *pulumi.OutputState }
+
+func (TriggerGitFileSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerGitFileSource)(nil)).Elem()
+}
+
+func (o TriggerGitFileSourceOutput) ToTriggerGitFileSourceOutput() TriggerGitFileSourceOutput {
+	return o
+}
+
+func (o TriggerGitFileSourceOutput) ToTriggerGitFileSourceOutputWithContext(ctx context.Context) TriggerGitFileSourceOutput {
+	return o
+}
+
+func (o TriggerGitFileSourceOutput) ToTriggerGitFileSourcePtrOutput() TriggerGitFileSourcePtrOutput {
+	return o.ToTriggerGitFileSourcePtrOutputWithContext(context.Background())
+}
+
+func (o TriggerGitFileSourceOutput) ToTriggerGitFileSourcePtrOutputWithContext(ctx context.Context) TriggerGitFileSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerGitFileSource) *TriggerGitFileSource {
+		return &v
+	}).(TriggerGitFileSourcePtrOutput)
+}
+
+// Path at which to mount the volume.
+// Paths must be absolute and cannot conflict with other volume paths on the same
+// build step or with certain reserved volume paths.
+func (o TriggerGitFileSourceOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerGitFileSource) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+func (o TriggerGitFileSourceOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerGitFileSource) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+// If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+func (o TriggerGitFileSourceOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerGitFileSource) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo (required).
+func (o TriggerGitFileSourceOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerGitFileSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type TriggerGitFileSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerGitFileSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerGitFileSource)(nil)).Elem()
+}
+
+func (o TriggerGitFileSourcePtrOutput) ToTriggerGitFileSourcePtrOutput() TriggerGitFileSourcePtrOutput {
+	return o
+}
+
+func (o TriggerGitFileSourcePtrOutput) ToTriggerGitFileSourcePtrOutputWithContext(ctx context.Context) TriggerGitFileSourcePtrOutput {
+	return o
+}
+
+func (o TriggerGitFileSourcePtrOutput) Elem() TriggerGitFileSourceOutput {
+	return o.ApplyT(func(v *TriggerGitFileSource) TriggerGitFileSource {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerGitFileSource
+		return ret
+	}).(TriggerGitFileSourceOutput)
+}
+
+// Path at which to mount the volume.
+// Paths must be absolute and cannot conflict with other volume paths on the same
+// build step or with certain reserved volume paths.
+func (o TriggerGitFileSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerGitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+func (o TriggerGitFileSourcePtrOutput) RepoType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerGitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+// If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+func (o TriggerGitFileSourcePtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerGitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo (required).
+func (o TriggerGitFileSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerGitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type TriggerGithub struct {
 	// Name of the volume to mount.
 	// Volume names must be unique per build step and must be valid names for Docker volumes.
@@ -3711,6 +3925,185 @@ func (o TriggerPubsubConfigPtrOutput) Topic() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerSourceToBuild struct {
+	// The branch or tag to use. Must start with "refs/" (required).
+	Ref string `pulumi:"ref"`
+	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+	RepoType string `pulumi:"repoType"`
+	// The URI of the repo (required).
+	Uri string `pulumi:"uri"`
+}
+
+// TriggerSourceToBuildInput is an input type that accepts TriggerSourceToBuildArgs and TriggerSourceToBuildOutput values.
+// You can construct a concrete instance of `TriggerSourceToBuildInput` via:
+//
+//          TriggerSourceToBuildArgs{...}
+type TriggerSourceToBuildInput interface {
+	pulumi.Input
+
+	ToTriggerSourceToBuildOutput() TriggerSourceToBuildOutput
+	ToTriggerSourceToBuildOutputWithContext(context.Context) TriggerSourceToBuildOutput
+}
+
+type TriggerSourceToBuildArgs struct {
+	// The branch or tag to use. Must start with "refs/" (required).
+	Ref pulumi.StringInput `pulumi:"ref"`
+	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+	RepoType pulumi.StringInput `pulumi:"repoType"`
+	// The URI of the repo (required).
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (TriggerSourceToBuildArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerSourceToBuild)(nil)).Elem()
+}
+
+func (i TriggerSourceToBuildArgs) ToTriggerSourceToBuildOutput() TriggerSourceToBuildOutput {
+	return i.ToTriggerSourceToBuildOutputWithContext(context.Background())
+}
+
+func (i TriggerSourceToBuildArgs) ToTriggerSourceToBuildOutputWithContext(ctx context.Context) TriggerSourceToBuildOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerSourceToBuildOutput)
+}
+
+func (i TriggerSourceToBuildArgs) ToTriggerSourceToBuildPtrOutput() TriggerSourceToBuildPtrOutput {
+	return i.ToTriggerSourceToBuildPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerSourceToBuildArgs) ToTriggerSourceToBuildPtrOutputWithContext(ctx context.Context) TriggerSourceToBuildPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerSourceToBuildOutput).ToTriggerSourceToBuildPtrOutputWithContext(ctx)
+}
+
+// TriggerSourceToBuildPtrInput is an input type that accepts TriggerSourceToBuildArgs, TriggerSourceToBuildPtr and TriggerSourceToBuildPtrOutput values.
+// You can construct a concrete instance of `TriggerSourceToBuildPtrInput` via:
+//
+//          TriggerSourceToBuildArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerSourceToBuildPtrInput interface {
+	pulumi.Input
+
+	ToTriggerSourceToBuildPtrOutput() TriggerSourceToBuildPtrOutput
+	ToTriggerSourceToBuildPtrOutputWithContext(context.Context) TriggerSourceToBuildPtrOutput
+}
+
+type triggerSourceToBuildPtrType TriggerSourceToBuildArgs
+
+func TriggerSourceToBuildPtr(v *TriggerSourceToBuildArgs) TriggerSourceToBuildPtrInput {
+	return (*triggerSourceToBuildPtrType)(v)
+}
+
+func (*triggerSourceToBuildPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerSourceToBuild)(nil)).Elem()
+}
+
+func (i *triggerSourceToBuildPtrType) ToTriggerSourceToBuildPtrOutput() TriggerSourceToBuildPtrOutput {
+	return i.ToTriggerSourceToBuildPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerSourceToBuildPtrType) ToTriggerSourceToBuildPtrOutputWithContext(ctx context.Context) TriggerSourceToBuildPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerSourceToBuildPtrOutput)
+}
+
+type TriggerSourceToBuildOutput struct{ *pulumi.OutputState }
+
+func (TriggerSourceToBuildOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerSourceToBuild)(nil)).Elem()
+}
+
+func (o TriggerSourceToBuildOutput) ToTriggerSourceToBuildOutput() TriggerSourceToBuildOutput {
+	return o
+}
+
+func (o TriggerSourceToBuildOutput) ToTriggerSourceToBuildOutputWithContext(ctx context.Context) TriggerSourceToBuildOutput {
+	return o
+}
+
+func (o TriggerSourceToBuildOutput) ToTriggerSourceToBuildPtrOutput() TriggerSourceToBuildPtrOutput {
+	return o.ToTriggerSourceToBuildPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerSourceToBuildOutput) ToTriggerSourceToBuildPtrOutputWithContext(ctx context.Context) TriggerSourceToBuildPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerSourceToBuild) *TriggerSourceToBuild {
+		return &v
+	}).(TriggerSourceToBuildPtrOutput)
+}
+
+// The branch or tag to use. Must start with "refs/" (required).
+func (o TriggerSourceToBuildOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+func (o TriggerSourceToBuildOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The URI of the repo (required).
+func (o TriggerSourceToBuildOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type TriggerSourceToBuildPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerSourceToBuildPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerSourceToBuild)(nil)).Elem()
+}
+
+func (o TriggerSourceToBuildPtrOutput) ToTriggerSourceToBuildPtrOutput() TriggerSourceToBuildPtrOutput {
+	return o
+}
+
+func (o TriggerSourceToBuildPtrOutput) ToTriggerSourceToBuildPtrOutputWithContext(ctx context.Context) TriggerSourceToBuildPtrOutput {
+	return o
+}
+
+func (o TriggerSourceToBuildPtrOutput) Elem() TriggerSourceToBuildOutput {
+	return o.ApplyT(func(v *TriggerSourceToBuild) TriggerSourceToBuild {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerSourceToBuild
+		return ret
+	}).(TriggerSourceToBuildOutput)
+}
+
+// The branch or tag to use. Must start with "refs/" (required).
+func (o TriggerSourceToBuildPtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+func (o TriggerSourceToBuildPtrOutput) RepoType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo (required).
+func (o TriggerSourceToBuildPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4526,6 +4919,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildStepArrayInput)(nil)).Elem(), TriggerBuildStepArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildStepVolumeInput)(nil)).Elem(), TriggerBuildStepVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildStepVolumeArrayInput)(nil)).Elem(), TriggerBuildStepVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGitFileSourceInput)(nil)).Elem(), TriggerGitFileSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGitFileSourcePtrInput)(nil)).Elem(), TriggerGitFileSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGithubInput)(nil)).Elem(), TriggerGithubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGithubPtrInput)(nil)).Elem(), TriggerGithubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGithubPullRequestInput)(nil)).Elem(), TriggerGithubPullRequestArgs{})
@@ -4534,6 +4929,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGithubPushPtrInput)(nil)).Elem(), TriggerGithubPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerPubsubConfigInput)(nil)).Elem(), TriggerPubsubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerPubsubConfigPtrInput)(nil)).Elem(), TriggerPubsubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerSourceToBuildInput)(nil)).Elem(), TriggerSourceToBuildArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerSourceToBuildPtrInput)(nil)).Elem(), TriggerSourceToBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTriggerTemplateInput)(nil)).Elem(), TriggerTriggerTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTriggerTemplatePtrInput)(nil)).Elem(), TriggerTriggerTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerWebhookConfigInput)(nil)).Elem(), TriggerWebhookConfigArgs{})
@@ -4570,6 +4967,8 @@ func init() {
 	pulumi.RegisterOutputType(TriggerBuildStepArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildStepVolumeOutput{})
 	pulumi.RegisterOutputType(TriggerBuildStepVolumeArrayOutput{})
+	pulumi.RegisterOutputType(TriggerGitFileSourceOutput{})
+	pulumi.RegisterOutputType(TriggerGitFileSourcePtrOutput{})
 	pulumi.RegisterOutputType(TriggerGithubOutput{})
 	pulumi.RegisterOutputType(TriggerGithubPtrOutput{})
 	pulumi.RegisterOutputType(TriggerGithubPullRequestOutput{})
@@ -4578,6 +4977,8 @@ func init() {
 	pulumi.RegisterOutputType(TriggerGithubPushPtrOutput{})
 	pulumi.RegisterOutputType(TriggerPubsubConfigOutput{})
 	pulumi.RegisterOutputType(TriggerPubsubConfigPtrOutput{})
+	pulumi.RegisterOutputType(TriggerSourceToBuildOutput{})
+	pulumi.RegisterOutputType(TriggerSourceToBuildPtrOutput{})
 	pulumi.RegisterOutputType(TriggerTriggerTemplateOutput{})
 	pulumi.RegisterOutputType(TriggerTriggerTemplatePtrOutput{})
 	pulumi.RegisterOutputType(TriggerWebhookConfigOutput{})

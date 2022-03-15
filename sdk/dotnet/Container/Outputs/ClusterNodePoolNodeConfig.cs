@@ -46,6 +46,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodePoolNodeConfigGuestAccelerator> GuestAccelerators;
         /// <summary>
+        /// Google Virtual NIC (gVNIC) is a virtual network interface.
+        /// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+        /// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+        /// GKE node version 1.15.11-gke.15 or later
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigGvnic? Gvnic;
+        /// <summary>
         /// The image type to use for this node. Note that changing the image type
         /// will delete and recreate all nodes in the node pool.
         /// </summary>
@@ -164,6 +172,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators,
 
+            Outputs.ClusterNodePoolNodeConfigGvnic? gvnic,
+
             string? imageType,
 
             Outputs.ClusterNodePoolNodeConfigKubeletConfig? kubeletConfig,
@@ -206,6 +216,7 @@ namespace Pulumi.Gcp.Container.Outputs
             EphemeralStorageConfig = ephemeralStorageConfig;
             GcfsConfig = gcfsConfig;
             GuestAccelerators = guestAccelerators;
+            Gvnic = gvnic;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;
             Labels = labels;

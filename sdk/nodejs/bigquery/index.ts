@@ -19,6 +19,7 @@ export * from "./iamMember";
 export * from "./iamPolicy";
 export * from "./job";
 export * from "./reservation";
+export * from "./reservationAssignment";
 export * from "./routine";
 export * from "./table";
 
@@ -36,6 +37,7 @@ import { IamMember } from "./iamMember";
 import { IamPolicy } from "./iamPolicy";
 import { Job } from "./job";
 import { Reservation } from "./reservation";
+import { ReservationAssignment } from "./reservationAssignment";
 import { Routine } from "./routine";
 import { Table } from "./table";
 
@@ -69,6 +71,8 @@ const _module = {
                 return new Job(name, <any>undefined, { urn })
             case "gcp:bigquery/reservation:Reservation":
                 return new Reservation(name, <any>undefined, { urn })
+            case "gcp:bigquery/reservationAssignment:ReservationAssignment":
+                return new ReservationAssignment(name, <any>undefined, { urn })
             case "gcp:bigquery/routine:Routine":
                 return new Routine(name, <any>undefined, { urn })
             case "gcp:bigquery/table:Table":
@@ -91,5 +95,6 @@ pulumi.runtime.registerResourceModule("gcp", "bigquery/iamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/iamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/job", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/reservation", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/reservationAssignment", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/routine", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/table", _module)

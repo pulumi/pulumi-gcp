@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:projects/accessApprovalSettings:AccessApprovalSettings":
 		r = &AccessApprovalSettings{}
+	case "gcp:projects/apiKey:ApiKey":
+		r = &ApiKey{}
 	case "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts":
 		r = &DefaultServiceAccounts{}
 	case "gcp:projects/iAMAuditConfig:IAMAuditConfig":
@@ -59,6 +61,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"projects/accessApprovalSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"projects/apiKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

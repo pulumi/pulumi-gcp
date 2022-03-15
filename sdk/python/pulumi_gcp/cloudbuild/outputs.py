@@ -24,10 +24,12 @@ __all__ = [
     'TriggerBuildSourceStorageSource',
     'TriggerBuildStep',
     'TriggerBuildStepVolume',
+    'TriggerGitFileSource',
     'TriggerGithub',
     'TriggerGithubPullRequest',
     'TriggerGithubPush',
     'TriggerPubsubConfig',
+    'TriggerSourceToBuild',
     'TriggerTriggerTemplate',
     'TriggerWebhookConfig',
     'WorkerPoolNetworkConfig',
@@ -1333,6 +1335,86 @@ class TriggerBuildStepVolume(dict):
 
 
 @pulumi.output_type
+class TriggerGitFileSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoType":
+            suggest = "repo_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerGitFileSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerGitFileSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerGitFileSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: str,
+                 repo_type: str,
+                 revision: Optional[str] = None,
+                 uri: Optional[str] = None):
+        """
+        :param str path: Path at which to mount the volume.
+               Paths must be absolute and cannot conflict with other volume paths on the same
+               build step or with certain reserved volume paths.
+        :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+               filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+               If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        :param str uri: The URI of the repo (required).
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "repo_type", repo_type)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path at which to mount the volume.
+        Paths must be absolute and cannot conflict with other volume paths on the same
+        build step or with certain reserved volume paths.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> str:
+        """
+        The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> Optional[str]:
+        """
+        The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+        filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+        If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        """
+        return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        The URI of the repo (required).
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class TriggerGithub(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1612,6 +1694,65 @@ class TriggerPubsubConfig(dict):
         Output only. Name of the subscription.
         """
         return pulumi.get(self, "subscription")
+
+
+@pulumi.output_type
+class TriggerSourceToBuild(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoType":
+            suggest = "repo_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerSourceToBuild. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerSourceToBuild.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerSourceToBuild.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ref: str,
+                 repo_type: str,
+                 uri: str):
+        """
+        :param str ref: The branch or tag to use. Must start with "refs/" (required).
+        :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        :param str uri: The URI of the repo (required).
+        """
+        pulumi.set(__self__, "ref", ref)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> str:
+        """
+        The branch or tag to use. Must start with "refs/" (required).
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> str:
+        """
+        The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the repo (required).
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type

@@ -693,7 +693,7 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        master = gcp.sql.DatabaseInstance("master",
+        main = gcp.sql.DatabaseInstance("main",
             database_version="POSTGRES_11",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -740,15 +740,15 @@ class DatabaseInstance(pulumi.CustomResource):
         Database instances can be imported using one of any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master projects/{{project}}/instances/{{name}}
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main projects/{{project}}/instances/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{project}}/{{name}}
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{name}}
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{name}}
         ```
 
          config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.
@@ -824,7 +824,7 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        master = gcp.sql.DatabaseInstance("master",
+        main = gcp.sql.DatabaseInstance("main",
             database_version="POSTGRES_11",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
@@ -871,15 +871,15 @@ class DatabaseInstance(pulumi.CustomResource):
         Database instances can be imported using one of any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master projects/{{project}}/instances/{{name}}
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main projects/{{project}}/instances/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{project}}/{{name}}
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{name}}
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{name}}
         ```
 
          config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.

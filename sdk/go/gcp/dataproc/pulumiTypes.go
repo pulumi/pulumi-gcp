@@ -3436,6 +3436,12 @@ type ClusterClusterConfigPreemptibleWorkerConfig struct {
 	// Specifies the number of preemptible nodes to create.
 	// Defaults to 0.
 	NumInstances *int `pulumi:"numInstances"`
+	// Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+	// Accepted values are:
+	// * PREEMPTIBILITY_UNSPECIFIED
+	// * NON_PREEMPTIBLE
+	// * PREEMPTIBLE
+	Preemptibility *string `pulumi:"preemptibility"`
 }
 
 // ClusterClusterConfigPreemptibleWorkerConfigInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigArgs and ClusterClusterConfigPreemptibleWorkerConfigOutput values.
@@ -3456,6 +3462,12 @@ type ClusterClusterConfigPreemptibleWorkerConfigArgs struct {
 	// Specifies the number of preemptible nodes to create.
 	// Defaults to 0.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+	// Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+	// Accepted values are:
+	// * PREEMPTIBILITY_UNSPECIFIED
+	// * NON_PREEMPTIBLE
+	// * PREEMPTIBLE
+	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
 }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigArgs) ElementType() reflect.Type {
@@ -3552,6 +3564,15 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) NumInstances() pulumi
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
 }
 
+// Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+// Accepted values are:
+// * PREEMPTIBILITY_UNSPECIFIED
+// * NON_PREEMPTIBLE
+// * PREEMPTIBLE
+func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfig) *string { return v.Preemptibility }).(pulumi.StringPtrOutput)
+}
+
 type ClusterClusterConfigPreemptibleWorkerConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) ElementType() reflect.Type {
@@ -3604,6 +3625,20 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) NumInstances() pul
 		}
 		return v.NumInstances
 	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+// Accepted values are:
+// * PREEMPTIBILITY_UNSPECIFIED
+// * NON_PREEMPTIBLE
+// * PREEMPTIBLE
+func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptibility
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigDiskConfig struct {
@@ -16058,7 +16093,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedG
 
 type WorkflowTemplatePlacementManagedClusterConfigInitializationAction struct {
 	// Required. Cloud Storage URI of executable file.
-	ExecutableFile string `pulumi:"executableFile"`
+	ExecutableFile *string `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	ExecutionTimeout *string `pulumi:"executionTimeout"`
 }
@@ -16076,7 +16111,7 @@ type WorkflowTemplatePlacementManagedClusterConfigInitializationActionInput inte
 
 type WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs struct {
 	// Required. Cloud Storage URI of executable file.
-	ExecutableFile pulumi.StringInput `pulumi:"executableFile"`
+	ExecutableFile pulumi.StringPtrInput `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
 }
@@ -16133,10 +16168,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput)
 }
 
 // Required. Cloud Storage URI of executable file.
-func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ExecutableFile() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigInitializationAction) string {
+func (o WorkflowTemplatePlacementManagedClusterConfigInitializationActionOutput) ExecutableFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigInitializationAction) *string {
 		return v.ExecutableFile
-	}).(pulumi.StringOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.

@@ -186,6 +186,15 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// MavenRepositoryConfig is maven related repository details.
+        /// Provides additional configuration details for repositories of the maven
+        /// format type.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("mavenConfig")]
+        public Output<Outputs.RepositoryMavenConfig?> MavenConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
         /// </summary>
         [Output("name")]
@@ -309,6 +318,15 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// MavenRepositoryConfig is maven related repository details.
+        /// Provides additional configuration details for repositories of the maven
+        /// format type.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mavenConfig")]
+        public Input<Inputs.RepositoryMavenConfigArgs>? MavenConfig { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -385,6 +403,15 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// MavenRepositoryConfig is maven related repository details.
+        /// Provides additional configuration details for repositories of the maven
+        /// format type.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mavenConfig")]
+        public Input<Inputs.RepositoryMavenConfigGetArgs>? MavenConfig { get; set; }
 
         /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"

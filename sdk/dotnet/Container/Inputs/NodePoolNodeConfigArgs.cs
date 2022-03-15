@@ -35,6 +35,9 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _guestAccelerators = value;
         }
 
+        [Input("gvnic")]
+        public Input<Inputs.NodePoolNodeConfigGvnicArgs>? Gvnic { get; set; }
+
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 

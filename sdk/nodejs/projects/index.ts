@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./accessApprovalSettings";
+export * from "./apiKey";
 export * from "./defaultServiceAccounts";
 export * from "./getOrganizationPolicy";
 export * from "./getProject";
@@ -21,6 +22,7 @@ export * from "./usageExportBucket";
 
 // Import resources to register:
 import { AccessApprovalSettings } from "./accessApprovalSettings";
+import { ApiKey } from "./apiKey";
 import { DefaultServiceAccounts } from "./defaultServiceAccounts";
 import { IAMAuditConfig } from "./iamauditConfig";
 import { IAMBinding } from "./iambinding";
@@ -38,6 +40,8 @@ const _module = {
         switch (type) {
             case "gcp:projects/accessApprovalSettings:AccessApprovalSettings":
                 return new AccessApprovalSettings(name, <any>undefined, { urn })
+            case "gcp:projects/apiKey:ApiKey":
+                return new ApiKey(name, <any>undefined, { urn })
             case "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts":
                 return new DefaultServiceAccounts(name, <any>undefined, { urn })
             case "gcp:projects/iAMAuditConfig:IAMAuditConfig":
@@ -64,6 +68,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "projects/accessApprovalSettings", _module)
+pulumi.runtime.registerResourceModule("gcp", "projects/apiKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/defaultServiceAccounts", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/iAMAuditConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/iAMBinding", _module)

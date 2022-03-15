@@ -1542,11 +1542,17 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
     def __init__(__self__, *,
                  disk_config: Optional['outputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfig'] = None,
                  instance_names: Optional[Sequence[str]] = None,
-                 num_instances: Optional[int] = None):
+                 num_instances: Optional[int] = None,
+                 preemptibility: Optional[str] = None):
         """
         :param 'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs' disk_config: Disk Config
         :param int num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
+        :param str preemptibility: Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+               Accepted values are:
+               * PREEMPTIBILITY_UNSPECIFIED
+               * NON_PREEMPTIBLE
+               * PREEMPTIBLE
         """
         if disk_config is not None:
             pulumi.set(__self__, "disk_config", disk_config)
@@ -1554,6 +1560,8 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
             pulumi.set(__self__, "instance_names", instance_names)
         if num_instances is not None:
             pulumi.set(__self__, "num_instances", num_instances)
+        if preemptibility is not None:
+            pulumi.set(__self__, "preemptibility", preemptibility)
 
     @property
     @pulumi.getter(name="diskConfig")
@@ -1576,6 +1584,18 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
         Defaults to 0.
         """
         return pulumi.get(self, "num_instances")
+
+    @property
+    @pulumi.getter
+    def preemptibility(self) -> Optional[str]:
+        """
+        Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+        Accepted values are:
+        * PREEMPTIBILITY_UNSPECIFIED
+        * NON_PREEMPTIBLE
+        * PREEMPTIBLE
+        """
+        return pulumi.get(self, "preemptibility")
 
 
 @pulumi.output_type
@@ -6115,19 +6135,20 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 executable_file: str,
+                 executable_file: Optional[str] = None,
                  execution_timeout: Optional[str] = None):
         """
         :param str executable_file: Required. Cloud Storage URI of executable file.
         :param str execution_timeout: Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
         """
-        pulumi.set(__self__, "executable_file", executable_file)
+        if executable_file is not None:
+            pulumi.set(__self__, "executable_file", executable_file)
         if execution_timeout is not None:
             pulumi.set(__self__, "execution_timeout", execution_timeout)
 
     @property
     @pulumi.getter(name="executableFile")
-    def executable_file(self) -> str:
+    def executable_file(self) -> Optional[str]:
         """
         Required. Cloud Storage URI of executable file.
         """

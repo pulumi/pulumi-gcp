@@ -34,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		master, err := sql.NewDatabaseInstance(ctx, "master", &sql.DatabaseInstanceArgs{
+// 		main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
 // 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
@@ -44,7 +44,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
-// 			Instance: master.Name,
+// 			Instance: main.Name,
 // 			Host:     pulumi.String("me.com"),
 // 			Password: pulumi.String("changeme"),
 // 		})
@@ -75,7 +75,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		master, err := sql.NewDatabaseInstance(ctx, "master", &sql.DatabaseInstanceArgs{
+// 		main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
 // 			DatabaseVersion: pulumi.String("POSTGRES_9_6"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
@@ -91,7 +91,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
-// 			Instance: master.Name,
+// 			Instance: main.Name,
 // 			Type:     pulumi.String("CLOUD_IAM_USER"),
 // 		})
 // 		if err != nil {
@@ -107,13 +107,13 @@ import (
 // SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:sql/user:User users my-project/master-instance/my-domain.com/me
+//  $ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
 // ```
 //
 //  SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:sql/user:User users my-project/master-instance/me
+//  $ pulumi import gcp:sql/user:User users my-project/main-instance/me
 // ```
 type User struct {
 	pulumi.CustomResourceState

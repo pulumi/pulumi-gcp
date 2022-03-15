@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///             },
     ///             TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
     ///             {
-    ///                 BranchName = "master",
+    ///                 BranchName = "main",
     ///                 RepoName = "my-repo",
     ///             },
     ///         });
@@ -172,7 +172,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///             },
     ///             TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
     ///             {
-    ///                 BranchName = "master",
+    ///                 BranchName = "main",
     ///                 RepoName = "my-repo",
     ///             },
     ///         });
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///         {
     ///             TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
     ///             {
-    ///                 BranchName = "master",
+    ///                 BranchName = "main",
     ///                 RepoName = "my-repo",
     ///             },
     ///             ServiceAccount = cloudbuildServiceAccount.Id,
@@ -222,6 +222,157 @@ namespace Pulumi.Gcp.CloudBuild
     ///             {
     ///                 actAs,
     ///                 logsWriter,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloudbuild Trigger Pubsub Config
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mytopic = new Gcp.PubSub.Topic("mytopic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var pubsub_config_trigger = new Gcp.CloudBuild.Trigger("pubsub-config-trigger", new Gcp.CloudBuild.TriggerArgs
+    ///         {
+    ///             Description = "acceptance test example pubsub build trigger",
+    ///             PubsubConfig = new Gcp.CloudBuild.Inputs.TriggerPubsubConfigArgs
+    ///             {
+    ///                 Topic = mytopic.Id,
+    ///             },
+    ///             SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///             {
+    ///                 Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///                 Ref = "refs/heads/main",
+    ///                 RepoType = "GITHUB",
+    ///             },
+    ///             GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///             {
+    ///                 Path = "cloudbuild.yaml",
+    ///                 Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///                 Revision = "refs/heads/main",
+    ///                 RepoType = "GITHUB",
+    ///             },
+    ///             Substitutions = 
+    ///             {
+    ///                 { "_ACTION", "$(body.message.data.action)" },
+    ///             },
+    ///             Filter = "_ACTION.matches('INSERT')",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloudbuild Trigger Webhook Config
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var webhookTriggerSecretKey = new Gcp.SecretManager.Secret("webhookTriggerSecretKey", new Gcp.SecretManager.SecretArgs
+    ///         {
+    ///             SecretId = "webhook_trigger-secret-key-1",
+    ///             Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///             {
+    ///                 UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
+    ///                 {
+    ///                     Replicas = 
+    ///                     {
+    ///                         new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
+    ///                         {
+    ///                             Location = "us-central1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var webhookTriggerSecretKeyData = new Gcp.SecretManager.SecretVersion("webhookTriggerSecretKeyData", new Gcp.SecretManager.SecretVersionArgs
+    ///         {
+    ///             Secret = webhookTriggerSecretKey.Id,
+    ///             SecretData = "secretkeygoeshere",
+    ///         });
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var secretAccessor = project.Apply(project =&gt; Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/secretmanager.secretAccessor",
+    ///                     Members = 
+    ///                     {
+    ///                         $"serviceAccount:service-{project.Number}@gcp-sa-cloudbuild.iam.gserviceaccount.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         })));
+    ///         var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new Gcp.SecretManager.SecretIamPolicyArgs
+    ///         {
+    ///             Project = webhookTriggerSecretKey.Project,
+    ///             SecretId = webhookTriggerSecretKey.SecretId,
+    ///             PolicyData = secretAccessor.Apply(secretAccessor =&gt; secretAccessor.PolicyData),
+    ///         });
+    ///         var webhook_config_trigger = new Gcp.CloudBuild.Trigger("webhook-config-trigger", new Gcp.CloudBuild.TriggerArgs
+    ///         {
+    ///             Description = "acceptance test example webhook build trigger",
+    ///             WebhookConfig = new Gcp.CloudBuild.Inputs.TriggerWebhookConfigArgs
+    ///             {
+    ///                 Secret = webhookTriggerSecretKeyData.Id,
+    ///             },
+    ///             SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///             {
+    ///                 Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///                 Ref = "refs/heads/main",
+    ///                 RepoType = "GITHUB",
+    ///             },
+    ///             GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///             {
+    ///                 Path = "cloudbuild.yaml",
+    ///                 Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///                 Revision = "refs/heads/main",
+    ///                 RepoType = "GITHUB",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloudbuild Trigger Manual
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var manual_trigger = new Gcp.CloudBuild.Trigger("manual-trigger", new Gcp.CloudBuild.TriggerArgs
+    ///         {
+    ///             GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///             {
+    ///                 Path = "cloudbuild.yaml",
+    ///                 RepoType = "GITHUB",
+    ///                 Revision = "refs/heads/main",
+    ///                 Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///             },
+    ///             SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///             {
+    ///                 Ref = "refs/heads/main",
+    ///                 RepoType = "GITHUB",
+    ///                 Uri = "https://hashicorp/terraform-provider-google-beta",
     ///             },
     ///         });
     ///     }
@@ -274,10 +425,25 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
+        /// Path, from the source root, to a file whose contents is used for the template.
+        /// Either a filename or build template must be provided. Set this only when using trigger_template or github.
+        /// When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
         /// </summary>
         [Output("filename")]
         public Output<string?> Filename { get; private set; } = null!;
+
+        /// <summary>
+        /// A Common Expression Language string. Used only with Pub/Sub and Webhook.
+        /// </summary>
+        [Output("filter")]
+        public Output<string?> Filter { get; private set; } = null!;
+
+        /// <summary>
+        /// The file source describing the local or remote Build template.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gitFileSource")]
+        public Output<Outputs.TriggerGitFileSource?> GitFileSource { get; private set; } = null!;
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
@@ -331,7 +497,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// PubsubConfig describes the configuration of a trigger that creates
         /// a build whenever a Pub/Sub message is published.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Output("pubsubConfig")]
@@ -346,6 +512,17 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("serviceAccount")]
         public Output<string?> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// The repo and ref of the repository from which to build.
+        /// This field is used only for those triggers that do not respond to SCM events.
+        /// Triggers that respond to such events build source at whatever commit caused the event.
+        /// This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sourceToBuild")]
+        public Output<Outputs.TriggerSourceToBuild?> SourceToBuild { get; private set; } = null!;
 
         /// <summary>
         /// Substitutions to use in a triggered build. Should only be used with triggers.run
@@ -370,7 +547,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Output("triggerTemplate")]
@@ -379,7 +556,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// WebhookConfig describes the configuration of a trigger that creates
         /// a build whenever a webhook is sent to a trigger's webhook URL.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Output("webhookConfig")]
@@ -451,10 +628,25 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
+        /// Path, from the source root, to a file whose contents is used for the template.
+        /// Either a filename or build template must be provided. Set this only when using trigger_template or github.
+        /// When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
         /// </summary>
         [Input("filename")]
         public Input<string>? Filename { get; set; }
+
+        /// <summary>
+        /// A Common Expression Language string. Used only with Pub/Sub and Webhook.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// The file source describing the local or remote Build template.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gitFileSource")]
+        public Input<Inputs.TriggerGitFileSourceArgs>? GitFileSource { get; set; }
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
@@ -520,7 +712,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// PubsubConfig describes the configuration of a trigger that creates
         /// a build whenever a Pub/Sub message is published.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("pubsubConfig")]
@@ -535,6 +727,17 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// The repo and ref of the repository from which to build.
+        /// This field is used only for those triggers that do not respond to SCM events.
+        /// Triggers that respond to such events build source at whatever commit caused the event.
+        /// This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceToBuild")]
+        public Input<Inputs.TriggerSourceToBuildArgs>? SourceToBuild { get; set; }
 
         [Input("substitutions")]
         private InputMap<string>? _substitutions;
@@ -565,7 +768,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("triggerTemplate")]
@@ -574,7 +777,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// WebhookConfig describes the configuration of a trigger that creates
         /// a build whenever a webhook is sent to a trigger's webhook URL.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("webhookConfig")]
@@ -613,10 +816,25 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
+        /// Path, from the source root, to a file whose contents is used for the template.
+        /// Either a filename or build template must be provided. Set this only when using trigger_template or github.
+        /// When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
         /// </summary>
         [Input("filename")]
         public Input<string>? Filename { get; set; }
+
+        /// <summary>
+        /// A Common Expression Language string. Used only with Pub/Sub and Webhook.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// The file source describing the local or remote Build template.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gitFileSource")]
+        public Input<Inputs.TriggerGitFileSourceGetArgs>? GitFileSource { get; set; }
 
         /// <summary>
         /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
@@ -682,7 +900,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// PubsubConfig describes the configuration of a trigger that creates
         /// a build whenever a Pub/Sub message is published.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("pubsubConfig")]
@@ -697,6 +915,17 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// The repo and ref of the repository from which to build.
+        /// This field is used only for those triggers that do not respond to SCM events.
+        /// Triggers that respond to such events build source at whatever commit caused the event.
+        /// This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceToBuild")]
+        public Input<Inputs.TriggerSourceToBuildGetArgs>? SourceToBuild { get; set; }
 
         [Input("substitutions")]
         private InputMap<string>? _substitutions;
@@ -733,7 +962,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// Branch and tag names in trigger templates are interpreted as regular
         /// expressions. Any branch or tag change that matches that regular
         /// expression will trigger a build.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("triggerTemplate")]
@@ -742,7 +971,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <summary>
         /// WebhookConfig describes the configuration of a trigger that creates
         /// a build whenever a webhook is sent to a trigger's webhook URL.
-        /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
+        /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("webhookConfig")]

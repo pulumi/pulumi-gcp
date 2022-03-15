@@ -2368,6 +2368,20 @@ export namespace artifactregistry {
         title: string;
     }
 
+    export interface RepositoryMavenConfig {
+        /**
+         * The repository with this flag will allow publishing the same
+         * snapshot versions.
+         */
+        allowSnapshotOverwrites?: boolean;
+        /**
+         * Version policy defines the versions that the registry will accept.
+         * Default value is `VERSION_POLICY_UNSPECIFIED`.
+         * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+         */
+        versionPolicy?: string;
+    }
+
 }
 
 export namespace assuredworkloads {
@@ -5816,6 +5830,30 @@ export namespace cloudbuild {
         path: string;
     }
 
+    export interface TriggerGitFileSource {
+        /**
+         * Path at which to mount the volume.
+         * Paths must be absolute and cannot conflict with other volume paths on the same
+         * build step or with certain reserved volume paths.
+         */
+        path: string;
+        /**
+         * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+         */
+        repoType: string;
+        /**
+         * The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+         * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+         * If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+         */
+        revision?: string;
+        /**
+         * The URI of the repo (required).
+         */
+        uri?: string;
+    }
+
     export interface TriggerGithub {
         /**
          * Name of the volume to mount.
@@ -5891,6 +5929,22 @@ export namespace cloudbuild {
          * The name of the topic from which this subscription is receiving messages.
          */
         topic: string;
+    }
+
+    export interface TriggerSourceToBuild {
+        /**
+         * The branch or tag to use. Must start with "refs/" (required).
+         */
+        ref: string;
+        /**
+         * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+         */
+        repoType: string;
+        /**
+         * The URI of the repo (required).
+         */
+        uri: string;
     }
 
     export interface TriggerTriggerTemplate {
@@ -6908,7 +6962,7 @@ export namespace cloudrun {
          * In the context of a Revision, we disallow a number of the fields of
          * this Container, including: name, ports, and volumeMounts.
          * The runtime contract is documented here:
-         * https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+         * https://github.com/knative/serving/blob/main/docs/runtime-contract.md
          * Structure is documented below.
          */
         containers: outputs.cloudrun.ServiceTemplateSpecContainer[];
@@ -17605,7 +17659,7 @@ export namespace container {
         /**
          * The status of the Filestore CSI driver addon,
          * which allows the usage of filestore instance as volumes.
-         * It is disbaled by default; set `enabled = true` to enable.
+         * It is disabled by default; set `enabled = true` to enable.
          */
         gcpFilestoreCsiDriverConfig: outputs.container.ClusterAddonsConfigGcpFilestoreCsiDriverConfig;
         /**
@@ -18027,6 +18081,14 @@ export namespace container {
          */
         guestAccelerators: outputs.container.ClusterNodeConfigGuestAccelerator[];
         /**
+         * Google Virtual NIC (gVNIC) is a virtual network interface.
+         * Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+         * gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+         * GKE node version 1.15.11-gke.15 or later
+         * Structure is documented below.
+         */
+        gvnic?: outputs.container.ClusterNodeConfigGvnic;
+        /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
          */
@@ -18160,6 +18222,14 @@ export namespace container {
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
+    }
+
+    export interface ClusterNodeConfigGvnic {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterNodeConfigKubeletConfig {
@@ -18343,6 +18413,14 @@ export namespace container {
          */
         guestAccelerators: outputs.container.ClusterNodePoolNodeConfigGuestAccelerator[];
         /**
+         * Google Virtual NIC (gVNIC) is a virtual network interface.
+         * Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+         * gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+         * GKE node version 1.15.11-gke.15 or later
+         * Structure is documented below.
+         */
+        gvnic?: outputs.container.ClusterNodePoolNodeConfigGvnic;
+        /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
          */
@@ -18476,6 +18554,14 @@ export namespace container {
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
+    }
+
+    export interface ClusterNodePoolNodeConfigGvnic {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterNodePoolNodeConfigKubeletConfig {
@@ -18872,6 +18958,7 @@ export namespace container {
         ephemeralStorageConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageConfig[];
         gcfsConfigs: outputs.container.GetClusterNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
+        gvnics: outputs.container.GetClusterNodeConfigGvnic[];
         imageType: string;
         kubeletConfigs: outputs.container.GetClusterNodeConfigKubeletConfig[];
         labels: {[key: string]: string};
@@ -18904,6 +18991,10 @@ export namespace container {
         count: number;
         gpuPartitionSize: string;
         type: string;
+    }
+
+    export interface GetClusterNodeConfigGvnic {
+        enabled: boolean;
     }
 
     export interface GetClusterNodeConfigKubeletConfig {
@@ -18979,6 +19070,7 @@ export namespace container {
         ephemeralStorageConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageConfig[];
         gcfsConfigs: outputs.container.GetClusterNodePoolNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
+        gvnics: outputs.container.GetClusterNodePoolNodeConfigGvnic[];
         imageType: string;
         kubeletConfigs: outputs.container.GetClusterNodePoolNodeConfigKubeletConfig[];
         labels: {[key: string]: string};
@@ -19011,6 +19103,10 @@ export namespace container {
         count: number;
         gpuPartitionSize: string;
         type: string;
+    }
+
+    export interface GetClusterNodePoolNodeConfigGvnic {
+        enabled: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigKubeletConfig {
@@ -19136,6 +19232,7 @@ export namespace container {
         ephemeralStorageConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageConfig;
         gcfsConfig?: outputs.container.NodePoolNodeConfigGcfsConfig;
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];
+        gvnic?: outputs.container.NodePoolNodeConfigGvnic;
         imageType: string;
         kubeletConfig?: outputs.container.NodePoolNodeConfigKubeletConfig;
         labels: {[key: string]: string};
@@ -19173,6 +19270,10 @@ export namespace container {
          * physical proximity in order to reduce network latency between nodes.
          */
         type: string;
+    }
+
+    export interface NodePoolNodeConfigGvnic {
+        enabled: boolean;
     }
 
     export interface NodePoolNodeConfigKubeletConfig {
@@ -19227,7 +19328,6 @@ export namespace container {
          */
         maxUnavailable: number;
     }
-
 }
 
 export namespace containeranalysis {
@@ -21063,6 +21163,14 @@ export namespace dataproc {
          * Defaults to 0.
          */
         numInstances: number;
+        /**
+         * Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+         * Accepted values are:
+         * * PREEMPTIBILITY_UNSPECIFIED
+         * * NON_PREEMPTIBLE
+         * * PREEMPTIBLE
+         */
+        preemptibility?: string;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
@@ -22219,7 +22327,7 @@ export namespace dataproc {
         /**
          * Required. Cloud Storage URI of executable file.
          */
-        executableFile: string;
+        executableFile?: string;
         /**
          * Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
          */
@@ -26707,9 +26815,16 @@ export namespace networkservices {
         description?: string;
         /**
          * The list of host patterns to match.
-         * Host patterns must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
-         * The only accepted ports are :80 and :443.
+         * Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
+         * When multiple hosts are specified, hosts are matched in the following priority:
+         * 1. Exact domain names: ``www.foo.com``.
+         * 2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
+         * 3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
+         * 4. Special wildcard ``*`` matching any domain.
+         * Notes:
+         * The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
          * Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+         * You may specify up to 10 hosts.
          */
         hosts: string[];
         /**
@@ -26961,34 +27076,34 @@ export namespace networkservices {
          * - The TTL must be > 0 and <= 86400s (1 day)
          * - The clientTtl cannot be larger than the defaultTtl (if set)
          * - Fractions of a second are not allowed.
-         * - Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+         * Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
          * When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         * A duration in seconds terminated by 's'. Example: "3s".
          */
         clientTtl?: string;
         /**
          * Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
          * Defaults to 3600s (1 hour).
-         * - The TTL must be >= 0 and <= 2592000s (1 month)
+         * - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
          * - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
          * - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
          * - Fractions of a second are not allowed.
          * - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
          * Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
          * When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         * A duration in seconds terminated by 's'. Example: "3s".
          */
         defaultTtl: string;
         /**
          * Specifies the maximum allowed TTL for cached content served by this origin.
          * Defaults to 86400s (1 day).
          * Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
-         * - The TTL must be >= 0 and <= 2592000s (1 month)
+         * - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
          * - Setting a TTL of "0" means "always revalidate"
          * - The value of maxTtl must be equal to or greater than defaultTtl.
          * - Fractions of a second are not allowed.
-         * - When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         * When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+         * A duration in seconds terminated by 's'. Example: "3s".
          */
         maxTtl: string;
         /**
@@ -27023,7 +27138,7 @@ export namespace networkservices {
     export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy {
         /**
          * If true, requests to different hosts will be cached separately.
-         * Note: this should only be enabled if hosts share the same origin and content Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
+         * Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
          */
         excludeHost: boolean;
         /**
@@ -29714,6 +29829,79 @@ export namespace projects {
         enrollmentLevel?: string;
     }
 
+    export interface ApiKeyRestrictions {
+        /**
+         * The Android apps that are allowed to use the key.
+         */
+        androidKeyRestrictions?: outputs.projects.ApiKeyRestrictionsAndroidKeyRestrictions;
+        /**
+         * A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+         */
+        apiTargets?: outputs.projects.ApiKeyRestrictionsApiTarget[];
+        /**
+         * The HTTP referrers (websites) that are allowed to use the key.
+         */
+        browserKeyRestrictions?: outputs.projects.ApiKeyRestrictionsBrowserKeyRestrictions;
+        /**
+         * The iOS apps that are allowed to use the key.
+         */
+        iosKeyRestrictions?: outputs.projects.ApiKeyRestrictionsIosKeyRestrictions;
+        /**
+         * The IP addresses of callers that are allowed to use the key.
+         */
+        serverKeyRestrictions?: outputs.projects.ApiKeyRestrictionsServerKeyRestrictions;
+    }
+
+    export interface ApiKeyRestrictionsAndroidKeyRestrictions {
+        /**
+         * A list of Android applications that are allowed to make API calls with this key.
+         */
+        allowedApplications: outputs.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication[];
+    }
+
+    export interface ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication {
+        /**
+         * The package name of the application.
+         */
+        packageName: string;
+        /**
+         * The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+         */
+        sha1Fingerprint: string;
+    }
+
+    export interface ApiKeyRestrictionsApiTarget {
+        /**
+         * Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
+         */
+        methods?: string[];
+        /**
+         * The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use `gcloud services list` to get a list of services that are enabled in the project.
+         */
+        service: string;
+    }
+
+    export interface ApiKeyRestrictionsBrowserKeyRestrictions {
+        /**
+         * A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+         */
+        allowedReferrers: string[];
+    }
+
+    export interface ApiKeyRestrictionsIosKeyRestrictions {
+        /**
+         * A list of bundle IDs that are allowed when making API calls with this key.
+         */
+        allowedBundleIds: string[];
+    }
+
+    export interface ApiKeyRestrictionsServerKeyRestrictions {
+        /**
+         * A list of the caller IP addresses that are allowed to make API calls with this key.
+         */
+        allowedIps: string[];
+    }
+
     export interface GetOrganizationPolicyBooleanPolicy {
         enforced: boolean;
     }
@@ -29845,6 +30033,7 @@ export namespace projects {
          */
         default: boolean;
     }
+
 }
 
 export namespace pubsub {

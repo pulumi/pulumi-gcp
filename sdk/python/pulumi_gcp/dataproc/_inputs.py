@@ -1424,11 +1424,17 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
     def __init__(__self__, *,
                  disk_config: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs']] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 num_instances: Optional[pulumi.Input[int]] = None):
+                 num_instances: Optional[pulumi.Input[int]] = None,
+                 preemptibility: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs'] disk_config: Disk Config
         :param pulumi.Input[int] num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
+        :param pulumi.Input[str] preemptibility: Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+               Accepted values are:
+               * PREEMPTIBILITY_UNSPECIFIED
+               * NON_PREEMPTIBLE
+               * PREEMPTIBLE
         """
         if disk_config is not None:
             pulumi.set(__self__, "disk_config", disk_config)
@@ -1436,6 +1442,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
             pulumi.set(__self__, "instance_names", instance_names)
         if num_instances is not None:
             pulumi.set(__self__, "num_instances", num_instances)
+        if preemptibility is not None:
+            pulumi.set(__self__, "preemptibility", preemptibility)
 
     @property
     @pulumi.getter(name="diskConfig")
@@ -1470,6 +1478,22 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
     @num_instances.setter
     def num_instances(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_instances", value)
+
+    @property
+    @pulumi.getter
+    def preemptibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
+        Accepted values are:
+        * PREEMPTIBILITY_UNSPECIFIED
+        * NON_PREEMPTIBLE
+        * PREEMPTIBLE
+        """
+        return pulumi.get(self, "preemptibility")
+
+    @preemptibility.setter
+    def preemptibility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preemptibility", value)
 
 
 @pulumi.input_type
@@ -5806,26 +5830,27 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs:
     def __init__(__self__, *,
-                 executable_file: pulumi.Input[str],
+                 executable_file: Optional[pulumi.Input[str]] = None,
                  execution_timeout: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] executable_file: Required. Cloud Storage URI of executable file.
         :param pulumi.Input[str] execution_timeout: Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
         """
-        pulumi.set(__self__, "executable_file", executable_file)
+        if executable_file is not None:
+            pulumi.set(__self__, "executable_file", executable_file)
         if execution_timeout is not None:
             pulumi.set(__self__, "execution_timeout", execution_timeout)
 
     @property
     @pulumi.getter(name="executableFile")
-    def executable_file(self) -> pulumi.Input[str]:
+    def executable_file(self) -> Optional[pulumi.Input[str]]:
         """
         Required. Cloud Storage URI of executable file.
         """
         return pulumi.get(self, "executable_file")
 
     @executable_file.setter
-    def executable_file(self, value: pulumi.Input[str]):
+    def executable_file(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "executable_file", value)
 
     @property

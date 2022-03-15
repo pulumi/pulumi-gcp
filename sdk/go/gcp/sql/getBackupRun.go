@@ -25,7 +25,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sql.GetBackupRun(ctx, &sql.GetBackupRunArgs{
-// 			Instance:   google_sql_database_instance.Master.Name,
+// 			Instance:   google_sql_database_instance.Main.Name,
 // 			MostRecent: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {

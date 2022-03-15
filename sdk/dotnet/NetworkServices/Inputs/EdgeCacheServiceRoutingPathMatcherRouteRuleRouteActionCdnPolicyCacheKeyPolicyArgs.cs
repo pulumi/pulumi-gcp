@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
     {
         /// <summary>
         /// If true, requests to different hosts will be cached separately.
-        /// Note: this should only be enabled if hosts share the same origin and content Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
+        /// Note: this should only be enabled if hosts share the same origin and content. Removing the host from the cache key may inadvertently result in different objects being cached than intended, depending on which route the first user matched.
         /// </summary>
         [Input("excludeHost")]
         public Input<bool>? ExcludeHost { get; set; }

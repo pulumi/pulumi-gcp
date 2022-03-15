@@ -5901,7 +5901,7 @@ type ClusterAddonsConfig struct {
 	GcePersistentDiskCsiDriverConfig *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// The status of the Filestore CSI driver addon,
 	// which allows the usage of filestore instance as volumes.
-	// It is disbaled by default; set `enabled = true` to enable.
+	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig *ClusterAddonsConfigGcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
@@ -5954,7 +5954,7 @@ type ClusterAddonsConfigArgs struct {
 	GcePersistentDiskCsiDriverConfig ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// The status of the Filestore CSI driver addon,
 	// which allows the usage of filestore instance as volumes.
-	// It is disbaled by default; set `enabled = true` to enable.
+	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
@@ -6086,7 +6086,7 @@ func (o ClusterAddonsConfigOutput) GcePersistentDiskCsiDriverConfig() ClusterAdd
 
 // The status of the Filestore CSI driver addon,
 // which allows the usage of filestore instance as volumes.
-// It is disbaled by default; set `enabled = true` to enable.
+// It is disabled by default; set `enabled = true` to enable.
 func (o ClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 		return v.GcpFilestoreCsiDriverConfig
@@ -6203,7 +6203,7 @@ func (o ClusterAddonsConfigPtrOutput) GcePersistentDiskCsiDriverConfig() Cluster
 
 // The status of the Filestore CSI driver addon,
 // which allows the usage of filestore instance as volumes.
-// It is disbaled by default; set `enabled = true` to enable.
+// It is disabled by default; set `enabled = true` to enable.
 func (o ClusterAddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 		if v == nil {
@@ -11203,6 +11203,12 @@ type ClusterNodeConfig struct {
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators []ClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
+	// Google Virtual NIC (gVNIC) is a virtual network interface.
+	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+	// GKE node version 1.15.11-gke.15 or later
+	// Structure is documented below.
+	Gvnic *ClusterNodeConfigGvnic `pulumi:"gvnic"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
@@ -11305,6 +11311,12 @@ type ClusterNodeConfigArgs struct {
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators ClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
+	// Google Virtual NIC (gVNIC) is a virtual network interface.
+	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+	// GKE node version 1.15.11-gke.15 or later
+	// Structure is documented below.
+	Gvnic ClusterNodeConfigGvnicPtrInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
@@ -11488,6 +11500,15 @@ func (o ClusterNodeConfigOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutp
 // Structure documented below.
 func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
+}
+
+// Google Virtual NIC (gVNIC) is a virtual network interface.
+// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+// GKE node version 1.15.11-gke.15 or later
+// Structure is documented below.
+func (o ClusterNodeConfigOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGvnic { return v.Gvnic }).(ClusterNodeConfigGvnicPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -11702,6 +11723,20 @@ func (o ClusterNodeConfigPtrOutput) GuestAccelerators() ClusterNodeConfigGuestAc
 		}
 		return v.GuestAccelerators
 	}).(ClusterNodeConfigGuestAcceleratorArrayOutput)
+}
+
+// Google Virtual NIC (gVNIC) is a virtual network interface.
+// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+// GKE node version 1.15.11-gke.15 or later
+// Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigGvnic {
+		if v == nil {
+			return nil
+		}
+		return v.Gvnic
+	}).(ClusterNodeConfigGvnicPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -12307,6 +12342,147 @@ func (o ClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) C
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodeConfigGuestAcceleratorOutput)
+}
+
+type ClusterNodeConfigGvnic struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodeConfigGvnicInput is an input type that accepts ClusterNodeConfigGvnicArgs and ClusterNodeConfigGvnicOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigGvnicInput` via:
+//
+//          ClusterNodeConfigGvnicArgs{...}
+type ClusterNodeConfigGvnicInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigGvnicOutput() ClusterNodeConfigGvnicOutput
+	ToClusterNodeConfigGvnicOutputWithContext(context.Context) ClusterNodeConfigGvnicOutput
+}
+
+type ClusterNodeConfigGvnicArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodeConfigGvnicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigGvnicArgs) ToClusterNodeConfigGvnicOutput() ClusterNodeConfigGvnicOutput {
+	return i.ToClusterNodeConfigGvnicOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigGvnicArgs) ToClusterNodeConfigGvnicOutputWithContext(ctx context.Context) ClusterNodeConfigGvnicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGvnicOutput)
+}
+
+func (i ClusterNodeConfigGvnicArgs) ToClusterNodeConfigGvnicPtrOutput() ClusterNodeConfigGvnicPtrOutput {
+	return i.ToClusterNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigGvnicArgs) ToClusterNodeConfigGvnicPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGvnicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGvnicOutput).ToClusterNodeConfigGvnicPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigGvnicPtrInput is an input type that accepts ClusterNodeConfigGvnicArgs, ClusterNodeConfigGvnicPtr and ClusterNodeConfigGvnicPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigGvnicPtrInput` via:
+//
+//          ClusterNodeConfigGvnicArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodeConfigGvnicPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigGvnicPtrOutput() ClusterNodeConfigGvnicPtrOutput
+	ToClusterNodeConfigGvnicPtrOutputWithContext(context.Context) ClusterNodeConfigGvnicPtrOutput
+}
+
+type clusterNodeConfigGvnicPtrType ClusterNodeConfigGvnicArgs
+
+func ClusterNodeConfigGvnicPtr(v *ClusterNodeConfigGvnicArgs) ClusterNodeConfigGvnicPtrInput {
+	return (*clusterNodeConfigGvnicPtrType)(v)
+}
+
+func (*clusterNodeConfigGvnicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigGvnicPtrType) ToClusterNodeConfigGvnicPtrOutput() ClusterNodeConfigGvnicPtrOutput {
+	return i.ToClusterNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigGvnicPtrType) ToClusterNodeConfigGvnicPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGvnicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGvnicPtrOutput)
+}
+
+type ClusterNodeConfigGvnicOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigGvnicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigGvnicOutput) ToClusterNodeConfigGvnicOutput() ClusterNodeConfigGvnicOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGvnicOutput) ToClusterNodeConfigGvnicOutputWithContext(ctx context.Context) ClusterNodeConfigGvnicOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGvnicOutput) ToClusterNodeConfigGvnicPtrOutput() ClusterNodeConfigGvnicPtrOutput {
+	return o.ToClusterNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigGvnicOutput) ToClusterNodeConfigGvnicPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGvnicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigGvnic) *ClusterNodeConfigGvnic {
+		return &v
+	}).(ClusterNodeConfigGvnicPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodeConfigGvnicOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodeConfigGvnic) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodeConfigGvnicPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigGvnicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigGvnicPtrOutput) ToClusterNodeConfigGvnicPtrOutput() ClusterNodeConfigGvnicPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGvnicPtrOutput) ToClusterNodeConfigGvnicPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGvnicPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGvnicPtrOutput) Elem() ClusterNodeConfigGvnicOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGvnic) ClusterNodeConfigGvnic {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigGvnic
+		return ret
+	}).(ClusterNodeConfigGvnicOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGvnic) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodeConfigKubeletConfig struct {
@@ -13945,6 +14121,12 @@ type ClusterNodePoolNodeConfig struct {
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators []ClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
+	// Google Virtual NIC (gVNIC) is a virtual network interface.
+	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+	// GKE node version 1.15.11-gke.15 or later
+	// Structure is documented below.
+	Gvnic *ClusterNodePoolNodeConfigGvnic `pulumi:"gvnic"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
@@ -14047,6 +14229,12 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators ClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
+	// Google Virtual NIC (gVNIC) is a virtual network interface.
+	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+	// GKE node version 1.15.11-gke.15 or later
+	// Structure is documented below.
+	Gvnic ClusterNodePoolNodeConfigGvnicPtrInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
@@ -14234,6 +14422,15 @@ func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNode
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
 		return v.GuestAccelerators
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
+}
+
+// Google Virtual NIC (gVNIC) is a virtual network interface.
+// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+// GKE node version 1.15.11-gke.15 or later
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) Gvnic() ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic { return v.Gvnic }).(ClusterNodePoolNodeConfigGvnicPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -14452,6 +14649,20 @@ func (o ClusterNodePoolNodeConfigPtrOutput) GuestAccelerators() ClusterNodePoolN
 		}
 		return v.GuestAccelerators
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
+}
+
+// Google Virtual NIC (gVNIC) is a virtual network interface.
+// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
+// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
+// GKE node version 1.15.11-gke.15 or later
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) Gvnic() ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic {
+		if v == nil {
+			return nil
+		}
+		return v.Gvnic
+	}).(ClusterNodePoolNodeConfigGvnicPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -15057,6 +15268,147 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type ClusterNodePoolNodeConfigGvnic struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodePoolNodeConfigGvnicInput is an input type that accepts ClusterNodePoolNodeConfigGvnicArgs and ClusterNodePoolNodeConfigGvnicOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigGvnicInput` via:
+//
+//          ClusterNodePoolNodeConfigGvnicArgs{...}
+type ClusterNodePoolNodeConfigGvnicInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigGvnicOutput() ClusterNodePoolNodeConfigGvnicOutput
+	ToClusterNodePoolNodeConfigGvnicOutputWithContext(context.Context) ClusterNodePoolNodeConfigGvnicOutput
+}
+
+type ClusterNodePoolNodeConfigGvnicArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodePoolNodeConfigGvnicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigGvnicArgs) ToClusterNodePoolNodeConfigGvnicOutput() ClusterNodePoolNodeConfigGvnicOutput {
+	return i.ToClusterNodePoolNodeConfigGvnicOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigGvnicArgs) ToClusterNodePoolNodeConfigGvnicOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGvnicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGvnicOutput)
+}
+
+func (i ClusterNodePoolNodeConfigGvnicArgs) ToClusterNodePoolNodeConfigGvnicPtrOutput() ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return i.ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigGvnicArgs) ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGvnicOutput).ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigGvnicPtrInput is an input type that accepts ClusterNodePoolNodeConfigGvnicArgs, ClusterNodePoolNodeConfigGvnicPtr and ClusterNodePoolNodeConfigGvnicPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigGvnicPtrInput` via:
+//
+//          ClusterNodePoolNodeConfigGvnicArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodePoolNodeConfigGvnicPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigGvnicPtrOutput() ClusterNodePoolNodeConfigGvnicPtrOutput
+	ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigGvnicPtrOutput
+}
+
+type clusterNodePoolNodeConfigGvnicPtrType ClusterNodePoolNodeConfigGvnicArgs
+
+func ClusterNodePoolNodeConfigGvnicPtr(v *ClusterNodePoolNodeConfigGvnicArgs) ClusterNodePoolNodeConfigGvnicPtrInput {
+	return (*clusterNodePoolNodeConfigGvnicPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigGvnicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigGvnicPtrType) ToClusterNodePoolNodeConfigGvnicPtrOutput() ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return i.ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigGvnicPtrType) ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGvnicPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigGvnicOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigGvnicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigGvnicOutput) ToClusterNodePoolNodeConfigGvnicOutput() ClusterNodePoolNodeConfigGvnicOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGvnicOutput) ToClusterNodePoolNodeConfigGvnicOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGvnicOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGvnicOutput) ToClusterNodePoolNodeConfigGvnicPtrOutput() ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return o.ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigGvnicOutput) ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigGvnic) *ClusterNodePoolNodeConfigGvnic {
+		return &v
+	}).(ClusterNodePoolNodeConfigGvnicPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodePoolNodeConfigGvnicOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGvnic) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolNodeConfigGvnicPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigGvnicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigGvnicPtrOutput) ToClusterNodePoolNodeConfigGvnicPtrOutput() ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGvnicPtrOutput) ToClusterNodePoolNodeConfigGvnicPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGvnicPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGvnicPtrOutput) Elem() ClusterNodePoolNodeConfigGvnicOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGvnic) ClusterNodePoolNodeConfigGvnic {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigGvnic
+		return ret
+	}).(ClusterNodePoolNodeConfigGvnicOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodePoolNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGvnic) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigKubeletConfig struct {
@@ -18392,6 +18744,7 @@ type NodePoolNodeConfig struct {
 	EphemeralStorageConfig *NodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
 	GcfsConfig             *NodePoolNodeConfigGcfsConfig             `pulumi:"gcfsConfig"`
 	GuestAccelerators      []NodePoolNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
+	Gvnic                  *NodePoolNodeConfigGvnic                  `pulumi:"gvnic"`
 	ImageType              *string                                   `pulumi:"imageType"`
 	KubeletConfig          *NodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfig"`
 	Labels                 map[string]string                         `pulumi:"labels"`
@@ -18430,6 +18783,7 @@ type NodePoolNodeConfigArgs struct {
 	EphemeralStorageConfig NodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
 	GcfsConfig             NodePoolNodeConfigGcfsConfigPtrInput             `pulumi:"gcfsConfig"`
 	GuestAccelerators      NodePoolNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
+	Gvnic                  NodePoolNodeConfigGvnicPtrInput                  `pulumi:"gvnic"`
 	ImageType              pulumi.StringPtrInput                            `pulumi:"imageType"`
 	KubeletConfig          NodePoolNodeConfigKubeletConfigPtrInput          `pulumi:"kubeletConfig"`
 	Labels                 pulumi.StringMapInput                            `pulumi:"labels"`
@@ -18549,6 +18903,10 @@ func (o NodePoolNodeConfigOutput) GcfsConfig() NodePoolNodeConfigGcfsConfigPtrOu
 
 func (o NodePoolNodeConfigOutput) GuestAccelerators() NodePoolNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) []NodePoolNodeConfigGuestAccelerator { return v.GuestAccelerators }).(NodePoolNodeConfigGuestAcceleratorArrayOutput)
+}
+
+func (o NodePoolNodeConfigOutput) Gvnic() NodePoolNodeConfigGvnicPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigGvnic { return v.Gvnic }).(NodePoolNodeConfigGvnicPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
@@ -18699,6 +19057,15 @@ func (o NodePoolNodeConfigPtrOutput) GuestAccelerators() NodePoolNodeConfigGuest
 		}
 		return v.GuestAccelerators
 	}).(NodePoolNodeConfigGuestAcceleratorArrayOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) Gvnic() NodePoolNodeConfigGvnicPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigGvnic {
+		if v == nil {
+			return nil
+		}
+		return v.Gvnic
+	}).(NodePoolNodeConfigGvnicPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
@@ -19242,6 +19609,139 @@ func (o NodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]NodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(NodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type NodePoolNodeConfigGvnic struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// NodePoolNodeConfigGvnicInput is an input type that accepts NodePoolNodeConfigGvnicArgs and NodePoolNodeConfigGvnicOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigGvnicInput` via:
+//
+//          NodePoolNodeConfigGvnicArgs{...}
+type NodePoolNodeConfigGvnicInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigGvnicOutput() NodePoolNodeConfigGvnicOutput
+	ToNodePoolNodeConfigGvnicOutputWithContext(context.Context) NodePoolNodeConfigGvnicOutput
+}
+
+type NodePoolNodeConfigGvnicArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (NodePoolNodeConfigGvnicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigGvnicArgs) ToNodePoolNodeConfigGvnicOutput() NodePoolNodeConfigGvnicOutput {
+	return i.ToNodePoolNodeConfigGvnicOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigGvnicArgs) ToNodePoolNodeConfigGvnicOutputWithContext(ctx context.Context) NodePoolNodeConfigGvnicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGvnicOutput)
+}
+
+func (i NodePoolNodeConfigGvnicArgs) ToNodePoolNodeConfigGvnicPtrOutput() NodePoolNodeConfigGvnicPtrOutput {
+	return i.ToNodePoolNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigGvnicArgs) ToNodePoolNodeConfigGvnicPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGvnicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGvnicOutput).ToNodePoolNodeConfigGvnicPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigGvnicPtrInput is an input type that accepts NodePoolNodeConfigGvnicArgs, NodePoolNodeConfigGvnicPtr and NodePoolNodeConfigGvnicPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigGvnicPtrInput` via:
+//
+//          NodePoolNodeConfigGvnicArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolNodeConfigGvnicPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigGvnicPtrOutput() NodePoolNodeConfigGvnicPtrOutput
+	ToNodePoolNodeConfigGvnicPtrOutputWithContext(context.Context) NodePoolNodeConfigGvnicPtrOutput
+}
+
+type nodePoolNodeConfigGvnicPtrType NodePoolNodeConfigGvnicArgs
+
+func NodePoolNodeConfigGvnicPtr(v *NodePoolNodeConfigGvnicArgs) NodePoolNodeConfigGvnicPtrInput {
+	return (*nodePoolNodeConfigGvnicPtrType)(v)
+}
+
+func (*nodePoolNodeConfigGvnicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigGvnicPtrType) ToNodePoolNodeConfigGvnicPtrOutput() NodePoolNodeConfigGvnicPtrOutput {
+	return i.ToNodePoolNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigGvnicPtrType) ToNodePoolNodeConfigGvnicPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGvnicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGvnicPtrOutput)
+}
+
+type NodePoolNodeConfigGvnicOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigGvnicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigGvnicOutput) ToNodePoolNodeConfigGvnicOutput() NodePoolNodeConfigGvnicOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGvnicOutput) ToNodePoolNodeConfigGvnicOutputWithContext(ctx context.Context) NodePoolNodeConfigGvnicOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGvnicOutput) ToNodePoolNodeConfigGvnicPtrOutput() NodePoolNodeConfigGvnicPtrOutput {
+	return o.ToNodePoolNodeConfigGvnicPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigGvnicOutput) ToNodePoolNodeConfigGvnicPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGvnicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigGvnic) *NodePoolNodeConfigGvnic {
+		return &v
+	}).(NodePoolNodeConfigGvnicPtrOutput)
+}
+
+func (o NodePoolNodeConfigGvnicOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigGvnic) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type NodePoolNodeConfigGvnicPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigGvnicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigGvnicPtrOutput) ToNodePoolNodeConfigGvnicPtrOutput() NodePoolNodeConfigGvnicPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGvnicPtrOutput) ToNodePoolNodeConfigGvnicPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGvnicPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGvnicPtrOutput) Elem() NodePoolNodeConfigGvnicOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGvnic) NodePoolNodeConfigGvnic {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigGvnic
+		return ret
+	}).(NodePoolNodeConfigGvnicOutput)
+}
+
+func (o NodePoolNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGvnic) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfigKubeletConfig struct {
@@ -23732,6 +24232,7 @@ type GetClusterNodeConfig struct {
 	EphemeralStorageConfigs []GetClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
 	GcfsConfigs             []GetClusterNodeConfigGcfsConfig             `pulumi:"gcfsConfigs"`
 	GuestAccelerators       []GetClusterNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
+	Gvnics                  []GetClusterNodeConfigGvnic                  `pulumi:"gvnics"`
 	ImageType               string                                       `pulumi:"imageType"`
 	KubeletConfigs          []GetClusterNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
 	Labels                  map[string]string                            `pulumi:"labels"`
@@ -23770,6 +24271,7 @@ type GetClusterNodeConfigArgs struct {
 	EphemeralStorageConfigs GetClusterNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
 	GcfsConfigs             GetClusterNodeConfigGcfsConfigArrayInput             `pulumi:"gcfsConfigs"`
 	GuestAccelerators       GetClusterNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
+	Gvnics                  GetClusterNodeConfigGvnicArrayInput                  `pulumi:"gvnics"`
 	ImageType               pulumi.StringInput                                   `pulumi:"imageType"`
 	KubeletConfigs          GetClusterNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
 	Labels                  pulumi.StringMapInput                                `pulumi:"labels"`
@@ -23865,6 +24367,10 @@ func (o GetClusterNodeConfigOutput) GcfsConfigs() GetClusterNodeConfigGcfsConfig
 
 func (o GetClusterNodeConfigOutput) GuestAccelerators() GetClusterNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(GetClusterNodeConfigGuestAcceleratorArrayOutput)
+}
+
+func (o GetClusterNodeConfigOutput) Gvnics() GetClusterNodeConfigGvnicArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigGvnic { return v.Gvnics }).(GetClusterNodeConfigGvnicArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) ImageType() pulumi.StringOutput {
@@ -24255,6 +24761,100 @@ func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodeConfigGuestAcceleratorOutput)
+}
+
+type GetClusterNodeConfigGvnic struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodeConfigGvnicInput is an input type that accepts GetClusterNodeConfigGvnicArgs and GetClusterNodeConfigGvnicOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGvnicInput` via:
+//
+//          GetClusterNodeConfigGvnicArgs{...}
+type GetClusterNodeConfigGvnicInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput
+	ToGetClusterNodeConfigGvnicOutputWithContext(context.Context) GetClusterNodeConfigGvnicOutput
+}
+
+type GetClusterNodeConfigGvnicArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodeConfigGvnicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGvnicArgs) ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput {
+	return i.ToGetClusterNodeConfigGvnicOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGvnicArgs) ToGetClusterNodeConfigGvnicOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGvnicOutput)
+}
+
+// GetClusterNodeConfigGvnicArrayInput is an input type that accepts GetClusterNodeConfigGvnicArray and GetClusterNodeConfigGvnicArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGvnicArrayInput` via:
+//
+//          GetClusterNodeConfigGvnicArray{ GetClusterNodeConfigGvnicArgs{...} }
+type GetClusterNodeConfigGvnicArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput
+	ToGetClusterNodeConfigGvnicArrayOutputWithContext(context.Context) GetClusterNodeConfigGvnicArrayOutput
+}
+
+type GetClusterNodeConfigGvnicArray []GetClusterNodeConfigGvnicInput
+
+func (GetClusterNodeConfigGvnicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGvnicArray) ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput {
+	return i.ToGetClusterNodeConfigGvnicArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGvnicArray) ToGetClusterNodeConfigGvnicArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGvnicArrayOutput)
+}
+
+type GetClusterNodeConfigGvnicOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGvnicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGvnicOutput) ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGvnicOutput) ToGetClusterNodeConfigGvnicOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGvnicOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGvnic) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigGvnicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGvnicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGvnicArrayOutput) ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGvnicArrayOutput) ToGetClusterNodeConfigGvnicArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGvnicArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGvnicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGvnic {
+		return vs[0].([]GetClusterNodeConfigGvnic)[vs[1].(int)]
+	}).(GetClusterNodeConfigGvnicOutput)
 }
 
 type GetClusterNodeConfigKubeletConfig struct {
@@ -25345,6 +25945,7 @@ type GetClusterNodePoolNodeConfig struct {
 	EphemeralStorageConfigs []GetClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
 	GcfsConfigs             []GetClusterNodePoolNodeConfigGcfsConfig             `pulumi:"gcfsConfigs"`
 	GuestAccelerators       []GetClusterNodePoolNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
+	Gvnics                  []GetClusterNodePoolNodeConfigGvnic                  `pulumi:"gvnics"`
 	ImageType               string                                               `pulumi:"imageType"`
 	KubeletConfigs          []GetClusterNodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
 	Labels                  map[string]string                                    `pulumi:"labels"`
@@ -25383,6 +25984,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	EphemeralStorageConfigs GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
 	GcfsConfigs             GetClusterNodePoolNodeConfigGcfsConfigArrayInput             `pulumi:"gcfsConfigs"`
 	GuestAccelerators       GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
+	Gvnics                  GetClusterNodePoolNodeConfigGvnicArrayInput                  `pulumi:"gvnics"`
 	ImageType               pulumi.StringInput                                           `pulumi:"imageType"`
 	KubeletConfigs          GetClusterNodePoolNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
 	Labels                  pulumi.StringMapInput                                        `pulumi:"labels"`
@@ -25480,6 +26082,10 @@ func (o GetClusterNodePoolNodeConfigOutput) GuestAccelerators() GetClusterNodePo
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGuestAccelerator {
 		return v.GuestAccelerators
 	}).(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) Gvnics() GetClusterNodePoolNodeConfigGvnicArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGvnic { return v.Gvnics }).(GetClusterNodePoolNodeConfigGvnicArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringOutput {
@@ -25876,6 +26482,100 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type GetClusterNodePoolNodeConfigGvnic struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolNodeConfigGvnicInput is an input type that accepts GetClusterNodePoolNodeConfigGvnicArgs and GetClusterNodePoolNodeConfigGvnicOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigGvnicInput` via:
+//
+//          GetClusterNodePoolNodeConfigGvnicArgs{...}
+type GetClusterNodePoolNodeConfigGvnicInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigGvnicOutput() GetClusterNodePoolNodeConfigGvnicOutput
+	ToGetClusterNodePoolNodeConfigGvnicOutputWithContext(context.Context) GetClusterNodePoolNodeConfigGvnicOutput
+}
+
+type GetClusterNodePoolNodeConfigGvnicArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolNodeConfigGvnicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigGvnicArgs) ToGetClusterNodePoolNodeConfigGvnicOutput() GetClusterNodePoolNodeConfigGvnicOutput {
+	return i.ToGetClusterNodePoolNodeConfigGvnicOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigGvnicArgs) ToGetClusterNodePoolNodeConfigGvnicOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGvnicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGvnicOutput)
+}
+
+// GetClusterNodePoolNodeConfigGvnicArrayInput is an input type that accepts GetClusterNodePoolNodeConfigGvnicArray and GetClusterNodePoolNodeConfigGvnicArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigGvnicArrayInput` via:
+//
+//          GetClusterNodePoolNodeConfigGvnicArray{ GetClusterNodePoolNodeConfigGvnicArgs{...} }
+type GetClusterNodePoolNodeConfigGvnicArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigGvnicArrayOutput() GetClusterNodePoolNodeConfigGvnicArrayOutput
+	ToGetClusterNodePoolNodeConfigGvnicArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigGvnicArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigGvnicArray []GetClusterNodePoolNodeConfigGvnicInput
+
+func (GetClusterNodePoolNodeConfigGvnicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigGvnicArray) ToGetClusterNodePoolNodeConfigGvnicArrayOutput() GetClusterNodePoolNodeConfigGvnicArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigGvnicArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigGvnicArray) ToGetClusterNodePoolNodeConfigGvnicArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGvnicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGvnicArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigGvnicOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigGvnicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigGvnicOutput) ToGetClusterNodePoolNodeConfigGvnicOutput() GetClusterNodePoolNodeConfigGvnicOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGvnicOutput) ToGetClusterNodePoolNodeConfigGvnicOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGvnicOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGvnicOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGvnic) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNodeConfigGvnicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigGvnicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigGvnicArrayOutput) ToGetClusterNodePoolNodeConfigGvnicArrayOutput() GetClusterNodePoolNodeConfigGvnicArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGvnicArrayOutput) ToGetClusterNodePoolNodeConfigGvnicArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGvnicArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGvnicArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigGvnicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGvnic {
+		return vs[0].([]GetClusterNodePoolNodeConfigGvnic)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigGvnicOutput)
 }
 
 type GetClusterNodePoolNodeConfigKubeletConfig struct {
@@ -27813,6 +28513,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGvnicInput)(nil)).Elem(), ClusterNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGvnicPtrInput)(nil)).Elem(), ClusterNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigArgs{})
@@ -27841,6 +28543,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGvnicInput)(nil)).Elem(), ClusterNodePoolNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGvnicPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
@@ -27891,6 +28595,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGvnicInput)(nil)).Elem(), NodePoolNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGvnicPtrInput)(nil)).Elem(), NodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigArgs{})
@@ -27981,6 +28687,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicArrayInput)(nil)).Elem(), GetClusterNodeConfigGvnicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArgs{})
@@ -28009,6 +28717,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnicArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGvnicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
@@ -28193,6 +28903,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigGvnicOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigOutput{})
@@ -28221,6 +28933,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGvnicOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
@@ -28271,6 +28985,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigGvnicOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigOutput{})
@@ -28361,6 +29077,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigOutput{})
@@ -28389,6 +29107,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGvnicOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGvnicArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput{})

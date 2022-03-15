@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Sql
     ///         {
     ///             ByteLength = 4,
     ///         });
-    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
+    ///         var main = new Gcp.Sql.DatabaseInstance("main", new Gcp.Sql.DatabaseInstanceArgs
     ///         {
     ///             DatabaseVersion = "MYSQL_5_7",
     ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Sql
     ///         });
     ///         var users = new Gcp.Sql.User("users", new Gcp.Sql.UserArgs
     ///         {
-    ///             Instance = master.Name,
+    ///             Instance = main.Name,
     ///             Host = "me.com",
     ///             Password = "changeme",
     ///         });
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Sql
     ///         {
     ///             ByteLength = 4,
     ///         });
-    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
+    ///         var main = new Gcp.Sql.DatabaseInstance("main", new Gcp.Sql.DatabaseInstanceArgs
     ///         {
     ///             DatabaseVersion = "POSTGRES_9_6",
     ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Sql
     ///         });
     ///         var users = new Gcp.Sql.User("users", new Gcp.Sql.UserArgs
     ///         {
-    ///             Instance = master.Name,
+    ///             Instance = main.Name,
     ///             Type = "CLOUD_IAM_USER",
     ///         });
     ///     }
@@ -94,13 +94,13 @@ namespace Pulumi.Gcp.Sql
     /// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:sql/user:User users my-project/master-instance/my-domain.com/me
+    ///  $ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
     /// ```
     /// 
     ///  SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:sql/user:User users my-project/master-instance/me
+    ///  $ pulumi import gcp:sql/user:User users my-project/main-instance/me
     /// ```
     /// </summary>
     [GcpResourceType("gcp:sql/user:User")]

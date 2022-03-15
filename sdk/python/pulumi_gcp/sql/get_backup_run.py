@@ -120,7 +120,7 @@ def get_backup_run(backup_id: Optional[int] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    backup = gcp.sql.get_backup_run(instance=google_sql_database_instance["master"]["name"],
+    backup = gcp.sql.get_backup_run(instance=google_sql_database_instance["main"]["name"],
         most_recent=True)
     ```
 
@@ -165,7 +165,7 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
     import pulumi
     import pulumi_gcp as gcp
 
-    backup = gcp.sql.get_backup_run(instance=google_sql_database_instance["master"]["name"],
+    backup = gcp.sql.get_backup_run(instance=google_sql_database_instance["main"]["name"],
         most_recent=True)
     ```
 

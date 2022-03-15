@@ -12,10 +12,10 @@ namespace Pulumi.Gcp.Projects
     /// <summary>
     /// Generate service identity for a service.
     /// 
-    /// &gt; **Note**: Once created, this resource cannot be updated or destroyed. These
+    /// &gt; **Note:** Once created, this resource cannot be updated or destroyed. These
     /// actions are a no-op.
     /// 
-    /// &gt; **Note**: This resource can be used to retrieve the emails of the [Google-managed service accounts](https://cloud.google.com/iam/docs/service-agents)
+    /// &gt; **Note:** This resource can be used to retrieve the emails of the [Google-managed service accounts](https://cloud.google.com/iam/docs/service-agents)
     /// of the APIs that Google has configured with a Service Identity. You can run `gcloud beta services identity create --service SERVICE_NAME.googleapis.com` to
     /// verify if an API supports this.
     /// 

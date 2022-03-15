@@ -167,6 +167,11 @@ type Repository struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this repository is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// MavenRepositoryConfig is maven related repository details.
+	// Provides additional configuration details for repositories of the maven
+	// format type.
+	// Structure is documented below.
+	MavenConfig RepositoryMavenConfigPtrOutput `pulumi:"mavenConfig"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -241,6 +246,11 @@ type repositoryState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this repository is located in.
 	Location *string `pulumi:"location"`
+	// MavenRepositoryConfig is maven related repository details.
+	// Provides additional configuration details for repositories of the maven
+	// format type.
+	// Structure is documented below.
+	MavenConfig *RepositoryMavenConfig `pulumi:"mavenConfig"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -281,6 +291,11 @@ type RepositoryState struct {
 	Labels pulumi.StringMapInput
 	// The name of the location this repository is located in.
 	Location pulumi.StringPtrInput
+	// MavenRepositoryConfig is maven related repository details.
+	// Provides additional configuration details for repositories of the maven
+	// format type.
+	// Structure is documented below.
+	MavenConfig RepositoryMavenConfigPtrInput
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -323,6 +338,11 @@ type repositoryArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this repository is located in.
 	Location *string `pulumi:"location"`
+	// MavenRepositoryConfig is maven related repository details.
+	// Provides additional configuration details for repositories of the maven
+	// format type.
+	// Structure is documented below.
+	MavenConfig *RepositoryMavenConfig `pulumi:"mavenConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -358,6 +378,11 @@ type RepositoryArgs struct {
 	Labels pulumi.StringMapInput
 	// The name of the location this repository is located in.
 	Location pulumi.StringPtrInput
+	// MavenRepositoryConfig is maven related repository details.
+	// Provides additional configuration details for repositories of the maven
+	// format type.
+	// Structure is documented below.
+	MavenConfig RepositoryMavenConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

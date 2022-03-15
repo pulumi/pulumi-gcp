@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Sql
         ///     {
         ///         var backup = Output.Create(Gcp.Sql.GetBackupRun.InvokeAsync(new Gcp.Sql.GetBackupRunArgs
         ///         {
-        ///             Instance = google_sql_database_instance.Master.Name,
+        ///             Instance = google_sql_database_instance.Main.Name,
         ///             MostRecent = true,
         ///         }));
         ///     }
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Sql
         ///     {
         ///         var backup = Output.Create(Gcp.Sql.GetBackupRun.InvokeAsync(new Gcp.Sql.GetBackupRunArgs
         ///         {
-        ///             Instance = google_sql_database_instance.Master.Name,
+        ///             Instance = google_sql_database_instance.Main.Name,
         ///             MostRecent = true,
         ///         }));
         ///     }
