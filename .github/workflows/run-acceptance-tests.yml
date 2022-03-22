@@ -266,7 +266,7 @@ jobs:
         pip3 install virtualenv==20.0.23
         pip3 install pipenv
     - name: Configure GCP credentials
-      uses: google-github-actions/setup-gcloud@master
+      uses: google-github-actions/setup-gcloud@v0
       with:
         export_default_credentials: true
         project_id: ${{ env.GOOGLE_PROJECT }}

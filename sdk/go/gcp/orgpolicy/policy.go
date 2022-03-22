@@ -187,10 +187,6 @@ import (
 // ```sh
 //  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
 // ```
-//
-// ```sh
-//  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/{{name}}
-// ```
 type Policy struct {
 	pulumi.CustomResourceState
 

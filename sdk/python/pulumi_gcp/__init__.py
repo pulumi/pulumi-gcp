@@ -3335,6 +3335,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "logging/logView",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/logView:LogView": "LogView"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "logging/metric",
   "fqn": "pulumi_gcp.logging",
   "classes": {

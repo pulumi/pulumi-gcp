@@ -11,6 +11,7 @@ export * from "./billingAccountSink";
 export * from "./folderBucketConfig";
 export * from "./folderExclusion";
 export * from "./folderSink";
+export * from "./logView";
 export * from "./metric";
 export * from "./organizationBucketConfig";
 export * from "./organizationExclusion";
@@ -26,6 +27,7 @@ import { BillingAccountSink } from "./billingAccountSink";
 import { FolderBucketConfig } from "./folderBucketConfig";
 import { FolderExclusion } from "./folderExclusion";
 import { FolderSink } from "./folderSink";
+import { LogView } from "./logView";
 import { Metric } from "./metric";
 import { OrganizationBucketConfig } from "./organizationBucketConfig";
 import { OrganizationExclusion } from "./organizationExclusion";
@@ -50,6 +52,8 @@ const _module = {
                 return new FolderExclusion(name, <any>undefined, { urn })
             case "gcp:logging/folderSink:FolderSink":
                 return new FolderSink(name, <any>undefined, { urn })
+            case "gcp:logging/logView:LogView":
+                return new LogView(name, <any>undefined, { urn })
             case "gcp:logging/metric:Metric":
                 return new Metric(name, <any>undefined, { urn })
             case "gcp:logging/organizationBucketConfig:OrganizationBucketConfig":
@@ -75,6 +79,7 @@ pulumi.runtime.registerResourceModule("gcp", "logging/billingAccountSink", _modu
 pulumi.runtime.registerResourceModule("gcp", "logging/folderBucketConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderExclusion", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderSink", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/logView", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/metric", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/organizationBucketConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/organizationExclusion", _module)

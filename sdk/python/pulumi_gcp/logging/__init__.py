@@ -11,6 +11,7 @@ from .billing_account_sink import *
 from .folder_bucket_config import *
 from .folder_exclusion import *
 from .folder_sink import *
+from .log_view import *
 from .metric import *
 from .organization_bucket_config import *
 from .organization_exclusion import *

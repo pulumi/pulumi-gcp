@@ -30,8 +30,8 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *         apiTargets: [{
- *             methods: ["GET*"],
  *             service: "translate.googleapis.com",
+ *             methods: ["GET*"],
  *         }],
  *     },
  * });
@@ -51,8 +51,8 @@ import * as utilities from "../utilities";
  *     project: basic.name,
  *     restrictions: {
  *         apiTargets: [{
- *             methods: ["GET*"],
  *             service: "translate.googleapis.com",
+ *             methods: ["GET*"],
  *         }],
  *         browserKeyRestrictions: {
  *             allowedReferrers: [".*"],
@@ -75,8 +75,8 @@ import * as utilities from "../utilities";
  *     project: basic.name,
  *     restrictions: {
  *         apiTargets: [{
- *             methods: ["GET*"],
  *             service: "translate.googleapis.com",
+ *             methods: ["GET*"],
  *         }],
  *         iosKeyRestrictions: {
  *             allowedBundleIds: ["com.google.app.macos"],
@@ -114,8 +114,8 @@ import * as utilities from "../utilities";
  *     project: basic.name,
  *     restrictions: {
  *         apiTargets: [{
- *             methods: ["GET*"],
  *             service: "translate.googleapis.com",
+ *             methods: ["GET*"],
  *         }],
  *         serverKeyRestrictions: {
  *             allowedIps: ["127.0.0.1"],

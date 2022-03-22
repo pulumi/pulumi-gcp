@@ -47,10 +47,10 @@ import (
 // 				},
 // 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
 // 					&projects.ApiKeyRestrictionsApiTargetArgs{
+// 						Service: pulumi.String("translate.googleapis.com"),
 // 						Methods: pulumi.StringArray{
 // 							pulumi.String("GET*"),
 // 						},
-// 						Service: pulumi.String("translate.googleapis.com"),
 // 					},
 // 				},
 // 			},
@@ -88,10 +88,10 @@ import (
 // 			Restrictions: &projects.ApiKeyRestrictionsArgs{
 // 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
 // 					&projects.ApiKeyRestrictionsApiTargetArgs{
+// 						Service: pulumi.String("translate.googleapis.com"),
 // 						Methods: pulumi.StringArray{
 // 							pulumi.String("GET*"),
 // 						},
-// 						Service: pulumi.String("translate.googleapis.com"),
 // 					},
 // 				},
 // 				BrowserKeyRestrictions: &projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs{
@@ -134,10 +134,10 @@ import (
 // 			Restrictions: &projects.ApiKeyRestrictionsArgs{
 // 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
 // 					&projects.ApiKeyRestrictionsApiTargetArgs{
+// 						Service: pulumi.String("translate.googleapis.com"),
 // 						Methods: pulumi.StringArray{
 // 							pulumi.String("GET*"),
 // 						},
-// 						Service: pulumi.String("translate.googleapis.com"),
 // 					},
 // 				},
 // 				IosKeyRestrictions: &projects.ApiKeyRestrictionsIosKeyRestrictionsArgs{
@@ -211,10 +211,10 @@ import (
 // 			Restrictions: &projects.ApiKeyRestrictionsArgs{
 // 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
 // 					&projects.ApiKeyRestrictionsApiTargetArgs{
+// 						Service: pulumi.String("translate.googleapis.com"),
 // 						Methods: pulumi.StringArray{
 // 							pulumi.String("GET*"),
 // 						},
-// 						Service: pulumi.String("translate.googleapis.com"),
 // 					},
 // 				},
 // 				ServerKeyRestrictions: &projects.ApiKeyRestrictionsServerKeyRestrictionsArgs{

@@ -144,6 +144,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///         {
     ///             Description = "some description",
     ///             DisableQuic = true,
+    ///             DisableHttp2 = true,
     ///             Labels = 
     ///             {
     ///                 { "a", "b" },
@@ -433,6 +434,14 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Disables HTTP/2.
+        /// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+        /// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        /// </summary>
+        [Output("disableHttp2")]
+        public Output<bool?> DisableHttp2 { get; private set; } = null!;
+
+        /// <summary>
         /// HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
         /// </summary>
         [Output("disableQuic")]
@@ -564,6 +573,14 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Disables HTTP/2.
+        /// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+        /// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        /// </summary>
+        [Input("disableHttp2")]
+        public Input<bool>? DisableHttp2 { get; set; }
+
+        /// <summary>
         /// HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
         /// </summary>
         [Input("disableQuic")]
@@ -654,6 +671,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Disables HTTP/2.
+        /// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+        /// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        /// </summary>
+        [Input("disableHttp2")]
+        public Input<bool>? DisableHttp2 { get; set; }
 
         /// <summary>
         /// HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.

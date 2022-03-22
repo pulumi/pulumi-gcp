@@ -36,11 +36,13 @@ import * as utilities from "../utilities";
  *         "CONNECT_FAILURE",
  *         "NOT_FOUND",
  *         "HTTP_5XX",
+ *         "FORBIDDEN",
  *     ],
  *     timeout: {
  *         connectTimeout: "10s",
- *         maxAttemptsTimeout: "10s",
- *         responseTimeout: "10s",
+ *         maxAttemptsTimeout: "20s",
+ *         responseTimeout: "60s",
+ *         readTimeout: "5s",
  *     },
  * });
  * const _default = new gcp.networkservices.EdgeCacheOrigin("default", {
@@ -122,8 +124,8 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      * retryConditions and failoverOrigin to control its own cache fill failures.
      * The total number of allowed attempts to cache fill across this and failover origins is limited to four.
      * The total time allowed for cache fill attempts across this and failover origins can be controlled with maxAttemptsTimeout.
-     * The last valid response from an origin will be returned to the client.
-     * If no origin returns a valid response, an HTTP 503 will be returned to the client.
+     * The last valid, non-retried response from all origins will be returned to the client.
+     * If no origin returns a valid response, an HTTP 502 will be returned to the client.
      * Defaults to 1. Must be a value greater than 0 and less than 4.
      */
     public readonly maxAttempts!: pulumi.Output<number | undefined>;
@@ -135,8 +137,8 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
-     * This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com IPv4:35.218.1.1 IPv6:[2607:f8b0:4012:809::200e] Cloud Storage: gs://bucketname
-     * When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.
+     * This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
+     * When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
      * If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
      */
     public readonly originAddress!: pulumi.Output<string>;
@@ -169,7 +171,8 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      * - GATEWAY_ERROR: Similar to 5xx, but only applies to response codes 502, 503 or 504.
      * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
      * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
-     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, and `NOT_FOUND`.
+     * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
+     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
      */
     public readonly retryConditions!: pulumi.Output<string[]>;
     /**
@@ -249,8 +252,8 @@ export interface EdgeCacheOriginState {
      * retryConditions and failoverOrigin to control its own cache fill failures.
      * The total number of allowed attempts to cache fill across this and failover origins is limited to four.
      * The total time allowed for cache fill attempts across this and failover origins can be controlled with maxAttemptsTimeout.
-     * The last valid response from an origin will be returned to the client.
-     * If no origin returns a valid response, an HTTP 503 will be returned to the client.
+     * The last valid, non-retried response from all origins will be returned to the client.
+     * If no origin returns a valid response, an HTTP 502 will be returned to the client.
      * Defaults to 1. Must be a value greater than 0 and less than 4.
      */
     maxAttempts?: pulumi.Input<number>;
@@ -262,8 +265,8 @@ export interface EdgeCacheOriginState {
     name?: pulumi.Input<string>;
     /**
      * A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
-     * This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com IPv4:35.218.1.1 IPv6:[2607:f8b0:4012:809::200e] Cloud Storage: gs://bucketname
-     * When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.
+     * This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
+     * When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
      * If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
      */
     originAddress?: pulumi.Input<string>;
@@ -296,7 +299,8 @@ export interface EdgeCacheOriginState {
      * - GATEWAY_ERROR: Similar to 5xx, but only applies to response codes 502, 503 or 504.
      * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
      * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
-     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, and `NOT_FOUND`.
+     * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
+     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
      */
     retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -331,8 +335,8 @@ export interface EdgeCacheOriginArgs {
      * retryConditions and failoverOrigin to control its own cache fill failures.
      * The total number of allowed attempts to cache fill across this and failover origins is limited to four.
      * The total time allowed for cache fill attempts across this and failover origins can be controlled with maxAttemptsTimeout.
-     * The last valid response from an origin will be returned to the client.
-     * If no origin returns a valid response, an HTTP 503 will be returned to the client.
+     * The last valid, non-retried response from all origins will be returned to the client.
+     * If no origin returns a valid response, an HTTP 502 will be returned to the client.
      * Defaults to 1. Must be a value greater than 0 and less than 4.
      */
     maxAttempts?: pulumi.Input<number>;
@@ -344,8 +348,8 @@ export interface EdgeCacheOriginArgs {
     name?: pulumi.Input<string>;
     /**
      * A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
-     * This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com IPv4:35.218.1.1 IPv6:[2607:f8b0:4012:809::200e] Cloud Storage: gs://bucketname
-     * When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.
+     * This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
+     * When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
      * If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
      */
     originAddress: pulumi.Input<string>;
@@ -378,7 +382,8 @@ export interface EdgeCacheOriginArgs {
      * - GATEWAY_ERROR: Similar to 5xx, but only applies to response codes 502, 503 or 504.
      * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
      * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
-     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, and `NOT_FOUND`.
+     * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
+     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
      */
     retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
     /**

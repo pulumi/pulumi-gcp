@@ -514,6 +514,7 @@
         "logging/folderExclusion.ts",
         "logging/folderSink.ts",
         "logging/index.ts",
+        "logging/logView.ts",
         "logging/metric.ts",
         "logging/organizationBucketConfig.ts",
         "logging/organizationExclusion.ts",

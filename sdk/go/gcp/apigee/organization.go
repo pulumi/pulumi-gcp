@@ -192,6 +192,8 @@ type Organization struct {
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
 	AuthorizedNetwork pulumi.StringPtrOutput `pulumi:"authorizedNetwork"`
+	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+	BillingType pulumi.StringOutput `pulumi:"billingType"`
 	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
 	// is CLOUD. A base64-encoded string.
 	CaCertificate pulumi.StringOutput `pulumi:"caCertificate"`
@@ -255,6 +257,8 @@ type organizationState struct {
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+	BillingType *string `pulumi:"billingType"`
 	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
 	// is CLOUD. A base64-encoded string.
 	CaCertificate *string `pulumi:"caCertificate"`
@@ -287,6 +291,8 @@ type OrganizationState struct {
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
 	AuthorizedNetwork pulumi.StringPtrInput
+	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+	BillingType pulumi.StringPtrInput
 	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
 	// is CLOUD. A base64-encoded string.
 	CaCertificate pulumi.StringPtrInput
@@ -323,6 +329,8 @@ type organizationArgs struct {
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+	BillingType *string `pulumi:"billingType"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
 	// The display name of the Apigee organization.
@@ -348,6 +356,8 @@ type OrganizationArgs struct {
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
 	AuthorizedNetwork pulumi.StringPtrInput
+	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+	BillingType pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
 	// The display name of the Apigee organization.

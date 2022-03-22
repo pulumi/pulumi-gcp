@@ -1251,6 +1251,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_logging_folder_bucket_config":          {Tok: gcpResource(gcpLogging, "FolderBucketConfig")},
 			"google_logging_organization_bucket_config":    {Tok: gcpResource(gcpLogging, "OrganizationBucketConfig")},
 			"google_logging_project_bucket_config":         {Tok: gcpResource(gcpLogging, "ProjectBucketConfig")},
+			"google_logging_log_view":                      {Tok: gcpResource(gcpLogging, "LogView")},
 
 			// Storage resources
 			"google_storage_bucket": {
