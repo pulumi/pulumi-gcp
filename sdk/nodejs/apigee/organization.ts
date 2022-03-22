@@ -139,6 +139,10 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly authorizedNetwork!: pulumi.Output<string | undefined>;
     /**
+     * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+     */
+    public readonly billingType!: pulumi.Output<string>;
+    /**
      * Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
      * is CLOUD. A base64-encoded string.
      */
@@ -193,6 +197,7 @@ export class Organization extends pulumi.CustomResource {
             const state = argsOrState as OrganizationState | undefined;
             resourceInputs["analyticsRegion"] = state ? state.analyticsRegion : undefined;
             resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
+            resourceInputs["billingType"] = state ? state.billingType : undefined;
             resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -208,6 +213,7 @@ export class Organization extends pulumi.CustomResource {
             }
             resourceInputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
+            resourceInputs["billingType"] = args ? args.billingType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -236,6 +242,10 @@ export interface OrganizationState {
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
      */
     authorizedNetwork?: pulumi.Input<string>;
+    /**
+     * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+     */
+    billingType?: pulumi.Input<string>;
     /**
      * Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
      * is CLOUD. A base64-encoded string.
@@ -291,6 +301,10 @@ export interface OrganizationArgs {
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
      */
     authorizedNetwork?: pulumi.Input<string>;
+    /**
+     * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+     */
+    billingType?: pulumi.Input<string>;
     /**
      * Description of the Apigee organization.
      */

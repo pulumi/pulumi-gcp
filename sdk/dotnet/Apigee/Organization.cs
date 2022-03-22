@@ -171,6 +171,12 @@ namespace Pulumi.Gcp.Apigee
         public Output<string?> AuthorizedNetwork { get; private set; } = null!;
 
         /// <summary>
+        /// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        /// </summary>
+        [Output("billingType")]
+        public Output<string> BillingType { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
         /// is CLOUD. A base64-encoded string.
         /// </summary>
@@ -286,6 +292,12 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? AuthorizedNetwork { get; set; }
 
         /// <summary>
+        /// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        /// </summary>
+        [Input("billingType")]
+        public Input<string>? BillingType { get; set; }
+
+        /// <summary>
         /// Description of the Apigee organization.
         /// </summary>
         [Input("description")]
@@ -340,6 +352,12 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("authorizedNetwork")]
         public Input<string>? AuthorizedNetwork { get; set; }
+
+        /// <summary>
+        /// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        /// </summary>
+        [Input("billingType")]
+        public Input<string>? BillingType { get; set; }
 
         /// <summary>
         /// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'

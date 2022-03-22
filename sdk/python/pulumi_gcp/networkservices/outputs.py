@@ -79,6 +79,8 @@ class EdgeCacheOriginTimeout(dict):
             suggest = "connect_timeout"
         elif key == "maxAttemptsTimeout":
             suggest = "max_attempts_timeout"
+        elif key == "readTimeout":
+            suggest = "read_timeout"
         elif key == "responseTimeout":
             suggest = "response_timeout"
 
@@ -96,19 +98,31 @@ class EdgeCacheOriginTimeout(dict):
     def __init__(__self__, *,
                  connect_timeout: Optional[str] = None,
                  max_attempts_timeout: Optional[str] = None,
+                 read_timeout: Optional[str] = None,
                  response_timeout: Optional[str] = None):
         """
-        :param str connect_timeout: The maximum duration to wait for the origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
+        :param str connect_timeout: The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
                Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
-        :param str max_attempts_timeout: The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 503 will be returned if the timeout is reached before a response is returned.
-               Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
-        :param str response_timeout: The maximum duration to wait for data to arrive when reading from the HTTP connection/stream.
-               Defaults to 5 seconds. The timeout must be a value between 1s and 30s.
+               The connectTimeout capped by the deadline set by the request's maxAttemptsTimeout.  The last connection attempt may have a smaller connectTimeout in order to adhere to the overall maxAttemptsTimeout.
+        :param str max_attempts_timeout: The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 504 will be returned if the timeout is reached before a response is returned.
+               Defaults to 15 seconds. The timeout must be a value between 1s and 30s.
+               If a failoverOrigin is specified, the maxAttemptsTimeout of the first configured origin sets the deadline for all connection attempts across all failoverOrigins.
+        :param str read_timeout: The maximum duration to wait between reads of a single HTTP connection/stream.
+               Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
+               The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
+               If the response headers have already been written to the connection, the response will be truncated and logged.
+        :param str response_timeout: The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
+               Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
+               The responseTimeout starts after the connection has been established.
+               This also applies to HTTP Chunked Transfer Encoding responses, and/or when an open-ended Range request is made to the origin. Origins that take longer to write additional bytes to the response than the configured responseTimeout will result in an error being returned to the client.
+               If the response headers have already been written to the connection, the response will be truncated and logged.
         """
         if connect_timeout is not None:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if max_attempts_timeout is not None:
             pulumi.set(__self__, "max_attempts_timeout", max_attempts_timeout)
+        if read_timeout is not None:
+            pulumi.set(__self__, "read_timeout", read_timeout)
         if response_timeout is not None:
             pulumi.set(__self__, "response_timeout", response_timeout)
 
@@ -116,8 +130,9 @@ class EdgeCacheOriginTimeout(dict):
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional[str]:
         """
-        The maximum duration to wait for the origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
+        The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
         Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
+        The connectTimeout capped by the deadline set by the request's maxAttemptsTimeout.  The last connection attempt may have a smaller connectTimeout in order to adhere to the overall maxAttemptsTimeout.
         """
         return pulumi.get(self, "connect_timeout")
 
@@ -125,17 +140,32 @@ class EdgeCacheOriginTimeout(dict):
     @pulumi.getter(name="maxAttemptsTimeout")
     def max_attempts_timeout(self) -> Optional[str]:
         """
-        The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 503 will be returned if the timeout is reached before a response is returned.
-        Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
+        The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 504 will be returned if the timeout is reached before a response is returned.
+        Defaults to 15 seconds. The timeout must be a value between 1s and 30s.
+        If a failoverOrigin is specified, the maxAttemptsTimeout of the first configured origin sets the deadline for all connection attempts across all failoverOrigins.
         """
         return pulumi.get(self, "max_attempts_timeout")
+
+    @property
+    @pulumi.getter(name="readTimeout")
+    def read_timeout(self) -> Optional[str]:
+        """
+        The maximum duration to wait between reads of a single HTTP connection/stream.
+        Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
+        The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
+        If the response headers have already been written to the connection, the response will be truncated and logged.
+        """
+        return pulumi.get(self, "read_timeout")
 
     @property
     @pulumi.getter(name="responseTimeout")
     def response_timeout(self) -> Optional[str]:
         """
-        The maximum duration to wait for data to arrive when reading from the HTTP connection/stream.
-        Defaults to 5 seconds. The timeout must be a value between 1s and 30s.
+        The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
+        Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
+        The responseTimeout starts after the connection has been established.
+        This also applies to HTTP Chunked Transfer Encoding responses, and/or when an open-ended Range request is made to the origin. Origins that take longer to write additional bytes to the response than the configured responseTimeout will result in an error being returned to the client.
+        If the response headers have already been written to the connection, the response will be truncated and logged.
         """
         return pulumi.get(self, "response_timeout")
 

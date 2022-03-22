@@ -92,6 +92,7 @@ import * as utilities from "../utilities";
  * const instanceEdgeCacheService = new gcp.networkservices.EdgeCacheService("instanceEdgeCacheService", {
  *     description: "some description",
  *     disableQuic: true,
+ *     disableHttp2: true,
  *     labels: {
  *         a: "b",
  *     },
@@ -306,6 +307,12 @@ export class EdgeCacheService extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Disables HTTP/2.
+     * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+     * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+     */
+    public readonly disableHttp2!: pulumi.Output<boolean | undefined>;
+    /**
      * HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
      */
     public readonly disableQuic!: pulumi.Output<boolean>;
@@ -375,6 +382,7 @@ export class EdgeCacheService extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EdgeCacheServiceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableHttp2"] = state ? state.disableHttp2 : undefined;
             resourceInputs["disableQuic"] = state ? state.disableQuic : undefined;
             resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
             resourceInputs["edgeSslCertificates"] = state ? state.edgeSslCertificates : undefined;
@@ -393,6 +401,7 @@ export class EdgeCacheService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'routing'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableHttp2"] = args ? args.disableHttp2 : undefined;
             resourceInputs["disableQuic"] = args ? args.disableQuic : undefined;
             resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
             resourceInputs["edgeSslCertificates"] = args ? args.edgeSslCertificates : undefined;
@@ -419,6 +428,12 @@ export interface EdgeCacheServiceState {
      * A human-readable description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Disables HTTP/2.
+     * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+     * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+     */
+    disableHttp2?: pulumi.Input<boolean>;
     /**
      * HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
      */
@@ -484,6 +499,12 @@ export interface EdgeCacheServiceArgs {
      * A human-readable description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Disables HTTP/2.
+     * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+     * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+     */
+    disableHttp2?: pulumi.Input<boolean>;
     /**
      * HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
      */

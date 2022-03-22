@@ -49,11 +49,11 @@ namespace Pulumi.Gcp.Projects
     ///                 {
     ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
     ///                     {
+    ///                         Service = "translate.googleapis.com",
     ///                         Methods = 
     ///                         {
     ///                             "GET*",
     ///                         },
-    ///                         Service = "translate.googleapis.com",
     ///                     },
     ///                 },
     ///             },
@@ -87,11 +87,11 @@ namespace Pulumi.Gcp.Projects
     ///                 {
     ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
     ///                     {
+    ///                         Service = "translate.googleapis.com",
     ///                         Methods = 
     ///                         {
     ///                             "GET*",
     ///                         },
-    ///                         Service = "translate.googleapis.com",
     ///                     },
     ///                 },
     ///                 BrowserKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs
@@ -132,11 +132,11 @@ namespace Pulumi.Gcp.Projects
     ///                 {
     ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
     ///                     {
+    ///                         Service = "translate.googleapis.com",
     ///                         Methods = 
     ///                         {
     ///                             "GET*",
     ///                         },
-    ///                         Service = "translate.googleapis.com",
     ///                     },
     ///                 },
     ///                 IosKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsIosKeyRestrictionsArgs
@@ -201,11 +201,11 @@ namespace Pulumi.Gcp.Projects
     ///                 {
     ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
     ///                     {
+    ///                         Service = "translate.googleapis.com",
     ///                         Methods = 
     ///                         {
     ///                             "GET*",
     ///                         },
-    ///                         Service = "translate.googleapis.com",
     ///                     },
     ///                 },
     ///                 ServerKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsServerKeyRestrictionsArgs

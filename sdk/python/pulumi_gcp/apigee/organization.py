@@ -16,6 +16,7 @@ class OrganizationArgs:
                  project_id: pulumi.Input[str],
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class OrganizationArgs:
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
+        :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
@@ -42,6 +44,8 @@ class OrganizationArgs:
             pulumi.set(__self__, "analytics_region", analytics_region)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
+        if billing_type is not None:
+            pulumi.set(__self__, "billing_type", billing_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -88,6 +92,18 @@ class OrganizationArgs:
     @authorized_network.setter
     def authorized_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authorized_network", value)
+
+    @property
+    @pulumi.getter(name="billingType")
+    def billing_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        """
+        return pulumi.get(self, "billing_type")
+
+    @billing_type.setter
+    def billing_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_type", value)
 
     @property
     @pulumi.getter
@@ -148,6 +164,7 @@ class _OrganizationState:
     def __init__(__self__, *,
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 billing_type: Optional[pulumi.Input[str]] = None,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -162,6 +179,7 @@ class _OrganizationState:
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
+        :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] ca_certificate: Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
                is CLOUD. A base64-encoded string.
         :param pulumi.Input[str] description: Description of the Apigee organization.
@@ -182,6 +200,8 @@ class _OrganizationState:
             pulumi.set(__self__, "analytics_region", analytics_region)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
+        if billing_type is not None:
+            pulumi.set(__self__, "billing_type", billing_type)
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
         if description is not None:
@@ -224,6 +244,18 @@ class _OrganizationState:
     @authorized_network.setter
     def authorized_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authorized_network", value)
+
+    @property
+    @pulumi.getter(name="billingType")
+    def billing_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        """
+        return pulumi.get(self, "billing_type")
+
+    @billing_type.setter
+    def billing_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_type", value)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -336,6 +368,7 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -433,6 +466,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
+        :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
@@ -552,6 +586,7 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -571,6 +606,7 @@ class Organization(pulumi.CustomResource):
 
             __props__.__dict__["analytics_region"] = analytics_region
             __props__.__dict__["authorized_network"] = authorized_network
+            __props__.__dict__["billing_type"] = billing_type
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if project_id is None and not opts.urn:
@@ -593,6 +629,7 @@ class Organization(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             analytics_region: Optional[pulumi.Input[str]] = None,
             authorized_network: Optional[pulumi.Input[str]] = None,
+            billing_type: Optional[pulumi.Input[str]] = None,
             ca_certificate: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -612,6 +649,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
+        :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] ca_certificate: Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
                is CLOUD. A base64-encoded string.
         :param pulumi.Input[str] description: Description of the Apigee organization.
@@ -634,6 +672,7 @@ class Organization(pulumi.CustomResource):
 
         __props__.__dict__["analytics_region"] = analytics_region
         __props__.__dict__["authorized_network"] = authorized_network
+        __props__.__dict__["billing_type"] = billing_type
         __props__.__dict__["ca_certificate"] = ca_certificate
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -661,6 +700,14 @@ class Organization(pulumi.CustomResource):
         Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
         """
         return pulumi.get(self, "authorized_network")
+
+    @property
+    @pulumi.getter(name="billingType")
+    def billing_type(self) -> pulumi.Output[str]:
+        """
+        Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        """
+        return pulumi.get(self, "billing_type")
 
     @property
     @pulumi.getter(name="caCertificate")

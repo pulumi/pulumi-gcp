@@ -17,6 +17,7 @@ class EdgeCacheServiceArgs:
     def __init__(__self__, *,
                  routing: pulumi.Input['EdgeCacheServiceRoutingArgs'],
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_http2: Optional[pulumi.Input[bool]] = None,
                  disable_quic: Optional[pulumi.Input[bool]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -31,6 +32,9 @@ class EdgeCacheServiceArgs:
         :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
+               HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+               Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
         :param pulumi.Input[bool] disable_quic: HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
         :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
@@ -50,6 +54,8 @@ class EdgeCacheServiceArgs:
         pulumi.set(__self__, "routing", routing)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_http2 is not None:
+            pulumi.set(__self__, "disable_http2", disable_http2)
         if disable_quic is not None:
             pulumi.set(__self__, "disable_quic", disable_quic)
         if edge_security_policy is not None:
@@ -93,6 +99,20 @@ class EdgeCacheServiceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableHttp2")
+    def disable_http2(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables HTTP/2.
+        HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+        Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        """
+        return pulumi.get(self, "disable_http2")
+
+    @disable_http2.setter
+    def disable_http2(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_http2", value)
 
     @property
     @pulumi.getter(name="disableQuic")
@@ -213,6 +233,7 @@ class EdgeCacheServiceArgs:
 class _EdgeCacheServiceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_http2: Optional[pulumi.Input[bool]] = None,
                  disable_quic: Optional[pulumi.Input[bool]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -228,6 +249,9 @@ class _EdgeCacheServiceState:
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
+               HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+               Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
         :param pulumi.Input[bool] disable_quic: HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
         :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
@@ -250,6 +274,8 @@ class _EdgeCacheServiceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_http2 is not None:
+            pulumi.set(__self__, "disable_http2", disable_http2)
         if disable_quic is not None:
             pulumi.set(__self__, "disable_quic", disable_quic)
         if edge_security_policy is not None:
@@ -286,6 +312,20 @@ class _EdgeCacheServiceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableHttp2")
+    def disable_http2(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables HTTP/2.
+        HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+        Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        """
+        return pulumi.get(self, "disable_http2")
+
+    @disable_http2.setter
+    def disable_http2(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_http2", value)
 
     @property
     @pulumi.getter(name="disableQuic")
@@ -445,6 +485,7 @@ class EdgeCacheService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_http2: Optional[pulumi.Input[bool]] = None,
                  disable_quic: Optional[pulumi.Input[bool]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -537,6 +578,7 @@ class EdgeCacheService(pulumi.CustomResource):
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
             description="some description",
             disable_quic=True,
+            disable_http2=True,
             labels={
                 "a": "b",
             },
@@ -720,6 +762,9 @@ class EdgeCacheService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
+               HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+               Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
         :param pulumi.Input[bool] disable_quic: HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
         :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
@@ -825,6 +870,7 @@ class EdgeCacheService(pulumi.CustomResource):
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
             description="some description",
             disable_quic=True,
+            disable_http2=True,
             labels={
                 "a": "b",
             },
@@ -1021,6 +1067,7 @@ class EdgeCacheService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_http2: Optional[pulumi.Input[bool]] = None,
                  disable_quic: Optional[pulumi.Input[bool]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1044,6 +1091,7 @@ class EdgeCacheService(pulumi.CustomResource):
             __props__ = EdgeCacheServiceArgs.__new__(EdgeCacheServiceArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_http2"] = disable_http2
             __props__.__dict__["disable_quic"] = disable_quic
             __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["edge_ssl_certificates"] = edge_ssl_certificates
@@ -1069,6 +1117,7 @@ class EdgeCacheService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disable_http2: Optional[pulumi.Input[bool]] = None,
             disable_quic: Optional[pulumi.Input[bool]] = None,
             edge_security_policy: Optional[pulumi.Input[str]] = None,
             edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1089,6 +1138,9 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
+               HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+               Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
         :param pulumi.Input[bool] disable_quic: HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
         :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
@@ -1114,6 +1166,7 @@ class EdgeCacheService(pulumi.CustomResource):
         __props__ = _EdgeCacheServiceState.__new__(_EdgeCacheServiceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["disable_http2"] = disable_http2
         __props__.__dict__["disable_quic"] = disable_quic
         __props__.__dict__["edge_security_policy"] = edge_security_policy
         __props__.__dict__["edge_ssl_certificates"] = edge_ssl_certificates
@@ -1135,6 +1188,16 @@ class EdgeCacheService(pulumi.CustomResource):
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableHttp2")
+    def disable_http2(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disables HTTP/2.
+        HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+        Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        """
+        return pulumi.get(self, "disable_http2")
 
     @property
     @pulumi.getter(name="disableQuic")

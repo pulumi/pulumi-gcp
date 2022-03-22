@@ -208,8 +208,8 @@ class ApiKey(pulumi.CustomResource):
                     )],
                 ),
                 api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    methods=["GET*"],
                     service="translate.googleapis.com",
+                    methods=["GET*"],
                 )],
             ))
         ```
@@ -227,8 +227,8 @@ class ApiKey(pulumi.CustomResource):
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    methods=["GET*"],
                     service="translate.googleapis.com",
+                    methods=["GET*"],
                 )],
                 browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
                     allowed_referrers=[".*"],
@@ -249,8 +249,8 @@ class ApiKey(pulumi.CustomResource):
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    methods=["GET*"],
                     service="translate.googleapis.com",
+                    methods=["GET*"],
                 )],
                 ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
                     allowed_bundle_ids=["com.google.app.macos"],
@@ -284,8 +284,8 @@ class ApiKey(pulumi.CustomResource):
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    methods=["GET*"],
                     service="translate.googleapis.com",
+                    methods=["GET*"],
                 )],
                 server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArgs(
                     allowed_ips=["127.0.0.1"],
@@ -346,8 +346,8 @@ class ApiKey(pulumi.CustomResource):
                     )],
                 ),
                 api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    methods=["GET*"],
                     service="translate.googleapis.com",
+                    methods=["GET*"],
                 )],
             ))
         ```
@@ -365,8 +365,8 @@ class ApiKey(pulumi.CustomResource):
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    methods=["GET*"],
                     service="translate.googleapis.com",
+                    methods=["GET*"],
                 )],
                 browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
                     allowed_referrers=[".*"],
@@ -387,8 +387,8 @@ class ApiKey(pulumi.CustomResource):
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    methods=["GET*"],
                     service="translate.googleapis.com",
+                    methods=["GET*"],
                 )],
                 ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
                     allowed_bundle_ids=["com.google.app.macos"],
@@ -422,8 +422,8 @@ class ApiKey(pulumi.CustomResource):
             project=basic.name,
             restrictions=gcp.projects.ApiKeyRestrictionsArgs(
                 api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
-                    methods=["GET*"],
                     service="translate.googleapis.com",
+                    methods=["GET*"],
                 )],
                 server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArgs(
                     allowed_ips=["127.0.0.1"],

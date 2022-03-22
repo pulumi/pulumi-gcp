@@ -168,10 +168,6 @@ namespace Pulumi.Gcp.OrgPolicy
     /// ```sh
     ///  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
     /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/{{name}}
-    /// ```
     /// </summary>
     [GcpResourceType("gcp:orgpolicy/policy:Policy")]
     public partial class Policy : Pulumi.CustomResource

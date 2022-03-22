@@ -106,10 +106,6 @@ import * as utilities from "../utilities";
  * ```sh
  *  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
  * ```
- *
- * ```sh
- *  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/{{name}}
- * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**
