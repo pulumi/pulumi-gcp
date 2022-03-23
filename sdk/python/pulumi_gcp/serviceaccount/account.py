@@ -297,7 +297,7 @@ class Account(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="service-account-id",
             display_name="Service Account")
         ```
@@ -352,7 +352,7 @@ class Account(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        service_account = gcp.service_account.Account("serviceAccount",
+        service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="service-account-id",
             display_name="Service Account")
         ```
