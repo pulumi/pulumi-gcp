@@ -66,10 +66,10 @@ jobs:
       name: Set Automerge
       uses: peter-evans/enable-pull-request-automerge@v1
       with:
-        github_token: ${{ secrets.PULUMI_BOT_TOKEN }}
-        merge_method: squash
-        pull_request_number: ${{ steps.create-pr.outputs.pull-request-number }}
+        merge-method: squash
+        pull-request-number: ${{ steps.create-pr.outputs.pull-request-number }}
         repository: ${{ github.repository }}
+        token: ${{ secrets.PULUMI_BOT_TOKEN }}
     strategy:
       fail-fast: true
       matrix:
