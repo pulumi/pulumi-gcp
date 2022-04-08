@@ -56,12 +56,8 @@ class DatabaseInstanceArgs:
                have `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
-        :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
-               available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-               A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-               the provider region will be used instead, but this will be an apply-time error for instances if the provider
-               region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-               make sure you understand this.
+        :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
+               the provider region will be used instead.
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
@@ -204,12 +200,8 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region the instance will sit in. Note, Cloud SQL is not
-        available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-        A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-        the provider region will be used instead, but this will be an apply-time error for instances if the provider
-        region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-        make sure you understand this.
+        The region the instance will sit in. If a region is not provided in the resource definition,
+        the provider region will be used instead.
         """
         return pulumi.get(self, "region")
 
@@ -328,12 +320,8 @@ class _DatabaseInstanceState:
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
-        :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
-               available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-               A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-               the provider region will be used instead, but this will be an apply-time error for instances if the provider
-               region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-               make sure you understand this.
+        :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
+               the provider region will be used instead.
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
@@ -554,12 +542,8 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region the instance will sit in. Note, Cloud SQL is not
-        available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-        A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-        the provider region will be used instead, but this will be an apply-time error for instances if the provider
-        region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-        make sure you understand this.
+        The region the instance will sit in. If a region is not provided in the resource definition,
+        the provider region will be used instead.
         """
         return pulumi.get(self, "region")
 
@@ -782,12 +766,8 @@ class DatabaseInstance(pulumi.CustomResource):
                have `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
-        :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
-               available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-               A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-               the provider region will be used instead, but this will be an apply-time error for instances if the provider
-               region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-               make sure you understand this.
+        :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
+               the provider region will be used instead.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
@@ -1014,12 +994,8 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The full project ID of the source instance.`
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
-        :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
-               available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-               A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-               the provider region will be used instead, but this will be an apply-time error for instances if the provider
-               region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-               make sure you understand this.
+        :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
+               the provider region will be used instead.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
@@ -1177,12 +1153,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region the instance will sit in. Note, Cloud SQL is not
-        available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-        A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-        the provider region will be used instead, but this will be an apply-time error for instances if the provider
-        region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-        make sure you understand this.
+        The region the instance will sit in. If a region is not provided in the resource definition,
+        the provider region will be used instead.
         """
         return pulumi.get(self, "region")
 

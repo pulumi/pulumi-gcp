@@ -27,13 +27,13 @@ class AwsNodePoolArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsNodePool resource.
-        :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Required. Autoscaler configuration for this node pool.
+        :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input['AwsNodePoolConfigArgs'] config: Required. The configuration of the node pool.
+        :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'] max_pods_constraint: Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-        :param pulumi.Input[str] subnet_id: Required. The subnet where the node pool node run.
-        :param pulumi.Input[str] version: Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        :param pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
+        :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
@@ -56,7 +56,7 @@ class AwsNodePoolArgs:
     @pulumi.getter
     def autoscaling(self) -> pulumi.Input['AwsNodePoolAutoscalingArgs']:
         """
-        Required. Autoscaler configuration for this node pool.
+        Autoscaler configuration for this node pool.
         """
         return pulumi.get(self, "autoscaling")
 
@@ -80,7 +80,7 @@ class AwsNodePoolArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input['AwsNodePoolConfigArgs']:
         """
-        Required. The configuration of the node pool.
+        The configuration of the node pool.
         """
         return pulumi.get(self, "config")
 
@@ -104,7 +104,7 @@ class AwsNodePoolArgs:
     @pulumi.getter(name="maxPodsConstraint")
     def max_pods_constraint(self) -> pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']:
         """
-        Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         """
         return pulumi.get(self, "max_pods_constraint")
 
@@ -116,7 +116,7 @@ class AwsNodePoolArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[str]:
         """
-        Required. The subnet where the node pool node run.
+        The subnet where the node pool node run.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -128,7 +128,7 @@ class AwsNodePoolArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         return pulumi.get(self, "version")
 
@@ -195,23 +195,23 @@ class _AwsNodePoolState:
         """
         Input properties used for looking up and filtering AwsNodePool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Required. Autoscaler configuration for this node pool.
+        :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input['AwsNodePoolConfigArgs'] config: Required. The configuration of the node pool.
+        :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
                and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'] max_pods_constraint: Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
                RECONCILING, STOPPING, ERROR, DEGRADED
-        :param pulumi.Input[str] subnet_id: Required. The subnet where the node pool node run.
+        :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
-        :param pulumi.Input[str] version: Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -262,7 +262,7 @@ class _AwsNodePoolState:
     @pulumi.getter
     def autoscaling(self) -> Optional[pulumi.Input['AwsNodePoolAutoscalingArgs']]:
         """
-        Required. Autoscaler configuration for this node pool.
+        Autoscaler configuration for this node pool.
         """
         return pulumi.get(self, "autoscaling")
 
@@ -286,7 +286,7 @@ class _AwsNodePoolState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['AwsNodePoolConfigArgs']]:
         """
-        Required. The configuration of the node pool.
+        The configuration of the node pool.
         """
         return pulumi.get(self, "config")
 
@@ -335,7 +335,7 @@ class _AwsNodePoolState:
     @pulumi.getter(name="maxPodsConstraint")
     def max_pods_constraint(self) -> Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']]:
         """
-        Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         """
         return pulumi.get(self, "max_pods_constraint")
 
@@ -396,7 +396,7 @@ class _AwsNodePoolState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The subnet where the node pool node run.
+        The subnet where the node pool node run.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -432,7 +432,7 @@ class _AwsNodePoolState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         return pulumi.get(self, "version")
 
@@ -596,15 +596,15 @@ class AwsNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Required. Autoscaler configuration for this node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: Required. The configuration of the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] subnet_id: Required. The subnet where the node pool node run.
-        :param pulumi.Input[str] version: Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
+        :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         ...
     @overload
@@ -849,23 +849,23 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Required. Autoscaler configuration for this node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: Required. The configuration of the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
                and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
                RECONCILING, STOPPING, ERROR, DEGRADED
-        :param pulumi.Input[str] subnet_id: Required. The subnet where the node pool node run.
+        :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
-        :param pulumi.Input[str] version: Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -901,7 +901,7 @@ class AwsNodePool(pulumi.CustomResource):
     @pulumi.getter
     def autoscaling(self) -> pulumi.Output['outputs.AwsNodePoolAutoscaling']:
         """
-        Required. Autoscaler configuration for this node pool.
+        Autoscaler configuration for this node pool.
         """
         return pulumi.get(self, "autoscaling")
 
@@ -917,7 +917,7 @@ class AwsNodePool(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.AwsNodePoolConfig']:
         """
-        Required. The configuration of the node pool.
+        The configuration of the node pool.
         """
         return pulumi.get(self, "config")
 
@@ -950,7 +950,7 @@ class AwsNodePool(pulumi.CustomResource):
     @pulumi.getter(name="maxPodsConstraint")
     def max_pods_constraint(self) -> pulumi.Output['outputs.AwsNodePoolMaxPodsConstraint']:
         """
-        Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         """
         return pulumi.get(self, "max_pods_constraint")
 
@@ -991,7 +991,7 @@ class AwsNodePool(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
         """
-        Required. The subnet where the node pool node run.
+        The subnet where the node pool node run.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -1015,7 +1015,7 @@ class AwsNodePool(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         return pulumi.get(self, "version")
 

@@ -107,6 +107,7 @@ namespace Pulumi.Gcp.Storage
     ///                     Seconds = 0,
     ///                     Nanos = 0,
     ///                 },
+    ///                 RepeatInterval = "604800s",
     ///             },
     ///         }, new CustomResourceOptions
     ///         {

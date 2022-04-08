@@ -333,6 +333,7 @@ class TransferJob(pulumi.CustomResource):
                     seconds=0,
                     nanos=0,
                 ),
+                repeat_interval="604800s",
             ),
             opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket_iam_member]))
         ```
@@ -428,6 +429,7 @@ class TransferJob(pulumi.CustomResource):
                     seconds=0,
                     nanos=0,
                 ),
+                repeat_interval="604800s",
             ),
             opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket_iam_member]))
         ```

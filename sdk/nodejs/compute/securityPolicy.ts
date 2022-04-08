@@ -103,6 +103,15 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * The URI of the created resourc
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The type indicates the intended use of the security policy.
+     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+     * They filter requests before they hit the origin servers.
+     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     * They filter requests before the request is served from Google's cache.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -124,6 +133,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as SecurityPolicyArgs | undefined;
             resourceInputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
@@ -131,6 +141,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
@@ -174,6 +185,15 @@ export interface SecurityPolicyState {
      * The URI of the created resourc
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * The type indicates the intended use of the security policy.
+     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+     * They filter requests before they hit the origin servers.
+     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     * They filter requests before the request is served from Google's cache.
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -203,4 +223,13 @@ export interface SecurityPolicyArgs {
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
+    /**
+     * The type indicates the intended use of the security policy.
+     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+     * They filter requests before they hit the origin servers.
+     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     * They filter requests before the request is served from Google's cache.
+     */
+    type?: pulumi.Input<string>;
 }

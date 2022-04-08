@@ -111,25 +111,25 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Configuration related to the cluster RBAC settings.
+        /// Configuration related to the cluster RBAC settings.
         /// </summary>
         [Output("authorization")]
         public Output<Outputs.AzureClusterAuthorization> Authorization { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+        /// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
         /// </summary>
         [Output("azureRegion")]
         public Output<string> AzureRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         /// </summary>
         [Output("client")]
         public Output<string> Client { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Configuration related to the cluster control plane.
+        /// Configuration related to the cluster control plane.
         /// </summary>
         [Output("controlPlane")]
         public Output<Outputs.AzureClusterControlPlane> ControlPlane { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Cluster-wide networking configuration.
+        /// Cluster-wide networking configuration.
         /// </summary>
         [Output("networking")]
         public Output<Outputs.AzureClusterNetworking> Networking { get; private set; } = null!;
@@ -285,25 +285,25 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// Required. Configuration related to the cluster RBAC settings.
+        /// Configuration related to the cluster RBAC settings.
         /// </summary>
         [Input("authorization", required: true)]
         public Input<Inputs.AzureClusterAuthorizationArgs> Authorization { get; set; } = null!;
 
         /// <summary>
-        /// Required. The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+        /// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
         /// </summary>
         [Input("azureRegion", required: true)]
         public Input<string> AzureRegion { get; set; } = null!;
 
         /// <summary>
-        /// Required. Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         /// </summary>
         [Input("client", required: true)]
         public Input<string> Client { get; set; } = null!;
 
         /// <summary>
-        /// Required. Configuration related to the cluster control plane.
+        /// Configuration related to the cluster control plane.
         /// </summary>
         [Input("controlPlane", required: true)]
         public Input<Inputs.AzureClusterControlPlaneArgs> ControlPlane { get; set; } = null!;
@@ -333,7 +333,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. Cluster-wide networking configuration.
+        /// Cluster-wide networking configuration.
         /// </summary>
         [Input("networking", required: true)]
         public Input<Inputs.AzureClusterNetworkingArgs> Networking { get; set; } = null!;
@@ -370,25 +370,25 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// Required. Configuration related to the cluster RBAC settings.
+        /// Configuration related to the cluster RBAC settings.
         /// </summary>
         [Input("authorization")]
         public Input<Inputs.AzureClusterAuthorizationGetArgs>? Authorization { get; set; }
 
         /// <summary>
-        /// Required. The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+        /// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
         /// </summary>
         [Input("azureRegion")]
         public Input<string>? AzureRegion { get; set; }
 
         /// <summary>
-        /// Required. Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         /// </summary>
         [Input("client")]
         public Input<string>? Client { get; set; }
 
         /// <summary>
-        /// Required. Configuration related to the cluster control plane.
+        /// Configuration related to the cluster control plane.
         /// </summary>
         [Input("controlPlane")]
         public Input<Inputs.AzureClusterControlPlaneGetArgs>? ControlPlane { get; set; }
@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. Cluster-wide networking configuration.
+        /// Cluster-wide networking configuration.
         /// </summary>
         [Input("networking")]
         public Input<Inputs.AzureClusterNetworkingGetArgs>? Networking { get; set; }

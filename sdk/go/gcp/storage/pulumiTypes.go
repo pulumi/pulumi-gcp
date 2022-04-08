@@ -1882,6 +1882,8 @@ func (o ObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInput) Obje
 }
 
 type TransferJobSchedule struct {
+	// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	RepeatInterval *string `pulumi:"repeatInterval"`
 	// The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
 	ScheduleEndDate *TransferJobScheduleScheduleEndDate `pulumi:"scheduleEndDate"`
 	// The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
@@ -1902,6 +1904,8 @@ type TransferJobScheduleInput interface {
 }
 
 type TransferJobScheduleArgs struct {
+	// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	RepeatInterval pulumi.StringPtrInput `pulumi:"repeatInterval"`
 	// The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
 	ScheduleEndDate TransferJobScheduleScheduleEndDatePtrInput `pulumi:"scheduleEndDate"`
 	// The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
@@ -1987,6 +1991,11 @@ func (o TransferJobScheduleOutput) ToTransferJobSchedulePtrOutputWithContext(ctx
 	}).(TransferJobSchedulePtrOutput)
 }
 
+// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o TransferJobScheduleOutput) RepeatInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobSchedule) *string { return v.RepeatInterval }).(pulumi.StringPtrOutput)
+}
+
 // The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
 func (o TransferJobScheduleOutput) ScheduleEndDate() TransferJobScheduleScheduleEndDatePtrOutput {
 	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleScheduleEndDate { return v.ScheduleEndDate }).(TransferJobScheduleScheduleEndDatePtrOutput)
@@ -2024,6 +2033,16 @@ func (o TransferJobSchedulePtrOutput) Elem() TransferJobScheduleOutput {
 		var ret TransferJobSchedule
 		return ret
 	}).(TransferJobScheduleOutput)
+}
+
+// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o TransferJobSchedulePtrOutput) RepeatInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepeatInterval
+	}).(pulumi.StringPtrOutput)
 }
 
 // The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.

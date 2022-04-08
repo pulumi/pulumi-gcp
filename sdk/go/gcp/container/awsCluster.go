@@ -134,11 +134,11 @@ type AwsCluster struct {
 
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Required. Configuration related to the cluster RBAC settings.
+	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationOutput `pulumi:"authorization"`
-	// Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion pulumi.StringOutput `pulumi:"awsRegion"`
-	// Required. Configuration related to the cluster control plane.
+	// Configuration related to the cluster control plane.
 	ControlPlane AwsClusterControlPlaneOutput `pulumi:"controlPlane"`
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -155,7 +155,7 @@ type AwsCluster struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Cluster-wide networking configuration.
+	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingOutput `pulumi:"networking"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -221,11 +221,11 @@ func GetAwsCluster(ctx *pulumi.Context,
 type awsClusterState struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Required. Configuration related to the cluster RBAC settings.
+	// Configuration related to the cluster RBAC settings.
 	Authorization *AwsClusterAuthorization `pulumi:"authorization"`
-	// Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion *string `pulumi:"awsRegion"`
-	// Required. Configuration related to the cluster control plane.
+	// Configuration related to the cluster control plane.
 	ControlPlane *AwsClusterControlPlane `pulumi:"controlPlane"`
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -242,7 +242,7 @@ type awsClusterState struct {
 	Location *string `pulumi:"location"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
-	// Required. Cluster-wide networking configuration.
+	// Cluster-wide networking configuration.
 	Networking *AwsClusterNetworking `pulumi:"networking"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -262,11 +262,11 @@ type awsClusterState struct {
 type AwsClusterState struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations pulumi.StringMapInput
-	// Required. Configuration related to the cluster RBAC settings.
+	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationPtrInput
-	// Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion pulumi.StringPtrInput
-	// Required. Configuration related to the cluster control plane.
+	// Configuration related to the cluster control plane.
 	ControlPlane AwsClusterControlPlanePtrInput
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
@@ -283,7 +283,7 @@ type AwsClusterState struct {
 	Location pulumi.StringPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
-	// Required. Cluster-wide networking configuration.
+	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -307,11 +307,11 @@ func (AwsClusterState) ElementType() reflect.Type {
 type awsClusterArgs struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Required. Configuration related to the cluster RBAC settings.
+	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorization `pulumi:"authorization"`
-	// Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion string `pulumi:"awsRegion"`
-	// Required. Configuration related to the cluster control plane.
+	// Configuration related to the cluster control plane.
 	ControlPlane AwsClusterControlPlane `pulumi:"controlPlane"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
@@ -321,7 +321,7 @@ type awsClusterArgs struct {
 	Location string `pulumi:"location"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
-	// Required. Cluster-wide networking configuration.
+	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworking `pulumi:"networking"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -331,11 +331,11 @@ type awsClusterArgs struct {
 type AwsClusterArgs struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations pulumi.StringMapInput
-	// Required. Configuration related to the cluster RBAC settings.
+	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationInput
-	// Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion pulumi.StringInput
-	// Required. Configuration related to the cluster control plane.
+	// Configuration related to the cluster control plane.
 	ControlPlane AwsClusterControlPlaneInput
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
@@ -345,7 +345,7 @@ type AwsClusterArgs struct {
 	Location pulumi.StringInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
-	// Required. Cluster-wide networking configuration.
+	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingInput
 	// The project for the resource
 	Project pulumi.StringPtrInput

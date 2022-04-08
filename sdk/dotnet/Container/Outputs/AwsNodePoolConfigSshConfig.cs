@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AwsNodePoolConfigSshConfig
     {
         /// <summary>
-        /// Required. The name of the EC2 key pair used to login into cluster machines.
+        /// The name of the EC2 key pair used to login into cluster machines.
         /// </summary>
         public readonly string Ec2KeyPair;
 

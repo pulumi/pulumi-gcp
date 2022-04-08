@@ -410,6 +410,13 @@ namespace Pulumi.Gcp
             set => _firebaseCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _firebaserulesCustomEndpoint = new __Value<string?>(() => __config.Get("firebaserulesCustomEndpoint"));
+        public static string? FirebaserulesCustomEndpoint
+        {
+            get => _firebaserulesCustomEndpoint.Get();
+            set => _firebaserulesCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _firestoreCustomEndpoint = new __Value<string?>(() => __config.Get("firestoreCustomEndpoint"));
         public static string? FirestoreCustomEndpoint
         {

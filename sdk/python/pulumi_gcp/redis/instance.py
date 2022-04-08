@@ -65,11 +65,14 @@ class InstanceArgs:
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-               backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-               provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-               endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-               "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
+               If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+               - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+               instance cannot scale up or down the number of replicas.
+               - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+               can scale up and down the number of replicas.
+               Default value is `READ_REPLICAS_DISABLED`.
+               Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -77,9 +80,10 @@ class InstanceArgs:
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
-        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-               defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-               is 1. The valid value for basic tier is 0 and the default is also 0.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with
+               read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+               for a Standard Tier instance, the only valid value is 1 and the default is 1.
+               The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -299,11 +303,14 @@ class InstanceArgs:
     @pulumi.getter(name="readReplicasMode")
     def read_replicas_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-        backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-        provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-        endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-        "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        Optional. Read replica mode. Can only be specified when trying to create the instance.
+        If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+        - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+        instance cannot scale up or down the number of replicas.
+        - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+        can scale up and down the number of replicas.
+        Default value is `READ_REPLICAS_DISABLED`.
+        Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")
 
@@ -355,9 +362,10 @@ class InstanceArgs:
     @pulumi.getter(name="replicaCount")
     def replica_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-        defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-        is 1. The valid value for basic tier is 0 and the default is also 0.
+        Optional. The number of replica nodes. The valid range for the Standard Tier with
+        read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+        for a Standard Tier instance, the only valid value is 1 and the default is 1.
+        The valid value for basic tier is 0 and the default is also 0.
         """
         return pulumi.get(self, "replica_count")
 
@@ -495,11 +503,14 @@ class _InstanceState:
                requests must target 'host'.
         :param pulumi.Input[int] read_endpoint_port: Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
                'port'.
-        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-               backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-               provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-               endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-               "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
+               If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+               - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+               instance cannot scale up or down the number of replicas.
+               - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+               can scale up and down the number of replicas.
+               Default value is `READ_REPLICAS_DISABLED`.
+               Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -507,9 +518,10 @@ class _InstanceState:
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
-        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-               defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-               is 1. The valid value for basic tier is 0 and the default is also 0.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with
+               read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+               for a Standard Tier instance, the only valid value is 1 and the default is 1.
+               The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -869,11 +881,14 @@ class _InstanceState:
     @pulumi.getter(name="readReplicasMode")
     def read_replicas_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-        backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-        provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-        endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-        "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        Optional. Read replica mode. Can only be specified when trying to create the instance.
+        If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+        - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+        instance cannot scale up or down the number of replicas.
+        - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+        can scale up and down the number of replicas.
+        Default value is `READ_REPLICAS_DISABLED`.
+        Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")
 
@@ -925,9 +940,10 @@ class _InstanceState:
     @pulumi.getter(name="replicaCount")
     def replica_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-        defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-        is 1. The valid value for basic tier is 0 and the default is also 0.
+        Optional. The number of replica nodes. The valid range for the Standard Tier with
+        read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+        for a Standard Tier instance, the only valid value is 1 and the default is 1.
+        The valid value for basic tier is 0 and the default is also 0.
         """
         return pulumi.get(self, "replica_count")
 
@@ -1119,8 +1135,7 @@ class Instance(pulumi.CustomResource):
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -1173,11 +1188,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-               backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-               provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-               endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-               "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
+               If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+               - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+               instance cannot scale up or down the number of replicas.
+               - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+               can scale up and down the number of replicas.
+               Default value is `READ_REPLICAS_DISABLED`.
+               Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -1185,9 +1203,10 @@ class Instance(pulumi.CustomResource):
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
-        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-               defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-               is 1. The valid value for basic tier is 0 and the default is also 0.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with
+               read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+               for a Standard Tier instance, the only valid value is 1 and the default is 1.
+               The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -1307,8 +1326,7 @@ class Instance(pulumi.CustomResource):
             labels={
                 "my_key": "my_val",
                 "other_key": "other_val",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import
@@ -1504,11 +1522,14 @@ class Instance(pulumi.CustomResource):
                requests must target 'host'.
         :param pulumi.Input[int] read_endpoint_port: Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
                'port'.
-        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-               backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-               provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-               endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-               "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
+               If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+               - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+               instance cannot scale up or down the number of replicas.
+               - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+               can scale up and down the number of replicas.
+               Default value is `READ_REPLICAS_DISABLED`.
+               Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -1516,9 +1537,10 @@ class Instance(pulumi.CustomResource):
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
-        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-               defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-               is 1. The valid value for basic tier is 0 and the default is also 0.
+        :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with
+               read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+               for a Standard Tier instance, the only valid value is 1 and the default is 1.
+               The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this
                instance. If not provided, the service will choose an unused /29
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
@@ -1769,11 +1791,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="readReplicasMode")
     def read_replicas_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-        backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-        provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-        endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-        "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        Optional. Read replica mode. Can only be specified when trying to create the instance.
+        If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+        - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+        instance cannot scale up or down the number of replicas.
+        - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+        can scale up and down the number of replicas.
+        Default value is `READ_REPLICAS_DISABLED`.
+        Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")
 
@@ -1809,9 +1834,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="replicaCount")
     def replica_count(self) -> pulumi.Output[int]:
         """
-        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-        defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-        is 1. The valid value for basic tier is 0 and the default is also 0.
+        Optional. The number of replica nodes. The valid range for the Standard Tier with
+        read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+        for a Standard Tier instance, the only valid value is 1 and the default is 1.
+        The valid value for basic tier is 0 and the default is also 0.
         """
         return pulumi.get(self, "replica_count")
 

@@ -232,6 +232,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('firebaseCustomEndpoint')
 
     @property
+    def firebaserules_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaserulesCustomEndpoint')
+
+    @property
     def firestore_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firestoreCustomEndpoint')
 

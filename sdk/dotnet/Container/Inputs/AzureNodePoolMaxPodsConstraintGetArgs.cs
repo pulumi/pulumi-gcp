@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AzureNodePoolMaxPodsConstraintGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The maximum number of pods to schedule on a single node.
+        /// The maximum number of pods to schedule on a single node.
         /// </summary>
         [Input("maxPodsPerNode", required: true)]
         public Input<int> MaxPodsPerNode { get; set; } = null!;

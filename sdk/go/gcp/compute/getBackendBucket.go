@@ -59,6 +59,7 @@ type LookupBackendBucketResult struct {
 	CreationTimestamp     string                      `pulumi:"creationTimestamp"`
 	CustomResponseHeaders []string                    `pulumi:"customResponseHeaders"`
 	Description           string                      `pulumi:"description"`
+	EdgeSecurityPolicy    string                      `pulumi:"edgeSecurityPolicy"`
 	EnableCdn             bool                        `pulumi:"enableCdn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string  `pulumi:"id"`
@@ -122,6 +123,10 @@ func (o LookupBackendBucketResultOutput) CustomResponseHeaders() pulumi.StringAr
 
 func (o LookupBackendBucketResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendBucketResultOutput) EdgeSecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.EdgeSecurityPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupBackendBucketResultOutput) EnableCdn() pulumi.BoolOutput {

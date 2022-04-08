@@ -105,19 +105,19 @@ export class AzureCluster extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Required. Configuration related to the cluster RBAC settings.
+     * Configuration related to the cluster RBAC settings.
      */
     public readonly authorization!: pulumi.Output<outputs.container.AzureClusterAuthorization>;
     /**
-     * Required. The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+     * The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
      */
     public readonly azureRegion!: pulumi.Output<string>;
     /**
-     * Required. Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      */
     public readonly client!: pulumi.Output<string>;
     /**
-     * Required. Configuration related to the cluster control plane.
+     * Configuration related to the cluster control plane.
      */
     public readonly controlPlane!: pulumi.Output<outputs.container.AzureClusterControlPlane>;
     /**
@@ -150,7 +150,7 @@ export class AzureCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. Cluster-wide networking configuration.
+     * Cluster-wide networking configuration.
      */
     public readonly networking!: pulumi.Output<outputs.container.AzureClusterNetworking>;
     /**
@@ -277,19 +277,19 @@ export interface AzureClusterState {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Configuration related to the cluster RBAC settings.
+     * Configuration related to the cluster RBAC settings.
      */
     authorization?: pulumi.Input<inputs.container.AzureClusterAuthorization>;
     /**
-     * Required. The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+     * The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
      */
     azureRegion?: pulumi.Input<string>;
     /**
-     * Required. Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      */
     client?: pulumi.Input<string>;
     /**
-     * Required. Configuration related to the cluster control plane.
+     * Configuration related to the cluster control plane.
      */
     controlPlane?: pulumi.Input<inputs.container.AzureClusterControlPlane>;
     /**
@@ -322,7 +322,7 @@ export interface AzureClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Cluster-wide networking configuration.
+     * Cluster-wide networking configuration.
      */
     networking?: pulumi.Input<inputs.container.AzureClusterNetworking>;
     /**
@@ -365,19 +365,19 @@ export interface AzureClusterArgs {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Configuration related to the cluster RBAC settings.
+     * Configuration related to the cluster RBAC settings.
      */
     authorization: pulumi.Input<inputs.container.AzureClusterAuthorization>;
     /**
-     * Required. The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+     * The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
      */
     azureRegion: pulumi.Input<string>;
     /**
-     * Required. Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      */
     client: pulumi.Input<string>;
     /**
-     * Required. Configuration related to the cluster control plane.
+     * Configuration related to the cluster control plane.
      */
     controlPlane: pulumi.Input<inputs.container.AzureClusterControlPlane>;
     /**
@@ -397,7 +397,7 @@ export interface AzureClusterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Cluster-wide networking configuration.
+     * Cluster-wide networking configuration.
      */
     networking: pulumi.Input<inputs.container.AzureClusterNetworking>;
     /**

@@ -16,6 +16,7 @@ __all__ = ['DatabaseArgs', 'Database']
 class DatabaseArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
+                 database_dialect: Optional[pulumi.Input[str]] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
@@ -24,6 +25,10 @@ class DatabaseArgs:
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] instance: The instance to create the database on.
+        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+               that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+               therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+               "POSTGRESQL"]
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -38,6 +43,8 @@ class DatabaseArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "instance", instance)
+        if database_dialect is not None:
+            pulumi.set(__self__, "database_dialect", database_dialect)
         if ddls is not None:
             pulumi.set(__self__, "ddls", ddls)
         if deletion_protection is not None:
@@ -60,6 +67,21 @@ class DatabaseArgs:
     @instance.setter
     def instance(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter(name="databaseDialect")
+    def database_dialect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+        that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+        therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+        "POSTGRESQL"]
+        """
+        return pulumi.get(self, "database_dialect")
+
+    @database_dialect.setter
+    def database_dialect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_dialect", value)
 
     @property
     @pulumi.getter
@@ -132,6 +154,7 @@ class DatabaseArgs:
 @pulumi.input_type
 class _DatabaseState:
     def __init__(__self__, *,
+                 database_dialect: Optional[pulumi.Input[str]] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
@@ -141,6 +164,10 @@ class _DatabaseState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+               that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+               therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+               "POSTGRESQL"]
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -156,6 +183,8 @@ class _DatabaseState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: An explanation of the status of the database.
         """
+        if database_dialect is not None:
+            pulumi.set(__self__, "database_dialect", database_dialect)
         if ddls is not None:
             pulumi.set(__self__, "ddls", ddls)
         if deletion_protection is not None:
@@ -170,6 +199,21 @@ class _DatabaseState:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="databaseDialect")
+    def database_dialect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+        that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+        therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+        "POSTGRESQL"]
+        """
+        return pulumi.get(self, "database_dialect")
+
+    @database_dialect.setter
+    def database_dialect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_dialect", value)
 
     @property
     @pulumi.getter
@@ -268,6 +312,7 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_dialect: Optional[pulumi.Input[str]] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
@@ -276,16 +321,6 @@ class Database(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A Cloud Spanner Database which is hosted on a Spanner instance.
-
-        To get more information about Database, see:
-
-        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/spanner/)
-
-        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
-
         ## Example Usage
         ### Spanner Database Basic
 
@@ -328,6 +363,10 @@ class Database(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+               that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+               therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+               "POSTGRESQL"]
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -349,16 +388,6 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Cloud Spanner Database which is hosted on a Spanner instance.
-
-        To get more information about Database, see:
-
-        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/spanner/)
-
-        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
-
         ## Example Usage
         ### Spanner Database Basic
 
@@ -414,6 +443,7 @@ class Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_dialect: Optional[pulumi.Input[str]] = None,
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
@@ -432,6 +462,7 @@ class Database(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
+            __props__.__dict__["database_dialect"] = database_dialect
             __props__.__dict__["ddls"] = ddls
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_config"] = encryption_config
@@ -451,6 +482,7 @@ class Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            database_dialect: Optional[pulumi.Input[str]] = None,
             ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
@@ -465,6 +497,10 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+               that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+               therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+               "POSTGRESQL"]
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -484,6 +520,7 @@ class Database(pulumi.CustomResource):
 
         __props__ = _DatabaseState.__new__(_DatabaseState)
 
+        __props__.__dict__["database_dialect"] = database_dialect
         __props__.__dict__["ddls"] = ddls
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["encryption_config"] = encryption_config
@@ -492,6 +529,17 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
         return Database(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="databaseDialect")
+    def database_dialect(self) -> pulumi.Output[str]:
+        """
+        The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+        that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+        therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+        "POSTGRESQL"]
+        """
+        return pulumi.get(self, "database_dialect")
 
     @property
     @pulumi.getter

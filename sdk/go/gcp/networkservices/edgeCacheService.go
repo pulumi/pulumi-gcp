@@ -276,6 +276,9 @@ import (
 // 											IncludedHeaderNames: pulumi.StringArray{
 // 												pulumi.String("banana"),
 // 											},
+// 											IncludedCookieNames: pulumi.StringArray{
+// 												pulumi.String("orange"),
+// 											},
 // 										},
 // 										NegativeCaching:   pulumi.Bool(true),
 // 										SignedRequestMode: pulumi.String("DISABLED"),

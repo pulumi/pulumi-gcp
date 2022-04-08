@@ -440,6 +440,14 @@ Object.defineProperty(exports, "firebaseCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const firebaserulesCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaserulesCustomEndpoint", {
+    get() {
+        return __config.get("firebaserulesCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const firestoreCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firestoreCustomEndpoint", {
     get() {

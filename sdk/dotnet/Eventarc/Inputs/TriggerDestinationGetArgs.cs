@@ -24,6 +24,18 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         [Input("cloudRunService")]
         public Input<Inputs.TriggerDestinationCloudRunServiceGetArgs>? CloudRunService { get; set; }
 
+        /// <summary>
+        /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        /// </summary>
+        [Input("gke")]
+        public Input<Inputs.TriggerDestinationGkeGetArgs>? Gke { get; set; }
+
+        /// <summary>
+        /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+        /// </summary>
+        [Input("workflow")]
+        public Input<string>? Workflow { get; set; }
+
         public TriggerDestinationGetArgs()
         {
         }

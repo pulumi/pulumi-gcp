@@ -11,6 +11,7 @@ from .. import _utilities
 __all__ = [
     'TriggerDestinationArgs',
     'TriggerDestinationCloudRunServiceArgs',
+    'TriggerDestinationGkeArgs',
     'TriggerMatchingCriteriaArgs',
     'TriggerTransportArgs',
     'TriggerTransportPubsubArgs',
@@ -20,15 +21,23 @@ __all__ = [
 class TriggerDestinationArgs:
     def __init__(__self__, *,
                  cloud_function: Optional[pulumi.Input[str]] = None,
-                 cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']] = None):
+                 cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']] = None,
+                 gke: Optional[pulumi.Input['TriggerDestinationGkeArgs']] = None,
+                 workflow: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cloud_function: [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
         :param pulumi.Input['TriggerDestinationCloudRunServiceArgs'] cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        :param pulumi.Input['TriggerDestinationGkeArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        :param pulumi.Input[str] workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         if cloud_function is not None:
             pulumi.set(__self__, "cloud_function", cloud_function)
         if cloud_run_service is not None:
             pulumi.set(__self__, "cloud_run_service", cloud_run_service)
+        if gke is not None:
+            pulumi.set(__self__, "gke", gke)
+        if workflow is not None:
+            pulumi.set(__self__, "workflow", workflow)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -54,6 +63,30 @@ class TriggerDestinationArgs:
     def cloud_run_service(self, value: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']]):
         pulumi.set(self, "cloud_run_service", value)
 
+    @property
+    @pulumi.getter
+    def gke(self) -> Optional[pulumi.Input['TriggerDestinationGkeArgs']]:
+        """
+        A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        """
+        return pulumi.get(self, "gke")
+
+    @gke.setter
+    def gke(self, value: Optional[pulumi.Input['TriggerDestinationGkeArgs']]):
+        pulumi.set(self, "gke", value)
+
+    @property
+    @pulumi.getter
+    def workflow(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+        """
+        return pulumi.get(self, "workflow")
+
+    @workflow.setter
+    def workflow(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workflow", value)
+
 
 @pulumi.input_type
 class TriggerDestinationCloudRunServiceArgs:
@@ -62,8 +95,8 @@ class TriggerDestinationCloudRunServiceArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] service: Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
-        :param pulumi.Input[str] path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        :param pulumi.Input[str] service: Required. Name of the GKE service.
+        :param pulumi.Input[str] path: Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         :param pulumi.Input[str] region: Required. The region the Cloud Run service is deployed in.
         """
         pulumi.set(__self__, "service", service)
@@ -76,7 +109,7 @@ class TriggerDestinationCloudRunServiceArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        Required. Name of the GKE service.
         """
         return pulumi.get(self, "service")
 
@@ -88,7 +121,7 @@ class TriggerDestinationCloudRunServiceArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
 
@@ -110,16 +143,103 @@ class TriggerDestinationCloudRunServiceArgs:
 
 
 @pulumi.input_type
+class TriggerDestinationGkeArgs:
+    def __init__(__self__, *,
+                 cluster: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 namespace: pulumi.Input[str],
+                 service: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cluster: Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+        :param pulumi.Input[str] location: Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+        :param pulumi.Input[str] namespace: Required. The namespace the GKE service is running in.
+        :param pulumi.Input[str] service: Required. Name of the GKE service.
+        :param pulumi.Input[str] path: Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "service", service)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[str]:
+        """
+        Required. The namespace the GKE service is running in.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the GKE service.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
 class TriggerMatchingCriteriaArgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 value: pulumi.Input[str],
+                 operator: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] attribute: Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
         :param pulumi.Input[str] value: Required. The value for the attribute.
+        :param pulumi.Input[str] operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "value", value)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
 
     @property
     @pulumi.getter
@@ -144,6 +264,18 @@ class TriggerMatchingCriteriaArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
 
 
 @pulumi.input_type

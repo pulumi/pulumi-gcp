@@ -7,11 +7,13 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GCPolicyMaxAge',
     'GCPolicyMaxVersion',
     'InstanceCluster',
+    'InstanceClusterAutoscalingConfig',
     'InstanceIamBindingCondition',
     'InstanceIamMemberCondition',
     'TableColumnFamily',
@@ -75,6 +77,8 @@ class InstanceCluster(dict):
         suggest = None
         if key == "clusterId":
             suggest = "cluster_id"
+        elif key == "autoscalingConfig":
+            suggest = "autoscaling_config"
         elif key == "kmsKeyName":
             suggest = "kms_key_name"
         elif key == "numNodes":
@@ -95,12 +99,14 @@ class InstanceCluster(dict):
 
     def __init__(__self__, *,
                  cluster_id: str,
+                 autoscaling_config: Optional['outputs.InstanceClusterAutoscalingConfig'] = None,
                  kms_key_name: Optional[str] = None,
                  num_nodes: Optional[int] = None,
                  storage_type: Optional[str] = None,
                  zone: Optional[str] = None):
         """
         :param str cluster_id: The ID of the Cloud Bigtable cluster.
+        :param 'InstanceClusterAutoscalingConfigArgs' autoscaling_config: Autoscaling config for the cluster, contains the following arguments:
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
         :param int num_nodes: The number of nodes in your Cloud Bigtable cluster.
                Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
@@ -112,6 +118,8 @@ class InstanceCluster(dict):
                Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if num_nodes is not None:
@@ -128,6 +136,14 @@ class InstanceCluster(dict):
         The ID of the Cloud Bigtable cluster.
         """
         return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional['outputs.InstanceClusterAutoscalingConfig']:
+        """
+        Autoscaling config for the cluster, contains the following arguments:
+        """
+        return pulumi.get(self, "autoscaling_config")
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -165,6 +181,67 @@ class InstanceCluster(dict):
         Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class InstanceClusterAutoscalingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuTarget":
+            suggest = "cpu_target"
+        elif key == "maxNodes":
+            suggest = "max_nodes"
+        elif key == "minNodes":
+            suggest = "min_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceClusterAutoscalingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceClusterAutoscalingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceClusterAutoscalingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_target: int,
+                 max_nodes: int,
+                 min_nodes: int):
+        """
+        :param int cpu_target: The CPU utilization target in percentage. Must be between 10 and 80.
+        :param int max_nodes: The maximum number of nodes for autoscaling.
+        :param int min_nodes: The minimum number of nodes for autoscaling.
+        """
+        pulumi.set(__self__, "cpu_target", cpu_target)
+        pulumi.set(__self__, "max_nodes", max_nodes)
+        pulumi.set(__self__, "min_nodes", min_nodes)
+
+    @property
+    @pulumi.getter(name="cpuTarget")
+    def cpu_target(self) -> int:
+        """
+        The CPU utilization target in percentage. Must be between 10 and 80.
+        """
+        return pulumi.get(self, "cpu_target")
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> int:
+        """
+        The maximum number of nodes for autoscaling.
+        """
+        return pulumi.get(self, "max_nodes")
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> int:
+        """
+        The minimum number of nodes for autoscaling.
+        """
+        return pulumi.get(self, "min_nodes")
 
 
 @pulumi.output_type

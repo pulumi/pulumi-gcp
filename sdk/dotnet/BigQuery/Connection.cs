@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
     /// 
     /// &gt; **Warning:** All arguments including `cloud_sql.credential.password` will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
     /// 
     /// ## Example Usage
     /// ### Bigquery Connection Basic

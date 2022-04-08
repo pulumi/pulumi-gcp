@@ -3504,6 +3504,10 @@ export namespace bigtable {
 
     export interface InstanceCluster {
         /**
+         * Autoscaling config for the cluster, contains the following arguments:
+         */
+        autoscalingConfig?: pulumi.Input<inputs.bigtable.InstanceClusterAutoscalingConfig>;
+        /**
          * The ID of the Cloud Bigtable cluster.
          */
         clusterId: pulumi.Input<string>;
@@ -3528,6 +3532,21 @@ export namespace bigtable {
          * Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
          */
         zone?: pulumi.Input<string>;
+    }
+
+    export interface InstanceClusterAutoscalingConfig {
+        /**
+         * The CPU utilization target in percentage. Must be between 10 and 80.
+         */
+        cpuTarget: pulumi.Input<number>;
+        /**
+         * The maximum number of nodes for autoscaling.
+         */
+        maxNodes: pulumi.Input<number>;
+        /**
+         * The minimum number of nodes for autoscaling.
+         */
+        minNodes: pulumi.Input<number>;
     }
 
     export interface InstanceIamBindingCondition {
@@ -13546,6 +13565,14 @@ export namespace compute {
 
     export interface SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
         target?: pulumi.Input<string>;
+        /**
+         * The type indicates the intended use of the security policy.
+         * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+         * They filter requests before they hit the origin servers.
+         * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+         * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+         * They filter requests before the request is served from Google's cache.
+         */
         type: pulumi.Input<string>;
     }
 
@@ -15704,37 +15731,37 @@ export namespace config {
 export namespace container {
     export interface AwsClusterAuthorization {
         /**
-         * Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
          */
         adminUsers: pulumi.Input<pulumi.Input<inputs.container.AwsClusterAuthorizationAdminUser>[]>;
     }
 
     export interface AwsClusterAuthorizationAdminUser {
         /**
-         * Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+         * The name of the user, e.g. `my-gcp-id@gmail.com`.
          */
         username: pulumi.Input<string>;
     }
 
     export interface AwsClusterControlPlane {
         /**
-         * Required. Authentication configuration for management of AWS resources.
+         * Authentication configuration for management of AWS resources.
          */
         awsServicesAuthentication: pulumi.Input<inputs.container.AwsClusterControlPlaneAwsServicesAuthentication>;
         /**
-         * Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+         * The ARN of the AWS KMS key used to encrypt cluster configuration.
          */
         configEncryption: pulumi.Input<inputs.container.AwsClusterControlPlaneConfigEncryption>;
         /**
-         * Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+         * The ARN of the AWS KMS key used to encrypt cluster secrets.
          */
         databaseEncryption: pulumi.Input<inputs.container.AwsClusterControlPlaneDatabaseEncryption>;
         /**
-         * Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+         * The name of the AWS IAM instance pofile to assign to each control plane replica.
          */
         iamInstanceProfile: pulumi.Input<string>;
         /**
-         * Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+         * Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
          */
         instanceType?: pulumi.Input<string>;
         /**
@@ -15758,7 +15785,7 @@ export namespace container {
          */
         sshConfig?: pulumi.Input<inputs.container.AwsClusterControlPlaneSshConfig>;
         /**
-         * Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+         * The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
          */
         subnetIds: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -15766,14 +15793,14 @@ export namespace container {
          */
         tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+         * The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
          */
         version: pulumi.Input<string>;
     }
 
     export interface AwsClusterControlPlaneAwsServicesAuthentication {
         /**
-         * Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+         * The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
          */
         roleArn: pulumi.Input<string>;
         /**
@@ -15847,7 +15874,7 @@ export namespace container {
 
     export interface AwsClusterControlPlaneSshConfig {
         /**
-         * Required. The name of the EC2 key pair used to login into cluster machines.
+         * The name of the EC2 key pair used to login into cluster machines.
          */
         ec2KeyPair: pulumi.Input<string>;
     }
@@ -15866,15 +15893,15 @@ export namespace container {
 
     export interface AwsClusterNetworking {
         /**
-         * Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+         * All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
          */
         podAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+         * All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
          */
         serviceAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+         * The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
          */
         vpcId: pulumi.Input<string>;
     }
@@ -15887,26 +15914,26 @@ export namespace container {
 
     export interface AwsNodePoolAutoscaling {
         /**
-         * Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+         * Maximum number of nodes in the NodePool. Must be >= min_node_count.
          */
         maxNodeCount: pulumi.Input<number>;
         /**
-         * Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+         * Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
          */
         minNodeCount: pulumi.Input<number>;
     }
 
     export interface AwsNodePoolConfig {
         /**
-         * Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+         * The ARN of the AWS KMS key used to encrypt node pool configuration.
          */
         configEncryption: pulumi.Input<inputs.container.AwsNodePoolConfigConfigEncryption>;
         /**
-         * Required. The name of the AWS IAM role assigned to nodes in the pool.
+         * The name of the AWS IAM role assigned to nodes in the pool.
          */
         iamInstanceProfile: pulumi.Input<string>;
         /**
-         * Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+         * Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
          */
         instanceType?: pulumi.Input<string>;
         /**
@@ -15963,43 +15990,43 @@ export namespace container {
 
     export interface AwsNodePoolConfigSshConfig {
         /**
-         * Required. The name of the EC2 key pair used to login into cluster machines.
+         * The name of the EC2 key pair used to login into cluster machines.
          */
         ec2KeyPair: pulumi.Input<string>;
     }
 
     export interface AwsNodePoolConfigTaint {
         /**
-         * Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+         * The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
          */
         effect: pulumi.Input<string>;
         /**
-         * Required. Key for the taint.
+         * Key for the taint.
          */
         key: pulumi.Input<string>;
         /**
-         * Required. Value for the taint.
+         * Value for the taint.
          */
         value: pulumi.Input<string>;
     }
 
     export interface AwsNodePoolMaxPodsConstraint {
         /**
-         * Required. The maximum number of pods to schedule on a single node.
+         * The maximum number of pods to schedule on a single node.
          */
         maxPodsPerNode: pulumi.Input<number>;
     }
 
     export interface AzureClusterAuthorization {
         /**
-         * Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
          */
         adminUsers: pulumi.Input<pulumi.Input<inputs.container.AzureClusterAuthorizationAdminUser>[]>;
     }
 
     export interface AzureClusterAuthorizationAdminUser {
         /**
-         * Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+         * The name of the user, e.g. `my-gcp-id@gmail.com`.
          */
         username: pulumi.Input<string>;
     }
@@ -16026,7 +16053,7 @@ export namespace container {
          */
         rootVolume?: pulumi.Input<inputs.container.AzureClusterControlPlaneRootVolume>;
         /**
-         * Required. SSH configuration for how to access the underlying control plane machines.
+         * SSH configuration for how to access the underlying control plane machines.
          */
         sshConfig: pulumi.Input<inputs.container.AzureClusterControlPlaneSshConfig>;
         /**
@@ -16038,7 +16065,7 @@ export namespace container {
          */
         tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+         * The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
          */
         version: pulumi.Input<string>;
         /**
@@ -16092,7 +16119,7 @@ export namespace container {
 
     export interface AzureClusterControlPlaneSshConfig {
         /**
-         * Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+         * The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
          */
         authorizedKey: pulumi.Input<string>;
     }
@@ -16111,15 +16138,15 @@ export namespace container {
 
     export interface AzureClusterNetworking {
         /**
-         * Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+         * The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
          */
         podAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+         * The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
          */
         serviceAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*&#47;resourceGroups/*&#47;providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+         * The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*&#47;resourceGroups/*&#47;providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
          */
         virtualNetworkId: pulumi.Input<string>;
     }
@@ -16132,11 +16159,11 @@ export namespace container {
 
     export interface AzureNodePoolAutoscaling {
         /**
-         * Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+         * Maximum number of nodes in the node pool. Must be >= min_node_count.
          */
         maxNodeCount: pulumi.Input<number>;
         /**
-         * Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+         * Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
          */
         minNodeCount: pulumi.Input<number>;
     }
@@ -16147,7 +16174,7 @@ export namespace container {
          */
         rootVolume?: pulumi.Input<inputs.container.AzureNodePoolConfigRootVolume>;
         /**
-         * Required. SSH configuration for how to access the node pool machines.
+         * SSH configuration for how to access the node pool machines.
          */
         sshConfig: pulumi.Input<inputs.container.AzureNodePoolConfigSshConfig>;
         /**
@@ -16169,14 +16196,14 @@ export namespace container {
 
     export interface AzureNodePoolConfigSshConfig {
         /**
-         * Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+         * The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
          */
         authorizedKey: pulumi.Input<string>;
     }
 
     export interface AzureNodePoolMaxPodsConstraint {
         /**
-         * Required. The maximum number of pods to schedule on a single node.
+         * The maximum number of pods to schedule on a single node.
          */
         maxPodsPerNode: pulumi.Input<number>;
     }
@@ -21681,11 +21708,19 @@ export namespace eventarc {
          * Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
          */
         cloudRunService?: pulumi.Input<inputs.eventarc.TriggerDestinationCloudRunService>;
+        /**
+         * A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+         */
+        gke?: pulumi.Input<inputs.eventarc.TriggerDestinationGke>;
+        /**
+         * The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+         */
+        workflow?: pulumi.Input<string>;
     }
 
     export interface TriggerDestinationCloudRunService {
         /**
-         * Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+         * Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
          */
         path?: pulumi.Input<string>;
         /**
@@ -21693,7 +21728,30 @@ export namespace eventarc {
          */
         region?: pulumi.Input<string>;
         /**
-         * Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+         * Required. Name of the GKE service.
+         */
+        service: pulumi.Input<string>;
+    }
+
+    export interface TriggerDestinationGke {
+        /**
+         * Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+         */
+        cluster: pulumi.Input<string>;
+        /**
+         * Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+         */
+        location: pulumi.Input<string>;
+        /**
+         * Required. The namespace the GKE service is running in.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Required. Name of the GKE service.
          */
         service: pulumi.Input<string>;
     }
@@ -21703,6 +21761,10 @@ export namespace eventarc {
          * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
          */
         attribute: pulumi.Input<string>;
+        /**
+         * Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+         */
+        operator?: pulumi.Input<string>;
         /**
          * Required. The value for the attribute.
          */
@@ -21812,6 +21874,38 @@ export namespace filestore {
          * addresses reserved for this instance.
          */
         reservedIpRange?: pulumi.Input<string>;
+    }
+}
+
+export namespace firebaserules {
+    export interface RulesetMetadata {
+        services?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RulesetSource {
+        /**
+         * `File` set constituting the `Source` bundle.
+         */
+        files: pulumi.Input<pulumi.Input<inputs.firebaserules.RulesetSourceFile>[]>;
+        /**
+         * `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+         */
+        language?: pulumi.Input<string>;
+    }
+
+    export interface RulesetSourceFile {
+        /**
+         * Textual Content.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * Fingerprint (e.g. github sha) associated with the `File`.
+         */
+        fingerprint?: pulumi.Input<string>;
+        /**
+         * File name.
+         */
+        name: pulumi.Input<string>;
     }
 }
 
@@ -24443,7 +24537,7 @@ export namespace monitoring {
          */
         maskHeaders?: pulumi.Input<boolean>;
         /**
-         * The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
+         * The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
          */
         path?: pulumi.Input<string>;
         /**
@@ -25053,6 +25147,16 @@ export namespace networkservices {
          * If true, http and https requests will be cached separately.
          */
         includeProtocol?: pulumi.Input<boolean>;
+        /**
+         * Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+         * Cookie names:
+         * - must be valid RFC 6265 "cookie-name" tokens
+         * - are case sensitive
+         * - cannot start with "Edge-Cache-" (case insensitive)
+         * Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+         * You may specify up to three cookie names.
+         */
+        includedCookieNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
          * - Header names must be valid HTTP RFC 7230 header field values.
@@ -29052,6 +29156,10 @@ export namespace storage {
     }
 
     export interface TransferJobSchedule {
+        /**
+         * Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        repeatInterval?: pulumi.Input<string>;
         /**
          * The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
          */

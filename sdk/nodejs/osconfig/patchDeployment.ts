@@ -56,6 +56,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Os Config Patch Deployment Daily Midnight
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const patch = new gcp.osconfig.PatchDeployment("patch", {
+ *     instanceFilter: {
+ *         all: true,
+ *     },
+ *     patchDeploymentId: "patch-deploy",
+ *     recurringSchedule: {
+ *         timeOfDay: {
+ *             hours: 0,
+ *             minutes: 0,
+ *             nanos: 0,
+ *             seconds: 0,
+ *         },
+ *         timeZone: {
+ *             id: "America/New_York",
+ *         },
+ *     },
+ * });
+ * ```
  * ### Os Config Patch Deployment Instance
  *
  * ```typescript

@@ -764,6 +764,8 @@ class TransferJobSchedule(dict):
         suggest = None
         if key == "scheduleStartDate":
             suggest = "schedule_start_date"
+        elif key == "repeatInterval":
+            suggest = "repeat_interval"
         elif key == "scheduleEndDate":
             suggest = "schedule_end_date"
         elif key == "startTimeOfDay":
@@ -782,14 +784,18 @@ class TransferJobSchedule(dict):
 
     def __init__(__self__, *,
                  schedule_start_date: 'outputs.TransferJobScheduleScheduleStartDate',
+                 repeat_interval: Optional[str] = None,
                  schedule_end_date: Optional['outputs.TransferJobScheduleScheduleEndDate'] = None,
                  start_time_of_day: Optional['outputs.TransferJobScheduleStartTimeOfDay'] = None):
         """
         :param 'TransferJobScheduleScheduleStartDateArgs' schedule_start_date: The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        :param str repeat_interval: Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param 'TransferJobScheduleScheduleEndDateArgs' schedule_end_date: The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
         :param 'TransferJobScheduleStartTimeOfDayArgs' start_time_of_day: The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
         """
         pulumi.set(__self__, "schedule_start_date", schedule_start_date)
+        if repeat_interval is not None:
+            pulumi.set(__self__, "repeat_interval", repeat_interval)
         if schedule_end_date is not None:
             pulumi.set(__self__, "schedule_end_date", schedule_end_date)
         if start_time_of_day is not None:
@@ -802,6 +808,14 @@ class TransferJobSchedule(dict):
         The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
         """
         return pulumi.get(self, "schedule_start_date")
+
+    @property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> Optional[str]:
+        """
+        Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "repeat_interval")
 
     @property
     @pulumi.getter(name="scheduleEndDate")

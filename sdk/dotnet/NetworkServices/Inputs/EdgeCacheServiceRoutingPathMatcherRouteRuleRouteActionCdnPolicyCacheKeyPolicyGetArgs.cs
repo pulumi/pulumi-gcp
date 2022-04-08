@@ -49,6 +49,24 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         [Input("includeProtocol")]
         public Input<bool>? IncludeProtocol { get; set; }
 
+        [Input("includedCookieNames")]
+        private InputList<string>? _includedCookieNames;
+
+        /// <summary>
+        /// Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+        /// Cookie names:
+        /// - must be valid RFC 6265 "cookie-name" tokens
+        /// - are case sensitive
+        /// - cannot start with "Edge-Cache-" (case insensitive)
+        /// Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+        /// You may specify up to three cookie names.
+        /// </summary>
+        public InputList<string> IncludedCookieNames
+        {
+            get => _includedCookieNames ?? (_includedCookieNames = new InputList<string>());
+            set => _includedCookieNames = value;
+        }
+
         [Input("includedHeaderNames")]
         private InputList<string>? _includedHeaderNames;
 

@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<string> CustomResponseHeaders;
         public readonly string Description;
+        public readonly string EdgeSecurityPolicy;
         public readonly bool EnableCdn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -141,6 +142,8 @@ namespace Pulumi.Gcp.Compute
 
             string description,
 
+            string edgeSecurityPolicy,
+
             bool enableCdn,
 
             string id,
@@ -156,6 +159,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             CustomResponseHeaders = customResponseHeaders;
             Description = description;
+            EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;
             Id = id;
             Name = name;

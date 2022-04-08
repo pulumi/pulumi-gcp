@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<bool>? MaskHeaders { get; set; }
 
         /// <summary>
-        /// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
+        /// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

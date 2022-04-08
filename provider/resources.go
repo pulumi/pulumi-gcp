@@ -60,6 +60,7 @@ const (
 	gcpEventarc             = "Eventarc"             // Eventarc
 	gcpFilestore            = "Filestore"            // Filestore resources
 	gcpFirebase             = "Firebase"             // Firebase resources
+	gcpFirebaserules        = "Firebaserules"        // FirebaseRules resources
 	gcpFirestore            = "Firestore"            // Firestore resources
 	gcpFolder               = "Folder"               // Folder resources
 	gcpGameServices         = "GameServices"         // Game Services resources
@@ -193,6 +194,12 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+		},
+		IgnoreMappings: []string{
+			// There is a resource and data source, identially named. The outputs of the data source share identical
+			// types with the resource.
+			// See: https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/data_source_dataproc_metastore_service
+			"google_dataproc_metastore_service",
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Access Context Manager
@@ -1063,6 +1070,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_firebase_project_location": {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
 			"google_firebase_web_app":          {Tok: gcpResource(gcpFirebase, "WebApp")},
+
+			// Firebaserules
+			"google_firebaserules_release": {Tok: gcpResource(gcpFirebaserules, "Release")},
+			"google_firebaserules_ruleset": {Tok: gcpResource(gcpFirebaserules, "Ruleset")},
 
 			// Firestore resources
 			"google_firestore_index":    {Tok: gcpResource(gcpFirestore, "Index")},

@@ -12,6 +12,7 @@ __all__ = [
     'GCPolicyMaxAgeArgs',
     'GCPolicyMaxVersionArgs',
     'InstanceClusterArgs',
+    'InstanceClusterAutoscalingConfigArgs',
     'InstanceIamBindingConditionArgs',
     'InstanceIamMemberConditionArgs',
     'TableColumnFamilyArgs',
@@ -87,12 +88,14 @@ class GCPolicyMaxVersionArgs:
 class InstanceClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
+                 autoscaling_config: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cluster_id: The ID of the Cloud Bigtable cluster.
+        :param pulumi.Input['InstanceClusterAutoscalingConfigArgs'] autoscaling_config: Autoscaling config for the cluster, contains the following arguments:
         :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
         :param pulumi.Input[int] num_nodes: The number of nodes in your Cloud Bigtable cluster.
                Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
@@ -104,6 +107,8 @@ class InstanceClusterArgs:
                Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if num_nodes is not None:
@@ -124,6 +129,18 @@ class InstanceClusterArgs:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']]:
+        """
+        Autoscaling config for the cluster, contains the following arguments:
+        """
+        return pulumi.get(self, "autoscaling_config")
+
+    @autoscaling_config.setter
+    def autoscaling_config(self, value: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']]):
+        pulumi.set(self, "autoscaling_config", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -177,6 +194,58 @@ class InstanceClusterArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
+class InstanceClusterAutoscalingConfigArgs:
+    def __init__(__self__, *,
+                 cpu_target: pulumi.Input[int],
+                 max_nodes: pulumi.Input[int],
+                 min_nodes: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] cpu_target: The CPU utilization target in percentage. Must be between 10 and 80.
+        :param pulumi.Input[int] max_nodes: The maximum number of nodes for autoscaling.
+        :param pulumi.Input[int] min_nodes: The minimum number of nodes for autoscaling.
+        """
+        pulumi.set(__self__, "cpu_target", cpu_target)
+        pulumi.set(__self__, "max_nodes", max_nodes)
+        pulumi.set(__self__, "min_nodes", min_nodes)
+
+    @property
+    @pulumi.getter(name="cpuTarget")
+    def cpu_target(self) -> pulumi.Input[int]:
+        """
+        The CPU utilization target in percentage. Must be between 10 and 80.
+        """
+        return pulumi.get(self, "cpu_target")
+
+    @cpu_target.setter
+    def cpu_target(self, value: pulumi.Input[int]):
+        pulumi.set(self, "cpu_target", value)
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> pulumi.Input[int]:
+        """
+        The maximum number of nodes for autoscaling.
+        """
+        return pulumi.get(self, "max_nodes")
+
+    @max_nodes.setter
+    def max_nodes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_nodes", value)
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> pulumi.Input[int]:
+        """
+        The minimum number of nodes for autoscaling.
+        """
+        return pulumi.get(self, "min_nodes")
+
+    @min_nodes.setter
+    def min_nodes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_nodes", value)
 
 
 @pulumi.input_type

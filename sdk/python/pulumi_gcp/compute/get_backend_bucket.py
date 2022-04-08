@@ -21,7 +21,7 @@ class GetBackendBucketResult:
     """
     A collection of values returned by getBackendBucket.
     """
-    def __init__(__self__, bucket_name=None, cdn_policies=None, creation_timestamp=None, custom_response_headers=None, description=None, enable_cdn=None, id=None, name=None, project=None, self_link=None):
+    def __init__(__self__, bucket_name=None, cdn_policies=None, creation_timestamp=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, id=None, name=None, project=None, self_link=None):
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -37,6 +37,9 @@ class GetBackendBucketResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if edge_security_policy and not isinstance(edge_security_policy, str):
+            raise TypeError("Expected argument 'edge_security_policy' to be a str")
+        pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn and not isinstance(enable_cdn, bool):
             raise TypeError("Expected argument 'enable_cdn' to be a bool")
         pulumi.set(__self__, "enable_cdn", enable_cdn)
@@ -79,6 +82,11 @@ class GetBackendBucketResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> str:
+        return pulumi.get(self, "edge_security_policy")
+
+    @property
     @pulumi.getter(name="enableCdn")
     def enable_cdn(self) -> bool:
         return pulumi.get(self, "enable_cdn")
@@ -118,6 +126,7 @@ class AwaitableGetBackendBucketResult(GetBackendBucketResult):
             creation_timestamp=self.creation_timestamp,
             custom_response_headers=self.custom_response_headers,
             description=self.description,
+            edge_security_policy=self.edge_security_policy,
             enable_cdn=self.enable_cdn,
             id=self.id,
             name=self.name,
@@ -160,6 +169,7 @@ def get_backend_bucket(name: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         custom_response_headers=__ret__.custom_response_headers,
         description=__ret__.description,
+        edge_security_policy=__ret__.edge_security_policy,
         enable_cdn=__ret__.enable_cdn,
         id=__ret__.id,
         name=__ret__.name,

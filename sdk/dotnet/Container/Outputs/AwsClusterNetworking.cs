@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AwsClusterNetworking
     {
         /// <summary>
-        /// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         /// </summary>
         public readonly ImmutableArray<string> PodAddressCidrBlocks;
         /// <summary>
-        /// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        /// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         /// </summary>
         public readonly ImmutableArray<string> ServiceAddressCidrBlocks;
         /// <summary>
-        /// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+        /// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
         /// </summary>
         public readonly string VpcId;
 

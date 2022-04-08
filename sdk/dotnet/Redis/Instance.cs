@@ -170,9 +170,6 @@ namespace Pulumi.Gcp.Redis
     ///                 { "my_key", "my_val" },
     ///                 { "other_key", "other_val" },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -355,11 +352,14 @@ namespace Pulumi.Gcp.Redis
         public Output<int> ReadEndpointPort { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-        /// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-        /// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-        /// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-        /// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        /// Optional. Read replica mode. Can only be specified when trying to create the instance.
+        /// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+        /// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+        /// instance cannot scale up or down the number of replicas.
+        /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+        /// can scale up and down the number of replicas.
+        /// Default value is `READ_REPLICAS_DISABLED`.
+        /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Output("readReplicasMode")]
         public Output<string?> ReadReplicasMode { get; private set; } = null!;
@@ -387,9 +387,10 @@ namespace Pulumi.Gcp.Redis
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-        /// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-        /// is 1. The valid value for basic tier is 0 and the default is also 0.
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with
+        /// read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+        /// for a Standard Tier instance, the only valid value is 1 and the default is 1.
+        /// The valid value for basic tier is 0 and the default is also 0.
         /// </summary>
         [Output("replicaCount")]
         public Output<int> ReplicaCount { get; private set; } = null!;
@@ -570,11 +571,14 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-        /// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-        /// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-        /// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-        /// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        /// Optional. Read replica mode. Can only be specified when trying to create the instance.
+        /// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+        /// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+        /// instance cannot scale up or down the number of replicas.
+        /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+        /// can scale up and down the number of replicas.
+        /// Default value is `READ_REPLICAS_DISABLED`.
+        /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Input("readReplicasMode")]
         public Input<string>? ReadReplicasMode { get; set; }
@@ -608,9 +612,10 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-        /// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-        /// is 1. The valid value for basic tier is 0 and the default is also 0.
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with
+        /// read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+        /// for a Standard Tier instance, the only valid value is 1 and the default is 1.
+        /// The valid value for basic tier is 0 and the default is also 0.
         /// </summary>
         [Input("replicaCount")]
         public Input<int>? ReplicaCount { get; set; }
@@ -816,11 +821,14 @@ namespace Pulumi.Gcp.Redis
         public Input<int>? ReadEndpointPort { get; set; }
 
         /// <summary>
-        /// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-        /// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-        /// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-        /// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-        /// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+        /// Optional. Read replica mode. Can only be specified when trying to create the instance.
+        /// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+        /// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+        /// instance cannot scale up or down the number of replicas.
+        /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+        /// can scale up and down the number of replicas.
+        /// Default value is `READ_REPLICAS_DISABLED`.
+        /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Input("readReplicasMode")]
         public Input<string>? ReadReplicasMode { get; set; }
@@ -854,9 +862,10 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-        /// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-        /// is 1. The valid value for basic tier is 0 and the default is also 0.
+        /// Optional. The number of replica nodes. The valid range for the Standard Tier with
+        /// read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+        /// for a Standard Tier instance, the only valid value is 1 and the default is 1.
+        /// The valid value for basic tier is 0 and the default is also 0.
         /// </summary>
         [Input("replicaCount")]
         public Input<int>? ReplicaCount { get; set; }

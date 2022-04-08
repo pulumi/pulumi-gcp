@@ -88,6 +88,8 @@ if typing.TYPE_CHECKING:
     filestore = __filestore
     import pulumi_gcp.firebase as __firebase
     firebase = __firebase
+    import pulumi_gcp.firebaserules as __firebaserules
+    firebaserules = __firebaserules
     import pulumi_gcp.firestore as __firestore
     firestore = __firestore
     import pulumi_gcp.folder as __folder
@@ -214,6 +216,7 @@ else:
     eventarc = _utilities.lazy_import('pulumi_gcp.eventarc')
     filestore = _utilities.lazy_import('pulumi_gcp.filestore')
     firebase = _utilities.lazy_import('pulumi_gcp.firebase')
+    firebaserules = _utilities.lazy_import('pulumi_gcp.firebaserules')
     firestore = _utilities.lazy_import('pulumi_gcp.firestore')
     folder = _utilities.lazy_import('pulumi_gcp.folder')
     gameservices = _utilities.lazy_import('pulumi_gcp.gameservices')
@@ -2611,6 +2614,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/webApp:WebApp": "WebApp"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebaserules/release",
+  "fqn": "pulumi_gcp.firebaserules",
+  "classes": {
+   "gcp:firebaserules/release:Release": "Release"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebaserules/ruleset",
+  "fqn": "pulumi_gcp.firebaserules",
+  "classes": {
+   "gcp:firebaserules/ruleset:Ruleset": "Ruleset"
   }
  },
  {

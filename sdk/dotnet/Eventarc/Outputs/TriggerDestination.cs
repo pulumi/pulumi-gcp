@@ -21,15 +21,29 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         /// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         /// </summary>
         public readonly Outputs.TriggerDestinationCloudRunService? CloudRunService;
+        /// <summary>
+        /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        /// </summary>
+        public readonly Outputs.TriggerDestinationGke? Gke;
+        /// <summary>
+        /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+        /// </summary>
+        public readonly string? Workflow;
 
         [OutputConstructor]
         private TriggerDestination(
             string? cloudFunction,
 
-            Outputs.TriggerDestinationCloudRunService? cloudRunService)
+            Outputs.TriggerDestinationCloudRunService? cloudRunService,
+
+            Outputs.TriggerDestinationGke? gke,
+
+            string? workflow)
         {
             CloudFunction = cloudFunction;
             CloudRunService = cloudRunService;
+            Gke = gke;
+            Workflow = workflow;
         }
     }
 }

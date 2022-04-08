@@ -178,7 +178,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Required. Autoscaler configuration for this node pool.
+     * Autoscaler configuration for this node pool.
      */
     public readonly autoscaling!: pulumi.Output<outputs.container.AwsNodePoolAutoscaling>;
     /**
@@ -186,7 +186,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
-     * Required. The configuration of the node pool.
+     * The configuration of the node pool.
      */
     public readonly config!: pulumi.Output<outputs.container.AwsNodePoolConfig>;
     /**
@@ -203,7 +203,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+     * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
     public readonly maxPodsConstraint!: pulumi.Output<outputs.container.AwsNodePoolMaxPodsConstraint>;
     /**
@@ -224,7 +224,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Required. The subnet where the node pool node run.
+     * The subnet where the node pool node run.
      */
     public readonly subnetId!: pulumi.Output<string>;
     /**
@@ -236,7 +236,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+     * The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -323,7 +323,7 @@ export interface AwsNodePoolState {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Autoscaler configuration for this node pool.
+     * Autoscaler configuration for this node pool.
      */
     autoscaling?: pulumi.Input<inputs.container.AwsNodePoolAutoscaling>;
     /**
@@ -331,7 +331,7 @@ export interface AwsNodePoolState {
      */
     cluster?: pulumi.Input<string>;
     /**
-     * Required. The configuration of the node pool.
+     * The configuration of the node pool.
      */
     config?: pulumi.Input<inputs.container.AwsNodePoolConfig>;
     /**
@@ -348,7 +348,7 @@ export interface AwsNodePoolState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+     * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
     maxPodsConstraint?: pulumi.Input<inputs.container.AwsNodePoolMaxPodsConstraint>;
     /**
@@ -369,7 +369,7 @@ export interface AwsNodePoolState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Required. The subnet where the node pool node run.
+     * The subnet where the node pool node run.
      */
     subnetId?: pulumi.Input<string>;
     /**
@@ -381,7 +381,7 @@ export interface AwsNodePoolState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+     * The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
      */
     version?: pulumi.Input<string>;
 }
@@ -395,7 +395,7 @@ export interface AwsNodePoolArgs {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Autoscaler configuration for this node pool.
+     * Autoscaler configuration for this node pool.
      */
     autoscaling: pulumi.Input<inputs.container.AwsNodePoolAutoscaling>;
     /**
@@ -403,7 +403,7 @@ export interface AwsNodePoolArgs {
      */
     cluster: pulumi.Input<string>;
     /**
-     * Required. The configuration of the node pool.
+     * The configuration of the node pool.
      */
     config: pulumi.Input<inputs.container.AwsNodePoolConfig>;
     /**
@@ -411,7 +411,7 @@ export interface AwsNodePoolArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+     * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
     maxPodsConstraint: pulumi.Input<inputs.container.AwsNodePoolMaxPodsConstraint>;
     /**
@@ -423,11 +423,11 @@ export interface AwsNodePoolArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Required. The subnet where the node pool node run.
+     * The subnet where the node pool node run.
      */
     subnetId: pulumi.Input<string>;
     /**
-     * Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+     * The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
      */
     version: pulumi.Input<string>;
 }

@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AzureNodePoolAutoscaling
     {
         /// <summary>
-        /// Required. Maximum number of nodes in the node pool. Must be &gt;= min_node_count.
+        /// Maximum number of nodes in the node pool. Must be &gt;= min_node_count.
         /// </summary>
         public readonly int MaxNodeCount;
         /// <summary>
-        /// Required. Minimum number of nodes in the node pool. Must be &gt;= 1 and &lt;= max_node_count.
+        /// Minimum number of nodes in the node pool. Must be &gt;= 1 and &lt;= max_node_count.
         /// </summary>
         public readonly int MinNodeCount;
 

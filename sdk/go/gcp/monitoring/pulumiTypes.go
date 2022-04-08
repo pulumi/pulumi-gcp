@@ -8414,7 +8414,7 @@ type UptimeCheckConfigHttpCheck struct {
 	Headers map[string]string `pulumi:"headers"`
 	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
 	MaskHeaders *bool `pulumi:"maskHeaders"`
-	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
+	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
 	Path *string `pulumi:"path"`
 	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 	Port *int `pulumi:"port"`
@@ -8452,7 +8452,7 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
 	MaskHeaders pulumi.BoolPtrInput `pulumi:"maskHeaders"`
-	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
+	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 	Port pulumi.IntPtrInput `pulumi:"port"`
@@ -8570,7 +8570,7 @@ func (o UptimeCheckConfigHttpCheckOutput) MaskHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.MaskHeaders }).(pulumi.BoolPtrOutput)
 }
 
-// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
+// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
 func (o UptimeCheckConfigHttpCheckOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -8673,7 +8673,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) MaskHeaders() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
+// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
 func (o UptimeCheckConfigHttpCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {

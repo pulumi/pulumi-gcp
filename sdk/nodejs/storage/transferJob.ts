@@ -78,6 +78,7 @@ import * as utilities from "../utilities";
  *             seconds: 0,
  *             nanos: 0,
  *         },
+ *         repeatInterval: "604800s",
  *     },
  * }, {
  *     dependsOn: [s3_backup_bucketBucketIAMMember],

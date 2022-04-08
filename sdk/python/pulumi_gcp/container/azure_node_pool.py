@@ -28,13 +28,13 @@ class AzureNodePoolArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AzureNodePool resource.
-        :param pulumi.Input['AzureNodePoolAutoscalingArgs'] autoscaling: Required. Autoscaler configuration for this node pool.
+        :param pulumi.Input['AzureNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
-        :param pulumi.Input['AzureNodePoolConfigArgs'] config: Required. The node configuration of the node pool.
+        :param pulumi.Input['AzureNodePoolConfigArgs'] config: The node configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AzureNodePoolMaxPodsConstraintArgs'] max_pods_constraint: Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-        :param pulumi.Input[str] subnet_id: Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
-        :param pulumi.Input[str] version: Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        :param pulumi.Input['AzureNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[str] subnet_id: The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        :param pulumi.Input[str] version: The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] name: The name of this resource.
@@ -60,7 +60,7 @@ class AzureNodePoolArgs:
     @pulumi.getter
     def autoscaling(self) -> pulumi.Input['AzureNodePoolAutoscalingArgs']:
         """
-        Required. Autoscaler configuration for this node pool.
+        Autoscaler configuration for this node pool.
         """
         return pulumi.get(self, "autoscaling")
 
@@ -84,7 +84,7 @@ class AzureNodePoolArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input['AzureNodePoolConfigArgs']:
         """
-        Required. The node configuration of the node pool.
+        The node configuration of the node pool.
         """
         return pulumi.get(self, "config")
 
@@ -108,7 +108,7 @@ class AzureNodePoolArgs:
     @pulumi.getter(name="maxPodsConstraint")
     def max_pods_constraint(self) -> pulumi.Input['AzureNodePoolMaxPodsConstraintArgs']:
         """
-        Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         """
         return pulumi.get(self, "max_pods_constraint")
 
@@ -120,7 +120,7 @@ class AzureNodePoolArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[str]:
         """
-        Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -132,7 +132,7 @@ class AzureNodePoolArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         """
         return pulumi.get(self, "version")
 
@@ -212,24 +212,24 @@ class _AzureNodePoolState:
         """
         Input properties used for looking up and filtering AzureNodePool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input['AzureNodePoolAutoscalingArgs'] autoscaling: Required. Autoscaler configuration for this node pool.
+        :param pulumi.Input['AzureNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
-        :param pulumi.Input['AzureNodePoolConfigArgs'] config: Required. The node configuration of the node pool.
+        :param pulumi.Input['AzureNodePoolConfigArgs'] config: The node configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
                and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AzureNodePoolMaxPodsConstraintArgs'] max_pods_constraint: Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input['AzureNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently pending changes to the node pool.
         :param pulumi.Input[str] state: Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
                STOPPING, ERROR, DEGRADED
-        :param pulumi.Input[str] subnet_id: Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        :param pulumi.Input[str] subnet_id: The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
-        :param pulumi.Input[str] version: Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        :param pulumi.Input[str] version: The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -282,7 +282,7 @@ class _AzureNodePoolState:
     @pulumi.getter
     def autoscaling(self) -> Optional[pulumi.Input['AzureNodePoolAutoscalingArgs']]:
         """
-        Required. Autoscaler configuration for this node pool.
+        Autoscaler configuration for this node pool.
         """
         return pulumi.get(self, "autoscaling")
 
@@ -318,7 +318,7 @@ class _AzureNodePoolState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['AzureNodePoolConfigArgs']]:
         """
-        Required. The node configuration of the node pool.
+        The node configuration of the node pool.
         """
         return pulumi.get(self, "config")
 
@@ -367,7 +367,7 @@ class _AzureNodePoolState:
     @pulumi.getter(name="maxPodsConstraint")
     def max_pods_constraint(self) -> Optional[pulumi.Input['AzureNodePoolMaxPodsConstraintArgs']]:
         """
-        Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         """
         return pulumi.get(self, "max_pods_constraint")
 
@@ -428,7 +428,7 @@ class _AzureNodePoolState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -464,7 +464,7 @@ class _AzureNodePoolState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         """
         return pulumi.get(self, "version")
 
@@ -584,16 +584,16 @@ class AzureNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']] autoscaling: Required. Autoscaler configuration for this node pool.
+        :param pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']] config: Required. The node configuration of the node pool.
+        :param pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']] config: The node configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']] max_pods_constraint: Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] subnet_id: Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
-        :param pulumi.Input[str] version: Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        :param pulumi.Input[str] subnet_id: The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        :param pulumi.Input[str] version: The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         """
         ...
     @overload
@@ -796,24 +796,24 @@ class AzureNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']] autoscaling: Required. Autoscaler configuration for this node pool.
+        :param pulumi.Input[pulumi.InputType['AzureNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[str] cluster: The azureCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']] config: Required. The node configuration of the node pool.
+        :param pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']] config: The node configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
                and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']] max_pods_constraint: Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently pending changes to the node pool.
         :param pulumi.Input[str] state: Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
                STOPPING, ERROR, DEGRADED
-        :param pulumi.Input[str] subnet_id: Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        :param pulumi.Input[str] subnet_id: The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
-        :param pulumi.Input[str] version: Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        :param pulumi.Input[str] version: The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -850,7 +850,7 @@ class AzureNodePool(pulumi.CustomResource):
     @pulumi.getter
     def autoscaling(self) -> pulumi.Output['outputs.AzureNodePoolAutoscaling']:
         """
-        Required. Autoscaler configuration for this node pool.
+        Autoscaler configuration for this node pool.
         """
         return pulumi.get(self, "autoscaling")
 
@@ -874,7 +874,7 @@ class AzureNodePool(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.AzureNodePoolConfig']:
         """
-        Required. The node configuration of the node pool.
+        The node configuration of the node pool.
         """
         return pulumi.get(self, "config")
 
@@ -907,7 +907,7 @@ class AzureNodePool(pulumi.CustomResource):
     @pulumi.getter(name="maxPodsConstraint")
     def max_pods_constraint(self) -> pulumi.Output['outputs.AzureNodePoolMaxPodsConstraint']:
         """
-        Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         """
         return pulumi.get(self, "max_pods_constraint")
 
@@ -948,7 +948,7 @@ class AzureNodePool(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
         """
-        Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -972,7 +972,7 @@ class AzureNodePool(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         """
         return pulumi.get(self, "version")
 

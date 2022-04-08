@@ -69,7 +69,7 @@ export class AzureClient extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The Azure Active Directory Application ID.
+     * The Azure Active Directory Application ID.
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
@@ -93,7 +93,7 @@ export class AzureClient extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Required. The Azure Active Directory Tenant ID.
+     * The Azure Active Directory Tenant ID.
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export class AzureClient extends pulumi.CustomResource {
  */
 export interface AzureClientState {
     /**
-     * Required. The Azure Active Directory Application ID.
+     * The Azure Active Directory Application ID.
      */
     applicationId?: pulumi.Input<string>;
     /**
@@ -176,7 +176,7 @@ export interface AzureClientState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Required. The Azure Active Directory Tenant ID.
+     * The Azure Active Directory Tenant ID.
      */
     tenantId?: pulumi.Input<string>;
     /**
@@ -190,7 +190,7 @@ export interface AzureClientState {
  */
 export interface AzureClientArgs {
     /**
-     * Required. The Azure Active Directory Application ID.
+     * The Azure Active Directory Application ID.
      */
     applicationId: pulumi.Input<string>;
     /**
@@ -206,7 +206,7 @@ export interface AzureClientArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Required. The Azure Active Directory Tenant ID.
+     * The Azure Active Directory Tenant ID.
      */
     tenantId: pulumi.Input<string>;
 }

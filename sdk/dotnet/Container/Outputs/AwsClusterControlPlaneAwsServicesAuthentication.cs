@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AwsClusterControlPlaneAwsServicesAuthentication
     {
         /// <summary>
-        /// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+        /// The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
         /// </summary>
         public readonly string RoleArn;
         /// <summary>

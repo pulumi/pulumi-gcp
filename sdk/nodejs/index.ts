@@ -48,6 +48,7 @@ import * as essentialcontacts from "./essentialcontacts";
 import * as eventarc from "./eventarc";
 import * as filestore from "./filestore";
 import * as firebase from "./firebase";
+import * as firebaserules from "./firebaserules";
 import * as firestore from "./firestore";
 import * as folder from "./folder";
 import * as gameservices from "./gameservices";
@@ -133,6 +134,7 @@ export {
     eventarc,
     filestore,
     firebase,
+    firebaserules,
     firestore,
     folder,
     gameservices,

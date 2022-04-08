@@ -26,7 +26,7 @@ class TriggerArgs:
         """
         The set of arguments for constructing a Trigger resource.
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
-        :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] location: Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
@@ -64,7 +64,7 @@ class TriggerArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The location for the resource
+        Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         """
         return pulumi.get(self, "location")
 
@@ -167,7 +167,7 @@ class _TriggerState:
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
                requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
-        :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] location: Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
@@ -255,7 +255,7 @@ class _TriggerState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location for the resource
+        Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         """
         return pulumi.get(self, "location")
 
@@ -428,7 +428,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
-        :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] location: Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
@@ -589,7 +589,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
                requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
-        :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] location: Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
@@ -654,7 +654,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The location for the resource
+        Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         """
         return pulumi.get(self, "location")
 

@@ -117,6 +117,8 @@ filestoreCustomEndpoint: Optional[str]
 
 firebaseCustomEndpoint: Optional[str]
 
+firebaserulesCustomEndpoint: Optional[str]
+
 firestoreCustomEndpoint: Optional[str]
 
 gameServicesCustomEndpoint: Optional[str]

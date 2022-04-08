@@ -57,6 +57,45 @@ import (
 // 	})
 // }
 // ```
+// ### Backend Bucket Security Policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		imageBackendBucket, err := storage.NewBucket(ctx, "imageBackendBucket", &storage.BucketArgs{
+// 			Location: pulumi.String("EU"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+// 			Description: pulumi.String("basic security policy"),
+// 			Type:        pulumi.String("CLOUD_ARMOR_EDGE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendBucket(ctx, "imageBackendBackendBucket", &compute.BackendBucketArgs{
+// 			Description:        pulumi.String("Contains beautiful images"),
+// 			BucketName:         imageBackendBucket.Name,
+// 			EnableCdn:          pulumi.Bool(true),
+// 			EdgeSecurityPolicy: policy.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -88,6 +127,8 @@ type BackendBucket struct {
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The security policy associated with this backend bucket.
+	EdgeSecurityPolicy pulumi.StringPtrOutput `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
 	// Name of the resource. Provided by the client when the resource is
@@ -149,6 +190,8 @@ type backendBucketState struct {
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description *string `pulumi:"description"`
+	// The security policy associated with this backend bucket.
+	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Name of the resource. Provided by the client when the resource is
@@ -179,6 +222,8 @@ type BackendBucketState struct {
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrInput
+	// The security policy associated with this backend bucket.
+	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -211,6 +256,8 @@ type backendBucketArgs struct {
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description *string `pulumi:"description"`
+	// The security policy associated with this backend bucket.
+	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Name of the resource. Provided by the client when the resource is
@@ -238,6 +285,8 @@ type BackendBucketArgs struct {
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrInput
+	// The security policy associated with this backend bucket.
+	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class TransferJobSchedule
     {
         /// <summary>
+        /// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        public readonly string? RepeatInterval;
+        /// <summary>
         /// The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobScheduleScheduleEndDate? ScheduleEndDate;
@@ -28,12 +32,15 @@ namespace Pulumi.Gcp.Storage.Outputs
 
         [OutputConstructor]
         private TransferJobSchedule(
+            string? repeatInterval,
+
             Outputs.TransferJobScheduleScheduleEndDate? scheduleEndDate,
 
             Outputs.TransferJobScheduleScheduleStartDate scheduleStartDate,
 
             Outputs.TransferJobScheduleStartTimeOfDay? startTimeOfDay)
         {
+            RepeatInterval = repeatInterval;
             ScheduleEndDate = scheduleEndDate;
             ScheduleStartDate = scheduleStartDate;
             StartTimeOfDay = startTimeOfDay;

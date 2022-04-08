@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.AppEngine
     ///    This provider is not able to delete App Engine applications.
     /// 
     /// &gt; **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
     /// 
     /// ## Example Usage
     /// 

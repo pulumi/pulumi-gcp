@@ -11,7 +11,7 @@ import (
 )
 
 type AwsClusterAuthorization struct {
-	// Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers []AwsClusterAuthorizationAdminUser `pulumi:"adminUsers"`
 }
 
@@ -27,7 +27,7 @@ type AwsClusterAuthorizationInput interface {
 }
 
 type AwsClusterAuthorizationArgs struct {
-	// Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers AwsClusterAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
 }
 
@@ -108,7 +108,7 @@ func (o AwsClusterAuthorizationOutput) ToAwsClusterAuthorizationPtrOutputWithCon
 	}).(AwsClusterAuthorizationPtrOutput)
 }
 
-// Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 func (o AwsClusterAuthorizationOutput) AdminUsers() AwsClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v AwsClusterAuthorization) []AwsClusterAuthorizationAdminUser { return v.AdminUsers }).(AwsClusterAuthorizationAdminUserArrayOutput)
 }
@@ -137,7 +137,7 @@ func (o AwsClusterAuthorizationPtrOutput) Elem() AwsClusterAuthorizationOutput {
 	}).(AwsClusterAuthorizationOutput)
 }
 
-// Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 func (o AwsClusterAuthorizationPtrOutput) AdminUsers() AwsClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v *AwsClusterAuthorization) []AwsClusterAuthorizationAdminUser {
 		if v == nil {
@@ -148,7 +148,7 @@ func (o AwsClusterAuthorizationPtrOutput) AdminUsers() AwsClusterAuthorizationAd
 }
 
 type AwsClusterAuthorizationAdminUser struct {
-	// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+	// The name of the user, e.g. `my-gcp-id@gmail.com`.
 	Username string `pulumi:"username"`
 }
 
@@ -164,7 +164,7 @@ type AwsClusterAuthorizationAdminUserInput interface {
 }
 
 type AwsClusterAuthorizationAdminUserArgs struct {
-	// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+	// The name of the user, e.g. `my-gcp-id@gmail.com`.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -219,7 +219,7 @@ func (o AwsClusterAuthorizationAdminUserOutput) ToAwsClusterAuthorizationAdminUs
 	return o
 }
 
-// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+// The name of the user, e.g. `my-gcp-id@gmail.com`.
 func (o AwsClusterAuthorizationAdminUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterAuthorizationAdminUser) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -245,15 +245,15 @@ func (o AwsClusterAuthorizationAdminUserArrayOutput) Index(i pulumi.IntInput) Aw
 }
 
 type AwsClusterControlPlane struct {
-	// Required. Authentication configuration for management of AWS resources.
+	// Authentication configuration for management of AWS resources.
 	AwsServicesAuthentication AwsClusterControlPlaneAwsServicesAuthentication `pulumi:"awsServicesAuthentication"`
-	// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+	// The ARN of the AWS KMS key used to encrypt cluster configuration.
 	ConfigEncryption AwsClusterControlPlaneConfigEncryption `pulumi:"configEncryption"`
-	// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+	// The ARN of the AWS KMS key used to encrypt cluster secrets.
 	DatabaseEncryption AwsClusterControlPlaneDatabaseEncryption `pulumi:"databaseEncryption"`
-	// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+	// The name of the AWS IAM instance pofile to assign to each control plane replica.
 	IamInstanceProfile string `pulumi:"iamInstanceProfile"`
-	// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType *string `pulumi:"instanceType"`
 	// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
 	MainVolume *AwsClusterControlPlaneMainVolume `pulumi:"mainVolume"`
@@ -265,11 +265,11 @@ type AwsClusterControlPlane struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Optional. SSH configuration for how to access the underlying control plane machines.
 	SshConfig *AwsClusterControlPlaneSshConfig `pulumi:"sshConfig"`
-	// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+	// The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
 	Tags map[string]string `pulumi:"tags"`
-	// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+	// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
 	Version string `pulumi:"version"`
 }
 
@@ -285,15 +285,15 @@ type AwsClusterControlPlaneInput interface {
 }
 
 type AwsClusterControlPlaneArgs struct {
-	// Required. Authentication configuration for management of AWS resources.
+	// Authentication configuration for management of AWS resources.
 	AwsServicesAuthentication AwsClusterControlPlaneAwsServicesAuthenticationInput `pulumi:"awsServicesAuthentication"`
-	// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+	// The ARN of the AWS KMS key used to encrypt cluster configuration.
 	ConfigEncryption AwsClusterControlPlaneConfigEncryptionInput `pulumi:"configEncryption"`
-	// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+	// The ARN of the AWS KMS key used to encrypt cluster secrets.
 	DatabaseEncryption AwsClusterControlPlaneDatabaseEncryptionInput `pulumi:"databaseEncryption"`
-	// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+	// The name of the AWS IAM instance pofile to assign to each control plane replica.
 	IamInstanceProfile pulumi.StringInput `pulumi:"iamInstanceProfile"`
-	// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
 	MainVolume AwsClusterControlPlaneMainVolumePtrInput `pulumi:"mainVolume"`
@@ -305,11 +305,11 @@ type AwsClusterControlPlaneArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// Optional. SSH configuration for how to access the underlying control plane machines.
 	SshConfig AwsClusterControlPlaneSshConfigPtrInput `pulumi:"sshConfig"`
-	// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+	// The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
 	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
 	// Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+	// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -390,29 +390,29 @@ func (o AwsClusterControlPlaneOutput) ToAwsClusterControlPlanePtrOutputWithConte
 	}).(AwsClusterControlPlanePtrOutput)
 }
 
-// Required. Authentication configuration for management of AWS resources.
+// Authentication configuration for management of AWS resources.
 func (o AwsClusterControlPlaneOutput) AwsServicesAuthentication() AwsClusterControlPlaneAwsServicesAuthenticationOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) AwsClusterControlPlaneAwsServicesAuthentication {
 		return v.AwsServicesAuthentication
 	}).(AwsClusterControlPlaneAwsServicesAuthenticationOutput)
 }
 
-// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+// The ARN of the AWS KMS key used to encrypt cluster configuration.
 func (o AwsClusterControlPlaneOutput) ConfigEncryption() AwsClusterControlPlaneConfigEncryptionOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) AwsClusterControlPlaneConfigEncryption { return v.ConfigEncryption }).(AwsClusterControlPlaneConfigEncryptionOutput)
 }
 
-// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+// The ARN of the AWS KMS key used to encrypt cluster secrets.
 func (o AwsClusterControlPlaneOutput) DatabaseEncryption() AwsClusterControlPlaneDatabaseEncryptionOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) AwsClusterControlPlaneDatabaseEncryption { return v.DatabaseEncryption }).(AwsClusterControlPlaneDatabaseEncryptionOutput)
 }
 
-// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+// The name of the AWS IAM instance pofile to assign to each control plane replica.
 func (o AwsClusterControlPlaneOutput) IamInstanceProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) string { return v.IamInstanceProfile }).(pulumi.StringOutput)
 }
 
-// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 func (o AwsClusterControlPlaneOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -442,7 +442,7 @@ func (o AwsClusterControlPlaneOutput) SshConfig() AwsClusterControlPlaneSshConfi
 	return o.ApplyT(func(v AwsClusterControlPlane) *AwsClusterControlPlaneSshConfig { return v.SshConfig }).(AwsClusterControlPlaneSshConfigPtrOutput)
 }
 
-// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+// The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
 func (o AwsClusterControlPlaneOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }
@@ -452,7 +452,7 @@ func (o AwsClusterControlPlaneOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
 func (o AwsClusterControlPlaneOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -481,7 +481,7 @@ func (o AwsClusterControlPlanePtrOutput) Elem() AwsClusterControlPlaneOutput {
 	}).(AwsClusterControlPlaneOutput)
 }
 
-// Required. Authentication configuration for management of AWS resources.
+// Authentication configuration for management of AWS resources.
 func (o AwsClusterControlPlanePtrOutput) AwsServicesAuthentication() AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneAwsServicesAuthentication {
 		if v == nil {
@@ -491,7 +491,7 @@ func (o AwsClusterControlPlanePtrOutput) AwsServicesAuthentication() AwsClusterC
 	}).(AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput)
 }
 
-// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+// The ARN of the AWS KMS key used to encrypt cluster configuration.
 func (o AwsClusterControlPlanePtrOutput) ConfigEncryption() AwsClusterControlPlaneConfigEncryptionPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneConfigEncryption {
 		if v == nil {
@@ -501,7 +501,7 @@ func (o AwsClusterControlPlanePtrOutput) ConfigEncryption() AwsClusterControlPla
 	}).(AwsClusterControlPlaneConfigEncryptionPtrOutput)
 }
 
-// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+// The ARN of the AWS KMS key used to encrypt cluster secrets.
 func (o AwsClusterControlPlanePtrOutput) DatabaseEncryption() AwsClusterControlPlaneDatabaseEncryptionPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneDatabaseEncryption {
 		if v == nil {
@@ -511,7 +511,7 @@ func (o AwsClusterControlPlanePtrOutput) DatabaseEncryption() AwsClusterControlP
 	}).(AwsClusterControlPlaneDatabaseEncryptionPtrOutput)
 }
 
-// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+// The name of the AWS IAM instance pofile to assign to each control plane replica.
 func (o AwsClusterControlPlanePtrOutput) IamInstanceProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlane) *string {
 		if v == nil {
@@ -521,7 +521,7 @@ func (o AwsClusterControlPlanePtrOutput) IamInstanceProfile() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 func (o AwsClusterControlPlanePtrOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlane) *string {
 		if v == nil {
@@ -581,7 +581,7 @@ func (o AwsClusterControlPlanePtrOutput) SshConfig() AwsClusterControlPlaneSshCo
 	}).(AwsClusterControlPlaneSshConfigPtrOutput)
 }
 
-// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+// The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
 func (o AwsClusterControlPlanePtrOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlane) []string {
 		if v == nil {
@@ -601,7 +601,7 @@ func (o AwsClusterControlPlanePtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
 func (o AwsClusterControlPlanePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlane) *string {
 		if v == nil {
@@ -612,7 +612,7 @@ func (o AwsClusterControlPlanePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type AwsClusterControlPlaneAwsServicesAuthentication struct {
-	// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+	// The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
 	RoleArn string `pulumi:"roleArn"`
 	// Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
 	RoleSessionName *string `pulumi:"roleSessionName"`
@@ -630,7 +630,7 @@ type AwsClusterControlPlaneAwsServicesAuthenticationInput interface {
 }
 
 type AwsClusterControlPlaneAwsServicesAuthenticationArgs struct {
-	// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+	// The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
 	RoleSessionName pulumi.StringPtrInput `pulumi:"roleSessionName"`
@@ -713,7 +713,7 @@ func (o AwsClusterControlPlaneAwsServicesAuthenticationOutput) ToAwsClusterContr
 	}).(AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput)
 }
 
-// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+// The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
 func (o AwsClusterControlPlaneAwsServicesAuthenticationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterControlPlaneAwsServicesAuthentication) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -747,7 +747,7 @@ func (o AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput) Elem() AwsClus
 	}).(AwsClusterControlPlaneAwsServicesAuthenticationOutput)
 }
 
-// Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+// The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
 func (o AwsClusterControlPlaneAwsServicesAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlaneAwsServicesAuthentication) *string {
 		if v == nil {
@@ -1586,7 +1586,7 @@ func (o AwsClusterControlPlaneRootVolumePtrOutput) VolumeType() pulumi.StringPtr
 }
 
 type AwsClusterControlPlaneSshConfig struct {
-	// Required. The name of the EC2 key pair used to login into cluster machines.
+	// The name of the EC2 key pair used to login into cluster machines.
 	Ec2KeyPair string `pulumi:"ec2KeyPair"`
 }
 
@@ -1602,7 +1602,7 @@ type AwsClusterControlPlaneSshConfigInput interface {
 }
 
 type AwsClusterControlPlaneSshConfigArgs struct {
-	// Required. The name of the EC2 key pair used to login into cluster machines.
+	// The name of the EC2 key pair used to login into cluster machines.
 	Ec2KeyPair pulumi.StringInput `pulumi:"ec2KeyPair"`
 }
 
@@ -1683,7 +1683,7 @@ func (o AwsClusterControlPlaneSshConfigOutput) ToAwsClusterControlPlaneSshConfig
 	}).(AwsClusterControlPlaneSshConfigPtrOutput)
 }
 
-// Required. The name of the EC2 key pair used to login into cluster machines.
+// The name of the EC2 key pair used to login into cluster machines.
 func (o AwsClusterControlPlaneSshConfigOutput) Ec2KeyPair() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterControlPlaneSshConfig) string { return v.Ec2KeyPair }).(pulumi.StringOutput)
 }
@@ -1712,7 +1712,7 @@ func (o AwsClusterControlPlaneSshConfigPtrOutput) Elem() AwsClusterControlPlaneS
 	}).(AwsClusterControlPlaneSshConfigOutput)
 }
 
-// Required. The name of the EC2 key pair used to login into cluster machines.
+// The name of the EC2 key pair used to login into cluster machines.
 func (o AwsClusterControlPlaneSshConfigPtrOutput) Ec2KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlaneSshConfig) *string {
 		if v == nil {
@@ -1883,11 +1883,11 @@ func (o AwsClusterFleetPtrOutput) Project() pulumi.StringPtrOutput {
 }
 
 type AwsClusterNetworking struct {
-	// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
-	// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
-	// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+	// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -1903,11 +1903,11 @@ type AwsClusterNetworkingInput interface {
 }
 
 type AwsClusterNetworkingArgs struct {
-	// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	PodAddressCidrBlocks pulumi.StringArrayInput `pulumi:"podAddressCidrBlocks"`
-	// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
-	// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+	// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -1988,17 +1988,17 @@ func (o AwsClusterNetworkingOutput) ToAwsClusterNetworkingPtrOutputWithContext(c
 	}).(AwsClusterNetworkingPtrOutput)
 }
 
-// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 func (o AwsClusterNetworkingOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsClusterNetworking) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 func (o AwsClusterNetworkingOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsClusterNetworking) []string { return v.ServiceAddressCidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
 func (o AwsClusterNetworkingOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterNetworking) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -2027,7 +2027,7 @@ func (o AwsClusterNetworkingPtrOutput) Elem() AwsClusterNetworkingOutput {
 	}).(AwsClusterNetworkingOutput)
 }
 
-// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 func (o AwsClusterNetworkingPtrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsClusterNetworking) []string {
 		if v == nil {
@@ -2037,7 +2037,7 @@ func (o AwsClusterNetworkingPtrOutput) PodAddressCidrBlocks() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 func (o AwsClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsClusterNetworking) []string {
 		if v == nil {
@@ -2047,7 +2047,7 @@ func (o AwsClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
 func (o AwsClusterNetworkingPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsClusterNetworking) *string {
 		if v == nil {
@@ -2164,9 +2164,9 @@ func (o AwsClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Aw
 }
 
 type AwsNodePoolAutoscaling struct {
-	// Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+	// Maximum number of nodes in the NodePool. Must be >= min_node_count.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount int `pulumi:"minNodeCount"`
 }
 
@@ -2182,9 +2182,9 @@ type AwsNodePoolAutoscalingInput interface {
 }
 
 type AwsNodePoolAutoscalingArgs struct {
-	// Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+	// Maximum number of nodes in the NodePool. Must be >= min_node_count.
 	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
-	// Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
 }
 
@@ -2265,12 +2265,12 @@ func (o AwsNodePoolAutoscalingOutput) ToAwsNodePoolAutoscalingPtrOutputWithConte
 	}).(AwsNodePoolAutoscalingPtrOutput)
 }
 
-// Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+// Maximum number of nodes in the NodePool. Must be >= min_node_count.
 func (o AwsNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v AwsNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
-// Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
 func (o AwsNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v AwsNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
@@ -2299,7 +2299,7 @@ func (o AwsNodePoolAutoscalingPtrOutput) Elem() AwsNodePoolAutoscalingOutput {
 	}).(AwsNodePoolAutoscalingOutput)
 }
 
-// Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+// Maximum number of nodes in the NodePool. Must be >= min_node_count.
 func (o AwsNodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolAutoscaling) *int {
 		if v == nil {
@@ -2309,7 +2309,7 @@ func (o AwsNodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
 func (o AwsNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolAutoscaling) *int {
 		if v == nil {
@@ -2320,11 +2320,11 @@ func (o AwsNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 }
 
 type AwsNodePoolConfig struct {
-	// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+	// The ARN of the AWS KMS key used to encrypt node pool configuration.
 	ConfigEncryption AwsNodePoolConfigConfigEncryption `pulumi:"configEncryption"`
-	// Required. The name of the AWS IAM role assigned to nodes in the pool.
+	// The name of the AWS IAM role assigned to nodes in the pool.
 	IamInstanceProfile string `pulumi:"iamInstanceProfile"`
-	// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType *string `pulumi:"instanceType"`
 	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -2352,11 +2352,11 @@ type AwsNodePoolConfigInput interface {
 }
 
 type AwsNodePoolConfigArgs struct {
-	// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+	// The ARN of the AWS KMS key used to encrypt node pool configuration.
 	ConfigEncryption AwsNodePoolConfigConfigEncryptionInput `pulumi:"configEncryption"`
-	// Required. The name of the AWS IAM role assigned to nodes in the pool.
+	// The name of the AWS IAM role assigned to nodes in the pool.
 	IamInstanceProfile pulumi.StringInput `pulumi:"iamInstanceProfile"`
-	// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -2449,17 +2449,17 @@ func (o AwsNodePoolConfigOutput) ToAwsNodePoolConfigPtrOutputWithContext(ctx con
 	}).(AwsNodePoolConfigPtrOutput)
 }
 
-// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+// The ARN of the AWS KMS key used to encrypt node pool configuration.
 func (o AwsNodePoolConfigOutput) ConfigEncryption() AwsNodePoolConfigConfigEncryptionOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) AwsNodePoolConfigConfigEncryption { return v.ConfigEncryption }).(AwsNodePoolConfigConfigEncryptionOutput)
 }
 
-// Required. The name of the AWS IAM role assigned to nodes in the pool.
+// The name of the AWS IAM role assigned to nodes in the pool.
 func (o AwsNodePoolConfigOutput) IamInstanceProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) string { return v.IamInstanceProfile }).(pulumi.StringOutput)
 }
 
-// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 func (o AwsNodePoolConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -2518,7 +2518,7 @@ func (o AwsNodePoolConfigPtrOutput) Elem() AwsNodePoolConfigOutput {
 	}).(AwsNodePoolConfigOutput)
 }
 
-// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+// The ARN of the AWS KMS key used to encrypt node pool configuration.
 func (o AwsNodePoolConfigPtrOutput) ConfigEncryption() AwsNodePoolConfigConfigEncryptionPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigConfigEncryption {
 		if v == nil {
@@ -2528,7 +2528,7 @@ func (o AwsNodePoolConfigPtrOutput) ConfigEncryption() AwsNodePoolConfigConfigEn
 	}).(AwsNodePoolConfigConfigEncryptionPtrOutput)
 }
 
-// Required. The name of the AWS IAM role assigned to nodes in the pool.
+// The name of the AWS IAM role assigned to nodes in the pool.
 func (o AwsNodePoolConfigPtrOutput) IamInstanceProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfig) *string {
 		if v == nil {
@@ -2538,7 +2538,7 @@ func (o AwsNodePoolConfigPtrOutput) IamInstanceProfile() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 func (o AwsNodePoolConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfig) *string {
 		if v == nil {
@@ -2940,7 +2940,7 @@ func (o AwsNodePoolConfigRootVolumePtrOutput) VolumeType() pulumi.StringPtrOutpu
 }
 
 type AwsNodePoolConfigSshConfig struct {
-	// Required. The name of the EC2 key pair used to login into cluster machines.
+	// The name of the EC2 key pair used to login into cluster machines.
 	Ec2KeyPair string `pulumi:"ec2KeyPair"`
 }
 
@@ -2956,7 +2956,7 @@ type AwsNodePoolConfigSshConfigInput interface {
 }
 
 type AwsNodePoolConfigSshConfigArgs struct {
-	// Required. The name of the EC2 key pair used to login into cluster machines.
+	// The name of the EC2 key pair used to login into cluster machines.
 	Ec2KeyPair pulumi.StringInput `pulumi:"ec2KeyPair"`
 }
 
@@ -3037,7 +3037,7 @@ func (o AwsNodePoolConfigSshConfigOutput) ToAwsNodePoolConfigSshConfigPtrOutputW
 	}).(AwsNodePoolConfigSshConfigPtrOutput)
 }
 
-// Required. The name of the EC2 key pair used to login into cluster machines.
+// The name of the EC2 key pair used to login into cluster machines.
 func (o AwsNodePoolConfigSshConfigOutput) Ec2KeyPair() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsNodePoolConfigSshConfig) string { return v.Ec2KeyPair }).(pulumi.StringOutput)
 }
@@ -3066,7 +3066,7 @@ func (o AwsNodePoolConfigSshConfigPtrOutput) Elem() AwsNodePoolConfigSshConfigOu
 	}).(AwsNodePoolConfigSshConfigOutput)
 }
 
-// Required. The name of the EC2 key pair used to login into cluster machines.
+// The name of the EC2 key pair used to login into cluster machines.
 func (o AwsNodePoolConfigSshConfigPtrOutput) Ec2KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfigSshConfig) *string {
 		if v == nil {
@@ -3077,11 +3077,11 @@ func (o AwsNodePoolConfigSshConfigPtrOutput) Ec2KeyPair() pulumi.StringPtrOutput
 }
 
 type AwsNodePoolConfigTaint struct {
-	// Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+	// The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
 	Effect string `pulumi:"effect"`
-	// Required. Key for the taint.
+	// Key for the taint.
 	Key string `pulumi:"key"`
-	// Required. Value for the taint.
+	// Value for the taint.
 	Value string `pulumi:"value"`
 }
 
@@ -3097,11 +3097,11 @@ type AwsNodePoolConfigTaintInput interface {
 }
 
 type AwsNodePoolConfigTaintArgs struct {
-	// Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+	// The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// Required. Key for the taint.
+	// Key for the taint.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Required. Value for the taint.
+	// Value for the taint.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -3156,17 +3156,17 @@ func (o AwsNodePoolConfigTaintOutput) ToAwsNodePoolConfigTaintOutputWithContext(
 	return o
 }
 
-// Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+// The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
 func (o AwsNodePoolConfigTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsNodePoolConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// Required. Key for the taint.
+// Key for the taint.
 func (o AwsNodePoolConfigTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsNodePoolConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Required. Value for the taint.
+// Value for the taint.
 func (o AwsNodePoolConfigTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsNodePoolConfigTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -3192,7 +3192,7 @@ func (o AwsNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) AwsNodePoolC
 }
 
 type AwsNodePoolMaxPodsConstraint struct {
-	// Required. The maximum number of pods to schedule on a single node.
+	// The maximum number of pods to schedule on a single node.
 	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
 }
 
@@ -3208,7 +3208,7 @@ type AwsNodePoolMaxPodsConstraintInput interface {
 }
 
 type AwsNodePoolMaxPodsConstraintArgs struct {
-	// Required. The maximum number of pods to schedule on a single node.
+	// The maximum number of pods to schedule on a single node.
 	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
 }
 
@@ -3289,7 +3289,7 @@ func (o AwsNodePoolMaxPodsConstraintOutput) ToAwsNodePoolMaxPodsConstraintPtrOut
 	}).(AwsNodePoolMaxPodsConstraintPtrOutput)
 }
 
-// Required. The maximum number of pods to schedule on a single node.
+// The maximum number of pods to schedule on a single node.
 func (o AwsNodePoolMaxPodsConstraintOutput) MaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v AwsNodePoolMaxPodsConstraint) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
@@ -3318,7 +3318,7 @@ func (o AwsNodePoolMaxPodsConstraintPtrOutput) Elem() AwsNodePoolMaxPodsConstrai
 	}).(AwsNodePoolMaxPodsConstraintOutput)
 }
 
-// Required. The maximum number of pods to schedule on a single node.
+// The maximum number of pods to schedule on a single node.
 func (o AwsNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolMaxPodsConstraint) *int {
 		if v == nil {
@@ -3329,7 +3329,7 @@ func (o AwsNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOut
 }
 
 type AzureClusterAuthorization struct {
-	// Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers []AzureClusterAuthorizationAdminUser `pulumi:"adminUsers"`
 }
 
@@ -3345,7 +3345,7 @@ type AzureClusterAuthorizationInput interface {
 }
 
 type AzureClusterAuthorizationArgs struct {
-	// Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers AzureClusterAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
 }
 
@@ -3426,7 +3426,7 @@ func (o AzureClusterAuthorizationOutput) ToAzureClusterAuthorizationPtrOutputWit
 	}).(AzureClusterAuthorizationPtrOutput)
 }
 
-// Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 func (o AzureClusterAuthorizationOutput) AdminUsers() AzureClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v AzureClusterAuthorization) []AzureClusterAuthorizationAdminUser { return v.AdminUsers }).(AzureClusterAuthorizationAdminUserArrayOutput)
 }
@@ -3455,7 +3455,7 @@ func (o AzureClusterAuthorizationPtrOutput) Elem() AzureClusterAuthorizationOutp
 	}).(AzureClusterAuthorizationOutput)
 }
 
-// Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 func (o AzureClusterAuthorizationPtrOutput) AdminUsers() AzureClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v *AzureClusterAuthorization) []AzureClusterAuthorizationAdminUser {
 		if v == nil {
@@ -3466,7 +3466,7 @@ func (o AzureClusterAuthorizationPtrOutput) AdminUsers() AzureClusterAuthorizati
 }
 
 type AzureClusterAuthorizationAdminUser struct {
-	// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+	// The name of the user, e.g. `my-gcp-id@gmail.com`.
 	Username string `pulumi:"username"`
 }
 
@@ -3482,7 +3482,7 @@ type AzureClusterAuthorizationAdminUserInput interface {
 }
 
 type AzureClusterAuthorizationAdminUserArgs struct {
-	// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+	// The name of the user, e.g. `my-gcp-id@gmail.com`.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -3537,7 +3537,7 @@ func (o AzureClusterAuthorizationAdminUserOutput) ToAzureClusterAuthorizationAdm
 	return o
 }
 
-// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+// The name of the user, e.g. `my-gcp-id@gmail.com`.
 func (o AzureClusterAuthorizationAdminUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureClusterAuthorizationAdminUser) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -3573,13 +3573,13 @@ type AzureClusterControlPlane struct {
 	ReplicaPlacements []AzureClusterControlPlaneReplicaPlacement `pulumi:"replicaPlacements"`
 	// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
 	RootVolume *AzureClusterControlPlaneRootVolume `pulumi:"rootVolume"`
-	// Required. SSH configuration for how to access the underlying control plane machines.
+	// SSH configuration for how to access the underlying control plane machines.
 	SshConfig AzureClusterControlPlaneSshConfig `pulumi:"sshConfig"`
 	// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
 	SubnetId string `pulumi:"subnetId"`
 	// Optional. A set of tags to apply to all underlying control plane Azure resources.
 	Tags map[string]string `pulumi:"tags"`
-	// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+	// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
 	Version string `pulumi:"version"`
 	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
 	VmSize *string `pulumi:"vmSize"`
@@ -3607,13 +3607,13 @@ type AzureClusterControlPlaneArgs struct {
 	ReplicaPlacements AzureClusterControlPlaneReplicaPlacementArrayInput `pulumi:"replicaPlacements"`
 	// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
 	RootVolume AzureClusterControlPlaneRootVolumePtrInput `pulumi:"rootVolume"`
-	// Required. SSH configuration for how to access the underlying control plane machines.
+	// SSH configuration for how to access the underlying control plane machines.
 	SshConfig AzureClusterControlPlaneSshConfigInput `pulumi:"sshConfig"`
 	// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 	// Optional. A set of tags to apply to all underlying control plane Azure resources.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+	// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
 	Version pulumi.StringInput `pulumi:"version"`
 	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
 	VmSize pulumi.StringPtrInput `pulumi:"vmSize"`
@@ -3725,7 +3725,7 @@ func (o AzureClusterControlPlaneOutput) RootVolume() AzureClusterControlPlaneRoo
 	return o.ApplyT(func(v AzureClusterControlPlane) *AzureClusterControlPlaneRootVolume { return v.RootVolume }).(AzureClusterControlPlaneRootVolumePtrOutput)
 }
 
-// Required. SSH configuration for how to access the underlying control plane machines.
+// SSH configuration for how to access the underlying control plane machines.
 func (o AzureClusterControlPlaneOutput) SshConfig() AzureClusterControlPlaneSshConfigOutput {
 	return o.ApplyT(func(v AzureClusterControlPlane) AzureClusterControlPlaneSshConfig { return v.SshConfig }).(AzureClusterControlPlaneSshConfigOutput)
 }
@@ -3740,7 +3740,7 @@ func (o AzureClusterControlPlaneOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AzureClusterControlPlane) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
 func (o AzureClusterControlPlaneOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureClusterControlPlane) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -3824,7 +3824,7 @@ func (o AzureClusterControlPlanePtrOutput) RootVolume() AzureClusterControlPlane
 	}).(AzureClusterControlPlaneRootVolumePtrOutput)
 }
 
-// Required. SSH configuration for how to access the underlying control plane machines.
+// SSH configuration for how to access the underlying control plane machines.
 func (o AzureClusterControlPlanePtrOutput) SshConfig() AzureClusterControlPlaneSshConfigPtrOutput {
 	return o.ApplyT(func(v *AzureClusterControlPlane) *AzureClusterControlPlaneSshConfig {
 		if v == nil {
@@ -3854,7 +3854,7 @@ func (o AzureClusterControlPlanePtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
 func (o AzureClusterControlPlanePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureClusterControlPlane) *string {
 		if v == nil {
@@ -4548,7 +4548,7 @@ func (o AzureClusterControlPlaneRootVolumePtrOutput) SizeGib() pulumi.IntPtrOutp
 }
 
 type AzureClusterControlPlaneSshConfig struct {
-	// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+	// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
 	AuthorizedKey string `pulumi:"authorizedKey"`
 }
 
@@ -4564,7 +4564,7 @@ type AzureClusterControlPlaneSshConfigInput interface {
 }
 
 type AzureClusterControlPlaneSshConfigArgs struct {
-	// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+	// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
 	AuthorizedKey pulumi.StringInput `pulumi:"authorizedKey"`
 }
 
@@ -4645,7 +4645,7 @@ func (o AzureClusterControlPlaneSshConfigOutput) ToAzureClusterControlPlaneSshCo
 	}).(AzureClusterControlPlaneSshConfigPtrOutput)
 }
 
-// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
 func (o AzureClusterControlPlaneSshConfigOutput) AuthorizedKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureClusterControlPlaneSshConfig) string { return v.AuthorizedKey }).(pulumi.StringOutput)
 }
@@ -4674,7 +4674,7 @@ func (o AzureClusterControlPlaneSshConfigPtrOutput) Elem() AzureClusterControlPl
 	}).(AzureClusterControlPlaneSshConfigOutput)
 }
 
-// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
 func (o AzureClusterControlPlaneSshConfigPtrOutput) AuthorizedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureClusterControlPlaneSshConfig) *string {
 		if v == nil {
@@ -4845,11 +4845,11 @@ func (o AzureClusterFleetPtrOutput) Project() pulumi.StringPtrOutput {
 }
 
 type AzureClusterNetworking struct {
-	// Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	// The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
-	// Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+	// The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
 	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
-	// Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+	// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
 	VirtualNetworkId string `pulumi:"virtualNetworkId"`
 }
 
@@ -4865,11 +4865,11 @@ type AzureClusterNetworkingInput interface {
 }
 
 type AzureClusterNetworkingArgs struct {
-	// Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+	// The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	PodAddressCidrBlocks pulumi.StringArrayInput `pulumi:"podAddressCidrBlocks"`
-	// Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+	// The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
 	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
-	// Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+	// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
 	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
 }
 
@@ -4950,17 +4950,17 @@ func (o AzureClusterNetworkingOutput) ToAzureClusterNetworkingPtrOutputWithConte
 	}).(AzureClusterNetworkingPtrOutput)
 }
 
-// Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+// The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 func (o AzureClusterNetworkingOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AzureClusterNetworking) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+// The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
 func (o AzureClusterNetworkingOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AzureClusterNetworking) []string { return v.ServiceAddressCidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
 func (o AzureClusterNetworkingOutput) VirtualNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureClusterNetworking) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
 }
@@ -4989,7 +4989,7 @@ func (o AzureClusterNetworkingPtrOutput) Elem() AzureClusterNetworkingOutput {
 	}).(AzureClusterNetworkingOutput)
 }
 
-// Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+// The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 func (o AzureClusterNetworkingPtrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AzureClusterNetworking) []string {
 		if v == nil {
@@ -4999,7 +4999,7 @@ func (o AzureClusterNetworkingPtrOutput) PodAddressCidrBlocks() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+// The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
 func (o AzureClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AzureClusterNetworking) []string {
 		if v == nil {
@@ -5009,7 +5009,7 @@ func (o AzureClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
 func (o AzureClusterNetworkingPtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureClusterNetworking) *string {
 		if v == nil {
@@ -5126,9 +5126,9 @@ func (o AzureClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type AzureNodePoolAutoscaling struct {
-	// Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+	// Maximum number of nodes in the node pool. Must be >= min_node_count.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+	// Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
 	MinNodeCount int `pulumi:"minNodeCount"`
 }
 
@@ -5144,9 +5144,9 @@ type AzureNodePoolAutoscalingInput interface {
 }
 
 type AzureNodePoolAutoscalingArgs struct {
-	// Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+	// Maximum number of nodes in the node pool. Must be >= min_node_count.
 	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
-	// Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+	// Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
 	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
 }
 
@@ -5227,12 +5227,12 @@ func (o AzureNodePoolAutoscalingOutput) ToAzureNodePoolAutoscalingPtrOutputWithC
 	}).(AzureNodePoolAutoscalingPtrOutput)
 }
 
-// Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+// Maximum number of nodes in the node pool. Must be >= min_node_count.
 func (o AzureNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v AzureNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
-// Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+// Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
 func (o AzureNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v AzureNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
@@ -5261,7 +5261,7 @@ func (o AzureNodePoolAutoscalingPtrOutput) Elem() AzureNodePoolAutoscalingOutput
 	}).(AzureNodePoolAutoscalingOutput)
 }
 
-// Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+// Maximum number of nodes in the node pool. Must be >= min_node_count.
 func (o AzureNodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolAutoscaling) *int {
 		if v == nil {
@@ -5271,7 +5271,7 @@ func (o AzureNodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+// Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
 func (o AzureNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolAutoscaling) *int {
 		if v == nil {
@@ -5284,7 +5284,7 @@ func (o AzureNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 type AzureNodePoolConfig struct {
 	// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
 	RootVolume *AzureNodePoolConfigRootVolume `pulumi:"rootVolume"`
-	// Required. SSH configuration for how to access the node pool machines.
+	// SSH configuration for how to access the node pool machines.
 	SshConfig AzureNodePoolConfigSshConfig `pulumi:"sshConfig"`
 	// Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
 	Tags map[string]string `pulumi:"tags"`
@@ -5306,7 +5306,7 @@ type AzureNodePoolConfigInput interface {
 type AzureNodePoolConfigArgs struct {
 	// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
 	RootVolume AzureNodePoolConfigRootVolumePtrInput `pulumi:"rootVolume"`
-	// Required. SSH configuration for how to access the node pool machines.
+	// SSH configuration for how to access the node pool machines.
 	SshConfig AzureNodePoolConfigSshConfigInput `pulumi:"sshConfig"`
 	// Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -5396,7 +5396,7 @@ func (o AzureNodePoolConfigOutput) RootVolume() AzureNodePoolConfigRootVolumePtr
 	return o.ApplyT(func(v AzureNodePoolConfig) *AzureNodePoolConfigRootVolume { return v.RootVolume }).(AzureNodePoolConfigRootVolumePtrOutput)
 }
 
-// Required. SSH configuration for how to access the node pool machines.
+// SSH configuration for how to access the node pool machines.
 func (o AzureNodePoolConfigOutput) SshConfig() AzureNodePoolConfigSshConfigOutput {
 	return o.ApplyT(func(v AzureNodePoolConfig) AzureNodePoolConfigSshConfig { return v.SshConfig }).(AzureNodePoolConfigSshConfigOutput)
 }
@@ -5445,7 +5445,7 @@ func (o AzureNodePoolConfigPtrOutput) RootVolume() AzureNodePoolConfigRootVolume
 	}).(AzureNodePoolConfigRootVolumePtrOutput)
 }
 
-// Required. SSH configuration for how to access the node pool machines.
+// SSH configuration for how to access the node pool machines.
 func (o AzureNodePoolConfigPtrOutput) SshConfig() AzureNodePoolConfigSshConfigPtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolConfig) *AzureNodePoolConfigSshConfig {
 		if v == nil {
@@ -5613,7 +5613,7 @@ func (o AzureNodePoolConfigRootVolumePtrOutput) SizeGib() pulumi.IntPtrOutput {
 }
 
 type AzureNodePoolConfigSshConfig struct {
-	// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+	// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
 	AuthorizedKey string `pulumi:"authorizedKey"`
 }
 
@@ -5629,7 +5629,7 @@ type AzureNodePoolConfigSshConfigInput interface {
 }
 
 type AzureNodePoolConfigSshConfigArgs struct {
-	// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+	// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
 	AuthorizedKey pulumi.StringInput `pulumi:"authorizedKey"`
 }
 
@@ -5710,7 +5710,7 @@ func (o AzureNodePoolConfigSshConfigOutput) ToAzureNodePoolConfigSshConfigPtrOut
 	}).(AzureNodePoolConfigSshConfigPtrOutput)
 }
 
-// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
 func (o AzureNodePoolConfigSshConfigOutput) AuthorizedKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureNodePoolConfigSshConfig) string { return v.AuthorizedKey }).(pulumi.StringOutput)
 }
@@ -5739,7 +5739,7 @@ func (o AzureNodePoolConfigSshConfigPtrOutput) Elem() AzureNodePoolConfigSshConf
 	}).(AzureNodePoolConfigSshConfigOutput)
 }
 
-// Required. The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
+// The SSH public key data for VMs managed by Anthos. This accepts the authorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
 func (o AzureNodePoolConfigSshConfigPtrOutput) AuthorizedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolConfigSshConfig) *string {
 		if v == nil {
@@ -5750,7 +5750,7 @@ func (o AzureNodePoolConfigSshConfigPtrOutput) AuthorizedKey() pulumi.StringPtrO
 }
 
 type AzureNodePoolMaxPodsConstraint struct {
-	// Required. The maximum number of pods to schedule on a single node.
+	// The maximum number of pods to schedule on a single node.
 	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
 }
 
@@ -5766,7 +5766,7 @@ type AzureNodePoolMaxPodsConstraintInput interface {
 }
 
 type AzureNodePoolMaxPodsConstraintArgs struct {
-	// Required. The maximum number of pods to schedule on a single node.
+	// The maximum number of pods to schedule on a single node.
 	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
 }
 
@@ -5847,7 +5847,7 @@ func (o AzureNodePoolMaxPodsConstraintOutput) ToAzureNodePoolMaxPodsConstraintPt
 	}).(AzureNodePoolMaxPodsConstraintPtrOutput)
 }
 
-// Required. The maximum number of pods to schedule on a single node.
+// The maximum number of pods to schedule on a single node.
 func (o AzureNodePoolMaxPodsConstraintOutput) MaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v AzureNodePoolMaxPodsConstraint) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
@@ -5876,7 +5876,7 @@ func (o AzureNodePoolMaxPodsConstraintPtrOutput) Elem() AzureNodePoolMaxPodsCons
 	}).(AzureNodePoolMaxPodsConstraintOutput)
 }
 
-// Required. The maximum number of pods to schedule on a single node.
+// The maximum number of pods to schedule on a single node.
 func (o AzureNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolMaxPodsConstraint) *int {
 		if v == nil {

@@ -55,6 +55,7 @@ export interface GetBackendBucketResult {
     readonly creationTimestamp: string;
     readonly customResponseHeaders: string[];
     readonly description: string;
+    readonly edgeSecurityPolicy: string;
     readonly enableCdn: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.

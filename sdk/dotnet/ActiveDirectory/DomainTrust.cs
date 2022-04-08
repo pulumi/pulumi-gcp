@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
     /// 
     /// &gt; **Warning:** All arguments including `trust_handshake_secret` will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
     /// 
     /// ## Example Usage
     /// ### Active Directory Domain Trust Basic

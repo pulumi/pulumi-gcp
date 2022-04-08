@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
  *
  * > **Warning:** All arguments including `sensitive_params.secret_access_key` will be stored in the raw
- * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
  *
  * ## Example Usage
  * ### Bigquerydatatransfer Config Scheduled Query

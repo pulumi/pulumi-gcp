@@ -320,6 +320,10 @@ namespace Pulumi.Gcp.NetworkServices
     ///                                             {
     ///                                                 "banana",
     ///                                             },
+    ///                                             IncludedCookieNames = 
+    ///                                             {
+    ///                                                 "orange",
+    ///                                             },
     ///                                         },
     ///                                         NegativeCaching = true,
     ///                                         SignedRequestMode = "DISABLED",

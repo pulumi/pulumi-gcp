@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AwsNodePoolConfig
     {
         /// <summary>
-        /// Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+        /// The ARN of the AWS KMS key used to encrypt node pool configuration.
         /// </summary>
         public readonly Outputs.AwsNodePoolConfigConfigEncryption ConfigEncryption;
         /// <summary>
-        /// Required. The name of the AWS IAM role assigned to nodes in the pool.
+        /// The name of the AWS IAM role assigned to nodes in the pool.
         /// </summary>
         public readonly string IamInstanceProfile;
         /// <summary>
-        /// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        /// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>

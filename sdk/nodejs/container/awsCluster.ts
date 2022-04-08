@@ -133,15 +133,15 @@ export class AwsCluster extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Required. Configuration related to the cluster RBAC settings.
+     * Configuration related to the cluster RBAC settings.
      */
     public readonly authorization!: pulumi.Output<outputs.container.AwsClusterAuthorization>;
     /**
-     * Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+     * The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
      */
     public readonly awsRegion!: pulumi.Output<string>;
     /**
-     * Required. Configuration related to the cluster control plane.
+     * Configuration related to the cluster control plane.
      */
     public readonly controlPlane!: pulumi.Output<outputs.container.AwsClusterControlPlane>;
     /**
@@ -174,7 +174,7 @@ export class AwsCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. Cluster-wide networking configuration.
+     * Cluster-wide networking configuration.
      */
     public readonly networking!: pulumi.Output<outputs.container.AwsClusterNetworking>;
     /**
@@ -287,15 +287,15 @@ export interface AwsClusterState {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Configuration related to the cluster RBAC settings.
+     * Configuration related to the cluster RBAC settings.
      */
     authorization?: pulumi.Input<inputs.container.AwsClusterAuthorization>;
     /**
-     * Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+     * The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
      */
     awsRegion?: pulumi.Input<string>;
     /**
-     * Required. Configuration related to the cluster control plane.
+     * Configuration related to the cluster control plane.
      */
     controlPlane?: pulumi.Input<inputs.container.AwsClusterControlPlane>;
     /**
@@ -328,7 +328,7 @@ export interface AwsClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Cluster-wide networking configuration.
+     * Cluster-wide networking configuration.
      */
     networking?: pulumi.Input<inputs.container.AwsClusterNetworking>;
     /**
@@ -367,15 +367,15 @@ export interface AwsClusterArgs {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Configuration related to the cluster RBAC settings.
+     * Configuration related to the cluster RBAC settings.
      */
     authorization: pulumi.Input<inputs.container.AwsClusterAuthorization>;
     /**
-     * Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+     * The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
      */
     awsRegion: pulumi.Input<string>;
     /**
-     * Required. Configuration related to the cluster control plane.
+     * Configuration related to the cluster control plane.
      */
     controlPlane: pulumi.Input<inputs.container.AwsClusterControlPlane>;
     /**
@@ -395,7 +395,7 @@ export interface AwsClusterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Cluster-wide networking configuration.
+     * Cluster-wide networking configuration.
      */
     networking: pulumi.Input<inputs.container.AwsClusterNetworking>;
     /**

@@ -14,7 +14,7 @@ import (
 // EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
 //
 // > **Warning:** All arguments including `public_key.public_key.value` will be stored in the raw
-// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
 //
 // ## Example Usage
 // ### Network Services Edge Cache Keyset Basic

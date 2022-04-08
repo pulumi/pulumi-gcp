@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AzureNodePoolMaxPodsConstraint
     {
         /// <summary>
-        /// Required. The maximum number of pods to schedule on a single node.
+        /// The maximum number of pods to schedule on a single node.
         /// </summary>
         public readonly int MaxPodsPerNode;
 

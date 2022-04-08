@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AwsNodePoolConfigTaint
     {
         /// <summary>
-        /// Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+        /// The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
         /// </summary>
         public readonly string Effect;
         /// <summary>
-        /// Required. Key for the taint.
+        /// Key for the taint.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Required. Value for the taint.
+        /// Value for the taint.
         /// </summary>
         public readonly string Value;
 

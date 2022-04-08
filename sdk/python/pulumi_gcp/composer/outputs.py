@@ -1650,7 +1650,7 @@ class GetImageVersionsImageVersionResult(dict):
                  image_version_id: str,
                  supported_python_versions: Sequence[str]):
         """
-        :param str image_version_id: The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
+        :param str image_version_id: The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
         :param Sequence[str] supported_python_versions: Supported python versions for this image version
         """
         pulumi.set(__self__, "image_version_id", image_version_id)
@@ -1660,7 +1660,7 @@ class GetImageVersionsImageVersionResult(dict):
     @pulumi.getter(name="imageVersionId")
     def image_version_id(self) -> str:
         """
-        The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
+        The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
         """
         return pulumi.get(self, "image_version_id")
 

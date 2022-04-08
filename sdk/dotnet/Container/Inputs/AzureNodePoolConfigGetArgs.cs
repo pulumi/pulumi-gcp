@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.AzureNodePoolConfigRootVolumeGetArgs>? RootVolume { get; set; }
 
         /// <summary>
-        /// Required. SSH configuration for how to access the node pool machines.
+        /// SSH configuration for how to access the node pool machines.
         /// </summary>
         [Input("sshConfig", required: true)]
         public Input<Inputs.AzureNodePoolConfigSshConfigGetArgs> SshConfig { get; set; } = null!;

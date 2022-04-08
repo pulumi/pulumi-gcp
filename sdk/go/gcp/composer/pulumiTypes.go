@@ -4967,7 +4967,7 @@ func (o GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput) Index(i pulumi.Int
 }
 
 type GetImageVersionsImageVersion struct {
-	// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
+	// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
 	ImageVersionId string `pulumi:"imageVersionId"`
 	// Supported python versions for this image version
 	SupportedPythonVersions []string `pulumi:"supportedPythonVersions"`
@@ -4985,7 +4985,7 @@ type GetImageVersionsImageVersionInput interface {
 }
 
 type GetImageVersionsImageVersionArgs struct {
-	// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
+	// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
 	ImageVersionId pulumi.StringInput `pulumi:"imageVersionId"`
 	// Supported python versions for this image version
 	SupportedPythonVersions pulumi.StringArrayInput `pulumi:"supportedPythonVersions"`
@@ -5042,7 +5042,7 @@ func (o GetImageVersionsImageVersionOutput) ToGetImageVersionsImageVersionOutput
 	return o
 }
 
-// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
+// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
 func (o GetImageVersionsImageVersionOutput) ImageVersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVersionsImageVersion) string { return v.ImageVersionId }).(pulumi.StringOutput)
 }

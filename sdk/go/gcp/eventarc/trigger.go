@@ -112,7 +112,7 @@ type Trigger struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The location for the resource
+	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayOutput `pulumi:"matchingCriterias"`
@@ -178,7 +178,7 @@ type triggerState struct {
 	Etag *string `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
-	// The location for the resource
+	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location *string `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias []TriggerMatchingCriteria `pulumi:"matchingCriterias"`
@@ -207,7 +207,7 @@ type TriggerState struct {
 	Etag pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapInput
-	// The location for the resource
+	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location pulumi.StringPtrInput
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayInput
@@ -235,7 +235,7 @@ type triggerArgs struct {
 	Destination TriggerDestination `pulumi:"destination"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
-	// The location for the resource
+	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location string `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias []TriggerMatchingCriteria `pulumi:"matchingCriterias"`
@@ -255,7 +255,7 @@ type TriggerArgs struct {
 	Destination TriggerDestinationInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapInput
-	// The location for the resource
+	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
 	Location pulumi.StringInput
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayInput

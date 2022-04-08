@@ -170,6 +170,9 @@ func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 func GetFirebaseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseCustomEndpoint")
 }
+func GetFirebaserulesCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaserulesCustomEndpoint")
+}
 func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firestoreCustomEndpoint")
 }
