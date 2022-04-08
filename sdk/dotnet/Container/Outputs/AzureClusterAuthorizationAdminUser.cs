@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AzureClusterAuthorizationAdminUser
     {
         /// <summary>
-        /// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        /// The name of the user, e.g. `my-gcp-id@gmail.com`.
         /// </summary>
         public readonly string Username;
 

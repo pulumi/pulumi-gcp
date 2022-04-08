@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.BigTable.Outputs
     public sealed class InstanceCluster
     {
         /// <summary>
+        /// Autoscaling config for the cluster, contains the following arguments:
+        /// </summary>
+        public readonly Outputs.InstanceClusterAutoscalingConfig? AutoscalingConfig;
+        /// <summary>
         /// The ID of the Cloud Bigtable cluster.
         /// </summary>
         public readonly string ClusterId;
@@ -41,6 +45,8 @@ namespace Pulumi.Gcp.BigTable.Outputs
 
         [OutputConstructor]
         private InstanceCluster(
+            Outputs.InstanceClusterAutoscalingConfig? autoscalingConfig,
+
             string clusterId,
 
             string? kmsKeyName,
@@ -51,6 +57,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
 
             string? zone)
         {
+            AutoscalingConfig = autoscalingConfig;
             ClusterId = clusterId;
             KmsKeyName = kmsKeyName;
             NumNodes = numNodes;

@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Monitoring
     ///             {
     ///                 Body = "Zm9vJTI1M0RiYXI=",
     ///                 ContentType = "URL_ENCODED",
-    ///                 Path = "/some-path",
+    ///                 Path = "some-path",
     ///                 Port = 8010,
     ///                 RequestMethod = "POST",
     ///             },

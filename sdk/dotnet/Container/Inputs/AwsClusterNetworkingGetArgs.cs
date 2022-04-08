@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _podAddressCidrBlocks;
 
         /// <summary>
-        /// Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         /// </summary>
         public InputList<string> PodAddressCidrBlocks
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _serviceAddressCidrBlocks;
 
         /// <summary>
-        /// Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        /// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         /// </summary>
         public InputList<string> ServiceAddressCidrBlocks
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+        /// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;

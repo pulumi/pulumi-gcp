@@ -34,6 +34,24 @@ import * as utilities from "../utilities";
  *     enableCdn: true,
  * });
  * ```
+ * ### Backend Bucket Security Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const imageBackendBucket = new gcp.storage.Bucket("imageBackendBucket", {location: "EU"});
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     description: "basic security policy",
+ *     type: "CLOUD_ARMOR_EDGE",
+ * });
+ * const imageBackendBackendBucket = new gcp.compute.BackendBucket("imageBackendBackendBucket", {
+ *     description: "Contains beautiful images",
+ *     bucketName: imageBackendBucket.name,
+ *     enableCdn: true,
+ *     edgeSecurityPolicy: policy.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -102,6 +120,10 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The security policy associated with this backend bucket.
+     */
+    public readonly edgeSecurityPolicy!: pulumi.Output<string | undefined>;
+    /**
      * If true, enable Cloud CDN for this BackendBucket.
      */
     public readonly enableCdn!: pulumi.Output<boolean | undefined>;
@@ -143,6 +165,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -156,6 +179,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -193,6 +217,10 @@ export interface BackendBucketState {
      * client when the resource is created.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The security policy associated with this backend bucket.
+     */
+    edgeSecurityPolicy?: pulumi.Input<string>;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
      */
@@ -240,6 +268,10 @@ export interface BackendBucketArgs {
      * client when the resource is created.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The security policy associated with this backend bucket.
+     */
+    edgeSecurityPolicy?: pulumi.Input<string>;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
      */

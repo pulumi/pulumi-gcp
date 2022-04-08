@@ -102,6 +102,7 @@ import (
 // 					Seconds: pulumi.Int(0),
 // 					Nanos:   pulumi.Int(0),
 // 				},
+// 				RepeatInterval: pulumi.String("604800s"),
 // 			},
 // 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			s3_backup_bucketBucketIAMMember,

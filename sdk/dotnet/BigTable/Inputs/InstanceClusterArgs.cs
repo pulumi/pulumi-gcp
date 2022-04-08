@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.BigTable.Inputs
     public sealed class InstanceClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Autoscaling config for the cluster, contains the following arguments:
+        /// </summary>
+        [Input("autoscalingConfig")]
+        public Input<Inputs.InstanceClusterAutoscalingConfigArgs>? AutoscalingConfig { get; set; }
+
+        /// <summary>
         /// The ID of the Cloud Bigtable cluster.
         /// </summary>
         [Input("clusterId", required: true)]

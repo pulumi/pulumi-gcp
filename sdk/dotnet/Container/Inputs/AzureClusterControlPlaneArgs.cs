@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.AzureClusterControlPlaneRootVolumeArgs>? RootVolume { get; set; }
 
         /// <summary>
-        /// Required. SSH configuration for how to access the underlying control plane machines.
+        /// SSH configuration for how to access the underlying control plane machines.
         /// </summary>
         [Input("sshConfig", required: true)]
         public Input<Inputs.AzureClusterControlPlaneSshConfigArgs> SshConfig { get; set; } = null!;
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+        /// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

@@ -117,8 +117,6 @@ import * as utilities from "../utilities";
  *         my_key: "my_val",
  *         other_key: "other_val",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -281,11 +279,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly readEndpointPort!: pulumi.Output<number>;
     /**
-     * Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-     * backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-     * provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-     * endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-     * "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+     * Optional. Read replica mode. Can only be specified when trying to create the instance.
+     * If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+     * - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+     * instance cannot scale up or down the number of replicas.
+     * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+     * can scale up and down the number of replicas.
+     * Default value is `READ_REPLICAS_DISABLED`.
+     * Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
      */
     public readonly readReplicasMode!: pulumi.Output<string | undefined>;
     /**
@@ -305,9 +306,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-     * defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-     * is 1. The valid value for basic tier is 0 and the default is also 0.
+     * Optional. The number of replica nodes. The valid range for the Standard Tier with
+     * read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+     * for a Standard Tier instance, the only valid value is 1 and the default is 1.
+     * The valid value for basic tier is 0 and the default is also 0.
      */
     public readonly replicaCount!: pulumi.Output<number>;
     /**
@@ -537,11 +539,14 @@ export interface InstanceState {
      */
     readEndpointPort?: pulumi.Input<number>;
     /**
-     * Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-     * backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-     * provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-     * endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-     * "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+     * Optional. Read replica mode. Can only be specified when trying to create the instance.
+     * If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+     * - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+     * instance cannot scale up or down the number of replicas.
+     * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+     * can scale up and down the number of replicas.
+     * Default value is `READ_REPLICAS_DISABLED`.
+     * Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
      */
     readReplicasMode?: pulumi.Input<string>;
     /**
@@ -561,9 +566,10 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-     * defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-     * is 1. The valid value for basic tier is 0 and the default is also 0.
+     * Optional. The number of replica nodes. The valid range for the Standard Tier with
+     * read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+     * for a Standard Tier instance, the only valid value is 1 and the default is 1.
+     * The valid value for basic tier is 0 and the default is also 0.
      */
     replicaCount?: pulumi.Input<number>;
     /**
@@ -664,11 +670,14 @@ export interface InstanceArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-     * backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-     * provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-     * endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-     * "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+     * Optional. Read replica mode. Can only be specified when trying to create the instance.
+     * If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+     * - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+     * instance cannot scale up or down the number of replicas.
+     * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+     * can scale up and down the number of replicas.
+     * Default value is `READ_REPLICAS_DISABLED`.
+     * Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
      */
     readReplicasMode?: pulumi.Input<string>;
     /**
@@ -688,9 +697,10 @@ export interface InstanceArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-     * defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-     * is 1. The valid value for basic tier is 0 and the default is also 0.
+     * Optional. The number of replica nodes. The valid range for the Standard Tier with
+     * read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+     * for a Standard Tier instance, the only valid value is 1 and the default is 1.
+     * The valid value for basic tier is 0 and the default is also 0.
      */
     replicaCount?: pulumi.Input<number>;
     /**

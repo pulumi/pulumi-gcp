@@ -2907,6 +2907,14 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPoli
 	ExcludedQueryParameters []string `pulumi:"excludedQueryParameters"`
 	// If true, http and https requests will be cached separately.
 	IncludeProtocol *bool `pulumi:"includeProtocol"`
+	// Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+	// Cookie names:
+	// - must be valid RFC 6265 "cookie-name" tokens
+	// - are case sensitive
+	// - cannot start with "Edge-Cache-" (case insensitive)
+	//   Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+	//   You may specify up to three cookie names.
+	IncludedCookieNames []string `pulumi:"includedCookieNames"`
 	// Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
 	// - Header names must be valid HTTP RFC 7230 header field values.
 	// - Header field names are case insensitive
@@ -2945,6 +2953,14 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPoli
 	ExcludedQueryParameters pulumi.StringArrayInput `pulumi:"excludedQueryParameters"`
 	// If true, http and https requests will be cached separately.
 	IncludeProtocol pulumi.BoolPtrInput `pulumi:"includeProtocol"`
+	// Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+	// Cookie names:
+	// - must be valid RFC 6265 "cookie-name" tokens
+	// - are case sensitive
+	// - cannot start with "Edge-Cache-" (case insensitive)
+	//   Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+	//   You may specify up to three cookie names.
+	IncludedCookieNames pulumi.StringArrayInput `pulumi:"includedCookieNames"`
 	// Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
 	// - Header names must be valid HTTP RFC 7230 header field values.
 	// - Header field names are case insensitive
@@ -3068,6 +3084,19 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+// Cookie names:
+// - must be valid RFC 6265 "cookie-name" tokens
+// - are case sensitive
+// - cannot start with "Edge-Cache-" (case insensitive)
+//   Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+//   You may specify up to three cookie names.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput) IncludedCookieNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) []string {
+		return v.IncludedCookieNames
+	}).(pulumi.StringArrayOutput)
+}
+
 // Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
 // - Header names must be valid HTTP RFC 7230 header field values.
 // - Header field names are case insensitive
@@ -3156,6 +3185,22 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 		}
 		return v.IncludeProtocol
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+// Cookie names:
+// - must be valid RFC 6265 "cookie-name" tokens
+// - are case sensitive
+// - cannot start with "Edge-Cache-" (case insensitive)
+//   Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+//   You may specify up to three cookie names.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput) IncludedCookieNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedCookieNames
+	}).(pulumi.StringArrayOutput)
 }
 
 // Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.

@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Container
     public partial class AzureClient : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The Azure Active Directory Application ID.
+        /// The Azure Active Directory Application ID.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Azure Active Directory Tenant ID.
+        /// The Azure Active Directory Tenant ID.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.Container
     public sealed class AzureClientArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The Azure Active Directory Application ID.
+        /// The Azure Active Directory Application ID.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Required. The Azure Active Directory Tenant ID.
+        /// The Azure Active Directory Tenant ID.
         /// </summary>
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.Container
     public sealed class AzureClientState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The Azure Active Directory Application ID.
+        /// The Azure Active Directory Application ID.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Required. The Azure Active Directory Tenant ID.
+        /// The Azure Active Directory Tenant ID.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

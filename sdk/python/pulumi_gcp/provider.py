@@ -68,6 +68,7 @@ class ProviderArgs:
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -237,6 +238,8 @@ class ProviderArgs:
             pulumi.set(__self__, "filestore_custom_endpoint", filestore_custom_endpoint)
         if firebase_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_custom_endpoint", firebase_custom_endpoint)
+        if firebaserules_custom_endpoint is not None:
+            pulumi.set(__self__, "firebaserules_custom_endpoint", firebaserules_custom_endpoint)
         if firestore_custom_endpoint is not None:
             pulumi.set(__self__, "firestore_custom_endpoint", firestore_custom_endpoint)
         if game_services_custom_endpoint is not None:
@@ -847,6 +850,15 @@ class ProviderArgs:
         pulumi.set(self, "firebase_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="firebaserulesCustomEndpoint")
+    def firebaserules_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "firebaserules_custom_endpoint")
+
+    @firebaserules_custom_endpoint.setter
+    def firebaserules_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firebaserules_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="firestoreCustomEndpoint")
     def firestore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "firestore_custom_endpoint")
@@ -1428,6 +1440,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1577,6 +1590,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1701,6 +1715,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
             __props__.__dict__["firebase_custom_endpoint"] = firebase_custom_endpoint
+            __props__.__dict__["firebaserules_custom_endpoint"] = firebaserules_custom_endpoint
             __props__.__dict__["firestore_custom_endpoint"] = firestore_custom_endpoint
             __props__.__dict__["game_services_custom_endpoint"] = game_services_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
@@ -2030,6 +2045,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="firebaseCustomEndpoint")
     def firebase_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "firebase_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="firebaserulesCustomEndpoint")
+    def firebaserules_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "firebaserules_custom_endpoint")
 
     @property
     @pulumi.getter(name="firestoreCustomEndpoint")

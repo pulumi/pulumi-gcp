@@ -204,6 +204,7 @@ import * as utilities from "../utilities";
  *                                         "claus",
  *                                     ],
  *                                     includedHeaderNames: ["banana"],
+ *                                     includedCookieNames: ["orange"],
  *                                 },
  *                                 negativeCaching: true,
  *                                 signedRequestMode: "DISABLED",

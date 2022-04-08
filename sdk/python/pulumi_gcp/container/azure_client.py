@@ -20,9 +20,9 @@ class AzureClientArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AzureClient resource.
-        :param pulumi.Input[str] application_id: Required. The Azure Active Directory Application ID.
+        :param pulumi.Input[str] application_id: The Azure Active Directory Application ID.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] tenant_id: Required. The Azure Active Directory Tenant ID.
+        :param pulumi.Input[str] tenant_id: The Azure Active Directory Tenant ID.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         """
@@ -38,7 +38,7 @@ class AzureClientArgs:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Input[str]:
         """
-        Required. The Azure Active Directory Application ID.
+        The Azure Active Directory Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -62,7 +62,7 @@ class AzureClientArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Input[str]:
         """
-        Required. The Azure Active Directory Tenant ID.
+        The Azure Active Directory Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -108,13 +108,13 @@ class _AzureClientState:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AzureClient resources.
-        :param pulumi.Input[str] application_id: Required. The Azure Active Directory Application ID.
+        :param pulumi.Input[str] application_id: The Azure Active Directory Application ID.
         :param pulumi.Input[str] certificate: Output only. The PEM encoded x509 certificate.
         :param pulumi.Input[str] create_time: Output only. The time at which this resource was created.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] tenant_id: Required. The Azure Active Directory Tenant ID.
+        :param pulumi.Input[str] tenant_id: The Azure Active Directory Tenant ID.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the client.
         """
         if application_id is not None:
@@ -138,7 +138,7 @@ class _AzureClientState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The Azure Active Directory Application ID.
+        The Azure Active Directory Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -210,7 +210,7 @@ class _AzureClientState:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The Azure Active Directory Tenant ID.
+        The Azure Active Directory Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -279,11 +279,11 @@ class AzureClient(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Required. The Azure Active Directory Application ID.
+        :param pulumi.Input[str] application_id: The Azure Active Directory Application ID.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] tenant_id: Required. The Azure Active Directory Tenant ID.
+        :param pulumi.Input[str] tenant_id: The Azure Active Directory Tenant ID.
         """
         ...
     @overload
@@ -397,13 +397,13 @@ class AzureClient(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Required. The Azure Active Directory Application ID.
+        :param pulumi.Input[str] application_id: The Azure Active Directory Application ID.
         :param pulumi.Input[str] certificate: Output only. The PEM encoded x509 certificate.
         :param pulumi.Input[str] create_time: Output only. The time at which this resource was created.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] tenant_id: Required. The Azure Active Directory Tenant ID.
+        :param pulumi.Input[str] tenant_id: The Azure Active Directory Tenant ID.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the client.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -424,7 +424,7 @@ class AzureClient(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        Required. The Azure Active Directory Application ID.
+        The Azure Active Directory Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -472,7 +472,7 @@ class AzureClient(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        Required. The Azure Active Directory Tenant ID.
+        The Azure Active Directory Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 

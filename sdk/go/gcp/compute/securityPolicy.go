@@ -83,6 +83,13 @@ type SecurityPolicy struct {
 	Rules SecurityPolicyRuleArrayOutput `pulumi:"rules"`
 	// The URI of the created resourc
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The type indicates the intended use of the security policy.
+	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+	//   They filter requests before they hit the origin servers.
+	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+	//   They filter requests before the request is served from Google's cache.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewSecurityPolicy registers a new resource with the given unique name, arguments, and options.
@@ -131,6 +138,13 @@ type securityPolicyState struct {
 	Rules []SecurityPolicyRule `pulumi:"rules"`
 	// The URI of the created resourc
 	SelfLink *string `pulumi:"selfLink"`
+	// The type indicates the intended use of the security policy.
+	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+	//   They filter requests before they hit the origin servers.
+	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+	//   They filter requests before the request is served from Google's cache.
+	Type *string `pulumi:"type"`
 }
 
 type SecurityPolicyState struct {
@@ -151,6 +165,13 @@ type SecurityPolicyState struct {
 	Rules SecurityPolicyRuleArrayInput
 	// The URI of the created resourc
 	SelfLink pulumi.StringPtrInput
+	// The type indicates the intended use of the security policy.
+	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+	//   They filter requests before they hit the origin servers.
+	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+	//   They filter requests before the request is served from Google's cache.
+	Type pulumi.StringPtrInput
 }
 
 func (SecurityPolicyState) ElementType() reflect.Type {
@@ -171,6 +192,13 @@ type securityPolicyArgs struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules []SecurityPolicyRule `pulumi:"rules"`
+	// The type indicates the intended use of the security policy.
+	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+	//   They filter requests before they hit the origin servers.
+	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+	//   They filter requests before the request is served from Google's cache.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a SecurityPolicy resource.
@@ -188,6 +216,13 @@ type SecurityPolicyArgs struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules SecurityPolicyRuleArrayInput
+	// The type indicates the intended use of the security policy.
+	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+	//   They filter requests before they hit the origin servers.
+	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+	//   They filter requests before the request is served from Google's cache.
+	Type pulumi.StringPtrInput
 }
 
 func (SecurityPolicyArgs) ElementType() reflect.Type {

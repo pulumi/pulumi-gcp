@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AzureClusterAuthorizationAdminUserGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        /// The name of the user, e.g. `my-gcp-id@gmail.com`.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

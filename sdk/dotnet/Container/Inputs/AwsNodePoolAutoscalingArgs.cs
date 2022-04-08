@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AwsNodePoolAutoscalingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
+        /// Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
         /// </summary>
         [Input("maxNodeCount", required: true)]
         public Input<int> MaxNodeCount { get; set; } = null!;
 
         /// <summary>
-        /// Required. Minimum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.
+        /// Minimum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.
         /// </summary>
         [Input("minNodeCount", required: true)]
         public Input<int> MinNodeCount { get; set; } = null!;

@@ -69,6 +69,7 @@ type Provider struct {
 	EventarcCustomEndpoint             pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint             pulumi.StringPtrOutput `pulumi:"firebaseCustomEndpoint"`
+	FirebaserulesCustomEndpoint        pulumi.StringPtrOutput `pulumi:"firebaserulesCustomEndpoint"`
 	FirestoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint         pulumi.StringPtrOutput `pulumi:"gameServicesCustomEndpoint"`
 	GkeHubCustomEndpoint               pulumi.StringPtrOutput `pulumi:"gkeHubCustomEndpoint"`
@@ -205,6 +206,7 @@ type providerArgs struct {
 	EventarcCustomEndpoint             *string           `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint            *string           `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint             *string           `pulumi:"firebaseCustomEndpoint"`
+	FirebaserulesCustomEndpoint        *string           `pulumi:"firebaserulesCustomEndpoint"`
 	FirestoreCustomEndpoint            *string           `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint         *string           `pulumi:"gameServicesCustomEndpoint"`
 	GkeHubCustomEndpoint               *string           `pulumi:"gkeHubCustomEndpoint"`
@@ -321,6 +323,7 @@ type ProviderArgs struct {
 	EventarcCustomEndpoint             pulumi.StringPtrInput
 	FilestoreCustomEndpoint            pulumi.StringPtrInput
 	FirebaseCustomEndpoint             pulumi.StringPtrInput
+	FirebaserulesCustomEndpoint        pulumi.StringPtrInput
 	FirestoreCustomEndpoint            pulumi.StringPtrInput
 	GameServicesCustomEndpoint         pulumi.StringPtrInput
 	GkeHubCustomEndpoint               pulumi.StringPtrInput

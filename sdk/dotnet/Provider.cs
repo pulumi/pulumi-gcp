@@ -174,6 +174,9 @@ namespace Pulumi.Gcp
         [Output("firebaseCustomEndpoint")]
         public Output<string?> FirebaseCustomEndpoint { get; private set; } = null!;
 
+        [Output("firebaserulesCustomEndpoint")]
+        public Output<string?> FirebaserulesCustomEndpoint { get; private set; } = null!;
+
         [Output("firestoreCustomEndpoint")]
         public Output<string?> FirestoreCustomEndpoint { get; private set; } = null!;
 
@@ -528,6 +531,9 @@ namespace Pulumi.Gcp
 
         [Input("firebaseCustomEndpoint")]
         public Input<string>? FirebaseCustomEndpoint { get; set; }
+
+        [Input("firebaserulesCustomEndpoint")]
+        public Input<string>? FirebaserulesCustomEndpoint { get; set; }
 
         [Input("firestoreCustomEndpoint")]
         public Input<string>? FirestoreCustomEndpoint { get; set; }

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     httpCheck: {
  *         body: "Zm9vJTI1M0RiYXI=",
  *         contentType: "URL_ENCODED",
- *         path: "/some-path",
+ *         path: "some-path",
  *         port: 8010,
  *         requestMethod: "POST",
  *     },

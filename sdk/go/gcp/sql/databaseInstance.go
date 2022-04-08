@@ -180,12 +180,8 @@ type DatabaseInstance struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
-	// The region the instance will sit in. Note, Cloud SQL is not
-	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-	// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-	// the provider region will be used instead, but this will be an apply-time error for instances if the provider
-	// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-	// make sure you understand this.
+	// The region the instance will sit in. If a region is not provided in the resource definition,
+	// the provider region will be used instead.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -284,12 +280,8 @@ type databaseInstanceState struct {
 	Project *string `pulumi:"project"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
-	// The region the instance will sit in. Note, Cloud SQL is not
-	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-	// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-	// the provider region will be used instead, but this will be an apply-time error for instances if the provider
-	// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-	// make sure you understand this.
+	// The region the instance will sit in. If a region is not provided in the resource definition,
+	// the provider region will be used instead.
 	Region *string `pulumi:"region"`
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -357,12 +349,8 @@ type DatabaseInstanceState struct {
 	Project pulumi.StringPtrInput
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringPtrInput
-	// The region the instance will sit in. Note, Cloud SQL is not
-	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-	// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-	// the provider region will be used instead, but this will be an apply-time error for instances if the provider
-	// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-	// make sure you understand this.
+	// The region the instance will sit in. If a region is not provided in the resource definition,
+	// the provider region will be used instead.
 	Region pulumi.StringPtrInput
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -424,12 +412,8 @@ type databaseInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The full project ID of the source instance.`
 	Project *string `pulumi:"project"`
-	// The region the instance will sit in. Note, Cloud SQL is not
-	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-	// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-	// the provider region will be used instead, but this will be an apply-time error for instances if the provider
-	// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-	// make sure you understand this.
+	// The region the instance will sit in. If a region is not provided in the resource definition,
+	// the provider region will be used instead.
 	Region *string `pulumi:"region"`
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -482,12 +466,8 @@ type DatabaseInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The full project ID of the source instance.`
 	Project pulumi.StringPtrInput
-	// The region the instance will sit in. Note, Cloud SQL is not
-	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
-	// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-	// the provider region will be used instead, but this will be an apply-time error for instances if the provider
-	// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
-	// make sure you understand this.
+	// The region the instance will sit in. If a region is not provided in the resource definition,
+	// the provider region will be used instead.
 	Region pulumi.StringPtrInput
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.

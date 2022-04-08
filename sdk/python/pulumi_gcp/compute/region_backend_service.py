@@ -1165,7 +1165,7 @@ class RegionBackendService(pulumi.CustomResource):
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
         > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
 
         ## Example Usage
         ### Region Backend Service Basic
@@ -1497,7 +1497,7 @@ class RegionBackendService(pulumi.CustomResource):
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
         > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
 
         ## Example Usage
         ### Region Backend Service Basic

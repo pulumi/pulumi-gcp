@@ -117,6 +117,17 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// The type indicates the intended use of the security policy.
+        /// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+        /// They filter requests before they hit the origin servers.
+        /// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+        /// (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+        /// They filter requests before the request is served from Google's cache.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -202,6 +213,17 @@ namespace Pulumi.Gcp.Compute
             set => _rules = value;
         }
 
+        /// <summary>
+        /// The type indicates the intended use of the security policy.
+        /// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+        /// They filter requests before they hit the origin servers.
+        /// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+        /// (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+        /// They filter requests before the request is served from Google's cache.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public SecurityPolicyArgs()
         {
         }
@@ -259,6 +281,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// The type indicates the intended use of the security policy.
+        /// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+        /// They filter requests before they hit the origin servers.
+        /// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+        /// (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+        /// They filter requests before the request is served from Google's cache.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public SecurityPolicyState()
         {

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AwsClusterControlPlaneSshConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of the EC2 key pair used to login into cluster machines.
+        /// The name of the EC2 key pair used to login into cluster machines.
         /// </summary>
         [Input("ec2KeyPair", required: true)]
         public Input<string> Ec2KeyPair { get; set; } = null!;

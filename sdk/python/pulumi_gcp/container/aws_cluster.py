@@ -27,12 +27,12 @@ class AwsClusterArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AwsCluster resource.
-        :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Required. Configuration related to the cluster RBAC settings.
-        :param pulumi.Input[str] aws_region: Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Required. Configuration related to the cluster control plane.
+        :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Required. Cluster-wide networking configuration.
+        :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] name: The name of this resource.
@@ -57,7 +57,7 @@ class AwsClusterArgs:
     @pulumi.getter
     def authorization(self) -> pulumi.Input['AwsClusterAuthorizationArgs']:
         """
-        Required. Configuration related to the cluster RBAC settings.
+        Configuration related to the cluster RBAC settings.
         """
         return pulumi.get(self, "authorization")
 
@@ -69,7 +69,7 @@ class AwsClusterArgs:
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> pulumi.Input[str]:
         """
-        Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         """
         return pulumi.get(self, "aws_region")
 
@@ -81,7 +81,7 @@ class AwsClusterArgs:
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> pulumi.Input['AwsClusterControlPlaneArgs']:
         """
-        Required. Configuration related to the cluster control plane.
+        Configuration related to the cluster control plane.
         """
         return pulumi.get(self, "control_plane")
 
@@ -117,7 +117,7 @@ class AwsClusterArgs:
     @pulumi.getter
     def networking(self) -> pulumi.Input['AwsClusterNetworkingArgs']:
         """
-        Required. Cluster-wide networking configuration.
+        Cluster-wide networking configuration.
         """
         return pulumi.get(self, "networking")
 
@@ -198,9 +198,9 @@ class _AwsClusterState:
         """
         Input properties used for looking up and filtering AwsCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Required. Configuration related to the cluster RBAC settings.
-        :param pulumi.Input[str] aws_region: Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Required. Configuration related to the cluster control plane.
+        :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        :param pulumi.Input['AwsClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
@@ -209,7 +209,7 @@ class _AwsClusterState:
         :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Required. Cluster-wide networking configuration.
+        :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
@@ -271,7 +271,7 @@ class _AwsClusterState:
     @pulumi.getter
     def authorization(self) -> Optional[pulumi.Input['AwsClusterAuthorizationArgs']]:
         """
-        Required. Configuration related to the cluster RBAC settings.
+        Configuration related to the cluster RBAC settings.
         """
         return pulumi.get(self, "authorization")
 
@@ -283,7 +283,7 @@ class _AwsClusterState:
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         """
         return pulumi.get(self, "aws_region")
 
@@ -295,7 +295,7 @@ class _AwsClusterState:
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> Optional[pulumi.Input['AwsClusterControlPlaneArgs']]:
         """
-        Required. Configuration related to the cluster control plane.
+        Configuration related to the cluster control plane.
         """
         return pulumi.get(self, "control_plane")
 
@@ -392,7 +392,7 @@ class _AwsClusterState:
     @pulumi.getter
     def networking(self) -> Optional[pulumi.Input['AwsClusterNetworkingArgs']]:
         """
-        Required. Cluster-wide networking configuration.
+        Cluster-wide networking configuration.
         """
         return pulumi.get(self, "networking")
 
@@ -585,14 +585,14 @@ class AwsCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Required. Configuration related to the cluster RBAC settings.
-        :param pulumi.Input[str] aws_region: Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']] control_plane: Required. Configuration related to the cluster control plane.
+        :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Required. Cluster-wide networking configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The project for the resource
         """
         ...
@@ -796,9 +796,9 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Required. Configuration related to the cluster RBAC settings.
-        :param pulumi.Input[str] aws_region: Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-        :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']] control_plane: Required. Configuration related to the cluster control plane.
+        :param pulumi.Input[pulumi.InputType['AwsClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        :param pulumi.Input[pulumi.InputType['AwsClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
@@ -807,7 +807,7 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Required. Cluster-wide networking configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
@@ -852,7 +852,7 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter
     def authorization(self) -> pulumi.Output['outputs.AwsClusterAuthorization']:
         """
-        Required. Configuration related to the cluster RBAC settings.
+        Configuration related to the cluster RBAC settings.
         """
         return pulumi.get(self, "authorization")
 
@@ -860,7 +860,7 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> pulumi.Output[str]:
         """
-        Required. The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
+        The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         """
         return pulumi.get(self, "aws_region")
 
@@ -868,7 +868,7 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> pulumi.Output['outputs.AwsClusterControlPlane']:
         """
-        Required. Configuration related to the cluster control plane.
+        Configuration related to the cluster control plane.
         """
         return pulumi.get(self, "control_plane")
 
@@ -933,7 +933,7 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter
     def networking(self) -> pulumi.Output['outputs.AwsClusterNetworking']:
         """
-        Required. Cluster-wide networking configuration.
+        Cluster-wide networking configuration.
         """
         return pulumi.get(self, "networking")
 

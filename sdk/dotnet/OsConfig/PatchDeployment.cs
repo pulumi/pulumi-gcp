@@ -82,6 +82,42 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// }
     /// ```
+    /// ### Os Config Patch Deployment Daily Midnight
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var patch = new Gcp.OsConfig.PatchDeployment("patch", new Gcp.OsConfig.PatchDeploymentArgs
+    ///         {
+    ///             InstanceFilter = new Gcp.OsConfig.Inputs.PatchDeploymentInstanceFilterArgs
+    ///             {
+    ///                 All = true,
+    ///             },
+    ///             PatchDeploymentId = "patch-deploy",
+    ///             RecurringSchedule = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleArgs
+    ///             {
+    ///                 TimeOfDay = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs
+    ///                 {
+    ///                     Hours = 0,
+    ///                     Minutes = 0,
+    ///                     Nanos = 0,
+    ///                     Seconds = 0,
+    ///                 },
+    ///                 TimeZone = new Gcp.OsConfig.Inputs.PatchDeploymentRecurringScheduleTimeZoneArgs
+    ///                 {
+    ///                     Id = "America/New_York",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Os Config Patch Deployment Instance
     /// 
     /// ```csharp

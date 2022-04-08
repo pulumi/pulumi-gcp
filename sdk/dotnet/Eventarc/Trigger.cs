@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The location for the resource
+        /// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// The location for the resource
+        /// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// The location for the resource
+        /// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

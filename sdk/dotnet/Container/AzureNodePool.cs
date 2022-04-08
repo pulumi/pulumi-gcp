@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Autoscaler configuration for this node pool.
+        /// Autoscaler configuration for this node pool.
         /// </summary>
         [Output("autoscaling")]
         public Output<Outputs.AzureNodePoolAutoscaling> Autoscaling { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The node configuration of the node pool.
+        /// The node configuration of the node pool.
         /// </summary>
         [Output("config")]
         public Output<Outputs.AzureNodePoolConfig> Config { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         /// </summary>
         [Output("maxPodsConstraint")]
         public Output<Outputs.AzureNodePoolMaxPodsConstraint> MaxPodsConstraint { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        /// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        /// The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// Required. Autoscaler configuration for this node pool.
+        /// Autoscaler configuration for this node pool.
         /// </summary>
         [Input("autoscaling", required: true)]
         public Input<Inputs.AzureNodePoolAutoscalingArgs> Autoscaling { get; set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.Container
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// Required. The node configuration of the node pool.
+        /// The node configuration of the node pool.
         /// </summary>
         [Input("config", required: true)]
         public Input<Inputs.AzureNodePoolConfigArgs> Config { get; set; } = null!;
@@ -334,7 +334,7 @@ namespace Pulumi.Gcp.Container
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         /// </summary>
         [Input("maxPodsConstraint", required: true)]
         public Input<Inputs.AzureNodePoolMaxPodsConstraintArgs> MaxPodsConstraint { get; set; } = null!;
@@ -352,13 +352,13 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        /// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        /// The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -383,7 +383,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// Required. Autoscaler configuration for this node pool.
+        /// Autoscaler configuration for this node pool.
         /// </summary>
         [Input("autoscaling")]
         public Input<Inputs.AzureNodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
@@ -401,7 +401,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// Required. The node configuration of the node pool.
+        /// The node configuration of the node pool.
         /// </summary>
         [Input("config")]
         public Input<Inputs.AzureNodePoolConfigGetArgs>? Config { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         /// </summary>
         [Input("maxPodsConstraint")]
         public Input<Inputs.AzureNodePoolMaxPodsConstraintGetArgs>? MaxPodsConstraint { get; set; }
@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+        /// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
@@ -475,7 +475,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+        /// The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

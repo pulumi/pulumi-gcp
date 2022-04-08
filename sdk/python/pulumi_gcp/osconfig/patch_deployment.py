@@ -500,6 +500,29 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Os Config Patch Deployment Daily Midnight
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        patch = gcp.osconfig.PatchDeployment("patch",
+            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
+                all=True,
+            ),
+            patch_deployment_id="patch-deploy",
+            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
+                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
+                    hours=0,
+                    minutes=0,
+                    nanos=0,
+                    seconds=0,
+                ),
+                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
+                    id="America/New_York",
+                ),
+            ))
+        ```
         ### Os Config Patch Deployment Instance
 
         ```python
@@ -749,6 +772,29 @@ class PatchDeployment(pulumi.CustomResource):
                     minutes=30,
                     nanos=20,
                     seconds=30,
+                ),
+                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
+                    id="America/New_York",
+                ),
+            ))
+        ```
+        ### Os Config Patch Deployment Daily Midnight
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        patch = gcp.osconfig.PatchDeployment("patch",
+            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
+                all=True,
+            ),
+            patch_deployment_id="patch-deploy",
+            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
+                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
+                    hours=0,
+                    minutes=0,
+                    nanos=0,
+                    seconds=0,
                 ),
                 time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
                     id="America/New_York",

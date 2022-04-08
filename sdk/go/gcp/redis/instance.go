@@ -187,7 +187,7 @@ import (
 // 				"my_key":    pulumi.String("my_val"),
 // 				"other_key": pulumi.String("other_val"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -286,11 +286,14 @@ type Instance struct {
 	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
 	// 'port'.
 	ReadEndpointPort pulumi.IntOutput `pulumi:"readEndpointPort"`
-	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	// Optional. Read replica mode. Can only be specified when trying to create the instance.
+	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+	// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+	//   instance cannot scale up or down the number of replicas.
+	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+	//   can scale up and down the number of replicas.
+	//   Default value is `READ_REPLICAS_DISABLED`.
+	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrOutput `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -302,9 +305,10 @@ type Instance struct {
 	RedisVersion pulumi.StringOutput `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with
+	// read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+	// for a Standard Tier instance, the only valid value is 1 and the default is 1.
+	// The valid value for basic tier is 0 and the default is also 0.
 	ReplicaCount pulumi.IntOutput `pulumi:"replicaCount"`
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
@@ -427,11 +431,14 @@ type instanceState struct {
 	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
 	// 'port'.
 	ReadEndpointPort *int `pulumi:"readEndpointPort"`
-	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	// Optional. Read replica mode. Can only be specified when trying to create the instance.
+	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+	// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+	//   instance cannot scale up or down the number of replicas.
+	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+	//   can scale up and down the number of replicas.
+	//   Default value is `READ_REPLICAS_DISABLED`.
+	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode *string `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -443,9 +450,10 @@ type instanceState struct {
 	RedisVersion *string `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region *string `pulumi:"region"`
-	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with
+	// read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+	// for a Standard Tier instance, the only valid value is 1 and the default is 1.
+	// The valid value for basic tier is 0 and the default is also 0.
 	ReplicaCount *int `pulumi:"replicaCount"`
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
@@ -537,11 +545,14 @@ type InstanceState struct {
 	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
 	// 'port'.
 	ReadEndpointPort pulumi.IntPtrInput
-	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	// Optional. Read replica mode. Can only be specified when trying to create the instance.
+	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+	// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+	//   instance cannot scale up or down the number of replicas.
+	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+	//   can scale up and down the number of replicas.
+	//   Default value is `READ_REPLICAS_DISABLED`.
+	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrInput
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -553,9 +564,10 @@ type InstanceState struct {
 	RedisVersion pulumi.StringPtrInput
 	// The name of the Redis region of the instance.
 	Region pulumi.StringPtrInput
-	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with
+	// read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+	// for a Standard Tier instance, the only valid value is 1 and the default is 1.
+	// The valid value for basic tier is 0 and the default is also 0.
 	ReplicaCount pulumi.IntPtrInput
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
@@ -623,11 +635,14 @@ type instanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	// Optional. Read replica mode. Can only be specified when trying to create the instance.
+	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+	// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+	//   instance cannot scale up or down the number of replicas.
+	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+	//   can scale up and down the number of replicas.
+	//   Default value is `READ_REPLICAS_DISABLED`.
+	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode *string `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -639,9 +654,10 @@ type instanceArgs struct {
 	RedisVersion *string `pulumi:"redisVersion"`
 	// The name of the Redis region of the instance.
 	Region *string `pulumi:"region"`
-	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with
+	// read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+	// for a Standard Tier instance, the only valid value is 1 and the default is 1.
+	// The valid value for basic tier is 0 and the default is also 0.
 	ReplicaCount *int `pulumi:"replicaCount"`
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29
@@ -704,11 +720,14 @@ type InstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis
-	// backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be
-	// provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read
-	// endpoint will be provided and the instance can scale up and down the number of replicas. Default value:
-	// "READ_REPLICAS_DISABLED" Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"]
+	// Optional. Read replica mode. Can only be specified when trying to create the instance.
+	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+	// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
+	//   instance cannot scale up or down the number of replicas.
+	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
+	//   can scale up and down the number of replicas.
+	//   Default value is `READ_REPLICAS_DISABLED`.
+	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrInput
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -720,9 +739,10 @@ type InstanceArgs struct {
 	RedisVersion pulumi.StringPtrInput
 	// The name of the Redis region of the instance.
 	Region pulumi.StringPtrInput
-	// Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and
-	// defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default
-	// is 1. The valid value for basic tier is 0 and the default is also 0.
+	// Optional. The number of replica nodes. The valid range for the Standard Tier with
+	// read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
+	// for a Standard Tier instance, the only valid value is 1 and the default is 1.
+	// The valid value for basic tier is 0 and the default is also 0.
 	ReplicaCount pulumi.IntPtrInput
 	// The CIDR range of internal addresses that are reserved for this
 	// instance. If not provided, the service will choose an unused /29

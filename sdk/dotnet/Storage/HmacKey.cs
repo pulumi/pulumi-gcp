@@ -24,9 +24,6 @@ namespace Pulumi.Gcp.Storage
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// On import, the `secret` value will not be retrieved.
     /// 
-    /// &gt; **Warning:** All arguments including `secret` will be stored in the raw
-    /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
-    /// 
     /// ## Example Usage
     /// ### Storage Hmac Key
     /// 

@@ -214,7 +214,7 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Autoscaler configuration for this node pool.
+        /// Autoscaler configuration for this node pool.
         /// </summary>
         [Output("autoscaling")]
         public Output<Outputs.AwsNodePoolAutoscaling> Autoscaling { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The configuration of the node pool.
+        /// The configuration of the node pool.
         /// </summary>
         [Output("config")]
         public Output<Outputs.AwsNodePoolConfig> Config { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         /// </summary>
         [Output("maxPodsConstraint")]
         public Output<Outputs.AwsNodePoolMaxPodsConstraint> MaxPodsConstraint { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The subnet where the node pool node run.
+        /// The subnet where the node pool node run.
         /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -300,7 +300,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        /// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -364,7 +364,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// Required. Autoscaler configuration for this node pool.
+        /// Autoscaler configuration for this node pool.
         /// </summary>
         [Input("autoscaling", required: true)]
         public Input<Inputs.AwsNodePoolAutoscalingArgs> Autoscaling { get; set; } = null!;
@@ -376,7 +376,7 @@ namespace Pulumi.Gcp.Container
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// Required. The configuration of the node pool.
+        /// The configuration of the node pool.
         /// </summary>
         [Input("config", required: true)]
         public Input<Inputs.AwsNodePoolConfigArgs> Config { get; set; } = null!;
@@ -388,7 +388,7 @@ namespace Pulumi.Gcp.Container
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         /// </summary>
         [Input("maxPodsConstraint", required: true)]
         public Input<Inputs.AwsNodePoolMaxPodsConstraintArgs> MaxPodsConstraint { get; set; } = null!;
@@ -406,13 +406,13 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Required. The subnet where the node pool node run.
+        /// The subnet where the node pool node run.
         /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        /// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// Required. Autoscaler configuration for this node pool.
+        /// Autoscaler configuration for this node pool.
         /// </summary>
         [Input("autoscaling")]
         public Input<Inputs.AwsNodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
@@ -449,7 +449,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// Required. The configuration of the node pool.
+        /// The configuration of the node pool.
         /// </summary>
         [Input("config")]
         public Input<Inputs.AwsNodePoolConfigGetArgs>? Config { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         /// </summary>
         [Input("maxPodsConstraint")]
         public Input<Inputs.AwsNodePoolMaxPodsConstraintGetArgs>? MaxPodsConstraint { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Required. The subnet where the node pool node run.
+        /// The subnet where the node pool node run.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
@@ -523,7 +523,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+        /// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -45,7 +45,7 @@ import (
 // 			HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
 // 				Body:          pulumi.String("Zm9vJTI1M0RiYXI="),
 // 				ContentType:   pulumi.String("URL_ENCODED"),
-// 				Path:          pulumi.String("/some-path"),
+// 				Path:          pulumi.String("some-path"),
 // 				Port:          pulumi.Int(8010),
 // 				RequestMethod: pulumi.String("POST"),
 // 			},

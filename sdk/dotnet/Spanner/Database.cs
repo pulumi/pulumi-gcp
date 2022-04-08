@@ -10,16 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Spanner
 {
     /// <summary>
-    /// A Cloud Spanner Database which is hosted on a Spanner instance.
-    /// 
-    /// To get more information about Database, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/spanner/)
-    /// 
-    /// &gt; **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
-    /// 
     /// ## Example Usage
     /// ### Spanner Database Basic
     /// 
@@ -75,6 +65,15 @@ namespace Pulumi.Gcp.Spanner
     [GcpResourceType("gcp:spanner/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+        /// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+        /// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+        /// "POSTGRESQL"]
+        /// </summary>
+        [Output("databaseDialect")]
+        public Output<string> DatabaseDialect { get; private set; } = null!;
+
         /// <summary>
         /// An optional list of DDL statements to run inside the newly created
         /// database. Statements can create tables, indexes, etc. These statements
@@ -170,6 +169,15 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class DatabaseArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+        /// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+        /// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+        /// "POSTGRESQL"]
+        /// </summary>
+        [Input("databaseDialect")]
+        public Input<string>? DatabaseDialect { get; set; }
+
         [Input("ddls")]
         private InputList<string>? _ddls;
 
@@ -226,6 +234,15 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class DatabaseState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+        /// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+        /// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+        /// "POSTGRESQL"]
+        /// </summary>
+        [Input("databaseDialect")]
+        public Input<string>? DatabaseDialect { get; set; }
+
         [Input("ddls")]
         private InputList<string>? _ddls;
 

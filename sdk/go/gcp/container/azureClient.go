@@ -60,7 +60,7 @@ import (
 type AzureClient struct {
 	pulumi.CustomResourceState
 
-	// Required. The Azure Active Directory Application ID.
+	// The Azure Active Directory Application ID.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Output only. The PEM encoded x509 certificate.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
@@ -72,7 +72,7 @@ type AzureClient struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Required. The Azure Active Directory Tenant ID.
+	// The Azure Active Directory Tenant ID.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Output only. A globally unique identifier for the client.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -116,7 +116,7 @@ func GetAzureClient(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureClient resources.
 type azureClientState struct {
-	// Required. The Azure Active Directory Application ID.
+	// The Azure Active Directory Application ID.
 	ApplicationId *string `pulumi:"applicationId"`
 	// Output only. The PEM encoded x509 certificate.
 	Certificate *string `pulumi:"certificate"`
@@ -128,14 +128,14 @@ type azureClientState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Required. The Azure Active Directory Tenant ID.
+	// The Azure Active Directory Tenant ID.
 	TenantId *string `pulumi:"tenantId"`
 	// Output only. A globally unique identifier for the client.
 	Uid *string `pulumi:"uid"`
 }
 
 type AzureClientState struct {
-	// Required. The Azure Active Directory Application ID.
+	// The Azure Active Directory Application ID.
 	ApplicationId pulumi.StringPtrInput
 	// Output only. The PEM encoded x509 certificate.
 	Certificate pulumi.StringPtrInput
@@ -147,7 +147,7 @@ type AzureClientState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Required. The Azure Active Directory Tenant ID.
+	// The Azure Active Directory Tenant ID.
 	TenantId pulumi.StringPtrInput
 	// Output only. A globally unique identifier for the client.
 	Uid pulumi.StringPtrInput
@@ -158,7 +158,7 @@ func (AzureClientState) ElementType() reflect.Type {
 }
 
 type azureClientArgs struct {
-	// Required. The Azure Active Directory Application ID.
+	// The Azure Active Directory Application ID.
 	ApplicationId string `pulumi:"applicationId"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -166,13 +166,13 @@ type azureClientArgs struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Required. The Azure Active Directory Tenant ID.
+	// The Azure Active Directory Tenant ID.
 	TenantId string `pulumi:"tenantId"`
 }
 
 // The set of arguments for constructing a AzureClient resource.
 type AzureClientArgs struct {
-	// Required. The Azure Active Directory Application ID.
+	// The Azure Active Directory Application ID.
 	ApplicationId pulumi.StringInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -180,7 +180,7 @@ type AzureClientArgs struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Required. The Azure Active Directory Tenant ID.
+	// The Azure Active Directory Tenant ID.
 	TenantId pulumi.StringInput
 }
 

@@ -703,14 +703,18 @@ class ObjectAccessControlProjectTeamArgs:
 class TransferJobScheduleArgs:
     def __init__(__self__, *,
                  schedule_start_date: pulumi.Input['TransferJobScheduleScheduleStartDateArgs'],
+                 repeat_interval: Optional[pulumi.Input[str]] = None,
                  schedule_end_date: Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArgs']] = None,
                  start_time_of_day: Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArgs']] = None):
         """
         :param pulumi.Input['TransferJobScheduleScheduleStartDateArgs'] schedule_start_date: The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        :param pulumi.Input[str] repeat_interval: Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input['TransferJobScheduleScheduleEndDateArgs'] schedule_end_date: The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
         :param pulumi.Input['TransferJobScheduleStartTimeOfDayArgs'] start_time_of_day: The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
         """
         pulumi.set(__self__, "schedule_start_date", schedule_start_date)
+        if repeat_interval is not None:
+            pulumi.set(__self__, "repeat_interval", repeat_interval)
         if schedule_end_date is not None:
             pulumi.set(__self__, "schedule_end_date", schedule_end_date)
         if start_time_of_day is not None:
@@ -727,6 +731,18 @@ class TransferJobScheduleArgs:
     @schedule_start_date.setter
     def schedule_start_date(self, value: pulumi.Input['TransferJobScheduleScheduleStartDateArgs']):
         pulumi.set(self, "schedule_start_date", value)
+
+    @property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "repeat_interval")
+
+    @repeat_interval.setter
+    def repeat_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repeat_interval", value)
 
     @property
     @pulumi.getter(name="scheduleEndDate")

@@ -85,6 +85,42 @@ import (
 // 	})
 // }
 // ```
+// ### Os Config Patch Deployment Daily Midnight
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/osconfig"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := osconfig.NewPatchDeployment(ctx, "patch", &osconfig.PatchDeploymentArgs{
+// 			InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
+// 				All: pulumi.Bool(true),
+// 			},
+// 			PatchDeploymentId: pulumi.String("patch-deploy"),
+// 			RecurringSchedule: &osconfig.PatchDeploymentRecurringScheduleArgs{
+// 				TimeOfDay: &osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs{
+// 					Hours:   pulumi.Int(0),
+// 					Minutes: pulumi.Int(0),
+// 					Nanos:   pulumi.Int(0),
+// 					Seconds: pulumi.Int(0),
+// 				},
+// 				TimeZone: &osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs{
+// 					Id: pulumi.String("America/New_York"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Os Config Patch Deployment Instance
 //
 // ```go

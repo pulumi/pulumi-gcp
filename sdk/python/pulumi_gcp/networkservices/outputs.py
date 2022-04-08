@@ -1423,6 +1423,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
             suggest = "excluded_query_parameters"
         elif key == "includeProtocol":
             suggest = "include_protocol"
+        elif key == "includedCookieNames":
+            suggest = "included_cookie_names"
         elif key == "includedHeaderNames":
             suggest = "included_header_names"
         elif key == "includedQueryParameters":
@@ -1444,6 +1446,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
                  exclude_query_string: Optional[bool] = None,
                  excluded_query_parameters: Optional[Sequence[str]] = None,
                  include_protocol: Optional[bool] = None,
+                 included_cookie_names: Optional[Sequence[str]] = None,
                  included_header_names: Optional[Sequence[str]] = None,
                  included_query_parameters: Optional[Sequence[str]] = None):
         """
@@ -1458,6 +1461,13 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
         :param Sequence[str] excluded_query_parameters: Names of query string parameters to exclude from cache keys. All other parameters will be included.
                Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
         :param bool include_protocol: If true, http and https requests will be cached separately.
+        :param Sequence[str] included_cookie_names: Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+               Cookie names:
+               - must be valid RFC 6265 "cookie-name" tokens
+               - are case sensitive
+               - cannot start with "Edge-Cache-" (case insensitive)
+               Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+               You may specify up to three cookie names.
         :param Sequence[str] included_header_names: Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
                - Header names must be valid HTTP RFC 7230 header field values.
                - Header field names are case insensitive
@@ -1474,6 +1484,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
             pulumi.set(__self__, "excluded_query_parameters", excluded_query_parameters)
         if include_protocol is not None:
             pulumi.set(__self__, "include_protocol", include_protocol)
+        if included_cookie_names is not None:
+            pulumi.set(__self__, "included_cookie_names", included_cookie_names)
         if included_header_names is not None:
             pulumi.set(__self__, "included_header_names", included_header_names)
         if included_query_parameters is not None:
@@ -1517,6 +1529,20 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
         If true, http and https requests will be cached separately.
         """
         return pulumi.get(self, "include_protocol")
+
+    @property
+    @pulumi.getter(name="includedCookieNames")
+    def included_cookie_names(self) -> Optional[Sequence[str]]:
+        """
+        Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+        Cookie names:
+        - must be valid RFC 6265 "cookie-name" tokens
+        - are case sensitive
+        - cannot start with "Edge-Cache-" (case insensitive)
+        Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+        You may specify up to three cookie names.
+        """
+        return pulumi.get(self, "included_cookie_names")
 
     @property
     @pulumi.getter(name="includedHeaderNames")

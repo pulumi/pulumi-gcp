@@ -13,31 +13,31 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AwsClusterControlPlaneGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Authentication configuration for management of AWS resources.
+        /// Authentication configuration for management of AWS resources.
         /// </summary>
         [Input("awsServicesAuthentication", required: true)]
         public Input<Inputs.AwsClusterControlPlaneAwsServicesAuthenticationGetArgs> AwsServicesAuthentication { get; set; } = null!;
 
         /// <summary>
-        /// Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+        /// The ARN of the AWS KMS key used to encrypt cluster configuration.
         /// </summary>
         [Input("configEncryption", required: true)]
         public Input<Inputs.AwsClusterControlPlaneConfigEncryptionGetArgs> ConfigEncryption { get; set; } = null!;
 
         /// <summary>
-        /// Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+        /// The ARN of the AWS KMS key used to encrypt cluster secrets.
         /// </summary>
         [Input("databaseEncryption", required: true)]
         public Input<Inputs.AwsClusterControlPlaneDatabaseEncryptionGetArgs> DatabaseEncryption { get; set; } = null!;
 
         /// <summary>
-        /// Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+        /// The name of the AWS IAM instance pofile to assign to each control plane replica.
         /// </summary>
         [Input("iamInstanceProfile", required: true)]
         public Input<string> IamInstanceProfile { get; set; } = null!;
 
         /// <summary>
-        /// Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        /// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _subnetIds;
 
         /// <summary>
-        /// Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+        /// The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
         /// </summary>
         public InputList<string> SubnetIds
         {
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+        /// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

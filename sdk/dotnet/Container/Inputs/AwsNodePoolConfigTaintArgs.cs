@@ -13,19 +13,19 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AwsNodePoolConfigTaintArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+        /// The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
         /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 
         /// <summary>
-        /// Required. Key for the taint.
+        /// Key for the taint.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Required. Value for the taint.
+        /// Value for the taint.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

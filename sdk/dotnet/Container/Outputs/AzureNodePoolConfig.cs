@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.AzureNodePoolConfigRootVolume? RootVolume;
         /// <summary>
-        /// Required. SSH configuration for how to access the node pool machines.
+        /// SSH configuration for how to access the node pool machines.
         /// </summary>
         public readonly Outputs.AzureNodePoolConfigSshConfig SshConfig;
         /// <summary>

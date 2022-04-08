@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
  *
  * > **Warning:** All arguments including `trustHandshakeSecret` will be stored in the raw
- * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
  *
  * ## Example Usage
  * ### Active Directory Domain Trust Basic

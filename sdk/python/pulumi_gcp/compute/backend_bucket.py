@@ -19,6 +19,7 @@ class BackendBucketArgs:
                  cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -30,6 +31,7 @@ class BackendBucketArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
+        :param pulumi.Input[str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -48,6 +50,8 @@ class BackendBucketArgs:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if edge_security_policy is not None:
+            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if name is not None:
@@ -106,6 +110,18 @@ class BackendBucketArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security policy associated with this backend bucket.
+        """
+        return pulumi.get(self, "edge_security_policy")
+
+    @edge_security_policy.setter
+    def edge_security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edge_security_policy", value)
+
+    @property
     @pulumi.getter(name="enableCdn")
     def enable_cdn(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -157,6 +173,7 @@ class _BackendBucketState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -170,6 +187,7 @@ class _BackendBucketState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
+        :param pulumi.Input[str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -192,6 +210,8 @@ class _BackendBucketState:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if edge_security_policy is not None:
+            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if name is not None:
@@ -264,6 +284,18 @@ class _BackendBucketState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security policy associated with this backend bucket.
+        """
+        return pulumi.get(self, "edge_security_policy")
+
+    @edge_security_policy.setter
+    def edge_security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edge_security_policy", value)
+
+    @property
     @pulumi.getter(name="enableCdn")
     def enable_cdn(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -328,6 +360,7 @@ class BackendBucket(pulumi.CustomResource):
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -360,6 +393,22 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
+        ### Backend Bucket Security Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_backend_bucket = gcp.storage.Bucket("imageBackendBucket", location="EU")
+        policy = gcp.compute.SecurityPolicy("policy",
+            description="basic security policy",
+            type="CLOUD_ARMOR_EDGE")
+        image_backend_backend_bucket = gcp.compute.BackendBucket("imageBackendBackendBucket",
+            description="Contains beautiful images",
+            bucket_name=image_backend_bucket.name,
+            enable_cdn=True,
+            edge_security_policy=policy.id)
+        ```
 
         ## Import
 
@@ -385,6 +434,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
+        :param pulumi.Input[str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -430,6 +480,22 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
+        ### Backend Bucket Security Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_backend_bucket = gcp.storage.Bucket("imageBackendBucket", location="EU")
+        policy = gcp.compute.SecurityPolicy("policy",
+            description="basic security policy",
+            type="CLOUD_ARMOR_EDGE")
+        image_backend_backend_bucket = gcp.compute.BackendBucket("imageBackendBackendBucket",
+            description="Contains beautiful images",
+            bucket_name=image_backend_bucket.name,
+            enable_cdn=True,
+            edge_security_policy=policy.id)
+        ```
 
         ## Import
 
@@ -466,6 +532,7 @@ class BackendBucket(pulumi.CustomResource):
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -487,6 +554,7 @@ class BackendBucket(pulumi.CustomResource):
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["custom_response_headers"] = custom_response_headers
             __props__.__dict__["description"] = description
+            __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -507,6 +575,7 @@ class BackendBucket(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            edge_security_policy: Optional[pulumi.Input[str]] = None,
             enable_cdn: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -525,6 +594,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
+        :param pulumi.Input[str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -546,6 +616,7 @@ class BackendBucket(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["custom_response_headers"] = custom_response_headers
         __props__.__dict__["description"] = description
+        __props__.__dict__["edge_security_policy"] = edge_security_policy
         __props__.__dict__["enable_cdn"] = enable_cdn
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -593,6 +664,14 @@ class BackendBucket(pulumi.CustomResource):
         client when the resource is created.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The security policy associated with this backend bucket.
+        """
+        return pulumi.get(self, "edge_security_policy")
 
     @property
     @pulumi.getter(name="enableCdn")

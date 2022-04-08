@@ -186,11 +186,11 @@ type AwsNodePool struct {
 
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Required. Autoscaler configuration for this node pool.
+	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingOutput `pulumi:"autoscaling"`
 	// The awsCluster for the resource
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
-	// Required. The configuration of the node pool.
+	// The configuration of the node pool.
 	Config AwsNodePoolConfigOutput `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -199,7 +199,7 @@ type AwsNodePool struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint AwsNodePoolMaxPodsConstraintOutput `pulumi:"maxPodsConstraint"`
 	// The name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -210,13 +210,13 @@ type AwsNodePool struct {
 	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
 	// RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringOutput `pulumi:"state"`
-	// Required. The subnet where the node pool node run.
+	// The subnet where the node pool node run.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// Output only. A globally unique identifier for the node pool.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -272,11 +272,11 @@ func GetAwsNodePool(ctx *pulumi.Context,
 type awsNodePoolState struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Required. Autoscaler configuration for this node pool.
+	// Autoscaler configuration for this node pool.
 	Autoscaling *AwsNodePoolAutoscaling `pulumi:"autoscaling"`
 	// The awsCluster for the resource
 	Cluster *string `pulumi:"cluster"`
-	// Required. The configuration of the node pool.
+	// The configuration of the node pool.
 	Config *AwsNodePoolConfig `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -285,7 +285,7 @@ type awsNodePoolState struct {
 	Etag *string `pulumi:"etag"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint *AwsNodePoolMaxPodsConstraint `pulumi:"maxPodsConstraint"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
@@ -296,24 +296,24 @@ type awsNodePoolState struct {
 	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
 	// RECONCILING, STOPPING, ERROR, DEGRADED
 	State *string `pulumi:"state"`
-	// Required. The subnet where the node pool node run.
+	// The subnet where the node pool node run.
 	SubnetId *string `pulumi:"subnetId"`
 	// Output only. A globally unique identifier for the node pool.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version *string `pulumi:"version"`
 }
 
 type AwsNodePoolState struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations pulumi.StringMapInput
-	// Required. Autoscaler configuration for this node pool.
+	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingPtrInput
 	// The awsCluster for the resource
 	Cluster pulumi.StringPtrInput
-	// Required. The configuration of the node pool.
+	// The configuration of the node pool.
 	Config AwsNodePoolConfigPtrInput
 	// Output only. The time at which this node pool was created.
 	CreateTime pulumi.StringPtrInput
@@ -322,7 +322,7 @@ type AwsNodePoolState struct {
 	Etag pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint AwsNodePoolMaxPodsConstraintPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
@@ -333,13 +333,13 @@ type AwsNodePoolState struct {
 	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
 	// RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringPtrInput
-	// Required. The subnet where the node pool node run.
+	// The subnet where the node pool node run.
 	SubnetId pulumi.StringPtrInput
 	// Output only. A globally unique identifier for the node pool.
 	Uid pulumi.StringPtrInput
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime pulumi.StringPtrInput
-	// Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version pulumi.StringPtrInput
 }
 
@@ -350,23 +350,23 @@ func (AwsNodePoolState) ElementType() reflect.Type {
 type awsNodePoolArgs struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Required. Autoscaler configuration for this node pool.
+	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscaling `pulumi:"autoscaling"`
 	// The awsCluster for the resource
 	Cluster string `pulumi:"cluster"`
-	// Required. The configuration of the node pool.
+	// The configuration of the node pool.
 	Config AwsNodePoolConfig `pulumi:"config"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint AwsNodePoolMaxPodsConstraint `pulumi:"maxPodsConstraint"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Required. The subnet where the node pool node run.
+	// The subnet where the node pool node run.
 	SubnetId string `pulumi:"subnetId"`
-	// Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version string `pulumi:"version"`
 }
 
@@ -374,23 +374,23 @@ type awsNodePoolArgs struct {
 type AwsNodePoolArgs struct {
 	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations pulumi.StringMapInput
-	// Required. Autoscaler configuration for this node pool.
+	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingInput
 	// The awsCluster for the resource
 	Cluster pulumi.StringInput
-	// Required. The configuration of the node pool.
+	// The configuration of the node pool.
 	Config AwsNodePoolConfigInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint AwsNodePoolMaxPodsConstraintInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Required. The subnet where the node pool node run.
+	// The subnet where the node pool node run.
 	SubnetId pulumi.StringInput
-	// Required. The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
+	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version pulumi.StringInput
 }
 

@@ -15,6 +15,10 @@ type TriggerDestination struct {
 	CloudFunction *string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
 	CloudRunService *TriggerDestinationCloudRunService `pulumi:"cloudRunService"`
+	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+	Gke *TriggerDestinationGke `pulumi:"gke"`
+	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+	Workflow *string `pulumi:"workflow"`
 }
 
 // TriggerDestinationInput is an input type that accepts TriggerDestinationArgs and TriggerDestinationOutput values.
@@ -33,6 +37,10 @@ type TriggerDestinationArgs struct {
 	CloudFunction pulumi.StringPtrInput `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
 	CloudRunService TriggerDestinationCloudRunServicePtrInput `pulumi:"cloudRunService"`
+	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+	Gke TriggerDestinationGkePtrInput `pulumi:"gke"`
+	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+	Workflow pulumi.StringPtrInput `pulumi:"workflow"`
 }
 
 func (TriggerDestinationArgs) ElementType() reflect.Type {
@@ -122,6 +130,16 @@ func (o TriggerDestinationOutput) CloudRunService() TriggerDestinationCloudRunSe
 	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationCloudRunService { return v.CloudRunService }).(TriggerDestinationCloudRunServicePtrOutput)
 }
 
+// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+func (o TriggerDestinationOutput) Gke() TriggerDestinationGkePtrOutput {
+	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationGke { return v.Gke }).(TriggerDestinationGkePtrOutput)
+}
+
+// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+func (o TriggerDestinationOutput) Workflow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerDestination) *string { return v.Workflow }).(pulumi.StringPtrOutput)
+}
+
 type TriggerDestinationPtrOutput struct{ *pulumi.OutputState }
 
 func (TriggerDestinationPtrOutput) ElementType() reflect.Type {
@@ -166,12 +184,32 @@ func (o TriggerDestinationPtrOutput) CloudRunService() TriggerDestinationCloudRu
 	}).(TriggerDestinationCloudRunServicePtrOutput)
 }
 
+// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+func (o TriggerDestinationPtrOutput) Gke() TriggerDestinationGkePtrOutput {
+	return o.ApplyT(func(v *TriggerDestination) *TriggerDestinationGke {
+		if v == nil {
+			return nil
+		}
+		return v.Gke
+	}).(TriggerDestinationGkePtrOutput)
+}
+
+// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+func (o TriggerDestinationPtrOutput) Workflow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Workflow
+	}).(pulumi.StringPtrOutput)
+}
+
 type TriggerDestinationCloudRunService struct {
-	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path *string `pulumi:"path"`
 	// Required. The region the Cloud Run service is deployed in.
 	Region *string `pulumi:"region"`
-	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// Required. Name of the GKE service.
 	Service string `pulumi:"service"`
 }
 
@@ -187,11 +225,11 @@ type TriggerDestinationCloudRunServiceInput interface {
 }
 
 type TriggerDestinationCloudRunServiceArgs struct {
-	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Required. The region the Cloud Run service is deployed in.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// Required. Name of the GKE service.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -272,7 +310,7 @@ func (o TriggerDestinationCloudRunServiceOutput) ToTriggerDestinationCloudRunSer
 	}).(TriggerDestinationCloudRunServicePtrOutput)
 }
 
-// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o TriggerDestinationCloudRunServiceOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerDestinationCloudRunService) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -282,7 +320,7 @@ func (o TriggerDestinationCloudRunServiceOutput) Region() pulumi.StringPtrOutput
 	return o.ApplyT(func(v TriggerDestinationCloudRunService) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// Required. Name of the GKE service.
 func (o TriggerDestinationCloudRunServiceOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerDestinationCloudRunService) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -311,7 +349,7 @@ func (o TriggerDestinationCloudRunServicePtrOutput) Elem() TriggerDestinationClo
 	}).(TriggerDestinationCloudRunServiceOutput)
 }
 
-// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o TriggerDestinationCloudRunServicePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestinationCloudRunService) *string {
 		if v == nil {
@@ -331,9 +369,222 @@ func (o TriggerDestinationCloudRunServicePtrOutput) Region() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// Required. Name of the GKE service.
 func (o TriggerDestinationCloudRunServicePtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestinationCloudRunService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerDestinationGke struct {
+	// Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+	Cluster string `pulumi:"cluster"`
+	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+	Location string `pulumi:"location"`
+	// Required. The namespace the GKE service is running in.
+	Namespace string `pulumi:"namespace"`
+	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	Path *string `pulumi:"path"`
+	// Required. Name of the GKE service.
+	Service string `pulumi:"service"`
+}
+
+// TriggerDestinationGkeInput is an input type that accepts TriggerDestinationGkeArgs and TriggerDestinationGkeOutput values.
+// You can construct a concrete instance of `TriggerDestinationGkeInput` via:
+//
+//          TriggerDestinationGkeArgs{...}
+type TriggerDestinationGkeInput interface {
+	pulumi.Input
+
+	ToTriggerDestinationGkeOutput() TriggerDestinationGkeOutput
+	ToTriggerDestinationGkeOutputWithContext(context.Context) TriggerDestinationGkeOutput
+}
+
+type TriggerDestinationGkeArgs struct {
+	// Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Required. The namespace the GKE service is running in.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Required. Name of the GKE service.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (TriggerDestinationGkeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDestinationGke)(nil)).Elem()
+}
+
+func (i TriggerDestinationGkeArgs) ToTriggerDestinationGkeOutput() TriggerDestinationGkeOutput {
+	return i.ToTriggerDestinationGkeOutputWithContext(context.Background())
+}
+
+func (i TriggerDestinationGkeArgs) ToTriggerDestinationGkeOutputWithContext(ctx context.Context) TriggerDestinationGkeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationGkeOutput)
+}
+
+func (i TriggerDestinationGkeArgs) ToTriggerDestinationGkePtrOutput() TriggerDestinationGkePtrOutput {
+	return i.ToTriggerDestinationGkePtrOutputWithContext(context.Background())
+}
+
+func (i TriggerDestinationGkeArgs) ToTriggerDestinationGkePtrOutputWithContext(ctx context.Context) TriggerDestinationGkePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationGkeOutput).ToTriggerDestinationGkePtrOutputWithContext(ctx)
+}
+
+// TriggerDestinationGkePtrInput is an input type that accepts TriggerDestinationGkeArgs, TriggerDestinationGkePtr and TriggerDestinationGkePtrOutput values.
+// You can construct a concrete instance of `TriggerDestinationGkePtrInput` via:
+//
+//          TriggerDestinationGkeArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerDestinationGkePtrInput interface {
+	pulumi.Input
+
+	ToTriggerDestinationGkePtrOutput() TriggerDestinationGkePtrOutput
+	ToTriggerDestinationGkePtrOutputWithContext(context.Context) TriggerDestinationGkePtrOutput
+}
+
+type triggerDestinationGkePtrType TriggerDestinationGkeArgs
+
+func TriggerDestinationGkePtr(v *TriggerDestinationGkeArgs) TriggerDestinationGkePtrInput {
+	return (*triggerDestinationGkePtrType)(v)
+}
+
+func (*triggerDestinationGkePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDestinationGke)(nil)).Elem()
+}
+
+func (i *triggerDestinationGkePtrType) ToTriggerDestinationGkePtrOutput() TriggerDestinationGkePtrOutput {
+	return i.ToTriggerDestinationGkePtrOutputWithContext(context.Background())
+}
+
+func (i *triggerDestinationGkePtrType) ToTriggerDestinationGkePtrOutputWithContext(ctx context.Context) TriggerDestinationGkePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationGkePtrOutput)
+}
+
+type TriggerDestinationGkeOutput struct{ *pulumi.OutputState }
+
+func (TriggerDestinationGkeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDestinationGke)(nil)).Elem()
+}
+
+func (o TriggerDestinationGkeOutput) ToTriggerDestinationGkeOutput() TriggerDestinationGkeOutput {
+	return o
+}
+
+func (o TriggerDestinationGkeOutput) ToTriggerDestinationGkeOutputWithContext(ctx context.Context) TriggerDestinationGkeOutput {
+	return o
+}
+
+func (o TriggerDestinationGkeOutput) ToTriggerDestinationGkePtrOutput() TriggerDestinationGkePtrOutput {
+	return o.ToTriggerDestinationGkePtrOutputWithContext(context.Background())
+}
+
+func (o TriggerDestinationGkeOutput) ToTriggerDestinationGkePtrOutputWithContext(ctx context.Context) TriggerDestinationGkePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestinationGke) *TriggerDestinationGke {
+		return &v
+	}).(TriggerDestinationGkePtrOutput)
+}
+
+// Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+func (o TriggerDestinationGkeOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerDestinationGke) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+func (o TriggerDestinationGkeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerDestinationGke) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Required. The namespace the GKE service is running in.
+func (o TriggerDestinationGkeOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerDestinationGke) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+func (o TriggerDestinationGkeOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerDestinationGke) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the GKE service.
+func (o TriggerDestinationGkeOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerDestinationGke) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type TriggerDestinationGkePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerDestinationGkePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDestinationGke)(nil)).Elem()
+}
+
+func (o TriggerDestinationGkePtrOutput) ToTriggerDestinationGkePtrOutput() TriggerDestinationGkePtrOutput {
+	return o
+}
+
+func (o TriggerDestinationGkePtrOutput) ToTriggerDestinationGkePtrOutputWithContext(ctx context.Context) TriggerDestinationGkePtrOutput {
+	return o
+}
+
+func (o TriggerDestinationGkePtrOutput) Elem() TriggerDestinationGkeOutput {
+	return o.ApplyT(func(v *TriggerDestinationGke) TriggerDestinationGke {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerDestinationGke
+		return ret
+	}).(TriggerDestinationGkeOutput)
+}
+
+// Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+func (o TriggerDestinationGkePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDestinationGke) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+func (o TriggerDestinationGkePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDestinationGke) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The namespace the GKE service is running in.
+func (o TriggerDestinationGkePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDestinationGke) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+func (o TriggerDestinationGkePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDestinationGke) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the GKE service.
+func (o TriggerDestinationGkePtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDestinationGke) *string {
 		if v == nil {
 			return nil
 		}
@@ -344,6 +595,8 @@ func (o TriggerDestinationCloudRunServicePtrOutput) Service() pulumi.StringPtrOu
 type TriggerMatchingCriteria struct {
 	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
 	Attribute string `pulumi:"attribute"`
+	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+	Operator *string `pulumi:"operator"`
 	// Required. The value for the attribute.
 	Value string `pulumi:"value"`
 }
@@ -362,6 +615,8 @@ type TriggerMatchingCriteriaInput interface {
 type TriggerMatchingCriteriaArgs struct {
 	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Required. The value for the attribute.
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -420,6 +675,11 @@ func (o TriggerMatchingCriteriaOutput) ToTriggerMatchingCriteriaOutputWithContex
 // Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
 func (o TriggerMatchingCriteriaOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerMatchingCriteria) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+func (o TriggerMatchingCriteriaOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerMatchingCriteria) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 // Required. The value for the attribute.
@@ -658,6 +918,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationPtrInput)(nil)).Elem(), TriggerDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServiceInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServicePtrInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationGkeInput)(nil)).Elem(), TriggerDestinationGkeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationGkePtrInput)(nil)).Elem(), TriggerDestinationGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaInput)(nil)).Elem(), TriggerMatchingCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaArrayInput)(nil)).Elem(), TriggerMatchingCriteriaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportInput)(nil)).Elem(), TriggerTransportArgs{})
@@ -668,6 +930,8 @@ func init() {
 	pulumi.RegisterOutputType(TriggerDestinationPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServiceOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServicePtrOutput{})
+	pulumi.RegisterOutputType(TriggerDestinationGkeOutput{})
+	pulumi.RegisterOutputType(TriggerDestinationGkePtrOutput{})
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaOutput{})
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaArrayOutput{})
 	pulumi.RegisterOutputType(TriggerTransportOutput{})

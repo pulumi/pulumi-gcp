@@ -37,6 +37,16 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly bool? IncludeProtocol;
         /// <summary>
+        /// Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
+        /// Cookie names:
+        /// - must be valid RFC 6265 "cookie-name" tokens
+        /// - are case sensitive
+        /// - cannot start with "Edge-Cache-" (case insensitive)
+        /// Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+        /// You may specify up to three cookie names.
+        /// </summary>
+        public readonly ImmutableArray<string> IncludedCookieNames;
+        /// <summary>
         /// Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
         /// - Header names must be valid HTTP RFC 7230 header field values.
         /// - Header field names are case insensitive
@@ -60,6 +70,8 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             bool? includeProtocol,
 
+            ImmutableArray<string> includedCookieNames,
+
             ImmutableArray<string> includedHeaderNames,
 
             ImmutableArray<string> includedQueryParameters)
@@ -68,6 +80,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
             ExcludeQueryString = excludeQueryString;
             ExcludedQueryParameters = excludedQueryParameters;
             IncludeProtocol = includeProtocol;
+            IncludedCookieNames = includedCookieNames;
             IncludedHeaderNames = includedHeaderNames;
             IncludedQueryParameters = includedQueryParameters;
         }

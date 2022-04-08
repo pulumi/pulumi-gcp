@@ -134,7 +134,7 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Required. Autoscaler configuration for this node pool.
+     * Autoscaler configuration for this node pool.
      */
     public readonly autoscaling!: pulumi.Output<outputs.container.AzureNodePoolAutoscaling>;
     /**
@@ -146,7 +146,7 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
-     * Required. The node configuration of the node pool.
+     * The node configuration of the node pool.
      */
     public readonly config!: pulumi.Output<outputs.container.AzureNodePoolConfig>;
     /**
@@ -163,7 +163,7 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+     * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
     public readonly maxPodsConstraint!: pulumi.Output<outputs.container.AzureNodePoolMaxPodsConstraint>;
     /**
@@ -184,7 +184,7 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+     * The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
      */
     public readonly subnetId!: pulumi.Output<string>;
     /**
@@ -196,7 +196,7 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+     * The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -285,7 +285,7 @@ export interface AzureNodePoolState {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Autoscaler configuration for this node pool.
+     * Autoscaler configuration for this node pool.
      */
     autoscaling?: pulumi.Input<inputs.container.AzureNodePoolAutoscaling>;
     /**
@@ -297,7 +297,7 @@ export interface AzureNodePoolState {
      */
     cluster?: pulumi.Input<string>;
     /**
-     * Required. The node configuration of the node pool.
+     * The node configuration of the node pool.
      */
     config?: pulumi.Input<inputs.container.AzureNodePoolConfig>;
     /**
@@ -314,7 +314,7 @@ export interface AzureNodePoolState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+     * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
     maxPodsConstraint?: pulumi.Input<inputs.container.AzureNodePoolMaxPodsConstraint>;
     /**
@@ -335,7 +335,7 @@ export interface AzureNodePoolState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+     * The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
      */
     subnetId?: pulumi.Input<string>;
     /**
@@ -347,7 +347,7 @@ export interface AzureNodePoolState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+     * The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
      */
     version?: pulumi.Input<string>;
 }
@@ -361,7 +361,7 @@ export interface AzureNodePoolArgs {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Autoscaler configuration for this node pool.
+     * Autoscaler configuration for this node pool.
      */
     autoscaling: pulumi.Input<inputs.container.AzureNodePoolAutoscaling>;
     /**
@@ -373,7 +373,7 @@ export interface AzureNodePoolArgs {
      */
     cluster: pulumi.Input<string>;
     /**
-     * Required. The node configuration of the node pool.
+     * The node configuration of the node pool.
      */
     config: pulumi.Input<inputs.container.AzureNodePoolConfig>;
     /**
@@ -381,7 +381,7 @@ export interface AzureNodePoolArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Required. The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+     * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
     maxPodsConstraint: pulumi.Input<inputs.container.AzureNodePoolMaxPodsConstraint>;
     /**
@@ -393,11 +393,11 @@ export interface AzureNodePoolArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Required. The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
+     * The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
      */
     subnetId: pulumi.Input<string>;
     /**
-     * Required. The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
+     * The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
      */
     version: pulumi.Input<string>;
 }

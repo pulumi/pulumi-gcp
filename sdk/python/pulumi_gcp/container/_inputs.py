@@ -140,7 +140,7 @@ class AwsClusterAuthorizationArgs:
     def __init__(__self__, *,
                  admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -148,7 +148,7 @@ class AwsClusterAuthorizationArgs:
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]:
         """
-        Required. Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
 
@@ -162,7 +162,7 @@ class AwsClusterAuthorizationAdminUserArgs:
     def __init__(__self__, *,
                  username: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] username: Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        :param pulumi.Input[str] username: The name of the user, e.g. `my-gcp-id@gmail.com`.
         """
         pulumi.set(__self__, "username", username)
 
@@ -170,7 +170,7 @@ class AwsClusterAuthorizationAdminUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        The name of the user, e.g. `my-gcp-id@gmail.com`.
         """
         return pulumi.get(self, "username")
 
@@ -196,13 +196,13 @@ class AwsClusterControlPlaneArgs:
                  ssh_config: Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs'] aws_services_authentication: Required. Authentication configuration for management of AWS resources.
-        :param pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs'] config_encryption: Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
-        :param pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs'] database_encryption: Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
-        :param pulumi.Input[str] iam_instance_profile: Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
-        :param pulumi.Input[str] version: Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
-        :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        :param pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs'] aws_services_authentication: Authentication configuration for management of AWS resources.
+        :param pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs'] config_encryption: The ARN of the AWS KMS key used to encrypt cluster configuration.
+        :param pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs'] database_encryption: The ARN of the AWS KMS key used to encrypt cluster secrets.
+        :param pulumi.Input[str] iam_instance_profile: The name of the AWS IAM instance pofile to assign to each control plane replica.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+        :param pulumi.Input[str] version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+        :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param pulumi.Input['AwsClusterControlPlaneMainVolumeArgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
         :param pulumi.Input['AwsClusterControlPlaneProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param pulumi.Input['AwsClusterControlPlaneRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
@@ -235,7 +235,7 @@ class AwsClusterControlPlaneArgs:
     @pulumi.getter(name="awsServicesAuthentication")
     def aws_services_authentication(self) -> pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs']:
         """
-        Required. Authentication configuration for management of AWS resources.
+        Authentication configuration for management of AWS resources.
         """
         return pulumi.get(self, "aws_services_authentication")
 
@@ -247,7 +247,7 @@ class AwsClusterControlPlaneArgs:
     @pulumi.getter(name="configEncryption")
     def config_encryption(self) -> pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs']:
         """
-        Required. The ARN of the AWS KMS key used to encrypt cluster configuration.
+        The ARN of the AWS KMS key used to encrypt cluster configuration.
         """
         return pulumi.get(self, "config_encryption")
 
@@ -259,7 +259,7 @@ class AwsClusterControlPlaneArgs:
     @pulumi.getter(name="databaseEncryption")
     def database_encryption(self) -> pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs']:
         """
-        Required. The ARN of the AWS KMS key used to encrypt cluster secrets.
+        The ARN of the AWS KMS key used to encrypt cluster secrets.
         """
         return pulumi.get(self, "database_encryption")
 
@@ -271,7 +271,7 @@ class AwsClusterControlPlaneArgs:
     @pulumi.getter(name="iamInstanceProfile")
     def iam_instance_profile(self) -> pulumi.Input[str]:
         """
-        Required. The name of the AWS IAM instance pofile to assign to each control plane replica.
+        The name of the AWS IAM instance pofile to assign to each control plane replica.
         """
         return pulumi.get(self, "iam_instance_profile")
 
@@ -283,7 +283,7 @@ class AwsClusterControlPlaneArgs:
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
+        The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
         """
         return pulumi.get(self, "subnet_ids")
 
@@ -295,7 +295,7 @@ class AwsClusterControlPlaneArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+        The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
         """
         return pulumi.get(self, "version")
 
@@ -307,7 +307,7 @@ class AwsClusterControlPlaneArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -394,7 +394,7 @@ class AwsClusterControlPlaneAwsServicesAuthenticationArgs:
                  role_arn: pulumi.Input[str],
                  role_session_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] role_arn: Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+        :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
         :param pulumi.Input[str] role_session_name: Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
         """
         pulumi.set(__self__, "role_arn", role_arn)
@@ -405,7 +405,7 @@ class AwsClusterControlPlaneAwsServicesAuthenticationArgs:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
         """
-        Required. The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
+        The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
         """
         return pulumi.get(self, "role_arn")
 
@@ -654,7 +654,7 @@ class AwsClusterControlPlaneSshConfigArgs:
     def __init__(__self__, *,
                  ec2_key_pair: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] ec2_key_pair: Required. The name of the EC2 key pair used to login into cluster machines.
+        :param pulumi.Input[str] ec2_key_pair: The name of the EC2 key pair used to login into cluster machines.
         """
         pulumi.set(__self__, "ec2_key_pair", ec2_key_pair)
 
@@ -662,7 +662,7 @@ class AwsClusterControlPlaneSshConfigArgs:
     @pulumi.getter(name="ec2KeyPair")
     def ec2_key_pair(self) -> pulumi.Input[str]:
         """
-        Required. The name of the EC2 key pair used to login into cluster machines.
+        The name of the EC2 key pair used to login into cluster machines.
         """
         return pulumi.get(self, "ec2_key_pair")
 
@@ -719,9 +719,9 @@ class AwsClusterNetworkingArgs:
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  vpc_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
-        :param pulumi.Input[str] vpc_id: Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        :param pulumi.Input[str] vpc_id: The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
         pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
@@ -731,7 +731,7 @@ class AwsClusterNetworkingArgs:
     @pulumi.getter(name="podAddressCidrBlocks")
     def pod_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         """
         return pulumi.get(self, "pod_address_cidr_blocks")
 
@@ -743,7 +743,7 @@ class AwsClusterNetworkingArgs:
     @pulumi.getter(name="serviceAddressCidrBlocks")
     def service_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         """
         return pulumi.get(self, "service_address_cidr_blocks")
 
@@ -755,7 +755,7 @@ class AwsClusterNetworkingArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        Required. The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+        The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -811,8 +811,8 @@ class AwsNodePoolAutoscalingArgs:
                  max_node_count: pulumi.Input[int],
                  min_node_count: pulumi.Input[int]):
         """
-        :param pulumi.Input[int] max_node_count: Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
-        :param pulumi.Input[int] min_node_count: Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        :param pulumi.Input[int] max_node_count: Maximum number of nodes in the NodePool. Must be >= min_node_count.
+        :param pulumi.Input[int] min_node_count: Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
         """
         pulumi.set(__self__, "max_node_count", max_node_count)
         pulumi.set(__self__, "min_node_count", min_node_count)
@@ -821,7 +821,7 @@ class AwsNodePoolAutoscalingArgs:
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> pulumi.Input[int]:
         """
-        Required. Maximum number of nodes in the NodePool. Must be >= min_node_count.
+        Maximum number of nodes in the NodePool. Must be >= min_node_count.
         """
         return pulumi.get(self, "max_node_count")
 
@@ -833,7 +833,7 @@ class AwsNodePoolAutoscalingArgs:
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> pulumi.Input[int]:
         """
-        Required. Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
         """
         return pulumi.get(self, "min_node_count")
 
@@ -855,9 +855,9 @@ class AwsNodePoolConfigArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]] = None):
         """
-        :param pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'] config_encryption: Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
-        :param pulumi.Input[str] iam_instance_profile: Required. The name of the AWS IAM role assigned to nodes in the pool.
-        :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        :param pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'] config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
+        :param pulumi.Input[str] iam_instance_profile: The name of the AWS IAM role assigned to nodes in the pool.
+        :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input['AwsNodePoolConfigRootVolumeArgs'] root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
@@ -886,7 +886,7 @@ class AwsNodePoolConfigArgs:
     @pulumi.getter(name="configEncryption")
     def config_encryption(self) -> pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs']:
         """
-        Required. The ARN of the AWS KMS key used to encrypt node pool configuration.
+        The ARN of the AWS KMS key used to encrypt node pool configuration.
         """
         return pulumi.get(self, "config_encryption")
 
@@ -898,7 +898,7 @@ class AwsNodePoolConfigArgs:
     @pulumi.getter(name="iamInstanceProfile")
     def iam_instance_profile(self) -> pulumi.Input[str]:
         """
-        Required. The name of the AWS IAM role assigned to nodes in the pool.
+        The name of the AWS IAM role assigned to nodes in the pool.
         """
         return pulumi.get(self, "iam_instance_profile")
 
@@ -910,7 +910,7 @@ class AwsNodePoolConfigArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The AWS instance type. When unspecified, it defaults to `t3.medium`.
+        Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -1089,7 +1089,7 @@ class AwsNodePoolConfigSshConfigArgs:
     def __init__(__self__, *,
                  ec2_key_pair: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] ec2_key_pair: Required. The name of the EC2 key pair used to login into cluster machines.
+        :param pulumi.Input[str] ec2_key_pair: The name of the EC2 key pair used to login into cluster machines.
         """
         pulumi.set(__self__, "ec2_key_pair", ec2_key_pair)
 
@@ -1097,7 +1097,7 @@ class AwsNodePoolConfigSshConfigArgs:
     @pulumi.getter(name="ec2KeyPair")
     def ec2_key_pair(self) -> pulumi.Input[str]:
         """
-        Required. The name of the EC2 key pair used to login into cluster machines.
+        The name of the EC2 key pair used to login into cluster machines.
         """
         return pulumi.get(self, "ec2_key_pair")
 
@@ -1113,9 +1113,9 @@ class AwsNodePoolConfigTaintArgs:
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] effect: Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
-        :param pulumi.Input[str] key: Required. Key for the taint.
-        :param pulumi.Input[str] value: Required. Value for the taint.
+        :param pulumi.Input[str] effect: The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+        :param pulumi.Input[str] key: Key for the taint.
+        :param pulumi.Input[str] value: Value for the taint.
         """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
@@ -1125,7 +1125,7 @@ class AwsNodePoolConfigTaintArgs:
     @pulumi.getter
     def effect(self) -> pulumi.Input[str]:
         """
-        Required. The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
+        The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
         """
         return pulumi.get(self, "effect")
 
@@ -1137,7 +1137,7 @@ class AwsNodePoolConfigTaintArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        Required. Key for the taint.
+        Key for the taint.
         """
         return pulumi.get(self, "key")
 
@@ -1149,7 +1149,7 @@ class AwsNodePoolConfigTaintArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Required. Value for the taint.
+        Value for the taint.
         """
         return pulumi.get(self, "value")
 
@@ -1163,7 +1163,7 @@ class AwsNodePoolMaxPodsConstraintArgs:
     def __init__(__self__, *,
                  max_pods_per_node: pulumi.Input[int]):
         """
-        :param pulumi.Input[int] max_pods_per_node: Required. The maximum number of pods to schedule on a single node.
+        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods to schedule on a single node.
         """
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
 
@@ -1171,7 +1171,7 @@ class AwsNodePoolMaxPodsConstraintArgs:
     @pulumi.getter(name="maxPodsPerNode")
     def max_pods_per_node(self) -> pulumi.Input[int]:
         """
-        Required. The maximum number of pods to schedule on a single node.
+        The maximum number of pods to schedule on a single node.
         """
         return pulumi.get(self, "max_pods_per_node")
 
@@ -1185,7 +1185,7 @@ class AzureClusterAuthorizationArgs:
     def __init__(__self__, *,
                  admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -1193,7 +1193,7 @@ class AzureClusterAuthorizationArgs:
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]:
         """
-        Required. Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
 
@@ -1207,7 +1207,7 @@ class AzureClusterAuthorizationAdminUserArgs:
     def __init__(__self__, *,
                  username: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] username: Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        :param pulumi.Input[str] username: The name of the user, e.g. `my-gcp-id@gmail.com`.
         """
         pulumi.set(__self__, "username", username)
 
@@ -1215,7 +1215,7 @@ class AzureClusterAuthorizationAdminUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        Required. The name of the user, e.g. `my-gcp-id@gmail.com`.
+        The name of the user, e.g. `my-gcp-id@gmail.com`.
         """
         return pulumi.get(self, "username")
 
@@ -1238,9 +1238,9 @@ class AzureClusterControlPlaneArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['AzureClusterControlPlaneSshConfigArgs'] ssh_config: Required. SSH configuration for how to access the underlying control plane machines.
+        :param pulumi.Input['AzureClusterControlPlaneSshConfigArgs'] ssh_config: SSH configuration for how to access the underlying control plane machines.
         :param pulumi.Input[str] subnet_id: For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
-        :param pulumi.Input[str] version: Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+        :param pulumi.Input[str] version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
         :param pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs'] database_encryption: Optional. Configuration related to application-layer secrets encryption.
         :param pulumi.Input['AzureClusterControlPlaneMainVolumeArgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
         :param pulumi.Input['AzureClusterControlPlaneProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
@@ -1271,7 +1271,7 @@ class AzureClusterControlPlaneArgs:
     @pulumi.getter(name="sshConfig")
     def ssh_config(self) -> pulumi.Input['AzureClusterControlPlaneSshConfigArgs']:
         """
-        Required. SSH configuration for how to access the underlying control plane machines.
+        SSH configuration for how to access the underlying control plane machines.
         """
         return pulumi.get(self, "ssh_config")
 
@@ -1295,7 +1295,7 @@ class AzureClusterControlPlaneArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Required. The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
+        The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
         """
         return pulumi.get(self, "version")
 
@@ -1535,7 +1535,7 @@ class AzureClusterControlPlaneSshConfigArgs:
     def __init__(__self__, *,
                  authorized_key: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] authorized_key: Required. The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        :param pulumi.Input[str] authorized_key: The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
         """
         pulumi.set(__self__, "authorized_key", authorized_key)
 
@@ -1543,7 +1543,7 @@ class AzureClusterControlPlaneSshConfigArgs:
     @pulumi.getter(name="authorizedKey")
     def authorized_key(self) -> pulumi.Input[str]:
         """
-        Required. The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
         """
         return pulumi.get(self, "authorized_key")
 
@@ -1600,9 +1600,9 @@ class AzureClusterNetworkingArgs:
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  virtual_network_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
-        :param pulumi.Input[str] virtual_network_id: Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+        :param pulumi.Input[str] virtual_network_id: The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
         pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
@@ -1612,7 +1612,7 @@ class AzureClusterNetworkingArgs:
     @pulumi.getter(name="podAddressCidrBlocks")
     def pod_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+        The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         """
         return pulumi.get(self, "pod_address_cidr_blocks")
 
@@ -1624,7 +1624,7 @@ class AzureClusterNetworkingArgs:
     @pulumi.getter(name="serviceAddressCidrBlocks")
     def service_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
+        The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
         """
         return pulumi.get(self, "service_address_cidr_blocks")
 
@@ -1636,7 +1636,7 @@ class AzureClusterNetworkingArgs:
     @pulumi.getter(name="virtualNetworkId")
     def virtual_network_id(self) -> pulumi.Input[str]:
         """
-        Required. The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+        The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
         """
         return pulumi.get(self, "virtual_network_id")
 
@@ -1692,8 +1692,8 @@ class AzureNodePoolAutoscalingArgs:
                  max_node_count: pulumi.Input[int],
                  min_node_count: pulumi.Input[int]):
         """
-        :param pulumi.Input[int] max_node_count: Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
-        :param pulumi.Input[int] min_node_count: Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+        :param pulumi.Input[int] max_node_count: Maximum number of nodes in the node pool. Must be >= min_node_count.
+        :param pulumi.Input[int] min_node_count: Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
         """
         pulumi.set(__self__, "max_node_count", max_node_count)
         pulumi.set(__self__, "min_node_count", min_node_count)
@@ -1702,7 +1702,7 @@ class AzureNodePoolAutoscalingArgs:
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> pulumi.Input[int]:
         """
-        Required. Maximum number of nodes in the node pool. Must be >= min_node_count.
+        Maximum number of nodes in the node pool. Must be >= min_node_count.
         """
         return pulumi.get(self, "max_node_count")
 
@@ -1714,7 +1714,7 @@ class AzureNodePoolAutoscalingArgs:
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> pulumi.Input[int]:
         """
-        Required. Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
+        Minimum number of nodes in the node pool. Must be >= 1 and <= max_node_count.
         """
         return pulumi.get(self, "min_node_count")
 
@@ -1731,7 +1731,7 @@ class AzureNodePoolConfigArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['AzureNodePoolConfigSshConfigArgs'] ssh_config: Required. SSH configuration for how to access the node pool machines.
+        :param pulumi.Input['AzureNodePoolConfigSshConfigArgs'] ssh_config: SSH configuration for how to access the node pool machines.
         :param pulumi.Input['AzureNodePoolConfigRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         :param pulumi.Input[str] vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
@@ -1748,7 +1748,7 @@ class AzureNodePoolConfigArgs:
     @pulumi.getter(name="sshConfig")
     def ssh_config(self) -> pulumi.Input['AzureNodePoolConfigSshConfigArgs']:
         """
-        Required. SSH configuration for how to access the node pool machines.
+        SSH configuration for how to access the node pool machines.
         """
         return pulumi.get(self, "ssh_config")
 
@@ -1821,7 +1821,7 @@ class AzureNodePoolConfigSshConfigArgs:
     def __init__(__self__, *,
                  authorized_key: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] authorized_key: Required. The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        :param pulumi.Input[str] authorized_key: The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
         """
         pulumi.set(__self__, "authorized_key", authorized_key)
 
@@ -1829,7 +1829,7 @@ class AzureNodePoolConfigSshConfigArgs:
     @pulumi.getter(name="authorizedKey")
     def authorized_key(self) -> pulumi.Input[str]:
         """
-        Required. The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
         """
         return pulumi.get(self, "authorized_key")
 
@@ -1843,7 +1843,7 @@ class AzureNodePoolMaxPodsConstraintArgs:
     def __init__(__self__, *,
                  max_pods_per_node: pulumi.Input[int]):
         """
-        :param pulumi.Input[int] max_pods_per_node: Required. The maximum number of pods to schedule on a single node.
+        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods to schedule on a single node.
         """
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
 
@@ -1851,7 +1851,7 @@ class AzureNodePoolMaxPodsConstraintArgs:
     @pulumi.getter(name="maxPodsPerNode")
     def max_pods_per_node(self) -> pulumi.Input[int]:
         """
-        Required. The maximum number of pods to schedule on a single node.
+        The maximum number of pods to schedule on a single node.
         """
         return pulumi.get(self, "max_pods_per_node")
 

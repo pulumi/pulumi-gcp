@@ -447,7 +447,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
                 body="Zm9vJTI1M0RiYXI=",
                 content_type="URL_ENCODED",
-                path="/some-path",
+                path="some-path",
                 port=8010,
                 request_method="POST",
             ),
@@ -567,7 +567,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
                 body="Zm9vJTI1M0RiYXI=",
                 content_type="URL_ENCODED",
-                path="/some-path",
+                path="some-path",
                 port=8010,
                 request_method="POST",
             ),

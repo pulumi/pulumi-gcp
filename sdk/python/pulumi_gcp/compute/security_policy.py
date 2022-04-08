@@ -19,7 +19,8 @@ class SecurityPolicyArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecurityPolicy resource.
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -30,6 +31,12 @@ class SecurityPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
+        :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
+               * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+               They filter requests before they hit the origin servers.
+               * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+               They filter requests before the request is served from Google's cache.
         """
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -41,6 +48,8 @@ class SecurityPolicyArgs:
             pulumi.set(__self__, "project", project)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -105,6 +114,23 @@ class SecurityPolicyArgs:
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type indicates the intended use of the security policy.
+        * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+        They filter requests before they hit the origin servers.
+        * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+        (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+        They filter requests before the request is served from Google's cache.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _SecurityPolicyState:
@@ -115,7 +141,8 @@ class _SecurityPolicyState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicy resources.
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -128,6 +155,12 @@ class _SecurityPolicyState:
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resourc
+        :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
+               * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+               They filter requests before they hit the origin servers.
+               * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+               They filter requests before the request is served from Google's cache.
         """
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -143,6 +176,8 @@ class _SecurityPolicyState:
             pulumi.set(__self__, "rules", rules)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -231,6 +266,23 @@ class _SecurityPolicyState:
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type indicates the intended use of the security policy.
+        * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+        They filter requests before they hit the origin servers.
+        * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+        (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+        They filter requests before the request is served from Google's cache.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 class SecurityPolicy(pulumi.CustomResource):
     @overload
@@ -242,6 +294,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
@@ -290,6 +343,12 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
+        :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
+               * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+               They filter requests before they hit the origin servers.
+               * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+               They filter requests before the request is served from Google's cache.
         """
         ...
     @overload
@@ -354,6 +413,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -371,6 +431,7 @@ class SecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["rules"] = rules
+            __props__.__dict__["type"] = type
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["self_link"] = None
         super(SecurityPolicy, __self__).__init__(
@@ -389,7 +450,8 @@ class SecurityPolicy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
-            self_link: Optional[pulumi.Input[str]] = None) -> 'SecurityPolicy':
+            self_link: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None) -> 'SecurityPolicy':
         """
         Get an existing SecurityPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -407,6 +469,12 @@ class SecurityPolicy(pulumi.CustomResource):
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resourc
+        :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
+               * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+               They filter requests before they hit the origin servers.
+               * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+               They filter requests before the request is served from Google's cache.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -419,6 +487,7 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["rules"] = rules
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["type"] = type
         return SecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -479,4 +548,17 @@ class SecurityPolicy(pulumi.CustomResource):
         The URI of the created resourc
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The type indicates the intended use of the security policy.
+        * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+        They filter requests before they hit the origin servers.
+        * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+        (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+        They filter requests before the request is served from Google's cache.
+        """
+        return pulumi.get(self, "type")
 

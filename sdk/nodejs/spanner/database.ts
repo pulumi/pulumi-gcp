@@ -6,16 +6,6 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * A Cloud Spanner Database which is hosted on a Spanner instance.
- *
- * To get more information about Database, see:
- *
- * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
- *
- * > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
- *
  * ## Example Usage
  * ### Spanner Database Basic
  *
@@ -87,6 +77,13 @@ export class Database extends pulumi.CustomResource {
     }
 
     /**
+     * The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+     * that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+     * therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+     * "POSTGRESQL"]
+     */
+    public readonly databaseDialect!: pulumi.Output<string>;
+    /**
      * An optional list of DDL statements to run inside the newly created
      * database. Statements can create tables, indexes, etc. These statements
      * execute atomically with the creation of the database: if there is an
@@ -135,6 +132,7 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
+            resourceInputs["databaseDialect"] = state ? state.databaseDialect : undefined;
             resourceInputs["ddls"] = state ? state.ddls : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
@@ -147,6 +145,7 @@ export class Database extends pulumi.CustomResource {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
+            resourceInputs["databaseDialect"] = args ? args.databaseDialect : undefined;
             resourceInputs["ddls"] = args ? args.ddls : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
@@ -164,6 +163,13 @@ export class Database extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Database resources.
  */
 export interface DatabaseState {
+    /**
+     * The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+     * that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+     * therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+     * "POSTGRESQL"]
+     */
+    databaseDialect?: pulumi.Input<string>;
     /**
      * An optional list of DDL statements to run inside the newly created
      * database. Statements can create tables, indexes, etc. These statements
@@ -205,6 +211,13 @@ export interface DatabaseState {
  * The set of arguments for constructing a Database resource.
  */
 export interface DatabaseArgs {
+    /**
+     * The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
+     * that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
+     * therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
+     * "POSTGRESQL"]
+     */
+    databaseDialect?: pulumi.Input<string>;
     /**
      * An optional list of DDL statements to run inside the newly created
      * database. Statements can create tables, indexes, etc. These statements

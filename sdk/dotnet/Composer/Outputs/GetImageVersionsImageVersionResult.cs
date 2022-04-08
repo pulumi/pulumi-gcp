@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class GetImageVersionsImageVersionResult
     {
         /// <summary>
-        /// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
+        /// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
         /// </summary>
         public readonly string ImageVersionId;
         /// <summary>

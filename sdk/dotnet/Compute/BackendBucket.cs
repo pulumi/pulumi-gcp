@@ -49,6 +49,36 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Backend Bucket Security Policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var imageBackendBucket = new Gcp.Storage.Bucket("imageBackendBucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             Location = "EU",
+    ///         });
+    ///         var policy = new Gcp.Compute.SecurityPolicy("policy", new Gcp.Compute.SecurityPolicyArgs
+    ///         {
+    ///             Description = "basic security policy",
+    ///             Type = "CLOUD_ARMOR_EDGE",
+    ///         });
+    ///         var imageBackendBackendBucket = new Gcp.Compute.BackendBucket("imageBackendBackendBucket", new Gcp.Compute.BackendBucketArgs
+    ///         {
+    ///             Description = "Contains beautiful images",
+    ///             BucketName = imageBackendBucket.Name,
+    ///             EnableCdn = true,
+    ///             EdgeSecurityPolicy = policy.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -100,6 +130,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The security policy associated with this backend bucket.
+        /// </summary>
+        [Output("edgeSecurityPolicy")]
+        public Output<string?> EdgeSecurityPolicy { get; private set; } = null!;
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
@@ -211,6 +247,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The security policy associated with this backend bucket.
+        /// </summary>
+        [Input("edgeSecurityPolicy")]
+        public Input<string>? EdgeSecurityPolicy { get; set; }
+
+        /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
         /// </summary>
         [Input("enableCdn")]
@@ -279,6 +321,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The security policy associated with this backend bucket.
+        /// </summary>
+        [Input("edgeSecurityPolicy")]
+        public Input<string>? EdgeSecurityPolicy { get; set; }
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.

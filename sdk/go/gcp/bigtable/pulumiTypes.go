@@ -272,6 +272,8 @@ func (o GCPolicyMaxVersionArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxVersi
 }
 
 type InstanceCluster struct {
+	// Autoscaling config for the cluster, contains the following arguments:
+	AutoscalingConfig *InstanceClusterAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
@@ -301,6 +303,8 @@ type InstanceClusterInput interface {
 }
 
 type InstanceClusterArgs struct {
+	// Autoscaling config for the cluster, contains the following arguments:
+	AutoscalingConfig InstanceClusterAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
@@ -369,6 +373,11 @@ func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+// Autoscaling config for the cluster, contains the following arguments:
+func (o InstanceClusterOutput) AutoscalingConfig() InstanceClusterAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v InstanceCluster) *InstanceClusterAutoscalingConfig { return v.AutoscalingConfig }).(InstanceClusterAutoscalingConfigPtrOutput)
+}
+
 // The ID of the Cloud Bigtable cluster.
 func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceCluster) string { return v.ClusterId }).(pulumi.StringOutput)
@@ -417,6 +426,181 @@ func (o InstanceClusterArrayOutput) Index(i pulumi.IntInput) InstanceClusterOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCluster {
 		return vs[0].([]InstanceCluster)[vs[1].(int)]
 	}).(InstanceClusterOutput)
+}
+
+type InstanceClusterAutoscalingConfig struct {
+	// The CPU utilization target in percentage. Must be between 10 and 80.
+	CpuTarget int `pulumi:"cpuTarget"`
+	// The maximum number of nodes for autoscaling.
+	MaxNodes int `pulumi:"maxNodes"`
+	// The minimum number of nodes for autoscaling.
+	MinNodes int `pulumi:"minNodes"`
+}
+
+// InstanceClusterAutoscalingConfigInput is an input type that accepts InstanceClusterAutoscalingConfigArgs and InstanceClusterAutoscalingConfigOutput values.
+// You can construct a concrete instance of `InstanceClusterAutoscalingConfigInput` via:
+//
+//          InstanceClusterAutoscalingConfigArgs{...}
+type InstanceClusterAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToInstanceClusterAutoscalingConfigOutput() InstanceClusterAutoscalingConfigOutput
+	ToInstanceClusterAutoscalingConfigOutputWithContext(context.Context) InstanceClusterAutoscalingConfigOutput
+}
+
+type InstanceClusterAutoscalingConfigArgs struct {
+	// The CPU utilization target in percentage. Must be between 10 and 80.
+	CpuTarget pulumi.IntInput `pulumi:"cpuTarget"`
+	// The maximum number of nodes for autoscaling.
+	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
+	// The minimum number of nodes for autoscaling.
+	MinNodes pulumi.IntInput `pulumi:"minNodes"`
+}
+
+func (InstanceClusterAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceClusterAutoscalingConfig)(nil)).Elem()
+}
+
+func (i InstanceClusterAutoscalingConfigArgs) ToInstanceClusterAutoscalingConfigOutput() InstanceClusterAutoscalingConfigOutput {
+	return i.ToInstanceClusterAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceClusterAutoscalingConfigArgs) ToInstanceClusterAutoscalingConfigOutputWithContext(ctx context.Context) InstanceClusterAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAutoscalingConfigOutput)
+}
+
+func (i InstanceClusterAutoscalingConfigArgs) ToInstanceClusterAutoscalingConfigPtrOutput() InstanceClusterAutoscalingConfigPtrOutput {
+	return i.ToInstanceClusterAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceClusterAutoscalingConfigArgs) ToInstanceClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceClusterAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAutoscalingConfigOutput).ToInstanceClusterAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceClusterAutoscalingConfigPtrInput is an input type that accepts InstanceClusterAutoscalingConfigArgs, InstanceClusterAutoscalingConfigPtr and InstanceClusterAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceClusterAutoscalingConfigPtrInput` via:
+//
+//          InstanceClusterAutoscalingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceClusterAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceClusterAutoscalingConfigPtrOutput() InstanceClusterAutoscalingConfigPtrOutput
+	ToInstanceClusterAutoscalingConfigPtrOutputWithContext(context.Context) InstanceClusterAutoscalingConfigPtrOutput
+}
+
+type instanceClusterAutoscalingConfigPtrType InstanceClusterAutoscalingConfigArgs
+
+func InstanceClusterAutoscalingConfigPtr(v *InstanceClusterAutoscalingConfigArgs) InstanceClusterAutoscalingConfigPtrInput {
+	return (*instanceClusterAutoscalingConfigPtrType)(v)
+}
+
+func (*instanceClusterAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceClusterAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *instanceClusterAutoscalingConfigPtrType) ToInstanceClusterAutoscalingConfigPtrOutput() InstanceClusterAutoscalingConfigPtrOutput {
+	return i.ToInstanceClusterAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceClusterAutoscalingConfigPtrType) ToInstanceClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceClusterAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAutoscalingConfigPtrOutput)
+}
+
+type InstanceClusterAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceClusterAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceClusterAutoscalingConfig)(nil)).Elem()
+}
+
+func (o InstanceClusterAutoscalingConfigOutput) ToInstanceClusterAutoscalingConfigOutput() InstanceClusterAutoscalingConfigOutput {
+	return o
+}
+
+func (o InstanceClusterAutoscalingConfigOutput) ToInstanceClusterAutoscalingConfigOutputWithContext(ctx context.Context) InstanceClusterAutoscalingConfigOutput {
+	return o
+}
+
+func (o InstanceClusterAutoscalingConfigOutput) ToInstanceClusterAutoscalingConfigPtrOutput() InstanceClusterAutoscalingConfigPtrOutput {
+	return o.ToInstanceClusterAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceClusterAutoscalingConfigOutput) ToInstanceClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceClusterAutoscalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceClusterAutoscalingConfig) *InstanceClusterAutoscalingConfig {
+		return &v
+	}).(InstanceClusterAutoscalingConfigPtrOutput)
+}
+
+// The CPU utilization target in percentage. Must be between 10 and 80.
+func (o InstanceClusterAutoscalingConfigOutput) CpuTarget() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceClusterAutoscalingConfig) int { return v.CpuTarget }).(pulumi.IntOutput)
+}
+
+// The maximum number of nodes for autoscaling.
+func (o InstanceClusterAutoscalingConfigOutput) MaxNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceClusterAutoscalingConfig) int { return v.MaxNodes }).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes for autoscaling.
+func (o InstanceClusterAutoscalingConfigOutput) MinNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceClusterAutoscalingConfig) int { return v.MinNodes }).(pulumi.IntOutput)
+}
+
+type InstanceClusterAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceClusterAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceClusterAutoscalingConfig)(nil)).Elem()
+}
+
+func (o InstanceClusterAutoscalingConfigPtrOutput) ToInstanceClusterAutoscalingConfigPtrOutput() InstanceClusterAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o InstanceClusterAutoscalingConfigPtrOutput) ToInstanceClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceClusterAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o InstanceClusterAutoscalingConfigPtrOutput) Elem() InstanceClusterAutoscalingConfigOutput {
+	return o.ApplyT(func(v *InstanceClusterAutoscalingConfig) InstanceClusterAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceClusterAutoscalingConfig
+		return ret
+	}).(InstanceClusterAutoscalingConfigOutput)
+}
+
+// The CPU utilization target in percentage. Must be between 10 and 80.
+func (o InstanceClusterAutoscalingConfigPtrOutput) CpuTarget() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceClusterAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CpuTarget
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of nodes for autoscaling.
+func (o InstanceClusterAutoscalingConfigPtrOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceClusterAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes for autoscaling.
+func (o InstanceClusterAutoscalingConfigPtrOutput) MinNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceClusterAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinNodes
+	}).(pulumi.IntPtrOutput)
 }
 
 type InstanceIamBindingCondition struct {
@@ -1175,6 +1359,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GCPolicyMaxVersionArrayInput)(nil)).Elem(), GCPolicyMaxVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterInput)(nil)).Elem(), InstanceClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterArrayInput)(nil)).Elem(), InstanceClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterAutoscalingConfigInput)(nil)).Elem(), InstanceClusterAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClusterAutoscalingConfigPtrInput)(nil)).Elem(), InstanceClusterAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionPtrInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
@@ -1191,6 +1377,8 @@ func init() {
 	pulumi.RegisterOutputType(GCPolicyMaxVersionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceClusterOutput{})
 	pulumi.RegisterOutputType(InstanceClusterArrayOutput{})
+	pulumi.RegisterOutputType(InstanceClusterAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(InstanceClusterAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
