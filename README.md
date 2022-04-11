@@ -8,8 +8,8 @@
 
 # Google Cloud Platform Resource Provider
 
-The Google Cloud Platform (GCP) resource provider for Pulumi lets you use GCP resources in your cloud programs.  To use
-this package, please [install the Pulumi CLI first](https://pulumi.com/). For a streamlined Pulumi walkthrough, including language runtime installation and GCP configuration, click "Get Started" below.
+The Google Cloud Platform (GCP) resource provider for Pulumi lets you use GCP resources in your cloud programs. To use
+this package, [install the Pulumi CLI](https://www.pulumi.com/docs/get-started/install/). For a streamlined Pulumi walkthrough, including language runtime installation and GCP configuration, select "Get Started" below.
 
 <div>
     <a href="https://www.pulumi.com/docs/get-started/gcp" title="Get Started">
@@ -51,4 +51,5 @@ To use from .NET, install using `dotnet add package`:
 
 ## Reference
 
-For further information, please visit [the GCP provider docs](https://www.pulumi.com/docs/intro/cloud-providers/gcp) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/gcp).
+For further information, visit [GCP in the Pulumi Registry](https://www.pulumi.com/registry/packages/gcp/)
+or for detailed API reference documentation, visit [GCP API Docs in the Pulumi Registry](https://www.pulumi.com/registry/packages/gcp/api-docs/).
