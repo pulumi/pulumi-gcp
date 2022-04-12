@@ -44,6 +44,8 @@ __all__ = [
     'JobPigConfig',
     'JobPigConfigLoggingConfig',
     'JobPlacement',
+    'JobPrestoConfig',
+    'JobPrestoConfigLoggingConfig',
     'JobPysparkConfig',
     'JobPysparkConfigLoggingConfig',
     'JobReference',
@@ -2426,7 +2428,7 @@ class JobHadoopConfig(dict):
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param str main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
         :param str main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
-        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -2502,7 +2504,7 @@ class JobHadoopConfig(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         """
         return pulumi.get(self, "properties")
 
@@ -2571,9 +2573,9 @@ class JobHiveConfig(dict):
                  query_lists: Optional[Sequence[str]] = None,
                  script_variables: Optional[Mapping[str, str]] = None):
         """
-        :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        :param bool continue_on_failure: Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
                Conflicts with `query_list`
         :param Sequence[str] query_lists: The list of SQL queries or statements to execute as part of the job.
@@ -2597,7 +2599,7 @@ class JobHiveConfig(dict):
     @pulumi.getter(name="continueOnFailure")
     def continue_on_failure(self) -> Optional[bool]:
         """
-        Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
         """
         return pulumi.get(self, "continue_on_failure")
 
@@ -2613,7 +2615,7 @@ class JobHiveConfig(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         """
         return pulumi.get(self, "properties")
 
@@ -2736,9 +2738,9 @@ class JobPigConfig(dict):
                  query_lists: Optional[Sequence[str]] = None,
                  script_variables: Optional[Mapping[str, str]] = None):
         """
-        :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        :param bool continue_on_failure: Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
                Conflicts with `query_list`
         :param Sequence[str] query_lists: The list of SQL queries or statements to execute as part of the job.
@@ -2764,7 +2766,7 @@ class JobPigConfig(dict):
     @pulumi.getter(name="continueOnFailure")
     def continue_on_failure(self) -> Optional[bool]:
         """
-        Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
         """
         return pulumi.get(self, "continue_on_failure")
 
@@ -2785,7 +2787,7 @@ class JobPigConfig(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         """
         return pulumi.get(self, "properties")
 
@@ -2885,6 +2887,153 @@ class JobPlacement(dict):
 
 
 @pulumi.output_type
+class JobPrestoConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientTags":
+            suggest = "client_tags"
+        elif key == "continueOnFailure":
+            suggest = "continue_on_failure"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "outputFormat":
+            suggest = "output_format"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryLists":
+            suggest = "query_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobPrestoConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobPrestoConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobPrestoConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_tags: Optional[Sequence[str]] = None,
+                 continue_on_failure: Optional[bool] = None,
+                 logging_config: Optional['outputs.JobPrestoConfigLoggingConfig'] = None,
+                 output_format: Optional[str] = None,
+                 properties: Optional[Mapping[str, str]] = None,
+                 query_file_uri: Optional[str] = None,
+                 query_lists: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] client_tags: Presto client tags to attach to this query.
+        :param bool continue_on_failure: Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        :param str output_format: The format in which query output will be displayed. See the Presto documentation for supported output formats.
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+        :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
+               Conflicts with `query_list`
+        :param Sequence[str] query_lists: The list of SQL queries or statements to execute as part of the job.
+               Conflicts with `query_file_uri`
+        """
+        if client_tags is not None:
+            pulumi.set(__self__, "client_tags", client_tags)
+        if continue_on_failure is not None:
+            pulumi.set(__self__, "continue_on_failure", continue_on_failure)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
+        if output_format is not None:
+            pulumi.set(__self__, "output_format", output_format)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if query_file_uri is not None:
+            pulumi.set(__self__, "query_file_uri", query_file_uri)
+        if query_lists is not None:
+            pulumi.set(__self__, "query_lists", query_lists)
+
+    @property
+    @pulumi.getter(name="clientTags")
+    def client_tags(self) -> Optional[Sequence[str]]:
+        """
+        Presto client tags to attach to this query.
+        """
+        return pulumi.get(self, "client_tags")
+
+    @property
+    @pulumi.getter(name="continueOnFailure")
+    def continue_on_failure(self) -> Optional[bool]:
+        """
+        Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        """
+        return pulumi.get(self, "continue_on_failure")
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional['outputs.JobPrestoConfigLoggingConfig']:
+        return pulumi.get(self, "logging_config")
+
+    @property
+    @pulumi.getter(name="outputFormat")
+    def output_format(self) -> Optional[str]:
+        """
+        The format in which query output will be displayed. See the Presto documentation for supported output formats.
+        """
+        return pulumi.get(self, "output_format")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter(name="queryFileUri")
+    def query_file_uri(self) -> Optional[str]:
+        """
+        The HCFS URI of the script that contains SQL queries.
+        Conflicts with `query_list`
+        """
+        return pulumi.get(self, "query_file_uri")
+
+    @property
+    @pulumi.getter(name="queryLists")
+    def query_lists(self) -> Optional[Sequence[str]]:
+        """
+        The list of SQL queries or statements to execute as part of the job.
+        Conflicts with `query_file_uri`
+        """
+        return pulumi.get(self, "query_lists")
+
+
+@pulumi.output_type
+class JobPrestoConfigLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "driverLogLevels":
+            suggest = "driver_log_levels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobPrestoConfigLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobPrestoConfigLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobPrestoConfigLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 driver_log_levels: Mapping[str, str]):
+        pulumi.set(__self__, "driver_log_levels", driver_log_levels)
+
+    @property
+    @pulumi.getter(name="driverLogLevels")
+    def driver_log_levels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "driver_log_levels")
+
+
+@pulumi.output_type
 class JobPysparkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2928,7 +3077,7 @@ class JobPysparkConfig(dict):
         :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param Sequence[str] file_uris: HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         :param Sequence[str] python_file_uris: HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
         pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
@@ -2996,7 +3145,7 @@ class JobPysparkConfig(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         """
         return pulumi.get(self, "properties")
 
@@ -3151,7 +3300,7 @@ class JobSparkConfig(dict):
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
         :param str main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
         :param str main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
-        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -3227,7 +3376,7 @@ class JobSparkConfig(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         """
         return pulumi.get(self, "properties")
 
@@ -3297,7 +3446,7 @@ class JobSparksqlConfig(dict):
                  script_variables: Optional[Mapping[str, str]] = None):
         """
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
                Conflicts with `query_list`
         :param Sequence[str] query_lists: The list of SQL queries or statements to execute as part of the job.
@@ -3334,7 +3483,7 @@ class JobSparksqlConfig(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         """
         return pulumi.get(self, "properties")
 

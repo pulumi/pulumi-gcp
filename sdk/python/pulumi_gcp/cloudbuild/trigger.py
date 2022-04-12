@@ -15,6 +15,7 @@ __all__ = ['TriggerArgs', 'Trigger']
 @pulumi.input_type
 class TriggerArgs:
     def __init__(__self__, *,
+                 approval_config: Optional[pulumi.Input['TriggerApprovalConfigArgs']] = None,
                  build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -35,6 +36,10 @@ class TriggerArgs:
                  webhook_config: Optional[pulumi.Input['TriggerWebhookConfigArgs']] = None):
         """
         The set of arguments for constructing a Trigger resource.
+        :param pulumi.Input['TriggerApprovalConfigArgs'] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+               Builds created by this trigger will require approval before they execute.
+               Any user with a Cloud Build Approver role for the project can approve a build.
+               Structure is documented below.
         :param pulumi.Input['TriggerBuildArgs'] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[str] description: Human-readable description of the trigger.
@@ -97,6 +102,8 @@ class TriggerArgs:
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         """
+        if approval_config is not None:
+            pulumi.set(__self__, "approval_config", approval_config)
         if build is not None:
             pulumi.set(__self__, "build", build)
         if description is not None:
@@ -133,6 +140,21 @@ class TriggerArgs:
             pulumi.set(__self__, "trigger_template", trigger_template)
         if webhook_config is not None:
             pulumi.set(__self__, "webhook_config", webhook_config)
+
+    @property
+    @pulumi.getter(name="approvalConfig")
+    def approval_config(self) -> Optional[pulumi.Input['TriggerApprovalConfigArgs']]:
+        """
+        Configuration for manual approval to start a build invocation of this BuildTrigger.
+        Builds created by this trigger will require approval before they execute.
+        Any user with a Cloud Build Approver role for the project can approve a build.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "approval_config")
+
+    @approval_config.setter
+    def approval_config(self, value: Optional[pulumi.Input['TriggerApprovalConfigArgs']]):
+        pulumi.set(self, "approval_config", value)
 
     @property
     @pulumi.getter
@@ -397,6 +419,7 @@ class TriggerArgs:
 @pulumi.input_type
 class _TriggerState:
     def __init__(__self__, *,
+                 approval_config: Optional[pulumi.Input['TriggerApprovalConfigArgs']] = None,
                  build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -419,6 +442,10 @@ class _TriggerState:
                  webhook_config: Optional[pulumi.Input['TriggerWebhookConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
+        :param pulumi.Input['TriggerApprovalConfigArgs'] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+               Builds created by this trigger will require approval before they execute.
+               Any user with a Cloud Build Approver role for the project can approve a build.
+               Structure is documented below.
         :param pulumi.Input['TriggerBuildArgs'] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when the trigger was created.
@@ -483,6 +510,8 @@ class _TriggerState:
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         """
+        if approval_config is not None:
+            pulumi.set(__self__, "approval_config", approval_config)
         if build is not None:
             pulumi.set(__self__, "build", build)
         if create_time is not None:
@@ -523,6 +552,21 @@ class _TriggerState:
             pulumi.set(__self__, "trigger_template", trigger_template)
         if webhook_config is not None:
             pulumi.set(__self__, "webhook_config", webhook_config)
+
+    @property
+    @pulumi.getter(name="approvalConfig")
+    def approval_config(self) -> Optional[pulumi.Input['TriggerApprovalConfigArgs']]:
+        """
+        Configuration for manual approval to start a build invocation of this BuildTrigger.
+        Builds created by this trigger will require approval before they execute.
+        Any user with a Cloud Build Approver role for the project can approve a build.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "approval_config")
+
+    @approval_config.setter
+    def approval_config(self, value: Optional[pulumi.Input['TriggerApprovalConfigArgs']]):
+        pulumi.set(self, "approval_config", value)
 
     @property
     @pulumi.getter
@@ -813,6 +857,7 @@ class Trigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -1044,6 +1089,9 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         manual_trigger = gcp.cloudbuild.Trigger("manual-trigger",
+            approval_config=gcp.cloudbuild.TriggerApprovalConfigArgs(
+                approval_required=True,
+            ),
             git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
                 path="cloudbuild.yaml",
                 repo_type="GITHUB",
@@ -1075,6 +1123,10 @@ class Trigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+               Builds created by this trigger will require approval before they execute.
+               Any user with a Cloud Build Approver role for the project can approve a build.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['TriggerBuildArgs']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[str] description: Human-readable description of the trigger.
@@ -1355,6 +1407,9 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         manual_trigger = gcp.cloudbuild.Trigger("manual-trigger",
+            approval_config=gcp.cloudbuild.TriggerApprovalConfigArgs(
+                approval_required=True,
+            ),
             git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
                 path="cloudbuild.yaml",
                 repo_type="GITHUB",
@@ -1399,6 +1454,7 @@ class Trigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -1429,6 +1485,7 @@ class Trigger(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TriggerArgs.__new__(TriggerArgs)
 
+            __props__.__dict__["approval_config"] = approval_config
             __props__.__dict__["build"] = build
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
@@ -1459,6 +1516,7 @@ class Trigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
             build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1486,6 +1544,10 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+               Builds created by this trigger will require approval before they execute.
+               Any user with a Cloud Build Approver role for the project can approve a build.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['TriggerBuildArgs']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when the trigger was created.
@@ -1554,6 +1616,7 @@ class Trigger(pulumi.CustomResource):
 
         __props__ = _TriggerState.__new__(_TriggerState)
 
+        __props__.__dict__["approval_config"] = approval_config
         __props__.__dict__["build"] = build
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -1575,6 +1638,17 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["trigger_template"] = trigger_template
         __props__.__dict__["webhook_config"] = webhook_config
         return Trigger(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="approvalConfig")
+    def approval_config(self) -> pulumi.Output['outputs.TriggerApprovalConfig']:
+        """
+        Configuration for manual approval to start a build invocation of this BuildTrigger.
+        Builds created by this trigger will require approval before they execute.
+        Any user with a Cloud Build Approver role for the project can approve a build.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "approval_config")
 
     @property
     @pulumi.getter

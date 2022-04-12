@@ -381,6 +381,18 @@ export namespace accesscontextmanager {
         title?: string;
     }
 
+    export interface AccessPolicyIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AccessPolicyIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface ServicePerimeterSpec {
         /**
          * A list of AccessLevel resource names that allow resources within
@@ -4172,14 +4184,32 @@ export namespace certificateauthority {
     }
 
     export interface CaPoolIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
     export interface CaPoolIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
@@ -5425,6 +5455,14 @@ export namespace cloudasset {
 }
 
 export namespace cloudbuild {
+    export interface TriggerApprovalConfig {
+        /**
+         * Whether or not approval is needed. If this is set on a build, it will become pending when run,
+         * and will need to be explicitly approved to start.
+         */
+        approvalRequired?: boolean;
+    }
+
     export interface TriggerBuild {
         /**
          * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -5858,6 +5896,7 @@ export namespace cloudbuild {
         path: string;
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
          * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
          */
         repoType: string;
@@ -5957,6 +5996,7 @@ export namespace cloudbuild {
         ref: string;
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
          * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
          */
         repoType: string;
@@ -21446,7 +21486,7 @@ export namespace dataproc {
          */
         mainJarFileUri?: string;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: {[key: string]: string};
     }
@@ -21457,7 +21497,7 @@ export namespace dataproc {
 
     export interface JobHiveConfig {
         /**
-         * Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+         * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
          */
         continueOnFailure?: boolean;
         /**
@@ -21465,7 +21505,7 @@ export namespace dataproc {
          */
         jarFileUris?: string[];
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: {[key: string]: string};
         /**
@@ -21498,7 +21538,7 @@ export namespace dataproc {
 
     export interface JobPigConfig {
         /**
-         * Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+         * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
          */
         continueOnFailure?: boolean;
         /**
@@ -21507,7 +21547,7 @@ export namespace dataproc {
         jarFileUris?: string[];
         loggingConfig: outputs.dataproc.JobPigConfigLoggingConfig;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: {[key: string]: string};
         /**
@@ -21535,6 +21575,40 @@ export namespace dataproc {
         clusterUuid: string;
     }
 
+    export interface JobPrestoConfig {
+        /**
+         * Presto client tags to attach to this query.
+         */
+        clientTags?: string[];
+        /**
+         * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+         */
+        continueOnFailure?: boolean;
+        loggingConfig: outputs.dataproc.JobPrestoConfigLoggingConfig;
+        /**
+         * The format in which query output will be displayed. See the Presto documentation for supported output formats.
+         */
+        outputFormat?: string;
+        /**
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         */
+        properties?: {[key: string]: string};
+        /**
+         * The HCFS URI of the script that contains SQL queries.
+         * Conflicts with `queryList`
+         */
+        queryFileUri?: string;
+        /**
+         * The list of SQL queries or statements to execute as part of the job.
+         * Conflicts with `queryFileUri`
+         */
+        queryLists?: string[];
+    }
+
+    export interface JobPrestoConfigLoggingConfig {
+        driverLogLevels: {[key: string]: string};
+    }
+
     export interface JobPysparkConfig {
         /**
          * HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -21558,7 +21632,7 @@ export namespace dataproc {
          */
         mainPythonFileUri: string;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: {[key: string]: string};
         /**
@@ -21607,7 +21681,7 @@ export namespace dataproc {
          */
         mainJarFileUri?: string;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: {[key: string]: string};
     }
@@ -21623,7 +21697,7 @@ export namespace dataproc {
         jarFileUris?: string[];
         loggingConfig: outputs.dataproc.JobSparksqlConfigLoggingConfig;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: {[key: string]: string};
         /**
@@ -23645,6 +23719,18 @@ export namespace dns {
 }
 
 export namespace endpoints {
+    export interface ConsumersIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ConsumersIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface ServiceApi {
         methods: outputs.endpoints.ServiceApiMethod[];
         name: string;
@@ -24486,11 +24572,13 @@ export namespace healthcare {
          */
         recursiveStructureDepth: number;
         /**
-         * Specifies the output schema type. Only ANALYTICS is supported at this time.
+         * Specifies the output schema type.
          * * ANALYTICS: Analytics schema defined by the FHIR community.
          * See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+         * * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+         * * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
          * Default value is `ANALYTICS`.
-         * Possible values are `ANALYTICS`.
+         * Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
          */
         schemaType?: string;
     }
@@ -24561,7 +24649,7 @@ export namespace healthcare {
         /**
          * The version of the unschematized parser to be used when a custom `schema` is not set.
          * Default value is `V1`.
-         * Possible values are `V1` and `V2`.
+         * Possible values are `V1`, `V2`, and `V3`.
          */
         version?: string;
     }
@@ -24569,6 +24657,69 @@ export namespace healthcare {
 }
 
 export namespace iam {
+    export interface DenyPolicyRule {
+        /**
+         * A deny rule in an IAM deny policy.
+         * Structure is documented below.
+         */
+        denyRule?: outputs.iam.DenyPolicyRuleDenyRule;
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description?: string;
+    }
+
+    export interface DenyPolicyRuleDenyRule {
+        /**
+         * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+         * Structure is documented below.
+         */
+        denialCondition: outputs.iam.DenyPolicyRuleDenyRuleDenialCondition;
+        /**
+         * The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+         * where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+         */
+        deniedPermissions?: string[];
+        /**
+         * The identities that are prevented from using one or more permissions on Google Cloud resources.
+         */
+        deniedPrincipals?: string[];
+        /**
+         * Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+         * If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+         * The excluded permissions can be specified using the same syntax as deniedPermissions.
+         */
+        exceptionPermissions?: string[];
+        /**
+         * The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+         * For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+         */
+        exceptionPrincipals?: string[];
+    }
+
+    export interface DenyPolicyRuleDenyRuleDenialCondition {
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting,
+         * e.g. a file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         * This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
     export interface GetTestablePermissionsPermission {
         /**
          * Whether the corresponding API has been enabled for the resource.
@@ -24627,7 +24778,6 @@ export namespace iam {
          */
         issuerUri: string;
     }
-
 }
 
 export namespace iap {
@@ -29484,6 +29634,10 @@ export namespace osconfig {
          * Structure is documented below.
          */
         goo?: outputs.osconfig.PatchDeploymentPatchConfigGoo;
+        /**
+         * Allows the patch job to run on Managed instance groups (MIGs).
+         */
+        migInstancesAllowed?: boolean;
         /**
          * The ExecStep to run after the patch update.
          * Structure is documented below.

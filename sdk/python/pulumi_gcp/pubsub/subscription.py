@@ -18,6 +18,7 @@ class SubscriptionArgs:
                  topic: pulumi.Input[str],
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
+                 enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -54,6 +55,12 @@ class SubscriptionArgs:
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
+               of a message with a given value of messageId on this Subscriptions':
+               - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+               - An acknowledged message will not be resent to a subscriber.
+               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -72,7 +79,7 @@ class SubscriptionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
-               retainAckedMessages is true, then this also configures the retention
+               retain_acked_messages is true, then this also configures the retention
                of acknowledged messages, and thus configures how far back in time a
                subscriptions.seek can be done. Defaults to 7 days. Cannot be more
                than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
@@ -99,6 +106,8 @@ class SubscriptionArgs:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if dead_letter_policy is not None:
             pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
+        if enable_exactly_once_delivery is not None:
+            pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
         if enable_message_ordering is not None:
             pulumi.set(__self__, "enable_message_ordering", enable_message_ordering)
         if expiration_policy is not None:
@@ -178,6 +187,23 @@ class SubscriptionArgs:
         pulumi.set(self, "dead_letter_policy", value)
 
     @property
+    @pulumi.getter(name="enableExactlyOnceDelivery")
+    def enable_exactly_once_delivery(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, Pub/Sub provides the following guarantees for the delivery
+        of a message with a given value of messageId on this Subscriptions':
+        - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+        - An acknowledged message will not be resent to a subscriber.
+        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        """
+        return pulumi.get(self, "enable_exactly_once_delivery")
+
+    @enable_exactly_once_delivery.setter
+    def enable_exactly_once_delivery(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_exactly_once_delivery", value)
+
+    @property
     @pulumi.getter(name="enableMessageOrdering")
     def enable_message_ordering(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -243,7 +269,7 @@ class SubscriptionArgs:
         """
         How long to retain unacknowledged messages in the subscription's
         backlog, from the moment a message is published. If
-        retainAckedMessages is true, then this also configures the retention
+        retain_acked_messages is true, then this also configures the retention
         of acknowledged messages, and thus configures how far back in time a
         subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
@@ -332,6 +358,7 @@ class _SubscriptionState:
     def __init__(__self__, *,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
+                 enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -368,6 +395,12 @@ class _SubscriptionState:
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
+               of a message with a given value of messageId on this Subscriptions':
+               - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+               - An acknowledged message will not be resent to a subscriber.
+               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -386,7 +419,7 @@ class _SubscriptionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
-               retainAckedMessages is true, then this also configures the retention
+               retain_acked_messages is true, then this also configures the retention
                of acknowledged messages, and thus configures how far back in time a
                subscriptions.seek can be done. Defaults to 7 days. Cannot be more
                than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
@@ -413,6 +446,8 @@ class _SubscriptionState:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if dead_letter_policy is not None:
             pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
+        if enable_exactly_once_delivery is not None:
+            pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
         if enable_message_ordering is not None:
             pulumi.set(__self__, "enable_message_ordering", enable_message_ordering)
         if expiration_policy is not None:
@@ -482,6 +517,23 @@ class _SubscriptionState:
         pulumi.set(self, "dead_letter_policy", value)
 
     @property
+    @pulumi.getter(name="enableExactlyOnceDelivery")
+    def enable_exactly_once_delivery(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, Pub/Sub provides the following guarantees for the delivery
+        of a message with a given value of messageId on this Subscriptions':
+        - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+        - An acknowledged message will not be resent to a subscriber.
+        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        """
+        return pulumi.get(self, "enable_exactly_once_delivery")
+
+    @enable_exactly_once_delivery.setter
+    def enable_exactly_once_delivery(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_exactly_once_delivery", value)
+
+    @property
     @pulumi.getter(name="enableMessageOrdering")
     def enable_message_ordering(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -547,7 +599,7 @@ class _SubscriptionState:
         """
         How long to retain unacknowledged messages in the subscription's
         backlog, from the moment a message is published. If
-        retainAckedMessages is true, then this also configures the retention
+        retain_acked_messages is true, then this also configures the retention
         of acknowledged messages, and thus configures how far back in time a
         subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
@@ -650,6 +702,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+                 enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -787,6 +840,12 @@ class Subscription(pulumi.CustomResource):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
+               of a message with a given value of messageId on this Subscriptions':
+               - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+               - An acknowledged message will not be resent to a subscriber.
+               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -805,7 +864,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
-               retainAckedMessages is true, then this also configures the retention
+               retain_acked_messages is true, then this also configures the retention
                of acknowledged messages, and thus configures how far back in time a
                subscriptions.seek can be done. Defaults to 7 days. Cannot be more
                than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
@@ -951,6 +1010,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+                 enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
                  expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -976,6 +1036,7 @@ class Subscription(pulumi.CustomResource):
 
             __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
             __props__.__dict__["dead_letter_policy"] = dead_letter_policy
+            __props__.__dict__["enable_exactly_once_delivery"] = enable_exactly_once_delivery
             __props__.__dict__["enable_message_ordering"] = enable_message_ordering
             __props__.__dict__["expiration_policy"] = expiration_policy
             __props__.__dict__["filter"] = filter
@@ -1001,6 +1062,7 @@ class Subscription(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
             dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+            enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
             enable_message_ordering: Optional[pulumi.Input[bool]] = None,
             expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
             filter: Optional[pulumi.Input[str]] = None,
@@ -1042,6 +1104,12 @@ class Subscription(pulumi.CustomResource):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
+               of a message with a given value of messageId on this Subscriptions':
+               - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+               - An acknowledged message will not be resent to a subscriber.
+               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -1060,7 +1128,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
                backlog, from the moment a message is published. If
-               retainAckedMessages is true, then this also configures the retention
+               retain_acked_messages is true, then this also configures the retention
                of acknowledged messages, and thus configures how far back in time a
                subscriptions.seek can be done. Defaults to 7 days. Cannot be more
                than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
@@ -1089,6 +1157,7 @@ class Subscription(pulumi.CustomResource):
 
         __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
         __props__.__dict__["dead_letter_policy"] = dead_letter_policy
+        __props__.__dict__["enable_exactly_once_delivery"] = enable_exactly_once_delivery
         __props__.__dict__["enable_message_ordering"] = enable_message_ordering
         __props__.__dict__["expiration_policy"] = expiration_policy
         __props__.__dict__["filter"] = filter
@@ -1140,6 +1209,19 @@ class Subscription(pulumi.CustomResource):
         return pulumi.get(self, "dead_letter_policy")
 
     @property
+    @pulumi.getter(name="enableExactlyOnceDelivery")
+    def enable_exactly_once_delivery(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If `true`, Pub/Sub provides the following guarantees for the delivery
+        of a message with a given value of messageId on this Subscriptions':
+        - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+        - An acknowledged message will not be resent to a subscriber.
+        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        """
+        return pulumi.get(self, "enable_exactly_once_delivery")
+
+    @property
     @pulumi.getter(name="enableMessageOrdering")
     def enable_message_ordering(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1189,7 +1271,7 @@ class Subscription(pulumi.CustomResource):
         """
         How long to retain unacknowledged messages in the subscription's
         backlog, from the moment a message is published. If
-        retainAckedMessages is true, then this also configures the retention
+        retain_acked_messages is true, then this also configures the retention
         of acknowledged messages, and thus configures how far back in time a
         subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).

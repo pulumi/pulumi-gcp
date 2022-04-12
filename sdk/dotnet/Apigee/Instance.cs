@@ -73,9 +73,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string?> IpRange { get; private set; } = null!;
 
         /// <summary>
-        /// Compute Engine location where the instance resides. For trial organization
-        /// subscriptions, the location must be a Compute Engine zone. For paid organization
-        /// subscriptions, it should correspond to a Compute Engine region.
+        /// Required. Compute Engine location where the instance resides.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -184,9 +182,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? IpRange { get; set; }
 
         /// <summary>
-        /// Compute Engine location where the instance resides. For trial organization
-        /// subscriptions, the location must be a Compute Engine zone. For paid organization
-        /// subscriptions, it should correspond to a Compute Engine region.
+        /// Required. Compute Engine location where the instance resides.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -256,9 +252,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? IpRange { get; set; }
 
         /// <summary>
-        /// Compute Engine location where the instance resides. For trial organization
-        /// subscriptions, the location must be a Compute Engine zone. For paid organization
-        /// subscriptions, it should correspond to a Compute Engine region.
+        /// Required. Compute Engine location where the instance resides.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

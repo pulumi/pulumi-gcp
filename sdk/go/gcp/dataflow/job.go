@@ -11,102 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
-// the official documentation for
-// [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataflow.NewJob(ctx, "bigDataJob", &dataflow.JobArgs{
-// 			Parameters: pulumi.AnyMap{
-// 				"baz": pulumi.Any("qux"),
-// 				"foo": pulumi.Any("bar"),
-// 			},
-// 			TempGcsLocation: pulumi.String("gs://my-bucket/tmp_dir"),
-// 			TemplateGcsPath: pulumi.String("gs://my-bucket/templates/template_file"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Streaming Job
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bucket1, err := storage.NewBucket(ctx, "bucket1", &storage.BucketArgs{
-// 			Location:     pulumi.String("US"),
-// 			ForceDestroy: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewBucket(ctx, "bucket2", &storage.BucketArgs{
-// 			Location:     pulumi.String("US"),
-// 			ForceDestroy: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dataflow.NewJob(ctx, "pubsubStream", &dataflow.JobArgs{
-// 			TemplateGcsPath:       pulumi.String("gs://my-bucket/templates/template_file"),
-// 			TempGcsLocation:       pulumi.String("gs://my-bucket/tmp_dir"),
-// 			EnableStreamingEngine: pulumi.Bool(true),
-// 			Parameters: pulumi.AnyMap{
-// 				"inputFilePattern": bucket1.Url.ApplyT(func(url string) (string, error) {
-// 					return fmt.Sprintf("%v%v", url, "/*.json"), nil
-// 				}).(pulumi.StringOutput),
-// 				"outputTopic": topic.ID(),
-// 			},
-// 			TransformNameMapping: pulumi.AnyMap{
-// 				"name": pulumi.Any("test_job"),
-// 				"env":  pulumi.Any("test"),
-// 			},
-// 			OnDelete: pulumi.String("cancel"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ## Note on "destroy" / "apply"
-//
-// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
-//
-// The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
-//
-// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `onDelete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
-//
 // ## Import
 //
 // This resource does not support import.
@@ -146,6 +50,10 @@ type Job struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrOutput `pulumi:"serviceAccountEmail"`
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
+	SkipWaitOnJobTermination pulumi.BoolPtrOutput `pulumi:"skipWaitOnJobTermination"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringOutput `pulumi:"state"`
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
@@ -230,6 +138,10 @@ type jobState struct {
 	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
+	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State *string `pulumi:"state"`
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
@@ -280,6 +192,10 @@ type JobState struct {
 	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
+	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringPtrInput
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
@@ -332,6 +248,10 @@ type jobArgs struct {
 	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
+	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork *string `pulumi:"subnetwork"`
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
@@ -377,6 +297,10 @@ type JobArgs struct {
 	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
+	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrInput
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.

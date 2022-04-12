@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:endpoints/consumersIamBinding:ConsumersIamBinding":
+		r = &ConsumersIamBinding{}
+	case "gcp:endpoints/consumersIamMember:ConsumersIamMember":
+		r = &ConsumersIamMember{}
+	case "gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy":
+		r = &ConsumersIamPolicy{}
 	case "gcp:endpoints/service:Service":
 		r = &Service{}
 	case "gcp:endpoints/serviceIamBinding:ServiceIamBinding":
@@ -42,6 +48,21 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"endpoints/consumersIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"endpoints/consumersIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"endpoints/consumersIamPolicy",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"endpoints/service",

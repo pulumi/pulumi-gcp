@@ -48,6 +48,66 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// }
     /// ```
+    /// ### Project Access Approval Active Key Version
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "global",
+    ///             Project = "my-project-name",
+    ///         });
+    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyRing.Id,
+    ///             Purpose = "ASYMMETRIC_SIGN",
+    ///             VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///             {
+    ///                 Algorithm = "EC_SIGN_P384_SHA384",
+    ///             },
+    ///         });
+    ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetProjectServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetProjectServiceAccountArgs
+    ///         {
+    ///             ProjectId = "my-project-name",
+    ///         }));
+    ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
+    ///         {
+    ///             CryptoKeyId = cryptoKey.Id,
+    ///             Role = "roles/cloudkms.signerVerifier",
+    ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
+    ///         });
+    ///         var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new Gcp.Kms.GetKMSCryptoKeyVersionInvokeArgs
+    ///         {
+    ///             CryptoKey = cryptoKey.Id,
+    ///         });
+    ///         var projectAccessApproval = new Gcp.Projects.AccessApprovalSettings("projectAccessApproval", new Gcp.Projects.AccessApprovalSettingsArgs
+    ///         {
+    ///             ProjectId = "my-project-name",
+    ///             ActiveKeyVersion = cryptoKeyVersion.Apply(cryptoKeyVersion =&gt; cryptoKeyVersion.Name),
+    ///             EnrolledServices = 
+    ///             {
+    ///                 new Gcp.Projects.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///                 {
+    ///                     CloudProduct = "all",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 iam,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -65,6 +125,20 @@ namespace Pulumi.Gcp.Projects
     public partial class AccessApprovalSettings : Pulumi.CustomResource
     {
         /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// </summary>
+        [Output("activeKeyVersion")]
+        public Output<string?> ActiveKeyVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
+        /// </summary>
+        [Output("ancestorHasActiveKeyVersion")]
+        public Output<bool> AncestorHasActiveKeyVersion { get; private set; } = null!;
+
+        /// <summary>
         /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
         /// of the Project.
         /// </summary>
@@ -80,6 +154,15 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Output("enrolledServices")]
         public Output<ImmutableArray<Outputs.AccessApprovalSettingsEnrolledService>> EnrolledServices { get; private set; } = null!;
+
+        /// <summary>
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+        /// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+        /// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+        /// top-down.
+        /// </summary>
+        [Output("invalidKeyVersion")]
+        public Output<bool> InvalidKeyVersion { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
@@ -155,6 +238,14 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class AccessApprovalSettingsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// </summary>
+        [Input("activeKeyVersion")]
+        public Input<string>? ActiveKeyVersion { get; set; }
+
         [Input("enrolledServices", required: true)]
         private InputList<Inputs.AccessApprovalSettingsEnrolledServiceArgs>? _enrolledServices;
 
@@ -207,6 +298,20 @@ namespace Pulumi.Gcp.Projects
     public sealed class AccessApprovalSettingsState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// </summary>
+        [Input("activeKeyVersion")]
+        public Input<string>? ActiveKeyVersion { get; set; }
+
+        /// <summary>
+        /// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
+        /// </summary>
+        [Input("ancestorHasActiveKeyVersion")]
+        public Input<bool>? AncestorHasActiveKeyVersion { get; set; }
+
+        /// <summary>
         /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
         /// of the Project.
         /// </summary>
@@ -228,6 +333,15 @@ namespace Pulumi.Gcp.Projects
             get => _enrolledServices ?? (_enrolledServices = new InputList<Inputs.AccessApprovalSettingsEnrolledServiceGetArgs>());
             set => _enrolledServices = value;
         }
+
+        /// <summary>
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+        /// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+        /// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+        /// top-down.
+        /// </summary>
+        [Input("invalidKeyVersion")]
+        public Input<bool>? InvalidKeyVersion { get; set; }
 
         /// <summary>
         /// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"

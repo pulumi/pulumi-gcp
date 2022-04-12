@@ -131,6 +131,8 @@ googlePartnerName: Optional[str]
 
 healthcareCustomEndpoint: Optional[str]
 
+iam2CustomEndpoint: Optional[str]
+
 iamBetaCustomEndpoint: Optional[str]
 
 iamCredentialsCustomEndpoint: Optional[str]

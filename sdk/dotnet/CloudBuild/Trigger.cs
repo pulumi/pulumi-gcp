@@ -361,6 +361,10 @@ namespace Pulumi.Gcp.CloudBuild
     ///     {
     ///         var manual_trigger = new Gcp.CloudBuild.Trigger("manual-trigger", new Gcp.CloudBuild.TriggerArgs
     ///         {
+    ///             ApprovalConfig = new Gcp.CloudBuild.Inputs.TriggerApprovalConfigArgs
+    ///             {
+    ///                 ApprovalRequired = true,
+    ///             },
     ///             GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
     ///             {
     ///                 Path = "cloudbuild.yaml",
@@ -399,6 +403,15 @@ namespace Pulumi.Gcp.CloudBuild
     [GcpResourceType("gcp:cloudbuild/trigger:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configuration for manual approval to start a build invocation of this BuildTrigger.
+        /// Builds created by this trigger will require approval before they execute.
+        /// Any user with a Cloud Build Approver role for the project can approve a build.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("approvalConfig")]
+        public Output<Outputs.TriggerApprovalConfig> ApprovalConfig { get; private set; } = null!;
+
         /// <summary>
         /// Contents of the build template. Either a filename or build template must be provided.
         /// Structure is documented below.
@@ -609,6 +622,15 @@ namespace Pulumi.Gcp.CloudBuild
     public sealed class TriggerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for manual approval to start a build invocation of this BuildTrigger.
+        /// Builds created by this trigger will require approval before they execute.
+        /// Any user with a Cloud Build Approver role for the project can approve a build.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("approvalConfig")]
+        public Input<Inputs.TriggerApprovalConfigArgs>? ApprovalConfig { get; set; }
+
+        /// <summary>
         /// Contents of the build template. Either a filename or build template must be provided.
         /// Structure is documented below.
         /// </summary>
@@ -790,6 +812,15 @@ namespace Pulumi.Gcp.CloudBuild
 
     public sealed class TriggerState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for manual approval to start a build invocation of this BuildTrigger.
+        /// Builds created by this trigger will require approval before they execute.
+        /// Any user with a Cloud Build Approver role for the project can approve a build.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("approvalConfig")]
+        public Input<Inputs.TriggerApprovalConfigGetArgs>? ApprovalConfig { get; set; }
+
         /// <summary>
         /// Contents of the build template. Either a filename or build template must be provided.
         /// Structure is documented below.

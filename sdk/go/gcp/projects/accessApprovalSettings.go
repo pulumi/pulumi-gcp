@@ -50,6 +50,76 @@ import (
 // 	})
 // }
 // ```
+// ### Project Access Approval Active Key Version
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accessapproval"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 			Project:  pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+// 			KeyRing: keyRing.ID(),
+// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
+// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		serviceAccount, err := accessapproval.GetProjectServiceAccount(ctx, &accessapproval.GetProjectServiceAccountArgs{
+// 			ProjectId: "my-project-name",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+// 			CryptoKeyId: cryptoKey.ID(),
+// 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
+// 			Member:      pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", serviceAccount.AccountEmail)),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
+// 			CryptoKey: cryptoKey.ID(),
+// 		}, nil)
+// 		_, err = projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
+// 			ProjectId: pulumi.String("my-project-name"),
+// 			ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (string, error) {
+// 				return cryptoKeyVersion.Name, nil
+// 			}).(pulumi.StringOutput),
+// 			EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
+// 				&projects.AccessApprovalSettingsEnrolledServiceArgs{
+// 					CloudProduct: pulumi.String("all"),
+// 				},
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			iam,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -65,6 +135,12 @@ import (
 type AccessApprovalSettings struct {
 	pulumi.CustomResourceState
 
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+	// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+	ActiveKeyVersion pulumi.StringPtrOutput `pulumi:"activeKeyVersion"`
+	// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
+	AncestorHasActiveKeyVersion pulumi.BoolOutput `pulumi:"ancestorHasActiveKeyVersion"`
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
 	// of the Project.
 	EnrolledAncestor pulumi.BoolOutput `pulumi:"enrolledAncestor"`
@@ -74,6 +150,11 @@ type AccessApprovalSettings struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayOutput `pulumi:"enrolledServices"`
+	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+	// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+	// top-down.
+	InvalidKeyVersion pulumi.BoolOutput `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of email addresses to which notifications relating to approval requests should be sent.
@@ -125,6 +206,12 @@ func GetAccessApprovalSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessApprovalSettings resources.
 type accessApprovalSettingsState struct {
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+	// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
+	// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
+	AncestorHasActiveKeyVersion *bool `pulumi:"ancestorHasActiveKeyVersion"`
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
 	// of the Project.
 	EnrolledAncestor *bool `pulumi:"enrolledAncestor"`
@@ -134,6 +221,11 @@ type accessApprovalSettingsState struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices []AccessApprovalSettingsEnrolledService `pulumi:"enrolledServices"`
+	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+	// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+	// top-down.
+	InvalidKeyVersion *bool `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name *string `pulumi:"name"`
 	// A list of email addresses to which notifications relating to approval requests should be sent.
@@ -151,6 +243,12 @@ type accessApprovalSettingsState struct {
 }
 
 type AccessApprovalSettingsState struct {
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+	// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+	ActiveKeyVersion pulumi.StringPtrInput
+	// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
+	AncestorHasActiveKeyVersion pulumi.BoolPtrInput
 	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
 	// of the Project.
 	EnrolledAncestor pulumi.BoolPtrInput
@@ -160,6 +258,11 @@ type AccessApprovalSettingsState struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayInput
+	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+	// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+	// top-down.
+	InvalidKeyVersion pulumi.BoolPtrInput
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name pulumi.StringPtrInput
 	// A list of email addresses to which notifications relating to approval requests should be sent.
@@ -181,6 +284,10 @@ func (AccessApprovalSettingsState) ElementType() reflect.Type {
 }
 
 type accessApprovalSettingsArgs struct {
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+	// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
 	// to have explicit approval. Enrollment can only be done on an all or nothing basis.
@@ -203,6 +310,10 @@ type accessApprovalSettingsArgs struct {
 
 // The set of arguments for constructing a AccessApprovalSettings resource.
 type AccessApprovalSettingsArgs struct {
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+	// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+	ActiveKeyVersion pulumi.StringPtrInput
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
 	// to have explicit approval. Enrollment can only be done on an all or nothing basis.

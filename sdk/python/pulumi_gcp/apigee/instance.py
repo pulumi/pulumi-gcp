@@ -23,9 +23,7 @@ class InstanceArgs:
                  peering_cidr_range: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] location: Compute Engine location where the instance resides. For trial organization
-               subscriptions, the location must be a Compute Engine zone. For paid organization
-               subscriptions, it should correspond to a Compute Engine region.
+        :param pulumi.Input[str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[str] description: Description of the instance.
@@ -62,9 +60,7 @@ class InstanceArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        Compute Engine location where the instance resides. For trial organization
-        subscriptions, the location must be a Compute Engine zone. For paid organization
-        subscriptions, it should correspond to a Compute Engine region.
+        Required. Compute Engine location where the instance resides.
         """
         return pulumi.get(self, "location")
 
@@ -193,9 +189,7 @@ class _InstanceState:
                available /22 CIDR block from Service Networking. The customer should use this CIDR block
                for configuring their firewall needs to allow traffic from Apigee.
                Input format: "a.b.c.d/22"
-        :param pulumi.Input[str] location: Compute Engine location where the instance resides. For trial organization
-               subscriptions, the location must be a Compute Engine zone. For paid organization
-               subscriptions, it should correspond to a Compute Engine region.
+        :param pulumi.Input[str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Resource ID of the instance.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
@@ -295,9 +289,7 @@ class _InstanceState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Compute Engine location where the instance resides. For trial organization
-        subscriptions, the location must be a Compute Engine zone. For paid organization
-        subscriptions, it should correspond to a Compute Engine region.
+        Required. Compute Engine location where the instance resides.
         """
         return pulumi.get(self, "location")
 
@@ -406,9 +398,7 @@ class Instance(pulumi.CustomResource):
                available /22 CIDR block from Service Networking. The customer should use this CIDR block
                for configuring their firewall needs to allow traffic from Apigee.
                Input format: "a.b.c.d/22"
-        :param pulumi.Input[str] location: Compute Engine location where the instance resides. For trial organization
-               subscriptions, the location must be a Compute Engine zone. For paid organization
-               subscriptions, it should correspond to a Compute Engine region.
+        :param pulumi.Input[str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Resource ID of the instance.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
@@ -532,9 +522,7 @@ class Instance(pulumi.CustomResource):
                available /22 CIDR block from Service Networking. The customer should use this CIDR block
                for configuring their firewall needs to allow traffic from Apigee.
                Input format: "a.b.c.d/22"
-        :param pulumi.Input[str] location: Compute Engine location where the instance resides. For trial organization
-               subscriptions, the location must be a Compute Engine zone. For paid organization
-               subscriptions, it should correspond to a Compute Engine region.
+        :param pulumi.Input[str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Resource ID of the instance.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
@@ -609,9 +597,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        Compute Engine location where the instance resides. For trial organization
-        subscriptions, the location must be a Compute Engine zone. For paid organization
-        subscriptions, it should correspond to a Compute Engine region.
+        Required. Compute Engine location where the instance resides.
         """
         return pulumi.get(self, "location")
 

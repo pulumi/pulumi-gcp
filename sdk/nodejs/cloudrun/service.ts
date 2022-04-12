@@ -301,6 +301,109 @@ import * as utilities from "../utilities";
  *     dependsOn: [secret_version_data],
  * });
  * ```
+ * ### Eventarc Basic Tf
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const projectProject = gcp.organizations.getProject({});
+ * // Enable Cloud Run API
+ * const run = new gcp.projects.Service("run", {
+ *     service: "run.googleapis.com",
+ *     disableOnDestroy: false,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Enable Eventarc API
+ * const eventarc = new gcp.projects.Service("eventarc", {
+ *     service: "eventarc.googleapis.com",
+ *     disableOnDestroy: false,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Deploy Cloud Run service
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     location: "us-east1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         percent: 100,
+ *         latestRevision: true,
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [run],
+ * });
+ * // Make Cloud Run service publicly accessible
+ * const allUsers = new gcp.cloudrun.IamMember("allUsers", {
+ *     service: _default.name,
+ *     location: _default.location,
+ *     role: "roles/run.invoker",
+ *     member: "allUsers",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Create a Pub/Sub trigger
+ * const trigger_pubsub_tf = new gcp.eventarc.Trigger("trigger-pubsub-tf", {
+ *     location: _default.location,
+ *     matchingCriterias: [{
+ *         attribute: "type",
+ *         value: "google.cloud.pubsub.topic.v1.messagePublished",
+ *     }],
+ *     destination: {
+ *         cloudRunService: {
+ *             service: _default.name,
+ *             region: _default.location,
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [eventarc],
+ * });
+ * // Give default Compute service account eventarc.eventReceiver role
+ * const projectIAMBinding = new gcp.projects.IAMBinding("projectIAMBinding", {
+ *     project: projectProject.then(projectProject => projectProject.id),
+ *     role: "roles/eventarc.eventReceiver",
+ *     members: [projectProject.then(projectProject => `serviceAccount:${projectProject.number}-compute@developer.gserviceaccount.com`)],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * // Create an AuditLog for Cloud Storage trigger
+ * const trigger_auditlog_tf = new gcp.eventarc.Trigger("trigger-auditlog-tf", {
+ *     location: _default.location,
+ *     project: projectProject.then(projectProject => projectProject.id),
+ *     matchingCriterias: [
+ *         {
+ *             attribute: "type",
+ *             value: "google.cloud.audit.log.v1.written",
+ *         },
+ *         {
+ *             attribute: "serviceName",
+ *             value: "storage.googleapis.com",
+ *         },
+ *         {
+ *             attribute: "methodName",
+ *             value: "storage.objects.create",
+ *         },
+ *     ],
+ *     destination: {
+ *         cloudRunService: {
+ *             service: _default.name,
+ *             region: _default.location,
+ *         },
+ *     },
+ *     serviceAccount: projectProject.then(projectProject => `${projectProject.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [eventarc],
+ * });
+ * ```
  *
  * ## Import
  *

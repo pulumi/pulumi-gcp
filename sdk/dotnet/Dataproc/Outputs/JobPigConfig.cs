@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class JobPigConfig
     {
         /// <summary>
-        /// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        /// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
         /// </summary>
         public readonly bool? ContinueOnFailure;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly ImmutableArray<string> JarFileUris;
         public readonly Outputs.JobPigConfigLoggingConfig? LoggingConfig;
         /// <summary>
-        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>

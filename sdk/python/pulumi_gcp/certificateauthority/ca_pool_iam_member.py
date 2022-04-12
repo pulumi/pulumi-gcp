@@ -27,6 +27,8 @@ class CaPoolIamMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `certificateauthority.CaPoolIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input['CaPoolIamMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
                Used to find the parent resource to bind the IAM policy to
@@ -81,6 +83,10 @@ class CaPoolIamMemberArgs:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['CaPoolIamMemberConditionArgs']]:
+        """
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -128,6 +134,8 @@ class _CaPoolIamMemberState:
         """
         Input properties used for looking up and filtering CaPoolIamMember resources.
         :param pulumi.Input[str] ca_pool: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input['CaPoolIamMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
@@ -168,6 +176,10 @@ class _CaPoolIamMemberState:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['CaPoolIamMemberConditionArgs']]:
+        """
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -250,55 +262,6 @@ class CaPoolIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
-
-        * `certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.
-        * `certificateauthority.CaPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the capool are preserved.
-        * `certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the capool are preserved.
-
-        > **Note:** `certificateauthority.CaPoolIamPolicy` **cannot** be used in conjunction with `certificateauthority.CaPoolIamBinding` and `certificateauthority.CaPoolIamMember` or they will fight over what your policy should be.
-
-        > **Note:** `certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\_privateca\_ca\_pool\_iam\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.certificateManager",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\_privateca\_ca\_pool\_iam\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.certificateauthority.CaPoolIamBinding("binding",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
-            role="roles/privateca.certificateManager",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\_privateca\_ca\_pool\_iam\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.certificateauthority.CaPoolIamMember("member",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
-            role="roles/privateca.certificateManager",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/caPools/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service capool IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -326,6 +289,8 @@ class CaPoolIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_pool: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[pulumi.InputType['CaPoolIamMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
                Used to find the parent resource to bind the IAM policy to
@@ -342,55 +307,6 @@ class CaPoolIamMember(pulumi.CustomResource):
                  args: CaPoolIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
-
-        * `certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.
-        * `certificateauthority.CaPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the capool are preserved.
-        * `certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the capool are preserved.
-
-        > **Note:** `certificateauthority.CaPoolIamPolicy` **cannot** be used in conjunction with `certificateauthority.CaPoolIamBinding` and `certificateauthority.CaPoolIamMember` or they will fight over what your policy should be.
-
-        > **Note:** `certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\_privateca\_ca\_pool\_iam\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.certificateManager",
-            members=["user:jane@example.com"],
-        )])
-        policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\_privateca\_ca\_pool\_iam\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        binding = gcp.certificateauthority.CaPoolIamBinding("binding",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
-            role="roles/privateca.certificateManager",
-            members=["user:jane@example.com"])
-        ```
-
-        ## google\_privateca\_ca\_pool\_iam\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        member = gcp.certificateauthority.CaPoolIamMember("member",
-            ca_pool=google_privateca_ca_pool["default"]["id"],
-            role="roles/privateca.certificateManager",
-            member="user:jane@example.com")
-        ```
-
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/caPools/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} Any variables not passed in the import command will be taken from the provider configuration. Certificate Authority Service capool IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -486,6 +402,8 @@ class CaPoolIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_pool: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[pulumi.InputType['CaPoolIamMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
@@ -520,6 +438,10 @@ class CaPoolIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.CaPoolIamMemberCondition']]:
+        """
+        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @property

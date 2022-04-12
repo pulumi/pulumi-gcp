@@ -24,6 +24,10 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigGoo? Goo;
         /// <summary>
+        /// Allows the patch job to run on Managed instance groups (MIGs).
+        /// </summary>
+        public readonly bool? MigInstancesAllowed;
+        /// <summary>
         /// The ExecStep to run after the patch update.
         /// Structure is documented below.
         /// </summary>
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
 
             Outputs.PatchDeploymentPatchConfigGoo? goo,
 
+            bool? migInstancesAllowed,
+
             Outputs.PatchDeploymentPatchConfigPostStep? postStep,
 
             Outputs.PatchDeploymentPatchConfigPreStep? preStep,
@@ -74,6 +80,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         {
             Apt = apt;
             Goo = goo;
+            MigInstancesAllowed = migInstancesAllowed;
             PostStep = postStep;
             PreStep = preStep;
             RebootConfig = rebootConfig;

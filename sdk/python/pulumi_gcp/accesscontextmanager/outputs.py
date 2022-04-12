@@ -25,6 +25,8 @@ __all__ = [
     'AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint',
     'AccessLevelsAccessLevelCustom',
     'AccessLevelsAccessLevelCustomExpr',
+    'AccessPolicyIamBindingCondition',
+    'AccessPolicyIamMemberCondition',
     'ServicePerimeterSpec',
     'ServicePerimeterSpecEgressPolicy',
     'ServicePerimeterSpecEgressPolicyEgressFrom',
@@ -1274,6 +1276,60 @@ class AccessLevelsAccessLevelCustomExpr(dict):
         Title for the expression, i.e. a short string describing its purpose.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class AccessPolicyIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AccessPolicyIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

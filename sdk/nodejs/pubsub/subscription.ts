@@ -167,6 +167,15 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly deadLetterPolicy!: pulumi.Output<outputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
     /**
+     * If `true`, Pub/Sub provides the following guarantees for the delivery
+     * of a message with a given value of messageId on this Subscriptions':
+     * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+     * - An acknowledged message will not be resent to a subscriber.
+     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     */
+    public readonly enableExactlyOnceDelivery!: pulumi.Output<boolean | undefined>;
+    /**
      * If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
      * the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
      * may be delivered in any order.
@@ -255,6 +264,7 @@ export class Subscription extends pulumi.CustomResource {
             const state = argsOrState as SubscriptionState | undefined;
             resourceInputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
             resourceInputs["deadLetterPolicy"] = state ? state.deadLetterPolicy : undefined;
+            resourceInputs["enableExactlyOnceDelivery"] = state ? state.enableExactlyOnceDelivery : undefined;
             resourceInputs["enableMessageOrdering"] = state ? state.enableMessageOrdering : undefined;
             resourceInputs["expirationPolicy"] = state ? state.expirationPolicy : undefined;
             resourceInputs["filter"] = state ? state.filter : undefined;
@@ -273,6 +283,7 @@ export class Subscription extends pulumi.CustomResource {
             }
             resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             resourceInputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
+            resourceInputs["enableExactlyOnceDelivery"] = args ? args.enableExactlyOnceDelivery : undefined;
             resourceInputs["enableMessageOrdering"] = args ? args.enableMessageOrdering : undefined;
             resourceInputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
@@ -323,6 +334,15 @@ export interface SubscriptionState {
      * Structure is documented below.
      */
     deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy>;
+    /**
+     * If `true`, Pub/Sub provides the following guarantees for the delivery
+     * of a message with a given value of messageId on this Subscriptions':
+     * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+     * - An acknowledged message will not be resent to a subscriber.
+     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     */
+    enableExactlyOnceDelivery?: pulumi.Input<boolean>;
     /**
      * If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
      * the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
@@ -431,6 +451,15 @@ export interface SubscriptionArgs {
      * Structure is documented below.
      */
     deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy>;
+    /**
+     * If `true`, Pub/Sub provides the following guarantees for the delivery
+     * of a message with a given value of messageId on this Subscriptions':
+     * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+     * - An acknowledged message will not be resent to a subscriber.
+     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     */
+    enableExactlyOnceDelivery?: pulumi.Input<boolean>;
     /**
      * If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
      * the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they

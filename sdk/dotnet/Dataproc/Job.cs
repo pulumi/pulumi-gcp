@@ -149,6 +149,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.JobPlacement> Placement { get; private set; } = null!;
 
         /// <summary>
+        /// The config of presto job
+        /// </summary>
+        [Output("prestoConfig")]
+        public Output<Outputs.JobPrestoConfig?> PrestoConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The project in which the `cluster` can be found and jobs
         /// subsequently run against. If it is not provided, the provider project is used.
         /// </summary>
@@ -289,6 +295,12 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.JobPlacementArgs> Placement { get; set; } = null!;
 
         /// <summary>
+        /// The config of presto job
+        /// </summary>
+        [Input("prestoConfig")]
+        public Input<Inputs.JobPrestoConfigArgs>? PrestoConfig { get; set; }
+
+        /// <summary>
         /// The project in which the `cluster` can be found and jobs
         /// subsequently run against. If it is not provided, the provider project is used.
         /// </summary>
@@ -394,6 +406,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("placement")]
         public Input<Inputs.JobPlacementGetArgs>? Placement { get; set; }
+
+        /// <summary>
+        /// The config of presto job
+        /// </summary>
+        [Input("prestoConfig")]
+        public Input<Inputs.JobPrestoConfigGetArgs>? PrestoConfig { get; set; }
 
         /// <summary>
         /// The project in which the `cluster` can be found and jobs

@@ -32,7 +32,23 @@ import * as utilities from "../utilities";
  *
  * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
- *     title: "my policy",
+ *     title: "Org Access Policy",
+ * });
+ * ```
+ * ### Access Context Manager Access Policy Scoped
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     orgId: "123456789",
+ *     projectId: "acm-test-proj-123",
+ * });
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     scopes: pulumi.interpolate`projects/${project.number}`,
+ *     title: "Scoped Access Policy",
  * });
  * ```
  *
@@ -86,6 +102,11 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
+     * Folder or project on which this policy is applicable.
+     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     */
+    public readonly scopes!: pulumi.Output<string | undefined>;
+    /**
      * Human readable title. Does not affect behavior.
      */
     public readonly title!: pulumi.Output<string>;
@@ -110,6 +131,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["scopes"] = state ? state.scopes : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -121,6 +143,7 @@ export class AccessPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -149,6 +172,11 @@ export interface AccessPolicyState {
      */
     parent?: pulumi.Input<string>;
     /**
+     * Folder or project on which this policy is applicable.
+     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     */
+    scopes?: pulumi.Input<string>;
+    /**
      * Human readable title. Does not affect behavior.
      */
     title?: pulumi.Input<string>;
@@ -167,6 +195,11 @@ export interface AccessPolicyArgs {
      * Format: organizations/{organization_id}
      */
     parent: pulumi.Input<string>;
+    /**
+     * Folder or project on which this policy is applicable.
+     * Format: folders/{{folder_id}} or projects/{{project_id}}
+     */
+    scopes?: pulumi.Input<string>;
     /**
      * Human readable title. Does not affect behavior.
      */

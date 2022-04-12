@@ -112,6 +112,8 @@ type Job struct {
 	PigConfig JobPigConfigPtrOutput `pulumi:"pigConfig"`
 	// The config of job placement.
 	Placement JobPlacementOutput `pulumi:"placement"`
+	// The config of presto job
+	PrestoConfig JobPrestoConfigPtrOutput `pulumi:"prestoConfig"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -182,6 +184,8 @@ type jobState struct {
 	PigConfig *JobPigConfig `pulumi:"pigConfig"`
 	// The config of job placement.
 	Placement *JobPlacement `pulumi:"placement"`
+	// The config of presto job
+	PrestoConfig *JobPrestoConfig `pulumi:"prestoConfig"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -221,6 +225,8 @@ type JobState struct {
 	PigConfig JobPigConfigPtrInput
 	// The config of job placement.
 	Placement JobPlacementPtrInput
+	// The config of presto job
+	PrestoConfig JobPrestoConfigPtrInput
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -260,6 +266,8 @@ type jobArgs struct {
 	PigConfig *JobPigConfig `pulumi:"pigConfig"`
 	// The config of job placement.
 	Placement JobPlacement `pulumi:"placement"`
+	// The config of presto job
+	PrestoConfig *JobPrestoConfig `pulumi:"prestoConfig"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -294,6 +302,8 @@ type JobArgs struct {
 	PigConfig JobPigConfigPtrInput
 	// The config of job placement.
 	Placement JobPlacementInput
+	// The config of presto job
+	PrestoConfig JobPrestoConfigPtrInput
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

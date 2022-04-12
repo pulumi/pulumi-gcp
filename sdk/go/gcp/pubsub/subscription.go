@@ -206,6 +206,13 @@ type Subscription struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrOutput `pulumi:"deadLetterPolicy"`
+	// If `true`, Pub/Sub provides the following guarantees for the delivery
+	// of a message with a given value of messageId on this Subscriptions':
+	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+	// - An acknowledged message will not be resent to a subscriber.
+	//   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+	//   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+	EnableExactlyOnceDelivery pulumi.BoolPtrOutput `pulumi:"enableExactlyOnceDelivery"`
 	// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
 	// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
 	// may be delivered in any order.
@@ -316,6 +323,13 @@ type subscriptionState struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
+	// If `true`, Pub/Sub provides the following guarantees for the delivery
+	// of a message with a given value of messageId on this Subscriptions':
+	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+	// - An acknowledged message will not be resent to a subscriber.
+	//   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+	//   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+	EnableExactlyOnceDelivery *bool `pulumi:"enableExactlyOnceDelivery"`
 	// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
 	// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
 	// may be delivered in any order.
@@ -395,6 +409,13 @@ type SubscriptionState struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
+	// If `true`, Pub/Sub provides the following guarantees for the delivery
+	// of a message with a given value of messageId on this Subscriptions':
+	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+	// - An acknowledged message will not be resent to a subscriber.
+	//   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+	//   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+	EnableExactlyOnceDelivery pulumi.BoolPtrInput
 	// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
 	// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
 	// may be delivered in any order.
@@ -478,6 +499,13 @@ type subscriptionArgs struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
+	// If `true`, Pub/Sub provides the following guarantees for the delivery
+	// of a message with a given value of messageId on this Subscriptions':
+	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+	// - An acknowledged message will not be resent to a subscriber.
+	//   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+	//   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+	EnableExactlyOnceDelivery *bool `pulumi:"enableExactlyOnceDelivery"`
 	// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
 	// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
 	// may be delivered in any order.
@@ -558,6 +586,13 @@ type SubscriptionArgs struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
+	// If `true`, Pub/Sub provides the following guarantees for the delivery
+	// of a message with a given value of messageId on this Subscriptions':
+	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+	// - An acknowledged message will not be resent to a subscriber.
+	//   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+	//   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+	EnableExactlyOnceDelivery pulumi.BoolPtrInput
 	// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
 	// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
 	// may be delivered in any order.

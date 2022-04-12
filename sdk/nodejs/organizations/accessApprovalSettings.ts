@@ -36,6 +36,48 @@ import * as utilities from "../utilities";
  *     organizationId: "123456789",
  * });
  * ```
+ * ### Organization Access Approval Active Key Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "your-project-id",
+ *     orgId: "123456789",
+ * });
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {
+ *     location: "global",
+ *     project: myProject.projectId,
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
+ *     keyRing: keyRing.id,
+ *     purpose: "ASYMMETRIC_SIGN",
+ *     versionTemplate: {
+ *         algorithm: "EC_SIGN_P384_SHA384",
+ *     },
+ * });
+ * const serviceAccount = gcp.accessapproval.getOrganizationServiceAccount({
+ *     organizationId: "123456789",
+ * });
+ * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.signerVerifier",
+ *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+ * });
+ * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
+ *     cryptoKey: cryptoKey.id,
+ * });
+ * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organizationAccessApproval", {
+ *     organizationId: "123456789",
+ *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+ *     enrolledServices: [{
+ *         cloudProduct: "all",
+ *     }],
+ * }, {
+ *     dependsOn: [iam],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -78,6 +120,15 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
     }
 
     /**
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     */
+    public readonly activeKeyVersion!: pulumi.Output<string | undefined>;
+    /**
+     * This field will always be unset for the organization since organizations do not have ancestors.
+     */
+    public /*out*/ readonly ancestorHasActiveKeyVersion!: pulumi.Output<boolean>;
+    /**
      * This field will always be unset for the organization since organizations do not have ancestors.
      */
     public /*out*/ readonly enrolledAncestor!: pulumi.Output<boolean>;
@@ -89,6 +140,12 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly enrolledServices!: pulumi.Output<outputs.organizations.AccessApprovalSettingsEnrolledService[]>;
+    /**
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+     * this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
+     * it, etc.).
+     */
+    public /*out*/ readonly invalidKeyVersion!: pulumi.Output<boolean>;
     /**
      * The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
      */
@@ -117,8 +174,11 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessApprovalSettingsState | undefined;
+            resourceInputs["activeKeyVersion"] = state ? state.activeKeyVersion : undefined;
+            resourceInputs["ancestorHasActiveKeyVersion"] = state ? state.ancestorHasActiveKeyVersion : undefined;
             resourceInputs["enrolledAncestor"] = state ? state.enrolledAncestor : undefined;
             resourceInputs["enrolledServices"] = state ? state.enrolledServices : undefined;
+            resourceInputs["invalidKeyVersion"] = state ? state.invalidKeyVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationEmails"] = state ? state.notificationEmails : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
@@ -130,10 +190,13 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
+            resourceInputs["activeKeyVersion"] = args ? args.activeKeyVersion : undefined;
             resourceInputs["enrolledServices"] = args ? args.enrolledServices : undefined;
             resourceInputs["notificationEmails"] = args ? args.notificationEmails : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["ancestorHasActiveKeyVersion"] = undefined /*out*/;
             resourceInputs["enrolledAncestor"] = undefined /*out*/;
+            resourceInputs["invalidKeyVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -146,6 +209,15 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
  */
 export interface AccessApprovalSettingsState {
     /**
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     */
+    activeKeyVersion?: pulumi.Input<string>;
+    /**
+     * This field will always be unset for the organization since organizations do not have ancestors.
+     */
+    ancestorHasActiveKeyVersion?: pulumi.Input<boolean>;
+    /**
      * This field will always be unset for the organization since organizations do not have ancestors.
      */
     enrolledAncestor?: pulumi.Input<boolean>;
@@ -157,6 +229,12 @@ export interface AccessApprovalSettingsState {
      * Structure is documented below.
      */
     enrolledServices?: pulumi.Input<pulumi.Input<inputs.organizations.AccessApprovalSettingsEnrolledService>[]>;
+    /**
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+     * this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
+     * it, etc.).
+     */
+    invalidKeyVersion?: pulumi.Input<boolean>;
     /**
      * The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
      */
@@ -177,6 +255,11 @@ export interface AccessApprovalSettingsState {
  * The set of arguments for constructing a AccessApprovalSettings resource.
  */
 export interface AccessApprovalSettingsArgs {
+    /**
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     */
+    activeKeyVersion?: pulumi.Input<string>;
     /**
      * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
      * Access requests for the resource given by name against any of these services contained here will be required

@@ -257,6 +257,7 @@ namespace Pulumi.Gcp.OsConfig
     ///                 {
     ///                     Enabled = true,
     ///                 },
+    ///                 MigInstancesAllowed = true,
     ///                 PostStep = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepArgs
     ///                 {
     ///                     LinuxExecStepConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs

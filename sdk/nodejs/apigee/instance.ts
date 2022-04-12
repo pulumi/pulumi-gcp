@@ -83,9 +83,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ipRange!: pulumi.Output<string | undefined>;
     /**
-     * Compute Engine location where the instance resides. For trial organization
-     * subscriptions, the location must be a Compute Engine zone. For paid organization
-     * subscriptions, it should correspond to a Compute Engine region.
+     * Required. Compute Engine location where the instance resides.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -186,9 +184,7 @@ export interface InstanceState {
      */
     ipRange?: pulumi.Input<string>;
     /**
-     * Compute Engine location where the instance resides. For trial organization
-     * subscriptions, the location must be a Compute Engine zone. For paid organization
-     * subscriptions, it should correspond to a Compute Engine region.
+     * Required. Compute Engine location where the instance resides.
      */
     location?: pulumi.Input<string>;
     /**
@@ -239,9 +235,7 @@ export interface InstanceArgs {
      */
     ipRange?: pulumi.Input<string>;
     /**
-     * Compute Engine location where the instance resides. For trial organization
-     * subscriptions, the location must be a Compute Engine zone. For paid organization
-     * subscriptions, it should correspond to a Compute Engine region.
+     * Required. Compute Engine location where the instance resides.
      */
     location: pulumi.Input<string>;
     /**

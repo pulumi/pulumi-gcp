@@ -14,6 +14,8 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[str],
+                 api_proxy_type: Optional[pulumi.Input[str]] = None,
+                 deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -21,11 +23,26 @@ class EnvironmentArgs:
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
+        :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
+               the Environment and cannot be changed.
+               Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        :param pulumi.Input[str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
+               set when creating the environment and cannot be changed. When you enable archive
+               deployment, you will be prevented from performing a subset of actions within the
+               environment, including:
+               Managing the deployment of API proxy or shared flow revisions;
+               Creating, updating, or deleting resource files;
+               Creating, updating, or deleting target servers.
+               Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
         """
         pulumi.set(__self__, "org_id", org_id)
+        if api_proxy_type is not None:
+            pulumi.set(__self__, "api_proxy_type", api_proxy_type)
+        if deployment_type is not None:
+            pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -45,6 +62,39 @@ class EnvironmentArgs:
     @org_id.setter
     def org_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="apiProxyType")
+    def api_proxy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. API Proxy type supported by the environment. The type can be set when creating
+        the Environment and cannot be changed.
+        Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        """
+        return pulumi.get(self, "api_proxy_type")
+
+    @api_proxy_type.setter
+    def api_proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_proxy_type", value)
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Deployment type supported by the environment. The deployment type can be
+        set when creating the environment and cannot be changed. When you enable archive
+        deployment, you will be prevented from performing a subset of actions within the
+        environment, including:
+        Managing the deployment of API proxy or shared flow revisions;
+        Creating, updating, or deleting resource files;
+        Creating, updating, or deleting target servers.
+        Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @deployment_type.setter
+    def deployment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_type", value)
 
     @property
     @pulumi.getter
@@ -86,18 +136,35 @@ class EnvironmentArgs:
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
+                 api_proxy_type: Optional[pulumi.Input[str]] = None,
+                 deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
+        :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
+               the Environment and cannot be changed.
+               Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        :param pulumi.Input[str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
+               set when creating the environment and cannot be changed. When you enable archive
+               deployment, you will be prevented from performing a subset of actions within the
+               environment, including:
+               Managing the deployment of API proxy or shared flow revisions;
+               Creating, updating, or deleting resource files;
+               Creating, updating, or deleting target servers.
+               Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
         """
+        if api_proxy_type is not None:
+            pulumi.set(__self__, "api_proxy_type", api_proxy_type)
+        if deployment_type is not None:
+            pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -106,6 +173,39 @@ class _EnvironmentState:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+
+    @property
+    @pulumi.getter(name="apiProxyType")
+    def api_proxy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. API Proxy type supported by the environment. The type can be set when creating
+        the Environment and cannot be changed.
+        Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        """
+        return pulumi.get(self, "api_proxy_type")
+
+    @api_proxy_type.setter
+    def api_proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_proxy_type", value)
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Deployment type supported by the environment. The deployment type can be
+        set when creating the environment and cannot be changed. When you enable archive
+        deployment, you will be prevented from performing a subset of actions within the
+        environment, including:
+        Managing the deployment of API proxy or shared flow revisions;
+        Creating, updating, or deleting resource files;
+        Creating, updating, or deleting target servers.
+        Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @deployment_type.setter
+    def deployment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_type", value)
 
     @property
     @pulumi.getter
@@ -162,6 +262,8 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_proxy_type: Optional[pulumi.Input[str]] = None,
+                 deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -192,6 +294,17 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
+               the Environment and cannot be changed.
+               Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        :param pulumi.Input[str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
+               set when creating the environment and cannot be changed. When you enable archive
+               deployment, you will be prevented from performing a subset of actions within the
+               environment, including:
+               Managing the deployment of API proxy or shared flow revisions;
+               Creating, updating, or deleting resource files;
+               Creating, updating, or deleting target servers.
+               Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
@@ -242,6 +355,8 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_proxy_type: Optional[pulumi.Input[str]] = None,
+                 deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -258,6 +373,8 @@ class Environment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
+            __props__.__dict__["api_proxy_type"] = api_proxy_type
+            __props__.__dict__["deployment_type"] = deployment_type
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
@@ -274,6 +391,8 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_proxy_type: Optional[pulumi.Input[str]] = None,
+            deployment_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -285,6 +404,17 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
+               the Environment and cannot be changed.
+               Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        :param pulumi.Input[str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
+               set when creating the environment and cannot be changed. When you enable archive
+               deployment, you will be prevented from performing a subset of actions within the
+               environment, including:
+               Managing the deployment of API proxy or shared flow revisions;
+               Creating, updating, or deleting resource files;
+               Creating, updating, or deleting target servers.
+               Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
@@ -295,11 +425,38 @@ class Environment(pulumi.CustomResource):
 
         __props__ = _EnvironmentState.__new__(_EnvironmentState)
 
+        __props__.__dict__["api_proxy_type"] = api_proxy_type
+        __props__.__dict__["deployment_type"] = deployment_type
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         return Environment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiProxyType")
+    def api_proxy_type(self) -> pulumi.Output[str]:
+        """
+        Optional. API Proxy type supported by the environment. The type can be set when creating
+        the Environment and cannot be changed.
+        Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        """
+        return pulumi.get(self, "api_proxy_type")
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> pulumi.Output[str]:
+        """
+        Optional. Deployment type supported by the environment. The deployment type can be
+        set when creating the environment and cannot be changed. When you enable archive
+        deployment, you will be prevented from performing a subset of actions within the
+        environment, including:
+        Managing the deployment of API proxy or shared flow revisions;
+        Creating, updating, or deleting resource files;
+        Creating, updating, or deleting target servers.
+        Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        """
+        return pulumi.get(self, "deployment_type")
 
     @property
     @pulumi.getter

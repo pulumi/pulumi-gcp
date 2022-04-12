@@ -10,6 +10,557 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DenyPolicyRule struct {
+	// A deny rule in an IAM deny policy.
+	// Structure is documented below.
+	DenyRule *DenyPolicyRuleDenyRule `pulumi:"denyRule"`
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+}
+
+// DenyPolicyRuleInput is an input type that accepts DenyPolicyRuleArgs and DenyPolicyRuleOutput values.
+// You can construct a concrete instance of `DenyPolicyRuleInput` via:
+//
+//          DenyPolicyRuleArgs{...}
+type DenyPolicyRuleInput interface {
+	pulumi.Input
+
+	ToDenyPolicyRuleOutput() DenyPolicyRuleOutput
+	ToDenyPolicyRuleOutputWithContext(context.Context) DenyPolicyRuleOutput
+}
+
+type DenyPolicyRuleArgs struct {
+	// A deny rule in an IAM deny policy.
+	// Structure is documented below.
+	DenyRule DenyPolicyRuleDenyRulePtrInput `pulumi:"denyRule"`
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (DenyPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyPolicyRule)(nil)).Elem()
+}
+
+func (i DenyPolicyRuleArgs) ToDenyPolicyRuleOutput() DenyPolicyRuleOutput {
+	return i.ToDenyPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i DenyPolicyRuleArgs) ToDenyPolicyRuleOutputWithContext(ctx context.Context) DenyPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyPolicyRuleOutput)
+}
+
+// DenyPolicyRuleArrayInput is an input type that accepts DenyPolicyRuleArray and DenyPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `DenyPolicyRuleArrayInput` via:
+//
+//          DenyPolicyRuleArray{ DenyPolicyRuleArgs{...} }
+type DenyPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToDenyPolicyRuleArrayOutput() DenyPolicyRuleArrayOutput
+	ToDenyPolicyRuleArrayOutputWithContext(context.Context) DenyPolicyRuleArrayOutput
+}
+
+type DenyPolicyRuleArray []DenyPolicyRuleInput
+
+func (DenyPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DenyPolicyRule)(nil)).Elem()
+}
+
+func (i DenyPolicyRuleArray) ToDenyPolicyRuleArrayOutput() DenyPolicyRuleArrayOutput {
+	return i.ToDenyPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DenyPolicyRuleArray) ToDenyPolicyRuleArrayOutputWithContext(ctx context.Context) DenyPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyPolicyRuleArrayOutput)
+}
+
+type DenyPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (DenyPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyPolicyRule)(nil)).Elem()
+}
+
+func (o DenyPolicyRuleOutput) ToDenyPolicyRuleOutput() DenyPolicyRuleOutput {
+	return o
+}
+
+func (o DenyPolicyRuleOutput) ToDenyPolicyRuleOutputWithContext(ctx context.Context) DenyPolicyRuleOutput {
+	return o
+}
+
+// A deny rule in an IAM deny policy.
+// Structure is documented below.
+func (o DenyPolicyRuleOutput) DenyRule() DenyPolicyRuleDenyRulePtrOutput {
+	return o.ApplyT(func(v DenyPolicyRule) *DenyPolicyRuleDenyRule { return v.DenyRule }).(DenyPolicyRuleDenyRulePtrOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o DenyPolicyRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DenyPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type DenyPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DenyPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DenyPolicyRule)(nil)).Elem()
+}
+
+func (o DenyPolicyRuleArrayOutput) ToDenyPolicyRuleArrayOutput() DenyPolicyRuleArrayOutput {
+	return o
+}
+
+func (o DenyPolicyRuleArrayOutput) ToDenyPolicyRuleArrayOutputWithContext(ctx context.Context) DenyPolicyRuleArrayOutput {
+	return o
+}
+
+func (o DenyPolicyRuleArrayOutput) Index(i pulumi.IntInput) DenyPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DenyPolicyRule {
+		return vs[0].([]DenyPolicyRule)[vs[1].(int)]
+	}).(DenyPolicyRuleOutput)
+}
+
+type DenyPolicyRuleDenyRule struct {
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// Structure is documented below.
+	DenialCondition DenyPolicyRuleDenyRuleDenialCondition `pulumi:"denialCondition"`
+	// The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+	// where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+	DeniedPermissions []string `pulumi:"deniedPermissions"`
+	// The identities that are prevented from using one or more permissions on Google Cloud resources.
+	DeniedPrincipals []string `pulumi:"deniedPrincipals"`
+	// Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+	// If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+	// The excluded permissions can be specified using the same syntax as deniedPermissions.
+	ExceptionPermissions []string `pulumi:"exceptionPermissions"`
+	// The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+	// For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+	ExceptionPrincipals []string `pulumi:"exceptionPrincipals"`
+}
+
+// DenyPolicyRuleDenyRuleInput is an input type that accepts DenyPolicyRuleDenyRuleArgs and DenyPolicyRuleDenyRuleOutput values.
+// You can construct a concrete instance of `DenyPolicyRuleDenyRuleInput` via:
+//
+//          DenyPolicyRuleDenyRuleArgs{...}
+type DenyPolicyRuleDenyRuleInput interface {
+	pulumi.Input
+
+	ToDenyPolicyRuleDenyRuleOutput() DenyPolicyRuleDenyRuleOutput
+	ToDenyPolicyRuleDenyRuleOutputWithContext(context.Context) DenyPolicyRuleDenyRuleOutput
+}
+
+type DenyPolicyRuleDenyRuleArgs struct {
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// Structure is documented below.
+	DenialCondition DenyPolicyRuleDenyRuleDenialConditionInput `pulumi:"denialCondition"`
+	// The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+	// where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+	DeniedPermissions pulumi.StringArrayInput `pulumi:"deniedPermissions"`
+	// The identities that are prevented from using one or more permissions on Google Cloud resources.
+	DeniedPrincipals pulumi.StringArrayInput `pulumi:"deniedPrincipals"`
+	// Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+	// If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+	// The excluded permissions can be specified using the same syntax as deniedPermissions.
+	ExceptionPermissions pulumi.StringArrayInput `pulumi:"exceptionPermissions"`
+	// The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+	// For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+	ExceptionPrincipals pulumi.StringArrayInput `pulumi:"exceptionPrincipals"`
+}
+
+func (DenyPolicyRuleDenyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyPolicyRuleDenyRule)(nil)).Elem()
+}
+
+func (i DenyPolicyRuleDenyRuleArgs) ToDenyPolicyRuleDenyRuleOutput() DenyPolicyRuleDenyRuleOutput {
+	return i.ToDenyPolicyRuleDenyRuleOutputWithContext(context.Background())
+}
+
+func (i DenyPolicyRuleDenyRuleArgs) ToDenyPolicyRuleDenyRuleOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyPolicyRuleDenyRuleOutput)
+}
+
+func (i DenyPolicyRuleDenyRuleArgs) ToDenyPolicyRuleDenyRulePtrOutput() DenyPolicyRuleDenyRulePtrOutput {
+	return i.ToDenyPolicyRuleDenyRulePtrOutputWithContext(context.Background())
+}
+
+func (i DenyPolicyRuleDenyRuleArgs) ToDenyPolicyRuleDenyRulePtrOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyPolicyRuleDenyRuleOutput).ToDenyPolicyRuleDenyRulePtrOutputWithContext(ctx)
+}
+
+// DenyPolicyRuleDenyRulePtrInput is an input type that accepts DenyPolicyRuleDenyRuleArgs, DenyPolicyRuleDenyRulePtr and DenyPolicyRuleDenyRulePtrOutput values.
+// You can construct a concrete instance of `DenyPolicyRuleDenyRulePtrInput` via:
+//
+//          DenyPolicyRuleDenyRuleArgs{...}
+//
+//  or:
+//
+//          nil
+type DenyPolicyRuleDenyRulePtrInput interface {
+	pulumi.Input
+
+	ToDenyPolicyRuleDenyRulePtrOutput() DenyPolicyRuleDenyRulePtrOutput
+	ToDenyPolicyRuleDenyRulePtrOutputWithContext(context.Context) DenyPolicyRuleDenyRulePtrOutput
+}
+
+type denyPolicyRuleDenyRulePtrType DenyPolicyRuleDenyRuleArgs
+
+func DenyPolicyRuleDenyRulePtr(v *DenyPolicyRuleDenyRuleArgs) DenyPolicyRuleDenyRulePtrInput {
+	return (*denyPolicyRuleDenyRulePtrType)(v)
+}
+
+func (*denyPolicyRuleDenyRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenyPolicyRuleDenyRule)(nil)).Elem()
+}
+
+func (i *denyPolicyRuleDenyRulePtrType) ToDenyPolicyRuleDenyRulePtrOutput() DenyPolicyRuleDenyRulePtrOutput {
+	return i.ToDenyPolicyRuleDenyRulePtrOutputWithContext(context.Background())
+}
+
+func (i *denyPolicyRuleDenyRulePtrType) ToDenyPolicyRuleDenyRulePtrOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyPolicyRuleDenyRulePtrOutput)
+}
+
+type DenyPolicyRuleDenyRuleOutput struct{ *pulumi.OutputState }
+
+func (DenyPolicyRuleDenyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyPolicyRuleDenyRule)(nil)).Elem()
+}
+
+func (o DenyPolicyRuleDenyRuleOutput) ToDenyPolicyRuleDenyRuleOutput() DenyPolicyRuleDenyRuleOutput {
+	return o
+}
+
+func (o DenyPolicyRuleDenyRuleOutput) ToDenyPolicyRuleDenyRuleOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRuleOutput {
+	return o
+}
+
+func (o DenyPolicyRuleDenyRuleOutput) ToDenyPolicyRuleDenyRulePtrOutput() DenyPolicyRuleDenyRulePtrOutput {
+	return o.ToDenyPolicyRuleDenyRulePtrOutputWithContext(context.Background())
+}
+
+func (o DenyPolicyRuleDenyRuleOutput) ToDenyPolicyRuleDenyRulePtrOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DenyPolicyRuleDenyRule) *DenyPolicyRuleDenyRule {
+		return &v
+	}).(DenyPolicyRuleDenyRulePtrOutput)
+}
+
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// Structure is documented below.
+func (o DenyPolicyRuleDenyRuleOutput) DenialCondition() DenyPolicyRuleDenyRuleDenialConditionOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRule) DenyPolicyRuleDenyRuleDenialCondition { return v.DenialCondition }).(DenyPolicyRuleDenyRuleDenialConditionOutput)
+}
+
+// The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+// where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+func (o DenyPolicyRuleDenyRuleOutput) DeniedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRule) []string { return v.DeniedPermissions }).(pulumi.StringArrayOutput)
+}
+
+// The identities that are prevented from using one or more permissions on Google Cloud resources.
+func (o DenyPolicyRuleDenyRuleOutput) DeniedPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRule) []string { return v.DeniedPrincipals }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+// If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+// The excluded permissions can be specified using the same syntax as deniedPermissions.
+func (o DenyPolicyRuleDenyRuleOutput) ExceptionPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRule) []string { return v.ExceptionPermissions }).(pulumi.StringArrayOutput)
+}
+
+// The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+// For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+func (o DenyPolicyRuleDenyRuleOutput) ExceptionPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRule) []string { return v.ExceptionPrincipals }).(pulumi.StringArrayOutput)
+}
+
+type DenyPolicyRuleDenyRulePtrOutput struct{ *pulumi.OutputState }
+
+func (DenyPolicyRuleDenyRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenyPolicyRuleDenyRule)(nil)).Elem()
+}
+
+func (o DenyPolicyRuleDenyRulePtrOutput) ToDenyPolicyRuleDenyRulePtrOutput() DenyPolicyRuleDenyRulePtrOutput {
+	return o
+}
+
+func (o DenyPolicyRuleDenyRulePtrOutput) ToDenyPolicyRuleDenyRulePtrOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRulePtrOutput {
+	return o
+}
+
+func (o DenyPolicyRuleDenyRulePtrOutput) Elem() DenyPolicyRuleDenyRuleOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRule) DenyPolicyRuleDenyRule {
+		if v != nil {
+			return *v
+		}
+		var ret DenyPolicyRuleDenyRule
+		return ret
+	}).(DenyPolicyRuleDenyRuleOutput)
+}
+
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// Structure is documented below.
+func (o DenyPolicyRuleDenyRulePtrOutput) DenialCondition() DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRule) *DenyPolicyRuleDenyRuleDenialCondition {
+		if v == nil {
+			return nil
+		}
+		return &v.DenialCondition
+	}).(DenyPolicyRuleDenyRuleDenialConditionPtrOutput)
+}
+
+// The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+// where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+func (o DenyPolicyRuleDenyRulePtrOutput) DeniedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeniedPermissions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The identities that are prevented from using one or more permissions on Google Cloud resources.
+func (o DenyPolicyRuleDenyRulePtrOutput) DeniedPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeniedPrincipals
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+// If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+// The excluded permissions can be specified using the same syntax as deniedPermissions.
+func (o DenyPolicyRuleDenyRulePtrOutput) ExceptionPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExceptionPermissions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+// For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+func (o DenyPolicyRuleDenyRulePtrOutput) ExceptionPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExceptionPrincipals
+	}).(pulumi.StringArrayOutput)
+}
+
+type DenyPolicyRuleDenyRuleDenialCondition struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting,
+	// e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// DenyPolicyRuleDenyRuleDenialConditionInput is an input type that accepts DenyPolicyRuleDenyRuleDenialConditionArgs and DenyPolicyRuleDenyRuleDenialConditionOutput values.
+// You can construct a concrete instance of `DenyPolicyRuleDenyRuleDenialConditionInput` via:
+//
+//          DenyPolicyRuleDenyRuleDenialConditionArgs{...}
+type DenyPolicyRuleDenyRuleDenialConditionInput interface {
+	pulumi.Input
+
+	ToDenyPolicyRuleDenyRuleDenialConditionOutput() DenyPolicyRuleDenyRuleDenialConditionOutput
+	ToDenyPolicyRuleDenyRuleDenialConditionOutputWithContext(context.Context) DenyPolicyRuleDenyRuleDenialConditionOutput
+}
+
+type DenyPolicyRuleDenyRuleDenialConditionArgs struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting,
+	// e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (DenyPolicyRuleDenyRuleDenialConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialCondition)(nil)).Elem()
+}
+
+func (i DenyPolicyRuleDenyRuleDenialConditionArgs) ToDenyPolicyRuleDenyRuleDenialConditionOutput() DenyPolicyRuleDenyRuleDenialConditionOutput {
+	return i.ToDenyPolicyRuleDenyRuleDenialConditionOutputWithContext(context.Background())
+}
+
+func (i DenyPolicyRuleDenyRuleDenialConditionArgs) ToDenyPolicyRuleDenyRuleDenialConditionOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRuleDenialConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyPolicyRuleDenyRuleDenialConditionOutput)
+}
+
+func (i DenyPolicyRuleDenyRuleDenialConditionArgs) ToDenyPolicyRuleDenyRuleDenialConditionPtrOutput() DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return i.ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DenyPolicyRuleDenyRuleDenialConditionArgs) ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyPolicyRuleDenyRuleDenialConditionOutput).ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(ctx)
+}
+
+// DenyPolicyRuleDenyRuleDenialConditionPtrInput is an input type that accepts DenyPolicyRuleDenyRuleDenialConditionArgs, DenyPolicyRuleDenyRuleDenialConditionPtr and DenyPolicyRuleDenyRuleDenialConditionPtrOutput values.
+// You can construct a concrete instance of `DenyPolicyRuleDenyRuleDenialConditionPtrInput` via:
+//
+//          DenyPolicyRuleDenyRuleDenialConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type DenyPolicyRuleDenyRuleDenialConditionPtrInput interface {
+	pulumi.Input
+
+	ToDenyPolicyRuleDenyRuleDenialConditionPtrOutput() DenyPolicyRuleDenyRuleDenialConditionPtrOutput
+	ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(context.Context) DenyPolicyRuleDenyRuleDenialConditionPtrOutput
+}
+
+type denyPolicyRuleDenyRuleDenialConditionPtrType DenyPolicyRuleDenyRuleDenialConditionArgs
+
+func DenyPolicyRuleDenyRuleDenialConditionPtr(v *DenyPolicyRuleDenyRuleDenialConditionArgs) DenyPolicyRuleDenyRuleDenialConditionPtrInput {
+	return (*denyPolicyRuleDenyRuleDenialConditionPtrType)(v)
+}
+
+func (*denyPolicyRuleDenyRuleDenialConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenyPolicyRuleDenyRuleDenialCondition)(nil)).Elem()
+}
+
+func (i *denyPolicyRuleDenyRuleDenialConditionPtrType) ToDenyPolicyRuleDenyRuleDenialConditionPtrOutput() DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return i.ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *denyPolicyRuleDenyRuleDenialConditionPtrType) ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyPolicyRuleDenyRuleDenialConditionPtrOutput)
+}
+
+type DenyPolicyRuleDenyRuleDenialConditionOutput struct{ *pulumi.OutputState }
+
+func (DenyPolicyRuleDenyRuleDenialConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialCondition)(nil)).Elem()
+}
+
+func (o DenyPolicyRuleDenyRuleDenialConditionOutput) ToDenyPolicyRuleDenyRuleDenialConditionOutput() DenyPolicyRuleDenyRuleDenialConditionOutput {
+	return o
+}
+
+func (o DenyPolicyRuleDenyRuleDenialConditionOutput) ToDenyPolicyRuleDenyRuleDenialConditionOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRuleDenialConditionOutput {
+	return o
+}
+
+func (o DenyPolicyRuleDenyRuleDenialConditionOutput) ToDenyPolicyRuleDenyRuleDenialConditionPtrOutput() DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return o.ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DenyPolicyRuleDenyRuleDenialConditionOutput) ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DenyPolicyRuleDenyRuleDenialCondition) *DenyPolicyRuleDenyRuleDenialCondition {
+		return &v
+	}).(DenyPolicyRuleDenyRuleDenialConditionPtrOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRuleDenialCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRuleDenialCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting,
+// e.g. a file name and a position in the file.
+func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRuleDenialCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DenyPolicyRuleDenyRuleDenialCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type DenyPolicyRuleDenyRuleDenialConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DenyPolicyRuleDenyRuleDenialConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenyPolicyRuleDenyRuleDenialCondition)(nil)).Elem()
+}
+
+func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) ToDenyPolicyRuleDenyRuleDenialConditionPtrOutput() DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return o
+}
+
+func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) ToDenyPolicyRuleDenyRuleDenialConditionPtrOutputWithContext(ctx context.Context) DenyPolicyRuleDenyRuleDenialConditionPtrOutput {
+	return o
+}
+
+func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Elem() DenyPolicyRuleDenyRuleDenialConditionOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRuleDenialCondition) DenyPolicyRuleDenyRuleDenialCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DenyPolicyRuleDenyRuleDenialCondition
+		return ret
+	}).(DenyPolicyRuleDenyRuleDenialConditionOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRuleDenialCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRuleDenialCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting,
+// e.g. a file name and a position in the file.
+func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRuleDenialCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DenyPolicyRuleDenyRuleDenialCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkloadIdentityPoolProviderAws struct {
 	// The AWS account ID.
 	AccountId string `pulumi:"accountId"`
@@ -707,6 +1258,12 @@ func (o GetWorkloadIdentityPoolProviderOidcArrayOutput) Index(i pulumi.IntInput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleInput)(nil)).Elem(), DenyPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleArrayInput)(nil)).Elem(), DenyPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleInput)(nil)).Elem(), DenyPolicyRuleDenyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRulePtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionPtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsPtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderOidcInput)(nil)).Elem(), WorkloadIdentityPoolProviderOidcArgs{})
@@ -717,6 +1274,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderAwArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderAwArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderOidcInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderOidcArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderOidcArray{})
+	pulumi.RegisterOutputType(DenyPolicyRuleOutput{})
+	pulumi.RegisterOutputType(DenyPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleOutput{})
+	pulumi.RegisterOutputType(DenyPolicyRuleDenyRulePtrOutput{})
+	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionOutput{})
+	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderOidcOutput{})

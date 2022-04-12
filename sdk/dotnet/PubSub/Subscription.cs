@@ -200,6 +200,17 @@ namespace Pulumi.Gcp.PubSub
         public Output<Outputs.SubscriptionDeadLetterPolicy?> DeadLetterPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// If `true`, Pub/Sub provides the following guarantees for the delivery
+        /// of a message with a given value of messageId on this Subscriptions':
+        /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+        /// - An acknowledged message will not be resent to a subscriber.
+        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        /// </summary>
+        [Output("enableExactlyOnceDelivery")]
+        public Output<bool?> EnableExactlyOnceDelivery { get; private set; } = null!;
+
+        /// <summary>
         /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
         /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
         /// may be delivered in any order.
@@ -238,7 +249,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// How long to retain unacknowledged messages in the subscription's
         /// backlog, from the moment a message is published. If
-        /// retainAckedMessages is true, then this also configures the retention
+        /// retain_acked_messages is true, then this also configures the retention
         /// of acknowledged messages, and thus configures how far back in time a
         /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         /// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
@@ -374,6 +385,17 @@ namespace Pulumi.Gcp.PubSub
         public Input<Inputs.SubscriptionDeadLetterPolicyArgs>? DeadLetterPolicy { get; set; }
 
         /// <summary>
+        /// If `true`, Pub/Sub provides the following guarantees for the delivery
+        /// of a message with a given value of messageId on this Subscriptions':
+        /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+        /// - An acknowledged message will not be resent to a subscriber.
+        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        /// </summary>
+        [Input("enableExactlyOnceDelivery")]
+        public Input<bool>? EnableExactlyOnceDelivery { get; set; }
+
+        /// <summary>
         /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
         /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
         /// may be delivered in any order.
@@ -418,7 +440,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// How long to retain unacknowledged messages in the subscription's
         /// backlog, from the moment a message is published. If
-        /// retainAckedMessages is true, then this also configures the retention
+        /// retain_acked_messages is true, then this also configures the retention
         /// of acknowledged messages, and thus configures how far back in time a
         /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         /// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
@@ -515,6 +537,17 @@ namespace Pulumi.Gcp.PubSub
         public Input<Inputs.SubscriptionDeadLetterPolicyGetArgs>? DeadLetterPolicy { get; set; }
 
         /// <summary>
+        /// If `true`, Pub/Sub provides the following guarantees for the delivery
+        /// of a message with a given value of messageId on this Subscriptions':
+        /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+        /// - An acknowledged message will not be resent to a subscriber.
+        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        /// </summary>
+        [Input("enableExactlyOnceDelivery")]
+        public Input<bool>? EnableExactlyOnceDelivery { get; set; }
+
+        /// <summary>
         /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
         /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
         /// may be delivered in any order.
@@ -559,7 +592,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// How long to retain unacknowledged messages in the subscription's
         /// backlog, from the moment a message is published. If
-        /// retainAckedMessages is true, then this also configures the retention
+        /// retain_acked_messages is true, then this also configures the retention
         /// of acknowledged messages, and thus configures how far back in time a
         /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         /// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).

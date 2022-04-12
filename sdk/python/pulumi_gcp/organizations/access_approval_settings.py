@@ -17,6 +17,7 @@ class AccessApprovalSettingsArgs:
     def __init__(__self__, *,
                  enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]],
                  organization_id: pulumi.Input[str],
+                 active_key_version: Optional[pulumi.Input[str]] = None,
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AccessApprovalSettings resource.
@@ -26,12 +27,16 @@ class AccessApprovalSettingsArgs:
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
         :param pulumi.Input[str] organization_id: ID of the organization of the access approval settings.
+        :param pulumi.Input[str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
+               Empty active_key_version indicates that a Google-managed key should be used for signing.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         """
         pulumi.set(__self__, "enrolled_services", enrolled_services)
         pulumi.set(__self__, "organization_id", organization_id)
+        if active_key_version is not None:
+            pulumi.set(__self__, "active_key_version", active_key_version)
         if notification_emails is not None:
             pulumi.set(__self__, "notification_emails", notification_emails)
 
@@ -64,6 +69,19 @@ class AccessApprovalSettingsArgs:
         pulumi.set(self, "organization_id", value)
 
     @property
+    @pulumi.getter(name="activeKeyVersion")
+    def active_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The asymmetric crypto key version to use for signing approval requests.
+        Empty active_key_version indicates that a Google-managed key should be used for signing.
+        """
+        return pulumi.get(self, "active_key_version")
+
+    @active_key_version.setter
+    def active_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "active_key_version", value)
+
+    @property
     @pulumi.getter(name="notificationEmails")
     def notification_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -81,35 +99,75 @@ class AccessApprovalSettingsArgs:
 @pulumi.input_type
 class _AccessApprovalSettingsState:
     def __init__(__self__, *,
+                 active_key_version: Optional[pulumi.Input[str]] = None,
+                 ancestor_has_active_key_version: Optional[pulumi.Input[bool]] = None,
                  enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
                  enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+                 invalid_key_version: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessApprovalSettings resources.
+        :param pulumi.Input[str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
+               Empty active_key_version indicates that a Google-managed key should be used for signing.
+        :param pulumi.Input[bool] ancestor_has_active_key_version: This field will always be unset for the organization since organizations do not have ancestors.
         :param pulumi.Input[bool] enrolled_ancestor: This field will always be unset for the organization since organizations do not have ancestors.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can be done for individual services.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
+        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+               this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
+               it, etc.).
         :param pulumi.Input[str] name: The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[str] organization_id: ID of the organization of the access approval settings.
         """
+        if active_key_version is not None:
+            pulumi.set(__self__, "active_key_version", active_key_version)
+        if ancestor_has_active_key_version is not None:
+            pulumi.set(__self__, "ancestor_has_active_key_version", ancestor_has_active_key_version)
         if enrolled_ancestor is not None:
             pulumi.set(__self__, "enrolled_ancestor", enrolled_ancestor)
         if enrolled_services is not None:
             pulumi.set(__self__, "enrolled_services", enrolled_services)
+        if invalid_key_version is not None:
+            pulumi.set(__self__, "invalid_key_version", invalid_key_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_emails is not None:
             pulumi.set(__self__, "notification_emails", notification_emails)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
+
+    @property
+    @pulumi.getter(name="activeKeyVersion")
+    def active_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The asymmetric crypto key version to use for signing approval requests.
+        Empty active_key_version indicates that a Google-managed key should be used for signing.
+        """
+        return pulumi.get(self, "active_key_version")
+
+    @active_key_version.setter
+    def active_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "active_key_version", value)
+
+    @property
+    @pulumi.getter(name="ancestorHasActiveKeyVersion")
+    def ancestor_has_active_key_version(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This field will always be unset for the organization since organizations do not have ancestors.
+        """
+        return pulumi.get(self, "ancestor_has_active_key_version")
+
+    @ancestor_has_active_key_version.setter
+    def ancestor_has_active_key_version(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ancestor_has_active_key_version", value)
 
     @property
     @pulumi.getter(name="enrolledAncestor")
@@ -138,6 +196,20 @@ class _AccessApprovalSettingsState:
     @enrolled_services.setter
     def enrolled_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]]):
         pulumi.set(self, "enrolled_services", value)
+
+    @property
+    @pulumi.getter(name="invalidKeyVersion")
+    def invalid_key_version(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+        this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
+        it, etc.).
+        """
+        return pulumi.get(self, "invalid_key_version")
+
+    @invalid_key_version.setter
+    def invalid_key_version(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "invalid_key_version", value)
 
     @property
     @pulumi.getter
@@ -183,6 +255,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_key_version: Optional[pulumi.Input[str]] = None,
                  enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -217,6 +290,38 @@ class AccessApprovalSettings(pulumi.CustomResource):
             ],
             organization_id="123456789")
         ```
+        ### Organization Access Approval Active Key Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="123456789")
+        key_ring = gcp.kms.KeyRing("keyRing",
+            location="global",
+            project=my_project.project_id)
+        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+            key_ring=key_ring.id,
+            purpose="ASYMMETRIC_SIGN",
+            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+                algorithm="EC_SIGN_P384_SHA384",
+            ))
+        service_account = gcp.accessapproval.get_organization_service_account(organization_id="123456789")
+        iam = gcp.kms.CryptoKeyIAMMember("iam",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.signerVerifier",
+            member=f"serviceAccount:{service_account.account_email}")
+        crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
+        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
+            organization_id="123456789",
+            active_key_version=crypto_key_version.name,
+            enrolled_services=[gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
+                cloud_product="all",
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[iam]))
+        ```
 
         ## Import
 
@@ -232,6 +337,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
+               Empty active_key_version indicates that a Google-managed key should be used for signing.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can be done for individual services.
@@ -278,6 +385,38 @@ class AccessApprovalSettings(pulumi.CustomResource):
             ],
             organization_id="123456789")
         ```
+        ### Organization Access Approval Active Key Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="123456789")
+        key_ring = gcp.kms.KeyRing("keyRing",
+            location="global",
+            project=my_project.project_id)
+        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+            key_ring=key_ring.id,
+            purpose="ASYMMETRIC_SIGN",
+            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+                algorithm="EC_SIGN_P384_SHA384",
+            ))
+        service_account = gcp.accessapproval.get_organization_service_account(organization_id="123456789")
+        iam = gcp.kms.CryptoKeyIAMMember("iam",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.signerVerifier",
+            member=f"serviceAccount:{service_account.account_email}")
+        crypto_key_version = gcp.kms.get_kms_crypto_key_version_output(crypto_key=crypto_key.id)
+        organization_access_approval = gcp.organizations.AccessApprovalSettings("organizationAccessApproval",
+            organization_id="123456789",
+            active_key_version=crypto_key_version.name,
+            enrolled_services=[gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
+                cloud_product="all",
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[iam]))
+        ```
 
         ## Import
 
@@ -306,6 +445,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_key_version: Optional[pulumi.Input[str]] = None,
                  enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
                  notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -321,6 +461,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessApprovalSettingsArgs.__new__(AccessApprovalSettingsArgs)
 
+            __props__.__dict__["active_key_version"] = active_key_version
             if enrolled_services is None and not opts.urn:
                 raise TypeError("Missing required property 'enrolled_services'")
             __props__.__dict__["enrolled_services"] = enrolled_services
@@ -328,7 +469,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["ancestor_has_active_key_version"] = None
             __props__.__dict__["enrolled_ancestor"] = None
+            __props__.__dict__["invalid_key_version"] = None
             __props__.__dict__["name"] = None
         super(AccessApprovalSettings, __self__).__init__(
             'gcp:organizations/accessApprovalSettings:AccessApprovalSettings',
@@ -340,8 +483,11 @@ class AccessApprovalSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            active_key_version: Optional[pulumi.Input[str]] = None,
+            ancestor_has_active_key_version: Optional[pulumi.Input[bool]] = None,
             enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
             enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
+            invalid_key_version: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             organization_id: Optional[pulumi.Input[str]] = None) -> 'AccessApprovalSettings':
@@ -352,12 +498,18 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
+               Empty active_key_version indicates that a Google-managed key should be used for signing.
+        :param pulumi.Input[bool] ancestor_has_active_key_version: This field will always be unset for the organization since organizations do not have ancestors.
         :param pulumi.Input[bool] enrolled_ancestor: This field will always be unset for the organization since organizations do not have ancestors.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can be done for individual services.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
+        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+               this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
+               it, etc.).
         :param pulumi.Input[str] name: The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
@@ -368,12 +520,32 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         __props__ = _AccessApprovalSettingsState.__new__(_AccessApprovalSettingsState)
 
+        __props__.__dict__["active_key_version"] = active_key_version
+        __props__.__dict__["ancestor_has_active_key_version"] = ancestor_has_active_key_version
         __props__.__dict__["enrolled_ancestor"] = enrolled_ancestor
         __props__.__dict__["enrolled_services"] = enrolled_services
+        __props__.__dict__["invalid_key_version"] = invalid_key_version
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_emails"] = notification_emails
         __props__.__dict__["organization_id"] = organization_id
         return AccessApprovalSettings(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="activeKeyVersion")
+    def active_key_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The asymmetric crypto key version to use for signing approval requests.
+        Empty active_key_version indicates that a Google-managed key should be used for signing.
+        """
+        return pulumi.get(self, "active_key_version")
+
+    @property
+    @pulumi.getter(name="ancestorHasActiveKeyVersion")
+    def ancestor_has_active_key_version(self) -> pulumi.Output[bool]:
+        """
+        This field will always be unset for the organization since organizations do not have ancestors.
+        """
+        return pulumi.get(self, "ancestor_has_active_key_version")
 
     @property
     @pulumi.getter(name="enrolledAncestor")
@@ -394,6 +566,16 @@ class AccessApprovalSettings(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "enrolled_services")
+
+    @property
+    @pulumi.getter(name="invalidKeyVersion")
+    def invalid_key_version(self) -> pulumi.Output[bool]:
+        """
+        If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+        this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
+        it, etc.).
+        """
+        return pulumi.get(self, "invalid_key_version")
 
     @property
     @pulumi.getter

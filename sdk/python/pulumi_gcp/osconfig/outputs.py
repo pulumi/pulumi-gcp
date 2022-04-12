@@ -4656,7 +4656,9 @@ class PatchDeploymentPatchConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "postStep":
+        if key == "migInstancesAllowed":
+            suggest = "mig_instances_allowed"
+        elif key == "postStep":
             suggest = "post_step"
         elif key == "preStep":
             suggest = "pre_step"
@@ -4679,6 +4681,7 @@ class PatchDeploymentPatchConfig(dict):
     def __init__(__self__, *,
                  apt: Optional['outputs.PatchDeploymentPatchConfigApt'] = None,
                  goo: Optional['outputs.PatchDeploymentPatchConfigGoo'] = None,
+                 mig_instances_allowed: Optional[bool] = None,
                  post_step: Optional['outputs.PatchDeploymentPatchConfigPostStep'] = None,
                  pre_step: Optional['outputs.PatchDeploymentPatchConfigPreStep'] = None,
                  reboot_config: Optional[str] = None,
@@ -4690,6 +4693,7 @@ class PatchDeploymentPatchConfig(dict):
                Structure is documented below.
         :param 'PatchDeploymentPatchConfigGooArgs' goo: goo update settings. Use this setting to override the default goo patch rules.
                Structure is documented below.
+        :param bool mig_instances_allowed: Allows the patch job to run on Managed instance groups (MIGs).
         :param 'PatchDeploymentPatchConfigPostStepArgs' post_step: The ExecStep to run after the patch update.
                Structure is documented below.
         :param 'PatchDeploymentPatchConfigPreStepArgs' pre_step: The ExecStep to run before the patch update.
@@ -4707,6 +4711,8 @@ class PatchDeploymentPatchConfig(dict):
             pulumi.set(__self__, "apt", apt)
         if goo is not None:
             pulumi.set(__self__, "goo", goo)
+        if mig_instances_allowed is not None:
+            pulumi.set(__self__, "mig_instances_allowed", mig_instances_allowed)
         if post_step is not None:
             pulumi.set(__self__, "post_step", post_step)
         if pre_step is not None:
@@ -4737,6 +4743,14 @@ class PatchDeploymentPatchConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "goo")
+
+    @property
+    @pulumi.getter(name="migInstancesAllowed")
+    def mig_instances_allowed(self) -> Optional[bool]:
+        """
+        Allows the patch job to run on Managed instance groups (MIGs).
+        """
+        return pulumi.get(self, "mig_instances_allowed")
 
     @property
     @pulumi.getter(name="postStep")

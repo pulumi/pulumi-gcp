@@ -9,6 +9,9 @@ export * from "./accessLevel";
 export * from "./accessLevelCondition";
 export * from "./accessLevels";
 export * from "./accessPolicy";
+export * from "./accessPolicyIamBinding";
+export * from "./accessPolicyIamMember";
+export * from "./accessPolicyIamPolicy";
 export * from "./gcpUserAccessBinding";
 export * from "./servicePerimeter";
 export * from "./servicePerimeterResource";
@@ -19,6 +22,9 @@ import { AccessLevel } from "./accessLevel";
 import { AccessLevelCondition } from "./accessLevelCondition";
 import { AccessLevels } from "./accessLevels";
 import { AccessPolicy } from "./accessPolicy";
+import { AccessPolicyIamBinding } from "./accessPolicyIamBinding";
+import { AccessPolicyIamMember } from "./accessPolicyIamMember";
+import { AccessPolicyIamPolicy } from "./accessPolicyIamPolicy";
 import { GcpUserAccessBinding } from "./gcpUserAccessBinding";
 import { ServicePerimeter } from "./servicePerimeter";
 import { ServicePerimeterResource } from "./servicePerimeterResource";
@@ -36,6 +42,12 @@ const _module = {
                 return new AccessLevels(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/accessPolicy:AccessPolicy":
                 return new AccessPolicy(name, <any>undefined, { urn })
+            case "gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding":
+                return new AccessPolicyIamBinding(name, <any>undefined, { urn })
+            case "gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember":
+                return new AccessPolicyIamMember(name, <any>undefined, { urn })
+            case "gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy":
+                return new AccessPolicyIamPolicy(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding":
                 return new GcpUserAccessBinding(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter":
@@ -53,6 +65,9 @@ pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessLevel",
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessLevelCondition", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessLevels", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessPolicyIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessPolicyIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessPolicyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/gcpUserAccessBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/servicePerimeter", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/servicePerimeterResource", _module)

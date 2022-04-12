@@ -191,6 +191,9 @@ func GetGooglePartnerName(ctx *pulumi.Context) string {
 func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:healthcareCustomEndpoint")
 }
+func GetIam2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:iam2CustomEndpoint")
+}
 func GetIamBetaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iamBetaCustomEndpoint")
 }

@@ -487,6 +487,164 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// }
     /// ```
+    /// ### Eventarc Basic Tf
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var projectProject = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         // Enable Cloud Run API
+    ///         var run = new Gcp.Projects.Service("run", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Service = "run.googleapis.com",
+    ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // Enable Eventarc API
+    ///         var eventarc = new Gcp.Projects.Service("eventarc", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Service = "eventarc.googleapis.com",
+    ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // Deploy Cloud Run service
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-east1",
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     LatestRevision = true,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 run,
+    ///             },
+    ///         });
+    ///         // Make Cloud Run service publicly accessible
+    ///         var allUsers = new Gcp.CloudRun.IamMember("allUsers", new Gcp.CloudRun.IamMemberArgs
+    ///         {
+    ///             Service = @default.Name,
+    ///             Location = @default.Location,
+    ///             Role = "roles/run.invoker",
+    ///             Member = "allUsers",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // Create a Pub/Sub trigger
+    ///         var trigger_pubsub_tf = new Gcp.Eventarc.Trigger("trigger-pubsub-tf", new Gcp.Eventarc.TriggerArgs
+    ///         {
+    ///             Location = @default.Location,
+    ///             MatchingCriterias = 
+    ///             {
+    ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
+    ///                 {
+    ///                     Attribute = "type",
+    ///                     Value = "google.cloud.pubsub.topic.v1.messagePublished",
+    ///                 },
+    ///             },
+    ///             Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
+    ///             {
+    ///                 CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
+    ///                 {
+    ///                     Service = @default.Name,
+    ///                     Region = @default.Location,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 eventarc,
+    ///             },
+    ///         });
+    ///         // Give default Compute service account eventarc.eventReceiver role
+    ///         var projectIAMBinding = new Gcp.Projects.IAMBinding("projectIAMBinding", new Gcp.Projects.IAMBindingArgs
+    ///         {
+    ///             Project = projectProject.Apply(projectProject =&gt; projectProject.Id),
+    ///             Role = "roles/eventarc.eventReceiver",
+    ///             Members = 
+    ///             {
+    ///                 projectProject.Apply(projectProject =&gt; $"serviceAccount:{projectProject.Number}-compute@developer.gserviceaccount.com"),
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         // Create an AuditLog for Cloud Storage trigger
+    ///         var trigger_auditlog_tf = new Gcp.Eventarc.Trigger("trigger-auditlog-tf", new Gcp.Eventarc.TriggerArgs
+    ///         {
+    ///             Location = @default.Location,
+    ///             Project = projectProject.Apply(projectProject =&gt; projectProject.Id),
+    ///             MatchingCriterias = 
+    ///             {
+    ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
+    ///                 {
+    ///                     Attribute = "type",
+    ///                     Value = "google.cloud.audit.log.v1.written",
+    ///                 },
+    ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
+    ///                 {
+    ///                     Attribute = "serviceName",
+    ///                     Value = "storage.googleapis.com",
+    ///                 },
+    ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
+    ///                 {
+    ///                     Attribute = "methodName",
+    ///                     Value = "storage.objects.create",
+    ///                 },
+    ///             },
+    ///             Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
+    ///             {
+    ///                 CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
+    ///                 {
+    ///                     Service = @default.Name,
+    ///                     Region = @default.Location,
+    ///                 },
+    ///             },
+    ///             ServiceAccount = projectProject.Apply(projectProject =&gt; $"{projectProject.Number}-compute@developer.gserviceaccount.com"),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 eventarc,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

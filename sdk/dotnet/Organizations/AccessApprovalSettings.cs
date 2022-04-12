@@ -52,6 +52,71 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// }
     /// ```
+    /// ### Organization Access Approval Active Key Version
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "your-project-id",
+    ///             OrgId = "123456789",
+    ///         });
+    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "global",
+    ///             Project = myProject.ProjectId,
+    ///         });
+    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyRing.Id,
+    ///             Purpose = "ASYMMETRIC_SIGN",
+    ///             VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///             {
+    ///                 Algorithm = "EC_SIGN_P384_SHA384",
+    ///             },
+    ///         });
+    ///         var serviceAccount = Output.Create(Gcp.AccessApproval.GetOrganizationServiceAccount.InvokeAsync(new Gcp.AccessApproval.GetOrganizationServiceAccountArgs
+    ///         {
+    ///             OrganizationId = "123456789",
+    ///         }));
+    ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
+    ///         {
+    ///             CryptoKeyId = cryptoKey.Id,
+    ///             Role = "roles/cloudkms.signerVerifier",
+    ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
+    ///         });
+    ///         var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new Gcp.Kms.GetKMSCryptoKeyVersionInvokeArgs
+    ///         {
+    ///             CryptoKey = cryptoKey.Id,
+    ///         });
+    ///         var organizationAccessApproval = new Gcp.Organizations.AccessApprovalSettings("organizationAccessApproval", new Gcp.Organizations.AccessApprovalSettingsArgs
+    ///         {
+    ///             OrganizationId = "123456789",
+    ///             ActiveKeyVersion = cryptoKeyVersion.Apply(cryptoKeyVersion =&gt; cryptoKeyVersion.Name),
+    ///             EnrolledServices = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///                 {
+    ///                     CloudProduct = "all",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 iam,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -69,6 +134,19 @@ namespace Pulumi.Gcp.Organizations
     public partial class AccessApprovalSettings : Pulumi.CustomResource
     {
         /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// </summary>
+        [Output("activeKeyVersion")]
+        public Output<string?> ActiveKeyVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// This field will always be unset for the organization since organizations do not have ancestors.
+        /// </summary>
+        [Output("ancestorHasActiveKeyVersion")]
+        public Output<bool> AncestorHasActiveKeyVersion { get; private set; } = null!;
+
+        /// <summary>
         /// This field will always be unset for the organization since organizations do not have ancestors.
         /// </summary>
         [Output("enrolledAncestor")]
@@ -83,6 +161,14 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Output("enrolledServices")]
         public Output<ImmutableArray<Outputs.AccessApprovalSettingsEnrolledService>> EnrolledServices { get; private set; } = null!;
+
+        /// <summary>
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+        /// this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
+        /// it, etc.).
+        /// </summary>
+        [Output("invalidKeyVersion")]
+        public Output<bool> InvalidKeyVersion { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
@@ -150,6 +236,13 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class AccessApprovalSettingsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// </summary>
+        [Input("activeKeyVersion")]
+        public Input<string>? ActiveKeyVersion { get; set; }
+
         [Input("enrolledServices", required: true)]
         private InputList<Inputs.AccessApprovalSettingsEnrolledServiceArgs>? _enrolledServices;
 
@@ -194,6 +287,19 @@ namespace Pulumi.Gcp.Organizations
     public sealed class AccessApprovalSettingsState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// </summary>
+        [Input("activeKeyVersion")]
+        public Input<string>? ActiveKeyVersion { get; set; }
+
+        /// <summary>
+        /// This field will always be unset for the organization since organizations do not have ancestors.
+        /// </summary>
+        [Input("ancestorHasActiveKeyVersion")]
+        public Input<bool>? AncestorHasActiveKeyVersion { get; set; }
+
+        /// <summary>
         /// This field will always be unset for the organization since organizations do not have ancestors.
         /// </summary>
         [Input("enrolledAncestor")]
@@ -214,6 +320,14 @@ namespace Pulumi.Gcp.Organizations
             get => _enrolledServices ?? (_enrolledServices = new InputList<Inputs.AccessApprovalSettingsEnrolledServiceGetArgs>());
             set => _enrolledServices = value;
         }
+
+        /// <summary>
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+        /// this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
+        /// it, etc.).
+        /// </summary>
+        [Input("invalidKeyVersion")]
+        public Input<bool>? InvalidKeyVersion { get; set; }
 
         /// <summary>
         /// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"

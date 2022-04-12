@@ -7,14 +7,231 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'DenyPolicyRule',
+    'DenyPolicyRuleDenyRule',
+    'DenyPolicyRuleDenyRuleDenialCondition',
     'WorkloadIdentityPoolProviderAws',
     'WorkloadIdentityPoolProviderOidc',
     'GetTestablePermissionsPermissionResult',
     'GetWorkloadIdentityPoolProviderAwResult',
     'GetWorkloadIdentityPoolProviderOidcResult',
 ]
+
+@pulumi.output_type
+class DenyPolicyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "denyRule":
+            suggest = "deny_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DenyPolicyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DenyPolicyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DenyPolicyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deny_rule: Optional['outputs.DenyPolicyRuleDenyRule'] = None,
+                 description: Optional[str] = None):
+        """
+        :param 'DenyPolicyRuleDenyRuleArgs' deny_rule: A deny rule in an IAM deny policy.
+               Structure is documented below.
+        :param str description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        """
+        if deny_rule is not None:
+            pulumi.set(__self__, "deny_rule", deny_rule)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="denyRule")
+    def deny_rule(self) -> Optional['outputs.DenyPolicyRuleDenyRule']:
+        """
+        A deny rule in an IAM deny policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deny_rule")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class DenyPolicyRuleDenyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "denialCondition":
+            suggest = "denial_condition"
+        elif key == "deniedPermissions":
+            suggest = "denied_permissions"
+        elif key == "deniedPrincipals":
+            suggest = "denied_principals"
+        elif key == "exceptionPermissions":
+            suggest = "exception_permissions"
+        elif key == "exceptionPrincipals":
+            suggest = "exception_principals"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DenyPolicyRuleDenyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DenyPolicyRuleDenyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DenyPolicyRuleDenyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 denial_condition: 'outputs.DenyPolicyRuleDenyRuleDenialCondition',
+                 denied_permissions: Optional[Sequence[str]] = None,
+                 denied_principals: Optional[Sequence[str]] = None,
+                 exception_permissions: Optional[Sequence[str]] = None,
+                 exception_principals: Optional[Sequence[str]] = None):
+        """
+        :param 'DenyPolicyRuleDenyRuleDenialConditionArgs' denial_condition: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+               Structure is documented below.
+        :param Sequence[str] denied_permissions: The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+               where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+        :param Sequence[str] denied_principals: The identities that are prevented from using one or more permissions on Google Cloud resources.
+        :param Sequence[str] exception_permissions: Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+               If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+               The excluded permissions can be specified using the same syntax as deniedPermissions.
+        :param Sequence[str] exception_principals: The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+               For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+        """
+        pulumi.set(__self__, "denial_condition", denial_condition)
+        if denied_permissions is not None:
+            pulumi.set(__self__, "denied_permissions", denied_permissions)
+        if denied_principals is not None:
+            pulumi.set(__self__, "denied_principals", denied_principals)
+        if exception_permissions is not None:
+            pulumi.set(__self__, "exception_permissions", exception_permissions)
+        if exception_principals is not None:
+            pulumi.set(__self__, "exception_principals", exception_principals)
+
+    @property
+    @pulumi.getter(name="denialCondition")
+    def denial_condition(self) -> 'outputs.DenyPolicyRuleDenyRuleDenialCondition':
+        """
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "denial_condition")
+
+    @property
+    @pulumi.getter(name="deniedPermissions")
+    def denied_permissions(self) -> Optional[Sequence[str]]:
+        """
+        The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+        where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+        """
+        return pulumi.get(self, "denied_permissions")
+
+    @property
+    @pulumi.getter(name="deniedPrincipals")
+    def denied_principals(self) -> Optional[Sequence[str]]:
+        """
+        The identities that are prevented from using one or more permissions on Google Cloud resources.
+        """
+        return pulumi.get(self, "denied_principals")
+
+    @property
+    @pulumi.getter(name="exceptionPermissions")
+    def exception_permissions(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+        If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+        The excluded permissions can be specified using the same syntax as deniedPermissions.
+        """
+        return pulumi.get(self, "exception_permissions")
+
+    @property
+    @pulumi.getter(name="exceptionPrincipals")
+    def exception_principals(self) -> Optional[Sequence[str]]:
+        """
+        The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+        For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+        """
+        return pulumi.get(self, "exception_principals")
+
+
+@pulumi.output_type
+class DenyPolicyRuleDenyRuleDenialCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 description: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        :param str location: String indicating the location of the expression for error reporting,
+               e.g. a file name and a position in the file.
+        :param str title: Title for the expression, i.e. a short string describing its purpose.
+               This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        String indicating the location of the expression for error reporting,
+        e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
 
 @pulumi.output_type
 class WorkloadIdentityPoolProviderAws(dict):

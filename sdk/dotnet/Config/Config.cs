@@ -459,6 +459,13 @@ namespace Pulumi.Gcp
             set => _healthcareCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _iam2CustomEndpoint = new __Value<string?>(() => __config.Get("iam2CustomEndpoint"));
+        public static string? Iam2CustomEndpoint
+        {
+            get => _iam2CustomEndpoint.Get();
+            set => _iam2CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _iamBetaCustomEndpoint = new __Value<string?>(() => __config.Get("iamBetaCustomEndpoint"));
         public static string? IamBetaCustomEndpoint
         {

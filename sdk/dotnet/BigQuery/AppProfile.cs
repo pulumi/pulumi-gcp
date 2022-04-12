@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.BigQuery
     /// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
     /// 
     /// ## Example Usage
-    /// ### Bigtable App Profile Multicluster
+    /// ### Bigtable App Profile Anycluster
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,8 +33,22 @@ namespace Pulumi.Gcp.BigQuery
     ///             {
     ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///                 {
-    ///                     ClusterId = "bt-instance",
+    ///                     ClusterId = "cluster-1",
+    ///                     Zone = "us-central1-a",
+    ///                     NumNodes = 3,
+    ///                     StorageType = "HDD",
+    ///                 },
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "cluster-2",
     ///                     Zone = "us-central1-b",
+    ///                     NumNodes = 3,
+    ///                     StorageType = "HDD",
+    ///                 },
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "cluster-3",
+    ///                     Zone = "us-central1-c",
     ///                     NumNodes = 3,
     ///                     StorageType = "HDD",
     ///                 },
@@ -68,7 +82,7 @@ namespace Pulumi.Gcp.BigQuery
     ///             {
     ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///                 {
-    ///                     ClusterId = "bt-instance",
+    ///                     ClusterId = "cluster-1",
     ///                     Zone = "us-central1-b",
     ///                     NumNodes = 3,
     ///                     StorageType = "HDD",
@@ -82,8 +96,62 @@ namespace Pulumi.Gcp.BigQuery
     ///             AppProfileId = "bt-profile",
     ///             SingleClusterRouting = new Gcp.BigQuery.Inputs.AppProfileSingleClusterRoutingArgs
     ///             {
-    ///                 ClusterId = "bt-instance",
+    ///                 ClusterId = "cluster-1",
     ///                 AllowTransactionalWrites = true,
+    ///             },
+    ///             IgnoreWarnings = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Bigtable App Profile Multicluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         {
+    ///             Clusters = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "cluster-1",
+    ///                     Zone = "us-central1-a",
+    ///                     NumNodes = 3,
+    ///                     StorageType = "HDD",
+    ///                 },
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "cluster-2",
+    ///                     Zone = "us-central1-b",
+    ///                     NumNodes = 3,
+    ///                     StorageType = "HDD",
+    ///                 },
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "cluster-3",
+    ///                     Zone = "us-central1-c",
+    ///                     NumNodes = 3,
+    ///                     StorageType = "HDD",
+    ///                 },
+    ///             },
+    ///             DeletionProtection = true,
+    ///         });
+    ///         var ap = new Gcp.BigQuery.AppProfile("ap", new Gcp.BigQuery.AppProfileArgs
+    ///         {
+    ///             Instance = instance.Name,
+    ///             AppProfileId = "bt-profile",
+    ///             MultiClusterRoutingUseAny = true,
+    ///             MultiClusterRoutingClusterIds = 
+    ///             {
+    ///                 "cluster-1",
+    ///                 "cluster-2",
     ///             },
     ///             IgnoreWarnings = true,
     ///         });

@@ -167,6 +167,7 @@ import * as utilities from "../utilities";
  *         goo: {
  *             enabled: true,
  *         },
+ *         migInstancesAllowed: true,
  *         postStep: {
  *             linuxExecStepConfig: {
  *                 gcsObject: {
