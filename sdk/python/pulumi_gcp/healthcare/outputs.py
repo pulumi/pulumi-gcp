@@ -552,11 +552,13 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
                value 2. The maximum depth allowed is 5.
-        :param str schema_type: Specifies the output schema type. Only ANALYTICS is supported at this time.
+        :param str schema_type: Specifies the output schema type.
                * ANALYTICS: Analytics schema defined by the FHIR community.
                See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+               * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+               * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
                Default value is `ANALYTICS`.
-               Possible values are `ANALYTICS`.
+               Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
         """
         pulumi.set(__self__, "recursive_structure_depth", recursive_structure_depth)
         if schema_type is not None:
@@ -577,11 +579,13 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> Optional[str]:
         """
-        Specifies the output schema type. Only ANALYTICS is supported at this time.
+        Specifies the output schema type.
         * ANALYTICS: Analytics schema defined by the FHIR community.
         See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+        * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+        * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
         Default value is `ANALYTICS`.
-        Possible values are `ANALYTICS`.
+        Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
         """
         return pulumi.get(self, "schema_type")
 
@@ -792,7 +796,7 @@ class Hl7StoreParserConfig(dict):
                A base64-encoded string.
         :param str version: The version of the unschematized parser to be used when a custom `schema` is not set.
                Default value is `V1`.
-               Possible values are `V1` and `V2`.
+               Possible values are `V1`, `V2`, and `V3`.
         """
         if allow_null_header is not None:
             pulumi.set(__self__, "allow_null_header", allow_null_header)
@@ -835,7 +839,7 @@ class Hl7StoreParserConfig(dict):
         """
         The version of the unschematized parser to be used when a custom `schema` is not set.
         Default value is `V1`.
-        Possible values are `V1` and `V2`.
+        Possible values are `V1`, `V2`, and `V3`.
         """
         return pulumi.get(self, "version")
 

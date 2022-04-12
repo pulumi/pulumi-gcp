@@ -626,6 +626,95 @@ class Service(pulumi.CustomResource):
             autogenerate_revision_name=True,
             opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         ```
+        ### Eventarc Basic Tf
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project_project = gcp.organizations.get_project()
+        # Enable Cloud Run API
+        run = gcp.projects.Service("run",
+            service="run.googleapis.com",
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Enable Eventarc API
+        eventarc = gcp.projects.Service("eventarc",
+            service="eventarc.googleapis.com",
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Deploy Cloud Run service
+        default = gcp.cloudrun.Service("default",
+            location="us-east1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[run]))
+        # Make Cloud Run service publicly accessible
+        all_users = gcp.cloudrun.IamMember("allUsers",
+            service=default.name,
+            location=default.location,
+            role="roles/run.invoker",
+            member="allUsers",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Create a Pub/Sub trigger
+        trigger_pubsub_tf = gcp.eventarc.Trigger("trigger-pubsub-tf",
+            location=default.location,
+            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
+                attribute="type",
+                value="google.cloud.pubsub.topic.v1.messagePublished",
+            )],
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region=default.location,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[eventarc]))
+        # Give default Compute service account eventarc.eventReceiver role
+        project_iam_binding = gcp.projects.IAMBinding("projectIAMBinding",
+            project=project_project.id,
+            role="roles/eventarc.eventReceiver",
+            members=[f"serviceAccount:{project_project.number}-compute@developer.gserviceaccount.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Create an AuditLog for Cloud Storage trigger
+        trigger_auditlog_tf = gcp.eventarc.Trigger("trigger-auditlog-tf",
+            location=default.location,
+            project=project_project.id,
+            matching_criterias=[
+                gcp.eventarc.TriggerMatchingCriteriaArgs(
+                    attribute="type",
+                    value="google.cloud.audit.log.v1.written",
+                ),
+                gcp.eventarc.TriggerMatchingCriteriaArgs(
+                    attribute="serviceName",
+                    value="storage.googleapis.com",
+                ),
+                gcp.eventarc.TriggerMatchingCriteriaArgs(
+                    attribute="methodName",
+                    value="storage.objects.create",
+                ),
+            ],
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region=default.location,
+                ),
+            ),
+            service_account=f"{project_project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[eventarc]))
+        ```
 
         ## Import
 
@@ -950,6 +1039,95 @@ class Service(pulumi.CustomResource):
             )],
             autogenerate_revision_name=True,
             opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
+        ```
+        ### Eventarc Basic Tf
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project_project = gcp.organizations.get_project()
+        # Enable Cloud Run API
+        run = gcp.projects.Service("run",
+            service="run.googleapis.com",
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Enable Eventarc API
+        eventarc = gcp.projects.Service("eventarc",
+            service="eventarc.googleapis.com",
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Deploy Cloud Run service
+        default = gcp.cloudrun.Service("default",
+            location="us-east1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[run]))
+        # Make Cloud Run service publicly accessible
+        all_users = gcp.cloudrun.IamMember("allUsers",
+            service=default.name,
+            location=default.location,
+            role="roles/run.invoker",
+            member="allUsers",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Create a Pub/Sub trigger
+        trigger_pubsub_tf = gcp.eventarc.Trigger("trigger-pubsub-tf",
+            location=default.location,
+            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
+                attribute="type",
+                value="google.cloud.pubsub.topic.v1.messagePublished",
+            )],
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region=default.location,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[eventarc]))
+        # Give default Compute service account eventarc.eventReceiver role
+        project_iam_binding = gcp.projects.IAMBinding("projectIAMBinding",
+            project=project_project.id,
+            role="roles/eventarc.eventReceiver",
+            members=[f"serviceAccount:{project_project.number}-compute@developer.gserviceaccount.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        # Create an AuditLog for Cloud Storage trigger
+        trigger_auditlog_tf = gcp.eventarc.Trigger("trigger-auditlog-tf",
+            location=default.location,
+            project=project_project.id,
+            matching_criterias=[
+                gcp.eventarc.TriggerMatchingCriteriaArgs(
+                    attribute="type",
+                    value="google.cloud.audit.log.v1.written",
+                ),
+                gcp.eventarc.TriggerMatchingCriteriaArgs(
+                    attribute="serviceName",
+                    value="storage.googleapis.com",
+                ),
+                gcp.eventarc.TriggerMatchingCriteriaArgs(
+                    attribute="methodName",
+                    value="storage.objects.create",
+                ),
+            ],
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region=default.location,
+                ),
+            ),
+            service_account=f"{project_project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[eventarc]))
         ```
 
         ## Import

@@ -76,6 +76,7 @@ type Provider struct {
 	GkehubFeatureCustomEndpoint        pulumi.StringPtrOutput `pulumi:"gkehubFeatureCustomEndpoint"`
 	GooglePartnerName                  pulumi.StringPtrOutput `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint           pulumi.StringPtrOutput `pulumi:"healthcareCustomEndpoint"`
+	Iam2CustomEndpoint                 pulumi.StringPtrOutput `pulumi:"iam2CustomEndpoint"`
 	IamBetaCustomEndpoint              pulumi.StringPtrOutput `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"iamCredentialsCustomEndpoint"`
 	IamCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"iamCustomEndpoint"`
@@ -213,6 +214,7 @@ type providerArgs struct {
 	GkehubFeatureCustomEndpoint        *string           `pulumi:"gkehubFeatureCustomEndpoint"`
 	GooglePartnerName                  *string           `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint           *string           `pulumi:"healthcareCustomEndpoint"`
+	Iam2CustomEndpoint                 *string           `pulumi:"iam2CustomEndpoint"`
 	IamBetaCustomEndpoint              *string           `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       *string           `pulumi:"iamCredentialsCustomEndpoint"`
 	IamCustomEndpoint                  *string           `pulumi:"iamCustomEndpoint"`
@@ -330,6 +332,7 @@ type ProviderArgs struct {
 	GkehubFeatureCustomEndpoint        pulumi.StringPtrInput
 	GooglePartnerName                  pulumi.StringPtrInput
 	HealthcareCustomEndpoint           pulumi.StringPtrInput
+	Iam2CustomEndpoint                 pulumi.StringPtrInput
 	IamBetaCustomEndpoint              pulumi.StringPtrInput
 	IamCredentialsCustomEndpoint       pulumi.StringPtrInput
 	IamCustomEndpoint                  pulumi.StringPtrInput

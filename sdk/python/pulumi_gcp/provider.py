@@ -75,6 +75,7 @@ class ProviderArgs:
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -252,6 +253,8 @@ class ProviderArgs:
             pulumi.set(__self__, "google_partner_name", google_partner_name)
         if healthcare_custom_endpoint is not None:
             pulumi.set(__self__, "healthcare_custom_endpoint", healthcare_custom_endpoint)
+        if iam2_custom_endpoint is not None:
+            pulumi.set(__self__, "iam2_custom_endpoint", iam2_custom_endpoint)
         if iam_beta_custom_endpoint is not None:
             pulumi.set(__self__, "iam_beta_custom_endpoint", iam_beta_custom_endpoint)
         if iam_credentials_custom_endpoint is not None:
@@ -913,6 +916,15 @@ class ProviderArgs:
         pulumi.set(self, "healthcare_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="iam2CustomEndpoint")
+    def iam2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iam2_custom_endpoint")
+
+    @iam2_custom_endpoint.setter
+    def iam2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam2_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="iamBetaCustomEndpoint")
     def iam_beta_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "iam_beta_custom_endpoint")
@@ -1447,6 +1459,7 @@ class Provider(pulumi.ProviderResource):
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1597,6 +1610,7 @@ class Provider(pulumi.ProviderResource):
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1722,6 +1736,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["gkehub_feature_custom_endpoint"] = gkehub_feature_custom_endpoint
             __props__.__dict__["google_partner_name"] = google_partner_name
             __props__.__dict__["healthcare_custom_endpoint"] = healthcare_custom_endpoint
+            __props__.__dict__["iam2_custom_endpoint"] = iam2_custom_endpoint
             __props__.__dict__["iam_beta_custom_endpoint"] = iam_beta_custom_endpoint
             __props__.__dict__["iam_credentials_custom_endpoint"] = iam_credentials_custom_endpoint
             __props__.__dict__["iam_custom_endpoint"] = iam_custom_endpoint
@@ -2080,6 +2095,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="healthcareCustomEndpoint")
     def healthcare_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "healthcare_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="iam2CustomEndpoint")
+    def iam2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "iam2_custom_endpoint")
 
     @property
     @pulumi.getter(name="iamBetaCustomEndpoint")

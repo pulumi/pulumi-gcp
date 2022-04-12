@@ -5630,7 +5630,7 @@ type JobHadoopConfig struct {
 	MainClass *string `pulumi:"mainClass"`
 	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `mainClass`
 	MainJarFileUri *string `pulumi:"mainJarFileUri"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -5659,7 +5659,7 @@ type JobHadoopConfigArgs struct {
 	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
 	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `mainClass`
 	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
@@ -5774,7 +5774,7 @@ func (o JobHadoopConfigOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobHadoopConfig) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobHadoopConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobHadoopConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -5872,7 +5872,7 @@ func (o JobHadoopConfigPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobHadoopConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobHadoopConfig) map[string]string {
 		if v == nil {
@@ -6016,11 +6016,11 @@ func (o JobHadoopConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMa
 }
 
 type JobHiveConfig struct {
-	// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+	// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
 	ContinueOnFailure *bool `pulumi:"continueOnFailure"`
 	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris []string `pulumi:"jarFileUris"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	// Conflicts with `queryList`
@@ -6044,11 +6044,11 @@ type JobHiveConfigInput interface {
 }
 
 type JobHiveConfigArgs struct {
-	// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+	// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
 	ContinueOnFailure pulumi.BoolPtrInput `pulumi:"continueOnFailure"`
 	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	// Conflicts with `queryList`
@@ -6137,7 +6137,7 @@ func (o JobHiveConfigOutput) ToJobHiveConfigPtrOutputWithContext(ctx context.Con
 	}).(JobHiveConfigPtrOutput)
 }
 
-// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
 func (o JobHiveConfigOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobHiveConfig) *bool { return v.ContinueOnFailure }).(pulumi.BoolPtrOutput)
 }
@@ -6147,7 +6147,7 @@ func (o JobHiveConfigOutput) JarFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobHiveConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobHiveConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobHiveConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -6193,7 +6193,7 @@ func (o JobHiveConfigPtrOutput) Elem() JobHiveConfigOutput {
 	}).(JobHiveConfigOutput)
 }
 
-// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
 func (o JobHiveConfigPtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobHiveConfig) *bool {
 		if v == nil {
@@ -6213,7 +6213,7 @@ func (o JobHiveConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobHiveConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobHiveConfig) map[string]string {
 		if v == nil {
@@ -6582,12 +6582,12 @@ func (o JobIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type JobPigConfig struct {
-	// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+	// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
 	ContinueOnFailure *bool `pulumi:"continueOnFailure"`
 	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris   []string                   `pulumi:"jarFileUris"`
 	LoggingConfig *JobPigConfigLoggingConfig `pulumi:"loggingConfig"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	// Conflicts with `queryList`
@@ -6611,12 +6611,12 @@ type JobPigConfigInput interface {
 }
 
 type JobPigConfigArgs struct {
-	// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+	// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
 	ContinueOnFailure pulumi.BoolPtrInput `pulumi:"continueOnFailure"`
 	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris   pulumi.StringArrayInput           `pulumi:"jarFileUris"`
 	LoggingConfig JobPigConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	// Conflicts with `queryList`
@@ -6705,7 +6705,7 @@ func (o JobPigConfigOutput) ToJobPigConfigPtrOutputWithContext(ctx context.Conte
 	}).(JobPigConfigPtrOutput)
 }
 
-// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
 func (o JobPigConfigOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobPigConfig) *bool { return v.ContinueOnFailure }).(pulumi.BoolPtrOutput)
 }
@@ -6719,7 +6719,7 @@ func (o JobPigConfigOutput) LoggingConfig() JobPigConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v JobPigConfig) *JobPigConfigLoggingConfig { return v.LoggingConfig }).(JobPigConfigLoggingConfigPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobPigConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPigConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -6765,7 +6765,7 @@ func (o JobPigConfigPtrOutput) Elem() JobPigConfigOutput {
 	}).(JobPigConfigOutput)
 }
 
-// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
 func (o JobPigConfigPtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobPigConfig) *bool {
 		if v == nil {
@@ -6794,7 +6794,7 @@ func (o JobPigConfigPtrOutput) LoggingConfig() JobPigConfigLoggingConfigPtrOutpu
 	}).(JobPigConfigLoggingConfigPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobPigConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobPigConfig) map[string]string {
 		if v == nil {
@@ -7117,6 +7117,394 @@ func (o JobPlacementPtrOutput) ClusterUuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobPrestoConfig struct {
+	// Presto client tags to attach to this query.
+	ClientTags []string `pulumi:"clientTags"`
+	// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+	ContinueOnFailure *bool                         `pulumi:"continueOnFailure"`
+	LoggingConfig     *JobPrestoConfigLoggingConfig `pulumi:"loggingConfig"`
+	// The format in which query output will be displayed. See the Presto documentation for supported output formats.
+	OutputFormat *string `pulumi:"outputFormat"`
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	// Conflicts with `queryList`
+	QueryFileUri *string `pulumi:"queryFileUri"`
+	// The list of SQL queries or statements to execute as part of the job.
+	// Conflicts with `queryFileUri`
+	QueryLists []string `pulumi:"queryLists"`
+}
+
+// JobPrestoConfigInput is an input type that accepts JobPrestoConfigArgs and JobPrestoConfigOutput values.
+// You can construct a concrete instance of `JobPrestoConfigInput` via:
+//
+//          JobPrestoConfigArgs{...}
+type JobPrestoConfigInput interface {
+	pulumi.Input
+
+	ToJobPrestoConfigOutput() JobPrestoConfigOutput
+	ToJobPrestoConfigOutputWithContext(context.Context) JobPrestoConfigOutput
+}
+
+type JobPrestoConfigArgs struct {
+	// Presto client tags to attach to this query.
+	ClientTags pulumi.StringArrayInput `pulumi:"clientTags"`
+	// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+	ContinueOnFailure pulumi.BoolPtrInput                  `pulumi:"continueOnFailure"`
+	LoggingConfig     JobPrestoConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// The format in which query output will be displayed. See the Presto documentation for supported output formats.
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	// Conflicts with `queryList`
+	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
+	// The list of SQL queries or statements to execute as part of the job.
+	// Conflicts with `queryFileUri`
+	QueryLists pulumi.StringArrayInput `pulumi:"queryLists"`
+}
+
+func (JobPrestoConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPrestoConfig)(nil)).Elem()
+}
+
+func (i JobPrestoConfigArgs) ToJobPrestoConfigOutput() JobPrestoConfigOutput {
+	return i.ToJobPrestoConfigOutputWithContext(context.Background())
+}
+
+func (i JobPrestoConfigArgs) ToJobPrestoConfigOutputWithContext(ctx context.Context) JobPrestoConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigOutput)
+}
+
+func (i JobPrestoConfigArgs) ToJobPrestoConfigPtrOutput() JobPrestoConfigPtrOutput {
+	return i.ToJobPrestoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i JobPrestoConfigArgs) ToJobPrestoConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigOutput).ToJobPrestoConfigPtrOutputWithContext(ctx)
+}
+
+// JobPrestoConfigPtrInput is an input type that accepts JobPrestoConfigArgs, JobPrestoConfigPtr and JobPrestoConfigPtrOutput values.
+// You can construct a concrete instance of `JobPrestoConfigPtrInput` via:
+//
+//          JobPrestoConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type JobPrestoConfigPtrInput interface {
+	pulumi.Input
+
+	ToJobPrestoConfigPtrOutput() JobPrestoConfigPtrOutput
+	ToJobPrestoConfigPtrOutputWithContext(context.Context) JobPrestoConfigPtrOutput
+}
+
+type jobPrestoConfigPtrType JobPrestoConfigArgs
+
+func JobPrestoConfigPtr(v *JobPrestoConfigArgs) JobPrestoConfigPtrInput {
+	return (*jobPrestoConfigPtrType)(v)
+}
+
+func (*jobPrestoConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobPrestoConfig)(nil)).Elem()
+}
+
+func (i *jobPrestoConfigPtrType) ToJobPrestoConfigPtrOutput() JobPrestoConfigPtrOutput {
+	return i.ToJobPrestoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *jobPrestoConfigPtrType) ToJobPrestoConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigPtrOutput)
+}
+
+type JobPrestoConfigOutput struct{ *pulumi.OutputState }
+
+func (JobPrestoConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPrestoConfig)(nil)).Elem()
+}
+
+func (o JobPrestoConfigOutput) ToJobPrestoConfigOutput() JobPrestoConfigOutput {
+	return o
+}
+
+func (o JobPrestoConfigOutput) ToJobPrestoConfigOutputWithContext(ctx context.Context) JobPrestoConfigOutput {
+	return o
+}
+
+func (o JobPrestoConfigOutput) ToJobPrestoConfigPtrOutput() JobPrestoConfigPtrOutput {
+	return o.ToJobPrestoConfigPtrOutputWithContext(context.Background())
+}
+
+func (o JobPrestoConfigOutput) ToJobPrestoConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPrestoConfig) *JobPrestoConfig {
+		return &v
+	}).(JobPrestoConfigPtrOutput)
+}
+
+// Presto client tags to attach to this query.
+func (o JobPrestoConfigOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobPrestoConfig) []string { return v.ClientTags }).(pulumi.StringArrayOutput)
+}
+
+// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+func (o JobPrestoConfigOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobPrestoConfig) *bool { return v.ContinueOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobPrestoConfigOutput) LoggingConfig() JobPrestoConfigLoggingConfigPtrOutput {
+	return o.ApplyT(func(v JobPrestoConfig) *JobPrestoConfigLoggingConfig { return v.LoggingConfig }).(JobPrestoConfigLoggingConfigPtrOutput)
+}
+
+// The format in which query output will be displayed. See the Presto documentation for supported output formats.
+func (o JobPrestoConfigOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobPrestoConfig) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+func (o JobPrestoConfigOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobPrestoConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+// Conflicts with `queryList`
+func (o JobPrestoConfigOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobPrestoConfig) *string { return v.QueryFileUri }).(pulumi.StringPtrOutput)
+}
+
+// The list of SQL queries or statements to execute as part of the job.
+// Conflicts with `queryFileUri`
+func (o JobPrestoConfigOutput) QueryLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobPrestoConfig) []string { return v.QueryLists }).(pulumi.StringArrayOutput)
+}
+
+type JobPrestoConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (JobPrestoConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobPrestoConfig)(nil)).Elem()
+}
+
+func (o JobPrestoConfigPtrOutput) ToJobPrestoConfigPtrOutput() JobPrestoConfigPtrOutput {
+	return o
+}
+
+func (o JobPrestoConfigPtrOutput) ToJobPrestoConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigPtrOutput {
+	return o
+}
+
+func (o JobPrestoConfigPtrOutput) Elem() JobPrestoConfigOutput {
+	return o.ApplyT(func(v *JobPrestoConfig) JobPrestoConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobPrestoConfig
+		return ret
+	}).(JobPrestoConfigOutput)
+}
+
+// Presto client tags to attach to this query.
+func (o JobPrestoConfigPtrOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobPrestoConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+func (o JobPrestoConfigPtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobPrestoConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContinueOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobPrestoConfigPtrOutput) LoggingConfig() JobPrestoConfigLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *JobPrestoConfig) *JobPrestoConfigLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(JobPrestoConfigLoggingConfigPtrOutput)
+}
+
+// The format in which query output will be displayed. See the Presto documentation for supported output formats.
+func (o JobPrestoConfigPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobPrestoConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+func (o JobPrestoConfigPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobPrestoConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+// Conflicts with `queryList`
+func (o JobPrestoConfigPtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobPrestoConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of SQL queries or statements to execute as part of the job.
+// Conflicts with `queryFileUri`
+func (o JobPrestoConfigPtrOutput) QueryLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobPrestoConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryLists
+	}).(pulumi.StringArrayOutput)
+}
+
+type JobPrestoConfigLoggingConfig struct {
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// JobPrestoConfigLoggingConfigInput is an input type that accepts JobPrestoConfigLoggingConfigArgs and JobPrestoConfigLoggingConfigOutput values.
+// You can construct a concrete instance of `JobPrestoConfigLoggingConfigInput` via:
+//
+//          JobPrestoConfigLoggingConfigArgs{...}
+type JobPrestoConfigLoggingConfigInput interface {
+	pulumi.Input
+
+	ToJobPrestoConfigLoggingConfigOutput() JobPrestoConfigLoggingConfigOutput
+	ToJobPrestoConfigLoggingConfigOutputWithContext(context.Context) JobPrestoConfigLoggingConfigOutput
+}
+
+type JobPrestoConfigLoggingConfigArgs struct {
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (JobPrestoConfigLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPrestoConfigLoggingConfig)(nil)).Elem()
+}
+
+func (i JobPrestoConfigLoggingConfigArgs) ToJobPrestoConfigLoggingConfigOutput() JobPrestoConfigLoggingConfigOutput {
+	return i.ToJobPrestoConfigLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i JobPrestoConfigLoggingConfigArgs) ToJobPrestoConfigLoggingConfigOutputWithContext(ctx context.Context) JobPrestoConfigLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigLoggingConfigOutput)
+}
+
+func (i JobPrestoConfigLoggingConfigArgs) ToJobPrestoConfigLoggingConfigPtrOutput() JobPrestoConfigLoggingConfigPtrOutput {
+	return i.ToJobPrestoConfigLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i JobPrestoConfigLoggingConfigArgs) ToJobPrestoConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigLoggingConfigOutput).ToJobPrestoConfigLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// JobPrestoConfigLoggingConfigPtrInput is an input type that accepts JobPrestoConfigLoggingConfigArgs, JobPrestoConfigLoggingConfigPtr and JobPrestoConfigLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `JobPrestoConfigLoggingConfigPtrInput` via:
+//
+//          JobPrestoConfigLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type JobPrestoConfigLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToJobPrestoConfigLoggingConfigPtrOutput() JobPrestoConfigLoggingConfigPtrOutput
+	ToJobPrestoConfigLoggingConfigPtrOutputWithContext(context.Context) JobPrestoConfigLoggingConfigPtrOutput
+}
+
+type jobPrestoConfigLoggingConfigPtrType JobPrestoConfigLoggingConfigArgs
+
+func JobPrestoConfigLoggingConfigPtr(v *JobPrestoConfigLoggingConfigArgs) JobPrestoConfigLoggingConfigPtrInput {
+	return (*jobPrestoConfigLoggingConfigPtrType)(v)
+}
+
+func (*jobPrestoConfigLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobPrestoConfigLoggingConfig)(nil)).Elem()
+}
+
+func (i *jobPrestoConfigLoggingConfigPtrType) ToJobPrestoConfigLoggingConfigPtrOutput() JobPrestoConfigLoggingConfigPtrOutput {
+	return i.ToJobPrestoConfigLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *jobPrestoConfigLoggingConfigPtrType) ToJobPrestoConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPrestoConfigLoggingConfigPtrOutput)
+}
+
+type JobPrestoConfigLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (JobPrestoConfigLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPrestoConfigLoggingConfig)(nil)).Elem()
+}
+
+func (o JobPrestoConfigLoggingConfigOutput) ToJobPrestoConfigLoggingConfigOutput() JobPrestoConfigLoggingConfigOutput {
+	return o
+}
+
+func (o JobPrestoConfigLoggingConfigOutput) ToJobPrestoConfigLoggingConfigOutputWithContext(ctx context.Context) JobPrestoConfigLoggingConfigOutput {
+	return o
+}
+
+func (o JobPrestoConfigLoggingConfigOutput) ToJobPrestoConfigLoggingConfigPtrOutput() JobPrestoConfigLoggingConfigPtrOutput {
+	return o.ToJobPrestoConfigLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o JobPrestoConfigLoggingConfigOutput) ToJobPrestoConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPrestoConfigLoggingConfig) *JobPrestoConfigLoggingConfig {
+		return &v
+	}).(JobPrestoConfigLoggingConfigPtrOutput)
+}
+
+func (o JobPrestoConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobPrestoConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type JobPrestoConfigLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (JobPrestoConfigLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobPrestoConfigLoggingConfig)(nil)).Elem()
+}
+
+func (o JobPrestoConfigLoggingConfigPtrOutput) ToJobPrestoConfigLoggingConfigPtrOutput() JobPrestoConfigLoggingConfigPtrOutput {
+	return o
+}
+
+func (o JobPrestoConfigLoggingConfigPtrOutput) ToJobPrestoConfigLoggingConfigPtrOutputWithContext(ctx context.Context) JobPrestoConfigLoggingConfigPtrOutput {
+	return o
+}
+
+func (o JobPrestoConfigLoggingConfigPtrOutput) Elem() JobPrestoConfigLoggingConfigOutput {
+	return o.ApplyT(func(v *JobPrestoConfigLoggingConfig) JobPrestoConfigLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobPrestoConfigLoggingConfig
+		return ret
+	}).(JobPrestoConfigLoggingConfigOutput)
+}
+
+func (o JobPrestoConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobPrestoConfigLoggingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
+}
+
 type JobPysparkConfig struct {
 	// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -7129,7 +7517,7 @@ type JobPysparkConfig struct {
 	LoggingConfig *JobPysparkConfigLoggingConfig `pulumi:"loggingConfig"`
 	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties map[string]string `pulumi:"properties"`
 	// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
 	PythonFileUris []string `pulumi:"pythonFileUris"`
@@ -7158,7 +7546,7 @@ type JobPysparkConfigArgs struct {
 	LoggingConfig JobPysparkConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
 	PythonFileUris pulumi.StringArrayInput `pulumi:"pythonFileUris"`
@@ -7270,7 +7658,7 @@ func (o JobPysparkConfigOutput) MainPythonFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v JobPysparkConfig) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobPysparkConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPysparkConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -7363,7 +7751,7 @@ func (o JobPysparkConfigPtrOutput) MainPythonFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobPysparkConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobPysparkConfig) map[string]string {
 		if v == nil {
@@ -7811,7 +8199,7 @@ type JobSparkConfig struct {
 	MainClass *string `pulumi:"mainClass"`
 	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `mainClass`
 	MainJarFileUri *string `pulumi:"mainJarFileUri"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties map[string]string `pulumi:"properties"`
 }
 
@@ -7840,7 +8228,7 @@ type JobSparkConfigArgs struct {
 	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
 	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `mainClass`
 	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
 
@@ -7955,7 +8343,7 @@ func (o JobSparkConfigOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSparkConfig) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobSparkConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobSparkConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -8053,7 +8441,7 @@ func (o JobSparkConfigPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobSparkConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobSparkConfig) map[string]string {
 		if v == nil {
@@ -8200,7 +8588,7 @@ type JobSparksqlConfig struct {
 	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris   []string                        `pulumi:"jarFileUris"`
 	LoggingConfig *JobSparksqlConfigLoggingConfig `pulumi:"loggingConfig"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties map[string]string `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	// Conflicts with `queryList`
@@ -8227,7 +8615,7 @@ type JobSparksqlConfigArgs struct {
 	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	JarFileUris   pulumi.StringArrayInput                `pulumi:"jarFileUris"`
 	LoggingConfig JobSparksqlConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
-	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+	// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The HCFS URI of the script that contains SQL queries.
 	// Conflicts with `queryList`
@@ -8325,7 +8713,7 @@ func (o JobSparksqlConfigOutput) LoggingConfig() JobSparksqlConfigLoggingConfigP
 	return o.ApplyT(func(v JobSparksqlConfig) *JobSparksqlConfigLoggingConfig { return v.LoggingConfig }).(JobSparksqlConfigLoggingConfigPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobSparksqlConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobSparksqlConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -8390,7 +8778,7 @@ func (o JobSparksqlConfigPtrOutput) LoggingConfig() JobSparksqlConfigLoggingConf
 	}).(JobSparksqlConfigLoggingConfigPtrOutput)
 }
 
-// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
 func (o JobSparksqlConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobSparksqlConfig) map[string]string {
 		if v == nil {
@@ -19527,6 +19915,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPigConfigLoggingConfigPtrInput)(nil)).Elem(), JobPigConfigLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPlacementInput)(nil)).Elem(), JobPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPlacementPtrInput)(nil)).Elem(), JobPlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobPrestoConfigInput)(nil)).Elem(), JobPrestoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobPrestoConfigPtrInput)(nil)).Elem(), JobPrestoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobPrestoConfigLoggingConfigInput)(nil)).Elem(), JobPrestoConfigLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobPrestoConfigLoggingConfigPtrInput)(nil)).Elem(), JobPrestoConfigLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPysparkConfigInput)(nil)).Elem(), JobPysparkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPysparkConfigPtrInput)(nil)).Elem(), JobPysparkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPysparkConfigLoggingConfigInput)(nil)).Elem(), JobPysparkConfigLoggingConfigArgs{})
@@ -19731,6 +20123,10 @@ func init() {
 	pulumi.RegisterOutputType(JobPigConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobPlacementOutput{})
 	pulumi.RegisterOutputType(JobPlacementPtrOutput{})
+	pulumi.RegisterOutputType(JobPrestoConfigOutput{})
+	pulumi.RegisterOutputType(JobPrestoConfigPtrOutput{})
+	pulumi.RegisterOutputType(JobPrestoConfigLoggingConfigOutput{})
+	pulumi.RegisterOutputType(JobPrestoConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobPysparkConfigOutput{})
 	pulumi.RegisterOutputType(JobPysparkConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobPysparkConfigLoggingConfigOutput{})

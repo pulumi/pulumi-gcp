@@ -9,6 +9,9 @@ from .access_level import *
 from .access_level_condition import *
 from .access_levels import *
 from .access_policy import *
+from .access_policy_iam_binding import *
+from .access_policy_iam_member import *
+from .access_policy_iam_policy import *
 from .gcp_user_access_binding import *
 from .service_perimeter import *
 from .service_perimeter_resource import *

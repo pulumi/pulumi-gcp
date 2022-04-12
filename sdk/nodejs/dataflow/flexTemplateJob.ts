@@ -5,48 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
- * job on Dataflow, which is an implementation of Apache Beam running on Google
- * Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
- * and [Dataflow](https://cloud.google.com/dataflow/).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bigDataJob = new gcp.dataflow.FlexTemplateJob("bigDataJob", {
- *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
- *     parameters: {
- *         inputSubscription: "messages",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ## Note on "destroy" / "apply"
- *
- * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
- * getting new data from (e.g.) a GCS bucket, and outputting data continuously.
- * Some jobs process a set amount of data then terminate. All jobs can fail while
- * running due to programming errors or other issues. In this way, Dataflow jobs
- * are different from most other provider / Google resources.
- *
- * The Dataflow resource is considered 'existing' while it is in a nonterminal
- * state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
- * 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
- * jobs which run continuously, but may surprise users who use this resource for
- * other kinds of Dataflow jobs.
- *
- * A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
- * "cancelled", the job terminates - any data written remains where it is, but no
- * new data will be processed.  If "drained", no new data will enter the pipeline,
- * but any data currently in the pipeline will finish being processed.  The default
- * is "cancelled", but if a user sets `onDelete` to `"drain"` in the
- * configuration, you may experience a long wait for your `pulumi destroy` to
- * complete.
- *
  * ## Import
  *
  * This resource does not support import.
@@ -125,6 +83,12 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+     * different, e.g. by embedding a release ID or by using a random_id.
+     */
+    public readonly skipWaitOnJobTermination!: pulumi.Output<boolean | undefined>;
+    /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -150,6 +114,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["skipWaitOnJobTermination"] = state ? state.skipWaitOnJobTermination : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as FlexTemplateJobArgs | undefined;
@@ -163,6 +128,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["skipWaitOnJobTermination"] = args ? args.skipWaitOnJobTermination : undefined;
             resourceInputs["jobId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
@@ -221,6 +187,12 @@ export interface FlexTemplateJobState {
      */
     region?: pulumi.Input<string>;
     /**
+     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+     * different, e.g. by embedding a release ID or by using a random_id.
+     */
+    skipWaitOnJobTermination?: pulumi.Input<boolean>;
+    /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
     state?: pulumi.Input<string>;
@@ -271,4 +243,10 @@ export interface FlexTemplateJobArgs {
      * The region in which the created job should run.
      */
     region?: pulumi.Input<string>;
+    /**
+     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+     * different, e.g. by embedding a release ID or by using a random_id.
+     */
+    skipWaitOnJobTermination?: pulumi.Input<boolean>;
 }

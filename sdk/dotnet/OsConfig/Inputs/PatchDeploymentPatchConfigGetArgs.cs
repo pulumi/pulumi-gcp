@@ -27,6 +27,12 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<Inputs.PatchDeploymentPatchConfigGooGetArgs>? Goo { get; set; }
 
         /// <summary>
+        /// Allows the patch job to run on Managed instance groups (MIGs).
+        /// </summary>
+        [Input("migInstancesAllowed")]
+        public Input<bool>? MigInstancesAllowed { get; set; }
+
+        /// <summary>
         /// The ExecStep to run after the patch update.
         /// Structure is documented below.
         /// </summary>

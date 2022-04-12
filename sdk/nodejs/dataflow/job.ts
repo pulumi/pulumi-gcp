@@ -5,63 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
- * the official documentation for
- * [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bigDataJob = new gcp.dataflow.Job("big_data_job", {
- *     parameters: {
- *         baz: "qux",
- *         foo: "bar",
- *     },
- *     tempGcsLocation: "gs://my-bucket/tmp_dir",
- *     templateGcsPath: "gs://my-bucket/templates/template_file",
- * });
- * ```
- * ### Streaming Job
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const topic = new gcp.pubsub.Topic("topic", {});
- * const bucket1 = new gcp.storage.Bucket("bucket1", {
- *     location: "US",
- *     forceDestroy: true,
- * });
- * const bucket2 = new gcp.storage.Bucket("bucket2", {
- *     location: "US",
- *     forceDestroy: true,
- * });
- * const pubsubStream = new gcp.dataflow.Job("pubsubStream", {
- *     templateGcsPath: "gs://my-bucket/templates/template_file",
- *     tempGcsLocation: "gs://my-bucket/tmp_dir",
- *     enableStreamingEngine: true,
- *     parameters: {
- *         inputFilePattern: pulumi.interpolate`${bucket1.url}/*.json`,
- *         outputTopic: topic.id,
- *     },
- *     transformNameMapping: {
- *         name: "test_job",
- *         env: "test",
- *     },
- *     onDelete: "cancel",
- * });
- * ```
- * ## Note on "destroy" / "apply"
- *
- * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
- *
- * The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
- *
- * A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `onDelete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
- *
  * ## Import
  *
  * This resource does not support import.
@@ -158,6 +101,12 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly serviceAccountEmail!: pulumi.Output<string | undefined>;
     /**
+     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+     * different, e.g. by embedding a release ID or by using a random_id.
+     */
+    public readonly skipWaitOnJobTermination!: pulumi.Output<boolean | undefined>;
+    /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -214,6 +163,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
+            resourceInputs["skipWaitOnJobTermination"] = state ? state.skipWaitOnJobTermination : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
@@ -243,6 +193,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            resourceInputs["skipWaitOnJobTermination"] = args ? args.skipWaitOnJobTermination : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["tempGcsLocation"] = args ? args.tempGcsLocation : undefined;
             resourceInputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
@@ -324,6 +275,12 @@ export interface JobState {
      * The Service Account email used to create the job.
      */
     serviceAccountEmail?: pulumi.Input<string>;
+    /**
+     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+     * different, e.g. by embedding a release ID or by using a random_id.
+     */
+    skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
@@ -417,6 +374,12 @@ export interface JobArgs {
      * The Service Account email used to create the job.
      */
     serviceAccountEmail?: pulumi.Input<string>;
+    /**
+     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+     * different, e.g. by embedding a release ID or by using a random_id.
+     */
+    skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
      * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
      */

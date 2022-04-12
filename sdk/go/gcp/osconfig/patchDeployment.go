@@ -245,6 +245,7 @@ import (
 // 				Goo: &osconfig.PatchDeploymentPatchConfigGooArgs{
 // 					Enabled: pulumi.Bool(true),
 // 				},
+// 				MigInstancesAllowed: pulumi.Bool(true),
 // 				PostStep: &osconfig.PatchDeploymentPatchConfigPostStepArgs{
 // 					LinuxExecStepConfig: &osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs{
 // 						GcsObject: &osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs{

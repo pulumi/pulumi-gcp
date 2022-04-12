@@ -385,6 +385,18 @@ export namespace accesscontextmanager {
         title?: pulumi.Input<string>;
     }
 
+    export interface AccessPolicyIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AccessPolicyIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface ServicePerimeterSpec {
         /**
          * A list of AccessLevel resource names that allow resources within
@@ -4169,14 +4181,32 @@ export namespace certificateauthority {
     }
 
     export interface CaPoolIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
     export interface CaPoolIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
@@ -5323,6 +5353,14 @@ export namespace cloudasset {
 }
 
 export namespace cloudbuild {
+    export interface TriggerApprovalConfig {
+        /**
+         * Whether or not approval is needed. If this is set on a build, it will become pending when run,
+         * and will need to be explicitly approved to start.
+         */
+        approvalRequired?: pulumi.Input<boolean>;
+    }
+
     export interface TriggerBuild {
         /**
          * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -5756,6 +5794,7 @@ export namespace cloudbuild {
         path: pulumi.Input<string>;
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
          * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
          */
         repoType: pulumi.Input<string>;
@@ -5855,6 +5894,7 @@ export namespace cloudbuild {
         ref: pulumi.Input<string>;
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
          * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
          */
         repoType: pulumi.Input<string>;
@@ -19575,7 +19615,7 @@ export namespace dataproc {
          */
         mainJarFileUri?: pulumi.Input<string>;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -19586,7 +19626,7 @@ export namespace dataproc {
 
     export interface JobHiveConfig {
         /**
-         * Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+         * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
          */
         continueOnFailure?: pulumi.Input<boolean>;
         /**
@@ -19594,7 +19634,7 @@ export namespace dataproc {
          */
         jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -19627,7 +19667,7 @@ export namespace dataproc {
 
     export interface JobPigConfig {
         /**
-         * Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+         * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
          */
         continueOnFailure?: pulumi.Input<boolean>;
         /**
@@ -19636,7 +19676,7 @@ export namespace dataproc {
         jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
         loggingConfig?: pulumi.Input<inputs.dataproc.JobPigConfigLoggingConfig>;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -19664,6 +19704,40 @@ export namespace dataproc {
         clusterUuid?: pulumi.Input<string>;
     }
 
+    export interface JobPrestoConfig {
+        /**
+         * Presto client tags to attach to this query.
+         */
+        clientTags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+         */
+        continueOnFailure?: pulumi.Input<boolean>;
+        loggingConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfigLoggingConfig>;
+        /**
+         * The format in which query output will be displayed. See the Presto documentation for supported output formats.
+         */
+        outputFormat?: pulumi.Input<string>;
+        /**
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         */
+        properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The HCFS URI of the script that contains SQL queries.
+         * Conflicts with `queryList`
+         */
+        queryFileUri?: pulumi.Input<string>;
+        /**
+         * The list of SQL queries or statements to execute as part of the job.
+         * Conflicts with `queryFileUri`
+         */
+        queryLists?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface JobPrestoConfigLoggingConfig {
+        driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
     export interface JobPysparkConfig {
         /**
          * HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -19687,7 +19761,7 @@ export namespace dataproc {
          */
         mainPythonFileUri: pulumi.Input<string>;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -19736,7 +19810,7 @@ export namespace dataproc {
          */
         mainJarFileUri?: pulumi.Input<string>;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -19752,7 +19826,7 @@ export namespace dataproc {
         jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
         loggingConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfigLoggingConfig>;
         /**
-         * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+         * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -21666,6 +21740,18 @@ export namespace dns {
 }
 
 export namespace endpoints {
+    export interface ConsumersIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ConsumersIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface ServiceApi {
         methods?: pulumi.Input<pulumi.Input<inputs.endpoints.ServiceApiMethod>[]>;
         name?: pulumi.Input<string>;
@@ -22468,11 +22554,13 @@ export namespace healthcare {
          */
         recursiveStructureDepth: pulumi.Input<number>;
         /**
-         * Specifies the output schema type. Only ANALYTICS is supported at this time.
+         * Specifies the output schema type.
          * * ANALYTICS: Analytics schema defined by the FHIR community.
          * See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+         * * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+         * * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
          * Default value is `ANALYTICS`.
-         * Possible values are `ANALYTICS`.
+         * Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
          */
         schemaType?: pulumi.Input<string>;
     }
@@ -22543,13 +22631,76 @@ export namespace healthcare {
         /**
          * The version of the unschematized parser to be used when a custom `schema` is not set.
          * Default value is `V1`.
-         * Possible values are `V1` and `V2`.
+         * Possible values are `V1`, `V2`, and `V3`.
          */
         version?: pulumi.Input<string>;
     }
 }
 
 export namespace iam {
+    export interface DenyPolicyRule {
+        /**
+         * A deny rule in an IAM deny policy.
+         * Structure is documented below.
+         */
+        denyRule?: pulumi.Input<inputs.iam.DenyPolicyRuleDenyRule>;
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+    }
+
+    export interface DenyPolicyRuleDenyRule {
+        /**
+         * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+         * Structure is documented below.
+         */
+        denialCondition: pulumi.Input<inputs.iam.DenyPolicyRuleDenyRuleDenialCondition>;
+        /**
+         * The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+         * where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+         */
+        deniedPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The identities that are prevented from using one or more permissions on Google Cloud resources.
+         */
+        deniedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+         * If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+         * The excluded permissions can be specified using the same syntax as deniedPermissions.
+         */
+        exceptionPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+         * For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+         */
+        exceptionPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DenyPolicyRuleDenyRuleDenialCondition {
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting,
+         * e.g. a file name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         * This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
+    }
+
     export interface WorkloadIdentityPoolProviderAws {
         /**
          * The AWS account ID.
@@ -22576,6 +22727,7 @@ export namespace iam {
          */
         issuerUri: pulumi.Input<string>;
     }
+
 }
 
 export namespace iap {
@@ -27391,6 +27543,10 @@ export namespace osconfig {
          * Structure is documented below.
          */
         goo?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfigGoo>;
+        /**
+         * Allows the patch job to run on Managed instance groups (MIGs).
+         */
+        migInstancesAllowed?: pulumi.Input<boolean>;
         /**
          * The ExecStep to run after the patch update.
          * Structure is documented below.

@@ -19,7 +19,8 @@ class FlexTemplateJobArgs:
                  on_delete: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a FlexTemplateJob resource.
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
@@ -40,6 +41,9 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
+        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+               different, e.g. by embedding a release ID or by using a random_id.
         """
         pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
         if labels is not None:
@@ -57,6 +61,8 @@ class FlexTemplateJobArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if skip_wait_on_job_termination is not None:
+            pulumi.set(__self__, "skip_wait_on_job_termination", skip_wait_on_job_termination)
 
     @property
     @pulumi.getter(name="containerSpecGcsPath")
@@ -153,6 +159,20 @@ class FlexTemplateJobArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter(name="skipWaitOnJobTermination")
+    def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+        different, e.g. by embedding a release ID or by using a random_id.
+        """
+        return pulumi.get(self, "skip_wait_on_job_termination")
+
+    @skip_wait_on_job_termination.setter
+    def skip_wait_on_job_termination(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_wait_on_job_termination", value)
+
 
 @pulumi.input_type
 class _FlexTemplateJobState:
@@ -165,6 +185,7 @@ class _FlexTemplateJobState:
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FlexTemplateJob resources.
@@ -187,6 +208,9 @@ class _FlexTemplateJobState:
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
+        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+               different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         """
         if container_spec_gcs_path is not None:
@@ -208,6 +232,8 @@ class _FlexTemplateJobState:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if skip_wait_on_job_termination is not None:
+            pulumi.set(__self__, "skip_wait_on_job_termination", skip_wait_on_job_termination)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -319,6 +345,20 @@ class _FlexTemplateJobState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="skipWaitOnJobTermination")
+    def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+        different, e.g. by embedding a release ID or by using a random_id.
+        """
+        return pulumi.get(self, "skip_wait_on_job_termination")
+
+    @skip_wait_on_job_termination.setter
+    def skip_wait_on_job_termination(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_wait_on_job_termination", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -343,48 +383,9 @@ class FlexTemplateJob(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
-        job on Dataflow, which is an implementation of Apache Beam running on Google
-        Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
-        and [Dataflow](https://cloud.google.com/dataflow/).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
-            container_spec_gcs_path="gs://my-bucket/templates/template.json",
-            parameters={
-                "inputSubscription": "messages",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ## Note on "destroy" / "apply"
-
-        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
-        getting new data from (e.g.) a GCS bucket, and outputting data continuously.
-        Some jobs process a set amount of data then terminate. All jobs can fail while
-        running due to programming errors or other issues. In this way, Dataflow jobs
-        are different from most other provider / Google resources.
-
-        The Dataflow resource is considered 'existing' while it is in a nonterminal
-        state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
-        'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
-        jobs which run continuously, but may surprise users who use this resource for
-        other kinds of Dataflow jobs.
-
-        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
-        "cancelled", the job terminates - any data written remains where it is, but no
-        new data will be processed.  If "drained", no new data will enter the pipeline,
-        but any data currently in the pipeline will finish being processed.  The default
-        is "cancelled", but if a user sets `on_delete` to `"drain"` in the
-        configuration, you may experience a long wait for your `pulumi destroy` to
-        complete.
-
         ## Import
 
         This resource does not support import.
@@ -409,6 +410,9 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
+        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+               different, e.g. by embedding a release ID or by using a random_id.
         """
         ...
     @overload
@@ -417,46 +421,6 @@ class FlexTemplateJob(pulumi.CustomResource):
                  args: FlexTemplateJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
-        job on Dataflow, which is an implementation of Apache Beam running on Google
-        Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
-        and [Dataflow](https://cloud.google.com/dataflow/).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
-            container_spec_gcs_path="gs://my-bucket/templates/template.json",
-            parameters={
-                "inputSubscription": "messages",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ## Note on "destroy" / "apply"
-
-        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
-        getting new data from (e.g.) a GCS bucket, and outputting data continuously.
-        Some jobs process a set amount of data then terminate. All jobs can fail while
-        running due to programming errors or other issues. In this way, Dataflow jobs
-        are different from most other provider / Google resources.
-
-        The Dataflow resource is considered 'existing' while it is in a nonterminal
-        state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
-        'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
-        jobs which run continuously, but may surprise users who use this resource for
-        other kinds of Dataflow jobs.
-
-        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
-        "cancelled", the job terminates - any data written remains where it is, but no
-        new data will be processed.  If "drained", no new data will enter the pipeline,
-        but any data currently in the pipeline will finish being processed.  The default
-        is "cancelled", but if a user sets `on_delete` to `"drain"` in the
-        configuration, you may experience a long wait for your `pulumi destroy` to
-        complete.
-
         ## Import
 
         This resource does not support import.
@@ -483,6 +447,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -507,6 +472,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["skip_wait_on_job_termination"] = skip_wait_on_job_termination
             __props__.__dict__["job_id"] = None
             __props__.__dict__["state"] = None
         super(FlexTemplateJob, __self__).__init__(
@@ -527,6 +493,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            skip_wait_on_job_termination: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'FlexTemplateJob':
         """
         Get an existing FlexTemplateJob resource's state with the given name, id, and optional extra
@@ -554,6 +521,9 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not
                provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
+        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+               different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -568,6 +538,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["skip_wait_on_job_termination"] = skip_wait_on_job_termination
         __props__.__dict__["state"] = state
         return FlexTemplateJob(resource_name, opts=opts, __props__=__props__)
 
@@ -645,6 +616,16 @@ class FlexTemplateJob(pulumi.CustomResource):
         The region in which the created job should run.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="skipWaitOnJobTermination")
+    def skip_wait_on_job_termination(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+        different, e.g. by embedding a release ID or by using a random_id.
+        """
+        return pulumi.get(self, "skip_wait_on_job_termination")
 
     @property
     @pulumi.getter

@@ -466,6 +466,137 @@ import (
 // 	})
 // }
 // ```
+// ### Eventarc Basic Tf
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/eventarc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		projectProject, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		run, err := projects.NewService(ctx, "run", &projects.ServiceArgs{
+// 			Service:          pulumi.String("run.googleapis.com"),
+// 			DisableOnDestroy: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		eventarc, err := projects.NewService(ctx, "eventarc", &projects.ServiceArgs{
+// 			Service:          pulumi.String("eventarc.googleapis.com"),
+// 			DisableOnDestroy: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-east1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					Percent:        pulumi.Int(100),
+// 					LatestRevision: pulumi.Bool(true),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			run,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewIamMember(ctx, "allUsers", &cloudrun.IamMemberArgs{
+// 			Service:  _default.Name,
+// 			Location: _default.Location,
+// 			Role:     pulumi.String("roles/run.invoker"),
+// 			Member:   pulumi.String("allUsers"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = eventarc.NewTrigger(ctx, "trigger-pubsub-tf", &eventarc.TriggerArgs{
+// 			Location: _default.Location,
+// 			MatchingCriterias: eventarc.TriggerMatchingCriteriaArray{
+// 				&eventarc.TriggerMatchingCriteriaArgs{
+// 					Attribute: pulumi.String("type"),
+// 					Value:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
+// 				},
+// 			},
+// 			Destination: &eventarc.TriggerDestinationArgs{
+// 				CloudRunService: &eventarc.TriggerDestinationCloudRunServiceArgs{
+// 					Service: _default.Name,
+// 					Region:  _default.Location,
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			eventarc,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMBinding(ctx, "projectIAMBinding", &projects.IAMBindingArgs{
+// 			Project: pulumi.String(projectProject.Id),
+// 			Role:    pulumi.String("roles/eventarc.eventReceiver"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:", projectProject.Number, "-compute@developer.gserviceaccount.com")),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = eventarc.NewTrigger(ctx, "trigger-auditlog-tf", &eventarc.TriggerArgs{
+// 			Location: _default.Location,
+// 			Project:  pulumi.String(projectProject.Id),
+// 			MatchingCriterias: eventarc.TriggerMatchingCriteriaArray{
+// 				&eventarc.TriggerMatchingCriteriaArgs{
+// 					Attribute: pulumi.String("type"),
+// 					Value:     pulumi.String("google.cloud.audit.log.v1.written"),
+// 				},
+// 				&eventarc.TriggerMatchingCriteriaArgs{
+// 					Attribute: pulumi.String("serviceName"),
+// 					Value:     pulumi.String("storage.googleapis.com"),
+// 				},
+// 				&eventarc.TriggerMatchingCriteriaArgs{
+// 					Attribute: pulumi.String("methodName"),
+// 					Value:     pulumi.String("storage.objects.create"),
+// 				},
+// 			},
+// 			Destination: &eventarc.TriggerDestinationArgs{
+// 				CloudRunService: &eventarc.TriggerDestinationCloudRunServiceArgs{
+// 					Service: _default.Name,
+// 					Region:  _default.Location,
+// 				},
+// 			},
+// 			ServiceAccount: pulumi.String(fmt.Sprintf("%v%v", projectProject.Number, "-compute@developer.gserviceaccount.com")),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			eventarc,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

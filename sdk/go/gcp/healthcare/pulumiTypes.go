@@ -1979,11 +1979,13 @@ type FhirStoreStreamConfigBigqueryDestinationSchemaConfig struct {
 	// concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
 	// value 2. The maximum depth allowed is 5.
 	RecursiveStructureDepth int `pulumi:"recursiveStructureDepth"`
-	// Specifies the output schema type. Only ANALYTICS is supported at this time.
+	// Specifies the output schema type.
 	// * ANALYTICS: Analytics schema defined by the FHIR community.
 	//   See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+	// * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+	// * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
 	//   Default value is `ANALYTICS`.
-	//   Possible values are `ANALYTICS`.
+	//   Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
 	SchemaType *string `pulumi:"schemaType"`
 }
 
@@ -2004,11 +2006,13 @@ type FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs struct {
 	// concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
 	// value 2. The maximum depth allowed is 5.
 	RecursiveStructureDepth pulumi.IntInput `pulumi:"recursiveStructureDepth"`
-	// Specifies the output schema type. Only ANALYTICS is supported at this time.
+	// Specifies the output schema type.
 	// * ANALYTICS: Analytics schema defined by the FHIR community.
 	//   See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+	// * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+	// * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
 	//   Default value is `ANALYTICS`.
-	//   Possible values are `ANALYTICS`.
+	//   Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
 	SchemaType pulumi.StringPtrInput `pulumi:"schemaType"`
 }
 
@@ -2046,11 +2050,13 @@ func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) RecursiveStr
 	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfig) int { return v.RecursiveStructureDepth }).(pulumi.IntOutput)
 }
 
-// Specifies the output schema type. Only ANALYTICS is supported at this time.
+// Specifies the output schema type.
 // * ANALYTICS: Analytics schema defined by the FHIR community.
 //   See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+// * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+// * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
 //   Default value is `ANALYTICS`.
-//   Possible values are `ANALYTICS`.
+//   Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
 func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) SchemaType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfig) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
 }
@@ -2694,7 +2700,7 @@ type Hl7StoreParserConfig struct {
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
 	// The version of the unschematized parser to be used when a custom `schema` is not set.
 	// Default value is `V1`.
-	// Possible values are `V1` and `V2`.
+	// Possible values are `V1`, `V2`, and `V3`.
 	Version *string `pulumi:"version"`
 }
 
@@ -2720,7 +2726,7 @@ type Hl7StoreParserConfigArgs struct {
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
 	// The version of the unschematized parser to be used when a custom `schema` is not set.
 	// Default value is `V1`.
-	// Possible values are `V1` and `V2`.
+	// Possible values are `V1`, `V2`, and `V3`.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -2820,7 +2826,7 @@ func (o Hl7StoreParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
 
 // The version of the unschematized parser to be used when a custom `schema` is not set.
 // Default value is `V1`.
-// Possible values are `V1` and `V2`.
+// Possible values are `V1`, `V2`, and `V3`.
 func (o Hl7StoreParserConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Hl7StoreParserConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2883,7 +2889,7 @@ func (o Hl7StoreParserConfigPtrOutput) SegmentTerminator() pulumi.StringPtrOutpu
 
 // The version of the unschematized parser to be used when a custom `schema` is not set.
 // Default value is `V1`.
-// Possible values are `V1` and `V2`.
+// Possible values are `V1`, `V2`, and `V3`.
 func (o Hl7StoreParserConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Hl7StoreParserConfig) *string {
 		if v == nil {

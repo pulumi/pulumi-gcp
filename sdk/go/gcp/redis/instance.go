@@ -292,9 +292,8 @@ type Instance struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Default value is `READ_REPLICAS_DISABLED`.
 	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
-	ReadReplicasMode pulumi.StringPtrOutput `pulumi:"readReplicasMode"`
+	ReadReplicasMode pulumi.StringOutput `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -437,7 +436,6 @@ type instanceState struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Default value is `READ_REPLICAS_DISABLED`.
 	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode *string `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
@@ -551,7 +549,6 @@ type InstanceState struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Default value is `READ_REPLICAS_DISABLED`.
 	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrInput
 	// Redis configuration parameters, according to http://redis.io/topics/config.
@@ -641,7 +638,6 @@ type instanceArgs struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Default value is `READ_REPLICAS_DISABLED`.
 	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode *string `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
@@ -726,7 +722,6 @@ type InstanceArgs struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Default value is `READ_REPLICAS_DISABLED`.
 	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrInput
 	// Redis configuration parameters, according to http://redis.io/topics/config.

@@ -230,6 +230,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const manual_trigger = new gcp.cloudbuild.Trigger("manual-trigger", {
+ *     // If this is set on a build, it will become pending when it is run, 
+ *     // and will need to be explicitly approved to start.
+ *     approvalConfig: {
+ *         approvalRequired: true,
+ *     },
  *     gitFileSource: {
  *         path: "cloudbuild.yaml",
  *         repoType: "GITHUB",
@@ -288,6 +293,13 @@ export class Trigger extends pulumi.CustomResource {
         return obj['__pulumiType'] === Trigger.__pulumiType;
     }
 
+    /**
+     * Configuration for manual approval to start a build invocation of this BuildTrigger.
+     * Builds created by this trigger will require approval before they execute.
+     * Any user with a Cloud Build Approver role for the project can approve a build.
+     * Structure is documented below.
+     */
+    public readonly approvalConfig!: pulumi.Output<outputs.cloudbuild.TriggerApprovalConfig>;
     /**
      * Contents of the build template. Either a filename or build template must be provided.
      * Structure is documented below.
@@ -425,6 +437,7 @@ export class Trigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
+            resourceInputs["approvalConfig"] = state ? state.approvalConfig : undefined;
             resourceInputs["build"] = state ? state.build : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -447,6 +460,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["webhookConfig"] = state ? state.webhookConfig : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
+            resourceInputs["approvalConfig"] = args ? args.approvalConfig : undefined;
             resourceInputs["build"] = args ? args.build : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
@@ -477,6 +491,13 @@ export class Trigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Trigger resources.
  */
 export interface TriggerState {
+    /**
+     * Configuration for manual approval to start a build invocation of this BuildTrigger.
+     * Builds created by this trigger will require approval before they execute.
+     * Any user with a Cloud Build Approver role for the project can approve a build.
+     * Structure is documented below.
+     */
+    approvalConfig?: pulumi.Input<inputs.cloudbuild.TriggerApprovalConfig>;
     /**
      * Contents of the build template. Either a filename or build template must be provided.
      * Structure is documented below.
@@ -606,6 +627,13 @@ export interface TriggerState {
  * The set of arguments for constructing a Trigger resource.
  */
 export interface TriggerArgs {
+    /**
+     * Configuration for manual approval to start a build invocation of this BuildTrigger.
+     * Builds created by this trigger will require approval before they execute.
+     * Any user with a Cloud Build Approver role for the project can approve a build.
+     * Structure is documented below.
+     */
+    approvalConfig?: pulumi.Input<inputs.cloudbuild.TriggerApprovalConfig>;
     /**
      * Contents of the build template. Either a filename or build template must be provided.
      * Structure is documented below.

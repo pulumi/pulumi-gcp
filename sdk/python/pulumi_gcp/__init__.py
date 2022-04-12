@@ -10,6 +10,8 @@ from ._inputs import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_gcp.accessapproval as __accessapproval
+    accessapproval = __accessapproval
     import pulumi_gcp.accesscontextmanager as __accesscontextmanager
     accesscontextmanager = __accesscontextmanager
     import pulumi_gcp.activedirectory as __activedirectory
@@ -177,6 +179,7 @@ if typing.TYPE_CHECKING:
     import pulumi_gcp.workflows as __workflows
     workflows = __workflows
 else:
+    accessapproval = _utilities.lazy_import('pulumi_gcp.accessapproval')
     accesscontextmanager = _utilities.lazy_import('pulumi_gcp.accesscontextmanager')
     activedirectory = _utilities.lazy_import('pulumi_gcp.activedirectory')
     apigateway = _utilities.lazy_import('pulumi_gcp.apigateway')
@@ -294,6 +297,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.accesscontextmanager",
   "classes": {
    "gcp:accesscontextmanager/accessPolicy:AccessPolicy": "AccessPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/accessPolicyIamBinding",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding": "AccessPolicyIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/accessPolicyIamMember",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember": "AccessPolicyIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/accessPolicyIamPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy": "AccessPolicyIamPolicy"
   }
  },
  {
@@ -2538,6 +2565,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "endpoints/consumersIamBinding",
+  "fqn": "pulumi_gcp.endpoints",
+  "classes": {
+   "gcp:endpoints/consumersIamBinding:ConsumersIamBinding": "ConsumersIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "endpoints/consumersIamMember",
+  "fqn": "pulumi_gcp.endpoints",
+  "classes": {
+   "gcp:endpoints/consumersIamMember:ConsumersIamMember": "ConsumersIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "endpoints/consumersIamPolicy",
+  "fqn": "pulumi_gcp.endpoints",
+  "classes": {
+   "gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy": "ConsumersIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "endpoints/service",
   "fqn": "pulumi_gcp.endpoints",
   "classes": {
@@ -2918,6 +2969,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.healthcare",
   "classes": {
    "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy": "Hl7StoreIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/denyPolicy",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/denyPolicy:DenyPolicy": "DenyPolicy"
   }
  },
  {

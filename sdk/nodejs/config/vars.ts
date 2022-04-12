@@ -496,6 +496,14 @@ Object.defineProperty(exports, "healthcareCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const iam2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "iam2CustomEndpoint", {
+    get() {
+        return __config.get("iam2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const iamBetaCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "iamBetaCustomEndpoint", {
     get() {

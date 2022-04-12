@@ -22,6 +22,7 @@ const (
 	gcpPackage = "gcp"
 	// modules; in general, we took naming inspiration from the Google Cloud SDK for Go:
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
+	gcpAccessApproval       = "AccessApproval"       // Access Approval resources
 	gcpAccessContextManager = "AccessContextManager" // Access Context Manager resources
 	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
 	// nolint:golint
@@ -196,7 +197,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		IgnoreMappings: []string{
-			// There is a resource and data source, identially named. The outputs of the data source share identical
+			// There is a resource and data source, identically named. The outputs of the data source share identical
 			// types with the resource.
 			// See: https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/data_source_dataproc_metastore_service
 			"google_dataproc_metastore_service",
@@ -236,6 +237,24 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_access_context_manager_gcp_user_access_binding": {
 				Tok: gcpResource(gcpAccessContextManager, "GcpUserAccessBinding"),
+			},
+			"google_access_context_manager_access_policy_iam_binding": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessPolicyIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "access_context_manager_access_policy_iam.html.markdown",
+				},
+			},
+			"google_access_context_manager_access_policy_iam_member": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessPolicyIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "access_context_manager_access_policy_iam.html.markdown",
+				},
+			},
+			"google_access_context_manager_access_policy_iam_policy": {
+				Tok: gcpResource(gcpAccessContextManager, "AccessPolicyIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "access_context_manager_access_policy_iam.html.markdown",
+				},
 			},
 
 			// AppEngine
@@ -1053,6 +1072,24 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpEndPoints, "ServiceIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "endpoints_service_iam.html.markdown",
+				},
+			},
+			"google_endpoints_service_consumers_iam_binding": {
+				Tok: gcpResource(gcpEndPoints, "ConsumersIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "endpoints_service_consumers_iam.html.markdown",
+				},
+			},
+			"google_endpoints_service_consumers_iam_member": {
+				Tok: gcpResource(gcpEndPoints, "ConsumersIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "endpoints_service_consumers_iam.html.markdown",
+				},
+			},
+			"google_endpoints_service_consumers_iam_policy": {
+				Tok: gcpResource(gcpEndPoints, "ConsumersIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "endpoints_service_consumers_iam.html.markdown",
 				},
 			},
 
@@ -2006,6 +2043,7 @@ func Provider() tfbridge.ProviderInfo {
 			// IAM
 			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
 			"google_iam_workload_identity_pool_provider": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPoolProvider")},
+			"google_iam_deny_policy":                     {Tok: gcpResource(gcpIAM, "DenyPolicy")},
 
 			// apigee
 			"google_apigee_organization":        {Tok: gcpResource(gcpApigee, "Organization")},
@@ -2189,6 +2227,17 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
+			// Access Approval
+			"google_access_approval_folder_service_account": {
+				Tok: gcpDataSource(gcpAccessApproval, "getFolderServiceAccount"),
+			},
+			"google_access_approval_organization_service_account": {
+				Tok: gcpDataSource(gcpAccessApproval, "getOrganizationServiceAccount"),
+			},
+			"google_access_approval_project_service_account": {
+				Tok: gcpDataSource(gcpAccessApproval, "getProjectServiceAccount"),
+			},
+
 			"google_billing_account": {
 				Tok: gcpDataSource(gcpOrganization, "getBillingAccount"),
 				Docs: &tfbridge.DocInfo{

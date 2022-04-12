@@ -10,6 +10,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'TriggerApprovalConfig',
     'TriggerBuild',
     'TriggerBuildArtifacts',
     'TriggerBuildArtifactsObjects',
@@ -35,6 +36,44 @@ __all__ = [
     'WorkerPoolNetworkConfig',
     'WorkerPoolWorkerConfig',
 ]
+
+@pulumi.output_type
+class TriggerApprovalConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalRequired":
+            suggest = "approval_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerApprovalConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerApprovalConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerApprovalConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approval_required: Optional[bool] = None):
+        """
+        :param bool approval_required: Whether or not approval is needed. If this is set on a build, it will become pending when run,
+               and will need to be explicitly approved to start.
+        """
+        if approval_required is not None:
+            pulumi.set(__self__, "approval_required", approval_required)
+
+    @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> Optional[bool]:
+        """
+        Whether or not approval is needed. If this is set on a build, it will become pending when run,
+        and will need to be explicitly approved to start.
+        """
+        return pulumi.get(self, "approval_required")
+
 
 @pulumi.output_type
 class TriggerBuild(dict):
@@ -1363,6 +1402,7 @@ class TriggerGitFileSource(dict):
                Paths must be absolute and cannot conflict with other volume paths on the same
                build step or with certain reserved volume paths.
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+               Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
                Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
         :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
                filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -1391,6 +1431,7 @@ class TriggerGitFileSource(dict):
     def repo_type(self) -> str:
         """
         The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
         Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
         """
         return pulumi.get(self, "repo_type")
@@ -1722,6 +1763,7 @@ class TriggerSourceToBuild(dict):
         """
         :param str ref: The branch or tag to use. Must start with "refs/" (required).
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+               Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
                Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
         :param str uri: The URI of the repo (required).
         """
@@ -1742,6 +1784,7 @@ class TriggerSourceToBuild(dict):
     def repo_type(self) -> str:
         """
         The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
         Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
         """
         return pulumi.get(self, "repo_type")

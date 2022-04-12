@@ -52,6 +52,76 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// }
     /// ```
+    /// ### Folder Access Approval Active Key Version
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myFolder = new Gcp.Organizations.Folder("myFolder", new Gcp.Organizations.FolderArgs
+    ///         {
+    ///             DisplayName = "my-folder",
+    ///             Parent = "organizations/123456789",
+    ///         });
+    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "your-project-id",
+    ///             FolderId = myFolder.Name,
+    ///         });
+    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "global",
+    ///             Project = myProject.ProjectId,
+    ///         });
+    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyRing.Id,
+    ///             Purpose = "ASYMMETRIC_SIGN",
+    ///             VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+    ///             {
+    ///                 Algorithm = "EC_SIGN_P384_SHA384",
+    ///             },
+    ///         });
+    ///         var serviceAccount = Gcp.AccessApproval.GetFolderServiceAccount.Invoke(new Gcp.AccessApproval.GetFolderServiceAccountInvokeArgs
+    ///         {
+    ///             FolderId = myFolder.FolderId,
+    ///         });
+    ///         var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new Gcp.Kms.CryptoKeyIAMMemberArgs
+    ///         {
+    ///             CryptoKeyId = cryptoKey.Id,
+    ///             Role = "roles/cloudkms.signerVerifier",
+    ///             Member = serviceAccount.Apply(serviceAccount =&gt; $"serviceAccount:{serviceAccount.AccountEmail}"),
+    ///         });
+    ///         var cryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new Gcp.Kms.GetKMSCryptoKeyVersionInvokeArgs
+    ///         {
+    ///             CryptoKey = cryptoKey.Id,
+    ///         });
+    ///         var folderAccessApproval = new Gcp.Folder.AccessApprovalSettings("folderAccessApproval", new Gcp.Folder.AccessApprovalSettingsArgs
+    ///         {
+    ///             FolderId = myFolder.FolderId,
+    ///             ActiveKeyVersion = cryptoKeyVersion.Apply(cryptoKeyVersion =&gt; cryptoKeyVersion.Name),
+    ///             EnrolledServices = 
+    ///             {
+    ///                 new Gcp.Folder.Inputs.AccessApprovalSettingsEnrolledServiceArgs
+    ///                 {
+    ///                     CloudProduct = "all",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 iam,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -68,6 +138,20 @@ namespace Pulumi.Gcp.Folder
     [GcpResourceType("gcp:folder/accessApprovalSettings:AccessApprovalSettings")]
     public partial class AccessApprovalSettings : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// </summary>
+        [Output("activeKeyVersion")]
+        public Output<string?> ActiveKeyVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
+        /// </summary>
+        [Output("ancestorHasActiveKeyVersion")]
+        public Output<bool> AncestorHasActiveKeyVersion { get; private set; } = null!;
+
         /// <summary>
         /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
         /// of the Folder.
@@ -90,6 +174,15 @@ namespace Pulumi.Gcp.Folder
         /// </summary>
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
+
+        /// <summary>
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+        /// this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+        /// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+        /// top-down.
+        /// </summary>
+        [Output("invalidKeyVersion")]
+        public Output<bool> InvalidKeyVersion { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
@@ -151,6 +244,14 @@ namespace Pulumi.Gcp.Folder
 
     public sealed class AccessApprovalSettingsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// </summary>
+        [Input("activeKeyVersion")]
+        public Input<string>? ActiveKeyVersion { get; set; }
+
         [Input("enrolledServices", required: true)]
         private InputList<Inputs.AccessApprovalSettingsEnrolledServiceArgs>? _enrolledServices;
 
@@ -195,6 +296,20 @@ namespace Pulumi.Gcp.Folder
     public sealed class AccessApprovalSettingsState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The asymmetric crypto key version to use for signing approval requests.
+        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+        /// </summary>
+        [Input("activeKeyVersion")]
+        public Input<string>? ActiveKeyVersion { get; set; }
+
+        /// <summary>
+        /// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
+        /// </summary>
+        [Input("ancestorHasActiveKeyVersion")]
+        public Input<bool>? AncestorHasActiveKeyVersion { get; set; }
+
+        /// <summary>
         /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
         /// of the Folder.
         /// </summary>
@@ -222,6 +337,15 @@ namespace Pulumi.Gcp.Folder
         /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+        /// this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+        /// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+        /// top-down.
+        /// </summary>
+        [Input("invalidKeyVersion")]
+        public Input<bool>? InvalidKeyVersion { get; set; }
 
         /// <summary>
         /// The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"

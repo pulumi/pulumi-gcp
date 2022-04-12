@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         /// <summary>
         /// The version of the unschematized parser to be used when a custom `schema` is not set.
         /// Default value is `V1`.
-        /// Possible values are `V1` and `V2`.
+        /// Possible values are `V1`, `V2`, and `V3`.
         /// </summary>
         public readonly string? Version;
 

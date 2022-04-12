@@ -21,6 +21,7 @@ class JobArgs:
                  hive_config: Optional[pulumi.Input['JobHiveConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pig_config: Optional[pulumi.Input['JobPigConfigArgs']] = None,
+                 presto_config: Optional[pulumi.Input['JobPrestoConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pyspark_config: Optional[pulumi.Input['JobPysparkConfigArgs']] = None,
                  reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
@@ -38,6 +39,7 @@ class JobArgs:
         :param pulumi.Input['JobHiveConfigArgs'] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
         :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
+        :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input['JobPysparkConfigArgs'] pyspark_config: The config of pySpark job.
@@ -59,6 +61,8 @@ class JobArgs:
             pulumi.set(__self__, "labels", labels)
         if pig_config is not None:
             pulumi.set(__self__, "pig_config", pig_config)
+        if presto_config is not None:
+            pulumi.set(__self__, "presto_config", presto_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pyspark_config is not None:
@@ -147,6 +151,18 @@ class JobArgs:
     @pig_config.setter
     def pig_config(self, value: Optional[pulumi.Input['JobPigConfigArgs']]):
         pulumi.set(self, "pig_config", value)
+
+    @property
+    @pulumi.getter(name="prestoConfig")
+    def presto_config(self) -> Optional[pulumi.Input['JobPrestoConfigArgs']]:
+        """
+        The config of presto job
+        """
+        return pulumi.get(self, "presto_config")
+
+    @presto_config.setter
+    def presto_config(self, value: Optional[pulumi.Input['JobPrestoConfigArgs']]):
+        pulumi.set(self, "presto_config", value)
 
     @property
     @pulumi.getter
@@ -246,6 +262,7 @@ class _JobState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pig_config: Optional[pulumi.Input['JobPigConfigArgs']] = None,
                  placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
+                 presto_config: Optional[pulumi.Input['JobPrestoConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pyspark_config: Optional[pulumi.Input['JobPysparkConfigArgs']] = None,
                  reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
@@ -266,6 +283,7 @@ class _JobState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
         :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
         :param pulumi.Input['JobPlacementArgs'] placement: The config of job placement.
+        :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input['JobPysparkConfigArgs'] pyspark_config: The config of pySpark job.
@@ -293,6 +311,8 @@ class _JobState:
             pulumi.set(__self__, "pig_config", pig_config)
         if placement is not None:
             pulumi.set(__self__, "placement", placement)
+        if presto_config is not None:
+            pulumi.set(__self__, "presto_config", presto_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pyspark_config is not None:
@@ -409,6 +429,18 @@ class _JobState:
         pulumi.set(self, "placement", value)
 
     @property
+    @pulumi.getter(name="prestoConfig")
+    def presto_config(self) -> Optional[pulumi.Input['JobPrestoConfigArgs']]:
+        """
+        The config of presto job
+        """
+        return pulumi.get(self, "presto_config")
+
+    @presto_config.setter
+    def presto_config(self, value: Optional[pulumi.Input['JobPrestoConfigArgs']]):
+        pulumi.set(self, "presto_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -518,6 +550,7 @@ class Job(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pig_config: Optional[pulumi.Input[pulumi.InputType['JobPigConfigArgs']]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
+                 presto_config: Optional[pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pyspark_config: Optional[pulumi.Input[pulumi.InputType['JobPysparkConfigArgs']]] = None,
                  reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
@@ -590,6 +623,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
         :param pulumi.Input[pulumi.InputType['JobPigConfigArgs']] pig_config: The config of pag job.
         :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: The config of job placement.
+        :param pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']] presto_config: The config of presto job
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['JobPysparkConfigArgs']] pyspark_config: The config of pySpark job.
@@ -681,6 +715,7 @@ class Job(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pig_config: Optional[pulumi.Input[pulumi.InputType['JobPigConfigArgs']]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
+                 presto_config: Optional[pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pyspark_config: Optional[pulumi.Input[pulumi.InputType['JobPysparkConfigArgs']]] = None,
                  reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
@@ -708,6 +743,7 @@ class Job(pulumi.CustomResource):
             if placement is None and not opts.urn:
                 raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement
+            __props__.__dict__["presto_config"] = presto_config
             __props__.__dict__["project"] = project
             __props__.__dict__["pyspark_config"] = pyspark_config
             __props__.__dict__["reference"] = reference
@@ -736,6 +772,7 @@ class Job(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             pig_config: Optional[pulumi.Input[pulumi.InputType['JobPigConfigArgs']]] = None,
             placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
+            presto_config: Optional[pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pyspark_config: Optional[pulumi.Input[pulumi.InputType['JobPysparkConfigArgs']]] = None,
             reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
@@ -761,6 +798,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
         :param pulumi.Input[pulumi.InputType['JobPigConfigArgs']] pig_config: The config of pag job.
         :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: The config of job placement.
+        :param pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']] presto_config: The config of presto job
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['JobPysparkConfigArgs']] pyspark_config: The config of pySpark job.
@@ -784,6 +822,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["pig_config"] = pig_config
         __props__.__dict__["placement"] = placement
+        __props__.__dict__["presto_config"] = presto_config
         __props__.__dict__["project"] = project
         __props__.__dict__["pyspark_config"] = pyspark_config
         __props__.__dict__["reference"] = reference
@@ -859,6 +898,14 @@ class Job(pulumi.CustomResource):
         The config of job placement.
         """
         return pulumi.get(self, "placement")
+
+    @property
+    @pulumi.getter(name="prestoConfig")
+    def presto_config(self) -> pulumi.Output[Optional['outputs.JobPrestoConfig']]:
+        """
+        The config of presto job
+        """
+        return pulumi.get(self, "presto_config")
 
     @property
     @pulumi.getter

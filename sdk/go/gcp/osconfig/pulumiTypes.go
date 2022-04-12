@@ -13082,6 +13082,8 @@ type PatchDeploymentPatchConfig struct {
 	// goo update settings. Use this setting to override the default goo patch rules.
 	// Structure is documented below.
 	Goo *PatchDeploymentPatchConfigGoo `pulumi:"goo"`
+	// Allows the patch job to run on Managed instance groups (MIGs).
+	MigInstancesAllowed *bool `pulumi:"migInstancesAllowed"`
 	// The ExecStep to run after the patch update.
 	// Structure is documented below.
 	PostStep *PatchDeploymentPatchConfigPostStep `pulumi:"postStep"`
@@ -13120,6 +13122,8 @@ type PatchDeploymentPatchConfigArgs struct {
 	// goo update settings. Use this setting to override the default goo patch rules.
 	// Structure is documented below.
 	Goo PatchDeploymentPatchConfigGooPtrInput `pulumi:"goo"`
+	// Allows the patch job to run on Managed instance groups (MIGs).
+	MigInstancesAllowed pulumi.BoolPtrInput `pulumi:"migInstancesAllowed"`
 	// The ExecStep to run after the patch update.
 	// Structure is documented below.
 	PostStep PatchDeploymentPatchConfigPostStepPtrInput `pulumi:"postStep"`
@@ -13229,6 +13233,11 @@ func (o PatchDeploymentPatchConfigOutput) Goo() PatchDeploymentPatchConfigGooPtr
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *PatchDeploymentPatchConfigGoo { return v.Goo }).(PatchDeploymentPatchConfigGooPtrOutput)
 }
 
+// Allows the patch job to run on Managed instance groups (MIGs).
+func (o PatchDeploymentPatchConfigOutput) MigInstancesAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PatchDeploymentPatchConfig) *bool { return v.MigInstancesAllowed }).(pulumi.BoolPtrOutput)
+}
+
 // The ExecStep to run after the patch update.
 // Structure is documented below.
 func (o PatchDeploymentPatchConfigOutput) PostStep() PatchDeploymentPatchConfigPostStepPtrOutput {
@@ -13309,6 +13318,16 @@ func (o PatchDeploymentPatchConfigPtrOutput) Goo() PatchDeploymentPatchConfigGoo
 		}
 		return v.Goo
 	}).(PatchDeploymentPatchConfigGooPtrOutput)
+}
+
+// Allows the patch job to run on Managed instance groups (MIGs).
+func (o PatchDeploymentPatchConfigPtrOutput) MigInstancesAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MigInstancesAllowed
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The ExecStep to run after the patch update.

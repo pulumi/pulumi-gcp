@@ -42,7 +42,32 @@ namespace Pulumi.Gcp.AccessContextManager
     ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
     ///         {
     ///             Parent = "organizations/123456789",
-    ///             Title = "my policy",
+    ///             Title = "Org Access Policy",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Access Context Manager Access Policy Scoped
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             OrgId = "123456789",
+    ///             ProjectId = "acm-test-proj-123",
+    ///         });
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Scopes = project.Number.Apply(number =&gt; $"projects/{number}"),
+    ///             Title = "Scoped Access Policy",
     ///         });
     ///     }
     /// 
@@ -78,6 +103,13 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
+        /// Folder or project on which this policy is applicable.
+        /// Format: folders/{{folder_id}} or projects/{{project_id}}
+        /// </summary>
+        [Output("scopes")]
+        public Output<string?> Scopes { get; private set; } = null!;
 
         /// <summary>
         /// Human readable title. Does not affect behavior.
@@ -145,6 +177,13 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
+        /// Folder or project on which this policy is applicable.
+        /// Format: folders/{{folder_id}} or projects/{{project_id}}
+        /// </summary>
+        [Input("scopes")]
+        public Input<string>? Scopes { get; set; }
+
+        /// <summary>
         /// Human readable title. Does not affect behavior.
         /// </summary>
         [Input("title", required: true)]
@@ -175,6 +214,13 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// Folder or project on which this policy is applicable.
+        /// Format: folders/{{folder_id}} or projects/{{project_id}}
+        /// </summary>
+        [Input("scopes")]
+        public Input<string>? Scopes { get; set; }
 
         /// <summary>
         /// Human readable title. Does not affect behavior.

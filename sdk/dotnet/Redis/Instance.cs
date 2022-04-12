@@ -358,11 +358,10 @@ namespace Pulumi.Gcp.Redis
         /// instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         /// can scale up and down the number of replicas.
-        /// Default value is `READ_REPLICAS_DISABLED`.
         /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Output("readReplicasMode")]
-        public Output<string?> ReadReplicasMode { get; private set; } = null!;
+        public Output<string> ReadReplicasMode { get; private set; } = null!;
 
         /// <summary>
         /// Redis configuration parameters, according to http://redis.io/topics/config.
@@ -577,7 +576,6 @@ namespace Pulumi.Gcp.Redis
         /// instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         /// can scale up and down the number of replicas.
-        /// Default value is `READ_REPLICAS_DISABLED`.
         /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Input("readReplicasMode")]
@@ -827,7 +825,6 @@ namespace Pulumi.Gcp.Redis
         /// instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         /// can scale up and down the number of replicas.
-        /// Default value is `READ_REPLICAS_DISABLED`.
         /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Input("readReplicasMode")]

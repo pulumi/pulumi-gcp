@@ -374,6 +374,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudbuild.NewTrigger(ctx, "manual-trigger", &cloudbuild.TriggerArgs{
+// 			ApprovalConfig: &cloudbuild.TriggerApprovalConfigArgs{
+// 				ApprovalRequired: pulumi.Bool(true),
+// 			},
 // 			GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
 // 				Path:     pulumi.String("cloudbuild.yaml"),
 // 				RepoType: pulumi.String("GITHUB"),
@@ -412,6 +415,11 @@ import (
 type Trigger struct {
 	pulumi.CustomResourceState
 
+	// Configuration for manual approval to start a build invocation of this BuildTrigger.
+	// Builds created by this trigger will require approval before they execute.
+	// Any user with a Cloud Build Approver role for the project can approve a build.
+	// Structure is documented below.
+	ApprovalConfig TriggerApprovalConfigOutput `pulumi:"approvalConfig"`
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build TriggerBuildPtrOutput `pulumi:"build"`
@@ -526,6 +534,11 @@ func GetTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Trigger resources.
 type triggerState struct {
+	// Configuration for manual approval to start a build invocation of this BuildTrigger.
+	// Builds created by this trigger will require approval before they execute.
+	// Any user with a Cloud Build Approver role for the project can approve a build.
+	// Structure is documented below.
+	ApprovalConfig *TriggerApprovalConfig `pulumi:"approvalConfig"`
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build *TriggerBuild `pulumi:"build"`
@@ -612,6 +625,11 @@ type triggerState struct {
 }
 
 type TriggerState struct {
+	// Configuration for manual approval to start a build invocation of this BuildTrigger.
+	// Builds created by this trigger will require approval before they execute.
+	// Any user with a Cloud Build Approver role for the project can approve a build.
+	// Structure is documented below.
+	ApprovalConfig TriggerApprovalConfigPtrInput
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build TriggerBuildPtrInput
@@ -702,6 +720,11 @@ func (TriggerState) ElementType() reflect.Type {
 }
 
 type triggerArgs struct {
+	// Configuration for manual approval to start a build invocation of this BuildTrigger.
+	// Builds created by this trigger will require approval before they execute.
+	// Any user with a Cloud Build Approver role for the project can approve a build.
+	// Structure is documented below.
+	ApprovalConfig *TriggerApprovalConfig `pulumi:"approvalConfig"`
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build *TriggerBuild `pulumi:"build"`
@@ -785,6 +808,11 @@ type triggerArgs struct {
 
 // The set of arguments for constructing a Trigger resource.
 type TriggerArgs struct {
+	// Configuration for manual approval to start a build invocation of this BuildTrigger.
+	// Builds created by this trigger will require approval before they execute.
+	// Any user with a Cloud Build Approver role for the project can approve a build.
+	// Structure is documented below.
+	ApprovalConfig TriggerApprovalConfigPtrInput
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build TriggerBuildPtrInput

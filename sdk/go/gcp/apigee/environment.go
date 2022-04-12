@@ -35,6 +35,19 @@ import (
 type Environment struct {
 	pulumi.CustomResourceState
 
+	// Optional. API Proxy type supported by the environment. The type can be set when creating
+	// the Environment and cannot be changed.
+	// Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+	ApiProxyType pulumi.StringOutput `pulumi:"apiProxyType"`
+	// Optional. Deployment type supported by the environment. The deployment type can be
+	// set when creating the environment and cannot be changed. When you enable archive
+	// deployment, you will be prevented from performing a subset of actions within the
+	// environment, including:
+	// Managing the deployment of API proxy or shared flow revisions;
+	// Creating, updating, or deleting resource files;
+	// Creating, updating, or deleting target servers.
+	// Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+	DeploymentType pulumi.StringOutput `pulumi:"deploymentType"`
 	// Description of the environment.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the environment.
@@ -78,6 +91,19 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
+	// Optional. API Proxy type supported by the environment. The type can be set when creating
+	// the Environment and cannot be changed.
+	// Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+	ApiProxyType *string `pulumi:"apiProxyType"`
+	// Optional. Deployment type supported by the environment. The deployment type can be
+	// set when creating the environment and cannot be changed. When you enable archive
+	// deployment, you will be prevented from performing a subset of actions within the
+	// environment, including:
+	// Managing the deployment of API proxy or shared flow revisions;
+	// Creating, updating, or deleting resource files;
+	// Creating, updating, or deleting target servers.
+	// Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+	DeploymentType *string `pulumi:"deploymentType"`
 	// Description of the environment.
 	Description *string `pulumi:"description"`
 	// Display name of the environment.
@@ -90,6 +116,19 @@ type environmentState struct {
 }
 
 type EnvironmentState struct {
+	// Optional. API Proxy type supported by the environment. The type can be set when creating
+	// the Environment and cannot be changed.
+	// Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+	ApiProxyType pulumi.StringPtrInput
+	// Optional. Deployment type supported by the environment. The deployment type can be
+	// set when creating the environment and cannot be changed. When you enable archive
+	// deployment, you will be prevented from performing a subset of actions within the
+	// environment, including:
+	// Managing the deployment of API proxy or shared flow revisions;
+	// Creating, updating, or deleting resource files;
+	// Creating, updating, or deleting target servers.
+	// Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+	DeploymentType pulumi.StringPtrInput
 	// Description of the environment.
 	Description pulumi.StringPtrInput
 	// Display name of the environment.
@@ -106,6 +145,19 @@ func (EnvironmentState) ElementType() reflect.Type {
 }
 
 type environmentArgs struct {
+	// Optional. API Proxy type supported by the environment. The type can be set when creating
+	// the Environment and cannot be changed.
+	// Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+	ApiProxyType *string `pulumi:"apiProxyType"`
+	// Optional. Deployment type supported by the environment. The deployment type can be
+	// set when creating the environment and cannot be changed. When you enable archive
+	// deployment, you will be prevented from performing a subset of actions within the
+	// environment, including:
+	// Managing the deployment of API proxy or shared flow revisions;
+	// Creating, updating, or deleting resource files;
+	// Creating, updating, or deleting target servers.
+	// Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+	DeploymentType *string `pulumi:"deploymentType"`
 	// Description of the environment.
 	Description *string `pulumi:"description"`
 	// Display name of the environment.
@@ -119,6 +171,19 @@ type environmentArgs struct {
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
+	// Optional. API Proxy type supported by the environment. The type can be set when creating
+	// the Environment and cannot be changed.
+	// Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+	ApiProxyType pulumi.StringPtrInput
+	// Optional. Deployment type supported by the environment. The deployment type can be
+	// set when creating the environment and cannot be changed. When you enable archive
+	// deployment, you will be prevented from performing a subset of actions within the
+	// environment, including:
+	// Managing the deployment of API proxy or shared flow revisions;
+	// Creating, updating, or deleting resource files;
+	// Creating, updating, or deleting target servers.
+	// Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+	DeploymentType pulumi.StringPtrInput
 	// Description of the environment.
 	Description pulumi.StringPtrInput
 	// Display name of the environment.

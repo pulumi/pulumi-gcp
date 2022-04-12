@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string MainPythonFileUri;
         /// <summary>
-        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>

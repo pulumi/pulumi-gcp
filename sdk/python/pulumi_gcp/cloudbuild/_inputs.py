@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'TriggerApprovalConfigArgs',
     'TriggerBuildArgs',
     'TriggerBuildArtifactsArgs',
     'TriggerBuildArtifactsObjectsArgs',
@@ -34,6 +35,31 @@ __all__ = [
     'WorkerPoolNetworkConfigArgs',
     'WorkerPoolWorkerConfigArgs',
 ]
+
+@pulumi.input_type
+class TriggerApprovalConfigArgs:
+    def __init__(__self__, *,
+                 approval_required: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] approval_required: Whether or not approval is needed. If this is set on a build, it will become pending when run,
+               and will need to be explicitly approved to start.
+        """
+        if approval_required is not None:
+            pulumi.set(__self__, "approval_required", approval_required)
+
+    @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not approval is needed. If this is set on a build, it will become pending when run,
+        and will need to be explicitly approved to start.
+        """
+        return pulumi.get(self, "approval_required")
+
+    @approval_required.setter
+    def approval_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "approval_required", value)
+
 
 @pulumi.input_type
 class TriggerBuildArgs:
@@ -1410,6 +1436,7 @@ class TriggerGitFileSourceArgs:
                Paths must be absolute and cannot conflict with other volume paths on the same
                build step or with certain reserved volume paths.
         :param pulumi.Input[str] repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+               Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
                Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
         :param pulumi.Input[str] revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
                filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -1442,6 +1469,7 @@ class TriggerGitFileSourceArgs:
     def repo_type(self) -> pulumi.Input[str]:
         """
         The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
         Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
         """
         return pulumi.get(self, "repo_type")
@@ -1754,6 +1782,7 @@ class TriggerSourceToBuildArgs:
         """
         :param pulumi.Input[str] ref: The branch or tag to use. Must start with "refs/" (required).
         :param pulumi.Input[str] repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+               Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
                Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
         :param pulumi.Input[str] uri: The URI of the repo (required).
         """
@@ -1778,6 +1807,7 @@ class TriggerSourceToBuildArgs:
     def repo_type(self) -> pulumi.Input[str]:
         """
         The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
         Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
         """
         return pulumi.get(self, "repo_type")

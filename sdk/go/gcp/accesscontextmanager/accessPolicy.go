@@ -44,7 +44,43 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
 // 			Parent: pulumi.String("organizations/123456789"),
-// 			Title:  pulumi.String("my policy"),
+// 			Title:  pulumi.String("Org Access Policy"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Access Context Manager Access Policy Scoped
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/accesscontextmanager"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+// 			OrgId:     pulumi.String("123456789"),
+// 			ProjectId: pulumi.String("acm-test-proj-123"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
+// 			Parent: pulumi.String("organizations/123456789"),
+// 			Scopes: project.Number.ApplyT(func(number string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "projects/", number), nil
+// 			}).(pulumi.StringOutput),
+// 			Title: pulumi.String("Scoped Access Policy"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -71,6 +107,9 @@ type AccessPolicy struct {
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Folder or project on which this policy is applicable.
+	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	Scopes pulumi.StringPtrOutput `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
 	Title pulumi.StringOutput `pulumi:"title"`
 	// Time the AccessPolicy was updated in UTC.
@@ -119,6 +158,9 @@ type accessPolicyState struct {
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id}
 	Parent *string `pulumi:"parent"`
+	// Folder or project on which this policy is applicable.
+	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	Scopes *string `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
 	Title *string `pulumi:"title"`
 	// Time the AccessPolicy was updated in UTC.
@@ -133,6 +175,9 @@ type AccessPolicyState struct {
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id}
 	Parent pulumi.StringPtrInput
+	// Folder or project on which this policy is applicable.
+	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	Scopes pulumi.StringPtrInput
 	// Human readable title. Does not affect behavior.
 	Title pulumi.StringPtrInput
 	// Time the AccessPolicy was updated in UTC.
@@ -147,6 +192,9 @@ type accessPolicyArgs struct {
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id}
 	Parent string `pulumi:"parent"`
+	// Folder or project on which this policy is applicable.
+	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	Scopes *string `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
 	Title string `pulumi:"title"`
 }
@@ -156,6 +204,9 @@ type AccessPolicyArgs struct {
 	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id}
 	Parent pulumi.StringInput
+	// Folder or project on which this policy is applicable.
+	// Format: folders/{{folder_id}} or projects/{{project_id}}
+	Scopes pulumi.StringPtrInput
 	// Human readable title. Does not affect behavior.
 	Title pulumi.StringInput
 }

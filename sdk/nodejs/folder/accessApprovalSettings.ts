@@ -34,6 +34,52 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Folder Access Approval Active Key Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myFolder = new gcp.organizations.Folder("myFolder", {
+ *     displayName: "my-folder",
+ *     parent: "organizations/123456789",
+ * });
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "your-project-id",
+ *     folderId: myFolder.name,
+ * });
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {
+ *     location: "global",
+ *     project: myProject.projectId,
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
+ *     keyRing: keyRing.id,
+ *     purpose: "ASYMMETRIC_SIGN",
+ *     versionTemplate: {
+ *         algorithm: "EC_SIGN_P384_SHA384",
+ *     },
+ * });
+ * const serviceAccount = gcp.accessapproval.getFolderServiceAccountOutput({
+ *     folderId: myFolder.folderId,
+ * });
+ * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.signerVerifier",
+ *     member: serviceAccount.apply(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+ * });
+ * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
+ *     cryptoKey: cryptoKey.id,
+ * });
+ * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folderAccessApproval", {
+ *     folderId: myFolder.folderId,
+ *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+ *     enrolledServices: [{
+ *         cloudProduct: "all",
+ *     }],
+ * }, {
+ *     dependsOn: [iam],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -76,6 +122,16 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
     }
 
     /**
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+     */
+    public readonly activeKeyVersion!: pulumi.Output<string | undefined>;
+    /**
+     * If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
+     */
+    public /*out*/ readonly ancestorHasActiveKeyVersion!: pulumi.Output<boolean>;
+    /**
      * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
      * of the Folder.
      */
@@ -92,6 +148,13 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      * ID of the folder of the access approval settings.
      */
     public readonly folderId!: pulumi.Output<string>;
+    /**
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+     * this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+     * top-down.
+     */
+    public /*out*/ readonly invalidKeyVersion!: pulumi.Output<boolean>;
     /**
      * The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
      */
@@ -116,9 +179,12 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessApprovalSettingsState | undefined;
+            resourceInputs["activeKeyVersion"] = state ? state.activeKeyVersion : undefined;
+            resourceInputs["ancestorHasActiveKeyVersion"] = state ? state.ancestorHasActiveKeyVersion : undefined;
             resourceInputs["enrolledAncestor"] = state ? state.enrolledAncestor : undefined;
             resourceInputs["enrolledServices"] = state ? state.enrolledServices : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["invalidKeyVersion"] = state ? state.invalidKeyVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationEmails"] = state ? state.notificationEmails : undefined;
         } else {
@@ -129,10 +195,13 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
             if ((!args || args.folderId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folderId'");
             }
+            resourceInputs["activeKeyVersion"] = args ? args.activeKeyVersion : undefined;
             resourceInputs["enrolledServices"] = args ? args.enrolledServices : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["notificationEmails"] = args ? args.notificationEmails : undefined;
+            resourceInputs["ancestorHasActiveKeyVersion"] = undefined /*out*/;
             resourceInputs["enrolledAncestor"] = undefined /*out*/;
+            resourceInputs["invalidKeyVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -144,6 +213,16 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessApprovalSettings resources.
  */
 export interface AccessApprovalSettingsState {
+    /**
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+     */
+    activeKeyVersion?: pulumi.Input<string>;
+    /**
+     * If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
+     */
+    ancestorHasActiveKeyVersion?: pulumi.Input<boolean>;
     /**
      * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
      * of the Folder.
@@ -162,6 +241,13 @@ export interface AccessApprovalSettingsState {
      */
     folderId?: pulumi.Input<string>;
     /**
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
+     * this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
+     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
+     * top-down.
+     */
+    invalidKeyVersion?: pulumi.Input<boolean>;
+    /**
      * The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
      */
     name?: pulumi.Input<string>;
@@ -177,6 +263,12 @@ export interface AccessApprovalSettingsState {
  * The set of arguments for constructing a AccessApprovalSettings resource.
  */
 export interface AccessApprovalSettingsArgs {
+    /**
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+     */
+    activeKeyVersion?: pulumi.Input<string>;
     /**
      * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
      * Access requests for the resource given by name against any of these services contained here will be required

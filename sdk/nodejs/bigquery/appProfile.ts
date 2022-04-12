@@ -13,19 +13,33 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
  *
  * ## Example Usage
- * ### Bigtable App Profile Multicluster
+ * ### Bigtable App Profile Anycluster
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.bigtable.Instance("instance", {
- *     clusters: [{
- *         clusterId: "bt-instance",
- *         zone: "us-central1-b",
- *         numNodes: 3,
- *         storageType: "HDD",
- *     }],
+ *     clusters: [
+ *         {
+ *             clusterId: "cluster-1",
+ *             zone: "us-central1-a",
+ *             numNodes: 3,
+ *             storageType: "HDD",
+ *         },
+ *         {
+ *             clusterId: "cluster-2",
+ *             zone: "us-central1-b",
+ *             numNodes: 3,
+ *             storageType: "HDD",
+ *         },
+ *         {
+ *             clusterId: "cluster-3",
+ *             zone: "us-central1-c",
+ *             numNodes: 3,
+ *             storageType: "HDD",
+ *         },
+ *     ],
  *     deletionProtection: "true",
  * });
  * const ap = new gcp.bigquery.AppProfile("ap", {
@@ -43,7 +57,7 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.bigtable.Instance("instance", {
  *     clusters: [{
- *         clusterId: "bt-instance",
+ *         clusterId: "cluster-1",
  *         zone: "us-central1-b",
  *         numNodes: 3,
  *         storageType: "HDD",
@@ -54,9 +68,49 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  *     appProfileId: "bt-profile",
  *     singleClusterRouting: {
- *         clusterId: "bt-instance",
+ *         clusterId: "cluster-1",
  *         allowTransactionalWrites: true,
  *     },
+ *     ignoreWarnings: true,
+ * });
+ * ```
+ * ### Bigtable App Profile Multicluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     clusters: [
+ *         {
+ *             clusterId: "cluster-1",
+ *             zone: "us-central1-a",
+ *             numNodes: 3,
+ *             storageType: "HDD",
+ *         },
+ *         {
+ *             clusterId: "cluster-2",
+ *             zone: "us-central1-b",
+ *             numNodes: 3,
+ *             storageType: "HDD",
+ *         },
+ *         {
+ *             clusterId: "cluster-3",
+ *             zone: "us-central1-c",
+ *             numNodes: 3,
+ *             storageType: "HDD",
+ *         },
+ *     ],
+ *     deletionProtection: "true",
+ * });
+ * const ap = new gcp.bigquery.AppProfile("ap", {
+ *     instance: instance.name,
+ *     appProfileId: "bt-profile",
+ *     multiClusterRoutingUseAny: true,
+ *     multiClusterRoutingClusterIds: [
+ *         "cluster-1",
+ *         "cluster-2",
+ *     ],
  *     ignoreWarnings: true,
  * });
  * ```

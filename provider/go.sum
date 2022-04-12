@@ -956,8 +956,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e h1:jl43csgF3BSlNRmjo+TGgjW/uXk9h7+NoR3doKQ0BT4=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e/go.mod h1:JBItawj+j8Ssla5Ib6BC/W9VQkOucBfnX7VRtyx1vw8=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20220405181522-d6f5458a87ca h1:VMQt1PJH2i7lzQgHCiAxNAnTrudN6cggk56DUNy7jzY=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20220405181522-d6f5458a87ca/go.mod h1:gVVB/twWiZbvwd5MnkJHCup2QFOUSDb70pmwKBNOIjA=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20220412164828-e475124a3692 h1:CGrv53EGcThp6C+fHjhw3QgRU4XZgcLt6Eub7QRgdoQ=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20220412164828-e475124a3692/go.mod h1:gVVB/twWiZbvwd5MnkJHCup2QFOUSDb70pmwKBNOIjA=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=
 github.com/quasilyte/go-ruleguard v0.3.1-0.20210203134552-1b5a410e1cc8/go.mod h1:KsAh3x0e7Fkpgs+Q9pNLS5XpFSvYCEVl5gP9Pp1xp30=
 github.com/quasilyte/go-ruleguard v0.3.4/go.mod h1:57FZgMnoo6jqxkYKmVj5Fc8vOt0rVzoE/UNAmFFIPqA=

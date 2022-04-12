@@ -29,6 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessLevels{}
 	case "gcp:accesscontextmanager/accessPolicy:AccessPolicy":
 		r = &AccessPolicy{}
+	case "gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding":
+		r = &AccessPolicyIamBinding{}
+	case "gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember":
+		r = &AccessPolicyIamMember{}
+	case "gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy":
+		r = &AccessPolicyIamPolicy{}
 	case "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding":
 		r = &GcpUserAccessBinding{}
 	case "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter":
@@ -68,6 +74,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"accesscontextmanager/accessPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"accesscontextmanager/accessPolicyIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"accesscontextmanager/accessPolicyIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"accesscontextmanager/accessPolicyIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

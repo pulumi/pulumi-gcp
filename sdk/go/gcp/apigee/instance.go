@@ -52,9 +52,7 @@ type Instance struct {
 	// for configuring their firewall needs to allow traffic from Apigee.
 	// Input format: "a.b.c.d/22"
 	IpRange pulumi.StringPtrOutput `pulumi:"ipRange"`
-	// Compute Engine location where the instance resides. For trial organization
-	// subscriptions, the location must be a Compute Engine zone. For paid organization
-	// subscriptions, it should correspond to a Compute Engine region.
+	// Required. Compute Engine location where the instance resides.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource ID of the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -120,9 +118,7 @@ type instanceState struct {
 	// for configuring their firewall needs to allow traffic from Apigee.
 	// Input format: "a.b.c.d/22"
 	IpRange *string `pulumi:"ipRange"`
-	// Compute Engine location where the instance resides. For trial organization
-	// subscriptions, the location must be a Compute Engine zone. For paid organization
-	// subscriptions, it should correspond to a Compute Engine region.
+	// Required. Compute Engine location where the instance resides.
 	Location *string `pulumi:"location"`
 	// Resource ID of the instance.
 	Name *string `pulumi:"name"`
@@ -154,9 +150,7 @@ type InstanceState struct {
 	// for configuring their firewall needs to allow traffic from Apigee.
 	// Input format: "a.b.c.d/22"
 	IpRange pulumi.StringPtrInput
-	// Compute Engine location where the instance resides. For trial organization
-	// subscriptions, the location must be a Compute Engine zone. For paid organization
-	// subscriptions, it should correspond to a Compute Engine region.
+	// Required. Compute Engine location where the instance resides.
 	Location pulumi.StringPtrInput
 	// Resource ID of the instance.
 	Name pulumi.StringPtrInput
@@ -190,9 +184,7 @@ type instanceArgs struct {
 	// for configuring their firewall needs to allow traffic from Apigee.
 	// Input format: "a.b.c.d/22"
 	IpRange *string `pulumi:"ipRange"`
-	// Compute Engine location where the instance resides. For trial organization
-	// subscriptions, the location must be a Compute Engine zone. For paid organization
-	// subscriptions, it should correspond to a Compute Engine region.
+	// Required. Compute Engine location where the instance resides.
 	Location string `pulumi:"location"`
 	// Resource ID of the instance.
 	Name *string `pulumi:"name"`
@@ -221,9 +213,7 @@ type InstanceArgs struct {
 	// for configuring their firewall needs to allow traffic from Apigee.
 	// Input format: "a.b.c.d/22"
 	IpRange pulumi.StringPtrInput
-	// Compute Engine location where the instance resides. For trial organization
-	// subscriptions, the location must be a Compute Engine zone. For paid organization
-	// subscriptions, it should correspond to a Compute Engine region.
+	// Required. Compute Engine location where the instance resides.
 	Location pulumi.StringInput
 	// Resource ID of the instance.
 	Name pulumi.StringPtrInput

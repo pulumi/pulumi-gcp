@@ -9,6 +9,7 @@ export * from "./provider";
 export * from "./utils";
 
 // Export sub-modules:
+import * as accessapproval from "./accessapproval";
 import * as accesscontextmanager from "./accesscontextmanager";
 import * as activedirectory from "./activedirectory";
 import * as apigateway from "./apigateway";
@@ -95,6 +96,7 @@ import * as vpcaccess from "./vpcaccess";
 import * as workflows from "./workflows";
 
 export {
+    accessapproval,
     accesscontextmanager,
     activedirectory,
     apigateway,

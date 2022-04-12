@@ -71,7 +71,6 @@ class InstanceArgs:
                instance cannot scale up or down the number of replicas.
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
-               Default value is `READ_REPLICAS_DISABLED`.
                Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
@@ -309,7 +308,6 @@ class InstanceArgs:
         instance cannot scale up or down the number of replicas.
         - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         can scale up and down the number of replicas.
-        Default value is `READ_REPLICAS_DISABLED`.
         Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")
@@ -509,7 +507,6 @@ class _InstanceState:
                instance cannot scale up or down the number of replicas.
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
-               Default value is `READ_REPLICAS_DISABLED`.
                Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
@@ -887,7 +884,6 @@ class _InstanceState:
         instance cannot scale up or down the number of replicas.
         - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         can scale up and down the number of replicas.
-        Default value is `READ_REPLICAS_DISABLED`.
         Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")
@@ -1194,7 +1190,6 @@ class Instance(pulumi.CustomResource):
                instance cannot scale up or down the number of replicas.
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
-               Default value is `READ_REPLICAS_DISABLED`.
                Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
@@ -1528,7 +1523,6 @@ class Instance(pulumi.CustomResource):
                instance cannot scale up or down the number of replicas.
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
-               Default value is `READ_REPLICAS_DISABLED`.
                Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
@@ -1789,7 +1783,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="readReplicasMode")
-    def read_replicas_mode(self) -> pulumi.Output[Optional[str]]:
+    def read_replicas_mode(self) -> pulumi.Output[str]:
         """
         Optional. Read replica mode. Can only be specified when trying to create the instance.
         If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
@@ -1797,7 +1791,6 @@ class Instance(pulumi.CustomResource):
         instance cannot scale up or down the number of replicas.
         - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         can scale up and down the number of replicas.
-        Default value is `READ_REPLICAS_DISABLED`.
         Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")

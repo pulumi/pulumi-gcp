@@ -56,6 +56,23 @@ export class Environment extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. API Proxy type supported by the environment. The type can be set when creating
+     * the Environment and cannot be changed.
+     * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+     */
+    public readonly apiProxyType!: pulumi.Output<string>;
+    /**
+     * Optional. Deployment type supported by the environment. The deployment type can be
+     * set when creating the environment and cannot be changed. When you enable archive
+     * deployment, you will be prevented from performing a subset of actions within the
+     * environment, including:
+     * Managing the deployment of API proxy or shared flow revisions;
+     * Creating, updating, or deleting resource files;
+     * Creating, updating, or deleting target servers.
+     * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+     */
+    public readonly deploymentType!: pulumi.Output<string>;
+    /**
      * Description of the environment.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -86,6 +103,8 @@ export class Environment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
+            resourceInputs["apiProxyType"] = state ? state.apiProxyType : undefined;
+            resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -95,6 +114,8 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
+            resourceInputs["apiProxyType"] = args ? args.apiProxyType : undefined;
+            resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -109,6 +130,23 @@ export class Environment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Environment resources.
  */
 export interface EnvironmentState {
+    /**
+     * Optional. API Proxy type supported by the environment. The type can be set when creating
+     * the Environment and cannot be changed.
+     * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+     */
+    apiProxyType?: pulumi.Input<string>;
+    /**
+     * Optional. Deployment type supported by the environment. The deployment type can be
+     * set when creating the environment and cannot be changed. When you enable archive
+     * deployment, you will be prevented from performing a subset of actions within the
+     * environment, including:
+     * Managing the deployment of API proxy or shared flow revisions;
+     * Creating, updating, or deleting resource files;
+     * Creating, updating, or deleting target servers.
+     * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+     */
+    deploymentType?: pulumi.Input<string>;
     /**
      * Description of the environment.
      */
@@ -132,6 +170,23 @@ export interface EnvironmentState {
  * The set of arguments for constructing a Environment resource.
  */
 export interface EnvironmentArgs {
+    /**
+     * Optional. API Proxy type supported by the environment. The type can be set when creating
+     * the Environment and cannot be changed.
+     * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+     */
+    apiProxyType?: pulumi.Input<string>;
+    /**
+     * Optional. Deployment type supported by the environment. The deployment type can be
+     * set when creating the environment and cannot be changed. When you enable archive
+     * deployment, you will be prevented from performing a subset of actions within the
+     * environment, including:
+     * Managing the deployment of API proxy or shared flow revisions;
+     * Creating, updating, or deleting resource files;
+     * Creating, updating, or deleting target servers.
+     * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+     */
+    deploymentType?: pulumi.Input<string>;
     /**
      * Description of the environment.
      */

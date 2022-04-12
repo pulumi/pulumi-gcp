@@ -285,10 +285,9 @@ export class Instance extends pulumi.CustomResource {
      * instance cannot scale up or down the number of replicas.
      * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
      * can scale up and down the number of replicas.
-     * Default value is `READ_REPLICAS_DISABLED`.
      * Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
      */
-    public readonly readReplicasMode!: pulumi.Output<string | undefined>;
+    public readonly readReplicasMode!: pulumi.Output<string>;
     /**
      * Redis configuration parameters, according to http://redis.io/topics/config.
      * Please check Memorystore documentation for the list of supported parameters:
@@ -545,7 +544,6 @@ export interface InstanceState {
      * instance cannot scale up or down the number of replicas.
      * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
      * can scale up and down the number of replicas.
-     * Default value is `READ_REPLICAS_DISABLED`.
      * Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
      */
     readReplicasMode?: pulumi.Input<string>;
@@ -676,7 +674,6 @@ export interface InstanceArgs {
      * instance cannot scale up or down the number of replicas.
      * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
      * can scale up and down the number of replicas.
-     * Default value is `READ_REPLICAS_DISABLED`.
      * Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
      */
     readReplicasMode?: pulumi.Input<string>;

@@ -10,6 +10,332 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ConsumersIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ConsumersIamBindingConditionInput is an input type that accepts ConsumersIamBindingConditionArgs and ConsumersIamBindingConditionOutput values.
+// You can construct a concrete instance of `ConsumersIamBindingConditionInput` via:
+//
+//          ConsumersIamBindingConditionArgs{...}
+type ConsumersIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToConsumersIamBindingConditionOutput() ConsumersIamBindingConditionOutput
+	ToConsumersIamBindingConditionOutputWithContext(context.Context) ConsumersIamBindingConditionOutput
+}
+
+type ConsumersIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ConsumersIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumersIamBindingCondition)(nil)).Elem()
+}
+
+func (i ConsumersIamBindingConditionArgs) ToConsumersIamBindingConditionOutput() ConsumersIamBindingConditionOutput {
+	return i.ToConsumersIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ConsumersIamBindingConditionArgs) ToConsumersIamBindingConditionOutputWithContext(ctx context.Context) ConsumersIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamBindingConditionOutput)
+}
+
+func (i ConsumersIamBindingConditionArgs) ToConsumersIamBindingConditionPtrOutput() ConsumersIamBindingConditionPtrOutput {
+	return i.ToConsumersIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ConsumersIamBindingConditionArgs) ToConsumersIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsumersIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamBindingConditionOutput).ToConsumersIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ConsumersIamBindingConditionPtrInput is an input type that accepts ConsumersIamBindingConditionArgs, ConsumersIamBindingConditionPtr and ConsumersIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ConsumersIamBindingConditionPtrInput` via:
+//
+//          ConsumersIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type ConsumersIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToConsumersIamBindingConditionPtrOutput() ConsumersIamBindingConditionPtrOutput
+	ToConsumersIamBindingConditionPtrOutputWithContext(context.Context) ConsumersIamBindingConditionPtrOutput
+}
+
+type consumersIamBindingConditionPtrType ConsumersIamBindingConditionArgs
+
+func ConsumersIamBindingConditionPtr(v *ConsumersIamBindingConditionArgs) ConsumersIamBindingConditionPtrInput {
+	return (*consumersIamBindingConditionPtrType)(v)
+}
+
+func (*consumersIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumersIamBindingCondition)(nil)).Elem()
+}
+
+func (i *consumersIamBindingConditionPtrType) ToConsumersIamBindingConditionPtrOutput() ConsumersIamBindingConditionPtrOutput {
+	return i.ToConsumersIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *consumersIamBindingConditionPtrType) ToConsumersIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsumersIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamBindingConditionPtrOutput)
+}
+
+type ConsumersIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ConsumersIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumersIamBindingCondition)(nil)).Elem()
+}
+
+func (o ConsumersIamBindingConditionOutput) ToConsumersIamBindingConditionOutput() ConsumersIamBindingConditionOutput {
+	return o
+}
+
+func (o ConsumersIamBindingConditionOutput) ToConsumersIamBindingConditionOutputWithContext(ctx context.Context) ConsumersIamBindingConditionOutput {
+	return o
+}
+
+func (o ConsumersIamBindingConditionOutput) ToConsumersIamBindingConditionPtrOutput() ConsumersIamBindingConditionPtrOutput {
+	return o.ToConsumersIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ConsumersIamBindingConditionOutput) ToConsumersIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsumersIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumersIamBindingCondition) *ConsumersIamBindingCondition {
+		return &v
+	}).(ConsumersIamBindingConditionPtrOutput)
+}
+
+func (o ConsumersIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConsumersIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ConsumersIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumersIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ConsumersIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumersIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ConsumersIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsumersIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumersIamBindingCondition)(nil)).Elem()
+}
+
+func (o ConsumersIamBindingConditionPtrOutput) ToConsumersIamBindingConditionPtrOutput() ConsumersIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ConsumersIamBindingConditionPtrOutput) ToConsumersIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsumersIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ConsumersIamBindingConditionPtrOutput) Elem() ConsumersIamBindingConditionOutput {
+	return o.ApplyT(func(v *ConsumersIamBindingCondition) ConsumersIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ConsumersIamBindingCondition
+		return ret
+	}).(ConsumersIamBindingConditionOutput)
+}
+
+func (o ConsumersIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumersIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsumersIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumersIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsumersIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumersIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConsumersIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ConsumersIamMemberConditionInput is an input type that accepts ConsumersIamMemberConditionArgs and ConsumersIamMemberConditionOutput values.
+// You can construct a concrete instance of `ConsumersIamMemberConditionInput` via:
+//
+//          ConsumersIamMemberConditionArgs{...}
+type ConsumersIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToConsumersIamMemberConditionOutput() ConsumersIamMemberConditionOutput
+	ToConsumersIamMemberConditionOutputWithContext(context.Context) ConsumersIamMemberConditionOutput
+}
+
+type ConsumersIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ConsumersIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumersIamMemberCondition)(nil)).Elem()
+}
+
+func (i ConsumersIamMemberConditionArgs) ToConsumersIamMemberConditionOutput() ConsumersIamMemberConditionOutput {
+	return i.ToConsumersIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ConsumersIamMemberConditionArgs) ToConsumersIamMemberConditionOutputWithContext(ctx context.Context) ConsumersIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamMemberConditionOutput)
+}
+
+func (i ConsumersIamMemberConditionArgs) ToConsumersIamMemberConditionPtrOutput() ConsumersIamMemberConditionPtrOutput {
+	return i.ToConsumersIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ConsumersIamMemberConditionArgs) ToConsumersIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsumersIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamMemberConditionOutput).ToConsumersIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ConsumersIamMemberConditionPtrInput is an input type that accepts ConsumersIamMemberConditionArgs, ConsumersIamMemberConditionPtr and ConsumersIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ConsumersIamMemberConditionPtrInput` via:
+//
+//          ConsumersIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type ConsumersIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToConsumersIamMemberConditionPtrOutput() ConsumersIamMemberConditionPtrOutput
+	ToConsumersIamMemberConditionPtrOutputWithContext(context.Context) ConsumersIamMemberConditionPtrOutput
+}
+
+type consumersIamMemberConditionPtrType ConsumersIamMemberConditionArgs
+
+func ConsumersIamMemberConditionPtr(v *ConsumersIamMemberConditionArgs) ConsumersIamMemberConditionPtrInput {
+	return (*consumersIamMemberConditionPtrType)(v)
+}
+
+func (*consumersIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumersIamMemberCondition)(nil)).Elem()
+}
+
+func (i *consumersIamMemberConditionPtrType) ToConsumersIamMemberConditionPtrOutput() ConsumersIamMemberConditionPtrOutput {
+	return i.ToConsumersIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *consumersIamMemberConditionPtrType) ToConsumersIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsumersIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamMemberConditionPtrOutput)
+}
+
+type ConsumersIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ConsumersIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumersIamMemberCondition)(nil)).Elem()
+}
+
+func (o ConsumersIamMemberConditionOutput) ToConsumersIamMemberConditionOutput() ConsumersIamMemberConditionOutput {
+	return o
+}
+
+func (o ConsumersIamMemberConditionOutput) ToConsumersIamMemberConditionOutputWithContext(ctx context.Context) ConsumersIamMemberConditionOutput {
+	return o
+}
+
+func (o ConsumersIamMemberConditionOutput) ToConsumersIamMemberConditionPtrOutput() ConsumersIamMemberConditionPtrOutput {
+	return o.ToConsumersIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ConsumersIamMemberConditionOutput) ToConsumersIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsumersIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumersIamMemberCondition) *ConsumersIamMemberCondition {
+		return &v
+	}).(ConsumersIamMemberConditionPtrOutput)
+}
+
+func (o ConsumersIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConsumersIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ConsumersIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumersIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ConsumersIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumersIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ConsumersIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsumersIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumersIamMemberCondition)(nil)).Elem()
+}
+
+func (o ConsumersIamMemberConditionPtrOutput) ToConsumersIamMemberConditionPtrOutput() ConsumersIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ConsumersIamMemberConditionPtrOutput) ToConsumersIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsumersIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ConsumersIamMemberConditionPtrOutput) Elem() ConsumersIamMemberConditionOutput {
+	return o.ApplyT(func(v *ConsumersIamMemberCondition) ConsumersIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ConsumersIamMemberCondition
+		return ret
+	}).(ConsumersIamMemberConditionOutput)
+}
+
+func (o ConsumersIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumersIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsumersIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumersIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsumersIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumersIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceApi struct {
 	Methods []ServiceApiMethod `pulumi:"methods"`
 	Name    *string            `pulumi:"name"`
@@ -661,6 +987,10 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumersIamBindingConditionInput)(nil)).Elem(), ConsumersIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumersIamBindingConditionPtrInput)(nil)).Elem(), ConsumersIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumersIamMemberConditionInput)(nil)).Elem(), ConsumersIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumersIamMemberConditionPtrInput)(nil)).Elem(), ConsumersIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceApiInput)(nil)).Elem(), ServiceApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceApiArrayInput)(nil)).Elem(), ServiceApiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceApiMethodInput)(nil)).Elem(), ServiceApiMethodArgs{})
@@ -671,6 +1001,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionPtrInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionPtrInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
+	pulumi.RegisterOutputType(ConsumersIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ConsumersIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ConsumersIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ConsumersIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ServiceApiOutput{})
 	pulumi.RegisterOutputType(ServiceApiArrayOutput{})
 	pulumi.RegisterOutputType(ServiceApiMethodOutput{})

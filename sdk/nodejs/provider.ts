@@ -85,6 +85,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly gkehubFeatureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly googlePartnerName!: pulumi.Output<string | undefined>;
     public readonly healthcareCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly iam2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamBetaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamCredentialsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -207,6 +208,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["gkehubFeatureCustomEndpoint"] = args ? args.gkehubFeatureCustomEndpoint : undefined;
             resourceInputs["googlePartnerName"] = args ? args.googlePartnerName : undefined;
             resourceInputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
+            resourceInputs["iam2CustomEndpoint"] = args ? args.iam2CustomEndpoint : undefined;
             resourceInputs["iamBetaCustomEndpoint"] = args ? args.iamBetaCustomEndpoint : undefined;
             resourceInputs["iamCredentialsCustomEndpoint"] = args ? args.iamCredentialsCustomEndpoint : undefined;
             resourceInputs["iamCustomEndpoint"] = args ? args.iamCustomEndpoint : undefined;
@@ -330,6 +332,7 @@ export interface ProviderArgs {
     gkehubFeatureCustomEndpoint?: pulumi.Input<string>;
     googlePartnerName?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;
+    iam2CustomEndpoint?: pulumi.Input<string>;
     iamBetaCustomEndpoint?: pulumi.Input<string>;
     iamCredentialsCustomEndpoint?: pulumi.Input<string>;
     iamCustomEndpoint?: pulumi.Input<string>;

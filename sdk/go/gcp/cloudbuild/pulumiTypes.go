@@ -10,6 +10,147 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type TriggerApprovalConfig struct {
+	// Whether or not approval is needed. If this is set on a build, it will become pending when run,
+	// and will need to be explicitly approved to start.
+	ApprovalRequired *bool `pulumi:"approvalRequired"`
+}
+
+// TriggerApprovalConfigInput is an input type that accepts TriggerApprovalConfigArgs and TriggerApprovalConfigOutput values.
+// You can construct a concrete instance of `TriggerApprovalConfigInput` via:
+//
+//          TriggerApprovalConfigArgs{...}
+type TriggerApprovalConfigInput interface {
+	pulumi.Input
+
+	ToTriggerApprovalConfigOutput() TriggerApprovalConfigOutput
+	ToTriggerApprovalConfigOutputWithContext(context.Context) TriggerApprovalConfigOutput
+}
+
+type TriggerApprovalConfigArgs struct {
+	// Whether or not approval is needed. If this is set on a build, it will become pending when run,
+	// and will need to be explicitly approved to start.
+	ApprovalRequired pulumi.BoolPtrInput `pulumi:"approvalRequired"`
+}
+
+func (TriggerApprovalConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerApprovalConfig)(nil)).Elem()
+}
+
+func (i TriggerApprovalConfigArgs) ToTriggerApprovalConfigOutput() TriggerApprovalConfigOutput {
+	return i.ToTriggerApprovalConfigOutputWithContext(context.Background())
+}
+
+func (i TriggerApprovalConfigArgs) ToTriggerApprovalConfigOutputWithContext(ctx context.Context) TriggerApprovalConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerApprovalConfigOutput)
+}
+
+func (i TriggerApprovalConfigArgs) ToTriggerApprovalConfigPtrOutput() TriggerApprovalConfigPtrOutput {
+	return i.ToTriggerApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerApprovalConfigArgs) ToTriggerApprovalConfigPtrOutputWithContext(ctx context.Context) TriggerApprovalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerApprovalConfigOutput).ToTriggerApprovalConfigPtrOutputWithContext(ctx)
+}
+
+// TriggerApprovalConfigPtrInput is an input type that accepts TriggerApprovalConfigArgs, TriggerApprovalConfigPtr and TriggerApprovalConfigPtrOutput values.
+// You can construct a concrete instance of `TriggerApprovalConfigPtrInput` via:
+//
+//          TriggerApprovalConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type TriggerApprovalConfigPtrInput interface {
+	pulumi.Input
+
+	ToTriggerApprovalConfigPtrOutput() TriggerApprovalConfigPtrOutput
+	ToTriggerApprovalConfigPtrOutputWithContext(context.Context) TriggerApprovalConfigPtrOutput
+}
+
+type triggerApprovalConfigPtrType TriggerApprovalConfigArgs
+
+func TriggerApprovalConfigPtr(v *TriggerApprovalConfigArgs) TriggerApprovalConfigPtrInput {
+	return (*triggerApprovalConfigPtrType)(v)
+}
+
+func (*triggerApprovalConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerApprovalConfig)(nil)).Elem()
+}
+
+func (i *triggerApprovalConfigPtrType) ToTriggerApprovalConfigPtrOutput() TriggerApprovalConfigPtrOutput {
+	return i.ToTriggerApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerApprovalConfigPtrType) ToTriggerApprovalConfigPtrOutputWithContext(ctx context.Context) TriggerApprovalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerApprovalConfigPtrOutput)
+}
+
+type TriggerApprovalConfigOutput struct{ *pulumi.OutputState }
+
+func (TriggerApprovalConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerApprovalConfig)(nil)).Elem()
+}
+
+func (o TriggerApprovalConfigOutput) ToTriggerApprovalConfigOutput() TriggerApprovalConfigOutput {
+	return o
+}
+
+func (o TriggerApprovalConfigOutput) ToTriggerApprovalConfigOutputWithContext(ctx context.Context) TriggerApprovalConfigOutput {
+	return o
+}
+
+func (o TriggerApprovalConfigOutput) ToTriggerApprovalConfigPtrOutput() TriggerApprovalConfigPtrOutput {
+	return o.ToTriggerApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerApprovalConfigOutput) ToTriggerApprovalConfigPtrOutputWithContext(ctx context.Context) TriggerApprovalConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerApprovalConfig) *TriggerApprovalConfig {
+		return &v
+	}).(TriggerApprovalConfigPtrOutput)
+}
+
+// Whether or not approval is needed. If this is set on a build, it will become pending when run,
+// and will need to be explicitly approved to start.
+func (o TriggerApprovalConfigOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerApprovalConfig) *bool { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+type TriggerApprovalConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerApprovalConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerApprovalConfig)(nil)).Elem()
+}
+
+func (o TriggerApprovalConfigPtrOutput) ToTriggerApprovalConfigPtrOutput() TriggerApprovalConfigPtrOutput {
+	return o
+}
+
+func (o TriggerApprovalConfigPtrOutput) ToTriggerApprovalConfigPtrOutputWithContext(ctx context.Context) TriggerApprovalConfigPtrOutput {
+	return o
+}
+
+func (o TriggerApprovalConfigPtrOutput) Elem() TriggerApprovalConfigOutput {
+	return o.ApplyT(func(v *TriggerApprovalConfig) TriggerApprovalConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerApprovalConfig
+		return ret
+	}).(TriggerApprovalConfigOutput)
+}
+
+// Whether or not approval is needed. If this is set on a build, it will become pending when run,
+// and will need to be explicitly approved to start.
+func (o TriggerApprovalConfigPtrOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerApprovalConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovalRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TriggerBuild struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	// Structure is documented below.
@@ -2946,6 +3087,7 @@ type TriggerGitFileSource struct {
 	// build step or with certain reserved volume paths.
 	Path string `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
 	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
 	RepoType string `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
@@ -2973,6 +3115,7 @@ type TriggerGitFileSourceArgs struct {
 	// build step or with certain reserved volume paths.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
 	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
 	RepoType pulumi.StringInput `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
@@ -3068,6 +3211,7 @@ func (o TriggerGitFileSourceOutput) Path() pulumi.StringOutput {
 }
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
 // Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
 func (o TriggerGitFileSourceOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGitFileSource) string { return v.RepoType }).(pulumi.StringOutput)
@@ -3122,6 +3266,7 @@ func (o TriggerGitFileSourcePtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
 // Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
 func (o TriggerGitFileSourcePtrOutput) RepoType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGitFileSource) *string {
@@ -3932,6 +4077,7 @@ type TriggerSourceToBuild struct {
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref string `pulumi:"ref"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
 	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
 	RepoType string `pulumi:"repoType"`
 	// The URI of the repo (required).
@@ -3953,6 +4099,7 @@ type TriggerSourceToBuildArgs struct {
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref pulumi.StringInput `pulumi:"ref"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
 	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
 	RepoType pulumi.StringInput `pulumi:"repoType"`
 	// The URI of the repo (required).
@@ -4042,6 +4189,7 @@ func (o TriggerSourceToBuildOutput) Ref() pulumi.StringOutput {
 }
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
 // Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
 func (o TriggerSourceToBuildOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.RepoType }).(pulumi.StringOutput)
@@ -4087,6 +4235,7 @@ func (o TriggerSourceToBuildPtrOutput) Ref() pulumi.StringPtrOutput {
 }
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
 // Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
 func (o TriggerSourceToBuildPtrOutput) RepoType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
@@ -4891,6 +5040,8 @@ func (o WorkerPoolWorkerConfigPtrOutput) NoExternalIp() pulumi.BoolPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerApprovalConfigInput)(nil)).Elem(), TriggerApprovalConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerApprovalConfigPtrInput)(nil)).Elem(), TriggerApprovalConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildInput)(nil)).Elem(), TriggerBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildPtrInput)(nil)).Elem(), TriggerBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsInput)(nil)).Elem(), TriggerBuildArtifactsArgs{})
@@ -4939,6 +5090,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolNetworkConfigPtrInput)(nil)).Elem(), WorkerPoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolWorkerConfigInput)(nil)).Elem(), WorkerPoolWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolWorkerConfigPtrInput)(nil)).Elem(), WorkerPoolWorkerConfigArgs{})
+	pulumi.RegisterOutputType(TriggerApprovalConfigOutput{})
+	pulumi.RegisterOutputType(TriggerApprovalConfigPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOutput{})
 	pulumi.RegisterOutputType(TriggerBuildPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsOutput{})

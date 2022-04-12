@@ -260,6 +260,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('healthcareCustomEndpoint')
 
     @property
+    def iam2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('iam2CustomEndpoint')
+
+    @property
     def iam_beta_custom_endpoint(self) -> Optional[str]:
         return __config__.get('iamBetaCustomEndpoint')
 

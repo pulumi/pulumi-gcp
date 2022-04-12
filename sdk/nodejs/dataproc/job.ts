@@ -124,6 +124,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly placement!: pulumi.Output<outputs.dataproc.JobPlacement>;
     /**
+     * The config of presto job
+     */
+    public readonly prestoConfig!: pulumi.Output<outputs.dataproc.JobPrestoConfig | undefined>;
+    /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
@@ -179,6 +183,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["pigConfig"] = state ? state.pigConfig : undefined;
             resourceInputs["placement"] = state ? state.placement : undefined;
+            resourceInputs["prestoConfig"] = state ? state.prestoConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pysparkConfig"] = state ? state.pysparkConfig : undefined;
             resourceInputs["reference"] = state ? state.reference : undefined;
@@ -198,6 +203,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["pigConfig"] = args ? args.pigConfig : undefined;
             resourceInputs["placement"] = args ? args.placement : undefined;
+            resourceInputs["prestoConfig"] = args ? args.prestoConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pysparkConfig"] = args ? args.pysparkConfig : undefined;
             resourceInputs["reference"] = args ? args.reference : undefined;
@@ -252,6 +258,10 @@ export interface JobState {
      * The config of job placement.
      */
     placement?: pulumi.Input<inputs.dataproc.JobPlacement>;
+    /**
+     * The config of presto job
+     */
+    prestoConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfig>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
@@ -318,6 +328,10 @@ export interface JobArgs {
      * The config of job placement.
      */
     placement: pulumi.Input<inputs.dataproc.JobPlacement>;
+    /**
+     * The config of presto job
+     */
+    prestoConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfig>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.

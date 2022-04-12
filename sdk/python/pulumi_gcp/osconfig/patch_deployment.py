@@ -606,6 +606,7 @@ class PatchDeployment(pulumi.CustomResource):
                 goo=gcp.osconfig.PatchDeploymentPatchConfigGooArgs(
                     enabled=True,
                 ),
+                mig_instances_allowed=True,
                 post_step=gcp.osconfig.PatchDeploymentPatchConfigPostStepArgs(
                     linux_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs(
                         gcs_object=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs(
@@ -884,6 +885,7 @@ class PatchDeployment(pulumi.CustomResource):
                 goo=gcp.osconfig.PatchDeploymentPatchConfigGooArgs(
                     enabled=True,
                 ),
+                mig_instances_allowed=True,
                 post_step=gcp.osconfig.PatchDeploymentPatchConfigPostStepArgs(
                     linux_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs(
                         gcs_object=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs(

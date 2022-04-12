@@ -2796,6 +2796,332 @@ func (o AccessLevelsAccessLevelCustomExprPtrOutput) Title() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessPolicyIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AccessPolicyIamBindingConditionInput is an input type that accepts AccessPolicyIamBindingConditionArgs and AccessPolicyIamBindingConditionOutput values.
+// You can construct a concrete instance of `AccessPolicyIamBindingConditionInput` via:
+//
+//          AccessPolicyIamBindingConditionArgs{...}
+type AccessPolicyIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIamBindingConditionOutput() AccessPolicyIamBindingConditionOutput
+	ToAccessPolicyIamBindingConditionOutputWithContext(context.Context) AccessPolicyIamBindingConditionOutput
+}
+
+type AccessPolicyIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AccessPolicyIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (i AccessPolicyIamBindingConditionArgs) ToAccessPolicyIamBindingConditionOutput() AccessPolicyIamBindingConditionOutput {
+	return i.ToAccessPolicyIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIamBindingConditionArgs) ToAccessPolicyIamBindingConditionOutputWithContext(ctx context.Context) AccessPolicyIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingConditionOutput)
+}
+
+func (i AccessPolicyIamBindingConditionArgs) ToAccessPolicyIamBindingConditionPtrOutput() AccessPolicyIamBindingConditionPtrOutput {
+	return i.ToAccessPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIamBindingConditionArgs) ToAccessPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingConditionOutput).ToAccessPolicyIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyIamBindingConditionPtrInput is an input type that accepts AccessPolicyIamBindingConditionArgs, AccessPolicyIamBindingConditionPtr and AccessPolicyIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyIamBindingConditionPtrInput` via:
+//
+//          AccessPolicyIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessPolicyIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIamBindingConditionPtrOutput() AccessPolicyIamBindingConditionPtrOutput
+	ToAccessPolicyIamBindingConditionPtrOutputWithContext(context.Context) AccessPolicyIamBindingConditionPtrOutput
+}
+
+type accessPolicyIamBindingConditionPtrType AccessPolicyIamBindingConditionArgs
+
+func AccessPolicyIamBindingConditionPtr(v *AccessPolicyIamBindingConditionArgs) AccessPolicyIamBindingConditionPtrInput {
+	return (*accessPolicyIamBindingConditionPtrType)(v)
+}
+
+func (*accessPolicyIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (i *accessPolicyIamBindingConditionPtrType) ToAccessPolicyIamBindingConditionPtrOutput() AccessPolicyIamBindingConditionPtrOutput {
+	return i.ToAccessPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyIamBindingConditionPtrType) ToAccessPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingConditionPtrOutput)
+}
+
+type AccessPolicyIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (o AccessPolicyIamBindingConditionOutput) ToAccessPolicyIamBindingConditionOutput() AccessPolicyIamBindingConditionOutput {
+	return o
+}
+
+func (o AccessPolicyIamBindingConditionOutput) ToAccessPolicyIamBindingConditionOutputWithContext(ctx context.Context) AccessPolicyIamBindingConditionOutput {
+	return o
+}
+
+func (o AccessPolicyIamBindingConditionOutput) ToAccessPolicyIamBindingConditionPtrOutput() AccessPolicyIamBindingConditionPtrOutput {
+	return o.ToAccessPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyIamBindingConditionOutput) ToAccessPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyIamBindingCondition) *AccessPolicyIamBindingCondition {
+		return &v
+	}).(AccessPolicyIamBindingConditionPtrOutput)
+}
+
+func (o AccessPolicyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AccessPolicyIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AccessPolicyIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (o AccessPolicyIamBindingConditionPtrOutput) ToAccessPolicyIamBindingConditionPtrOutput() AccessPolicyIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIamBindingConditionPtrOutput) ToAccessPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIamBindingConditionPtrOutput) Elem() AccessPolicyIamBindingConditionOutput {
+	return o.ApplyT(func(v *AccessPolicyIamBindingCondition) AccessPolicyIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyIamBindingCondition
+		return ret
+	}).(AccessPolicyIamBindingConditionOutput)
+}
+
+func (o AccessPolicyIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AccessPolicyIamMemberConditionInput is an input type that accepts AccessPolicyIamMemberConditionArgs and AccessPolicyIamMemberConditionOutput values.
+// You can construct a concrete instance of `AccessPolicyIamMemberConditionInput` via:
+//
+//          AccessPolicyIamMemberConditionArgs{...}
+type AccessPolicyIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIamMemberConditionOutput() AccessPolicyIamMemberConditionOutput
+	ToAccessPolicyIamMemberConditionOutputWithContext(context.Context) AccessPolicyIamMemberConditionOutput
+}
+
+type AccessPolicyIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AccessPolicyIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (i AccessPolicyIamMemberConditionArgs) ToAccessPolicyIamMemberConditionOutput() AccessPolicyIamMemberConditionOutput {
+	return i.ToAccessPolicyIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIamMemberConditionArgs) ToAccessPolicyIamMemberConditionOutputWithContext(ctx context.Context) AccessPolicyIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamMemberConditionOutput)
+}
+
+func (i AccessPolicyIamMemberConditionArgs) ToAccessPolicyIamMemberConditionPtrOutput() AccessPolicyIamMemberConditionPtrOutput {
+	return i.ToAccessPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIamMemberConditionArgs) ToAccessPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamMemberConditionOutput).ToAccessPolicyIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyIamMemberConditionPtrInput is an input type that accepts AccessPolicyIamMemberConditionArgs, AccessPolicyIamMemberConditionPtr and AccessPolicyIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyIamMemberConditionPtrInput` via:
+//
+//          AccessPolicyIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessPolicyIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIamMemberConditionPtrOutput() AccessPolicyIamMemberConditionPtrOutput
+	ToAccessPolicyIamMemberConditionPtrOutputWithContext(context.Context) AccessPolicyIamMemberConditionPtrOutput
+}
+
+type accessPolicyIamMemberConditionPtrType AccessPolicyIamMemberConditionArgs
+
+func AccessPolicyIamMemberConditionPtr(v *AccessPolicyIamMemberConditionArgs) AccessPolicyIamMemberConditionPtrInput {
+	return (*accessPolicyIamMemberConditionPtrType)(v)
+}
+
+func (*accessPolicyIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (i *accessPolicyIamMemberConditionPtrType) ToAccessPolicyIamMemberConditionPtrOutput() AccessPolicyIamMemberConditionPtrOutput {
+	return i.ToAccessPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyIamMemberConditionPtrType) ToAccessPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamMemberConditionPtrOutput)
+}
+
+type AccessPolicyIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (o AccessPolicyIamMemberConditionOutput) ToAccessPolicyIamMemberConditionOutput() AccessPolicyIamMemberConditionOutput {
+	return o
+}
+
+func (o AccessPolicyIamMemberConditionOutput) ToAccessPolicyIamMemberConditionOutputWithContext(ctx context.Context) AccessPolicyIamMemberConditionOutput {
+	return o
+}
+
+func (o AccessPolicyIamMemberConditionOutput) ToAccessPolicyIamMemberConditionPtrOutput() AccessPolicyIamMemberConditionPtrOutput {
+	return o.ToAccessPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyIamMemberConditionOutput) ToAccessPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyIamMemberCondition) *AccessPolicyIamMemberCondition {
+		return &v
+	}).(AccessPolicyIamMemberConditionPtrOutput)
+}
+
+func (o AccessPolicyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AccessPolicyIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AccessPolicyIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (o AccessPolicyIamMemberConditionPtrOutput) ToAccessPolicyIamMemberConditionPtrOutput() AccessPolicyIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIamMemberConditionPtrOutput) ToAccessPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIamMemberConditionPtrOutput) Elem() AccessPolicyIamMemberConditionOutput {
+	return o.ApplyT(func(v *AccessPolicyIamMemberCondition) AccessPolicyIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyIamMemberCondition
+		return ret
+	}).(AccessPolicyIamMemberConditionOutput)
+}
+
+func (o AccessPolicyIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServicePerimeterSpec struct {
 	// A list of AccessLevel resource names that allow resources within
 	// the ServicePerimeter to be accessed from the internet.
@@ -11573,6 +11899,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelCustomPtrInput)(nil)).Elem(), AccessLevelsAccessLevelCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelCustomExprInput)(nil)).Elem(), AccessLevelsAccessLevelCustomExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelCustomExprPtrInput)(nil)).Elem(), AccessLevelsAccessLevelCustomExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamBindingConditionInput)(nil)).Elem(), AccessPolicyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamBindingConditionPtrInput)(nil)).Elem(), AccessPolicyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionPtrInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecInput)(nil)).Elem(), ServicePerimeterSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecPtrInput)(nil)).Elem(), ServicePerimeterSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyArgs{})
@@ -11709,6 +12039,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomExprOutput{})
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomExprPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyOutput{})

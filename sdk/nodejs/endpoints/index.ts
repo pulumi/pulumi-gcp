@@ -5,12 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./consumersIamBinding";
+export * from "./consumersIamMember";
+export * from "./consumersIamPolicy";
 export * from "./service";
 export * from "./serviceIamBinding";
 export * from "./serviceIamMember";
 export * from "./serviceIamPolicy";
 
 // Import resources to register:
+import { ConsumersIamBinding } from "./consumersIamBinding";
+import { ConsumersIamMember } from "./consumersIamMember";
+import { ConsumersIamPolicy } from "./consumersIamPolicy";
 import { Service } from "./service";
 import { ServiceIamBinding } from "./serviceIamBinding";
 import { ServiceIamMember } from "./serviceIamMember";
@@ -20,6 +26,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:endpoints/consumersIamBinding:ConsumersIamBinding":
+                return new ConsumersIamBinding(name, <any>undefined, { urn })
+            case "gcp:endpoints/consumersIamMember:ConsumersIamMember":
+                return new ConsumersIamMember(name, <any>undefined, { urn })
+            case "gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy":
+                return new ConsumersIamPolicy(name, <any>undefined, { urn })
             case "gcp:endpoints/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "gcp:endpoints/serviceIamBinding:ServiceIamBinding":
@@ -33,6 +45,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "endpoints/consumersIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "endpoints/consumersIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "endpoints/consumersIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "endpoints/service", _module)
 pulumi.runtime.registerResourceModule("gcp", "endpoints/serviceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "endpoints/serviceIamMember", _module)
