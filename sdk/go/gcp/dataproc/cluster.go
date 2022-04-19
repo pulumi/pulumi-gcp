@@ -92,7 +92,7 @@ import (
 // 					NumInstances: pulumi.Int(0),
 // 				},
 // 				SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{
-// 					ImageVersion: pulumi.String("1.3.7-deb9"),
+// 					ImageVersion: pulumi.String("2.0.35-debian10"),
 // 					OverrideProperties: pulumi.StringMap{
 // 						"dataproc:dataproc.allow.zero.workers": pulumi.String("true"),
 // 					},

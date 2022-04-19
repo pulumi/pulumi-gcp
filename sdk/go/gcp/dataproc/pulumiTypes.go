@@ -9065,6 +9065,147 @@ func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
 	}).(JobStatusOutput)
 }
 
+type MetastoreServiceEncryptionConfig struct {
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+	// Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// MetastoreServiceEncryptionConfigInput is an input type that accepts MetastoreServiceEncryptionConfigArgs and MetastoreServiceEncryptionConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceEncryptionConfigInput` via:
+//
+//          MetastoreServiceEncryptionConfigArgs{...}
+type MetastoreServiceEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceEncryptionConfigOutput() MetastoreServiceEncryptionConfigOutput
+	ToMetastoreServiceEncryptionConfigOutputWithContext(context.Context) MetastoreServiceEncryptionConfigOutput
+}
+
+type MetastoreServiceEncryptionConfigArgs struct {
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+	// Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+}
+
+func (MetastoreServiceEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceEncryptionConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceEncryptionConfigArgs) ToMetastoreServiceEncryptionConfigOutput() MetastoreServiceEncryptionConfigOutput {
+	return i.ToMetastoreServiceEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceEncryptionConfigArgs) ToMetastoreServiceEncryptionConfigOutputWithContext(ctx context.Context) MetastoreServiceEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceEncryptionConfigOutput)
+}
+
+func (i MetastoreServiceEncryptionConfigArgs) ToMetastoreServiceEncryptionConfigPtrOutput() MetastoreServiceEncryptionConfigPtrOutput {
+	return i.ToMetastoreServiceEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceEncryptionConfigArgs) ToMetastoreServiceEncryptionConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceEncryptionConfigOutput).ToMetastoreServiceEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceEncryptionConfigPtrInput is an input type that accepts MetastoreServiceEncryptionConfigArgs, MetastoreServiceEncryptionConfigPtr and MetastoreServiceEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceEncryptionConfigPtrInput` via:
+//
+//          MetastoreServiceEncryptionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreServiceEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceEncryptionConfigPtrOutput() MetastoreServiceEncryptionConfigPtrOutput
+	ToMetastoreServiceEncryptionConfigPtrOutputWithContext(context.Context) MetastoreServiceEncryptionConfigPtrOutput
+}
+
+type metastoreServiceEncryptionConfigPtrType MetastoreServiceEncryptionConfigArgs
+
+func MetastoreServiceEncryptionConfigPtr(v *MetastoreServiceEncryptionConfigArgs) MetastoreServiceEncryptionConfigPtrInput {
+	return (*metastoreServiceEncryptionConfigPtrType)(v)
+}
+
+func (*metastoreServiceEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceEncryptionConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceEncryptionConfigPtrType) ToMetastoreServiceEncryptionConfigPtrOutput() MetastoreServiceEncryptionConfigPtrOutput {
+	return i.ToMetastoreServiceEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceEncryptionConfigPtrType) ToMetastoreServiceEncryptionConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceEncryptionConfigPtrOutput)
+}
+
+type MetastoreServiceEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceEncryptionConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceEncryptionConfigOutput) ToMetastoreServiceEncryptionConfigOutput() MetastoreServiceEncryptionConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceEncryptionConfigOutput) ToMetastoreServiceEncryptionConfigOutputWithContext(ctx context.Context) MetastoreServiceEncryptionConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceEncryptionConfigOutput) ToMetastoreServiceEncryptionConfigPtrOutput() MetastoreServiceEncryptionConfigPtrOutput {
+	return o.ToMetastoreServiceEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceEncryptionConfigOutput) ToMetastoreServiceEncryptionConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceEncryptionConfig) *MetastoreServiceEncryptionConfig {
+		return &v
+	}).(MetastoreServiceEncryptionConfigPtrOutput)
+}
+
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+// Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+func (o MetastoreServiceEncryptionConfigOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceEncryptionConfig) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+type MetastoreServiceEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceEncryptionConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceEncryptionConfigPtrOutput) ToMetastoreServiceEncryptionConfigPtrOutput() MetastoreServiceEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceEncryptionConfigPtrOutput) ToMetastoreServiceEncryptionConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceEncryptionConfigPtrOutput) Elem() MetastoreServiceEncryptionConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceEncryptionConfig) MetastoreServiceEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceEncryptionConfig
+		return ret
+	}).(MetastoreServiceEncryptionConfigOutput)
+}
+
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+// Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+func (o MetastoreServiceEncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type MetastoreServiceHiveMetastoreConfig struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
 	// The mappings override system defaults (some keys cannot be overridden)
@@ -19937,6 +20078,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparksqlConfigLoggingConfigPtrInput)(nil)).Elem(), JobSparksqlConfigLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusInput)(nil)).Elem(), JobStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusArrayInput)(nil)).Elem(), JobStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceEncryptionConfigInput)(nil)).Elem(), MetastoreServiceEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceEncryptionConfigPtrInput)(nil)).Elem(), MetastoreServiceEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigPtrInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigKerberosConfigArgs{})
@@ -20145,6 +20288,8 @@ func init() {
 	pulumi.RegisterOutputType(JobSparksqlConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
 	pulumi.RegisterOutputType(JobStatusArrayOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigOutput{})

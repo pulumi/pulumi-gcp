@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Dataproc
     ///                         },
     ///                         SoftwareConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs
     ///                         {
-    ///                             ImageVersion = "1.3.7-deb9",
+    ///                             ImageVersion = "2.0.35-debian10",
     ///                         },
     ///                         WorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
     ///                         {

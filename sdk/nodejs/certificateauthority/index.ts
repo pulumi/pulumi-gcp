@@ -12,6 +12,9 @@ export * from "./caPoolIamMember";
 export * from "./caPoolIamPolicy";
 export * from "./certificate";
 export * from "./certificateTemplate";
+export * from "./certificateTemplateIamBinding";
+export * from "./certificateTemplateIamMember";
+export * from "./certificateTemplateIamPolicy";
 export * from "./getAuthority";
 
 // Import resources to register:
@@ -22,6 +25,9 @@ import { CaPoolIamMember } from "./caPoolIamMember";
 import { CaPoolIamPolicy } from "./caPoolIamPolicy";
 import { Certificate } from "./certificate";
 import { CertificateTemplate } from "./certificateTemplate";
+import { CertificateTemplateIamBinding } from "./certificateTemplateIamBinding";
+import { CertificateTemplateIamMember } from "./certificateTemplateIamMember";
+import { CertificateTemplateIamPolicy } from "./certificateTemplateIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -41,6 +47,12 @@ const _module = {
                 return new Certificate(name, <any>undefined, { urn })
             case "gcp:certificateauthority/certificateTemplate:CertificateTemplate":
                 return new CertificateTemplate(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding":
+                return new CertificateTemplateIamBinding(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember":
+                return new CertificateTemplateIamMember(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy":
+                return new CertificateTemplateIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -53,3 +65,6 @@ pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPoolIamMemb
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/caPoolIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificateTemplate", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificateTemplateIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificateTemplateIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificateTemplateIamPolicy", _module)

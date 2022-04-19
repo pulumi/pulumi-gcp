@@ -300,6 +300,18 @@ class Instance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## +---
+
+        subcategory: "Cloud Bigtable"
+        layout: "google"
+        page_title: "Google: bigtable.Instance"
+        sidebar_current: "docs-google-bigtable-instance"
+        description: |-
+          Creates a Google Bigtable instance.
+        ---
+
+        # bigtable.Instance
+
         Creates a Google Bigtable instance. For more information see:
 
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
@@ -307,7 +319,7 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigtable/docs)
 
         ## Example Usage
-        ### Production Instance
+        ### Simple Instance
 
         ```python
         import pulumi
@@ -319,6 +331,35 @@ class Instance(pulumi.CustomResource):
                 num_nodes=1,
                 storage_type="HDD",
             )],
+            labels={
+                "my-label": "prod-label",
+            })
+        ```
+        ### Replicated Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        production_instance = gcp.bigtable.Instance("production-instance",
+            clusters=[
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="tf-instance-cluster1",
+                    num_nodes=1,
+                    storage_type="HDD",
+                    zone="us-central1-c",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
+                        cpu_target=50,
+                        max_nodes=3,
+                        min_nodes=1,
+                    ),
+                    cluster_id="tf-instance-cluster2",
+                    storage_type="HDD",
+                    zone="us-central1-b",
+                ),
+            ],
             labels={
                 "my-label": "prod-label",
             })
@@ -364,6 +405,18 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## +---
+
+        subcategory: "Cloud Bigtable"
+        layout: "google"
+        page_title: "Google: bigtable.Instance"
+        sidebar_current: "docs-google-bigtable-instance"
+        description: |-
+          Creates a Google Bigtable instance.
+        ---
+
+        # bigtable.Instance
+
         Creates a Google Bigtable instance. For more information see:
 
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
@@ -371,7 +424,7 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigtable/docs)
 
         ## Example Usage
-        ### Production Instance
+        ### Simple Instance
 
         ```python
         import pulumi
@@ -383,6 +436,35 @@ class Instance(pulumi.CustomResource):
                 num_nodes=1,
                 storage_type="HDD",
             )],
+            labels={
+                "my-label": "prod-label",
+            })
+        ```
+        ### Replicated Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        production_instance = gcp.bigtable.Instance("production-instance",
+            clusters=[
+                gcp.bigtable.InstanceClusterArgs(
+                    cluster_id="tf-instance-cluster1",
+                    num_nodes=1,
+                    storage_type="HDD",
+                    zone="us-central1-c",
+                ),
+                gcp.bigtable.InstanceClusterArgs(
+                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
+                        cpu_target=50,
+                        max_nodes=3,
+                        min_nodes=1,
+                    ),
+                    cluster_id="tf-instance-cluster2",
+                    storage_type="HDD",
+                    zone="us-central1-b",
+                ),
+            ],
             labels={
                 "my-label": "prod-label",
             })

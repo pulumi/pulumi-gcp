@@ -208,7 +208,7 @@ type Connector struct {
 	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
-	Network pulumi.StringPtrOutput `pulumi:"network"`
+	Network pulumi.StringOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`

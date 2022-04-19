@@ -16,6 +16,7 @@ __all__ = ['MetastoreServiceArgs', 'MetastoreService']
 class MetastoreServiceArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[str],
+                 encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
                  hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,9 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
+        :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
+               customer data at rest.
+               Structure is documented below.
         :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
@@ -46,6 +50,8 @@ class MetastoreServiceArgs:
                Possible values are `DEVELOPER` and `ENTERPRISE`.
         """
         pulumi.set(__self__, "service_id", service_id)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if hive_metastore_config is not None:
             pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
         if labels is not None:
@@ -76,6 +82,20 @@ class MetastoreServiceArgs:
     @service_id.setter
     def service_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]:
+        """
+        Information used to configure the Dataproc Metastore service to encrypt
+        customer data at rest.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="hiveMetastoreConfig")
@@ -185,6 +205,7 @@ class MetastoreServiceArgs:
 class _MetastoreServiceState:
     def __init__(__self__, *,
                  artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
                  endpoint_uri: Optional[pulumi.Input[str]] = None,
                  hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -201,6 +222,9 @@ class _MetastoreServiceState:
         """
         Input properties used for looking up and filtering MetastoreService resources.
         :param pulumi.Input[str] artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+        :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
+               customer data at rest.
+               Structure is documented below.
         :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
@@ -226,6 +250,8 @@ class _MetastoreServiceState:
         """
         if artifact_gcs_uri is not None:
             pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if endpoint_uri is not None:
             pulumi.set(__self__, "endpoint_uri", endpoint_uri)
         if hive_metastore_config is not None:
@@ -264,6 +290,20 @@ class _MetastoreServiceState:
     @artifact_gcs_uri.setter
     def artifact_gcs_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "artifact_gcs_uri", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]:
+        """
+        Information used to configure the Dataproc Metastore service to encrypt
+        customer data at rest.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="endpointUri")
@@ -436,6 +476,7 @@ class MetastoreService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']]] = None,
                  hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -470,6 +511,29 @@ class MetastoreService(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Dataproc Metastore Service Cmek Example
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+            key_ring=key_ring.id,
+            purpose="ENCRYPT_DECRYPT",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="example-service",
+            location="us-central1",
+            encryption_config=gcp.dataproc.MetastoreServiceEncryptionConfigArgs(
+                kms_key=crypto_key.id,
+            ),
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -489,6 +553,9 @@ class MetastoreService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
+               customer data at rest.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
@@ -538,6 +605,29 @@ class MetastoreService(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Dataproc Metastore Service Cmek Example
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        crypto_key = gcp.kms.CryptoKey("cryptoKey",
+            key_ring=key_ring.id,
+            purpose="ENCRYPT_DECRYPT",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="example-service",
+            location="us-central1",
+            encryption_config=gcp.dataproc.MetastoreServiceEncryptionConfigArgs(
+                kms_key=crypto_key.id,
+            ),
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -570,6 +660,7 @@ class MetastoreService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']]] = None,
                  hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -591,6 +682,7 @@ class MetastoreService(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetastoreServiceArgs.__new__(MetastoreServiceArgs)
 
+            __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["hive_metastore_config"] = hive_metastore_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -618,6 +710,7 @@ class MetastoreService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
+            encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']]] = None,
             endpoint_uri: Optional[pulumi.Input[str]] = None,
             hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -639,6 +732,9 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
+               customer data at rest.
+               Structure is documented below.
         :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
@@ -667,6 +763,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__ = _MetastoreServiceState.__new__(_MetastoreServiceState)
 
         __props__.__dict__["artifact_gcs_uri"] = artifact_gcs_uri
+        __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["endpoint_uri"] = endpoint_uri
         __props__.__dict__["hive_metastore_config"] = hive_metastore_config
         __props__.__dict__["labels"] = labels
@@ -689,6 +786,16 @@ class MetastoreService(pulumi.CustomResource):
         A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         """
         return pulumi.get(self, "artifact_gcs_uri")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output[Optional['outputs.MetastoreServiceEncryptionConfig']]:
+        """
+        Information used to configure the Dataproc Metastore service to encrypt
+        customer data at rest.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter(name="endpointUri")

@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *                     numInstances: 2,
  *                 },
  *                 softwareConfig: {
- *                     imageVersion: "1.3.7-deb9",
+ *                     imageVersion: "2.0.35-debian10",
  *                 },
  *                 workerConfig: {
  *                     diskConfig: {

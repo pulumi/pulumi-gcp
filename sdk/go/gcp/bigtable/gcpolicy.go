@@ -100,6 +100,73 @@ import (
 // }
 // ```
 //
+// For complex, nested policies, an optional `gcRules` field are supported. This field
+// conflicts with `mode`, `maxAge` and `maxVersion`. This field is a serialized JSON
+// string. Example:
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+// 			Clusters: bigtable.InstanceClusterArray{
+// 				&bigtable.InstanceClusterArgs{
+// 					ClusterId: pulumi.String("cid"),
+// 					Zone:      pulumi.String("us-central1-b"),
+// 				},
+// 			},
+// 			InstanceType:       pulumi.String("DEVELOPMENT"),
+// 			DeletionProtection: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		table, err := bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
+// 			InstanceName: instance.ID(),
+// 			ColumnFamilies: bigtable.TableColumnFamilyArray{
+// 				&bigtable.TableColumnFamilyArgs{
+// 					Family: pulumi.String("cf1"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
+// 			InstanceName: instance.ID(),
+// 			Table:        table.Name,
+// 			ColumnFamily: pulumi.String("cf1"),
+// 			GcRules:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"mode\": \"union\",\n", "  \"rules\": [\n", "    {\n", "      \"max_age\": \"10h\"\n", "    },\n", "    {\n", "      \"mode\": \"intersection\",\n", "      \"rules\": [\n", "        {\n", "          \"max_age\": \"2h\"\n", "        },\n", "        {\n", "          \"max_version\": 2\n", "        }\n", "      ]\n", "    }\n", "  ]\n", "}\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// This is equivalent to running the following `cbt` command:
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // This resource does not support import.
@@ -108,6 +175,8 @@ type GCPolicy struct {
 
 	// The name of the column family.
 	ColumnFamily pulumi.StringOutput `pulumi:"columnFamily"`
+	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
+	GcRules pulumi.StringPtrOutput `pulumi:"gcRules"`
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
@@ -162,6 +231,8 @@ func GetGCPolicy(ctx *pulumi.Context,
 type gcpolicyState struct {
 	// The name of the column family.
 	ColumnFamily *string `pulumi:"columnFamily"`
+	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
+	GcRules *string `pulumi:"gcRules"`
 	// The name of the Bigtable instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
@@ -179,6 +250,8 @@ type gcpolicyState struct {
 type GCPolicyState struct {
 	// The name of the column family.
 	ColumnFamily pulumi.StringPtrInput
+	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
+	GcRules pulumi.StringPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringPtrInput
 	// GC policy that applies to all cells older than the given age.
@@ -200,6 +273,8 @@ func (GCPolicyState) ElementType() reflect.Type {
 type gcpolicyArgs struct {
 	// The name of the column family.
 	ColumnFamily string `pulumi:"columnFamily"`
+	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
+	GcRules *string `pulumi:"gcRules"`
 	// The name of the Bigtable instance.
 	InstanceName string `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
@@ -218,6 +293,8 @@ type gcpolicyArgs struct {
 type GCPolicyArgs struct {
 	// The name of the column family.
 	ColumnFamily pulumi.StringInput
+	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
+	GcRules pulumi.StringPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringInput
 	// GC policy that applies to all cells older than the given age.

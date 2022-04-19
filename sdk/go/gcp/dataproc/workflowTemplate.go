@@ -67,7 +67,7 @@ import (
 // 							NumInstances: pulumi.Int(2),
 // 						},
 // 						SoftwareConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs{
-// 							ImageVersion: pulumi.String("1.3.7-deb9"),
+// 							ImageVersion: pulumi.String("2.0.35-debian10"),
 // 						},
 // 						WorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{
 // 							DiskConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{

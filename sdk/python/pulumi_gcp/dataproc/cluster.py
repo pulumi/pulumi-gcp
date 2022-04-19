@@ -318,7 +318,7 @@ class Cluster(pulumi.CustomResource):
                     num_instances=0,
                 ),
                 software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
-                    image_version="1.3.7-deb9",
+                    image_version="2.0.35-debian10",
                     override_properties={
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },
@@ -442,7 +442,7 @@ class Cluster(pulumi.CustomResource):
                     num_instances=0,
                 ),
                 software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
-                    image_version="1.3.7-deb9",
+                    image_version="2.0.35-debian10",
                     override_properties={
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },

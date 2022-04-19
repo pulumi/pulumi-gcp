@@ -3524,7 +3524,7 @@ export namespace bigtable {
          */
         clusterId: string;
         /**
-         * Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+         * Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
          */
         kmsKeyName: string;
         /**
@@ -5035,6 +5035,36 @@ export namespace certificateauthority {
     export interface CertificateRevocationDetail {
         revocationState: string;
         revocationTime: string;
+    }
+
+    export interface CertificateTemplateIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface CertificateTemplateIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
     }
 
     export interface CertificateTemplateIdentityConstraints {
@@ -21725,6 +21755,14 @@ export namespace dataproc {
         state: string;
         stateStartTime: string;
         substate: string;
+    }
+
+    export interface MetastoreServiceEncryptionConfig {
+        /**
+         * The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+         * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+         */
+        kmsKey: string;
     }
 
     export interface MetastoreServiceHiveMetastoreConfig {

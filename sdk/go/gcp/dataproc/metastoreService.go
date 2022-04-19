@@ -46,6 +46,49 @@ import (
 // 	})
 // }
 // ```
+// ### Dataproc Metastore Service Cmek Example
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+// 			KeyRing: keyRing.ID(),
+// 			Purpose: pulumi.String("ENCRYPT_DECRYPT"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
+// 			ServiceId: pulumi.String("example-service"),
+// 			Location:  pulumi.String("us-central1"),
+// 			EncryptionConfig: &dataproc.MetastoreServiceEncryptionConfigArgs{
+// 				KmsKey: cryptoKey.ID(),
+// 			},
+// 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+// 				Version: pulumi.String("3.1.2"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -67,6 +110,10 @@ type MetastoreService struct {
 
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri pulumi.StringOutput `pulumi:"artifactGcsUri"`
+	// Information used to configure the Dataproc Metastore service to encrypt
+	// customer data at rest.
+	// Structure is documented below.
+	EncryptionConfig MetastoreServiceEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri pulumi.StringOutput `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -138,6 +185,10 @@ func GetMetastoreService(ctx *pulumi.Context,
 type metastoreServiceState struct {
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri *string `pulumi:"artifactGcsUri"`
+	// Information used to configure the Dataproc Metastore service to encrypt
+	// customer data at rest.
+	// Structure is documented below.
+	EncryptionConfig *MetastoreServiceEncryptionConfig `pulumi:"encryptionConfig"`
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri *string `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -178,6 +229,10 @@ type metastoreServiceState struct {
 type MetastoreServiceState struct {
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri pulumi.StringPtrInput
+	// Information used to configure the Dataproc Metastore service to encrypt
+	// customer data at rest.
+	// Structure is documented below.
+	EncryptionConfig MetastoreServiceEncryptionConfigPtrInput
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri pulumi.StringPtrInput
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -220,6 +275,10 @@ func (MetastoreServiceState) ElementType() reflect.Type {
 }
 
 type metastoreServiceArgs struct {
+	// Information used to configure the Dataproc Metastore service to encrypt
+	// customer data at rest.
+	// Structure is documented below.
+	EncryptionConfig *MetastoreServiceEncryptionConfig `pulumi:"encryptionConfig"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	// Structure is documented below.
 	HiveMetastoreConfig *MetastoreServiceHiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
@@ -251,6 +310,10 @@ type metastoreServiceArgs struct {
 
 // The set of arguments for constructing a MetastoreService resource.
 type MetastoreServiceArgs struct {
+	// Information used to configure the Dataproc Metastore service to encrypt
+	// customer data at rest.
+	// Structure is documented below.
+	EncryptionConfig MetastoreServiceEncryptionConfigPtrInput
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	// Structure is documented below.
 	HiveMetastoreConfig MetastoreServiceHiveMetastoreConfigPtrInput
