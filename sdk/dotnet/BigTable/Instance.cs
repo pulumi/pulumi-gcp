@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
+    /// ## +---
+    /// 
+    /// subcategory: "Cloud Bigtable"
+    /// layout: "google"
+    /// page_title: "Google: gcp.bigtable.Instance"
+    /// sidebar_current: "docs-google-bigtable-instance"
+    /// description: |-
+    ///   Creates a Google Bigtable instance.
+    /// ---
+    /// 
+    /// # gcp.bigtable.Instance
+    /// 
     /// Creates a Google Bigtable instance. For more information see:
     /// 
     /// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
@@ -17,7 +29,7 @@ namespace Pulumi.Gcp.BigTable
     ///     * [Official Documentation](https://cloud.google.com/bigtable/docs)
     /// 
     /// ## Example Usage
-    /// ### Production Instance
+    /// ### Simple Instance
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +48,49 @@ namespace Pulumi.Gcp.BigTable
     ///                     ClusterId = "tf-instance-cluster",
     ///                     NumNodes = 1,
     ///                     StorageType = "HDD",
+    ///                 },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "my-label", "prod-label" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Replicated Instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var production_instance = new Gcp.BigTable.Instance("production-instance", new Gcp.BigTable.InstanceArgs
+    ///         {
+    ///             Clusters = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "tf-instance-cluster1",
+    ///                     NumNodes = 1,
+    ///                     StorageType = "HDD",
+    ///                     Zone = "us-central1-c",
+    ///                 },
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     AutoscalingConfig = new Gcp.BigTable.Inputs.InstanceClusterAutoscalingConfigArgs
+    ///                     {
+    ///                         CpuTarget = 50,
+    ///                         MaxNodes = 3,
+    ///                         MinNodes = 1,
+    ///                     },
+    ///                     ClusterId = "tf-instance-cluster2",
+    ///                     StorageType = "HDD",
+    ///                     Zone = "us-central1-b",
     ///                 },
     ///             },
     ///             Labels = 

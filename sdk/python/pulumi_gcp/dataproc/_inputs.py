@@ -54,6 +54,7 @@ __all__ = [
     'JobSparksqlConfigArgs',
     'JobSparksqlConfigLoggingConfigArgs',
     'JobStatusArgs',
+    'MetastoreServiceEncryptionConfigArgs',
     'MetastoreServiceHiveMetastoreConfigArgs',
     'MetastoreServiceHiveMetastoreConfigKerberosConfigArgs',
     'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs',
@@ -3413,6 +3414,30 @@ class JobStatusArgs:
     @substate.setter
     def substate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "substate", value)
+
+
+@pulumi.input_type
+class MetastoreServiceEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key: The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+               Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Input[str]:
+        """
+        The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+        Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key", value)
 
 
 @pulumi.input_type

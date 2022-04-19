@@ -46,6 +46,51 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// }
     /// ```
+    /// ### Dataproc Metastore Service Cmek Example
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyRing.Id,
+    ///             Purpose = "ENCRYPT_DECRYPT",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var @default = new Gcp.Dataproc.MetastoreService("default", new Gcp.Dataproc.MetastoreServiceArgs
+    ///         {
+    ///             ServiceId = "example-service",
+    ///             Location = "us-central1",
+    ///             EncryptionConfig = new Gcp.Dataproc.Inputs.MetastoreServiceEncryptionConfigArgs
+    ///             {
+    ///                 KmsKey = cryptoKey.Id,
+    ///             },
+    ///             HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///             {
+    ///                 Version = "3.1.2",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -71,6 +116,14 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("artifactGcsUri")]
         public Output<string> ArtifactGcsUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Information used to configure the Dataproc Metastore service to encrypt
+        /// customer data at rest.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.MetastoreServiceEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
         /// The URI of the endpoint used to access the metastore service.
@@ -206,6 +259,14 @@ namespace Pulumi.Gcp.Dataproc
     public sealed class MetastoreServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Information used to configure the Dataproc Metastore service to encrypt
+        /// customer data at rest.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.MetastoreServiceEncryptionConfigArgs>? EncryptionConfig { get; set; }
+
+        /// <summary>
         /// Configuration information specific to running Hive metastore software as the metastore service.
         /// Structure is documented below.
         /// </summary>
@@ -286,6 +347,14 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("artifactGcsUri")]
         public Input<string>? ArtifactGcsUri { get; set; }
+
+        /// <summary>
+        /// Information used to configure the Dataproc Metastore service to encrypt
+        /// customer data at rest.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.MetastoreServiceEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
         /// The URI of the endpoint used to access the metastore service.

@@ -989,6 +989,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "certificateauthority/certificateTemplateIamBinding",
+  "fqn": "pulumi_gcp.certificateauthority",
+  "classes": {
+   "gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding": "CertificateTemplateIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "certificateauthority/certificateTemplateIamMember",
+  "fqn": "pulumi_gcp.certificateauthority",
+  "classes": {
+   "gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember": "CertificateTemplateIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "certificateauthority/certificateTemplateIamPolicy",
+  "fqn": "pulumi_gcp.certificateauthority",
+  "classes": {
+   "gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy": "CertificateTemplateIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudasset/folderFeed",
   "fqn": "pulumi_gcp.cloudasset",
   "classes": {

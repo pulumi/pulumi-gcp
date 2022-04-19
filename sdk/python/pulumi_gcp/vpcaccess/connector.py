@@ -878,7 +878,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> pulumi.Output[Optional[str]]:
+    def network(self) -> pulumi.Output[str]:
         """
         Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         """

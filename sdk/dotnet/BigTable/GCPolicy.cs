@@ -95,6 +95,84 @@ namespace Pulumi.Gcp.BigTable
     /// }
     /// ```
     /// 
+    /// For complex, nested policies, an optional `gc_rules` field are supported. This field
+    /// conflicts with `mode`, `max_age` and `max_version`. This field is a serialized JSON
+    /// string. Example:
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         {
+    ///             Clusters = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "cid",
+    ///                     Zone = "us-central1-b",
+    ///                 },
+    ///             },
+    ///             InstanceType = "DEVELOPMENT",
+    ///             DeletionProtection = false,
+    ///         });
+    ///         var table = new Gcp.BigTable.Table("table", new Gcp.BigTable.TableArgs
+    ///         {
+    ///             InstanceName = instance.Id,
+    ///             ColumnFamilies = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///                 {
+    ///                     Family = "cf1",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var policy = new Gcp.BigTable.GCPolicy("policy", new Gcp.BigTable.GCPolicyArgs
+    ///         {
+    ///             InstanceName = instance.Id,
+    ///             Table = table.Name,
+    ///             ColumnFamily = "cf1",
+    ///             GcRules = @"{
+    ///   ""mode"": ""union"",
+    ///   ""rules"": [
+    ///     {
+    ///       ""max_age"": ""10h""
+    ///     },
+    ///     {
+    ///       ""mode"": ""intersection"",
+    ///       ""rules"": [
+    ///         {
+    ///           ""max_age"": ""2h""
+    ///         },
+    ///         {
+    ///           ""max_version"": 2
+    ///         }
+    ///       ]
+    ///     }
+    ///   ]
+    /// }
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// This is equivalent to running the following `cbt` command:
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support import.
@@ -107,6 +185,12 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Output("columnFamily")]
         public Output<string> ColumnFamily { get; private set; } = null!;
+
+        /// <summary>
+        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+        /// </summary>
+        [Output("gcRules")]
+        public Output<string?> GcRules { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Bigtable instance.
@@ -197,6 +281,12 @@ namespace Pulumi.Gcp.BigTable
         public Input<string> ColumnFamily { get; set; } = null!;
 
         /// <summary>
+        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+        /// </summary>
+        [Input("gcRules")]
+        public Input<string>? GcRules { get; set; }
+
+        /// <summary>
         /// The name of the Bigtable instance.
         /// </summary>
         [Input("instanceName", required: true)]
@@ -250,6 +340,12 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Input("columnFamily")]
         public Input<string>? ColumnFamily { get; set; }
+
+        /// <summary>
+        /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+        /// </summary>
+        [Input("gcRules")]
+        public Input<string>? GcRules { get; set; }
 
         /// <summary>
         /// The name of the Bigtable instance.

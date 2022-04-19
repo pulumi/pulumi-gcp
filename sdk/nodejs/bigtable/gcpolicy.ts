@@ -57,6 +57,58 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * For complex, nested policies, an optional `gcRules` field are supported. This field
+ * conflicts with `mode`, `maxAge` and `maxVersion`. This field is a serialized JSON
+ * string. Example:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     clusters: [{
+ *         clusterId: "cid",
+ *         zone: "us-central1-b",
+ *     }],
+ *     instanceType: "DEVELOPMENT",
+ *     deletionProtection: false,
+ * });
+ * const table = new gcp.bigtable.Table("table", {
+ *     instanceName: instance.id,
+ *     columnFamilies: [{
+ *         family: "cf1",
+ *     }],
+ * });
+ * const policy = new gcp.bigtable.GCPolicy("policy", {
+ *     instanceName: instance.id,
+ *     table: table.name,
+ *     columnFamily: "cf1",
+ *     gcRules: `{
+ *   "mode": "union",
+ *   "rules": [
+ *     {
+ *       "max_age": "10h"
+ *     },
+ *     {
+ *       "mode": "intersection",
+ *       "rules": [
+ *         {
+ *           "max_age": "2h"
+ *         },
+ *         {
+ *           "max_version": 2
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * }
+ * `,
+ * });
+ * ```
+ * This is equivalent to running the following `cbt` command:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
  * ## Import
  *
  * This resource does not support import.
@@ -93,6 +145,10 @@ export class GCPolicy extends pulumi.CustomResource {
      * The name of the column family.
      */
     public readonly columnFamily!: pulumi.Output<string>;
+    /**
+     * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
+     */
+    public readonly gcRules!: pulumi.Output<string | undefined>;
     /**
      * The name of the Bigtable instance.
      */
@@ -132,6 +188,7 @@ export class GCPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GCPolicyState | undefined;
             resourceInputs["columnFamily"] = state ? state.columnFamily : undefined;
+            resourceInputs["gcRules"] = state ? state.gcRules : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["maxAge"] = state ? state.maxAge : undefined;
             resourceInputs["maxVersions"] = state ? state.maxVersions : undefined;
@@ -150,6 +207,7 @@ export class GCPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'table'");
             }
             resourceInputs["columnFamily"] = args ? args.columnFamily : undefined;
+            resourceInputs["gcRules"] = args ? args.gcRules : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["maxAge"] = args ? args.maxAge : undefined;
             resourceInputs["maxVersions"] = args ? args.maxVersions : undefined;
@@ -170,6 +228,10 @@ export interface GCPolicyState {
      * The name of the column family.
      */
     columnFamily?: pulumi.Input<string>;
+    /**
+     * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
+     */
+    gcRules?: pulumi.Input<string>;
     /**
      * The name of the Bigtable instance.
      */
@@ -204,6 +266,10 @@ export interface GCPolicyArgs {
      * The name of the column family.
      */
     columnFamily: pulumi.Input<string>;
+    /**
+     * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
+     */
+    gcRules?: pulumi.Input<string>;
     /**
      * The name of the Bigtable instance.
      */

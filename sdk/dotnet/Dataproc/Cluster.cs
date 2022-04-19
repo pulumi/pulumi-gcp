@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.Dataproc
     ///                 },
     ///                 SoftwareConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSoftwareConfigArgs
     ///                 {
-    ///                     ImageVersion = "1.3.7-deb9",
+    ///                     ImageVersion = "2.0.35-debian10",
     ///                     OverrideProperties = 
     ///                     {
     ///                         { "dataproc:dataproc.allow.zero.workers", "true" },

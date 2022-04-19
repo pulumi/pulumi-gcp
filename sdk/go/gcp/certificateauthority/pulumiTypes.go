@@ -10562,6 +10562,356 @@ func (o CertificateRevocationDetailArrayOutput) Index(i pulumi.IntInput) Certifi
 	}).(CertificateRevocationDetailOutput)
 }
 
+type CertificateTemplateIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// CertificateTemplateIamBindingConditionInput is an input type that accepts CertificateTemplateIamBindingConditionArgs and CertificateTemplateIamBindingConditionOutput values.
+// You can construct a concrete instance of `CertificateTemplateIamBindingConditionInput` via:
+//
+//          CertificateTemplateIamBindingConditionArgs{...}
+type CertificateTemplateIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToCertificateTemplateIamBindingConditionOutput() CertificateTemplateIamBindingConditionOutput
+	ToCertificateTemplateIamBindingConditionOutputWithContext(context.Context) CertificateTemplateIamBindingConditionOutput
+}
+
+type CertificateTemplateIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (CertificateTemplateIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplateIamBindingCondition)(nil)).Elem()
+}
+
+func (i CertificateTemplateIamBindingConditionArgs) ToCertificateTemplateIamBindingConditionOutput() CertificateTemplateIamBindingConditionOutput {
+	return i.ToCertificateTemplateIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplateIamBindingConditionArgs) ToCertificateTemplateIamBindingConditionOutputWithContext(ctx context.Context) CertificateTemplateIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamBindingConditionOutput)
+}
+
+func (i CertificateTemplateIamBindingConditionArgs) ToCertificateTemplateIamBindingConditionPtrOutput() CertificateTemplateIamBindingConditionPtrOutput {
+	return i.ToCertificateTemplateIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplateIamBindingConditionArgs) ToCertificateTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) CertificateTemplateIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamBindingConditionOutput).ToCertificateTemplateIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// CertificateTemplateIamBindingConditionPtrInput is an input type that accepts CertificateTemplateIamBindingConditionArgs, CertificateTemplateIamBindingConditionPtr and CertificateTemplateIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `CertificateTemplateIamBindingConditionPtrInput` via:
+//
+//          CertificateTemplateIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplateIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplateIamBindingConditionPtrOutput() CertificateTemplateIamBindingConditionPtrOutput
+	ToCertificateTemplateIamBindingConditionPtrOutputWithContext(context.Context) CertificateTemplateIamBindingConditionPtrOutput
+}
+
+type certificateTemplateIamBindingConditionPtrType CertificateTemplateIamBindingConditionArgs
+
+func CertificateTemplateIamBindingConditionPtr(v *CertificateTemplateIamBindingConditionArgs) CertificateTemplateIamBindingConditionPtrInput {
+	return (*certificateTemplateIamBindingConditionPtrType)(v)
+}
+
+func (*certificateTemplateIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplateIamBindingCondition)(nil)).Elem()
+}
+
+func (i *certificateTemplateIamBindingConditionPtrType) ToCertificateTemplateIamBindingConditionPtrOutput() CertificateTemplateIamBindingConditionPtrOutput {
+	return i.ToCertificateTemplateIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplateIamBindingConditionPtrType) ToCertificateTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) CertificateTemplateIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamBindingConditionPtrOutput)
+}
+
+type CertificateTemplateIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplateIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplateIamBindingCondition)(nil)).Elem()
+}
+
+func (o CertificateTemplateIamBindingConditionOutput) ToCertificateTemplateIamBindingConditionOutput() CertificateTemplateIamBindingConditionOutput {
+	return o
+}
+
+func (o CertificateTemplateIamBindingConditionOutput) ToCertificateTemplateIamBindingConditionOutputWithContext(ctx context.Context) CertificateTemplateIamBindingConditionOutput {
+	return o
+}
+
+func (o CertificateTemplateIamBindingConditionOutput) ToCertificateTemplateIamBindingConditionPtrOutput() CertificateTemplateIamBindingConditionPtrOutput {
+	return o.ToCertificateTemplateIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplateIamBindingConditionOutput) ToCertificateTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) CertificateTemplateIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplateIamBindingCondition) *CertificateTemplateIamBindingCondition {
+		return &v
+	}).(CertificateTemplateIamBindingConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o CertificateTemplateIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o CertificateTemplateIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateTemplateIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o CertificateTemplateIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateTemplateIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type CertificateTemplateIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplateIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplateIamBindingCondition)(nil)).Elem()
+}
+
+func (o CertificateTemplateIamBindingConditionPtrOutput) ToCertificateTemplateIamBindingConditionPtrOutput() CertificateTemplateIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o CertificateTemplateIamBindingConditionPtrOutput) ToCertificateTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) CertificateTemplateIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o CertificateTemplateIamBindingConditionPtrOutput) Elem() CertificateTemplateIamBindingConditionOutput {
+	return o.ApplyT(func(v *CertificateTemplateIamBindingCondition) CertificateTemplateIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplateIamBindingCondition
+		return ret
+	}).(CertificateTemplateIamBindingConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o CertificateTemplateIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o CertificateTemplateIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o CertificateTemplateIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateTemplateIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// CertificateTemplateIamMemberConditionInput is an input type that accepts CertificateTemplateIamMemberConditionArgs and CertificateTemplateIamMemberConditionOutput values.
+// You can construct a concrete instance of `CertificateTemplateIamMemberConditionInput` via:
+//
+//          CertificateTemplateIamMemberConditionArgs{...}
+type CertificateTemplateIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToCertificateTemplateIamMemberConditionOutput() CertificateTemplateIamMemberConditionOutput
+	ToCertificateTemplateIamMemberConditionOutputWithContext(context.Context) CertificateTemplateIamMemberConditionOutput
+}
+
+type CertificateTemplateIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (CertificateTemplateIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplateIamMemberCondition)(nil)).Elem()
+}
+
+func (i CertificateTemplateIamMemberConditionArgs) ToCertificateTemplateIamMemberConditionOutput() CertificateTemplateIamMemberConditionOutput {
+	return i.ToCertificateTemplateIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplateIamMemberConditionArgs) ToCertificateTemplateIamMemberConditionOutputWithContext(ctx context.Context) CertificateTemplateIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamMemberConditionOutput)
+}
+
+func (i CertificateTemplateIamMemberConditionArgs) ToCertificateTemplateIamMemberConditionPtrOutput() CertificateTemplateIamMemberConditionPtrOutput {
+	return i.ToCertificateTemplateIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateTemplateIamMemberConditionArgs) ToCertificateTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) CertificateTemplateIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamMemberConditionOutput).ToCertificateTemplateIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// CertificateTemplateIamMemberConditionPtrInput is an input type that accepts CertificateTemplateIamMemberConditionArgs, CertificateTemplateIamMemberConditionPtr and CertificateTemplateIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `CertificateTemplateIamMemberConditionPtrInput` via:
+//
+//          CertificateTemplateIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateTemplateIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToCertificateTemplateIamMemberConditionPtrOutput() CertificateTemplateIamMemberConditionPtrOutput
+	ToCertificateTemplateIamMemberConditionPtrOutputWithContext(context.Context) CertificateTemplateIamMemberConditionPtrOutput
+}
+
+type certificateTemplateIamMemberConditionPtrType CertificateTemplateIamMemberConditionArgs
+
+func CertificateTemplateIamMemberConditionPtr(v *CertificateTemplateIamMemberConditionArgs) CertificateTemplateIamMemberConditionPtrInput {
+	return (*certificateTemplateIamMemberConditionPtrType)(v)
+}
+
+func (*certificateTemplateIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplateIamMemberCondition)(nil)).Elem()
+}
+
+func (i *certificateTemplateIamMemberConditionPtrType) ToCertificateTemplateIamMemberConditionPtrOutput() CertificateTemplateIamMemberConditionPtrOutput {
+	return i.ToCertificateTemplateIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateTemplateIamMemberConditionPtrType) ToCertificateTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) CertificateTemplateIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamMemberConditionPtrOutput)
+}
+
+type CertificateTemplateIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplateIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateTemplateIamMemberCondition)(nil)).Elem()
+}
+
+func (o CertificateTemplateIamMemberConditionOutput) ToCertificateTemplateIamMemberConditionOutput() CertificateTemplateIamMemberConditionOutput {
+	return o
+}
+
+func (o CertificateTemplateIamMemberConditionOutput) ToCertificateTemplateIamMemberConditionOutputWithContext(ctx context.Context) CertificateTemplateIamMemberConditionOutput {
+	return o
+}
+
+func (o CertificateTemplateIamMemberConditionOutput) ToCertificateTemplateIamMemberConditionPtrOutput() CertificateTemplateIamMemberConditionPtrOutput {
+	return o.ToCertificateTemplateIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateTemplateIamMemberConditionOutput) ToCertificateTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) CertificateTemplateIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateTemplateIamMemberCondition) *CertificateTemplateIamMemberCondition {
+		return &v
+	}).(CertificateTemplateIamMemberConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o CertificateTemplateIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateTemplateIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o CertificateTemplateIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateTemplateIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o CertificateTemplateIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateTemplateIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type CertificateTemplateIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateTemplateIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateTemplateIamMemberCondition)(nil)).Elem()
+}
+
+func (o CertificateTemplateIamMemberConditionPtrOutput) ToCertificateTemplateIamMemberConditionPtrOutput() CertificateTemplateIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o CertificateTemplateIamMemberConditionPtrOutput) ToCertificateTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) CertificateTemplateIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o CertificateTemplateIamMemberConditionPtrOutput) Elem() CertificateTemplateIamMemberConditionOutput {
+	return o.ApplyT(func(v *CertificateTemplateIamMemberCondition) CertificateTemplateIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateTemplateIamMemberCondition
+		return ret
+	}).(CertificateTemplateIamMemberConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o CertificateTemplateIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o CertificateTemplateIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o CertificateTemplateIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplateIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type CertificateTemplateIdentityConstraints struct {
 	// Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
 	AllowSubjectAltNamesPassthrough bool `pulumi:"allowSubjectAltNamesPassthrough"`
@@ -14412,6 +14762,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigPolicyIdArrayInput)(nil)).Elem(), CertificateConfigX509ConfigPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateRevocationDetailInput)(nil)).Elem(), CertificateRevocationDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateRevocationDetailArrayInput)(nil)).Elem(), CertificateRevocationDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateIamBindingConditionInput)(nil)).Elem(), CertificateTemplateIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateIamBindingConditionPtrInput)(nil)).Elem(), CertificateTemplateIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateIamMemberConditionInput)(nil)).Elem(), CertificateTemplateIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateIamMemberConditionPtrInput)(nil)).Elem(), CertificateTemplateIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateIdentityConstraintsInput)(nil)).Elem(), CertificateTemplateIdentityConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateIdentityConstraintsPtrInput)(nil)).Elem(), CertificateTemplateIdentityConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateIdentityConstraintsCelExpressionInput)(nil)).Elem(), CertificateTemplateIdentityConstraintsCelExpressionArgs{})
@@ -14596,6 +14950,10 @@ func init() {
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(CertificateRevocationDetailOutput{})
 	pulumi.RegisterOutputType(CertificateRevocationDetailArrayOutput{})
+	pulumi.RegisterOutputType(CertificateTemplateIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(CertificateTemplateIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(CertificateTemplateIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(CertificateTemplateIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(CertificateTemplateIdentityConstraintsOutput{})
 	pulumi.RegisterOutputType(CertificateTemplateIdentityConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(CertificateTemplateIdentityConstraintsCelExpressionOutput{})

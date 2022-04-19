@@ -10,6 +10,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## +---
+//
+// subcategory: "Cloud Bigtable"
+// layout: "google"
+// page_title: "Google: bigtable.Instance"
+// sidebar_current: "docs-google-bigtable-instance"
+// description: |-
+//   Creates a Google Bigtable instance.
+// ---
+//
+// # bigtable.Instance
+//
 // Creates a Google Bigtable instance. For more information see:
 //
 // * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
@@ -17,7 +29,7 @@ import (
 //     * [Official Documentation](https://cloud.google.com/bigtable/docs)
 //
 // ## Example Usage
-// ### Production Instance
+// ### Simple Instance
 //
 // ```go
 // package main
@@ -35,6 +47,48 @@ import (
 // 					ClusterId:   pulumi.String("tf-instance-cluster"),
 // 					NumNodes:    pulumi.Int(1),
 // 					StorageType: pulumi.String("HDD"),
+// 				},
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"my-label": pulumi.String("prod-label"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Replicated Instance
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigtable.NewInstance(ctx, "production-instance", &bigtable.InstanceArgs{
+// 			Clusters: bigtable.InstanceClusterArray{
+// 				&bigtable.InstanceClusterArgs{
+// 					ClusterId:   pulumi.String("tf-instance-cluster1"),
+// 					NumNodes:    pulumi.Int(1),
+// 					StorageType: pulumi.String("HDD"),
+// 					Zone:        pulumi.String("us-central1-c"),
+// 				},
+// 				&bigtable.InstanceClusterArgs{
+// 					AutoscalingConfig: &bigtable.InstanceClusterAutoscalingConfigArgs{
+// 						CpuTarget: pulumi.Int(50),
+// 						MaxNodes:  pulumi.Int(3),
+// 						MinNodes:  pulumi.Int(1),
+// 					},
+// 					ClusterId:   pulumi.String("tf-instance-cluster2"),
+// 					StorageType: pulumi.String("HDD"),
+// 					Zone:        pulumi.String("us-central1-b"),
 // 				},
 // 			},
 // 			Labels: pulumi.StringMap{

@@ -201,7 +201,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    public readonly network!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

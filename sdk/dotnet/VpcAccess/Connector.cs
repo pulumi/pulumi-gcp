@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         /// </summary>
         [Output("network")]
-        public Output<string?> Network { get; private set; } = null!;
+        public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

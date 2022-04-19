@@ -35,6 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Certificate{}
 	case "gcp:certificateauthority/certificateTemplate:CertificateTemplate":
 		r = &CertificateTemplate{}
+	case "gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding":
+		r = &CertificateTemplateIamBinding{}
+	case "gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember":
+		r = &CertificateTemplateIamMember{}
+	case "gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy":
+		r = &CertificateTemplateIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -81,6 +87,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"certificateauthority/certificateTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"certificateauthority/certificateTemplateIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"certificateauthority/certificateTemplateIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"certificateauthority/certificateTemplateIamPolicy",
 		&module{version},
 	)
 }

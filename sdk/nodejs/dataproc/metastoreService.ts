@@ -31,6 +31,34 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Dataproc Metastore Service Cmek Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
+ *     keyRing: keyRing.id,
+ *     purpose: "ENCRYPT_DECRYPT",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.dataproc.MetastoreService("default", {
+ *     serviceId: "example-service",
+ *     location: "us-central1",
+ *     encryptionConfig: {
+ *         kmsKey: cryptoKey.id,
+ *     },
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -80,6 +108,12 @@ export class MetastoreService extends pulumi.CustomResource {
      * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
      */
     public /*out*/ readonly artifactGcsUri!: pulumi.Output<string>;
+    /**
+     * Information used to configure the Dataproc Metastore service to encrypt
+     * customer data at rest.
+     * Structure is documented below.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceEncryptionConfig | undefined>;
     /**
      * The URI of the endpoint used to access the metastore service.
      */
@@ -156,6 +190,7 @@ export class MetastoreService extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MetastoreServiceState | undefined;
             resourceInputs["artifactGcsUri"] = state ? state.artifactGcsUri : undefined;
+            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
             resourceInputs["hiveMetastoreConfig"] = state ? state.hiveMetastoreConfig : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -174,6 +209,7 @@ export class MetastoreService extends pulumi.CustomResource {
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -202,6 +238,12 @@ export interface MetastoreServiceState {
      * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
      */
     artifactGcsUri?: pulumi.Input<string>;
+    /**
+     * Information used to configure the Dataproc Metastore service to encrypt
+     * customer data at rest.
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig>;
     /**
      * The URI of the endpoint used to access the metastore service.
      */
@@ -269,6 +311,12 @@ export interface MetastoreServiceState {
  * The set of arguments for constructing a MetastoreService resource.
  */
 export interface MetastoreServiceArgs {
+    /**
+     * Information used to configure the Dataproc Metastore service to encrypt
+     * customer data at rest.
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig>;
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      * Structure is documented below.

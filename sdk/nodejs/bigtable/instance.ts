@@ -6,6 +6,18 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * ## +---
+ *
+ * subcategory: "Cloud Bigtable"
+ * layout: "google"
+ * page_title: "Google: gcp.bigtable.Instance"
+ * sidebar_current: "docs-google-bigtable-instance"
+ * description: |-
+ *   Creates a Google Bigtable instance.
+ * ---
+ *
+ * # gcp.bigtable.Instance
+ *
  * Creates a Google Bigtable instance. For more information see:
  *
  * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
@@ -13,7 +25,7 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
  *
  * ## Example Usage
- * ### Production Instance
+ * ### Simple Instance
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +37,38 @@ import * as utilities from "../utilities";
  *         numNodes: 1,
  *         storageType: "HDD",
  *     }],
+ *     labels: {
+ *         "my-label": "prod-label",
+ *     },
+ * });
+ * ```
+ * ### Replicated Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const production_instance = new gcp.bigtable.Instance("production-instance", {
+ *     clusters: [
+ *         // A cluster with fixed number of nodes.
+ *         {
+ *             clusterId: "tf-instance-cluster1",
+ *             numNodes: 1,
+ *             storageType: "HDD",
+ *             zone: "us-central1-c",
+ *         },
+ *         // a cluster with auto scaling.
+ *         {
+ *             autoscalingConfig: {
+ *                 cpuTarget: 50,
+ *                 maxNodes: 3,
+ *                 minNodes: 1,
+ *             },
+ *             clusterId: "tf-instance-cluster2",
+ *             storageType: "HDD",
+ *             zone: "us-central1-b",
+ *         },
+ *     ],
  *     labels: {
  *         "my-label": "prod-label",
  *     },
