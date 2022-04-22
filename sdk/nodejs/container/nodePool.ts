@@ -37,42 +37,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.serviceaccount.Account("default", {
- *     accountId: "service-account-id",
- *     displayName: "Service Account",
- * });
- * const primary = new gcp.container.Cluster("primary", {
- *     location: "us-central1-a",
- *     initialNodeCount: 3,
- *     nodeLocations: ["us-central1-c"],
- *     nodeConfig: {
- *         serviceAccount: _default.email,
- *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
- *         guestAccelerators: [{
- *             type: "nvidia-tesla-k80",
- *             count: 1,
- *         }],
- *     },
- * });
- * const np = new gcp.container.NodePool("np", {
- *     cluster: primary.id,
- *     nodeConfig: {
- *         machineType: "e2-medium",
- *         serviceAccount: _default.email,
- *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
- *     },
- *     timeouts: [{
- *         create: "30m",
- *         update: "20m",
- *     }],
- * });
- * ```
  *
  * ## Import
  *

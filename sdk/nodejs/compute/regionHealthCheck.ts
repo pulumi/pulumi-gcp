@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     httpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  *     logConfig: {
  *         enable: true,

@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
- *         port: "443",
+ *         port: 443,
  *     },
  * });
  * // instance template
@@ -195,7 +195,7 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * }, {
  *     provider: google_beta,
@@ -512,7 +512,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * }, {
  *     provider: google_beta,
@@ -621,14 +621,14 @@ import * as utilities from "../utilities";
  * // Zonal NEG with GCE_VM_IP_PORT
  * const defaultNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("defaultNetworkEndpointGroup", {
  *     network: defaultNetwork.id,
- *     defaultPort: "90",
+ *     defaultPort: 90,
  *     zone: "us-central1-a",
  *     networkEndpointType: "GCE_VM_IP_PORT",
  * });
  * // Hybrid connectivity NEG
  * const hybridNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("hybridNetworkEndpointGroup", {
  *     network: defaultNetwork.id,
- *     defaultPort: "90",
+ *     defaultPort: 90,
  *     zone: "us-central1-a",
  *     networkEndpointType: "NON_GCP_PRIVATE_IP_PORT",
  * });
@@ -641,7 +641,7 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * });
  * // Backend service for Zonal NEG

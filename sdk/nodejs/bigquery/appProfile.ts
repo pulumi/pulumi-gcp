@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *             storageType: "HDD",
  *         },
  *     ],
- *     deletionProtection: "true",
+ *     deletionProtection: true,
  * });
  * const ap = new gcp.bigquery.AppProfile("ap", {
  *     instance: instance.name,
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *         numNodes: 3,
  *         storageType: "HDD",
  *     }],
- *     deletionProtection: "true",
+ *     deletionProtection: true,
  * });
  * const ap = new gcp.bigquery.AppProfile("ap", {
  *     instance: instance.name,
@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  *             storageType: "HDD",
  *         },
  *     ],
- *     deletionProtection: "true",
+ *     deletionProtection: true,
  * });
  * const ap = new gcp.bigquery.AppProfile("ap", {
  *     instance: instance.name,

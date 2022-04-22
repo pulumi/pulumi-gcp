@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     retentionConfig: {
- *         perPartitionBytes: 32212254720,
+ *         perPartitionBytes: "32212254720",
  *     },
  *     reservationConfig: {
  *         throughputReservation: exampleLiteReservation.name,

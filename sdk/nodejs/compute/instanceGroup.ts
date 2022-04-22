@@ -38,11 +38,11 @@ import * as utilities from "../utilities";
  *     namedPorts: [
  *         {
  *             name: "http",
- *             port: "8080",
+ *             port: 8080,
  *         },
  *         {
  *             name: "https",
- *             port: "8443",
+ *             port: 8443,
  *         },
  *     ],
  *     zone: "us-central1-a",
@@ -79,11 +79,11 @@ import * as utilities from "../utilities";
  *     namedPorts: [
  *         {
  *             name: "http",
- *             port: "8080",
+ *             port: 8080,
  *         },
  *         {
  *             name: "https",
- *             port: "8443",
+ *             port: 8443,
  *         },
  *     ],
  * });

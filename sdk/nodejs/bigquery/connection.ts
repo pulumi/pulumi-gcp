@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *     },
- *     deletionProtection: "true",
+ *     deletionProtection: true,
  * }, {
  *     provider: google_beta,
  * });
@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *     },
- *     deletionProtection: "true",
+ *     deletionProtection: true,
  * }, {
  *     provider: google_beta,
  * });

@@ -83,38 +83,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Using with Instance Group Manager
- *
- * Instance Templates cannot be updated after creation with the Google
- * Cloud Platform API. In order to update an Instance Template, this provider will
- * create a replacement. In order to effectively
- * use an Instance Template resource with an [Instance Group Manager resource](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html).
- * Either omit the Instance Template `name` attribute, or specify a partial name
- * with `namePrefix`. Example:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
- *     namePrefix: "instance-template-",
- *     machineType: "e2-medium",
- *     region: "us-central1",
- *     disks: [{}],
- *     networkInterfaces: [{}],
- * });
- * const instanceGroupManager = new gcp.compute.InstanceGroupManager("instanceGroupManager", {
- *     instanceTemplate: instanceTemplate.id,
- *     baseInstanceName: "instance-group-manager",
- *     zone: "us-central1-f",
- *     targetSize: "1",
- * });
- * ```
- *
- * With this setup, this provider generates a unique name for your Instance
- * Template and can then update the Instance Group manager without conflict before
- * destroying the previous Instance Template.
- *
  * ## Deploying the Latest Image
  *
  * A common way to use instance templates and managed instance groups is to deploy the

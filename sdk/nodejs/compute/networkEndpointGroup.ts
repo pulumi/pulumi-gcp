@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
- *     defaultPort: "90",
+ *     defaultPort: 90,
  *     zone: "us-central1-a",
  * });
  * ```
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.compute.Network("default", {});
  * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
  *     network: _default.id,
- *     defaultPort: "90",
+ *     defaultPort: 90,
  *     zone: "us-central1-a",
  *     networkEndpointType: "NON_GCP_PRIVATE_IP_PORT",
  * });

@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *             name: "routes",
  *             routeRules: [{
  *                 description: "a route rule to match against",
- *                 priority: 1,
+ *                 priority: "1",
  *                 matchRules: [{
  *                     prefixMatch: "/",
  *                 }],
@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  *                 name: "routes",
  *                 routeRules: [{
  *                     description: "a route rule to match against",
- *                     priority: 1,
+ *                     priority: "1",
  *                     matchRules: [{
  *                         prefixMatch: "/",
  *                     }],
@@ -144,7 +144,7 @@ import * as utilities from "../utilities";
  *                 routeRules: [
  *                     {
  *                         description: "an advanced route rule to match against",
- *                         priority: 1,
+ *                         priority: "1",
  *                         matchRules: [
  *                             {
  *                                 prefixMatch: "/potato/",
@@ -228,7 +228,7 @@ import * as utilities from "../utilities";
  *                     },
  *                     {
  *                         description: "a second route rule to match against",
- *                         priority: 2,
+ *                         priority: "2",
  *                         matchRules: [{
  *                             fullPathMatch: "/yay",
  *                         }],
