@@ -11792,7 +11792,7 @@ export namespace compute {
          * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
          * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
          */
-        urlMask: pulumi.Input<string>;
+        urlMask?: pulumi.Input<string>;
         /**
          * The optional resource version. The version identified by this value is platform-specific and is follows:
          * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
