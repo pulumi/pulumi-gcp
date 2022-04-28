@@ -92,8 +92,6 @@ class AwaitableGetClientConfigResult(GetClientConfigResult):
 
 def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientConfigResult:
     """
-    Use this data source to access the configuration of the Google Cloud provider.
-
     ## Example Usage
 
     ```python

@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The service-level to be provided for IPv6 traffic when the
-        /// subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        /// subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }

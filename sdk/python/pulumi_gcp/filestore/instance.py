@@ -19,6 +19,7 @@ class InstanceArgs:
                  networks: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]],
                  tier: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,8 +34,9 @@ class InstanceArgs:
                only a single network is supported.
                Structure is documented below.
         :param pulumi.Input[str] tier: The service tier of the instance.
-               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         :param pulumi.Input[str] description: A description of the instance.
+        :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
@@ -49,6 +51,8 @@ class InstanceArgs:
         pulumi.set(__self__, "tier", tier)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -96,7 +100,7 @@ class InstanceArgs:
     def tier(self) -> pulumi.Input[str]:
         """
         The service tier of the instance.
-        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         """
         return pulumi.get(self, "tier")
 
@@ -115,6 +119,18 @@ class InstanceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        KMS key name used for data encryption.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
     @property
     @pulumi.getter
@@ -187,6 +203,7 @@ class _InstanceState:
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input['InstanceFileSharesArgs']] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -202,6 +219,7 @@ class _InstanceState:
         :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
@@ -211,7 +229,7 @@ class _InstanceState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
-               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         :param pulumi.Input[str] zone: -
                (Optional, Deprecated)
                The name of the Filestore zone of the instance.
@@ -224,6 +242,8 @@ class _InstanceState:
             pulumi.set(__self__, "etag", etag)
         if file_shares is not None:
             pulumi.set(__self__, "file_shares", file_shares)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -293,6 +313,18 @@ class _InstanceState:
         pulumi.set(self, "file_shares", value)
 
     @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        KMS key name used for data encryption.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -360,7 +392,7 @@ class _InstanceState:
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
         The service tier of the instance.
-        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         """
         return pulumi.get(self, "tier")
 
@@ -390,6 +422,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -435,32 +468,52 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
-            location="us-central1-b",
-            tier="BASIC_SSD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=2660,
                 name="share1",
                 nfs_export_options=[
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        ip_ranges=["10.0.0.0/24"],
                         access_mode="READ_WRITE",
+                        ip_ranges=["10.0.0.0/24"],
                         squash_mode="NO_ROOT_SQUASH",
                     ),
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        ip_ranges=["10.10.0.0/24"],
                         access_mode="READ_ONLY",
-                        squash_mode="ROOT_SQUASH",
-                        anon_uid=123,
                         anon_gid=456,
+                        anon_uid=123,
+                        ip_ranges=["10.10.0.0/24"],
+                        squash_mode="ROOT_SQUASH",
                     ),
                 ],
+            ),
+            location="us-central1-b",
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                connect_mode="DIRECT_PEERING",
+                modes=["MODE_IPV4"],
+                network="default",
+            )],
+            tier="BASIC_SSD")
+        ```
+        ### Filestore Instance Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        filestore_keyring = gcp.kms.KeyRing("filestoreKeyring", location="us-central1")
+        filestore_key = gcp.kms.CryptoKey("filestoreKey", key_ring=filestore_keyring.id)
+        instance = gcp.filestore.Instance("instance",
+            location="us-central1",
+            tier="ENTERPRISE",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=2560,
+                name="share1",
             ),
             networks=[gcp.filestore.InstanceNetworkArgs(
                 network="default",
                 modes=["MODE_IPV4"],
-                connect_mode="DIRECT_PEERING",
             )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            kms_key_name=filestore_key.id)
         ```
 
         ## Import
@@ -485,6 +538,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
@@ -494,7 +548,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
-               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         :param pulumi.Input[str] zone: -
                (Optional, Deprecated)
                The name of the Filestore zone of the instance.
@@ -542,32 +596,52 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
-            location="us-central1-b",
-            tier="BASIC_SSD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=2660,
                 name="share1",
                 nfs_export_options=[
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        ip_ranges=["10.0.0.0/24"],
                         access_mode="READ_WRITE",
+                        ip_ranges=["10.0.0.0/24"],
                         squash_mode="NO_ROOT_SQUASH",
                     ),
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        ip_ranges=["10.10.0.0/24"],
                         access_mode="READ_ONLY",
-                        squash_mode="ROOT_SQUASH",
-                        anon_uid=123,
                         anon_gid=456,
+                        anon_uid=123,
+                        ip_ranges=["10.10.0.0/24"],
+                        squash_mode="ROOT_SQUASH",
                     ),
                 ],
+            ),
+            location="us-central1-b",
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                connect_mode="DIRECT_PEERING",
+                modes=["MODE_IPV4"],
+                network="default",
+            )],
+            tier="BASIC_SSD")
+        ```
+        ### Filestore Instance Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        filestore_keyring = gcp.kms.KeyRing("filestoreKeyring", location="us-central1")
+        filestore_key = gcp.kms.CryptoKey("filestoreKey", key_ring=filestore_keyring.id)
+        instance = gcp.filestore.Instance("instance",
+            location="us-central1",
+            tier="ENTERPRISE",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=2560,
+                name="share1",
             ),
             networks=[gcp.filestore.InstanceNetworkArgs(
                 network="default",
                 modes=["MODE_IPV4"],
-                connect_mode="DIRECT_PEERING",
             )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            kms_key_name=filestore_key.id)
         ```
 
         ## Import
@@ -603,6 +677,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -626,6 +701,7 @@ class Instance(pulumi.CustomResource):
             if file_shares is None and not opts.urn:
                 raise TypeError("Missing required property 'file_shares'")
             __props__.__dict__["file_shares"] = file_shares
+            __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -656,6 +732,7 @@ class Instance(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
+            kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -676,6 +753,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
+        :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
@@ -685,7 +763,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
-               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         :param pulumi.Input[str] zone: -
                (Optional, Deprecated)
                The name of the Filestore zone of the instance.
@@ -698,6 +776,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
         __props__.__dict__["file_shares"] = file_shares
+        __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -740,6 +819,14 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "file_shares")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        KMS key name used for data encryption.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter
@@ -789,7 +876,7 @@ class Instance(pulumi.CustomResource):
     def tier(self) -> pulumi.Output[str]:
         """
         The service tier of the instance.
-        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         """
         return pulumi.get(self, "tier")
 

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     region: "us-central1",
- *     databaseVersion: "MYSQL_5_7",
+ *     databaseVersion: "MYSQL_8_0",
  *     settings: {
  *         tier: "db-f1-micro",
  *     },

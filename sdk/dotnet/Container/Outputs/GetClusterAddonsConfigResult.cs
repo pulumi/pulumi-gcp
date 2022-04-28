@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigDnsCacheConfigResult> DnsCacheConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult> GcePersistentDiskCsiDriverConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult> GcpFilestoreCsiDriverConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigGkeBackupAgentConfigResult> GkeBackupAgentConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult> HorizontalPodAutoscalings;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigHttpLoadBalancingResult> HttpLoadBalancings;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigIstioConfigResult> IstioConfigs;
@@ -36,6 +37,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult> gcpFilestoreCsiDriverConfigs,
 
+            ImmutableArray<Outputs.GetClusterAddonsConfigGkeBackupAgentConfigResult> gkeBackupAgentConfigs,
+
             ImmutableArray<Outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult> horizontalPodAutoscalings,
 
             ImmutableArray<Outputs.GetClusterAddonsConfigHttpLoadBalancingResult> httpLoadBalancings,
@@ -51,6 +54,7 @@ namespace Pulumi.Gcp.Container.Outputs
             DnsCacheConfigs = dnsCacheConfigs;
             GcePersistentDiskCsiDriverConfigs = gcePersistentDiskCsiDriverConfigs;
             GcpFilestoreCsiDriverConfigs = gcpFilestoreCsiDriverConfigs;
+            GkeBackupAgentConfigs = gkeBackupAgentConfigs;
             HorizontalPodAutoscalings = horizontalPodAutoscalings;
             HttpLoadBalancings = httpLoadBalancings;
             IstioConfigs = istioConfigs;

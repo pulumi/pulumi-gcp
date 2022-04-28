@@ -555,7 +555,7 @@ class TriggerBuildOptionsArgs:
         :param pulumi.Input[str] log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
                Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
         :param pulumi.Input[str] logging: Option to specify the logging mode, which determines if and where build logs are stored.
-               Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+               Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
         :param pulumi.Input[str] machine_type: Compute Engine machine type on which to run the build.
                Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
         :param pulumi.Input[str] requested_verify_option: Requested verifiability options.
@@ -666,7 +666,7 @@ class TriggerBuildOptionsArgs:
     def logging(self) -> Optional[pulumi.Input[str]]:
         """
         Option to specify the logging mode, which determines if and where build logs are stored.
-        Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+        Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
         """
         return pulumi.get(self, "logging")
 

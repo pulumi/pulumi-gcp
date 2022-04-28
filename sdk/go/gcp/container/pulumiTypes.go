@@ -5903,6 +5903,9 @@ type ClusterAddonsConfig struct {
 	// which allows the usage of filestore instance as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig *ClusterAddonsConfigGcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// ).
+	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+	GkeBackupAgentConfig *ClusterAddonsConfigGkeBackupAgentConfig `pulumi:"gkeBackupAgentConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
 	// has based on the resource usage of the existing pods.
@@ -5956,6 +5959,9 @@ type ClusterAddonsConfigArgs struct {
 	// which allows the usage of filestore instance as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// ).
+	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+	GkeBackupAgentConfig ClusterAddonsConfigGkeBackupAgentConfigPtrInput `pulumi:"gkeBackupAgentConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
 	// has based on the resource usage of the existing pods.
@@ -6093,6 +6099,12 @@ func (o ClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsCo
 	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// ).
+// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+func (o ClusterAddonsConfigOutput) GkeBackupAgentConfig() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGkeBackupAgentConfig { return v.GkeBackupAgentConfig }).(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput)
+}
+
 // The status of the Horizontal Pod Autoscaling
 // addon, which increases or decreases the number of replica pods a replication controller
 // has based on the resource usage of the existing pods.
@@ -6211,6 +6223,17 @@ func (o ClusterAddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() ClusterAddon
 		}
 		return v.GcpFilestoreCsiDriverConfig
 	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
+}
+
+// ).
+// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+func (o ClusterAddonsConfigPtrOutput) GkeBackupAgentConfig() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGkeBackupAgentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GkeBackupAgentConfig
+	}).(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput)
 }
 
 // The status of the Horizontal Pod Autoscaling
@@ -6997,6 +7020,147 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Elem() ClusterA
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcpFilestoreCsiDriverConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigGkeBackupAgentConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigGkeBackupAgentConfigInput is an input type that accepts ClusterAddonsConfigGkeBackupAgentConfigArgs and ClusterAddonsConfigGkeBackupAgentConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigGkeBackupAgentConfigInput` via:
+//
+//          ClusterAddonsConfigGkeBackupAgentConfigArgs{...}
+type ClusterAddonsConfigGkeBackupAgentConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigGkeBackupAgentConfigOutput() ClusterAddonsConfigGkeBackupAgentConfigOutput
+	ToClusterAddonsConfigGkeBackupAgentConfigOutputWithContext(context.Context) ClusterAddonsConfigGkeBackupAgentConfigOutput
+}
+
+type ClusterAddonsConfigGkeBackupAgentConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigGkeBackupAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigGkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigGkeBackupAgentConfigArgs) ToClusterAddonsConfigGkeBackupAgentConfigOutput() ClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return i.ToClusterAddonsConfigGkeBackupAgentConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigGkeBackupAgentConfigArgs) ToClusterAddonsConfigGkeBackupAgentConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGkeBackupAgentConfigOutput)
+}
+
+func (i ClusterAddonsConfigGkeBackupAgentConfigArgs) ToClusterAddonsConfigGkeBackupAgentConfigPtrOutput() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return i.ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigGkeBackupAgentConfigArgs) ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGkeBackupAgentConfigOutput).ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigGkeBackupAgentConfigPtrInput is an input type that accepts ClusterAddonsConfigGkeBackupAgentConfigArgs, ClusterAddonsConfigGkeBackupAgentConfigPtr and ClusterAddonsConfigGkeBackupAgentConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigGkeBackupAgentConfigPtrInput` via:
+//
+//          ClusterAddonsConfigGkeBackupAgentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterAddonsConfigGkeBackupAgentConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigGkeBackupAgentConfigPtrOutput() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput
+	ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigGkeBackupAgentConfigPtrOutput
+}
+
+type clusterAddonsConfigGkeBackupAgentConfigPtrType ClusterAddonsConfigGkeBackupAgentConfigArgs
+
+func ClusterAddonsConfigGkeBackupAgentConfigPtr(v *ClusterAddonsConfigGkeBackupAgentConfigArgs) ClusterAddonsConfigGkeBackupAgentConfigPtrInput {
+	return (*clusterAddonsConfigGkeBackupAgentConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigGkeBackupAgentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigGkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigGkeBackupAgentConfigPtrType) ToClusterAddonsConfigGkeBackupAgentConfigPtrOutput() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return i.ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigGkeBackupAgentConfigPtrType) ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput)
+}
+
+type ClusterAddonsConfigGkeBackupAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigGkeBackupAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigGkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) ToClusterAddonsConfigGkeBackupAgentConfigOutput() ClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) ToClusterAddonsConfigGkeBackupAgentConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) ToClusterAddonsConfigGkeBackupAgentConfigPtrOutput() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return o.ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigGkeBackupAgentConfig) *ClusterAddonsConfigGkeBackupAgentConfig {
+		return &v
+	}).(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigGkeBackupAgentConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigGkeBackupAgentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigGkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) ToClusterAddonsConfigGkeBackupAgentConfigPtrOutput() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) ToClusterAddonsConfigGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Elem() ClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigGkeBackupAgentConfig) ClusterAddonsConfigGkeBackupAgentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigGkeBackupAgentConfig
+		return ret
+	}).(ClusterAddonsConfigGkeBackupAgentConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigGkeBackupAgentConfig) *bool {
 		if v == nil {
 			return nil
 		}
@@ -20883,6 +21047,7 @@ type GetClusterAddonsConfig struct {
 	DnsCacheConfigs                   []GetClusterAddonsConfigDnsCacheConfig                   `pulumi:"dnsCacheConfigs"`
 	GcePersistentDiskCsiDriverConfigs []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfigs"`
 	GcpFilestoreCsiDriverConfigs      []GetClusterAddonsConfigGcpFilestoreCsiDriverConfig      `pulumi:"gcpFilestoreCsiDriverConfigs"`
+	GkeBackupAgentConfigs             []GetClusterAddonsConfigGkeBackupAgentConfig             `pulumi:"gkeBackupAgentConfigs"`
 	HorizontalPodAutoscalings         []GetClusterAddonsConfigHorizontalPodAutoscaling         `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings                []GetClusterAddonsConfigHttpLoadBalancing                `pulumi:"httpLoadBalancings"`
 	IstioConfigs                      []GetClusterAddonsConfigIstioConfig                      `pulumi:"istioConfigs"`
@@ -20907,6 +21072,7 @@ type GetClusterAddonsConfigArgs struct {
 	DnsCacheConfigs                   GetClusterAddonsConfigDnsCacheConfigArrayInput                   `pulumi:"dnsCacheConfigs"`
 	GcePersistentDiskCsiDriverConfigs GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput `pulumi:"gcePersistentDiskCsiDriverConfigs"`
 	GcpFilestoreCsiDriverConfigs      GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput      `pulumi:"gcpFilestoreCsiDriverConfigs"`
+	GkeBackupAgentConfigs             GetClusterAddonsConfigGkeBackupAgentConfigArrayInput             `pulumi:"gkeBackupAgentConfigs"`
 	HorizontalPodAutoscalings         GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput         `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings                GetClusterAddonsConfigHttpLoadBalancingArrayInput                `pulumi:"httpLoadBalancings"`
 	IstioConfigs                      GetClusterAddonsConfigIstioConfigArrayInput                      `pulumi:"istioConfigs"`
@@ -20989,6 +21155,12 @@ func (o GetClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfigs() GetClusterA
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 		return v.GcpFilestoreCsiDriverConfigs
 	}).(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput)
+}
+
+func (o GetClusterAddonsConfigOutput) GkeBackupAgentConfigs() GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGkeBackupAgentConfig {
+		return v.GkeBackupAgentConfigs
+	}).(GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) HorizontalPodAutoscalings() GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput {
@@ -21509,6 +21681,100 @@ func (o GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 		return vs[0].([]GetClusterAddonsConfigGcpFilestoreCsiDriverConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput)
+}
+
+type GetClusterAddonsConfigGkeBackupAgentConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigGkeBackupAgentConfigInput is an input type that accepts GetClusterAddonsConfigGkeBackupAgentConfigArgs and GetClusterAddonsConfigGkeBackupAgentConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigGkeBackupAgentConfigInput` via:
+//
+//          GetClusterAddonsConfigGkeBackupAgentConfigArgs{...}
+type GetClusterAddonsConfigGkeBackupAgentConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigGkeBackupAgentConfigOutput() GetClusterAddonsConfigGkeBackupAgentConfigOutput
+	ToGetClusterAddonsConfigGkeBackupAgentConfigOutputWithContext(context.Context) GetClusterAddonsConfigGkeBackupAgentConfigOutput
+}
+
+type GetClusterAddonsConfigGkeBackupAgentConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigGkeBackupAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigGkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigGkeBackupAgentConfigArgs) ToGetClusterAddonsConfigGkeBackupAgentConfigOutput() GetClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return i.ToGetClusterAddonsConfigGkeBackupAgentConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigGkeBackupAgentConfigArgs) ToGetClusterAddonsConfigGkeBackupAgentConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigGkeBackupAgentConfigOutput)
+}
+
+// GetClusterAddonsConfigGkeBackupAgentConfigArrayInput is an input type that accepts GetClusterAddonsConfigGkeBackupAgentConfigArray and GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigGkeBackupAgentConfigArrayInput` via:
+//
+//          GetClusterAddonsConfigGkeBackupAgentConfigArray{ GetClusterAddonsConfigGkeBackupAgentConfigArgs{...} }
+type GetClusterAddonsConfigGkeBackupAgentConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigGkeBackupAgentConfigArrayOutput() GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput
+	ToGetClusterAddonsConfigGkeBackupAgentConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput
+}
+
+type GetClusterAddonsConfigGkeBackupAgentConfigArray []GetClusterAddonsConfigGkeBackupAgentConfigInput
+
+func (GetClusterAddonsConfigGkeBackupAgentConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigGkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigGkeBackupAgentConfigArray) ToGetClusterAddonsConfigGkeBackupAgentConfigArrayOutput() GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigGkeBackupAgentConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigGkeBackupAgentConfigArray) ToGetClusterAddonsConfigGkeBackupAgentConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigGkeBackupAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigGkeBackupAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigGkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigGkeBackupAgentConfigOutput) ToGetClusterAddonsConfigGkeBackupAgentConfigOutput() GetClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGkeBackupAgentConfigOutput) ToGetClusterAddonsConfigGkeBackupAgentConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGkeBackupAgentConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigGkeBackupAgentConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigGkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput) ToGetClusterAddonsConfigGkeBackupAgentConfigArrayOutput() GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput) ToGetClusterAddonsConfigGkeBackupAgentConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigGkeBackupAgentConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigGkeBackupAgentConfig {
+		return vs[0].([]GetClusterAddonsConfigGkeBackupAgentConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigGkeBackupAgentConfigOutput)
 }
 
 type GetClusterAddonsConfigHorizontalPodAutoscaling struct {
@@ -28451,6 +28717,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcpFilestoreCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGkeBackupAgentConfigInput)(nil)).Elem(), ClusterAddonsConfigGkeBackupAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGkeBackupAgentConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHorizontalPodAutoscalingInput)(nil)).Elem(), ClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHorizontalPodAutoscalingPtrInput)(nil)).Elem(), ClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHttpLoadBalancingInput)(nil)).Elem(), ClusterAddonsConfigHttpLoadBalancingArgs{})
@@ -28625,6 +28893,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGkeBackupAgentConfigInput)(nil)).Elem(), GetClusterAddonsConfigGkeBackupAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGkeBackupAgentConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGkeBackupAgentConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHorizontalPodAutoscalingInput)(nil)).Elem(), GetClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterAddonsConfigHorizontalPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHttpLoadBalancingInput)(nil)).Elem(), GetClusterAddonsConfigHttpLoadBalancingArgs{})
@@ -28841,6 +29111,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigGkeBackupAgentConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHttpLoadBalancingOutput{})
@@ -29015,6 +29287,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigGkeBackupAgentConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHttpLoadBalancingOutput{})

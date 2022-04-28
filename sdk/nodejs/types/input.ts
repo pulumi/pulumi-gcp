@@ -5562,7 +5562,7 @@ export namespace cloudbuild {
         logStreamingOption?: pulumi.Input<string>;
         /**
          * Option to specify the logging mode, which determines if and where build logs are stored.
-         * Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+         * Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
          */
         logging?: pulumi.Input<string>;
         /**
@@ -9642,7 +9642,7 @@ export namespace compute {
         natIp?: pulumi.Input<string>;
         /**
          * The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+         * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
          */
         networkTier?: pulumi.Input<string>;
         /**
@@ -9673,7 +9673,7 @@ export namespace compute {
         externalIpv6PrefixLength?: pulumi.Input<string>;
         /**
          * The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+         * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
          */
         networkTier: pulumi.Input<string>;
         /**
@@ -9999,7 +9999,7 @@ export namespace compute {
         natIp?: pulumi.Input<string>;
         /**
          * The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+         * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier?: pulumi.Input<string>;
         publicPtrDomainName?: pulumi.Input<string>;
@@ -10027,7 +10027,7 @@ export namespace compute {
         externalIpv6PrefixLength?: pulumi.Input<string>;
         /**
          * The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+         * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: pulumi.Input<string>;
         publicPtrDomainName?: pulumi.Input<string>;
@@ -11792,7 +11792,7 @@ export namespace compute {
          * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
          * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
          */
-        urlMask: pulumi.Input<string>;
+        urlMask?: pulumi.Input<string>;
         /**
          * The optional resource version. The version identified by this value is platform-specific and is follows:
          * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
@@ -13546,6 +13546,11 @@ export namespace compute {
          * Must be specified if the `action` is "rateBasedBad" or "throttle". Cannot be specified for other actions. Structure is documented below.
          */
         rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
+        /**
+         * )
+         * Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+         */
+        redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions>;
     }
 
     export interface SecurityPolicyRuleMatch {
@@ -13634,14 +13639,12 @@ export namespace compute {
     }
 
     export interface SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
+        /**
+         * External redirection target when "EXTERNAL_302" is set in 'type'.
+         */
         target?: pulumi.Input<string>;
         /**
-         * The type indicates the intended use of the security policy.
-         * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-         * They filter requests before they hit the origin servers.
-         * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-         * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-         * They filter requests before the request is served from Google's cache.
+         * Type of redirect action.
          */
         type: pulumi.Input<string>;
     }
@@ -13655,6 +13658,17 @@ export namespace compute {
          * Interval over which the threshold is computed.
          */
         intervalSec: pulumi.Input<number>;
+    }
+
+    export interface SecurityPolicyRuleRedirectOptions {
+        /**
+         * External redirection target when "EXTERNAL_302" is set in 'type'.
+         */
+        target?: pulumi.Input<string>;
+        /**
+         * Type of redirect action.
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface SecurityScanConfigAuthentication {
@@ -16306,6 +16320,11 @@ export namespace container {
          */
         gcpFilestoreCsiDriverConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigGcpFilestoreCsiDriverConfig>;
         /**
+         * ).
+         * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+         */
+        gkeBackupAgentConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigGkeBackupAgentConfig>;
+        /**
          * The status of the Horizontal Pod Autoscaling
          * addon, which increases or decreases the number of replica pods a replication controller
          * has based on the resource usage of the existing pods.
@@ -16378,6 +16397,14 @@ export namespace container {
     }
 
     export interface ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterAddonsConfigGkeBackupAgentConfig {
         /**
          * Enable the PodSecurityPolicy controller for this cluster.
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -17557,6 +17584,7 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
+
 }
 
 export namespace containeranalysis {
@@ -28973,9 +29001,10 @@ export namespace sql {
         activationPolicy?: pulumi.Input<string>;
         /**
          * The availability type of the Cloud SQL
-         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
-         * instances, ensure that `settings.backup_configuration.enabled` and
-         * `settings.backup_configuration.binary_log_enabled` are both set to `true`.
+         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
+         * ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
+         * are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
+         * and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
          */
         availabilityType?: pulumi.Input<string>;
         backupConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsBackupConfiguration>;

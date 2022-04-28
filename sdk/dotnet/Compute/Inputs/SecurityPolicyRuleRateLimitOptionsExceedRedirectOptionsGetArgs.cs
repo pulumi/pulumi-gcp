@@ -12,16 +12,14 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// External redirection target when "EXTERNAL_302" is set in 'type'.
+        /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The type indicates the intended use of the security policy.
-        /// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-        /// They filter requests before they hit the origin servers.
-        /// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-        /// (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-        /// They filter requests before the request is served from Google's cache.
+        /// Type of redirect action.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

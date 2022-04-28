@@ -549,9 +549,10 @@ class DatabaseInstanceSettings(dict):
         :param str activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
         :param str availability_type: The availability type of the Cloud SQL
-               instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
-               instances, ensure that `settings.backup_configuration.enabled` and
-               `settings.backup_configuration.binary_log_enabled` are both set to `true`.
+               instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
+               ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
+               are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
+               and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
         :param str collation: The name of server instance collation.
         :param bool disk_autoresize: Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
@@ -617,9 +618,10 @@ class DatabaseInstanceSettings(dict):
     def availability_type(self) -> Optional[str]:
         """
         The availability type of the Cloud SQL
-        instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
-        instances, ensure that `settings.backup_configuration.enabled` and
-        `settings.backup_configuration.binary_log_enabled` are both set to `true`.
+        instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
+        ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
+        are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
+        and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
         """
         return pulumi.get(self, "availability_type")
 

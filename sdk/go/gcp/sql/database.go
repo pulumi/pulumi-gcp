@@ -29,7 +29,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 // 			Region:          pulumi.String("us-central1"),
-// 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
+// 			DatabaseVersion: pulumi.String("MYSQL_8_0"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
 // 			},

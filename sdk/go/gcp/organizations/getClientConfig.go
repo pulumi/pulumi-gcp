@@ -7,8 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to access the configuration of the Google Cloud provider.
-//
 // ## Example Usage
 //
 // ```go

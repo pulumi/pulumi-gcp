@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// &gt; This resource will only work as expected if the provider is configured to
         /// use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
-        /// receive an error otherwise.
+        /// receive an error otherwise. The provider uses this scope by default.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

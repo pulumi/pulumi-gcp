@@ -270,7 +270,7 @@ class Database(pulumi.CustomResource):
         # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-central1",
-            database_version="MYSQL_5_7",
+            database_version="MYSQL_8_0",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
@@ -341,7 +341,7 @@ class Database(pulumi.CustomResource):
         # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-central1",
-            database_version="MYSQL_5_7",
+            database_version="MYSQL_8_0",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
