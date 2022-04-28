@@ -1339,7 +1339,7 @@ type TriggerBuildOptions struct {
 	// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
 	LogStreamingOption *string `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
-	// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+	// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
 	Logging *string `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
 	// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
@@ -1402,7 +1402,7 @@ type TriggerBuildOptionsArgs struct {
 	// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
 	LogStreamingOption pulumi.StringPtrInput `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
-	// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+	// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
 	Logging pulumi.StringPtrInput `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
 	// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
@@ -1542,7 +1542,7 @@ func (o TriggerBuildOptionsOutput) LogStreamingOption() pulumi.StringPtrOutput {
 }
 
 // Option to specify the logging mode, which determines if and where build logs are stored.
-// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
 func (o TriggerBuildOptionsOutput) Logging() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.Logging }).(pulumi.StringPtrOutput)
 }
@@ -1671,7 +1671,7 @@ func (o TriggerBuildOptionsPtrOutput) LogStreamingOption() pulumi.StringPtrOutpu
 }
 
 // Option to specify the logging mode, which determines if and where build logs are stored.
-// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, and `NONE`.
+// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
 func (o TriggerBuildOptionsPtrOutput) Logging() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuildOptions) *string {
 		if v == nil {

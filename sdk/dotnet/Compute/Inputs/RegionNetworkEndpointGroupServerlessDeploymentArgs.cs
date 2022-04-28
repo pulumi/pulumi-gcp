@@ -33,8 +33,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
         /// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
         /// </summary>
-        [Input("urlMask", required: true)]
-        public Input<string> UrlMask { get; set; } = null!;
+        [Input("urlMask")]
+        public Input<string>? UrlMask { get; set; }
 
         /// <summary>
         /// The optional resource version. The version identified by this value is platform-specific and is follows:

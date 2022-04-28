@@ -5,12 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates and manages service account keys, which allow the use of a service account outside of Google Cloud.
- *
- * * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
- *
  * ## Example Usage
  * ### Creating A New Key
  *

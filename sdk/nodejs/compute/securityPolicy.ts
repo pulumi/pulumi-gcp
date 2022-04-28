@@ -104,12 +104,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The type indicates the intended use of the security policy.
-     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-     * They filter requests before they hit the origin servers.
-     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-     * They filter requests before the request is served from Google's cache.
+     * Type of redirect action.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -186,12 +181,7 @@ export interface SecurityPolicyState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The type indicates the intended use of the security policy.
-     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-     * They filter requests before they hit the origin servers.
-     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-     * They filter requests before the request is served from Google's cache.
+     * Type of redirect action.
      */
     type?: pulumi.Input<string>;
 }
@@ -224,12 +214,7 @@ export interface SecurityPolicyArgs {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
     /**
-     * The type indicates the intended use of the security policy.
-     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-     * They filter requests before they hit the origin servers.
-     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-     * They filter requests before the request is served from Google's cache.
+     * Type of redirect action.
      */
     type?: pulumi.Input<string>;
 }

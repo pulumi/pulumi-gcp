@@ -311,6 +311,7 @@ __all__ = [
     'SecurityPolicyRuleRateLimitOptionsBanThresholdArgs',
     'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs',
     'SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs',
+    'SecurityPolicyRuleRedirectOptionsArgs',
     'SecurityScanConfigAuthenticationArgs',
     'SecurityScanConfigAuthenticationCustomAccountArgs',
     'SecurityScanConfigAuthenticationGoogleAccountArgs',
@@ -8559,7 +8560,7 @@ class InstanceNetworkInterfaceAccessConfigArgs:
         :param pulumi.Input[str] nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
         :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+               subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
         """
@@ -8588,7 +8589,7 @@ class InstanceNetworkInterfaceAccessConfigArgs:
     def network_tier(self) -> Optional[pulumi.Input[str]]:
         """
         The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
 
@@ -8667,7 +8668,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+               subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
         """
@@ -8684,7 +8685,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     def network_tier(self) -> pulumi.Input[str]:
         """
         The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
 
@@ -9769,7 +9770,7 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
         :param pulumi.Input[str] nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
         :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+               subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -9796,7 +9797,7 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
     def network_tier(self) -> Optional[pulumi.Input[str]]:
         """
         The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
 
@@ -9873,7 +9874,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+               subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
@@ -9888,7 +9889,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     def network_tier(self) -> pulumi.Input[str]:
         """
         The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
 
@@ -15506,26 +15507,27 @@ class RegionNetworkEndpointGroupCloudRunArgs:
 class RegionNetworkEndpointGroupServerlessDeploymentArgs:
     def __init__(__self__, *,
                  platform: pulumi.Input[str],
-                 url_mask: pulumi.Input[str],
                  resource: Optional[pulumi.Input[str]] = None,
+                 url_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] platform: The platform of the NEG backend target(s). Possible values:
                API Gateway: apigateway.googleapis.com
+        :param pulumi.Input[str] resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+               The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+               Cloud Functions: The function name, Cloud Run: The service name
         :param pulumi.Input[str] url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
                on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
                The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
                App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
-        :param pulumi.Input[str] resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
-               The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
-               Cloud Functions: The function name, Cloud Run: The service name
         :param pulumi.Input[str] version: The optional resource version. The version identified by this value is platform-specific and is follows:
                API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
         """
         pulumi.set(__self__, "platform", platform)
-        pulumi.set(__self__, "url_mask", url_mask)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
+        if url_mask is not None:
+            pulumi.set(__self__, "url_mask", url_mask)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -15543,21 +15545,6 @@ class RegionNetworkEndpointGroupServerlessDeploymentArgs:
         pulumi.set(self, "platform", value)
 
     @property
-    @pulumi.getter(name="urlMask")
-    def url_mask(self) -> pulumi.Input[str]:
-        """
-        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-        on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-        The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-        App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
-        """
-        return pulumi.get(self, "url_mask")
-
-    @url_mask.setter
-    def url_mask(self, value: pulumi.Input[str]):
-        pulumi.set(self, "url_mask", value)
-
-    @property
     @pulumi.getter
     def resource(self) -> Optional[pulumi.Input[str]]:
         """
@@ -15570,6 +15557,21 @@ class RegionNetworkEndpointGroupServerlessDeploymentArgs:
     @resource.setter
     def resource(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter(name="urlMask")
+    def url_mask(self) -> Optional[pulumi.Input[str]]:
+        """
+        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+        on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+        The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+        App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+        """
+        return pulumi.get(self, "url_mask")
+
+    @url_mask.setter
+    def url_mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url_mask", value)
 
     @property
     @pulumi.getter
@@ -20961,7 +20963,8 @@ class SecurityPolicyRuleArgs:
                  priority: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
-                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None):
+                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
+                 redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']] = None):
         """
         :param pulumi.Input[str] action: Action to take when `match` matches the request. Valid values:
                * allow: allow access to target.
@@ -20978,6 +20981,8 @@ class SecurityPolicyRuleArgs:
                Stackdriver logs for requests that trigger a preview action are annotated as such.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: )
                Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: )
+               Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "match", match)
@@ -20988,6 +20993,8 @@ class SecurityPolicyRuleArgs:
             pulumi.set(__self__, "preview", preview)
         if rate_limit_options is not None:
             pulumi.set(__self__, "rate_limit_options", rate_limit_options)
+        if redirect_options is not None:
+            pulumi.set(__self__, "redirect_options", redirect_options)
 
     @property
     @pulumi.getter
@@ -21069,6 +21076,19 @@ class SecurityPolicyRuleArgs:
     @rate_limit_options.setter
     def rate_limit_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]):
         pulumi.set(self, "rate_limit_options", value)
+
+    @property
+    @pulumi.getter(name="redirectOptions")
+    def redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]:
+        """
+        )
+        Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+        """
+        return pulumi.get(self, "redirect_options")
+
+    @redirect_options.setter
+    def redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]):
+        pulumi.set(self, "redirect_options", value)
 
 
 @pulumi.input_type
@@ -21367,12 +21387,8 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
                  type: pulumi.Input[str],
                  target: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
-               * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-               They filter requests before they hit the origin servers.
-               * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-               (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-               They filter requests before the request is served from Google's cache.
+        :param pulumi.Input[str] type: Type of redirect action.
+        :param pulumi.Input[str] target: External redirection target when "EXTERNAL_302" is set in 'type'.
         """
         pulumi.set(__self__, "type", type)
         if target is not None:
@@ -21382,12 +21398,7 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type indicates the intended use of the security policy.
-        * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-        They filter requests before they hit the origin servers.
-        * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-        (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-        They filter requests before the request is served from Google's cache.
+        Type of redirect action.
         """
         return pulumi.get(self, "type")
 
@@ -21398,6 +21409,9 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        External redirection target when "EXTERNAL_302" is set in 'type'.
+        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -21440,6 +21454,44 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
     @interval_sec.setter
     def interval_sec(self, value: pulumi.Input[int]):
         pulumi.set(self, "interval_sec", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleRedirectOptionsArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 target: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of redirect action.
+        :param pulumi.Input[str] target: External redirection target when "EXTERNAL_302" is set in 'type'.
+        """
+        pulumi.set(__self__, "type", type)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of redirect action.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        External redirection target when "EXTERNAL_302" is set in 'type'.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target", value)
 
 
 @pulumi.input_type

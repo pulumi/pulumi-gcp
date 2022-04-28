@@ -70,29 +70,78 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
-// 			Location: pulumi.String("us-central1-b"),
-// 			Tier:     pulumi.String("BASIC_SSD"),
 // 			FileShares: &filestore.InstanceFileSharesArgs{
 // 				CapacityGb: pulumi.Int(2660),
 // 				Name:       pulumi.String("share1"),
 // 				NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
 // 					&filestore.InstanceFileSharesNfsExportOptionArgs{
+// 						AccessMode: pulumi.String("READ_WRITE"),
 // 						IpRanges: pulumi.StringArray{
 // 							pulumi.String("10.0.0.0/24"),
 // 						},
-// 						AccessMode: pulumi.String("READ_WRITE"),
 // 						SquashMode: pulumi.String("NO_ROOT_SQUASH"),
 // 					},
 // 					&filestore.InstanceFileSharesNfsExportOptionArgs{
+// 						AccessMode: pulumi.String("READ_ONLY"),
+// 						AnonGid:    pulumi.Int(456),
+// 						AnonUid:    pulumi.Int(123),
 // 						IpRanges: pulumi.StringArray{
 // 							pulumi.String("10.10.0.0/24"),
 // 						},
-// 						AccessMode: pulumi.String("READ_ONLY"),
 // 						SquashMode: pulumi.String("ROOT_SQUASH"),
-// 						AnonUid:    pulumi.Int(123),
-// 						AnonGid:    pulumi.Int(456),
 // 					},
 // 				},
+// 			},
+// 			Location: pulumi.String("us-central1-b"),
+// 			Networks: filestore.InstanceNetworkArray{
+// 				&filestore.InstanceNetworkArgs{
+// 					ConnectMode: pulumi.String("DIRECT_PEERING"),
+// 					Modes: pulumi.StringArray{
+// 						pulumi.String("MODE_IPV4"),
+// 					},
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Tier: pulumi.String("BASIC_SSD"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Filestore Instance Enterprise
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		filestoreKeyring, err := kms.NewKeyRing(ctx, "filestoreKeyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		filestoreKey, err := kms.NewCryptoKey(ctx, "filestoreKey", &kms.CryptoKeyArgs{
+// 			KeyRing: filestoreKeyring.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Tier:     pulumi.String("ENTERPRISE"),
+// 			FileShares: &filestore.InstanceFileSharesArgs{
+// 				CapacityGb: pulumi.Int(2560),
+// 				Name:       pulumi.String("share1"),
 // 			},
 // 			Networks: filestore.InstanceNetworkArray{
 // 				&filestore.InstanceNetworkArgs{
@@ -100,10 +149,10 @@ import (
 // 					Modes: pulumi.StringArray{
 // 						pulumi.String("MODE_IPV4"),
 // 					},
-// 					ConnectMode: pulumi.String("DIRECT_PEERING"),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 			KmsKeyName: filestoreKey.ID(),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -140,6 +189,8 @@ type Instance struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesOutput `pulumi:"fileShares"`
+	// KMS key name used for data encryption.
+	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
@@ -154,7 +205,7 @@ type Instance struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// -
 	// (Optional, Deprecated)
@@ -212,6 +263,8 @@ type instanceState struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares *InstanceFileShares `pulumi:"fileShares"`
+	// KMS key name used for data encryption.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
@@ -226,7 +279,7 @@ type instanceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier *string `pulumi:"tier"`
 	// -
 	// (Optional, Deprecated)
@@ -247,6 +300,8 @@ type InstanceState struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesPtrInput
+	// KMS key name used for data encryption.
+	KmsKeyName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
@@ -261,7 +316,7 @@ type InstanceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier pulumi.StringPtrInput
 	// -
 	// (Optional, Deprecated)
@@ -282,6 +337,8 @@ type instanceArgs struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileShares `pulumi:"fileShares"`
+	// KMS key name used for data encryption.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
@@ -296,7 +353,7 @@ type instanceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier string `pulumi:"tier"`
 	// -
 	// (Optional, Deprecated)
@@ -314,6 +371,8 @@ type InstanceArgs struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesInput
+	// KMS key name used for data encryption.
+	KmsKeyName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
@@ -328,7 +387,7 @@ type InstanceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier pulumi.StringInput
 	// -
 	// (Optional, Deprecated)

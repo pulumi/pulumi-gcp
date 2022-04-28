@@ -12,8 +12,6 @@ namespace Pulumi.Gcp.Organizations
     public static class GetClientConfig
     {
         /// <summary>
-        /// Use this data source to access the configuration of the Google Cloud provider.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

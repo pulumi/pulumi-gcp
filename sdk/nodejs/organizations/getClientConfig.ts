@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to access the configuration of the Google Cloud provider.
- *
  * ## Example Usage
  *
  * ```typescript

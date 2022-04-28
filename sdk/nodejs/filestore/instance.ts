@@ -43,33 +43,53 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.filestore.Instance("instance", {
- *     location: "us-central1-b",
- *     tier: "BASIC_SSD",
  *     fileShares: {
  *         capacityGb: 2660,
  *         name: "share1",
  *         nfsExportOptions: [
  *             {
- *                 ipRanges: ["10.0.0.0/24"],
  *                 accessMode: "READ_WRITE",
+ *                 ipRanges: ["10.0.0.0/24"],
  *                 squashMode: "NO_ROOT_SQUASH",
  *             },
  *             {
- *                 ipRanges: ["10.10.0.0/24"],
  *                 accessMode: "READ_ONLY",
- *                 squashMode: "ROOT_SQUASH",
- *                 anonUid: 123,
  *                 anonGid: 456,
+ *                 anonUid: 123,
+ *                 ipRanges: ["10.10.0.0/24"],
+ *                 squashMode: "ROOT_SQUASH",
  *             },
  *         ],
+ *     },
+ *     location: "us-central1-b",
+ *     networks: [{
+ *         connectMode: "DIRECT_PEERING",
+ *         modes: ["MODE_IPV4"],
+ *         network: "default",
+ *     }],
+ *     tier: "BASIC_SSD",
+ * });
+ * ```
+ * ### Filestore Instance Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const filestoreKeyring = new gcp.kms.KeyRing("filestoreKeyring", {location: "us-central1"});
+ * const filestoreKey = new gcp.kms.CryptoKey("filestoreKey", {keyRing: filestoreKeyring.id});
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     fileShares: {
+ *         capacityGb: 2560,
+ *         name: "share1",
  *     },
  *     networks: [{
  *         network: "default",
  *         modes: ["MODE_IPV4"],
- *         connectMode: "DIRECT_PEERING",
  *     }],
- * }, {
- *     provider: google_beta,
+ *     kmsKeyName: filestoreKey.id,
  * });
  * ```
  *
@@ -136,6 +156,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly fileShares!: pulumi.Output<outputs.filestore.InstanceFileShares>;
     /**
+     * KMS key name used for data encryption.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -160,7 +184,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
      */
     public readonly tier!: pulumi.Output<string>;
     /**
@@ -189,6 +213,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["fileShares"] = state ? state.fileShares : undefined;
+            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -209,6 +234,7 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fileShares"] = args ? args.fileShares : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -247,6 +273,10 @@ export interface InstanceState {
      */
     fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
+     * KMS key name used for data encryption.
+     */
+    kmsKeyName?: pulumi.Input<string>;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -271,7 +301,7 @@ export interface InstanceState {
     project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
      */
     tier?: pulumi.Input<string>;
     /**
@@ -299,6 +329,10 @@ export interface InstanceArgs {
      */
     fileShares: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
+     * KMS key name used for data encryption.
+     */
+    kmsKeyName?: pulumi.Input<string>;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -323,7 +357,7 @@ export interface InstanceArgs {
     project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
      */
     tier: pulumi.Input<string>;
     /**

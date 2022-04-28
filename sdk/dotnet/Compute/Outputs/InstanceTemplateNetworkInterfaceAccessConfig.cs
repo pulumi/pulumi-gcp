@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? NatIp;
         /// <summary>
         /// The service-level to be provided for IPv6 traffic when the
-        /// subnet has an external subnet. Only PREMIUM tier is valid for IPv6.
+        /// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         /// </summary>
         public readonly string? NetworkTier;
         public readonly string? PublicPtrDomainName;

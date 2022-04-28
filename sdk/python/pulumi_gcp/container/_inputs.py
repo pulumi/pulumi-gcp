@@ -52,6 +52,7 @@ __all__ = [
     'ClusterAddonsConfigDnsCacheConfigArgs',
     'ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs',
     'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs',
+    'ClusterAddonsConfigGkeBackupAgentConfigArgs',
     'ClusterAddonsConfigHorizontalPodAutoscalingArgs',
     'ClusterAddonsConfigHttpLoadBalancingArgs',
     'ClusterAddonsConfigIstioConfigArgs',
@@ -1868,6 +1869,7 @@ class ClusterAddonsConfigArgs:
                  dns_cache_config: Optional[pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs']] = None,
                  gce_persistent_disk_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs']] = None,
                  gcp_filestore_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']] = None,
+                 gke_backup_agent_config: Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs']] = None,
                  horizontal_pod_autoscaling: Optional[pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs']] = None,
                  http_load_balancing: Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs']] = None,
                  istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']] = None,
@@ -1885,6 +1887,8 @@ class ClusterAddonsConfigArgs:
         :param pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
                It is disabled by default; set `enabled = true` to enable.
+        :param pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs'] gke_backup_agent_config: ).
+               The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
@@ -1914,6 +1918,8 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         if gcp_filestore_csi_driver_config is not None:
             pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        if gke_backup_agent_config is not None:
+            pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         if horizontal_pod_autoscaling is not None:
             pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         if http_load_balancing is not None:
@@ -1990,6 +1996,19 @@ class ClusterAddonsConfigArgs:
     @gcp_filestore_csi_driver_config.setter
     def gcp_filestore_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']]):
         pulumi.set(self, "gcp_filestore_csi_driver_config", value)
+
+    @property
+    @pulumi.getter(name="gkeBackupAgentConfig")
+    def gke_backup_agent_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs']]:
+        """
+        ).
+        The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+        """
+        return pulumi.get(self, "gke_backup_agent_config")
+
+    @gke_backup_agent_config.setter
+    def gke_backup_agent_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs']]):
+        pulumi.set(self, "gke_backup_agent_config", value)
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -2181,6 +2200,30 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
 
 @pulumi.input_type
 class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class ClusterAddonsConfigGkeBackupAgentConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """

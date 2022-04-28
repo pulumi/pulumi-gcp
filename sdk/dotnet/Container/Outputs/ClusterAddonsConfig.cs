@@ -40,6 +40,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? GcpFilestoreCsiDriverConfig;
         /// <summary>
+        /// ).
+        /// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigGkeBackupAgentConfig? GkeBackupAgentConfig;
+        /// <summary>
         /// The status of the Horizontal Pod Autoscaling
         /// addon, which increases or decreases the number of replica pods a replication controller
         /// has based on the resource usage of the existing pods.
@@ -85,6 +90,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? gcpFilestoreCsiDriverConfig,
 
+            Outputs.ClusterAddonsConfigGkeBackupAgentConfig? gkeBackupAgentConfig,
+
             Outputs.ClusterAddonsConfigHorizontalPodAutoscaling? horizontalPodAutoscaling,
 
             Outputs.ClusterAddonsConfigHttpLoadBalancing? httpLoadBalancing,
@@ -100,6 +107,7 @@ namespace Pulumi.Gcp.Container.Outputs
             DnsCacheConfig = dnsCacheConfig;
             GcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
             GcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
+            GkeBackupAgentConfig = gkeBackupAgentConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;

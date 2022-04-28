@@ -49,6 +49,13 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs>? GcpFilestoreCsiDriverConfig { get; set; }
 
         /// <summary>
+        /// ).
+        /// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+        /// </summary>
+        [Input("gkeBackupAgentConfig")]
+        public Input<Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs>? GkeBackupAgentConfig { get; set; }
+
+        /// <summary>
         /// The status of the Horizontal Pod Autoscaling
         /// addon, which increases or decreases the number of replica pods a replication controller
         /// has based on the resource usage of the existing pods.

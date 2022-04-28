@@ -68,8 +68,6 @@ namespace Pulumi.Gcp.Filestore
     ///     {
     ///         var instance = new Gcp.Filestore.Instance("instance", new Gcp.Filestore.InstanceArgs
     ///         {
-    ///             Location = "us-central1-b",
-    ///             Tier = "BASIC_SSD",
     ///             FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///             {
     ///                 CapacityGb = 2660,
@@ -78,25 +76,71 @@ namespace Pulumi.Gcp.Filestore
     ///                 {
     ///                     new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
     ///                     {
+    ///                         AccessMode = "READ_WRITE",
     ///                         IpRanges = 
     ///                         {
     ///                             "10.0.0.0/24",
     ///                         },
-    ///                         AccessMode = "READ_WRITE",
     ///                         SquashMode = "NO_ROOT_SQUASH",
     ///                     },
     ///                     new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
     ///                     {
+    ///                         AccessMode = "READ_ONLY",
+    ///                         AnonGid = 456,
+    ///                         AnonUid = 123,
     ///                         IpRanges = 
     ///                         {
     ///                             "10.10.0.0/24",
     ///                         },
-    ///                         AccessMode = "READ_ONLY",
     ///                         SquashMode = "ROOT_SQUASH",
-    ///                         AnonUid = 123,
-    ///                         AnonGid = 456,
     ///                     },
     ///                 },
+    ///             },
+    ///             Location = "us-central1-b",
+    ///             Networks = 
+    ///             {
+    ///                 new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///                 {
+    ///                     ConnectMode = "DIRECT_PEERING",
+    ///                     Modes = 
+    ///                     {
+    ///                         "MODE_IPV4",
+    ///                     },
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             Tier = "BASIC_SSD",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Filestore Instance Enterprise
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var filestoreKeyring = new Gcp.Kms.KeyRing("filestoreKeyring", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         });
+    ///         var filestoreKey = new Gcp.Kms.CryptoKey("filestoreKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = filestoreKeyring.Id,
+    ///         });
+    ///         var instance = new Gcp.Filestore.Instance("instance", new Gcp.Filestore.InstanceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Tier = "ENTERPRISE",
+    ///             FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///             {
+    ///                 CapacityGb = 2560,
+    ///                 Name = "share1",
     ///             },
     ///             Networks = 
     ///             {
@@ -107,12 +151,9 @@ namespace Pulumi.Gcp.Filestore
     ///                     {
     ///                         "MODE_IPV4",
     ///                     },
-    ///                     ConnectMode = "DIRECT_PEERING",
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
+    ///             KmsKeyName = filestoreKey.Id,
     ///         });
     ///     }
     /// 
@@ -165,6 +206,12 @@ namespace Pulumi.Gcp.Filestore
         public Output<Outputs.InstanceFileShares> FileShares { get; private set; } = null!;
 
         /// <summary>
+        /// KMS key name used for data encryption.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// </summary>
         [Output("labels")]
@@ -199,7 +246,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
@@ -272,6 +319,12 @@ namespace Pulumi.Gcp.Filestore
         [Input("fileShares", required: true)]
         public Input<Inputs.InstanceFileSharesArgs> FileShares { get; set; } = null!;
 
+        /// <summary>
+        /// KMS key name used for data encryption.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -319,7 +372,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
@@ -364,6 +417,12 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("fileShares")]
         public Input<Inputs.InstanceFileSharesGetArgs>? FileShares { get; set; }
+
+        /// <summary>
+        /// KMS key name used for data encryption.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -412,7 +471,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE (beta only)
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

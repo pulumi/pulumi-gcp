@@ -57,6 +57,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("rateLimitOptions")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsGetArgs>? RateLimitOptions { get; set; }
 
+        /// <summary>
+        /// )
+        /// Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+        /// </summary>
+        [Input("redirectOptions")]
+        public Input<Inputs.SecurityPolicyRuleRedirectOptionsGetArgs>? RedirectOptions { get; set; }
+
         public SecurityPolicyRuleGetArgs()
         {
         }

@@ -53,6 +53,7 @@ __all__ = [
     'ClusterAddonsConfigDnsCacheConfig',
     'ClusterAddonsConfigGcePersistentDiskCsiDriverConfig',
     'ClusterAddonsConfigGcpFilestoreCsiDriverConfig',
+    'ClusterAddonsConfigGkeBackupAgentConfig',
     'ClusterAddonsConfigHorizontalPodAutoscaling',
     'ClusterAddonsConfigHttpLoadBalancing',
     'ClusterAddonsConfigIstioConfig',
@@ -140,6 +141,7 @@ __all__ = [
     'GetClusterAddonsConfigDnsCacheConfigResult',
     'GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult',
     'GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult',
+    'GetClusterAddonsConfigGkeBackupAgentConfigResult',
     'GetClusterAddonsConfigHorizontalPodAutoscalingResult',
     'GetClusterAddonsConfigHttpLoadBalancingResult',
     'GetClusterAddonsConfigIstioConfigResult',
@@ -2195,6 +2197,8 @@ class ClusterAddonsConfig(dict):
             suggest = "gce_persistent_disk_csi_driver_config"
         elif key == "gcpFilestoreCsiDriverConfig":
             suggest = "gcp_filestore_csi_driver_config"
+        elif key == "gkeBackupAgentConfig":
+            suggest = "gke_backup_agent_config"
         elif key == "horizontalPodAutoscaling":
             suggest = "horizontal_pod_autoscaling"
         elif key == "httpLoadBalancing":
@@ -2223,6 +2227,7 @@ class ClusterAddonsConfig(dict):
                  dns_cache_config: Optional['outputs.ClusterAddonsConfigDnsCacheConfig'] = None,
                  gce_persistent_disk_csi_driver_config: Optional['outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig'] = None,
                  gcp_filestore_csi_driver_config: Optional['outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig'] = None,
+                 gke_backup_agent_config: Optional['outputs.ClusterAddonsConfigGkeBackupAgentConfig'] = None,
                  horizontal_pod_autoscaling: Optional['outputs.ClusterAddonsConfigHorizontalPodAutoscaling'] = None,
                  http_load_balancing: Optional['outputs.ClusterAddonsConfigHttpLoadBalancing'] = None,
                  istio_config: Optional['outputs.ClusterAddonsConfigIstioConfig'] = None,
@@ -2240,6 +2245,8 @@ class ClusterAddonsConfig(dict):
         :param 'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs' gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
                It is disabled by default; set `enabled = true` to enable.
+        :param 'ClusterAddonsConfigGkeBackupAgentConfigArgs' gke_backup_agent_config: ).
+               The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         :param 'ClusterAddonsConfigHorizontalPodAutoscalingArgs' horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
@@ -2269,6 +2276,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         if gcp_filestore_csi_driver_config is not None:
             pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        if gke_backup_agent_config is not None:
+            pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         if horizontal_pod_autoscaling is not None:
             pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         if http_load_balancing is not None:
@@ -2325,6 +2334,15 @@ class ClusterAddonsConfig(dict):
         It is disabled by default; set `enabled = true` to enable.
         """
         return pulumi.get(self, "gcp_filestore_csi_driver_config")
+
+    @property
+    @pulumi.getter(name="gkeBackupAgentConfig")
+    def gke_backup_agent_config(self) -> Optional['outputs.ClusterAddonsConfigGkeBackupAgentConfig']:
+        """
+        ).
+        The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+        """
+        return pulumi.get(self, "gke_backup_agent_config")
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -2493,6 +2511,26 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
 
 @pulumi.output_type
 class ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigGkeBackupAgentConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -6938,6 +6976,7 @@ class GetClusterAddonsConfigResult(dict):
                  dns_cache_configs: Sequence['outputs.GetClusterAddonsConfigDnsCacheConfigResult'],
                  gce_persistent_disk_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult'],
                  gcp_filestore_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult'],
+                 gke_backup_agent_configs: Sequence['outputs.GetClusterAddonsConfigGkeBackupAgentConfigResult'],
                  horizontal_pod_autoscalings: Sequence['outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult'],
                  http_load_balancings: Sequence['outputs.GetClusterAddonsConfigHttpLoadBalancingResult'],
                  istio_configs: Sequence['outputs.GetClusterAddonsConfigIstioConfigResult'],
@@ -6948,6 +6987,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "dns_cache_configs", dns_cache_configs)
         pulumi.set(__self__, "gce_persistent_disk_csi_driver_configs", gce_persistent_disk_csi_driver_configs)
         pulumi.set(__self__, "gcp_filestore_csi_driver_configs", gcp_filestore_csi_driver_configs)
+        pulumi.set(__self__, "gke_backup_agent_configs", gke_backup_agent_configs)
         pulumi.set(__self__, "horizontal_pod_autoscalings", horizontal_pod_autoscalings)
         pulumi.set(__self__, "http_load_balancings", http_load_balancings)
         pulumi.set(__self__, "istio_configs", istio_configs)
@@ -6978,6 +7018,11 @@ class GetClusterAddonsConfigResult(dict):
     @pulumi.getter(name="gcpFilestoreCsiDriverConfigs")
     def gcp_filestore_csi_driver_configs(self) -> Sequence['outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult']:
         return pulumi.get(self, "gcp_filestore_csi_driver_configs")
+
+    @property
+    @pulumi.getter(name="gkeBackupAgentConfigs")
+    def gke_backup_agent_configs(self) -> Sequence['outputs.GetClusterAddonsConfigGkeBackupAgentConfigResult']:
+        return pulumi.get(self, "gke_backup_agent_configs")
 
     @property
     @pulumi.getter(name="horizontalPodAutoscalings")
@@ -7062,6 +7107,18 @@ class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult(dict):
 
 @pulumi.output_type
 class GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigGkeBackupAgentConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)

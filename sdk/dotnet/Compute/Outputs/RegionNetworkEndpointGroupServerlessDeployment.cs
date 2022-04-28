@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
         /// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
         /// </summary>
-        public readonly string UrlMask;
+        public readonly string? UrlMask;
         /// <summary>
         /// The optional resource version. The version identified by this value is platform-specific and is follows:
         /// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? resource,
 
-            string urlMask,
+            string? urlMask,
 
             string? version)
         {
