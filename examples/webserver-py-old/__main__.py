@@ -18,7 +18,7 @@ region_zone = config.zone
 project_name = config.project
 
 compute_network = compute.Network(
-    "network",
+    "network-old",
     project=project_name,
     auto_create_subnetworks=True,
 )
