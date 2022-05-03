@@ -203,6 +203,7 @@ __all__ = [
     'RegionBackendServiceOutlierDetection',
     'RegionBackendServiceOutlierDetectionBaseEjectionTime',
     'RegionBackendServiceOutlierDetectionInterval',
+    'RegionBackendServiceSubsetting',
     'RegionDiskDiskEncryptionKey',
     'RegionDiskIamBindingCondition',
     'RegionDiskIamMemberCondition',
@@ -428,6 +429,9 @@ __all__ = [
     'GetBackendServiceOutlierDetectionBaseEjectionTimeResult',
     'GetBackendServiceOutlierDetectionIntervalResult',
     'GetBackendServiceSecuritySettingResult',
+    'GetDiskDiskEncryptionKeyResult',
+    'GetDiskSourceImageEncryptionKeyResult',
+    'GetDiskSourceSnapshotEncryptionKeyResult',
     'GetGlobalForwardingRuleMetadataFilterResult',
     'GetGlobalForwardingRuleMetadataFilterFilterLabelResult',
     'GetHcVpnGatewayVpnInterfaceResult',
@@ -489,6 +493,8 @@ __all__ = [
     'GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult',
     'GetRouterBgpResult',
     'GetRouterBgpAdvertisedIpRangeResult',
+    'GetRouterStatusBestRouteResult',
+    'GetRouterStatusBestRoutesForRouterResult',
     'GetSubnetworkSecondaryIpRangeResult',
 ]
 
@@ -13671,6 +13677,26 @@ class RegionBackendServiceOutlierDetectionInterval(dict):
         `nanos` field. Must be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class RegionBackendServiceSubsetting(dict):
+    def __init__(__self__, *,
+                 policy: str):
+        """
+        :param str policy: The algorithm used for subsetting.
+               Possible values are `CONSISTENT_HASH_SUBSETTING`.
+        """
+        pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        The algorithm used for subsetting.
+        Possible values are `CONSISTENT_HASH_SUBSETTING`.
+        """
+        return pulumi.get(self, "policy")
 
 
 @pulumi.output_type
@@ -29778,6 +29804,105 @@ class GetBackendServiceSecuritySettingResult(dict):
 
 
 @pulumi.output_type
+class GetDiskDiskEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str,
+                 raw_key: str,
+                 sha256: str):
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class GetDiskSourceImageEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str,
+                 raw_key: str,
+                 sha256: str):
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class GetDiskSourceSnapshotEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str,
+                 raw_key: str,
+                 sha256: str):
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
 class GetGlobalForwardingRuleMetadataFilterResult(dict):
     def __init__(__self__, *,
                  filter_labels: Sequence['outputs.GetGlobalForwardingRuleMetadataFilterFilterLabelResult'],
@@ -32089,6 +32214,262 @@ class GetRouterBgpAdvertisedIpRangeResult(dict):
     @pulumi.getter
     def range(self) -> str:
         return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRouteResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 dest_range: str,
+                 name: str,
+                 network: str,
+                 next_hop_gateway: str,
+                 next_hop_ilb: str,
+                 next_hop_instance: str,
+                 next_hop_instance_zone: str,
+                 next_hop_ip: str,
+                 next_hop_network: str,
+                 next_hop_vpn_tunnel: str,
+                 priority: int,
+                 project: str,
+                 self_link: str,
+                 tags: Sequence[str]):
+        """
+        :param str name: The name of the router.
+        :param str network: The network name or resource link to the parent
+               network of this subnetwork.
+        :param str project: The ID of the project in which the resource
+               belongs. If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dest_range", dest_range)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
+        pulumi.set(__self__, "next_hop_instance", next_hop_instance)
+        pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+        pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        pulumi.set(__self__, "next_hop_network", next_hop_network)
+        pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="destRange")
+    def dest_range(self) -> str:
+        return pulumi.get(self, "dest_range")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the router.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The network name or resource link to the parent
+        network of this subnetwork.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="nextHopGateway")
+    def next_hop_gateway(self) -> str:
+        return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopIlb")
+    def next_hop_ilb(self) -> str:
+        return pulumi.get(self, "next_hop_ilb")
+
+    @property
+    @pulumi.getter(name="nextHopInstance")
+    def next_hop_instance(self) -> str:
+        return pulumi.get(self, "next_hop_instance")
+
+    @property
+    @pulumi.getter(name="nextHopInstanceZone")
+    def next_hop_instance_zone(self) -> str:
+        return pulumi.get(self, "next_hop_instance_zone")
+
+    @property
+    @pulumi.getter(name="nextHopIp")
+    def next_hop_ip(self) -> str:
+        return pulumi.get(self, "next_hop_ip")
+
+    @property
+    @pulumi.getter(name="nextHopNetwork")
+    def next_hop_network(self) -> str:
+        return pulumi.get(self, "next_hop_network")
+
+    @property
+    @pulumi.getter(name="nextHopVpnTunnel")
+    def next_hop_vpn_tunnel(self) -> str:
+        return pulumi.get(self, "next_hop_vpn_tunnel")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource
+        belongs. If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRoutesForRouterResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 dest_range: str,
+                 name: str,
+                 network: str,
+                 next_hop_gateway: str,
+                 next_hop_ilb: str,
+                 next_hop_instance: str,
+                 next_hop_instance_zone: str,
+                 next_hop_ip: str,
+                 next_hop_network: str,
+                 next_hop_vpn_tunnel: str,
+                 priority: int,
+                 project: str,
+                 self_link: str,
+                 tags: Sequence[str]):
+        """
+        :param str name: The name of the router.
+        :param str network: The network name or resource link to the parent
+               network of this subnetwork.
+        :param str project: The ID of the project in which the resource
+               belongs. If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dest_range", dest_range)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
+        pulumi.set(__self__, "next_hop_instance", next_hop_instance)
+        pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+        pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        pulumi.set(__self__, "next_hop_network", next_hop_network)
+        pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="destRange")
+    def dest_range(self) -> str:
+        return pulumi.get(self, "dest_range")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the router.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The network name or resource link to the parent
+        network of this subnetwork.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="nextHopGateway")
+    def next_hop_gateway(self) -> str:
+        return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopIlb")
+    def next_hop_ilb(self) -> str:
+        return pulumi.get(self, "next_hop_ilb")
+
+    @property
+    @pulumi.getter(name="nextHopInstance")
+    def next_hop_instance(self) -> str:
+        return pulumi.get(self, "next_hop_instance")
+
+    @property
+    @pulumi.getter(name="nextHopInstanceZone")
+    def next_hop_instance_zone(self) -> str:
+        return pulumi.get(self, "next_hop_instance_zone")
+
+    @property
+    @pulumi.getter(name="nextHopIp")
+    def next_hop_ip(self) -> str:
+        return pulumi.get(self, "next_hop_ip")
+
+    @property
+    @pulumi.getter(name="nextHopNetwork")
+    def next_hop_network(self) -> str:
+        return pulumi.get(self, "next_hop_network")
+
+    @property
+    @pulumi.getter(name="nextHopVpnTunnel")
+    def next_hop_vpn_tunnel(self) -> str:
+        return pulumi.get(self, "next_hop_vpn_tunnel")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource
+        belongs. If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

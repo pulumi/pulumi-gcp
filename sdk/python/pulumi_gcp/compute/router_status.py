@@ -16,6 +16,8 @@ __all__ = [
     'router_status_output',
 ]
 
+warnings.warn("""gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus""", DeprecationWarning)
+
 @pulumi.output_type
 class RouterStatusResult:
     """
@@ -120,7 +122,7 @@ def router_status(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_router = gcp.compute.router_status(name="myrouter")
+    my_router = gcp.compute.get_router_status(name="myrouter")
     ```
 
 
@@ -130,6 +132,7 @@ def router_status(name: Optional[str] = None,
     :param str region: The region this router has been created in. If
            unspecified, this defaults to the region configured in the provider.
     """
+    pulumi.log.warn("""router_status is deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus""")
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
@@ -169,7 +172,7 @@ def router_status_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    my_router = gcp.compute.router_status(name="myrouter")
+    my_router = gcp.compute.get_router_status(name="myrouter")
     ```
 
 
@@ -179,4 +182,5 @@ def router_status_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region this router has been created in. If
            unspecified, this defaults to the region configured in the provider.
     """
+    pulumi.log.warn("""router_status is deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus""")
     ...

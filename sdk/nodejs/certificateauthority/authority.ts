@@ -6,15 +6,6 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * A CertificateAuthority represents an individual Certificate Authority. A
- * CertificateAuthority can be used to create Certificates.
- *
- * To get more information about CertificateAuthority, see:
- *
- * * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
- *
  * ## Example Usage
  * ### Privateca Certificate Authority Basic
  *
@@ -60,6 +51,7 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ *     deletionProtection: true,
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
@@ -115,6 +107,7 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ *     deletionProtection: true,
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
@@ -147,6 +140,7 @@ import * as utilities from "../utilities";
  *     pool: "ca-pool",
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
+ *     deletionProtection: "true",
  *     keySpec: {
  *         cloudKmsKeyVersion: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
  *     },
@@ -243,6 +237,7 @@ export class Authority extends pulumi.CustomResource {
      * resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -335,6 +330,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["certificateAuthorityId"] = state ? state.certificateAuthorityId : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["gcsBucket"] = state ? state.gcsBucket : undefined;
             resourceInputs["ignoreActiveCertificatesOnDeletion"] = state ? state.ignoreActiveCertificatesOnDeletion : undefined;
             resourceInputs["keySpec"] = state ? state.keySpec : undefined;
@@ -367,6 +363,7 @@ export class Authority extends pulumi.CustomResource {
             }
             resourceInputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["gcsBucket"] = args ? args.gcsBucket : undefined;
             resourceInputs["ignoreActiveCertificatesOnDeletion"] = args ? args.ignoreActiveCertificatesOnDeletion : undefined;
             resourceInputs["keySpec"] = args ? args.keySpec : undefined;
@@ -410,6 +407,7 @@ export interface AuthorityState {
      * resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -499,6 +497,7 @@ export interface AuthorityArgs {
      * Structure is documented below.
      */
     config: pulumi.Input<inputs.certificateauthority.AuthorityConfig>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes

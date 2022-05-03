@@ -519,6 +519,9 @@ type RegionBackendService struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+	// and Internal HTTP(S) load balancing.
+	Subsetting RegionBackendServiceSubsettingPtrOutput `pulumi:"subsetting"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec pulumi.IntOutput `pulumi:"timeoutSec"`
@@ -674,6 +677,9 @@ type regionBackendServiceState struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+	// and Internal HTTP(S) load balancing.
+	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec *int `pulumi:"timeoutSec"`
@@ -801,6 +807,9 @@ type RegionBackendServiceState struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringPtrInput
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+	// and Internal HTTP(S) load balancing.
+	Subsetting RegionBackendServiceSubsettingPtrInput
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec pulumi.IntPtrInput
@@ -926,6 +935,9 @@ type regionBackendServiceArgs struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+	// and Internal HTTP(S) load balancing.
+	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec *int `pulumi:"timeoutSec"`
@@ -1048,6 +1060,9 @@ type RegionBackendServiceArgs struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringPtrInput
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+	// and Internal HTTP(S) load balancing.
+	Subsetting RegionBackendServiceSubsettingPtrInput
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec pulumi.IntPtrInput

@@ -204,11 +204,13 @@ class _CertificateState:
                  certificate_template: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 issuer_certificate_authority: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pem_certificate: Optional[pulumi.Input[str]] = None,
+                 pem_certificate_chains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
@@ -228,6 +230,8 @@ class _CertificateState:
         :param pulumi.Input['CertificateConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
+        :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format
+               projects/*/locations/*/caPools/*/certificateAuthorities/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -236,6 +240,8 @@ class _CertificateState:
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+               5246.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
@@ -255,6 +261,8 @@ class _CertificateState:
             pulumi.set(__self__, "config", config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if issuer_certificate_authority is not None:
+            pulumi.set(__self__, "issuer_certificate_authority", issuer_certificate_authority)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if lifetime is not None:
@@ -265,6 +273,11 @@ class _CertificateState:
             pulumi.set(__self__, "name", name)
         if pem_certificate is not None:
             pulumi.set(__self__, "pem_certificate", pem_certificate)
+        if pem_certificate_chains is not None:
+            pulumi.set(__self__, "pem_certificate_chains", pem_certificate_chains)
+        if pem_certificates is not None:
+            warnings.warn("""Deprecated in favor of `pem_certificate_chain`.""", DeprecationWarning)
+            pulumi.log.warn("""pem_certificates is deprecated: Deprecated in favor of `pem_certificate_chain`.""")
         if pem_certificates is not None:
             pulumi.set(__self__, "pem_certificates", pem_certificates)
         if pem_csr is not None:
@@ -345,6 +358,19 @@ class _CertificateState:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="issuerCertificateAuthority")
+    def issuer_certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the issuing CertificateAuthority in the format
+        projects/*/locations/*/caPools/*/certificateAuthorities/*.
+        """
+        return pulumi.get(self, "issuer_certificate_authority")
+
+    @issuer_certificate_authority.setter
+    def issuer_certificate_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer_certificate_authority", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -406,6 +432,19 @@ class _CertificateState:
     @pem_certificate.setter
     def pem_certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pem_certificate", value)
+
+    @property
+    @pulumi.getter(name="pemCertificateChains")
+    def pem_certificate_chains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+        5246.
+        """
+        return pulumi.get(self, "pem_certificate_chains")
+
+    @pem_certificate_chains.setter
+    def pem_certificate_chains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pem_certificate_chains", value)
 
     @property
     @pulumi.getter(name="pemCertificates")
@@ -517,6 +556,7 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool="",
             ignore_active_certificates_on_deletion=True,
+            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -669,6 +709,7 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
+            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -715,6 +756,7 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
+            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -761,6 +803,7 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-authority",
             location="us-central1",
+            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -892,6 +935,7 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool="",
             ignore_active_certificates_on_deletion=True,
+            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1044,6 +1088,7 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
+            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1090,6 +1135,7 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
+            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1136,6 +1182,7 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-authority",
             location="us-central1",
+            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1273,7 +1320,9 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["certificate_descriptions"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["issuer_certificate_authority"] = None
             __props__.__dict__["pem_certificate"] = None
+            __props__.__dict__["pem_certificate_chains"] = None
             __props__.__dict__["pem_certificates"] = None
             __props__.__dict__["revocation_details"] = None
             __props__.__dict__["update_time"] = None
@@ -1292,11 +1341,13 @@ class Certificate(pulumi.CustomResource):
             certificate_template: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            issuer_certificate_authority: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             lifetime: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pem_certificate: Optional[pulumi.Input[str]] = None,
+            pem_certificate_chains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             pem_csr: Optional[pulumi.Input[str]] = None,
             pool: Optional[pulumi.Input[str]] = None,
@@ -1321,6 +1372,8 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
+        :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format
+               projects/*/locations/*/caPools/*/certificateAuthorities/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -1329,6 +1382,8 @@ class Certificate(pulumi.CustomResource):
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+               5246.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
@@ -1347,11 +1402,13 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["certificate_template"] = certificate_template
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["issuer_certificate_authority"] = issuer_certificate_authority
         __props__.__dict__["labels"] = labels
         __props__.__dict__["lifetime"] = lifetime
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["pem_certificate"] = pem_certificate
+        __props__.__dict__["pem_certificate_chains"] = pem_certificate_chains
         __props__.__dict__["pem_certificates"] = pem_certificates
         __props__.__dict__["pem_csr"] = pem_csr
         __props__.__dict__["pool"] = pool
@@ -1407,6 +1464,15 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="issuerCertificateAuthority")
+    def issuer_certificate_authority(self) -> pulumi.Output[str]:
+        """
+        The resource name of the issuing CertificateAuthority in the format
+        projects/*/locations/*/caPools/*/certificateAuthorities/*.
+        """
+        return pulumi.get(self, "issuer_certificate_authority")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
@@ -1448,6 +1514,15 @@ class Certificate(pulumi.CustomResource):
         Output only. The pem-encoded, signed X.509 certificate.
         """
         return pulumi.get(self, "pem_certificate")
+
+    @property
+    @pulumi.getter(name="pemCertificateChains")
+    def pem_certificate_chains(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+        5246.
+        """
+        return pulumi.get(self, "pem_certificate_chains")
 
     @property
     @pulumi.getter(name="pemCertificates")

@@ -19,12 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_router = pulumi.output(gcp.compute.RouterStatus({
+ * const my_router = pulumi.output(gcp.compute.getRouterStatus({
  *     name: "myrouter",
  * }));
  * ```
  */
+/** @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
 export function routerStatus(args: RouterStatusArgs, opts?: pulumi.InvokeOptions): Promise<RouterStatusResult> {
+    pulumi.log.warn("routerStatus is deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus")
     if (!opts) {
         opts = {}
     }

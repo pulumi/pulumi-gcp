@@ -38,6 +38,7 @@ class RegionBackendServiceArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a RegionBackendService resource.
@@ -133,6 +134,8 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+               and Internal HTTP(S) load balancing.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -182,6 +185,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "region", region)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
+        if subsetting is not None:
+            pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
 
@@ -531,6 +536,19 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "session_affinity", value)
 
     @property
+    @pulumi.getter
+    def subsetting(self) -> Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]:
+        """
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+        and Internal HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "subsetting")
+
+    @subsetting.setter
+    def subsetting(self, value: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]):
+        pulumi.set(self, "subsetting", value)
+
+    @property
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
@@ -573,6 +591,7 @@ class _RegionBackendServiceState:
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering RegionBackendService resources.
@@ -671,6 +690,8 @@ class _RegionBackendServiceState:
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+               and Internal HTTP(S) load balancing.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -726,6 +747,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "self_link", self_link)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
+        if subsetting is not None:
+            pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
 
@@ -1111,6 +1134,19 @@ class _RegionBackendServiceState:
         pulumi.set(self, "session_affinity", value)
 
     @property
+    @pulumi.getter
+    def subsetting(self) -> Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]:
+        """
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+        and Internal HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "subsetting")
+
+    @subsetting.setter
+    def subsetting(self, value: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]):
+        pulumi.set(self, "subsetting", value)
+
+    @property
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1152,6 +1188,7 @@ class RegionBackendService(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -1477,6 +1514,8 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+               and Internal HTTP(S) load balancing.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1753,6 +1792,7 @@ class RegionBackendService(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -1789,6 +1829,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
             __props__.__dict__["session_affinity"] = session_affinity
+            __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
@@ -1829,6 +1870,7 @@ class RegionBackendService(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
+            subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None) -> 'RegionBackendService':
         """
         Get an existing RegionBackendService resource's state with the given name, id, and optional extra
@@ -1932,6 +1974,8 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+               and Internal HTTP(S) load balancing.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1965,6 +2009,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["session_affinity"] = session_affinity
+        __props__.__dict__["subsetting"] = subsetting
         __props__.__dict__["timeout_sec"] = timeout_sec
         return RegionBackendService(resource_name, opts=opts, __props__=__props__)
 
@@ -2244,6 +2289,15 @@ class RegionBackendService(pulumi.CustomResource):
         Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
         """
         return pulumi.get(self, "session_affinity")
+
+    @property
+    @pulumi.getter
+    def subsetting(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceSubsetting']]:
+        """
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+        and Internal HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "subsetting")
 
     @property
     @pulumi.getter(name="timeoutSec")

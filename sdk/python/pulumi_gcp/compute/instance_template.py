@@ -1060,6 +1060,75 @@ class InstanceTemplate(pulumi.CustomResource):
                 scopes=["cloud-platform"],
             ))
         ```
+        ### Automatic Envoy Deployment
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        foobar = gcp.compute.InstanceTemplate("foobar",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=my_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            scheduling=gcp.compute.InstanceTemplateSchedulingArgs(
+                preemptible=False,
+                automatic_restart=True,
+            ),
+            metadata={
+                "gce-software-declaration": \"\"\"{
+          "softwareRecipes": [{
+            "name": "install-gce-service-proxy-agent",
+            "desired_state": "INSTALLED",
+            "installSteps": [{
+              "scriptRun": {
+                "script": "#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
+              }
+            }]
+          }]
+        }
+        \"\"\",
+                "gce-service-proxy": \"\"\"{
+          "api-version": "0.2",
+          "proxy-spec": {
+            "proxy-port": 15001,
+            "network": "my-network",
+            "tracing": "ON",
+            "access-log": "/var/log/envoy/access.log"
+          }
+          "service": {
+            "serving-ports": [80, 81]
+          },
+         "labels": {
+           "app_name": "bookserver_app",
+           "app_version": "STABLE"
+          }
+        }
+        \"\"\",
+                "enable-guest-attributes": "true",
+                "enable-osconfig": "true",
+            },
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                email=default.email,
+                scopes=["cloud-platform"],
+            ),
+            labels={
+                "gce-service-proxy": "on",
+            })
+        ```
         ## Deploying the Latest Image
 
         A common way to use instance templates and managed instance groups is to deploy the
@@ -1260,6 +1329,75 @@ class InstanceTemplate(pulumi.CustomResource):
                 email=default_account.email,
                 scopes=["cloud-platform"],
             ))
+        ```
+        ### Automatic Envoy Deployment
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        foobar = gcp.compute.InstanceTemplate("foobar",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=my_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            scheduling=gcp.compute.InstanceTemplateSchedulingArgs(
+                preemptible=False,
+                automatic_restart=True,
+            ),
+            metadata={
+                "gce-software-declaration": \"\"\"{
+          "softwareRecipes": [{
+            "name": "install-gce-service-proxy-agent",
+            "desired_state": "INSTALLED",
+            "installSteps": [{
+              "scriptRun": {
+                "script": "#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
+              }
+            }]
+          }]
+        }
+        \"\"\",
+                "gce-service-proxy": \"\"\"{
+          "api-version": "0.2",
+          "proxy-spec": {
+            "proxy-port": 15001,
+            "network": "my-network",
+            "tracing": "ON",
+            "access-log": "/var/log/envoy/access.log"
+          }
+          "service": {
+            "serving-ports": [80, 81]
+          },
+         "labels": {
+           "app_name": "bookserver_app",
+           "app_version": "STABLE"
+          }
+        }
+        \"\"\",
+                "enable-guest-attributes": "true",
+                "enable-osconfig": "true",
+            },
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                email=default.email,
+                scopes=["cloud-platform"],
+            ),
+            labels={
+                "gce-service-proxy": "on",
+            })
         ```
         ## Deploying the Latest Image
 

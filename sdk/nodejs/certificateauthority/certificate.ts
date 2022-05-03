@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     pool: "",
  *     ignoreActiveCertificatesOnDeletion: true,
+ *     deletionProtection: false,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -180,6 +181,7 @@ import * as utilities from "../utilities";
  *     pool: "",
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -229,6 +231,7 @@ import * as utilities from "../utilities";
  *     pool: "",
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -277,6 +280,7 @@ import * as utilities from "../utilities";
  *     pool: "",
  *     certificateAuthorityId: "my-authority",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -419,6 +423,11 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The resource name of the issuing CertificateAuthority in the format
+     * projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*.
+     */
+    public /*out*/ readonly issuerCertificateAuthority!: pulumi.Output<string>;
+    /**
      * Labels with user-defined metadata to apply to this resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -442,7 +451,14 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly pemCertificate!: pulumi.Output<string>;
     /**
+     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+     * 5246.
+     */
+    public /*out*/ readonly pemCertificateChains!: pulumi.Output<string[]>;
+    /**
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
+     *
+     * @deprecated Deprecated in favor of `pem_certificate_chain`.
      */
     public /*out*/ readonly pemCertificates!: pulumi.Output<string[]>;
     /**
@@ -486,11 +502,13 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["certificateTemplate"] = state ? state.certificateTemplate : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["issuerCertificateAuthority"] = state ? state.issuerCertificateAuthority : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lifetime"] = state ? state.lifetime : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["pemCertificate"] = state ? state.pemCertificate : undefined;
+            resourceInputs["pemCertificateChains"] = state ? state.pemCertificateChains : undefined;
             resourceInputs["pemCertificates"] = state ? state.pemCertificates : undefined;
             resourceInputs["pemCsr"] = state ? state.pemCsr : undefined;
             resourceInputs["pool"] = state ? state.pool : undefined;
@@ -517,7 +535,9 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["certificateDescriptions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["issuerCertificateAuthority"] = undefined /*out*/;
             resourceInputs["pemCertificate"] = undefined /*out*/;
+            resourceInputs["pemCertificateChains"] = undefined /*out*/;
             resourceInputs["pemCertificates"] = undefined /*out*/;
             resourceInputs["revocationDetails"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -558,6 +578,11 @@ export interface CertificateState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * The resource name of the issuing CertificateAuthority in the format
+     * projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*.
+     */
+    issuerCertificateAuthority?: pulumi.Input<string>;
+    /**
      * Labels with user-defined metadata to apply to this resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -581,7 +606,14 @@ export interface CertificateState {
      */
     pemCertificate?: pulumi.Input<string>;
     /**
+     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+     * 5246.
+     */
+    pemCertificateChains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
+     *
+     * @deprecated Deprecated in favor of `pem_certificate_chain`.
      */
     pemCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**

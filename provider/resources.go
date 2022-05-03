@@ -2282,6 +2282,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_cloudfunctions_function.html.markdown",
 				},
 			},
+
+			// Compute
 			"google_compute_address": {
 				Tok: gcpDataSource(gcpCompute, "getAddress"),
 				Docs: &tfbridge.DocInfo{
@@ -2358,7 +2360,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_compute_network_endpoint_group.html.markdown",
 				},
 			},
-			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")},
+			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")}, // fixed via alias
+			"google_compute_disk":          {Tok: gcpDataSource(gcpCompute, "getDisk")},
 
 			"google_composer_image_versions": {
 				Tok: gcpDataSource(gcpComposer, "getImageVersions"),
@@ -2837,6 +2840,13 @@ func Provider() tfbridge.ProviderInfo {
 		&tfbridge.DataSourceInfo{
 			Docs: &tfbridge.DocInfo{
 				Source: "secret_manager_secret_version.html.markdown",
+			},
+		})
+
+	prov.RenameDataSource("google_compute_router_status", gcpDataSource(gcpCompute, "RouterStatus"),
+		gcpDataSource(gcpCompute, "getRouterStatus"), gcpCompute, gcpCompute, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "compute_router_status.html.markdown",
 			},
 		})
 

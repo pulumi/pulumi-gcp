@@ -460,6 +460,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+     * and Internal HTTP(S) load balancing.
+     */
+    public readonly subsetting!: pulumi.Output<outputs.compute.RegionBackendServiceSubsetting | undefined>;
+    /**
      * How many seconds to wait for the backend before considering it a
      * failed request. Default is 30 seconds. Valid range is [1, 86400].
      */
@@ -504,6 +509,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
+            resourceInputs["subsetting"] = state ? state.subsetting : undefined;
             resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
         } else {
             const args = argsOrState as RegionBackendServiceArgs | undefined;
@@ -530,6 +536,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            resourceInputs["subsetting"] = args ? args.subsetting : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -718,6 +725,11 @@ export interface RegionBackendServiceState {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+     * and Internal HTTP(S) load balancing.
+     */
+    subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
+    /**
      * How many seconds to wait for the backend before considering it a
      * failed request. Default is 30 seconds. Valid range is [1, 86400].
      */
@@ -889,6 +901,11 @@ export interface RegionBackendServiceArgs {
      * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
      */
     sessionAffinity?: pulumi.Input<string>;
+    /**
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+     * and Internal HTTP(S) load balancing.
+     */
+    subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
     /**
      * How many seconds to wait for the backend before considering it a
      * failed request. Default is 30 seconds. Valid range is [1, 86400].

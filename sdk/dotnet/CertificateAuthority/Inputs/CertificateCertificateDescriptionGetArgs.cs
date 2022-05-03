@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("configValues")]
         private InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs>? _configValues;
+        [Obsolete(@"Deprecated in favor of `x509_description`.")]
         public InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs> ConfigValues
         {
             get => _configValues ?? (_configValues = new InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs>());
@@ -79,6 +80,14 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         {
             get => _subjectKeyIds ?? (_subjectKeyIds = new InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs>());
             set => _subjectKeyIds = value;
+        }
+
+        [Input("x509Descriptions")]
+        private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionGetArgs>? _x509Descriptions;
+        public InputList<Inputs.CertificateCertificateDescriptionX509DescriptionGetArgs> X509Descriptions
+        {
+            get => _x509Descriptions ?? (_x509Descriptions = new InputList<Inputs.CertificateCertificateDescriptionX509DescriptionGetArgs>());
+            set => _x509Descriptions = value;
         }
 
         public CertificateCertificateDescriptionGetArgs()

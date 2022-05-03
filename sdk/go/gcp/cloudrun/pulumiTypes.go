@@ -2331,6 +2331,7 @@ type ServiceTemplateSpec struct {
 	// will use the project's default service account.
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
 	// -
+	// (Deprecated)
 	// ServingState holds a value describing the state the resources
 	// are in for this Revision.
 	// It is expected
@@ -2373,6 +2374,7 @@ type ServiceTemplateSpecArgs struct {
 	// will use the project's default service account.
 	ServiceAccountName pulumi.StringPtrInput `pulumi:"serviceAccountName"`
 	// -
+	// (Deprecated)
 	// ServingState holds a value describing the state the resources
 	// are in for this Revision.
 	// It is expected
@@ -2489,6 +2491,7 @@ func (o ServiceTemplateSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
 }
 
 // -
+// (Deprecated)
 // ServingState holds a value describing the state the resources
 // are in for this Revision.
 // It is expected
@@ -2574,6 +2577,7 @@ func (o ServiceTemplateSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutpu
 }
 
 // -
+// (Deprecated)
 // ServingState holds a value describing the state the resources
 // are in for this Revision.
 // It is expected

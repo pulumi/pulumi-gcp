@@ -4520,6 +4520,9 @@ export namespace certificateauthority {
         aiaIssuingCertificateUrls?: pulumi.Input<pulumi.Input<string>[]>;
         authorityKeyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionAuthorityKeyId>[]>;
         certFingerprints?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint>[]>;
+        /**
+         * @deprecated Deprecated in favor of `x509_description`.
+         */
         configValues?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValue>[]>;
         crlDistributionPoints?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -4529,6 +4532,7 @@ export namespace certificateauthority {
         publicKeys?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionPublicKey>[]>;
         subjectDescriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescription>[]>;
         subjectKeyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectKeyId>[]>;
+        x509Descriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509Description>[]>;
     }
 
     export interface CertificateCertificateDescriptionAuthorityKeyId {
@@ -4757,6 +4761,168 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionSubjectKeyId {
         keyId?: pulumi.Input<string>;
+    }
+
+    export interface CertificateCertificateDescriptionX509Description {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * Structure is documented below.
+         */
+        additionalExtensions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionAdditionalExtension>[]>;
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        caOptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionCaOption>[]>;
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsage>[]>;
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
+         */
+        policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionPolicyId>[]>;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical?: pulumi.Input<boolean>;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        objectIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>[]>;
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths?: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionCaOption {
+        /**
+         * When true, the "CA" in Basic Constraints extension will be set to true.
+         */
+        isCa?: pulumi.Input<boolean>;
+        /**
+         * Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+         */
+        maxIssuerPathLength?: pulumi.Input<number>;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage>[]>;
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage>[]>;
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage>[]>;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly?: pulumi.Input<boolean>;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement?: pulumi.Input<boolean>;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment?: pulumi.Input<boolean>;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth?: pulumi.Input<boolean>;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping?: pulumi.Input<boolean>;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths?: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths?: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface CertificateConfig {
@@ -6667,6 +6833,7 @@ export namespace cloudrun {
         serviceAccountName?: pulumi.Input<string>;
         /**
          * -
+         * (Deprecated)
          * ServingState holds a value describing the state the resources
          * are in for this Revision.
          * It is expected
@@ -11228,6 +11395,14 @@ export namespace compute {
          * inclusive.
          */
         seconds: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceSubsetting {
+        /**
+         * The algorithm used for subsetting.
+         * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+         */
+        policy: pulumi.Input<string>;
     }
 
     export interface RegionDiskDiskEncryptionKey {
@@ -15806,7 +15981,6 @@ export namespace compute {
          */
         service: pulumi.Input<string>;
     }
-
 }
 
 export namespace config {
@@ -29001,10 +29175,11 @@ export namespace sql {
         activationPolicy?: pulumi.Input<string>;
         /**
          * The availability type of the Cloud SQL
-         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-         * ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-         * are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-         * and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+         * `settings.backup_configuration.enabled` is set to `true`.
+         * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+         * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+         * is set to `true`.
          */
         availabilityType?: pulumi.Input<string>;
         backupConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsBackupConfiguration>;
@@ -29054,7 +29229,7 @@ export namespace sql {
         backupRetentionSettings?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings>;
         /**
          * True if binary logging is enabled.
-         * Cannot be used with Postgres.
+         * Can only be used with MySQL.
          */
         binaryLogEnabled?: pulumi.Input<boolean>;
         /**

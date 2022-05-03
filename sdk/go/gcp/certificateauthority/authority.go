@@ -11,15 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A CertificateAuthority represents an individual Certificate Authority. A
-// CertificateAuthority can be used to create Certificates.
-//
-// To get more information about CertificateAuthority, see:
-//
-// * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
-//
 // ## Example Usage
 // ### Privateca Certificate Authority Basic
 //
@@ -73,6 +64,7 @@ import (
 // 					},
 // 				},
 // 			},
+// 			DeletionProtection: pulumi.Bool(true),
 // 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 // 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 // 			},
@@ -139,6 +131,7 @@ import (
 // 					},
 // 				},
 // 			},
+// 			DeletionProtection: pulumi.Bool(true),
 // 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 // 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 // 			},
@@ -204,6 +197,7 @@ import (
 // 			Pool:                   pulumi.String("ca-pool"),
 // 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 // 			Location:               pulumi.String("us-central1"),
+// 			DeletionProtection:     pulumi.Bool(true),
 // 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 // 				CloudKmsKeyVersion: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1"),
 // 			},
@@ -269,7 +263,8 @@ type Authority struct {
 	Config AuthorityConfigOutput `pulumi:"config"`
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -373,7 +368,8 @@ type authorityState struct {
 	Config *AuthorityConfig `pulumi:"config"`
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime         *string `pulumi:"createTime"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -434,7 +430,8 @@ type AuthorityState struct {
 	Config AuthorityConfigPtrInput
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringPtrInput
+	CreateTime         pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -494,7 +491,8 @@ type authorityArgs struct {
 	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
-	Config AuthorityConfig `pulumi:"config"`
+	Config             AuthorityConfig `pulumi:"config"`
+	DeletionProtection *bool           `pulumi:"deletionProtection"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -540,7 +538,8 @@ type AuthorityArgs struct {
 	CertificateAuthorityId pulumi.StringInput
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
-	Config AuthorityConfigInput
+	Config             AuthorityConfigInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named

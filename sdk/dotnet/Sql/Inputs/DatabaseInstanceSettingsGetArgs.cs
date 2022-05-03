@@ -21,10 +21,11 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         /// <summary>
         /// The availability type of the Cloud SQL
-        /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-        /// ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-        /// are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-        /// and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+        /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+        /// `settings.backup_configuration.enabled` is set to `true`.
+        /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+        /// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+        /// is set to `true`.
         /// </summary>
         [Input("availabilityType")]
         public Input<string>? AvailabilityType { get; set; }

@@ -90,6 +90,7 @@ export interface GetInstanceResult {
     readonly region?: string;
     readonly replicaCount: number;
     readonly reservedIpRange: string;
+    readonly secondaryIpRange: string;
     readonly serverCaCerts: outputs.redis.GetInstanceServerCaCert[];
     readonly tier: string;
     readonly transitEncryptionMode: string;

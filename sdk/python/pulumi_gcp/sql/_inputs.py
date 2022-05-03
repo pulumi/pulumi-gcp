@@ -475,10 +475,11 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[str] activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
         :param pulumi.Input[str] availability_type: The availability type of the Cloud SQL
-               instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-               ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-               are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-               and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+               instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+               `settings.backup_configuration.enabled` is set to `true`.
+               For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+               For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+               is set to `true`.
         :param pulumi.Input[str] collation: The name of server instance collation.
         :param pulumi.Input[bool] disk_autoresize: Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
@@ -552,10 +553,11 @@ class DatabaseInstanceSettingsArgs:
     def availability_type(self) -> Optional[pulumi.Input[str]]:
         """
         The availability type of the Cloud SQL
-        instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-        ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-        are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-        and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+        instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+        `settings.backup_configuration.enabled` is set to `true`.
+        For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+        For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+        is set to `true`.
         """
         return pulumi.get(self, "availability_type")
 
@@ -721,7 +723,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
         """
         :param pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs'] backup_retention_settings: Backup retention settings. The configuration is detailed below.
         :param pulumi.Input[bool] binary_log_enabled: True if binary logging is enabled.
-               Cannot be used with Postgres.
+               Can only be used with MySQL.
         :param pulumi.Input[bool] enabled: True if backup configuration is enabled.
         :param pulumi.Input[str] location: The region where the backup will be stored
         :param pulumi.Input[bool] point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
@@ -761,7 +763,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
     def binary_log_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         True if binary logging is enabled.
-        Cannot be used with Postgres.
+        Can only be used with MySQL.
         """
         return pulumi.get(self, "binary_log_enabled")
 

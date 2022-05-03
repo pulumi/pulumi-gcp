@@ -50,9 +50,7 @@ type Job struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrOutput `pulumi:"serviceAccountEmail"`
-	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-	// different, e.g. by embedding a release ID or by using a random_id.
+	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrOutput `pulumi:"skipWaitOnJobTermination"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringOutput `pulumi:"state"`
@@ -138,9 +136,7 @@ type jobState struct {
 	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-	// different, e.g. by embedding a release ID or by using a random_id.
+	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State *string `pulumi:"state"`
@@ -192,9 +188,7 @@ type JobState struct {
 	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
-	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-	// different, e.g. by embedding a release ID or by using a random_id.
+	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringPtrInput
@@ -248,9 +242,7 @@ type jobArgs struct {
 	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-	// different, e.g. by embedding a release ID or by using a random_id.
+	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -297,9 +289,7 @@ type JobArgs struct {
 	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
-	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-	// different, e.g. by embedding a release ID or by using a random_id.
+	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrInput

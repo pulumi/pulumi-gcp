@@ -987,6 +987,7 @@ class ServiceTemplateSpec(dict):
                and determines what permissions the revision has. If not provided, the revision
                will use the project's default service account.
         :param str serving_state: -
+               (Deprecated)
                ServingState holds a value describing the state the resources
                are in for this Revision.
                It is expected
@@ -1046,6 +1047,7 @@ class ServiceTemplateSpec(dict):
     def serving_state(self) -> Optional[str]:
         """
         -
+        (Deprecated)
         ServingState holds a value describing the state the resources
         are in for this Revision.
         It is expected

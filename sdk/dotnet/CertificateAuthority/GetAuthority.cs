@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string? CertificateAuthorityId;
         public readonly ImmutableArray<Outputs.GetAuthorityConfigResult> Configs;
         public readonly string CreateTime;
+        public readonly bool DeletionProtection;
         public readonly string GcsBucket;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -184,6 +185,8 @@ namespace Pulumi.Gcp.CertificateAuthority
             ImmutableArray<Outputs.GetAuthorityConfigResult> configs,
 
             string createTime,
+
+            bool deletionProtection,
 
             string gcsBucket,
 
@@ -219,6 +222,7 @@ namespace Pulumi.Gcp.CertificateAuthority
             CertificateAuthorityId = certificateAuthorityId;
             Configs = configs;
             CreateTime = createTime;
+            DeletionProtection = deletionProtection;
             GcsBucket = gcsBucket;
             Id = id;
             IgnoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;

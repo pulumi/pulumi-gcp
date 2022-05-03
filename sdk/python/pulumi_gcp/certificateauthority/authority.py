@@ -20,6 +20,7 @@ class AuthorityArgs:
                  key_spec: pulumi.Input['AuthorityKeySpecArgs'],
                  location: pulumi.Input[str],
                  pool: pulumi.Input[str],
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -65,6 +66,8 @@ class AuthorityArgs:
         pulumi.set(__self__, "key_spec", key_spec)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "pool", pool)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if gcs_bucket is not None:
             pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if ignore_active_certificates_on_deletion is not None:
@@ -142,6 +145,15 @@ class AuthorityArgs:
     @pool.setter
     def pool(self, value: pulumi.Input[str]):
         pulumi.set(self, "pool", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -238,6 +250,7 @@ class _AuthorityState:
                  certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['AuthorityConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
@@ -303,6 +316,8 @@ class _AuthorityState:
             pulumi.set(__self__, "config", config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if gcs_bucket is not None:
             pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if ignore_active_certificates_on_deletion is not None:
@@ -379,6 +394,15 @@ class _AuthorityState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -566,6 +590,7 @@ class Authority(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
@@ -577,15 +602,6 @@ class Authority(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A CertificateAuthority represents an individual Certificate Authority. A
-        CertificateAuthority can be used to create Certificates.
-
-        To get more information about CertificateAuthority, see:
-
-        * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
-
         ## Example Usage
         ### Privateca Certificate Authority Basic
 
@@ -631,6 +647,7 @@ class Authority(pulumi.CustomResource):
                     ),
                 ),
             ),
+            deletion_protection=True,
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
@@ -682,6 +699,7 @@ class Authority(pulumi.CustomResource):
                     ),
                 ),
             ),
+            deletion_protection=True,
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
@@ -709,6 +727,7 @@ class Authority(pulumi.CustomResource):
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
+            deletion_protection=True,
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 cloud_kms_key_version="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             ),
@@ -798,15 +817,6 @@ class Authority(pulumi.CustomResource):
                  args: AuthorityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A CertificateAuthority represents an individual Certificate Authority. A
-        CertificateAuthority can be used to create Certificates.
-
-        To get more information about CertificateAuthority, see:
-
-        * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
-
         ## Example Usage
         ### Privateca Certificate Authority Basic
 
@@ -852,6 +862,7 @@ class Authority(pulumi.CustomResource):
                     ),
                 ),
             ),
+            deletion_protection=True,
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
@@ -903,6 +914,7 @@ class Authority(pulumi.CustomResource):
                     ),
                 ),
             ),
+            deletion_protection=True,
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
@@ -930,6 +942,7 @@ class Authority(pulumi.CustomResource):
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
+            deletion_protection=True,
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 cloud_kms_key_version="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             ),
@@ -995,6 +1008,7 @@ class Authority(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
@@ -1022,6 +1036,7 @@ class Authority(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["gcs_bucket"] = gcs_bucket
             __props__.__dict__["ignore_active_certificates_on_deletion"] = ignore_active_certificates_on_deletion
             if key_spec is None and not opts.urn:
@@ -1057,6 +1072,7 @@ class Authority(pulumi.CustomResource):
             certificate_authority_id: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             gcs_bucket: Optional[pulumi.Input[str]] = None,
             ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
             key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
@@ -1127,6 +1143,7 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["certificate_authority_id"] = certificate_authority_id
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["gcs_bucket"] = gcs_bucket
         __props__.__dict__["ignore_active_certificates_on_deletion"] = ignore_active_certificates_on_deletion
         __props__.__dict__["key_spec"] = key_spec
@@ -1175,6 +1192,11 @@ class Authority(pulumi.CustomResource):
         resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="gcsBucket")

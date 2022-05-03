@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.RouterStatus(ctx, &compute.RouterStatusArgs{
+// 		_, err := compute.GetRouterStatus(ctx, &compute.GetRouterStatusArgs{
 // 			Name: "myrouter",
 // 		}, nil)
 // 		if err != nil {
@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+//
+// Deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
 func RouterStatus(ctx *pulumi.Context, args *RouterStatusArgs, opts ...pulumi.InvokeOption) (*RouterStatusResult, error) {
 	var rv RouterStatusResult
 	err := ctx.Invoke("gcp:compute/routerStatus:RouterStatus", args, &rv, opts...)

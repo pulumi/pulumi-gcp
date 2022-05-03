@@ -21,7 +21,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -106,6 +106,9 @@ class GetInstanceResult:
         if reserved_ip_range and not isinstance(reserved_ip_range, str):
             raise TypeError("Expected argument 'reserved_ip_range' to be a str")
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+        if secondary_ip_range and not isinstance(secondary_ip_range, str):
+            raise TypeError("Expected argument 'secondary_ip_range' to be a str")
+        pulumi.set(__self__, "secondary_ip_range", secondary_ip_range)
         if server_ca_certs and not isinstance(server_ca_certs, list):
             raise TypeError("Expected argument 'server_ca_certs' to be a list")
         pulumi.set(__self__, "server_ca_certs", server_ca_certs)
@@ -260,6 +263,11 @@ class GetInstanceResult:
         return pulumi.get(self, "reserved_ip_range")
 
     @property
+    @pulumi.getter(name="secondaryIpRange")
+    def secondary_ip_range(self) -> str:
+        return pulumi.get(self, "secondary_ip_range")
+
+    @property
     @pulumi.getter(name="serverCaCerts")
     def server_ca_certs(self) -> Sequence['outputs.GetInstanceServerCaCertResult']:
         return pulumi.get(self, "server_ca_certs")
@@ -309,6 +317,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             region=self.region,
             replica_count=self.replica_count,
             reserved_ip_range=self.reserved_ip_range,
+            secondary_ip_range=self.secondary_ip_range,
             server_ca_certs=self.server_ca_certs,
             tier=self.tier,
             transit_encryption_mode=self.transit_encryption_mode)
@@ -379,6 +388,7 @@ def get_instance(name: Optional[str] = None,
         region=__ret__.region,
         replica_count=__ret__.replica_count,
         reserved_ip_range=__ret__.reserved_ip_range,
+        secondary_ip_range=__ret__.secondary_ip_range,
         server_ca_certs=__ret__.server_ca_certs,
         tier=__ret__.tier,
         transit_encryption_mode=__ret__.transit_encryption_mode)

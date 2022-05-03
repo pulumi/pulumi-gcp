@@ -120,6 +120,103 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Automatic Envoy Deployment
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = Output.Create(Gcp.Compute.GetDefaultServiceAccount.InvokeAsync());
+    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var foobar = new Gcp.Compute.InstanceTemplate("foobar", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             CanIpForward = false,
+    ///             Tags = 
+    ///             {
+    ///                 "foo",
+    ///                 "bar",
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = myImage.Apply(myImage =&gt; myImage.SelfLink),
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             Scheduling = new Gcp.Compute.Inputs.InstanceTemplateSchedulingArgs
+    ///             {
+    ///                 Preemptible = false,
+    ///                 AutomaticRestart = true,
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "gce-software-declaration", @"{
+    ///   ""softwareRecipes"": [{
+    ///     ""name"": ""install-gce-service-proxy-agent"",
+    ///     ""desired_state"": ""INSTALLED"",
+    ///     ""installSteps"": [{
+    ///       ""scriptRun"": {
+    ///         ""script"": ""#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-""$ZONE""/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   ""$SERVICE_PROXY_AGENT_DIRECTORY""   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     ""$SERVICE_PROXY_AGENT_DIRECTORY""\nsudo tar -xzf ""$SERVICE_PROXY_AGENT_DIRECTORY""/service-proxy-agent-0.2.tgz -C ""$SERVICE_PROXY_AGENT_DIRECTORY""\n""$SERVICE_PROXY_AGENT_DIRECTORY""/service-proxy-agent/service-proxy-agent-bootstrap.sh""
+    ///       }
+    ///     }]
+    ///   }]
+    /// }
+    /// " },
+    ///                 { "gce-service-proxy", @"{
+    ///   ""api-version"": ""0.2"",
+    ///   ""proxy-spec"": {
+    ///     ""proxy-port"": 15001,
+    ///     ""network"": ""my-network"",
+    ///     ""tracing"": ""ON"",
+    ///     ""access-log"": ""/var/log/envoy/access.log""
+    ///   }
+    ///   ""service"": {
+    ///     ""serving-ports"": [80, 81]
+    ///   },
+    ///  ""labels"": {
+    ///    ""app_name"": ""bookserver_app"",
+    ///    ""app_version"": ""STABLE""
+    ///   }
+    /// }
+    /// " },
+    ///                 { "enable-guest-attributes", "true" },
+    ///                 { "enable-osconfig", "true" },
+    ///             },
+    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///             {
+    ///                 Email = @default.Apply(@default =&gt; @default.Email),
+    ///                 Scopes = 
+    ///                 {
+    ///                     "cloud-platform",
+    ///                 },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "gce-service-proxy", "on" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Deploying the Latest Image
     /// 
     /// A common way to use instance templates and managed instance groups is to deploy the
