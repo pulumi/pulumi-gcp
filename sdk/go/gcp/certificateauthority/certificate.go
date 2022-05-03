@@ -45,6 +45,7 @@ import (
 // 			Location:                           pulumi.String("us-central1"),
 // 			Pool:                               pulumi.String(""),
 // 			IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+// 			DeletionProtection:                 pulumi.Bool(false),
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 // 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -248,6 +249,7 @@ import (
 // 			Pool:                   pulumi.String(""),
 // 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 // 			Location:               pulumi.String("us-central1"),
+// 			DeletionProtection:     pulumi.Bool(false),
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 // 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -323,6 +325,7 @@ import (
 // 			Pool:                   pulumi.String(""),
 // 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 // 			Location:               pulumi.String("us-central1"),
+// 			DeletionProtection:     pulumi.Bool(false),
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 // 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -398,6 +401,7 @@ import (
 // 			Pool:                   pulumi.String(""),
 // 			CertificateAuthorityId: pulumi.String("my-authority"),
 // 			Location:               pulumi.String("us-central1"),
+// 			DeletionProtection:     pulumi.Bool(false),
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 // 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -514,6 +518,9 @@ type Certificate struct {
 	Config CertificateConfigPtrOutput `pulumi:"config"`
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The resource name of the issuing CertificateAuthority in the format
+	// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+	IssuerCertificateAuthority pulumi.StringOutput `pulumi:"issuerCertificateAuthority"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
@@ -527,7 +534,12 @@ type Certificate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate pulumi.StringOutput `pulumi:"pemCertificate"`
+	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+	// 5246.
+	PemCertificateChains pulumi.StringArrayOutput `pulumi:"pemCertificateChains"`
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
+	//
+	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
 	PemCertificates pulumi.StringArrayOutput `pulumi:"pemCertificates"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrOutput `pulumi:"pemCsr"`
@@ -594,6 +606,9 @@ type certificateState struct {
 	Config *CertificateConfig `pulumi:"config"`
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
+	// The resource name of the issuing CertificateAuthority in the format
+	// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+	IssuerCertificateAuthority *string `pulumi:"issuerCertificateAuthority"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
@@ -607,7 +622,12 @@ type certificateState struct {
 	Name *string `pulumi:"name"`
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate *string `pulumi:"pemCertificate"`
+	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+	// 5246.
+	PemCertificateChains []string `pulumi:"pemCertificateChains"`
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
+	//
+	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
 	PemCertificates []string `pulumi:"pemCertificates"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr *string `pulumi:"pemCsr"`
@@ -640,6 +660,9 @@ type CertificateState struct {
 	Config CertificateConfigPtrInput
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
+	// The resource name of the issuing CertificateAuthority in the format
+	// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+	IssuerCertificateAuthority pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapInput
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
@@ -653,7 +676,12 @@ type CertificateState struct {
 	Name pulumi.StringPtrInput
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate pulumi.StringPtrInput
+	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+	// 5246.
+	PemCertificateChains pulumi.StringArrayInput
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
+	//
+	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
 	PemCertificates pulumi.StringArrayInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrInput

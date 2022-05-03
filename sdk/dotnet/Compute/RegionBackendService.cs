@@ -621,6 +621,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+        /// and Internal HTTP(S) load balancing.
+        /// </summary>
+        [Output("subsetting")]
+        public Output<Outputs.RegionBackendServiceSubsetting?> Subsetting { get; private set; } = null!;
+
+        /// <summary>
         /// How many seconds to wait for the backend before considering it a
         /// failed request. Default is 30 seconds. Valid range is [1, 86400].
         /// </summary>
@@ -887,6 +894,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+        /// and Internal HTTP(S) load balancing.
+        /// </summary>
+        [Input("subsetting")]
+        public Input<Inputs.RegionBackendServiceSubsettingArgs>? Subsetting { get; set; }
+
+        /// <summary>
         /// How many seconds to wait for the backend before considering it a
         /// failed request. Default is 30 seconds. Valid range is [1, 86400].
         /// </summary>
@@ -1130,6 +1144,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
+
+        /// <summary>
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
+        /// and Internal HTTP(S) load balancing.
+        /// </summary>
+        [Input("subsetting")]
+        public Input<Inputs.RegionBackendServiceSubsettingGetArgs>? Subsetting { get; set; }
 
         /// <summary>
         /// How many seconds to wait for the backend before considering it a

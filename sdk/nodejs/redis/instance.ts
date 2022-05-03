@@ -320,6 +320,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly reservedIpRange!: pulumi.Output<string>;
     /**
+     * Optional. Additional IP range for node placement. Required when enabling read replicas on
+     * an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+     * "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+     * range associated with the private service access connection, or "auto".
+     */
+    public readonly secondaryIpRange!: pulumi.Output<string>;
+    /**
      * List of server CA certificates for the instance.
      */
     public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.InstanceServerCaCert[]>;
@@ -379,6 +386,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["replicaCount"] = state ? state.replicaCount : undefined;
             resourceInputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
+            resourceInputs["secondaryIpRange"] = state ? state.secondaryIpRange : undefined;
             resourceInputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
@@ -405,6 +413,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
             resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
+            resourceInputs["secondaryIpRange"] = args ? args.secondaryIpRange : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             resourceInputs["authString"] = undefined /*out*/;
@@ -579,6 +588,13 @@ export interface InstanceState {
      */
     reservedIpRange?: pulumi.Input<string>;
     /**
+     * Optional. Additional IP range for node placement. Required when enabling read replicas on
+     * an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+     * "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+     * range associated with the private service access connection, or "auto".
+     */
+    secondaryIpRange?: pulumi.Input<string>;
+    /**
      * List of server CA certificates for the instance.
      */
     serverCaCerts?: pulumi.Input<pulumi.Input<inputs.redis.InstanceServerCaCert>[]>;
@@ -708,6 +724,13 @@ export interface InstanceArgs {
      * network.
      */
     reservedIpRange?: pulumi.Input<string>;
+    /**
+     * Optional. Additional IP range for node placement. Required when enabling read replicas on
+     * an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+     * "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+     * range associated with the private service access connection, or "auto".
+     */
+    secondaryIpRange?: pulumi.Input<string>;
     /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance

@@ -89,6 +89,7 @@ type LookupInstanceResult struct {
 	Region                 *string                          `pulumi:"region"`
 	ReplicaCount           int                              `pulumi:"replicaCount"`
 	ReservedIpRange        string                           `pulumi:"reservedIpRange"`
+	SecondaryIpRange       string                           `pulumi:"secondaryIpRange"`
 	ServerCaCerts          []GetInstanceServerCaCert        `pulumi:"serverCaCerts"`
 	Tier                   string                           `pulumi:"tier"`
 	TransitEncryptionMode  string                           `pulumi:"transitEncryptionMode"`
@@ -245,6 +246,10 @@ func (o LookupInstanceResultOutput) ReplicaCount() pulumi.IntOutput {
 
 func (o LookupInstanceResultOutput) ReservedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ReservedIpRange }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) SecondaryIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.SecondaryIpRange }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) ServerCaCerts() GetInstanceServerCaCertArrayOutput {

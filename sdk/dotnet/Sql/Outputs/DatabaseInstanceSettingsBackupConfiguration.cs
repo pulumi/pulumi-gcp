@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly Outputs.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings? BackupRetentionSettings;
         /// <summary>
         /// True if binary logging is enabled.
-        /// Cannot be used with Postgres.
+        /// Can only be used with MySQL.
         /// </summary>
         public readonly bool? BinaryLogEnabled;
         /// <summary>

@@ -56,6 +56,13 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Customer accept list represents the list of projects (id/number) on customer
+     * side that can privately connect to the service attachment. It is an optional field
+     * which the customers can provide during the instance creation. By default, the customer
+     * project associated with the Apigee organization will be included to the list.
+     */
+    public readonly consumerAcceptLists!: pulumi.Output<string[]>;
+    /**
      * Description of the instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -104,6 +111,12 @@ export class Instance extends pulumi.CustomResource {
      * Output only. Port number of the exposed Apigee endpoint.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
+     * Output only. Resource name of the service attachment created for the instance in the format:
+     * projects/*&#47;regions/*&#47;serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
+     * using the PSC endpoints.
+     */
+    public /*out*/ readonly serviceAttachment!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -118,6 +131,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["consumerAcceptLists"] = state ? state.consumerAcceptLists : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKeyName"] = state ? state.diskEncryptionKeyName : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -128,6 +142,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["peeringCidrRange"] = state ? state.peeringCidrRange : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["serviceAttachment"] = state ? state.serviceAttachment : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -136,6 +151,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
+            resourceInputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -146,6 +162,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["peeringCidrRange"] = args ? args.peeringCidrRange : undefined;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["serviceAttachment"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -156,6 +173,13 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * Optional. Customer accept list represents the list of projects (id/number) on customer
+     * side that can privately connect to the service attachment. It is an optional field
+     * which the customers can provide during the instance creation. By default, the customer
+     * project associated with the Apigee organization will be included to the list.
+     */
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the instance.
      */
@@ -205,12 +229,25 @@ export interface InstanceState {
      * Output only. Port number of the exposed Apigee endpoint.
      */
     port?: pulumi.Input<string>;
+    /**
+     * Output only. Resource name of the service attachment created for the instance in the format:
+     * projects/*&#47;regions/*&#47;serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
+     * using the PSC endpoints.
+     */
+    serviceAttachment?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Optional. Customer accept list represents the list of projects (id/number) on customer
+     * side that can privately connect to the service attachment. It is an optional field
+     * which the customers can provide during the instance creation. By default, the customer
+     * project associated with the Apigee organization will be included to the list.
+     */
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the instance.
      */

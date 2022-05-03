@@ -1033,6 +1033,7 @@ class ServiceTemplateSpecArgs:
                and determines what permissions the revision has. If not provided, the revision
                will use the project's default service account.
         :param pulumi.Input[str] serving_state: -
+               (Deprecated)
                ServingState holds a value describing the state the resources
                are in for this Revision.
                It is expected
@@ -1107,6 +1108,7 @@ class ServiceTemplateSpecArgs:
     def serving_state(self) -> Optional[pulumi.Input[str]]:
         """
         -
+        (Deprecated)
         ServingState holds a value describing the state the resources
         are in for this Revision.
         It is expected

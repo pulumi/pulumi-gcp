@@ -33,6 +33,7 @@ class InstanceArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
+                 secondary_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -88,6 +89,10 @@ class InstanceArgs:
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
                unique and non-overlapping with existing subnets in an authorized
                network.
+        :param pulumi.Input[str] secondary_ip_range: Optional. Additional IP range for node placement. Required when enabling read replicas on
+               an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+               "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+               range associated with the private service access connection, or "auto".
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -133,6 +138,8 @@ class InstanceArgs:
             pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+        if secondary_ip_range is not None:
+            pulumi.set(__self__, "secondary_ip_range", secondary_ip_range)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
         if transit_encryption_mode is not None:
@@ -388,6 +395,21 @@ class InstanceArgs:
         pulumi.set(self, "reserved_ip_range", value)
 
     @property
+    @pulumi.getter(name="secondaryIpRange")
+    def secondary_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Additional IP range for node placement. Required when enabling read replicas on
+        an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+        "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+        range associated with the private service access connection, or "auto".
+        """
+        return pulumi.get(self, "secondary_ip_range")
+
+    @secondary_ip_range.setter
+    def secondary_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_ip_range", value)
+
+    @property
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -449,6 +471,7 @@ class _InstanceState:
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
+                 secondary_ip_range: Optional[pulumi.Input[str]] = None,
                  server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None):
@@ -524,6 +547,10 @@ class _InstanceState:
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
                unique and non-overlapping with existing subnets in an authorized
                network.
+        :param pulumi.Input[str] secondary_ip_range: Optional. Additional IP range for node placement. Required when enabling read replicas on
+               an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+               "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+               range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]] server_ca_certs: List of server CA certificates for the instance.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
@@ -589,6 +616,8 @@ class _InstanceState:
             pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+        if secondary_ip_range is not None:
+            pulumi.set(__self__, "secondary_ip_range", secondary_ip_range)
         if server_ca_certs is not None:
             pulumi.set(__self__, "server_ca_certs", server_ca_certs)
         if tier is not None:
@@ -964,6 +993,21 @@ class _InstanceState:
         pulumi.set(self, "reserved_ip_range", value)
 
     @property
+    @pulumi.getter(name="secondaryIpRange")
+    def secondary_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Additional IP range for node placement. Required when enabling read replicas on
+        an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+        "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+        range associated with the private service access connection, or "auto".
+        """
+        return pulumi.get(self, "secondary_ip_range")
+
+    @secondary_ip_range.setter
+    def secondary_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_ip_range", value)
+
+    @property
     @pulumi.getter(name="serverCaCerts")
     def server_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]:
         """
@@ -1030,6 +1074,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
+                 secondary_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1207,6 +1252,10 @@ class Instance(pulumi.CustomResource):
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
                unique and non-overlapping with existing subnets in an authorized
                network.
+        :param pulumi.Input[str] secondary_ip_range: Optional. Additional IP range for node placement. Required when enabling read replicas on
+               an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+               "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+               range associated with the private service access connection, or "auto".
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -1377,6 +1426,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
+                 secondary_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1411,6 +1461,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["replica_count"] = replica_count
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
+            __props__.__dict__["secondary_ip_range"] = secondary_ip_range
             __props__.__dict__["tier"] = tier
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
             __props__.__dict__["auth_string"] = None
@@ -1460,6 +1511,7 @@ class Instance(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             replica_count: Optional[pulumi.Input[int]] = None,
             reserved_ip_range: Optional[pulumi.Input[str]] = None,
+            secondary_ip_range: Optional[pulumi.Input[str]] = None,
             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             transit_encryption_mode: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -1540,6 +1592,10 @@ class Instance(pulumi.CustomResource):
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
                unique and non-overlapping with existing subnets in an authorized
                network.
+        :param pulumi.Input[str] secondary_ip_range: Optional. Additional IP range for node placement. Required when enabling read replicas on
+               an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+               "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+               range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]] server_ca_certs: List of server CA certificates for the instance.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
@@ -1582,6 +1638,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_count"] = replica_count
         __props__.__dict__["reserved_ip_range"] = reserved_ip_range
+        __props__.__dict__["secondary_ip_range"] = secondary_ip_range
         __props__.__dict__["server_ca_certs"] = server_ca_certs
         __props__.__dict__["tier"] = tier
         __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
@@ -1845,6 +1902,17 @@ class Instance(pulumi.CustomResource):
         network.
         """
         return pulumi.get(self, "reserved_ip_range")
+
+    @property
+    @pulumi.getter(name="secondaryIpRange")
+    def secondary_ip_range(self) -> pulumi.Output[str]:
+        """
+        Optional. Additional IP range for node placement. Required when enabling read replicas on
+        an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+        "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+        range associated with the private service access connection, or "auto".
+        """
+        return pulumi.get(self, "secondary_ip_range")
 
     @property
     @pulumi.getter(name="serverCaCerts")

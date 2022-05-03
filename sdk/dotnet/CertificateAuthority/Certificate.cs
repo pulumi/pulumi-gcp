@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             Location = "us-central1",
     ///             Pool = "",
     ///             IgnoreActiveCertificatesOnDeletion = true,
+    ///             DeletionProtection = false,
     ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///             {
     ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -271,6 +272,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             Pool = "",
     ///             CertificateAuthorityId = "my-certificate-authority",
     ///             Location = "us-central1",
+    ///             DeletionProtection = false,
     ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///             {
     ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -342,6 +344,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             Pool = "",
     ///             CertificateAuthorityId = "my-certificate-authority",
     ///             Location = "us-central1",
+    ///             DeletionProtection = false,
     ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///             {
     ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -417,6 +420,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             Pool = "",
     ///             CertificateAuthorityId = "my-authority",
     ///             Location = "us-central1",
+    ///             DeletionProtection = false,
     ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///             {
     ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -574,6 +578,13 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The resource name of the issuing CertificateAuthority in the format
+        /// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+        /// </summary>
+        [Output("issuerCertificateAuthority")]
+        public Output<string> IssuerCertificateAuthority { get; private set; } = null!;
+
+        /// <summary>
         /// Labels with user-defined metadata to apply to this resource.
         /// </summary>
         [Output("labels")]
@@ -605,6 +616,13 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Output("pemCertificate")]
         public Output<string> PemCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+        /// 5246.
+        /// </summary>
+        [Output("pemCertificateChains")]
+        public Output<ImmutableArray<string>> PemCertificateChains { get; private set; } = null!;
 
         /// <summary>
         /// Required. Expected to be in leaf-to-root order according to RFC 5246.
@@ -814,6 +832,13 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The resource name of the issuing CertificateAuthority in the format
+        /// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+        /// </summary>
+        [Input("issuerCertificateAuthority")]
+        public Input<string>? IssuerCertificateAuthority { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -853,12 +878,26 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("pemCertificate")]
         public Input<string>? PemCertificate { get; set; }
 
+        [Input("pemCertificateChains")]
+        private InputList<string>? _pemCertificateChains;
+
+        /// <summary>
+        /// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
+        /// 5246.
+        /// </summary>
+        public InputList<string> PemCertificateChains
+        {
+            get => _pemCertificateChains ?? (_pemCertificateChains = new InputList<string>());
+            set => _pemCertificateChains = value;
+        }
+
         [Input("pemCertificates")]
         private InputList<string>? _pemCertificates;
 
         /// <summary>
         /// Required. Expected to be in leaf-to-root order according to RFC 5246.
         /// </summary>
+        [Obsolete(@"Deprecated in favor of `pem_certificate_chain`.")]
         public InputList<string> PemCertificates
         {
             get => _pemCertificates ?? (_pemCertificates = new InputList<string>());

@@ -21,7 +21,7 @@ class GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
-    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, state=None, type=None, update_time=None):
+    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, state=None, type=None, update_time=None):
         if access_urls and not isinstance(access_urls, list):
             raise TypeError("Expected argument 'access_urls' to be a list")
         pulumi.set(__self__, "access_urls", access_urls)
@@ -34,6 +34,9 @@ class GetAuthorityResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if gcs_bucket and not isinstance(gcs_bucket, str):
             raise TypeError("Expected argument 'gcs_bucket' to be a str")
         pulumi.set(__self__, "gcs_bucket", gcs_bucket)
@@ -99,6 +102,11 @@ class GetAuthorityResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -192,6 +200,7 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             certificate_authority_id=self.certificate_authority_id,
             configs=self.configs,
             create_time=self.create_time,
+            deletion_protection=self.deletion_protection,
             gcs_bucket=self.gcs_bucket,
             id=self.id,
             ignore_active_certificates_on_deletion=self.ignore_active_certificates_on_deletion,
@@ -252,6 +261,7 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         certificate_authority_id=__ret__.certificate_authority_id,
         configs=__ret__.configs,
         create_time=__ret__.create_time,
+        deletion_protection=__ret__.deletion_protection,
         gcs_bucket=__ret__.gcs_bucket,
         id=__ret__.id,
         ignore_active_certificates_on_deletion=__ret__.ignore_active_certificates_on_deletion,

@@ -405,6 +405,15 @@ namespace Pulumi.Gcp.Redis
         public Output<string> ReservedIpRange { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Additional IP range for node placement. Required when enabling read replicas on
+        /// an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+        /// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+        /// range associated with the private service access connection, or "auto".
+        /// </summary>
+        [Output("secondaryIpRange")]
+        public Output<string> SecondaryIpRange { get; private set; } = null!;
+
+        /// <summary>
         /// List of server CA certificates for the instance.
         /// </summary>
         [Output("serverCaCerts")]
@@ -627,6 +636,15 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
+
+        /// <summary>
+        /// Optional. Additional IP range for node placement. Required when enabling read replicas on
+        /// an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+        /// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+        /// range associated with the private service access connection, or "auto".
+        /// </summary>
+        [Input("secondaryIpRange")]
+        public Input<string>? SecondaryIpRange { get; set; }
 
         /// <summary>
         /// The service tier of the instance. Must be one of these values:
@@ -876,6 +894,15 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
+
+        /// <summary>
+        /// Optional. Additional IP range for node placement. Required when enabling read replicas on
+        /// an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+        /// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+        /// range associated with the private service access connection, or "auto".
+        /// </summary>
+        [Input("secondaryIpRange")]
+        public Input<string>? SecondaryIpRange { get; set; }
 
         [Input("serverCaCerts")]
         private InputList<Inputs.InstanceServerCaCertGetArgs>? _serverCaCerts;

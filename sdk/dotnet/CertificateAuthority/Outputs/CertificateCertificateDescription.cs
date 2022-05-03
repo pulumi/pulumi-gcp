@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionPublicKey> PublicKeys;
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescription> SubjectDescriptions;
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectKeyId> SubjectKeyIds;
+        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionX509Description> X509Descriptions;
 
         [OutputConstructor]
         private CertificateCertificateDescription(
@@ -42,7 +43,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescription> subjectDescriptions,
 
-            ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds)
+            ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds,
+
+            ImmutableArray<Outputs.CertificateCertificateDescriptionX509Description> x509Descriptions)
         {
             AiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
             AuthorityKeyIds = authorityKeyIds;
@@ -52,6 +55,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
             PublicKeys = publicKeys;
             SubjectDescriptions = subjectDescriptions;
             SubjectKeyIds = subjectKeyIds;
+            X509Descriptions = x509Descriptions;
         }
     }
 }

@@ -36,6 +36,15 @@ namespace Pulumi.Gcp.Apigee
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Customer accept list represents the list of projects (id/number) on customer
+        /// side that can privately connect to the service attachment. It is an optional field
+        /// which the customers can provide during the instance creation. By default, the customer
+        /// project associated with the Apigee organization will be included to the list.
+        /// </summary>
+        [Output("consumerAcceptLists")]
+        public Output<ImmutableArray<string>> ConsumerAcceptLists { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the instance.
         /// </summary>
         [Output("description")]
@@ -104,6 +113,14 @@ namespace Pulumi.Gcp.Apigee
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. Resource name of the service attachment created for the instance in the format:
+        /// projects/*/regions/*/serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
+        /// using the PSC endpoints.
+        /// </summary>
+        [Output("serviceAttachment")]
+        public Output<string> ServiceAttachment { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -150,6 +167,21 @@ namespace Pulumi.Gcp.Apigee
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        [Input("consumerAcceptLists")]
+        private InputList<string>? _consumerAcceptLists;
+
+        /// <summary>
+        /// Optional. Customer accept list represents the list of projects (id/number) on customer
+        /// side that can privately connect to the service attachment. It is an optional field
+        /// which the customers can provide during the instance creation. By default, the customer
+        /// project associated with the Apigee organization will be included to the list.
+        /// </summary>
+        public InputList<string> ConsumerAcceptLists
+        {
+            get => _consumerAcceptLists ?? (_consumerAcceptLists = new InputList<string>());
+            set => _consumerAcceptLists = value;
+        }
+
         /// <summary>
         /// Description of the instance.
         /// </summary>
@@ -214,6 +246,21 @@ namespace Pulumi.Gcp.Apigee
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        [Input("consumerAcceptLists")]
+        private InputList<string>? _consumerAcceptLists;
+
+        /// <summary>
+        /// Optional. Customer accept list represents the list of projects (id/number) on customer
+        /// side that can privately connect to the service attachment. It is an optional field
+        /// which the customers can provide during the instance creation. By default, the customer
+        /// project associated with the Apigee organization will be included to the list.
+        /// </summary>
+        public InputList<string> ConsumerAcceptLists
+        {
+            get => _consumerAcceptLists ?? (_consumerAcceptLists = new InputList<string>());
+            set => _consumerAcceptLists = value;
+        }
+
         /// <summary>
         /// Description of the instance.
         /// </summary>
@@ -282,6 +329,14 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the service attachment created for the instance in the format:
+        /// projects/*/regions/*/serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
+        /// using the PSC endpoints.
+        /// </summary>
+        [Input("serviceAttachment")]
+        public Input<string>? ServiceAttachment { get; set; }
 
         public InstanceState()
         {

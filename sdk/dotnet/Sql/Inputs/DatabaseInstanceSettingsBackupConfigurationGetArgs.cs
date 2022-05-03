@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         /// <summary>
         /// True if binary logging is enabled.
-        /// Cannot be used with Postgres.
+        /// Can only be used with MySQL.
         /// </summary>
         [Input("binaryLogEnabled")]
         public Input<bool>? BinaryLogEnabled { get; set; }

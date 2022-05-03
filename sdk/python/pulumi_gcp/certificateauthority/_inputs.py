@@ -60,6 +60,15 @@ __all__ = [
     'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs',
     'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs',
     'CertificateCertificateDescriptionSubjectKeyIdArgs',
+    'CertificateCertificateDescriptionX509DescriptionArgs',
+    'CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs',
+    'CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs',
+    'CertificateCertificateDescriptionX509DescriptionCaOptionArgs',
+    'CertificateCertificateDescriptionX509DescriptionKeyUsageArgs',
+    'CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs',
+    'CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs',
+    'CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs',
+    'CertificateCertificateDescriptionX509DescriptionPolicyIdArgs',
     'CertificateConfigArgs',
     'CertificateConfigPublicKeyArgs',
     'CertificateConfigSubjectConfigArgs',
@@ -2220,7 +2229,8 @@ class CertificateCertificateDescriptionArgs:
                  crl_distribution_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]]] = None,
                  subject_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]]] = None,
-                 subject_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]] = None):
+                 subject_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]] = None,
+                 x509_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]] public_keys: A PublicKey describes a public key.
                Structure is documented below.
@@ -2232,6 +2242,9 @@ class CertificateCertificateDescriptionArgs:
         if cert_fingerprints is not None:
             pulumi.set(__self__, "cert_fingerprints", cert_fingerprints)
         if config_values is not None:
+            warnings.warn("""Deprecated in favor of `x509_description`.""", DeprecationWarning)
+            pulumi.log.warn("""config_values is deprecated: Deprecated in favor of `x509_description`.""")
+        if config_values is not None:
             pulumi.set(__self__, "config_values", config_values)
         if crl_distribution_points is not None:
             pulumi.set(__self__, "crl_distribution_points", crl_distribution_points)
@@ -2241,6 +2254,8 @@ class CertificateCertificateDescriptionArgs:
             pulumi.set(__self__, "subject_descriptions", subject_descriptions)
         if subject_key_ids is not None:
             pulumi.set(__self__, "subject_key_ids", subject_key_ids)
+        if x509_descriptions is not None:
+            pulumi.set(__self__, "x509_descriptions", x509_descriptions)
 
     @property
     @pulumi.getter(name="aiaIssuingCertificateUrls")
@@ -2317,6 +2332,15 @@ class CertificateCertificateDescriptionArgs:
     @subject_key_ids.setter
     def subject_key_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]]):
         pulumi.set(self, "subject_key_ids", value)
+
+    @property
+    @pulumi.getter(name="x509Descriptions")
+    def x509_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]]:
+        return pulumi.get(self, "x509_descriptions")
+
+    @x509_descriptions.setter
+    def x509_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]]):
+        pulumi.set(self, "x509_descriptions", value)
 
 
 @pulumi.input_type
@@ -3199,6 +3223,587 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
     @key_id.setter
     def key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_id", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionArgs:
+    def __init__(__self__, *,
+                 additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]]] = None,
+                 aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ca_options: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]] = None,
+                 key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]] = None,
+                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+               "Authority Information Access" extension in the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]] ca_options: Describes values that are relevant in a CA certificate.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]] key_usages: Indicates the intended use for keys that correspond to a certificate.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+               Structure is documented below.
+        """
+        if additional_extensions is not None:
+            pulumi.set(__self__, "additional_extensions", additional_extensions)
+        if aia_ocsp_servers is not None:
+            pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
+        if ca_options is not None:
+            pulumi.set(__self__, "ca_options", ca_options)
+        if key_usages is not None:
+            pulumi.set(__self__, "key_usages", key_usages)
+        if policy_ids is not None:
+            pulumi.set(__self__, "policy_ids", policy_ids)
+
+    @property
+    @pulumi.getter(name="additionalExtensions")
+    def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]]]:
+        """
+        Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_extensions")
+
+    @additional_extensions.setter
+    def additional_extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]]]):
+        pulumi.set(self, "additional_extensions", value)
+
+    @property
+    @pulumi.getter(name="aiaOcspServers")
+    def aia_ocsp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+        "Authority Information Access" extension in the certificate.
+        """
+        return pulumi.get(self, "aia_ocsp_servers")
+
+    @aia_ocsp_servers.setter
+    def aia_ocsp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "aia_ocsp_servers", value)
+
+    @property
+    @pulumi.getter(name="caOptions")
+    def ca_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]]:
+        """
+        Describes values that are relevant in a CA certificate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_options")
+
+    @ca_options.setter
+    def ca_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]]):
+        pulumi.set(self, "ca_options", value)
+
+    @property
+    @pulumi.getter(name="keyUsages")
+    def key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]]:
+        """
+        Indicates the intended use for keys that correspond to a certificate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "key_usages")
+
+    @key_usages.setter
+    def key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]]):
+        pulumi.set(self, "key_usages", value)
+
+    @property
+    @pulumi.getter(name="policyIds")
+    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]]:
+        """
+        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policy_ids")
+
+    @policy_ids.setter
+    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]]):
+        pulumi.set(self, "policy_ids", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs:
+    def __init__(__self__, *,
+                 critical: Optional[pulumi.Input[bool]] = None,
+                 object_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
+               handle this extension, the client should consider this to be an error).
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]] object_ids: Describes values that are relevant in a CA certificate.
+               Structure is documented below.
+        :param pulumi.Input[str] value: The value of this X.509 extension. A base64-encoded string.
+        """
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if object_ids is not None:
+            pulumi.set(__self__, "object_ids", object_ids)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not this extension is critical (i.e., if the client does not know how to
+        handle this extension, the client should consider this to be an error).
+        """
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter(name="objectIds")
+    def object_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]]]:
+        """
+        Describes values that are relevant in a CA certificate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "object_ids")
+
+    @object_ids.setter
+    def object_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]]]):
+        pulumi.set(self, "object_ids", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of this X.509 extension. A base64-encoded string.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs:
+    def __init__(__self__, *,
+                 object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
+        if object_id_paths is not None:
+            pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
+        return pulumi.get(self, "object_id_paths")
+
+    @object_id_paths.setter
+    def object_id_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "object_id_paths", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionCaOptionArgs:
+    def __init__(__self__, *,
+                 is_ca: Optional[pulumi.Input[bool]] = None,
+                 max_issuer_path_length: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] is_ca: When true, the "CA" in Basic Constraints extension will be set to true.
+        :param pulumi.Input[int] max_issuer_path_length: Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+        """
+        if is_ca is not None:
+            pulumi.set(__self__, "is_ca", is_ca)
+        if max_issuer_path_length is not None:
+            pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
+
+    @property
+    @pulumi.getter(name="isCa")
+    def is_ca(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the "CA" in Basic Constraints extension will be set to true.
+        """
+        return pulumi.get(self, "is_ca")
+
+    @is_ca.setter
+    def is_ca(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_ca", value)
+
+    @property
+    @pulumi.getter(name="maxIssuerPathLength")
+    def max_issuer_path_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+        """
+        return pulumi.get(self, "max_issuer_path_length")
+
+    @max_issuer_path_length.setter
+    def max_issuer_path_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_issuer_path_length", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionKeyUsageArgs:
+    def __init__(__self__, *,
+                 base_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]]] = None,
+                 extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]]] = None,
+                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]] base_key_usages: Describes high-level ways in which a key may be used.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]] extended_key_usages: Describes high-level ways in which a key may be used.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               Structure is documented below.
+        """
+        if base_key_usages is not None:
+            pulumi.set(__self__, "base_key_usages", base_key_usages)
+        if extended_key_usages is not None:
+            pulumi.set(__self__, "extended_key_usages", extended_key_usages)
+        if unknown_extended_key_usages is not None:
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
+
+    @property
+    @pulumi.getter(name="baseKeyUsages")
+    def base_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]]]:
+        """
+        Describes high-level ways in which a key may be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "base_key_usages")
+
+    @base_key_usages.setter
+    def base_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]]]):
+        pulumi.set(self, "base_key_usages", value)
+
+    @property
+    @pulumi.getter(name="extendedKeyUsages")
+    def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]]]:
+        """
+        Describes high-level ways in which a key may be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extended_key_usages")
+
+    @extended_key_usages.setter
+    def extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]]]):
+        pulumi.set(self, "extended_key_usages", value)
+
+    @property
+    @pulumi.getter(name="unknownExtendedKeyUsages")
+    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]]]:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "unknown_extended_key_usages")
+
+    @unknown_extended_key_usages.setter
+    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]]]):
+        pulumi.set(self, "unknown_extended_key_usages", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs:
+    def __init__(__self__, *,
+                 cert_sign: Optional[pulumi.Input[bool]] = None,
+                 content_commitment: Optional[pulumi.Input[bool]] = None,
+                 crl_sign: Optional[pulumi.Input[bool]] = None,
+                 data_encipherment: Optional[pulumi.Input[bool]] = None,
+                 decipher_only: Optional[pulumi.Input[bool]] = None,
+                 digital_signature: Optional[pulumi.Input[bool]] = None,
+                 encipher_only: Optional[pulumi.Input[bool]] = None,
+                 key_agreement: Optional[pulumi.Input[bool]] = None,
+                 key_encipherment: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] cert_sign: The key may be used to sign certificates.
+        :param pulumi.Input[bool] content_commitment: The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        :param pulumi.Input[bool] crl_sign: The key may be used sign certificate revocation lists.
+        :param pulumi.Input[bool] data_encipherment: The key may be used to encipher data.
+        :param pulumi.Input[bool] decipher_only: The key may be used to decipher only.
+        :param pulumi.Input[bool] digital_signature: The key may be used for digital signatures.
+        :param pulumi.Input[bool] encipher_only: The key may be used to encipher only.
+        :param pulumi.Input[bool] key_agreement: The key may be used in a key agreement protocol.
+        :param pulumi.Input[bool] key_encipherment: The key may be used to encipher other keys.
+        """
+        if cert_sign is not None:
+            pulumi.set(__self__, "cert_sign", cert_sign)
+        if content_commitment is not None:
+            pulumi.set(__self__, "content_commitment", content_commitment)
+        if crl_sign is not None:
+            pulumi.set(__self__, "crl_sign", crl_sign)
+        if data_encipherment is not None:
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
+        if decipher_only is not None:
+            pulumi.set(__self__, "decipher_only", decipher_only)
+        if digital_signature is not None:
+            pulumi.set(__self__, "digital_signature", digital_signature)
+        if encipher_only is not None:
+            pulumi.set(__self__, "encipher_only", encipher_only)
+        if key_agreement is not None:
+            pulumi.set(__self__, "key_agreement", key_agreement)
+        if key_encipherment is not None:
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
+
+    @property
+    @pulumi.getter(name="certSign")
+    def cert_sign(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used to sign certificates.
+        """
+        return pulumi.get(self, "cert_sign")
+
+    @cert_sign.setter
+    def cert_sign(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cert_sign", value)
+
+    @property
+    @pulumi.getter(name="contentCommitment")
+    def content_commitment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        """
+        return pulumi.get(self, "content_commitment")
+
+    @content_commitment.setter
+    def content_commitment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "content_commitment", value)
+
+    @property
+    @pulumi.getter(name="crlSign")
+    def crl_sign(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used sign certificate revocation lists.
+        """
+        return pulumi.get(self, "crl_sign")
+
+    @crl_sign.setter
+    def crl_sign(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "crl_sign", value)
+
+    @property
+    @pulumi.getter(name="dataEncipherment")
+    def data_encipherment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used to encipher data.
+        """
+        return pulumi.get(self, "data_encipherment")
+
+    @data_encipherment.setter
+    def data_encipherment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "data_encipherment", value)
+
+    @property
+    @pulumi.getter(name="decipherOnly")
+    def decipher_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used to decipher only.
+        """
+        return pulumi.get(self, "decipher_only")
+
+    @decipher_only.setter
+    def decipher_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "decipher_only", value)
+
+    @property
+    @pulumi.getter(name="digitalSignature")
+    def digital_signature(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used for digital signatures.
+        """
+        return pulumi.get(self, "digital_signature")
+
+    @digital_signature.setter
+    def digital_signature(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "digital_signature", value)
+
+    @property
+    @pulumi.getter(name="encipherOnly")
+    def encipher_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used to encipher only.
+        """
+        return pulumi.get(self, "encipher_only")
+
+    @encipher_only.setter
+    def encipher_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encipher_only", value)
+
+    @property
+    @pulumi.getter(name="keyAgreement")
+    def key_agreement(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used in a key agreement protocol.
+        """
+        return pulumi.get(self, "key_agreement")
+
+    @key_agreement.setter
+    def key_agreement(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "key_agreement", value)
+
+    @property
+    @pulumi.getter(name="keyEncipherment")
+    def key_encipherment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The key may be used to encipher other keys.
+        """
+        return pulumi.get(self, "key_encipherment")
+
+    @key_encipherment.setter
+    def key_encipherment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "key_encipherment", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs:
+    def __init__(__self__, *,
+                 client_auth: Optional[pulumi.Input[bool]] = None,
+                 code_signing: Optional[pulumi.Input[bool]] = None,
+                 email_protection: Optional[pulumi.Input[bool]] = None,
+                 ocsp_signing: Optional[pulumi.Input[bool]] = None,
+                 server_auth: Optional[pulumi.Input[bool]] = None,
+                 time_stamping: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] client_auth: Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+        :param pulumi.Input[bool] code_signing: Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+        :param pulumi.Input[bool] email_protection: Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+        :param pulumi.Input[bool] ocsp_signing: Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+        :param pulumi.Input[bool] server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+        :param pulumi.Input[bool] time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+        """
+        if client_auth is not None:
+            pulumi.set(__self__, "client_auth", client_auth)
+        if code_signing is not None:
+            pulumi.set(__self__, "code_signing", code_signing)
+        if email_protection is not None:
+            pulumi.set(__self__, "email_protection", email_protection)
+        if ocsp_signing is not None:
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
+        if server_auth is not None:
+            pulumi.set(__self__, "server_auth", server_auth)
+        if time_stamping is not None:
+            pulumi.set(__self__, "time_stamping", time_stamping)
+
+    @property
+    @pulumi.getter(name="clientAuth")
+    def client_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+        """
+        return pulumi.get(self, "client_auth")
+
+    @client_auth.setter
+    def client_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "client_auth", value)
+
+    @property
+    @pulumi.getter(name="codeSigning")
+    def code_signing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+        """
+        return pulumi.get(self, "code_signing")
+
+    @code_signing.setter
+    def code_signing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "code_signing", value)
+
+    @property
+    @pulumi.getter(name="emailProtection")
+    def email_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+        """
+        return pulumi.get(self, "email_protection")
+
+    @email_protection.setter
+    def email_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "email_protection", value)
+
+    @property
+    @pulumi.getter(name="ocspSigning")
+    def ocsp_signing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+        """
+        return pulumi.get(self, "ocsp_signing")
+
+    @ocsp_signing.setter
+    def ocsp_signing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ocsp_signing", value)
+
+    @property
+    @pulumi.getter(name="serverAuth")
+    def server_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+        """
+        return pulumi.get(self, "server_auth")
+
+    @server_auth.setter
+    def server_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "server_auth", value)
+
+    @property
+    @pulumi.getter(name="timeStamping")
+    def time_stamping(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+        """
+        return pulumi.get(self, "time_stamping")
+
+    @time_stamping.setter
+    def time_stamping(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "time_stamping", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs:
+    def __init__(__self__, *,
+                 object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
+        if object_id_paths is not None:
+            pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
+        return pulumi.get(self, "object_id_paths")
+
+    @object_id_paths.setter
+    def object_id_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "object_id_paths", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionPolicyIdArgs:
+    def __init__(__self__, *,
+                 object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
+        if object_id_paths is not None:
+            pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
+        return pulumi.get(self, "object_id_paths")
+
+    @object_id_paths.setter
+    def object_id_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "object_id_paths", value)
 
 
 @pulumi.input_type

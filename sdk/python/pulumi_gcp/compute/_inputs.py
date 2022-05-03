@@ -202,6 +202,7 @@ __all__ = [
     'RegionBackendServiceOutlierDetectionArgs',
     'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs',
     'RegionBackendServiceOutlierDetectionIntervalArgs',
+    'RegionBackendServiceSubsettingArgs',
     'RegionDiskDiskEncryptionKeyArgs',
     'RegionDiskIamBindingConditionArgs',
     'RegionDiskIamMemberConditionArgs',
@@ -13713,6 +13714,30 @@ class RegionBackendServiceOutlierDetectionIntervalArgs:
     @nanos.setter
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
+
+
+@pulumi.input_type
+class RegionBackendServiceSubsettingArgs:
+    def __init__(__self__, *,
+                 policy: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] policy: The algorithm used for subsetting.
+               Possible values are `CONSISTENT_HASH_SUBSETTING`.
+        """
+        pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[str]:
+        """
+        The algorithm used for subsetting.
+        Possible values are `CONSISTENT_HASH_SUBSETTING`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy", value)
 
 
 @pulumi.input_type

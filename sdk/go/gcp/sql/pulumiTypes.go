@@ -962,10 +962,11 @@ type DatabaseInstanceSettings struct {
 	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
 	ActivationPolicy *string `pulumi:"activationPolicy"`
 	// The availability type of the Cloud SQL
-	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-	// ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-	// are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-	// and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+	// `settings.backup_configuration.enabled` is set to `true`.
+	// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+	// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+	// is set to `true`.
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
@@ -1009,10 +1010,11 @@ type DatabaseInstanceSettingsArgs struct {
 	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
 	ActivationPolicy pulumi.StringPtrInput `pulumi:"activationPolicy"`
 	// The availability type of the Cloud SQL
-	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-	// ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-	// are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-	// and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+	// `settings.backup_configuration.enabled` is set to `true`.
+	// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+	// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+	// is set to `true`.
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
@@ -1124,10 +1126,11 @@ func (o DatabaseInstanceSettingsOutput) ActivationPolicy() pulumi.StringPtrOutpu
 }
 
 // The availability type of the Cloud SQL
-// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-// ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-// are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-// and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+// `settings.backup_configuration.enabled` is set to `true`.
+// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+// is set to `true`.
 func (o DatabaseInstanceSettingsOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
@@ -1243,10 +1246,11 @@ func (o DatabaseInstanceSettingsPtrOutput) ActivationPolicy() pulumi.StringPtrOu
 }
 
 // The availability type of the Cloud SQL
-// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-// ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-// are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-// and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+// `settings.backup_configuration.enabled` is set to `true`.
+// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+// is set to `true`.
 func (o DatabaseInstanceSettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {
@@ -1404,7 +1408,7 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 	// Backup retention settings. The configuration is detailed below.
 	BackupRetentionSettings *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings `pulumi:"backupRetentionSettings"`
 	// True if binary logging is enabled.
-	// Cannot be used with Postgres.
+	// Can only be used with MySQL.
 	BinaryLogEnabled *bool `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -1434,7 +1438,7 @@ type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	// Backup retention settings. The configuration is detailed below.
 	BackupRetentionSettings DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput `pulumi:"backupRetentionSettings"`
 	// True if binary logging is enabled.
-	// Cannot be used with Postgres.
+	// Can only be used with MySQL.
 	BinaryLogEnabled pulumi.BoolPtrInput `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -1534,7 +1538,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) BackupRetentionSettin
 }
 
 // True if binary logging is enabled.
-// Cannot be used with Postgres.
+// Can only be used with MySQL.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.BinaryLogEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1600,7 +1604,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BackupRetentionSet
 }
 
 // True if binary logging is enabled.
-// Cannot be used with Postgres.
+// Can only be used with MySQL.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *bool {
 		if v == nil {

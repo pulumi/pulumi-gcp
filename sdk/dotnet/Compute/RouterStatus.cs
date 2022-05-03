@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    [Obsolete(@"gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus")]
     public static class RouterStatus
     {
         /// <summary>
@@ -31,7 +32,7 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     public MyStack()
         ///     {
-        ///         var my_router = Output.Create(Gcp.Compute.RouterStatus.InvokeAsync(new Gcp.Compute.RouterStatusArgs
+        ///         var my_router = Output.Create(Gcp.Compute.GetRouterStatus.InvokeAsync(new Gcp.Compute.GetRouterStatusArgs
         ///         {
         ///             Name = "myrouter",
         ///         }));
@@ -65,7 +66,7 @@ namespace Pulumi.Gcp.Compute
         /// {
         ///     public MyStack()
         ///     {
-        ///         var my_router = Output.Create(Gcp.Compute.RouterStatus.InvokeAsync(new Gcp.Compute.RouterStatusArgs
+        ///         var my_router = Output.Create(Gcp.Compute.GetRouterStatus.InvokeAsync(new Gcp.Compute.GetRouterStatusArgs
         ///         {
         ///             Name = "myrouter",
         ///         }));

@@ -4523,6 +4523,9 @@ export namespace certificateauthority {
         aiaIssuingCertificateUrls: string[];
         authorityKeyIds: outputs.certificateauthority.CertificateCertificateDescriptionAuthorityKeyId[];
         certFingerprints: outputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint[];
+        /**
+         * @deprecated Deprecated in favor of `x509_description`.
+         */
         configValues: outputs.certificateauthority.CertificateCertificateDescriptionConfigValue[];
         crlDistributionPoints: string[];
         /**
@@ -4532,6 +4535,7 @@ export namespace certificateauthority {
         publicKeys: outputs.certificateauthority.CertificateCertificateDescriptionPublicKey[];
         subjectDescriptions: outputs.certificateauthority.CertificateCertificateDescriptionSubjectDescription[];
         subjectKeyIds: outputs.certificateauthority.CertificateCertificateDescriptionSubjectKeyId[];
+        x509Descriptions: outputs.certificateauthority.CertificateCertificateDescriptionX509Description[];
     }
 
     export interface CertificateCertificateDescriptionAuthorityKeyId {
@@ -4760,6 +4764,168 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionSubjectKeyId {
         keyId: string;
+    }
+
+    export interface CertificateCertificateDescriptionX509Description {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * Structure is documented below.
+         */
+        additionalExtensions: outputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionAdditionalExtension[];
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
+        aiaOcspServers: string[];
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        caOptions: outputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionCaOption[];
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         * Structure is documented below.
+         */
+        keyUsages: outputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsage[];
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Structure is documented below.
+         */
+        policyIds: outputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionPolicyId[];
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
+        critical: boolean;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         * Structure is documented below.
+         */
+        objectIds: outputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId[];
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
+        value?: string;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionCaOption {
+        /**
+         * When true, the "CA" in Basic Constraints extension will be set to true.
+         */
+        isCa: boolean;
+        /**
+         * Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+         */
+        maxIssuerPathLength: number;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        baseKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage[];
+        /**
+         * Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         */
+        extendedKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage[];
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * Structure is documented below.
+         */
+        unknownExtendedKeyUsages: outputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage[];
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
+        certSign: boolean;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
+        contentCommitment: boolean;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
+        crlSign: boolean;
+        /**
+         * The key may be used to encipher data.
+         */
+        dataEncipherment: boolean;
+        /**
+         * The key may be used to decipher only.
+         */
+        decipherOnly: boolean;
+        /**
+         * The key may be used for digital signatures.
+         */
+        digitalSignature: boolean;
+        /**
+         * The key may be used to encipher only.
+         */
+        encipherOnly: boolean;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
+        keyAgreement: boolean;
+        /**
+         * The key may be used to encipher other keys.
+         */
+        keyEncipherment: boolean;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
+        clientAuth: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
+        codeSigning: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
+        emailProtection: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
+        ocspSigning: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
+        serverAuth: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
+        timeStamping: boolean;
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
+    }
+
+    export interface CertificateCertificateDescriptionX509DescriptionPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
+        objectIdPaths: number[];
     }
 
     export interface CertificateConfig {
@@ -7064,6 +7230,7 @@ export namespace cloudrun {
         serviceAccountName: string;
         /**
          * -
+         * (Deprecated)
          * ServingState holds a value describing the state the resources
          * are in for this Revision.
          * It is expected
@@ -9258,6 +9425,27 @@ export namespace compute {
         subjectAltNames: string[];
     }
 
+    export interface GetDiskDiskEncryptionKey {
+        kmsKeySelfLink: string;
+        kmsKeyServiceAccount: string;
+        rawKey: string;
+        sha256: string;
+    }
+
+    export interface GetDiskSourceImageEncryptionKey {
+        kmsKeySelfLink: string;
+        kmsKeyServiceAccount: string;
+        rawKey: string;
+        sha256: string;
+    }
+
+    export interface GetDiskSourceSnapshotEncryptionKey {
+        kmsKeySelfLink: string;
+        kmsKeyServiceAccount: string;
+        rawKey: string;
+        sha256: string;
+    }
+
     export interface GetGlobalForwardingRuleMetadataFilter {
         filterLabels: outputs.compute.GetGlobalForwardingRuleMetadataFilterFilterLabel[];
         filterMatchCriteria: string;
@@ -9970,6 +10158,64 @@ export namespace compute {
     export interface GetRouterBgpAdvertisedIpRange {
         description: string;
         range: string;
+    }
+
+    export interface GetRouterStatusBestRoute {
+        description: string;
+        destRange: string;
+        /**
+         * The name of the router.
+         */
+        name: string;
+        /**
+         * The network name or resource link to the parent
+         * network of this subnetwork.
+         */
+        network: string;
+        nextHopGateway: string;
+        nextHopIlb: string;
+        nextHopInstance: string;
+        nextHopInstanceZone: string;
+        nextHopIp: string;
+        nextHopNetwork: string;
+        nextHopVpnTunnel: string;
+        priority: number;
+        /**
+         * The ID of the project in which the resource
+         * belongs. If it is not provided, the provider project is used.
+         */
+        project: string;
+        selfLink: string;
+        tags: string[];
+    }
+
+    export interface GetRouterStatusBestRoutesForRouter {
+        description: string;
+        destRange: string;
+        /**
+         * The name of the router.
+         */
+        name: string;
+        /**
+         * The network name or resource link to the parent
+         * network of this subnetwork.
+         */
+        network: string;
+        nextHopGateway: string;
+        nextHopIlb: string;
+        nextHopInstance: string;
+        nextHopInstanceZone: string;
+        nextHopIp: string;
+        nextHopNetwork: string;
+        nextHopVpnTunnel: string;
+        priority: number;
+        /**
+         * The ID of the project in which the resource
+         * belongs. If it is not provided, the provider project is used.
+         */
+        project: string;
+        selfLink: string;
+        tags: string[];
     }
 
     export interface GetSubnetworkSecondaryIpRange {
@@ -12619,6 +12865,14 @@ export namespace compute {
          * inclusive.
          */
         seconds: number;
+    }
+
+    export interface RegionBackendServiceSubsetting {
+        /**
+         * The algorithm used for subsetting.
+         * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+         */
+        policy: string;
     }
 
     export interface RegionDiskDiskEncryptionKey {
@@ -31222,10 +31476,11 @@ export namespace sql {
         activationPolicy?: string;
         /**
          * The availability type of the Cloud SQL
-         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL and SQL Server instances,
-         * ensure that `settings.backup_configuration.enabled` and `settings.backup_configuration.binary_log_enabled`
-         * are both set to `true`. For Postgres instances, ensure that `settings.backup_configuration.enabled`
-         * and `settings.backup_configuration.point_in_time_recovery_enabled` are both set to `true`.
+         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+         * `settings.backup_configuration.enabled` is set to `true`.
+         * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
+         * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+         * is set to `true`.
          */
         availabilityType?: string;
         backupConfiguration: outputs.sql.DatabaseInstanceSettingsBackupConfiguration;
@@ -31275,7 +31530,7 @@ export namespace sql {
         backupRetentionSettings: outputs.sql.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings;
         /**
          * True if binary logging is enabled.
-         * Cannot be used with Postgres.
+         * Can only be used with MySQL.
          */
         binaryLogEnabled?: boolean;
         /**

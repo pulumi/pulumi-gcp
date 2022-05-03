@@ -32,6 +32,7 @@ from .get_backend_bucket import *
 from .get_backend_service import *
 from .get_certificate import *
 from .get_default_service_account import *
+from .get_disk import *
 from .get_forwarding_rule import *
 from .get_global_address import *
 from .get_global_forwarding_rule import *
@@ -52,6 +53,7 @@ from .get_region_ssl_certificate import *
 from .get_regions import *
 from .get_resource_policy import *
 from .get_router import *
+from .get_router_status import *
 from .get_ssl_policy import *
 from .get_subnetwork import *
 from .get_vpn_gateway import *

@@ -68,6 +68,7 @@ export interface GetAuthorityResult {
     readonly certificateAuthorityId?: string;
     readonly configs: outputs.certificateauthority.GetAuthorityConfig[];
     readonly createTime: string;
+    readonly deletionProtection: boolean;
     readonly gcsBucket: string;
     /**
      * The provider-assigned unique ID for this managed resource.

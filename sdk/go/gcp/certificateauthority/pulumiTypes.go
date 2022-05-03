@@ -5885,13 +5885,15 @@ type CertificateCertificateDescription struct {
 	AiaIssuingCertificateUrls []string                                           `pulumi:"aiaIssuingCertificateUrls"`
 	AuthorityKeyIds           []CertificateCertificateDescriptionAuthorityKeyId  `pulumi:"authorityKeyIds"`
 	CertFingerprints          []CertificateCertificateDescriptionCertFingerprint `pulumi:"certFingerprints"`
-	ConfigValues              []CertificateCertificateDescriptionConfigValue     `pulumi:"configValues"`
-	CrlDistributionPoints     []string                                           `pulumi:"crlDistributionPoints"`
+	// Deprecated: Deprecated in favor of `x509_description`.
+	ConfigValues          []CertificateCertificateDescriptionConfigValue `pulumi:"configValues"`
+	CrlDistributionPoints []string                                       `pulumi:"crlDistributionPoints"`
 	// A PublicKey describes a public key.
 	// Structure is documented below.
 	PublicKeys          []CertificateCertificateDescriptionPublicKey          `pulumi:"publicKeys"`
 	SubjectDescriptions []CertificateCertificateDescriptionSubjectDescription `pulumi:"subjectDescriptions"`
 	SubjectKeyIds       []CertificateCertificateDescriptionSubjectKeyId       `pulumi:"subjectKeyIds"`
+	X509Descriptions    []CertificateCertificateDescriptionX509Description    `pulumi:"x509Descriptions"`
 }
 
 // CertificateCertificateDescriptionInput is an input type that accepts CertificateCertificateDescriptionArgs and CertificateCertificateDescriptionOutput values.
@@ -5909,13 +5911,15 @@ type CertificateCertificateDescriptionArgs struct {
 	AiaIssuingCertificateUrls pulumi.StringArrayInput                                    `pulumi:"aiaIssuingCertificateUrls"`
 	AuthorityKeyIds           CertificateCertificateDescriptionAuthorityKeyIdArrayInput  `pulumi:"authorityKeyIds"`
 	CertFingerprints          CertificateCertificateDescriptionCertFingerprintArrayInput `pulumi:"certFingerprints"`
-	ConfigValues              CertificateCertificateDescriptionConfigValueArrayInput     `pulumi:"configValues"`
-	CrlDistributionPoints     pulumi.StringArrayInput                                    `pulumi:"crlDistributionPoints"`
+	// Deprecated: Deprecated in favor of `x509_description`.
+	ConfigValues          CertificateCertificateDescriptionConfigValueArrayInput `pulumi:"configValues"`
+	CrlDistributionPoints pulumi.StringArrayInput                                `pulumi:"crlDistributionPoints"`
 	// A PublicKey describes a public key.
 	// Structure is documented below.
 	PublicKeys          CertificateCertificateDescriptionPublicKeyArrayInput          `pulumi:"publicKeys"`
 	SubjectDescriptions CertificateCertificateDescriptionSubjectDescriptionArrayInput `pulumi:"subjectDescriptions"`
 	SubjectKeyIds       CertificateCertificateDescriptionSubjectKeyIdArrayInput       `pulumi:"subjectKeyIds"`
+	X509Descriptions    CertificateCertificateDescriptionX509DescriptionArrayInput    `pulumi:"x509Descriptions"`
 }
 
 func (CertificateCertificateDescriptionArgs) ElementType() reflect.Type {
@@ -5985,6 +5989,7 @@ func (o CertificateCertificateDescriptionOutput) CertFingerprints() CertificateC
 	}).(CertificateCertificateDescriptionCertFingerprintArrayOutput)
 }
 
+// Deprecated: Deprecated in favor of `x509_description`.
 func (o CertificateCertificateDescriptionOutput) ConfigValues() CertificateCertificateDescriptionConfigValueArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionConfigValue {
 		return v.ConfigValues
@@ -6013,6 +6018,12 @@ func (o CertificateCertificateDescriptionOutput) SubjectKeyIds() CertificateCert
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionSubjectKeyId {
 		return v.SubjectKeyIds
 	}).(CertificateCertificateDescriptionSubjectKeyIdArrayOutput)
+}
+
+func (o CertificateCertificateDescriptionOutput) X509Descriptions() CertificateCertificateDescriptionX509DescriptionArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionX509Description {
+		return v.X509Descriptions
+	}).(CertificateCertificateDescriptionX509DescriptionArrayOutput)
 }
 
 type CertificateCertificateDescriptionArrayOutput struct{ *pulumi.OutputState }
@@ -7955,6 +7966,1156 @@ func (o CertificateCertificateDescriptionSubjectKeyIdArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionSubjectKeyId {
 		return vs[0].([]CertificateCertificateDescriptionSubjectKeyId)[vs[1].(int)]
 	}).(CertificateCertificateDescriptionSubjectKeyIdOutput)
+}
+
+type CertificateCertificateDescriptionX509Description struct {
+	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+	// Structure is documented below.
+	AdditionalExtensions []CertificateCertificateDescriptionX509DescriptionAdditionalExtension `pulumi:"additionalExtensions"`
+	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+	// "Authority Information Access" extension in the certificate.
+	AiaOcspServers []string `pulumi:"aiaOcspServers"`
+	// Describes values that are relevant in a CA certificate.
+	// Structure is documented below.
+	CaOptions []CertificateCertificateDescriptionX509DescriptionCaOption `pulumi:"caOptions"`
+	// Indicates the intended use for keys that correspond to a certificate.
+	// Structure is documented below.
+	KeyUsages []CertificateCertificateDescriptionX509DescriptionKeyUsage `pulumi:"keyUsages"`
+	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Structure is documented below.
+	PolicyIds []CertificateCertificateDescriptionX509DescriptionPolicyId `pulumi:"policyIds"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionArgs and CertificateCertificateDescriptionX509DescriptionOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionArgs{...}
+type CertificateCertificateDescriptionX509DescriptionInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionOutput() CertificateCertificateDescriptionX509DescriptionOutput
+	ToCertificateCertificateDescriptionX509DescriptionOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionArgs struct {
+	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+	// Structure is documented below.
+	AdditionalExtensions CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
+	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+	// "Authority Information Access" extension in the certificate.
+	AiaOcspServers pulumi.StringArrayInput `pulumi:"aiaOcspServers"`
+	// Describes values that are relevant in a CA certificate.
+	// Structure is documented below.
+	CaOptions CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput `pulumi:"caOptions"`
+	// Indicates the intended use for keys that correspond to a certificate.
+	// Structure is documented below.
+	KeyUsages CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput `pulumi:"keyUsages"`
+	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Structure is documented below.
+	PolicyIds CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput `pulumi:"policyIds"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509Description)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionArgs) ToCertificateCertificateDescriptionX509DescriptionOutput() CertificateCertificateDescriptionX509DescriptionOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionArgs) ToCertificateCertificateDescriptionX509DescriptionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionArray and CertificateCertificateDescriptionX509DescriptionArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionArray{ CertificateCertificateDescriptionX509DescriptionArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionArrayOutput() CertificateCertificateDescriptionX509DescriptionArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionArray []CertificateCertificateDescriptionX509DescriptionInput
+
+func (CertificateCertificateDescriptionX509DescriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509Description)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionArray) ToCertificateCertificateDescriptionX509DescriptionArrayOutput() CertificateCertificateDescriptionX509DescriptionArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionArray) ToCertificateCertificateDescriptionX509DescriptionArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509Description)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionOutput) ToCertificateCertificateDescriptionX509DescriptionOutput() CertificateCertificateDescriptionX509DescriptionOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionOutput) ToCertificateCertificateDescriptionX509DescriptionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionOutput {
+	return o
+}
+
+// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionOutput) AdditionalExtensions() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
+		return v.AdditionalExtensions
+	}).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput)
+}
+
+// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+// "Authority Information Access" extension in the certificate.
+func (o CertificateCertificateDescriptionX509DescriptionOutput) AiaOcspServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []string { return v.AiaOcspServers }).(pulumi.StringArrayOutput)
+}
+
+// Describes values that are relevant in a CA certificate.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionOutput) CaOptions() CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []CertificateCertificateDescriptionX509DescriptionCaOption {
+		return v.CaOptions
+	}).(CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput)
+}
+
+// Indicates the intended use for keys that correspond to a certificate.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionOutput) KeyUsages() CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []CertificateCertificateDescriptionX509DescriptionKeyUsage {
+		return v.KeyUsages
+	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput)
+}
+
+// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionOutput) PolicyIds() CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []CertificateCertificateDescriptionX509DescriptionPolicyId {
+		return v.PolicyIds
+	}).(CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509Description)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionArrayOutput) ToCertificateCertificateDescriptionX509DescriptionArrayOutput() CertificateCertificateDescriptionX509DescriptionArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionArrayOutput) ToCertificateCertificateDescriptionX509DescriptionArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509Description {
+		return vs[0].([]CertificateCertificateDescriptionX509Description)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtension struct {
+	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+	// handle this extension, the client should consider this to be an error).
+	Critical *bool `pulumi:"critical"`
+	// Describes values that are relevant in a CA certificate.
+	// Structure is documented below.
+	ObjectIds []CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId `pulumi:"objectIds"`
+	// The value of this X.509 extension. A base64-encoded string.
+	Value *string `pulumi:"value"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionAdditionalExtensionInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs and CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionAdditionalExtensionInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs{...}
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput
+	ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs struct {
+	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+	// handle this extension, the client should consider this to be an error).
+	Critical pulumi.BoolPtrInput `pulumi:"critical"`
+	// Describes values that are relevant in a CA certificate.
+	// Structure is documented below.
+	ObjectIds CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayInput `pulumi:"objectIds"`
+	// The value of this X.509 extension. A base64-encoded string.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionAdditionalExtension)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray and CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray{ CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray []CertificateCertificateDescriptionX509DescriptionAdditionalExtensionInput
+
+func (CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionAdditionalExtension)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionAdditionalExtension)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput {
+	return o
+}
+
+// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+// handle this extension, the client should consider this to be an error).
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionAdditionalExtension) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+}
+
+// Describes values that are relevant in a CA certificate.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput) ObjectIds() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionAdditionalExtension) []CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId {
+		return v.ObjectIds
+	}).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput)
+}
+
+// The value of this X.509 extension. A base64-encoded string.
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionAdditionalExtension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionAdditionalExtension)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionAdditionalExtension)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs and CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs{...}
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput
+	ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray and CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray{ CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray []CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdInput
+
+func (CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput {
+	return o
+}
+
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId) []int {
+		return v.ObjectIdPaths
+	}).(pulumi.IntArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput() CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput) ToCertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionCaOption struct {
+	// When true, the "CA" in Basic Constraints extension will be set to true.
+	IsCa *bool `pulumi:"isCa"`
+	// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+	MaxIssuerPathLength *int `pulumi:"maxIssuerPathLength"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionCaOptionInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionCaOptionArgs and CertificateCertificateDescriptionX509DescriptionCaOptionOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionCaOptionInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionCaOptionArgs{...}
+type CertificateCertificateDescriptionX509DescriptionCaOptionInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionCaOptionOutput() CertificateCertificateDescriptionX509DescriptionCaOptionOutput
+	ToCertificateCertificateDescriptionX509DescriptionCaOptionOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionCaOptionOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionCaOptionArgs struct {
+	// When true, the "CA" in Basic Constraints extension will be set to true.
+	IsCa pulumi.BoolPtrInput `pulumi:"isCa"`
+	// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+	MaxIssuerPathLength pulumi.IntPtrInput `pulumi:"maxIssuerPathLength"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionCaOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionCaOption)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionCaOptionArgs) ToCertificateCertificateDescriptionX509DescriptionCaOptionOutput() CertificateCertificateDescriptionX509DescriptionCaOptionOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionCaOptionOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionCaOptionArgs) ToCertificateCertificateDescriptionX509DescriptionCaOptionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionCaOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionCaOptionOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionCaOptionArray and CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionCaOptionArray{ CertificateCertificateDescriptionX509DescriptionCaOptionArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput() CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionCaOptionArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionCaOptionArray []CertificateCertificateDescriptionX509DescriptionCaOptionInput
+
+func (CertificateCertificateDescriptionX509DescriptionCaOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionCaOption)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionCaOptionArray) ToCertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput() CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionCaOptionArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionCaOptionArray) ToCertificateCertificateDescriptionX509DescriptionCaOptionArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionCaOptionOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionCaOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionCaOption)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionCaOptionOutput) ToCertificateCertificateDescriptionX509DescriptionCaOptionOutput() CertificateCertificateDescriptionX509DescriptionCaOptionOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionCaOptionOutput) ToCertificateCertificateDescriptionX509DescriptionCaOptionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionCaOptionOutput {
+	return o
+}
+
+// When true, the "CA" in Basic Constraints extension will be set to true.
+func (o CertificateCertificateDescriptionX509DescriptionCaOptionOutput) IsCa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionCaOption) *bool { return v.IsCa }).(pulumi.BoolPtrOutput)
+}
+
+// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+func (o CertificateCertificateDescriptionX509DescriptionCaOptionOutput) MaxIssuerPathLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionCaOption) *int { return v.MaxIssuerPathLength }).(pulumi.IntPtrOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionCaOption)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput) ToCertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput() CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput) ToCertificateCertificateDescriptionX509DescriptionCaOptionArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionCaOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionCaOption {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionCaOption)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionCaOptionOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsage struct {
+	// Describes high-level ways in which a key may be used.
+	// Structure is documented below.
+	BaseKeyUsages []CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage `pulumi:"baseKeyUsages"`
+	// Describes high-level ways in which a key may be used.
+	// Structure is documented below.
+	ExtendedKeyUsages []CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage `pulumi:"extendedKeyUsages"`
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// Structure is documented below.
+	UnknownExtendedKeyUsages []CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage `pulumi:"unknownExtendedKeyUsages"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionKeyUsageInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageArgs and CertificateCertificateDescriptionX509DescriptionKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionKeyUsageArgs{...}
+type CertificateCertificateDescriptionX509DescriptionKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageOutput
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageArgs struct {
+	// Describes high-level ways in which a key may be used.
+	// Structure is documented below.
+	BaseKeyUsages CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayInput `pulumi:"baseKeyUsages"`
+	// Describes high-level ways in which a key may be used.
+	// Structure is documented below.
+	ExtendedKeyUsages CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput `pulumi:"extendedKeyUsages"`
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// Structure is documented below.
+	UnknownExtendedKeyUsages CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput `pulumi:"unknownExtendedKeyUsages"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageArgs) ToCertificateCertificateDescriptionX509DescriptionKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageArgs) ToCertificateCertificateDescriptionX509DescriptionKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionKeyUsageOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageArray and CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageArray []CertificateCertificateDescriptionX509DescriptionKeyUsageInput
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageArray) ToCertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageArray) ToCertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageOutput {
+	return o
+}
+
+// Describes high-level ways in which a key may be used.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageOutput) BaseKeyUsages() CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsage) []CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage {
+		return v.BaseKeyUsages
+	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput)
+}
+
+// Describes high-level ways in which a key may be used.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageOutput) ExtendedKeyUsages() CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsage) []CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage {
+		return v.ExtendedKeyUsages
+	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput)
+}
+
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageOutput) UnknownExtendedKeyUsages() CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsage) []CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage {
+		return v.UnknownExtendedKeyUsages
+	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionKeyUsage {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionKeyUsage)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage struct {
+	// The key may be used to sign certificates.
+	CertSign *bool `pulumi:"certSign"`
+	// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+	ContentCommitment *bool `pulumi:"contentCommitment"`
+	// The key may be used sign certificate revocation lists.
+	CrlSign *bool `pulumi:"crlSign"`
+	// The key may be used to encipher data.
+	DataEncipherment *bool `pulumi:"dataEncipherment"`
+	// The key may be used to decipher only.
+	DecipherOnly *bool `pulumi:"decipherOnly"`
+	// The key may be used for digital signatures.
+	DigitalSignature *bool `pulumi:"digitalSignature"`
+	// The key may be used to encipher only.
+	EncipherOnly *bool `pulumi:"encipherOnly"`
+	// The key may be used in a key agreement protocol.
+	KeyAgreement *bool `pulumi:"keyAgreement"`
+	// The key may be used to encipher other keys.
+	KeyEncipherment *bool `pulumi:"keyEncipherment"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs and CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs{...}
+type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs struct {
+	// The key may be used to sign certificates.
+	CertSign pulumi.BoolPtrInput `pulumi:"certSign"`
+	// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+	ContentCommitment pulumi.BoolPtrInput `pulumi:"contentCommitment"`
+	// The key may be used sign certificate revocation lists.
+	CrlSign pulumi.BoolPtrInput `pulumi:"crlSign"`
+	// The key may be used to encipher data.
+	DataEncipherment pulumi.BoolPtrInput `pulumi:"dataEncipherment"`
+	// The key may be used to decipher only.
+	DecipherOnly pulumi.BoolPtrInput `pulumi:"decipherOnly"`
+	// The key may be used for digital signatures.
+	DigitalSignature pulumi.BoolPtrInput `pulumi:"digitalSignature"`
+	// The key may be used to encipher only.
+	EncipherOnly pulumi.BoolPtrInput `pulumi:"encipherOnly"`
+	// The key may be used in a key agreement protocol.
+	KeyAgreement pulumi.BoolPtrInput `pulumi:"keyAgreement"`
+	// The key may be used to encipher other keys.
+	KeyEncipherment pulumi.BoolPtrInput `pulumi:"keyEncipherment"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs) ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs) ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray and CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray []CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageInput
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray) ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray) ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput {
+	return o
+}
+
+// The key may be used to sign certificates.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) CertSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool { return v.CertSign }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) ContentCommitment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool {
+		return v.ContentCommitment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used sign certificate revocation lists.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) CrlSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool { return v.CrlSign }).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher data.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) DataEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool {
+		return v.DataEncipherment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to decipher only.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) DecipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool {
+		return v.DecipherOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used for digital signatures.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) DigitalSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool {
+		return v.DigitalSignature
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher only.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) EncipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool {
+		return v.EncipherOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used in a key agreement protocol.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) KeyAgreement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool {
+		return v.KeyAgreement
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key may be used to encipher other keys.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput) KeyEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage) *bool {
+		return v.KeyEncipherment
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage struct {
+	// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+	ClientAuth *bool `pulumi:"clientAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+	CodeSigning *bool `pulumi:"codeSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+	EmailProtection *bool `pulumi:"emailProtection"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+	OcspSigning *bool `pulumi:"ocspSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+	ServerAuth *bool `pulumi:"serverAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+	TimeStamping *bool `pulumi:"timeStamping"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs and CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs{...}
+type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs struct {
+	// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+	ClientAuth pulumi.BoolPtrInput `pulumi:"clientAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+	CodeSigning pulumi.BoolPtrInput `pulumi:"codeSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+	EmailProtection pulumi.BoolPtrInput `pulumi:"emailProtection"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+	OcspSigning pulumi.BoolPtrInput `pulumi:"ocspSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+	ServerAuth pulumi.BoolPtrInput `pulumi:"serverAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+	TimeStamping pulumi.BoolPtrInput `pulumi:"timeStamping"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs) ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs) ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray and CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray []CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageInput
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray) ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray) ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput {
+	return o
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) ClientAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage) *bool {
+		return v.ClientAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) CodeSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage) *bool {
+		return v.CodeSigning
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) EmailProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage) *bool {
+		return v.EmailProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) OcspSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage) *bool {
+		return v.OcspSigning
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) ServerAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage) *bool {
+		return v.ServerAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput) TimeStamping() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage) *bool {
+		return v.TimeStamping
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs and CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs{...}
+type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs) ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs) ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray and CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray{ CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray []CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray) ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray) ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput {
+	return o
+}
+
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage) []int {
+		return v.ObjectIdPaths
+	}).(pulumi.IntArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput) ToCertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionPolicyId struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionPolicyIdInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionPolicyIdArgs and CertificateCertificateDescriptionX509DescriptionPolicyIdOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionPolicyIdInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionPolicyIdArgs{...}
+type CertificateCertificateDescriptionX509DescriptionPolicyIdInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionPolicyIdOutput() CertificateCertificateDescriptionX509DescriptionPolicyIdOutput
+	ToCertificateCertificateDescriptionX509DescriptionPolicyIdOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionPolicyIdOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionPolicyIdArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionPolicyIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionPolicyId)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionPolicyIdArgs) ToCertificateCertificateDescriptionX509DescriptionPolicyIdOutput() CertificateCertificateDescriptionX509DescriptionPolicyIdOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionPolicyIdOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionPolicyIdArgs) ToCertificateCertificateDescriptionX509DescriptionPolicyIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionPolicyIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionPolicyIdOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionPolicyIdArray and CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput` via:
+//
+//          CertificateCertificateDescriptionX509DescriptionPolicyIdArray{ CertificateCertificateDescriptionX509DescriptionPolicyIdArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput() CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionPolicyIdArray []CertificateCertificateDescriptionX509DescriptionPolicyIdInput
+
+func (CertificateCertificateDescriptionX509DescriptionPolicyIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionPolicyId)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionPolicyIdArray) ToCertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput() CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionPolicyIdArray) ToCertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionPolicyIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionPolicyIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionPolicyId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionPolicyIdOutput) ToCertificateCertificateDescriptionX509DescriptionPolicyIdOutput() CertificateCertificateDescriptionX509DescriptionPolicyIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionPolicyIdOutput) ToCertificateCertificateDescriptionX509DescriptionPolicyIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionPolicyIdOutput {
+	return o
+}
+
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+func (o CertificateCertificateDescriptionX509DescriptionPolicyIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionPolicyId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionPolicyId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput) ToCertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput() CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput) ToCertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionPolicyIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionPolicyId {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionPolicyId)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionPolicyIdOutput)
 }
 
 type CertificateConfig struct {
@@ -14733,6 +15894,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayInput)(nil)).Elem(), CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionSubjectKeyIdInput)(nil)).Elem(), CertificateCertificateDescriptionSubjectKeyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionSubjectKeyIdArrayInput)(nil)).Elem(), CertificateCertificateDescriptionSubjectKeyIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionAdditionalExtensionInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionCaOptionInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionCaOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionCaOptionArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionCaOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionPolicyIdInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionPolicyIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigInput)(nil)).Elem(), CertificateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigPtrInput)(nil)).Elem(), CertificateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigPublicKeyInput)(nil)).Elem(), CertificateConfigPublicKeyArgs{})
@@ -14921,6 +16100,24 @@ func init() {
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayOutput{})
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectKeyIdOutput{})
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectKeyIdArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionCaOptionOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionCaOptionArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionPolicyIdOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(CertificateConfigOutput{})
 	pulumi.RegisterOutputType(CertificateConfigPtrOutput{})
 	pulumi.RegisterOutputType(CertificateConfigPublicKeyOutput{})

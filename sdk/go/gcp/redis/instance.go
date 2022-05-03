@@ -315,6 +315,11 @@ type Instance struct {
 	// unique and non-overlapping with existing subnets in an authorized
 	// network.
 	ReservedIpRange pulumi.StringOutput `pulumi:"reservedIpRange"`
+	// Optional. Additional IP range for node placement. Required when enabling read replicas on
+	// an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+	// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+	// range associated with the private service access connection, or "auto".
+	SecondaryIpRange pulumi.StringOutput `pulumi:"secondaryIpRange"`
 	// List of server CA certificates for the instance.
 	ServerCaCerts InstanceServerCaCertArrayOutput `pulumi:"serverCaCerts"`
 	// The service tier of the instance. Must be one of these values:
@@ -459,6 +464,11 @@ type instanceState struct {
 	// unique and non-overlapping with existing subnets in an authorized
 	// network.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
+	// Optional. Additional IP range for node placement. Required when enabling read replicas on
+	// an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+	// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+	// range associated with the private service access connection, or "auto".
+	SecondaryIpRange *string `pulumi:"secondaryIpRange"`
 	// List of server CA certificates for the instance.
 	ServerCaCerts []InstanceServerCaCert `pulumi:"serverCaCerts"`
 	// The service tier of the instance. Must be one of these values:
@@ -572,6 +582,11 @@ type InstanceState struct {
 	// unique and non-overlapping with existing subnets in an authorized
 	// network.
 	ReservedIpRange pulumi.StringPtrInput
+	// Optional. Additional IP range for node placement. Required when enabling read replicas on
+	// an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+	// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+	// range associated with the private service access connection, or "auto".
+	SecondaryIpRange pulumi.StringPtrInput
 	// List of server CA certificates for the instance.
 	ServerCaCerts InstanceServerCaCertArrayInput
 	// The service tier of the instance. Must be one of these values:
@@ -661,6 +676,11 @@ type instanceArgs struct {
 	// unique and non-overlapping with existing subnets in an authorized
 	// network.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
+	// Optional. Additional IP range for node placement. Required when enabling read replicas on
+	// an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+	// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+	// range associated with the private service access connection, or "auto".
+	SecondaryIpRange *string `pulumi:"secondaryIpRange"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -745,6 +765,11 @@ type InstanceArgs struct {
 	// unique and non-overlapping with existing subnets in an authorized
 	// network.
 	ReservedIpRange pulumi.StringPtrInput
+	// Optional. Additional IP range for node placement. Required when enabling read replicas on
+	// an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
+	// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
+	// range associated with the private service access connection, or "auto".
+	SecondaryIpRange pulumi.StringPtrInput
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances

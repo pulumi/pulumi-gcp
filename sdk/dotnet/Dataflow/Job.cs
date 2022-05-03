@@ -111,9 +111,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string?> ServiceAccountEmail { get; private set; } = null!;
 
         /// <summary>
-        /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        /// different, e.g. by embedding a release ID or by using a random_id.
+        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         /// </summary>
         [Output("skipWaitOnJobTermination")]
         public Output<bool?> SkipWaitOnJobTermination { get; private set; } = null!;
@@ -312,9 +310,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        /// different, e.g. by embedding a release ID or by using a random_id.
+        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
@@ -474,9 +470,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        /// different, e.g. by embedding a release ID or by using a random_id.
+        /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }

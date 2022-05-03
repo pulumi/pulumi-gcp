@@ -10,15 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority
 {
     /// <summary>
-    /// A CertificateAuthority represents an individual Certificate Authority. A
-    /// CertificateAuthority can be used to create Certificates.
-    /// 
-    /// To get more information about CertificateAuthority, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
-    /// 
     /// ## Example Usage
     /// ### Privateca Certificate Authority Basic
     /// 
@@ -81,6 +72,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     },
     ///                 },
     ///             },
+    ///             DeletionProtection = true,
     ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///             {
     ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
@@ -154,6 +146,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     },
     ///                 },
     ///             },
+    ///             DeletionProtection = true,
     ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///             {
     ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
@@ -204,6 +197,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             Pool = "ca-pool",
     ///             CertificateAuthorityId = "my-certificate-authority",
     ///             Location = "us-central1",
+    ///             DeletionProtection = true,
     ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///             {
     ///                 CloudKmsKeyVersion = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
@@ -296,6 +290,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
@@ -456,6 +453,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("config", required: true)]
         public Input<Inputs.AuthorityConfigArgs> Config { get; set; } = null!;
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
         /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -573,6 +573,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,

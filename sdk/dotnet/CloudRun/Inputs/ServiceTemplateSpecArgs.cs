@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         /// <summary>
         /// -
+        /// (Deprecated)
         /// ServingState holds a value describing the state the resources
         /// are in for this Revision.
         /// It is expected

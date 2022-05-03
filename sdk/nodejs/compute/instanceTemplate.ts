@@ -83,6 +83,78 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Automatic Envoy Deployment
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.compute.getDefaultServiceAccount({});
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const foobar = new gcp.compute.InstanceTemplate("foobar", {
+ *     machineType: "e2-medium",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     scheduling: {
+ *         preemptible: false,
+ *         automaticRestart: true,
+ *     },
+ *     metadata: {
+ *         "gce-software-declaration": `{
+ *   "softwareRecipes": [{
+ *     "name": "install-gce-service-proxy-agent",
+ *     "desired_state": "INSTALLED",
+ *     "installSteps": [{
+ *       "scriptRun": {
+ *         "script": "#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
+ *       }
+ *     }]
+ *   }]
+ * }
+ * `,
+ *         "gce-service-proxy": `{
+ *   "api-version": "0.2",
+ *   "proxy-spec": {
+ *     "proxy-port": 15001,
+ *     "network": "my-network",
+ *     "tracing": "ON",
+ *     "access-log": "/var/log/envoy/access.log"
+ *   }
+ *   "service": {
+ *     "serving-ports": [80, 81]
+ *   },
+ *  "labels": {
+ *    "app_name": "bookserver_app",
+ *    "app_version": "STABLE"
+ *   }
+ * }
+ * `,
+ *         "enable-guest-attributes": "true",
+ *         "enable-osconfig": "true",
+ *     },
+ *     serviceAccount: {
+ *         email: _default.then(_default => _default.email),
+ *         scopes: ["cloud-platform"],
+ *     },
+ *     labels: {
+ *         "gce-service-proxy": "on",
+ *     },
+ * });
+ * ```
  * ## Using with Instance Group Manager
  *
  * Instance Templates cannot be updated after creation with the Google
