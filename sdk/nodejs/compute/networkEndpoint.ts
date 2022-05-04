@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * const group = new gcp.compute.NetworkEndpointGroup("group", {
  *     network: defaultNetwork.id,
  *     subnetwork: defaultSubnetwork.id,
- *     defaultPort: "90",
+ *     defaultPort: 90,
  *     zone: "us-central1-a",
  * });
  * ```

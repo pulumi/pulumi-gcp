@@ -253,7 +253,7 @@ import * as utilities from "../utilities";
  *                     },
  *                     delay: {
  *                         fixedDelay: {
- *                             seconds: 0,
+ *                             seconds: "0",
  *                             nanos: 50000,
  *                         },
  *                         percentage: 7.8,
@@ -265,7 +265,7 @@ import * as utilities from "../utilities";
  *                 retryPolicy: {
  *                     numRetries: 4,
  *                     perTryTimeout: {
- *                         seconds: 30,
+ *                         seconds: "30",
  *                     },
  *                     retryConditions: [
  *                         "5xx",
@@ -273,7 +273,7 @@ import * as utilities from "../utilities";
  *                     ],
  *                 },
  *                 timeout: {
- *                     seconds: 20,
+ *                     seconds: "20",
  *                     nanos: 750000000,
  *                 },
  *                 urlRewrite: {

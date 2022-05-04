@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * });
  * const backend = new gcp.compute.RegionBackendService("backend", {
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * }, {
  *     provider: google_beta,

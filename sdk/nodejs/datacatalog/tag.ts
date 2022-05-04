@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     ],
- *     forceDelete: "false",
+ *     forceDelete: false,
  * });
  * const basicTag = new gcp.datacatalog.Tag("basicTag", {
  *     parent: entry.id,
@@ -140,7 +140,7 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     ],
- *     forceDelete: "false",
+ *     forceDelete: false,
  * });
  * const entryGroupTag = new gcp.datacatalog.Tag("entryGroupTag", {
  *     parent: entryGroup.id,
@@ -241,7 +241,7 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     ],
- *     forceDelete: "false",
+ *     forceDelete: false,
  * });
  * const basicTag = new gcp.datacatalog.Tag("basicTag", {
  *     parent: entry.id,

@@ -24,8 +24,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const me = gcp.organizations.getClientOpenIdUserInfo({});
- * export const my_email = me.then(me => me.email);
+ * export = async () => {
+ *     const me = await gcp.organizations.getClientOpenIdUserInfo({});
+ *     const my_email = me.email;
+ *     return {
+ *         "my-email": my_email,
+ *     };
+ * }
  * ```
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {

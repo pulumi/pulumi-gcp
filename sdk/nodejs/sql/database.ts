@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *     },
- *     deletionProtection: "true",
+ *     deletionProtection: true,
  * });
  * const database = new gcp.sql.Database("database", {instance: instance.name});
  * ```

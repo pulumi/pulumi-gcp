@@ -219,7 +219,7 @@ import * as utilities from "../utilities";
  * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
  *     region: "europe-west1",
  *     httpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * }, {
  *     provider: google_beta,
@@ -378,7 +378,7 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  *     region: "us-central1",
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * }, {
  *     provider: google_beta,
@@ -393,7 +393,7 @@ import * as utilities from "../utilities";
  * // Forwarding rule for External Network Load Balancing using Backend Services
  * const _default = new gcp.compute.ForwardingRule("default", {
  *     region: "us-central1",
- *     portRange: 80,
+ *     portRange: "80",
  *     backendService: backend.id,
  * }, {
  *     provider: google_beta,
@@ -409,7 +409,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * });
  * const backend = new gcp.compute.RegionBackendService("backend", {
@@ -485,7 +485,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * });
  * const backend = new gcp.compute.RegionBackendService("backend", {

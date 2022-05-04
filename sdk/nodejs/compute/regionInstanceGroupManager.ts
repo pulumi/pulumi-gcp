@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     unhealthyThreshold: 10,
  *     httpHealthCheck: {
  *         requestPath: "/healthz",
- *         port: "8080",
+ *         port: 8080,
  *     },
  * });
  * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {

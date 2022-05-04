@@ -33,8 +33,8 @@ import * as utilities from "../utilities";
  *         layer4Configs: [{
  *             ipProtocol: "tcp",
  *             ports: [
- *                 80,
- *                 8080,
+ *                 "80",
+ *                 "8080",
  *             ],
  *         }],
  *         destIpRanges: ["11.100.0.1/32"],

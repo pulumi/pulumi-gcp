@@ -247,7 +247,7 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
- *         port: "22",
+ *         port: 22,
  *     },
  *     logConfig: {
  *         enable: true,

@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     duration: "2d",
  *     credentials: fs.readFileSync("path/to/credentials.json"),
  *     extensionHeaders: {
- *         "x-goog-if-generation-match": 1,
+ *         "x-goog-if-generation-match": "1",
  *     },
  * });
  * ```

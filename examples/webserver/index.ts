@@ -17,12 +17,12 @@ const region = gcp.config.region;
 const regionZone = gcp.config.zone;
 const projectName = gcp.config.project;
 
-const computeNetwork = new gcp.compute.Network("network", {
+const computeNetwork = new gcp.compute.Network("ts-network", {
     project: projectName,
     autoCreateSubnetworks: true,
 });
 
-const computeFirewall = new gcp.compute.Firewall("firewall", {
+const computeFirewall = new gcp.compute.Firewall("ts-firewall", {
     project: projectName,
     network: computeNetwork.selfLink,
     sourceTags: ["foo"],
@@ -40,7 +40,7 @@ const computeFirewall = new gcp.compute.Firewall("firewall", {
     ],
 });
 
-const computeIntance = new gcp.compute.Instance("instance", {
+const computeIntance = new gcp.compute.Instance("ts-instance", {
     project: projectName,
     machineType: "f1-micro",
     zone: regionZone,

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
  *     type: "PARTNER",
  *     router: foobarRouter.id,
- *     mtu: 1500,
+ *     mtu: "1500",
  * });
  * ```
  * ### Compute Interconnect Attachment Ipsec Encryption

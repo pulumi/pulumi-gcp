@@ -18,13 +18,13 @@ region_zone = config.zone
 project_name = config.project
 
 compute_network = compute.Network(
-    "network",
+    "py-network",
     project=project_name,
     auto_create_subnetworks=True,
 )
 
 compute_firewall = compute.Firewall(
-    "firewall",
+    "py-firewall",
     project=project_name,
     network=compute_network.self_link,
     source_tags = ["foo"],
@@ -38,7 +38,7 @@ compute_firewall = compute.Firewall(
 )
 
 compute_instance = compute.Instance(
-    "instance",
+    "py-instance",
     project=project_name,
     machine_type="f1-micro",
     zone=region_zone,
