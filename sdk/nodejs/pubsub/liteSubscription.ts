@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     retentionConfig: {
- *         perPartitionBytes: 32212254720,
+ *         perPartitionBytes: "32212254720",
  *     },
  * });
  * const exampleLiteSubscription = new gcp.pubsub.LiteSubscription("exampleLiteSubscription", {

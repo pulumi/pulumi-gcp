@@ -140,7 +140,7 @@ import * as utilities from "../utilities";
  *     pool: "ca-pool",
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
- *     deletionProtection: "true",
+ *     deletionProtection: true,
  *     keySpec: {
  *         cloudKmsKeyVersion: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
  *     },

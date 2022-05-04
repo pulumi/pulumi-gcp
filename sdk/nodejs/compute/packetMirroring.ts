@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * });
  * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {healthChecks: [defaultHealthCheck.id]});

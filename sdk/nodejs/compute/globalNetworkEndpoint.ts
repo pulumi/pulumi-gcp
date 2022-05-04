@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const neg = new gcp.compute.GlobalNetworkEndpointGroup("neg", {
- *     defaultPort: "90",
+ *     defaultPort: 90,
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * const default_endpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
- *         port: "443",
+ *         port: 443,
  *     },
  * });
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {

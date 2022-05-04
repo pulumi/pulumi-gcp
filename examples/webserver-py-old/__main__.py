@@ -24,7 +24,7 @@ compute_network = compute.Network(
 )
 
 compute_firewall = compute.Firewall(
-    "firewall",
+    "firewall-old",
     project=project_name,
     network=compute_network.self_link,
     source_tags = ["foo"],
@@ -40,7 +40,7 @@ compute_firewall = compute.Firewall(
 )
 
 compute_instance = compute.Instance(
-    "instance",
+    "instance-old",
     project=project_name,
     machine_type="f1-micro",
     zone=region_zone,

@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * const zone = new gcp.dns.ManagedZone("zone", {dnsName: "sslcert.tf-test.club."});
  * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
  *     target: defaultTargetHttpsProxy.id,
- *     portRange: 443,
+ *     portRange: "443",
  * });
  * const set = new gcp.dns.RecordSet("set", {
  *     name: "sslcert.tf-test.club.",

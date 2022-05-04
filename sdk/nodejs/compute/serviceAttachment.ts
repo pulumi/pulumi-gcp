@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * });
  * const producerServiceBackend = new gcp.compute.RegionBackendService("producerServiceBackend", {
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
- *         port: "80",
+ *         port: 80,
  *     },
  * });
  * const producerServiceBackend = new gcp.compute.RegionBackendService("producerServiceBackend", {

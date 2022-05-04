@@ -66,8 +66,8 @@ import * as utilities from "../utilities";
  *                     }],
  *                 },
  *             },
- *             required: "true",
- *             redact: "true",
+ *             required: true,
+ *             redact: true,
  *         }],
  *     },
  *     transitionRoutes: [{

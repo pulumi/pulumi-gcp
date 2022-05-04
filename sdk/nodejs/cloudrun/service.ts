@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *     },
- *     deletionProtection: "true",
+ *     deletionProtection: true,
  * });
  * const _default = new gcp.cloudrun.Service("default", {
  *     location: "us-central1",
