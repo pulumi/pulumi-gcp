@@ -23,6 +23,9 @@ __all__ = [
     'PolicyAlternativeNameServerConfig',
     'PolicyAlternativeNameServerConfigTargetNameServer',
     'PolicyNetwork',
+    'RecordSetRoutingPolicy',
+    'RecordSetRoutingPolicyGeo',
+    'RecordSetRoutingPolicyWrr',
     'ResponsePolicyNetwork',
     'ResponsePolicyRuleLocalData',
     'ResponsePolicyRuleLocalDataLocalData',
@@ -627,6 +630,99 @@ class PolicyNetwork(dict):
         `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         return pulumi.get(self, "network_url")
+
+
+@pulumi.output_type
+class RecordSetRoutingPolicy(dict):
+    def __init__(__self__, *,
+                 geos: Optional[Sequence['outputs.RecordSetRoutingPolicyGeo']] = None,
+                 wrrs: Optional[Sequence['outputs.RecordSetRoutingPolicyWrr']] = None):
+        """
+        :param Sequence['RecordSetRoutingPolicyGeoArgs'] geos: The configuration for Geolocation based routing policy.
+               Structure is document below.
+        :param Sequence['RecordSetRoutingPolicyWrrArgs'] wrrs: The configuration for Weighted Round Robin based routing policy.
+               Structure is document below.
+        """
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
+        if wrrs is not None:
+            pulumi.set(__self__, "wrrs", wrrs)
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[Sequence['outputs.RecordSetRoutingPolicyGeo']]:
+        """
+        The configuration for Geolocation based routing policy.
+        Structure is document below.
+        """
+        return pulumi.get(self, "geos")
+
+    @property
+    @pulumi.getter
+    def wrrs(self) -> Optional[Sequence['outputs.RecordSetRoutingPolicyWrr']]:
+        """
+        The configuration for Weighted Round Robin based routing policy.
+        Structure is document below.
+        """
+        return pulumi.get(self, "wrrs")
+
+
+@pulumi.output_type
+class RecordSetRoutingPolicyGeo(dict):
+    def __init__(__self__, *,
+                 location: str,
+                 rrdatas: Sequence[str]):
+        """
+        :param str location: The location name defined in Google Cloud.
+        :param Sequence[str] rrdatas: Same as `rrdatas` above.
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "rrdatas", rrdatas)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location name defined in Google Cloud.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Sequence[str]:
+        """
+        Same as `rrdatas` above.
+        """
+        return pulumi.get(self, "rrdatas")
+
+
+@pulumi.output_type
+class RecordSetRoutingPolicyWrr(dict):
+    def __init__(__self__, *,
+                 rrdatas: Sequence[str],
+                 weight: float):
+        """
+        :param Sequence[str] rrdatas: Same as `rrdatas` above.
+        :param float weight: The ratio of traffic routed to the target.
+        """
+        pulumi.set(__self__, "rrdatas", rrdatas)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Sequence[str]:
+        """
+        Same as `rrdatas` above.
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> float:
+        """
+        The ratio of traffic routed to the target.
+        """
+        return pulumi.get(self, "weight")
 
 
 @pulumi.output_type

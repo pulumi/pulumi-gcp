@@ -67,6 +67,7 @@ export interface GetFunctionResult {
      * Description of the function.
      */
     readonly description: string;
+    readonly dockerRepository: string;
     /**
      * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      */
@@ -88,6 +89,7 @@ export interface GetFunctionResult {
      * Controls what traffic can reach the function.
      */
     readonly ingressSettings: string;
+    readonly kmsKeyName: string;
     /**
      * A map of labels applied to this function.
      */

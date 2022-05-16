@@ -207,6 +207,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// (Beta only) Logging configuration.
+        /// </summary>
+        [Output("loggingConfig")]
+        public Output<Outputs.AwsClusterLoggingConfig> LoggingConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The name of this resource.
         /// </summary>
         [Output("name")]
@@ -350,6 +356,12 @@ namespace Pulumi.Gcp.Container
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// (Beta only) Logging configuration.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.AwsClusterLoggingConfigArgs>? LoggingConfig { get; set; }
+
+        /// <summary>
         /// The name of this resource.
         /// </summary>
         [Input("name")]
@@ -440,6 +452,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// (Beta only) Logging configuration.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.AwsClusterLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
         /// <summary>
         /// The name of this resource.

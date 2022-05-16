@@ -133,6 +133,10 @@ import (
 // 				SecurityGroupIds: pulumi.StringArray{
 // 					pulumi.String("sg-00000000000000000"),
 // 				},
+// 				ProxyConfig: &container.AwsNodePoolConfigProxyConfigArgs{
+// 					SecretArn:     pulumi.String("arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"),
+// 					SecretVersion: pulumi.String("12345678-ABCD-EFGH-IJKL-987654321098"),
+// 				},
 // 				SshConfig: &container.AwsNodePoolConfigSshConfigArgs{
 // 					Ec2KeyPair: pulumi.String("my--1p-dev-ssh"),
 // 				},

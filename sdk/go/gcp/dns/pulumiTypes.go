@@ -1832,6 +1832,382 @@ func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
 	}).(PolicyNetworkOutput)
 }
 
+type RecordSetRoutingPolicy struct {
+	// The configuration for Geolocation based routing policy.
+	// Structure is document below.
+	Geos []RecordSetRoutingPolicyGeo `pulumi:"geos"`
+	// The configuration for Weighted Round Robin based routing policy.
+	// Structure is document below.
+	Wrrs []RecordSetRoutingPolicyWrr `pulumi:"wrrs"`
+}
+
+// RecordSetRoutingPolicyInput is an input type that accepts RecordSetRoutingPolicyArgs and RecordSetRoutingPolicyOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyInput` via:
+//
+//          RecordSetRoutingPolicyArgs{...}
+type RecordSetRoutingPolicyInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyOutput() RecordSetRoutingPolicyOutput
+	ToRecordSetRoutingPolicyOutputWithContext(context.Context) RecordSetRoutingPolicyOutput
+}
+
+type RecordSetRoutingPolicyArgs struct {
+	// The configuration for Geolocation based routing policy.
+	// Structure is document below.
+	Geos RecordSetRoutingPolicyGeoArrayInput `pulumi:"geos"`
+	// The configuration for Weighted Round Robin based routing policy.
+	// Structure is document below.
+	Wrrs RecordSetRoutingPolicyWrrArrayInput `pulumi:"wrrs"`
+}
+
+func (RecordSetRoutingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicy)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyArgs) ToRecordSetRoutingPolicyOutput() RecordSetRoutingPolicyOutput {
+	return i.ToRecordSetRoutingPolicyOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyArgs) ToRecordSetRoutingPolicyOutputWithContext(ctx context.Context) RecordSetRoutingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyOutput)
+}
+
+func (i RecordSetRoutingPolicyArgs) ToRecordSetRoutingPolicyPtrOutput() RecordSetRoutingPolicyPtrOutput {
+	return i.ToRecordSetRoutingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyArgs) ToRecordSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyOutput).ToRecordSetRoutingPolicyPtrOutputWithContext(ctx)
+}
+
+// RecordSetRoutingPolicyPtrInput is an input type that accepts RecordSetRoutingPolicyArgs, RecordSetRoutingPolicyPtr and RecordSetRoutingPolicyPtrOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPtrInput` via:
+//
+//          RecordSetRoutingPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type RecordSetRoutingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPtrOutput() RecordSetRoutingPolicyPtrOutput
+	ToRecordSetRoutingPolicyPtrOutputWithContext(context.Context) RecordSetRoutingPolicyPtrOutput
+}
+
+type recordSetRoutingPolicyPtrType RecordSetRoutingPolicyArgs
+
+func RecordSetRoutingPolicyPtr(v *RecordSetRoutingPolicyArgs) RecordSetRoutingPolicyPtrInput {
+	return (*recordSetRoutingPolicyPtrType)(v)
+}
+
+func (*recordSetRoutingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicy)(nil)).Elem()
+}
+
+func (i *recordSetRoutingPolicyPtrType) ToRecordSetRoutingPolicyPtrOutput() RecordSetRoutingPolicyPtrOutput {
+	return i.ToRecordSetRoutingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *recordSetRoutingPolicyPtrType) ToRecordSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPtrOutput)
+}
+
+type RecordSetRoutingPolicyOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicy)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyOutput) ToRecordSetRoutingPolicyOutput() RecordSetRoutingPolicyOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyOutput) ToRecordSetRoutingPolicyOutputWithContext(ctx context.Context) RecordSetRoutingPolicyOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyOutput) ToRecordSetRoutingPolicyPtrOutput() RecordSetRoutingPolicyPtrOutput {
+	return o.ToRecordSetRoutingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RecordSetRoutingPolicyOutput) ToRecordSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSetRoutingPolicy) *RecordSetRoutingPolicy {
+		return &v
+	}).(RecordSetRoutingPolicyPtrOutput)
+}
+
+// The configuration for Geolocation based routing policy.
+// Structure is document below.
+func (o RecordSetRoutingPolicyOutput) Geos() RecordSetRoutingPolicyGeoArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicy) []RecordSetRoutingPolicyGeo { return v.Geos }).(RecordSetRoutingPolicyGeoArrayOutput)
+}
+
+// The configuration for Weighted Round Robin based routing policy.
+// Structure is document below.
+func (o RecordSetRoutingPolicyOutput) Wrrs() RecordSetRoutingPolicyWrrArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicy) []RecordSetRoutingPolicyWrr { return v.Wrrs }).(RecordSetRoutingPolicyWrrArrayOutput)
+}
+
+type RecordSetRoutingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicy)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPtrOutput) ToRecordSetRoutingPolicyPtrOutput() RecordSetRoutingPolicyPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPtrOutput) ToRecordSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPtrOutput) Elem() RecordSetRoutingPolicyOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicy) RecordSetRoutingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RecordSetRoutingPolicy
+		return ret
+	}).(RecordSetRoutingPolicyOutput)
+}
+
+// The configuration for Geolocation based routing policy.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPtrOutput) Geos() RecordSetRoutingPolicyGeoArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicy) []RecordSetRoutingPolicyGeo {
+		if v == nil {
+			return nil
+		}
+		return v.Geos
+	}).(RecordSetRoutingPolicyGeoArrayOutput)
+}
+
+// The configuration for Weighted Round Robin based routing policy.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPtrOutput) Wrrs() RecordSetRoutingPolicyWrrArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicy) []RecordSetRoutingPolicyWrr {
+		if v == nil {
+			return nil
+		}
+		return v.Wrrs
+	}).(RecordSetRoutingPolicyWrrArrayOutput)
+}
+
+type RecordSetRoutingPolicyGeo struct {
+	// The location name defined in Google Cloud.
+	Location string `pulumi:"location"`
+	// Same as `rrdatas` above.
+	Rrdatas []string `pulumi:"rrdatas"`
+}
+
+// RecordSetRoutingPolicyGeoInput is an input type that accepts RecordSetRoutingPolicyGeoArgs and RecordSetRoutingPolicyGeoOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyGeoInput` via:
+//
+//          RecordSetRoutingPolicyGeoArgs{...}
+type RecordSetRoutingPolicyGeoInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyGeoOutput() RecordSetRoutingPolicyGeoOutput
+	ToRecordSetRoutingPolicyGeoOutputWithContext(context.Context) RecordSetRoutingPolicyGeoOutput
+}
+
+type RecordSetRoutingPolicyGeoArgs struct {
+	// The location name defined in Google Cloud.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Same as `rrdatas` above.
+	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
+}
+
+func (RecordSetRoutingPolicyGeoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyGeo)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyGeoArgs) ToRecordSetRoutingPolicyGeoOutput() RecordSetRoutingPolicyGeoOutput {
+	return i.ToRecordSetRoutingPolicyGeoOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyGeoArgs) ToRecordSetRoutingPolicyGeoOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoOutput)
+}
+
+// RecordSetRoutingPolicyGeoArrayInput is an input type that accepts RecordSetRoutingPolicyGeoArray and RecordSetRoutingPolicyGeoArrayOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyGeoArrayInput` via:
+//
+//          RecordSetRoutingPolicyGeoArray{ RecordSetRoutingPolicyGeoArgs{...} }
+type RecordSetRoutingPolicyGeoArrayInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyGeoArrayOutput() RecordSetRoutingPolicyGeoArrayOutput
+	ToRecordSetRoutingPolicyGeoArrayOutputWithContext(context.Context) RecordSetRoutingPolicyGeoArrayOutput
+}
+
+type RecordSetRoutingPolicyGeoArray []RecordSetRoutingPolicyGeoInput
+
+func (RecordSetRoutingPolicyGeoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyGeo)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyGeoArray) ToRecordSetRoutingPolicyGeoArrayOutput() RecordSetRoutingPolicyGeoArrayOutput {
+	return i.ToRecordSetRoutingPolicyGeoArrayOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyGeoArray) ToRecordSetRoutingPolicyGeoArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoArrayOutput)
+}
+
+type RecordSetRoutingPolicyGeoOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyGeoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyGeo)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyGeoOutput) ToRecordSetRoutingPolicyGeoOutput() RecordSetRoutingPolicyGeoOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoOutput) ToRecordSetRoutingPolicyGeoOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoOutput {
+	return o
+}
+
+// The location name defined in Google Cloud.
+func (o RecordSetRoutingPolicyGeoOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeo) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Same as `rrdatas` above.
+func (o RecordSetRoutingPolicyGeoOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeo) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+}
+
+type RecordSetRoutingPolicyGeoArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyGeoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyGeo)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyGeoArrayOutput) ToRecordSetRoutingPolicyGeoArrayOutput() RecordSetRoutingPolicyGeoArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoArrayOutput) ToRecordSetRoutingPolicyGeoArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyGeoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyGeo {
+		return vs[0].([]RecordSetRoutingPolicyGeo)[vs[1].(int)]
+	}).(RecordSetRoutingPolicyGeoOutput)
+}
+
+type RecordSetRoutingPolicyWrr struct {
+	// Same as `rrdatas` above.
+	Rrdatas []string `pulumi:"rrdatas"`
+	// The ratio of traffic routed to the target.
+	Weight float64 `pulumi:"weight"`
+}
+
+// RecordSetRoutingPolicyWrrInput is an input type that accepts RecordSetRoutingPolicyWrrArgs and RecordSetRoutingPolicyWrrOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyWrrInput` via:
+//
+//          RecordSetRoutingPolicyWrrArgs{...}
+type RecordSetRoutingPolicyWrrInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyWrrOutput() RecordSetRoutingPolicyWrrOutput
+	ToRecordSetRoutingPolicyWrrOutputWithContext(context.Context) RecordSetRoutingPolicyWrrOutput
+}
+
+type RecordSetRoutingPolicyWrrArgs struct {
+	// Same as `rrdatas` above.
+	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
+	// The ratio of traffic routed to the target.
+	Weight pulumi.Float64Input `pulumi:"weight"`
+}
+
+func (RecordSetRoutingPolicyWrrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyWrr)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyWrrArgs) ToRecordSetRoutingPolicyWrrOutput() RecordSetRoutingPolicyWrrOutput {
+	return i.ToRecordSetRoutingPolicyWrrOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyWrrArgs) ToRecordSetRoutingPolicyWrrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrOutput)
+}
+
+// RecordSetRoutingPolicyWrrArrayInput is an input type that accepts RecordSetRoutingPolicyWrrArray and RecordSetRoutingPolicyWrrArrayOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyWrrArrayInput` via:
+//
+//          RecordSetRoutingPolicyWrrArray{ RecordSetRoutingPolicyWrrArgs{...} }
+type RecordSetRoutingPolicyWrrArrayInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyWrrArrayOutput() RecordSetRoutingPolicyWrrArrayOutput
+	ToRecordSetRoutingPolicyWrrArrayOutputWithContext(context.Context) RecordSetRoutingPolicyWrrArrayOutput
+}
+
+type RecordSetRoutingPolicyWrrArray []RecordSetRoutingPolicyWrrInput
+
+func (RecordSetRoutingPolicyWrrArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyWrr)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyWrrArray) ToRecordSetRoutingPolicyWrrArrayOutput() RecordSetRoutingPolicyWrrArrayOutput {
+	return i.ToRecordSetRoutingPolicyWrrArrayOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyWrrArray) ToRecordSetRoutingPolicyWrrArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrArrayOutput)
+}
+
+type RecordSetRoutingPolicyWrrOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyWrrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyWrr)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyWrrOutput) ToRecordSetRoutingPolicyWrrOutput() RecordSetRoutingPolicyWrrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrOutput) ToRecordSetRoutingPolicyWrrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrOutput {
+	return o
+}
+
+// Same as `rrdatas` above.
+func (o RecordSetRoutingPolicyWrrOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrr) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+}
+
+// The ratio of traffic routed to the target.
+func (o RecordSetRoutingPolicyWrrOutput) Weight() pulumi.Float64Output {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrr) float64 { return v.Weight }).(pulumi.Float64Output)
+}
+
+type RecordSetRoutingPolicyWrrArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyWrrArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyWrr)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyWrrArrayOutput) ToRecordSetRoutingPolicyWrrArrayOutput() RecordSetRoutingPolicyWrrArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrArrayOutput) ToRecordSetRoutingPolicyWrrArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyWrrOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyWrr {
+		return vs[0].([]RecordSetRoutingPolicyWrr)[vs[1].(int)]
+	}).(RecordSetRoutingPolicyWrrOutput)
+}
+
 type ResponsePolicyNetwork struct {
 	// The fully qualified URL of the VPC network to bind to.
 	// This should be formatted like
@@ -2792,6 +3168,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerArrayInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyNetworkInput)(nil)).Elem(), PolicyNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyNetworkArrayInput)(nil)).Elem(), PolicyNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyInput)(nil)).Elem(), RecordSetRoutingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPtrInput)(nil)).Elem(), RecordSetRoutingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyGeoInput)(nil)).Elem(), RecordSetRoutingPolicyGeoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyGeoArrayInput)(nil)).Elem(), RecordSetRoutingPolicyGeoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyWrrInput)(nil)).Elem(), RecordSetRoutingPolicyWrrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyWrrArrayInput)(nil)).Elem(), RecordSetRoutingPolicyWrrArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyNetworkInput)(nil)).Elem(), ResponsePolicyNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyNetworkArrayInput)(nil)).Elem(), ResponsePolicyNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataInput)(nil)).Elem(), ResponsePolicyRuleLocalDataArgs{})
@@ -2832,6 +3214,12 @@ func init() {
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkArrayOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyGeoOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyGeoArrayOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyWrrOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyWrrArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataOutput{})

@@ -132,8 +132,8 @@ github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym
 github.com/DataDog/datadog-go v3.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
 github.com/Djarvur/go-err113 v0.0.0-20210108212216-aea10b59be24/go.mod h1:4UJr5HIiMZrwgkSPdsjy2uOQExX/WEILpIrO9UPGuXs=
 github.com/GoogleCloudPlatform/cloudsql-proxy v1.22.0/go.mod h1:mAm5O/zik2RFmcpigNjg6nMotDL8ZXJaxKzgGVcSMFA=
-github.com/GoogleCloudPlatform/declarative-resource-client-library v1.1.0 h1:6EDY4EUsCW/mTRzYJ8SEzL2V5JACYCiIswnbhpaAwaY=
-github.com/GoogleCloudPlatform/declarative-resource-client-library v1.1.0/go.mod h1:UJoDYx6t3+xCOd+dZX8+NrEB+Y/eW1pQlvxh2Gt7y5E=
+github.com/GoogleCloudPlatform/declarative-resource-client-library v1.5.1 h1:WsauUAtzKxwcfR2SAN8K/yeHS6S4pGK6r/oJdKJaTgI=
+github.com/GoogleCloudPlatform/declarative-resource-client-library v1.5.1/go.mod h1:UJoDYx6t3+xCOd+dZX8+NrEB+Y/eW1pQlvxh2Gt7y5E=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2 h1:5IcZpTvzydCQeHzK4Ef/D5rrSqwxob0t8PQPMybUNFM=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2/go.mod h1:yDgFjdqOqDEKOvasDdhWNXYg9BVp4O+o5f6V/ehm6Oo=
 github.com/Masterminds/goutils v1.1.0 h1:zukEsf/1JZwCMgHiK3GZftabmxiCw4apj3a28RPBiVg=
@@ -1026,8 +1026,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e h1:jl43csgF3BSlNRmjo+TGgjW/uXk9h7+NoR3doKQ0BT4=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e/go.mod h1:JBItawj+j8Ssla5Ib6BC/W9VQkOucBfnX7VRtyx1vw8=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20220503201551-f50693105f6a h1:2BlFuXCe69iCioBeJV6/0P2owWupKL3zHjwoH0M67WM=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20220503201551-f50693105f6a/go.mod h1:gVVB/twWiZbvwd5MnkJHCup2QFOUSDb70pmwKBNOIjA=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20220516202811-f79f45c3b5b1 h1:vkp9vWiIr2fWoTzvFA3aQlGlLPKHDNjZy4Nice8xxMU=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20220516202811-f79f45c3b5b1/go.mod h1:F0Sp+p7suGOyldEPmy2olcm1HG+egmZv4KwyFuyY2Go=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=
 github.com/quasilyte/go-ruleguard v0.3.1-0.20210203134552-1b5a410e1cc8/go.mod h1:KsAh3x0e7Fkpgs+Q9pNLS5XpFSvYCEVl5gP9Pp1xp30=
 github.com/quasilyte/go-ruleguard v0.3.4/go.mod h1:57FZgMnoo6jqxkYKmVj5Fc8vOt0rVzoE/UNAmFFIPqA=

@@ -298,7 +298,11 @@ import (
 //
 //  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
-// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
+// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
+//
+// ```sh
+//  $ pulumi import gcp:organizations/iAMMember:IAMMember to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+// ```
 type IAMMember struct {
 	pulumi.CustomResourceState
 

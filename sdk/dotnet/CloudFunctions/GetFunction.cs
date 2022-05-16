@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Description of the function.
         /// </summary>
         public readonly string Description;
+        public readonly string DockerRepository;
         /// <summary>
         /// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
         /// </summary>
@@ -163,6 +164,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Controls what traffic can reach the function.
         /// </summary>
         public readonly string IngressSettings;
+        public readonly string KmsKeyName;
         /// <summary>
         /// A map of labels applied to this function.
         /// </summary>
@@ -225,6 +227,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string description,
 
+            string dockerRepository,
+
             string entryPoint,
 
             ImmutableDictionary<string, object> environmentVariables,
@@ -236,6 +240,8 @@ namespace Pulumi.Gcp.CloudFunctions
             string id,
 
             string ingressSettings,
+
+            string kmsKeyName,
 
             ImmutableDictionary<string, object> labels,
 
@@ -274,12 +280,14 @@ namespace Pulumi.Gcp.CloudFunctions
             AvailableMemoryMb = availableMemoryMb;
             BuildEnvironmentVariables = buildEnvironmentVariables;
             Description = description;
+            DockerRepository = dockerRepository;
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;
             EventTriggers = eventTriggers;
             HttpsTriggerUrl = httpsTriggerUrl;
             Id = id;
             IngressSettings = ingressSettings;
+            KmsKeyName = kmsKeyName;
             Labels = labels;
             MaxInstances = maxInstances;
             MinInstances = minInstances;

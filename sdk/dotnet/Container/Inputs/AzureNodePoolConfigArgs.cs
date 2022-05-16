@@ -13,6 +13,18 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AzureNodePoolConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Beta only) The OS image type to use on node pool instances.
+        /// </summary>
+        [Input("imageType")]
+        public Input<string>? ImageType { get; set; }
+
+        /// <summary>
+        /// Proxy configuration for outbound HTTP(S) traffic.
+        /// </summary>
+        [Input("proxyConfig")]
+        public Input<Inputs.AzureNodePoolConfigProxyConfigArgs>? ProxyConfig { get; set; }
+
+        /// <summary>
         /// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         /// </summary>
         [Input("rootVolume")]

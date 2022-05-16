@@ -130,6 +130,8 @@ type AzureCluster struct {
 	Fleet AzureClusterFleetOutput `pulumi:"fleet"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
+	// (Beta only) Logging configuration.
+	LoggingConfig AzureClusterLoggingConfigOutput `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cluster-wide networking configuration.
@@ -227,6 +229,8 @@ type azureClusterState struct {
 	Fleet *AzureClusterFleet `pulumi:"fleet"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
+	// (Beta only) Logging configuration.
+	LoggingConfig *AzureClusterLoggingConfig `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
@@ -272,6 +276,8 @@ type AzureClusterState struct {
 	Fleet AzureClusterFleetPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
+	// (Beta only) Logging configuration.
+	LoggingConfig AzureClusterLoggingConfigPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
@@ -314,6 +320,8 @@ type azureClusterArgs struct {
 	Fleet AzureClusterFleet `pulumi:"fleet"`
 	// The location for the resource
 	Location string `pulumi:"location"`
+	// (Beta only) Logging configuration.
+	LoggingConfig *AzureClusterLoggingConfig `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
@@ -342,6 +350,8 @@ type AzureClusterArgs struct {
 	Fleet AzureClusterFleetInput
 	// The location for the resource
 	Location pulumi.StringInput
+	// (Beta only) Logging configuration.
+	LoggingConfig AzureClusterLoggingConfigPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
@@ -493,6 +503,11 @@ func (o AzureClusterOutput) Fleet() AzureClusterFleetOutput {
 // The location for the resource
 func (o AzureClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// (Beta only) Logging configuration.
+func (o AzureClusterOutput) LoggingConfig() AzureClusterLoggingConfigOutput {
+	return o.ApplyT(func(v *AzureCluster) AzureClusterLoggingConfigOutput { return v.LoggingConfig }).(AzureClusterLoggingConfigOutput)
 }
 
 // The name of this resource.

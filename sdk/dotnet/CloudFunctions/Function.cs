@@ -151,6 +151,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        /// </summary>
+        [Output("dockerRepository")]
+        public Output<string?> DockerRepository { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the function that will be executed when the Google Cloud Function is triggered.
         /// </summary>
         [Output("entryPoint")]
@@ -179,6 +185,13 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Output("ingressSettings")]
         public Output<string?> IngressSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
         /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
@@ -255,7 +268,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Represents parameters related to source repository where a function is hosted.
-        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         /// </summary>
         [Output("sourceRepository")]
         public Output<Outputs.FunctionSourceRepository?> SourceRepository { get; private set; } = null!;
@@ -355,6 +368,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        /// </summary>
+        [Input("dockerRepository")]
+        public Input<string>? DockerRepository { get; set; }
+
+        /// <summary>
         /// Name of the function that will be executed when the Google Cloud Function is triggered.
         /// </summary>
         [Input("entryPoint")]
@@ -389,6 +408,13 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("ingressSettings")]
         public Input<string>? IngressSettings { get; set; }
+
+        /// <summary>
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -483,7 +509,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Represents parameters related to source repository where a function is hosted.
-        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         /// </summary>
         [Input("sourceRepository")]
         public Input<Inputs.FunctionSourceRepositoryArgs>? SourceRepository { get; set; }
@@ -544,6 +570,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        /// </summary>
+        [Input("dockerRepository")]
+        public Input<string>? DockerRepository { get; set; }
+
+        /// <summary>
         /// Name of the function that will be executed when the Google Cloud Function is triggered.
         /// </summary>
         [Input("entryPoint")]
@@ -578,6 +610,13 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("ingressSettings")]
         public Input<string>? IngressSettings { get; set; }
+
+        /// <summary>
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -672,7 +711,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Represents parameters related to source repository where a function is hosted.
-        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
+        /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         /// </summary>
         [Input("sourceRepository")]
         public Input<Inputs.FunctionSourceRepositoryGetArgs>? SourceRepository { get; set; }

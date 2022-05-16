@@ -57,6 +57,7 @@ __all__ = [
     'FirewallLogConfigArgs',
     'FirewallPolicyRuleMatchArgs',
     'FirewallPolicyRuleMatchLayer4ConfigArgs',
+    'ForwardingRuleServiceDirectoryRegistrationArgs',
     'GlobalForwardingRuleMetadataFilterArgs',
     'GlobalForwardingRuleMetadataFilterFilterLabelArgs',
     'HaVpnGatewayVpnInterfaceArgs',
@@ -4253,6 +4254,45 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
     @ports.setter
     def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ports", value)
+
+
+@pulumi.input_type
+class ForwardingRuleServiceDirectoryRegistrationArgs:
+    def __init__(__self__, *,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] namespace: Service Directory namespace to register the forwarding rule under.
+        :param pulumi.Input[str] service: Service Directory service to register the forwarding rule under.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Directory namespace to register the forwarding rule under.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Directory service to register the forwarding rule under.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
 
 
 @pulumi.input_type
@@ -9232,8 +9272,8 @@ class InstanceTemplateDiskArgs:
         :param pulumi.Input[int] disk_size_gb: The size of the image in gigabytes. If not
                specified, it will inherit the size of its base image. For SCRATCH disks,
                the size must be exactly 375GB.
-        :param pulumi.Input[str] disk_type: The GCE disk type. Can be either `"pd-ssd"`,
-               `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+        :param pulumi.Input[str] disk_type: The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+               `"pd-balanced"` or `"pd-standard"`.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk,
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
@@ -9367,8 +9407,8 @@ class InstanceTemplateDiskArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The GCE disk type. Can be either `"pd-ssd"`,
-        `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+        The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+        `"pd-balanced"` or `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
 

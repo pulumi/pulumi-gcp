@@ -301,7 +301,11 @@ class IAMPolicy(pulumi.CustomResource):
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
+        full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
+
+        ```sh
+         $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,7 +495,11 @@ class IAMPolicy(pulumi.CustomResource):
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
+        full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
+
+        ```sh
+         $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+        ```
 
         :param str resource_name: The name of the resource.
         :param IAMPolicyArgs args: The arguments to use to populate this resource's properties.

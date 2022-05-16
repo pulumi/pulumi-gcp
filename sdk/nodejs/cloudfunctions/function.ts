@@ -138,6 +138,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+     */
+    public readonly dockerRepository!: pulumi.Output<string | undefined>;
+    /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
     public readonly entryPoint!: pulumi.Output<string | undefined>;
@@ -157,6 +161,11 @@ export class Function extends pulumi.CustomResource {
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
      */
     public readonly ingressSettings!: pulumi.Output<string | undefined>;
+    /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     * If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     */
+    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      */
@@ -208,7 +217,7 @@ export class Function extends pulumi.CustomResource {
     public readonly sourceArchiveObject!: pulumi.Output<string | undefined>;
     /**
      * Represents parameters related to source repository where a function is hosted.
-     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      */
     public readonly sourceRepository!: pulumi.Output<outputs.cloudfunctions.FunctionSourceRepository | undefined>;
     /**
@@ -244,11 +253,13 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dockerRepository"] = state ? state.dockerRepository : undefined;
             resourceInputs["entryPoint"] = state ? state.entryPoint : undefined;
             resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
             resourceInputs["eventTrigger"] = state ? state.eventTrigger : undefined;
             resourceInputs["httpsTriggerUrl"] = state ? state.httpsTriggerUrl : undefined;
             resourceInputs["ingressSettings"] = state ? state.ingressSettings : undefined;
+            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxInstances"] = state ? state.maxInstances : undefined;
             resourceInputs["minInstances"] = state ? state.minInstances : undefined;
@@ -274,11 +285,13 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dockerRepository"] = args ? args.dockerRepository : undefined;
             resourceInputs["entryPoint"] = args ? args.entryPoint : undefined;
             resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             resourceInputs["eventTrigger"] = args ? args.eventTrigger : undefined;
             resourceInputs["httpsTriggerUrl"] = args ? args.httpsTriggerUrl : undefined;
             resourceInputs["ingressSettings"] = args ? args.ingressSettings : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["maxInstances"] = args ? args.maxInstances : undefined;
             resourceInputs["minInstances"] = args ? args.minInstances : undefined;
@@ -319,6 +332,10 @@ export interface FunctionState {
      */
     description?: pulumi.Input<string>;
     /**
+     * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+     */
+    dockerRepository?: pulumi.Input<string>;
+    /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
     entryPoint?: pulumi.Input<string>;
@@ -338,6 +355,11 @@ export interface FunctionState {
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
      */
     ingressSettings?: pulumi.Input<string>;
+    /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     * If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      */
@@ -389,7 +411,7 @@ export interface FunctionState {
     sourceArchiveObject?: pulumi.Input<string>;
     /**
      * Represents parameters related to source repository where a function is hosted.
-     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      */
     sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
     /**
@@ -427,6 +449,10 @@ export interface FunctionArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+     */
+    dockerRepository?: pulumi.Input<string>;
+    /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
     entryPoint?: pulumi.Input<string>;
@@ -446,6 +472,11 @@ export interface FunctionArgs {
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
      */
     ingressSettings?: pulumi.Input<string>;
+    /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     * If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      */
@@ -497,7 +528,7 @@ export interface FunctionArgs {
     sourceArchiveObject?: pulumi.Input<string>;
     /**
      * Represents parameters related to source repository where a function is hosted.
-     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      */
     sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
     /**

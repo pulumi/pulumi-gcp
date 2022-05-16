@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string IamInstanceProfile;
         /// <summary>
+        /// (Beta only) Details of placement information for an instance.
+        /// </summary>
+        public readonly Outputs.AwsClusterControlPlaneInstancePlacement? InstancePlacement;
+        /// <summary>
         /// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         /// </summary>
         public readonly string? InstanceType;
@@ -76,6 +80,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string iamInstanceProfile,
 
+            Outputs.AwsClusterControlPlaneInstancePlacement? instancePlacement,
+
             string? instanceType,
 
             Outputs.AwsClusterControlPlaneMainVolume? mainVolume,
@@ -98,6 +104,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ConfigEncryption = configEncryption;
             DatabaseEncryption = databaseEncryption;
             IamInstanceProfile = iamInstanceProfile;
+            InstancePlacement = instancePlacement;
             InstanceType = instanceType;
             MainVolume = mainVolume;
             ProxyConfig = proxyConfig;

@@ -11,7 +11,7 @@ import (
 )
 
 type AwsClusterAuthorization struct {
-	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers []AwsClusterAuthorizationAdminUser `pulumi:"adminUsers"`
 }
 
@@ -27,7 +27,7 @@ type AwsClusterAuthorizationInput interface {
 }
 
 type AwsClusterAuthorizationArgs struct {
-	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers AwsClusterAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
 }
 
@@ -108,7 +108,7 @@ func (o AwsClusterAuthorizationOutput) ToAwsClusterAuthorizationPtrOutputWithCon
 	}).(AwsClusterAuthorizationPtrOutput)
 }
 
-// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 func (o AwsClusterAuthorizationOutput) AdminUsers() AwsClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v AwsClusterAuthorization) []AwsClusterAuthorizationAdminUser { return v.AdminUsers }).(AwsClusterAuthorizationAdminUserArrayOutput)
 }
@@ -137,7 +137,7 @@ func (o AwsClusterAuthorizationPtrOutput) Elem() AwsClusterAuthorizationOutput {
 	}).(AwsClusterAuthorizationOutput)
 }
 
-// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 func (o AwsClusterAuthorizationPtrOutput) AdminUsers() AwsClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v *AwsClusterAuthorization) []AwsClusterAuthorizationAdminUser {
 		if v == nil {
@@ -253,6 +253,8 @@ type AwsClusterControlPlane struct {
 	DatabaseEncryption AwsClusterControlPlaneDatabaseEncryption `pulumi:"databaseEncryption"`
 	// The name of the AWS IAM instance pofile to assign to each control plane replica.
 	IamInstanceProfile string `pulumi:"iamInstanceProfile"`
+	// (Beta only) Details of placement information for an instance.
+	InstancePlacement *AwsClusterControlPlaneInstancePlacement `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType *string `pulumi:"instanceType"`
 	// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
@@ -293,6 +295,8 @@ type AwsClusterControlPlaneArgs struct {
 	DatabaseEncryption AwsClusterControlPlaneDatabaseEncryptionInput `pulumi:"databaseEncryption"`
 	// The name of the AWS IAM instance pofile to assign to each control plane replica.
 	IamInstanceProfile pulumi.StringInput `pulumi:"iamInstanceProfile"`
+	// (Beta only) Details of placement information for an instance.
+	InstancePlacement AwsClusterControlPlaneInstancePlacementPtrInput `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
@@ -412,6 +416,11 @@ func (o AwsClusterControlPlaneOutput) IamInstanceProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) string { return v.IamInstanceProfile }).(pulumi.StringOutput)
 }
 
+// (Beta only) Details of placement information for an instance.
+func (o AwsClusterControlPlaneOutput) InstancePlacement() AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlane) *AwsClusterControlPlaneInstancePlacement { return v.InstancePlacement }).(AwsClusterControlPlaneInstancePlacementPtrOutput)
+}
+
 // Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 func (o AwsClusterControlPlaneOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
@@ -519,6 +528,16 @@ func (o AwsClusterControlPlanePtrOutput) IamInstanceProfile() pulumi.StringPtrOu
 		}
 		return &v.IamInstanceProfile
 	}).(pulumi.StringPtrOutput)
+}
+
+// (Beta only) Details of placement information for an instance.
+func (o AwsClusterControlPlanePtrOutput) InstancePlacement() AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneInstancePlacement {
+		if v == nil {
+			return nil
+		}
+		return v.InstancePlacement
+	}).(AwsClusterControlPlaneInstancePlacementPtrOutput)
 }
 
 // Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
@@ -1038,6 +1057,143 @@ func (o AwsClusterControlPlaneDatabaseEncryptionPtrOutput) KmsKeyArn() pulumi.St
 			return nil
 		}
 		return &v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneInstancePlacement struct {
+	// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+	Tenancy *string `pulumi:"tenancy"`
+}
+
+// AwsClusterControlPlaneInstancePlacementInput is an input type that accepts AwsClusterControlPlaneInstancePlacementArgs and AwsClusterControlPlaneInstancePlacementOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneInstancePlacementInput` via:
+//
+//          AwsClusterControlPlaneInstancePlacementArgs{...}
+type AwsClusterControlPlaneInstancePlacementInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneInstancePlacementOutput() AwsClusterControlPlaneInstancePlacementOutput
+	ToAwsClusterControlPlaneInstancePlacementOutputWithContext(context.Context) AwsClusterControlPlaneInstancePlacementOutput
+}
+
+type AwsClusterControlPlaneInstancePlacementArgs struct {
+	// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+	Tenancy pulumi.StringPtrInput `pulumi:"tenancy"`
+}
+
+func (AwsClusterControlPlaneInstancePlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneInstancePlacement)(nil)).Elem()
+}
+
+func (i AwsClusterControlPlaneInstancePlacementArgs) ToAwsClusterControlPlaneInstancePlacementOutput() AwsClusterControlPlaneInstancePlacementOutput {
+	return i.ToAwsClusterControlPlaneInstancePlacementOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneInstancePlacementArgs) ToAwsClusterControlPlaneInstancePlacementOutputWithContext(ctx context.Context) AwsClusterControlPlaneInstancePlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneInstancePlacementOutput)
+}
+
+func (i AwsClusterControlPlaneInstancePlacementArgs) ToAwsClusterControlPlaneInstancePlacementPtrOutput() AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return i.ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterControlPlaneInstancePlacementArgs) ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneInstancePlacementOutput).ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(ctx)
+}
+
+// AwsClusterControlPlaneInstancePlacementPtrInput is an input type that accepts AwsClusterControlPlaneInstancePlacementArgs, AwsClusterControlPlaneInstancePlacementPtr and AwsClusterControlPlaneInstancePlacementPtrOutput values.
+// You can construct a concrete instance of `AwsClusterControlPlaneInstancePlacementPtrInput` via:
+//
+//          AwsClusterControlPlaneInstancePlacementArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterControlPlaneInstancePlacementPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterControlPlaneInstancePlacementPtrOutput() AwsClusterControlPlaneInstancePlacementPtrOutput
+	ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(context.Context) AwsClusterControlPlaneInstancePlacementPtrOutput
+}
+
+type awsClusterControlPlaneInstancePlacementPtrType AwsClusterControlPlaneInstancePlacementArgs
+
+func AwsClusterControlPlaneInstancePlacementPtr(v *AwsClusterControlPlaneInstancePlacementArgs) AwsClusterControlPlaneInstancePlacementPtrInput {
+	return (*awsClusterControlPlaneInstancePlacementPtrType)(v)
+}
+
+func (*awsClusterControlPlaneInstancePlacementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneInstancePlacement)(nil)).Elem()
+}
+
+func (i *awsClusterControlPlaneInstancePlacementPtrType) ToAwsClusterControlPlaneInstancePlacementPtrOutput() AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return i.ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterControlPlaneInstancePlacementPtrType) ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterControlPlaneInstancePlacementPtrOutput)
+}
+
+type AwsClusterControlPlaneInstancePlacementOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneInstancePlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterControlPlaneInstancePlacement)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneInstancePlacementOutput) ToAwsClusterControlPlaneInstancePlacementOutput() AwsClusterControlPlaneInstancePlacementOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneInstancePlacementOutput) ToAwsClusterControlPlaneInstancePlacementOutputWithContext(ctx context.Context) AwsClusterControlPlaneInstancePlacementOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneInstancePlacementOutput) ToAwsClusterControlPlaneInstancePlacementPtrOutput() AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return o.ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterControlPlaneInstancePlacementOutput) ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterControlPlaneInstancePlacement) *AwsClusterControlPlaneInstancePlacement {
+		return &v
+	}).(AwsClusterControlPlaneInstancePlacementPtrOutput)
+}
+
+// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+func (o AwsClusterControlPlaneInstancePlacementOutput) Tenancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneInstancePlacement) *string { return v.Tenancy }).(pulumi.StringPtrOutput)
+}
+
+type AwsClusterControlPlaneInstancePlacementPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterControlPlaneInstancePlacementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterControlPlaneInstancePlacement)(nil)).Elem()
+}
+
+func (o AwsClusterControlPlaneInstancePlacementPtrOutput) ToAwsClusterControlPlaneInstancePlacementPtrOutput() AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneInstancePlacementPtrOutput) ToAwsClusterControlPlaneInstancePlacementPtrOutputWithContext(ctx context.Context) AwsClusterControlPlaneInstancePlacementPtrOutput {
+	return o
+}
+
+func (o AwsClusterControlPlaneInstancePlacementPtrOutput) Elem() AwsClusterControlPlaneInstancePlacementOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneInstancePlacement) AwsClusterControlPlaneInstancePlacement {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterControlPlaneInstancePlacement
+		return ret
+	}).(AwsClusterControlPlaneInstancePlacementOutput)
+}
+
+// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+func (o AwsClusterControlPlaneInstancePlacementPtrOutput) Tenancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneInstancePlacement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tenancy
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1882,6 +2038,280 @@ func (o AwsClusterFleetPtrOutput) Project() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AwsClusterLoggingConfig struct {
+	// Configuration of the logging components.
+	ComponentConfig *AwsClusterLoggingConfigComponentConfig `pulumi:"componentConfig"`
+}
+
+// AwsClusterLoggingConfigInput is an input type that accepts AwsClusterLoggingConfigArgs and AwsClusterLoggingConfigOutput values.
+// You can construct a concrete instance of `AwsClusterLoggingConfigInput` via:
+//
+//          AwsClusterLoggingConfigArgs{...}
+type AwsClusterLoggingConfigInput interface {
+	pulumi.Input
+
+	ToAwsClusterLoggingConfigOutput() AwsClusterLoggingConfigOutput
+	ToAwsClusterLoggingConfigOutputWithContext(context.Context) AwsClusterLoggingConfigOutput
+}
+
+type AwsClusterLoggingConfigArgs struct {
+	// Configuration of the logging components.
+	ComponentConfig AwsClusterLoggingConfigComponentConfigPtrInput `pulumi:"componentConfig"`
+}
+
+func (AwsClusterLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i AwsClusterLoggingConfigArgs) ToAwsClusterLoggingConfigOutput() AwsClusterLoggingConfigOutput {
+	return i.ToAwsClusterLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i AwsClusterLoggingConfigArgs) ToAwsClusterLoggingConfigOutputWithContext(ctx context.Context) AwsClusterLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterLoggingConfigOutput)
+}
+
+func (i AwsClusterLoggingConfigArgs) ToAwsClusterLoggingConfigPtrOutput() AwsClusterLoggingConfigPtrOutput {
+	return i.ToAwsClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterLoggingConfigArgs) ToAwsClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AwsClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterLoggingConfigOutput).ToAwsClusterLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// AwsClusterLoggingConfigPtrInput is an input type that accepts AwsClusterLoggingConfigArgs, AwsClusterLoggingConfigPtr and AwsClusterLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `AwsClusterLoggingConfigPtrInput` via:
+//
+//          AwsClusterLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterLoggingConfigPtrOutput() AwsClusterLoggingConfigPtrOutput
+	ToAwsClusterLoggingConfigPtrOutputWithContext(context.Context) AwsClusterLoggingConfigPtrOutput
+}
+
+type awsClusterLoggingConfigPtrType AwsClusterLoggingConfigArgs
+
+func AwsClusterLoggingConfigPtr(v *AwsClusterLoggingConfigArgs) AwsClusterLoggingConfigPtrInput {
+	return (*awsClusterLoggingConfigPtrType)(v)
+}
+
+func (*awsClusterLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i *awsClusterLoggingConfigPtrType) ToAwsClusterLoggingConfigPtrOutput() AwsClusterLoggingConfigPtrOutput {
+	return i.ToAwsClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterLoggingConfigPtrType) ToAwsClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AwsClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterLoggingConfigPtrOutput)
+}
+
+type AwsClusterLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o AwsClusterLoggingConfigOutput) ToAwsClusterLoggingConfigOutput() AwsClusterLoggingConfigOutput {
+	return o
+}
+
+func (o AwsClusterLoggingConfigOutput) ToAwsClusterLoggingConfigOutputWithContext(ctx context.Context) AwsClusterLoggingConfigOutput {
+	return o
+}
+
+func (o AwsClusterLoggingConfigOutput) ToAwsClusterLoggingConfigPtrOutput() AwsClusterLoggingConfigPtrOutput {
+	return o.ToAwsClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterLoggingConfigOutput) ToAwsClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AwsClusterLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterLoggingConfig) *AwsClusterLoggingConfig {
+		return &v
+	}).(AwsClusterLoggingConfigPtrOutput)
+}
+
+// Configuration of the logging components.
+func (o AwsClusterLoggingConfigOutput) ComponentConfig() AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyT(func(v AwsClusterLoggingConfig) *AwsClusterLoggingConfigComponentConfig { return v.ComponentConfig }).(AwsClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AwsClusterLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o AwsClusterLoggingConfigPtrOutput) ToAwsClusterLoggingConfigPtrOutput() AwsClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o AwsClusterLoggingConfigPtrOutput) ToAwsClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AwsClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o AwsClusterLoggingConfigPtrOutput) Elem() AwsClusterLoggingConfigOutput {
+	return o.ApplyT(func(v *AwsClusterLoggingConfig) AwsClusterLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterLoggingConfig
+		return ret
+	}).(AwsClusterLoggingConfigOutput)
+}
+
+// Configuration of the logging components.
+func (o AwsClusterLoggingConfigPtrOutput) ComponentConfig() AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyT(func(v *AwsClusterLoggingConfig) *AwsClusterLoggingConfigComponentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentConfig
+	}).(AwsClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AwsClusterLoggingConfigComponentConfig struct {
+	// Components of the logging configuration to be enabled.
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// AwsClusterLoggingConfigComponentConfigInput is an input type that accepts AwsClusterLoggingConfigComponentConfigArgs and AwsClusterLoggingConfigComponentConfigOutput values.
+// You can construct a concrete instance of `AwsClusterLoggingConfigComponentConfigInput` via:
+//
+//          AwsClusterLoggingConfigComponentConfigArgs{...}
+type AwsClusterLoggingConfigComponentConfigInput interface {
+	pulumi.Input
+
+	ToAwsClusterLoggingConfigComponentConfigOutput() AwsClusterLoggingConfigComponentConfigOutput
+	ToAwsClusterLoggingConfigComponentConfigOutputWithContext(context.Context) AwsClusterLoggingConfigComponentConfigOutput
+}
+
+type AwsClusterLoggingConfigComponentConfigArgs struct {
+	// Components of the logging configuration to be enabled.
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (AwsClusterLoggingConfigComponentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (i AwsClusterLoggingConfigComponentConfigArgs) ToAwsClusterLoggingConfigComponentConfigOutput() AwsClusterLoggingConfigComponentConfigOutput {
+	return i.ToAwsClusterLoggingConfigComponentConfigOutputWithContext(context.Background())
+}
+
+func (i AwsClusterLoggingConfigComponentConfigArgs) ToAwsClusterLoggingConfigComponentConfigOutputWithContext(ctx context.Context) AwsClusterLoggingConfigComponentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterLoggingConfigComponentConfigOutput)
+}
+
+func (i AwsClusterLoggingConfigComponentConfigArgs) ToAwsClusterLoggingConfigComponentConfigPtrOutput() AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return i.ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsClusterLoggingConfigComponentConfigArgs) ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterLoggingConfigComponentConfigOutput).ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx)
+}
+
+// AwsClusterLoggingConfigComponentConfigPtrInput is an input type that accepts AwsClusterLoggingConfigComponentConfigArgs, AwsClusterLoggingConfigComponentConfigPtr and AwsClusterLoggingConfigComponentConfigPtrOutput values.
+// You can construct a concrete instance of `AwsClusterLoggingConfigComponentConfigPtrInput` via:
+//
+//          AwsClusterLoggingConfigComponentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsClusterLoggingConfigComponentConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsClusterLoggingConfigComponentConfigPtrOutput() AwsClusterLoggingConfigComponentConfigPtrOutput
+	ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Context) AwsClusterLoggingConfigComponentConfigPtrOutput
+}
+
+type awsClusterLoggingConfigComponentConfigPtrType AwsClusterLoggingConfigComponentConfigArgs
+
+func AwsClusterLoggingConfigComponentConfigPtr(v *AwsClusterLoggingConfigComponentConfigArgs) AwsClusterLoggingConfigComponentConfigPtrInput {
+	return (*awsClusterLoggingConfigComponentConfigPtrType)(v)
+}
+
+func (*awsClusterLoggingConfigComponentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (i *awsClusterLoggingConfigComponentConfigPtrType) ToAwsClusterLoggingConfigComponentConfigPtrOutput() AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return i.ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsClusterLoggingConfigComponentConfigPtrType) ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AwsClusterLoggingConfigComponentConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterLoggingConfigComponentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (o AwsClusterLoggingConfigComponentConfigOutput) ToAwsClusterLoggingConfigComponentConfigOutput() AwsClusterLoggingConfigComponentConfigOutput {
+	return o
+}
+
+func (o AwsClusterLoggingConfigComponentConfigOutput) ToAwsClusterLoggingConfigComponentConfigOutputWithContext(ctx context.Context) AwsClusterLoggingConfigComponentConfigOutput {
+	return o
+}
+
+func (o AwsClusterLoggingConfigComponentConfigOutput) ToAwsClusterLoggingConfigComponentConfigPtrOutput() AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsClusterLoggingConfigComponentConfigOutput) ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsClusterLoggingConfigComponentConfig) *AwsClusterLoggingConfigComponentConfig {
+		return &v
+	}).(AwsClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+// Components of the logging configuration to be enabled.
+func (o AwsClusterLoggingConfigComponentConfigOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsClusterLoggingConfigComponentConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type AwsClusterLoggingConfigComponentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsClusterLoggingConfigComponentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (o AwsClusterLoggingConfigComponentConfigPtrOutput) ToAwsClusterLoggingConfigComponentConfigPtrOutput() AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return o
+}
+
+func (o AwsClusterLoggingConfigComponentConfigPtrOutput) ToAwsClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AwsClusterLoggingConfigComponentConfigPtrOutput {
+	return o
+}
+
+func (o AwsClusterLoggingConfigComponentConfigPtrOutput) Elem() AwsClusterLoggingConfigComponentConfigOutput {
+	return o.ApplyT(func(v *AwsClusterLoggingConfigComponentConfig) AwsClusterLoggingConfigComponentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsClusterLoggingConfigComponentConfig
+		return ret
+	}).(AwsClusterLoggingConfigComponentConfigOutput)
+}
+
+// Components of the logging configuration to be enabled.
+func (o AwsClusterLoggingConfigComponentConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsClusterLoggingConfigComponentConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(pulumi.StringArrayOutput)
+}
+
 type AwsClusterNetworking struct {
 	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
@@ -2324,10 +2754,16 @@ type AwsNodePoolConfig struct {
 	ConfigEncryption AwsNodePoolConfigConfigEncryption `pulumi:"configEncryption"`
 	// The name of the AWS IAM role assigned to nodes in the pool.
 	IamInstanceProfile string `pulumi:"iamInstanceProfile"`
+	// (Beta only) The OS image type to use on node pool instances.
+	ImageType *string `pulumi:"imageType"`
+	// (Beta only) Details of placement information for an instance.
+	InstancePlacement *AwsNodePoolConfigInstancePlacement `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType *string `pulumi:"instanceType"`
 	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
+	// Proxy configuration for outbound HTTP(S) traffic.
+	ProxyConfig *AwsNodePoolConfigProxyConfig `pulumi:"proxyConfig"`
 	// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
 	RootVolume *AwsNodePoolConfigRootVolume `pulumi:"rootVolume"`
 	// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
@@ -2356,10 +2792,16 @@ type AwsNodePoolConfigArgs struct {
 	ConfigEncryption AwsNodePoolConfigConfigEncryptionInput `pulumi:"configEncryption"`
 	// The name of the AWS IAM role assigned to nodes in the pool.
 	IamInstanceProfile pulumi.StringInput `pulumi:"iamInstanceProfile"`
+	// (Beta only) The OS image type to use on node pool instances.
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// (Beta only) Details of placement information for an instance.
+	InstancePlacement AwsNodePoolConfigInstancePlacementPtrInput `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Proxy configuration for outbound HTTP(S) traffic.
+	ProxyConfig AwsNodePoolConfigProxyConfigPtrInput `pulumi:"proxyConfig"`
 	// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
 	RootVolume AwsNodePoolConfigRootVolumePtrInput `pulumi:"rootVolume"`
 	// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
@@ -2459,6 +2901,16 @@ func (o AwsNodePoolConfigOutput) IamInstanceProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) string { return v.IamInstanceProfile }).(pulumi.StringOutput)
 }
 
+// (Beta only) The OS image type to use on node pool instances.
+func (o AwsNodePoolConfigOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+}
+
+// (Beta only) Details of placement information for an instance.
+func (o AwsNodePoolConfigOutput) InstancePlacement() AwsNodePoolConfigInstancePlacementPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) *AwsNodePoolConfigInstancePlacement { return v.InstancePlacement }).(AwsNodePoolConfigInstancePlacementPtrOutput)
+}
+
 // Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 func (o AwsNodePoolConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
@@ -2467,6 +2919,11 @@ func (o AwsNodePoolConfigOutput) InstanceType() pulumi.StringPtrOutput {
 // Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o AwsNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Proxy configuration for outbound HTTP(S) traffic.
+func (o AwsNodePoolConfigOutput) ProxyConfig() AwsNodePoolConfigProxyConfigPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) *AwsNodePoolConfigProxyConfig { return v.ProxyConfig }).(AwsNodePoolConfigProxyConfigPtrOutput)
 }
 
 // Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
@@ -2538,6 +2995,26 @@ func (o AwsNodePoolConfigPtrOutput) IamInstanceProfile() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Beta only) The OS image type to use on node pool instances.
+func (o AwsNodePoolConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Beta only) Details of placement information for an instance.
+func (o AwsNodePoolConfigPtrOutput) InstancePlacement() AwsNodePoolConfigInstancePlacementPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigInstancePlacement {
+		if v == nil {
+			return nil
+		}
+		return v.InstancePlacement
+	}).(AwsNodePoolConfigInstancePlacementPtrOutput)
+}
+
 // Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 func (o AwsNodePoolConfigPtrOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfig) *string {
@@ -2556,6 +3033,16 @@ func (o AwsNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
 		}
 		return v.Labels
 	}).(pulumi.StringMapOutput)
+}
+
+// Proxy configuration for outbound HTTP(S) traffic.
+func (o AwsNodePoolConfigPtrOutput) ProxyConfig() AwsNodePoolConfigProxyConfigPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigProxyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyConfig
+	}).(AwsNodePoolConfigProxyConfigPtrOutput)
 }
 
 // Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
@@ -2742,6 +3229,299 @@ func (o AwsNodePoolConfigConfigEncryptionPtrOutput) KmsKeyArn() pulumi.StringPtr
 			return nil
 		}
 		return &v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsNodePoolConfigInstancePlacement struct {
+	// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+	Tenancy *string `pulumi:"tenancy"`
+}
+
+// AwsNodePoolConfigInstancePlacementInput is an input type that accepts AwsNodePoolConfigInstancePlacementArgs and AwsNodePoolConfigInstancePlacementOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigInstancePlacementInput` via:
+//
+//          AwsNodePoolConfigInstancePlacementArgs{...}
+type AwsNodePoolConfigInstancePlacementInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigInstancePlacementOutput() AwsNodePoolConfigInstancePlacementOutput
+	ToAwsNodePoolConfigInstancePlacementOutputWithContext(context.Context) AwsNodePoolConfigInstancePlacementOutput
+}
+
+type AwsNodePoolConfigInstancePlacementArgs struct {
+	// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+	Tenancy pulumi.StringPtrInput `pulumi:"tenancy"`
+}
+
+func (AwsNodePoolConfigInstancePlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigInstancePlacement)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigInstancePlacementArgs) ToAwsNodePoolConfigInstancePlacementOutput() AwsNodePoolConfigInstancePlacementOutput {
+	return i.ToAwsNodePoolConfigInstancePlacementOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigInstancePlacementArgs) ToAwsNodePoolConfigInstancePlacementOutputWithContext(ctx context.Context) AwsNodePoolConfigInstancePlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigInstancePlacementOutput)
+}
+
+func (i AwsNodePoolConfigInstancePlacementArgs) ToAwsNodePoolConfigInstancePlacementPtrOutput() AwsNodePoolConfigInstancePlacementPtrOutput {
+	return i.ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigInstancePlacementArgs) ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigInstancePlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigInstancePlacementOutput).ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolConfigInstancePlacementPtrInput is an input type that accepts AwsNodePoolConfigInstancePlacementArgs, AwsNodePoolConfigInstancePlacementPtr and AwsNodePoolConfigInstancePlacementPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigInstancePlacementPtrInput` via:
+//
+//          AwsNodePoolConfigInstancePlacementArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsNodePoolConfigInstancePlacementPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigInstancePlacementPtrOutput() AwsNodePoolConfigInstancePlacementPtrOutput
+	ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(context.Context) AwsNodePoolConfigInstancePlacementPtrOutput
+}
+
+type awsNodePoolConfigInstancePlacementPtrType AwsNodePoolConfigInstancePlacementArgs
+
+func AwsNodePoolConfigInstancePlacementPtr(v *AwsNodePoolConfigInstancePlacementArgs) AwsNodePoolConfigInstancePlacementPtrInput {
+	return (*awsNodePoolConfigInstancePlacementPtrType)(v)
+}
+
+func (*awsNodePoolConfigInstancePlacementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigInstancePlacement)(nil)).Elem()
+}
+
+func (i *awsNodePoolConfigInstancePlacementPtrType) ToAwsNodePoolConfigInstancePlacementPtrOutput() AwsNodePoolConfigInstancePlacementPtrOutput {
+	return i.ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolConfigInstancePlacementPtrType) ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigInstancePlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigInstancePlacementPtrOutput)
+}
+
+type AwsNodePoolConfigInstancePlacementOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigInstancePlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigInstancePlacement)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigInstancePlacementOutput) ToAwsNodePoolConfigInstancePlacementOutput() AwsNodePoolConfigInstancePlacementOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigInstancePlacementOutput) ToAwsNodePoolConfigInstancePlacementOutputWithContext(ctx context.Context) AwsNodePoolConfigInstancePlacementOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigInstancePlacementOutput) ToAwsNodePoolConfigInstancePlacementPtrOutput() AwsNodePoolConfigInstancePlacementPtrOutput {
+	return o.ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolConfigInstancePlacementOutput) ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigInstancePlacementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolConfigInstancePlacement) *AwsNodePoolConfigInstancePlacement {
+		return &v
+	}).(AwsNodePoolConfigInstancePlacementPtrOutput)
+}
+
+// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+func (o AwsNodePoolConfigInstancePlacementOutput) Tenancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigInstancePlacement) *string { return v.Tenancy }).(pulumi.StringPtrOutput)
+}
+
+type AwsNodePoolConfigInstancePlacementPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigInstancePlacementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigInstancePlacement)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigInstancePlacementPtrOutput) ToAwsNodePoolConfigInstancePlacementPtrOutput() AwsNodePoolConfigInstancePlacementPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigInstancePlacementPtrOutput) ToAwsNodePoolConfigInstancePlacementPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigInstancePlacementPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigInstancePlacementPtrOutput) Elem() AwsNodePoolConfigInstancePlacementOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigInstancePlacement) AwsNodePoolConfigInstancePlacement {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolConfigInstancePlacement
+		return ret
+	}).(AwsNodePoolConfigInstancePlacementOutput)
+}
+
+// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+func (o AwsNodePoolConfigInstancePlacementPtrOutput) Tenancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigInstancePlacement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tenancy
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsNodePoolConfigProxyConfig struct {
+	// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+	SecretArn string `pulumi:"secretArn"`
+	// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// AwsNodePoolConfigProxyConfigInput is an input type that accepts AwsNodePoolConfigProxyConfigArgs and AwsNodePoolConfigProxyConfigOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigProxyConfigInput` via:
+//
+//          AwsNodePoolConfigProxyConfigArgs{...}
+type AwsNodePoolConfigProxyConfigInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigProxyConfigOutput() AwsNodePoolConfigProxyConfigOutput
+	ToAwsNodePoolConfigProxyConfigOutputWithContext(context.Context) AwsNodePoolConfigProxyConfigOutput
+}
+
+type AwsNodePoolConfigProxyConfigArgs struct {
+	// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+	SecretArn pulumi.StringInput `pulumi:"secretArn"`
+	// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (AwsNodePoolConfigProxyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigProxyConfig)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigProxyConfigArgs) ToAwsNodePoolConfigProxyConfigOutput() AwsNodePoolConfigProxyConfigOutput {
+	return i.ToAwsNodePoolConfigProxyConfigOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigProxyConfigArgs) ToAwsNodePoolConfigProxyConfigOutputWithContext(ctx context.Context) AwsNodePoolConfigProxyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigProxyConfigOutput)
+}
+
+func (i AwsNodePoolConfigProxyConfigArgs) ToAwsNodePoolConfigProxyConfigPtrOutput() AwsNodePoolConfigProxyConfigPtrOutput {
+	return i.ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigProxyConfigArgs) ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigProxyConfigOutput).ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolConfigProxyConfigPtrInput is an input type that accepts AwsNodePoolConfigProxyConfigArgs, AwsNodePoolConfigProxyConfigPtr and AwsNodePoolConfigProxyConfigPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigProxyConfigPtrInput` via:
+//
+//          AwsNodePoolConfigProxyConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsNodePoolConfigProxyConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigProxyConfigPtrOutput() AwsNodePoolConfigProxyConfigPtrOutput
+	ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(context.Context) AwsNodePoolConfigProxyConfigPtrOutput
+}
+
+type awsNodePoolConfigProxyConfigPtrType AwsNodePoolConfigProxyConfigArgs
+
+func AwsNodePoolConfigProxyConfigPtr(v *AwsNodePoolConfigProxyConfigArgs) AwsNodePoolConfigProxyConfigPtrInput {
+	return (*awsNodePoolConfigProxyConfigPtrType)(v)
+}
+
+func (*awsNodePoolConfigProxyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigProxyConfig)(nil)).Elem()
+}
+
+func (i *awsNodePoolConfigProxyConfigPtrType) ToAwsNodePoolConfigProxyConfigPtrOutput() AwsNodePoolConfigProxyConfigPtrOutput {
+	return i.ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolConfigProxyConfigPtrType) ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigProxyConfigPtrOutput)
+}
+
+type AwsNodePoolConfigProxyConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigProxyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigProxyConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigProxyConfigOutput) ToAwsNodePoolConfigProxyConfigOutput() AwsNodePoolConfigProxyConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigProxyConfigOutput) ToAwsNodePoolConfigProxyConfigOutputWithContext(ctx context.Context) AwsNodePoolConfigProxyConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigProxyConfigOutput) ToAwsNodePoolConfigProxyConfigPtrOutput() AwsNodePoolConfigProxyConfigPtrOutput {
+	return o.ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolConfigProxyConfigOutput) ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigProxyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolConfigProxyConfig) *AwsNodePoolConfigProxyConfig {
+		return &v
+	}).(AwsNodePoolConfigProxyConfigPtrOutput)
+}
+
+// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+func (o AwsNodePoolConfigProxyConfigOutput) SecretArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigProxyConfig) string { return v.SecretArn }).(pulumi.StringOutput)
+}
+
+// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+func (o AwsNodePoolConfigProxyConfigOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigProxyConfig) string { return v.SecretVersion }).(pulumi.StringOutput)
+}
+
+type AwsNodePoolConfigProxyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigProxyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigProxyConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigProxyConfigPtrOutput) ToAwsNodePoolConfigProxyConfigPtrOutput() AwsNodePoolConfigProxyConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigProxyConfigPtrOutput) ToAwsNodePoolConfigProxyConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigProxyConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigProxyConfigPtrOutput) Elem() AwsNodePoolConfigProxyConfigOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigProxyConfig) AwsNodePoolConfigProxyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolConfigProxyConfig
+		return ret
+	}).(AwsNodePoolConfigProxyConfigOutput)
+}
+
+// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+func (o AwsNodePoolConfigProxyConfigPtrOutput) SecretArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigProxyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+func (o AwsNodePoolConfigProxyConfigPtrOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigProxyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3329,7 +4109,7 @@ func (o AwsNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOut
 }
 
 type AzureClusterAuthorization struct {
-	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers []AzureClusterAuthorizationAdminUser `pulumi:"adminUsers"`
 }
 
@@ -3345,7 +4125,7 @@ type AzureClusterAuthorizationInput interface {
 }
 
 type AzureClusterAuthorizationArgs struct {
-	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers AzureClusterAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
 }
 
@@ -3426,7 +4206,7 @@ func (o AzureClusterAuthorizationOutput) ToAzureClusterAuthorizationPtrOutputWit
 	}).(AzureClusterAuthorizationPtrOutput)
 }
 
-// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 func (o AzureClusterAuthorizationOutput) AdminUsers() AzureClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v AzureClusterAuthorization) []AzureClusterAuthorizationAdminUser { return v.AdminUsers }).(AzureClusterAuthorizationAdminUserArrayOutput)
 }
@@ -3455,7 +4235,7 @@ func (o AzureClusterAuthorizationPtrOutput) Elem() AzureClusterAuthorizationOutp
 	}).(AzureClusterAuthorizationOutput)
 }
 
-// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 func (o AzureClusterAuthorizationPtrOutput) AdminUsers() AzureClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v *AzureClusterAuthorization) []AzureClusterAuthorizationAdminUser {
 		if v == nil {
@@ -4844,6 +5624,280 @@ func (o AzureClusterFleetPtrOutput) Project() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AzureClusterLoggingConfig struct {
+	// Configuration of the logging components.
+	ComponentConfig *AzureClusterLoggingConfigComponentConfig `pulumi:"componentConfig"`
+}
+
+// AzureClusterLoggingConfigInput is an input type that accepts AzureClusterLoggingConfigArgs and AzureClusterLoggingConfigOutput values.
+// You can construct a concrete instance of `AzureClusterLoggingConfigInput` via:
+//
+//          AzureClusterLoggingConfigArgs{...}
+type AzureClusterLoggingConfigInput interface {
+	pulumi.Input
+
+	ToAzureClusterLoggingConfigOutput() AzureClusterLoggingConfigOutput
+	ToAzureClusterLoggingConfigOutputWithContext(context.Context) AzureClusterLoggingConfigOutput
+}
+
+type AzureClusterLoggingConfigArgs struct {
+	// Configuration of the logging components.
+	ComponentConfig AzureClusterLoggingConfigComponentConfigPtrInput `pulumi:"componentConfig"`
+}
+
+func (AzureClusterLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i AzureClusterLoggingConfigArgs) ToAzureClusterLoggingConfigOutput() AzureClusterLoggingConfigOutput {
+	return i.ToAzureClusterLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i AzureClusterLoggingConfigArgs) ToAzureClusterLoggingConfigOutputWithContext(ctx context.Context) AzureClusterLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterLoggingConfigOutput)
+}
+
+func (i AzureClusterLoggingConfigArgs) ToAzureClusterLoggingConfigPtrOutput() AzureClusterLoggingConfigPtrOutput {
+	return i.ToAzureClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterLoggingConfigArgs) ToAzureClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AzureClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterLoggingConfigOutput).ToAzureClusterLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// AzureClusterLoggingConfigPtrInput is an input type that accepts AzureClusterLoggingConfigArgs, AzureClusterLoggingConfigPtr and AzureClusterLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `AzureClusterLoggingConfigPtrInput` via:
+//
+//          AzureClusterLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterLoggingConfigPtrOutput() AzureClusterLoggingConfigPtrOutput
+	ToAzureClusterLoggingConfigPtrOutputWithContext(context.Context) AzureClusterLoggingConfigPtrOutput
+}
+
+type azureClusterLoggingConfigPtrType AzureClusterLoggingConfigArgs
+
+func AzureClusterLoggingConfigPtr(v *AzureClusterLoggingConfigArgs) AzureClusterLoggingConfigPtrInput {
+	return (*azureClusterLoggingConfigPtrType)(v)
+}
+
+func (*azureClusterLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i *azureClusterLoggingConfigPtrType) ToAzureClusterLoggingConfigPtrOutput() AzureClusterLoggingConfigPtrOutput {
+	return i.ToAzureClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterLoggingConfigPtrType) ToAzureClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AzureClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterLoggingConfigPtrOutput)
+}
+
+type AzureClusterLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o AzureClusterLoggingConfigOutput) ToAzureClusterLoggingConfigOutput() AzureClusterLoggingConfigOutput {
+	return o
+}
+
+func (o AzureClusterLoggingConfigOutput) ToAzureClusterLoggingConfigOutputWithContext(ctx context.Context) AzureClusterLoggingConfigOutput {
+	return o
+}
+
+func (o AzureClusterLoggingConfigOutput) ToAzureClusterLoggingConfigPtrOutput() AzureClusterLoggingConfigPtrOutput {
+	return o.ToAzureClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterLoggingConfigOutput) ToAzureClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AzureClusterLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterLoggingConfig) *AzureClusterLoggingConfig {
+		return &v
+	}).(AzureClusterLoggingConfigPtrOutput)
+}
+
+// Configuration of the logging components.
+func (o AzureClusterLoggingConfigOutput) ComponentConfig() AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyT(func(v AzureClusterLoggingConfig) *AzureClusterLoggingConfigComponentConfig { return v.ComponentConfig }).(AzureClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AzureClusterLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o AzureClusterLoggingConfigPtrOutput) ToAzureClusterLoggingConfigPtrOutput() AzureClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o AzureClusterLoggingConfigPtrOutput) ToAzureClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AzureClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o AzureClusterLoggingConfigPtrOutput) Elem() AzureClusterLoggingConfigOutput {
+	return o.ApplyT(func(v *AzureClusterLoggingConfig) AzureClusterLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterLoggingConfig
+		return ret
+	}).(AzureClusterLoggingConfigOutput)
+}
+
+// Configuration of the logging components.
+func (o AzureClusterLoggingConfigPtrOutput) ComponentConfig() AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyT(func(v *AzureClusterLoggingConfig) *AzureClusterLoggingConfigComponentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentConfig
+	}).(AzureClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AzureClusterLoggingConfigComponentConfig struct {
+	// Components of the logging configuration to be enabled.
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// AzureClusterLoggingConfigComponentConfigInput is an input type that accepts AzureClusterLoggingConfigComponentConfigArgs and AzureClusterLoggingConfigComponentConfigOutput values.
+// You can construct a concrete instance of `AzureClusterLoggingConfigComponentConfigInput` via:
+//
+//          AzureClusterLoggingConfigComponentConfigArgs{...}
+type AzureClusterLoggingConfigComponentConfigInput interface {
+	pulumi.Input
+
+	ToAzureClusterLoggingConfigComponentConfigOutput() AzureClusterLoggingConfigComponentConfigOutput
+	ToAzureClusterLoggingConfigComponentConfigOutputWithContext(context.Context) AzureClusterLoggingConfigComponentConfigOutput
+}
+
+type AzureClusterLoggingConfigComponentConfigArgs struct {
+	// Components of the logging configuration to be enabled.
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (AzureClusterLoggingConfigComponentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (i AzureClusterLoggingConfigComponentConfigArgs) ToAzureClusterLoggingConfigComponentConfigOutput() AzureClusterLoggingConfigComponentConfigOutput {
+	return i.ToAzureClusterLoggingConfigComponentConfigOutputWithContext(context.Background())
+}
+
+func (i AzureClusterLoggingConfigComponentConfigArgs) ToAzureClusterLoggingConfigComponentConfigOutputWithContext(ctx context.Context) AzureClusterLoggingConfigComponentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterLoggingConfigComponentConfigOutput)
+}
+
+func (i AzureClusterLoggingConfigComponentConfigArgs) ToAzureClusterLoggingConfigComponentConfigPtrOutput() AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return i.ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AzureClusterLoggingConfigComponentConfigArgs) ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterLoggingConfigComponentConfigOutput).ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx)
+}
+
+// AzureClusterLoggingConfigComponentConfigPtrInput is an input type that accepts AzureClusterLoggingConfigComponentConfigArgs, AzureClusterLoggingConfigComponentConfigPtr and AzureClusterLoggingConfigComponentConfigPtrOutput values.
+// You can construct a concrete instance of `AzureClusterLoggingConfigComponentConfigPtrInput` via:
+//
+//          AzureClusterLoggingConfigComponentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureClusterLoggingConfigComponentConfigPtrInput interface {
+	pulumi.Input
+
+	ToAzureClusterLoggingConfigComponentConfigPtrOutput() AzureClusterLoggingConfigComponentConfigPtrOutput
+	ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Context) AzureClusterLoggingConfigComponentConfigPtrOutput
+}
+
+type azureClusterLoggingConfigComponentConfigPtrType AzureClusterLoggingConfigComponentConfigArgs
+
+func AzureClusterLoggingConfigComponentConfigPtr(v *AzureClusterLoggingConfigComponentConfigArgs) AzureClusterLoggingConfigComponentConfigPtrInput {
+	return (*azureClusterLoggingConfigComponentConfigPtrType)(v)
+}
+
+func (*azureClusterLoggingConfigComponentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (i *azureClusterLoggingConfigComponentConfigPtrType) ToAzureClusterLoggingConfigComponentConfigPtrOutput() AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return i.ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *azureClusterLoggingConfigComponentConfigPtrType) ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AzureClusterLoggingConfigComponentConfigOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterLoggingConfigComponentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (o AzureClusterLoggingConfigComponentConfigOutput) ToAzureClusterLoggingConfigComponentConfigOutput() AzureClusterLoggingConfigComponentConfigOutput {
+	return o
+}
+
+func (o AzureClusterLoggingConfigComponentConfigOutput) ToAzureClusterLoggingConfigComponentConfigOutputWithContext(ctx context.Context) AzureClusterLoggingConfigComponentConfigOutput {
+	return o
+}
+
+func (o AzureClusterLoggingConfigComponentConfigOutput) ToAzureClusterLoggingConfigComponentConfigPtrOutput() AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AzureClusterLoggingConfigComponentConfigOutput) ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureClusterLoggingConfigComponentConfig) *AzureClusterLoggingConfigComponentConfig {
+		return &v
+	}).(AzureClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+// Components of the logging configuration to be enabled.
+func (o AzureClusterLoggingConfigComponentConfigOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureClusterLoggingConfigComponentConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type AzureClusterLoggingConfigComponentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureClusterLoggingConfigComponentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (o AzureClusterLoggingConfigComponentConfigPtrOutput) ToAzureClusterLoggingConfigComponentConfigPtrOutput() AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return o
+}
+
+func (o AzureClusterLoggingConfigComponentConfigPtrOutput) ToAzureClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AzureClusterLoggingConfigComponentConfigPtrOutput {
+	return o
+}
+
+func (o AzureClusterLoggingConfigComponentConfigPtrOutput) Elem() AzureClusterLoggingConfigComponentConfigOutput {
+	return o.ApplyT(func(v *AzureClusterLoggingConfigComponentConfig) AzureClusterLoggingConfigComponentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AzureClusterLoggingConfigComponentConfig
+		return ret
+	}).(AzureClusterLoggingConfigComponentConfigOutput)
+}
+
+// Components of the logging configuration to be enabled.
+func (o AzureClusterLoggingConfigComponentConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AzureClusterLoggingConfigComponentConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(pulumi.StringArrayOutput)
+}
+
 type AzureClusterNetworking struct {
 	// The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
@@ -5282,6 +6336,10 @@ func (o AzureNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 }
 
 type AzureNodePoolConfig struct {
+	// (Beta only) The OS image type to use on node pool instances.
+	ImageType *string `pulumi:"imageType"`
+	// Proxy configuration for outbound HTTP(S) traffic.
+	ProxyConfig *AzureNodePoolConfigProxyConfig `pulumi:"proxyConfig"`
 	// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
 	RootVolume *AzureNodePoolConfigRootVolume `pulumi:"rootVolume"`
 	// SSH configuration for how to access the node pool machines.
@@ -5304,6 +6362,10 @@ type AzureNodePoolConfigInput interface {
 }
 
 type AzureNodePoolConfigArgs struct {
+	// (Beta only) The OS image type to use on node pool instances.
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// Proxy configuration for outbound HTTP(S) traffic.
+	ProxyConfig AzureNodePoolConfigProxyConfigPtrInput `pulumi:"proxyConfig"`
 	// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
 	RootVolume AzureNodePoolConfigRootVolumePtrInput `pulumi:"rootVolume"`
 	// SSH configuration for how to access the node pool machines.
@@ -5391,6 +6453,16 @@ func (o AzureNodePoolConfigOutput) ToAzureNodePoolConfigPtrOutputWithContext(ctx
 	}).(AzureNodePoolConfigPtrOutput)
 }
 
+// (Beta only) The OS image type to use on node pool instances.
+func (o AzureNodePoolConfigOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureNodePoolConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+}
+
+// Proxy configuration for outbound HTTP(S) traffic.
+func (o AzureNodePoolConfigOutput) ProxyConfig() AzureNodePoolConfigProxyConfigPtrOutput {
+	return o.ApplyT(func(v AzureNodePoolConfig) *AzureNodePoolConfigProxyConfig { return v.ProxyConfig }).(AzureNodePoolConfigProxyConfigPtrOutput)
+}
+
 // Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
 func (o AzureNodePoolConfigOutput) RootVolume() AzureNodePoolConfigRootVolumePtrOutput {
 	return o.ApplyT(func(v AzureNodePoolConfig) *AzureNodePoolConfigRootVolume { return v.RootVolume }).(AzureNodePoolConfigRootVolumePtrOutput)
@@ -5435,6 +6507,26 @@ func (o AzureNodePoolConfigPtrOutput) Elem() AzureNodePoolConfigOutput {
 	}).(AzureNodePoolConfigOutput)
 }
 
+// (Beta only) The OS image type to use on node pool instances.
+func (o AzureNodePoolConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Proxy configuration for outbound HTTP(S) traffic.
+func (o AzureNodePoolConfigPtrOutput) ProxyConfig() AzureNodePoolConfigProxyConfigPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfig) *AzureNodePoolConfigProxyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyConfig
+	}).(AzureNodePoolConfigProxyConfigPtrOutput)
+}
+
 // Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
 func (o AzureNodePoolConfigPtrOutput) RootVolume() AzureNodePoolConfigRootVolumePtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolConfig) *AzureNodePoolConfigRootVolume {
@@ -5472,6 +6564,162 @@ func (o AzureNodePoolConfigPtrOutput) VmSize() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.VmSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureNodePoolConfigProxyConfig struct {
+	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+	SecretId string `pulumi:"secretId"`
+}
+
+// AzureNodePoolConfigProxyConfigInput is an input type that accepts AzureNodePoolConfigProxyConfigArgs and AzureNodePoolConfigProxyConfigOutput values.
+// You can construct a concrete instance of `AzureNodePoolConfigProxyConfigInput` via:
+//
+//          AzureNodePoolConfigProxyConfigArgs{...}
+type AzureNodePoolConfigProxyConfigInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolConfigProxyConfigOutput() AzureNodePoolConfigProxyConfigOutput
+	ToAzureNodePoolConfigProxyConfigOutputWithContext(context.Context) AzureNodePoolConfigProxyConfigOutput
+}
+
+type AzureNodePoolConfigProxyConfigArgs struct {
+	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
+}
+
+func (AzureNodePoolConfigProxyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolConfigProxyConfig)(nil)).Elem()
+}
+
+func (i AzureNodePoolConfigProxyConfigArgs) ToAzureNodePoolConfigProxyConfigOutput() AzureNodePoolConfigProxyConfigOutput {
+	return i.ToAzureNodePoolConfigProxyConfigOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolConfigProxyConfigArgs) ToAzureNodePoolConfigProxyConfigOutputWithContext(ctx context.Context) AzureNodePoolConfigProxyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigProxyConfigOutput)
+}
+
+func (i AzureNodePoolConfigProxyConfigArgs) ToAzureNodePoolConfigProxyConfigPtrOutput() AzureNodePoolConfigProxyConfigPtrOutput {
+	return i.ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolConfigProxyConfigArgs) ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigProxyConfigOutput).ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(ctx)
+}
+
+// AzureNodePoolConfigProxyConfigPtrInput is an input type that accepts AzureNodePoolConfigProxyConfigArgs, AzureNodePoolConfigProxyConfigPtr and AzureNodePoolConfigProxyConfigPtrOutput values.
+// You can construct a concrete instance of `AzureNodePoolConfigProxyConfigPtrInput` via:
+//
+//          AzureNodePoolConfigProxyConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureNodePoolConfigProxyConfigPtrInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolConfigProxyConfigPtrOutput() AzureNodePoolConfigProxyConfigPtrOutput
+	ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(context.Context) AzureNodePoolConfigProxyConfigPtrOutput
+}
+
+type azureNodePoolConfigProxyConfigPtrType AzureNodePoolConfigProxyConfigArgs
+
+func AzureNodePoolConfigProxyConfigPtr(v *AzureNodePoolConfigProxyConfigArgs) AzureNodePoolConfigProxyConfigPtrInput {
+	return (*azureNodePoolConfigProxyConfigPtrType)(v)
+}
+
+func (*azureNodePoolConfigProxyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolConfigProxyConfig)(nil)).Elem()
+}
+
+func (i *azureNodePoolConfigProxyConfigPtrType) ToAzureNodePoolConfigProxyConfigPtrOutput() AzureNodePoolConfigProxyConfigPtrOutput {
+	return i.ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *azureNodePoolConfigProxyConfigPtrType) ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolConfigProxyConfigPtrOutput)
+}
+
+type AzureNodePoolConfigProxyConfigOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolConfigProxyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolConfigProxyConfig)(nil)).Elem()
+}
+
+func (o AzureNodePoolConfigProxyConfigOutput) ToAzureNodePoolConfigProxyConfigOutput() AzureNodePoolConfigProxyConfigOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigProxyConfigOutput) ToAzureNodePoolConfigProxyConfigOutputWithContext(ctx context.Context) AzureNodePoolConfigProxyConfigOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigProxyConfigOutput) ToAzureNodePoolConfigProxyConfigPtrOutput() AzureNodePoolConfigProxyConfigPtrOutput {
+	return o.ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AzureNodePoolConfigProxyConfigOutput) ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigProxyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureNodePoolConfigProxyConfig) *AzureNodePoolConfigProxyConfig {
+		return &v
+	}).(AzureNodePoolConfigProxyConfigPtrOutput)
+}
+
+// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+func (o AzureNodePoolConfigProxyConfigOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureNodePoolConfigProxyConfig) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+func (o AzureNodePoolConfigProxyConfigOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureNodePoolConfigProxyConfig) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+type AzureNodePoolConfigProxyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolConfigProxyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolConfigProxyConfig)(nil)).Elem()
+}
+
+func (o AzureNodePoolConfigProxyConfigPtrOutput) ToAzureNodePoolConfigProxyConfigPtrOutput() AzureNodePoolConfigProxyConfigPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigProxyConfigPtrOutput) ToAzureNodePoolConfigProxyConfigPtrOutputWithContext(ctx context.Context) AzureNodePoolConfigProxyConfigPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolConfigProxyConfigPtrOutput) Elem() AzureNodePoolConfigProxyConfigOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfigProxyConfig) AzureNodePoolConfigProxyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AzureNodePoolConfigProxyConfig
+		return ret
+	}).(AzureNodePoolConfigProxyConfigOutput)
+}
+
+// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+func (o AzureNodePoolConfigProxyConfigPtrOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfigProxyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+func (o AzureNodePoolConfigProxyConfigPtrOutput) SecretId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfigProxyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28643,6 +29891,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneConfigEncryptionPtrInput)(nil)).Elem(), AwsClusterControlPlaneConfigEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneDatabaseEncryptionInput)(nil)).Elem(), AwsClusterControlPlaneDatabaseEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneDatabaseEncryptionPtrInput)(nil)).Elem(), AwsClusterControlPlaneDatabaseEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneInstancePlacementInput)(nil)).Elem(), AwsClusterControlPlaneInstancePlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneInstancePlacementPtrInput)(nil)).Elem(), AwsClusterControlPlaneInstancePlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneMainVolumeInput)(nil)).Elem(), AwsClusterControlPlaneMainVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneMainVolumePtrInput)(nil)).Elem(), AwsClusterControlPlaneMainVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneProxyConfigInput)(nil)).Elem(), AwsClusterControlPlaneProxyConfigArgs{})
@@ -28653,6 +29903,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterControlPlaneSshConfigPtrInput)(nil)).Elem(), AwsClusterControlPlaneSshConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterFleetInput)(nil)).Elem(), AwsClusterFleetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterFleetPtrInput)(nil)).Elem(), AwsClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterLoggingConfigInput)(nil)).Elem(), AwsClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterLoggingConfigPtrInput)(nil)).Elem(), AwsClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterLoggingConfigComponentConfigInput)(nil)).Elem(), AwsClusterLoggingConfigComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterLoggingConfigComponentConfigPtrInput)(nil)).Elem(), AwsClusterLoggingConfigComponentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterNetworkingInput)(nil)).Elem(), AwsClusterNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterNetworkingPtrInput)(nil)).Elem(), AwsClusterNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterWorkloadIdentityConfigInput)(nil)).Elem(), AwsClusterWorkloadIdentityConfigArgs{})
@@ -28663,6 +29917,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigConfigEncryptionInput)(nil)).Elem(), AwsNodePoolConfigConfigEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigConfigEncryptionPtrInput)(nil)).Elem(), AwsNodePoolConfigConfigEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigInstancePlacementInput)(nil)).Elem(), AwsNodePoolConfigInstancePlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigInstancePlacementPtrInput)(nil)).Elem(), AwsNodePoolConfigInstancePlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigProxyConfigInput)(nil)).Elem(), AwsNodePoolConfigProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigProxyConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigProxyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigRootVolumeInput)(nil)).Elem(), AwsNodePoolConfigRootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigRootVolumePtrInput)(nil)).Elem(), AwsNodePoolConfigRootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSshConfigInput)(nil)).Elem(), AwsNodePoolConfigSshConfigArgs{})
@@ -28691,6 +29949,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterControlPlaneSshConfigPtrInput)(nil)).Elem(), AzureClusterControlPlaneSshConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterFleetInput)(nil)).Elem(), AzureClusterFleetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterFleetPtrInput)(nil)).Elem(), AzureClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterLoggingConfigInput)(nil)).Elem(), AzureClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterLoggingConfigPtrInput)(nil)).Elem(), AzureClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterLoggingConfigComponentConfigInput)(nil)).Elem(), AzureClusterLoggingConfigComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterLoggingConfigComponentConfigPtrInput)(nil)).Elem(), AzureClusterLoggingConfigComponentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterNetworkingInput)(nil)).Elem(), AzureClusterNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterNetworkingPtrInput)(nil)).Elem(), AzureClusterNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterWorkloadIdentityConfigInput)(nil)).Elem(), AzureClusterWorkloadIdentityConfigArgs{})
@@ -28699,6 +29961,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolAutoscalingPtrInput)(nil)).Elem(), AzureNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigInput)(nil)).Elem(), AzureNodePoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigPtrInput)(nil)).Elem(), AzureNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigProxyConfigInput)(nil)).Elem(), AzureNodePoolConfigProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigProxyConfigPtrInput)(nil)).Elem(), AzureNodePoolConfigProxyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigRootVolumeInput)(nil)).Elem(), AzureNodePoolConfigRootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigRootVolumePtrInput)(nil)).Elem(), AzureNodePoolConfigRootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigSshConfigInput)(nil)).Elem(), AzureNodePoolConfigSshConfigArgs{})
@@ -29037,6 +30301,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsClusterControlPlaneConfigEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterControlPlaneDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(AwsClusterControlPlaneDatabaseEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneInstancePlacementOutput{})
+	pulumi.RegisterOutputType(AwsClusterControlPlaneInstancePlacementPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterControlPlaneMainVolumeOutput{})
 	pulumi.RegisterOutputType(AwsClusterControlPlaneMainVolumePtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterControlPlaneProxyConfigOutput{})
@@ -29047,6 +30313,10 @@ func init() {
 	pulumi.RegisterOutputType(AwsClusterControlPlaneSshConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterFleetOutput{})
 	pulumi.RegisterOutputType(AwsClusterFleetPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterLoggingConfigOutput{})
+	pulumi.RegisterOutputType(AwsClusterLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AwsClusterLoggingConfigComponentConfigOutput{})
+	pulumi.RegisterOutputType(AwsClusterLoggingConfigComponentConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterNetworkingOutput{})
 	pulumi.RegisterOutputType(AwsClusterNetworkingPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterWorkloadIdentityConfigOutput{})
@@ -29057,6 +30327,10 @@ func init() {
 	pulumi.RegisterOutputType(AwsNodePoolConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigConfigEncryptionOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigConfigEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigInstancePlacementOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigInstancePlacementPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigProxyConfigOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigProxyConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigRootVolumeOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigRootVolumePtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigSshConfigOutput{})
@@ -29085,6 +30359,10 @@ func init() {
 	pulumi.RegisterOutputType(AzureClusterControlPlaneSshConfigPtrOutput{})
 	pulumi.RegisterOutputType(AzureClusterFleetOutput{})
 	pulumi.RegisterOutputType(AzureClusterFleetPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterLoggingConfigOutput{})
+	pulumi.RegisterOutputType(AzureClusterLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AzureClusterLoggingConfigComponentConfigOutput{})
+	pulumi.RegisterOutputType(AzureClusterLoggingConfigComponentConfigPtrOutput{})
 	pulumi.RegisterOutputType(AzureClusterNetworkingOutput{})
 	pulumi.RegisterOutputType(AzureClusterNetworkingPtrOutput{})
 	pulumi.RegisterOutputType(AzureClusterWorkloadIdentityConfigOutput{})
@@ -29093,6 +30371,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureNodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolConfigOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolConfigProxyConfigOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolConfigProxyConfigPtrOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolConfigRootVolumeOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolConfigRootVolumePtrOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolConfigSshConfigOutput{})

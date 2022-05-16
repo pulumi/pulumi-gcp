@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -1074,6 +1075,12 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Service Directory resources to register this forwarding rule with. Currently,
+     * only supports a single Service Directory resource.
+     * Structure is documented below.
+     */
+    public readonly serviceDirectoryRegistrations!: pulumi.Output<outputs.compute.ForwardingRuleServiceDirectoryRegistration[]>;
+    /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service
      * name.
@@ -1139,6 +1146,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serviceDirectoryRegistrations"] = state ? state.serviceDirectoryRegistrations : undefined;
             resourceInputs["serviceLabel"] = state ? state.serviceLabel : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
@@ -1161,6 +1169,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["ports"] = args ? args.ports : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
             resourceInputs["serviceLabel"] = args ? args.serviceLabel : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
@@ -1328,6 +1337,12 @@ export interface ForwardingRuleState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * Service Directory resources to register this forwarding rule with. Currently,
+     * only supports a single Service Directory resource.
+     * Structure is documented below.
+     */
+    serviceDirectoryRegistrations?: pulumi.Input<pulumi.Input<inputs.compute.ForwardingRuleServiceDirectoryRegistration>[]>;
     /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service
@@ -1505,6 +1520,12 @@ export interface ForwardingRuleArgs {
      * This field is not applicable to global forwarding rules.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Service Directory resources to register this forwarding rule with. Currently,
+     * only supports a single Service Directory resource.
+     * Structure is documented below.
+     */
+    serviceDirectoryRegistrations?: pulumi.Input<pulumi.Input<inputs.compute.ForwardingRuleServiceDirectoryRegistration>[]>;
     /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service

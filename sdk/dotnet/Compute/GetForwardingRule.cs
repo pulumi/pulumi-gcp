@@ -152,6 +152,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly string? Region;
         public readonly string SelfLink;
+        public readonly ImmutableArray<Outputs.GetForwardingRuleServiceDirectoryRegistrationResult> ServiceDirectoryRegistrations;
         public readonly string ServiceLabel;
         public readonly string ServiceName;
         public readonly string Subnetwork;
@@ -199,6 +200,8 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            ImmutableArray<Outputs.GetForwardingRuleServiceDirectoryRegistrationResult> serviceDirectoryRegistrations,
+
             string serviceLabel,
 
             string serviceName,
@@ -227,6 +230,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             Region = region;
             SelfLink = selfLink;
+            ServiceDirectoryRegistrations = serviceDirectoryRegistrations;
             ServiceLabel = serviceLabel;
             ServiceName = serviceName;
             Subnetwork = subnetwork;

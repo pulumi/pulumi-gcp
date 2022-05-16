@@ -25,6 +25,18 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string> IamInstanceProfile { get; set; } = null!;
 
         /// <summary>
+        /// (Beta only) The OS image type to use on node pool instances.
+        /// </summary>
+        [Input("imageType")]
+        public Input<string>? ImageType { get; set; }
+
+        /// <summary>
+        /// (Beta only) Details of placement information for an instance.
+        /// </summary>
+        [Input("instancePlacement")]
+        public Input<Inputs.AwsNodePoolConfigInstancePlacementGetArgs>? InstancePlacement { get; set; }
+
+        /// <summary>
         /// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         /// </summary>
         [Input("instanceType")]
@@ -41,6 +53,12 @@ namespace Pulumi.Gcp.Container.Inputs
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Proxy configuration for outbound HTTP(S) traffic.
+        /// </summary>
+        [Input("proxyConfig")]
+        public Input<Inputs.AwsNodePoolConfigProxyConfigGetArgs>? ProxyConfig { get; set; }
 
         /// <summary>
         /// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.

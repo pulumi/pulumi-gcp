@@ -553,6 +553,10 @@ class AwsNodePool(pulumi.CustomResource):
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
+                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
+                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
+                ),
                 ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
@@ -708,6 +712,10 @@ class AwsNodePool(pulumi.CustomResource):
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
+                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
+                    secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
+                ),
                 ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),

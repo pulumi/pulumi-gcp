@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureMembershipConfigmanagementConfigSyncGit
     {
+        /// <summary>
+        /// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+        /// </summary>
         public readonly string? GcpServiceAccountEmail;
         /// <summary>
         /// URL for the HTTPS proxy to be used when communicating with the Git repo.

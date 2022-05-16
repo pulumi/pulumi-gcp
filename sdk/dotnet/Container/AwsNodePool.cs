@@ -152,6 +152,11 @@ namespace Pulumi.Gcp.Container
     ///                 {
     ///                     "sg-00000000000000000",
     ///                 },
+    ///                 ProxyConfig = new Gcp.Container.Inputs.AwsNodePoolConfigProxyConfigArgs
+    ///                 {
+    ///                     SecretArn = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+    ///                     SecretVersion = "12345678-ABCD-EFGH-IJKL-987654321098",
+    ///                 },
     ///                 SshConfig = new Gcp.Container.Inputs.AwsNodePoolConfigSshConfigArgs
     ///                 {
     ///                     Ec2KeyPair = "my--1p-dev-ssh",
