@@ -25,6 +25,7 @@ class AzureClusterArgs:
                  resource_group_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -39,6 +40,7 @@ class AzureClusterArgs:
         :param pulumi.Input[str] resource_group_id: The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         """
@@ -54,6 +56,8 @@ class AzureClusterArgs:
             pulumi.set(__self__, "annotations", annotations)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -180,6 +184,18 @@ class AzureClusterArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]:
+        """
+        (Beta only) Logging configuration.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -218,6 +234,7 @@ class _AzureClusterState:
                  etag: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input['AzureClusterFleetArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networking: Optional[pulumi.Input['AzureClusterNetworkingArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -241,6 +258,7 @@ class _AzureClusterState:
                and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The project for the resource
@@ -274,6 +292,8 @@ class _AzureClusterState:
             pulumi.set(__self__, "fleet", fleet)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networking is not None:
@@ -427,6 +447,18 @@ class _AzureClusterState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]:
+        """
+        (Beta only) Logging configuration.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -549,6 +581,7 @@ class AzureCluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -627,6 +660,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The project for the resource
@@ -724,6 +758,7 @@ class AzureCluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -760,6 +795,7 @@ class AzureCluster(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["name"] = name
             if networking is None and not opts.urn:
                 raise TypeError("Missing required property 'networking'")
@@ -797,6 +833,7 @@ class AzureCluster(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -825,6 +862,7 @@ class AzureCluster(pulumi.CustomResource):
                and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The project for the resource
@@ -851,6 +889,7 @@ class AzureCluster(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["fleet"] = fleet
         __props__.__dict__["location"] = location
+        __props__.__dict__["logging_config"] = logging_config
         __props__.__dict__["name"] = name
         __props__.__dict__["networking"] = networking
         __props__.__dict__["project"] = project
@@ -950,6 +989,14 @@ class AzureCluster(pulumi.CustomResource):
         The location for the resource
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Output['outputs.AzureClusterLoggingConfig']:
+        """
+        (Beta only) Logging configuration.
+        """
+        return pulumi.get(self, "logging_config")
 
     @property
     @pulumi.getter

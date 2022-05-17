@@ -22,6 +22,9 @@ __all__ = [
     'PolicyAlternativeNameServerConfigArgs',
     'PolicyAlternativeNameServerConfigTargetNameServerArgs',
     'PolicyNetworkArgs',
+    'RecordSetRoutingPolicyArgs',
+    'RecordSetRoutingPolicyGeoArgs',
+    'RecordSetRoutingPolicyWrrArgs',
     'ResponsePolicyNetworkArgs',
     'ResponsePolicyRuleLocalDataArgs',
     'ResponsePolicyRuleLocalDataLocalDataArgs',
@@ -511,6 +514,123 @@ class PolicyNetworkArgs:
     @network_url.setter
     def network_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "network_url", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyArgs:
+    def __init__(__self__, *,
+                 geos: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]] = None,
+                 wrrs: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]] geos: The configuration for Geolocation based routing policy.
+               Structure is document below.
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]] wrrs: The configuration for Weighted Round Robin based routing policy.
+               Structure is document below.
+        """
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
+        if wrrs is not None:
+            pulumi.set(__self__, "wrrs", wrrs)
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]]:
+        """
+        The configuration for Geolocation based routing policy.
+        Structure is document below.
+        """
+        return pulumi.get(self, "geos")
+
+    @geos.setter
+    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]]):
+        pulumi.set(self, "geos", value)
+
+    @property
+    @pulumi.getter
+    def wrrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]]:
+        """
+        The configuration for Weighted Round Robin based routing policy.
+        Structure is document below.
+        """
+        return pulumi.get(self, "wrrs")
+
+    @wrrs.setter
+    def wrrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]]):
+        pulumi.set(self, "wrrs", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyGeoArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[str],
+                 rrdatas: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] location: The location name defined in Google Cloud.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "rrdatas", rrdatas)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location name defined in Google Cloud.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Same as `rrdatas` above.
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "rrdatas", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyWrrArgs:
+    def __init__(__self__, *,
+                 rrdatas: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 weight: pulumi.Input[float]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
+        :param pulumi.Input[float] weight: The ratio of traffic routed to the target.
+        """
+        pulumi.set(__self__, "rrdatas", rrdatas)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Same as `rrdatas` above.
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "rrdatas", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[float]:
+        """
+        The ratio of traffic routed to the target.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[float]):
+        pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type

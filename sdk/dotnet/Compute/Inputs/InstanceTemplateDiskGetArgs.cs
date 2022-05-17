@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
-        /// The GCE disk type. Can be either `"pd-ssd"`,
-        /// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+        /// The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+        /// `"pd-balanced"` or `"pd-standard"`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }

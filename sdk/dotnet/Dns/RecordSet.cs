@@ -187,6 +187,50 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// }
     /// ```
+    /// ### Setting Routing Policy instead of using rrdatas
+    /// ### Geolocation
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var geo = new Gcp.Dns.RecordSet("geo", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             Name = $"backend.{google_dns_managed_zone.Prod.Dns_name}",
+    ///             ManagedZone = google_dns_managed_zone.Prod.Name,
+    ///             Type = "A",
+    ///             Ttl = 300,
+    ///             RoutingPolicy = new Gcp.Dns.Inputs.RecordSetRoutingPolicyArgs
+    ///             {
+    ///                 Geos = 
+    ///                 {
+    ///                     new Gcp.Dns.Inputs.RecordSetRoutingPolicyGeoArgs
+    ///                     {
+    ///                         Location = "asia-east1",
+    ///                         Rrdatas = 
+    ///                         {
+    ///                             "10.128.1.1",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Dns.Inputs.RecordSetRoutingPolicyGeoArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                         Rrdatas = 
+    ///                         {
+    ///                             "10.130.1.1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -230,10 +274,15 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        /// string (e.g. "first255characters\"\"morecharacters").
+        /// The configuration for steering traffic based on query.
+        /// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("routingPolicy")]
+        public Output<Outputs.RecordSetRoutingPolicy?> RoutingPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Same as `rrdatas` above.
         /// </summary>
         [Output("rrdatas")]
         public Output<ImmutableArray<string>> Rrdatas { get; private set; } = null!;
@@ -316,14 +365,19 @@ namespace Pulumi.Gcp.Dns
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("rrdatas", required: true)]
+        /// <summary>
+        /// The configuration for steering traffic based on query.
+        /// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("routingPolicy")]
+        public Input<Inputs.RecordSetRoutingPolicyArgs>? RoutingPolicy { get; set; }
+
+        [Input("rrdatas")]
         private InputList<string>? _rrdatas;
 
         /// <summary>
-        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        /// string (e.g. "first255characters\"\"morecharacters").
+        /// Same as `rrdatas` above.
         /// </summary>
         public InputList<string> Rrdatas
         {
@@ -370,14 +424,19 @@ namespace Pulumi.Gcp.Dns
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The configuration for steering traffic based on query.
+        /// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("routingPolicy")]
+        public Input<Inputs.RecordSetRoutingPolicyGetArgs>? RoutingPolicy { get; set; }
+
         [Input("rrdatas")]
         private InputList<string>? _rrdatas;
 
         /// <summary>
-        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        /// string (e.g. "first255characters\"\"morecharacters").
+        /// Same as `rrdatas` above.
         /// </summary>
         public InputList<string> Rrdatas
         {

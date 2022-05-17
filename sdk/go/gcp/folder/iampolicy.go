@@ -297,7 +297,11 @@ import (
 //
 //  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
-// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
+// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
+//
+// ```sh
+//  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+// ```
 type IAMPolicy struct {
 	pulumi.CustomResourceState
 

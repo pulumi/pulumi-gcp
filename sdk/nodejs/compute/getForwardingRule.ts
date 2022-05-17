@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -78,6 +79,7 @@ export interface GetForwardingRuleResult {
     readonly project?: string;
     readonly region?: string;
     readonly selfLink: string;
+    readonly serviceDirectoryRegistrations: outputs.compute.GetForwardingRuleServiceDirectoryRegistration[];
     readonly serviceLabel: string;
     readonly serviceName: string;
     readonly subnetwork: string;

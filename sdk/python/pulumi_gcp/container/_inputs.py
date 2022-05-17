@@ -15,16 +15,21 @@ __all__ = [
     'AwsClusterControlPlaneAwsServicesAuthenticationArgs',
     'AwsClusterControlPlaneConfigEncryptionArgs',
     'AwsClusterControlPlaneDatabaseEncryptionArgs',
+    'AwsClusterControlPlaneInstancePlacementArgs',
     'AwsClusterControlPlaneMainVolumeArgs',
     'AwsClusterControlPlaneProxyConfigArgs',
     'AwsClusterControlPlaneRootVolumeArgs',
     'AwsClusterControlPlaneSshConfigArgs',
     'AwsClusterFleetArgs',
+    'AwsClusterLoggingConfigArgs',
+    'AwsClusterLoggingConfigComponentConfigArgs',
     'AwsClusterNetworkingArgs',
     'AwsClusterWorkloadIdentityConfigArgs',
     'AwsNodePoolAutoscalingArgs',
     'AwsNodePoolConfigArgs',
     'AwsNodePoolConfigConfigEncryptionArgs',
+    'AwsNodePoolConfigInstancePlacementArgs',
+    'AwsNodePoolConfigProxyConfigArgs',
     'AwsNodePoolConfigRootVolumeArgs',
     'AwsNodePoolConfigSshConfigArgs',
     'AwsNodePoolConfigTaintArgs',
@@ -39,10 +44,13 @@ __all__ = [
     'AzureClusterControlPlaneRootVolumeArgs',
     'AzureClusterControlPlaneSshConfigArgs',
     'AzureClusterFleetArgs',
+    'AzureClusterLoggingConfigArgs',
+    'AzureClusterLoggingConfigComponentConfigArgs',
     'AzureClusterNetworkingArgs',
     'AzureClusterWorkloadIdentityConfigArgs',
     'AzureNodePoolAutoscalingArgs',
     'AzureNodePoolConfigArgs',
+    'AzureNodePoolConfigProxyConfigArgs',
     'AzureNodePoolConfigRootVolumeArgs',
     'AzureNodePoolConfigSshConfigArgs',
     'AzureNodePoolMaxPodsConstraintArgs',
@@ -141,7 +149,7 @@ class AwsClusterAuthorizationArgs:
     def __init__(__self__, *,
                  admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -149,7 +157,7 @@ class AwsClusterAuthorizationArgs:
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]:
         """
-        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
 
@@ -189,6 +197,7 @@ class AwsClusterControlPlaneArgs:
                  iam_instance_profile: pulumi.Input[str],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  version: pulumi.Input[str],
+                 instance_placement: Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs']] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  main_volume: Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArgs']] = None,
                  proxy_config: Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArgs']] = None,
@@ -203,6 +212,7 @@ class AwsClusterControlPlaneArgs:
         :param pulumi.Input[str] iam_instance_profile: The name of the AWS IAM instance pofile to assign to each control plane replica.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
         :param pulumi.Input[str] version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+        :param pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs'] instance_placement: (Beta only) Details of placement information for an instance.
         :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param pulumi.Input['AwsClusterControlPlaneMainVolumeArgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
         :param pulumi.Input['AwsClusterControlPlaneProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
@@ -217,6 +227,8 @@ class AwsClusterControlPlaneArgs:
         pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
         pulumi.set(__self__, "version", version)
+        if instance_placement is not None:
+            pulumi.set(__self__, "instance_placement", instance_placement)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if main_volume is not None:
@@ -303,6 +315,18 @@ class AwsClusterControlPlaneArgs:
     @version.setter
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="instancePlacement")
+    def instance_placement(self) -> Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs']]:
+        """
+        (Beta only) Details of placement information for an instance.
+        """
+        return pulumi.get(self, "instance_placement")
+
+    @instance_placement.setter
+    def instance_placement(self, value: Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs']]):
+        pulumi.set(self, "instance_placement", value)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -469,6 +493,29 @@ class AwsClusterControlPlaneDatabaseEncryptionArgs:
     @kms_key_arn.setter
     def kms_key_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_arn", value)
+
+
+@pulumi.input_type
+class AwsClusterControlPlaneInstancePlacementArgs:
+    def __init__(__self__, *,
+                 tenancy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] tenancy: The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+        """
+        if tenancy is not None:
+            pulumi.set(__self__, "tenancy", tenancy)
+
+    @property
+    @pulumi.getter
+    def tenancy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+        """
+        return pulumi.get(self, "tenancy")
+
+    @tenancy.setter
+    def tenancy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenancy", value)
 
 
 @pulumi.input_type
@@ -714,6 +761,52 @@ class AwsClusterFleetArgs:
 
 
 @pulumi.input_type
+class AwsClusterLoggingConfigArgs:
+    def __init__(__self__, *,
+                 component_config: Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs']] = None):
+        """
+        :param pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs'] component_config: Configuration of the logging components.
+        """
+        if component_config is not None:
+            pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs']]:
+        """
+        Configuration of the logging components.
+        """
+        return pulumi.get(self, "component_config")
+
+    @component_config.setter
+    def component_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs']]):
+        pulumi.set(self, "component_config", value)
+
+
+@pulumi.input_type
+class AwsClusterLoggingConfigComponentConfigArgs:
+    def __init__(__self__, *,
+                 enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: Components of the logging configuration to be enabled.
+        """
+        if enable_components is not None:
+            pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Components of the logging configuration to be enabled.
+        """
+        return pulumi.get(self, "enable_components")
+
+    @enable_components.setter
+    def enable_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enable_components", value)
+
+
+@pulumi.input_type
 class AwsClusterNetworkingArgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -848,8 +941,11 @@ class AwsNodePoolConfigArgs:
     def __init__(__self__, *,
                  config_encryption: pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'],
                  iam_instance_profile: pulumi.Input[str],
+                 image_type: Optional[pulumi.Input[str]] = None,
+                 instance_placement: Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArgs']] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 proxy_config: Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArgs']] = None,
                  root_volume: Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArgs']] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssh_config: Optional[pulumi.Input['AwsNodePoolConfigSshConfigArgs']] = None,
@@ -858,8 +954,11 @@ class AwsNodePoolConfigArgs:
         """
         :param pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'] config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
         :param pulumi.Input[str] iam_instance_profile: The name of the AWS IAM role assigned to nodes in the pool.
+        :param pulumi.Input[str] image_type: (Beta only) The OS image type to use on node pool instances.
+        :param pulumi.Input['AwsNodePoolConfigInstancePlacementArgs'] instance_placement: (Beta only) Details of placement information for an instance.
         :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input['AwsNodePoolConfigProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param pulumi.Input['AwsNodePoolConfigRootVolumeArgs'] root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
         :param pulumi.Input['AwsNodePoolConfigSshConfigArgs'] ssh_config: Optional. The SSH configuration.
@@ -868,10 +967,16 @@ class AwsNodePoolConfigArgs:
         """
         pulumi.set(__self__, "config_encryption", config_encryption)
         pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
+        if instance_placement is not None:
+            pulumi.set(__self__, "instance_placement", instance_placement)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if proxy_config is not None:
+            pulumi.set(__self__, "proxy_config", proxy_config)
         if root_volume is not None:
             pulumi.set(__self__, "root_volume", root_volume)
         if security_group_ids is not None:
@@ -908,6 +1013,30 @@ class AwsNodePoolConfigArgs:
         pulumi.set(self, "iam_instance_profile", value)
 
     @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Beta only) The OS image type to use on node pool instances.
+        """
+        return pulumi.get(self, "image_type")
+
+    @image_type.setter
+    def image_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_type", value)
+
+    @property
+    @pulumi.getter(name="instancePlacement")
+    def instance_placement(self) -> Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArgs']]:
+        """
+        (Beta only) Details of placement information for an instance.
+        """
+        return pulumi.get(self, "instance_placement")
+
+    @instance_placement.setter
+    def instance_placement(self, value: Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArgs']]):
+        pulumi.set(self, "instance_placement", value)
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -930,6 +1059,18 @@ class AwsNodePoolConfigArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArgs']]:
+        """
+        Proxy configuration for outbound HTTP(S) traffic.
+        """
+        return pulumi.get(self, "proxy_config")
+
+    @proxy_config.setter
+    def proxy_config(self, value: Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArgs']]):
+        pulumi.set(self, "proxy_config", value)
 
     @property
     @pulumi.getter(name="rootVolume")
@@ -1012,6 +1153,66 @@ class AwsNodePoolConfigConfigEncryptionArgs:
     @kms_key_arn.setter
     def kms_key_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_arn", value)
+
+
+@pulumi.input_type
+class AwsNodePoolConfigInstancePlacementArgs:
+    def __init__(__self__, *,
+                 tenancy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] tenancy: The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+        """
+        if tenancy is not None:
+            pulumi.set(__self__, "tenancy", tenancy)
+
+    @property
+    @pulumi.getter
+    def tenancy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+        """
+        return pulumi.get(self, "tenancy")
+
+    @tenancy.setter
+    def tenancy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenancy", value)
+
+
+@pulumi.input_type
+class AwsNodePoolConfigProxyConfigArgs:
+    def __init__(__self__, *,
+                 secret_arn: pulumi.Input[str],
+                 secret_version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] secret_arn: The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        :param pulumi.Input[str] secret_version: The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        pulumi.set(__self__, "secret_arn", secret_arn)
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="secretArn")
+    def secret_arn(self) -> pulumi.Input[str]:
+        """
+        The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        return pulumi.get(self, "secret_arn")
+
+    @secret_arn.setter
+    def secret_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_arn", value)
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> pulumi.Input[str]:
+        """
+        The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        return pulumi.get(self, "secret_version")
+
+    @secret_version.setter
+    def secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_version", value)
 
 
 @pulumi.input_type
@@ -1186,7 +1387,7 @@ class AzureClusterAuthorizationArgs:
     def __init__(__self__, *,
                  admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -1194,7 +1395,7 @@ class AzureClusterAuthorizationArgs:
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]:
         """
-        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
 
@@ -1595,6 +1796,52 @@ class AzureClusterFleetArgs:
 
 
 @pulumi.input_type
+class AzureClusterLoggingConfigArgs:
+    def __init__(__self__, *,
+                 component_config: Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs']] = None):
+        """
+        :param pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs'] component_config: Configuration of the logging components.
+        """
+        if component_config is not None:
+            pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs']]:
+        """
+        Configuration of the logging components.
+        """
+        return pulumi.get(self, "component_config")
+
+    @component_config.setter
+    def component_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs']]):
+        pulumi.set(self, "component_config", value)
+
+
+@pulumi.input_type
+class AzureClusterLoggingConfigComponentConfigArgs:
+    def __init__(__self__, *,
+                 enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: Components of the logging configuration to be enabled.
+        """
+        if enable_components is not None:
+            pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Components of the logging configuration to be enabled.
+        """
+        return pulumi.get(self, "enable_components")
+
+    @enable_components.setter
+    def enable_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enable_components", value)
+
+
+@pulumi.input_type
 class AzureClusterNetworkingArgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -1728,16 +1975,24 @@ class AzureNodePoolAutoscalingArgs:
 class AzureNodePoolConfigArgs:
     def __init__(__self__, *,
                  ssh_config: pulumi.Input['AzureNodePoolConfigSshConfigArgs'],
+                 image_type: Optional[pulumi.Input[str]] = None,
+                 proxy_config: Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArgs']] = None,
                  root_volume: Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['AzureNodePoolConfigSshConfigArgs'] ssh_config: SSH configuration for how to access the node pool machines.
+        :param pulumi.Input[str] image_type: (Beta only) The OS image type to use on node pool instances.
+        :param pulumi.Input['AzureNodePoolConfigProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param pulumi.Input['AzureNodePoolConfigRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         :param pulumi.Input[str] vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
         """
         pulumi.set(__self__, "ssh_config", ssh_config)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
+        if proxy_config is not None:
+            pulumi.set(__self__, "proxy_config", proxy_config)
         if root_volume is not None:
             pulumi.set(__self__, "root_volume", root_volume)
         if tags is not None:
@@ -1756,6 +2011,30 @@ class AzureNodePoolConfigArgs:
     @ssh_config.setter
     def ssh_config(self, value: pulumi.Input['AzureNodePoolConfigSshConfigArgs']):
         pulumi.set(self, "ssh_config", value)
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Beta only) The OS image type to use on node pool instances.
+        """
+        return pulumi.get(self, "image_type")
+
+    @image_type.setter
+    def image_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_type", value)
+
+    @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArgs']]:
+        """
+        Proxy configuration for outbound HTTP(S) traffic.
+        """
+        return pulumi.get(self, "proxy_config")
+
+    @proxy_config.setter
+    def proxy_config(self, value: Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArgs']]):
+        pulumi.set(self, "proxy_config", value)
 
     @property
     @pulumi.getter(name="rootVolume")
@@ -1792,6 +2071,43 @@ class AzureNodePoolConfigArgs:
     @vm_size.setter
     def vm_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vm_size", value)
+
+
+@pulumi.input_type
+class AzureNodePoolConfigProxyConfigArgs:
+    def __init__(__self__, *,
+                 resource_group_id: pulumi.Input[str],
+                 secret_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] resource_group_id: The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        :param pulumi.Input[str] secret_id: The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+        """
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "secret_id", secret_id)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[str]:
+        """
+        The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> pulumi.Input[str]:
+        """
+        The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @secret_id.setter
+    def secret_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_id", value)
 
 
 @pulumi.input_type

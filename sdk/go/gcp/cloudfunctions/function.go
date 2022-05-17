@@ -156,6 +156,8 @@ type Function struct {
 	BuildEnvironmentVariables pulumi.MapOutput `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+	DockerRepository pulumi.StringPtrOutput `pulumi:"dockerRepository"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrOutput `pulumi:"entryPoint"`
 	// A set of key/value environment variable pairs to assign to the function.
@@ -166,6 +168,9 @@ type Function struct {
 	HttpsTriggerUrl pulumi.StringOutput `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrOutput `pulumi:"ingressSettings"`
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -192,7 +197,7 @@ type Function struct {
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject pulumi.StringPtrOutput `pulumi:"sourceArchiveObject"`
 	// Represents parameters related to source repository where a function is hosted.
-	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 	SourceRepository FunctionSourceRepositoryPtrOutput `pulumi:"sourceRepository"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
@@ -242,6 +247,8 @@ type functionState struct {
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
+	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+	DockerRepository *string `pulumi:"dockerRepository"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// A set of key/value environment variable pairs to assign to the function.
@@ -252,6 +259,9 @@ type functionState struct {
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -278,7 +288,7 @@ type functionState struct {
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject *string `pulumi:"sourceArchiveObject"`
 	// Represents parameters related to source repository where a function is hosted.
-	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 	SourceRepository *FunctionSourceRepository `pulumi:"sourceRepository"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout *int `pulumi:"timeout"`
@@ -297,6 +307,8 @@ type FunctionState struct {
 	BuildEnvironmentVariables pulumi.MapInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
+	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+	DockerRepository pulumi.StringPtrInput
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrInput
 	// A set of key/value environment variable pairs to assign to the function.
@@ -307,6 +319,9 @@ type FunctionState struct {
 	HttpsTriggerUrl pulumi.StringPtrInput
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -333,7 +348,7 @@ type FunctionState struct {
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject pulumi.StringPtrInput
 	// Represents parameters related to source repository where a function is hosted.
-	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 	SourceRepository FunctionSourceRepositoryPtrInput
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrInput
@@ -356,6 +371,8 @@ type functionArgs struct {
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
+	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+	DockerRepository *string `pulumi:"dockerRepository"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// A set of key/value environment variable pairs to assign to the function.
@@ -366,6 +383,9 @@ type functionArgs struct {
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -392,7 +412,7 @@ type functionArgs struct {
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject *string `pulumi:"sourceArchiveObject"`
 	// Represents parameters related to source repository where a function is hosted.
-	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 	SourceRepository *FunctionSourceRepository `pulumi:"sourceRepository"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout *int `pulumi:"timeout"`
@@ -412,6 +432,8 @@ type FunctionArgs struct {
 	BuildEnvironmentVariables pulumi.MapInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
+	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+	DockerRepository pulumi.StringPtrInput
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrInput
 	// A set of key/value environment variable pairs to assign to the function.
@@ -422,6 +444,9 @@ type FunctionArgs struct {
 	HttpsTriggerUrl pulumi.StringPtrInput
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -448,7 +473,7 @@ type FunctionArgs struct {
 	// The source archive object (file) in archive bucket.
 	SourceArchiveObject pulumi.StringPtrInput
 	// Represents parameters related to source repository where a function is hosted.
-	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 	SourceRepository FunctionSourceRepositoryPtrInput
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrInput
@@ -562,6 +587,11 @@ func (o FunctionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+func (o FunctionOutput) DockerRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.DockerRepository }).(pulumi.StringPtrOutput)
+}
+
 // Name of the function that will be executed when the Google Cloud Function is triggered.
 func (o FunctionOutput) EntryPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.EntryPoint }).(pulumi.StringPtrOutput)
@@ -585,6 +615,12 @@ func (o FunctionOutput) HttpsTriggerUrl() pulumi.StringOutput {
 // String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 func (o FunctionOutput) IngressSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.IngressSettings }).(pulumi.StringPtrOutput)
+}
+
+// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+func (o FunctionOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
 // A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
@@ -649,7 +685,7 @@ func (o FunctionOutput) SourceArchiveObject() pulumi.StringPtrOutput {
 }
 
 // Represents parameters related to source repository where a function is hosted.
-// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below.
+// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 func (o FunctionOutput) SourceRepository() FunctionSourceRepositoryPtrOutput {
 	return o.ApplyT(func(v *Function) FunctionSourceRepositoryPtrOutput { return v.SourceRepository }).(FunctionSourceRepositoryPtrOutput)
 }

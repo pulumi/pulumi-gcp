@@ -63,25 +63,26 @@ type LookupForwardingRuleResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	Description       string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                   string            `pulumi:"id"`
-	IpAddress            string            `pulumi:"ipAddress"`
-	IpProtocol           string            `pulumi:"ipProtocol"`
-	IsMirroringCollector bool              `pulumi:"isMirroringCollector"`
-	LabelFingerprint     string            `pulumi:"labelFingerprint"`
-	Labels               map[string]string `pulumi:"labels"`
-	LoadBalancingScheme  string            `pulumi:"loadBalancingScheme"`
-	Name                 string            `pulumi:"name"`
-	Network              string            `pulumi:"network"`
-	NetworkTier          string            `pulumi:"networkTier"`
-	PortRange            string            `pulumi:"portRange"`
-	Ports                []string          `pulumi:"ports"`
-	Project              *string           `pulumi:"project"`
-	Region               *string           `pulumi:"region"`
-	SelfLink             string            `pulumi:"selfLink"`
-	ServiceLabel         string            `pulumi:"serviceLabel"`
-	ServiceName          string            `pulumi:"serviceName"`
-	Subnetwork           string            `pulumi:"subnetwork"`
-	Target               string            `pulumi:"target"`
+	Id                            string                                          `pulumi:"id"`
+	IpAddress                     string                                          `pulumi:"ipAddress"`
+	IpProtocol                    string                                          `pulumi:"ipProtocol"`
+	IsMirroringCollector          bool                                            `pulumi:"isMirroringCollector"`
+	LabelFingerprint              string                                          `pulumi:"labelFingerprint"`
+	Labels                        map[string]string                               `pulumi:"labels"`
+	LoadBalancingScheme           string                                          `pulumi:"loadBalancingScheme"`
+	Name                          string                                          `pulumi:"name"`
+	Network                       string                                          `pulumi:"network"`
+	NetworkTier                   string                                          `pulumi:"networkTier"`
+	PortRange                     string                                          `pulumi:"portRange"`
+	Ports                         []string                                        `pulumi:"ports"`
+	Project                       *string                                         `pulumi:"project"`
+	Region                        *string                                         `pulumi:"region"`
+	SelfLink                      string                                          `pulumi:"selfLink"`
+	ServiceDirectoryRegistrations []GetForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
+	ServiceLabel                  string                                          `pulumi:"serviceLabel"`
+	ServiceName                   string                                          `pulumi:"serviceName"`
+	Subnetwork                    string                                          `pulumi:"subnetwork"`
+	Target                        string                                          `pulumi:"target"`
 }
 
 func LookupForwardingRuleOutput(ctx *pulumi.Context, args LookupForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupForwardingRuleResultOutput {
@@ -207,6 +208,12 @@ func (o LookupForwardingRuleResultOutput) Region() pulumi.StringPtrOutput {
 
 func (o LookupForwardingRuleResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) ServiceDirectoryRegistrations() GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) []GetForwardingRuleServiceDirectoryRegistration {
+		return v.ServiceDirectoryRegistrations
+	}).(GetForwardingRuleServiceDirectoryRegistrationArrayOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) ServiceLabel() pulumi.StringOutput {

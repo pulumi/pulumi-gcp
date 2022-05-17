@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RecordSetArgs', 'RecordSet']
 
@@ -15,30 +17,34 @@ class RecordSetArgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 rrdatas: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-               data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-               record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-               string (e.g. "first255characters\"\"morecharacters").
         :param pulumi.Input[str] type: The DNS record set type.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
+               Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "rrdatas", rrdatas)
         pulumi.set(__self__, "type", type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if routing_policy is not None:
+            pulumi.set(__self__, "routing_policy", routing_policy)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -69,21 +75,6 @@ class RecordSetArgs:
 
     @property
     @pulumi.getter
-    def rrdatas(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        string (e.g. "first255characters\"\"morecharacters").
-        """
-        return pulumi.get(self, "rrdatas")
-
-    @rrdatas.setter
-    def rrdatas(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "rrdatas", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
         The DNS record set type.
@@ -108,6 +99,32 @@ class RecordSetArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="routingPolicy")
+    def routing_policy(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]:
+        """
+        The configuration for steering traffic based on query.
+        Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routing_policy")
+
+    @routing_policy.setter
+    def routing_policy(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]):
+        pulumi.set(self, "routing_policy", value)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Same as `rrdatas` above.
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rrdatas", value)
+
+    @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
@@ -126,6 +143,7 @@ class _RecordSetState:
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -136,10 +154,10 @@ class _RecordSetState:
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-               data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-               record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-               string (e.g. "first255characters\"\"morecharacters").
+        :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
+               Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
         """
@@ -149,6 +167,8 @@ class _RecordSetState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if routing_policy is not None:
+            pulumi.set(__self__, "routing_policy", routing_policy)
         if rrdatas is not None:
             pulumi.set(__self__, "rrdatas", rrdatas)
         if ttl is not None:
@@ -195,13 +215,24 @@ class _RecordSetState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="routingPolicy")
+    def routing_policy(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]:
+        """
+        The configuration for steering traffic based on query.
+        Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routing_policy")
+
+    @routing_policy.setter
+    def routing_policy(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]):
+        pulumi.set(self, "routing_policy", value)
+
+    @property
     @pulumi.getter
     def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        string (e.g. "first255characters\"\"morecharacters").
+        Same as `rrdatas` above.
         """
         return pulumi.get(self, "rrdatas")
 
@@ -242,6 +273,7 @@ class RecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -340,6 +372,31 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["frontend.mydomain.com."])
         ```
+        ### Setting Routing Policy instead of using rrdatas
+        ### Geolocation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        geo = gcp.dns.RecordSet("geo",
+            name=f"backend.{google_dns_managed_zone['prod']['dns_name']}",
+            managed_zone=google_dns_managed_zone["prod"]["name"],
+            type="A",
+            ttl=300,
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+                geos=[
+                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                        location="asia-east1",
+                        rrdatas=["10.128.1.1"],
+                    ),
+                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                        location="us-central1",
+                        rrdatas=["10.130.1.1"],
+                    ),
+                ],
+            ))
+        ```
 
         ## Import
 
@@ -366,10 +423,10 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-               data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-               record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-               string (e.g. "first255characters\"\"morecharacters").
+        :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
+               Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
         """
@@ -473,6 +530,31 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["frontend.mydomain.com."])
         ```
+        ### Setting Routing Policy instead of using rrdatas
+        ### Geolocation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        geo = gcp.dns.RecordSet("geo",
+            name=f"backend.{google_dns_managed_zone['prod']['dns_name']}",
+            managed_zone=google_dns_managed_zone["prod"]["name"],
+            type="A",
+            ttl=300,
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+                geos=[
+                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                        location="asia-east1",
+                        rrdatas=["10.128.1.1"],
+                    ),
+                    gcp.dns.RecordSetRoutingPolicyGeoArgs(
+                        location="us-central1",
+                        rrdatas=["10.130.1.1"],
+                    ),
+                ],
+            ))
+        ```
 
         ## Import
 
@@ -510,6 +592,7 @@ class RecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -532,8 +615,7 @@ class RecordSet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if rrdatas is None and not opts.urn:
-                raise TypeError("Missing required property 'rrdatas'")
+            __props__.__dict__["routing_policy"] = routing_policy
             __props__.__dict__["rrdatas"] = rrdatas
             __props__.__dict__["ttl"] = ttl
             if type is None and not opts.urn:
@@ -552,6 +634,7 @@ class RecordSet(pulumi.CustomResource):
             managed_zone: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            routing_policy: Optional[pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']]] = None,
             rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'RecordSet':
@@ -567,10 +650,10 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-               data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-               record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-               string (e.g. "first255characters\"\"morecharacters").
+        :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
+               Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
         """
@@ -581,6 +664,7 @@ class RecordSet(pulumi.CustomResource):
         __props__.__dict__["managed_zone"] = managed_zone
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["routing_policy"] = routing_policy
         __props__.__dict__["rrdatas"] = rrdatas
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["type"] = type
@@ -613,13 +697,20 @@ class RecordSet(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter
-    def rrdatas(self) -> pulumi.Output[Sequence[str]]:
+    @pulumi.getter(name="routingPolicy")
+    def routing_policy(self) -> pulumi.Output[Optional['outputs.RecordSetRoutingPolicy']]:
         """
-        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-        data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-        record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-        string (e.g. "first255characters\"\"morecharacters").
+        The configuration for steering traffic based on query.
+        Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routing_policy")
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Same as `rrdatas` above.
         """
         return pulumi.get(self, "rrdatas")
 

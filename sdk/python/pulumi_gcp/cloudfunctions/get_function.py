@@ -21,7 +21,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, docker_repository=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -31,6 +31,9 @@ class GetFunctionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if docker_repository and not isinstance(docker_repository, str):
+            raise TypeError("Expected argument 'docker_repository' to be a str")
+        pulumi.set(__self__, "docker_repository", docker_repository)
         if entry_point and not isinstance(entry_point, str):
             raise TypeError("Expected argument 'entry_point' to be a str")
         pulumi.set(__self__, "entry_point", entry_point)
@@ -49,6 +52,9 @@ class GetFunctionResult:
         if ingress_settings and not isinstance(ingress_settings, str):
             raise TypeError("Expected argument 'ingress_settings' to be a str")
         pulumi.set(__self__, "ingress_settings", ingress_settings)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -123,6 +129,11 @@ class GetFunctionResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> str:
+        return pulumi.get(self, "docker_repository")
+
+    @property
     @pulumi.getter(name="entryPoint")
     def entry_point(self) -> str:
         """
@@ -166,6 +177,11 @@ class GetFunctionResult:
         Controls what traffic can reach the function.
         """
         return pulumi.get(self, "ingress_settings")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter
@@ -298,12 +314,14 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             available_memory_mb=self.available_memory_mb,
             build_environment_variables=self.build_environment_variables,
             description=self.description,
+            docker_repository=self.docker_repository,
             entry_point=self.entry_point,
             environment_variables=self.environment_variables,
             event_triggers=self.event_triggers,
             https_trigger_url=self.https_trigger_url,
             id=self.id,
             ingress_settings=self.ingress_settings,
+            kms_key_name=self.kms_key_name,
             labels=self.labels,
             max_instances=self.max_instances,
             min_instances=self.min_instances,
@@ -362,12 +380,14 @@ def get_function(name: Optional[str] = None,
         available_memory_mb=__ret__.available_memory_mb,
         build_environment_variables=__ret__.build_environment_variables,
         description=__ret__.description,
+        docker_repository=__ret__.docker_repository,
         entry_point=__ret__.entry_point,
         environment_variables=__ret__.environment_variables,
         event_triggers=__ret__.event_triggers,
         https_trigger_url=__ret__.https_trigger_url,
         id=__ret__.id,
         ingress_settings=__ret__.ingress_settings,
+        kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
         max_instances=__ret__.max_instances,
         min_instances=__ret__.min_instances,

@@ -16,16 +16,21 @@ __all__ = [
     'AwsClusterControlPlaneAwsServicesAuthentication',
     'AwsClusterControlPlaneConfigEncryption',
     'AwsClusterControlPlaneDatabaseEncryption',
+    'AwsClusterControlPlaneInstancePlacement',
     'AwsClusterControlPlaneMainVolume',
     'AwsClusterControlPlaneProxyConfig',
     'AwsClusterControlPlaneRootVolume',
     'AwsClusterControlPlaneSshConfig',
     'AwsClusterFleet',
+    'AwsClusterLoggingConfig',
+    'AwsClusterLoggingConfigComponentConfig',
     'AwsClusterNetworking',
     'AwsClusterWorkloadIdentityConfig',
     'AwsNodePoolAutoscaling',
     'AwsNodePoolConfig',
     'AwsNodePoolConfigConfigEncryption',
+    'AwsNodePoolConfigInstancePlacement',
+    'AwsNodePoolConfigProxyConfig',
     'AwsNodePoolConfigRootVolume',
     'AwsNodePoolConfigSshConfig',
     'AwsNodePoolConfigTaint',
@@ -40,10 +45,13 @@ __all__ = [
     'AzureClusterControlPlaneRootVolume',
     'AzureClusterControlPlaneSshConfig',
     'AzureClusterFleet',
+    'AzureClusterLoggingConfig',
+    'AzureClusterLoggingConfigComponentConfig',
     'AzureClusterNetworking',
     'AzureClusterWorkloadIdentityConfig',
     'AzureNodePoolAutoscaling',
     'AzureNodePoolConfig',
+    'AzureNodePoolConfigProxyConfig',
     'AzureNodePoolConfigRootVolume',
     'AzureNodePoolConfigSshConfig',
     'AzureNodePoolMaxPodsConstraint',
@@ -231,7 +239,7 @@ class AwsClusterAuthorization(dict):
     def __init__(__self__, *,
                  admin_users: Sequence['outputs.AwsClusterAuthorizationAdminUser']):
         """
-        :param Sequence['AwsClusterAuthorizationAdminUserArgs'] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param Sequence['AwsClusterAuthorizationAdminUserArgs'] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -239,7 +247,7 @@ class AwsClusterAuthorization(dict):
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> Sequence['outputs.AwsClusterAuthorizationAdminUser']:
         """
-        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
 
@@ -277,6 +285,8 @@ class AwsClusterControlPlane(dict):
             suggest = "iam_instance_profile"
         elif key == "subnetIds":
             suggest = "subnet_ids"
+        elif key == "instancePlacement":
+            suggest = "instance_placement"
         elif key == "instanceType":
             suggest = "instance_type"
         elif key == "mainVolume":
@@ -308,6 +318,7 @@ class AwsClusterControlPlane(dict):
                  iam_instance_profile: str,
                  subnet_ids: Sequence[str],
                  version: str,
+                 instance_placement: Optional['outputs.AwsClusterControlPlaneInstancePlacement'] = None,
                  instance_type: Optional[str] = None,
                  main_volume: Optional['outputs.AwsClusterControlPlaneMainVolume'] = None,
                  proxy_config: Optional['outputs.AwsClusterControlPlaneProxyConfig'] = None,
@@ -322,6 +333,7 @@ class AwsClusterControlPlane(dict):
         :param str iam_instance_profile: The name of the AWS IAM instance pofile to assign to each control plane replica.
         :param Sequence[str] subnet_ids: The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
         :param str version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
+        :param 'AwsClusterControlPlaneInstancePlacementArgs' instance_placement: (Beta only) Details of placement information for an instance.
         :param str instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param 'AwsClusterControlPlaneMainVolumeArgs' main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
         :param 'AwsClusterControlPlaneProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
@@ -336,6 +348,8 @@ class AwsClusterControlPlane(dict):
         pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
         pulumi.set(__self__, "version", version)
+        if instance_placement is not None:
+            pulumi.set(__self__, "instance_placement", instance_placement)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if main_volume is not None:
@@ -398,6 +412,14 @@ class AwsClusterControlPlane(dict):
         The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
         """
         return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="instancePlacement")
+    def instance_placement(self) -> Optional['outputs.AwsClusterControlPlaneInstancePlacement']:
+        """
+        (Beta only) Details of placement information for an instance.
+        """
+        return pulumi.get(self, "instance_placement")
 
     @property
     @pulumi.getter(name="instanceType")
@@ -573,6 +595,25 @@ class AwsClusterControlPlaneDatabaseEncryption(dict):
         Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
         """
         return pulumi.get(self, "kms_key_arn")
+
+
+@pulumi.output_type
+class AwsClusterControlPlaneInstancePlacement(dict):
+    def __init__(__self__, *,
+                 tenancy: Optional[str] = None):
+        """
+        :param str tenancy: The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+        """
+        if tenancy is not None:
+            pulumi.set(__self__, "tenancy", tenancy)
+
+    @property
+    @pulumi.getter
+    def tenancy(self) -> Optional[str]:
+        """
+        The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+        """
+        return pulumi.get(self, "tenancy")
 
 
 @pulumi.output_type
@@ -844,6 +885,78 @@ class AwsClusterFleet(dict):
 
 
 @pulumi.output_type
+class AwsClusterLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentConfig":
+            suggest = "component_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsClusterLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsClusterLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsClusterLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_config: Optional['outputs.AwsClusterLoggingConfigComponentConfig'] = None):
+        """
+        :param 'AwsClusterLoggingConfigComponentConfigArgs' component_config: Configuration of the logging components.
+        """
+        if component_config is not None:
+            pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> Optional['outputs.AwsClusterLoggingConfigComponentConfig']:
+        """
+        Configuration of the logging components.
+        """
+        return pulumi.get(self, "component_config")
+
+
+@pulumi.output_type
+class AwsClusterLoggingConfigComponentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableComponents":
+            suggest = "enable_components"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsClusterLoggingConfigComponentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsClusterLoggingConfigComponentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsClusterLoggingConfigComponentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_components: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] enable_components: Components of the logging configuration to be enabled.
+        """
+        if enable_components is not None:
+            pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Optional[Sequence[str]]:
+        """
+        Components of the logging configuration to be enabled.
+        """
+        return pulumi.get(self, "enable_components")
+
+
+@pulumi.output_type
 class AwsClusterNetworking(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1011,8 +1124,14 @@ class AwsNodePoolConfig(dict):
             suggest = "config_encryption"
         elif key == "iamInstanceProfile":
             suggest = "iam_instance_profile"
+        elif key == "imageType":
+            suggest = "image_type"
+        elif key == "instancePlacement":
+            suggest = "instance_placement"
         elif key == "instanceType":
             suggest = "instance_type"
+        elif key == "proxyConfig":
+            suggest = "proxy_config"
         elif key == "rootVolume":
             suggest = "root_volume"
         elif key == "securityGroupIds":
@@ -1034,8 +1153,11 @@ class AwsNodePoolConfig(dict):
     def __init__(__self__, *,
                  config_encryption: 'outputs.AwsNodePoolConfigConfigEncryption',
                  iam_instance_profile: str,
+                 image_type: Optional[str] = None,
+                 instance_placement: Optional['outputs.AwsNodePoolConfigInstancePlacement'] = None,
                  instance_type: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
+                 proxy_config: Optional['outputs.AwsNodePoolConfigProxyConfig'] = None,
                  root_volume: Optional['outputs.AwsNodePoolConfigRootVolume'] = None,
                  security_group_ids: Optional[Sequence[str]] = None,
                  ssh_config: Optional['outputs.AwsNodePoolConfigSshConfig'] = None,
@@ -1044,8 +1166,11 @@ class AwsNodePoolConfig(dict):
         """
         :param 'AwsNodePoolConfigConfigEncryptionArgs' config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
         :param str iam_instance_profile: The name of the AWS IAM role assigned to nodes in the pool.
+        :param str image_type: (Beta only) The OS image type to use on node pool instances.
+        :param 'AwsNodePoolConfigInstancePlacementArgs' instance_placement: (Beta only) Details of placement information for an instance.
         :param str instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param Mapping[str, str] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param 'AwsNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param 'AwsNodePoolConfigRootVolumeArgs' root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param Sequence[str] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
         :param 'AwsNodePoolConfigSshConfigArgs' ssh_config: Optional. The SSH configuration.
@@ -1054,10 +1179,16 @@ class AwsNodePoolConfig(dict):
         """
         pulumi.set(__self__, "config_encryption", config_encryption)
         pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
+        if instance_placement is not None:
+            pulumi.set(__self__, "instance_placement", instance_placement)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if proxy_config is not None:
+            pulumi.set(__self__, "proxy_config", proxy_config)
         if root_volume is not None:
             pulumi.set(__self__, "root_volume", root_volume)
         if security_group_ids is not None:
@@ -1086,6 +1217,22 @@ class AwsNodePoolConfig(dict):
         return pulumi.get(self, "iam_instance_profile")
 
     @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[str]:
+        """
+        (Beta only) The OS image type to use on node pool instances.
+        """
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="instancePlacement")
+    def instance_placement(self) -> Optional['outputs.AwsNodePoolConfigInstancePlacement']:
+        """
+        (Beta only) Details of placement information for an instance.
+        """
+        return pulumi.get(self, "instance_placement")
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
         """
@@ -1100,6 +1247,14 @@ class AwsNodePoolConfig(dict):
         Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> Optional['outputs.AwsNodePoolConfigProxyConfig']:
+        """
+        Proxy configuration for outbound HTTP(S) traffic.
+        """
+        return pulumi.get(self, "proxy_config")
 
     @property
     @pulumi.getter(name="rootVolume")
@@ -1175,6 +1330,73 @@ class AwsNodePoolConfigConfigEncryption(dict):
         Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
         """
         return pulumi.get(self, "kms_key_arn")
+
+
+@pulumi.output_type
+class AwsNodePoolConfigInstancePlacement(dict):
+    def __init__(__self__, *,
+                 tenancy: Optional[str] = None):
+        """
+        :param str tenancy: The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+        """
+        if tenancy is not None:
+            pulumi.set(__self__, "tenancy", tenancy)
+
+    @property
+    @pulumi.getter
+    def tenancy(self) -> Optional[str]:
+        """
+        The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+        """
+        return pulumi.get(self, "tenancy")
+
+
+@pulumi.output_type
+class AwsNodePoolConfigProxyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretArn":
+            suggest = "secret_arn"
+        elif key == "secretVersion":
+            suggest = "secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsNodePoolConfigProxyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsNodePoolConfigProxyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsNodePoolConfigProxyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_arn: str,
+                 secret_version: str):
+        """
+        :param str secret_arn: The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        :param str secret_version: The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        pulumi.set(__self__, "secret_arn", secret_arn)
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="secretArn")
+    def secret_arn(self) -> str:
+        """
+        The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        return pulumi.get(self, "secret_arn")
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> str:
+        """
+        The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+        """
+        return pulumi.get(self, "secret_version")
 
 
 @pulumi.output_type
@@ -1385,7 +1607,7 @@ class AzureClusterAuthorization(dict):
     def __init__(__self__, *,
                  admin_users: Sequence['outputs.AzureClusterAuthorizationAdminUser']):
         """
-        :param Sequence['AzureClusterAuthorizationAdminUserArgs'] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param Sequence['AzureClusterAuthorizationAdminUserArgs'] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -1393,7 +1615,7 @@ class AzureClusterAuthorization(dict):
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> Sequence['outputs.AzureClusterAuthorizationAdminUser']:
         """
-        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
 
@@ -1843,6 +2065,78 @@ class AzureClusterFleet(dict):
 
 
 @pulumi.output_type
+class AzureClusterLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentConfig":
+            suggest = "component_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureClusterLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureClusterLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureClusterLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_config: Optional['outputs.AzureClusterLoggingConfigComponentConfig'] = None):
+        """
+        :param 'AzureClusterLoggingConfigComponentConfigArgs' component_config: Configuration of the logging components.
+        """
+        if component_config is not None:
+            pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> Optional['outputs.AzureClusterLoggingConfigComponentConfig']:
+        """
+        Configuration of the logging components.
+        """
+        return pulumi.get(self, "component_config")
+
+
+@pulumi.output_type
+class AzureClusterLoggingConfigComponentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableComponents":
+            suggest = "enable_components"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureClusterLoggingConfigComponentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureClusterLoggingConfigComponentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureClusterLoggingConfigComponentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_components: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] enable_components: Components of the logging configuration to be enabled.
+        """
+        if enable_components is not None:
+            pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Optional[Sequence[str]]:
+        """
+        Components of the logging configuration to be enabled.
+        """
+        return pulumi.get(self, "enable_components")
+
+
+@pulumi.output_type
 class AzureClusterNetworking(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2008,6 +2302,10 @@ class AzureNodePoolConfig(dict):
         suggest = None
         if key == "sshConfig":
             suggest = "ssh_config"
+        elif key == "imageType":
+            suggest = "image_type"
+        elif key == "proxyConfig":
+            suggest = "proxy_config"
         elif key == "rootVolume":
             suggest = "root_volume"
         elif key == "vmSize":
@@ -2026,16 +2324,24 @@ class AzureNodePoolConfig(dict):
 
     def __init__(__self__, *,
                  ssh_config: 'outputs.AzureNodePoolConfigSshConfig',
+                 image_type: Optional[str] = None,
+                 proxy_config: Optional['outputs.AzureNodePoolConfigProxyConfig'] = None,
                  root_volume: Optional['outputs.AzureNodePoolConfigRootVolume'] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  vm_size: Optional[str] = None):
         """
         :param 'AzureNodePoolConfigSshConfigArgs' ssh_config: SSH configuration for how to access the node pool machines.
+        :param str image_type: (Beta only) The OS image type to use on node pool instances.
+        :param 'AzureNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param 'AzureNodePoolConfigRootVolumeArgs' root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         :param Mapping[str, str] tags: Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         :param str vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
         """
         pulumi.set(__self__, "ssh_config", ssh_config)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
+        if proxy_config is not None:
+            pulumi.set(__self__, "proxy_config", proxy_config)
         if root_volume is not None:
             pulumi.set(__self__, "root_volume", root_volume)
         if tags is not None:
@@ -2050,6 +2356,22 @@ class AzureNodePoolConfig(dict):
         SSH configuration for how to access the node pool machines.
         """
         return pulumi.get(self, "ssh_config")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[str]:
+        """
+        (Beta only) The OS image type to use on node pool instances.
+        """
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> Optional['outputs.AzureNodePoolConfigProxyConfig']:
+        """
+        Proxy configuration for outbound HTTP(S) traffic.
+        """
+        return pulumi.get(self, "proxy_config")
 
     @property
     @pulumi.getter(name="rootVolume")
@@ -2074,6 +2396,54 @@ class AzureNodePoolConfig(dict):
         Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
         """
         return pulumi.get(self, "vm_size")
+
+
+@pulumi.output_type
+class AzureNodePoolConfigProxyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupId":
+            suggest = "resource_group_id"
+        elif key == "secretId":
+            suggest = "secret_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureNodePoolConfigProxyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureNodePoolConfigProxyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureNodePoolConfigProxyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_group_id: str,
+                 secret_id: str):
+        """
+        :param str resource_group_id: The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        :param str secret_id: The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+        """
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "secret_id", secret_id)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> str:
+        """
+        The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+        """
+        return pulumi.get(self, "secret_id")
 
 
 @pulumi.output_type

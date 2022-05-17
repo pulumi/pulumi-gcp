@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -104,6 +105,32 @@ import * as utilities from "../utilities";
  *     rrdatas: ["frontend.mydomain.com."],
  * });
  * ```
+ * ### Setting Routing Policy instead of using rrdatas
+ * ### Geolocation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const geo = new gcp.dns.RecordSet("geo", {
+ *     name: `backend.${google_dns_managed_zone.prod.dns_name}`,
+ *     managedZone: google_dns_managed_zone.prod.name,
+ *     type: "A",
+ *     ttl: 300,
+ *     routingPolicy: {
+ *         geos: [
+ *             {
+ *                 location: "asia-east1",
+ *                 rrdatas: ["10.128.1.1"],
+ *             },
+ *             {
+ *                 location: "us-central1",
+ *                 rrdatas: ["10.130.1.1"],
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -166,12 +193,15 @@ export class RecordSet extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-     * string (e.g. "first255characters\"\"morecharacters").
+     * The configuration for steering traffic based on query.
+     * Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+     * Structure is documented below.
      */
-    public readonly rrdatas!: pulumi.Output<string[]>;
+    public readonly routingPolicy!: pulumi.Output<outputs.dns.RecordSetRoutingPolicy | undefined>;
+    /**
+     * Same as `rrdatas` above.
+     */
+    public readonly rrdatas!: pulumi.Output<string[] | undefined>;
     /**
      * The time-to-live of this record set (seconds).
      */
@@ -197,6 +227,7 @@ export class RecordSet extends pulumi.CustomResource {
             resourceInputs["managedZone"] = state ? state.managedZone : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["routingPolicy"] = state ? state.routingPolicy : undefined;
             resourceInputs["rrdatas"] = state ? state.rrdatas : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -208,15 +239,13 @@ export class RecordSet extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.rrdatas === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rrdatas'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["managedZone"] = args ? args.managedZone : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["routingPolicy"] = args ? args.routingPolicy : undefined;
             resourceInputs["rrdatas"] = args ? args.rrdatas : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -245,10 +274,13 @@ export interface RecordSetState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-     * string (e.g. "first255characters\"\"morecharacters").
+     * The configuration for steering traffic based on query.
+     * Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+     * Structure is documented below.
+     */
+    routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy>;
+    /**
+     * Same as `rrdatas` above.
      */
     rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -280,12 +312,15 @@ export interface RecordSetArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
-     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
-     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
-     * string (e.g. "first255characters\"\"morecharacters").
+     * The configuration for steering traffic based on query.
+     * Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+     * Structure is documented below.
      */
-    rrdatas: pulumi.Input<pulumi.Input<string>[]>;
+    routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy>;
+    /**
+     * Same as `rrdatas` above.
+     */
+    rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time-to-live of this record set (seconds).
      */

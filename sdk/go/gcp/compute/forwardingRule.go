@@ -1278,6 +1278,10 @@ type ForwardingRule struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Service Directory resources to register this forwarding rule with. Currently,
+	// only supports a single Service Directory resource.
+	// Structure is documented below.
+	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationArrayOutput `pulumi:"serviceDirectoryRegistrations"`
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -1446,6 +1450,10 @@ type forwardingRuleState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Service Directory resources to register this forwarding rule with. Currently,
+	// only supports a single Service Directory resource.
+	// Structure is documented below.
+	ServiceDirectoryRegistrations []ForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -1586,6 +1594,10 @@ type ForwardingRuleState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Service Directory resources to register this forwarding rule with. Currently,
+	// only supports a single Service Directory resource.
+	// Structure is documented below.
+	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationArrayInput
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -1724,6 +1736,10 @@ type forwardingRuleArgs struct {
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region *string `pulumi:"region"`
+	// Service Directory resources to register this forwarding rule with. Currently,
+	// only supports a single Service Directory resource.
+	// Structure is documented below.
+	ServiceDirectoryRegistrations []ForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -1856,6 +1872,10 @@ type ForwardingRuleArgs struct {
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringPtrInput
+	// Service Directory resources to register this forwarding rule with. Currently,
+	// only supports a single Service Directory resource.
+	// Structure is documented below.
+	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationArrayInput
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -2134,6 +2154,15 @@ func (o ForwardingRuleOutput) Region() pulumi.StringOutput {
 // The URI of the created resource.
 func (o ForwardingRuleOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Service Directory resources to register this forwarding rule with. Currently,
+// only supports a single Service Directory resource.
+// Structure is documented below.
+func (o ForwardingRuleOutput) ServiceDirectoryRegistrations() ForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o.ApplyT(func(v *ForwardingRule) ForwardingRuleServiceDirectoryRegistrationArrayOutput {
+		return v.ServiceDirectoryRegistrations
+	}).(ForwardingRuleServiceDirectoryRegistrationArrayOutput)
 }
 
 // An optional prefix to the service name for this Forwarding Rule.

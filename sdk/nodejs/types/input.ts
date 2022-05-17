@@ -8761,6 +8761,17 @@ export namespace compute {
         ports?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface ForwardingRuleServiceDirectoryRegistration {
+        /**
+         * Service Directory namespace to register the forwarding rule under.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * Service Directory service to register the forwarding rule under.
+         */
+        service?: pulumi.Input<string>;
+    }
+
     export interface GlobalForwardingRuleMetadataFilter {
         /**
          * The list of label value pairs that must match labels in the
@@ -10028,8 +10039,8 @@ export namespace compute {
          */
         diskSizeGb?: pulumi.Input<number>;
         /**
-         * The GCE disk type. Can be either `"pd-ssd"`,
-         * `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+         * The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+         * `"pd-balanced"` or `"pd-standard"`.
          */
         diskType?: pulumi.Input<string>;
         /**
@@ -15989,7 +16000,7 @@ export namespace config {
 export namespace container {
     export interface AwsClusterAuthorization {
         /**
-         * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
          */
         adminUsers: pulumi.Input<pulumi.Input<inputs.container.AwsClusterAuthorizationAdminUser>[]>;
     }
@@ -16018,6 +16029,10 @@ export namespace container {
          * The name of the AWS IAM instance pofile to assign to each control plane replica.
          */
         iamInstanceProfile: pulumi.Input<string>;
+        /**
+         * (Beta only) Details of placement information for an instance.
+         */
+        instancePlacement?: pulumi.Input<inputs.container.AwsClusterControlPlaneInstancePlacement>;
         /**
          * Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
          */
@@ -16079,6 +16094,13 @@ export namespace container {
          * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
          */
         kmsKeyArn: pulumi.Input<string>;
+    }
+
+    export interface AwsClusterControlPlaneInstancePlacement {
+        /**
+         * The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+         */
+        tenancy?: pulumi.Input<string>;
     }
 
     export interface AwsClusterControlPlaneMainVolume {
@@ -16149,6 +16171,20 @@ export namespace container {
         project?: pulumi.Input<string>;
     }
 
+    export interface AwsClusterLoggingConfig {
+        /**
+         * Configuration of the logging components.
+         */
+        componentConfig?: pulumi.Input<inputs.container.AwsClusterLoggingConfigComponentConfig>;
+    }
+
+    export interface AwsClusterLoggingConfigComponentConfig {
+        /**
+         * Components of the logging configuration to be enabled.
+         */
+        enableComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface AwsClusterNetworking {
         /**
          * All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
@@ -16191,6 +16227,14 @@ export namespace container {
          */
         iamInstanceProfile: pulumi.Input<string>;
         /**
+         * (Beta only) The OS image type to use on node pool instances.
+         */
+        imageType?: pulumi.Input<string>;
+        /**
+         * (Beta only) Details of placement information for an instance.
+         */
+        instancePlacement?: pulumi.Input<inputs.container.AwsNodePoolConfigInstancePlacement>;
+        /**
          * Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
          */
         instanceType?: pulumi.Input<string>;
@@ -16198,6 +16242,10 @@ export namespace container {
          * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Proxy configuration for outbound HTTP(S) traffic.
+         */
+        proxyConfig?: pulumi.Input<inputs.container.AwsNodePoolConfigProxyConfig>;
         /**
          * Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
          */
@@ -16225,6 +16273,24 @@ export namespace container {
          * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
          */
         kmsKeyArn: pulumi.Input<string>;
+    }
+
+    export interface AwsNodePoolConfigInstancePlacement {
+        /**
+         * The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
+         */
+        tenancy?: pulumi.Input<string>;
+    }
+
+    export interface AwsNodePoolConfigProxyConfig {
+        /**
+         * The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+         */
+        secretArn: pulumi.Input<string>;
+        /**
+         * The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
+         */
+        secretVersion: pulumi.Input<string>;
     }
 
     export interface AwsNodePoolConfigRootVolume {
@@ -16277,7 +16343,7 @@ export namespace container {
 
     export interface AzureClusterAuthorization {
         /**
-         * Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. At most one user can be specified. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
          */
         adminUsers: pulumi.Input<pulumi.Input<inputs.container.AzureClusterAuthorizationAdminUser>[]>;
     }
@@ -16394,6 +16460,20 @@ export namespace container {
         project?: pulumi.Input<string>;
     }
 
+    export interface AzureClusterLoggingConfig {
+        /**
+         * Configuration of the logging components.
+         */
+        componentConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfigComponentConfig>;
+    }
+
+    export interface AzureClusterLoggingConfigComponentConfig {
+        /**
+         * Components of the logging configuration to be enabled.
+         */
+        enableComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface AzureClusterNetworking {
         /**
          * The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
@@ -16428,6 +16508,14 @@ export namespace container {
 
     export interface AzureNodePoolConfig {
         /**
+         * (Beta only) The OS image type to use on node pool instances.
+         */
+        imageType?: pulumi.Input<string>;
+        /**
+         * Proxy configuration for outbound HTTP(S) traffic.
+         */
+        proxyConfig?: pulumi.Input<inputs.container.AzureNodePoolConfigProxyConfig>;
+        /**
          * Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
          */
         rootVolume?: pulumi.Input<inputs.container.AzureNodePoolConfigRootVolume>;
@@ -16443,6 +16531,17 @@ export namespace container {
          * Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
          */
         vmSize?: pulumi.Input<string>;
+    }
+
+    export interface AzureNodePoolConfigProxyConfig {
+        /**
+         * The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+         */
+        resourceGroupId: pulumi.Input<string>;
+        /**
+         * The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:<key-vault-name>.vault.azure.net/secrets/<secret-name>/<secret-version>`.
+         */
+        secretId: pulumi.Input<string>;
     }
 
     export interface AzureNodePoolConfigRootVolume {
@@ -17758,7 +17857,6 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
-
 }
 
 export namespace containeranalysis {
@@ -21940,6 +22038,41 @@ export namespace dns {
         networkUrl: pulumi.Input<string>;
     }
 
+    export interface RecordSetRoutingPolicy {
+        /**
+         * The configuration for Geolocation based routing policy.
+         * Structure is document below.
+         */
+        geos?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeo>[]>;
+        /**
+         * The configuration for Weighted Round Robin based routing policy.
+         * Structure is document below.
+         */
+        wrrs?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyWrr>[]>;
+    }
+
+    export interface RecordSetRoutingPolicyGeo {
+        /**
+         * The location name defined in Google Cloud.
+         */
+        location: pulumi.Input<string>;
+        /**
+         * Same as `rrdatas` above.
+         */
+        rrdatas: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RecordSetRoutingPolicyWrr {
+        /**
+         * Same as `rrdatas` above.
+         */
+        rrdatas: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The ratio of traffic routed to the target.
+         */
+        weight: pulumi.Input<number>;
+    }
+
     export interface ResponsePolicyNetwork {
         /**
          * The fully qualified URL of the VPC network to bind to.
@@ -21977,6 +22110,7 @@ export namespace dns {
          */
         type: pulumi.Input<string>;
     }
+
 }
 
 export namespace endpoints {
@@ -22092,7 +22226,7 @@ export namespace eventarc {
          */
         operator?: pulumi.Input<string>;
         /**
-         * Required. The value for the attribute.
+         * Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
          */
         value: pulumi.Input<string>;
     }
@@ -22547,6 +22681,9 @@ export namespace gkehub {
     }
 
     export interface FeatureMembershipConfigmanagementConfigSyncGit {
+        /**
+         * The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+         */
         gcpServiceAccountEmail?: pulumi.Input<string>;
         /**
          * URL for the HTTPS proxy to be used when communicating with the Git repo.

@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AzureNodePoolConfig
     {
         /// <summary>
+        /// (Beta only) The OS image type to use on node pool instances.
+        /// </summary>
+        public readonly string? ImageType;
+        /// <summary>
+        /// Proxy configuration for outbound HTTP(S) traffic.
+        /// </summary>
+        public readonly Outputs.AzureNodePoolConfigProxyConfig? ProxyConfig;
+        /// <summary>
         /// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         /// </summary>
         public readonly Outputs.AzureNodePoolConfigRootVolume? RootVolume;
@@ -32,6 +40,10 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private AzureNodePoolConfig(
+            string? imageType,
+
+            Outputs.AzureNodePoolConfigProxyConfig? proxyConfig,
+
             Outputs.AzureNodePoolConfigRootVolume? rootVolume,
 
             Outputs.AzureNodePoolConfigSshConfig sshConfig,
@@ -40,6 +52,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? vmSize)
         {
+            ImageType = imageType;
+            ProxyConfig = proxyConfig;
             RootVolume = rootVolume;
             SshConfig = sshConfig;
             Tags = tags;

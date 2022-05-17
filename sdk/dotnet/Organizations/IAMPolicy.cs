@@ -280,7 +280,11 @@ namespace Pulumi.Gcp.Organizations
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    /// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`.
+    /// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -&gt; **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:organizations/iAMPolicy:IAMPolicy")]
     public partial class IAMPolicy : Pulumi.CustomResource

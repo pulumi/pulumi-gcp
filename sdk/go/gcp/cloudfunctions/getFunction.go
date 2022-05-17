@@ -63,7 +63,8 @@ type LookupFunctionResult struct {
 	AvailableMemoryMb         int                    `pulumi:"availableMemoryMb"`
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
-	Description string `pulumi:"description"`
+	Description      string `pulumi:"description"`
+	DockerRepository string `pulumi:"dockerRepository"`
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint           string                 `pulumi:"entryPoint"`
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
@@ -75,6 +76,7 @@ type LookupFunctionResult struct {
 	Id string `pulumi:"id"`
 	// Controls what traffic can reach the function.
 	IngressSettings string `pulumi:"ingressSettings"`
+	KmsKeyName      string `pulumi:"kmsKeyName"`
 	// A map of labels applied to this function.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -164,6 +166,10 @@ func (o LookupFunctionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o LookupFunctionResultOutput) DockerRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.DockerRepository }).(pulumi.StringOutput)
+}
+
 // Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 func (o LookupFunctionResultOutput) EntryPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.EntryPoint }).(pulumi.StringOutput)
@@ -191,6 +197,10 @@ func (o LookupFunctionResultOutput) Id() pulumi.StringOutput {
 // Controls what traffic can reach the function.
 func (o LookupFunctionResultOutput) IngressSettings() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.IngressSettings }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 // A map of labels applied to this function.

@@ -226,6 +226,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
                  sync_rev: Optional[str] = None,
                  sync_wait_secs: Optional[str] = None):
         """
+        :param str gcp_service_account_email: The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
         :param str https_proxy: URL for the HTTPS proxy to be used when communicating with the Git repo.
         :param str policy_dir: The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
         :param str secret_type: Type of secret configured for access to the Git repo.
@@ -254,6 +255,9 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @property
     @pulumi.getter(name="gcpServiceAccountEmail")
     def gcp_service_account_email(self) -> Optional[str]:
+        """
+        The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+        """
         return pulumi.get(self, "gcp_service_account_email")
 
     @property

@@ -37,6 +37,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string> IamInstanceProfile { get; set; } = null!;
 
         /// <summary>
+        /// (Beta only) Details of placement information for an instance.
+        /// </summary>
+        [Input("instancePlacement")]
+        public Input<Inputs.AwsClusterControlPlaneInstancePlacementGetArgs>? InstancePlacement { get; set; }
+
+        /// <summary>
         /// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         /// </summary>
         [Input("instanceType")]

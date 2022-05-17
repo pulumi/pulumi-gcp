@@ -22,6 +22,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string IamInstanceProfile;
         /// <summary>
+        /// (Beta only) The OS image type to use on node pool instances.
+        /// </summary>
+        public readonly string? ImageType;
+        /// <summary>
+        /// (Beta only) Details of placement information for an instance.
+        /// </summary>
+        public readonly Outputs.AwsNodePoolConfigInstancePlacement? InstancePlacement;
+        /// <summary>
         /// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         /// </summary>
         public readonly string? InstanceType;
@@ -29,6 +37,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// Proxy configuration for outbound HTTP(S) traffic.
+        /// </summary>
+        public readonly Outputs.AwsNodePoolConfigProxyConfig? ProxyConfig;
         /// <summary>
         /// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         /// </summary>
@@ -56,9 +68,15 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string iamInstanceProfile,
 
+            string? imageType,
+
+            Outputs.AwsNodePoolConfigInstancePlacement? instancePlacement,
+
             string? instanceType,
 
             ImmutableDictionary<string, string>? labels,
+
+            Outputs.AwsNodePoolConfigProxyConfig? proxyConfig,
 
             Outputs.AwsNodePoolConfigRootVolume? rootVolume,
 
@@ -72,8 +90,11 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             ConfigEncryption = configEncryption;
             IamInstanceProfile = iamInstanceProfile;
+            ImageType = imageType;
+            InstancePlacement = instancePlacement;
             InstanceType = instanceType;
             Labels = labels;
+            ProxyConfig = proxyConfig;
             RootVolume = rootVolume;
             SecurityGroupIds = securityGroupIds;
             SshConfig = sshConfig;

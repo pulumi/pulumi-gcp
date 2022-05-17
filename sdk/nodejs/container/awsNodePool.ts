@@ -104,6 +104,10 @@ import * as utilities from "../utilities";
  *             volumeType: "GP3",
  *         },
  *         securityGroupIds: ["sg-00000000000000000"],
+ *         proxyConfig: {
+ *             secretArn: "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+ *             secretVersion: "12345678-ABCD-EFGH-IJKL-987654321098",
+ *         },
  *         sshConfig: {
  *             ec2KeyPair: "my--1p-dev-ssh",
  *         },

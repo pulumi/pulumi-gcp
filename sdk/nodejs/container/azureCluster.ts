@@ -146,6 +146,10 @@ export class AzureCluster extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * (Beta only) Logging configuration.
+     */
+    public readonly loggingConfig!: pulumi.Output<outputs.container.AzureClusterLoggingConfig>;
+    /**
      * The name of this resource.
      */
     public readonly name!: pulumi.Output<string>;
@@ -207,6 +211,7 @@ export class AzureCluster extends pulumi.CustomResource {
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["fleet"] = state ? state.fleet : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networking"] = state ? state.networking : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -250,6 +255,7 @@ export class AzureCluster extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fleet"] = args ? args.fleet : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networking"] = args ? args.networking : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -317,6 +323,10 @@ export interface AzureClusterState {
      * The location for the resource
      */
     location?: pulumi.Input<string>;
+    /**
+     * (Beta only) Logging configuration.
+     */
+    loggingConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfig>;
     /**
      * The name of this resource.
      */
@@ -392,6 +402,10 @@ export interface AzureClusterArgs {
      * The location for the resource
      */
     location: pulumi.Input<string>;
+    /**
+     * (Beta only) Logging configuration.
+     */
+    loggingConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfig>;
     /**
      * The name of this resource.
      */

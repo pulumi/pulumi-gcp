@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetForwardingRuleResult',
@@ -20,7 +21,7 @@ class GetForwardingRuleResult:
     """
     A collection of values returned by getForwardingRule.
     """
-    def __init__(__self__, all_ports=None, allow_global_access=None, backend_service=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, self_link=None, service_label=None, service_name=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, backend_service=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -81,6 +82,9 @@ class GetForwardingRuleResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if service_directory_registrations and not isinstance(service_directory_registrations, list):
+            raise TypeError("Expected argument 'service_directory_registrations' to be a list")
+        pulumi.set(__self__, "service_directory_registrations", service_directory_registrations)
         if service_label and not isinstance(service_label, str):
             raise TypeError("Expected argument 'service_label' to be a str")
         pulumi.set(__self__, "service_label", service_label)
@@ -198,6 +202,11 @@ class GetForwardingRuleResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="serviceDirectoryRegistrations")
+    def service_directory_registrations(self) -> Sequence['outputs.GetForwardingRuleServiceDirectoryRegistrationResult']:
+        return pulumi.get(self, "service_directory_registrations")
+
+    @property
     @pulumi.getter(name="serviceLabel")
     def service_label(self) -> str:
         return pulumi.get(self, "service_label")
@@ -244,6 +253,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             project=self.project,
             region=self.region,
             self_link=self.self_link,
+            service_directory_registrations=self.service_directory_registrations,
             service_label=self.service_label,
             service_name=self.service_name,
             subnetwork=self.subnetwork,
@@ -304,6 +314,7 @@ def get_forwarding_rule(name: Optional[str] = None,
         project=__ret__.project,
         region=__ret__.region,
         self_link=__ret__.self_link,
+        service_directory_registrations=__ret__.service_directory_registrations,
         service_label=__ret__.service_label,
         service_name=__ret__.service_name,
         subnetwork=__ret__.subnetwork,

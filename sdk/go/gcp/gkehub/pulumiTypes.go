@@ -531,6 +531,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) SourceFormat() pul
 }
 
 type FeatureMembershipConfigmanagementConfigSyncGit struct {
+	// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
 	GcpServiceAccountEmail *string `pulumi:"gcpServiceAccountEmail"`
 	// URL for the HTTPS proxy to be used when communicating with the Git repo.
 	HttpsProxy *string `pulumi:"httpsProxy"`
@@ -560,6 +561,7 @@ type FeatureMembershipConfigmanagementConfigSyncGitInput interface {
 }
 
 type FeatureMembershipConfigmanagementConfigSyncGitArgs struct {
+	// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
 	GcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"gcpServiceAccountEmail"`
 	// URL for the HTTPS proxy to be used when communicating with the Git repo.
 	HttpsProxy pulumi.StringPtrInput `pulumi:"httpsProxy"`
@@ -654,6 +656,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershi
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
+// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
 func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.GcpServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -717,6 +720,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) Elem() FeatureM
 	}).(FeatureMembershipConfigmanagementConfigSyncGitOutput)
 }
 
+// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
 		if v == nil {
