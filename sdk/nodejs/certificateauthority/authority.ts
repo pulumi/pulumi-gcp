@@ -239,6 +239,10 @@ export class Authority extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+     */
+    public readonly desiredState!: pulumi.Output<string | undefined>;
+    /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
      * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -331,6 +335,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["gcsBucket"] = state ? state.gcsBucket : undefined;
             resourceInputs["ignoreActiveCertificatesOnDeletion"] = state ? state.ignoreActiveCertificatesOnDeletion : undefined;
             resourceInputs["keySpec"] = state ? state.keySpec : undefined;
@@ -364,6 +369,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
             resourceInputs["gcsBucket"] = args ? args.gcsBucket : undefined;
             resourceInputs["ignoreActiveCertificatesOnDeletion"] = args ? args.ignoreActiveCertificatesOnDeletion : undefined;
             resourceInputs["keySpec"] = args ? args.keySpec : undefined;
@@ -408,6 +414,10 @@ export interface AuthorityState {
      */
     createTime?: pulumi.Input<string>;
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -498,6 +508,10 @@ export interface AuthorityArgs {
      */
     config: pulumi.Input<inputs.certificateauthority.AuthorityConfig>;
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes

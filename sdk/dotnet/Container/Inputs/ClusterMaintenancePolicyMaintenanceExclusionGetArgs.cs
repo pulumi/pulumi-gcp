@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("exclusionName", required: true)]
         public Input<string> ExclusionName { get; set; } = null!;
 
+        /// <summary>
+        /// MaintenanceExclusionOptions provides maintenance exclusion related options.
+        /// </summary>
+        [Input("exclusionOptions")]
+        public Input<Inputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsGetArgs>? ExclusionOptions { get; set; }
+
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;
 

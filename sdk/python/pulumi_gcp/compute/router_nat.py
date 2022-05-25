@@ -19,6 +19,7 @@ class RouterNatArgs:
                  router: pulumi.Input[str],
                  source_subnetwork_ip_ranges_to_nat: pulumi.Input[str],
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
@@ -51,6 +52,10 @@ class RouterNatArgs:
                Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
+        :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
+               If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+               If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+               Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
                see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -77,6 +82,8 @@ class RouterNatArgs:
         pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
+        if enable_dynamic_port_allocation is not None:
+            pulumi.set(__self__, "enable_dynamic_port_allocation", enable_dynamic_port_allocation)
         if enable_endpoint_independent_mapping is not None:
             pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
         if icmp_idle_timeout_sec is not None:
@@ -163,6 +170,21 @@ class RouterNatArgs:
     @drain_nat_ips.setter
     def drain_nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "drain_nat_ips", value)
+
+    @property
+    @pulumi.getter(name="enableDynamicPortAllocation")
+    def enable_dynamic_port_allocation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Dynamic Port Allocation.
+        If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        Mutually exclusive with enableEndpointIndependentMapping.
+        """
+        return pulumi.get(self, "enable_dynamic_port_allocation")
+
+    @enable_dynamic_port_allocation.setter
+    def enable_dynamic_port_allocation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_dynamic_port_allocation", value)
 
     @property
     @pulumi.getter(name="enableEndpointIndependentMapping")
@@ -321,6 +343,7 @@ class RouterNatArgs:
 class _RouterNatState:
     def __init__(__self__, *,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
@@ -340,6 +363,10 @@ class _RouterNatState:
         Input properties used for looking up and filtering RouterNat resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
+        :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
+               If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+               If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+               Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
                see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -379,6 +406,8 @@ class _RouterNatState:
         """
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
+        if enable_dynamic_port_allocation is not None:
+            pulumi.set(__self__, "enable_dynamic_port_allocation", enable_dynamic_port_allocation)
         if enable_endpoint_independent_mapping is not None:
             pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
         if icmp_idle_timeout_sec is not None:
@@ -422,6 +451,21 @@ class _RouterNatState:
     @drain_nat_ips.setter
     def drain_nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "drain_nat_ips", value)
+
+    @property
+    @pulumi.getter(name="enableDynamicPortAllocation")
+    def enable_dynamic_port_allocation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Dynamic Port Allocation.
+        If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        Mutually exclusive with enableEndpointIndependentMapping.
+        """
+        return pulumi.get(self, "enable_dynamic_port_allocation")
+
+    @enable_dynamic_port_allocation.setter
+    def enable_dynamic_port_allocation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_dynamic_port_allocation", value)
 
     @property
     @pulumi.getter(name="enableEndpointIndependentMapping")
@@ -631,6 +675,7 @@ class RouterNat(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
@@ -737,6 +782,10 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
+        :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
+               If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+               If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+               Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
                see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -882,6 +931,7 @@ class RouterNat(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
@@ -910,6 +960,7 @@ class RouterNat(pulumi.CustomResource):
             __props__ = RouterNatArgs.__new__(RouterNatArgs)
 
             __props__.__dict__["drain_nat_ips"] = drain_nat_ips
+            __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
             __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
             __props__.__dict__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
             __props__.__dict__["log_config"] = log_config
@@ -942,6 +993,7 @@ class RouterNat(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
             enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
             icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
             log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
@@ -966,6 +1018,10 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
+        :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
+               If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+               If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+               Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
                see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -1008,6 +1064,7 @@ class RouterNat(pulumi.CustomResource):
         __props__ = _RouterNatState.__new__(_RouterNatState)
 
         __props__.__dict__["drain_nat_ips"] = drain_nat_ips
+        __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
         __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
         __props__.__dict__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
         __props__.__dict__["log_config"] = log_config
@@ -1033,6 +1090,17 @@ class RouterNat(pulumi.CustomResource):
         valid static external IPs that have been assigned to the NAT.
         """
         return pulumi.get(self, "drain_nat_ips")
+
+    @property
+    @pulumi.getter(name="enableDynamicPortAllocation")
+    def enable_dynamic_port_allocation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable Dynamic Port Allocation.
+        If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        Mutually exclusive with enableEndpointIndependentMapping.
+        """
+        return pulumi.get(self, "enable_dynamic_port_allocation")
 
     @property
     @pulumi.getter(name="enableEndpointIndependentMapping")

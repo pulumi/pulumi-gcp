@@ -19,6 +19,81 @@ namespace Pulumi.Gcp.Compute
     ///     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
     /// 
     /// ## Example Usage
+    /// ### Organization Security Policy Association Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var securityPolicyTarget = new Gcp.Organizations.Folder("securityPolicyTarget", new Gcp.Organizations.FolderArgs
+    ///         {
+    ///             DisplayName = "tf-test-secpol",
+    ///             Parent = "organizations/123456789",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new Gcp.Compute.OrganizationSecurityPolicyArgs
+    ///         {
+    ///             DisplayName = "tf-test",
+    ///             Parent = securityPolicyTarget.Name,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new Gcp.Compute.OrganizationSecurityPolicyRuleArgs
+    ///         {
+    ///             PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///             Action = "allow",
+    ///             Direction = "INGRESS",
+    ///             EnableLogging = true,
+    ///             Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
+    ///             {
+    ///                 Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
+    ///                 {
+    ///                     SrcIpRanges = 
+    ///                     {
+    ///                         "192.168.0.0/16",
+    ///                         "10.0.0.0/8",
+    ///                     },
+    ///                     Layer4Configs = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "tcp",
+    ///                             Ports = 
+    ///                             {
+    ///                                 "22",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "icmp",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Priority = 100,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", new Gcp.Compute.OrganizationSecurityPolicyAssociationArgs
+    ///         {
+    ///             AttachmentId = policyOrganizationSecurityPolicy.Parent,
+    ///             PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

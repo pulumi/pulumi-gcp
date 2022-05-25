@@ -29,6 +29,12 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("observedGeneration")]
         public Input<int>? ObservedGeneration { get; set; }
 
+        /// <summary>
+        /// -
+        /// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+        /// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+        /// but may not contain anything else (e.g. basic auth, url path, etc.)
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

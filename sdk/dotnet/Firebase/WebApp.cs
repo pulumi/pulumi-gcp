@@ -19,6 +19,87 @@ namespace Pulumi.Gcp.Firebase
     ///     * [Official Documentation](https://firebase.google.com/)
     /// 
     /// ## Example Usage
+    /// ### Firebase Web App Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultProject = new Gcp.Organizations.Project("defaultProject", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "tf-test",
+    ///             OrgId = "123456789",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new Gcp.Firebase.ProjectArgs
+    ///         {
+    ///             Project = defaultProject.ProjectId,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var basicWebApp = new Gcp.Firebase.WebApp("basicWebApp", new Gcp.Firebase.WebAppArgs
+    ///         {
+    ///             Project = defaultProject.ProjectId,
+    ///             DisplayName = "Display Name Basic",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 defaultFirebase / projectProject,
+    ///             },
+    ///         });
+    ///         var basicWebAppConfig = Gcp.Firebase.GetWebAppConfig.Invoke(new Gcp.Firebase.GetWebAppConfigInvokeArgs
+    ///         {
+    ///             WebAppId = basicWebApp.AppId,
+    ///         });
+    ///         var defaultBucket = new Gcp.Storage.Bucket("defaultBucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             Location = "US",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultBucketObject = new Gcp.Storage.BucketObject("defaultBucketObject", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = defaultBucket.Name,
+    ///             Content = Output.Tuple(basicWebApp.AppId, basicWebAppConfig, basicWebAppConfig, basicWebAppConfig["database_url"] ?? "", basicWebAppConfig["storage_bucket"] ?? "", basicWebAppConfig["messaging_sender_id"] ?? "", basicWebAppConfig["measurement_id"] ?? "").Apply(values =&gt;
+    ///             {
+    ///                 var appId = values.Item1;
+    ///                 var basicWebAppConfig = values.Item2;
+    ///                 var basicWebAppConfig1 = values.Item3;
+    ///                 var s = values.Item4;
+    ///                 var s1 = values.Item5;
+    ///                 var s2 = values.Item6;
+    ///                 var s3 = values.Item7;
+    ///                 return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     { "appId", appId },
+    ///                     { "apiKey", basicWebAppConfig.ApiKey },
+    ///                     { "authDomain", basicWebAppConfig1.AuthDomain },
+    ///                     { "databaseURL", s },
+    ///                     { "storageBucket", s1 },
+    ///                     { "messagingSenderId", s2 },
+    ///                     { "measurementId", s3 },
+    ///                 });
+    ///             }),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

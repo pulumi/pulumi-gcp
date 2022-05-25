@@ -52,7 +52,7 @@ import (
 // 		}
 // 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
 // 			Description:         pulumi.String("My function"),
-// 			Runtime:             pulumi.String("nodejs14"),
+// 			Runtime:             pulumi.String("nodejs16"),
 // 			AvailableMemoryMb:   pulumi.Int(128),
 // 			SourceArchiveBucket: bucket.Name,
 // 			SourceArchiveObject: archive.Name,
@@ -104,7 +104,7 @@ import (
 // 		}
 // 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
 // 			Description:         pulumi.String("My function"),
-// 			Runtime:             pulumi.String("nodejs14"),
+// 			Runtime:             pulumi.String("nodejs16"),
 // 			AvailableMemoryMb:   pulumi.Int(128),
 // 			SourceArchiveBucket: bucket.Name,
 // 			SourceArchiveObject: archive.Name,
@@ -164,6 +164,8 @@ type Function struct {
 	EnvironmentVariables pulumi.MapOutput `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerOutput `pulumi:"eventTrigger"`
+	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	HttpsTriggerSecurityLevel pulumi.StringOutput `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringOutput `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -184,7 +186,7 @@ type Function struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayOutput `pulumi:"secretEnvironmentVariables"`
@@ -255,6 +257,8 @@ type functionState struct {
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
+	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	HttpsTriggerSecurityLevel *string `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -275,7 +279,7 @@ type functionState struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime *string `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables []FunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -315,6 +319,8 @@ type FunctionState struct {
 	EnvironmentVariables pulumi.MapInput
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerPtrInput
+	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	HttpsTriggerSecurityLevel pulumi.StringPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -335,7 +341,7 @@ type FunctionState struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringPtrInput
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayInput
@@ -379,6 +385,8 @@ type functionArgs struct {
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
+	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	HttpsTriggerSecurityLevel *string `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -399,7 +407,7 @@ type functionArgs struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime string `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables []FunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -440,6 +448,8 @@ type FunctionArgs struct {
 	EnvironmentVariables pulumi.MapInput
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerPtrInput
+	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	HttpsTriggerSecurityLevel pulumi.StringPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
@@ -460,7 +470,7 @@ type FunctionArgs struct {
 	// Region of function. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 	Runtime pulumi.StringInput
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayInput
@@ -607,6 +617,11 @@ func (o FunctionOutput) EventTrigger() FunctionEventTriggerOutput {
 	return o.ApplyT(func(v *Function) FunctionEventTriggerOutput { return v.EventTrigger }).(FunctionEventTriggerOutput)
 }
 
+// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+func (o FunctionOutput) HttpsTriggerSecurityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.HttpsTriggerSecurityLevel }).(pulumi.StringOutput)
+}
+
 // URL which triggers function execution. Returned only if `triggerHttp` is used.
 func (o FunctionOutput) HttpsTriggerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.HttpsTriggerUrl }).(pulumi.StringOutput)
@@ -654,7 +669,7 @@ func (o FunctionOutput) Region() pulumi.StringOutput {
 }
 
 // The runtime in which the function is going to run.
-// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 func (o FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }

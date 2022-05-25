@@ -13,11 +13,29 @@ namespace Pulumi.Gcp.Projects.Outputs
     [OutputType]
     public sealed class GetProjectProjectResult
     {
+        /// <summary>
+        /// Creation time in RFC3339 UTC "Zulu" format.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// A set of key/value label pairs assigned on a project.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// The Project lifecycle state.
+        /// </summary>
         public readonly string LifecycleState;
+        /// <summary>
+        /// The optional user-assigned display name of the project.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The numeric identifier of the project.
+        /// </summary>
         public readonly string Number;
+        /// <summary>
+        /// An optional reference to a parent resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Parent;
         /// <summary>
         /// The project id of the project.

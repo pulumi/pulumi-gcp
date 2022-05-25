@@ -29,6 +29,43 @@ import (
 //     * [Official Documentation](https://firebase.google.com/)
 //
 // ## Example Usage
+// ### Firebase Project Location Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("tf-test"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
+// 			Project: defaultProject.ProjectId,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = firebase.NewProjectLocation(ctx, "basic", &firebase.ProjectLocationArgs{
+// 			Project:    defaultFirebase / projectProject.Project,
+// 			LocationId: pulumi.String("us-central"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

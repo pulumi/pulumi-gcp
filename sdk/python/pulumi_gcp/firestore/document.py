@@ -281,6 +281,40 @@ class Document(pulumi.CustomResource):
         the App Engine location specified.
 
         ## Example Usage
+        ### Firestore Document Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        mydoc = gcp.firestore.Document("mydoc",
+            collection="somenewcollection",
+            document_id="my-doc",
+            fields="{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+            project="my-project-name")
+        ```
+        ### Firestore Document Nested Document
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        mydoc = gcp.firestore.Document("mydoc",
+            collection="somenewcollection",
+            document_id="my-doc",
+            fields="{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+            project="my-project-name")
+        sub_document = gcp.firestore.Document("subDocument",
+            collection=mydoc.path.apply(lambda path: f"{path}/subdocs"),
+            document_id="bitcoinkey",
+            fields="{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
+            project="my-project-name")
+        sub_sub_document = gcp.firestore.Document("subSubDocument",
+            collection=sub_document.path.apply(lambda path: f"{path}/subsubdocs"),
+            document_id="asecret",
+            fields="{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -322,6 +356,40 @@ class Document(pulumi.CustomResource):
         the App Engine location specified.
 
         ## Example Usage
+        ### Firestore Document Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        mydoc = gcp.firestore.Document("mydoc",
+            collection="somenewcollection",
+            document_id="my-doc",
+            fields="{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+            project="my-project-name")
+        ```
+        ### Firestore Document Nested Document
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        mydoc = gcp.firestore.Document("mydoc",
+            collection="somenewcollection",
+            document_id="my-doc",
+            fields="{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+            project="my-project-name")
+        sub_document = gcp.firestore.Document("subDocument",
+            collection=mydoc.path.apply(lambda path: f"{path}/subdocs"),
+            document_id="bitcoinkey",
+            fields="{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
+            project="my-project-name")
+        sub_sub_document = gcp.firestore.Document("subSubDocument",
+            collection=sub_document.path.apply(lambda path: f"{path}/subsubdocs"),
+            document_id="asecret",
+            fields="{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
+            project="my-project-name")
+        ```
 
         ## Import
 

@@ -86,8 +86,11 @@ import (
 // 			return err
 // 		}
 // 		pscIlbServiceAttachment, err := compute.NewServiceAttachment(ctx, "pscIlbServiceAttachment", &compute.ServiceAttachmentArgs{
-// 			Region:               pulumi.String("us-west2"),
-// 			Description:          pulumi.String("A service attachment configured with Terraform"),
+// 			Region:      pulumi.String("us-west2"),
+// 			Description: pulumi.String("A service attachment configured with Terraform"),
+// 			DomainNames: pulumi.StringArray{
+// 				pulumi.String("gcp.tfacc.hashicorptest.com."),
+// 			},
 // 			EnableProxyProtocol:  pulumi.Bool(true),
 // 			ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 // 			NatSubnets: pulumi.StringArray{
@@ -186,8 +189,11 @@ import (
 // 			return err
 // 		}
 // 		pscIlbServiceAttachment, err := compute.NewServiceAttachment(ctx, "pscIlbServiceAttachment", &compute.ServiceAttachmentArgs{
-// 			Region:               pulumi.String("us-west2"),
-// 			Description:          pulumi.String("A service attachment configured with Terraform"),
+// 			Region:      pulumi.String("us-west2"),
+// 			Description: pulumi.String("A service attachment configured with Terraform"),
+// 			DomainNames: pulumi.StringArray{
+// 				pulumi.String("gcp.tfacc.hashicorptest.com."),
+// 			},
 // 			EnableProxyProtocol:  pulumi.Bool(true),
 // 			ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 // 			NatSubnets: pulumi.StringArray{
@@ -268,6 +274,11 @@ type ServiceAttachment struct {
 	ConsumerRejectLists pulumi.StringArrayOutput `pulumi:"consumerRejectLists"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// If specified, the domain name will be used during the integration between
+	// the PSC connected endpoints and the Cloud DNS. For example, this is a
+	// valid domain name: "p.mycompany.com.". Current max number of domain names
+	// supported is 1.
+	DomainNames pulumi.StringArrayOutput `pulumi:"domainNames"`
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
@@ -350,6 +361,11 @@ type serviceAttachmentState struct {
 	ConsumerRejectLists []string `pulumi:"consumerRejectLists"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// If specified, the domain name will be used during the integration between
+	// the PSC connected endpoints and the Cloud DNS. For example, this is a
+	// valid domain name: "p.mycompany.com.". Current max number of domain names
+	// supported is 1.
+	DomainNames []string `pulumi:"domainNames"`
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
@@ -392,6 +408,11 @@ type ServiceAttachmentState struct {
 	ConsumerRejectLists pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// If specified, the domain name will be used during the integration between
+	// the PSC connected endpoints and the Cloud DNS. For example, this is a
+	// valid domain name: "p.mycompany.com.". Current max number of domain names
+	// supported is 1.
+	DomainNames pulumi.StringArrayInput
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
@@ -436,6 +457,11 @@ type serviceAttachmentArgs struct {
 	ConsumerRejectLists []string `pulumi:"consumerRejectLists"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// If specified, the domain name will be used during the integration between
+	// the PSC connected endpoints and the Cloud DNS. For example, this is a
+	// valid domain name: "p.mycompany.com.". Current max number of domain names
+	// supported is 1.
+	DomainNames []string `pulumi:"domainNames"`
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
@@ -473,6 +499,11 @@ type ServiceAttachmentArgs struct {
 	ConsumerRejectLists pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// If specified, the domain name will be used during the integration between
+	// the PSC connected endpoints and the Cloud DNS. For example, this is a
+	// valid domain name: "p.mycompany.com.". Current max number of domain names
+	// supported is 1.
+	DomainNames pulumi.StringArrayInput
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
@@ -612,6 +643,14 @@ func (o ServiceAttachmentOutput) ConsumerRejectLists() pulumi.StringArrayOutput 
 // An optional description of this resource.
 func (o ServiceAttachmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// If specified, the domain name will be used during the integration between
+// the PSC connected endpoints and the Cloud DNS. For example, this is a
+// valid domain name: "p.mycompany.com.". Current max number of domain names
+// supported is 1.
+func (o ServiceAttachmentOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringArrayOutput { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
 
 // If true, enable the proxy protocol which is for supplying client TCP/IP

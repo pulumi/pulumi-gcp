@@ -33,6 +33,7 @@ class ProviderArgs:
                  billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  billing_project: Optional[pulumi.Input[str]] = None,
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 certificate_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,7 @@ class ProviderArgs:
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -105,7 +107,7 @@ class ProviderArgs:
                  request_reason: Optional[pulumi.Input[str]] = None,
                  request_timeout: Optional[pulumi.Input[str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 resource_manager_v3_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -169,6 +171,8 @@ class ProviderArgs:
             pulumi.set(__self__, "billing_project", billing_project)
         if binary_authorization_custom_endpoint is not None:
             pulumi.set(__self__, "binary_authorization_custom_endpoint", binary_authorization_custom_endpoint)
+        if certificate_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "certificate_manager_custom_endpoint", certificate_manager_custom_endpoint)
         if cloud_asset_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_asset_custom_endpoint", cloud_asset_custom_endpoint)
         if cloud_billing_custom_endpoint is not None:
@@ -191,6 +195,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_scheduler_custom_endpoint", cloud_scheduler_custom_endpoint)
         if cloud_tasks_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_tasks_custom_endpoint", cloud_tasks_custom_endpoint)
+        if clouddeploy_custom_endpoint is not None:
+            pulumi.set(__self__, "clouddeploy_custom_endpoint", clouddeploy_custom_endpoint)
         if cloudfunctions2_custom_endpoint is not None:
             pulumi.set(__self__, "cloudfunctions2_custom_endpoint", cloudfunctions2_custom_endpoint)
         if composer_custom_endpoint is not None:
@@ -317,8 +323,8 @@ class ProviderArgs:
             pulumi.set(__self__, "request_timeout", request_timeout)
         if resource_manager_custom_endpoint is not None:
             pulumi.set(__self__, "resource_manager_custom_endpoint", resource_manager_custom_endpoint)
-        if resource_manager_v2_custom_endpoint is not None:
-            pulumi.set(__self__, "resource_manager_v2_custom_endpoint", resource_manager_v2_custom_endpoint)
+        if resource_manager_v3_custom_endpoint is not None:
+            pulumi.set(__self__, "resource_manager_v3_custom_endpoint", resource_manager_v3_custom_endpoint)
         if runtime_config_custom_endpoint is not None:
             pulumi.set(__self__, "runtime_config_custom_endpoint", runtime_config_custom_endpoint)
         if runtimeconfig_custom_endpoint is not None:
@@ -538,6 +544,15 @@ class ProviderArgs:
         pulumi.set(self, "binary_authorization_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="certificateManagerCustomEndpoint")
+    def certificate_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_manager_custom_endpoint")
+
+    @certificate_manager_custom_endpoint.setter
+    def certificate_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_manager_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="cloudAssetCustomEndpoint")
     def cloud_asset_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloud_asset_custom_endpoint")
@@ -635,6 +650,15 @@ class ProviderArgs:
     @cloud_tasks_custom_endpoint.setter
     def cloud_tasks_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_tasks_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="clouddeployCustomEndpoint")
+    def clouddeploy_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "clouddeploy_custom_endpoint")
+
+    @clouddeploy_custom_endpoint.setter
+    def clouddeploy_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "clouddeploy_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="cloudfunctions2CustomEndpoint")
@@ -1186,13 +1210,13 @@ class ProviderArgs:
         pulumi.set(self, "resource_manager_custom_endpoint", value)
 
     @property
-    @pulumi.getter(name="resourceManagerV2CustomEndpoint")
-    def resource_manager_v2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "resource_manager_v2_custom_endpoint")
+    @pulumi.getter(name="resourceManagerV3CustomEndpoint")
+    def resource_manager_v3_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_manager_v3_custom_endpoint")
 
-    @resource_manager_v2_custom_endpoint.setter
-    def resource_manager_v2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource_manager_v2_custom_endpoint", value)
+    @resource_manager_v3_custom_endpoint.setter
+    def resource_manager_v3_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_manager_v3_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="runtimeConfigCustomEndpoint")
@@ -1417,6 +1441,7 @@ class Provider(pulumi.ProviderResource):
                  billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  billing_project: Optional[pulumi.Input[str]] = None,
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 certificate_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1428,6 +1453,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1489,7 +1515,7 @@ class Provider(pulumi.ProviderResource):
                  request_reason: Optional[pulumi.Input[str]] = None,
                  request_timeout: Optional[pulumi.Input[str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 resource_manager_v3_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1568,6 +1594,7 @@ class Provider(pulumi.ProviderResource):
                  billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  billing_project: Optional[pulumi.Input[str]] = None,
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 certificate_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1579,6 +1606,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1640,7 +1668,7 @@ class Provider(pulumi.ProviderResource):
                  request_reason: Optional[pulumi.Input[str]] = None,
                  request_timeout: Optional[pulumi.Input[str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 resource_manager_v3_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1694,6 +1722,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["billing_custom_endpoint"] = billing_custom_endpoint
             __props__.__dict__["billing_project"] = billing_project
             __props__.__dict__["binary_authorization_custom_endpoint"] = binary_authorization_custom_endpoint
+            __props__.__dict__["certificate_manager_custom_endpoint"] = certificate_manager_custom_endpoint
             __props__.__dict__["cloud_asset_custom_endpoint"] = cloud_asset_custom_endpoint
             __props__.__dict__["cloud_billing_custom_endpoint"] = cloud_billing_custom_endpoint
             __props__.__dict__["cloud_build_custom_endpoint"] = cloud_build_custom_endpoint
@@ -1705,6 +1734,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_run_custom_endpoint"] = cloud_run_custom_endpoint
             __props__.__dict__["cloud_scheduler_custom_endpoint"] = cloud_scheduler_custom_endpoint
             __props__.__dict__["cloud_tasks_custom_endpoint"] = cloud_tasks_custom_endpoint
+            __props__.__dict__["clouddeploy_custom_endpoint"] = clouddeploy_custom_endpoint
             __props__.__dict__["cloudfunctions2_custom_endpoint"] = cloudfunctions2_custom_endpoint
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
             __props__.__dict__["compute_custom_endpoint"] = compute_custom_endpoint
@@ -1770,7 +1800,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["request_reason"] = request_reason
             __props__.__dict__["request_timeout"] = request_timeout
             __props__.__dict__["resource_manager_custom_endpoint"] = resource_manager_custom_endpoint
-            __props__.__dict__["resource_manager_v2_custom_endpoint"] = resource_manager_v2_custom_endpoint
+            __props__.__dict__["resource_manager_v3_custom_endpoint"] = resource_manager_v3_custom_endpoint
             __props__.__dict__["runtime_config_custom_endpoint"] = runtime_config_custom_endpoint
             __props__.__dict__["runtimeconfig_custom_endpoint"] = runtimeconfig_custom_endpoint
             __props__.__dict__["scopes"] = pulumi.Output.from_input(scopes).apply(pulumi.runtime.to_json) if scopes is not None else None
@@ -1892,6 +1922,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "binary_authorization_custom_endpoint")
 
     @property
+    @pulumi.getter(name="certificateManagerCustomEndpoint")
+    def certificate_manager_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "certificate_manager_custom_endpoint")
+
+    @property
     @pulumi.getter(name="cloudAssetCustomEndpoint")
     def cloud_asset_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_asset_custom_endpoint")
@@ -1945,6 +1980,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudTasksCustomEndpoint")
     def cloud_tasks_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_tasks_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="clouddeployCustomEndpoint")
+    def clouddeploy_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "clouddeploy_custom_endpoint")
 
     @property
     @pulumi.getter(name="cloudfunctions2CustomEndpoint")
@@ -2242,9 +2282,9 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "resource_manager_custom_endpoint")
 
     @property
-    @pulumi.getter(name="resourceManagerV2CustomEndpoint")
-    def resource_manager_v2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "resource_manager_v2_custom_endpoint")
+    @pulumi.getter(name="resourceManagerV3CustomEndpoint")
+    def resource_manager_v3_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "resource_manager_v3_custom_endpoint")
 
     @property
     @pulumi.getter(name="runtimeConfigCustomEndpoint")

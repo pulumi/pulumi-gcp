@@ -45,6 +45,102 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// }
     /// ```
+    /// ### Big Query Routine Json
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Gcp.BigQuery.Dataset("test", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "dataset_id",
+    ///         });
+    ///         var sproc = new Gcp.BigQuery.Routine("sproc", new Gcp.BigQuery.RoutineArgs
+    ///         {
+    ///             DatasetId = test.DatasetId,
+    ///             RoutineId = "tf_test_routine_id",
+    ///             RoutineType = "SCALAR_FUNCTION",
+    ///             Language = "JAVASCRIPT",
+    ///             DefinitionBody = "CREATE FUNCTION multiplyInputs return x*y;",
+    ///             Arguments = 
+    ///             {
+    ///                 new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///                 {
+    ///                     Name = "x",
+    ///                     DataType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///                 },
+    ///                 new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///                 {
+    ///                     Name = "y",
+    ///                     DataType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///                 },
+    ///             },
+    ///             ReturnType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Big Query Routine Tvf
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Gcp.BigQuery.Dataset("test", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "dataset_id",
+    ///         });
+    ///         var sproc = new Gcp.BigQuery.Routine("sproc", new Gcp.BigQuery.RoutineArgs
+    ///         {
+    ///             DatasetId = test.DatasetId,
+    ///             RoutineId = "tf_test_routine_id",
+    ///             RoutineType = "TABLE_VALUED_FUNCTION",
+    ///             Language = "SQL",
+    ///             DefinitionBody = @"SELECT 1 + value AS value
+    /// ",
+    ///             Arguments = 
+    ///             {
+    ///                 new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///                 {
+    ///                     Name = "value",
+    ///                     ArgumentKind = "FIXED_TYPE",
+    ///                     DataType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         { "typeKind", "INT64" },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             ReturnTableType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "columns", new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "name", "value" },
+    ///                             { "type", new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 { "typeKind", "INT64" },
+    ///                             } },
+    ///                         },
+    ///                     }
+    ///                  },
+    ///             }),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

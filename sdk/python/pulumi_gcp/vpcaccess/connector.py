@@ -498,6 +498,7 @@ class Connector(pulumi.CustomResource):
         connector = gcp.vpcaccess.Connector("connector",
             region="us-west1",
             ip_cidr_range="10.8.0.0/28",
+            max_throughput=300,
             network=default.name,
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[vpcaccess_api]))
@@ -532,7 +533,7 @@ class Connector(pulumi.CustomResource):
                     annotations={
                         "autoscaling.knative.dev/maxScale": "5",
                         "run.googleapis.com/vpc-access-connector": connector.name,
-                        "run.googleapis.com/vpc-access-egress": "all",
+                        "run.googleapis.com/vpc-access-egress": "all-traffic",
                     },
                 ),
             ),
@@ -640,6 +641,7 @@ class Connector(pulumi.CustomResource):
         connector = gcp.vpcaccess.Connector("connector",
             region="us-west1",
             ip_cidr_range="10.8.0.0/28",
+            max_throughput=300,
             network=default.name,
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[vpcaccess_api]))
@@ -674,7 +676,7 @@ class Connector(pulumi.CustomResource):
                     annotations={
                         "autoscaling.knative.dev/maxScale": "5",
                         "run.googleapis.com/vpc-access-connector": connector.name,
-                        "run.googleapis.com/vpc-access-egress": "all",
+                        "run.googleapis.com/vpc-access-egress": "all-traffic",
                     },
                 ),
             ),

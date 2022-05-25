@@ -23,6 +23,7 @@ class RegionNetworkEndpointGroupArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_target_service: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']] = None):
         """
         The set of arguments for constructing a RegionNetworkEndpointGroup resource.
@@ -47,9 +48,11 @@ class RegionNetworkEndpointGroupArgs:
                character, which cannot be a dash.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
                Default value is `SERVERLESS`.
-               Possible values are `SERVERLESS`.
+               Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
+               a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
                serverlessDeployment may be set.
         """
@@ -68,6 +71,8 @@ class RegionNetworkEndpointGroupArgs:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_target_service is not None:
+            pulumi.set(__self__, "psc_target_service", psc_target_service)
         if serverless_deployment is not None:
             pulumi.set(__self__, "serverless_deployment", serverless_deployment)
 
@@ -162,7 +167,7 @@ class RegionNetworkEndpointGroupArgs:
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         Default value is `SERVERLESS`.
-        Possible values are `SERVERLESS`.
+        Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -182,6 +187,19 @@ class RegionNetworkEndpointGroupArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pscTargetService")
+    def psc_target_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target service url used to set up private service connection to
+        a Google API or a PSC Producer Service Attachment.
+        """
+        return pulumi.get(self, "psc_target_service")
+
+    @psc_target_service.setter
+    def psc_target_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_target_service", value)
 
     @property
     @pulumi.getter(name="serverlessDeployment")
@@ -207,6 +225,7 @@ class _RegionNetworkEndpointGroupState:
                  name: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']] = None):
@@ -232,9 +251,11 @@ class _RegionNetworkEndpointGroupState:
                character, which cannot be a dash.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
                Default value is `SERVERLESS`.
-               Possible values are `SERVERLESS`.
+               Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
+               a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[str] region: A reference to the region where the Serverless NEGs Reside.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
@@ -254,6 +275,8 @@ class _RegionNetworkEndpointGroupState:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_target_service is not None:
+            pulumi.set(__self__, "psc_target_service", psc_target_service)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if self_link is not None:
@@ -340,7 +363,7 @@ class _RegionNetworkEndpointGroupState:
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         Default value is `SERVERLESS`.
-        Possible values are `SERVERLESS`.
+        Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -360,6 +383,19 @@ class _RegionNetworkEndpointGroupState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pscTargetService")
+    def psc_target_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target service url used to set up private service connection to
+        a Google API or a PSC Producer Service Attachment.
+        """
+        return pulumi.get(self, "psc_target_service")
+
+    @psc_target_service.setter
+    def psc_target_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_target_service", value)
 
     @property
     @pulumi.getter
@@ -411,6 +447,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']]] = None,
                  __props__=None):
@@ -535,6 +572,17 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 version=appengine_neg_flexible_app_version.version_id,
             ))
         ```
+        ### Region Network Endpoint Group Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        psc_neg = gcp.compute.RegionNetworkEndpointGroup("pscNeg",
+            network_endpoint_type="PRIVATE_SERVICE_CONNECT",
+            psc_target_service="asia-northeast3-cloudkms.googleapis.com",
+            region="asia-northeast3")
+        ```
 
         ## Import
 
@@ -578,9 +626,11 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
                Default value is `SERVERLESS`.
-               Possible values are `SERVERLESS`.
+               Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
+               a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[str] region: A reference to the region where the Serverless NEGs Reside.
         :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
                serverlessDeployment may be set.
@@ -712,6 +762,17 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 version=appengine_neg_flexible_app_version.version_id,
             ))
         ```
+        ### Region Network Endpoint Group Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        psc_neg = gcp.compute.RegionNetworkEndpointGroup("pscNeg",
+            network_endpoint_type="PRIVATE_SERVICE_CONNECT",
+            psc_target_service="asia-northeast3-cloudkms.googleapis.com",
+            region="asia-northeast3")
+        ```
 
         ## Import
 
@@ -755,6 +816,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']]] = None,
                  __props__=None):
@@ -776,6 +838,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_endpoint_type"] = network_endpoint_type
             __props__.__dict__["project"] = project
+            __props__.__dict__["psc_target_service"] = psc_target_service
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -798,6 +861,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network_endpoint_type: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            psc_target_service: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             serverless_deployment: Optional[pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']]] = None) -> 'RegionNetworkEndpointGroup':
@@ -828,9 +892,11 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
                Default value is `SERVERLESS`.
-               Possible values are `SERVERLESS`.
+               Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
+               a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[str] region: A reference to the region where the Serverless NEGs Reside.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
@@ -847,6 +913,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network_endpoint_type"] = network_endpoint_type
         __props__.__dict__["project"] = project
+        __props__.__dict__["psc_target_service"] = psc_target_service
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["serverless_deployment"] = serverless_deployment
@@ -911,7 +978,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         Default value is `SERVERLESS`.
-        Possible values are `SERVERLESS`.
+        Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -923,6 +990,15 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscTargetService")
+    def psc_target_service(self) -> pulumi.Output[Optional[str]]:
+        """
+        The target service url used to set up private service connection to
+        a Google API or a PSC Producer Service Attachment.
+        """
+        return pulumi.get(self, "psc_target_service")
 
     @property
     @pulumi.getter

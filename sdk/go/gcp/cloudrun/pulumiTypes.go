@@ -1555,7 +1555,11 @@ type ServiceStatus struct {
 	LatestCreatedRevisionName *string                  `pulumi:"latestCreatedRevisionName"`
 	LatestReadyRevisionName   *string                  `pulumi:"latestReadyRevisionName"`
 	ObservedGeneration        *int                     `pulumi:"observedGeneration"`
-	Url                       *string                  `pulumi:"url"`
+	// -
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+	// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+	// but may not contain anything else (e.g. basic auth, url path, etc.)
+	Url *string `pulumi:"url"`
 }
 
 // ServiceStatusInput is an input type that accepts ServiceStatusArgs and ServiceStatusOutput values.
@@ -1574,7 +1578,11 @@ type ServiceStatusArgs struct {
 	LatestCreatedRevisionName pulumi.StringPtrInput            `pulumi:"latestCreatedRevisionName"`
 	LatestReadyRevisionName   pulumi.StringPtrInput            `pulumi:"latestReadyRevisionName"`
 	ObservedGeneration        pulumi.IntPtrInput               `pulumi:"observedGeneration"`
-	Url                       pulumi.StringPtrInput            `pulumi:"url"`
+	// -
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+	// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+	// but may not contain anything else (e.g. basic auth, url path, etc.)
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ServiceStatusArgs) ElementType() reflect.Type {
@@ -1644,6 +1652,10 @@ func (o ServiceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
 }
 
+// -
+// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+// but may not contain anything else (e.g. basic auth, url path, etc.)
 func (o ServiceStatusOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -4857,6 +4869,13 @@ type ServiceTraffic struct {
 	Percent int `pulumi:"percent"`
 	// RevisionName of a specific revision to which to send this portion of traffic.
 	RevisionName *string `pulumi:"revisionName"`
+	// Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+	Tag *string `pulumi:"tag"`
+	// -
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+	// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+	// but may not contain anything else (e.g. basic auth, url path, etc.)
+	Url *string `pulumi:"url"`
 }
 
 // ServiceTrafficInput is an input type that accepts ServiceTrafficArgs and ServiceTrafficOutput values.
@@ -4880,6 +4899,13 @@ type ServiceTrafficArgs struct {
 	Percent pulumi.IntInput `pulumi:"percent"`
 	// RevisionName of a specific revision to which to send this portion of traffic.
 	RevisionName pulumi.StringPtrInput `pulumi:"revisionName"`
+	// Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// -
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+	// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+	// but may not contain anything else (e.g. basic auth, url path, etc.)
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ServiceTrafficArgs) ElementType() reflect.Type {
@@ -4949,6 +4975,19 @@ func (o ServiceTrafficOutput) Percent() pulumi.IntOutput {
 // RevisionName of a specific revision to which to send this portion of traffic.
 func (o ServiceTrafficOutput) RevisionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTraffic) *string { return v.RevisionName }).(pulumi.StringPtrOutput)
+}
+
+// Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+func (o ServiceTrafficOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTraffic) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// -
+// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+// but may not contain anything else (e.g. basic auth, url path, etc.)
+func (o ServiceTrafficOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTraffic) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 type ServiceTrafficArrayOutput struct{ *pulumi.OutputState }
@@ -7287,6 +7326,8 @@ type GetServiceTraffic struct {
 	LatestRevision bool   `pulumi:"latestRevision"`
 	Percent        int    `pulumi:"percent"`
 	RevisionName   string `pulumi:"revisionName"`
+	Tag            string `pulumi:"tag"`
+	Url            string `pulumi:"url"`
 }
 
 // GetServiceTrafficInput is an input type that accepts GetServiceTrafficArgs and GetServiceTrafficOutput values.
@@ -7304,6 +7345,8 @@ type GetServiceTrafficArgs struct {
 	LatestRevision pulumi.BoolInput   `pulumi:"latestRevision"`
 	Percent        pulumi.IntInput    `pulumi:"percent"`
 	RevisionName   pulumi.StringInput `pulumi:"revisionName"`
+	Tag            pulumi.StringInput `pulumi:"tag"`
+	Url            pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetServiceTrafficArgs) ElementType() reflect.Type {
@@ -7367,6 +7410,14 @@ func (o GetServiceTrafficOutput) Percent() pulumi.IntOutput {
 
 func (o GetServiceTrafficOutput) RevisionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTraffic) string { return v.RevisionName }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTrafficOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTraffic) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTrafficOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTraffic) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type GetServiceTrafficArrayOutput struct{ *pulumi.OutputState }

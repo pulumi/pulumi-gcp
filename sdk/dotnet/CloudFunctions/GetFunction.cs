@@ -152,6 +152,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// A source that fires events in response to a condition in another service. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionEventTriggerResult> EventTriggers;
+        public readonly string HttpsTriggerSecurityLevel;
         /// <summary>
         /// If function is triggered by HTTP, trigger URL is set here.
         /// </summary>
@@ -235,6 +236,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             ImmutableArray<Outputs.GetFunctionEventTriggerResult> eventTriggers,
 
+            string httpsTriggerSecurityLevel,
+
             string httpsTriggerUrl,
 
             string id,
@@ -284,6 +287,7 @@ namespace Pulumi.Gcp.CloudFunctions
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;
             EventTriggers = eventTriggers;
+            HttpsTriggerSecurityLevel = httpsTriggerSecurityLevel;
             HttpsTriggerUrl = httpsTriggerUrl;
             Id = id;
             IngressSettings = ingressSettings;

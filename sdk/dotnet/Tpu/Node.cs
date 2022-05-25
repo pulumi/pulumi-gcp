@@ -41,6 +41,58 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// }
     /// ```
+    /// ### TPU Node Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
+    ///         var network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         {
+    ///             Name = "default",
+    ///         }));
+    ///         var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = network.Apply(network =&gt; network.Id),
+    ///         });
+    ///         var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = network.Apply(network =&gt; network.Id),
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 serviceRange.Name,
+    ///             },
+    ///         });
+    ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
+    ///         {
+    ///             Zone = "us-central1-b",
+    ///             AcceleratorType = "v3-8",
+    ///             TensorflowVersion = available.Apply(available =&gt; available.Versions?[0]),
+    ///             Description = "Google Provider test TPU",
+    ///             UseServiceNetworking = true,
+    ///             Network = privateServiceConnection.Network,
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             SchedulingConfig = new Gcp.Tpu.Inputs.NodeSchedulingConfigArgs
+    ///             {
+    ///                 Preemptible = true,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstanceSettingResult
     {
         public readonly string ActivationPolicy;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult> ActiveDirectoryConfigs;
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> BackupConfigurations;
         public readonly string Collation;
@@ -34,6 +35,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         [OutputConstructor]
         private GetDatabaseInstanceSettingResult(
             string activationPolicy,
+
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult> activeDirectoryConfigs,
 
             string availabilityType,
 
@@ -68,6 +71,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             int version)
         {
             ActivationPolicy = activationPolicy;
+            ActiveDirectoryConfigs = activeDirectoryConfigs;
             AvailabilityType = availabilityType;
             BackupConfigurations = backupConfigurations;
             Collation = collation;

@@ -21,7 +21,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, docker_repository=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, docker_repository=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -43,6 +43,9 @@ class GetFunctionResult:
         if event_triggers and not isinstance(event_triggers, list):
             raise TypeError("Expected argument 'event_triggers' to be a list")
         pulumi.set(__self__, "event_triggers", event_triggers)
+        if https_trigger_security_level and not isinstance(https_trigger_security_level, str):
+            raise TypeError("Expected argument 'https_trigger_security_level' to be a str")
+        pulumi.set(__self__, "https_trigger_security_level", https_trigger_security_level)
         if https_trigger_url and not isinstance(https_trigger_url, str):
             raise TypeError("Expected argument 'https_trigger_url' to be a str")
         pulumi.set(__self__, "https_trigger_url", https_trigger_url)
@@ -153,6 +156,11 @@ class GetFunctionResult:
         A source that fires events in response to a condition in another service. Structure is documented below.
         """
         return pulumi.get(self, "event_triggers")
+
+    @property
+    @pulumi.getter(name="httpsTriggerSecurityLevel")
+    def https_trigger_security_level(self) -> str:
+        return pulumi.get(self, "https_trigger_security_level")
 
     @property
     @pulumi.getter(name="httpsTriggerUrl")
@@ -318,6 +326,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             entry_point=self.entry_point,
             environment_variables=self.environment_variables,
             event_triggers=self.event_triggers,
+            https_trigger_security_level=self.https_trigger_security_level,
             https_trigger_url=self.https_trigger_url,
             id=self.id,
             ingress_settings=self.ingress_settings,
@@ -384,6 +393,7 @@ def get_function(name: Optional[str] = None,
         entry_point=__ret__.entry_point,
         environment_variables=__ret__.environment_variables,
         event_triggers=__ret__.event_triggers,
+        https_trigger_security_level=__ret__.https_trigger_security_level,
         https_trigger_url=__ret__.https_trigger_url,
         id=__ret__.id,
         ingress_settings=__ret__.ingress_settings,

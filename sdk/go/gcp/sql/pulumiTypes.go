@@ -960,7 +960,8 @@ func (o DatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) Databa
 type DatabaseInstanceSettings struct {
 	// This specifies when the instance should be
 	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
-	ActivationPolicy *string `pulumi:"activationPolicy"`
+	ActivationPolicy      *string                                        `pulumi:"activationPolicy"`
+	ActiveDirectoryConfig *DatabaseInstanceSettingsActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
 	// The availability type of the Cloud SQL
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
@@ -972,10 +973,10 @@ type DatabaseInstanceSettings struct {
 	// The name of server instance collation.
 	Collation     *string                                `pulumi:"collation"`
 	DatabaseFlags []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
-	// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+	// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
 	DiskAutoresize      *bool `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit *int  `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
 	DiskSize *int `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD.
 	DiskType           *string                                     `pulumi:"diskType"`
@@ -1008,7 +1009,8 @@ type DatabaseInstanceSettingsInput interface {
 type DatabaseInstanceSettingsArgs struct {
 	// This specifies when the instance should be
 	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
-	ActivationPolicy pulumi.StringPtrInput `pulumi:"activationPolicy"`
+	ActivationPolicy      pulumi.StringPtrInput                                 `pulumi:"activationPolicy"`
+	ActiveDirectoryConfig DatabaseInstanceSettingsActiveDirectoryConfigPtrInput `pulumi:"activeDirectoryConfig"`
 	// The availability type of the Cloud SQL
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
@@ -1020,10 +1022,10 @@ type DatabaseInstanceSettingsArgs struct {
 	// The name of server instance collation.
 	Collation     pulumi.StringPtrInput                          `pulumi:"collation"`
 	DatabaseFlags DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
-	// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+	// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
 	DiskAutoresize      pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit pulumi.IntPtrInput  `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD.
 	DiskType           pulumi.StringPtrInput                              `pulumi:"diskType"`
@@ -1125,6 +1127,12 @@ func (o DatabaseInstanceSettingsOutput) ActivationPolicy() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
 }
 
+func (o DatabaseInstanceSettingsOutput) ActiveDirectoryConfig() DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsActiveDirectoryConfig {
+		return v.ActiveDirectoryConfig
+	}).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
+}
+
 // The availability type of the Cloud SQL
 // instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 // `settings.backup_configuration.enabled` is set to `true`.
@@ -1150,7 +1158,7 @@ func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettings
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
 func (o DatabaseInstanceSettingsOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
 }
@@ -1159,7 +1167,7 @@ func (o DatabaseInstanceSettingsOutput) DiskAutoresizeLimit() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskAutoresizeLimit }).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
 func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
@@ -1245,6 +1253,15 @@ func (o DatabaseInstanceSettingsPtrOutput) ActivationPolicy() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o DatabaseInstanceSettingsPtrOutput) ActiveDirectoryConfig() DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsActiveDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDirectoryConfig
+	}).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
+}
+
 // The availability type of the Cloud SQL
 // instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 // `settings.backup_configuration.enabled` is set to `true`.
@@ -1288,7 +1305,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSetti
 	}).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
 func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
 		if v == nil {
@@ -1307,7 +1324,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresizeLimit() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
 func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
 		if v == nil {
@@ -1402,6 +1419,147 @@ func (o DatabaseInstanceSettingsPtrOutput) Version() pulumi.IntPtrOutput {
 		}
 		return v.Version
 	}).(pulumi.IntPtrOutput)
+}
+
+type DatabaseInstanceSettingsActiveDirectoryConfig struct {
+	// The domain name for the active directory (e.g., mydomain.com).
+	// Can only be used with SQL Server.
+	Domain string `pulumi:"domain"`
+}
+
+// DatabaseInstanceSettingsActiveDirectoryConfigInput is an input type that accepts DatabaseInstanceSettingsActiveDirectoryConfigArgs and DatabaseInstanceSettingsActiveDirectoryConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsActiveDirectoryConfigInput` via:
+//
+//          DatabaseInstanceSettingsActiveDirectoryConfigArgs{...}
+type DatabaseInstanceSettingsActiveDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsActiveDirectoryConfigOutput() DatabaseInstanceSettingsActiveDirectoryConfigOutput
+	ToDatabaseInstanceSettingsActiveDirectoryConfigOutputWithContext(context.Context) DatabaseInstanceSettingsActiveDirectoryConfigOutput
+}
+
+type DatabaseInstanceSettingsActiveDirectoryConfigArgs struct {
+	// The domain name for the active directory (e.g., mydomain.com).
+	// Can only be used with SQL Server.
+	Domain pulumi.StringInput `pulumi:"domain"`
+}
+
+func (DatabaseInstanceSettingsActiveDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsActiveDirectoryConfigArgs) ToDatabaseInstanceSettingsActiveDirectoryConfigOutput() DatabaseInstanceSettingsActiveDirectoryConfigOutput {
+	return i.ToDatabaseInstanceSettingsActiveDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsActiveDirectoryConfigArgs) ToDatabaseInstanceSettingsActiveDirectoryConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsActiveDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsActiveDirectoryConfigOutput)
+}
+
+func (i DatabaseInstanceSettingsActiveDirectoryConfigArgs) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutput() DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsActiveDirectoryConfigArgs) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsActiveDirectoryConfigOutput).ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsActiveDirectoryConfigPtrInput is an input type that accepts DatabaseInstanceSettingsActiveDirectoryConfigArgs, DatabaseInstanceSettingsActiveDirectoryConfigPtr and DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsActiveDirectoryConfigPtrInput` via:
+//
+//          DatabaseInstanceSettingsActiveDirectoryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseInstanceSettingsActiveDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutput() DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput
+	ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(context.Context) DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput
+}
+
+type databaseInstanceSettingsActiveDirectoryConfigPtrType DatabaseInstanceSettingsActiveDirectoryConfigArgs
+
+func DatabaseInstanceSettingsActiveDirectoryConfigPtr(v *DatabaseInstanceSettingsActiveDirectoryConfigArgs) DatabaseInstanceSettingsActiveDirectoryConfigPtrInput {
+	return (*databaseInstanceSettingsActiveDirectoryConfigPtrType)(v)
+}
+
+func (*databaseInstanceSettingsActiveDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsActiveDirectoryConfigPtrType) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutput() DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsActiveDirectoryConfigPtrType) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
+}
+
+type DatabaseInstanceSettingsActiveDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsActiveDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) ToDatabaseInstanceSettingsActiveDirectoryConfigOutput() DatabaseInstanceSettingsActiveDirectoryConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) ToDatabaseInstanceSettingsActiveDirectoryConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsActiveDirectoryConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutput() DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return o.ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsActiveDirectoryConfig) *DatabaseInstanceSettingsActiveDirectoryConfig {
+		return &v
+	}).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
+}
+
+// The domain name for the active directory (e.g., mydomain.com).
+// Can only be used with SQL Server.
+func (o DatabaseInstanceSettingsActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsActiveDirectoryConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutput() DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) ToDatabaseInstanceSettingsActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) Elem() DatabaseInstanceSettingsActiveDirectoryConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsActiveDirectoryConfig) DatabaseInstanceSettingsActiveDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsActiveDirectoryConfig
+		return ret
+	}).(DatabaseInstanceSettingsActiveDirectoryConfigOutput)
+}
+
+// The domain name for the active directory (e.g., mydomain.com).
+// Can only be used with SQL Server.
+func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsActiveDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsBackupConfiguration struct {
@@ -3564,23 +3722,24 @@ func (o GetDatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetDatabaseInstanceSetting struct {
-	ActivationPolicy     string                                          `pulumi:"activationPolicy"`
-	AvailabilityType     string                                          `pulumi:"availabilityType"`
-	BackupConfigurations []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
-	Collation            string                                          `pulumi:"collation"`
-	DatabaseFlags        []GetDatabaseInstanceSettingDatabaseFlag        `pulumi:"databaseFlags"`
-	DiskAutoresize       bool                                            `pulumi:"diskAutoresize"`
-	DiskAutoresizeLimit  int                                             `pulumi:"diskAutoresizeLimit"`
-	DiskSize             int                                             `pulumi:"diskSize"`
-	DiskType             string                                          `pulumi:"diskType"`
-	InsightsConfigs      []GetDatabaseInstanceSettingInsightsConfig      `pulumi:"insightsConfigs"`
-	IpConfigurations     []GetDatabaseInstanceSettingIpConfiguration     `pulumi:"ipConfigurations"`
-	LocationPreferences  []GetDatabaseInstanceSettingLocationPreference  `pulumi:"locationPreferences"`
-	MaintenanceWindows   []GetDatabaseInstanceSettingMaintenanceWindow   `pulumi:"maintenanceWindows"`
-	PricingPlan          string                                          `pulumi:"pricingPlan"`
-	Tier                 string                                          `pulumi:"tier"`
-	UserLabels           map[string]string                               `pulumi:"userLabels"`
-	Version              int                                             `pulumi:"version"`
+	ActivationPolicy       string                                            `pulumi:"activationPolicy"`
+	ActiveDirectoryConfigs []GetDatabaseInstanceSettingActiveDirectoryConfig `pulumi:"activeDirectoryConfigs"`
+	AvailabilityType       string                                            `pulumi:"availabilityType"`
+	BackupConfigurations   []GetDatabaseInstanceSettingBackupConfiguration   `pulumi:"backupConfigurations"`
+	Collation              string                                            `pulumi:"collation"`
+	DatabaseFlags          []GetDatabaseInstanceSettingDatabaseFlag          `pulumi:"databaseFlags"`
+	DiskAutoresize         bool                                              `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit    int                                               `pulumi:"diskAutoresizeLimit"`
+	DiskSize               int                                               `pulumi:"diskSize"`
+	DiskType               string                                            `pulumi:"diskType"`
+	InsightsConfigs        []GetDatabaseInstanceSettingInsightsConfig        `pulumi:"insightsConfigs"`
+	IpConfigurations       []GetDatabaseInstanceSettingIpConfiguration       `pulumi:"ipConfigurations"`
+	LocationPreferences    []GetDatabaseInstanceSettingLocationPreference    `pulumi:"locationPreferences"`
+	MaintenanceWindows     []GetDatabaseInstanceSettingMaintenanceWindow     `pulumi:"maintenanceWindows"`
+	PricingPlan            string                                            `pulumi:"pricingPlan"`
+	Tier                   string                                            `pulumi:"tier"`
+	UserLabels             map[string]string                                 `pulumi:"userLabels"`
+	Version                int                                               `pulumi:"version"`
 }
 
 // GetDatabaseInstanceSettingInput is an input type that accepts GetDatabaseInstanceSettingArgs and GetDatabaseInstanceSettingOutput values.
@@ -3595,23 +3754,24 @@ type GetDatabaseInstanceSettingInput interface {
 }
 
 type GetDatabaseInstanceSettingArgs struct {
-	ActivationPolicy     pulumi.StringInput                                      `pulumi:"activationPolicy"`
-	AvailabilityType     pulumi.StringInput                                      `pulumi:"availabilityType"`
-	BackupConfigurations GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
-	Collation            pulumi.StringInput                                      `pulumi:"collation"`
-	DatabaseFlags        GetDatabaseInstanceSettingDatabaseFlagArrayInput        `pulumi:"databaseFlags"`
-	DiskAutoresize       pulumi.BoolInput                                        `pulumi:"diskAutoresize"`
-	DiskAutoresizeLimit  pulumi.IntInput                                         `pulumi:"diskAutoresizeLimit"`
-	DiskSize             pulumi.IntInput                                         `pulumi:"diskSize"`
-	DiskType             pulumi.StringInput                                      `pulumi:"diskType"`
-	InsightsConfigs      GetDatabaseInstanceSettingInsightsConfigArrayInput      `pulumi:"insightsConfigs"`
-	IpConfigurations     GetDatabaseInstanceSettingIpConfigurationArrayInput     `pulumi:"ipConfigurations"`
-	LocationPreferences  GetDatabaseInstanceSettingLocationPreferenceArrayInput  `pulumi:"locationPreferences"`
-	MaintenanceWindows   GetDatabaseInstanceSettingMaintenanceWindowArrayInput   `pulumi:"maintenanceWindows"`
-	PricingPlan          pulumi.StringInput                                      `pulumi:"pricingPlan"`
-	Tier                 pulumi.StringInput                                      `pulumi:"tier"`
-	UserLabels           pulumi.StringMapInput                                   `pulumi:"userLabels"`
-	Version              pulumi.IntInput                                         `pulumi:"version"`
+	ActivationPolicy       pulumi.StringInput                                        `pulumi:"activationPolicy"`
+	ActiveDirectoryConfigs GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput `pulumi:"activeDirectoryConfigs"`
+	AvailabilityType       pulumi.StringInput                                        `pulumi:"availabilityType"`
+	BackupConfigurations   GetDatabaseInstanceSettingBackupConfigurationArrayInput   `pulumi:"backupConfigurations"`
+	Collation              pulumi.StringInput                                        `pulumi:"collation"`
+	DatabaseFlags          GetDatabaseInstanceSettingDatabaseFlagArrayInput          `pulumi:"databaseFlags"`
+	DiskAutoresize         pulumi.BoolInput                                          `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit    pulumi.IntInput                                           `pulumi:"diskAutoresizeLimit"`
+	DiskSize               pulumi.IntInput                                           `pulumi:"diskSize"`
+	DiskType               pulumi.StringInput                                        `pulumi:"diskType"`
+	InsightsConfigs        GetDatabaseInstanceSettingInsightsConfigArrayInput        `pulumi:"insightsConfigs"`
+	IpConfigurations       GetDatabaseInstanceSettingIpConfigurationArrayInput       `pulumi:"ipConfigurations"`
+	LocationPreferences    GetDatabaseInstanceSettingLocationPreferenceArrayInput    `pulumi:"locationPreferences"`
+	MaintenanceWindows     GetDatabaseInstanceSettingMaintenanceWindowArrayInput     `pulumi:"maintenanceWindows"`
+	PricingPlan            pulumi.StringInput                                        `pulumi:"pricingPlan"`
+	Tier                   pulumi.StringInput                                        `pulumi:"tier"`
+	UserLabels             pulumi.StringMapInput                                     `pulumi:"userLabels"`
+	Version                pulumi.IntInput                                           `pulumi:"version"`
 }
 
 func (GetDatabaseInstanceSettingArgs) ElementType() reflect.Type {
@@ -3667,6 +3827,12 @@ func (o GetDatabaseInstanceSettingOutput) ToGetDatabaseInstanceSettingOutputWith
 
 func (o GetDatabaseInstanceSettingOutput) ActivationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ActivationPolicy }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) ActiveDirectoryConfigs() GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingActiveDirectoryConfig {
+		return v.ActiveDirectoryConfigs
+	}).(GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) AvailabilityType() pulumi.StringOutput {
@@ -3761,6 +3927,100 @@ func (o GetDatabaseInstanceSettingArrayOutput) Index(i pulumi.IntInput) GetDatab
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSetting {
 		return vs[0].([]GetDatabaseInstanceSetting)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingOutput)
+}
+
+type GetDatabaseInstanceSettingActiveDirectoryConfig struct {
+	Domain string `pulumi:"domain"`
+}
+
+// GetDatabaseInstanceSettingActiveDirectoryConfigInput is an input type that accepts GetDatabaseInstanceSettingActiveDirectoryConfigArgs and GetDatabaseInstanceSettingActiveDirectoryConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingActiveDirectoryConfigInput` via:
+//
+//          GetDatabaseInstanceSettingActiveDirectoryConfigArgs{...}
+type GetDatabaseInstanceSettingActiveDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingActiveDirectoryConfigOutput() GetDatabaseInstanceSettingActiveDirectoryConfigOutput
+	ToGetDatabaseInstanceSettingActiveDirectoryConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingActiveDirectoryConfigOutput
+}
+
+type GetDatabaseInstanceSettingActiveDirectoryConfigArgs struct {
+	Domain pulumi.StringInput `pulumi:"domain"`
+}
+
+func (GetDatabaseInstanceSettingActiveDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingActiveDirectoryConfigArgs) ToGetDatabaseInstanceSettingActiveDirectoryConfigOutput() GetDatabaseInstanceSettingActiveDirectoryConfigOutput {
+	return i.ToGetDatabaseInstanceSettingActiveDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingActiveDirectoryConfigArgs) ToGetDatabaseInstanceSettingActiveDirectoryConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingActiveDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingActiveDirectoryConfigOutput)
+}
+
+// GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingActiveDirectoryConfigArray and GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput` via:
+//
+//          GetDatabaseInstanceSettingActiveDirectoryConfigArray{ GetDatabaseInstanceSettingActiveDirectoryConfigArgs{...} }
+type GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput() GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput
+	ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingActiveDirectoryConfigArray []GetDatabaseInstanceSettingActiveDirectoryConfigInput
+
+func (GetDatabaseInstanceSettingActiveDirectoryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingActiveDirectoryConfigArray) ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput() GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingActiveDirectoryConfigArray) ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingActiveDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingActiveDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) ToGetDatabaseInstanceSettingActiveDirectoryConfigOutput() GetDatabaseInstanceSettingActiveDirectoryConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) ToGetDatabaseInstanceSettingActiveDirectoryConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingActiveDirectoryConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingActiveDirectoryConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput() GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) ToGetDatabaseInstanceSettingActiveDirectoryConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingActiveDirectoryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingActiveDirectoryConfig {
+		return vs[0].([]GetDatabaseInstanceSettingActiveDirectoryConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingActiveDirectoryConfigOutput)
 }
 
 type GetDatabaseInstanceSettingBackupConfiguration struct {
@@ -4662,6 +4922,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceServerCaCertArrayInput)(nil)).Elem(), DatabaseInstanceServerCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsInput)(nil)).Elem(), DatabaseInstanceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPtrInput)(nil)).Elem(), DatabaseInstanceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsActiveDirectoryConfigInput)(nil)).Elem(), DatabaseInstanceSettingsActiveDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsActiveDirectoryConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsActiveDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationPtrInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{})
@@ -4692,6 +4954,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceServerCaCertArrayInput)(nil)).Elem(), GetDatabaseInstanceServerCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingInput)(nil)).Elem(), GetDatabaseInstanceSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingActiveDirectoryConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingActiveDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingActiveDirectoryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{})
@@ -4720,6 +4984,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceServerCaCertArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsActiveDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput{})
@@ -4750,6 +5016,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceServerCaCertArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingActiveDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})

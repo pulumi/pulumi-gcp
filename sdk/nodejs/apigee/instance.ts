@@ -14,6 +14,154 @@ import * as utilities from "../utilities";
  *     * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
  *
  * ## Example Usage
+ * ### Apigee Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
+ * });
+ * const apigeeInstance = new gcp.apigee.Instance("apigeeInstance", {
+ *     location: "us-central1",
+ *     orgId: apigeeOrg.id,
+ * });
+ * ```
+ * ### Apigee Instance Cidr Range
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 22,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
+ * });
+ * const apigeeInstance = new gcp.apigee.Instance("apigeeInstance", {
+ *     location: "us-central1",
+ *     orgId: apigeeOrg.id,
+ *     peeringCidrRange: "SLASH_22",
+ * });
+ * ```
+ * ### Apigee Instance Ip Range
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 22,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
+ * });
+ * const apigeeInstance = new gcp.apigee.Instance("apigeeInstance", {
+ *     location: "us-central1",
+ *     orgId: apigeeOrg.id,
+ *     ipRange: "10.87.8.0/22",
+ * });
+ * ```
+ * ### Apigee Instance Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const apigeeKeyring = new gcp.kms.KeyRing("apigeeKeyring", {location: "us-central1"});
+ * const apigeeKey = new gcp.kms.CryptoKey("apigeeKey", {keyRing: apigeeKeyring.id});
+ * const apigeeSa = new gcp.projects.ServiceIdentity("apigeeSa", {
+ *     project: google_project.project.project_id,
+ *     service: google_project_service.apigee.service,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser", {
+ *     cryptoKeyId: apigeeKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [pulumi.interpolate`serviceAccount:${apigeeSa.email}`],
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ *     analyticsRegion: "us-central1",
+ *     displayName: "apigee-org",
+ *     description: "Auto-provisioned Apigee Org.",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigeeSaKeyuser,
+ *     ],
+ * });
+ * const apigeeInstance = new gcp.apigee.Instance("apigeeInstance", {
+ *     location: "us-central1",
+ *     description: "Auto-managed Apigee Runtime Instance",
+ *     displayName: "tf-test",
+ *     orgId: apigeeOrg.id,
+ *     diskEncryptionKeyName: apigeeKey.id,
+ * });
+ * ```
  *
  * ## Import
  *

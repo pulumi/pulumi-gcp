@@ -15,7 +15,8 @@ __all__ = ['ConnectionArgs', 'Connection']
 @pulumi.input_type
 class ConnectionArgs:
     def __init__(__self__, *,
-                 cloud_sql: pulumi.Input['ConnectionCloudSqlArgs'],
+                 cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
+                 cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -23,6 +24,8 @@ class ConnectionArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
+        :param pulumi.Input['ConnectionCloudResourceArgs'] cloud_resource: Cloud Resource properties.
+               Structure is documented below.
         :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Cloud SQL properties.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
@@ -35,7 +38,10 @@ class ConnectionArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
-        pulumi.set(__self__, "cloud_sql", cloud_sql)
+        if cloud_resource is not None:
+            pulumi.set(__self__, "cloud_resource", cloud_resource)
+        if cloud_sql is not None:
+            pulumi.set(__self__, "cloud_sql", cloud_sql)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
         if description is not None:
@@ -48,8 +54,21 @@ class ConnectionArgs:
             pulumi.set(__self__, "project", project)
 
     @property
+    @pulumi.getter(name="cloudResource")
+    def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArgs']]:
+        """
+        Cloud Resource properties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_resource")
+
+    @cloud_resource.setter
+    def cloud_resource(self, value: Optional[pulumi.Input['ConnectionCloudResourceArgs']]):
+        pulumi.set(self, "cloud_resource", value)
+
+    @property
     @pulumi.getter(name="cloudSql")
-    def cloud_sql(self) -> pulumi.Input['ConnectionCloudSqlArgs']:
+    def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
         """
         Cloud SQL properties.
         Structure is documented below.
@@ -57,7 +76,7 @@ class ConnectionArgs:
         return pulumi.get(self, "cloud_sql")
 
     @cloud_sql.setter
-    def cloud_sql(self, value: pulumi.Input['ConnectionCloudSqlArgs']):
+    def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArgs']]):
         pulumi.set(self, "cloud_sql", value)
 
     @property
@@ -128,6 +147,7 @@ class ConnectionArgs:
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
+                 cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
                  cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -138,6 +158,8 @@ class _ConnectionState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input['ConnectionCloudResourceArgs'] cloud_resource: Cloud Resource properties.
+               Structure is documented below.
         :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Cloud SQL properties.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
@@ -153,6 +175,8 @@ class _ConnectionState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        if cloud_resource is not None:
+            pulumi.set(__self__, "cloud_resource", cloud_resource)
         if cloud_sql is not None:
             pulumi.set(__self__, "cloud_sql", cloud_sql)
         if connection_id is not None:
@@ -169,6 +193,19 @@ class _ConnectionState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="cloudResource")
+    def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArgs']]:
+        """
+        Cloud Resource properties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_resource")
+
+    @cloud_resource.setter
+    def cloud_resource(self, value: Optional[pulumi.Input['ConnectionCloudResourceArgs']]):
+        pulumi.set(self, "cloud_resource", value)
 
     @property
     @pulumi.getter(name="cloudSql")
@@ -278,6 +315,7 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
                  cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -311,17 +349,14 @@ class Connection(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
-            deletion_protection=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db = gcp.sql.Database("db", instance=instance.name,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             instance=instance.name,
-            password=pwd.result,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
             friendly_name="👋",
             description="a riveting description",
@@ -333,8 +368,7 @@ class Connection(pulumi.CustomResource):
                     username=user.name,
                     password=user.password,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Bigquery Connection Full
 
@@ -349,17 +383,14 @@ class Connection(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
-            deletion_protection=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db = gcp.sql.Database("db", instance=instance.name,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             instance=instance.name,
-            password=pwd.result,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
             connection_id="my-connection",
             location="US",
@@ -373,8 +404,20 @@ class Connection(pulumi.CustomResource):
                     username=user.name,
                     password=user.password,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        ```
+        ### Bigquery Connection Cloud Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
         ```
 
         ## Import
@@ -395,6 +438,8 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Cloud Resource properties.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Cloud SQL properties.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
@@ -411,7 +456,7 @@ class Connection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionArgs,
+                 args: Optional[ConnectionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A connection allows BigQuery connections to external data sources..
@@ -439,17 +484,14 @@ class Connection(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
-            deletion_protection=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db = gcp.sql.Database("db", instance=instance.name,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             instance=instance.name,
-            password=pwd.result,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
             friendly_name="👋",
             description="a riveting description",
@@ -461,8 +503,7 @@ class Connection(pulumi.CustomResource):
                     username=user.name,
                     password=user.password,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Bigquery Connection Full
 
@@ -477,17 +518,14 @@ class Connection(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ),
-            deletion_protection=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db = gcp.sql.Database("db", instance=instance.name,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
         pwd = random.RandomPassword("pwd",
             length=16,
             special=False)
         user = gcp.sql.User("user",
             instance=instance.name,
-            password=pwd.result,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
             connection_id="my-connection",
             location="US",
@@ -501,8 +539,20 @@ class Connection(pulumi.CustomResource):
                     username=user.name,
                     password=user.password,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        ```
+        ### Bigquery Connection Cloud Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
         ```
 
         ## Import
@@ -536,6 +586,7 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
                  cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -554,8 +605,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
-            if cloud_sql is None and not opts.urn:
-                raise TypeError("Missing required property 'cloud_sql'")
+            __props__.__dict__["cloud_resource"] = cloud_resource
             __props__.__dict__["cloud_sql"] = cloud_sql
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["description"] = description
@@ -574,6 +624,7 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
             cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -589,6 +640,8 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Cloud Resource properties.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Cloud SQL properties.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
@@ -608,6 +661,7 @@ class Connection(pulumi.CustomResource):
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
+        __props__.__dict__["cloud_resource"] = cloud_resource
         __props__.__dict__["cloud_sql"] = cloud_sql
         __props__.__dict__["connection_id"] = connection_id
         __props__.__dict__["description"] = description
@@ -619,8 +673,17 @@ class Connection(pulumi.CustomResource):
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="cloudResource")
+    def cloud_resource(self) -> pulumi.Output[Optional['outputs.ConnectionCloudResource']]:
+        """
+        Cloud Resource properties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_resource")
+
+    @property
     @pulumi.getter(name="cloudSql")
-    def cloud_sql(self) -> pulumi.Output['outputs.ConnectionCloudSql']:
+    def cloud_sql(self) -> pulumi.Output[Optional['outputs.ConnectionCloudSql']]:
         """
         Cloud SQL properties.
         Structure is documented below.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,13 +43,13 @@ import (
 // 				Tier: pulumi.String("db-f1-micro"),
 // 			},
 // 			DeletionProtection: pulumi.Bool(true),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
 // 			Instance: instance.Name,
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -64,7 +63,7 @@ import (
 // 		user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
 // 			Instance: instance.Name,
 // 			Password: pwd.Result,
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -80,7 +79,7 @@ import (
 // 					Password: user.Password,
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -109,13 +108,13 @@ import (
 // 				Tier: pulumi.String("db-f1-micro"),
 // 			},
 // 			DeletionProtection: pulumi.Bool(true),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
 // 			Instance: instance.Name,
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -129,7 +128,7 @@ import (
 // 		user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
 // 			Instance: instance.Name,
 // 			Password: pwd.Result,
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -147,7 +146,33 @@ import (
 // 					Password: user.Password,
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Bigquery Connection Cloud Resource
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+// 			CloudResource: nil,
+// 			ConnectionId:  pulumi.String("my-connection"),
+// 			Description:   pulumi.String("a riveting description"),
+// 			FriendlyName:  pulumi.String("👋"),
+// 			Location:      pulumi.String("US"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -174,9 +199,12 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// Cloud Resource properties.
+	// Structure is documented below.
+	CloudResource ConnectionCloudResourcePtrOutput `pulumi:"cloudResource"`
 	// Cloud SQL properties.
 	// Structure is documented below.
-	CloudSql ConnectionCloudSqlOutput `pulumi:"cloudSql"`
+	CloudSql ConnectionCloudSqlPtrOutput `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	// A descriptive description for the connection
@@ -202,12 +230,9 @@ type Connection struct {
 func NewConnection(ctx *pulumi.Context,
 	name string, args *ConnectionArgs, opts ...pulumi.ResourceOption) (*Connection, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ConnectionArgs{}
 	}
 
-	if args.CloudSql == nil {
-		return nil, errors.New("invalid value for required argument 'CloudSql'")
-	}
 	var resource Connection
 	err := ctx.RegisterResource("gcp:bigquery/connection:Connection", name, args, &resource, opts...)
 	if err != nil {
@@ -230,6 +255,9 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
+	// Cloud Resource properties.
+	// Structure is documented below.
+	CloudResource *ConnectionCloudResource `pulumi:"cloudResource"`
 	// Cloud SQL properties.
 	// Structure is documented below.
 	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
@@ -255,6 +283,9 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
+	// Cloud Resource properties.
+	// Structure is documented below.
+	CloudResource ConnectionCloudResourcePtrInput
 	// Cloud SQL properties.
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrInput
@@ -284,9 +315,12 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
+	// Cloud Resource properties.
+	// Structure is documented below.
+	CloudResource *ConnectionCloudResource `pulumi:"cloudResource"`
 	// Cloud SQL properties.
 	// Structure is documented below.
-	CloudSql ConnectionCloudSql `pulumi:"cloudSql"`
+	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId *string `pulumi:"connectionId"`
 	// A descriptive description for the connection
@@ -305,9 +339,12 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
+	// Cloud Resource properties.
+	// Structure is documented below.
+	CloudResource ConnectionCloudResourcePtrInput
 	// Cloud SQL properties.
 	// Structure is documented below.
-	CloudSql ConnectionCloudSqlInput
+	CloudSql ConnectionCloudSqlPtrInput
 	// Optional connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrInput
 	// A descriptive description for the connection
@@ -411,10 +448,16 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// Cloud Resource properties.
+// Structure is documented below.
+func (o ConnectionOutput) CloudResource() ConnectionCloudResourcePtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionCloudResourcePtrOutput { return v.CloudResource }).(ConnectionCloudResourcePtrOutput)
+}
+
 // Cloud SQL properties.
 // Structure is documented below.
-func (o ConnectionOutput) CloudSql() ConnectionCloudSqlOutput {
-	return o.ApplyT(func(v *Connection) ConnectionCloudSqlOutput { return v.CloudSql }).(ConnectionCloudSqlOutput)
+func (o ConnectionOutput) CloudSql() ConnectionCloudSqlPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionCloudSqlPtrOutput { return v.CloudSql }).(ConnectionCloudSqlPtrOutput)
 }
 
 // Optional connection id that should be assigned to the created connection.

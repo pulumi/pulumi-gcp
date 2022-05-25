@@ -21,6 +21,7 @@ class AuthorityArgs:
                  location: pulumi.Input[str],
                  pool: pulumi.Input[str],
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -39,6 +40,7 @@ class AuthorityArgs:
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
                (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -68,6 +70,8 @@ class AuthorityArgs:
         pulumi.set(__self__, "pool", pool)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if gcs_bucket is not None:
             pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if ignore_active_certificates_on_deletion is not None:
@@ -154,6 +158,18 @@ class AuthorityArgs:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_state", value)
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -251,6 +267,7 @@ class _AuthorityState:
                  config: Optional[pulumi.Input['AuthorityConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
@@ -272,6 +289,7 @@ class _AuthorityState:
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
                (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -318,6 +336,8 @@ class _AuthorityState:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if gcs_bucket is not None:
             pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if ignore_active_certificates_on_deletion is not None:
@@ -403,6 +423,18 @@ class _AuthorityState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_state", value)
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -591,6 +623,7 @@ class Authority(pulumi.CustomResource):
                  certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
@@ -781,6 +814,7 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input[pulumi.InputType['AuthorityConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
                (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -1009,6 +1043,7 @@ class Authority(pulumi.CustomResource):
                  certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
@@ -1037,6 +1072,7 @@ class Authority(pulumi.CustomResource):
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["gcs_bucket"] = gcs_bucket
             __props__.__dict__["ignore_active_certificates_on_deletion"] = ignore_active_certificates_on_deletion
             if key_spec is None and not opts.urn:
@@ -1073,6 +1109,7 @@ class Authority(pulumi.CustomResource):
             config: Optional[pulumi.Input[pulumi.InputType['AuthorityConfigArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            desired_state: Optional[pulumi.Input[str]] = None,
             gcs_bucket: Optional[pulumi.Input[str]] = None,
             ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
             key_spec: Optional[pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']]] = None,
@@ -1099,6 +1136,7 @@ class Authority(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
                (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -1144,6 +1182,7 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["gcs_bucket"] = gcs_bucket
         __props__.__dict__["ignore_active_certificates_on_deletion"] = ignore_active_certificates_on_deletion
         __props__.__dict__["key_spec"] = key_spec
@@ -1197,6 +1236,14 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Output[Optional[str]]:
+        """
+        Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        """
+        return pulumi.get(self, "desired_state")
 
     @property
     @pulumi.getter(name="gcsBucket")

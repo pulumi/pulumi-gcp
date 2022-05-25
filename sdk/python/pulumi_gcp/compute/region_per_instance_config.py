@@ -365,6 +365,70 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
         ## Example Usage
+        ### Stateful Rigm
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=my_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            ))
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            description="Demo test instance group manager",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                name="prod",
+                instance_template=igm_basic.self_link,
+            )],
+            update_policy=gcp.compute.RegionInstanceGroupManagerUpdatePolicyArgs(
+                type="OPPORTUNISTIC",
+                instance_redistribution_type="NONE",
+                minimal_action="RESTART",
+            ),
+            base_instance_name="rigm",
+            region="us-central1",
+            target_size=2)
+        default = gcp.compute.Disk("default",
+            type="pd-ssd",
+            zone="us-central1-a",
+            image="debian-8-jessie-v20170523",
+            physical_block_size_bytes=4096)
+        with_disk = gcp.compute.RegionPerInstanceConfig("withDisk",
+            region=google_compute_region_instance_group_manager["igm"]["region"],
+            region_instance_group_manager=rigm.name,
+            preserved_state=gcp.compute.RegionPerInstanceConfigPreservedStateArgs(
+                metadata={
+                    "foo": "bar",
+                    "instance_template": igm_basic.self_link,
+                },
+                disks=[gcp.compute.RegionPerInstanceConfigPreservedStateDiskArgs(
+                    device_name="my-stateful-disk",
+                    source=default.id,
+                    mode="READ_ONLY",
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -429,6 +493,70 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
         ## Example Usage
+        ### Stateful Rigm
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        igm_basic = gcp.compute.InstanceTemplate("igm-basic",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=my_image.self_link,
+                auto_delete=True,
+                boot=True,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            ))
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            description="Demo test instance group manager",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                name="prod",
+                instance_template=igm_basic.self_link,
+            )],
+            update_policy=gcp.compute.RegionInstanceGroupManagerUpdatePolicyArgs(
+                type="OPPORTUNISTIC",
+                instance_redistribution_type="NONE",
+                minimal_action="RESTART",
+            ),
+            base_instance_name="rigm",
+            region="us-central1",
+            target_size=2)
+        default = gcp.compute.Disk("default",
+            type="pd-ssd",
+            zone="us-central1-a",
+            image="debian-8-jessie-v20170523",
+            physical_block_size_bytes=4096)
+        with_disk = gcp.compute.RegionPerInstanceConfig("withDisk",
+            region=google_compute_region_instance_group_manager["igm"]["region"],
+            region_instance_group_manager=rigm.name,
+            preserved_state=gcp.compute.RegionPerInstanceConfigPreservedStateArgs(
+                metadata={
+                    "foo": "bar",
+                    "instance_template": igm_basic.self_link,
+                },
+                disks=[gcp.compute.RegionPerInstanceConfigPreservedStateDiskArgs(
+                    device_name="my-stateful-disk",
+                    source=default.id,
+                    mode="READ_ONLY",
+                )],
+            ))
+        ```
 
         ## Import
 

@@ -22,8 +22,10 @@ import * as bigtable from "./bigtable";
 import * as billing from "./billing";
 import * as binaryauthorization from "./binaryauthorization";
 import * as certificateauthority from "./certificateauthority";
+import * as certificatemanager from "./certificatemanager";
 import * as cloudasset from "./cloudasset";
 import * as cloudbuild from "./cloudbuild";
+import * as clouddeploy from "./clouddeploy";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudfunctionsv2 from "./cloudfunctionsv2";
 import * as cloudidentity from "./cloudidentity";
@@ -109,8 +111,10 @@ export {
     billing,
     binaryauthorization,
     certificateauthority,
+    certificatemanager,
     cloudasset,
     cloudbuild,
+    clouddeploy,
     cloudfunctions,
     cloudfunctionsv2,
     cloudidentity,

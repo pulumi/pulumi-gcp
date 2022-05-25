@@ -23,6 +23,7 @@ class FunctionArgs:
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+                 https_trigger_security_level: Optional[pulumi.Input[str]] = None,
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -45,7 +46,7 @@ class FunctionArgs:
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+               Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
@@ -53,6 +54,7 @@ class FunctionArgs:
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -90,6 +92,8 @@ class FunctionArgs:
             pulumi.set(__self__, "environment_variables", environment_variables)
         if event_trigger is not None:
             pulumi.set(__self__, "event_trigger", event_trigger)
+        if https_trigger_security_level is not None:
+            pulumi.set(__self__, "https_trigger_security_level", https_trigger_security_level)
         if https_trigger_url is not None:
             pulumi.set(__self__, "https_trigger_url", https_trigger_url)
         if ingress_settings is not None:
@@ -134,7 +138,7 @@ class FunctionArgs:
     def runtime(self) -> pulumi.Input[str]:
         """
         The runtime in which the function is going to run.
-        Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         """
         return pulumi.get(self, "runtime")
 
@@ -225,6 +229,18 @@ class FunctionArgs:
     @event_trigger.setter
     def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArgs']]):
         pulumi.set(self, "event_trigger", value)
+
+    @property
+    @pulumi.getter(name="httpsTriggerSecurityLevel")
+    def https_trigger_security_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        """
+        return pulumi.get(self, "https_trigger_security_level")
+
+    @https_trigger_security_level.setter
+    def https_trigger_security_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "https_trigger_security_level", value)
 
     @property
     @pulumi.getter(name="httpsTriggerUrl")
@@ -467,6 +483,7 @@ class _FunctionState:
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
+                 https_trigger_security_level: Optional[pulumi.Input[str]] = None,
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -496,6 +513,7 @@ class _FunctionState:
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -507,7 +525,7 @@ class _FunctionState:
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+               Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -534,6 +552,8 @@ class _FunctionState:
             pulumi.set(__self__, "environment_variables", environment_variables)
         if event_trigger is not None:
             pulumi.set(__self__, "event_trigger", event_trigger)
+        if https_trigger_security_level is not None:
+            pulumi.set(__self__, "https_trigger_security_level", https_trigger_security_level)
         if https_trigger_url is not None:
             pulumi.set(__self__, "https_trigger_url", https_trigger_url)
         if ingress_settings is not None:
@@ -660,6 +680,18 @@ class _FunctionState:
         pulumi.set(self, "event_trigger", value)
 
     @property
+    @pulumi.getter(name="httpsTriggerSecurityLevel")
+    def https_trigger_security_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        """
+        return pulumi.get(self, "https_trigger_security_level")
+
+    @https_trigger_security_level.setter
+    def https_trigger_security_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "https_trigger_security_level", value)
+
+    @property
     @pulumi.getter(name="httpsTriggerUrl")
     def https_trigger_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -773,7 +805,7 @@ class _FunctionState:
     def runtime(self) -> Optional[pulumi.Input[str]]:
         """
         The runtime in which the function is going to run.
-        Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         """
         return pulumi.get(self, "runtime")
 
@@ -915,6 +947,7 @@ class Function(pulumi.CustomResource):
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+                 https_trigger_security_level: Optional[pulumi.Input[str]] = None,
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -962,7 +995,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs14",
+            runtime="nodejs16",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -988,7 +1021,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs14",
+            runtime="nodejs16",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -1031,6 +1064,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -1042,7 +1076,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+               Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -1087,7 +1121,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs14",
+            runtime="nodejs16",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -1113,7 +1147,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs14",
+            runtime="nodejs16",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -1169,6 +1203,7 @@ class Function(pulumi.CustomResource):
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+                 https_trigger_security_level: Optional[pulumi.Input[str]] = None,
                  https_trigger_url: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -1208,6 +1243,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["entry_point"] = entry_point
             __props__.__dict__["environment_variables"] = environment_variables
             __props__.__dict__["event_trigger"] = event_trigger
+            __props__.__dict__["https_trigger_security_level"] = https_trigger_security_level
             __props__.__dict__["https_trigger_url"] = https_trigger_url
             __props__.__dict__["ingress_settings"] = ingress_settings
             __props__.__dict__["kms_key_name"] = kms_key_name
@@ -1247,6 +1283,7 @@ class Function(pulumi.CustomResource):
             entry_point: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+            https_trigger_security_level: Optional[pulumi.Input[str]] = None,
             https_trigger_url: Optional[pulumi.Input[str]] = None,
             ingress_settings: Optional[pulumi.Input[str]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -1281,6 +1318,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -1292,7 +1330,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+               Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretEnvironmentVariableArgs']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionSecretVolumeArgs']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -1316,6 +1354,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["entry_point"] = entry_point
         __props__.__dict__["environment_variables"] = environment_variables
         __props__.__dict__["event_trigger"] = event_trigger
+        __props__.__dict__["https_trigger_security_level"] = https_trigger_security_level
         __props__.__dict__["https_trigger_url"] = https_trigger_url
         __props__.__dict__["ingress_settings"] = ingress_settings
         __props__.__dict__["kms_key_name"] = kms_key_name
@@ -1395,6 +1434,14 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "event_trigger")
 
     @property
+    @pulumi.getter(name="httpsTriggerSecurityLevel")
+    def https_trigger_security_level(self) -> pulumi.Output[str]:
+        """
+        The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        """
+        return pulumi.get(self, "https_trigger_security_level")
+
+    @property
     @pulumi.getter(name="httpsTriggerUrl")
     def https_trigger_url(self) -> pulumi.Output[str]:
         """
@@ -1472,7 +1519,7 @@ class Function(pulumi.CustomResource):
     def runtime(self) -> pulumi.Output[str]:
         """
         The runtime in which the function is going to run.
-        Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         """
         return pulumi.get(self, "runtime")
 

@@ -16,6 +16,71 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
  *
  * ## Example Usage
+ * ### Stateful Igm
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const igm_basic = new gcp.compute.InstanceTemplate("igm-basic", {
+ *     machineType: "e2-medium",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const igm_no_tp = new gcp.compute.InstanceGroupManager("igm-no-tp", {
+ *     description: "Test instance group manager",
+ *     versions: [{
+ *         name: "prod",
+ *         instanceTemplate: igm_basic.selfLink,
+ *     }],
+ *     baseInstanceName: "igm-no-tp",
+ *     zone: "us-central1-c",
+ *     targetSize: 2,
+ * });
+ * const _default = new gcp.compute.Disk("default", {
+ *     type: "pd-ssd",
+ *     zone: google_compute_instance_group_manager.igm.zone,
+ *     image: "debian-8-jessie-v20170523",
+ *     physicalBlockSizeBytes: 4096,
+ * });
+ * const withDisk = new gcp.compute.PerInstanceConfig("withDisk", {
+ *     zone: google_compute_instance_group_manager.igm.zone,
+ *     instanceGroupManager: google_compute_instance_group_manager.igm.name,
+ *     preservedState: {
+ *         metadata: {
+ *             foo: "bar",
+ *             instance_template: igm_basic.selfLink,
+ *         },
+ *         disks: [{
+ *             deviceName: "my-stateful-disk",
+ *             source: _default.id,
+ *             mode: "READ_ONLY",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

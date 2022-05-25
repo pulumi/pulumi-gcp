@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly bool LatestRevision;
         public readonly int Percent;
         public readonly string RevisionName;
+        public readonly string Tag;
+        public readonly string Url;
 
         [OutputConstructor]
         private GetServiceTrafficResult(
@@ -23,11 +25,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             int percent,
 
-            string revisionName)
+            string revisionName,
+
+            string tag,
+
+            string url)
         {
             LatestRevision = latestRevision;
             Percent = percent;
             RevisionName = revisionName;
+            Tag = tag;
+            Url = url;
         }
     }
 }

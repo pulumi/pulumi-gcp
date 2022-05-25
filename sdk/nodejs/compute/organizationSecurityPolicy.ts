@@ -14,6 +14,19 @@ import * as utilities from "../utilities";
  *     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
  *
  * ## Example Usage
+ * ### Organization Security Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
+ *     displayName: "tf-test",
+ *     parent: "organizations/123456789",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

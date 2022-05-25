@@ -200,6 +200,23 @@ class Brand(pulumi.CustomResource):
             * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
 
         ## Example Usage
+        ### Iap Brand
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="tf-test",
+            org_id="123456789")
+        project_service = gcp.projects.Service("projectService",
+            project=project.project_id,
+            service="iap.googleapis.com")
+        project_brand = gcp.iap.Brand("projectBrand",
+            support_email="support@example.com",
+            application_title="Cloud IAP protected Application",
+            project=project_service.project)
+        ```
 
         ## Import
 
@@ -243,6 +260,23 @@ class Brand(pulumi.CustomResource):
             * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
 
         ## Example Usage
+        ### Iap Brand
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="tf-test",
+            org_id="123456789")
+        project_service = gcp.projects.Service("projectService",
+            project=project.project_id,
+            service="iap.googleapis.com")
+        project_brand = gcp.iap.Brand("projectBrand",
+            support_email="support@example.com",
+            application_title="Cloud IAP protected Application",
+            project=project_service.project)
+        ```
 
         ## Import
 

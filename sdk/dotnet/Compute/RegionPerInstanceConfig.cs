@@ -21,6 +21,110 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
     /// 
     /// ## Example Usage
+    /// ### Stateful Rigm
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var igm_basic = new Gcp.Compute.InstanceTemplate("igm-basic", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             CanIpForward = false,
+    ///             Tags = 
+    ///             {
+    ///                 "foo",
+    ///                 "bar",
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = myImage.Apply(myImage =&gt; myImage.SelfLink),
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///             {
+    ///                 Scopes = 
+    ///                 {
+    ///                     "userinfo-email",
+    ///                     "compute-ro",
+    ///                     "storage-ro",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var rigm = new Gcp.Compute.RegionInstanceGroupManager("rigm", new Gcp.Compute.RegionInstanceGroupManagerArgs
+    ///         {
+    ///             Description = "Demo test instance group manager",
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     Name = "prod",
+    ///                     InstanceTemplate = igm_basic.SelfLink,
+    ///                 },
+    ///             },
+    ///             UpdatePolicy = new Gcp.Compute.Inputs.RegionInstanceGroupManagerUpdatePolicyArgs
+    ///             {
+    ///                 Type = "OPPORTUNISTIC",
+    ///                 InstanceRedistributionType = "NONE",
+    ///                 MinimalAction = "RESTART",
+    ///             },
+    ///             BaseInstanceName = "rigm",
+    ///             Region = "us-central1",
+    ///             TargetSize = 2,
+    ///         });
+    ///         var @default = new Gcp.Compute.Disk("default", new Gcp.Compute.DiskArgs
+    ///         {
+    ///             Type = "pd-ssd",
+    ///             Zone = "us-central1-a",
+    ///             Image = "debian-8-jessie-v20170523",
+    ///             PhysicalBlockSizeBytes = 4096,
+    ///         });
+    ///         var withDisk = new Gcp.Compute.RegionPerInstanceConfig("withDisk", new Gcp.Compute.RegionPerInstanceConfigArgs
+    ///         {
+    ///             Region = google_compute_region_instance_group_manager.Igm.Region,
+    ///             RegionInstanceGroupManager = rigm.Name,
+    ///             PreservedState = new Gcp.Compute.Inputs.RegionPerInstanceConfigPreservedStateArgs
+    ///             {
+    ///                 Metadata = 
+    ///                 {
+    ///                     { "foo", "bar" },
+    ///                     { "instance_template", igm_basic.SelfLink },
+    ///                 },
+    ///                 Disks = 
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RegionPerInstanceConfigPreservedStateDiskArgs
+    ///                     {
+    ///                         DeviceName = "my-stateful-disk",
+    ///                         Source = @default.Id,
+    ///                         Mode = "READ_ONLY",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

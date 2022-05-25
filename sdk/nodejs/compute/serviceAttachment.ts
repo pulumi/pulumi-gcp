@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  * const pscIlbServiceAttachment = new gcp.compute.ServiceAttachment("pscIlbServiceAttachment", {
  *     region: "us-west2",
  *     description: "A service attachment configured with Terraform",
+ *     domainNames: ["gcp.tfacc.hashicorptest.com."],
  *     enableProxyProtocol: true,
  *     connectionPreference: "ACCEPT_AUTOMATIC",
  *     natSubnets: [pscIlbNat.id],
@@ -113,6 +114,7 @@ import * as utilities from "../utilities";
  * const pscIlbServiceAttachment = new gcp.compute.ServiceAttachment("pscIlbServiceAttachment", {
  *     region: "us-west2",
  *     description: "A service attachment configured with Terraform",
+ *     domainNames: ["gcp.tfacc.hashicorptest.com."],
  *     enableProxyProtocol: true,
  *     connectionPreference: "ACCEPT_MANUAL",
  *     natSubnets: [pscIlbNat.id],
@@ -214,6 +216,13 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * If specified, the domain name will be used during the integration between
+     * the PSC connected endpoints and the Cloud DNS. For example, this is a
+     * valid domain name: "p.mycompany.com.". Current max number of domain names
+     * supported is 1.
+     */
+    public readonly domainNames!: pulumi.Output<string[] | undefined>;
+    /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
@@ -273,6 +282,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["consumerAcceptLists"] = state ? state.consumerAcceptLists : undefined;
             resourceInputs["consumerRejectLists"] = state ? state.consumerRejectLists : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domainNames"] = state ? state.domainNames : undefined;
             resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -299,6 +309,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
             resourceInputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domainNames"] = args ? args.domainNames : undefined;
             resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
@@ -342,6 +353,13 @@ export interface ServiceAttachmentState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * If specified, the domain name will be used during the integration between
+     * the PSC connected endpoints and the Cloud DNS. For example, this is a
+     * valid domain name: "p.mycompany.com.". Current max number of domain names
+     * supported is 1.
+     */
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
@@ -409,6 +427,13 @@ export interface ServiceAttachmentArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * If specified, the domain name will be used during the integration between
+     * the PSC connected endpoints and the Cloud DNS. For example, this is a
+     * valid domain name: "p.mycompany.com.". Current max number of domain names
+     * supported is 1.
+     */
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to

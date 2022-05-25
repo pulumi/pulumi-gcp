@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly string EndTime;
         public readonly string ExclusionName;
+        public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult> ExclusionOptions;
         public readonly string StartTime;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string exclusionName,
 
+            ImmutableArray<Outputs.GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult> exclusionOptions,
+
             string startTime)
         {
             EndTime = endTime;
             ExclusionName = exclusionName;
+            ExclusionOptions = exclusionOptions;
             StartTime = startTime;
         }
     }

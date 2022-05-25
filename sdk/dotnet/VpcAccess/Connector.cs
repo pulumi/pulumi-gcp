@@ -110,6 +110,7 @@ namespace Pulumi.Gcp.VpcAccess
     ///         {
     ///             Region = "us-west1",
     ///             IpCidrRange = "10.8.0.0/28",
+    ///             MaxThroughput = 300,
     ///             Network = @default.Name,
     ///         }, new CustomResourceOptions
     ///         {
@@ -169,7 +170,7 @@ namespace Pulumi.Gcp.VpcAccess
     ///                     {
     ///                         { "autoscaling.knative.dev/maxScale", "5" },
     ///                         { "run.googleapis.com/vpc-access-connector", connector.Name },
-    ///                         { "run.googleapis.com/vpc-access-egress", "all" },
+    ///                         { "run.googleapis.com/vpc-access-egress", "all-traffic" },
     ///                     },
     ///                 },
     ///             },

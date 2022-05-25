@@ -32,12 +32,8 @@ import * as utilities from "../utilities";
  *         tier: "db-f1-micro",
  *     },
  *     deletionProtection: true,
- * }, {
- *     provider: google_beta,
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name}, {
- *     provider: google_beta,
- * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name});
  * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
@@ -45,8 +41,6 @@ import * as utilities from "../utilities";
  * const user = new gcp.sql.User("user", {
  *     instance: instance.name,
  *     password: pwd.result,
- * }, {
- *     provider: google_beta,
  * });
  * const connection = new gcp.bigquery.Connection("connection", {
  *     friendlyName: "👋",
@@ -60,8 +54,6 @@ import * as utilities from "../utilities";
  *             password: user.password,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Bigquery Connection Full
@@ -78,12 +70,8 @@ import * as utilities from "../utilities";
  *         tier: "db-f1-micro",
  *     },
  *     deletionProtection: true,
- * }, {
- *     provider: google_beta,
  * });
- * const db = new gcp.sql.Database("db", {instance: instance.name}, {
- *     provider: google_beta,
- * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name});
  * const pwd = new random.RandomPassword("pwd", {
  *     length: 16,
  *     special: false,
@@ -91,8 +79,6 @@ import * as utilities from "../utilities";
  * const user = new gcp.sql.User("user", {
  *     instance: instance.name,
  *     password: pwd.result,
- * }, {
- *     provider: google_beta,
  * });
  * const connection = new gcp.bigquery.Connection("connection", {
  *     connectionId: "my-connection",
@@ -108,8 +94,20 @@ import * as utilities from "../utilities";
  *             password: user.password,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
+ * });
+ * ```
+ * ### Bigquery Connection Cloud Resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     cloudResource: {},
+ *     connectionId: "my-connection",
+ *     description: "a riveting description",
+ *     friendlyName: "👋",
+ *     location: "US",
  * });
  * ```
  *
@@ -158,10 +156,15 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
+     * Cloud Resource properties.
+     * Structure is documented below.
+     */
+    public readonly cloudResource!: pulumi.Output<outputs.bigquery.ConnectionCloudResource | undefined>;
+    /**
      * Cloud SQL properties.
      * Structure is documented below.
      */
-    public readonly cloudSql!: pulumi.Output<outputs.bigquery.ConnectionCloudSql>;
+    public readonly cloudSql!: pulumi.Output<outputs.bigquery.ConnectionCloudSql | undefined>;
     /**
      * Optional connection id that should be assigned to the created connection.
      */
@@ -203,12 +206,13 @@ export class Connection extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            resourceInputs["cloudResource"] = state ? state.cloudResource : undefined;
             resourceInputs["cloudSql"] = state ? state.cloudSql : undefined;
             resourceInputs["connectionId"] = state ? state.connectionId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -219,9 +223,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.cloudSql === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cloudSql'");
-            }
+            resourceInputs["cloudResource"] = args ? args.cloudResource : undefined;
             resourceInputs["cloudSql"] = args ? args.cloudSql : undefined;
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -240,6 +242,11 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
+    /**
+     * Cloud Resource properties.
+     * Structure is documented below.
+     */
+    cloudResource?: pulumi.Input<inputs.bigquery.ConnectionCloudResource>;
     /**
      * Cloud SQL properties.
      * Structure is documented below.
@@ -285,10 +292,15 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
+     * Cloud Resource properties.
+     * Structure is documented below.
+     */
+    cloudResource?: pulumi.Input<inputs.bigquery.ConnectionCloudResource>;
+    /**
      * Cloud SQL properties.
      * Structure is documented below.
      */
-    cloudSql: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
+    cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
     /**
      * Optional connection id that should be assigned to the created connection.
      */

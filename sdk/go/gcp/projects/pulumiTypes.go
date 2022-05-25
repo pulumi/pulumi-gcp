@@ -2864,12 +2864,18 @@ func (o GetOrganizationPolicyRestorePolicyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetProjectProject struct {
-	CreateTime     string            `pulumi:"createTime"`
-	Labels         map[string]string `pulumi:"labels"`
-	LifecycleState string            `pulumi:"lifecycleState"`
-	Name           string            `pulumi:"name"`
-	Number         string            `pulumi:"number"`
-	Parent         map[string]string `pulumi:"parent"`
+	// Creation time in RFC3339 UTC "Zulu" format.
+	CreateTime string `pulumi:"createTime"`
+	// A set of key/value label pairs assigned on a project.
+	Labels map[string]string `pulumi:"labels"`
+	// The Project lifecycle state.
+	LifecycleState string `pulumi:"lifecycleState"`
+	// The optional user-assigned display name of the project.
+	Name string `pulumi:"name"`
+	// The numeric identifier of the project.
+	Number string `pulumi:"number"`
+	// An optional reference to a parent resource.
+	Parent map[string]string `pulumi:"parent"`
 	// The project id of the project.
 	ProjectId string `pulumi:"projectId"`
 }
@@ -2886,12 +2892,18 @@ type GetProjectProjectInput interface {
 }
 
 type GetProjectProjectArgs struct {
-	CreateTime     pulumi.StringInput    `pulumi:"createTime"`
-	Labels         pulumi.StringMapInput `pulumi:"labels"`
-	LifecycleState pulumi.StringInput    `pulumi:"lifecycleState"`
-	Name           pulumi.StringInput    `pulumi:"name"`
-	Number         pulumi.StringInput    `pulumi:"number"`
-	Parent         pulumi.StringMapInput `pulumi:"parent"`
+	// Creation time in RFC3339 UTC "Zulu" format.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// A set of key/value label pairs assigned on a project.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The Project lifecycle state.
+	LifecycleState pulumi.StringInput `pulumi:"lifecycleState"`
+	// The optional user-assigned display name of the project.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The numeric identifier of the project.
+	Number pulumi.StringInput `pulumi:"number"`
+	// An optional reference to a parent resource.
+	Parent pulumi.StringMapInput `pulumi:"parent"`
 	// The project id of the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
@@ -2947,26 +2959,32 @@ func (o GetProjectProjectOutput) ToGetProjectProjectOutputWithContext(ctx contex
 	return o
 }
 
+// Creation time in RFC3339 UTC "Zulu" format.
 func (o GetProjectProjectOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProject) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// A set of key/value label pairs assigned on a project.
 func (o GetProjectProjectOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProjectProject) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The Project lifecycle state.
 func (o GetProjectProjectOutput) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProject) string { return v.LifecycleState }).(pulumi.StringOutput)
 }
 
+// The optional user-assigned display name of the project.
 func (o GetProjectProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProject) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The numeric identifier of the project.
 func (o GetProjectProjectOutput) Number() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProject) string { return v.Number }).(pulumi.StringOutput)
 }
 
+// An optional reference to a parent resource.
 func (o GetProjectProjectOutput) Parent() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetProjectProject) map[string]string { return v.Parent }).(pulumi.StringMapOutput)
 }

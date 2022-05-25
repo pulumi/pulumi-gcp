@@ -33,6 +33,21 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("revisionName")]
         public Input<string>? RevisionName { get; set; }
 
+        /// <summary>
+        /// Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
+        /// <summary>
+        /// -
+        /// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+        /// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+        /// but may not contain anything else (e.g. basic auth, url path, etc.)
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
+
         public ServiceTrafficArgs()
         {
         }

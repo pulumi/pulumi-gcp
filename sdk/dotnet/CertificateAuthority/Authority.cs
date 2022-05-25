@@ -295,6 +295,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        /// </summary>
+        [Output("desiredState")]
+        public Output<string?> DesiredState { get; private set; } = null!;
+
+        /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
         /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
         /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -457,6 +463,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
+
+        /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
         /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
         /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -576,6 +588,12 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
 
         /// <summary>
         /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,

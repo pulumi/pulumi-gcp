@@ -26,6 +26,62 @@ namespace Pulumi.Gcp.Firestore
     /// the App Engine location specified.
     /// 
     /// ## Example Usage
+    /// ### Firestore Document Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mydoc = new Gcp.Firestore.Document("mydoc", new Gcp.Firestore.DocumentArgs
+    ///         {
+    ///             Collection = "somenewcollection",
+    ///             DocumentId = "my-doc",
+    ///             Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+    ///             Project = "my-project-name",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Firestore Document Nested Document
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mydoc = new Gcp.Firestore.Document("mydoc", new Gcp.Firestore.DocumentArgs
+    ///         {
+    ///             Collection = "somenewcollection",
+    ///             DocumentId = "my-doc",
+    ///             Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+    ///             Project = "my-project-name",
+    ///         });
+    ///         var subDocument = new Gcp.Firestore.Document("subDocument", new Gcp.Firestore.DocumentArgs
+    ///         {
+    ///             Collection = mydoc.Path.Apply(path =&gt; $"{path}/subdocs"),
+    ///             DocumentId = "bitcoinkey",
+    ///             Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
+    ///             Project = "my-project-name",
+    ///         });
+    ///         var subSubDocument = new Gcp.Firestore.Document("subSubDocument", new Gcp.Firestore.DocumentArgs
+    ///         {
+    ///             Collection = subDocument.Path.Apply(path =&gt; $"{path}/subsubdocs"),
+    ///             DocumentId = "asecret",
+    ///             Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
+    ///             Project = "my-project-name",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

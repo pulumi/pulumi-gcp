@@ -42,16 +42,10 @@ namespace Pulumi.Gcp.BigQuery
     ///                 Tier = "db-f1-micro",
     ///             },
     ///             DeletionProtection = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var db = new Gcp.Sql.Database("db", new Gcp.Sql.DatabaseArgs
     ///         {
     ///             Instance = instance.Name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var pwd = new Random.RandomPassword("pwd", new Random.RandomPasswordArgs
     ///         {
@@ -62,9 +56,6 @@ namespace Pulumi.Gcp.BigQuery
     ///         {
     ///             Instance = instance.Name,
     ///             Password = pwd.Result,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
     ///         {
@@ -81,9 +72,6 @@ namespace Pulumi.Gcp.BigQuery
     ///                     Password = user.Password,
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -109,16 +97,10 @@ namespace Pulumi.Gcp.BigQuery
     ///                 Tier = "db-f1-micro",
     ///             },
     ///             DeletionProtection = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var db = new Gcp.Sql.Database("db", new Gcp.Sql.DatabaseArgs
     ///         {
     ///             Instance = instance.Name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var pwd = new Random.RandomPassword("pwd", new Random.RandomPasswordArgs
     ///         {
@@ -129,9 +111,6 @@ namespace Pulumi.Gcp.BigQuery
     ///         {
     ///             Instance = instance.Name,
     ///             Password = pwd.Result,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
     ///         {
@@ -150,9 +129,28 @@ namespace Pulumi.Gcp.BigQuery
     ///                     Password = user.Password,
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Bigquery Connection Cloud Resource
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
     ///         {
-    ///             Provider = google_beta,
+    ///             CloudResource = ,
+    ///             ConnectionId = "my-connection",
+    ///             Description = "a riveting description",
+    ///             FriendlyName = "👋",
+    ///             Location = "US",
     ///         });
     ///     }
     /// 
@@ -179,11 +177,18 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>
+        /// Cloud Resource properties.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("cloudResource")]
+        public Output<Outputs.ConnectionCloudResource?> CloudResource { get; private set; } = null!;
+
+        /// <summary>
         /// Cloud SQL properties.
         /// Structure is documented below.
         /// </summary>
         [Output("cloudSql")]
-        public Output<Outputs.ConnectionCloudSql> CloudSql { get; private set; } = null!;
+        public Output<Outputs.ConnectionCloudSql?> CloudSql { get; private set; } = null!;
 
         /// <summary>
         /// Optional connection id that should be assigned to the created connection.
@@ -240,7 +245,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Connection(string name, ConnectionArgs args, CustomResourceOptions? options = null)
+        public Connection(string name, ConnectionArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:bigquery/connection:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -279,11 +284,18 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Cloud Resource properties.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cloudResource")]
+        public Input<Inputs.ConnectionCloudResourceArgs>? CloudResource { get; set; }
+
+        /// <summary>
         /// Cloud SQL properties.
         /// Structure is documented below.
         /// </summary>
-        [Input("cloudSql", required: true)]
-        public Input<Inputs.ConnectionCloudSqlArgs> CloudSql { get; set; } = null!;
+        [Input("cloudSql")]
+        public Input<Inputs.ConnectionCloudSqlArgs>? CloudSql { get; set; }
 
         /// <summary>
         /// Optional connection id that should be assigned to the created connection.
@@ -326,6 +338,13 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class ConnectionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cloud Resource properties.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cloudResource")]
+        public Input<Inputs.ConnectionCloudResourceGetArgs>? CloudResource { get; set; }
+
         /// <summary>
         /// Cloud SQL properties.
         /// Structure is documented below.

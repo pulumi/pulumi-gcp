@@ -165,6 +165,13 @@ namespace Pulumi.Gcp
             set => _binaryAuthorizationCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _certificateManagerCustomEndpoint = new __Value<string?>(() => __config.Get("certificateManagerCustomEndpoint"));
+        public static string? CertificateManagerCustomEndpoint
+        {
+            get => _certificateManagerCustomEndpoint.Get();
+            set => _certificateManagerCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _cloudAssetCustomEndpoint = new __Value<string?>(() => __config.Get("cloudAssetCustomEndpoint"));
         public static string? CloudAssetCustomEndpoint
         {
@@ -240,6 +247,13 @@ namespace Pulumi.Gcp
         {
             get => _cloudTasksCustomEndpoint.Get();
             set => _cloudTasksCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _clouddeployCustomEndpoint = new __Value<string?>(() => __config.Get("clouddeployCustomEndpoint"));
+        public static string? ClouddeployCustomEndpoint
+        {
+            get => _clouddeployCustomEndpoint.Get();
+            set => _clouddeployCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _cloudfunctions2CustomEndpoint = new __Value<string?>(() => __config.Get("cloudfunctions2CustomEndpoint"));
@@ -669,11 +683,11 @@ namespace Pulumi.Gcp
             set => _resourceManagerCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _resourceManagerV2CustomEndpoint = new __Value<string?>(() => __config.Get("resourceManagerV2CustomEndpoint"));
-        public static string? ResourceManagerV2CustomEndpoint
+        private static readonly __Value<string?> _resourceManagerV3CustomEndpoint = new __Value<string?>(() => __config.Get("resourceManagerV3CustomEndpoint"));
+        public static string? ResourceManagerV3CustomEndpoint
         {
-            get => _resourceManagerV2CustomEndpoint.Get();
-            set => _resourceManagerV2CustomEndpoint.Set(value);
+            get => _resourceManagerV3CustomEndpoint.Get();
+            set => _resourceManagerV3CustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _runtimeConfigCustomEndpoint = new __Value<string?>(() => __config.Get("runtimeConfigCustomEndpoint"));

@@ -47,6 +47,8 @@ billingProject: Optional[str]
 
 binaryAuthorizationCustomEndpoint: Optional[str]
 
+certificateManagerCustomEndpoint: Optional[str]
+
 cloudAssetCustomEndpoint: Optional[str]
 
 cloudBillingCustomEndpoint: Optional[str]
@@ -68,6 +70,8 @@ cloudRunCustomEndpoint: Optional[str]
 cloudSchedulerCustomEndpoint: Optional[str]
 
 cloudTasksCustomEndpoint: Optional[str]
+
+clouddeployCustomEndpoint: Optional[str]
 
 cloudfunctions2CustomEndpoint: Optional[str]
 
@@ -191,7 +195,7 @@ requestTimeout: Optional[str]
 
 resourceManagerCustomEndpoint: Optional[str]
 
-resourceManagerV2CustomEndpoint: Optional[str]
+resourceManagerV3CustomEndpoint: Optional[str]
 
 runtimeConfigCustomEndpoint: Optional[str]
 

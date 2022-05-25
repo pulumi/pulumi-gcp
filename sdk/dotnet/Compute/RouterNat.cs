@@ -153,6 +153,15 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> DrainNatIps { get; private set; } = null!;
 
         /// <summary>
+        /// Enable Dynamic Port Allocation.
+        /// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        /// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        /// Mutually exclusive with enableEndpointIndependentMapping.
+        /// </summary>
+        [Output("enableDynamicPortAllocation")]
+        public Output<bool?> EnableDynamicPortAllocation { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
         /// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         /// </summary>
@@ -323,6 +332,15 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Enable Dynamic Port Allocation.
+        /// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        /// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        /// Mutually exclusive with enableEndpointIndependentMapping.
+        /// </summary>
+        [Input("enableDynamicPortAllocation")]
+        public Input<bool>? EnableDynamicPortAllocation { get; set; }
+
+        /// <summary>
         /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
         /// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         /// </summary>
@@ -464,6 +482,15 @@ namespace Pulumi.Gcp.Compute
             get => _drainNatIps ?? (_drainNatIps = new InputList<string>());
             set => _drainNatIps = value;
         }
+
+        /// <summary>
+        /// Enable Dynamic Port Allocation.
+        /// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        /// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        /// Mutually exclusive with enableEndpointIndependentMapping.
+        /// </summary>
+        [Input("enableDynamicPortAllocation")]
+        public Input<bool>? EnableDynamicPortAllocation { get; set; }
 
         /// <summary>
         /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information

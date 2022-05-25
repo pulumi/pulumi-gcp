@@ -69,6 +69,7 @@ export interface GetAuthorityResult {
     readonly configs: outputs.certificateauthority.GetAuthorityConfig[];
     readonly createTime: string;
     readonly deletionProtection: boolean;
+    readonly desiredState: string;
     readonly gcsBucket: string;
     /**
      * The provider-assigned unique ID for this managed resource.

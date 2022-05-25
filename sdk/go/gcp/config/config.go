@@ -65,6 +65,9 @@ func GetBillingProject(ctx *pulumi.Context) string {
 func GetBinaryAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:binaryAuthorizationCustomEndpoint")
 }
+func GetCertificateManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:certificateManagerCustomEndpoint")
+}
 func GetCloudAssetCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudAssetCustomEndpoint")
 }
@@ -97,6 +100,9 @@ func GetCloudSchedulerCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetCloudTasksCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudTasksCustomEndpoint")
+}
+func GetClouddeployCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:clouddeployCustomEndpoint")
 }
 func GetCloudfunctions2CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudfunctions2CustomEndpoint")
@@ -289,8 +295,8 @@ func GetRequestTimeout(ctx *pulumi.Context) string {
 func GetResourceManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:resourceManagerCustomEndpoint")
 }
-func GetResourceManagerV2CustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:resourceManagerV2CustomEndpoint")
+func GetResourceManagerV3CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:resourceManagerV3CustomEndpoint")
 }
 func GetRuntimeConfigCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:runtimeConfigCustomEndpoint")

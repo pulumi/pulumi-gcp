@@ -160,6 +160,14 @@ Object.defineProperty(exports, "binaryAuthorizationCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const certificateManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "certificateManagerCustomEndpoint", {
+    get() {
+        return __config.get("certificateManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const cloudAssetCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudAssetCustomEndpoint", {
     get() {
@@ -244,6 +252,14 @@ export declare const cloudTasksCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudTasksCustomEndpoint", {
     get() {
         return __config.get("cloudTasksCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const clouddeployCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "clouddeployCustomEndpoint", {
+    get() {
+        return __config.get("clouddeployCustomEndpoint");
     },
     enumerable: true,
 });
@@ -736,10 +752,10 @@ Object.defineProperty(exports, "resourceManagerCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const resourceManagerV2CustomEndpoint: string | undefined;
-Object.defineProperty(exports, "resourceManagerV2CustomEndpoint", {
+export declare const resourceManagerV3CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "resourceManagerV3CustomEndpoint", {
     get() {
-        return __config.get("resourceManagerV2CustomEndpoint");
+        return __config.get("resourceManagerV3CustomEndpoint");
     },
     enumerable: true,
 });

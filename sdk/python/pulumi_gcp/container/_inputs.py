@@ -81,6 +81,7 @@ __all__ = [
     'ClusterMaintenancePolicyArgs',
     'ClusterMaintenancePolicyDailyMaintenanceWindowArgs',
     'ClusterMaintenancePolicyMaintenanceExclusionArgs',
+    'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs',
     'ClusterMaintenancePolicyRecurringWindowArgs',
     'ClusterMasterAuthArgs',
     'ClusterMasterAuthClientCertificateConfigArgs',
@@ -3350,10 +3351,16 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgs:
     def __init__(__self__, *,
                  end_time: pulumi.Input[str],
                  exclusion_name: pulumi.Input[str],
-                 start_time: pulumi.Input[str]):
+                 start_time: pulumi.Input[str],
+                 exclusion_options: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']] = None):
+        """
+        :param pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs'] exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
+        """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "exclusion_name", exclusion_name)
         pulumi.set(__self__, "start_time", start_time)
+        if exclusion_options is not None:
+            pulumi.set(__self__, "exclusion_options", exclusion_options)
 
     @property
     @pulumi.getter(name="endTime")
@@ -3381,6 +3388,40 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgs:
     @start_time.setter
     def start_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="exclusionOptions")
+    def exclusion_options(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']]:
+        """
+        MaintenanceExclusionOptions provides maintenance exclusion related options.
+        """
+        return pulumi.get(self, "exclusion_options")
+
+    @exclusion_options.setter
+    def exclusion_options(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']]):
+        pulumi.set(self, "exclusion_options", value)
+
+
+@pulumi.input_type
+class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
+    def __init__(__self__, *,
+                 scope: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] scope: The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        """
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
 
 
 @pulumi.input_type

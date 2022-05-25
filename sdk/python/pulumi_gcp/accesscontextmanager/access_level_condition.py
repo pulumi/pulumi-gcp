@@ -391,6 +391,56 @@ class AccessLevelCondition(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Access Context Manager Access Level Condition Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            title="tf_test_chromeos_no_lock",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=True,
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                    ),
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ))
+        created_later = gcp.service_account.Account("created-later", account_id="tf-test")
+        access_level_conditions = gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions",
+            access_level=access_level_service_account.name,
+            ip_subnetworks=["192.0.4.0/24"],
+            members=[
+                "user:test@google.com",
+                "user:test2@google.com",
+                created_later.email.apply(lambda email: f"serviceAccount:{email}"),
+            ],
+            negate=False,
+            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArgs(
+                require_screen_lock=False,
+                require_admin_approval=False,
+                require_corp_owned=True,
+                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArgs(
+                    os_type="DESKTOP_CHROME_OS",
+                )],
+            ),
+            regions=[
+                "IT",
+                "US",
+            ])
+        ```
 
         ## Import
 
@@ -461,6 +511,56 @@ class AccessLevelCondition(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Access Context Manager Access Level Condition Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            title="tf_test_chromeos_no_lock",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+                        require_screen_lock=True,
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                            os_type="DESKTOP_CHROME_OS",
+                        )],
+                    ),
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ))
+        created_later = gcp.service_account.Account("created-later", account_id="tf-test")
+        access_level_conditions = gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions",
+            access_level=access_level_service_account.name,
+            ip_subnetworks=["192.0.4.0/24"],
+            members=[
+                "user:test@google.com",
+                "user:test2@google.com",
+                created_later.email.apply(lambda email: f"serviceAccount:{email}"),
+            ],
+            negate=False,
+            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArgs(
+                require_screen_lock=False,
+                require_admin_approval=False,
+                require_corp_owned=True,
+                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArgs(
+                    os_type="DESKTOP_CHROME_OS",
+                )],
+            ),
+            regions=[
+                "IT",
+                "US",
+            ])
+        ```
 
         ## Import
 

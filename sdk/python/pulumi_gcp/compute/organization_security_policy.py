@@ -224,6 +224,17 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 
         ## Example Usage
+        ### Organization Security Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            display_name="tf-test",
+            parent="organizations/123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -265,6 +276,17 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 
         ## Example Usage
+        ### Organization Security Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            display_name="tf-test",
+            parent="organizations/123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

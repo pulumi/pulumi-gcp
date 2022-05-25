@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
         /// </summary>
         public readonly string? ActivationPolicy;
+        public readonly Outputs.DatabaseInstanceSettingsActiveDirectoryConfig? ActiveDirectoryConfig;
         /// <summary>
         /// The availability type of the Cloud SQL
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
@@ -34,12 +35,12 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string? Collation;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
         /// <summary>
-        /// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        /// Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
         /// </summary>
         public readonly bool? DiskAutoresize;
         public readonly int? DiskAutoresizeLimit;
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
         /// </summary>
         public readonly int? DiskSize;
         /// <summary>
@@ -69,6 +70,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         [OutputConstructor]
         private DatabaseInstanceSettings(
             string? activationPolicy,
+
+            Outputs.DatabaseInstanceSettingsActiveDirectoryConfig? activeDirectoryConfig,
 
             string? availabilityType,
 
@@ -103,6 +106,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             int? version)
         {
             ActivationPolicy = activationPolicy;
+            ActiveDirectoryConfig = activeDirectoryConfig;
             AvailabilityType = availabilityType;
             BackupConfiguration = backupConfiguration;
             Collation = collation;
