@@ -19,6 +19,58 @@ namespace Pulumi.Gcp.Apigee
     ///     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
     /// 
     /// ## Example Usage
+    /// ### Apigee Environment Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var current = Output.Create(Gcp.Organizations.GetClientConfig.InvokeAsync());
+    ///         var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = apigeeNetwork.Id,
+    ///         });
+    ///         var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = apigeeNetwork.Id,
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 apigeeRange.Name,
+    ///             },
+    ///         });
+    ///         var apigeeOrg = new Gcp.Apigee.Organization("apigeeOrg", new Gcp.Apigee.OrganizationArgs
+    ///         {
+    ///             AnalyticsRegion = "us-central1",
+    ///             ProjectId = current.Apply(current =&gt; current.Project),
+    ///             AuthorizedNetwork = apigeeNetwork.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 apigeeVpcConnection,
+    ///             },
+    ///         });
+    ///         var env = new Gcp.Apigee.Environment("env", new Gcp.Apigee.EnvironmentArgs
+    ///         {
+    ///             Description = "Apigee Environment",
+    ///             DisplayName = "environment-1",
+    ///             OrgId = apigeeOrg.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

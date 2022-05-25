@@ -66,6 +66,7 @@ type LookupAuthorityResult struct {
 	Configs                []GetAuthorityConfig    `pulumi:"configs"`
 	CreateTime             string                  `pulumi:"createTime"`
 	DeletionProtection     bool                    `pulumi:"deletionProtection"`
+	DesiredState           string                  `pulumi:"desiredState"`
 	GcsBucket              string                  `pulumi:"gcsBucket"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                                 string                `pulumi:"id"`
@@ -148,6 +149,10 @@ func (o LookupAuthorityResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupAuthorityResultOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+func (o LookupAuthorityResultOutput) DesiredState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) string { return v.DesiredState }).(pulumi.StringOutput)
 }
 
 func (o LookupAuthorityResultOutput) GcsBucket() pulumi.StringOutput {

@@ -71,6 +71,7 @@ import * as utilities from "../utilities";
  * const connector = new gcp.vpcaccess.Connector("connector", {
  *     region: "us-west1",
  *     ipCidrRange: "10.8.0.0/28",
+ *     maxThroughput: 300,
  *     network: _default.name,
  * }, {
  *     provider: google_beta,
@@ -111,7 +112,7 @@ import * as utilities from "../utilities";
  *             annotations: {
  *                 "autoscaling.knative.dev/maxScale": "5",
  *                 "run.googleapis.com/vpc-access-connector": connector.name,
- *                 "run.googleapis.com/vpc-access-egress": "all",
+ *                 "run.googleapis.com/vpc-access-egress": "all-traffic",
  *             },
  *         },
  *     },

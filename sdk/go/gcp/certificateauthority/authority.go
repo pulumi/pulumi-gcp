@@ -265,6 +265,8 @@ type Authority struct {
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -370,6 +372,8 @@ type authorityState struct {
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime         *string `pulumi:"createTime"`
 	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+	DesiredState *string `pulumi:"desiredState"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -432,6 +436,8 @@ type AuthorityState struct {
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime         pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
+	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+	DesiredState pulumi.StringPtrInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -493,6 +499,8 @@ type authorityArgs struct {
 	// Structure is documented below.
 	Config             AuthorityConfig `pulumi:"config"`
 	DeletionProtection *bool           `pulumi:"deletionProtection"`
+	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+	DesiredState *string `pulumi:"desiredState"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -540,6 +548,8 @@ type AuthorityArgs struct {
 	// Structure is documented below.
 	Config             AuthorityConfigInput
 	DeletionProtection pulumi.BoolPtrInput
+	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+	DesiredState pulumi.StringPtrInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
 	// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
 	// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
@@ -690,6 +700,11 @@ func (o AuthorityOutput) CreateTime() pulumi.StringOutput {
 
 func (o AuthorityOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+func (o AuthorityOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
 
 // The name of a Cloud Storage bucket where this CertificateAuthority will publish content,

@@ -170,6 +170,147 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionCloudResource struct {
+	// -
+	// The account ID of the service created for the purpose of this connection.
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+}
+
+// ConnectionCloudResourceInput is an input type that accepts ConnectionCloudResourceArgs and ConnectionCloudResourceOutput values.
+// You can construct a concrete instance of `ConnectionCloudResourceInput` via:
+//
+//          ConnectionCloudResourceArgs{...}
+type ConnectionCloudResourceInput interface {
+	pulumi.Input
+
+	ToConnectionCloudResourceOutput() ConnectionCloudResourceOutput
+	ToConnectionCloudResourceOutputWithContext(context.Context) ConnectionCloudResourceOutput
+}
+
+type ConnectionCloudResourceArgs struct {
+	// -
+	// The account ID of the service created for the purpose of this connection.
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+}
+
+func (ConnectionCloudResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCloudResource)(nil)).Elem()
+}
+
+func (i ConnectionCloudResourceArgs) ToConnectionCloudResourceOutput() ConnectionCloudResourceOutput {
+	return i.ToConnectionCloudResourceOutputWithContext(context.Background())
+}
+
+func (i ConnectionCloudResourceArgs) ToConnectionCloudResourceOutputWithContext(ctx context.Context) ConnectionCloudResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudResourceOutput)
+}
+
+func (i ConnectionCloudResourceArgs) ToConnectionCloudResourcePtrOutput() ConnectionCloudResourcePtrOutput {
+	return i.ToConnectionCloudResourcePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionCloudResourceArgs) ToConnectionCloudResourcePtrOutputWithContext(ctx context.Context) ConnectionCloudResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudResourceOutput).ToConnectionCloudResourcePtrOutputWithContext(ctx)
+}
+
+// ConnectionCloudResourcePtrInput is an input type that accepts ConnectionCloudResourceArgs, ConnectionCloudResourcePtr and ConnectionCloudResourcePtrOutput values.
+// You can construct a concrete instance of `ConnectionCloudResourcePtrInput` via:
+//
+//          ConnectionCloudResourceArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionCloudResourcePtrInput interface {
+	pulumi.Input
+
+	ToConnectionCloudResourcePtrOutput() ConnectionCloudResourcePtrOutput
+	ToConnectionCloudResourcePtrOutputWithContext(context.Context) ConnectionCloudResourcePtrOutput
+}
+
+type connectionCloudResourcePtrType ConnectionCloudResourceArgs
+
+func ConnectionCloudResourcePtr(v *ConnectionCloudResourceArgs) ConnectionCloudResourcePtrInput {
+	return (*connectionCloudResourcePtrType)(v)
+}
+
+func (*connectionCloudResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCloudResource)(nil)).Elem()
+}
+
+func (i *connectionCloudResourcePtrType) ToConnectionCloudResourcePtrOutput() ConnectionCloudResourcePtrOutput {
+	return i.ToConnectionCloudResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionCloudResourcePtrType) ToConnectionCloudResourcePtrOutputWithContext(ctx context.Context) ConnectionCloudResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudResourcePtrOutput)
+}
+
+type ConnectionCloudResourceOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCloudResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCloudResource)(nil)).Elem()
+}
+
+func (o ConnectionCloudResourceOutput) ToConnectionCloudResourceOutput() ConnectionCloudResourceOutput {
+	return o
+}
+
+func (o ConnectionCloudResourceOutput) ToConnectionCloudResourceOutputWithContext(ctx context.Context) ConnectionCloudResourceOutput {
+	return o
+}
+
+func (o ConnectionCloudResourceOutput) ToConnectionCloudResourcePtrOutput() ConnectionCloudResourcePtrOutput {
+	return o.ToConnectionCloudResourcePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionCloudResourceOutput) ToConnectionCloudResourcePtrOutputWithContext(ctx context.Context) ConnectionCloudResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionCloudResource) *ConnectionCloudResource {
+		return &v
+	}).(ConnectionCloudResourcePtrOutput)
+}
+
+// -
+// The account ID of the service created for the purpose of this connection.
+func (o ConnectionCloudResourceOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionCloudResource) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionCloudResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCloudResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCloudResource)(nil)).Elem()
+}
+
+func (o ConnectionCloudResourcePtrOutput) ToConnectionCloudResourcePtrOutput() ConnectionCloudResourcePtrOutput {
+	return o
+}
+
+func (o ConnectionCloudResourcePtrOutput) ToConnectionCloudResourcePtrOutputWithContext(ctx context.Context) ConnectionCloudResourcePtrOutput {
+	return o
+}
+
+func (o ConnectionCloudResourcePtrOutput) Elem() ConnectionCloudResourceOutput {
+	return o.ApplyT(func(v *ConnectionCloudResource) ConnectionCloudResource {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionCloudResource
+		return ret
+	}).(ConnectionCloudResourceOutput)
+}
+
+// -
+// The account ID of the service created for the purpose of this connection.
+func (o ConnectionCloudResourcePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionCloudResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionCloudSql struct {
 	// Cloud SQL properties.
 	// Structure is documented below.
@@ -9502,6 +9643,8 @@ func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudResourceInput)(nil)).Elem(), ConnectionCloudResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudResourcePtrInput)(nil)).Elem(), ConnectionCloudResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlInput)(nil)).Elem(), ConnectionCloudSqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlPtrInput)(nil)).Elem(), ConnectionCloudSqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlCredentialInput)(nil)).Elem(), ConnectionCloudSqlCredentialArgs{})
@@ -9598,6 +9741,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableViewPtrInput)(nil)).Elem(), TableViewArgs{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionCloudResourceOutput{})
+	pulumi.RegisterOutputType(ConnectionCloudResourcePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialOutput{})

@@ -15,6 +15,7 @@ __all__ = [
     'DatabaseInstanceRestoreBackupContextArgs',
     'DatabaseInstanceServerCaCertArgs',
     'DatabaseInstanceSettingsArgs',
+    'DatabaseInstanceSettingsActiveDirectoryConfigArgs',
     'DatabaseInstanceSettingsBackupConfigurationArgs',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs',
     'DatabaseInstanceSettingsDatabaseFlagArgs',
@@ -453,6 +454,7 @@ class DatabaseInstanceSettingsArgs:
     def __init__(__self__, *,
                  tier: pulumi.Input[str],
                  activation_policy: Optional[pulumi.Input[str]] = None,
+                 active_directory_config: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']] = None,
                  availability_type: Optional[pulumi.Input[str]] = None,
                  backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
@@ -481,8 +483,8 @@ class DatabaseInstanceSettingsArgs:
                For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`.
         :param pulumi.Input[str] collation: The name of server instance collation.
-        :param pulumi.Input[bool] disk_autoresize: Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
-        :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        :param pulumi.Input[bool] disk_autoresize: Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+        :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
         :param pulumi.Input[str] disk_type: The type of data disk: PD_SSD or PD_HDD.
         :param pulumi.Input[str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: A set of key/value user label pairs to assign to the instance.
@@ -490,6 +492,8 @@ class DatabaseInstanceSettingsArgs:
         pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
             pulumi.set(__self__, "activation_policy", activation_policy)
+        if active_directory_config is not None:
+            pulumi.set(__self__, "active_directory_config", active_directory_config)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
@@ -549,6 +553,15 @@ class DatabaseInstanceSettingsArgs:
         pulumi.set(self, "activation_policy", value)
 
     @property
+    @pulumi.getter(name="activeDirectoryConfig")
+    def active_directory_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]:
+        return pulumi.get(self, "active_directory_config")
+
+    @active_directory_config.setter
+    def active_directory_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]):
+        pulumi.set(self, "active_directory_config", value)
+
+    @property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -599,7 +612,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> Optional[pulumi.Input[bool]]:
         """
-        Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
         """
         return pulumi.get(self, "disk_autoresize")
 
@@ -620,7 +633,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
         """
         return pulumi.get(self, "disk_size")
 
@@ -708,6 +721,30 @@ class DatabaseInstanceSettingsArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceSettingsActiveDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The domain name for the active directory (e.g., mydomain.com).
+               Can only be used with SQL Server.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The domain name for the active directory (e.g., mydomain.com).
+        Can only be used with SQL Server.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
 
 
 @pulumi.input_type

@@ -11,6 +11,7 @@ from . import outputs
 
 __all__ = [
     'AppProfileSingleClusterRouting',
+    'ConnectionCloudResource',
     'ConnectionCloudSql',
     'ConnectionCloudSqlCredential',
     'DataTransferConfigEmailPreferences',
@@ -109,6 +110,44 @@ class AppProfileSingleClusterRouting(dict):
         It is unsafe to send these requests to the same table/row/column in multiple clusters.
         """
         return pulumi.get(self, "allow_transactional_writes")
+
+
+@pulumi.output_type
+class ConnectionCloudResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountId":
+            suggest = "service_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionCloudResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionCloudResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionCloudResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_id: Optional[str] = None):
+        """
+        :param str service_account_id: -
+               The account ID of the service created for the purpose of this connection.
+        """
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[str]:
+        """
+        -
+        The account ID of the service created for the purpose of this connection.
+        """
+        return pulumi.get(self, "service_account_id")
 
 
 @pulumi.output_type

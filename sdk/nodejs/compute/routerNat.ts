@@ -132,6 +132,13 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly drainNatIps!: pulumi.Output<string[] | undefined>;
     /**
+     * Enable Dynamic Port Allocation.
+     * If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+     * If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+     * Mutually exclusive with enableEndpointIndependentMapping.
+     */
+    public readonly enableDynamicPortAllocation!: pulumi.Output<boolean | undefined>;
+    /**
      * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
      * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      */
@@ -227,6 +234,7 @@ export class RouterNat extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RouterNatState | undefined;
             resourceInputs["drainNatIps"] = state ? state.drainNatIps : undefined;
+            resourceInputs["enableDynamicPortAllocation"] = state ? state.enableDynamicPortAllocation : undefined;
             resourceInputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
             resourceInputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
@@ -254,6 +262,7 @@ export class RouterNat extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sourceSubnetworkIpRangesToNat'");
             }
             resourceInputs["drainNatIps"] = args ? args.drainNatIps : undefined;
+            resourceInputs["enableDynamicPortAllocation"] = args ? args.enableDynamicPortAllocation : undefined;
             resourceInputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
             resourceInputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
@@ -284,6 +293,13 @@ export interface RouterNatState {
      * valid static external IPs that have been assigned to the NAT.
      */
     drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable Dynamic Port Allocation.
+     * If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+     * If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+     * Mutually exclusive with enableEndpointIndependentMapping.
+     */
+    enableDynamicPortAllocation?: pulumi.Input<boolean>;
     /**
      * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
      * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
@@ -376,6 +392,13 @@ export interface RouterNatArgs {
      * valid static external IPs that have been assigned to the NAT.
      */
     drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable Dynamic Port Allocation.
+     * If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+     * If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+     * Mutually exclusive with enableEndpointIndependentMapping.
+     */
+    enableDynamicPortAllocation?: pulumi.Input<boolean>;
     /**
      * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
      * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).

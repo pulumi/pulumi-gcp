@@ -82,6 +82,7 @@ __all__ = [
     'ClusterMaintenancePolicy',
     'ClusterMaintenancePolicyDailyMaintenanceWindow',
     'ClusterMaintenancePolicyMaintenanceExclusion',
+    'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions',
     'ClusterMaintenancePolicyRecurringWindow',
     'ClusterMasterAuth',
     'ClusterMasterAuthClientCertificateConfig',
@@ -170,6 +171,7 @@ __all__ = [
     'GetClusterMaintenancePolicyResult',
     'GetClusterMaintenancePolicyDailyMaintenanceWindowResult',
     'GetClusterMaintenancePolicyMaintenanceExclusionResult',
+    'GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult',
     'GetClusterMaintenancePolicyRecurringWindowResult',
     'GetClusterMasterAuthResult',
     'GetClusterMasterAuthClientCertificateConfigResult',
@@ -3759,6 +3761,8 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
             suggest = "exclusion_name"
         elif key == "startTime":
             suggest = "start_time"
+        elif key == "exclusionOptions":
+            suggest = "exclusion_options"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenancePolicyMaintenanceExclusion. Access the value via the '{suggest}' property getter instead.")
@@ -3774,10 +3778,16 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
     def __init__(__self__, *,
                  end_time: str,
                  exclusion_name: str,
-                 start_time: str):
+                 start_time: str,
+                 exclusion_options: Optional['outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions'] = None):
+        """
+        :param 'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs' exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
+        """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "exclusion_name", exclusion_name)
         pulumi.set(__self__, "start_time", start_time)
+        if exclusion_options is not None:
+            pulumi.set(__self__, "exclusion_options", exclusion_options)
 
     @property
     @pulumi.getter(name="endTime")
@@ -3793,6 +3803,32 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="exclusionOptions")
+    def exclusion_options(self) -> Optional['outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions']:
+        """
+        MaintenanceExclusionOptions provides maintenance exclusion related options.
+        """
+        return pulumi.get(self, "exclusion_options")
+
+
+@pulumi.output_type
+class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(dict):
+    def __init__(__self__, *,
+                 scope: str):
+        """
+        :param str scope: The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        """
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+        """
+        return pulumi.get(self, "scope")
 
 
 @pulumi.output_type
@@ -7858,9 +7894,11 @@ class GetClusterMaintenancePolicyMaintenanceExclusionResult(dict):
     def __init__(__self__, *,
                  end_time: str,
                  exclusion_name: str,
+                 exclusion_options: Sequence['outputs.GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult'],
                  start_time: str):
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "exclusion_name", exclusion_name)
+        pulumi.set(__self__, "exclusion_options", exclusion_options)
         pulumi.set(__self__, "start_time", start_time)
 
     @property
@@ -7874,9 +7912,26 @@ class GetClusterMaintenancePolicyMaintenanceExclusionResult(dict):
         return pulumi.get(self, "exclusion_name")
 
     @property
+    @pulumi.getter(name="exclusionOptions")
+    def exclusion_options(self) -> Sequence['outputs.GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult']:
+        return pulumi.get(self, "exclusion_options")
+
+    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult(dict):
+    def __init__(__self__, *,
+                 scope: str):
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        return pulumi.get(self, "scope")
 
 
 @pulumi.output_type

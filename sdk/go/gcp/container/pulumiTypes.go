@@ -11464,7 +11464,9 @@ func (o ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) StartTime() pul
 type ClusterMaintenancePolicyMaintenanceExclusion struct {
 	EndTime       string `pulumi:"endTime"`
 	ExclusionName string `pulumi:"exclusionName"`
-	StartTime     string `pulumi:"startTime"`
+	// MaintenanceExclusionOptions provides maintenance exclusion related options.
+	ExclusionOptions *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions `pulumi:"exclusionOptions"`
+	StartTime        string                                                        `pulumi:"startTime"`
 }
 
 // ClusterMaintenancePolicyMaintenanceExclusionInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionArgs and ClusterMaintenancePolicyMaintenanceExclusionOutput values.
@@ -11481,7 +11483,9 @@ type ClusterMaintenancePolicyMaintenanceExclusionInput interface {
 type ClusterMaintenancePolicyMaintenanceExclusionArgs struct {
 	EndTime       pulumi.StringInput `pulumi:"endTime"`
 	ExclusionName pulumi.StringInput `pulumi:"exclusionName"`
-	StartTime     pulumi.StringInput `pulumi:"startTime"`
+	// MaintenanceExclusionOptions provides maintenance exclusion related options.
+	ExclusionOptions ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrInput `pulumi:"exclusionOptions"`
+	StartTime        pulumi.StringInput                                                   `pulumi:"startTime"`
 }
 
 func (ClusterMaintenancePolicyMaintenanceExclusionArgs) ElementType() reflect.Type {
@@ -11543,6 +11547,13 @@ func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ExclusionName() pulu
 	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) string { return v.ExclusionName }).(pulumi.StringOutput)
 }
 
+// MaintenanceExclusionOptions provides maintenance exclusion related options.
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ExclusionOptions() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
+		return v.ExclusionOptions
+	}).(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput)
+}
+
 func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -11565,6 +11576,143 @@ func (o ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMaintenancePolicyMaintenanceExclusion {
 		return vs[0].([]ClusterMaintenancePolicyMaintenanceExclusion)[vs[1].(int)]
 	}).(ClusterMaintenancePolicyMaintenanceExclusionOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions struct {
+	// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+	Scope string `pulumi:"scope"`
+}
+
+// ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs and ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsInput` via:
+//
+//          ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs{...}
+type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput
+	ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutputWithContext(context.Context) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs struct {
+	// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput)
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput).ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(ctx)
+}
+
+// ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs, ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtr and ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrInput` via:
+//
+//          ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput
+	ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(context.Context) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput
+}
+
+type clusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrType ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs
+
+func ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtr(v *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrInput {
+	return (*clusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrType)(v)
+}
+
+func (*clusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions)(nil)).Elem()
+}
+
+func (i *clusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrType) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrType) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return o.ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions) *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
+		return &v
+	}).(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput)
+}
+
+// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) ToClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) Elem() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions) ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions
+		return ret
+	}).(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput)
+}
+
+// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scope
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterMaintenancePolicyRecurringWindow struct {
@@ -24930,9 +25078,10 @@ func (o GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput) Index(i pu
 }
 
 type GetClusterMaintenancePolicyMaintenanceExclusion struct {
-	EndTime       string `pulumi:"endTime"`
-	ExclusionName string `pulumi:"exclusionName"`
-	StartTime     string `pulumi:"startTime"`
+	EndTime          string                                                           `pulumi:"endTime"`
+	ExclusionName    string                                                           `pulumi:"exclusionName"`
+	ExclusionOptions []GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption `pulumi:"exclusionOptions"`
+	StartTime        string                                                           `pulumi:"startTime"`
 }
 
 // GetClusterMaintenancePolicyMaintenanceExclusionInput is an input type that accepts GetClusterMaintenancePolicyMaintenanceExclusionArgs and GetClusterMaintenancePolicyMaintenanceExclusionOutput values.
@@ -24947,9 +25096,10 @@ type GetClusterMaintenancePolicyMaintenanceExclusionInput interface {
 }
 
 type GetClusterMaintenancePolicyMaintenanceExclusionArgs struct {
-	EndTime       pulumi.StringInput `pulumi:"endTime"`
-	ExclusionName pulumi.StringInput `pulumi:"exclusionName"`
-	StartTime     pulumi.StringInput `pulumi:"startTime"`
+	EndTime          pulumi.StringInput                                                       `pulumi:"endTime"`
+	ExclusionName    pulumi.StringInput                                                       `pulumi:"exclusionName"`
+	ExclusionOptions GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayInput `pulumi:"exclusionOptions"`
+	StartTime        pulumi.StringInput                                                       `pulumi:"startTime"`
 }
 
 func (GetClusterMaintenancePolicyMaintenanceExclusionArgs) ElementType() reflect.Type {
@@ -25011,6 +25161,12 @@ func (o GetClusterMaintenancePolicyMaintenanceExclusionOutput) ExclusionName() p
 	return o.ApplyT(func(v GetClusterMaintenancePolicyMaintenanceExclusion) string { return v.ExclusionName }).(pulumi.StringOutput)
 }
 
+func (o GetClusterMaintenancePolicyMaintenanceExclusionOutput) ExclusionOptions() GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput {
+	return o.ApplyT(func(v GetClusterMaintenancePolicyMaintenanceExclusion) []GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
+		return v.ExclusionOptions
+	}).(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput)
+}
+
 func (o GetClusterMaintenancePolicyMaintenanceExclusionOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterMaintenancePolicyMaintenanceExclusion) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -25033,6 +25189,100 @@ func (o GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenancePolicyMaintenanceExclusion {
 		return vs[0].([]GetClusterMaintenancePolicyMaintenanceExclusion)[vs[1].(int)]
 	}).(GetClusterMaintenancePolicyMaintenanceExclusionOutput)
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption struct {
+	Scope string `pulumi:"scope"`
+}
+
+// GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionInput is an input type that accepts GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArgs and GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput values.
+// You can construct a concrete instance of `GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionInput` via:
+//
+//          GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArgs{...}
+type GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput() GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput
+	ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutputWithContext(context.Context) GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArgs struct {
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption)(nil)).Elem()
+}
+
+func (i GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArgs) ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput() GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput {
+	return i.ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArgs) ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutputWithContext(ctx context.Context) GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput)
+}
+
+// GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayInput is an input type that accepts GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArray and GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput values.
+// You can construct a concrete instance of `GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayInput` via:
+//
+//          GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArray{ GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArgs{...} }
+type GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput() GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput
+	ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutputWithContext(context.Context) GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArray []GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionInput
+
+func (GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption)(nil)).Elem()
+}
+
+func (i GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArray) ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput() GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput {
+	return i.ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArray) ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutputWithContext(ctx context.Context) GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput)
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption)(nil)).Elem()
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput) ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput() GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput {
+	return o
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput) ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutputWithContext(ctx context.Context) GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput {
+	return o
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption)(nil)).Elem()
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput) ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput() GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput) ToGetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutputWithContext(ctx context.Context) GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput) Index(i pulumi.IntInput) GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
+		return vs[0].([]GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption)[vs[1].(int)]
+	}).(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput)
 }
 
 type GetClusterMaintenancePolicyRecurringWindow struct {
@@ -30023,6 +30273,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput)(nil)).Elem(), ClusterMaintenancePolicyDailyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionInput)(nil)).Elem(), ClusterMaintenancePolicyMaintenanceExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionArrayInput)(nil)).Elem(), ClusterMaintenancePolicyMaintenanceExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsInput)(nil)).Elem(), ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrInput)(nil)).Elem(), ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyRecurringWindowInput)(nil)).Elem(), ClusterMaintenancePolicyRecurringWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyRecurringWindowPtrInput)(nil)).Elem(), ClusterMaintenancePolicyRecurringWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMasterAuthInput)(nil)).Elem(), ClusterMasterAuthArgs{})
@@ -30199,6 +30451,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenancePolicyDailyMaintenanceWindowArrayInput)(nil)).Elem(), GetClusterMaintenancePolicyDailyMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenancePolicyMaintenanceExclusionInput)(nil)).Elem(), GetClusterMaintenancePolicyMaintenanceExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenancePolicyMaintenanceExclusionArrayInput)(nil)).Elem(), GetClusterMaintenancePolicyMaintenanceExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionInput)(nil)).Elem(), GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayInput)(nil)).Elem(), GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenancePolicyRecurringWindowInput)(nil)).Elem(), GetClusterMaintenancePolicyRecurringWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenancePolicyRecurringWindowArrayInput)(nil)).Elem(), GetClusterMaintenancePolicyRecurringWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMasterAuthInput)(nil)).Elem(), GetClusterMasterAuthArgs{})
@@ -30433,6 +30687,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyRecurringWindowOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyRecurringWindowPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMasterAuthOutput{})
@@ -30609,6 +30865,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyMaintenanceExclusionOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyRecurringWindowOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyRecurringWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMasterAuthOutput{})

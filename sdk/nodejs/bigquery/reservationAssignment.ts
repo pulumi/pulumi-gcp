@@ -14,16 +14,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basic = new gcp.bigquery.Reservation("basic", {
- *     ignoreIdleSlots: false,
- *     location: "us-central1",
  *     project: "my-project-name",
+ *     location: "us-central1",
  *     slotCapacity: 0,
+ *     ignoreIdleSlots: false,
  * });
  * const primary = new gcp.bigquery.ReservationAssignment("primary", {
  *     assignee: "projects/my-project-name",
- *     "google_bigquery_reservation.basic.id": [{}],
  *     jobType: "PIPELINE",
- *     reservation: "",
+ *     reservation: basic.id,
  * });
  * ```
  *

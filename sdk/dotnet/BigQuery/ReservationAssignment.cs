@@ -13,6 +13,32 @@ namespace Pulumi.Gcp.BigQuery
     /// The BigqueryReservation Assignment resource
     /// 
     /// ## Example Usage
+    /// ### Basic
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basic = new Gcp.BigQuery.Reservation("basic", new Gcp.BigQuery.ReservationArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Location = "us-central1",
+    ///             SlotCapacity = 0,
+    ///             IgnoreIdleSlots = false,
+    ///         });
+    ///         var primary = new Gcp.BigQuery.ReservationAssignment("primary", new Gcp.BigQuery.ReservationAssignmentArgs
+    ///         {
+    ///             Assignee = "projects/my-project-name",
+    ///             JobType = "PIPELINE",
+    ///             Reservation = basic.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

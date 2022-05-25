@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Monitoring
     ///     {
     ///         var http = new Gcp.Monitoring.UptimeCheckConfig("http", new Gcp.Monitoring.UptimeCheckConfigArgs
     ///         {
+    ///             CheckerType = "STATIC_IP_CHECKERS",
     ///             ContentMatchers = 
     ///             {
     ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
@@ -152,6 +153,13 @@ namespace Pulumi.Gcp.Monitoring
     [GcpResourceType("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig")]
     public partial class UptimeCheckConfig : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+        /// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        /// </summary>
+        [Output("checkerType")]
+        public Output<string> CheckerType { get; private set; } = null!;
+
         /// <summary>
         /// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
         /// Structure is documented below.
@@ -277,6 +285,13 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class UptimeCheckConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+        /// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        /// </summary>
+        [Input("checkerType")]
+        public Input<string>? CheckerType { get; set; }
+
         [Input("contentMatchers")]
         private InputList<Inputs.UptimeCheckConfigContentMatcherArgs>? _contentMatchers;
 
@@ -362,6 +377,13 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class UptimeCheckConfigState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+        /// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        /// </summary>
+        [Input("checkerType")]
+        public Input<string>? CheckerType { get; set; }
+
         [Input("contentMatchers")]
         private InputList<Inputs.UptimeCheckConfigContentMatcherGetArgs>? _contentMatchers;
 

@@ -28,6 +28,43 @@ namespace Pulumi.Gcp.Firebase
     ///     * [Official Documentation](https://firebase.google.com/)
     /// 
     /// ## Example Usage
+    /// ### Firebase Project Location Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultProject = new Gcp.Organizations.Project("defaultProject", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "tf-test",
+    ///             OrgId = "123456789",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new Gcp.Firebase.ProjectArgs
+    ///         {
+    ///             Project = defaultProject.ProjectId,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var basic = new Gcp.Firebase.ProjectLocation("basic", new Gcp.Firebase.ProjectLocationArgs
+    ///         {
+    ///             Project = defaultFirebase / projectProject.Project,
+    ///             LocationId = "us-central",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

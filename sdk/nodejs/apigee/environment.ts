@@ -14,6 +14,38 @@ import * as utilities from "../utilities";
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  *
  * ## Example Usage
+ * ### Apigee Environment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
+ * });
+ * const env = new gcp.apigee.Environment("env", {
+ *     description: "Apigee Environment",
+ *     displayName: "environment-1",
+ *     orgId: apigeeOrg.id,
+ * });
+ * ```
  *
  * ## Import
  *

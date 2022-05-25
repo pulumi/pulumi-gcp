@@ -97,6 +97,11 @@ type RouterNat struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayOutput `pulumi:"drainNatIps"`
+	// Enable Dynamic Port Allocation.
+	// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+	// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	// Mutually exclusive with enableEndpointIndependentMapping.
+	EnableDynamicPortAllocation pulumi.BoolPtrOutput `pulumi:"enableDynamicPortAllocation"`
 	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
 	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolPtrOutput `pulumi:"enableEndpointIndependentMapping"`
@@ -191,6 +196,11 @@ type routerNatState struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
+	// Enable Dynamic Port Allocation.
+	// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+	// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	// Mutually exclusive with enableEndpointIndependentMapping.
+	EnableDynamicPortAllocation *bool `pulumi:"enableDynamicPortAllocation"`
 	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
 	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
@@ -248,6 +258,11 @@ type RouterNatState struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
+	// Enable Dynamic Port Allocation.
+	// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+	// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	// Mutually exclusive with enableEndpointIndependentMapping.
+	EnableDynamicPortAllocation pulumi.BoolPtrInput
 	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
 	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolPtrInput
@@ -309,6 +324,11 @@ type routerNatArgs struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
+	// Enable Dynamic Port Allocation.
+	// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+	// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	// Mutually exclusive with enableEndpointIndependentMapping.
+	EnableDynamicPortAllocation *bool `pulumi:"enableDynamicPortAllocation"`
 	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
 	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
@@ -367,6 +387,11 @@ type RouterNatArgs struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
+	// Enable Dynamic Port Allocation.
+	// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+	// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	// Mutually exclusive with enableEndpointIndependentMapping.
+	EnableDynamicPortAllocation pulumi.BoolPtrInput
 	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
 	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolPtrInput
@@ -511,6 +536,14 @@ func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) Route
 // valid static external IPs that have been assigned to the NAT.
 func (o RouterNatOutput) DrainNatIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringArrayOutput { return v.DrainNatIps }).(pulumi.StringArrayOutput)
+}
+
+// Enable Dynamic Port Allocation.
+// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+// Mutually exclusive with enableEndpointIndependentMapping.
+func (o RouterNatOutput) EnableDynamicPortAllocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouterNat) pulumi.BoolPtrOutput { return v.EnableDynamicPortAllocation }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information

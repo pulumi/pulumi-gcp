@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * });
  * const _function = new gcp.cloudfunctions.Function("function", {
  *     description: "My function",
- *     runtime: "nodejs14",
+ *     runtime: "nodejs16",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * const _function = new gcp.cloudfunctions.Function("function", {
  *     description: "My function",
- *     runtime: "nodejs14",
+ *     runtime: "nodejs16",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
@@ -154,6 +154,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly eventTrigger!: pulumi.Output<outputs.cloudfunctions.FunctionEventTrigger>;
     /**
+     * The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     */
+    public readonly httpsTriggerSecurityLevel!: pulumi.Output<string>;
+    /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
     public readonly httpsTriggerUrl!: pulumi.Output<string>;
@@ -192,7 +196,7 @@ export class Function extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
@@ -257,6 +261,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["entryPoint"] = state ? state.entryPoint : undefined;
             resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
             resourceInputs["eventTrigger"] = state ? state.eventTrigger : undefined;
+            resourceInputs["httpsTriggerSecurityLevel"] = state ? state.httpsTriggerSecurityLevel : undefined;
             resourceInputs["httpsTriggerUrl"] = state ? state.httpsTriggerUrl : undefined;
             resourceInputs["ingressSettings"] = state ? state.ingressSettings : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
@@ -289,6 +294,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["entryPoint"] = args ? args.entryPoint : undefined;
             resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             resourceInputs["eventTrigger"] = args ? args.eventTrigger : undefined;
+            resourceInputs["httpsTriggerSecurityLevel"] = args ? args.httpsTriggerSecurityLevel : undefined;
             resourceInputs["httpsTriggerUrl"] = args ? args.httpsTriggerUrl : undefined;
             resourceInputs["ingressSettings"] = args ? args.ingressSettings : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -348,6 +354,10 @@ export interface FunctionState {
      */
     eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
     /**
+     * The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     */
+    httpsTriggerSecurityLevel?: pulumi.Input<string>;
+    /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
     httpsTriggerUrl?: pulumi.Input<string>;
@@ -386,7 +396,7 @@ export interface FunctionState {
     region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -465,6 +475,10 @@ export interface FunctionArgs {
      */
     eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
     /**
+     * The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     */
+    httpsTriggerSecurityLevel?: pulumi.Input<string>;
+    /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
     httpsTriggerUrl?: pulumi.Input<string>;
@@ -503,7 +517,7 @@ export interface FunctionArgs {
     region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      */
     runtime: pulumi.Input<string>;
     /**

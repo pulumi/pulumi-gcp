@@ -672,6 +672,12 @@ class ServiceStatusArgs:
                  latest_ready_revision_name: Optional[pulumi.Input[str]] = None,
                  observed_generation: Optional[pulumi.Input[int]] = None,
                  url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] url: -
+               URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+               and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+               but may not contain anything else (e.g. basic auth, url path, etc.)
+        """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
         if latest_created_revision_name is not None:
@@ -722,6 +728,12 @@ class ServiceStatusArgs:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+        and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+        but may not contain anything else (e.g. basic auth, url path, etc.)
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -2043,7 +2055,9 @@ class ServiceTrafficArgs:
     def __init__(__self__, *,
                  percent: pulumi.Input[int],
                  latest_revision: Optional[pulumi.Input[bool]] = None,
-                 revision_name: Optional[pulumi.Input[str]] = None):
+                 revision_name: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] percent: Percent specifies percent of the traffic to this Revision or Configuration.
         :param pulumi.Input[bool] latest_revision: LatestRevision may be optionally provided to indicate that the latest ready
@@ -2051,12 +2065,21 @@ class ServiceTrafficArgs:
                provided LatestRevision must be true if RevisionName is empty; it must be
                false when RevisionName is non-empty.
         :param pulumi.Input[str] revision_name: RevisionName of a specific revision to which to send this portion of traffic.
+        :param pulumi.Input[str] tag: Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+        :param pulumi.Input[str] url: -
+               URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+               and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+               but may not contain anything else (e.g. basic auth, url path, etc.)
         """
         pulumi.set(__self__, "percent", percent)
         if latest_revision is not None:
             pulumi.set(__self__, "latest_revision", latest_revision)
         if revision_name is not None:
             pulumi.set(__self__, "revision_name", revision_name)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -2096,5 +2119,32 @@ class ServiceTrafficArgs:
     @revision_name.setter
     def revision_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "revision_name", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+        and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+        but may not contain anything else (e.g. basic auth, url path, etc.)
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 

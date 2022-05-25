@@ -20,6 +20,58 @@ import (
 //     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
 //
 // ## Example Usage
+// ### Organization Security Policy Rule Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		policyOrganizationSecurityPolicy, err := compute.NewOrganizationSecurityPolicy(ctx, "policyOrganizationSecurityPolicy", &compute.OrganizationSecurityPolicyArgs{
+// 			DisplayName: pulumi.String("tf-test"),
+// 			Parent:      pulumi.String("organizations/123456789"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policyOrganizationSecurityPolicyRule", &compute.OrganizationSecurityPolicyRuleArgs{
+// 			PolicyId:      policyOrganizationSecurityPolicy.ID(),
+// 			Action:        pulumi.String("allow"),
+// 			Direction:     pulumi.String("INGRESS"),
+// 			EnableLogging: pulumi.Bool(true),
+// 			Match: &compute.OrganizationSecurityPolicyRuleMatchArgs{
+// 				Config: &compute.OrganizationSecurityPolicyRuleMatchConfigArgs{
+// 					SrcIpRanges: pulumi.StringArray{
+// 						pulumi.String("192.168.0.0/16"),
+// 						pulumi.String("10.0.0.0/8"),
+// 					},
+// 					Layer4Configs: compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArray{
+// 						&compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs{
+// 							IpProtocol: pulumi.String("tcp"),
+// 							Ports: pulumi.StringArray{
+// 								pulumi.String("22"),
+// 							},
+// 						},
+// 						&compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs{
+// 							IpProtocol: pulumi.String("icmp"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Priority: pulumi.Int(100),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

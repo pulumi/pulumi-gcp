@@ -72,6 +72,9 @@ namespace Pulumi.Gcp
         [Output("binaryAuthorizationCustomEndpoint")]
         public Output<string?> BinaryAuthorizationCustomEndpoint { get; private set; } = null!;
 
+        [Output("certificateManagerCustomEndpoint")]
+        public Output<string?> CertificateManagerCustomEndpoint { get; private set; } = null!;
+
         [Output("cloudAssetCustomEndpoint")]
         public Output<string?> CloudAssetCustomEndpoint { get; private set; } = null!;
 
@@ -104,6 +107,9 @@ namespace Pulumi.Gcp
 
         [Output("cloudTasksCustomEndpoint")]
         public Output<string?> CloudTasksCustomEndpoint { get; private set; } = null!;
+
+        [Output("clouddeployCustomEndpoint")]
+        public Output<string?> ClouddeployCustomEndpoint { get; private set; } = null!;
 
         [Output("cloudfunctions2CustomEndpoint")]
         public Output<string?> Cloudfunctions2CustomEndpoint { get; private set; } = null!;
@@ -282,8 +288,8 @@ namespace Pulumi.Gcp
         [Output("resourceManagerCustomEndpoint")]
         public Output<string?> ResourceManagerCustomEndpoint { get; private set; } = null!;
 
-        [Output("resourceManagerV2CustomEndpoint")]
-        public Output<string?> ResourceManagerV2CustomEndpoint { get; private set; } = null!;
+        [Output("resourceManagerV3CustomEndpoint")]
+        public Output<string?> ResourceManagerV3CustomEndpoint { get; private set; } = null!;
 
         [Output("runtimeConfigCustomEndpoint")]
         public Output<string?> RuntimeConfigCustomEndpoint { get; private set; } = null!;
@@ -430,6 +436,9 @@ namespace Pulumi.Gcp
         [Input("binaryAuthorizationCustomEndpoint")]
         public Input<string>? BinaryAuthorizationCustomEndpoint { get; set; }
 
+        [Input("certificateManagerCustomEndpoint")]
+        public Input<string>? CertificateManagerCustomEndpoint { get; set; }
+
         [Input("cloudAssetCustomEndpoint")]
         public Input<string>? CloudAssetCustomEndpoint { get; set; }
 
@@ -462,6 +471,9 @@ namespace Pulumi.Gcp
 
         [Input("cloudTasksCustomEndpoint")]
         public Input<string>? CloudTasksCustomEndpoint { get; set; }
+
+        [Input("clouddeployCustomEndpoint")]
+        public Input<string>? ClouddeployCustomEndpoint { get; set; }
 
         [Input("cloudfunctions2CustomEndpoint")]
         public Input<string>? Cloudfunctions2CustomEndpoint { get; set; }
@@ -651,8 +663,8 @@ namespace Pulumi.Gcp
         [Input("resourceManagerCustomEndpoint")]
         public Input<string>? ResourceManagerCustomEndpoint { get; set; }
 
-        [Input("resourceManagerV2CustomEndpoint")]
-        public Input<string>? ResourceManagerV2CustomEndpoint { get; set; }
+        [Input("resourceManagerV3CustomEndpoint")]
+        public Input<string>? ResourceManagerV3CustomEndpoint { get; set; }
 
         [Input("runtimeConfigCustomEndpoint")]
         public Input<string>? RuntimeConfigCustomEndpoint { get; set; }

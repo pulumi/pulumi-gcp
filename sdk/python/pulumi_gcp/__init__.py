@@ -36,10 +36,14 @@ if typing.TYPE_CHECKING:
     binaryauthorization = __binaryauthorization
     import pulumi_gcp.certificateauthority as __certificateauthority
     certificateauthority = __certificateauthority
+    import pulumi_gcp.certificatemanager as __certificatemanager
+    certificatemanager = __certificatemanager
     import pulumi_gcp.cloudasset as __cloudasset
     cloudasset = __cloudasset
     import pulumi_gcp.cloudbuild as __cloudbuild
     cloudbuild = __cloudbuild
+    import pulumi_gcp.clouddeploy as __clouddeploy
+    clouddeploy = __clouddeploy
     import pulumi_gcp.cloudfunctions as __cloudfunctions
     cloudfunctions = __cloudfunctions
     import pulumi_gcp.cloudfunctionsv2 as __cloudfunctionsv2
@@ -192,8 +196,10 @@ else:
     billing = _utilities.lazy_import('pulumi_gcp.billing')
     binaryauthorization = _utilities.lazy_import('pulumi_gcp.binaryauthorization')
     certificateauthority = _utilities.lazy_import('pulumi_gcp.certificateauthority')
+    certificatemanager = _utilities.lazy_import('pulumi_gcp.certificatemanager')
     cloudasset = _utilities.lazy_import('pulumi_gcp.cloudasset')
     cloudbuild = _utilities.lazy_import('pulumi_gcp.cloudbuild')
+    clouddeploy = _utilities.lazy_import('pulumi_gcp.clouddeploy')
     cloudfunctions = _utilities.lazy_import('pulumi_gcp.cloudfunctions')
     cloudfunctionsv2 = _utilities.lazy_import('pulumi_gcp.cloudfunctionsv2')
     cloudidentity = _utilities.lazy_import('pulumi_gcp.cloudidentity')
@@ -1013,6 +1019,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "certificatemanager/certificate",
+  "fqn": "pulumi_gcp.certificatemanager",
+  "classes": {
+   "gcp:certificatemanager/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "certificatemanager/dnsAuthorization",
+  "fqn": "pulumi_gcp.certificatemanager",
+  "classes": {
+   "gcp:certificatemanager/dnsAuthorization:DnsAuthorization": "DnsAuthorization"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudasset/folderFeed",
   "fqn": "pulumi_gcp.cloudasset",
   "classes": {
@@ -1049,6 +1071,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudbuild",
   "classes": {
    "gcp:cloudbuild/workerPool:WorkerPool": "WorkerPool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/deliveryPipeline",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": "DeliveryPipeline"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/target",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/target:Target": "Target"
   }
  },
  {

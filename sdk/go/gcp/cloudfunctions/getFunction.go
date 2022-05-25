@@ -69,7 +69,8 @@ type LookupFunctionResult struct {
 	EntryPoint           string                 `pulumi:"entryPoint"`
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below.
-	EventTriggers []GetFunctionEventTrigger `pulumi:"eventTriggers"`
+	EventTriggers             []GetFunctionEventTrigger `pulumi:"eventTriggers"`
+	HttpsTriggerSecurityLevel string                    `pulumi:"httpsTriggerSecurityLevel"`
 	// If function is triggered by HTTP, trigger URL is set here.
 	HttpsTriggerUrl string `pulumi:"httpsTriggerUrl"`
 	// The provider-assigned unique ID for this managed resource.
@@ -182,6 +183,10 @@ func (o LookupFunctionResultOutput) EnvironmentVariables() pulumi.MapOutput {
 // A source that fires events in response to a condition in another service. Structure is documented below.
 func (o LookupFunctionResultOutput) EventTriggers() GetFunctionEventTriggerArrayOutput {
 	return o.ApplyT(func(v LookupFunctionResult) []GetFunctionEventTrigger { return v.EventTriggers }).(GetFunctionEventTriggerArrayOutput)
+}
+
+func (o LookupFunctionResultOutput) HttpsTriggerSecurityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.HttpsTriggerSecurityLevel }).(pulumi.StringOutput)
 }
 
 // If function is triggered by HTTP, trigger URL is set here.

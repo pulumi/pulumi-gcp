@@ -145,6 +145,40 @@ class WebApp(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
+        ### Firebase Web App Basic
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="tf-test",
+            org_id="123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        basic_web_app = gcp.firebase.WebApp("basicWebApp",
+            project=default_project.project_id,
+            display_name="Display Name Basic",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[default_firebase / project_project]))
+        basic_web_app_config = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
+        default_bucket = gcp.storage.Bucket("defaultBucket", location="US",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_bucket_object = gcp.storage.BucketObject("defaultBucketObject",
+            bucket=default_bucket.name,
+            content=pulumi.Output.all(basic_web_app.app_id, basic_web_app_config, basic_web_app_config, (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], "")).apply(lambda app_id, basic_web_app_config, basic_web_app_config1, s, s1, s2, s3: json.dumps({
+                "appId": app_id,
+                "apiKey": basic_web_app_config.api_key,
+                "authDomain": basic_web_app_config1.auth_domain,
+                "databaseURL": s,
+                "storageBucket": s1,
+                "messagingSenderId": s2,
+                "measurementId": s3,
+            })),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -184,6 +218,40 @@ class WebApp(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
+        ### Firebase Web App Basic
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="tf-test",
+            org_id="123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        basic_web_app = gcp.firebase.WebApp("basicWebApp",
+            project=default_project.project_id,
+            display_name="Display Name Basic",
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[default_firebase / project_project]))
+        basic_web_app_config = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
+        default_bucket = gcp.storage.Bucket("defaultBucket", location="US",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_bucket_object = gcp.storage.BucketObject("defaultBucketObject",
+            bucket=default_bucket.name,
+            content=pulumi.Output.all(basic_web_app.app_id, basic_web_app_config, basic_web_app_config, (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], "")).apply(lambda app_id, basic_web_app_config, basic_web_app_config1, s, s1, s2, s3: json.dumps({
+                "appId": app_id,
+                "apiKey": basic_web_app_config.api_key,
+                "authDomain": basic_web_app_config1.auth_domain,
+                "databaseURL": s,
+                "storageBucket": s1,
+                "messagingSenderId": s2,
+                "measurementId": s3,
+            })),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

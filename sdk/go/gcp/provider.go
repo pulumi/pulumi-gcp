@@ -35,6 +35,7 @@ type Provider struct {
 	BillingCustomEndpoint              pulumi.StringPtrOutput `pulumi:"billingCustomEndpoint"`
 	BillingProject                     pulumi.StringPtrOutput `pulumi:"billingProject"`
 	BinaryAuthorizationCustomEndpoint  pulumi.StringPtrOutput `pulumi:"binaryAuthorizationCustomEndpoint"`
+	CertificateManagerCustomEndpoint   pulumi.StringPtrOutput `pulumi:"certificateManagerCustomEndpoint"`
 	CloudAssetCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint         pulumi.StringPtrOutput `pulumi:"cloudBillingCustomEndpoint"`
 	CloudBuildCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudBuildCustomEndpoint"`
@@ -46,6 +47,7 @@ type Provider struct {
 	CloudRunCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudRunCustomEndpoint"`
 	CloudSchedulerCustomEndpoint       pulumi.StringPtrOutput `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudTasksCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudTasksCustomEndpoint"`
+	ClouddeployCustomEndpoint          pulumi.StringPtrOutput `pulumi:"clouddeployCustomEndpoint"`
 	Cloudfunctions2CustomEndpoint      pulumi.StringPtrOutput `pulumi:"cloudfunctions2CustomEndpoint"`
 	ComposerCustomEndpoint             pulumi.StringPtrOutput `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint              pulumi.StringPtrOutput `pulumi:"computeCustomEndpoint"`
@@ -105,7 +107,7 @@ type Provider struct {
 	RequestReason                      pulumi.StringPtrOutput `pulumi:"requestReason"`
 	RequestTimeout                     pulumi.StringPtrOutput `pulumi:"requestTimeout"`
 	ResourceManagerCustomEndpoint      pulumi.StringPtrOutput `pulumi:"resourceManagerCustomEndpoint"`
-	ResourceManagerV2CustomEndpoint    pulumi.StringPtrOutput `pulumi:"resourceManagerV2CustomEndpoint"`
+	ResourceManagerV3CustomEndpoint    pulumi.StringPtrOutput `pulumi:"resourceManagerV3CustomEndpoint"`
 	RuntimeConfigCustomEndpoint        pulumi.StringPtrOutput `pulumi:"runtimeConfigCustomEndpoint"`
 	RuntimeconfigCustomEndpoint        pulumi.StringPtrOutput `pulumi:"runtimeconfigCustomEndpoint"`
 	SecretManagerCustomEndpoint        pulumi.StringPtrOutput `pulumi:"secretManagerCustomEndpoint"`
@@ -172,6 +174,7 @@ type providerArgs struct {
 	BillingCustomEndpoint              *string           `pulumi:"billingCustomEndpoint"`
 	BillingProject                     *string           `pulumi:"billingProject"`
 	BinaryAuthorizationCustomEndpoint  *string           `pulumi:"binaryAuthorizationCustomEndpoint"`
+	CertificateManagerCustomEndpoint   *string           `pulumi:"certificateManagerCustomEndpoint"`
 	CloudAssetCustomEndpoint           *string           `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint         *string           `pulumi:"cloudBillingCustomEndpoint"`
 	CloudBuildCustomEndpoint           *string           `pulumi:"cloudBuildCustomEndpoint"`
@@ -183,6 +186,7 @@ type providerArgs struct {
 	CloudRunCustomEndpoint             *string           `pulumi:"cloudRunCustomEndpoint"`
 	CloudSchedulerCustomEndpoint       *string           `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudTasksCustomEndpoint           *string           `pulumi:"cloudTasksCustomEndpoint"`
+	ClouddeployCustomEndpoint          *string           `pulumi:"clouddeployCustomEndpoint"`
 	Cloudfunctions2CustomEndpoint      *string           `pulumi:"cloudfunctions2CustomEndpoint"`
 	ComposerCustomEndpoint             *string           `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint              *string           `pulumi:"computeCustomEndpoint"`
@@ -244,7 +248,7 @@ type providerArgs struct {
 	RequestReason                      *string           `pulumi:"requestReason"`
 	RequestTimeout                     *string           `pulumi:"requestTimeout"`
 	ResourceManagerCustomEndpoint      *string           `pulumi:"resourceManagerCustomEndpoint"`
-	ResourceManagerV2CustomEndpoint    *string           `pulumi:"resourceManagerV2CustomEndpoint"`
+	ResourceManagerV3CustomEndpoint    *string           `pulumi:"resourceManagerV3CustomEndpoint"`
 	RuntimeConfigCustomEndpoint        *string           `pulumi:"runtimeConfigCustomEndpoint"`
 	RuntimeconfigCustomEndpoint        *string           `pulumi:"runtimeconfigCustomEndpoint"`
 	Scopes                             []string          `pulumi:"scopes"`
@@ -290,6 +294,7 @@ type ProviderArgs struct {
 	BillingCustomEndpoint              pulumi.StringPtrInput
 	BillingProject                     pulumi.StringPtrInput
 	BinaryAuthorizationCustomEndpoint  pulumi.StringPtrInput
+	CertificateManagerCustomEndpoint   pulumi.StringPtrInput
 	CloudAssetCustomEndpoint           pulumi.StringPtrInput
 	CloudBillingCustomEndpoint         pulumi.StringPtrInput
 	CloudBuildCustomEndpoint           pulumi.StringPtrInput
@@ -301,6 +306,7 @@ type ProviderArgs struct {
 	CloudRunCustomEndpoint             pulumi.StringPtrInput
 	CloudSchedulerCustomEndpoint       pulumi.StringPtrInput
 	CloudTasksCustomEndpoint           pulumi.StringPtrInput
+	ClouddeployCustomEndpoint          pulumi.StringPtrInput
 	Cloudfunctions2CustomEndpoint      pulumi.StringPtrInput
 	ComposerCustomEndpoint             pulumi.StringPtrInput
 	ComputeCustomEndpoint              pulumi.StringPtrInput
@@ -362,7 +368,7 @@ type ProviderArgs struct {
 	RequestReason                      pulumi.StringPtrInput
 	RequestTimeout                     pulumi.StringPtrInput
 	ResourceManagerCustomEndpoint      pulumi.StringPtrInput
-	ResourceManagerV2CustomEndpoint    pulumi.StringPtrInput
+	ResourceManagerV3CustomEndpoint    pulumi.StringPtrInput
 	RuntimeConfigCustomEndpoint        pulumi.StringPtrInput
 	RuntimeconfigCustomEndpoint        pulumi.StringPtrInput
 	Scopes                             pulumi.StringArrayInput
@@ -496,6 +502,10 @@ func (o ProviderOutput) BinaryAuthorizationCustomEndpoint() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BinaryAuthorizationCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) CertificateManagerCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CertificateManagerCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) CloudAssetCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudAssetCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -538,6 +548,10 @@ func (o ProviderOutput) CloudSchedulerCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) CloudTasksCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudTasksCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ClouddeployCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClouddeployCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Cloudfunctions2CustomEndpoint() pulumi.StringPtrOutput {
@@ -776,8 +790,8 @@ func (o ProviderOutput) ResourceManagerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ResourceManagerCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) ResourceManagerV2CustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ResourceManagerV2CustomEndpoint }).(pulumi.StringPtrOutput)
+func (o ProviderOutput) ResourceManagerV3CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ResourceManagerV3CustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) RuntimeConfigCustomEndpoint() pulumi.StringPtrOutput {

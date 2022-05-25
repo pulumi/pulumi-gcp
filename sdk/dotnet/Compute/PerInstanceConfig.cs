@@ -20,6 +20,104 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
     /// 
     /// ## Example Usage
+    /// ### Stateful Igm
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var igm_basic = new Gcp.Compute.InstanceTemplate("igm-basic", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             CanIpForward = false,
+    ///             Tags = 
+    ///             {
+    ///                 "foo",
+    ///                 "bar",
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = myImage.Apply(myImage =&gt; myImage.SelfLink),
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///             {
+    ///                 Scopes = 
+    ///                 {
+    ///                     "userinfo-email",
+    ///                     "compute-ro",
+    ///                     "storage-ro",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var igm_no_tp = new Gcp.Compute.InstanceGroupManager("igm-no-tp", new Gcp.Compute.InstanceGroupManagerArgs
+    ///         {
+    ///             Description = "Test instance group manager",
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     Name = "prod",
+    ///                     InstanceTemplate = igm_basic.SelfLink,
+    ///                 },
+    ///             },
+    ///             BaseInstanceName = "igm-no-tp",
+    ///             Zone = "us-central1-c",
+    ///             TargetSize = 2,
+    ///         });
+    ///         var @default = new Gcp.Compute.Disk("default", new Gcp.Compute.DiskArgs
+    ///         {
+    ///             Type = "pd-ssd",
+    ///             Zone = google_compute_instance_group_manager.Igm.Zone,
+    ///             Image = "debian-8-jessie-v20170523",
+    ///             PhysicalBlockSizeBytes = 4096,
+    ///         });
+    ///         var withDisk = new Gcp.Compute.PerInstanceConfig("withDisk", new Gcp.Compute.PerInstanceConfigArgs
+    ///         {
+    ///             Zone = google_compute_instance_group_manager.Igm.Zone,
+    ///             InstanceGroupManager = google_compute_instance_group_manager.Igm.Name,
+    ///             PreservedState = new Gcp.Compute.Inputs.PerInstanceConfigPreservedStateArgs
+    ///             {
+    ///                 Metadata = 
+    ///                 {
+    ///                     { "foo", "bar" },
+    ///                     { "instance_template", igm_basic.SelfLink },
+    ///                 },
+    ///                 Disks = 
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.PerInstanceConfigPreservedStateDiskArgs
+    ///                     {
+    ///                         DeviceName = "my-stateful-disk",
+    ///                         Source = @default.Id,
+    ///                         Mode = "READ_ONLY",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

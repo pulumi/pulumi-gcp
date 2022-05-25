@@ -2445,6 +2445,14 @@ export namespace bigquery {
         clusterId: string;
     }
 
+    export interface ConnectionCloudResource {
+        /**
+         * -
+         * The account ID of the service created for the purpose of this connection.
+         */
+        serviceAccountId: string;
+    }
+
     export interface ConnectionCloudSql {
         /**
          * Cloud SQL properties.
@@ -5536,6 +5544,51 @@ export namespace certificateauthority {
 
 }
 
+export namespace certificatemanager {
+    export interface CertificateManaged {
+        /**
+         * Authorizations that will be used for performing domain authorization
+         */
+        dnsAuthorizations?: string[];
+        /**
+         * The domains for which a managed SSL certificate will be generated.
+         * Wildcard domains are only supported with DNS challenge resolution
+         */
+        domains?: string[];
+        /**
+         * -
+         * State of the managed certificate resource.
+         */
+        state: string;
+    }
+
+    export interface CertificateSelfManaged {
+        /**
+         * The certificate chain in PEM-encoded form.
+         * Leaf certificate comes first, followed by intermediate ones if any.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        certificatePem: string;
+        /**
+         * The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        privateKeyPem: string;
+    }
+
+    export interface DnsAuthorizationDnsResourceRecord {
+        data: string;
+        /**
+         * Name of the resource; provided by the client when the resource is created.
+         * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+         * and all following characters must be a dash, underscore, letter or digit.
+         */
+        name: string;
+        type: string;
+    }
+
+}
+
 export namespace cloudasset {
     export interface FolderFeedCondition {
         /**
@@ -6280,6 +6333,80 @@ export namespace cloudbuild {
          * If true, workers are created without any public address, which prevents network egress to public IPs.
          */
         noExternalIp: boolean;
+    }
+
+}
+
+export namespace clouddeploy {
+    export interface DeliveryPipelineCondition {
+        pipelineReadyConditions: outputs.clouddeploy.DeliveryPipelineConditionPipelineReadyCondition[];
+        targetsPresentConditions: outputs.clouddeploy.DeliveryPipelineConditionTargetsPresentCondition[];
+    }
+
+    export interface DeliveryPipelineConditionPipelineReadyCondition {
+        status: boolean;
+        updateTime: string;
+    }
+
+    export interface DeliveryPipelineConditionTargetsPresentCondition {
+        missingTargets: string[];
+        status: boolean;
+        updateTime: string;
+    }
+
+    export interface DeliveryPipelineSerialPipeline {
+        /**
+         * Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
+         */
+        stages?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStage[];
+    }
+
+    export interface DeliveryPipelineSerialPipelineStage {
+        /**
+         * Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+         */
+        profiles?: string[];
+        /**
+         * The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
+         */
+        targetId?: string;
+    }
+
+    export interface TargetAnthosCluster {
+        /**
+         * Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+         */
+        membership?: string;
+    }
+
+    export interface TargetExecutionConfig {
+        /**
+         * Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+         */
+        artifactStorage?: string;
+        /**
+         * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+         */
+        serviceAccount?: string;
+        /**
+         * Required. Usages when this configuration should be applied.
+         */
+        usages: string[];
+        /**
+         * Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+         */
+        workerPool?: string;
+    }
+
+    export interface TargetGke {
+        /**
+         * Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+         */
+        cluster?: string;
+        /**
+         * Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+         */
+        internalIp?: boolean;
     }
 
 }
@@ -7049,6 +7176,8 @@ export namespace cloudrun {
         latestRevision: boolean;
         percent: number;
         revisionName: string;
+        tag: string;
+        url: string;
     }
 
     export interface IamBindingCondition {
@@ -7123,6 +7252,12 @@ export namespace cloudrun {
         latestCreatedRevisionName: string;
         latestReadyRevisionName: string;
         observedGeneration: number;
+        /**
+         * -
+         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+         * but may not contain anything else (e.g. basic auth, url path, etc.)
+         */
         url: string;
     }
 
@@ -7556,6 +7691,17 @@ export namespace cloudrun {
          * RevisionName of a specific revision to which to send this portion of traffic.
          */
         revisionName?: string;
+        /**
+         * Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+         */
+        tag?: string;
+        /**
+         * -
+         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+         * but may not contain anything else (e.g. basic auth, url path, etc.)
+         */
+        url: string;
     }
 }
 
@@ -11119,9 +11265,13 @@ export namespace compute {
          */
         minReadySec?: number;
         /**
-         * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: string;
+        /**
+         * - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         */
+        mostDisruptiveAllowedAction?: string;
         /**
          * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
          * - - -
@@ -13333,9 +13483,13 @@ export namespace compute {
          */
         minReadySec?: number;
         /**
-         * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: string;
+        /**
+         * - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         */
+        mostDisruptiveAllowedAction?: string;
         /**
          * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
          * - - -
@@ -18467,7 +18621,18 @@ export namespace container {
     export interface ClusterMaintenancePolicyMaintenanceExclusion {
         endTime: string;
         exclusionName: string;
+        /**
+         * MaintenanceExclusionOptions provides maintenance exclusion related options.
+         */
+        exclusionOptions?: outputs.container.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions;
         startTime: string;
+    }
+
+    export interface ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
+        /**
+         * The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+         */
+        scope: string;
     }
 
     export interface ClusterMaintenancePolicyRecurringWindow {
@@ -19190,7 +19355,7 @@ export namespace container {
          * for more details. This field only applies to private clusters, when
          * `enablePrivateNodes` is `true`.
          */
-        masterIpv4CidrBlock?: string;
+        masterIpv4CidrBlock: string;
         /**
          * The name of the peering between this cluster and the Google owned VPC.
          */
@@ -19400,7 +19565,12 @@ export namespace container {
     export interface GetClusterMaintenancePolicyMaintenanceExclusion {
         endTime: string;
         exclusionName: string;
+        exclusionOptions: outputs.container.GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption[];
         startTime: string;
+    }
+
+    export interface GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
+        scope: string;
     }
 
     export interface GetClusterMaintenancePolicyRecurringWindow {
@@ -30665,11 +30835,29 @@ export namespace projects {
     }
 
     export interface GetProjectProject {
+        /**
+         * Creation time in RFC3339 UTC "Zulu" format.
+         */
         createTime: string;
+        /**
+         * A set of key/value label pairs assigned on a project.
+         */
         labels: {[key: string]: string};
+        /**
+         * The Project lifecycle state.
+         */
         lifecycleState: string;
+        /**
+         * The optional user-assigned display name of the project.
+         */
         name: string;
+        /**
+         * The numeric identifier of the project.
+         */
         number: string;
+        /**
+         * An optional reference to a parent resource.
+         */
         parent: {[key: string]: string};
         /**
          * The project id of the project.
@@ -31616,6 +31804,7 @@ export namespace sql {
          * active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
          */
         activationPolicy?: string;
+        activeDirectoryConfig?: outputs.sql.DatabaseInstanceSettingsActiveDirectoryConfig;
         /**
          * The availability type of the Cloud SQL
          * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
@@ -31632,12 +31821,12 @@ export namespace sql {
         collation?: string;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
         /**
-         * Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
          */
         diskAutoresize?: boolean;
         diskAutoresizeLimit?: number;
         /**
-         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
          */
         diskSize: number;
         /**
@@ -31663,6 +31852,14 @@ export namespace sql {
          */
         userLabels: {[key: string]: string};
         version: number;
+    }
+
+    export interface DatabaseInstanceSettingsActiveDirectoryConfig {
+        /**
+         * The domain name for the active directory (e.g., mydomain.com).
+         * Can only be used with SQL Server.
+         */
+        domain: string;
     }
 
     export interface DatabaseInstanceSettingsBackupConfiguration {
@@ -31883,6 +32080,7 @@ export namespace sql {
 
     export interface GetDatabaseInstanceSetting {
         activationPolicy: string;
+        activeDirectoryConfigs: outputs.sql.GetDatabaseInstanceSettingActiveDirectoryConfig[];
         availabilityType: string;
         backupConfigurations: outputs.sql.GetDatabaseInstanceSettingBackupConfiguration[];
         collation: string;
@@ -31899,6 +32097,10 @@ export namespace sql {
         tier: string;
         userLabels: {[key: string]: string};
         version: number;
+    }
+
+    export interface GetDatabaseInstanceSettingActiveDirectoryConfig {
+        domain: string;
     }
 
     export interface GetDatabaseInstanceSettingBackupConfiguration {

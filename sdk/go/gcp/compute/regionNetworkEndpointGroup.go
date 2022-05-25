@@ -214,6 +214,30 @@ import (
 // 	})
 // }
 // ```
+// ### Region Network Endpoint Group Psc
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewRegionNetworkEndpointGroup(ctx, "pscNeg", &compute.RegionNetworkEndpointGroupArgs{
+// 			NetworkEndpointType: pulumi.String("PRIVATE_SERVICE_CONNECT"),
+// 			PscTargetService:    pulumi.String("asia-northeast3-cloudkms.googleapis.com"),
+// 			Region:              pulumi.String("asia-northeast3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -262,11 +286,14 @@ type RegionNetworkEndpointGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS`.
+	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType pulumi.StringPtrOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The target service url used to set up private service connection to
+	// a Google API or a PSC Producer Service Attachment.
+	PscTargetService pulumi.StringPtrOutput `pulumi:"pscTargetService"`
 	// A reference to the region where the Serverless NEGs Reside.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
@@ -333,11 +360,14 @@ type regionNetworkEndpointGroupState struct {
 	Name *string `pulumi:"name"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS`.
+	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The target service url used to set up private service connection to
+	// a Google API or a PSC Producer Service Attachment.
+	PscTargetService *string `pulumi:"pscTargetService"`
 	// A reference to the region where the Serverless NEGs Reside.
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
@@ -373,11 +403,14 @@ type RegionNetworkEndpointGroupState struct {
 	Name pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS`.
+	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The target service url used to set up private service connection to
+	// a Google API or a PSC Producer Service Attachment.
+	PscTargetService pulumi.StringPtrInput
 	// A reference to the region where the Serverless NEGs Reside.
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
@@ -417,11 +450,14 @@ type regionNetworkEndpointGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS`.
+	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The target service url used to set up private service connection to
+	// a Google API or a PSC Producer Service Attachment.
+	PscTargetService *string `pulumi:"pscTargetService"`
 	// A reference to the region where the Serverless NEGs Reside.
 	Region string `pulumi:"region"`
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
@@ -456,11 +492,14 @@ type RegionNetworkEndpointGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS`.
+	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The target service url used to set up private service connection to
+	// a Google API or a PSC Producer Service Attachment.
+	PscTargetService pulumi.StringPtrInput
 	// A reference to the region where the Serverless NEGs Reside.
 	Region pulumi.StringInput
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
@@ -597,7 +636,7 @@ func (o RegionNetworkEndpointGroupOutput) Name() pulumi.StringOutput {
 
 // Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 // Default value is `SERVERLESS`.
-// Possible values are `SERVERLESS`.
+// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
 func (o RegionNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.NetworkEndpointType }).(pulumi.StringPtrOutput)
 }
@@ -606,6 +645,12 @@ func (o RegionNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringPtr
 // If it is not provided, the provider project is used.
 func (o RegionNetworkEndpointGroupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The target service url used to set up private service connection to
+// a Google API or a PSC Producer Service Attachment.
+func (o RegionNetworkEndpointGroupOutput) PscTargetService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.PscTargetService }).(pulumi.StringPtrOutput)
 }
 
 // A reference to the region where the Serverless NEGs Reside.

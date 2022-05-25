@@ -111,9 +111,10 @@ import (
 // 			return err
 // 		}
 // 		connector, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
-// 			Region:      pulumi.String("us-west1"),
-// 			IpCidrRange: pulumi.String("10.8.0.0/28"),
-// 			Network:     _default.Name,
+// 			Region:        pulumi.String("us-west1"),
+// 			IpCidrRange:   pulumi.String("10.8.0.0/28"),
+// 			MaxThroughput: pulumi.Int(300),
+// 			Network:       _default.Name,
 // 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 // 			vpcaccessApi,
 // 		}))
@@ -156,7 +157,7 @@ import (
 // 					Annotations: pulumi.StringMap{
 // 						"autoscaling.knative.dev/maxScale":        pulumi.String("5"),
 // 						"run.googleapis.com/vpc-access-connector": connector.Name,
-// 						"run.googleapis.com/vpc-access-egress":    pulumi.String("all"),
+// 						"run.googleapis.com/vpc-access-egress":    pulumi.String("all-traffic"),
 // 					},
 // 				},
 // 			},

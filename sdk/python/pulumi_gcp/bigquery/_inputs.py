@@ -10,6 +10,7 @@ from .. import _utilities
 
 __all__ = [
     'AppProfileSingleClusterRoutingArgs',
+    'ConnectionCloudResourceArgs',
     'ConnectionCloudSqlArgs',
     'ConnectionCloudSqlCredentialArgs',
     'DataTransferConfigEmailPreferencesArgs',
@@ -97,6 +98,31 @@ class AppProfileSingleClusterRoutingArgs:
     @allow_transactional_writes.setter
     def allow_transactional_writes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_transactional_writes", value)
+
+
+@pulumi.input_type
+class ConnectionCloudResourceArgs:
+    def __init__(__self__, *,
+                 service_account_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_account_id: -
+               The account ID of the service created for the purpose of this connection.
+        """
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The account ID of the service created for the purpose of this connection.
+        """
+        return pulumi.get(self, "service_account_id")
+
+    @service_account_id.setter
+    def service_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_id", value)
 
 
 @pulumi.input_type

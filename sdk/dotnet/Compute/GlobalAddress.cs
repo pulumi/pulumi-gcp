@@ -37,6 +37,37 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Global Address Private Services Connect
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var @default = new Gcp.Compute.GlobalAddress("default", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             AddressType = "INTERNAL",
+    ///             Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///             Network = network.Id,
+    ///             Address = "100.100.100.105",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

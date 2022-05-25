@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const http = new gcp.monitoring.UptimeCheckConfig("http", {
+ *     checkerType: "STATIC_IP_CHECKERS",
  *     contentMatchers: [{
  *         content: "example",
  *     }],
@@ -133,6 +134,11 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     }
 
     /**
+     * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     */
+    public readonly checkerType!: pulumi.Output<string>;
+    /**
      * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
      * Structure is documented below.
      */
@@ -201,6 +207,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UptimeCheckConfigState | undefined;
+            resourceInputs["checkerType"] = state ? state.checkerType : undefined;
             resourceInputs["contentMatchers"] = state ? state.contentMatchers : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["httpCheck"] = state ? state.httpCheck : undefined;
@@ -221,6 +228,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             if ((!args || args.timeout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
+            resourceInputs["checkerType"] = args ? args.checkerType : undefined;
             resourceInputs["contentMatchers"] = args ? args.contentMatchers : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["httpCheck"] = args ? args.httpCheck : undefined;
@@ -243,6 +251,11 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UptimeCheckConfig resources.
  */
 export interface UptimeCheckConfigState {
+    /**
+     * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     */
+    checkerType?: pulumi.Input<string>;
     /**
      * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
      * Structure is documented below.
@@ -304,6 +317,11 @@ export interface UptimeCheckConfigState {
  * The set of arguments for constructing a UptimeCheckConfig resource.
  */
 export interface UptimeCheckConfigArgs {
+    /**
+     * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     */
+    checkerType?: pulumi.Input<string>;
     /**
      * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
      * Structure is documented below.

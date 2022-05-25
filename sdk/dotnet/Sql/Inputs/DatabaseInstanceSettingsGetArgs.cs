@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("activationPolicy")]
         public Input<string>? ActivationPolicy { get; set; }
 
+        [Input("activeDirectoryConfig")]
+        public Input<Inputs.DatabaseInstanceSettingsActiveDirectoryConfigGetArgs>? ActiveDirectoryConfig { get; set; }
+
         /// <summary>
         /// The availability type of the Cloud SQL
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
@@ -48,7 +51,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
-        /// Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        /// Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
         /// </summary>
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }
@@ -57,7 +60,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<int>? DiskAutoresizeLimit { get; set; }
 
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }

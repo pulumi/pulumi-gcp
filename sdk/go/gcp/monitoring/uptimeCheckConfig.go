@@ -36,6 +36,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := monitoring.NewUptimeCheckConfig(ctx, "http", &monitoring.UptimeCheckConfigArgs{
+// 			CheckerType: pulumi.String("STATIC_IP_CHECKERS"),
 // 			ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
 // 				&monitoring.UptimeCheckConfigContentMatcherArgs{
 // 					Content: pulumi.String("example"),
@@ -154,6 +155,9 @@ import (
 type UptimeCheckConfig struct {
 	pulumi.CustomResourceState
 
+	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+	CheckerType pulumi.StringOutput `pulumi:"checkerType"`
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayOutput `pulumi:"contentMatchers"`
@@ -222,6 +226,9 @@ func GetUptimeCheckConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UptimeCheckConfig resources.
 type uptimeCheckConfigState struct {
+	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+	CheckerType *string `pulumi:"checkerType"`
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers []UptimeCheckConfigContentMatcher `pulumi:"contentMatchers"`
@@ -256,6 +263,9 @@ type uptimeCheckConfigState struct {
 }
 
 type UptimeCheckConfigState struct {
+	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+	CheckerType pulumi.StringPtrInput
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayInput
@@ -294,6 +304,9 @@ func (UptimeCheckConfigState) ElementType() reflect.Type {
 }
 
 type uptimeCheckConfigArgs struct {
+	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+	CheckerType *string `pulumi:"checkerType"`
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers []UptimeCheckConfigContentMatcher `pulumi:"contentMatchers"`
@@ -324,6 +337,9 @@ type uptimeCheckConfigArgs struct {
 
 // The set of arguments for constructing a UptimeCheckConfig resource.
 type UptimeCheckConfigArgs struct {
+	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+	CheckerType pulumi.StringPtrInput
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayInput
@@ -437,6 +453,12 @@ func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutput() UptimeCheckConfigOu
 
 func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutputWithContext(ctx context.Context) UptimeCheckConfigOutput {
 	return o
+}
+
+// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+func (o UptimeCheckConfigOutput) CheckerType() pulumi.StringOutput {
+	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.CheckerType }).(pulumi.StringOutput)
 }
 
 // The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.

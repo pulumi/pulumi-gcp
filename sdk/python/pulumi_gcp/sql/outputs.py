@@ -16,6 +16,7 @@ __all__ = [
     'DatabaseInstanceRestoreBackupContext',
     'DatabaseInstanceServerCaCert',
     'DatabaseInstanceSettings',
+    'DatabaseInstanceSettingsActiveDirectoryConfig',
     'DatabaseInstanceSettingsBackupConfiguration',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings',
     'DatabaseInstanceSettingsDatabaseFlag',
@@ -31,6 +32,7 @@ __all__ = [
     'GetDatabaseInstanceRestoreBackupContextResult',
     'GetDatabaseInstanceServerCaCertResult',
     'GetDatabaseInstanceSettingResult',
+    'GetDatabaseInstanceSettingActiveDirectoryConfigResult',
     'GetDatabaseInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
@@ -486,6 +488,8 @@ class DatabaseInstanceSettings(dict):
         suggest = None
         if key == "activationPolicy":
             suggest = "activation_policy"
+        elif key == "activeDirectoryConfig":
+            suggest = "active_directory_config"
         elif key == "availabilityType":
             suggest = "availability_type"
         elif key == "backupConfiguration":
@@ -527,6 +531,7 @@ class DatabaseInstanceSettings(dict):
     def __init__(__self__, *,
                  tier: str,
                  activation_policy: Optional[str] = None,
+                 active_directory_config: Optional['outputs.DatabaseInstanceSettingsActiveDirectoryConfig'] = None,
                  availability_type: Optional[str] = None,
                  backup_configuration: Optional['outputs.DatabaseInstanceSettingsBackupConfiguration'] = None,
                  collation: Optional[str] = None,
@@ -555,8 +560,8 @@ class DatabaseInstanceSettings(dict):
                For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`.
         :param str collation: The name of server instance collation.
-        :param bool disk_autoresize: Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
-        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        :param bool disk_autoresize: Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
         :param str disk_type: The type of data disk: PD_SSD or PD_HDD.
         :param str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
@@ -564,6 +569,8 @@ class DatabaseInstanceSettings(dict):
         pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
             pulumi.set(__self__, "activation_policy", activation_policy)
+        if active_directory_config is not None:
+            pulumi.set(__self__, "active_directory_config", active_directory_config)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
@@ -615,6 +622,11 @@ class DatabaseInstanceSettings(dict):
         return pulumi.get(self, "activation_policy")
 
     @property
+    @pulumi.getter(name="activeDirectoryConfig")
+    def active_directory_config(self) -> Optional['outputs.DatabaseInstanceSettingsActiveDirectoryConfig']:
+        return pulumi.get(self, "active_directory_config")
+
+    @property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> Optional[str]:
         """
@@ -649,7 +661,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> Optional[bool]:
         """
-        Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
         """
         return pulumi.get(self, "disk_autoresize")
 
@@ -662,7 +674,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[int]:
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
         """
         return pulumi.get(self, "disk_size")
 
@@ -714,6 +726,26 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter
     def version(self) -> Optional[int]:
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsActiveDirectoryConfig(dict):
+    def __init__(__self__, *,
+                 domain: str):
+        """
+        :param str domain: The domain name for the active directory (e.g., mydomain.com).
+               Can only be used with SQL Server.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain name for the active directory (e.g., mydomain.com).
+        Can only be used with SQL Server.
+        """
+        return pulumi.get(self, "domain")
 
 
 @pulumi.output_type
@@ -1549,6 +1581,7 @@ class GetDatabaseInstanceServerCaCertResult(dict):
 class GetDatabaseInstanceSettingResult(dict):
     def __init__(__self__, *,
                  activation_policy: str,
+                 active_directory_configs: Sequence['outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult'],
                  availability_type: str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
                  collation: str,
@@ -1566,6 +1599,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  user_labels: Mapping[str, str],
                  version: int):
         pulumi.set(__self__, "activation_policy", activation_policy)
+        pulumi.set(__self__, "active_directory_configs", active_directory_configs)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
@@ -1587,6 +1621,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="activationPolicy")
     def activation_policy(self) -> str:
         return pulumi.get(self, "activation_policy")
+
+    @property
+    @pulumi.getter(name="activeDirectoryConfigs")
+    def active_directory_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult']:
+        return pulumi.get(self, "active_directory_configs")
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -1667,6 +1706,18 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter
     def version(self) -> int:
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingActiveDirectoryConfigResult(dict):
+    def __init__(__self__, *,
+                 domain: str):
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        return pulumi.get(self, "domain")
 
 
 @pulumi.output_type

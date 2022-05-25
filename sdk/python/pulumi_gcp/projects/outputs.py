@@ -824,6 +824,12 @@ class GetProjectProjectResult(dict):
                  parent: Mapping[str, str],
                  project_id: str):
         """
+        :param str create_time: Creation time in RFC3339 UTC "Zulu" format.
+        :param Mapping[str, str] labels: A set of key/value label pairs assigned on a project.
+        :param str lifecycle_state: The Project lifecycle state.
+        :param str name: The optional user-assigned display name of the project.
+        :param str number: The numeric identifier of the project.
+        :param Mapping[str, str] parent: An optional reference to a parent resource.
         :param str project_id: The project id of the project.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -837,31 +843,49 @@ class GetProjectProjectResult(dict):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        Creation time in RFC3339 UTC "Zulu" format.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        A set of key/value label pairs assigned on a project.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> str:
+        """
+        The Project lifecycle state.
+        """
         return pulumi.get(self, "lifecycle_state")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The optional user-assigned display name of the project.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def number(self) -> str:
+        """
+        The numeric identifier of the project.
+        """
         return pulumi.get(self, "number")
 
     @property
     @pulumi.getter
     def parent(self) -> Mapping[str, str]:
+        """
+        An optional reference to a parent resource.
+        """
         return pulumi.get(self, "parent")
 
     @property

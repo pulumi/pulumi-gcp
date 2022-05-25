@@ -21,7 +21,7 @@ class GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
-    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, state=None, type=None, update_time=None):
+    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, state=None, type=None, update_time=None):
         if access_urls and not isinstance(access_urls, list):
             raise TypeError("Expected argument 'access_urls' to be a list")
         pulumi.set(__self__, "access_urls", access_urls)
@@ -37,6 +37,9 @@ class GetAuthorityResult:
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if desired_state and not isinstance(desired_state, str):
+            raise TypeError("Expected argument 'desired_state' to be a str")
+        pulumi.set(__self__, "desired_state", desired_state)
         if gcs_bucket and not isinstance(gcs_bucket, str):
             raise TypeError("Expected argument 'gcs_bucket' to be a str")
         pulumi.set(__self__, "gcs_bucket", gcs_bucket)
@@ -107,6 +110,11 @@ class GetAuthorityResult:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> bool:
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> str:
+        return pulumi.get(self, "desired_state")
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -201,6 +209,7 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             configs=self.configs,
             create_time=self.create_time,
             deletion_protection=self.deletion_protection,
+            desired_state=self.desired_state,
             gcs_bucket=self.gcs_bucket,
             id=self.id,
             ignore_active_certificates_on_deletion=self.ignore_active_certificates_on_deletion,
@@ -262,6 +271,7 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         configs=__ret__.configs,
         create_time=__ret__.create_time,
         deletion_protection=__ret__.deletion_protection,
+        desired_state=__ret__.desired_state,
         gcs_bucket=__ret__.gcs_bucket,
         id=__ret__.id,
         ignore_active_certificates_on_deletion=__ret__.ignore_active_certificates_on_deletion,

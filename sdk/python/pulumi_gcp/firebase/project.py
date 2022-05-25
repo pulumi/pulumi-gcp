@@ -115,6 +115,19 @@ class Project(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
+        ### Firebase Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="tf-test",
+            org_id="123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -153,6 +166,19 @@ class Project(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
+        ### Firebase Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="tf-test",
+            org_id="123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

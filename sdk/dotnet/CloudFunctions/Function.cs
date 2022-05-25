@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///         var function = new Gcp.CloudFunctions.Function("function", new Gcp.CloudFunctions.FunctionArgs
     ///         {
     ///             Description = "My function",
-    ///             Runtime = "nodejs14",
+    ///             Runtime = "nodejs16",
     ///             AvailableMemoryMb = 128,
     ///             SourceArchiveBucket = bucket.Name,
     ///             SourceArchiveObject = archive.Name,
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///         var function = new Gcp.CloudFunctions.Function("function", new Gcp.CloudFunctions.FunctionArgs
     ///         {
     ///             Description = "My function",
-    ///             Runtime = "nodejs14",
+    ///             Runtime = "nodejs16",
     ///             AvailableMemoryMb = 128,
     ///             SourceArchiveBucket = bucket.Name,
     ///             SourceArchiveObject = archive.Name,
@@ -175,6 +175,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<Outputs.FunctionEventTrigger> EventTrigger { get; private set; } = null!;
 
         /// <summary>
+        /// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        /// </summary>
+        [Output("httpsTriggerSecurityLevel")]
+        public Output<string> HttpsTriggerSecurityLevel { get; private set; } = null!;
+
+        /// <summary>
         /// URL which triggers function execution. Returned only if `trigger_http` is used.
         /// </summary>
         [Output("httpsTriggerUrl")]
@@ -231,7 +237,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -398,6 +404,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<Inputs.FunctionEventTriggerArgs>? EventTrigger { get; set; }
 
         /// <summary>
+        /// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        /// </summary>
+        [Input("httpsTriggerSecurityLevel")]
+        public Input<string>? HttpsTriggerSecurityLevel { get; set; }
+
+        /// <summary>
         /// URL which triggers function execution. Returned only if `trigger_http` is used.
         /// </summary>
         [Input("httpsTriggerUrl")]
@@ -460,7 +472,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
@@ -600,6 +612,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<Inputs.FunctionEventTriggerGetArgs>? EventTrigger { get; set; }
 
         /// <summary>
+        /// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        /// </summary>
+        [Input("httpsTriggerSecurityLevel")]
+        public Input<string>? HttpsTriggerSecurityLevel { get; set; }
+
+        /// <summary>
         /// URL which triggers function execution. Returned only if `trigger_http` is used.
         /// </summary>
         [Input("httpsTriggerUrl")]
@@ -662,7 +680,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs10"`, `"nodejs12"`, `"nodejs14"`, `"python37"`, `"python38"`, `"python39"`, `"dotnet3"`, `"go113"`, `"java11"`, `"ruby27"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

@@ -134,6 +134,18 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Region Network Endpoint Group Psc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pscNeg = new gcp.compute.RegionNetworkEndpointGroup("psc_neg", {
+ *     networkEndpointType: "PRIVATE_SERVICE_CONNECT",
+ *     pscTargetService: "asia-northeast3-cloudkms.googleapis.com",
+ *     region: "asia-northeast3",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -219,7 +231,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS`.
+     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
      */
     public readonly networkEndpointType!: pulumi.Output<string | undefined>;
     /**
@@ -227,6 +239,11 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The target service url used to set up private service connection to
+     * a Google API or a PSC Producer Service Attachment.
+     */
+    public readonly pscTargetService!: pulumi.Output<string | undefined>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
      */
@@ -261,6 +278,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkEndpointType"] = state ? state.networkEndpointType : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pscTargetService"] = state ? state.pscTargetService : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serverlessDeployment"] = state ? state.serverlessDeployment : undefined;
@@ -276,6 +294,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pscTargetService"] = args ? args.pscTargetService : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -325,7 +344,7 @@ export interface RegionNetworkEndpointGroupState {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS`.
+     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**
@@ -333,6 +352,11 @@ export interface RegionNetworkEndpointGroupState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The target service url used to set up private service connection to
+     * a Google API or a PSC Producer Service Attachment.
+     */
+    pscTargetService?: pulumi.Input<string>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
      */
@@ -388,7 +412,7 @@ export interface RegionNetworkEndpointGroupArgs {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS`.
+     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**
@@ -396,6 +420,11 @@ export interface RegionNetworkEndpointGroupArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The target service url used to set up private service connection to
+     * a Google API or a PSC Producer Service Attachment.
+     */
+    pscTargetService?: pulumi.Input<string>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
      */

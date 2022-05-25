@@ -26,6 +26,36 @@ namespace Pulumi.Gcp.Iap
     ///     * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
     /// 
     /// ## Example Usage
+    /// ### Iap Brand
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "tf-test",
+    ///             OrgId = "123456789",
+    ///         });
+    ///         var projectService = new Gcp.Projects.Service("projectService", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = project.ProjectId,
+    ///             Service = "iap.googleapis.com",
+    ///         });
+    ///         var projectBrand = new Gcp.Iap.Brand("projectBrand", new Gcp.Iap.BrandArgs
+    ///         {
+    ///             SupportEmail = "support@example.com",
+    ///             ApplicationTitle = "Cloud IAP protected Application",
+    ///             Project = projectService.Project,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

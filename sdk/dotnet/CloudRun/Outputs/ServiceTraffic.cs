@@ -28,6 +28,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// RevisionName of a specific revision to which to send this portion of traffic.
         /// </summary>
         public readonly string? RevisionName;
+        /// <summary>
+        /// Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+        /// </summary>
+        public readonly string? Tag;
+        /// <summary>
+        /// -
+        /// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+        /// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+        /// but may not contain anything else (e.g. basic auth, url path, etc.)
+        /// </summary>
+        public readonly string? Url;
 
         [OutputConstructor]
         private ServiceTraffic(
@@ -35,11 +46,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             int percent,
 
-            string? revisionName)
+            string? revisionName,
+
+            string? tag,
+
+            string? url)
         {
             LatestRevision = latestRevision;
             Percent = percent;
             RevisionName = revisionName;
+            Tag = tag;
+            Url = url;
         }
     }
 }

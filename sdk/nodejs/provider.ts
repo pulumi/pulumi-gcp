@@ -44,6 +44,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly billingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly billingProject!: pulumi.Output<string | undefined>;
     public readonly binaryAuthorizationCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly certificateManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudAssetCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudBillingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudBuildCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -55,6 +56,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudRunCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudSchedulerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudTasksCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly clouddeployCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudfunctions2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly composerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly computeCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -114,7 +116,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly requestReason!: pulumi.Output<string | undefined>;
     public readonly requestTimeout!: pulumi.Output<string | undefined>;
     public readonly resourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly resourceManagerV2CustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly resourceManagerV3CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly runtimeConfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly runtimeconfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly secretManagerCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -166,6 +168,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["billingCustomEndpoint"] = args ? args.billingCustomEndpoint : undefined;
             resourceInputs["billingProject"] = args ? args.billingProject : undefined;
             resourceInputs["binaryAuthorizationCustomEndpoint"] = args ? args.binaryAuthorizationCustomEndpoint : undefined;
+            resourceInputs["certificateManagerCustomEndpoint"] = args ? args.certificateManagerCustomEndpoint : undefined;
             resourceInputs["cloudAssetCustomEndpoint"] = args ? args.cloudAssetCustomEndpoint : undefined;
             resourceInputs["cloudBillingCustomEndpoint"] = args ? args.cloudBillingCustomEndpoint : undefined;
             resourceInputs["cloudBuildCustomEndpoint"] = args ? args.cloudBuildCustomEndpoint : undefined;
@@ -177,6 +180,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cloudRunCustomEndpoint"] = args ? args.cloudRunCustomEndpoint : undefined;
             resourceInputs["cloudSchedulerCustomEndpoint"] = args ? args.cloudSchedulerCustomEndpoint : undefined;
             resourceInputs["cloudTasksCustomEndpoint"] = args ? args.cloudTasksCustomEndpoint : undefined;
+            resourceInputs["clouddeployCustomEndpoint"] = args ? args.clouddeployCustomEndpoint : undefined;
             resourceInputs["cloudfunctions2CustomEndpoint"] = args ? args.cloudfunctions2CustomEndpoint : undefined;
             resourceInputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
             resourceInputs["computeCustomEndpoint"] = args ? args.computeCustomEndpoint : undefined;
@@ -238,7 +242,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["requestReason"] = args ? args.requestReason : undefined;
             resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             resourceInputs["resourceManagerCustomEndpoint"] = args ? args.resourceManagerCustomEndpoint : undefined;
-            resourceInputs["resourceManagerV2CustomEndpoint"] = args ? args.resourceManagerV2CustomEndpoint : undefined;
+            resourceInputs["resourceManagerV3CustomEndpoint"] = args ? args.resourceManagerV3CustomEndpoint : undefined;
             resourceInputs["runtimeConfigCustomEndpoint"] = args ? args.runtimeConfigCustomEndpoint : undefined;
             resourceInputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
             resourceInputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
@@ -290,6 +294,7 @@ export interface ProviderArgs {
     billingCustomEndpoint?: pulumi.Input<string>;
     billingProject?: pulumi.Input<string>;
     binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;
+    certificateManagerCustomEndpoint?: pulumi.Input<string>;
     cloudAssetCustomEndpoint?: pulumi.Input<string>;
     cloudBillingCustomEndpoint?: pulumi.Input<string>;
     cloudBuildCustomEndpoint?: pulumi.Input<string>;
@@ -301,6 +306,7 @@ export interface ProviderArgs {
     cloudRunCustomEndpoint?: pulumi.Input<string>;
     cloudSchedulerCustomEndpoint?: pulumi.Input<string>;
     cloudTasksCustomEndpoint?: pulumi.Input<string>;
+    clouddeployCustomEndpoint?: pulumi.Input<string>;
     cloudfunctions2CustomEndpoint?: pulumi.Input<string>;
     composerCustomEndpoint?: pulumi.Input<string>;
     computeCustomEndpoint?: pulumi.Input<string>;
@@ -362,7 +368,7 @@ export interface ProviderArgs {
     requestReason?: pulumi.Input<string>;
     requestTimeout?: pulumi.Input<string>;
     resourceManagerCustomEndpoint?: pulumi.Input<string>;
-    resourceManagerV2CustomEndpoint?: pulumi.Input<string>;
+    resourceManagerV3CustomEndpoint?: pulumi.Input<string>;
     runtimeConfigCustomEndpoint?: pulumi.Input<string>;
     runtimeconfigCustomEndpoint?: pulumi.Input<string>;
     scopes?: pulumi.Input<pulumi.Input<string>[]>;

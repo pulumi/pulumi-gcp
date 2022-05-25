@@ -2445,6 +2445,14 @@ export namespace bigquery {
         clusterId: pulumi.Input<string>;
     }
 
+    export interface ConnectionCloudResource {
+        /**
+         * -
+         * The account ID of the service created for the purpose of this connection.
+         */
+        serviceAccountId?: pulumi.Input<string>;
+    }
+
     export interface ConnectionCloudSql {
         /**
          * Cloud SQL properties.
@@ -3490,7 +3498,6 @@ export namespace bigquery {
          */
         useLegacySql?: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace bigtable {
@@ -5435,6 +5442,50 @@ export namespace certificateauthority {
 
 }
 
+export namespace certificatemanager {
+    export interface CertificateManaged {
+        /**
+         * Authorizations that will be used for performing domain authorization
+         */
+        dnsAuthorizations?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The domains for which a managed SSL certificate will be generated.
+         * Wildcard domains are only supported with DNS challenge resolution
+         */
+        domains?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * -
+         * State of the managed certificate resource.
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface CertificateSelfManaged {
+        /**
+         * The certificate chain in PEM-encoded form.
+         * Leaf certificate comes first, followed by intermediate ones if any.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        certificatePem: pulumi.Input<string>;
+        /**
+         * The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        privateKeyPem: pulumi.Input<string>;
+    }
+
+    export interface DnsAuthorizationDnsResourceRecord {
+        data?: pulumi.Input<string>;
+        /**
+         * Name of the resource; provided by the client when the resource is created.
+         * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+         * and all following characters must be a dash, underscore, letter or digit.
+         */
+        name?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+    }
+}
+
 export namespace cloudasset {
     export interface FolderFeedCondition {
         /**
@@ -6181,6 +6232,79 @@ export namespace cloudbuild {
     }
 }
 
+export namespace clouddeploy {
+    export interface DeliveryPipelineCondition {
+        pipelineReadyConditions?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeliveryPipelineConditionPipelineReadyCondition>[]>;
+        targetsPresentConditions?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeliveryPipelineConditionTargetsPresentCondition>[]>;
+    }
+
+    export interface DeliveryPipelineConditionPipelineReadyCondition {
+        status?: pulumi.Input<boolean>;
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface DeliveryPipelineConditionTargetsPresentCondition {
+        missingTargets?: pulumi.Input<pulumi.Input<string>[]>;
+        status?: pulumi.Input<boolean>;
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface DeliveryPipelineSerialPipeline {
+        /**
+         * Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
+         */
+        stages?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeliveryPipelineSerialPipelineStage>[]>;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStage {
+        /**
+         * Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+         */
+        profiles?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
+         */
+        targetId?: pulumi.Input<string>;
+    }
+
+    export interface TargetAnthosCluster {
+        /**
+         * Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+         */
+        membership?: pulumi.Input<string>;
+    }
+
+    export interface TargetExecutionConfig {
+        /**
+         * Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+         */
+        artifactStorage?: pulumi.Input<string>;
+        /**
+         * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
+         */
+        serviceAccount?: pulumi.Input<string>;
+        /**
+         * Required. Usages when this configuration should be applied.
+         */
+        usages: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
+         */
+        workerPool?: pulumi.Input<string>;
+    }
+
+    export interface TargetGke {
+        /**
+         * Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+         */
+        cluster?: pulumi.Input<string>;
+        /**
+         * Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+         */
+        internalIp?: pulumi.Input<boolean>;
+    }
+}
+
 export namespace cloudfunctions {
     export interface FunctionEventTrigger {
         /**
@@ -6726,6 +6850,12 @@ export namespace cloudrun {
         latestCreatedRevisionName?: pulumi.Input<string>;
         latestReadyRevisionName?: pulumi.Input<string>;
         observedGeneration?: pulumi.Input<number>;
+        /**
+         * -
+         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+         * but may not contain anything else (e.g. basic auth, url path, etc.)
+         */
         url?: pulumi.Input<string>;
     }
 
@@ -7159,6 +7289,17 @@ export namespace cloudrun {
          * RevisionName of a specific revision to which to send this portion of traffic.
          */
         revisionName?: pulumi.Input<string>;
+        /**
+         * Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+         */
+        tag?: pulumi.Input<string>;
+        /**
+         * -
+         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+         * but may not contain anything else (e.g. basic auth, url path, etc.)
+         */
+        url?: pulumi.Input<string>;
     }
 
 }
@@ -9644,9 +9785,13 @@ export namespace compute {
          */
         minReadySec?: pulumi.Input<number>;
         /**
-         * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: pulumi.Input<string>;
+        /**
+         * - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         */
+        mostDisruptiveAllowedAction?: pulumi.Input<string>;
         /**
          * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
          * - - -
@@ -11858,9 +12003,13 @@ export namespace compute {
          */
         minReadySec?: pulumi.Input<number>;
         /**
-         * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: pulumi.Input<string>;
+        /**
+         * - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         */
+        mostDisruptiveAllowedAction?: pulumi.Input<string>;
         /**
          * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
          * - - -
@@ -16928,7 +17077,18 @@ export namespace container {
     export interface ClusterMaintenancePolicyMaintenanceExclusion {
         endTime: pulumi.Input<string>;
         exclusionName: pulumi.Input<string>;
+        /**
+         * MaintenanceExclusionOptions provides maintenance exclusion related options.
+         */
+        exclusionOptions?: pulumi.Input<inputs.container.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions>;
         startTime: pulumi.Input<string>;
+    }
+
+    export interface ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
+        /**
+         * The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+         */
+        scope: pulumi.Input<string>;
     }
 
     export interface ClusterMaintenancePolicyRecurringWindow {
@@ -17857,6 +18017,7 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
+
 }
 
 export namespace containeranalysis {
@@ -29310,6 +29471,7 @@ export namespace sql {
          * active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
          */
         activationPolicy?: pulumi.Input<string>;
+        activeDirectoryConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsActiveDirectoryConfig>;
         /**
          * The availability type of the Cloud SQL
          * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
@@ -29326,12 +29488,12 @@ export namespace sql {
         collation?: pulumi.Input<string>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
         /**
-         * Configuration to increase storage size automatically.  Note that future apply calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
+         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
          */
         diskAutoresize?: pulumi.Input<boolean>;
         diskAutoresizeLimit?: pulumi.Input<number>;
         /**
-         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
          */
         diskSize?: pulumi.Input<number>;
         /**
@@ -29357,6 +29519,14 @@ export namespace sql {
          */
         userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         version?: pulumi.Input<number>;
+    }
+
+    export interface DatabaseInstanceSettingsActiveDirectoryConfig {
+        /**
+         * The domain name for the active directory (e.g., mydomain.com).
+         * Can only be used with SQL Server.
+         */
+        domain: pulumi.Input<string>;
     }
 
     export interface DatabaseInstanceSettingsBackupConfiguration {

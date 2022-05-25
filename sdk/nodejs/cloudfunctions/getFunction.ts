@@ -77,6 +77,7 @@ export interface GetFunctionResult {
      * A source that fires events in response to a condition in another service. Structure is documented below.
      */
     readonly eventTriggers: outputs.cloudfunctions.GetFunctionEventTrigger[];
+    readonly httpsTriggerSecurityLevel: string;
     /**
      * If function is triggered by HTTP, trigger URL is set here.
      */

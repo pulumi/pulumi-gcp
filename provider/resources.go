@@ -36,8 +36,10 @@ const (
 	gcpBilling              = "Billing"              // Billing resources
 	gcpBinaryAuthorization  = "BinaryAuthorization"  // Binary Authorization resources
 	gcpCertificateAuthority = "CertificateAuthority" // CertificateAuthority resources
+	gcpCertificateManager   = "CertificateManager"   // CertificateManager resources
 	gcpCloudAsset           = "CloudAsset"           // CloudAsset resources
 	gcpCloudBuild           = "CloudBuild"           // CloudBuild resources
+	gcpCloudDeploy          = "CloudDeploy"          // CloudDeploy resources
 	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
 	gcpCloudFunctionsV2     = "CloudFunctionsV2"     // CloudFunction (2nd Gen) resources
 	gcpCloudIdentity        = "CloudIdentity"        // CloudIdentity resources
@@ -445,6 +447,10 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_cloudbuild_worker_pool": {Tok: gcpResource(gcpCloudBuild, "WorkerPool")},
+
+			// Cloud Deploy
+			"google_clouddeploy_delivery_pipeline": {Tok: gcpResource(gcpCloudDeploy, "DeliveryPipeline")},
+			"google_clouddeploy_target":            {Tok: gcpResource(gcpCloudDeploy, "Target")},
 
 			// Cloud Functions
 			"google_cloudfunctions_function": {
@@ -2172,6 +2178,10 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "privateca_ca_pool_iam.html.markdown",
 				},
 			},
+
+			// Certificate Manager
+			"google_certificate_manager_certificate":       {Tok: gcpResource(gcpCertificateManager, "Certificate")},
+			"google_certificate_manager_dns_authorization": {Tok: gcpResource(gcpCertificateManager, "DnsAuthorization")},
 
 			// essential contacts
 			"google_essential_contacts_contact": {Tok: gcpResource(gcpEssentialContacts, "Contact")},

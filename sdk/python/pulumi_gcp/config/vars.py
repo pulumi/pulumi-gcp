@@ -92,6 +92,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('binaryAuthorizationCustomEndpoint')
 
     @property
+    def certificate_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('certificateManagerCustomEndpoint')
+
+    @property
     def cloud_asset_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudAssetCustomEndpoint')
 
@@ -134,6 +138,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def cloud_tasks_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudTasksCustomEndpoint')
+
+    @property
+    def clouddeploy_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('clouddeployCustomEndpoint')
 
     @property
     def cloudfunctions2_custom_endpoint(self) -> Optional[str]:
@@ -380,8 +388,8 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('resourceManagerCustomEndpoint')
 
     @property
-    def resource_manager_v2_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('resourceManagerV2CustomEndpoint')
+    def resource_manager_v3_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('resourceManagerV3CustomEndpoint')
 
     @property
     def runtime_config_custom_endpoint(self) -> Optional[str]:

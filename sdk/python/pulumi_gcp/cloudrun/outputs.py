@@ -660,6 +660,12 @@ class ServiceStatus(dict):
                  latest_ready_revision_name: Optional[str] = None,
                  observed_generation: Optional[int] = None,
                  url: Optional[str] = None):
+        """
+        :param str url: -
+               URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+               and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+               but may not contain anything else (e.g. basic auth, url path, etc.)
+        """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
         if latest_created_revision_name is not None:
@@ -694,6 +700,12 @@ class ServiceStatus(dict):
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
+        """
+        -
+        URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+        and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+        but may not contain anything else (e.g. basic auth, url path, etc.)
+        """
         return pulumi.get(self, "url")
 
 
@@ -1988,7 +2000,9 @@ class ServiceTraffic(dict):
     def __init__(__self__, *,
                  percent: int,
                  latest_revision: Optional[bool] = None,
-                 revision_name: Optional[str] = None):
+                 revision_name: Optional[str] = None,
+                 tag: Optional[str] = None,
+                 url: Optional[str] = None):
         """
         :param int percent: Percent specifies percent of the traffic to this Revision or Configuration.
         :param bool latest_revision: LatestRevision may be optionally provided to indicate that the latest ready
@@ -1996,12 +2010,21 @@ class ServiceTraffic(dict):
                provided LatestRevision must be true if RevisionName is empty; it must be
                false when RevisionName is non-empty.
         :param str revision_name: RevisionName of a specific revision to which to send this portion of traffic.
+        :param str tag: Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+        :param str url: -
+               URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+               and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+               but may not contain anything else (e.g. basic auth, url path, etc.)
         """
         pulumi.set(__self__, "percent", percent)
         if latest_revision is not None:
             pulumi.set(__self__, "latest_revision", latest_revision)
         if revision_name is not None:
             pulumi.set(__self__, "revision_name", revision_name)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -2029,6 +2052,25 @@ class ServiceTraffic(dict):
         RevisionName of a specific revision to which to send this portion of traffic.
         """
         return pulumi.get(self, "revision_name")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        -
+        URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+        and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+        but may not contain anything else (e.g. basic auth, url path, etc.)
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -2686,10 +2728,14 @@ class GetServiceTrafficResult(dict):
     def __init__(__self__, *,
                  latest_revision: bool,
                  percent: int,
-                 revision_name: str):
+                 revision_name: str,
+                 tag: str,
+                 url: str):
         pulumi.set(__self__, "latest_revision", latest_revision)
         pulumi.set(__self__, "percent", percent)
         pulumi.set(__self__, "revision_name", revision_name)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="latestRevision")
@@ -2705,5 +2751,15 @@ class GetServiceTrafficResult(dict):
     @pulumi.getter(name="revisionName")
     def revision_name(self) -> str:
         return pulumi.get(self, "revision_name")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
 
 

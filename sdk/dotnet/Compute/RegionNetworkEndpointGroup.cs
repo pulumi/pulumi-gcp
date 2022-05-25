@@ -204,6 +204,26 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Region Network Endpoint Group Psc
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var pscNeg = new Gcp.Compute.RegionNetworkEndpointGroup("pscNeg", new Gcp.Compute.RegionNetworkEndpointGroupArgs
+    ///         {
+    ///             NetworkEndpointType = "PRIVATE_SERVICE_CONNECT",
+    ///             PscTargetService = "asia-northeast3-cloudkms.googleapis.com",
+    ///             Region = "asia-northeast3",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -274,7 +294,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
-        /// Possible values are `SERVERLESS`.
+        /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string?> NetworkEndpointType { get; private set; } = null!;
@@ -285,6 +305,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The target service url used to set up private service connection to
+        /// a Google API or a PSC Producer Service Attachment.
+        /// </summary>
+        [Output("pscTargetService")]
+        public Output<string?> PscTargetService { get; private set; } = null!;
 
         /// <summary>
         /// A reference to the region where the Serverless NEGs Reside.
@@ -397,7 +424,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
-        /// Possible values are `SERVERLESS`.
+        /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
@@ -408,6 +435,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The target service url used to set up private service connection to
+        /// a Google API or a PSC Producer Service Attachment.
+        /// </summary>
+        [Input("pscTargetService")]
+        public Input<string>? PscTargetService { get; set; }
 
         /// <summary>
         /// A reference to the region where the Serverless NEGs Reside.
@@ -475,7 +509,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
-        /// Possible values are `SERVERLESS`.
+        /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
@@ -486,6 +520,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The target service url used to set up private service connection to
+        /// a Google API or a PSC Producer Service Attachment.
+        /// </summary>
+        [Input("pscTargetService")]
+        public Input<string>? PscTargetService { get; set; }
 
         /// <summary>
         /// A reference to the region where the Serverless NEGs Reside.

@@ -26,6 +26,41 @@ namespace Pulumi.Gcp.Iap
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### Iap Client
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "tf-test",
+    ///             OrgId = "123456789",
+    ///         });
+    ///         var projectService = new Gcp.Projects.Service("projectService", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = project.ProjectId,
+    ///             Service = "iap.googleapis.com",
+    ///         });
+    ///         var projectBrand = new Gcp.Iap.Brand("projectBrand", new Gcp.Iap.BrandArgs
+    ///         {
+    ///             SupportEmail = "support@example.com",
+    ///             ApplicationTitle = "Cloud IAP protected Application",
+    ///             Project = projectService.Project,
+    ///         });
+    ///         var projectClient = new Gcp.Iap.Client("projectClient", new Gcp.Iap.ClientArgs
+    ///         {
+    ///             DisplayName = "Test Client",
+    ///             Brand = projectBrand.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
