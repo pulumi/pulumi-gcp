@@ -10,6 +10,596 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceMaintenancePolicy struct {
+	// -
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits
+	CreateTime *string `pulumi:"createTime"`
+	// Optional. Description of what this policy is for.
+	// Create/Update methods return INVALID_ARGUMENT if the
+	// length is greater than 512.
+	Description *string `pulumi:"description"`
+	// -
+	// Output only. The time when the policy was updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	UpdateTime *string `pulumi:"updateTime"`
+	// Required. Maintenance window that is applied to resources covered by this policy.
+	// Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
+	// is expected to be one.
+	// Structure is documented below.
+	WeeklyMaintenanceWindows []InstanceMaintenancePolicyWeeklyMaintenanceWindow `pulumi:"weeklyMaintenanceWindows"`
+}
+
+// InstanceMaintenancePolicyInput is an input type that accepts InstanceMaintenancePolicyArgs and InstanceMaintenancePolicyOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyInput` via:
+//
+//          InstanceMaintenancePolicyArgs{...}
+type InstanceMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput
+	ToInstanceMaintenancePolicyOutputWithContext(context.Context) InstanceMaintenancePolicyOutput
+}
+
+type InstanceMaintenancePolicyArgs struct {
+	// -
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Optional. Description of what this policy is for.
+	// Create/Update methods return INVALID_ARGUMENT if the
+	// length is greater than 512.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// -
+	// Output only. The time when the policy was updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// Required. Maintenance window that is applied to resources covered by this policy.
+	// Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
+	// is expected to be one.
+	// Structure is documented below.
+	WeeklyMaintenanceWindows InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput `pulumi:"weeklyMaintenanceWindows"`
+}
+
+func (InstanceMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput {
+	return i.ToInstanceMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyOutputWithContext(ctx context.Context) InstanceMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyOutput)
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return i.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyOutput).ToInstanceMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyPtrInput is an input type that accepts InstanceMaintenancePolicyArgs, InstanceMaintenancePolicyPtr and InstanceMaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyPtrInput` via:
+//
+//          InstanceMaintenancePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput
+	ToInstanceMaintenancePolicyPtrOutputWithContext(context.Context) InstanceMaintenancePolicyPtrOutput
+}
+
+type instanceMaintenancePolicyPtrType InstanceMaintenancePolicyArgs
+
+func InstanceMaintenancePolicyPtr(v *InstanceMaintenancePolicyArgs) InstanceMaintenancePolicyPtrInput {
+	return (*instanceMaintenancePolicyPtrType)(v)
+}
+
+func (*instanceMaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyPtrType) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return i.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyPtrType) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyPtrOutput)
+}
+
+type InstanceMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyOutputWithContext(ctx context.Context) InstanceMaintenancePolicyOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return o.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicy) *InstanceMaintenancePolicy {
+		return &v
+	}).(InstanceMaintenancePolicyPtrOutput)
+}
+
+// -
+// Output only. The time when the policy was created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits
+func (o InstanceMaintenancePolicyOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicy) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Description of what this policy is for.
+// Create/Update methods return INVALID_ARGUMENT if the
+// length is greater than 512.
+func (o InstanceMaintenancePolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The time when the policy was updated.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o InstanceMaintenancePolicyOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicy) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// Required. Maintenance window that is applied to resources covered by this policy.
+// Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
+// is expected to be one.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyOutput) WeeklyMaintenanceWindows() InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicy) []InstanceMaintenancePolicyWeeklyMaintenanceWindow {
+		return v.WeeklyMaintenanceWindows
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput)
+}
+
+type InstanceMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) Elem() InstanceMaintenancePolicyOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) InstanceMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicy
+		return ret
+	}).(InstanceMaintenancePolicyOutput)
+}
+
+// -
+// Output only. The time when the policy was created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits
+func (o InstanceMaintenancePolicyPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Description of what this policy is for.
+// Create/Update methods return INVALID_ARGUMENT if the
+// length is greater than 512.
+func (o InstanceMaintenancePolicyPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The time when the policy was updated.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o InstanceMaintenancePolicyPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Maintenance window that is applied to resources covered by this policy.
+// Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
+// is expected to be one.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyPtrOutput) WeeklyMaintenanceWindows() InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) []InstanceMaintenancePolicyWeeklyMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyMaintenanceWindows
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
+	// Required. The day of week that maintenance updates occur.
+	// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+	// - MONDAY: Monday
+	// - TUESDAY: Tuesday
+	// - WEDNESDAY: Wednesday
+	// - THURSDAY: Thursday
+	// - FRIDAY: Friday
+	// - SATURDAY: Saturday
+	// - SUNDAY: Sunday
+	//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	Day string `pulumi:"day"`
+	// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+	// A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s".
+	Duration string `pulumi:"duration"`
+	// Required. Start time of the window in UTC time.
+	// Structure is documented below.
+	StartTime InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime `pulumi:"startTime"`
+}
+
+// InstanceMaintenancePolicyWeeklyMaintenanceWindowInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs and InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowInput` via:
+//
+//          InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...}
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs struct {
+	// Required. The day of week that maintenance updates occur.
+	// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+	// - MONDAY: Monday
+	// - TUESDAY: Tuesday
+	// - WEDNESDAY: Wednesday
+	// - THURSDAY: Thursday
+	// - FRIDAY: Friday
+	// - SATURDAY: Saturday
+	// - SUNDAY: Sunday
+	//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	Day pulumi.StringInput `pulumi:"day"`
+	// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+	// A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s".
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Required. Start time of the window in UTC time.
+	// Structure is documented below.
+	StartTime InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput `pulumi:"startTime"`
+}
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput)
+}
+
+// InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowArray and InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput` via:
+//
+//          InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{ InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{...} }
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowArray []InstanceMaintenancePolicyWeeklyMaintenanceWindowInput
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowArray) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowArray) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return o
+}
+
+// Required. The day of week that maintenance updates occur.
+// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+// - MONDAY: Monday
+// - TUESDAY: Tuesday
+// - WEDNESDAY: Wednesday
+// - THURSDAY: Thursday
+// - FRIDAY: Friday
+// - SATURDAY: Saturday
+// - SUNDAY: Sunday
+//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+// A duration in seconds with up to nine fractional digits,
+// terminated by 's'. Example: "3.5s".
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Required. Start time of the window in UTC time.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) StartTime() InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindow) InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
+		return v.StartTime
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceMaintenancePolicyWeeklyMaintenanceWindow {
+		return vs[0].([]InstanceMaintenancePolicyWeeklyMaintenanceWindow)[vs[1].(int)]
+	}).(InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput is an input type that accepts InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs and InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput` via:
+//
+//          InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...}
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput
+	ToInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return i.ToInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput)
+}
+
+type InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ToInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(ctx context.Context) InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59.
+// An API may allow the value 60 if it allows leap-seconds.
+func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type InstanceMaintenanceSchedule struct {
+	EndTime              *string `pulumi:"endTime"`
+	ScheduleDeadlineTime *string `pulumi:"scheduleDeadlineTime"`
+	// Required. Start time of the window in UTC time.
+	// Structure is documented below.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// InstanceMaintenanceScheduleInput is an input type that accepts InstanceMaintenanceScheduleArgs and InstanceMaintenanceScheduleOutput values.
+// You can construct a concrete instance of `InstanceMaintenanceScheduleInput` via:
+//
+//          InstanceMaintenanceScheduleArgs{...}
+type InstanceMaintenanceScheduleInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenanceScheduleOutput() InstanceMaintenanceScheduleOutput
+	ToInstanceMaintenanceScheduleOutputWithContext(context.Context) InstanceMaintenanceScheduleOutput
+}
+
+type InstanceMaintenanceScheduleArgs struct {
+	EndTime              pulumi.StringPtrInput `pulumi:"endTime"`
+	ScheduleDeadlineTime pulumi.StringPtrInput `pulumi:"scheduleDeadlineTime"`
+	// Required. Start time of the window in UTC time.
+	// Structure is documented below.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (InstanceMaintenanceScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenanceSchedule)(nil)).Elem()
+}
+
+func (i InstanceMaintenanceScheduleArgs) ToInstanceMaintenanceScheduleOutput() InstanceMaintenanceScheduleOutput {
+	return i.ToInstanceMaintenanceScheduleOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenanceScheduleArgs) ToInstanceMaintenanceScheduleOutputWithContext(ctx context.Context) InstanceMaintenanceScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceScheduleOutput)
+}
+
+// InstanceMaintenanceScheduleArrayInput is an input type that accepts InstanceMaintenanceScheduleArray and InstanceMaintenanceScheduleArrayOutput values.
+// You can construct a concrete instance of `InstanceMaintenanceScheduleArrayInput` via:
+//
+//          InstanceMaintenanceScheduleArray{ InstanceMaintenanceScheduleArgs{...} }
+type InstanceMaintenanceScheduleArrayInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenanceScheduleArrayOutput() InstanceMaintenanceScheduleArrayOutput
+	ToInstanceMaintenanceScheduleArrayOutputWithContext(context.Context) InstanceMaintenanceScheduleArrayOutput
+}
+
+type InstanceMaintenanceScheduleArray []InstanceMaintenanceScheduleInput
+
+func (InstanceMaintenanceScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMaintenanceSchedule)(nil)).Elem()
+}
+
+func (i InstanceMaintenanceScheduleArray) ToInstanceMaintenanceScheduleArrayOutput() InstanceMaintenanceScheduleArrayOutput {
+	return i.ToInstanceMaintenanceScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenanceScheduleArray) ToInstanceMaintenanceScheduleArrayOutputWithContext(ctx context.Context) InstanceMaintenanceScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceScheduleArrayOutput)
+}
+
+type InstanceMaintenanceScheduleOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenanceScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenanceSchedule)(nil)).Elem()
+}
+
+func (o InstanceMaintenanceScheduleOutput) ToInstanceMaintenanceScheduleOutput() InstanceMaintenanceScheduleOutput {
+	return o
+}
+
+func (o InstanceMaintenanceScheduleOutput) ToInstanceMaintenanceScheduleOutputWithContext(ctx context.Context) InstanceMaintenanceScheduleOutput {
+	return o
+}
+
+func (o InstanceMaintenanceScheduleOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceMaintenanceScheduleOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.ScheduleDeadlineTime }).(pulumi.StringPtrOutput)
+}
+
+// Required. Start time of the window in UTC time.
+// Structure is documented below.
+func (o InstanceMaintenanceScheduleOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type InstanceMaintenanceScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenanceScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMaintenanceSchedule)(nil)).Elem()
+}
+
+func (o InstanceMaintenanceScheduleArrayOutput) ToInstanceMaintenanceScheduleArrayOutput() InstanceMaintenanceScheduleArrayOutput {
+	return o
+}
+
+func (o InstanceMaintenanceScheduleArrayOutput) ToInstanceMaintenanceScheduleArrayOutputWithContext(ctx context.Context) InstanceMaintenanceScheduleArrayOutput {
+	return o
+}
+
+func (o InstanceMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) InstanceMaintenanceScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceMaintenanceSchedule {
+		return vs[0].([]InstanceMaintenanceSchedule)[vs[1].(int)]
+	}).(InstanceMaintenanceScheduleOutput)
+}
+
 type InstanceMemcacheNode struct {
 	Host   *string `pulumi:"host"`
 	NodeId *string `pulumi:"nodeId"`
@@ -445,12 +1035,26 @@ func (o InstanceNodeConfigPtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyPtrInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceScheduleInput)(nil)).Elem(), InstanceMaintenanceScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceScheduleArrayInput)(nil)).Elem(), InstanceMaintenanceScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheNodeInput)(nil)).Elem(), InstanceMemcacheNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheNodeArrayInput)(nil)).Elem(), InstanceMemcacheNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheParametersInput)(nil)).Elem(), InstanceMemcacheParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMemcacheParametersPtrInput)(nil)).Elem(), InstanceMemcacheParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigInput)(nil)).Elem(), InstanceNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigPtrInput)(nil)).Elem(), InstanceNodeConfigArgs{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenanceScheduleOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenanceScheduleArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheNodeOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheNodeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMemcacheParametersOutput{})

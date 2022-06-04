@@ -67,6 +67,20 @@ import (
 // 			},
 // 			NodeCount:       pulumi.Int(1),
 // 			MemcacheVersion: pulumi.String("MEMCACHE_1_5"),
+// 			MaintenancePolicy: &memcache.InstanceMaintenancePolicyArgs{
+// 				WeeklyMaintenanceWindows: memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
+// 					&memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{
+// 						Day:      pulumi.String("SATURDAY"),
+// 						Duration: pulumi.String("14400s"),
+// 						StartTime: &memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+// 							Hours:   pulumi.Int(0),
+// 							Minutes: pulumi.Int(30),
+// 							Seconds: pulumi.Int(0),
+// 							Nanos:   pulumi.Int(0),
+// 						},
+// 					},
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -101,7 +115,10 @@ type Instance struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
-	// Creation timestamp in RFC3339 text format.
+	// -
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Endpoint for Discovery API
 	DiscoveryEndpoint pulumi.StringOutput `pulumi:"discoveryEndpoint"`
@@ -109,6 +126,11 @@ type Instance struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
+	// Output only. Published maintenance schedule.
+	MaintenanceSchedules InstanceMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
 	// The full version of memcached server running on this instance.
 	MemcacheFullVersion pulumi.StringOutput `pulumi:"memcacheFullVersion"`
 	// Additional information about the instance state, if available.
@@ -177,7 +199,10 @@ type instanceState struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
-	// Creation timestamp in RFC3339 text format.
+	// -
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits
 	CreateTime *string `pulumi:"createTime"`
 	// Endpoint for Discovery API
 	DiscoveryEndpoint *string `pulumi:"discoveryEndpoint"`
@@ -185,6 +210,11 @@ type instanceState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Output only. Published maintenance schedule.
+	MaintenanceSchedules []InstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
 	// The full version of memcached server running on this instance.
 	MemcacheFullVersion *string `pulumi:"memcacheFullVersion"`
 	// Additional information about the instance state, if available.
@@ -219,7 +249,10 @@ type InstanceState struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
-	// Creation timestamp in RFC3339 text format.
+	// -
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits
 	CreateTime pulumi.StringPtrInput
 	// Endpoint for Discovery API
 	DiscoveryEndpoint pulumi.StringPtrInput
@@ -227,6 +260,11 @@ type InstanceState struct {
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
+	// Output only. Published maintenance schedule.
+	MaintenanceSchedules InstanceMaintenanceScheduleArrayInput
 	// The full version of memcached server running on this instance.
 	MemcacheFullVersion pulumi.StringPtrInput
 	// Additional information about the instance state, if available.
@@ -269,6 +307,9 @@ type instanceArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
 	MemcacheParameters *InstanceMemcacheParameters `pulumi:"memcacheParameters"`
@@ -304,6 +345,9 @@ type InstanceArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
 	MemcacheParameters InstanceMemcacheParametersPtrInput
@@ -423,7 +467,10 @@ func (o InstanceOutput) AuthorizedNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizedNetwork }).(pulumi.StringOutput)
 }
 
-// Creation timestamp in RFC3339 text format.
+// -
+// Output only. The time when the policy was created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -441,6 +488,17 @@ func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 // Resource labels to represent user-provided metadata.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Maintenance policy for an instance.
+// Structure is documented below.
+func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(InstanceMaintenancePolicyPtrOutput)
+}
+
+// Output only. Published maintenance schedule.
+func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(InstanceMaintenanceScheduleArrayOutput)
 }
 
 // The full version of memcached server running on this instance.

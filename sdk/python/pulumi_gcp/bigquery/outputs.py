@@ -11,7 +11,11 @@ from . import outputs
 
 __all__ = [
     'AppProfileSingleClusterRouting',
+    'ConnectionAws',
+    'ConnectionAwsAccessRole',
+    'ConnectionAzure',
     'ConnectionCloudResource',
+    'ConnectionCloudSpanner',
     'ConnectionCloudSql',
     'ConnectionCloudSqlCredential',
     'DataTransferConfigEmailPreferences',
@@ -113,6 +117,189 @@ class AppProfileSingleClusterRouting(dict):
 
 
 @pulumi.output_type
+class ConnectionAws(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessRole":
+            suggest = "access_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionAws. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionAws.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionAws.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_role: 'outputs.ConnectionAwsAccessRole'):
+        """
+        :param 'ConnectionAwsAccessRoleArgs' access_role: Authentication using Google owned service account to assume into customer's AWS IAM Role.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "access_role", access_role)
+
+    @property
+    @pulumi.getter(name="accessRole")
+    def access_role(self) -> 'outputs.ConnectionAwsAccessRole':
+        """
+        Authentication using Google owned service account to assume into customer's AWS IAM Role.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_role")
+
+
+@pulumi.output_type
+class ConnectionAwsAccessRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iamRoleId":
+            suggest = "iam_role_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionAwsAccessRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionAwsAccessRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionAwsAccessRole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iam_role_id: str,
+                 identity: Optional[str] = None):
+        """
+        :param str iam_role_id: The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+        :param str identity: -
+               A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+        """
+        pulumi.set(__self__, "iam_role_id", iam_role_id)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+
+    @property
+    @pulumi.getter(name="iamRoleId")
+    def iam_role_id(self) -> str:
+        """
+        The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+        """
+        return pulumi.get(self, "iam_role_id")
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[str]:
+        """
+        -
+        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+        """
+        return pulumi.get(self, "identity")
+
+
+@pulumi.output_type
+class ConnectionAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerTenantId":
+            suggest = "customer_tenant_id"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "objectId":
+            suggest = "object_id"
+        elif key == "redirectUri":
+            suggest = "redirect_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customer_tenant_id: str,
+                 application: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 object_id: Optional[str] = None,
+                 redirect_uri: Optional[str] = None):
+        """
+        :param str customer_tenant_id: The id of customer's directory that host the data.
+        :param str application: -
+               The name of the Azure Active Directory Application.
+        :param str client_id: -
+               The client id of the Azure Active Directory Application.
+        :param str object_id: -
+               The object id of the Azure Active Directory Application.
+        :param str redirect_uri: -
+               The URL user will be redirected to after granting consent during connection setup.
+        """
+        pulumi.set(__self__, "customer_tenant_id", customer_tenant_id)
+        if application is not None:
+            pulumi.set(__self__, "application", application)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @property
+    @pulumi.getter(name="customerTenantId")
+    def customer_tenant_id(self) -> str:
+        """
+        The id of customer's directory that host the data.
+        """
+        return pulumi.get(self, "customer_tenant_id")
+
+    @property
+    @pulumi.getter
+    def application(self) -> Optional[str]:
+        """
+        -
+        The name of the Azure Active Directory Application.
+        """
+        return pulumi.get(self, "application")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        -
+        The client id of the Azure Active Directory Application.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[str]:
+        """
+        -
+        The object id of the Azure Active Directory Application.
+        """
+        return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[str]:
+        """
+        -
+        The URL user will be redirected to after granting consent during connection setup.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+
+@pulumi.output_type
 class ConnectionCloudResource(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -151,6 +338,53 @@ class ConnectionCloudResource(dict):
 
 
 @pulumi.output_type
+class ConnectionCloudSpanner(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useParallelism":
+            suggest = "use_parallelism"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionCloudSpanner. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionCloudSpanner.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionCloudSpanner.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 use_parallelism: Optional[bool] = None):
+        """
+        :param str database: Cloud Spanner database in the form `project/instance/database'
+        :param bool use_parallelism: If parallelism should be used when reading from Cloud Spanner
+        """
+        pulumi.set(__self__, "database", database)
+        if use_parallelism is not None:
+            pulumi.set(__self__, "use_parallelism", use_parallelism)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Cloud Spanner database in the form `project/instance/database'
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="useParallelism")
+    def use_parallelism(self) -> Optional[bool]:
+        """
+        If parallelism should be used when reading from Cloud Spanner
+        """
+        return pulumi.get(self, "use_parallelism")
+
+
+@pulumi.output_type
 class ConnectionCloudSql(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -177,7 +411,7 @@ class ConnectionCloudSql(dict):
         """
         :param 'ConnectionCloudSqlCredentialArgs' credential: Cloud SQL properties.
                Structure is documented below.
-        :param str database: Database name.
+        :param str database: Cloud Spanner database in the form `project/instance/database'
         :param str instance_id: Cloud SQL instance ID in the form project:location:instance.
         :param str type: Type of the Cloud SQL database.
                Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
@@ -200,7 +434,7 @@ class ConnectionCloudSql(dict):
     @pulumi.getter
     def database(self) -> str:
         """
-        Database name.
+        Cloud Spanner database in the form `project/instance/database'
         """
         return pulumi.get(self, "database")
 

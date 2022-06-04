@@ -15,7 +15,7 @@ import (
 //
 // ## Example Usage
 // ### Target
-// tests creating and updating a target
+// Creates a basic Cloud Deploy target
 // ```go
 // package main
 //

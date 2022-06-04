@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///             Description = "a new function",
     ///             BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///             {
-    ///                 Runtime = "nodejs12",
+    ///                 Runtime = "nodejs16",
     ///                 EntryPoint = "helloHttp",
     ///                 Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
     ///                 {
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///             Description = "a new function",
     ///             BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///             {
-    ///                 Runtime = "nodejs12",
+    ///                 Runtime = "nodejs16",
     ///                 EntryPoint = "helloHttp",
     ///                 EnvironmentVariables = 
     ///                 {

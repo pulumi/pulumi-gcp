@@ -20,6 +20,7 @@ class InstanceArgs:
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArgs']] = None,
                  memcache_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,8 @@ class InstanceArgs:
                'default' will be used.
         :param pulumi.Input[str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input['InstanceMemcacheParametersArgs'] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
         :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
@@ -57,6 +60,8 @@ class InstanceArgs:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if memcache_parameters is not None:
             pulumi.set(__self__, "memcache_parameters", memcache_parameters)
         if memcache_version is not None:
@@ -131,6 +136,19 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
 
     @property
     @pulumi.getter(name="memcacheParameters")
@@ -220,6 +238,8 @@ class _InstanceState:
                  discovery_endpoint: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
                  memcache_full_version: Optional[pulumi.Input[str]] = None,
                  memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]] = None,
                  memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArgs']] = None,
@@ -234,10 +254,16 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
-        :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] create_time: -
+               Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits
         :param pulumi.Input[str] discovery_endpoint: Endpoint for Discovery API
         :param pulumi.Input[str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Output only. Published maintenance schedule.
         :param pulumi.Input[str] memcache_full_version: The full version of memcached server running on this instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]] memcache_nodes: Additional information about the instance state, if available.
         :param pulumi.Input['InstanceMemcacheParametersArgs'] memcache_parameters: User-specified parameters for this memcache instance.
@@ -267,6 +293,10 @@ class _InstanceState:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_schedules is not None:
+            pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
         if memcache_full_version is not None:
             pulumi.set(__self__, "memcache_full_version", memcache_full_version)
         if memcache_nodes is not None:
@@ -305,7 +335,10 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation timestamp in RFC3339 text format.
+        -
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits
         """
         return pulumi.get(self, "create_time")
 
@@ -348,6 +381,31 @@ class _InstanceState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
+        """
+        Output only. Published maintenance schedule.
+        """
+        return pulumi.get(self, "maintenance_schedules")
+
+    @maintenance_schedules.setter
+    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+        pulumi.set(self, "maintenance_schedules", value)
 
     @property
     @pulumi.getter(name="memcacheFullVersion")
@@ -486,6 +544,7 @@ class Instance(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
                  memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']]] = None,
                  memcache_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -528,7 +587,19 @@ class Instance(pulumi.CustomResource):
                 memory_size_mb=1024,
             ),
             node_count=1,
-            memcache_version="MEMCACHE_1_5")
+            memcache_version="MEMCACHE_1_5",
+            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArgs(
+                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+                    day="SATURDAY",
+                    duration="14400s",
+                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                        hours=0,
+                        minutes=30,
+                        seconds=0,
+                        nanos=0,
+                    ),
+                )],
+            ))
         ```
 
         ## Import
@@ -557,6 +628,8 @@ class Instance(pulumi.CustomResource):
                'default' will be used.
         :param pulumi.Input[str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
         :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
@@ -613,7 +686,19 @@ class Instance(pulumi.CustomResource):
                 memory_size_mb=1024,
             ),
             node_count=1,
-            memcache_version="MEMCACHE_1_5")
+            memcache_version="MEMCACHE_1_5",
+            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArgs(
+                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+                    day="SATURDAY",
+                    duration="14400s",
+                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                        hours=0,
+                        minutes=30,
+                        seconds=0,
+                        nanos=0,
+                    ),
+                )],
+            ))
         ```
 
         ## Import
@@ -654,6 +739,7 @@ class Instance(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
                  memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']]] = None,
                  memcache_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -677,6 +763,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["memcache_parameters"] = memcache_parameters
             __props__.__dict__["memcache_version"] = memcache_version
             __props__.__dict__["name"] = name
@@ -691,6 +778,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["zones"] = zones
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoint"] = None
+            __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["memcache_full_version"] = None
             __props__.__dict__["memcache_nodes"] = None
         super(Instance, __self__).__init__(
@@ -708,6 +796,8 @@ class Instance(pulumi.CustomResource):
             discovery_endpoint: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
+            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]]] = None,
             memcache_full_version: Optional[pulumi.Input[str]] = None,
             memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMemcacheNodeArgs']]]]] = None,
             memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']]] = None,
@@ -727,10 +817,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
-        :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] create_time: -
+               Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits
         :param pulumi.Input[str] discovery_endpoint: Endpoint for Discovery API
         :param pulumi.Input[str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]] maintenance_schedules: Output only. Published maintenance schedule.
         :param pulumi.Input[str] memcache_full_version: The full version of memcached server running on this instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMemcacheNodeArgs']]]] memcache_nodes: Additional information about the instance state, if available.
         :param pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']] memcache_parameters: User-specified parameters for this memcache instance.
@@ -759,6 +855,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["discovery_endpoint"] = discovery_endpoint
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["maintenance_policy"] = maintenance_policy
+        __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["memcache_full_version"] = memcache_full_version
         __props__.__dict__["memcache_nodes"] = memcache_nodes
         __props__.__dict__["memcache_parameters"] = memcache_parameters
@@ -784,7 +882,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Creation timestamp in RFC3339 text format.
+        -
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits
         """
         return pulumi.get(self, "create_time")
 
@@ -811,6 +912,23 @@ class Instance(pulumi.CustomResource):
         Resource labels to represent user-provided metadata.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output[Optional['outputs.InstanceMaintenancePolicy']]:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> pulumi.Output[Sequence['outputs.InstanceMaintenanceSchedule']]:
+        """
+        Output only. Published maintenance schedule.
+        """
+        return pulumi.get(self, "maintenance_schedules")
 
     @property
     @pulumi.getter(name="memcacheFullVersion")

@@ -74,6 +74,8 @@ if typing.TYPE_CHECKING:
     datafusion = __datafusion
     import pulumi_gcp.dataloss as __dataloss
     dataloss = __dataloss
+    import pulumi_gcp.dataplex as __dataplex
+    dataplex = __dataplex
     import pulumi_gcp.dataproc as __dataproc
     dataproc = __dataproc
     import pulumi_gcp.datastore as __datastore
@@ -215,6 +217,7 @@ else:
     dataflow = _utilities.lazy_import('pulumi_gcp.dataflow')
     datafusion = _utilities.lazy_import('pulumi_gcp.datafusion')
     dataloss = _utilities.lazy_import('pulumi_gcp.dataloss')
+    dataplex = _utilities.lazy_import('pulumi_gcp.dataplex')
     dataproc = _utilities.lazy_import('pulumi_gcp.dataproc')
     datastore = _utilities.lazy_import('pulumi_gcp.datastore')
     deploymentmanager = _utilities.lazy_import('pulumi_gcp.deploymentmanager')
@@ -2391,6 +2394,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataloss",
   "classes": {
    "gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType": "PreventionStoredInfoType"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/lake",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/lake:Lake": "Lake"
   }
  },
  {

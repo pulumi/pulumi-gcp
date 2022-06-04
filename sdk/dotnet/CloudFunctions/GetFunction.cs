@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Description of the function.
         /// </summary>
         public readonly string Description;
+        public readonly string DockerRegistry;
         public readonly string DockerRepository;
         /// <summary>
         /// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
@@ -228,6 +229,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string description,
 
+            string dockerRegistry,
+
             string dockerRepository,
 
             string entryPoint,
@@ -283,6 +286,7 @@ namespace Pulumi.Gcp.CloudFunctions
             AvailableMemoryMb = availableMemoryMb;
             BuildEnvironmentVariables = buildEnvironmentVariables;
             Description = description;
+            DockerRegistry = dockerRegistry;
             DockerRepository = dockerRepository;
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;

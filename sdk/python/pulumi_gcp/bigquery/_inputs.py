@@ -10,7 +10,11 @@ from .. import _utilities
 
 __all__ = [
     'AppProfileSingleClusterRoutingArgs',
+    'ConnectionAwsArgs',
+    'ConnectionAwsAccessRoleArgs',
+    'ConnectionAzureArgs',
     'ConnectionCloudResourceArgs',
+    'ConnectionCloudSpannerArgs',
     'ConnectionCloudSqlArgs',
     'ConnectionCloudSqlCredentialArgs',
     'DataTransferConfigEmailPreferencesArgs',
@@ -101,6 +105,164 @@ class AppProfileSingleClusterRoutingArgs:
 
 
 @pulumi.input_type
+class ConnectionAwsArgs:
+    def __init__(__self__, *,
+                 access_role: pulumi.Input['ConnectionAwsAccessRoleArgs']):
+        """
+        :param pulumi.Input['ConnectionAwsAccessRoleArgs'] access_role: Authentication using Google owned service account to assume into customer's AWS IAM Role.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "access_role", access_role)
+
+    @property
+    @pulumi.getter(name="accessRole")
+    def access_role(self) -> pulumi.Input['ConnectionAwsAccessRoleArgs']:
+        """
+        Authentication using Google owned service account to assume into customer's AWS IAM Role.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_role")
+
+    @access_role.setter
+    def access_role(self, value: pulumi.Input['ConnectionAwsAccessRoleArgs']):
+        pulumi.set(self, "access_role", value)
+
+
+@pulumi.input_type
+class ConnectionAwsAccessRoleArgs:
+    def __init__(__self__, *,
+                 iam_role_id: pulumi.Input[str],
+                 identity: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] iam_role_id: The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+        :param pulumi.Input[str] identity: -
+               A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+        """
+        pulumi.set(__self__, "iam_role_id", iam_role_id)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+
+    @property
+    @pulumi.getter(name="iamRoleId")
+    def iam_role_id(self) -> pulumi.Input[str]:
+        """
+        The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+        """
+        return pulumi.get(self, "iam_role_id")
+
+    @iam_role_id.setter
+    def iam_role_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iam_role_id", value)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity", value)
+
+
+@pulumi.input_type
+class ConnectionAzureArgs:
+    def __init__(__self__, *,
+                 customer_tenant_id: pulumi.Input[str],
+                 application: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None,
+                 redirect_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] customer_tenant_id: The id of customer's directory that host the data.
+        :param pulumi.Input[str] application: -
+               The name of the Azure Active Directory Application.
+        :param pulumi.Input[str] client_id: -
+               The client id of the Azure Active Directory Application.
+        :param pulumi.Input[str] object_id: -
+               The object id of the Azure Active Directory Application.
+        :param pulumi.Input[str] redirect_uri: -
+               The URL user will be redirected to after granting consent during connection setup.
+        """
+        pulumi.set(__self__, "customer_tenant_id", customer_tenant_id)
+        if application is not None:
+            pulumi.set(__self__, "application", application)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @property
+    @pulumi.getter(name="customerTenantId")
+    def customer_tenant_id(self) -> pulumi.Input[str]:
+        """
+        The id of customer's directory that host the data.
+        """
+        return pulumi.get(self, "customer_tenant_id")
+
+    @customer_tenant_id.setter
+    def customer_tenant_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "customer_tenant_id", value)
+
+    @property
+    @pulumi.getter
+    def application(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The name of the Azure Active Directory Application.
+        """
+        return pulumi.get(self, "application")
+
+    @application.setter
+    def application(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The client id of the Azure Active Directory Application.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The object id of the Azure Active Directory Application.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_id", value)
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The URL user will be redirected to after granting consent during connection setup.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+    @redirect_uri.setter
+    def redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_uri", value)
+
+
+@pulumi.input_type
 class ConnectionCloudResourceArgs:
     def __init__(__self__, *,
                  service_account_id: Optional[pulumi.Input[str]] = None):
@@ -126,6 +288,44 @@ class ConnectionCloudResourceArgs:
 
 
 @pulumi.input_type
+class ConnectionCloudSpannerArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 use_parallelism: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] database: Cloud Spanner database in the form `project/instance/database'
+        :param pulumi.Input[bool] use_parallelism: If parallelism should be used when reading from Cloud Spanner
+        """
+        pulumi.set(__self__, "database", database)
+        if use_parallelism is not None:
+            pulumi.set(__self__, "use_parallelism", use_parallelism)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        Cloud Spanner database in the form `project/instance/database'
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="useParallelism")
+    def use_parallelism(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If parallelism should be used when reading from Cloud Spanner
+        """
+        return pulumi.get(self, "use_parallelism")
+
+    @use_parallelism.setter
+    def use_parallelism(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_parallelism", value)
+
+
+@pulumi.input_type
 class ConnectionCloudSqlArgs:
     def __init__(__self__, *,
                  credential: pulumi.Input['ConnectionCloudSqlCredentialArgs'],
@@ -135,7 +335,7 @@ class ConnectionCloudSqlArgs:
         """
         :param pulumi.Input['ConnectionCloudSqlCredentialArgs'] credential: Cloud SQL properties.
                Structure is documented below.
-        :param pulumi.Input[str] database: Database name.
+        :param pulumi.Input[str] database: Cloud Spanner database in the form `project/instance/database'
         :param pulumi.Input[str] instance_id: Cloud SQL instance ID in the form project:location:instance.
         :param pulumi.Input[str] type: Type of the Cloud SQL database.
                Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
@@ -162,7 +362,7 @@ class ConnectionCloudSqlArgs:
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
         """
-        Database name.
+        Cloud Spanner database in the form `project/instance/database'
         """
         return pulumi.get(self, "database")
 

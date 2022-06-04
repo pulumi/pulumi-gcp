@@ -97,6 +97,8 @@ dataLossPreventionCustomEndpoint: Optional[str]
 
 dataflowCustomEndpoint: Optional[str]
 
+dataplexCustomEndpoint: Optional[str]
+
 dataprocCustomEndpoint: Optional[str]
 
 dataprocMetastoreCustomEndpoint: Optional[str]

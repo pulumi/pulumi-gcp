@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Connection, see:
  *
- * * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
  * * How-to Guides
  *     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
  *
@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  * const connection = new gcp.bigquery.Connection("connection", {
  *     friendlyName: "👋",
  *     description: "a riveting description",
+ *     location: "US",
  *     cloudSql: {
  *         instanceId: instance.connectionName,
  *         database: db.name,
@@ -110,6 +111,56 @@ import * as utilities from "../utilities";
  *     location: "US",
  * });
  * ```
+ * ### Bigquery Connection Aws
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     aws: {
+ *         accessRole: {
+ *             iamRoleId: "arn:aws:iam::999999999999:role/omnirole",
+ *         },
+ *     },
+ *     connectionId: "my-connection",
+ *     description: "a riveting description",
+ *     friendlyName: "👋",
+ *     location: "aws-us-east-1",
+ * });
+ * ```
+ * ### Bigquery Connection Azure
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     azure: {
+ *         customerTenantId: "customer-tenant-id",
+ *     },
+ *     connectionId: "my-connection",
+ *     description: "a riveting description",
+ *     friendlyName: "👋",
+ *     location: "azure-eastus2",
+ * });
+ * ```
+ * ### Bigquery Connection Cloudspanner
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     cloudSpanner: {
+ *         database: "projects/project/instances/instance/databases/database",
+ *     },
+ *     connectionId: "my-connection",
+ *     description: "a riveting description",
+ *     friendlyName: "👋",
+ *     location: "US",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -156,12 +207,27 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * Cloud Resource properties.
+     * Connection properties specific to Amazon Web Services.
+     * Structure is documented below.
+     */
+    public readonly aws!: pulumi.Output<outputs.bigquery.ConnectionAws | undefined>;
+    /**
+     * Container for connection properties specific to Azure.
+     * Structure is documented below.
+     */
+    public readonly azure!: pulumi.Output<outputs.bigquery.ConnectionAzure | undefined>;
+    /**
+     * Container for connection properties for delegation of access to GCP resources.
      * Structure is documented below.
      */
     public readonly cloudResource!: pulumi.Output<outputs.bigquery.ConnectionCloudResource | undefined>;
     /**
-     * Cloud SQL properties.
+     * Connection properties specific to Cloud Spanner
+     * Structure is documented below.
+     */
+    public readonly cloudSpanner!: pulumi.Output<outputs.bigquery.ConnectionCloudSpanner | undefined>;
+    /**
+     * A nested object resource
      * Structure is documented below.
      */
     public readonly cloudSql!: pulumi.Output<outputs.bigquery.ConnectionCloudSql | undefined>;
@@ -185,7 +251,10 @@ export class Connection extends pulumi.CustomResource {
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
      * with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-     * Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+     * Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+     * Spanner Connections same as spanner region
+     * AWS allowed regions are aws-us-east-1
+     * Azure allowed regions are azure-eastus2
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -212,7 +281,10 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            resourceInputs["aws"] = state ? state.aws : undefined;
+            resourceInputs["azure"] = state ? state.azure : undefined;
             resourceInputs["cloudResource"] = state ? state.cloudResource : undefined;
+            resourceInputs["cloudSpanner"] = state ? state.cloudSpanner : undefined;
             resourceInputs["cloudSql"] = state ? state.cloudSql : undefined;
             resourceInputs["connectionId"] = state ? state.connectionId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -223,7 +295,10 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
+            resourceInputs["aws"] = args ? args.aws : undefined;
+            resourceInputs["azure"] = args ? args.azure : undefined;
             resourceInputs["cloudResource"] = args ? args.cloudResource : undefined;
+            resourceInputs["cloudSpanner"] = args ? args.cloudSpanner : undefined;
             resourceInputs["cloudSql"] = args ? args.cloudSql : undefined;
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -243,12 +318,27 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * Cloud Resource properties.
+     * Connection properties specific to Amazon Web Services.
+     * Structure is documented below.
+     */
+    aws?: pulumi.Input<inputs.bigquery.ConnectionAws>;
+    /**
+     * Container for connection properties specific to Azure.
+     * Structure is documented below.
+     */
+    azure?: pulumi.Input<inputs.bigquery.ConnectionAzure>;
+    /**
+     * Container for connection properties for delegation of access to GCP resources.
      * Structure is documented below.
      */
     cloudResource?: pulumi.Input<inputs.bigquery.ConnectionCloudResource>;
     /**
-     * Cloud SQL properties.
+     * Connection properties specific to Cloud Spanner
+     * Structure is documented below.
+     */
+    cloudSpanner?: pulumi.Input<inputs.bigquery.ConnectionCloudSpanner>;
+    /**
+     * A nested object resource
      * Structure is documented below.
      */
     cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
@@ -272,7 +362,10 @@ export interface ConnectionState {
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
      * with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-     * Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+     * Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+     * Spanner Connections same as spanner region
+     * AWS allowed regions are aws-us-east-1
+     * Azure allowed regions are azure-eastus2
      */
     location?: pulumi.Input<string>;
     /**
@@ -292,12 +385,27 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
-     * Cloud Resource properties.
+     * Connection properties specific to Amazon Web Services.
+     * Structure is documented below.
+     */
+    aws?: pulumi.Input<inputs.bigquery.ConnectionAws>;
+    /**
+     * Container for connection properties specific to Azure.
+     * Structure is documented below.
+     */
+    azure?: pulumi.Input<inputs.bigquery.ConnectionAzure>;
+    /**
+     * Container for connection properties for delegation of access to GCP resources.
      * Structure is documented below.
      */
     cloudResource?: pulumi.Input<inputs.bigquery.ConnectionCloudResource>;
     /**
-     * Cloud SQL properties.
+     * Connection properties specific to Cloud Spanner
+     * Structure is documented below.
+     */
+    cloudSpanner?: pulumi.Input<inputs.bigquery.ConnectionCloudSpanner>;
+    /**
+     * A nested object resource
      * Structure is documented below.
      */
     cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
@@ -317,7 +425,10 @@ export interface ConnectionArgs {
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
      * with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-     * Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+     * Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+     * Spanner Connections same as spanner region
+     * AWS allowed regions are aws-us-east-1
+     * Azure allowed regions are azure-eastus2
      */
     location?: pulumi.Input<string>;
     /**

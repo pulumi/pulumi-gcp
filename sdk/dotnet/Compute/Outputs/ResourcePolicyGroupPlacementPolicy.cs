@@ -27,7 +27,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Collocation;
         /// <summary>
-        /// Number of vms in this placement group.
+        /// Number of VMs in this placement group. Google does not recommend that you use this field
+        /// unless you use a compact policy and you want your policy to work only if it contains this
+        /// exact number of VMs.
         /// </summary>
         public readonly int? VmCount;
 

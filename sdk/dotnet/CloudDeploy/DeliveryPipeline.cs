@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// ## Example Usage
     /// ### Delivery_pipeline
-    /// tests creating and updating a delivery pipeline
+    /// Creates a basic Cloud Deploy delivery pipeline
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

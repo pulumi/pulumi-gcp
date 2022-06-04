@@ -37,12 +37,15 @@ import (
 // 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
 // 						&cloudrun.ServiceTemplateSpecContainerArgs{
 // 							Image: pulumi.String("gcr.io/cloudrun/hello"),
-// 							Args: pulumi.StringArray{
-// 								pulumi.String("arrgs"),
+// 							Ports: cloudrun.ServiceTemplateSpecContainerPortArray{
+// 								&cloudrun.ServiceTemplateSpecContainerPortArgs{
+// 									ContainerPort: pulumi.Int(8080),
+// 								},
 // 							},
 // 						},
 // 					},
 // 					ContainerConcurrency: pulumi.Int(50),
+// 					TimeoutSeconds:       pulumi.Int(100),
 // 				},
 // 			},
 // 			Traffics: cloudrun.ServiceTrafficArray{

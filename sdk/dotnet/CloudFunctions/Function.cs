@@ -151,6 +151,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        /// </summary>
+        [Output("dockerRegistry")]
+        public Output<string> DockerRegistry { get; private set; } = null!;
+
+        /// <summary>
         /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         /// </summary>
         [Output("dockerRepository")]
@@ -374,6 +380,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        /// </summary>
+        [Input("dockerRegistry")]
+        public Input<string>? DockerRegistry { get; set; }
+
+        /// <summary>
         /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         /// </summary>
         [Input("dockerRepository")]
@@ -580,6 +592,12 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        /// </summary>
+        [Input("dockerRegistry")]
+        public Input<string>? DockerRegistry { get; set; }
 
         /// <summary>
         /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.

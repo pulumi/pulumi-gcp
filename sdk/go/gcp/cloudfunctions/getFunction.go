@@ -64,6 +64,7 @@ type LookupFunctionResult struct {
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description      string `pulumi:"description"`
+	DockerRegistry   string `pulumi:"dockerRegistry"`
 	DockerRepository string `pulumi:"dockerRepository"`
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint           string                 `pulumi:"entryPoint"`
@@ -165,6 +166,10 @@ func (o LookupFunctionResultOutput) BuildEnvironmentVariables() pulumi.MapOutput
 // Description of the function.
 func (o LookupFunctionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) DockerRegistry() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.DockerRegistry }).(pulumi.StringOutput)
 }
 
 func (o LookupFunctionResultOutput) DockerRepository() pulumi.StringOutput {

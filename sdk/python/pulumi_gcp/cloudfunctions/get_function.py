@@ -21,7 +21,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, docker_repository=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, description=None, docker_registry=None, docker_repository=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -31,6 +31,9 @@ class GetFunctionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if docker_registry and not isinstance(docker_registry, str):
+            raise TypeError("Expected argument 'docker_registry' to be a str")
+        pulumi.set(__self__, "docker_registry", docker_registry)
         if docker_repository and not isinstance(docker_repository, str):
             raise TypeError("Expected argument 'docker_repository' to be a str")
         pulumi.set(__self__, "docker_repository", docker_repository)
@@ -130,6 +133,11 @@ class GetFunctionResult:
         Description of the function.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerRegistry")
+    def docker_registry(self) -> str:
+        return pulumi.get(self, "docker_registry")
 
     @property
     @pulumi.getter(name="dockerRepository")
@@ -322,6 +330,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             available_memory_mb=self.available_memory_mb,
             build_environment_variables=self.build_environment_variables,
             description=self.description,
+            docker_registry=self.docker_registry,
             docker_repository=self.docker_repository,
             entry_point=self.entry_point,
             environment_variables=self.environment_variables,
@@ -389,6 +398,7 @@ def get_function(name: Optional[str] = None,
         available_memory_mb=__ret__.available_memory_mb,
         build_environment_variables=__ret__.build_environment_variables,
         description=__ret__.description,
+        docker_registry=__ret__.docker_registry,
         docker_repository=__ret__.docker_repository,
         entry_point=__ret__.entry_point,
         environment_variables=__ret__.environment_variables,

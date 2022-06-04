@@ -394,7 +394,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs12",
+                runtime="nodejs16",
                 entry_point="helloHttp",
                 source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
                     storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
@@ -429,7 +429,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs12",
+                runtime="nodejs16",
                 entry_point="helloHttp",
                 environment_variables={
                     "BUILD_CONFIG_TEST": "build_test",
@@ -521,7 +521,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs12",
+                runtime="nodejs16",
                 entry_point="helloHttp",
                 source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
                     storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
@@ -556,7 +556,7 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs12",
+                runtime="nodejs16",
                 entry_point="helloHttp",
                 environment_variables={
                     "BUILD_CONFIG_TEST": "build_test",

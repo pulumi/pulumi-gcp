@@ -69,6 +69,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dataFusionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataLossPreventionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataflowCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly dataplexCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocMetastoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly datastoreCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -193,6 +194,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataFusionCustomEndpoint"] = args ? args.dataFusionCustomEndpoint : undefined;
             resourceInputs["dataLossPreventionCustomEndpoint"] = args ? args.dataLossPreventionCustomEndpoint : undefined;
             resourceInputs["dataflowCustomEndpoint"] = args ? args.dataflowCustomEndpoint : undefined;
+            resourceInputs["dataplexCustomEndpoint"] = args ? args.dataplexCustomEndpoint : undefined;
             resourceInputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
             resourceInputs["dataprocMetastoreCustomEndpoint"] = args ? args.dataprocMetastoreCustomEndpoint : undefined;
             resourceInputs["datastoreCustomEndpoint"] = args ? args.datastoreCustomEndpoint : undefined;
@@ -319,6 +321,7 @@ export interface ProviderArgs {
     dataFusionCustomEndpoint?: pulumi.Input<string>;
     dataLossPreventionCustomEndpoint?: pulumi.Input<string>;
     dataflowCustomEndpoint?: pulumi.Input<string>;
+    dataplexCustomEndpoint?: pulumi.Input<string>;
     dataprocCustomEndpoint?: pulumi.Input<string>;
     dataprocMetastoreCustomEndpoint?: pulumi.Input<string>;
     datastoreCustomEndpoint?: pulumi.Input<string>;

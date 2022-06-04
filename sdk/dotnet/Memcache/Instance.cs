@@ -59,6 +59,24 @@ namespace Pulumi.Gcp.Memcache
     ///             },
     ///             NodeCount = 1,
     ///             MemcacheVersion = "MEMCACHE_1_5",
+    ///             MaintenancePolicy = new Gcp.Memcache.Inputs.InstanceMaintenancePolicyArgs
+    ///             {
+    ///                 WeeklyMaintenanceWindows = 
+    ///                 {
+    ///                     new Gcp.Memcache.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                     {
+    ///                         Day = "SATURDAY",
+    ///                         Duration = "14400s",
+    ///                         StartTime = new Gcp.Memcache.Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                         {
+    ///                             Hours = 0,
+    ///                             Minutes = 30,
+    ///                             Seconds = 0,
+    ///                             Nanos = 0,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -96,7 +114,10 @@ namespace Pulumi.Gcp.Memcache
         public Output<string> AuthorizedNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// Creation timestamp in RFC3339 text format.
+        /// -
+        /// Output only. The time when the policy was created.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -118,6 +139,19 @@ namespace Pulumi.Gcp.Memcache
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.InstanceMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Published maintenance schedule.
+        /// </summary>
+        [Output("maintenanceSchedules")]
+        public Output<ImmutableArray<Outputs.InstanceMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
 
         /// <summary>
         /// The full version of memcached server running on this instance.
@@ -259,6 +293,13 @@ namespace Pulumi.Gcp.Memcache
         }
 
         /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
         /// User-specified parameters for this memcache instance.
         /// Structure is documented below.
         /// </summary>
@@ -335,7 +376,10 @@ namespace Pulumi.Gcp.Memcache
         public Input<string>? AuthorizedNetwork { get; set; }
 
         /// <summary>
-        /// Creation timestamp in RFC3339 text format.
+        /// -
+        /// Output only. The time when the policy was created.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -362,6 +406,25 @@ namespace Pulumi.Gcp.Memcache
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
+        }
+
+        /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
+
+        [Input("maintenanceSchedules")]
+        private InputList<Inputs.InstanceMaintenanceScheduleGetArgs>? _maintenanceSchedules;
+
+        /// <summary>
+        /// Output only. Published maintenance schedule.
+        /// </summary>
+        public InputList<Inputs.InstanceMaintenanceScheduleGetArgs> MaintenanceSchedules
+        {
+            get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.InstanceMaintenanceScheduleGetArgs>());
+            set => _maintenanceSchedules = value;
         }
 
         /// <summary>

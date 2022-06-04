@@ -340,6 +340,13 @@ namespace Pulumi.Gcp
             set => _dataflowCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _dataplexCustomEndpoint = new __Value<string?>(() => __config.Get("dataplexCustomEndpoint"));
+        public static string? DataplexCustomEndpoint
+        {
+            get => _dataplexCustomEndpoint.Get();
+            set => _dataplexCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _dataprocCustomEndpoint = new __Value<string?>(() => __config.Get("dataprocCustomEndpoint"));
         public static string? DataprocCustomEndpoint
         {

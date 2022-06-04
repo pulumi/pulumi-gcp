@@ -37,7 +37,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
-// 			DatabaseVersion: pulumi.String("POSTGRES_11"),
+// 			DatabaseVersion: pulumi.String("POSTGRES_14"),
 // 			Region:          pulumi.String("us-central1"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
@@ -146,7 +146,7 @@ type DatabaseInstance struct {
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+	// `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
 	// `SQLSERVER_2019_WEB`.
@@ -246,7 +246,7 @@ type databaseInstanceState struct {
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+	// `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
 	// `SQLSERVER_2019_WEB`.
@@ -315,7 +315,7 @@ type DatabaseInstanceState struct {
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+	// `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
 	// `SQLSERVER_2019_WEB`.
@@ -385,7 +385,7 @@ type databaseInstanceArgs struct {
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+	// `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
 	// `SQLSERVER_2019_WEB`.
@@ -439,7 +439,7 @@ type DatabaseInstanceArgs struct {
 	// The MySQL, PostgreSQL or
 	// SQL Server version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-	// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+	// `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
 	// `SQLSERVER_2019_WEB`.
@@ -587,7 +587,7 @@ func (o DatabaseInstanceOutput) ConnectionName() pulumi.StringOutput {
 // The MySQL, PostgreSQL or
 // SQL Server version to use. Supported values include `MYSQL_5_6`,
 // `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-// `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+// `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
 // `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 // `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
 // `SQLSERVER_2019_WEB`.

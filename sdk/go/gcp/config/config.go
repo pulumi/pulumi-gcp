@@ -140,6 +140,9 @@ func GetDataLossPreventionCustomEndpoint(ctx *pulumi.Context) string {
 func GetDataflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataflowCustomEndpoint")
 }
+func GetDataplexCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataplexCustomEndpoint")
+}
 func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocCustomEndpoint")
 }

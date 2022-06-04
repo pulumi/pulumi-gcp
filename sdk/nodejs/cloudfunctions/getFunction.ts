@@ -67,6 +67,7 @@ export interface GetFunctionResult {
      * Description of the function.
      */
     readonly description: string;
+    readonly dockerRegistry: string;
     readonly dockerRepository: string;
     /**
      * Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.

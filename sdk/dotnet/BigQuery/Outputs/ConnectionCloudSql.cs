@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly Outputs.ConnectionCloudSqlCredential Credential;
         /// <summary>
-        /// Database name.
+        /// Cloud Spanner database in the form `project/instance/database'
         /// </summary>
         public readonly string Database;
         /// <summary>

@@ -9,10 +9,306 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceMaintenancePolicyArgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs',
+    'InstanceMaintenanceScheduleArgs',
     'InstanceMemcacheNodeArgs',
     'InstanceMemcacheParametersArgs',
     'InstanceNodeConfigArgs',
 ]
+
+@pulumi.input_type
+class InstanceMaintenancePolicyArgs:
+    def __init__(__self__, *,
+                 weekly_maintenance_windows: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]],
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]] weekly_maintenance_windows: Required. Maintenance window that is applied to resources covered by this policy.
+               Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+               is expected to be one.
+               Structure is documented below.
+        :param pulumi.Input[str] create_time: -
+               Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits
+        :param pulumi.Input[str] description: Optional. Description of what this policy is for.
+               Create/Update methods return INVALID_ARGUMENT if the
+               length is greater than 512.
+        :param pulumi.Input[str] update_time: -
+               Output only. The time when the policy was updated.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        """
+        pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="weeklyMaintenanceWindows")
+    def weekly_maintenance_windows(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]:
+        """
+        Required. Maintenance window that is applied to resources covered by this policy.
+        Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+        is expected to be one.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "weekly_maintenance_windows")
+
+    @weekly_maintenance_windows.setter
+    def weekly_maintenance_windows(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]):
+        pulumi.set(self, "weekly_maintenance_windows", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Description of what this policy is for.
+        Create/Update methods return INVALID_ARGUMENT if the
+        length is greater than 512.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        Output only. The time when the policy was updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 day: pulumi.Input[str],
+                 duration: pulumi.Input[str],
+                 start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']):
+        """
+        :param pulumi.Input[str] day: Required. The day of week that maintenance updates occur.
+               - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+               - MONDAY: Monday
+               - TUESDAY: Tuesday
+               - WEDNESDAY: Wednesday
+               - THURSDAY: Thursday
+               - FRIDAY: Friday
+               - SATURDAY: Saturday
+               - SUNDAY: Sunday
+               Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        :param pulumi.Input[str] duration: Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+               A duration in seconds with up to nine fractional digits,
+               terminated by 's'. Example: "3.5s".
+        :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> pulumi.Input[str]:
+        """
+        Required. The day of week that maintenance updates occur.
+        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+        - MONDAY: Monday
+        - TUESDAY: Tuesday
+        - WEDNESDAY: Wednesday
+        - THURSDAY: Thursday
+        - FRIDAY: Friday
+        - SATURDAY: Saturday
+        - SUNDAY: Sunday
+        Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: pulumi.Input[str]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[str]:
+        """
+        Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+        A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']:
+        """
+        Required. Start time of the window in UTC time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']):
+        pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[int]] = None,
+                 minutes: Optional[pulumi.Input[int]] = None,
+                 nanos: Optional[pulumi.Input[int]] = None,
+                 seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param pulumi.Input[int] minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
+               An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hours", value)
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minutes", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seconds", value)
+
+
+@pulumi.input_type
+class InstanceMaintenanceScheduleArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 schedule_deadline_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] start_time: Required. Start time of the window in UTC time.
+               Structure is documented below.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if schedule_deadline_time is not None:
+            pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="scheduleDeadlineTime")
+    def schedule_deadline_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "schedule_deadline_time")
+
+    @schedule_deadline_time.setter
+    def schedule_deadline_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_deadline_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Start time of the window in UTC time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
 
 @pulumi.input_type
 class InstanceMemcacheNodeArgs:
