@@ -381,9 +381,12 @@ class Trigger(pulumi.CustomResource):
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
                         image="gcr.io/cloudrun/hello",
-                        args=["arrgs"],
+                        ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
+                            container_port=8080,
+                        )],
                     )],
                     container_concurrency=50,
+                    timeout_seconds=100,
                 ),
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
@@ -459,9 +462,12 @@ class Trigger(pulumi.CustomResource):
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
                         image="gcr.io/cloudrun/hello",
-                        args=["arrgs"],
+                        ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
+                            container_port=8080,
+                        )],
                     )],
                     container_concurrency=50,
+                    timeout_seconds=100,
                 ),
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(

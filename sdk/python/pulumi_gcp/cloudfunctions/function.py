@@ -19,6 +19,7 @@ class FunctionArgs:
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_registry: Optional[pulumi.Input[str]] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -50,6 +51,7 @@ class FunctionArgs:
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
+        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -84,6 +86,8 @@ class FunctionArgs:
             pulumi.set(__self__, "build_environment_variables", build_environment_variables)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if docker_registry is not None:
+            pulumi.set(__self__, "docker_registry", docker_registry)
         if docker_repository is not None:
             pulumi.set(__self__, "docker_repository", docker_repository)
         if entry_point is not None:
@@ -181,6 +185,18 @@ class FunctionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dockerRegistry")
+    def docker_registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        """
+        return pulumi.get(self, "docker_registry")
+
+    @docker_registry.setter
+    def docker_registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "docker_registry", value)
 
     @property
     @pulumi.getter(name="dockerRepository")
@@ -479,6 +495,7 @@ class _FunctionState:
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_registry: Optional[pulumi.Input[str]] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -509,6 +526,7 @@ class _FunctionState:
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
+        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -544,6 +562,8 @@ class _FunctionState:
             pulumi.set(__self__, "build_environment_variables", build_environment_variables)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if docker_registry is not None:
+            pulumi.set(__self__, "docker_registry", docker_registry)
         if docker_repository is not None:
             pulumi.set(__self__, "docker_repository", docker_repository)
         if entry_point is not None:
@@ -630,6 +650,18 @@ class _FunctionState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dockerRegistry")
+    def docker_registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        """
+        return pulumi.get(self, "docker_registry")
+
+    @docker_registry.setter
+    def docker_registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "docker_registry", value)
 
     @property
     @pulumi.getter(name="dockerRepository")
@@ -943,6 +975,7 @@ class Function(pulumi.CustomResource):
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_registry: Optional[pulumi.Input[str]] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1060,6 +1093,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
+        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -1199,6 +1233,7 @@ class Function(pulumi.CustomResource):
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_registry: Optional[pulumi.Input[str]] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1239,6 +1274,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["available_memory_mb"] = available_memory_mb
             __props__.__dict__["build_environment_variables"] = build_environment_variables
             __props__.__dict__["description"] = description
+            __props__.__dict__["docker_registry"] = docker_registry
             __props__.__dict__["docker_repository"] = docker_repository
             __props__.__dict__["entry_point"] = entry_point
             __props__.__dict__["environment_variables"] = environment_variables
@@ -1279,6 +1315,7 @@ class Function(pulumi.CustomResource):
             available_memory_mb: Optional[pulumi.Input[int]] = None,
             build_environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            docker_registry: Optional[pulumi.Input[str]] = None,
             docker_repository: Optional[pulumi.Input[str]] = None,
             entry_point: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1314,6 +1351,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] description: Description of the function.
+        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -1350,6 +1388,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["available_memory_mb"] = available_memory_mb
         __props__.__dict__["build_environment_variables"] = build_environment_variables
         __props__.__dict__["description"] = description
+        __props__.__dict__["docker_registry"] = docker_registry
         __props__.__dict__["docker_repository"] = docker_repository
         __props__.__dict__["entry_point"] = entry_point
         __props__.__dict__["environment_variables"] = environment_variables
@@ -1400,6 +1439,14 @@ class Function(pulumi.CustomResource):
         Description of the function.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerRegistry")
+    def docker_registry(self) -> pulumi.Output[str]:
+        """
+        Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        """
+        return pulumi.get(self, "docker_registry")
 
     @property
     @pulumi.getter(name="dockerRepository")

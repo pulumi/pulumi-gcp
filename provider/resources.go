@@ -54,6 +54,7 @@ const (
 	gcpDataFlow             = "Dataflow"             // DataFlow resources
 	gcpDataFusion           = "DataFusion"           // DataFusion resources
 	gcpDataLoss             = "DataLoss"             // DataLoss resources
+	gcpDataPlex             = "DataPlex"             // DataPlex
 	gcpDataProc             = "Dataproc"             // DataProc resources
 	gcpDatastore            = "Datastore"            // Datastore resources
 	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
@@ -2046,6 +2047,9 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpDataLoss, "PreventionDeidentifyTemplate"),
 			},
 
+			// Dataplex
+			"google_dataplex_lake": {Tok: gcpResource(gcpDataPlex, "Lake")},
+
 			// IAM
 			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
 			"google_iam_workload_identity_pool_provider": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPoolProvider")},
@@ -2769,6 +2773,10 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpDataSource(gcpSecretManager, "getSecret")},
+
+			// Tags
+			"google_tags_tag_key":   {Tok: gcpDataSource(gcpTags, "getTagKey")},
+			"google_tags_tag_value": {Tok: gcpDataSource(gcpTags, "getTagValue")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

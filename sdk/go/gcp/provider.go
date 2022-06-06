@@ -60,6 +60,7 @@ type Provider struct {
 	DataFusionCustomEndpoint           pulumi.StringPtrOutput `pulumi:"dataFusionCustomEndpoint"`
 	DataLossPreventionCustomEndpoint   pulumi.StringPtrOutput `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataflowCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataflowCustomEndpoint"`
+	DataplexCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataplexCustomEndpoint"`
 	DataprocCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataprocCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint    pulumi.StringPtrOutput `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"datastoreCustomEndpoint"`
@@ -199,6 +200,7 @@ type providerArgs struct {
 	DataFusionCustomEndpoint           *string           `pulumi:"dataFusionCustomEndpoint"`
 	DataLossPreventionCustomEndpoint   *string           `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataflowCustomEndpoint             *string           `pulumi:"dataflowCustomEndpoint"`
+	DataplexCustomEndpoint             *string           `pulumi:"dataplexCustomEndpoint"`
 	DataprocCustomEndpoint             *string           `pulumi:"dataprocCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint    *string           `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastoreCustomEndpoint            *string           `pulumi:"datastoreCustomEndpoint"`
@@ -319,6 +321,7 @@ type ProviderArgs struct {
 	DataFusionCustomEndpoint           pulumi.StringPtrInput
 	DataLossPreventionCustomEndpoint   pulumi.StringPtrInput
 	DataflowCustomEndpoint             pulumi.StringPtrInput
+	DataplexCustomEndpoint             pulumi.StringPtrInput
 	DataprocCustomEndpoint             pulumi.StringPtrInput
 	DataprocMetastoreCustomEndpoint    pulumi.StringPtrInput
 	DatastoreCustomEndpoint            pulumi.StringPtrInput
@@ -600,6 +603,10 @@ func (o ProviderOutput) DataLossPreventionCustomEndpoint() pulumi.StringPtrOutpu
 
 func (o ProviderOutput) DataflowCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataflowCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) DataplexCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataplexCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) DataprocCustomEndpoint() pulumi.StringPtrOutput {

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const main = new gcp.sql.DatabaseInstance("main", {
- *     databaseVersion: "POSTGRES_11",
+ *     databaseVersion: "POSTGRES_14",
  *     region: "us-central1",
  *     settings: {
  *         // Second-generation instance tiers are based on the machine
@@ -139,7 +139,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
      * `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-     * `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+     * `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
      * `SQLSERVER_2019_WEB`.
@@ -310,7 +310,7 @@ export interface DatabaseInstanceState {
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
      * `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-     * `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+     * `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
      * `SQLSERVER_2019_WEB`.
@@ -413,7 +413,7 @@ export interface DatabaseInstanceArgs {
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
      * `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-     * `POSTGRES_12`, `POSTGRES_13`, `SQLSERVER_2017_STANDARD`,
+     * `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
      * `SQLSERVER_2019_WEB`.

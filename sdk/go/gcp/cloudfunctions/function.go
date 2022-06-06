@@ -156,6 +156,8 @@ type Function struct {
 	BuildEnvironmentVariables pulumi.MapOutput `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+	DockerRegistry pulumi.StringOutput `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository pulumi.StringPtrOutput `pulumi:"dockerRepository"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -249,6 +251,8 @@ type functionState struct {
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
+	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+	DockerRegistry *string `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository *string `pulumi:"dockerRepository"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -311,6 +315,8 @@ type FunctionState struct {
 	BuildEnvironmentVariables pulumi.MapInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
+	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+	DockerRegistry pulumi.StringPtrInput
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository pulumi.StringPtrInput
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -377,6 +383,8 @@ type functionArgs struct {
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
+	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+	DockerRegistry *string `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository *string `pulumi:"dockerRepository"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -440,6 +448,8 @@ type FunctionArgs struct {
 	BuildEnvironmentVariables pulumi.MapInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
+	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+	DockerRegistry pulumi.StringPtrInput
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository pulumi.StringPtrInput
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -595,6 +605,11 @@ func (o FunctionOutput) BuildEnvironmentVariables() pulumi.MapOutput {
 // Description of the function.
 func (o FunctionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+func (o FunctionOutput) DockerRegistry() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.DockerRegistry }).(pulumi.StringOutput)
 }
 
 // User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.

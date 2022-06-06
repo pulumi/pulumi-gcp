@@ -38,13 +38,17 @@ namespace Pulumi.Gcp.Eventarc
     ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
     ///                         {
     ///                             Image = "gcr.io/cloudrun/hello",
-    ///                             Args = 
+    ///                             Ports = 
     ///                             {
-    ///                                 "arrgs",
+    ///                                 new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerPortArgs
+    ///                                 {
+    ///                                     ContainerPort = 8080,
+    ///                                 },
     ///                             },
     ///                         },
     ///                     },
     ///                     ContainerConcurrency = 50,
+    ///                     TimeoutSeconds = 100,
     ///                 },
     ///             },
     ///             Traffics = 

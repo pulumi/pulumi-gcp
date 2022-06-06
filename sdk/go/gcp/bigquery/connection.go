@@ -14,7 +14,7 @@ import (
 //
 // To get more information about Connection, see:
 //
-// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
 // * How-to Guides
 //     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 //
@@ -70,6 +70,7 @@ import (
 // 		_, err = bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
 // 			FriendlyName: pulumi.String("👋"),
 // 			Description:  pulumi.String("a riveting description"),
+// 			Location:     pulumi.String("US"),
 // 			CloudSql: &bigquery.ConnectionCloudSqlArgs{
 // 				InstanceId: instance.ConnectionName,
 // 				Database:   db.Name,
@@ -180,6 +181,92 @@ import (
 // 	})
 // }
 // ```
+// ### Bigquery Connection Aws
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+// 			Aws: &bigquery.ConnectionAwsArgs{
+// 				AccessRole: &bigquery.ConnectionAwsAccessRoleArgs{
+// 					IamRoleId: pulumi.String("arn:aws:iam::999999999999:role/omnirole"),
+// 				},
+// 			},
+// 			ConnectionId: pulumi.String("my-connection"),
+// 			Description:  pulumi.String("a riveting description"),
+// 			FriendlyName: pulumi.String("👋"),
+// 			Location:     pulumi.String("aws-us-east-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Bigquery Connection Azure
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+// 			Azure: &bigquery.ConnectionAzureArgs{
+// 				CustomerTenantId: pulumi.String("customer-tenant-id"),
+// 			},
+// 			ConnectionId: pulumi.String("my-connection"),
+// 			Description:  pulumi.String("a riveting description"),
+// 			FriendlyName: pulumi.String("👋"),
+// 			Location:     pulumi.String("azure-eastus2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Bigquery Connection Cloudspanner
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+// 			CloudSpanner: &bigquery.ConnectionCloudSpannerArgs{
+// 				Database: pulumi.String("projects/project/instances/instance/databases/database"),
+// 			},
+// 			ConnectionId: pulumi.String("my-connection"),
+// 			Description:  pulumi.String("a riveting description"),
+// 			FriendlyName: pulumi.String("👋"),
+// 			Location:     pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -199,10 +286,19 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// Cloud Resource properties.
+	// Connection properties specific to Amazon Web Services.
+	// Structure is documented below.
+	Aws ConnectionAwsPtrOutput `pulumi:"aws"`
+	// Container for connection properties specific to Azure.
+	// Structure is documented below.
+	Azure ConnectionAzurePtrOutput `pulumi:"azure"`
+	// Container for connection properties for delegation of access to GCP resources.
 	// Structure is documented below.
 	CloudResource ConnectionCloudResourcePtrOutput `pulumi:"cloudResource"`
-	// Cloud SQL properties.
+	// Connection properties specific to Cloud Spanner
+	// Structure is documented below.
+	CloudSpanner ConnectionCloudSpannerPtrOutput `pulumi:"cloudSpanner"`
+	// A nested object resource
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrOutput `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
@@ -216,7 +312,10 @@ type Connection struct {
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-	// Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+	// Spanner Connections same as spanner region
+	// AWS allowed regions are aws-us-east-1
+	// Azure allowed regions are azure-eastus2
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of the connection in the form of:
 	// "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
@@ -255,10 +354,19 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// Cloud Resource properties.
+	// Connection properties specific to Amazon Web Services.
+	// Structure is documented below.
+	Aws *ConnectionAws `pulumi:"aws"`
+	// Container for connection properties specific to Azure.
+	// Structure is documented below.
+	Azure *ConnectionAzure `pulumi:"azure"`
+	// Container for connection properties for delegation of access to GCP resources.
 	// Structure is documented below.
 	CloudResource *ConnectionCloudResource `pulumi:"cloudResource"`
-	// Cloud SQL properties.
+	// Connection properties specific to Cloud Spanner
+	// Structure is documented below.
+	CloudSpanner *ConnectionCloudSpanner `pulumi:"cloudSpanner"`
+	// A nested object resource
 	// Structure is documented below.
 	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
@@ -272,7 +380,10 @@ type connectionState struct {
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-	// Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+	// Spanner Connections same as spanner region
+	// AWS allowed regions are aws-us-east-1
+	// Azure allowed regions are azure-eastus2
 	Location *string `pulumi:"location"`
 	// The resource name of the connection in the form of:
 	// "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
@@ -283,10 +394,19 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
-	// Cloud Resource properties.
+	// Connection properties specific to Amazon Web Services.
+	// Structure is documented below.
+	Aws ConnectionAwsPtrInput
+	// Container for connection properties specific to Azure.
+	// Structure is documented below.
+	Azure ConnectionAzurePtrInput
+	// Container for connection properties for delegation of access to GCP resources.
 	// Structure is documented below.
 	CloudResource ConnectionCloudResourcePtrInput
-	// Cloud SQL properties.
+	// Connection properties specific to Cloud Spanner
+	// Structure is documented below.
+	CloudSpanner ConnectionCloudSpannerPtrInput
+	// A nested object resource
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrInput
 	// Optional connection id that should be assigned to the created connection.
@@ -300,7 +420,10 @@ type ConnectionState struct {
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-	// Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+	// Spanner Connections same as spanner region
+	// AWS allowed regions are aws-us-east-1
+	// Azure allowed regions are azure-eastus2
 	Location pulumi.StringPtrInput
 	// The resource name of the connection in the form of:
 	// "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
@@ -315,10 +438,19 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// Cloud Resource properties.
+	// Connection properties specific to Amazon Web Services.
+	// Structure is documented below.
+	Aws *ConnectionAws `pulumi:"aws"`
+	// Container for connection properties specific to Azure.
+	// Structure is documented below.
+	Azure *ConnectionAzure `pulumi:"azure"`
+	// Container for connection properties for delegation of access to GCP resources.
 	// Structure is documented below.
 	CloudResource *ConnectionCloudResource `pulumi:"cloudResource"`
-	// Cloud SQL properties.
+	// Connection properties specific to Cloud Spanner
+	// Structure is documented below.
+	CloudSpanner *ConnectionCloudSpanner `pulumi:"cloudSpanner"`
+	// A nested object resource
 	// Structure is documented below.
 	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
@@ -330,7 +462,10 @@ type connectionArgs struct {
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-	// Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+	// Spanner Connections same as spanner region
+	// AWS allowed regions are aws-us-east-1
+	// Azure allowed regions are azure-eastus2
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -339,10 +474,19 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// Cloud Resource properties.
+	// Connection properties specific to Amazon Web Services.
+	// Structure is documented below.
+	Aws ConnectionAwsPtrInput
+	// Container for connection properties specific to Azure.
+	// Structure is documented below.
+	Azure ConnectionAzurePtrInput
+	// Container for connection properties for delegation of access to GCP resources.
 	// Structure is documented below.
 	CloudResource ConnectionCloudResourcePtrInput
-	// Cloud SQL properties.
+	// Connection properties specific to Cloud Spanner
+	// Structure is documented below.
+	CloudSpanner ConnectionCloudSpannerPtrInput
+	// A nested object resource
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrInput
 	// Optional connection id that should be assigned to the created connection.
@@ -354,7 +498,10 @@ type ConnectionArgs struct {
 	// The geographic location where the connection should reside.
 	// Cloud SQL instance must be in the same location as the connection
 	// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-	// Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+	// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+	// Spanner Connections same as spanner region
+	// AWS allowed regions are aws-us-east-1
+	// Azure allowed regions are azure-eastus2
 	Location pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -448,13 +595,31 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
-// Cloud Resource properties.
+// Connection properties specific to Amazon Web Services.
+// Structure is documented below.
+func (o ConnectionOutput) Aws() ConnectionAwsPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionAwsPtrOutput { return v.Aws }).(ConnectionAwsPtrOutput)
+}
+
+// Container for connection properties specific to Azure.
+// Structure is documented below.
+func (o ConnectionOutput) Azure() ConnectionAzurePtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionAzurePtrOutput { return v.Azure }).(ConnectionAzurePtrOutput)
+}
+
+// Container for connection properties for delegation of access to GCP resources.
 // Structure is documented below.
 func (o ConnectionOutput) CloudResource() ConnectionCloudResourcePtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionCloudResourcePtrOutput { return v.CloudResource }).(ConnectionCloudResourcePtrOutput)
 }
 
-// Cloud SQL properties.
+// Connection properties specific to Cloud Spanner
+// Structure is documented below.
+func (o ConnectionOutput) CloudSpanner() ConnectionCloudSpannerPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionCloudSpannerPtrOutput { return v.CloudSpanner }).(ConnectionCloudSpannerPtrOutput)
+}
+
+// A nested object resource
 // Structure is documented below.
 func (o ConnectionOutput) CloudSql() ConnectionCloudSqlPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionCloudSqlPtrOutput { return v.CloudSql }).(ConnectionCloudSqlPtrOutput)
@@ -483,7 +648,10 @@ func (o ConnectionOutput) HasCredential() pulumi.BoolOutput {
 // The geographic location where the connection should reside.
 // Cloud SQL instance must be in the same location as the connection
 // with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-// Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+// Spanner Connections same as spanner region
+// AWS allowed regions are aws-us-east-1
+// Azure allowed regions are azure-eastus2
 func (o ConnectionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }

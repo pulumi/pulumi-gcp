@@ -23,9 +23,12 @@ import * as utilities from "../utilities";
  *         spec: {
  *             containers: [{
  *                 image: "gcr.io/cloudrun/hello",
- *                 args: ["arrgs"],
+ *                 ports: [{
+ *                     containerPort: 8080,
+ *                 }],
  *             }],
  *             containerConcurrency: 50,
+ *             timeoutSeconds: 100,
  *         },
  *     },
  *     traffics: [{

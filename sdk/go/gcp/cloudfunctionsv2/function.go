@@ -42,7 +42,7 @@ import (
 // 			Location:    pulumi.String("us-central1"),
 // 			Description: pulumi.String("a new function"),
 // 			BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-// 				Runtime:    pulumi.String("nodejs12"),
+// 				Runtime:    pulumi.String("nodejs16"),
 // 				EntryPoint: pulumi.String("helloHttp"),
 // 				Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 // 					StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
@@ -100,7 +100,7 @@ import (
 // 			Location:    pulumi.String("us-central1"),
 // 			Description: pulumi.String("a new function"),
 // 			BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
-// 				Runtime:    pulumi.String("nodejs12"),
+// 				Runtime:    pulumi.String("nodejs16"),
 // 				EntryPoint: pulumi.String("helloHttp"),
 // 				EnvironmentVariables: pulumi.StringMap{
 // 					"BUILD_CONFIG_TEST": pulumi.String("build_test"),

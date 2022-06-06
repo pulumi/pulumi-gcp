@@ -147,6 +147,9 @@ namespace Pulumi.Gcp
         [Output("dataflowCustomEndpoint")]
         public Output<string?> DataflowCustomEndpoint { get; private set; } = null!;
 
+        [Output("dataplexCustomEndpoint")]
+        public Output<string?> DataplexCustomEndpoint { get; private set; } = null!;
+
         [Output("dataprocCustomEndpoint")]
         public Output<string?> DataprocCustomEndpoint { get; private set; } = null!;
 
@@ -510,6 +513,9 @@ namespace Pulumi.Gcp
 
         [Input("dataflowCustomEndpoint")]
         public Input<string>? DataflowCustomEndpoint { get; set; }
+
+        [Input("dataplexCustomEndpoint")]
+        public Input<string>? DataplexCustomEndpoint { get; set; }
 
         [Input("dataprocCustomEndpoint")]
         public Input<string>? DataprocCustomEndpoint { get; set; }

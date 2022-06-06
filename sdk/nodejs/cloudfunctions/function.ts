@@ -138,6 +138,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+     */
+    public readonly dockerRegistry!: pulumi.Output<string>;
+    /**
      * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
      */
     public readonly dockerRepository!: pulumi.Output<string | undefined>;
@@ -257,6 +261,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dockerRegistry"] = state ? state.dockerRegistry : undefined;
             resourceInputs["dockerRepository"] = state ? state.dockerRepository : undefined;
             resourceInputs["entryPoint"] = state ? state.entryPoint : undefined;
             resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
@@ -290,6 +295,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dockerRegistry"] = args ? args.dockerRegistry : undefined;
             resourceInputs["dockerRepository"] = args ? args.dockerRepository : undefined;
             resourceInputs["entryPoint"] = args ? args.entryPoint : undefined;
             resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
@@ -337,6 +343,10 @@ export interface FunctionState {
      * Description of the function.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+     */
+    dockerRegistry?: pulumi.Input<string>;
     /**
      * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
      */
@@ -458,6 +468,10 @@ export interface FunctionArgs {
      * Description of the function.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+     */
+    dockerRegistry?: pulumi.Input<string>;
     /**
      * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
      */

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// ## Example Usage
     /// ### Target
-    /// tests creating and updating a target
+    /// Creates a basic Cloud Deploy target
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

@@ -450,7 +450,7 @@ class Target(pulumi.CustomResource):
 
         ## Example Usage
         ### Target
-        tests creating and updating a target
+        Creates a basic Cloud Deploy target
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -513,7 +513,7 @@ class Target(pulumi.CustomResource):
 
         ## Example Usage
         ### Target
-        tests creating and updating a target
+        Creates a basic Cloud Deploy target
         ```python
         import pulumi
         import pulumi_gcp as gcp

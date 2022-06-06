@@ -351,7 +351,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         ## Example Usage
         ### Delivery_pipeline
-        tests creating and updating a delivery pipeline
+        Creates a basic Cloud Deploy delivery pipeline
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -422,7 +422,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         ## Example Usage
         ### Delivery_pipeline
-        tests creating and updating a delivery pipeline
+        Creates a basic Cloud Deploy delivery pipeline
         ```python
         import pulumi
         import pulumi_gcp as gcp

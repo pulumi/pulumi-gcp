@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./getTagKey";
+export * from "./getTagValue";
 export * from "./tagBinding";
 export * from "./tagKey";
 export * from "./tagKeyIamBinding";

@@ -15,7 +15,10 @@ __all__ = ['ConnectionArgs', 'Connection']
 @pulumi.input_type
 class ConnectionArgs:
     def __init__(__self__, *,
+                 aws: Optional[pulumi.Input['ConnectionAwsArgs']] = None,
+                 azure: Optional[pulumi.Input['ConnectionAzureArgs']] = None,
                  cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
+                 cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
                  cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -24,9 +27,15 @@ class ConnectionArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
-        :param pulumi.Input['ConnectionCloudResourceArgs'] cloud_resource: Cloud Resource properties.
+        :param pulumi.Input['ConnectionAwsArgs'] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Cloud SQL properties.
+        :param pulumi.Input['ConnectionAzureArgs'] azure: Container for connection properties specific to Azure.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionCloudResourceArgs'] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionCloudSpannerArgs'] cloud_spanner: Connection properties specific to Cloud Spanner
+               Structure is documented below.
+        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -34,12 +43,21 @@ class ConnectionArgs:
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-               Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+               Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+               Spanner Connections same as spanner region
+               AWS allowed regions are aws-us-east-1
+               Azure allowed regions are azure-eastus2
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        if aws is not None:
+            pulumi.set(__self__, "aws", aws)
+        if azure is not None:
+            pulumi.set(__self__, "azure", azure)
         if cloud_resource is not None:
             pulumi.set(__self__, "cloud_resource", cloud_resource)
+        if cloud_spanner is not None:
+            pulumi.set(__self__, "cloud_spanner", cloud_spanner)
         if cloud_sql is not None:
             pulumi.set(__self__, "cloud_sql", cloud_sql)
         if connection_id is not None:
@@ -54,10 +72,36 @@ class ConnectionArgs:
             pulumi.set(__self__, "project", project)
 
     @property
+    @pulumi.getter
+    def aws(self) -> Optional[pulumi.Input['ConnectionAwsArgs']]:
+        """
+        Connection properties specific to Amazon Web Services.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws")
+
+    @aws.setter
+    def aws(self, value: Optional[pulumi.Input['ConnectionAwsArgs']]):
+        pulumi.set(self, "aws", value)
+
+    @property
+    @pulumi.getter
+    def azure(self) -> Optional[pulumi.Input['ConnectionAzureArgs']]:
+        """
+        Container for connection properties specific to Azure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "azure")
+
+    @azure.setter
+    def azure(self, value: Optional[pulumi.Input['ConnectionAzureArgs']]):
+        pulumi.set(self, "azure", value)
+
+    @property
     @pulumi.getter(name="cloudResource")
     def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArgs']]:
         """
-        Cloud Resource properties.
+        Container for connection properties for delegation of access to GCP resources.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_resource")
@@ -67,10 +111,23 @@ class ConnectionArgs:
         pulumi.set(self, "cloud_resource", value)
 
     @property
+    @pulumi.getter(name="cloudSpanner")
+    def cloud_spanner(self) -> Optional[pulumi.Input['ConnectionCloudSpannerArgs']]:
+        """
+        Connection properties specific to Cloud Spanner
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_spanner")
+
+    @cloud_spanner.setter
+    def cloud_spanner(self, value: Optional[pulumi.Input['ConnectionCloudSpannerArgs']]):
+        pulumi.set(self, "cloud_spanner", value)
+
+    @property
     @pulumi.getter(name="cloudSql")
     def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
         """
-        Cloud SQL properties.
+        A nested object resource
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql")
@@ -122,7 +179,10 @@ class ConnectionArgs:
         The geographic location where the connection should reside.
         Cloud SQL instance must be in the same location as the connection
         with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-        Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+        Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+        Spanner Connections same as spanner region
+        AWS allowed regions are aws-us-east-1
+        Azure allowed regions are azure-eastus2
         """
         return pulumi.get(self, "location")
 
@@ -147,7 +207,10 @@ class ConnectionArgs:
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
+                 aws: Optional[pulumi.Input['ConnectionAwsArgs']] = None,
+                 azure: Optional[pulumi.Input['ConnectionAzureArgs']] = None,
                  cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
+                 cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
                  cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -158,9 +221,15 @@ class _ConnectionState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-        :param pulumi.Input['ConnectionCloudResourceArgs'] cloud_resource: Cloud Resource properties.
+        :param pulumi.Input['ConnectionAwsArgs'] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Cloud SQL properties.
+        :param pulumi.Input['ConnectionAzureArgs'] azure: Container for connection properties specific to Azure.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionCloudResourceArgs'] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionCloudSpannerArgs'] cloud_spanner: Connection properties specific to Cloud Spanner
+               Structure is documented below.
+        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -169,14 +238,23 @@ class _ConnectionState:
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-               Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+               Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+               Spanner Connections same as spanner region
+               AWS allowed regions are aws-us-east-1
+               Azure allowed regions are azure-eastus2
         :param pulumi.Input[str] name: The resource name of the connection in the form of:
                "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        if aws is not None:
+            pulumi.set(__self__, "aws", aws)
+        if azure is not None:
+            pulumi.set(__self__, "azure", azure)
         if cloud_resource is not None:
             pulumi.set(__self__, "cloud_resource", cloud_resource)
+        if cloud_spanner is not None:
+            pulumi.set(__self__, "cloud_spanner", cloud_spanner)
         if cloud_sql is not None:
             pulumi.set(__self__, "cloud_sql", cloud_sql)
         if connection_id is not None:
@@ -195,10 +273,36 @@ class _ConnectionState:
             pulumi.set(__self__, "project", project)
 
     @property
+    @pulumi.getter
+    def aws(self) -> Optional[pulumi.Input['ConnectionAwsArgs']]:
+        """
+        Connection properties specific to Amazon Web Services.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws")
+
+    @aws.setter
+    def aws(self, value: Optional[pulumi.Input['ConnectionAwsArgs']]):
+        pulumi.set(self, "aws", value)
+
+    @property
+    @pulumi.getter
+    def azure(self) -> Optional[pulumi.Input['ConnectionAzureArgs']]:
+        """
+        Container for connection properties specific to Azure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "azure")
+
+    @azure.setter
+    def azure(self, value: Optional[pulumi.Input['ConnectionAzureArgs']]):
+        pulumi.set(self, "azure", value)
+
+    @property
     @pulumi.getter(name="cloudResource")
     def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArgs']]:
         """
-        Cloud Resource properties.
+        Container for connection properties for delegation of access to GCP resources.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_resource")
@@ -208,10 +312,23 @@ class _ConnectionState:
         pulumi.set(self, "cloud_resource", value)
 
     @property
+    @pulumi.getter(name="cloudSpanner")
+    def cloud_spanner(self) -> Optional[pulumi.Input['ConnectionCloudSpannerArgs']]:
+        """
+        Connection properties specific to Cloud Spanner
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_spanner")
+
+    @cloud_spanner.setter
+    def cloud_spanner(self, value: Optional[pulumi.Input['ConnectionCloudSpannerArgs']]):
+        pulumi.set(self, "cloud_spanner", value)
+
+    @property
     @pulumi.getter(name="cloudSql")
     def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
         """
-        Cloud SQL properties.
+        A nested object resource
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql")
@@ -275,7 +392,10 @@ class _ConnectionState:
         The geographic location where the connection should reside.
         Cloud SQL instance must be in the same location as the connection
         with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-        Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+        Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+        Spanner Connections same as spanner region
+        AWS allowed regions are aws-us-east-1
+        Azure allowed regions are azure-eastus2
         """
         return pulumi.get(self, "location")
 
@@ -315,7 +435,10 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
+                 azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
                  cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
+                 cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
                  cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -328,7 +451,7 @@ class Connection(pulumi.CustomResource):
 
         To get more information about Connection, see:
 
-        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
         * How-to Guides
             * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 
@@ -360,6 +483,7 @@ class Connection(pulumi.CustomResource):
         connection = gcp.bigquery.Connection("connection",
             friendly_name="👋",
             description="a riveting description",
+            location="US",
             cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
                 instance_id=instance.connection_name,
                 database=db.name,
@@ -419,6 +543,53 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             location="US")
         ```
+        ### Bigquery Connection Aws
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            aws=gcp.bigquery.ConnectionAwsArgs(
+                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
+                    iam_role_id="arn:aws:iam::999999999999:role/omnirole",
+                ),
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="aws-us-east-1")
+        ```
+        ### Bigquery Connection Azure
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            azure=gcp.bigquery.ConnectionAzureArgs(
+                customer_tenant_id="customer-tenant-id",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="azure-eastus2")
+        ```
+        ### Bigquery Connection Cloudspanner
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+                database="projects/project/instances/instance/databases/database",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
 
         ## Import
 
@@ -438,9 +609,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Cloud Resource properties.
+        :param pulumi.Input[pulumi.InputType['ConnectionAwsArgs']] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Cloud SQL properties.
+        :param pulumi.Input[pulumi.InputType['ConnectionAzureArgs']] azure: Container for connection properties specific to Azure.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']] cloud_spanner: Connection properties specific to Cloud Spanner
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -448,7 +625,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-               Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+               Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+               Spanner Connections same as spanner region
+               AWS allowed regions are aws-us-east-1
+               Azure allowed regions are azure-eastus2
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -463,7 +643,7 @@ class Connection(pulumi.CustomResource):
 
         To get more information about Connection, see:
 
-        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
         * How-to Guides
             * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 
@@ -495,6 +675,7 @@ class Connection(pulumi.CustomResource):
         connection = gcp.bigquery.Connection("connection",
             friendly_name="👋",
             description="a riveting description",
+            location="US",
             cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
                 instance_id=instance.connection_name,
                 database=db.name,
@@ -549,6 +730,53 @@ class Connection(pulumi.CustomResource):
 
         connection = gcp.bigquery.Connection("connection",
             cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
+        ### Bigquery Connection Aws
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            aws=gcp.bigquery.ConnectionAwsArgs(
+                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
+                    iam_role_id="arn:aws:iam::999999999999:role/omnirole",
+                ),
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="aws-us-east-1")
+        ```
+        ### Bigquery Connection Azure
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            azure=gcp.bigquery.ConnectionAzureArgs(
+                customer_tenant_id="customer-tenant-id",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="azure-eastus2")
+        ```
+        ### Bigquery Connection Cloudspanner
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+                database="projects/project/instances/instance/databases/database",
+            ),
             connection_id="my-connection",
             description="a riveting description",
             friendly_name="👋",
@@ -586,7 +814,10 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
+                 azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
                  cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
+                 cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
                  cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -605,7 +836,10 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            __props__.__dict__["aws"] = aws
+            __props__.__dict__["azure"] = azure
             __props__.__dict__["cloud_resource"] = cloud_resource
+            __props__.__dict__["cloud_spanner"] = cloud_spanner
             __props__.__dict__["cloud_sql"] = cloud_sql
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["description"] = description
@@ -624,7 +858,10 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
+            azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
             cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
+            cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
             cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -640,9 +877,15 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Cloud Resource properties.
+        :param pulumi.Input[pulumi.InputType['ConnectionAwsArgs']] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Cloud SQL properties.
+        :param pulumi.Input[pulumi.InputType['ConnectionAzureArgs']] azure: Container for connection properties specific to Azure.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']] cloud_spanner: Connection properties specific to Cloud Spanner
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -651,7 +894,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
                with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-               Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+               Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+               Spanner Connections same as spanner region
+               AWS allowed regions are aws-us-east-1
+               Azure allowed regions are azure-eastus2
         :param pulumi.Input[str] name: The resource name of the connection in the form of:
                "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -661,7 +907,10 @@ class Connection(pulumi.CustomResource):
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
+        __props__.__dict__["aws"] = aws
+        __props__.__dict__["azure"] = azure
         __props__.__dict__["cloud_resource"] = cloud_resource
+        __props__.__dict__["cloud_spanner"] = cloud_spanner
         __props__.__dict__["cloud_sql"] = cloud_sql
         __props__.__dict__["connection_id"] = connection_id
         __props__.__dict__["description"] = description
@@ -673,19 +922,46 @@ class Connection(pulumi.CustomResource):
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter
+    def aws(self) -> pulumi.Output[Optional['outputs.ConnectionAws']]:
+        """
+        Connection properties specific to Amazon Web Services.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws")
+
+    @property
+    @pulumi.getter
+    def azure(self) -> pulumi.Output[Optional['outputs.ConnectionAzure']]:
+        """
+        Container for connection properties specific to Azure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "azure")
+
+    @property
     @pulumi.getter(name="cloudResource")
     def cloud_resource(self) -> pulumi.Output[Optional['outputs.ConnectionCloudResource']]:
         """
-        Cloud Resource properties.
+        Container for connection properties for delegation of access to GCP resources.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_resource")
 
     @property
+    @pulumi.getter(name="cloudSpanner")
+    def cloud_spanner(self) -> pulumi.Output[Optional['outputs.ConnectionCloudSpanner']]:
+        """
+        Connection properties specific to Cloud Spanner
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_spanner")
+
+    @property
     @pulumi.getter(name="cloudSql")
     def cloud_sql(self) -> pulumi.Output[Optional['outputs.ConnectionCloudSql']]:
         """
-        Cloud SQL properties.
+        A nested object resource
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql")
@@ -729,7 +1005,10 @@ class Connection(pulumi.CustomResource):
         The geographic location where the connection should reside.
         Cloud SQL instance must be in the same location as the connection
         with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-        Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+        Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+        Spanner Connections same as spanner region
+        AWS allowed regions are aws-us-east-1
+        Azure allowed regions are azure-eastus2
         """
         return pulumi.get(self, "location")
 

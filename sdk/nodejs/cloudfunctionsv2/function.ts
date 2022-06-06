@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs12",
+ *         runtime: "nodejs16",
  *         entryPoint: "helloHttp",
  *         source: {
  *             storageSource: {
@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
- *         runtime: "nodejs12",
+ *         runtime: "nodejs16",
  *         entryPoint: "helloHttp",
  *         environmentVariables: {
  *             BUILD_CONFIG_TEST: "build_test",

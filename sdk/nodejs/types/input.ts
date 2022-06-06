@@ -2445,12 +2445,70 @@ export namespace bigquery {
         clusterId: pulumi.Input<string>;
     }
 
+    export interface ConnectionAws {
+        /**
+         * Authentication using Google owned service account to assume into customer's AWS IAM Role.
+         * Structure is documented below.
+         */
+        accessRole: pulumi.Input<inputs.bigquery.ConnectionAwsAccessRole>;
+    }
+
+    export interface ConnectionAwsAccessRole {
+        /**
+         * The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+         */
+        iamRoleId: pulumi.Input<string>;
+        /**
+         * -
+         * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+         */
+        identity?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAzure {
+        /**
+         * -
+         * The name of the Azure Active Directory Application.
+         */
+        application?: pulumi.Input<string>;
+        /**
+         * -
+         * The client id of the Azure Active Directory Application.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * The id of customer's directory that host the data.
+         */
+        customerTenantId: pulumi.Input<string>;
+        /**
+         * -
+         * The object id of the Azure Active Directory Application.
+         */
+        objectId?: pulumi.Input<string>;
+        /**
+         * -
+         * The URL user will be redirected to after granting consent during connection setup.
+         */
+        redirectUri?: pulumi.Input<string>;
+    }
+
     export interface ConnectionCloudResource {
         /**
          * -
          * The account ID of the service created for the purpose of this connection.
          */
         serviceAccountId?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionCloudSpanner {
+        /**
+         * Cloud Spanner database in the form `project/instance/database'
+         */
+        database: pulumi.Input<string>;
+        /**
+         * If parallelism should be used when reading from Cloud Spanner
+         */
+        useParallelism?: pulumi.Input<boolean>;
     }
 
     export interface ConnectionCloudSql {
@@ -2460,7 +2518,7 @@ export namespace bigquery {
          */
         credential: pulumi.Input<inputs.bigquery.ConnectionCloudSqlCredential>;
         /**
-         * Database name.
+         * Cloud Spanner database in the form `project/instance/database'
          */
         database: pulumi.Input<string>;
         /**
@@ -13544,7 +13602,9 @@ export namespace compute {
          */
         collocation?: pulumi.Input<string>;
         /**
-         * Number of vms in this placement group.
+         * Number of VMs in this placement group. Google does not recommend that you use this field
+         * unless you use a compact policy and you want your policy to work only if it contains this
+         * exact number of VMs.
          */
         vmCount?: pulumi.Input<number>;
     }
@@ -19439,6 +19499,28 @@ export namespace dataloss {
 
 }
 
+export namespace dataplex {
+    export interface LakeAssetStatus {
+        activeAssets?: pulumi.Input<number>;
+        securityPolicyApplyingAssets?: pulumi.Input<number>;
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface LakeMetastore {
+        /**
+         * Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+         */
+        service?: pulumi.Input<string>;
+    }
+
+    export interface LakeMetastoreStatus {
+        endpoint?: pulumi.Input<string>;
+        message?: pulumi.Input<string>;
+        state?: pulumi.Input<string>;
+        updateTime?: pulumi.Input<string>;
+    }
+}
+
 export namespace dataproc {
     export interface AutoscalingPolicyBasicAlgorithm {
         /**
@@ -24047,6 +24129,94 @@ export namespace logging {
 }
 
 export namespace memcache {
+    export interface InstanceMaintenancePolicy {
+        /**
+         * -
+         * Output only. The time when the policy was created.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits
+         */
+        createTime?: pulumi.Input<string>;
+        /**
+         * Optional. Description of what this policy is for.
+         * Create/Update methods return INVALID_ARGUMENT if the
+         * length is greater than 512.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * -
+         * Output only. The time when the policy was updated.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        updateTime?: pulumi.Input<string>;
+        /**
+         * Required. Maintenance window that is applied to resources covered by this policy.
+         * Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
+         * is expected to be one.
+         * Structure is documented below.
+         */
+        weeklyMaintenanceWindows: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindow>[]>;
+    }
+
+    export interface InstanceMaintenancePolicyWeeklyMaintenanceWindow {
+        /**
+         * Required. The day of week that maintenance updates occur.
+         * - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+         * - MONDAY: Monday
+         * - TUESDAY: Tuesday
+         * - WEDNESDAY: Wednesday
+         * - THURSDAY: Thursday
+         * - FRIDAY: Friday
+         * - SATURDAY: Saturday
+         * - SUNDAY: Sunday
+         * Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        day: pulumi.Input<string>;
+        /**
+         * Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+         * A duration in seconds with up to nine fractional digits,
+         * terminated by 's'. Example: "3.5s".
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Required. Start time of the window in UTC time.
+         * Structure is documented below.
+         */
+        startTime: pulumi.Input<inputs.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime>;
+    }
+
+    export interface InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         * An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface InstanceMaintenanceSchedule {
+        endTime?: pulumi.Input<string>;
+        scheduleDeadlineTime?: pulumi.Input<string>;
+        /**
+         * Required. Start time of the window in UTC time.
+         * Structure is documented below.
+         */
+        startTime?: pulumi.Input<string>;
+    }
+
     export interface InstanceMemcacheNode {
         host?: pulumi.Input<string>;
         nodeId?: pulumi.Input<string>;

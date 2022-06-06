@@ -20038,7 +20038,9 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
                attached.
                Possible values are `COLLOCATED`.
-        :param pulumi.Input[int] vm_count: Number of vms in this placement group.
+        :param pulumi.Input[int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
+               unless you use a compact policy and you want your policy to work only if it contains this
+               exact number of VMs.
         """
         if availability_domain_count is not None:
             pulumi.set(__self__, "availability_domain_count", availability_domain_count)
@@ -20080,7 +20082,9 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @pulumi.getter(name="vmCount")
     def vm_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of vms in this placement group.
+        Number of VMs in this placement group. Google does not recommend that you use this field
+        unless you use a compact policy and you want your policy to work only if it contains this
+        exact number of VMs.
         """
         return pulumi.get(self, "vm_count")
 

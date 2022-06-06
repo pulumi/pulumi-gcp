@@ -43,6 +43,18 @@ import * as utilities from "../utilities";
  *     },
  *     nodeCount: 1,
  *     memcacheVersion: "MEMCACHE_1_5",
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "SATURDAY",
+ *             duration: "14400s",
+ *             startTime: {
+ *                 hours: 0,
+ *                 minutes: 30,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
  * });
  * ```
  *
@@ -100,7 +112,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly authorizedNetwork!: pulumi.Output<string>;
     /**
-     * Creation timestamp in RFC3339 text format.
+     * -
+     * Output only. The time when the policy was created.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+     * resolution and up to nine fractional digits
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -115,6 +130,15 @@ export class Instance extends pulumi.CustomResource {
      * Resource labels to represent user-provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<outputs.memcache.InstanceMaintenancePolicy | undefined>;
+    /**
+     * Output only. Published maintenance schedule.
+     */
+    public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.memcache.InstanceMaintenanceSchedule[]>;
     /**
      * The full version of memcached server running on this instance.
      */
@@ -182,6 +206,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["discoveryEndpoint"] = state ? state.discoveryEndpoint : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
+            resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
             resourceInputs["memcacheFullVersion"] = state ? state.memcacheFullVersion : undefined;
             resourceInputs["memcacheNodes"] = state ? state.memcacheNodes : undefined;
             resourceInputs["memcacheParameters"] = state ? state.memcacheParameters : undefined;
@@ -203,6 +229,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["memcacheParameters"] = args ? args.memcacheParameters : undefined;
             resourceInputs["memcacheVersion"] = args ? args.memcacheVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -213,6 +240,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoint"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["memcacheFullVersion"] = undefined /*out*/;
             resourceInputs["memcacheNodes"] = undefined /*out*/;
         }
@@ -231,7 +259,10 @@ export interface InstanceState {
      */
     authorizedNetwork?: pulumi.Input<string>;
     /**
-     * Creation timestamp in RFC3339 text format.
+     * -
+     * Output only. The time when the policy was created.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+     * resolution and up to nine fractional digits
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -246,6 +277,15 @@ export interface InstanceState {
      * Resource labels to represent user-provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy>;
+    /**
+     * Output only. Published maintenance schedule.
+     */
+    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMaintenanceSchedule>[]>;
     /**
      * The full version of memcached server running on this instance.
      */
@@ -313,6 +353,11 @@ export interface InstanceArgs {
      * Resource labels to represent user-provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy>;
     /**
      * User-specified parameters for this memcache instance.
      * Structure is documented below.

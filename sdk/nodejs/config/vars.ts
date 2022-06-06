@@ -360,6 +360,14 @@ Object.defineProperty(exports, "dataflowCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const dataplexCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataplexCustomEndpoint", {
+    get() {
+        return __config.get("dataplexCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const dataprocCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dataprocCustomEndpoint", {
     get() {

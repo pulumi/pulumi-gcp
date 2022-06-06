@@ -58,6 +58,7 @@ class ProviderArgs:
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -221,6 +222,8 @@ class ProviderArgs:
             pulumi.set(__self__, "data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
         if dataflow_custom_endpoint is not None:
             pulumi.set(__self__, "dataflow_custom_endpoint", dataflow_custom_endpoint)
+        if dataplex_custom_endpoint is not None:
+            pulumi.set(__self__, "dataplex_custom_endpoint", dataplex_custom_endpoint)
         if dataproc_custom_endpoint is not None:
             pulumi.set(__self__, "dataproc_custom_endpoint", dataproc_custom_endpoint)
         if dataproc_metastore_custom_endpoint is not None:
@@ -767,6 +770,15 @@ class ProviderArgs:
     @dataflow_custom_endpoint.setter
     def dataflow_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataflow_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="dataplexCustomEndpoint")
+    def dataplex_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataplex_custom_endpoint")
+
+    @dataplex_custom_endpoint.setter
+    def dataplex_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataplex_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="dataprocCustomEndpoint")
@@ -1466,6 +1478,7 @@ class Provider(pulumi.ProviderResource):
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1619,6 +1632,7 @@ class Provider(pulumi.ProviderResource):
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1747,6 +1761,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["data_fusion_custom_endpoint"] = data_fusion_custom_endpoint
             __props__.__dict__["data_loss_prevention_custom_endpoint"] = data_loss_prevention_custom_endpoint
             __props__.__dict__["dataflow_custom_endpoint"] = dataflow_custom_endpoint
+            __props__.__dict__["dataplex_custom_endpoint"] = dataplex_custom_endpoint
             __props__.__dict__["dataproc_custom_endpoint"] = dataproc_custom_endpoint
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
             __props__.__dict__["datastore_custom_endpoint"] = datastore_custom_endpoint
@@ -2045,6 +2060,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="dataflowCustomEndpoint")
     def dataflow_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dataflow_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="dataplexCustomEndpoint")
+    def dataplex_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "dataplex_custom_endpoint")
 
     @property
     @pulumi.getter(name="dataprocCustomEndpoint")

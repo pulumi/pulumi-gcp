@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  * ### Target
- * tests creating and updating a target
+ * Creates a basic Cloud Deploy target
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";

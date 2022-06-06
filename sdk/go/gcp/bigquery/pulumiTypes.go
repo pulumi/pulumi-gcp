@@ -170,6 +170,536 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionAws struct {
+	// Authentication using Google owned service account to assume into customer's AWS IAM Role.
+	// Structure is documented below.
+	AccessRole ConnectionAwsAccessRole `pulumi:"accessRole"`
+}
+
+// ConnectionAwsInput is an input type that accepts ConnectionAwsArgs and ConnectionAwsOutput values.
+// You can construct a concrete instance of `ConnectionAwsInput` via:
+//
+//          ConnectionAwsArgs{...}
+type ConnectionAwsInput interface {
+	pulumi.Input
+
+	ToConnectionAwsOutput() ConnectionAwsOutput
+	ToConnectionAwsOutputWithContext(context.Context) ConnectionAwsOutput
+}
+
+type ConnectionAwsArgs struct {
+	// Authentication using Google owned service account to assume into customer's AWS IAM Role.
+	// Structure is documented below.
+	AccessRole ConnectionAwsAccessRoleInput `pulumi:"accessRole"`
+}
+
+func (ConnectionAwsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAws)(nil)).Elem()
+}
+
+func (i ConnectionAwsArgs) ToConnectionAwsOutput() ConnectionAwsOutput {
+	return i.ToConnectionAwsOutputWithContext(context.Background())
+}
+
+func (i ConnectionAwsArgs) ToConnectionAwsOutputWithContext(ctx context.Context) ConnectionAwsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAwsOutput)
+}
+
+func (i ConnectionAwsArgs) ToConnectionAwsPtrOutput() ConnectionAwsPtrOutput {
+	return i.ToConnectionAwsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionAwsArgs) ToConnectionAwsPtrOutputWithContext(ctx context.Context) ConnectionAwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAwsOutput).ToConnectionAwsPtrOutputWithContext(ctx)
+}
+
+// ConnectionAwsPtrInput is an input type that accepts ConnectionAwsArgs, ConnectionAwsPtr and ConnectionAwsPtrOutput values.
+// You can construct a concrete instance of `ConnectionAwsPtrInput` via:
+//
+//          ConnectionAwsArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionAwsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionAwsPtrOutput() ConnectionAwsPtrOutput
+	ToConnectionAwsPtrOutputWithContext(context.Context) ConnectionAwsPtrOutput
+}
+
+type connectionAwsPtrType ConnectionAwsArgs
+
+func ConnectionAwsPtr(v *ConnectionAwsArgs) ConnectionAwsPtrInput {
+	return (*connectionAwsPtrType)(v)
+}
+
+func (*connectionAwsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAws)(nil)).Elem()
+}
+
+func (i *connectionAwsPtrType) ToConnectionAwsPtrOutput() ConnectionAwsPtrOutput {
+	return i.ToConnectionAwsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionAwsPtrType) ToConnectionAwsPtrOutputWithContext(ctx context.Context) ConnectionAwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAwsPtrOutput)
+}
+
+type ConnectionAwsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAwsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAws)(nil)).Elem()
+}
+
+func (o ConnectionAwsOutput) ToConnectionAwsOutput() ConnectionAwsOutput {
+	return o
+}
+
+func (o ConnectionAwsOutput) ToConnectionAwsOutputWithContext(ctx context.Context) ConnectionAwsOutput {
+	return o
+}
+
+func (o ConnectionAwsOutput) ToConnectionAwsPtrOutput() ConnectionAwsPtrOutput {
+	return o.ToConnectionAwsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionAwsOutput) ToConnectionAwsPtrOutputWithContext(ctx context.Context) ConnectionAwsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAws) *ConnectionAws {
+		return &v
+	}).(ConnectionAwsPtrOutput)
+}
+
+// Authentication using Google owned service account to assume into customer's AWS IAM Role.
+// Structure is documented below.
+func (o ConnectionAwsOutput) AccessRole() ConnectionAwsAccessRoleOutput {
+	return o.ApplyT(func(v ConnectionAws) ConnectionAwsAccessRole { return v.AccessRole }).(ConnectionAwsAccessRoleOutput)
+}
+
+type ConnectionAwsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAwsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAws)(nil)).Elem()
+}
+
+func (o ConnectionAwsPtrOutput) ToConnectionAwsPtrOutput() ConnectionAwsPtrOutput {
+	return o
+}
+
+func (o ConnectionAwsPtrOutput) ToConnectionAwsPtrOutputWithContext(ctx context.Context) ConnectionAwsPtrOutput {
+	return o
+}
+
+func (o ConnectionAwsPtrOutput) Elem() ConnectionAwsOutput {
+	return o.ApplyT(func(v *ConnectionAws) ConnectionAws {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAws
+		return ret
+	}).(ConnectionAwsOutput)
+}
+
+// Authentication using Google owned service account to assume into customer's AWS IAM Role.
+// Structure is documented below.
+func (o ConnectionAwsPtrOutput) AccessRole() ConnectionAwsAccessRolePtrOutput {
+	return o.ApplyT(func(v *ConnectionAws) *ConnectionAwsAccessRole {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessRole
+	}).(ConnectionAwsAccessRolePtrOutput)
+}
+
+type ConnectionAwsAccessRole struct {
+	// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+	IamRoleId string `pulumi:"iamRoleId"`
+	// -
+	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+	Identity *string `pulumi:"identity"`
+}
+
+// ConnectionAwsAccessRoleInput is an input type that accepts ConnectionAwsAccessRoleArgs and ConnectionAwsAccessRoleOutput values.
+// You can construct a concrete instance of `ConnectionAwsAccessRoleInput` via:
+//
+//          ConnectionAwsAccessRoleArgs{...}
+type ConnectionAwsAccessRoleInput interface {
+	pulumi.Input
+
+	ToConnectionAwsAccessRoleOutput() ConnectionAwsAccessRoleOutput
+	ToConnectionAwsAccessRoleOutputWithContext(context.Context) ConnectionAwsAccessRoleOutput
+}
+
+type ConnectionAwsAccessRoleArgs struct {
+	// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+	IamRoleId pulumi.StringInput `pulumi:"iamRoleId"`
+	// -
+	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
+}
+
+func (ConnectionAwsAccessRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAwsAccessRole)(nil)).Elem()
+}
+
+func (i ConnectionAwsAccessRoleArgs) ToConnectionAwsAccessRoleOutput() ConnectionAwsAccessRoleOutput {
+	return i.ToConnectionAwsAccessRoleOutputWithContext(context.Background())
+}
+
+func (i ConnectionAwsAccessRoleArgs) ToConnectionAwsAccessRoleOutputWithContext(ctx context.Context) ConnectionAwsAccessRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAwsAccessRoleOutput)
+}
+
+func (i ConnectionAwsAccessRoleArgs) ToConnectionAwsAccessRolePtrOutput() ConnectionAwsAccessRolePtrOutput {
+	return i.ToConnectionAwsAccessRolePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionAwsAccessRoleArgs) ToConnectionAwsAccessRolePtrOutputWithContext(ctx context.Context) ConnectionAwsAccessRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAwsAccessRoleOutput).ToConnectionAwsAccessRolePtrOutputWithContext(ctx)
+}
+
+// ConnectionAwsAccessRolePtrInput is an input type that accepts ConnectionAwsAccessRoleArgs, ConnectionAwsAccessRolePtr and ConnectionAwsAccessRolePtrOutput values.
+// You can construct a concrete instance of `ConnectionAwsAccessRolePtrInput` via:
+//
+//          ConnectionAwsAccessRoleArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionAwsAccessRolePtrInput interface {
+	pulumi.Input
+
+	ToConnectionAwsAccessRolePtrOutput() ConnectionAwsAccessRolePtrOutput
+	ToConnectionAwsAccessRolePtrOutputWithContext(context.Context) ConnectionAwsAccessRolePtrOutput
+}
+
+type connectionAwsAccessRolePtrType ConnectionAwsAccessRoleArgs
+
+func ConnectionAwsAccessRolePtr(v *ConnectionAwsAccessRoleArgs) ConnectionAwsAccessRolePtrInput {
+	return (*connectionAwsAccessRolePtrType)(v)
+}
+
+func (*connectionAwsAccessRolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAwsAccessRole)(nil)).Elem()
+}
+
+func (i *connectionAwsAccessRolePtrType) ToConnectionAwsAccessRolePtrOutput() ConnectionAwsAccessRolePtrOutput {
+	return i.ToConnectionAwsAccessRolePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionAwsAccessRolePtrType) ToConnectionAwsAccessRolePtrOutputWithContext(ctx context.Context) ConnectionAwsAccessRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAwsAccessRolePtrOutput)
+}
+
+type ConnectionAwsAccessRoleOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAwsAccessRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAwsAccessRole)(nil)).Elem()
+}
+
+func (o ConnectionAwsAccessRoleOutput) ToConnectionAwsAccessRoleOutput() ConnectionAwsAccessRoleOutput {
+	return o
+}
+
+func (o ConnectionAwsAccessRoleOutput) ToConnectionAwsAccessRoleOutputWithContext(ctx context.Context) ConnectionAwsAccessRoleOutput {
+	return o
+}
+
+func (o ConnectionAwsAccessRoleOutput) ToConnectionAwsAccessRolePtrOutput() ConnectionAwsAccessRolePtrOutput {
+	return o.ToConnectionAwsAccessRolePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionAwsAccessRoleOutput) ToConnectionAwsAccessRolePtrOutputWithContext(ctx context.Context) ConnectionAwsAccessRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAwsAccessRole) *ConnectionAwsAccessRole {
+		return &v
+	}).(ConnectionAwsAccessRolePtrOutput)
+}
+
+// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+func (o ConnectionAwsAccessRoleOutput) IamRoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionAwsAccessRole) string { return v.IamRoleId }).(pulumi.StringOutput)
+}
+
+// -
+// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+func (o ConnectionAwsAccessRoleOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAwsAccessRole) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionAwsAccessRolePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAwsAccessRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAwsAccessRole)(nil)).Elem()
+}
+
+func (o ConnectionAwsAccessRolePtrOutput) ToConnectionAwsAccessRolePtrOutput() ConnectionAwsAccessRolePtrOutput {
+	return o
+}
+
+func (o ConnectionAwsAccessRolePtrOutput) ToConnectionAwsAccessRolePtrOutputWithContext(ctx context.Context) ConnectionAwsAccessRolePtrOutput {
+	return o
+}
+
+func (o ConnectionAwsAccessRolePtrOutput) Elem() ConnectionAwsAccessRoleOutput {
+	return o.ApplyT(func(v *ConnectionAwsAccessRole) ConnectionAwsAccessRole {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAwsAccessRole
+		return ret
+	}).(ConnectionAwsAccessRoleOutput)
+}
+
+// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
+func (o ConnectionAwsAccessRolePtrOutput) IamRoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAwsAccessRole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IamRoleId
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+func (o ConnectionAwsAccessRolePtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAwsAccessRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionAzure struct {
+	// -
+	// The name of the Azure Active Directory Application.
+	Application *string `pulumi:"application"`
+	// -
+	// The client id of the Azure Active Directory Application.
+	ClientId *string `pulumi:"clientId"`
+	// The id of customer's directory that host the data.
+	CustomerTenantId string `pulumi:"customerTenantId"`
+	// -
+	// The object id of the Azure Active Directory Application.
+	ObjectId *string `pulumi:"objectId"`
+	// -
+	// The URL user will be redirected to after granting consent during connection setup.
+	RedirectUri *string `pulumi:"redirectUri"`
+}
+
+// ConnectionAzureInput is an input type that accepts ConnectionAzureArgs and ConnectionAzureOutput values.
+// You can construct a concrete instance of `ConnectionAzureInput` via:
+//
+//          ConnectionAzureArgs{...}
+type ConnectionAzureInput interface {
+	pulumi.Input
+
+	ToConnectionAzureOutput() ConnectionAzureOutput
+	ToConnectionAzureOutputWithContext(context.Context) ConnectionAzureOutput
+}
+
+type ConnectionAzureArgs struct {
+	// -
+	// The name of the Azure Active Directory Application.
+	Application pulumi.StringPtrInput `pulumi:"application"`
+	// -
+	// The client id of the Azure Active Directory Application.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The id of customer's directory that host the data.
+	CustomerTenantId pulumi.StringInput `pulumi:"customerTenantId"`
+	// -
+	// The object id of the Azure Active Directory Application.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// -
+	// The URL user will be redirected to after granting consent during connection setup.
+	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
+}
+
+func (ConnectionAzureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAzure)(nil)).Elem()
+}
+
+func (i ConnectionAzureArgs) ToConnectionAzureOutput() ConnectionAzureOutput {
+	return i.ToConnectionAzureOutputWithContext(context.Background())
+}
+
+func (i ConnectionAzureArgs) ToConnectionAzureOutputWithContext(ctx context.Context) ConnectionAzureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAzureOutput)
+}
+
+func (i ConnectionAzureArgs) ToConnectionAzurePtrOutput() ConnectionAzurePtrOutput {
+	return i.ToConnectionAzurePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionAzureArgs) ToConnectionAzurePtrOutputWithContext(ctx context.Context) ConnectionAzurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAzureOutput).ToConnectionAzurePtrOutputWithContext(ctx)
+}
+
+// ConnectionAzurePtrInput is an input type that accepts ConnectionAzureArgs, ConnectionAzurePtr and ConnectionAzurePtrOutput values.
+// You can construct a concrete instance of `ConnectionAzurePtrInput` via:
+//
+//          ConnectionAzureArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionAzurePtrInput interface {
+	pulumi.Input
+
+	ToConnectionAzurePtrOutput() ConnectionAzurePtrOutput
+	ToConnectionAzurePtrOutputWithContext(context.Context) ConnectionAzurePtrOutput
+}
+
+type connectionAzurePtrType ConnectionAzureArgs
+
+func ConnectionAzurePtr(v *ConnectionAzureArgs) ConnectionAzurePtrInput {
+	return (*connectionAzurePtrType)(v)
+}
+
+func (*connectionAzurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAzure)(nil)).Elem()
+}
+
+func (i *connectionAzurePtrType) ToConnectionAzurePtrOutput() ConnectionAzurePtrOutput {
+	return i.ToConnectionAzurePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionAzurePtrType) ToConnectionAzurePtrOutputWithContext(ctx context.Context) ConnectionAzurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAzurePtrOutput)
+}
+
+type ConnectionAzureOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAzureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAzure)(nil)).Elem()
+}
+
+func (o ConnectionAzureOutput) ToConnectionAzureOutput() ConnectionAzureOutput {
+	return o
+}
+
+func (o ConnectionAzureOutput) ToConnectionAzureOutputWithContext(ctx context.Context) ConnectionAzureOutput {
+	return o
+}
+
+func (o ConnectionAzureOutput) ToConnectionAzurePtrOutput() ConnectionAzurePtrOutput {
+	return o.ToConnectionAzurePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionAzureOutput) ToConnectionAzurePtrOutputWithContext(ctx context.Context) ConnectionAzurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAzure) *ConnectionAzure {
+		return &v
+	}).(ConnectionAzurePtrOutput)
+}
+
+// -
+// The name of the Azure Active Directory Application.
+func (o ConnectionAzureOutput) Application() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAzure) *string { return v.Application }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The client id of the Azure Active Directory Application.
+func (o ConnectionAzureOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAzure) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The id of customer's directory that host the data.
+func (o ConnectionAzureOutput) CustomerTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionAzure) string { return v.CustomerTenantId }).(pulumi.StringOutput)
+}
+
+// -
+// The object id of the Azure Active Directory Application.
+func (o ConnectionAzureOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAzure) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The URL user will be redirected to after granting consent during connection setup.
+func (o ConnectionAzureOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAzure) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionAzurePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAzurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAzure)(nil)).Elem()
+}
+
+func (o ConnectionAzurePtrOutput) ToConnectionAzurePtrOutput() ConnectionAzurePtrOutput {
+	return o
+}
+
+func (o ConnectionAzurePtrOutput) ToConnectionAzurePtrOutputWithContext(ctx context.Context) ConnectionAzurePtrOutput {
+	return o
+}
+
+func (o ConnectionAzurePtrOutput) Elem() ConnectionAzureOutput {
+	return o.ApplyT(func(v *ConnectionAzure) ConnectionAzure {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAzure
+		return ret
+	}).(ConnectionAzureOutput)
+}
+
+// -
+// The name of the Azure Active Directory Application.
+func (o ConnectionAzurePtrOutput) Application() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAzure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Application
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The client id of the Azure Active Directory Application.
+func (o ConnectionAzurePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAzure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The id of customer's directory that host the data.
+func (o ConnectionAzurePtrOutput) CustomerTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAzure) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomerTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The object id of the Azure Active Directory Application.
+func (o ConnectionAzurePtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAzure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The URL user will be redirected to after granting consent during connection setup.
+func (o ConnectionAzurePtrOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAzure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionCloudResource struct {
 	// -
 	// The account ID of the service created for the purpose of this connection.
@@ -311,11 +841,167 @@ func (o ConnectionCloudResourcePtrOutput) ServiceAccountId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionCloudSpanner struct {
+	// Cloud Spanner database in the form `project/instance/database'
+	Database string `pulumi:"database"`
+	// If parallelism should be used when reading from Cloud Spanner
+	UseParallelism *bool `pulumi:"useParallelism"`
+}
+
+// ConnectionCloudSpannerInput is an input type that accepts ConnectionCloudSpannerArgs and ConnectionCloudSpannerOutput values.
+// You can construct a concrete instance of `ConnectionCloudSpannerInput` via:
+//
+//          ConnectionCloudSpannerArgs{...}
+type ConnectionCloudSpannerInput interface {
+	pulumi.Input
+
+	ToConnectionCloudSpannerOutput() ConnectionCloudSpannerOutput
+	ToConnectionCloudSpannerOutputWithContext(context.Context) ConnectionCloudSpannerOutput
+}
+
+type ConnectionCloudSpannerArgs struct {
+	// Cloud Spanner database in the form `project/instance/database'
+	Database pulumi.StringInput `pulumi:"database"`
+	// If parallelism should be used when reading from Cloud Spanner
+	UseParallelism pulumi.BoolPtrInput `pulumi:"useParallelism"`
+}
+
+func (ConnectionCloudSpannerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCloudSpanner)(nil)).Elem()
+}
+
+func (i ConnectionCloudSpannerArgs) ToConnectionCloudSpannerOutput() ConnectionCloudSpannerOutput {
+	return i.ToConnectionCloudSpannerOutputWithContext(context.Background())
+}
+
+func (i ConnectionCloudSpannerArgs) ToConnectionCloudSpannerOutputWithContext(ctx context.Context) ConnectionCloudSpannerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSpannerOutput)
+}
+
+func (i ConnectionCloudSpannerArgs) ToConnectionCloudSpannerPtrOutput() ConnectionCloudSpannerPtrOutput {
+	return i.ToConnectionCloudSpannerPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionCloudSpannerArgs) ToConnectionCloudSpannerPtrOutputWithContext(ctx context.Context) ConnectionCloudSpannerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSpannerOutput).ToConnectionCloudSpannerPtrOutputWithContext(ctx)
+}
+
+// ConnectionCloudSpannerPtrInput is an input type that accepts ConnectionCloudSpannerArgs, ConnectionCloudSpannerPtr and ConnectionCloudSpannerPtrOutput values.
+// You can construct a concrete instance of `ConnectionCloudSpannerPtrInput` via:
+//
+//          ConnectionCloudSpannerArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionCloudSpannerPtrInput interface {
+	pulumi.Input
+
+	ToConnectionCloudSpannerPtrOutput() ConnectionCloudSpannerPtrOutput
+	ToConnectionCloudSpannerPtrOutputWithContext(context.Context) ConnectionCloudSpannerPtrOutput
+}
+
+type connectionCloudSpannerPtrType ConnectionCloudSpannerArgs
+
+func ConnectionCloudSpannerPtr(v *ConnectionCloudSpannerArgs) ConnectionCloudSpannerPtrInput {
+	return (*connectionCloudSpannerPtrType)(v)
+}
+
+func (*connectionCloudSpannerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCloudSpanner)(nil)).Elem()
+}
+
+func (i *connectionCloudSpannerPtrType) ToConnectionCloudSpannerPtrOutput() ConnectionCloudSpannerPtrOutput {
+	return i.ToConnectionCloudSpannerPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionCloudSpannerPtrType) ToConnectionCloudSpannerPtrOutputWithContext(ctx context.Context) ConnectionCloudSpannerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSpannerPtrOutput)
+}
+
+type ConnectionCloudSpannerOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCloudSpannerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCloudSpanner)(nil)).Elem()
+}
+
+func (o ConnectionCloudSpannerOutput) ToConnectionCloudSpannerOutput() ConnectionCloudSpannerOutput {
+	return o
+}
+
+func (o ConnectionCloudSpannerOutput) ToConnectionCloudSpannerOutputWithContext(ctx context.Context) ConnectionCloudSpannerOutput {
+	return o
+}
+
+func (o ConnectionCloudSpannerOutput) ToConnectionCloudSpannerPtrOutput() ConnectionCloudSpannerPtrOutput {
+	return o.ToConnectionCloudSpannerPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionCloudSpannerOutput) ToConnectionCloudSpannerPtrOutputWithContext(ctx context.Context) ConnectionCloudSpannerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionCloudSpanner) *ConnectionCloudSpanner {
+		return &v
+	}).(ConnectionCloudSpannerPtrOutput)
+}
+
+// Cloud Spanner database in the form `project/instance/database'
+func (o ConnectionCloudSpannerOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionCloudSpanner) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// If parallelism should be used when reading from Cloud Spanner
+func (o ConnectionCloudSpannerOutput) UseParallelism() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionCloudSpanner) *bool { return v.UseParallelism }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionCloudSpannerPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCloudSpannerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCloudSpanner)(nil)).Elem()
+}
+
+func (o ConnectionCloudSpannerPtrOutput) ToConnectionCloudSpannerPtrOutput() ConnectionCloudSpannerPtrOutput {
+	return o
+}
+
+func (o ConnectionCloudSpannerPtrOutput) ToConnectionCloudSpannerPtrOutputWithContext(ctx context.Context) ConnectionCloudSpannerPtrOutput {
+	return o
+}
+
+func (o ConnectionCloudSpannerPtrOutput) Elem() ConnectionCloudSpannerOutput {
+	return o.ApplyT(func(v *ConnectionCloudSpanner) ConnectionCloudSpanner {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionCloudSpanner
+		return ret
+	}).(ConnectionCloudSpannerOutput)
+}
+
+// Cloud Spanner database in the form `project/instance/database'
+func (o ConnectionCloudSpannerPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionCloudSpanner) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// If parallelism should be used when reading from Cloud Spanner
+func (o ConnectionCloudSpannerPtrOutput) UseParallelism() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionCloudSpanner) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseParallelism
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ConnectionCloudSql struct {
 	// Cloud SQL properties.
 	// Structure is documented below.
 	Credential ConnectionCloudSqlCredential `pulumi:"credential"`
-	// Database name.
+	// Cloud Spanner database in the form `project/instance/database'
 	Database string `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -339,7 +1025,7 @@ type ConnectionCloudSqlArgs struct {
 	// Cloud SQL properties.
 	// Structure is documented below.
 	Credential ConnectionCloudSqlCredentialInput `pulumi:"credential"`
-	// Database name.
+	// Cloud Spanner database in the form `project/instance/database'
 	Database pulumi.StringInput `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -431,7 +1117,7 @@ func (o ConnectionCloudSqlOutput) Credential() ConnectionCloudSqlCredentialOutpu
 	return o.ApplyT(func(v ConnectionCloudSql) ConnectionCloudSqlCredential { return v.Credential }).(ConnectionCloudSqlCredentialOutput)
 }
 
-// Database name.
+// Cloud Spanner database in the form `project/instance/database'
 func (o ConnectionCloudSqlOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) string { return v.Database }).(pulumi.StringOutput)
 }
@@ -482,7 +1168,7 @@ func (o ConnectionCloudSqlPtrOutput) Credential() ConnectionCloudSqlCredentialPt
 	}).(ConnectionCloudSqlCredentialPtrOutput)
 }
 
-// Database name.
+// Cloud Spanner database in the form `project/instance/database'
 func (o ConnectionCloudSqlPtrOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudSql) *string {
 		if v == nil {
@@ -9643,8 +10329,16 @@ func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsInput)(nil)).Elem(), ConnectionAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsPtrInput)(nil)).Elem(), ConnectionAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsAccessRoleInput)(nil)).Elem(), ConnectionAwsAccessRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsAccessRolePtrInput)(nil)).Elem(), ConnectionAwsAccessRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAzureInput)(nil)).Elem(), ConnectionAzureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAzurePtrInput)(nil)).Elem(), ConnectionAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudResourceInput)(nil)).Elem(), ConnectionCloudResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudResourcePtrInput)(nil)).Elem(), ConnectionCloudResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSpannerInput)(nil)).Elem(), ConnectionCloudSpannerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSpannerPtrInput)(nil)).Elem(), ConnectionCloudSpannerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlInput)(nil)).Elem(), ConnectionCloudSqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlPtrInput)(nil)).Elem(), ConnectionCloudSqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCloudSqlCredentialInput)(nil)).Elem(), ConnectionCloudSqlCredentialArgs{})
@@ -9741,8 +10435,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableViewPtrInput)(nil)).Elem(), TableViewArgs{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionAwsOutput{})
+	pulumi.RegisterOutputType(ConnectionAwsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionAwsAccessRoleOutput{})
+	pulumi.RegisterOutputType(ConnectionAwsAccessRolePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionAzureOutput{})
+	pulumi.RegisterOutputType(ConnectionAzurePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudResourceOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudResourcePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionCloudSpannerOutput{})
+	pulumi.RegisterOutputType(ConnectionCloudSpannerPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionCloudSqlCredentialOutput{})

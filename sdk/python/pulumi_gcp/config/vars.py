@@ -192,6 +192,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dataflowCustomEndpoint')
 
     @property
+    def dataplex_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataplexCustomEndpoint')
+
+    @property
     def dataproc_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dataprocCustomEndpoint')
 
