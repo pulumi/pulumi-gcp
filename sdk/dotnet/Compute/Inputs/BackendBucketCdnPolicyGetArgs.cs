@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class BackendBucketCdnPolicyGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The CacheKeyPolicy for this CdnPolicy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cacheKeyPolicy")]
+        public Input<Inputs.BackendBucketCdnPolicyCacheKeyPolicyGetArgs>? CacheKeyPolicy { get; set; }
+
+        /// <summary>
         /// Specifies the cache setting for all responses from this backend.
         /// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
         /// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.

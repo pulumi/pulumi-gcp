@@ -335,7 +335,7 @@ export class Cluster extends pulumi.CustomResource {
      * [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
      * feature. Structure is documented below.
      */
-    public readonly networkPolicy!: pulumi.Output<outputs.container.ClusterNetworkPolicy>;
+    public readonly networkPolicy!: pulumi.Output<outputs.container.ClusterNetworkPolicy | undefined>;
     /**
      * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
      * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),

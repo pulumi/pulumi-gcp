@@ -52,6 +52,42 @@ import * as utilities from "../utilities";
  *     edgeSecurityPolicy: policy.id,
  * });
  * ```
+ * ### Backend Bucket Query String Whitelist
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const imageBucket = new gcp.storage.Bucket("imageBucket", {location: "EU"});
+ * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
+ *     description: "Contains beautiful images",
+ *     bucketName: imageBucket.name,
+ *     enableCdn: true,
+ *     cdnPolicy: {
+ *         cacheKeyPolicy: {
+ *             queryStringWhitelists: ["image-version"],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Backend Bucket Include Http Headers
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const imageBucket = new gcp.storage.Bucket("imageBucket", {location: "EU"});
+ * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
+ *     description: "Contains beautiful images",
+ *     bucketName: imageBucket.name,
+ *     enableCdn: true,
+ *     cdnPolicy: {
+ *         cacheKeyPolicy: {
+ *             includeHttpHeaders: ["X-My-Header-Field"],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

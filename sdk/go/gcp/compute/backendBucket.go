@@ -96,6 +96,82 @@ import (
 // 	})
 // }
 // ```
+// ### Backend Bucket Query String Whitelist
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+// 			Location: pulumi.String("EU"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+// 			Description: pulumi.String("Contains beautiful images"),
+// 			BucketName:  imageBucket.Name,
+// 			EnableCdn:   pulumi.Bool(true),
+// 			CdnPolicy: &compute.BackendBucketCdnPolicyArgs{
+// 				CacheKeyPolicy: &compute.BackendBucketCdnPolicyCacheKeyPolicyArgs{
+// 					QueryStringWhitelists: pulumi.StringArray{
+// 						pulumi.String("image-version"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Backend Bucket Include Http Headers
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+// 			Location: pulumi.String("EU"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+// 			Description: pulumi.String("Contains beautiful images"),
+// 			BucketName:  imageBucket.Name,
+// 			EnableCdn:   pulumi.Bool(true),
+// 			CdnPolicy: &compute.BackendBucketCdnPolicyArgs{
+// 				CacheKeyPolicy: &compute.BackendBucketCdnPolicyCacheKeyPolicyArgs{
+// 					IncludeHttpHeaders: pulumi.StringArray{
+// 						pulumi.String("X-My-Header-Field"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v1.20.1-0.20210315160117-642085ce9b99
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.24.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.25.0
 	github.com/pulumi/pulumi/sdk/v3 v3.33.1
 )
 
@@ -114,7 +114,7 @@ require (
 	github.com/hashicorp/terraform-plugin-go v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.4.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.13.0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.16.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.0.0-20210412075316-9b2996cce896 // indirect
 	github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734 // indirect
 	github.com/hashicorp/vault/api v1.1.1 // indirect
@@ -225,6 +225,6 @@ require (
 
 replace (
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220523144019-a9dc436975cc
-	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20220604113118-18e8f0589864
+	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20220610113829-6340bbf2d502
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )

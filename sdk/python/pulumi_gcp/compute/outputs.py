@@ -29,6 +29,7 @@ __all__ = [
     'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas',
     'AutoscalerAutoscalingPolicyScalingSchedule',
     'BackendBucketCdnPolicy',
+    'BackendBucketCdnPolicyCacheKeyPolicy',
     'BackendBucketCdnPolicyNegativeCachingPolicy',
     'BackendServiceBackend',
     'BackendServiceCdnPolicy',
@@ -414,6 +415,7 @@ __all__ = [
     'URLMapPathMatcherRouteRuleUrlRedirect',
     'URLMapTest',
     'GetBackendBucketCdnPolicyResult',
+    'GetBackendBucketCdnPolicyCacheKeyPolicyResult',
     'GetBackendBucketCdnPolicyNegativeCachingPolicyResult',
     'GetBackendServiceBackendResult',
     'GetBackendServiceCdnPolicyResult',
@@ -1985,7 +1987,9 @@ class BackendBucketCdnPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cacheMode":
+        if key == "cacheKeyPolicy":
+            suggest = "cache_key_policy"
+        elif key == "cacheMode":
             suggest = "cache_mode"
         elif key == "clientTtl":
             suggest = "client_ttl"
@@ -2014,6 +2018,7 @@ class BackendBucketCdnPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cache_key_policy: Optional['outputs.BackendBucketCdnPolicyCacheKeyPolicy'] = None,
                  cache_mode: Optional[str] = None,
                  client_ttl: Optional[int] = None,
                  default_ttl: Optional[int] = None,
@@ -2023,6 +2028,8 @@ class BackendBucketCdnPolicy(dict):
                  serve_while_stale: Optional[int] = None,
                  signed_url_cache_max_age_sec: Optional[int] = None):
         """
+        :param 'BackendBucketCdnPolicyCacheKeyPolicyArgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+               Structure is documented below.
         :param str cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
                Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
@@ -2044,6 +2051,8 @@ class BackendBucketCdnPolicy(dict):
                max-age=[TTL]" header, regardless of any existing Cache-Control
                header. The actual headers served in responses will not be altered.
         """
+        if cache_key_policy is not None:
+            pulumi.set(__self__, "cache_key_policy", cache_key_policy)
         if cache_mode is not None:
             pulumi.set(__self__, "cache_mode", cache_mode)
         if client_ttl is not None:
@@ -2060,6 +2069,15 @@ class BackendBucketCdnPolicy(dict):
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheKeyPolicy")
+    def cache_key_policy(self) -> Optional['outputs.BackendBucketCdnPolicyCacheKeyPolicy']:
+        """
+        The CacheKeyPolicy for this CdnPolicy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cache_key_policy")
 
     @property
     @pulumi.getter(name="cacheMode")
@@ -2136,6 +2154,62 @@ class BackendBucketCdnPolicy(dict):
         header. The actual headers served in responses will not be altered.
         """
         return pulumi.get(self, "signed_url_cache_max_age_sec")
+
+
+@pulumi.output_type
+class BackendBucketCdnPolicyCacheKeyPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeHttpHeaders":
+            suggest = "include_http_headers"
+        elif key == "queryStringWhitelists":
+            suggest = "query_string_whitelists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendBucketCdnPolicyCacheKeyPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendBucketCdnPolicyCacheKeyPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendBucketCdnPolicyCacheKeyPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 include_http_headers: Optional[Sequence[str]] = None,
+                 query_string_whitelists: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] include_http_headers: Allows HTTP request headers (by name) to be used in the
+               cache key.
+        :param Sequence[str] query_string_whitelists: Names of query string parameters to include in cache keys.
+               Default parameters are always included. '&' and '=' will
+               be percent encoded and not treated as delimiters.
+        """
+        if include_http_headers is not None:
+            pulumi.set(__self__, "include_http_headers", include_http_headers)
+        if query_string_whitelists is not None:
+            pulumi.set(__self__, "query_string_whitelists", query_string_whitelists)
+
+    @property
+    @pulumi.getter(name="includeHttpHeaders")
+    def include_http_headers(self) -> Optional[Sequence[str]]:
+        """
+        Allows HTTP request headers (by name) to be used in the
+        cache key.
+        """
+        return pulumi.get(self, "include_http_headers")
+
+    @property
+    @pulumi.getter(name="queryStringWhitelists")
+    def query_string_whitelists(self) -> Optional[Sequence[str]]:
+        """
+        Names of query string parameters to include in cache keys.
+        Default parameters are always included. '&' and '=' will
+        be percent encoded and not treated as delimiters.
+        """
+        return pulumi.get(self, "query_string_whitelists")
 
 
 @pulumi.output_type
@@ -29249,6 +29323,7 @@ class URLMapTest(dict):
 @pulumi.output_type
 class GetBackendBucketCdnPolicyResult(dict):
     def __init__(__self__, *,
+                 cache_key_policies: Sequence['outputs.GetBackendBucketCdnPolicyCacheKeyPolicyResult'],
                  cache_mode: str,
                  client_ttl: int,
                  default_ttl: int,
@@ -29257,6 +29332,7 @@ class GetBackendBucketCdnPolicyResult(dict):
                  negative_caching_policies: Sequence['outputs.GetBackendBucketCdnPolicyNegativeCachingPolicyResult'],
                  serve_while_stale: int,
                  signed_url_cache_max_age_sec: int):
+        pulumi.set(__self__, "cache_key_policies", cache_key_policies)
         pulumi.set(__self__, "cache_mode", cache_mode)
         pulumi.set(__self__, "client_ttl", client_ttl)
         pulumi.set(__self__, "default_ttl", default_ttl)
@@ -29265,6 +29341,11 @@ class GetBackendBucketCdnPolicyResult(dict):
         pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
         pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheKeyPolicies")
+    def cache_key_policies(self) -> Sequence['outputs.GetBackendBucketCdnPolicyCacheKeyPolicyResult']:
+        return pulumi.get(self, "cache_key_policies")
 
     @property
     @pulumi.getter(name="cacheMode")
@@ -29305,6 +29386,25 @@ class GetBackendBucketCdnPolicyResult(dict):
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
     def signed_url_cache_max_age_sec(self) -> int:
         return pulumi.get(self, "signed_url_cache_max_age_sec")
+
+
+@pulumi.output_type
+class GetBackendBucketCdnPolicyCacheKeyPolicyResult(dict):
+    def __init__(__self__, *,
+                 include_http_headers: Sequence[str],
+                 query_string_whitelists: Sequence[str]):
+        pulumi.set(__self__, "include_http_headers", include_http_headers)
+        pulumi.set(__self__, "query_string_whitelists", query_string_whitelists)
+
+    @property
+    @pulumi.getter(name="includeHttpHeaders")
+    def include_http_headers(self) -> Sequence[str]:
+        return pulumi.get(self, "include_http_headers")
+
+    @property
+    @pulumi.getter(name="queryStringWhitelists")
+    def query_string_whitelists(self) -> Sequence[str]:
+        return pulumi.get(self, "query_string_whitelists")
 
 
 @pulumi.output_type

@@ -409,7 +409,7 @@ namespace Pulumi.Gcp.Container
         /// feature. Structure is documented below.
         /// </summary>
         [Output("networkPolicy")]
-        public Output<Outputs.ClusterNetworkPolicy> NetworkPolicy { get; private set; } = null!;
+        public Output<Outputs.ClusterNetworkPolicy?> NetworkPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Determines whether alias IPs or routes will be used for pod IPs in the cluster.

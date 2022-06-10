@@ -763,7 +763,13 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_instance_iam.html.markdown",
 				},
 			},
-			"google_compute_instance_template":       {Tok: gcpResource(gcpCompute, "InstanceTemplate")},
+			"google_compute_instance_template": {
+				Tok: gcpResource(gcpCompute, "InstanceTemplate"),
+				UniqueNameFields: []string{
+					"name",
+					"name-prefix",
+				},
+			},
 			"google_compute_interconnect_attachment": {Tok: gcpResource(gcpCompute, "InterconnectAttachment")},
 			"google_compute_machine_image_iam_binding": {
 				Tok: gcpResource(gcpCompute, "MachineImageIamBinding"),

@@ -3465,7 +3465,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkPolicy")
-    def network_policy(self) -> pulumi.Output['outputs.ClusterNetworkPolicy']:
+    def network_policy(self) -> pulumi.Output[Optional['outputs.ClusterNetworkPolicy']]:
         """
         Configuration options for the
         [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
