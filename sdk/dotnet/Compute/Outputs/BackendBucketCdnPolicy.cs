@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class BackendBucketCdnPolicy
     {
         /// <summary>
+        /// The CacheKeyPolicy for this CdnPolicy.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.BackendBucketCdnPolicyCacheKeyPolicy? CacheKeyPolicy;
+        /// <summary>
         /// Specifies the cache setting for all responses from this backend.
         /// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
         /// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
@@ -60,6 +65,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private BackendBucketCdnPolicy(
+            Outputs.BackendBucketCdnPolicyCacheKeyPolicy? cacheKeyPolicy,
+
             string? cacheMode,
 
             int? clientTtl,
@@ -76,6 +83,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? signedUrlCacheMaxAgeSec)
         {
+            CacheKeyPolicy = cacheKeyPolicy;
             CacheMode = cacheMode;
             ClientTtl = clientTtl;
             DefaultTtl = defaultTtl;

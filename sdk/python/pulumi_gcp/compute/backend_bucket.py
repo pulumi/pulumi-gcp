@@ -409,6 +409,40 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
+        ### Backend Bucket Query String Whitelist
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
+        image_backend = gcp.compute.BackendBucket("imageBackend",
+            description="Contains beautiful images",
+            bucket_name=image_bucket.name,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
+                    query_string_whitelists=["image-version"],
+                ),
+            ))
+        ```
+        ### Backend Bucket Include Http Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
+        image_backend = gcp.compute.BackendBucket("imageBackend",
+            description="Contains beautiful images",
+            bucket_name=image_bucket.name,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
+                    include_http_headers=["X-My-Header-Field"],
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -495,6 +529,40 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_backend_bucket.name,
             enable_cdn=True,
             edge_security_policy=policy.id)
+        ```
+        ### Backend Bucket Query String Whitelist
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
+        image_backend = gcp.compute.BackendBucket("imageBackend",
+            description="Contains beautiful images",
+            bucket_name=image_bucket.name,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
+                    query_string_whitelists=["image-version"],
+                ),
+            ))
+        ```
+        ### Backend Bucket Include Http Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
+        image_backend = gcp.compute.BackendBucket("imageBackend",
+            description="Contains beautiful images",
+            bucket_name=image_bucket.name,
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendBucketCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendBucketCdnPolicyCacheKeyPolicyArgs(
+                    include_http_headers=["X-My-Header-Field"],
+                ),
+            ))
         ```
 
         ## Import

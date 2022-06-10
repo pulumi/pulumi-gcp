@@ -8777,6 +8777,11 @@ export namespace compute {
 
     export interface BackendBucketCdnPolicy {
         /**
+         * The CacheKeyPolicy for this CdnPolicy.
+         * Structure is documented below.
+         */
+        cacheKeyPolicy?: outputs.compute.BackendBucketCdnPolicyCacheKeyPolicy;
+        /**
          * Specifies the cache setting for all responses from this backend.
          * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
          * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
@@ -8820,6 +8825,20 @@ export namespace compute {
          * header. The actual headers served in responses will not be altered.
          */
         signedUrlCacheMaxAgeSec?: number;
+    }
+
+    export interface BackendBucketCdnPolicyCacheKeyPolicy {
+        /**
+         * Allows HTTP request headers (by name) to be used in the
+         * cache key.
+         */
+        includeHttpHeaders?: string[];
+        /**
+         * Names of query string parameters to include in cache keys.
+         * Default parameters are always included. '&' and '=' will
+         * be percent encoded and not treated as delimiters.
+         */
+        queryStringWhitelists?: string[];
     }
 
     export interface BackendBucketCdnPolicyNegativeCachingPolicy {
@@ -9509,6 +9528,7 @@ export namespace compute {
     }
 
     export interface GetBackendBucketCdnPolicy {
+        cacheKeyPolicies: outputs.compute.GetBackendBucketCdnPolicyCacheKeyPolicy[];
         cacheMode: string;
         clientTtl: number;
         defaultTtl: number;
@@ -9517,6 +9537,11 @@ export namespace compute {
         negativeCachingPolicies: outputs.compute.GetBackendBucketCdnPolicyNegativeCachingPolicy[];
         serveWhileStale: number;
         signedUrlCacheMaxAgeSec: number;
+    }
+
+    export interface GetBackendBucketCdnPolicyCacheKeyPolicy {
+        includeHttpHeaders: string[];
+        queryStringWhitelists: string[];
     }
 
     export interface GetBackendBucketCdnPolicyNegativeCachingPolicy {

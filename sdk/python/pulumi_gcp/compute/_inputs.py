@@ -28,6 +28,7 @@ __all__ = [
     'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
     'AutoscalerAutoscalingPolicyScalingScheduleArgs',
     'BackendBucketCdnPolicyArgs',
+    'BackendBucketCdnPolicyCacheKeyPolicyArgs',
     'BackendBucketCdnPolicyNegativeCachingPolicyArgs',
     'BackendServiceBackendArgs',
     'BackendServiceCdnPolicyArgs',
@@ -1911,6 +1912,7 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
 @pulumi.input_type
 class BackendBucketCdnPolicyArgs:
     def __init__(__self__, *,
+                 cache_key_policy: Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[int]] = None,
                  default_ttl: Optional[pulumi.Input[int]] = None,
@@ -1920,6 +1922,8 @@ class BackendBucketCdnPolicyArgs:
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+               Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
                Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
@@ -1941,6 +1945,8 @@ class BackendBucketCdnPolicyArgs:
                max-age=[TTL]" header, regardless of any existing Cache-Control
                header. The actual headers served in responses will not be altered.
         """
+        if cache_key_policy is not None:
+            pulumi.set(__self__, "cache_key_policy", cache_key_policy)
         if cache_mode is not None:
             pulumi.set(__self__, "cache_mode", cache_mode)
         if client_ttl is not None:
@@ -1957,6 +1963,19 @@ class BackendBucketCdnPolicyArgs:
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheKeyPolicy")
+    def cache_key_policy(self) -> Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs']]:
+        """
+        The CacheKeyPolicy for this CdnPolicy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cache_key_policy")
+
+    @cache_key_policy.setter
+    def cache_key_policy(self, value: Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs']]):
+        pulumi.set(self, "cache_key_policy", value)
 
     @property
     @pulumi.getter(name="cacheMode")
@@ -2065,6 +2084,51 @@ class BackendBucketCdnPolicyArgs:
     @signed_url_cache_max_age_sec.setter
     def signed_url_cache_max_age_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
+
+
+@pulumi.input_type
+class BackendBucketCdnPolicyCacheKeyPolicyArgs:
+    def __init__(__self__, *,
+                 include_http_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 query_string_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_http_headers: Allows HTTP request headers (by name) to be used in the
+               cache key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_string_whitelists: Names of query string parameters to include in cache keys.
+               Default parameters are always included. '&' and '=' will
+               be percent encoded and not treated as delimiters.
+        """
+        if include_http_headers is not None:
+            pulumi.set(__self__, "include_http_headers", include_http_headers)
+        if query_string_whitelists is not None:
+            pulumi.set(__self__, "query_string_whitelists", query_string_whitelists)
+
+    @property
+    @pulumi.getter(name="includeHttpHeaders")
+    def include_http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allows HTTP request headers (by name) to be used in the
+        cache key.
+        """
+        return pulumi.get(self, "include_http_headers")
+
+    @include_http_headers.setter
+    def include_http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_http_headers", value)
+
+    @property
+    @pulumi.getter(name="queryStringWhitelists")
+    def query_string_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of query string parameters to include in cache keys.
+        Default parameters are always included. '&' and '=' will
+        be percent encoded and not treated as delimiters.
+        """
+        return pulumi.get(self, "query_string_whitelists")
+
+    @query_string_whitelists.setter
+    def query_string_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_string_whitelists", value)
 
 
 @pulumi.input_type
