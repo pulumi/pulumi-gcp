@@ -151,6 +151,9 @@ namespace Pulumi.Gcp.Sql
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        [Output("sqlServerUserDetails")]
+        public Output<Outputs.UserSqlServerUserDetails?> SqlServerUserDetails { get; private set; } = null!;
+
         /// <summary>
         /// The user type. It determines the method to authenticate the
         /// user during login. The default is the database's built-in user type. Flags
@@ -250,6 +253,9 @@ namespace Pulumi.Gcp.Sql
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("sqlServerUserDetails")]
+        public Input<Inputs.UserSqlServerUserDetailsArgs>? SqlServerUserDetails { get; set; }
+
         /// <summary>
         /// The user type. It determines the method to authenticate the
         /// user during login. The default is the database's built-in user type. Flags
@@ -309,6 +315,9 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("sqlServerUserDetails")]
+        public Input<Inputs.UserSqlServerUserDetailsGetArgs>? SqlServerUserDetails { get; set; }
 
         /// <summary>
         /// The user type. It determines the method to authenticate the

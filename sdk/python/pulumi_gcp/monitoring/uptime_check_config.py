@@ -36,7 +36,7 @@ class UptimeCheckConfigArgs:
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
-        :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+        :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
                Structure is documented below.
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -135,7 +135,7 @@ class UptimeCheckConfigArgs:
     @pulumi.getter(name="monitoredResource")
     def monitored_resource(self) -> Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]:
         """
-        The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+        The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
         Structure is documented below.
         """
         return pulumi.get(self, "monitored_resource")
@@ -233,7 +233,7 @@ class _UptimeCheckConfigState:
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
-        :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+        :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
                Structure is documented below.
         :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is
                projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
@@ -330,7 +330,7 @@ class _UptimeCheckConfigState:
     @pulumi.getter(name="monitoredResource")
     def monitored_resource(self) -> Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]:
         """
-        The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+        The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
         Structure is documented below.
         """
         return pulumi.get(self, "monitored_resource")
@@ -479,7 +479,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
         http = gcp.monitoring.UptimeCheckConfig("http",
             checker_type="STATIC_IP_CHECKERS",
             content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
-                content="example",
+                content="\"example\"",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="EXACT_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
             )],
             display_name="http-uptime-check",
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
@@ -507,6 +512,11 @@ class UptimeCheckConfig(pulumi.CustomResource):
         https = gcp.monitoring.UptimeCheckConfig("https",
             content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
                 content="example",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="REGEX_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
             )],
             display_name="https-uptime-check",
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
@@ -562,7 +572,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigHttpCheckArgs']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['UptimeCheckConfigMonitoredResourceArgs']] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+        :param pulumi.Input[pulumi.InputType['UptimeCheckConfigMonitoredResourceArgs']] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
                Structure is documented below.
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -602,7 +612,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
         http = gcp.monitoring.UptimeCheckConfig("http",
             checker_type="STATIC_IP_CHECKERS",
             content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
-                content="example",
+                content="\"example\"",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="EXACT_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
             )],
             display_name="http-uptime-check",
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
@@ -630,6 +645,11 @@ class UptimeCheckConfig(pulumi.CustomResource):
         https = gcp.monitoring.UptimeCheckConfig("https",
             content_matchers=[gcp.monitoring.UptimeCheckConfigContentMatcherArgs(
                 content="example",
+                json_path_matcher=gcp.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs(
+                    json_matcher="REGEX_MATCH",
+                    json_path="$.path",
+                ),
+                matcher="MATCHES_JSON_PATH",
             )],
             display_name="https-uptime-check",
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
@@ -768,7 +788,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigHttpCheckArgs']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['UptimeCheckConfigMonitoredResourceArgs']] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+        :param pulumi.Input[pulumi.InputType['UptimeCheckConfigMonitoredResourceArgs']] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
                Structure is documented below.
         :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is
                projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
@@ -841,7 +861,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     @pulumi.getter(name="monitoredResource")
     def monitored_resource(self) -> pulumi.Output[Optional['outputs.UptimeCheckConfigMonitoredResource']]:
         """
-        The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+        The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
         Structure is documented below.
         """
         return pulumi.get(self, "monitored_resource")

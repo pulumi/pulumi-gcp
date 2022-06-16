@@ -54,6 +54,11 @@ namespace Pulumi.Gcp.Monitoring
     ///                     Threshold = "1s",
     ///                 },
     ///             },
+    ///             UserLabels = 
+    ///             {
+    ///                 { "my_key", "my_value" },
+    ///                 { "my_other_key", "my_other_value" },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -189,6 +194,16 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> SloId { get; private set; } = null!;
 
         /// <summary>
+        /// This field is intended to be used for organizing and identifying the AlertPolicy
+        /// objects.The field can contain up to 64 entries. Each key and value is limited
+        /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        /// must begin with a letter.
+        /// </summary>
+        [Output("userLabels")]
+        public Output<ImmutableDictionary<string, string>?> UserLabels { get; private set; } = null!;
+
+        /// <summary>
         /// A windows-based SLI defines the criteria for time windows.
         /// good_service is defined based off the count of these time windows
         /// for which the provided service was of good quality.
@@ -320,6 +335,22 @@ namespace Pulumi.Gcp.Monitoring
         [Input("sloId")]
         public Input<string>? SloId { get; set; }
 
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// This field is intended to be used for organizing and identifying the AlertPolicy
+        /// objects.The field can contain up to 64 entries. Each key and value is limited
+        /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        /// must begin with a letter.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
+
         /// <summary>
         /// A windows-based SLI defines the criteria for time windows.
         /// good_service is defined based off the count of these time windows
@@ -419,6 +450,22 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("sloId")]
         public Input<string>? SloId { get; set; }
+
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// This field is intended to be used for organizing and identifying the AlertPolicy
+        /// objects.The field can contain up to 64 entries. Each key and value is limited
+        /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        /// must begin with a letter.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
 
         /// <summary>
         /// A windows-based SLI defines the criteria for time windows.

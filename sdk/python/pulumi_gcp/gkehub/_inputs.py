@@ -139,14 +139,18 @@ class FeatureMembershipConfigmanagementBinauthzArgs:
 class FeatureMembershipConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
                  git: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']] = None,
+                 prevent_drift: Optional[pulumi.Input[bool]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: -
                (Optional) Structure is documented below.
+        :param pulumi.Input[bool] prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
         if git is not None:
             pulumi.set(__self__, "git", git)
+        if prevent_drift is not None:
+            pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
             pulumi.set(__self__, "source_format", source_format)
 
@@ -162,6 +166,18 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     @git.setter
     def git(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']]):
         pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter(name="preventDrift")
+    def prevent_drift(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        """
+        return pulumi.get(self, "prevent_drift")
+
+    @prevent_drift.setter
+    def prevent_drift(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_drift", value)
 
     @property
     @pulumi.getter(name="sourceFormat")

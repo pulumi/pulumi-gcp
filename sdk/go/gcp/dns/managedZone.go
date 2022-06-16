@@ -270,6 +270,8 @@ import (
 type ManagedZone struct {
 	pulumi.CustomResourceState
 
+	// The time that this resource was created on the server. This is in RFC3339 text format.
+	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -286,6 +288,8 @@ type ManagedZone struct {
 	ForwardingConfig ManagedZoneForwardingConfigPtrOutput `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Unique identifier for the resource; defined by the server.
+	ManagedZoneId pulumi.IntOutput `pulumi:"managedZoneId"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -351,6 +355,8 @@ func GetManagedZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedZone resources.
 type managedZoneState struct {
+	// The time that this resource was created on the server. This is in RFC3339 text format.
+	CreationTime *string `pulumi:"creationTime"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -367,6 +373,8 @@ type managedZoneState struct {
 	ForwardingConfig *ManagedZoneForwardingConfig `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels map[string]string `pulumi:"labels"`
+	// Unique identifier for the resource; defined by the server.
+	ManagedZoneId *int `pulumi:"managedZoneId"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	Name *string `pulumi:"name"`
@@ -398,6 +406,8 @@ type managedZoneState struct {
 }
 
 type ManagedZoneState struct {
+	// The time that this resource was created on the server. This is in RFC3339 text format.
+	CreationTime pulumi.StringPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -414,6 +424,8 @@ type ManagedZoneState struct {
 	ForwardingConfig ManagedZoneForwardingConfigPtrInput
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels pulumi.StringMapInput
+	// Unique identifier for the resource; defined by the server.
+	ManagedZoneId pulumi.IntPtrInput
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	Name pulumi.StringPtrInput
@@ -626,6 +638,11 @@ func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) M
 	return o
 }
 
+// The time that this resource was created on the server. This is in RFC3339 text format.
+func (o ManagedZoneOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
 // A textual description field. Defaults to 'Managed by Pulumi'.
 func (o ManagedZoneOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -658,6 +675,11 @@ func (o ManagedZoneOutput) ForwardingConfig() ManagedZoneForwardingConfigPtrOutp
 // A set of key/value label pairs to assign to this ManagedZone.
 func (o ManagedZoneOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Unique identifier for the resource; defined by the server.
+func (o ManagedZoneOutput) ManagedZoneId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.IntOutput { return v.ManagedZoneId }).(pulumi.IntOutput)
 }
 
 // User assigned name for this resource.

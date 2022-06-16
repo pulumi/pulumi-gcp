@@ -78,6 +78,14 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// {
     ///     public MyStack()
     ///     {
+    ///         var account = new Gcp.ServiceAccount.Account("account", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "test-service-account",
+    ///             DisplayName = "Test Service Account",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
     ///         var sub = new Gcp.PubSub.Topic("sub", new Gcp.PubSub.TopicArgs
     ///         {
     ///         }, new CustomResourceOptions
@@ -133,6 +141,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///                 },
     ///                 IngressSettings = "ALLOW_INTERNAL_ONLY",
     ///                 AllTrafficOnLatestRevision = true,
+    ///                 ServiceAccountEmail = account.Email,
     ///             },
     ///             EventTrigger = new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerArgs
     ///             {
@@ -140,6 +149,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///                 EventType = "google.cloud.pubsub.topic.v1.messagePublished",
     ///                 PubsubTopic = sub.Id,
     ///                 RetryPolicy = "RETRY_POLICY_RETRY",
+    ///                 ServiceAccountEmail = account.Email,
     ///             },
     ///         }, new CustomResourceOptions
     ///         {

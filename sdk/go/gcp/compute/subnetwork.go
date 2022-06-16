@@ -177,6 +177,39 @@ import (
 // 	})
 // }
 // ```
+// ### Subnetwork Internal Ipv6
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 			EnableUlaInternalIpv6: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSubnetwork(ctx, "subnetwork-internal-ipv6", &compute.SubnetworkArgs{
+// 			IpCidrRange:    pulumi.String("10.0.0.0/22"),
+// 			Region:         pulumi.String("us-west2"),
+// 			StackType:      pulumi.String("IPV4_IPV6"),
+// 			Ipv6AccessType: pulumi.String("INTERNAL"),
+// 			Network:        custom_test.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -222,7 +255,7 @@ type Subnetwork struct {
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
 	// cannot enable direct path.
-	// Possible values are `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	Ipv6AccessType pulumi.StringPtrOutput `pulumi:"ipv6AccessType"`
 	// The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange pulumi.StringOutput `pulumi:"ipv6CidrRange"`
@@ -335,7 +368,7 @@ type subnetworkState struct {
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
 	// cannot enable direct path.
-	// Possible values are `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange *string `pulumi:"ipv6CidrRange"`
@@ -414,7 +447,7 @@ type SubnetworkState struct {
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
 	// cannot enable direct path.
-	// Possible values are `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	Ipv6AccessType pulumi.StringPtrInput
 	// The range of internal IPv6 addresses that are owned by this subnetwork.
 	Ipv6CidrRange pulumi.StringPtrInput
@@ -487,7 +520,7 @@ type subnetworkArgs struct {
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
 	// cannot enable direct path.
-	// Possible values are `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -553,7 +586,7 @@ type SubnetworkArgs struct {
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
 	// cannot enable direct path.
-	// Possible values are `EXTERNAL`.
+	// Possible values are `EXTERNAL` and `INTERNAL`.
 	Ipv6AccessType pulumi.StringPtrInput
 	// Denotes the logging options for the subnetwork flow logs. If logging is enabled
 	// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -732,7 +765,7 @@ func (o SubnetworkOutput) IpCidrRange() pulumi.StringOutput {
 // The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 // or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
 // cannot enable direct path.
-// Possible values are `EXTERNAL`.
+// Possible values are `EXTERNAL` and `INTERNAL`.
 func (o SubnetworkOutput) Ipv6AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.Ipv6AccessType }).(pulumi.StringPtrOutput)
 }

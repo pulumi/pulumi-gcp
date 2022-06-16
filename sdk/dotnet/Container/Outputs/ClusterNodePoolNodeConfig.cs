@@ -116,10 +116,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// for more information. Defaults to false.
         /// </summary>
         public readonly bool? Preemptible;
-        /// <summary>
-        /// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-        /// Structure is documented below.
-        /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigSandboxConfig? SandboxConfig;
         /// <summary>
         /// The service account to be used by the Node VMs.
@@ -131,8 +127,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig? ShieldedInstanceConfig;
         /// <summary>
-        /// ) A boolean
-        /// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        /// A boolean that represents whether the underlying node VMs are spot.
+        /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         /// for more information. Defaults to false.
         /// </summary>
         public readonly bool? Spot;

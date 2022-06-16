@@ -229,6 +229,7 @@ namespace Pulumi.Gcp.Monitoring
         public readonly string? Project;
         public readonly string ServiceId;
         public readonly ImmutableArray<Outputs.GetAppEngineServiceTelemetryResult> Telemetries;
+        public readonly ImmutableDictionary<string, string> UserLabels;
 
         [OutputConstructor]
         private GetAppEngineServiceResult(
@@ -244,7 +245,9 @@ namespace Pulumi.Gcp.Monitoring
 
             string serviceId,
 
-            ImmutableArray<Outputs.GetAppEngineServiceTelemetryResult> telemetries)
+            ImmutableArray<Outputs.GetAppEngineServiceTelemetryResult> telemetries,
+
+            ImmutableDictionary<string, string> userLabels)
         {
             DisplayName = displayName;
             Id = id;
@@ -253,6 +256,7 @@ namespace Pulumi.Gcp.Monitoring
             Project = project;
             ServiceId = serviceId;
             Telemetries = telemetries;
+            UserLabels = userLabels;
         }
     }
 }

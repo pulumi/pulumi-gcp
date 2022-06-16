@@ -77,6 +77,10 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public readonly adaptiveProtectionConfig!: pulumi.Output<outputs.compute.SecurityPolicyAdaptiveProtectionConfig | undefined>;
     /**
+     * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+     */
+    public readonly advancedOptionsConfig!: pulumi.Output<outputs.compute.SecurityPolicyAdvancedOptionsConfig>;
+    /**
      * An optional description of this rule. Max size is 64.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -122,6 +126,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SecurityPolicyState | undefined;
             resourceInputs["adaptiveProtectionConfig"] = state ? state.adaptiveProtectionConfig : undefined;
+            resourceInputs["advancedOptionsConfig"] = state ? state.advancedOptionsConfig : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -132,6 +137,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
         } else {
             const args = argsOrState as SecurityPolicyArgs | undefined;
             resourceInputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
+            resourceInputs["advancedOptionsConfig"] = args ? args.advancedOptionsConfig : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -153,6 +159,10 @@ export interface SecurityPolicyState {
      * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      */
     adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig>;
+    /**
+     * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+     */
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**
      * An optional description of this rule. Max size is 64.
      */
@@ -194,6 +204,10 @@ export interface SecurityPolicyArgs {
      * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      */
     adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig>;
+    /**
+     * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+     */
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**
      * An optional description of this rule. Max size is 64.
      */

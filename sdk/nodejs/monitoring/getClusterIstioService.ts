@@ -99,6 +99,7 @@ export interface GetClusterIstioServiceResult {
     readonly serviceName: string;
     readonly serviceNamespace: string;
     readonly telemetries: outputs.monitoring.GetClusterIstioServiceTelemetry[];
+    readonly userLabels: {[key: string]: string};
 }
 
 export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIstioServiceResult> {

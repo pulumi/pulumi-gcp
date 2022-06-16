@@ -905,7 +905,6 @@ type FunctionEventTrigger struct {
 	// Retried execution is charged as any other execution.
 	// Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
 	RetryPolicy *string `pulumi:"retryPolicy"`
-	// -
 	// The email of the service account for this function.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// -
@@ -939,7 +938,6 @@ type FunctionEventTriggerArgs struct {
 	// Retried execution is charged as any other execution.
 	// Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
 	RetryPolicy pulumi.StringPtrInput `pulumi:"retryPolicy"`
-	// -
 	// The email of the service account for this function.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// -
@@ -1047,7 +1045,6 @@ func (o FunctionEventTriggerOutput) RetryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.RetryPolicy }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The email of the service account for this function.
 func (o FunctionEventTriggerOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
@@ -1124,7 +1121,6 @@ func (o FunctionEventTriggerPtrOutput) RetryPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The email of the service account for this function.
 func (o FunctionEventTriggerPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionEventTrigger) *string {
@@ -1183,7 +1179,6 @@ type FunctionServiceConfig struct {
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 	// Name of the service associated with a Function.
 	Service *string `pulumi:"service"`
-	// -
 	// The email of the service account for this function.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The function execution timeout. Execution is considered failed and
@@ -1235,7 +1230,6 @@ type FunctionServiceConfigArgs struct {
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 	// Name of the service associated with a Function.
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// -
 	// The email of the service account for this function.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// The function execution timeout. Execution is considered failed and
@@ -1376,7 +1370,6 @@ func (o FunctionServiceConfigOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The email of the service account for this function.
 func (o FunctionServiceConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
@@ -1517,7 +1510,6 @@ func (o FunctionServiceConfigPtrOutput) Service() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The email of the service account for this function.
 func (o FunctionServiceConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {

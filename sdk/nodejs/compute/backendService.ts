@@ -52,6 +52,31 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Backend Service Cache Include Named Cookies
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     cdnPolicy: {
+ *         cacheKeyPolicy: {
+ *             includeHost: true,
+ *             includeNamedCookies: [
+ *                 "__next_preview_data",
+ *                 "__prerender_bypass",
+ *             ],
+ *             includeProtocol: true,
+ *             includeQueryString: true,
+ *         },
+ *         cacheMode: "CACHE_ALL_STATIC",
+ *         clientTtl: 7200,
+ *         defaultTtl: 3600,
+ *         maxTtl: 10800,
+ *     },
+ *     enableCdn: true,
+ * });
+ * ```
  * ### Backend Service Cache
  *
  * ```typescript

@@ -14,14 +14,22 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterMonitoringConfig
     {
         /// <summary>
-        /// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+        /// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         /// </summary>
         public readonly ImmutableArray<string> EnableComponents;
+        /// <summary>
+        /// Configuration for Managed Service for Prometheus. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterMonitoringConfigManagedPrometheus? ManagedPrometheus;
 
         [OutputConstructor]
-        private ClusterMonitoringConfig(ImmutableArray<string> enableComponents)
+        private ClusterMonitoringConfig(
+            ImmutableArray<string> enableComponents,
+
+            Outputs.ClusterMonitoringConfigManagedPrometheus? managedPrometheus)
         {
             EnableComponents = enableComponents;
+            ManagedPrometheus = managedPrometheus;
         }
     }
 }

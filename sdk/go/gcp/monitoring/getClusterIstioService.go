@@ -91,6 +91,7 @@ type GetClusterIstioServiceResult struct {
 	ServiceName      string                            `pulumi:"serviceName"`
 	ServiceNamespace string                            `pulumi:"serviceNamespace"`
 	Telemetries      []GetClusterIstioServiceTelemetry `pulumi:"telemetries"`
+	UserLabels       map[string]string                 `pulumi:"userLabels"`
 }
 
 func GetClusterIstioServiceOutput(ctx *pulumi.Context, args GetClusterIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetClusterIstioServiceResultOutput {
@@ -183,6 +184,10 @@ func (o GetClusterIstioServiceResultOutput) ServiceNamespace() pulumi.StringOutp
 
 func (o GetClusterIstioServiceResultOutput) Telemetries() GetClusterIstioServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceResult) []GetClusterIstioServiceTelemetry { return v.Telemetries }).(GetClusterIstioServiceTelemetryArrayOutput)
+}
+
+func (o GetClusterIstioServiceResultOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceResult) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

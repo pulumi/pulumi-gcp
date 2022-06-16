@@ -3332,6 +3332,13 @@ export namespace bigquery {
          */
         compression?: string;
         /**
+         * The connection specifying the credentials to be used to read
+         * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
+         * the form `{{project}}.{{location}}.{{connection_id}}`
+         * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+         */
+        connectionId?: string;
+        /**
          * Additional properties to set if
          * `sourceFormat` is set to "CSV". Structure is documented below.
          */
@@ -6736,7 +6743,6 @@ export namespace cloudfunctionsv2 {
          */
         retryPolicy?: string;
         /**
-         * -
          * The email of the service account for this function.
          */
         serviceAccountEmail: string;
@@ -6795,7 +6801,6 @@ export namespace cloudfunctionsv2 {
          */
         service: string;
         /**
-         * -
          * The email of the service account for this function.
          */
         serviceAccountEmail: string;
@@ -9006,6 +9011,10 @@ export namespace compute {
          */
         includeHost?: boolean;
         /**
+         * Names of cookies to include in cache keys.
+         */
+        includeNamedCookies?: string[];
+        /**
          * If true, http and https requests will be cached separately.
          */
         includeProtocol?: boolean;
@@ -9580,6 +9589,7 @@ export namespace compute {
 
     export interface GetBackendServiceCdnPolicyCacheKeyPolicy {
         includeHost: boolean;
+        includeNamedCookies: string[];
         includeProtocol: boolean;
         includeQueryString: boolean;
         queryStringBlacklists: string[];
@@ -12734,6 +12744,10 @@ export namespace compute {
          */
         includeHost?: boolean;
         /**
+         * Names of cookies to include in cache keys.
+         */
+        includeNamedCookies?: string[];
+        /**
          * If true, http and https requests will be cached separately.
          */
         includeProtocol?: boolean;
@@ -15470,6 +15484,21 @@ export namespace compute {
         ruleVisibility?: string;
     }
 
+    export interface SecurityPolicyAdvancedOptionsConfig {
+        /**
+         * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+         * * DISABLED - Don't parse JSON payloads in POST bodies.
+         * * STANDARD - Parse JSON payloads in POST bodies.
+         */
+        jsonParsing: string;
+        /**
+         * Log level to use. Defaults to `NORMAL`.
+         * * NORMAL - Normal log level.
+         * * VERBOSE - Verbose log level.
+         */
+        logLevel: string;
+    }
+
     export interface SecurityPolicyRule {
         /**
          * Action to take when `match` matches the request. Valid values:
@@ -17764,7 +17793,6 @@ export namespace compute {
          */
         service: string;
     }
-
 }
 
 export namespace config {
@@ -18676,7 +18704,7 @@ export namespace container {
 
     export interface ClusterLoggingConfig {
         /**
-         * The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+         * The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents: string[];
     }
@@ -18762,9 +18790,21 @@ export namespace container {
 
     export interface ClusterMonitoringConfig {
         /**
-         * The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+         * The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents: string[];
+        /**
+         * Configuration for Managed Service for Prometheus. Structure is documented below.
+         */
+        managedPrometheus: outputs.container.ClusterMonitoringConfigManagedPrometheus;
+    }
+
+    export interface ClusterMonitoringConfigManagedPrometheus {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterNetworkPolicy {
@@ -18883,10 +18923,6 @@ export namespace container {
          * for more information. Defaults to false.
          */
         preemptible?: boolean;
-        /**
-         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-         * Structure is documented below.
-         */
         sandboxConfig?: outputs.container.ClusterNodeConfigSandboxConfig;
         /**
          * The service account to be used by the Node VMs.
@@ -18898,8 +18934,8 @@ export namespace container {
          */
         shieldedInstanceConfig: outputs.container.ClusterNodeConfigShieldedInstanceConfig;
         /**
-         * ) A boolean
-         * that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+         * A boolean that represents whether the underlying node VMs are spot.
+         * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
          * for more information. Defaults to false.
          */
         spot?: boolean;
@@ -19215,10 +19251,6 @@ export namespace container {
          * for more information. Defaults to false.
          */
         preemptible?: boolean;
-        /**
-         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-         * Structure is documented below.
-         */
         sandboxConfig?: outputs.container.ClusterNodePoolNodeConfigSandboxConfig;
         /**
          * The service account to be used by the Node VMs.
@@ -19230,8 +19262,8 @@ export namespace container {
          */
         shieldedInstanceConfig: outputs.container.ClusterNodePoolNodeConfigShieldedInstanceConfig;
         /**
-         * ) A boolean
-         * that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+         * A boolean that represents whether the underlying node VMs are spot.
+         * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
          * for more information. Defaults to false.
          */
         spot?: boolean;
@@ -19686,6 +19718,11 @@ export namespace container {
 
     export interface GetClusterMonitoringConfig {
         enableComponents: string[];
+        managedPrometheuses: outputs.container.GetClusterMonitoringConfigManagedPrometheus[];
+    }
+
+    export interface GetClusterMonitoringConfigManagedPrometheus {
+        enabled: boolean;
     }
 
     export interface GetClusterNetworkPolicy {
@@ -20070,7 +20107,6 @@ export namespace container {
          */
         maxUnavailable: number;
     }
-
 }
 
 export namespace containeranalysis {
@@ -25059,6 +25095,10 @@ export namespace gkehub {
          */
         git?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit;
         /**
+         * Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+         */
+        preventDrift: boolean;
+        /**
          * Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
          */
         sourceFormat?: string;
@@ -27604,11 +27644,29 @@ export namespace monitoring {
          */
         content: string;
         /**
+         * Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+         * Structure is documented below.
+         */
+        jsonPathMatcher?: outputs.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcher;
+        /**
          * The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
          * Default value is `CONTAINS_STRING`.
-         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
          */
         matcher?: string;
+    }
+
+    export interface UptimeCheckConfigContentMatcherJsonPathMatcher {
+        /**
+         * Options to perform JSONPath content matching.
+         * Default value is `EXACT_MATCH`.
+         * Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+         */
+        jsonMatcher?: string;
+        /**
+         * JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+         */
+        jsonPath: string;
     }
 
     export interface UptimeCheckConfigHttpCheck {
@@ -27699,7 +27757,6 @@ export namespace monitoring {
          */
         port: number;
     }
-
 }
 
 export namespace networkconnectivity {
@@ -32355,6 +32412,11 @@ export namespace sql {
         day: number;
         hour: number;
         updateTrack: string;
+    }
+
+    export interface UserSqlServerUserDetails {
+        disabled?: boolean;
+        serverRoles?: string[];
     }
 
 }

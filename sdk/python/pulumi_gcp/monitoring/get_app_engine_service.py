@@ -21,7 +21,7 @@ class GetAppEngineServiceResult:
     """
     A collection of values returned by getAppEngineService.
     """
-    def __init__(__self__, display_name=None, id=None, module_id=None, name=None, project=None, service_id=None, telemetries=None):
+    def __init__(__self__, display_name=None, id=None, module_id=None, name=None, project=None, service_id=None, telemetries=None, user_labels=None):
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -43,6 +43,9 @@ class GetAppEngineServiceResult:
         if telemetries and not isinstance(telemetries, list):
             raise TypeError("Expected argument 'telemetries' to be a list")
         pulumi.set(__self__, "telemetries", telemetries)
+        if user_labels and not isinstance(user_labels, dict):
+            raise TypeError("Expected argument 'user_labels' to be a dict")
+        pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="displayName")
@@ -82,6 +85,11 @@ class GetAppEngineServiceResult:
     def telemetries(self) -> Sequence['outputs.GetAppEngineServiceTelemetryResult']:
         return pulumi.get(self, "telemetries")
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "user_labels")
+
 
 class AwaitableGetAppEngineServiceResult(GetAppEngineServiceResult):
     # pylint: disable=using-constant-test
@@ -95,7 +103,8 @@ class AwaitableGetAppEngineServiceResult(GetAppEngineServiceResult):
             name=self.name,
             project=self.project,
             service_id=self.service_id,
-            telemetries=self.telemetries)
+            telemetries=self.telemetries,
+            user_labels=self.user_labels)
 
 
 def get_app_engine_service(module_id: Optional[str] = None,
@@ -168,7 +177,8 @@ def get_app_engine_service(module_id: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         service_id=__ret__.service_id,
-        telemetries=__ret__.telemetries)
+        telemetries=__ret__.telemetries,
+        user_labels=__ret__.user_labels)
 
 
 @_utilities.lift_output_func(get_app_engine_service)

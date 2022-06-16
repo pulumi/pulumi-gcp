@@ -29,6 +29,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
@@ -39,7 +41,12 @@ import (
 // 			CheckerType: pulumi.String("STATIC_IP_CHECKERS"),
 // 			ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
 // 				&monitoring.UptimeCheckConfigContentMatcherArgs{
-// 					Content: pulumi.String("example"),
+// 					Content: pulumi.String("\"example\""),
+// 					JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
+// 						JsonMatcher: pulumi.String("EXACT_MATCH"),
+// 						JsonPath:    pulumi.String(fmt.Sprintf("%v%v", "$", ".path")),
+// 					},
+// 					Matcher: pulumi.String("MATCHES_JSON_PATH"),
 // 				},
 // 			},
 // 			DisplayName: pulumi.String("http-uptime-check"),
@@ -72,6 +79,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
@@ -82,6 +91,11 @@ import (
 // 			ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
 // 				&monitoring.UptimeCheckConfigContentMatcherArgs{
 // 					Content: pulumi.String("example"),
+// 					JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
+// 						JsonMatcher: pulumi.String("REGEX_MATCH"),
+// 						JsonPath:    pulumi.String(fmt.Sprintf("%v%v", "$", ".path")),
+// 					},
+// 					Matcher: pulumi.String("MATCHES_JSON_PATH"),
 // 				},
 // 			},
 // 			DisplayName: pulumi.String("https-uptime-check"),
@@ -166,7 +180,7 @@ type UptimeCheckConfig struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrOutput `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrOutput `pulumi:"monitoredResource"`
 	// A unique resource name for this UptimeCheckConfig. The format is
@@ -237,7 +251,7 @@ type uptimeCheckConfigState struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
 	// A unique resource name for this UptimeCheckConfig. The format is
@@ -274,7 +288,7 @@ type UptimeCheckConfigState struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
 	// A unique resource name for this UptimeCheckConfig. The format is
@@ -315,7 +329,7 @@ type uptimeCheckConfigArgs struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
@@ -348,7 +362,7 @@ type UptimeCheckConfigArgs struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
@@ -478,7 +492,7 @@ func (o UptimeCheckConfigOutput) HttpCheck() UptimeCheckConfigHttpCheckPtrOutput
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigHttpCheckPtrOutput { return v.HttpCheck }).(UptimeCheckConfigHttpCheckPtrOutput)
 }
 
-// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance  awsElbLoadBalancer
+// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 // Structure is documented below.
 func (o UptimeCheckConfigOutput) MonitoredResource() UptimeCheckConfigMonitoredResourcePtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigMonitoredResourcePtrOutput { return v.MonitoredResource }).(UptimeCheckConfigMonitoredResourcePtrOutput)

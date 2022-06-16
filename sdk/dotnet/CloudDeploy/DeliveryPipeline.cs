@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudDeploy
 {
     /// <summary>
-    /// The Clouddeploy DeliveryPipeline resource
+    /// The Cloud Deploy `DeliveryPipeline` resource
     /// 
     /// ## Example Usage
     /// ### Delivery_pipeline

@@ -50,6 +50,7 @@ __all__ = [
     'SloWindowsBasedSliMetricSumInRange',
     'SloWindowsBasedSliMetricSumInRangeRange',
     'UptimeCheckConfigContentMatcher',
+    'UptimeCheckConfigContentMatcherJsonPathMatcher',
     'UptimeCheckConfigHttpCheck',
     'UptimeCheckConfigHttpCheckAuthInfo',
     'UptimeCheckConfigMonitoredResource',
@@ -3159,16 +3160,38 @@ class SloWindowsBasedSliMetricSumInRangeRange(dict):
 
 @pulumi.output_type
 class UptimeCheckConfigContentMatcher(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jsonPathMatcher":
+            suggest = "json_path_matcher"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UptimeCheckConfigContentMatcher. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UptimeCheckConfigContentMatcher.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UptimeCheckConfigContentMatcher.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content: str,
+                 json_path_matcher: Optional['outputs.UptimeCheckConfigContentMatcherJsonPathMatcher'] = None,
                  matcher: Optional[str] = None):
         """
         :param str content: String or regex content to match (max 1024 bytes)
+        :param 'UptimeCheckConfigContentMatcherJsonPathMatcherArgs' json_path_matcher: Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+               Structure is documented below.
         :param str matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
                Default value is `CONTAINS_STRING`.
-               Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+               Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
         """
         pulumi.set(__self__, "content", content)
+        if json_path_matcher is not None:
+            pulumi.set(__self__, "json_path_matcher", json_path_matcher)
         if matcher is not None:
             pulumi.set(__self__, "matcher", matcher)
 
@@ -3181,14 +3204,76 @@ class UptimeCheckConfigContentMatcher(dict):
         return pulumi.get(self, "content")
 
     @property
+    @pulumi.getter(name="jsonPathMatcher")
+    def json_path_matcher(self) -> Optional['outputs.UptimeCheckConfigContentMatcherJsonPathMatcher']:
+        """
+        Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "json_path_matcher")
+
+    @property
     @pulumi.getter
     def matcher(self) -> Optional[str]:
         """
         The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         Default value is `CONTAINS_STRING`.
-        Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+        Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
         """
         return pulumi.get(self, "matcher")
+
+
+@pulumi.output_type
+class UptimeCheckConfigContentMatcherJsonPathMatcher(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jsonPath":
+            suggest = "json_path"
+        elif key == "jsonMatcher":
+            suggest = "json_matcher"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UptimeCheckConfigContentMatcherJsonPathMatcher. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UptimeCheckConfigContentMatcherJsonPathMatcher.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UptimeCheckConfigContentMatcherJsonPathMatcher.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 json_path: str,
+                 json_matcher: Optional[str] = None):
+        """
+        :param str json_path: JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+        :param str json_matcher: Options to perform JSONPath content matching.
+               Default value is `EXACT_MATCH`.
+               Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+        """
+        pulumi.set(__self__, "json_path", json_path)
+        if json_matcher is not None:
+            pulumi.set(__self__, "json_matcher", json_matcher)
+
+    @property
+    @pulumi.getter(name="jsonPath")
+    def json_path(self) -> str:
+        """
+        JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+        """
+        return pulumi.get(self, "json_path")
+
+    @property
+    @pulumi.getter(name="jsonMatcher")
+    def json_matcher(self) -> Optional[str]:
+        """
+        Options to perform JSONPath content matching.
+        Default value is `EXACT_MATCH`.
+        Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+        """
+        return pulumi.get(self, "json_matcher")
 
 
 @pulumi.output_type

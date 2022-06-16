@@ -148,9 +148,8 @@ export class InstanceGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * List of instances in the group. They should be given
-     * as either selfLink or id. When adding instances they must all be in the same
-     * network and zone as the instance group.
+     * The list of instances in the group, in `selfLink` format.
+     * When adding instances they must all be in the same network and zone as the instance group.
      */
     public readonly instances!: pulumi.Output<string[]>;
     /**
@@ -236,9 +235,8 @@ export interface InstanceGroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * List of instances in the group. They should be given
-     * as either selfLink or id. When adding instances they must all be in the same
-     * network and zone as the instance group.
+     * The list of instances in the group, in `selfLink` format.
+     * When adding instances they must all be in the same network and zone as the instance group.
      */
     instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -286,9 +284,8 @@ export interface InstanceGroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * List of instances in the group. They should be given
-     * as either selfLink or id. When adding instances they must all be in the same
-     * network and zone as the instance group.
+     * The list of instances in the group, in `selfLink` format.
+     * When adding instances they must all be in the same network and zone as the instance group.
      */
     instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**

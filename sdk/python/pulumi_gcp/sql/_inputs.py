@@ -24,6 +24,7 @@ __all__ = [
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs',
     'DatabaseInstanceSettingsLocationPreferenceArgs',
     'DatabaseInstanceSettingsMaintenanceWindowArgs',
+    'UserSqlServerUserDetailsArgs',
 ]
 
 @pulumi.input_type
@@ -1275,5 +1276,34 @@ class DatabaseInstanceSettingsMaintenanceWindowArgs:
     @update_track.setter
     def update_track(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_track", value)
+
+
+@pulumi.input_type
+class UserSqlServerUserDetailsArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 server_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if server_roles is not None:
+            pulumi.set(__self__, "server_roles", server_roles)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="serverRoles")
+    def server_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "server_roles")
+
+    @server_roles.setter
+    def server_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "server_roles", value)
 
 

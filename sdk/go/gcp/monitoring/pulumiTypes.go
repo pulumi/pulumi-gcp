@@ -8292,9 +8292,12 @@ func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Min() pulumi.Float64Pt
 type UptimeCheckConfigContentMatcher struct {
 	// String or regex content to match (max 1024 bytes)
 	Content string `pulumi:"content"`
+	// Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+	// Structure is documented below.
+	JsonPathMatcher *UptimeCheckConfigContentMatcherJsonPathMatcher `pulumi:"jsonPathMatcher"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	// Default value is `CONTAINS_STRING`.
-	// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+	// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
 	Matcher *string `pulumi:"matcher"`
 }
 
@@ -8312,9 +8315,12 @@ type UptimeCheckConfigContentMatcherInput interface {
 type UptimeCheckConfigContentMatcherArgs struct {
 	// String or regex content to match (max 1024 bytes)
 	Content pulumi.StringInput `pulumi:"content"`
+	// Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+	// Structure is documented below.
+	JsonPathMatcher UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput `pulumi:"jsonPathMatcher"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	// Default value is `CONTAINS_STRING`.
-	// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+	// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
 	Matcher pulumi.StringPtrInput `pulumi:"matcher"`
 }
 
@@ -8374,9 +8380,17 @@ func (o UptimeCheckConfigContentMatcherOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeCheckConfigContentMatcher) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+// Structure is documented below.
+func (o UptimeCheckConfigContentMatcherOutput) JsonPathMatcher() UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigContentMatcher) *UptimeCheckConfigContentMatcherJsonPathMatcher {
+		return v.JsonPathMatcher
+	}).(UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput)
+}
+
 // The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 // Default value is `CONTAINS_STRING`.
-// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
 func (o UptimeCheckConfigContentMatcherOutput) Matcher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigContentMatcher) *string { return v.Matcher }).(pulumi.StringPtrOutput)
 }
@@ -8399,6 +8413,170 @@ func (o UptimeCheckConfigContentMatcherArrayOutput) Index(i pulumi.IntInput) Upt
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeCheckConfigContentMatcher {
 		return vs[0].([]UptimeCheckConfigContentMatcher)[vs[1].(int)]
 	}).(UptimeCheckConfigContentMatcherOutput)
+}
+
+type UptimeCheckConfigContentMatcherJsonPathMatcher struct {
+	// Options to perform JSONPath content matching.
+	// Default value is `EXACT_MATCH`.
+	// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+	JsonMatcher *string `pulumi:"jsonMatcher"`
+	// JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+	JsonPath string `pulumi:"jsonPath"`
+}
+
+// UptimeCheckConfigContentMatcherJsonPathMatcherInput is an input type that accepts UptimeCheckConfigContentMatcherJsonPathMatcherArgs and UptimeCheckConfigContentMatcherJsonPathMatcherOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigContentMatcherJsonPathMatcherInput` via:
+//
+//          UptimeCheckConfigContentMatcherJsonPathMatcherArgs{...}
+type UptimeCheckConfigContentMatcherJsonPathMatcherInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigContentMatcherJsonPathMatcherOutput() UptimeCheckConfigContentMatcherJsonPathMatcherOutput
+	ToUptimeCheckConfigContentMatcherJsonPathMatcherOutputWithContext(context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherOutput
+}
+
+type UptimeCheckConfigContentMatcherJsonPathMatcherArgs struct {
+	// Options to perform JSONPath content matching.
+	// Default value is `EXACT_MATCH`.
+	// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+	JsonMatcher pulumi.StringPtrInput `pulumi:"jsonMatcher"`
+	// JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+	JsonPath pulumi.StringInput `pulumi:"jsonPath"`
+}
+
+func (UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigContentMatcherJsonPathMatcher)(nil)).Elem()
+}
+
+func (i UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ToUptimeCheckConfigContentMatcherJsonPathMatcherOutput() UptimeCheckConfigContentMatcherJsonPathMatcherOutput {
+	return i.ToUptimeCheckConfigContentMatcherJsonPathMatcherOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ToUptimeCheckConfigContentMatcherJsonPathMatcherOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigContentMatcherJsonPathMatcherOutput)
+}
+
+func (i UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput() UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return i.ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigContentMatcherJsonPathMatcherOutput).ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(ctx)
+}
+
+// UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput is an input type that accepts UptimeCheckConfigContentMatcherJsonPathMatcherArgs, UptimeCheckConfigContentMatcherJsonPathMatcherPtr and UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput` via:
+//
+//          UptimeCheckConfigContentMatcherJsonPathMatcherArgs{...}
+//
+//  or:
+//
+//          nil
+type UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput() UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput
+	ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput
+}
+
+type uptimeCheckConfigContentMatcherJsonPathMatcherPtrType UptimeCheckConfigContentMatcherJsonPathMatcherArgs
+
+func UptimeCheckConfigContentMatcherJsonPathMatcherPtr(v *UptimeCheckConfigContentMatcherJsonPathMatcherArgs) UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput {
+	return (*uptimeCheckConfigContentMatcherJsonPathMatcherPtrType)(v)
+}
+
+func (*uptimeCheckConfigContentMatcherJsonPathMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigContentMatcherJsonPathMatcher)(nil)).Elem()
+}
+
+func (i *uptimeCheckConfigContentMatcherJsonPathMatcherPtrType) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput() UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return i.ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *uptimeCheckConfigContentMatcherJsonPathMatcherPtrType) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput)
+}
+
+type UptimeCheckConfigContentMatcherJsonPathMatcherOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigContentMatcherJsonPathMatcher)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ToUptimeCheckConfigContentMatcherJsonPathMatcherOutput() UptimeCheckConfigContentMatcherJsonPathMatcherOutput {
+	return o
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ToUptimeCheckConfigContentMatcherJsonPathMatcherOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherOutput {
+	return o
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput() UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return o.ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigContentMatcherJsonPathMatcher) *UptimeCheckConfigContentMatcherJsonPathMatcher {
+		return &v
+	}).(UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput)
+}
+
+// Options to perform JSONPath content matching.
+// Default value is `EXACT_MATCH`.
+// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) JsonMatcher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigContentMatcherJsonPathMatcher) *string { return v.JsonMatcher }).(pulumi.StringPtrOutput)
+}
+
+// JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) JsonPath() pulumi.StringOutput {
+	return o.ApplyT(func(v UptimeCheckConfigContentMatcherJsonPathMatcher) string { return v.JsonPath }).(pulumi.StringOutput)
+}
+
+type UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigContentMatcherJsonPathMatcher)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput() UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) Elem() UptimeCheckConfigContentMatcherJsonPathMatcherOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigContentMatcherJsonPathMatcher) UptimeCheckConfigContentMatcherJsonPathMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigContentMatcherJsonPathMatcher
+		return ret
+	}).(UptimeCheckConfigContentMatcherJsonPathMatcherOutput)
+}
+
+// Options to perform JSONPath content matching.
+// Default value is `EXACT_MATCH`.
+// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) JsonMatcher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigContentMatcherJsonPathMatcher) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonMatcher
+	}).(pulumi.StringPtrOutput)
+}
+
+// JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigContentMatcherJsonPathMatcher) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JsonPath
+	}).(pulumi.StringPtrOutput)
 }
 
 type UptimeCheckConfigHttpCheck struct {
@@ -10028,6 +10206,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SloWindowsBasedSliMetricSumInRangeRangePtrInput)(nil)).Elem(), SloWindowsBasedSliMetricSumInRangeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigContentMatcherInput)(nil)).Elem(), UptimeCheckConfigContentMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigContentMatcherArrayInput)(nil)).Elem(), UptimeCheckConfigContentMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigContentMatcherJsonPathMatcherInput)(nil)).Elem(), UptimeCheckConfigContentMatcherJsonPathMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput)(nil)).Elem(), UptimeCheckConfigContentMatcherJsonPathMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckInput)(nil)).Elem(), UptimeCheckConfigHttpCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckPtrInput)(nil)).Elem(), UptimeCheckConfigHttpCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigHttpCheckAuthInfoInput)(nil)).Elem(), UptimeCheckConfigHttpCheckAuthInfoArgs{})
@@ -10130,6 +10310,8 @@ func init() {
 	pulumi.RegisterOutputType(SloWindowsBasedSliMetricSumInRangeRangePtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherArrayOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherJsonPathMatcherOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckAuthInfoOutput{})

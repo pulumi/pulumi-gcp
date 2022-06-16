@@ -321,6 +321,15 @@ class Feature(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Enable Anthos Service Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature", location="global",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -394,6 +403,15 @@ class Feature(pulumi.CustomResource):
                 "foo": "bar",
             },
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Enable Anthos Service Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature", location="global",
+        opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

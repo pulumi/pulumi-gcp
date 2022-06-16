@@ -43,7 +43,7 @@ class SubnetworkArgs:
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
-               Possible values are `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL`.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
                subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -156,7 +156,7 @@ class SubnetworkArgs:
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         cannot enable direct path.
-        Possible values are `EXTERNAL`.
+        Possible values are `EXTERNAL` and `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -349,7 +349,7 @@ class _SubnetworkState:
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
-               Possible values are `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL`.
         :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -518,7 +518,7 @@ class _SubnetworkState:
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         cannot enable direct path.
-        Possible values are `EXTERNAL`.
+        Possible values are `EXTERNAL` and `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -824,6 +824,22 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="EXTERNAL",
             network=custom_test.id)
         ```
+        ### Subnetwork Internal Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test",
+            auto_create_subnetworks=False,
+            enable_ula_internal_ipv6=True)
+        subnetwork_internal_ipv6 = gcp.compute.Subnetwork("subnetwork-internal-ipv6",
+            ip_cidr_range="10.0.0.0/22",
+            region="us-west2",
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="INTERNAL",
+            network=custom_test.id)
+        ```
 
         ## Import
 
@@ -857,7 +873,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
-               Possible values are `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL`.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
                subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -997,6 +1013,22 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="EXTERNAL",
             network=custom_test.id)
         ```
+        ### Subnetwork Internal Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test",
+            auto_create_subnetworks=False,
+            enable_ula_internal_ipv6=True)
+        subnetwork_internal_ipv6 = gcp.compute.Subnetwork("subnetwork-internal-ipv6",
+            ip_cidr_range="10.0.0.0/22",
+            region="us-west2",
+            stack_type="IPV4_IPV6",
+            ipv6_access_type="INTERNAL",
+            network=custom_test.id)
+        ```
 
         ## Import
 
@@ -1134,7 +1166,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
-               Possible values are `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL`.
         :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -1261,7 +1293,7 @@ class Subnetwork(pulumi.CustomResource):
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         cannot enable direct path.
-        Possible values are `EXTERNAL`.
+        Possible values are `EXTERNAL` and `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 

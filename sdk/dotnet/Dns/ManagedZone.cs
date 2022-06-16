@@ -261,6 +261,12 @@ namespace Pulumi.Gcp.Dns
     public partial class ManagedZone : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time that this resource was created on the server. This is in RFC3339 text format.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
         /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Output("description")]
@@ -299,6 +305,12 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server.
+        /// </summary>
+        [Output("managedZoneId")]
+        public Output<int> ManagedZoneId { get; private set; } = null!;
 
         /// <summary>
         /// User assigned name for this resource.
@@ -515,6 +527,12 @@ namespace Pulumi.Gcp.Dns
     public sealed class ManagedZoneState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The time that this resource was created on the server. This is in RFC3339 text format.
+        /// </summary>
+        [Input("creationTime")]
+        public Input<string>? CreationTime { get; set; }
+
+        /// <summary>
         /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Input("description")]
@@ -559,6 +577,12 @@ namespace Pulumi.Gcp.Dns
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server.
+        /// </summary>
+        [Input("managedZoneId")]
+        public Input<int>? ManagedZoneId { get; set; }
 
         /// <summary>
         /// User assigned name for this resource.

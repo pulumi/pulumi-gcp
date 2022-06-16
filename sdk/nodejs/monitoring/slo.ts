@@ -42,6 +42,10 @@ import * as utilities from "../utilities";
  *             threshold: "1s",
  *         },
  *     },
+ *     userLabels: {
+ *         my_key: "my_value",
+ *         my_other_key: "my_other_value",
+ *     },
  * });
  * ```
  * ### Monitoring Slo Request Based
@@ -167,6 +171,14 @@ export class Slo extends pulumi.CustomResource {
      */
     public readonly sloId!: pulumi.Output<string>;
     /**
+     * This field is intended to be used for organizing and identifying the AlertPolicy
+     * objects.The field can contain up to 64 entries. Each key and value is limited
+     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
+     * must begin with a letter.
+     */
+    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * A windows-based SLI defines the criteria for time windows.
      * goodService is defined based off the count of these time windows
      * for which the provided service was of good quality.
@@ -202,6 +214,7 @@ export class Slo extends pulumi.CustomResource {
             resourceInputs["rollingPeriodDays"] = state ? state.rollingPeriodDays : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
             resourceInputs["sloId"] = state ? state.sloId : undefined;
+            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
             resourceInputs["windowsBasedSli"] = state ? state.windowsBasedSli : undefined;
         } else {
             const args = argsOrState as SloArgs | undefined;
@@ -220,6 +233,7 @@ export class Slo extends pulumi.CustomResource {
             resourceInputs["rollingPeriodDays"] = args ? args.rollingPeriodDays : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["sloId"] = args ? args.sloId : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
             resourceInputs["windowsBasedSli"] = args ? args.windowsBasedSli : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -292,6 +306,14 @@ export interface SloState {
      */
     sloId?: pulumi.Input<string>;
     /**
+     * This field is intended to be used for organizing and identifying the AlertPolicy
+     * objects.The field can contain up to 64 entries. Each key and value is limited
+     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
+     * must begin with a letter.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * A windows-based SLI defines the criteria for time windows.
      * goodService is defined based off the count of these time windows
      * for which the provided service was of good quality.
@@ -363,6 +385,14 @@ export interface SloArgs {
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
     sloId?: pulumi.Input<string>;
+    /**
+     * This field is intended to be used for organizing and identifying the AlertPolicy
+     * objects.The field can contain up to 64 entries. Each key and value is limited
+     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
+     * must begin with a letter.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A windows-based SLI defines the criteria for time windows.
      * goodService is defined based off the count of these time windows

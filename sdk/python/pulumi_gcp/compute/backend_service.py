@@ -1190,6 +1190,30 @@ class BackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ))
         ```
+        ### Backend Service Cache Include Named Cookies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+                    include_host=True,
+                    include_named_cookies=[
+                        "__next_preview_data",
+                        "__prerender_bypass",
+                    ],
+                    include_protocol=True,
+                    include_query_string=True,
+                ),
+                cache_mode="CACHE_ALL_STATIC",
+                client_ttl=7200,
+                default_ttl=3600,
+                max_ttl=10800,
+            ),
+            enable_cdn=True)
+        ```
         ### Backend Service Cache
 
         ```python
@@ -1460,6 +1484,30 @@ class BackendService(pulumi.CustomResource):
             cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
                 signed_url_cache_max_age_sec=7200,
             ))
+        ```
+        ### Backend Service Cache Include Named Cookies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+                    include_host=True,
+                    include_named_cookies=[
+                        "__next_preview_data",
+                        "__prerender_bypass",
+                    ],
+                    include_protocol=True,
+                    include_query_string=True,
+                ),
+                cache_mode="CACHE_ALL_STATIC",
+                client_ttl=7200,
+                default_ttl=3600,
+                max_ttl=10800,
+            ),
+            enable_cdn=True)
         ```
         ### Backend Service Cache
 

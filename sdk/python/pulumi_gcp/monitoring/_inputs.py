@@ -49,6 +49,7 @@ __all__ = [
     'SloWindowsBasedSliMetricSumInRangeArgs',
     'SloWindowsBasedSliMetricSumInRangeRangeArgs',
     'UptimeCheckConfigContentMatcherArgs',
+    'UptimeCheckConfigContentMatcherJsonPathMatcherArgs',
     'UptimeCheckConfigHttpCheckArgs',
     'UptimeCheckConfigHttpCheckAuthInfoArgs',
     'UptimeCheckConfigMonitoredResourceArgs',
@@ -3125,14 +3126,19 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
 class UptimeCheckConfigContentMatcherArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
+                 json_path_matcher: Optional[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']] = None,
                  matcher: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] content: String or regex content to match (max 1024 bytes)
+        :param pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs'] json_path_matcher: Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+               Structure is documented below.
         :param pulumi.Input[str] matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
                Default value is `CONTAINS_STRING`.
-               Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+               Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
         """
         pulumi.set(__self__, "content", content)
+        if json_path_matcher is not None:
+            pulumi.set(__self__, "json_path_matcher", json_path_matcher)
         if matcher is not None:
             pulumi.set(__self__, "matcher", matcher)
 
@@ -3149,18 +3155,73 @@ class UptimeCheckConfigContentMatcherArgs:
         pulumi.set(self, "content", value)
 
     @property
+    @pulumi.getter(name="jsonPathMatcher")
+    def json_path_matcher(self) -> Optional[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']]:
+        """
+        Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "json_path_matcher")
+
+    @json_path_matcher.setter
+    def json_path_matcher(self, value: Optional[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']]):
+        pulumi.set(self, "json_path_matcher", value)
+
+    @property
     @pulumi.getter
     def matcher(self) -> Optional[pulumi.Input[str]]:
         """
         The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         Default value is `CONTAINS_STRING`.
-        Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+        Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
         """
         return pulumi.get(self, "matcher")
 
     @matcher.setter
     def matcher(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "matcher", value)
+
+
+@pulumi.input_type
+class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
+    def __init__(__self__, *,
+                 json_path: pulumi.Input[str],
+                 json_matcher: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] json_path: JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+        :param pulumi.Input[str] json_matcher: Options to perform JSONPath content matching.
+               Default value is `EXACT_MATCH`.
+               Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+        """
+        pulumi.set(__self__, "json_path", json_path)
+        if json_matcher is not None:
+            pulumi.set(__self__, "json_matcher", json_matcher)
+
+    @property
+    @pulumi.getter(name="jsonPath")
+    def json_path(self) -> pulumi.Input[str]:
+        """
+        JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+        """
+        return pulumi.get(self, "json_path")
+
+    @json_path.setter
+    def json_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "json_path", value)
+
+    @property
+    @pulumi.getter(name="jsonMatcher")
+    def json_matcher(self) -> Optional[pulumi.Input[str]]:
+        """
+        Options to perform JSONPath content matching.
+        Default value is `EXACT_MATCH`.
+        Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+        """
+        return pulumi.get(self, "json_matcher")
+
+    @json_matcher.setter
+    def json_matcher(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "json_matcher", value)
 
 
 @pulumi.input_type

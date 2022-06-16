@@ -18,7 +18,8 @@ class CustomServiceArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None):
+                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CustomService resource.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
@@ -28,6 +29,12 @@ class CustomServiceArgs:
                service ID.
         :param pulumi.Input['CustomServiceTelemetryArgs'] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
+               with a letter. Label keys and values may contain lowercase letters,
+               numbers, underscores, and dashes. Label keys and values have a maximum
+               length of 63 characters, and must be less than 128 bytes in size. Up to 64
+               label entries may be stored. For labels which do not have a semantic value,
+               the empty string may be supplied for the label value.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -37,6 +44,8 @@ class CustomServiceArgs:
             pulumi.set(__self__, "service_id", service_id)
         if telemetry is not None:
             pulumi.set(__self__, "telemetry", telemetry)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="displayName")
@@ -89,6 +98,23 @@ class CustomServiceArgs:
     def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArgs']]):
         pulumi.set(self, "telemetry", value)
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels which have been used to annotate the service. Label keys must start
+        with a letter. Label keys and values may contain lowercase letters,
+        numbers, underscores, and dashes. Label keys and values have a maximum
+        length of 63 characters, and must be less than 128 bytes in size. Up to 64
+        label entries may be stored. For labels which do not have a semantic value,
+        the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
 
 @pulumi.input_type
 class _CustomServiceState:
@@ -97,7 +123,8 @@ class _CustomServiceState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None):
+                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CustomService resources.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
@@ -108,6 +135,12 @@ class _CustomServiceState:
                service ID.
         :param pulumi.Input['CustomServiceTelemetryArgs'] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
+               with a letter. Label keys and values may contain lowercase letters,
+               numbers, underscores, and dashes. Label keys and values have a maximum
+               length of 63 characters, and must be less than 128 bytes in size. Up to 64
+               label entries may be stored. For labels which do not have a semantic value,
+               the empty string may be supplied for the label value.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -119,6 +152,8 @@ class _CustomServiceState:
             pulumi.set(__self__, "service_id", service_id)
         if telemetry is not None:
             pulumi.set(__self__, "telemetry", telemetry)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="displayName")
@@ -183,6 +218,23 @@ class _CustomServiceState:
     def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArgs']]):
         pulumi.set(self, "telemetry", value)
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels which have been used to annotate the service. Label keys must start
+        with a letter. Label keys and values may contain lowercase letters,
+        numbers, underscores, and dashes. Label keys and values have a maximum
+        length of 63 characters, and must be less than 128 bytes in size. Up to 64
+        label entries may be stored. For labels which do not have a semantic value,
+        the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
 
 class CustomService(pulumi.CustomResource):
     @overload
@@ -193,6 +245,7 @@ class CustomService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         A Service is a discrete, autonomous, and network-accessible unit,
@@ -219,7 +272,11 @@ class CustomService(pulumi.CustomResource):
             service_id="custom-srv",
             telemetry=gcp.monitoring.CustomServiceTelemetryArgs(
                 resource_name="//product.googleapis.com/foo/foo/services/test",
-            ))
+            ),
+            user_labels={
+                "my_key": "my_value",
+                "my_other_key": "my_other_value",
+            })
         ```
 
         ## Import
@@ -239,6 +296,12 @@ class CustomService(pulumi.CustomResource):
                service ID.
         :param pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
+               with a letter. Label keys and values may contain lowercase letters,
+               numbers, underscores, and dashes. Label keys and values have a maximum
+               length of 63 characters, and must be less than 128 bytes in size. Up to 64
+               label entries may be stored. For labels which do not have a semantic value,
+               the empty string may be supplied for the label value.
         """
         ...
     @overload
@@ -271,7 +334,11 @@ class CustomService(pulumi.CustomResource):
             service_id="custom-srv",
             telemetry=gcp.monitoring.CustomServiceTelemetryArgs(
                 resource_name="//product.googleapis.com/foo/foo/services/test",
-            ))
+            ),
+            user_labels={
+                "my_key": "my_value",
+                "my_other_key": "my_other_value",
+            })
         ```
 
         ## Import
@@ -301,6 +368,7 @@ class CustomService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -317,6 +385,7 @@ class CustomService(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["telemetry"] = telemetry
+            __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["name"] = None
         super(CustomService, __self__).__init__(
             'gcp:monitoring/customService:CustomService',
@@ -332,7 +401,8 @@ class CustomService(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
-            telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None) -> 'CustomService':
+            telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None,
+            user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'CustomService':
         """
         Get an existing CustomService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -348,6 +418,12 @@ class CustomService(pulumi.CustomResource):
                service ID.
         :param pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
+               with a letter. Label keys and values may contain lowercase letters,
+               numbers, underscores, and dashes. Label keys and values have a maximum
+               length of 63 characters, and must be less than 128 bytes in size. Up to 64
+               label entries may be stored. For labels which do not have a semantic value,
+               the empty string may be supplied for the label value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -358,6 +434,7 @@ class CustomService(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["telemetry"] = telemetry
+        __props__.__dict__["user_labels"] = user_labels
         return CustomService(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -402,4 +479,17 @@ class CustomService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "telemetry")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Labels which have been used to annotate the service. Label keys must start
+        with a letter. Label keys and values may contain lowercase letters,
+        numbers, underscores, and dashes. Label keys and values have a maximum
+        length of 63 characters, and must be less than 128 bytes in size. Up to 64
+        label entries may be stored. For labels which do not have a semantic value,
+        the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
 

@@ -91,6 +91,7 @@ export interface GetIstioCanonicalServiceResult {
     readonly project?: string;
     readonly serviceId: string;
     readonly telemetries: outputs.monitoring.GetIstioCanonicalServiceTelemetry[];
+    readonly userLabels: {[key: string]: string};
 }
 
 export function getIstioCanonicalServiceOutput(args: GetIstioCanonicalServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIstioCanonicalServiceResult> {

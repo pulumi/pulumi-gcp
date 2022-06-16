@@ -21,7 +21,7 @@ class GetClusterIstioServiceResult:
     """
     A collection of values returned by getClusterIstioService.
     """
-    def __init__(__self__, cluster_name=None, display_name=None, id=None, location=None, name=None, project=None, service_id=None, service_name=None, service_namespace=None, telemetries=None):
+    def __init__(__self__, cluster_name=None, display_name=None, id=None, location=None, name=None, project=None, service_id=None, service_name=None, service_namespace=None, telemetries=None, user_labels=None):
         if cluster_name and not isinstance(cluster_name, str):
             raise TypeError("Expected argument 'cluster_name' to be a str")
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -52,6 +52,9 @@ class GetClusterIstioServiceResult:
         if telemetries and not isinstance(telemetries, list):
             raise TypeError("Expected argument 'telemetries' to be a list")
         pulumi.set(__self__, "telemetries", telemetries)
+        if user_labels and not isinstance(user_labels, dict):
+            raise TypeError("Expected argument 'user_labels' to be a dict")
+        pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -106,6 +109,11 @@ class GetClusterIstioServiceResult:
     def telemetries(self) -> Sequence['outputs.GetClusterIstioServiceTelemetryResult']:
         return pulumi.get(self, "telemetries")
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "user_labels")
+
 
 class AwaitableGetClusterIstioServiceResult(GetClusterIstioServiceResult):
     # pylint: disable=using-constant-test
@@ -122,7 +130,8 @@ class AwaitableGetClusterIstioServiceResult(GetClusterIstioServiceResult):
             service_id=self.service_id,
             service_name=self.service_name,
             service_namespace=self.service_namespace,
-            telemetries=self.telemetries)
+            telemetries=self.telemetries,
+            user_labels=self.user_labels)
 
 
 def get_cluster_istio_service(cluster_name: Optional[str] = None,
@@ -193,7 +202,8 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
         service_id=__ret__.service_id,
         service_name=__ret__.service_name,
         service_namespace=__ret__.service_namespace,
-        telemetries=__ret__.telemetries)
+        telemetries=__ret__.telemetries,
+        user_labels=__ret__.user_labels)
 
 
 @_utilities.lift_output_func(get_cluster_istio_service)

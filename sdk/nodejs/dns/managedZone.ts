@@ -193,6 +193,10 @@ export class ManagedZone extends pulumi.CustomResource {
     }
 
     /**
+     * The time that this resource was created on the server. This is in RFC3339 text format.
+     */
+    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     public readonly description!: pulumi.Output<string>;
@@ -220,6 +224,10 @@ export class ManagedZone extends pulumi.CustomResource {
      * A set of key/value label pairs to assign to this ManagedZone.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Unique identifier for the resource; defined by the server.
+     */
+    public /*out*/ readonly managedZoneId!: pulumi.Output<number>;
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
@@ -278,12 +286,14 @@ export class ManagedZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedZoneState | undefined;
+            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsName"] = state ? state.dnsName : undefined;
             resourceInputs["dnssecConfig"] = state ? state.dnssecConfig : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["managedZoneId"] = state ? state.managedZoneId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nameServers"] = state ? state.nameServers : undefined;
             resourceInputs["peeringConfig"] = state ? state.peeringConfig : undefined;
@@ -310,6 +320,8 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["reverseLookup"] = args ? args.reverseLookup : undefined;
             resourceInputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
             resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["managedZoneId"] = undefined /*out*/;
             resourceInputs["nameServers"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -321,6 +333,10 @@ export class ManagedZone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ManagedZone resources.
  */
 export interface ManagedZoneState {
+    /**
+     * The time that this resource was created on the server. This is in RFC3339 text format.
+     */
+    creationTime?: pulumi.Input<string>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
@@ -349,6 +365,10 @@ export interface ManagedZoneState {
      * A set of key/value label pairs to assign to this ManagedZone.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Unique identifier for the resource; defined by the server.
+     */
+    managedZoneId?: pulumi.Input<number>;
     /**
      * User assigned name for this resource.
      * Must be unique within the project.

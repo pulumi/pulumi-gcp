@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? IncludeHost;
         /// <summary>
+        /// Names of cookies to include in cache keys.
+        /// </summary>
+        public readonly ImmutableArray<string> IncludeNamedCookies;
+        /// <summary>
         /// If true, http and https requests will be cached separately.
         /// </summary>
         public readonly bool? IncludeProtocol;
@@ -51,6 +55,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private BackendServiceCdnPolicyCacheKeyPolicy(
             bool? includeHost,
 
+            ImmutableArray<string> includeNamedCookies,
+
             bool? includeProtocol,
 
             bool? includeQueryString,
@@ -60,6 +66,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             ImmutableArray<string> queryStringWhitelists)
         {
             IncludeHost = includeHost;
+            IncludeNamedCookies = includeNamedCookies;
             IncludeProtocol = includeProtocol;
             IncludeQueryString = includeQueryString;
             QueryStringBlacklists = queryStringBlacklists;

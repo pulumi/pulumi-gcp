@@ -191,6 +191,7 @@ namespace Pulumi.Gcp.Monitoring
         public readonly string? Project;
         public readonly string ServiceId;
         public readonly ImmutableArray<Outputs.GetIstioCanonicalServiceTelemetryResult> Telemetries;
+        public readonly ImmutableDictionary<string, string> UserLabels;
 
         [OutputConstructor]
         private GetIstioCanonicalServiceResult(
@@ -210,7 +211,9 @@ namespace Pulumi.Gcp.Monitoring
 
             string serviceId,
 
-            ImmutableArray<Outputs.GetIstioCanonicalServiceTelemetryResult> telemetries)
+            ImmutableArray<Outputs.GetIstioCanonicalServiceTelemetryResult> telemetries,
+
+            ImmutableDictionary<string, string> userLabels)
         {
             CanonicalService = canonicalService;
             CanonicalServiceNamespace = canonicalServiceNamespace;
@@ -221,6 +224,7 @@ namespace Pulumi.Gcp.Monitoring
             Project = project;
             ServiceId = serviceId;
             Telemetries = telemetries;
+            UserLabels = userLabels;
         }
     }
 }

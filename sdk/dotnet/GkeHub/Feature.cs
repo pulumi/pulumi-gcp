@@ -87,6 +87,27 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// }
     /// ```
+    /// ### Enable Anthos Service Mesh
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var feature = new Gcp.GkeHub.Feature("feature", new Gcp.GkeHub.FeatureArgs
+    ///         {
+    ///             Location = "global",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

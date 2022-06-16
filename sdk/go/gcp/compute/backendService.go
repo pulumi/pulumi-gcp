@@ -92,6 +92,43 @@ import (
 // 	})
 // }
 // ```
+// ### Backend Service Cache Include Named Cookies
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+// 				CacheKeyPolicy: &compute.BackendServiceCdnPolicyCacheKeyPolicyArgs{
+// 					IncludeHost: pulumi.Bool(true),
+// 					IncludeNamedCookies: pulumi.StringArray{
+// 						pulumi.String("__next_preview_data"),
+// 						pulumi.String("__prerender_bypass"),
+// 					},
+// 					IncludeProtocol:    pulumi.Bool(true),
+// 					IncludeQueryString: pulumi.Bool(true),
+// 				},
+// 				CacheMode:  pulumi.String("CACHE_ALL_STATIC"),
+// 				ClientTtl:  pulumi.Int(7200),
+// 				DefaultTtl: pulumi.Int(3600),
+// 				MaxTtl:     pulumi.Int(10800),
+// 			},
+// 			EnableCdn: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Backend Service Cache
 //
 // ```go

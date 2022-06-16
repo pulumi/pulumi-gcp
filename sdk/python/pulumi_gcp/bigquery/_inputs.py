@@ -3081,6 +3081,7 @@ class TableExternalDataConfigurationArgs:
                  source_format: pulumi.Input[str],
                  source_uris: pulumi.Input[Sequence[pulumi.Input[str]]],
                  compression: Optional[pulumi.Input[str]] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
                  csv_options: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']] = None,
                  google_sheets_options: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']] = None,
                  hive_partitioning_options: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']] = None,
@@ -3099,6 +3100,10 @@ class TableExternalDataConfigurationArgs:
                your data in Google Cloud.
         :param pulumi.Input[str] compression: The compression type of the data source.
                Valid values are "NONE" or "GZIP".
+        :param pulumi.Input[str] connection_id: The connection specifying the credentials to be used to read
+               external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+               the form `{{project}}.{{location}}.{{connection_id}}`
+               or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
         :param pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs'] csv_options: Additional properties to set if
                `source_format` is set to "CSV". Structure is documented below.
         :param pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs'] google_sheets_options: Additional options if
@@ -3133,6 +3138,8 @@ class TableExternalDataConfigurationArgs:
         pulumi.set(__self__, "source_uris", source_uris)
         if compression is not None:
             pulumi.set(__self__, "compression", compression)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
         if google_sheets_options is not None:
@@ -3200,6 +3207,21 @@ class TableExternalDataConfigurationArgs:
     @compression.setter
     def compression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "compression", value)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The connection specifying the credentials to be used to read
+        external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+        the form `{{project}}.{{location}}.{{connection_id}}`
+        or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
 
     @property
     @pulumi.getter(name="csvOptions")

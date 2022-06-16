@@ -182,9 +182,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// List of instances in the group. They should be given
-        /// as either self_link or id. When adding instances they must all be in the same
-        /// network and zone as the instance group.
+        /// The list of instances in the group, in `self_link` format.
+        /// When adding instances they must all be in the same network and zone as the instance group.
         /// </summary>
         [Output("instances")]
         public Output<ImmutableArray<string>> Instances { get; private set; } = null!;
@@ -293,9 +292,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _instances;
 
         /// <summary>
-        /// List of instances in the group. They should be given
-        /// as either self_link or id. When adding instances they must all be in the same
-        /// network and zone as the instance group.
+        /// The list of instances in the group, in `self_link` format.
+        /// When adding instances they must all be in the same network and zone as the instance group.
         /// </summary>
         public InputList<string> Instances
         {
@@ -362,9 +360,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _instances;
 
         /// <summary>
-        /// List of instances in the group. They should be given
-        /// as either self_link or id. When adding instances they must all be in the same
-        /// network and zone as the instance group.
+        /// The list of instances in the group, in `self_link` format.
+        /// When adding instances they must all be in the same network and zone as the instance group.
         /// </summary>
         public InputList<string> Instances
         {

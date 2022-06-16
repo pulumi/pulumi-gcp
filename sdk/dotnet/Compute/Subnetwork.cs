@@ -161,6 +161,33 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Subnetwork Internal Ipv6
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var custom_test = new Gcp.Compute.Network("custom-test", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///             EnableUlaInternalIpv6 = true,
+    ///         });
+    ///         var subnetwork_internal_ipv6 = new Gcp.Compute.Subnetwork("subnetwork-internal-ipv6", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.0.0/22",
+    ///             Region = "us-west2",
+    ///             StackType = "IPV4_IPV6",
+    ///             Ipv6AccessType = "INTERNAL",
+    ///             Network = custom_test.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -230,7 +257,7 @@ namespace Pulumi.Gcp.Compute
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         /// cannot enable direct path.
-        /// Possible values are `EXTERNAL`.
+        /// Possible values are `EXTERNAL` and `INTERNAL`.
         /// </summary>
         [Output("ipv6AccessType")]
         public Output<string?> Ipv6AccessType { get; private set; } = null!;
@@ -406,7 +433,7 @@ namespace Pulumi.Gcp.Compute
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         /// cannot enable direct path.
-        /// Possible values are `EXTERNAL`.
+        /// Possible values are `EXTERNAL` and `INTERNAL`.
         /// </summary>
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }
@@ -561,7 +588,7 @@ namespace Pulumi.Gcp.Compute
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         /// cannot enable direct path.
-        /// Possible values are `EXTERNAL`.
+        /// Possible values are `EXTERNAL` and `INTERNAL`.
         /// </summary>
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }

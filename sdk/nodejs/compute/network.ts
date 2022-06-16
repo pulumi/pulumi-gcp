@@ -98,9 +98,22 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Enable ULA internal ipv6 on this network. Enabling this feature will assign
+     * a /48 from google defined ULA prefix fd20::/20.
+     */
+    public readonly enableUlaInternalIpv6!: pulumi.Output<boolean | undefined>;
+    /**
      * The gateway address for default routing out of the network. This value is selected by GCP.
      */
     public /*out*/ readonly gatewayIpv4!: pulumi.Output<string>;
+    /**
+     * When enabling ula internal ipv6, caller optionally can specify the /48 range
+     * they want from the google defined ULA prefix fd20::/20. The input must be a
+     * valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+     * fail if the speficied /48 is already in used by another resource.
+     * If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+     */
+    public readonly internalIpv6Range!: pulumi.Output<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460
      * and the maximum value is 1500 bytes.
@@ -151,7 +164,9 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["autoCreateSubnetworks"] = state ? state.autoCreateSubnetworks : undefined;
             resourceInputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableUlaInternalIpv6"] = state ? state.enableUlaInternalIpv6 : undefined;
             resourceInputs["gatewayIpv4"] = state ? state.gatewayIpv4 : undefined;
+            resourceInputs["internalIpv6Range"] = state ? state.internalIpv6Range : undefined;
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -162,6 +177,8 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
             resourceInputs["deleteDefaultRoutesOnCreate"] = args ? args.deleteDefaultRoutesOnCreate : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableUlaInternalIpv6"] = args ? args.enableUlaInternalIpv6 : undefined;
+            resourceInputs["internalIpv6Range"] = args ? args.internalIpv6Range : undefined;
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -197,9 +214,22 @@ export interface NetworkState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Enable ULA internal ipv6 on this network. Enabling this feature will assign
+     * a /48 from google defined ULA prefix fd20::/20.
+     */
+    enableUlaInternalIpv6?: pulumi.Input<boolean>;
+    /**
      * The gateway address for default routing out of the network. This value is selected by GCP.
      */
     gatewayIpv4?: pulumi.Input<string>;
+    /**
+     * When enabling ula internal ipv6, caller optionally can specify the /48 range
+     * they want from the google defined ULA prefix fd20::/20. The input must be a
+     * valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+     * fail if the speficied /48 is already in used by another resource.
+     * If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+     */
+    internalIpv6Range?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460
      * and the maximum value is 1500 bytes.
@@ -257,6 +287,19 @@ export interface NetworkArgs {
      * recreated to modify this field.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Enable ULA internal ipv6 on this network. Enabling this feature will assign
+     * a /48 from google defined ULA prefix fd20::/20.
+     */
+    enableUlaInternalIpv6?: pulumi.Input<boolean>;
+    /**
+     * When enabling ula internal ipv6, caller optionally can specify the /48 range
+     * they want from the google defined ULA prefix fd20::/20. The input must be a
+     * valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+     * fail if the speficied /48 is already in used by another resource.
+     * If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+     */
+    internalIpv6Range?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460
      * and the maximum value is 1500 bytes.

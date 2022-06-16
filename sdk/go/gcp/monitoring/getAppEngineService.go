@@ -114,6 +114,7 @@ type GetAppEngineServiceResult struct {
 	Project     *string                        `pulumi:"project"`
 	ServiceId   string                         `pulumi:"serviceId"`
 	Telemetries []GetAppEngineServiceTelemetry `pulumi:"telemetries"`
+	UserLabels  map[string]string              `pulumi:"userLabels"`
 }
 
 func GetAppEngineServiceOutput(ctx *pulumi.Context, args GetAppEngineServiceOutputArgs, opts ...pulumi.InvokeOption) GetAppEngineServiceResultOutput {
@@ -185,6 +186,10 @@ func (o GetAppEngineServiceResultOutput) ServiceId() pulumi.StringOutput {
 
 func (o GetAppEngineServiceResultOutput) Telemetries() GetAppEngineServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v GetAppEngineServiceResult) []GetAppEngineServiceTelemetry { return v.Telemetries }).(GetAppEngineServiceTelemetryArrayOutput)
+}
+
+func (o GetAppEngineServiceResultOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAppEngineServiceResult) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

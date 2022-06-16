@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Clouddeploy DeliveryPipeline resource
+// The Cloud Deploy `DeliveryPipeline` resource
 //
 // ## Example Usage
 // ### Delivery_pipeline

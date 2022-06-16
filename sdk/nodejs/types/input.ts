@@ -3332,6 +3332,13 @@ export namespace bigquery {
          */
         compression?: pulumi.Input<string>;
         /**
+         * The connection specifying the credentials to be used to read
+         * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
+         * the form `{{project}}.{{location}}.{{connection_id}}`
+         * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+         */
+        connectionId?: pulumi.Input<string>;
+        /**
          * Additional properties to set if
          * `sourceFormat` is set to "CSV". Structure is documented below.
          */
@@ -6579,7 +6586,6 @@ export namespace cloudfunctionsv2 {
          */
         retryPolicy?: pulumi.Input<string>;
         /**
-         * -
          * The email of the service account for this function.
          */
         serviceAccountEmail?: pulumi.Input<string>;
@@ -6638,7 +6644,6 @@ export namespace cloudfunctionsv2 {
          */
         service?: pulumi.Input<string>;
         /**
-         * -
          * The email of the service account for this function.
          */
         serviceAccountEmail?: pulumi.Input<string>;
@@ -8468,6 +8473,10 @@ export namespace compute {
          * If true requests to different hosts will be cached separately.
          */
         includeHost?: pulumi.Input<boolean>;
+        /**
+         * Names of cookies to include in cache keys.
+         */
+        includeNamedCookies?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * If true, http and https requests will be cached separately.
          */
@@ -11248,6 +11257,10 @@ export namespace compute {
          */
         includeHost?: pulumi.Input<boolean>;
         /**
+         * Names of cookies to include in cache keys.
+         */
+        includeNamedCookies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * If true, http and https requests will be cached separately.
          */
         includeProtocol?: pulumi.Input<boolean>;
@@ -13924,6 +13937,21 @@ export namespace compute {
          * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
          */
         ruleVisibility?: pulumi.Input<string>;
+    }
+
+    export interface SecurityPolicyAdvancedOptionsConfig {
+        /**
+         * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+         * * DISABLED - Don't parse JSON payloads in POST bodies.
+         * * STANDARD - Parse JSON payloads in POST bodies.
+         */
+        jsonParsing?: pulumi.Input<string>;
+        /**
+         * Log level to use. Defaults to `NORMAL`.
+         * * NORMAL - Normal log level.
+         * * VERBOSE - Verbose log level.
+         */
+        logLevel?: pulumi.Input<string>;
     }
 
     export interface SecurityPolicyRule {
@@ -17126,7 +17154,7 @@ export namespace container {
 
     export interface ClusterLoggingConfig {
         /**
-         * The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+         * The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17212,9 +17240,21 @@ export namespace container {
 
     export interface ClusterMonitoringConfig {
         /**
-         * The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+         * The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
-        enableComponents: pulumi.Input<pulumi.Input<string>[]>;
+        enableComponents?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Configuration for Managed Service for Prometheus. Structure is documented below.
+         */
+        managedPrometheus?: pulumi.Input<inputs.container.ClusterMonitoringConfigManagedPrometheus>;
+    }
+
+    export interface ClusterMonitoringConfigManagedPrometheus {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterNetworkPolicy {
@@ -17333,10 +17373,6 @@ export namespace container {
          * for more information. Defaults to false.
          */
         preemptible?: pulumi.Input<boolean>;
-        /**
-         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-         * Structure is documented below.
-         */
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodeConfigSandboxConfig>;
         /**
          * The service account to be used by the Node VMs.
@@ -17348,8 +17384,8 @@ export namespace container {
          */
         shieldedInstanceConfig?: pulumi.Input<inputs.container.ClusterNodeConfigShieldedInstanceConfig>;
         /**
-         * ) A boolean
-         * that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+         * A boolean that represents whether the underlying node VMs are spot.
+         * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
          * for more information. Defaults to false.
          */
         spot?: pulumi.Input<boolean>;
@@ -17665,10 +17701,6 @@ export namespace container {
          * for more information. Defaults to false.
          */
         preemptible?: pulumi.Input<boolean>;
-        /**
-         * [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-         * Structure is documented below.
-         */
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSandboxConfig>;
         /**
          * The service account to be used by the Node VMs.
@@ -17680,8 +17712,8 @@ export namespace container {
          */
         shieldedInstanceConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigShieldedInstanceConfig>;
         /**
-         * ) A boolean
-         * that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+         * A boolean that represents whether the underlying node VMs are spot.
+         * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
          * for more information. Defaults to false.
          */
         spot?: pulumi.Input<boolean>;
@@ -22937,6 +22969,10 @@ export namespace gkehub {
          */
         git?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit>;
         /**
+         * Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+         */
+        preventDrift?: pulumi.Input<boolean>;
+        /**
          * Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
          */
         sourceFormat?: pulumi.Input<string>;
@@ -25385,11 +25421,29 @@ export namespace monitoring {
          */
         content: pulumi.Input<string>;
         /**
+         * Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+         * Structure is documented below.
+         */
+        jsonPathMatcher?: pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcherJsonPathMatcher>;
+        /**
          * The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
          * Default value is `CONTAINS_STRING`.
-         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
          */
         matcher?: pulumi.Input<string>;
+    }
+
+    export interface UptimeCheckConfigContentMatcherJsonPathMatcher {
+        /**
+         * Options to perform JSONPath content matching.
+         * Default value is `EXACT_MATCH`.
+         * Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+         */
+        jsonMatcher?: pulumi.Input<string>;
+        /**
+         * JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
+         */
+        jsonPath: pulumi.Input<string>;
     }
 
     export interface UptimeCheckConfigHttpCheck {
@@ -25480,6 +25534,7 @@ export namespace monitoring {
          */
         port: pulumi.Input<number>;
     }
+
 }
 
 export namespace networkconnectivity {
@@ -29868,6 +29923,10 @@ export namespace sql {
         updateTrack?: pulumi.Input<string>;
     }
 
+    export interface UserSqlServerUserDetails {
+        disabled?: pulumi.Input<boolean>;
+        serverRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    }
 }
 
 export namespace storage {

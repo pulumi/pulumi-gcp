@@ -372,6 +372,8 @@ type FeatureMembershipConfigmanagementConfigSync struct {
 	// -
 	// (Optional) Structure is documented below.
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
+	// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+	PreventDrift *bool `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat *string `pulumi:"sourceFormat"`
 }
@@ -391,6 +393,8 @@ type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	// -
 	// (Optional) Structure is documented below.
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
+	// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+	PreventDrift pulumi.BoolPtrInput `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
 }
@@ -480,6 +484,11 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembersh
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
+// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) PreventDrift() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.PreventDrift }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) SourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
@@ -518,6 +527,16 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembe
 		}
 		return v.Git
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
+}
+
+// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) PreventDrift() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreventDrift
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.

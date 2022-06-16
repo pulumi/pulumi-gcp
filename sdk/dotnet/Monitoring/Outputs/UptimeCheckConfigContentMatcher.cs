@@ -18,9 +18,14 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string Content;
         /// <summary>
+        /// Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.UptimeCheckConfigContentMatcherJsonPathMatcher? JsonPathMatcher;
+        /// <summary>
         /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         /// Default value is `CONTAINS_STRING`.
-        /// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+        /// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
         /// </summary>
         public readonly string? Matcher;
 
@@ -28,9 +33,12 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private UptimeCheckConfigContentMatcher(
             string content,
 
+            Outputs.UptimeCheckConfigContentMatcherJsonPathMatcher? jsonPathMatcher,
+
             string? matcher)
         {
             Content = content;
+            JsonPathMatcher = jsonPathMatcher;
             Matcher = matcher;
         }
     }

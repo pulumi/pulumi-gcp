@@ -21,7 +21,7 @@ class GetIstioCanonicalServiceResult:
     """
     A collection of values returned by getIstioCanonicalService.
     """
-    def __init__(__self__, canonical_service=None, canonical_service_namespace=None, display_name=None, id=None, mesh_uid=None, name=None, project=None, service_id=None, telemetries=None):
+    def __init__(__self__, canonical_service=None, canonical_service_namespace=None, display_name=None, id=None, mesh_uid=None, name=None, project=None, service_id=None, telemetries=None, user_labels=None):
         if canonical_service and not isinstance(canonical_service, str):
             raise TypeError("Expected argument 'canonical_service' to be a str")
         pulumi.set(__self__, "canonical_service", canonical_service)
@@ -49,6 +49,9 @@ class GetIstioCanonicalServiceResult:
         if telemetries and not isinstance(telemetries, list):
             raise TypeError("Expected argument 'telemetries' to be a list")
         pulumi.set(__self__, "telemetries", telemetries)
+        if user_labels and not isinstance(user_labels, dict):
+            raise TypeError("Expected argument 'user_labels' to be a dict")
+        pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="canonicalService")
@@ -98,6 +101,11 @@ class GetIstioCanonicalServiceResult:
     def telemetries(self) -> Sequence['outputs.GetIstioCanonicalServiceTelemetryResult']:
         return pulumi.get(self, "telemetries")
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "user_labels")
+
 
 class AwaitableGetIstioCanonicalServiceResult(GetIstioCanonicalServiceResult):
     # pylint: disable=using-constant-test
@@ -113,7 +121,8 @@ class AwaitableGetIstioCanonicalServiceResult(GetIstioCanonicalServiceResult):
             name=self.name,
             project=self.project,
             service_id=self.service_id,
-            telemetries=self.telemetries)
+            telemetries=self.telemetries,
+            user_labels=self.user_labels)
 
 
 def get_istio_canonical_service(canonical_service: Optional[str] = None,
@@ -178,7 +187,8 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         service_id=__ret__.service_id,
-        telemetries=__ret__.telemetries)
+        telemetries=__ret__.telemetries,
+        user_labels=__ret__.user_labels)
 
 
 @_utilities.lift_output_func(get_istio_canonical_service)

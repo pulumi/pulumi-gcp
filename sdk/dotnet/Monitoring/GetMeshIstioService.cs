@@ -191,6 +191,7 @@ namespace Pulumi.Gcp.Monitoring
         public readonly string ServiceName;
         public readonly string ServiceNamespace;
         public readonly ImmutableArray<Outputs.GetMeshIstioServiceTelemetryResult> Telemetries;
+        public readonly ImmutableDictionary<string, string> UserLabels;
 
         [OutputConstructor]
         private GetMeshIstioServiceResult(
@@ -210,7 +211,9 @@ namespace Pulumi.Gcp.Monitoring
 
             string serviceNamespace,
 
-            ImmutableArray<Outputs.GetMeshIstioServiceTelemetryResult> telemetries)
+            ImmutableArray<Outputs.GetMeshIstioServiceTelemetryResult> telemetries,
+
+            ImmutableDictionary<string, string> userLabels)
         {
             DisplayName = displayName;
             Id = id;
@@ -221,6 +224,7 @@ namespace Pulumi.Gcp.Monitoring
             ServiceName = serviceName;
             ServiceNamespace = serviceNamespace;
             Telemetries = telemetries;
+            UserLabels = userLabels;
         }
     }
 }

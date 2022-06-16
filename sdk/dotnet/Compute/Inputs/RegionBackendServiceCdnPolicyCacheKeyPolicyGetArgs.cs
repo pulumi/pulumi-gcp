@@ -18,6 +18,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("includeHost")]
         public Input<bool>? IncludeHost { get; set; }
 
+        [Input("includeNamedCookies")]
+        private InputList<string>? _includeNamedCookies;
+
+        /// <summary>
+        /// Names of cookies to include in cache keys.
+        /// </summary>
+        public InputList<string> IncludeNamedCookies
+        {
+            get => _includeNamedCookies ?? (_includeNamedCookies = new InputList<string>());
+            set => _includeNamedCookies = value;
+        }
+
         /// <summary>
         /// If true, http and https requests will be cached separately.
         /// </summary>

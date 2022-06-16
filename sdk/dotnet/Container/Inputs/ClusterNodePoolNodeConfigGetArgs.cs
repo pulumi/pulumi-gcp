@@ -175,10 +175,6 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
-        /// <summary>
-        /// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-        /// Structure is documented below.
-        /// </summary>
         [Input("sandboxConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigSandboxConfigGetArgs>? SandboxConfig { get; set; }
 
@@ -196,8 +192,8 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolNodeConfigShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
 
         /// <summary>
-        /// ) A boolean
-        /// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        /// A boolean that represents whether the underlying node VMs are spot.
+        /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         /// for more information. Defaults to false.
         /// </summary>
         [Input("spot")]

@@ -12,17 +12,23 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterMonitoringConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("enableComponents", required: true)]
+        [Input("enableComponents")]
         private InputList<string>? _enableComponents;
 
         /// <summary>
-        /// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+        /// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         /// </summary>
         public InputList<string> EnableComponents
         {
             get => _enableComponents ?? (_enableComponents = new InputList<string>());
             set => _enableComponents = value;
         }
+
+        /// <summary>
+        /// Configuration for Managed Service for Prometheus. Structure is documented below.
+        /// </summary>
+        [Input("managedPrometheus")]
+        public Input<Inputs.ClusterMonitoringConfigManagedPrometheusGetArgs>? ManagedPrometheus { get; set; }
 
         public ClusterMonitoringConfigGetArgs()
         {

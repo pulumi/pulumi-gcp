@@ -208,6 +208,7 @@ namespace Pulumi.Gcp.Monitoring
         public readonly string ServiceName;
         public readonly string ServiceNamespace;
         public readonly ImmutableArray<Outputs.GetClusterIstioServiceTelemetryResult> Telemetries;
+        public readonly ImmutableDictionary<string, string> UserLabels;
 
         [OutputConstructor]
         private GetClusterIstioServiceResult(
@@ -229,7 +230,9 @@ namespace Pulumi.Gcp.Monitoring
 
             string serviceNamespace,
 
-            ImmutableArray<Outputs.GetClusterIstioServiceTelemetryResult> telemetries)
+            ImmutableArray<Outputs.GetClusterIstioServiceTelemetryResult> telemetries,
+
+            ImmutableDictionary<string, string> userLabels)
         {
             ClusterName = clusterName;
             DisplayName = displayName;
@@ -241,6 +244,7 @@ namespace Pulumi.Gcp.Monitoring
             ServiceName = serviceName;
             ServiceNamespace = serviceNamespace;
             Telemetries = telemetries;
+            UserLabels = userLabels;
         }
     }
 }

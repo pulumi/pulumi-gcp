@@ -24,6 +24,7 @@ class SloArgs:
                  request_based_sli: Optional[pulumi.Input['SloRequestBasedSliArgs']] = None,
                  rolling_period_days: Optional[pulumi.Input[int]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None):
         """
         The set of arguments for constructing a Slo resource.
@@ -54,6 +55,11 @@ class SloArgs:
         :param pulumi.Input[int] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
+               objects.The field can contain up to 64 entries. Each key and value is limited
+               to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+               can contain only lowercase letters, numerals, underscores, and dashes. Keys
+               must begin with a letter.
         :param pulumi.Input['SloWindowsBasedSliArgs'] windows_based_sli: A windows-based SLI defines the criteria for time windows.
                good_service is defined based off the count of these time windows
                for which the provided service was of good quality.
@@ -80,6 +86,8 @@ class SloArgs:
             pulumi.set(__self__, "rolling_period_days", rolling_period_days)
         if slo_id is not None:
             pulumi.set(__self__, "slo_id", slo_id)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
         if windows_based_sli is not None:
             pulumi.set(__self__, "windows_based_sli", windows_based_sli)
 
@@ -210,6 +218,22 @@ class SloArgs:
         pulumi.set(self, "slo_id", value)
 
     @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        This field is intended to be used for organizing and identifying the AlertPolicy
+        objects.The field can contain up to 64 entries. Each key and value is limited
+        to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
+    @property
     @pulumi.getter(name="windowsBasedSli")
     def windows_based_sli(self) -> Optional[pulumi.Input['SloWindowsBasedSliArgs']]:
         """
@@ -243,6 +267,7 @@ class _SloState:
                  rolling_period_days: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  windows_based_sli: Optional[pulumi.Input['SloWindowsBasedSliArgs']] = None):
         """
         Input properties used for looking up and filtering Slo resources.
@@ -275,6 +300,11 @@ class _SloState:
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
+               objects.The field can contain up to 64 entries. Each key and value is limited
+               to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+               can contain only lowercase letters, numerals, underscores, and dashes. Keys
+               must begin with a letter.
         :param pulumi.Input['SloWindowsBasedSliArgs'] windows_based_sli: A windows-based SLI defines the criteria for time windows.
                good_service is defined based off the count of these time windows
                for which the provided service was of good quality.
@@ -305,6 +335,8 @@ class _SloState:
             pulumi.set(__self__, "service", service)
         if slo_id is not None:
             pulumi.set(__self__, "slo_id", slo_id)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
         if windows_based_sli is not None:
             pulumi.set(__self__, "windows_based_sli", windows_based_sli)
 
@@ -448,6 +480,22 @@ class _SloState:
         pulumi.set(self, "slo_id", value)
 
     @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        This field is intended to be used for organizing and identifying the AlertPolicy
+        objects.The field can contain up to 64 entries. Each key and value is limited
+        to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
+    @property
     @pulumi.getter(name="windowsBasedSli")
     def windows_based_sli(self) -> Optional[pulumi.Input['SloWindowsBasedSliArgs']]:
         """
@@ -482,6 +530,7 @@ class Slo(pulumi.CustomResource):
                  rolling_period_days: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  windows_based_sli: Optional[pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']]] = None,
                  __props__=None):
         """
@@ -518,7 +567,11 @@ class Slo(pulumi.CustomResource):
                 latency=gcp.monitoring.SloBasicSliLatencyArgs(
                     threshold="1s",
                 ),
-            ))
+            ),
+            user_labels={
+                "my_key": "my_value",
+                "my_other_key": "my_other_value",
+            })
         ```
         ### Monitoring Slo Request Based
 
@@ -582,6 +635,11 @@ class Slo(pulumi.CustomResource):
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
+               objects.The field can contain up to 64 entries. Each key and value is limited
+               to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+               can contain only lowercase letters, numerals, underscores, and dashes. Keys
+               must begin with a letter.
         :param pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
                good_service is defined based off the count of these time windows
                for which the provided service was of good quality.
@@ -632,7 +690,11 @@ class Slo(pulumi.CustomResource):
                 latency=gcp.monitoring.SloBasicSliLatencyArgs(
                     threshold="1s",
                 ),
-            ))
+            ),
+            user_labels={
+                "my_key": "my_value",
+                "my_other_key": "my_other_value",
+            })
         ```
         ### Monitoring Slo Request Based
 
@@ -691,6 +753,7 @@ class Slo(pulumi.CustomResource):
                  rolling_period_days: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  windows_based_sli: Optional[pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -717,6 +780,7 @@ class Slo(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
             __props__.__dict__["slo_id"] = slo_id
+            __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["windows_based_sli"] = windows_based_sli
             __props__.__dict__["name"] = None
         super(Slo, __self__).__init__(
@@ -739,6 +803,7 @@ class Slo(pulumi.CustomResource):
             rolling_period_days: Optional[pulumi.Input[int]] = None,
             service: Optional[pulumi.Input[str]] = None,
             slo_id: Optional[pulumi.Input[str]] = None,
+            user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             windows_based_sli: Optional[pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']]] = None) -> 'Slo':
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
@@ -776,6 +841,11 @@ class Slo(pulumi.CustomResource):
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
+               objects.The field can contain up to 64 entries. Each key and value is limited
+               to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+               can contain only lowercase letters, numerals, underscores, and dashes. Keys
+               must begin with a letter.
         :param pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
                good_service is defined based off the count of these time windows
                for which the provided service was of good quality.
@@ -800,6 +870,7 @@ class Slo(pulumi.CustomResource):
         __props__.__dict__["rolling_period_days"] = rolling_period_days
         __props__.__dict__["service"] = service
         __props__.__dict__["slo_id"] = slo_id
+        __props__.__dict__["user_labels"] = user_labels
         __props__.__dict__["windows_based_sli"] = windows_based_sli
         return Slo(resource_name, opts=opts, __props__=__props__)
 
@@ -901,6 +972,18 @@ class Slo(pulumi.CustomResource):
         The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
         """
         return pulumi.get(self, "slo_id")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        This field is intended to be used for organizing and identifying the AlertPolicy
+        objects.The field can contain up to 64 entries. Each key and value is limited
+        to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
 
     @property
     @pulumi.getter(name="windowsBasedSli")

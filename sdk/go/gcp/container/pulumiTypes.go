@@ -10990,7 +10990,7 @@ func (o ClusterIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.
 }
 
 type ClusterLoggingConfig struct {
-	// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+	// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 	EnableComponents []string `pulumi:"enableComponents"`
 }
 
@@ -11006,7 +11006,7 @@ type ClusterLoggingConfigInput interface {
 }
 
 type ClusterLoggingConfigArgs struct {
-	// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+	// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 }
 
@@ -11087,7 +11087,7 @@ func (o ClusterLoggingConfigOutput) ToClusterLoggingConfigPtrOutputWithContext(c
 	}).(ClusterLoggingConfigPtrOutput)
 }
 
-// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 func (o ClusterLoggingConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterLoggingConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }
@@ -11116,7 +11116,7 @@ func (o ClusterLoggingConfigPtrOutput) Elem() ClusterLoggingConfigOutput {
 	}).(ClusterLoggingConfigOutput)
 }
 
-// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 func (o ClusterLoggingConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterLoggingConfig) []string {
 		if v == nil {
@@ -12446,8 +12446,10 @@ func (o ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulum
 }
 
 type ClusterMonitoringConfig struct {
-	// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+	// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 	EnableComponents []string `pulumi:"enableComponents"`
+	// Configuration for Managed Service for Prometheus. Structure is documented below.
+	ManagedPrometheus *ClusterMonitoringConfigManagedPrometheus `pulumi:"managedPrometheus"`
 }
 
 // ClusterMonitoringConfigInput is an input type that accepts ClusterMonitoringConfigArgs and ClusterMonitoringConfigOutput values.
@@ -12462,8 +12464,10 @@ type ClusterMonitoringConfigInput interface {
 }
 
 type ClusterMonitoringConfigArgs struct {
-	// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+	// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+	// Configuration for Managed Service for Prometheus. Structure is documented below.
+	ManagedPrometheus ClusterMonitoringConfigManagedPrometheusPtrInput `pulumi:"managedPrometheus"`
 }
 
 func (ClusterMonitoringConfigArgs) ElementType() reflect.Type {
@@ -12543,9 +12547,14 @@ func (o ClusterMonitoringConfigOutput) ToClusterMonitoringConfigPtrOutputWithCon
 	}).(ClusterMonitoringConfigPtrOutput)
 }
 
-// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 func (o ClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+// Configuration for Managed Service for Prometheus. Structure is documented below.
+func (o ClusterMonitoringConfigOutput) ManagedPrometheus() ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfig) *ClusterMonitoringConfigManagedPrometheus { return v.ManagedPrometheus }).(ClusterMonitoringConfigManagedPrometheusPtrOutput)
 }
 
 type ClusterMonitoringConfigPtrOutput struct{ *pulumi.OutputState }
@@ -12572,7 +12581,7 @@ func (o ClusterMonitoringConfigPtrOutput) Elem() ClusterMonitoringConfigOutput {
 	}).(ClusterMonitoringConfigOutput)
 }
 
-// The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+// The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 func (o ClusterMonitoringConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterMonitoringConfig) []string {
 		if v == nil {
@@ -12580,6 +12589,157 @@ func (o ClusterMonitoringConfigPtrOutput) EnableComponents() pulumi.StringArrayO
 		}
 		return v.EnableComponents
 	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration for Managed Service for Prometheus. Structure is documented below.
+func (o ClusterMonitoringConfigPtrOutput) ManagedPrometheus() ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfig) *ClusterMonitoringConfigManagedPrometheus {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedPrometheus
+	}).(ClusterMonitoringConfigManagedPrometheusPtrOutput)
+}
+
+type ClusterMonitoringConfigManagedPrometheus struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterMonitoringConfigManagedPrometheusInput is an input type that accepts ClusterMonitoringConfigManagedPrometheusArgs and ClusterMonitoringConfigManagedPrometheusOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigManagedPrometheusInput` via:
+//
+//          ClusterMonitoringConfigManagedPrometheusArgs{...}
+type ClusterMonitoringConfigManagedPrometheusInput interface {
+	pulumi.Input
+
+	ToClusterMonitoringConfigManagedPrometheusOutput() ClusterMonitoringConfigManagedPrometheusOutput
+	ToClusterMonitoringConfigManagedPrometheusOutputWithContext(context.Context) ClusterMonitoringConfigManagedPrometheusOutput
+}
+
+type ClusterMonitoringConfigManagedPrometheusArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterMonitoringConfigManagedPrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheus)(nil)).Elem()
+}
+
+func (i ClusterMonitoringConfigManagedPrometheusArgs) ToClusterMonitoringConfigManagedPrometheusOutput() ClusterMonitoringConfigManagedPrometheusOutput {
+	return i.ToClusterMonitoringConfigManagedPrometheusOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigManagedPrometheusArgs) ToClusterMonitoringConfigManagedPrometheusOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigManagedPrometheusOutput)
+}
+
+func (i ClusterMonitoringConfigManagedPrometheusArgs) ToClusterMonitoringConfigManagedPrometheusPtrOutput() ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return i.ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigManagedPrometheusArgs) ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigManagedPrometheusOutput).ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(ctx)
+}
+
+// ClusterMonitoringConfigManagedPrometheusPtrInput is an input type that accepts ClusterMonitoringConfigManagedPrometheusArgs, ClusterMonitoringConfigManagedPrometheusPtr and ClusterMonitoringConfigManagedPrometheusPtrOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigManagedPrometheusPtrInput` via:
+//
+//          ClusterMonitoringConfigManagedPrometheusArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterMonitoringConfigManagedPrometheusPtrInput interface {
+	pulumi.Input
+
+	ToClusterMonitoringConfigManagedPrometheusPtrOutput() ClusterMonitoringConfigManagedPrometheusPtrOutput
+	ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(context.Context) ClusterMonitoringConfigManagedPrometheusPtrOutput
+}
+
+type clusterMonitoringConfigManagedPrometheusPtrType ClusterMonitoringConfigManagedPrometheusArgs
+
+func ClusterMonitoringConfigManagedPrometheusPtr(v *ClusterMonitoringConfigManagedPrometheusArgs) ClusterMonitoringConfigManagedPrometheusPtrInput {
+	return (*clusterMonitoringConfigManagedPrometheusPtrType)(v)
+}
+
+func (*clusterMonitoringConfigManagedPrometheusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMonitoringConfigManagedPrometheus)(nil)).Elem()
+}
+
+func (i *clusterMonitoringConfigManagedPrometheusPtrType) ToClusterMonitoringConfigManagedPrometheusPtrOutput() ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return i.ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMonitoringConfigManagedPrometheusPtrType) ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigManagedPrometheusPtrOutput)
+}
+
+type ClusterMonitoringConfigManagedPrometheusOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigManagedPrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheus)(nil)).Elem()
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusOutput) ToClusterMonitoringConfigManagedPrometheusOutput() ClusterMonitoringConfigManagedPrometheusOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusOutput) ToClusterMonitoringConfigManagedPrometheusOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusOutput) ToClusterMonitoringConfigManagedPrometheusPtrOutput() ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return o.ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusOutput) ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMonitoringConfigManagedPrometheus) *ClusterMonitoringConfigManagedPrometheus {
+		return &v
+	}).(ClusterMonitoringConfigManagedPrometheusPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterMonitoringConfigManagedPrometheusOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfigManagedPrometheus) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterMonitoringConfigManagedPrometheusPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigManagedPrometheusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMonitoringConfigManagedPrometheus)(nil)).Elem()
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusPtrOutput) ToClusterMonitoringConfigManagedPrometheusPtrOutput() ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusPtrOutput) ToClusterMonitoringConfigManagedPrometheusPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigManagedPrometheusPtrOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigManagedPrometheusPtrOutput) Elem() ClusterMonitoringConfigManagedPrometheusOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfigManagedPrometheus) ClusterMonitoringConfigManagedPrometheus {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMonitoringConfigManagedPrometheus
+		return ret
+	}).(ClusterMonitoringConfigManagedPrometheusOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterMonitoringConfigManagedPrometheusPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfigManagedPrometheus) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNetworkPolicy struct {
@@ -12809,17 +12969,15 @@ type ClusterNodeConfig struct {
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
-	Preemptible *bool `pulumi:"preemptible"`
-	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-	// Structure is documented below.
+	Preemptible   *bool                           `pulumi:"preemptible"`
 	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	// ) A boolean
-	// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+	// A boolean that represents whether the underlying node VMs are spot.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
@@ -12917,17 +13075,15 @@ type ClusterNodeConfigArgs struct {
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
-	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-	// Structure is documented below.
+	Preemptible   pulumi.BoolPtrInput                    `pulumi:"preemptible"`
 	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	// ) A boolean
-	// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+	// A boolean that represents whether the underlying node VMs are spot.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
@@ -13145,8 +13301,6 @@ func (o ClusterNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-// Structure is documented below.
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
@@ -13162,8 +13316,8 @@ func (o ClusterNodeConfigOutput) ShieldedInstanceConfig() ClusterNodeConfigShiel
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
-// ) A boolean
-// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+// A boolean that represents whether the underlying node VMs are spot.
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 // for more information. Defaults to false.
 func (o ClusterNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
@@ -13428,8 +13582,6 @@ func (o ClusterNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-// Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSandboxConfig {
 		if v == nil {
@@ -13460,8 +13612,8 @@ func (o ClusterNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodeConfigSh
 	}).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
-// ) A boolean
-// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+// A boolean that represents whether the underlying node VMs are spot.
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 // for more information. Defaults to false.
 func (o ClusterNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *bool {
@@ -15727,17 +15879,15 @@ type ClusterNodePoolNodeConfig struct {
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
-	Preemptible *bool `pulumi:"preemptible"`
-	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-	// Structure is documented below.
+	Preemptible   *bool                                   `pulumi:"preemptible"`
 	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	// ) A boolean
-	// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+	// A boolean that represents whether the underlying node VMs are spot.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
@@ -15835,17 +15985,15 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
 	// for more information. Defaults to false.
-	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-	// Structure is documented below.
+	Preemptible   pulumi.BoolPtrInput                            `pulumi:"preemptible"`
 	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	// ) A boolean
-	// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+	// A boolean that represents whether the underlying node VMs are spot.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
@@ -16067,8 +16215,6 @@ func (o ClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-// Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
@@ -16086,8 +16232,8 @@ func (o ClusterNodePoolNodeConfigOutput) ShieldedInstanceConfig() ClusterNodePoo
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
-// ) A boolean
-// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+// A boolean that represents whether the underlying node VMs are spot.
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 // for more information. Defaults to false.
 func (o ClusterNodePoolNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
@@ -16354,8 +16500,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
-// Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig {
 		if v == nil {
@@ -16386,8 +16530,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNode
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
-// ) A boolean
-// that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+// A boolean that represents whether the underlying node VMs are spot.
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 // for more information. Defaults to false.
 func (o ClusterNodePoolNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *bool {
@@ -25796,7 +25940,8 @@ func (o GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pu
 }
 
 type GetClusterMonitoringConfig struct {
-	EnableComponents []string `pulumi:"enableComponents"`
+	EnableComponents    []string                                      `pulumi:"enableComponents"`
+	ManagedPrometheuses []GetClusterMonitoringConfigManagedPrometheus `pulumi:"managedPrometheuses"`
 }
 
 // GetClusterMonitoringConfigInput is an input type that accepts GetClusterMonitoringConfigArgs and GetClusterMonitoringConfigOutput values.
@@ -25811,7 +25956,8 @@ type GetClusterMonitoringConfigInput interface {
 }
 
 type GetClusterMonitoringConfigArgs struct {
-	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+	EnableComponents    pulumi.StringArrayInput                               `pulumi:"enableComponents"`
+	ManagedPrometheuses GetClusterMonitoringConfigManagedPrometheusArrayInput `pulumi:"managedPrometheuses"`
 }
 
 func (GetClusterMonitoringConfigArgs) ElementType() reflect.Type {
@@ -25869,6 +26015,12 @@ func (o GetClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayO
 	return o.ApplyT(func(v GetClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }
 
+func (o GetClusterMonitoringConfigOutput) ManagedPrometheuses() GetClusterMonitoringConfigManagedPrometheusArrayOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfig) []GetClusterMonitoringConfigManagedPrometheus {
+		return v.ManagedPrometheuses
+	}).(GetClusterMonitoringConfigManagedPrometheusArrayOutput)
+}
+
 type GetClusterMonitoringConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMonitoringConfigArrayOutput) ElementType() reflect.Type {
@@ -25887,6 +26039,100 @@ func (o GetClusterMonitoringConfigArrayOutput) Index(i pulumi.IntInput) GetClust
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMonitoringConfig {
 		return vs[0].([]GetClusterMonitoringConfig)[vs[1].(int)]
 	}).(GetClusterMonitoringConfigOutput)
+}
+
+type GetClusterMonitoringConfigManagedPrometheus struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterMonitoringConfigManagedPrometheusInput is an input type that accepts GetClusterMonitoringConfigManagedPrometheusArgs and GetClusterMonitoringConfigManagedPrometheusOutput values.
+// You can construct a concrete instance of `GetClusterMonitoringConfigManagedPrometheusInput` via:
+//
+//          GetClusterMonitoringConfigManagedPrometheusArgs{...}
+type GetClusterMonitoringConfigManagedPrometheusInput interface {
+	pulumi.Input
+
+	ToGetClusterMonitoringConfigManagedPrometheusOutput() GetClusterMonitoringConfigManagedPrometheusOutput
+	ToGetClusterMonitoringConfigManagedPrometheusOutputWithContext(context.Context) GetClusterMonitoringConfigManagedPrometheusOutput
+}
+
+type GetClusterMonitoringConfigManagedPrometheusArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterMonitoringConfigManagedPrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheus)(nil)).Elem()
+}
+
+func (i GetClusterMonitoringConfigManagedPrometheusArgs) ToGetClusterMonitoringConfigManagedPrometheusOutput() GetClusterMonitoringConfigManagedPrometheusOutput {
+	return i.ToGetClusterMonitoringConfigManagedPrometheusOutputWithContext(context.Background())
+}
+
+func (i GetClusterMonitoringConfigManagedPrometheusArgs) ToGetClusterMonitoringConfigManagedPrometheusOutputWithContext(ctx context.Context) GetClusterMonitoringConfigManagedPrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMonitoringConfigManagedPrometheusOutput)
+}
+
+// GetClusterMonitoringConfigManagedPrometheusArrayInput is an input type that accepts GetClusterMonitoringConfigManagedPrometheusArray and GetClusterMonitoringConfigManagedPrometheusArrayOutput values.
+// You can construct a concrete instance of `GetClusterMonitoringConfigManagedPrometheusArrayInput` via:
+//
+//          GetClusterMonitoringConfigManagedPrometheusArray{ GetClusterMonitoringConfigManagedPrometheusArgs{...} }
+type GetClusterMonitoringConfigManagedPrometheusArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMonitoringConfigManagedPrometheusArrayOutput() GetClusterMonitoringConfigManagedPrometheusArrayOutput
+	ToGetClusterMonitoringConfigManagedPrometheusArrayOutputWithContext(context.Context) GetClusterMonitoringConfigManagedPrometheusArrayOutput
+}
+
+type GetClusterMonitoringConfigManagedPrometheusArray []GetClusterMonitoringConfigManagedPrometheusInput
+
+func (GetClusterMonitoringConfigManagedPrometheusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMonitoringConfigManagedPrometheus)(nil)).Elem()
+}
+
+func (i GetClusterMonitoringConfigManagedPrometheusArray) ToGetClusterMonitoringConfigManagedPrometheusArrayOutput() GetClusterMonitoringConfigManagedPrometheusArrayOutput {
+	return i.ToGetClusterMonitoringConfigManagedPrometheusArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMonitoringConfigManagedPrometheusArray) ToGetClusterMonitoringConfigManagedPrometheusArrayOutputWithContext(ctx context.Context) GetClusterMonitoringConfigManagedPrometheusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMonitoringConfigManagedPrometheusArrayOutput)
+}
+
+type GetClusterMonitoringConfigManagedPrometheusOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMonitoringConfigManagedPrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheus)(nil)).Elem()
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusOutput) ToGetClusterMonitoringConfigManagedPrometheusOutput() GetClusterMonitoringConfigManagedPrometheusOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusOutput) ToGetClusterMonitoringConfigManagedPrometheusOutputWithContext(ctx context.Context) GetClusterMonitoringConfigManagedPrometheusOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfigManagedPrometheus) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterMonitoringConfigManagedPrometheusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMonitoringConfigManagedPrometheusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMonitoringConfigManagedPrometheus)(nil)).Elem()
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusArrayOutput) ToGetClusterMonitoringConfigManagedPrometheusArrayOutput() GetClusterMonitoringConfigManagedPrometheusArrayOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusArrayOutput) ToGetClusterMonitoringConfigManagedPrometheusArrayOutputWithContext(ctx context.Context) GetClusterMonitoringConfigManagedPrometheusArrayOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigManagedPrometheusArrayOutput) Index(i pulumi.IntInput) GetClusterMonitoringConfigManagedPrometheusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMonitoringConfigManagedPrometheus {
+		return vs[0].([]GetClusterMonitoringConfigManagedPrometheus)[vs[1].(int)]
+	}).(GetClusterMonitoringConfigManagedPrometheusOutput)
 }
 
 type GetClusterNetworkPolicy struct {
@@ -30287,6 +30533,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMasterAuthorizedNetworksConfigCidrBlockArrayInput)(nil)).Elem(), ClusterMasterAuthorizedNetworksConfigCidrBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigInput)(nil)).Elem(), ClusterMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigPtrInput)(nil)).Elem(), ClusterMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusPtrInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyPtrInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigInput)(nil)).Elem(), ClusterNodeConfigArgs{})
@@ -30465,6 +30713,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayInput)(nil)).Elem(), GetClusterMasterAuthorizedNetworksConfigCidrBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigInput)(nil)).Elem(), GetClusterMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigArrayInput)(nil)).Elem(), GetClusterMonitoringConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusArrayInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPolicyInput)(nil)).Elem(), GetClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPolicyArrayInput)(nil)).Elem(), GetClusterNetworkPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigArgs{})
@@ -30701,6 +30951,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigOutput{})
@@ -30879,6 +31131,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusOutput{})
+	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigOutput{})
