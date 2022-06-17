@@ -56,6 +56,16 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Enable Anthos Service Mesh
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {location: "global"}, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

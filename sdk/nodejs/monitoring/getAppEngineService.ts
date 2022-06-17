@@ -96,6 +96,7 @@ export interface GetAppEngineServiceResult {
     readonly project?: string;
     readonly serviceId: string;
     readonly telemetries: outputs.monitoring.GetAppEngineServiceTelemetry[];
+    readonly userLabels: {[key: string]: string};
 }
 
 export function getAppEngineServiceOutput(args: GetAppEngineServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineServiceResult> {

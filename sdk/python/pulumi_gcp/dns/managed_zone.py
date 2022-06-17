@@ -264,12 +264,14 @@ class ManagedZoneArgs:
 @pulumi.input_type
 class _ManagedZoneState:
     def __init__(__self__, *,
+                 creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 managed_zone_id: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
@@ -280,6 +282,7 @@ class _ManagedZoneState:
                  visibility: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ManagedZone resources.
+        :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
@@ -290,6 +293,7 @@ class _ManagedZoneState:
                to forward to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
+        :param pulumi.Input[int] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
@@ -311,6 +315,8 @@ class _ManagedZoneState:
                Default value is `public`.
                Possible values are `private` and `public`.
         """
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
@@ -325,6 +331,8 @@ class _ManagedZoneState:
             pulumi.set(__self__, "forwarding_config", forwarding_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if managed_zone_id is not None:
+            pulumi.set(__self__, "managed_zone_id", managed_zone_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if name_servers is not None:
@@ -341,6 +349,18 @@ class _ManagedZoneState:
             pulumi.set(__self__, "service_directory_config", service_directory_config)
         if visibility is not None:
             pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time that this resource was created on the server. This is in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @creation_time.setter
+    def creation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_time", value)
 
     @property
     @pulumi.getter
@@ -417,6 +437,18 @@ class _ManagedZoneState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="managedZoneId")
+    def managed_zone_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Unique identifier for the resource; defined by the server.
+        """
+        return pulumi.get(self, "managed_zone_id")
+
+    @managed_zone_id.setter
+    def managed_zone_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "managed_zone_id", value)
 
     @property
     @pulumi.getter
@@ -941,6 +973,8 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["reverse_lookup"] = reverse_lookup
             __props__.__dict__["service_directory_config"] = service_directory_config
             __props__.__dict__["visibility"] = visibility
+            __props__.__dict__["creation_time"] = None
+            __props__.__dict__["managed_zone_id"] = None
             __props__.__dict__["name_servers"] = None
         super(ManagedZone, __self__).__init__(
             'gcp:dns/managedZone:ManagedZone',
@@ -952,12 +986,14 @@ class ManagedZone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            creation_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
             dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            managed_zone_id: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
@@ -973,6 +1009,7 @@ class ManagedZone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
@@ -983,6 +1020,7 @@ class ManagedZone(pulumi.CustomResource):
                to forward to.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this ManagedZone.
+        :param pulumi.Input[int] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
@@ -1008,12 +1046,14 @@ class ManagedZone(pulumi.CustomResource):
 
         __props__ = _ManagedZoneState.__new__(_ManagedZoneState)
 
+        __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["dnssec_config"] = dnssec_config
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["forwarding_config"] = forwarding_config
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["managed_zone_id"] = managed_zone_id
         __props__.__dict__["name"] = name
         __props__.__dict__["name_servers"] = name_servers
         __props__.__dict__["peering_config"] = peering_config
@@ -1023,6 +1063,14 @@ class ManagedZone(pulumi.CustomResource):
         __props__.__dict__["service_directory_config"] = service_directory_config
         __props__.__dict__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> pulumi.Output[str]:
+        """
+        The time that this resource was created on the server. This is in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
@@ -1075,6 +1123,14 @@ class ManagedZone(pulumi.CustomResource):
         A set of key/value label pairs to assign to this ManagedZone.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="managedZoneId")
+    def managed_zone_id(self) -> pulumi.Output[int]:
+        """
+        Unique identifier for the resource; defined by the server.
+        """
+        return pulumi.get(self, "managed_zone_id")
 
     @property
     @pulumi.getter

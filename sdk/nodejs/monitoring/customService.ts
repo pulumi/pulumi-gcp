@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     telemetry: {
  *         resourceName: "//product.googleapis.com/foo/foo/services/test",
  *     },
+ *     userLabels: {
+ *         my_key: "my_value",
+ *         my_other_key: "my_other_value",
+ *     },
  * });
  * ```
  *
@@ -93,6 +97,15 @@ export class CustomService extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly telemetry!: pulumi.Output<outputs.monitoring.CustomServiceTelemetry | undefined>;
+    /**
+     * Labels which have been used to annotate the service. Label keys must start
+     * with a letter. Label keys and values may contain lowercase letters,
+     * numbers, underscores, and dashes. Label keys and values have a maximum
+     * length of 63 characters, and must be less than 128 bytes in size. Up to 64
+     * label entries may be stored. For labels which do not have a semantic value,
+     * the empty string may be supplied for the label value.
+     */
+    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a CustomService resource with the given unique name, arguments, and options.
@@ -112,12 +125,14 @@ export class CustomService extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
             resourceInputs["telemetry"] = state ? state.telemetry : undefined;
+            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
         } else {
             const args = argsOrState as CustomServiceArgs | undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["telemetry"] = args ? args.telemetry : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -152,6 +167,15 @@ export interface CustomServiceState {
      * Structure is documented below.
      */
     telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
+    /**
+     * Labels which have been used to annotate the service. Label keys must start
+     * with a letter. Label keys and values may contain lowercase letters,
+     * numbers, underscores, and dashes. Label keys and values have a maximum
+     * length of 63 characters, and must be less than 128 bytes in size. Up to 64
+     * label entries may be stored. For labels which do not have a semantic value,
+     * the empty string may be supplied for the label value.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -177,4 +201,13 @@ export interface CustomServiceArgs {
      * Structure is documented below.
      */
     telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
+    /**
+     * Labels which have been used to annotate the service. Label keys must start
+     * with a letter. Label keys and values may contain lowercase letters,
+     * numbers, underscores, and dashes. Label keys and values have a maximum
+     * length of 63 characters, and must be less than 128 bytes in size. Up to 64
+     * label entries may be stored. For labels which do not have a semantic value,
+     * the empty string may be supplied for the label value.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

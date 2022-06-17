@@ -53,6 +53,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const account = new gcp.serviceaccount.Account("account", {
+ *     accountId: "test-service-account",
+ *     displayName: "Test Service Account",
+ * }, {
+ *     provider: google_beta,
+ * });
  * const sub = new gcp.pubsub.Topic("sub", {}, {
  *     provider: google_beta,
  * });
@@ -94,12 +100,14 @@ import * as utilities from "../utilities";
  *         },
  *         ingressSettings: "ALLOW_INTERNAL_ONLY",
  *         allTrafficOnLatestRevision: true,
+ *         serviceAccountEmail: account.email,
  *     },
  *     eventTrigger: {
  *         triggerRegion: "us-central1",
  *         eventType: "google.cloud.pubsub.topic.v1.messagePublished",
  *         pubsubTopic: sub.id,
  *         retryPolicy: "RETRY_POLICY_RETRY",
+ *         serviceAccountEmail: account.email,
  *     },
  * }, {
  *     provider: google_beta,

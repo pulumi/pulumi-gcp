@@ -41,6 +41,11 @@ namespace Pulumi.Gcp.Monitoring
     ///             {
     ///                 ResourceName = "//product.googleapis.com/foo/foo/services/test",
     ///             },
+    ///             UserLabels = 
+    ///             {
+    ///                 { "my_key", "my_value" },
+    ///                 { "my_other_key", "my_other_value" },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -90,6 +95,17 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Output("telemetry")]
         public Output<Outputs.CustomServiceTelemetry?> Telemetry { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels which have been used to annotate the service. Label keys must start
+        /// with a letter. Label keys and values may contain lowercase letters,
+        /// numbers, underscores, and dashes. Label keys and values have a maximum
+        /// length of 63 characters, and must be less than 128 bytes in size. Up to 64
+        /// label entries may be stored. For labels which do not have a semantic value,
+        /// the empty string may be supplied for the label value.
+        /// </summary>
+        [Output("userLabels")]
+        public Output<ImmutableDictionary<string, string>?> UserLabels { get; private set; } = null!;
 
 
         /// <summary>
@@ -164,6 +180,23 @@ namespace Pulumi.Gcp.Monitoring
         [Input("telemetry")]
         public Input<Inputs.CustomServiceTelemetryArgs>? Telemetry { get; set; }
 
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// Labels which have been used to annotate the service. Label keys must start
+        /// with a letter. Label keys and values may contain lowercase letters,
+        /// numbers, underscores, and dashes. Label keys and values have a maximum
+        /// length of 63 characters, and must be less than 128 bytes in size. Up to 64
+        /// label entries may be stored. For labels which do not have a semantic value,
+        /// the empty string may be supplied for the label value.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
+
         public CustomServiceArgs()
         {
         }
@@ -203,6 +236,23 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("telemetry")]
         public Input<Inputs.CustomServiceTelemetryGetArgs>? Telemetry { get; set; }
+
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// Labels which have been used to annotate the service. Label keys must start
+        /// with a letter. Label keys and values may contain lowercase letters,
+        /// numbers, underscores, and dashes. Label keys and values have a maximum
+        /// length of 63 characters, and must be less than 128 bytes in size. Up to 64
+        /// label entries may be stored. For labels which do not have a semantic value,
+        /// the empty string may be supplied for the label value.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
 
         public CustomServiceState()
         {

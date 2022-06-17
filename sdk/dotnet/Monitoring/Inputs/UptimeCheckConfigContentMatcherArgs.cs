@@ -19,9 +19,16 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
+        /// Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("jsonPathMatcher")]
+        public Input<Inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs>? JsonPathMatcher { get; set; }
+
+        /// <summary>
         /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         /// Default value is `CONTAINS_STRING`.
-        /// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NOT_MATCHES_REGEX`.
+        /// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
         /// </summary>
         [Input("matcher")]
         public Input<string>? Matcher { get; set; }

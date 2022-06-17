@@ -27,6 +27,15 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string>? Compression { get; set; }
 
         /// <summary>
+        /// The connection specifying the credentials to be used to read
+        /// external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+        /// the form `{{project}}.{{location}}.{{connection_id}}`
+        /// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+        /// </summary>
+        [Input("connectionId")]
+        public Input<string>? ConnectionId { get; set; }
+
+        /// <summary>
         /// Additional properties to set if
         /// `source_format` is set to "CSV". Structure is documented below.
         /// </summary>

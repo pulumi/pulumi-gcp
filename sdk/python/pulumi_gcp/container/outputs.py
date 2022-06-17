@@ -89,6 +89,7 @@ __all__ = [
     'ClusterMasterAuthorizedNetworksConfig',
     'ClusterMasterAuthorizedNetworksConfigCidrBlock',
     'ClusterMonitoringConfig',
+    'ClusterMonitoringConfigManagedPrometheus',
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
     'ClusterNodeConfigEphemeralStorageConfig',
@@ -178,6 +179,7 @@ __all__ = [
     'GetClusterMasterAuthorizedNetworksConfigResult',
     'GetClusterMasterAuthorizedNetworksConfigCidrBlockResult',
     'GetClusterMonitoringConfigResult',
+    'GetClusterMonitoringConfigManagedPrometheusResult',
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
@@ -3632,7 +3634,7 @@ class ClusterLoggingConfig(dict):
     def __init__(__self__, *,
                  enable_components: Sequence[str]):
         """
-        :param Sequence[str] enable_components: The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+        :param Sequence[str] enable_components: The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -3640,7 +3642,7 @@ class ClusterLoggingConfig(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+        The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         """
         return pulumi.get(self, "enable_components")
 
@@ -4066,6 +4068,8 @@ class ClusterMonitoringConfig(dict):
         suggest = None
         if key == "enableComponents":
             suggest = "enable_components"
+        elif key == "managedPrometheus":
+            suggest = "managed_prometheus"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterMonitoringConfig. Access the value via the '{suggest}' property getter instead.")
@@ -4079,19 +4083,52 @@ class ClusterMonitoringConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_components: Sequence[str]):
+                 enable_components: Optional[Sequence[str]] = None,
+                 managed_prometheus: Optional['outputs.ClusterMonitoringConfigManagedPrometheus'] = None):
         """
-        :param Sequence[str] enable_components: The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+        :param Sequence[str] enable_components: The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        :param 'ClusterMonitoringConfigManagedPrometheusArgs' managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
-        pulumi.set(__self__, "enable_components", enable_components)
+        if enable_components is not None:
+            pulumi.set(__self__, "enable_components", enable_components)
+        if managed_prometheus is not None:
+            pulumi.set(__self__, "managed_prometheus", managed_prometheus)
 
     @property
     @pulumi.getter(name="enableComponents")
-    def enable_components(self) -> Sequence[str]:
+    def enable_components(self) -> Optional[Sequence[str]]:
         """
-        The GKE components exposing logs. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported.
+        The GKE components exposing metrics. `SYSTEM_COMPONENTS` and in beta provider, both `SYSTEM_COMPONENTS` and `WORKLOADS` are supported. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         """
         return pulumi.get(self, "enable_components")
+
+    @property
+    @pulumi.getter(name="managedPrometheus")
+    def managed_prometheus(self) -> Optional['outputs.ClusterMonitoringConfigManagedPrometheus']:
+        """
+        Configuration for Managed Service for Prometheus. Structure is documented below.
+        """
+        return pulumi.get(self, "managed_prometheus")
+
+
+@pulumi.output_type
+class ClusterMonitoringConfigManagedPrometheus(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -4255,13 +4292,11 @@ class ClusterNodeConfig(dict):
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-               Structure is documented below.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param bool spot: ) A boolean
-               that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        :param bool spot: A boolean that represents whether the underlying node VMs are spot.
+               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
@@ -4505,10 +4540,6 @@ class ClusterNodeConfig(dict):
     @property
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodeConfigSandboxConfig']:
-        """
-        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-        Structure is documented below.
-        """
         return pulumi.get(self, "sandbox_config")
 
     @property
@@ -4532,8 +4563,8 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def spot(self) -> Optional[bool]:
         """
-        ) A boolean
-        that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        A boolean that represents whether the underlying node VMs are spot.
+        See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         for more information. Defaults to false.
         """
         return pulumi.get(self, "spot")
@@ -5437,13 +5468,11 @@ class ClusterNodePoolNodeConfig(dict):
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-               Structure is documented below.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param bool spot: ) A boolean
-               that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        :param bool spot: A boolean that represents whether the underlying node VMs are spot.
+               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
@@ -5687,10 +5716,6 @@ class ClusterNodePoolNodeConfig(dict):
     @property
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig']:
-        """
-        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
-        Structure is documented below.
-        """
         return pulumi.get(self, "sandbox_config")
 
     @property
@@ -5714,8 +5739,8 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def spot(self) -> Optional[bool]:
         """
-        ) A boolean
-        that represents whether the underlying node VMs are spot. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
+        A boolean that represents whether the underlying node VMs are spot.
+        See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         for more information. Defaults to false.
         """
         return pulumi.get(self, "spot")
@@ -8039,13 +8064,32 @@ class GetClusterMasterAuthorizedNetworksConfigCidrBlockResult(dict):
 @pulumi.output_type
 class GetClusterMonitoringConfigResult(dict):
     def __init__(__self__, *,
-                 enable_components: Sequence[str]):
+                 enable_components: Sequence[str],
+                 managed_prometheuses: Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusResult']):
         pulumi.set(__self__, "enable_components", enable_components)
+        pulumi.set(__self__, "managed_prometheuses", managed_prometheuses)
 
     @property
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         return pulumi.get(self, "enable_components")
+
+    @property
+    @pulumi.getter(name="managedPrometheuses")
+    def managed_prometheuses(self) -> Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusResult']:
+        return pulumi.get(self, "managed_prometheuses")
+
+
+@pulumi.output_type
+class GetClusterMonitoringConfigManagedPrometheusResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

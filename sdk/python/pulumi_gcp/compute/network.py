@@ -16,6 +16,8 @@ class NetworkArgs:
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
+                 internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -31,6 +33,13 @@ class NetworkArgs:
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
+        :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
+               a /48 from google defined ULA prefix fd20::/20.
+        :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range
+               they want from the google defined ULA prefix fd20::/20. The input must be a
+               valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+               fail if the speficied /48 is already in used by another resource.
+               If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
                and the maximum value is 1500 bytes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -55,6 +64,10 @@ class NetworkArgs:
             pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_ula_internal_ipv6 is not None:
+            pulumi.set(__self__, "enable_ula_internal_ipv6", enable_ula_internal_ipv6)
+        if internal_ipv6_range is not None:
+            pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -105,6 +118,35 @@ class NetworkArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableUlaInternalIpv6")
+    def enable_ula_internal_ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable ULA internal ipv6 on this network. Enabling this feature will assign
+        a /48 from google defined ULA prefix fd20::/20.
+        """
+        return pulumi.get(self, "enable_ula_internal_ipv6")
+
+    @enable_ula_internal_ipv6.setter
+    def enable_ula_internal_ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ula_internal_ipv6", value)
+
+    @property
+    @pulumi.getter(name="internalIpv6Range")
+    def internal_ipv6_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        When enabling ula internal ipv6, caller optionally can specify the /48 range
+        they want from the google defined ULA prefix fd20::/20. The input must be a
+        valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+        fail if the speficied /48 is already in used by another resource.
+        If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+        """
+        return pulumi.get(self, "internal_ipv6_range")
+
+    @internal_ipv6_range.setter
+    def internal_ipv6_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internal_ipv6_range", value)
 
     @property
     @pulumi.getter
@@ -174,7 +216,9 @@ class _NetworkState:
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
                  gateway_ipv4: Optional[pulumi.Input[str]] = None,
+                 internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -191,7 +235,14 @@ class _NetworkState:
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
+        :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
+               a /48 from google defined ULA prefix fd20::/20.
         :param pulumi.Input[str] gateway_ipv4: The gateway address for default routing out of the network. This value is selected by GCP.
+        :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range
+               they want from the google defined ULA prefix fd20::/20. The input must be a
+               valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+               fail if the speficied /48 is already in used by another resource.
+               If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
                and the maximum value is 1500 bytes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -217,8 +268,12 @@ class _NetworkState:
             pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_ula_internal_ipv6 is not None:
+            pulumi.set(__self__, "enable_ula_internal_ipv6", enable_ula_internal_ipv6)
         if gateway_ipv4 is not None:
             pulumi.set(__self__, "gateway_ipv4", gateway_ipv4)
+        if internal_ipv6_range is not None:
+            pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -273,6 +328,19 @@ class _NetworkState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="enableUlaInternalIpv6")
+    def enable_ula_internal_ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable ULA internal ipv6 on this network. Enabling this feature will assign
+        a /48 from google defined ULA prefix fd20::/20.
+        """
+        return pulumi.get(self, "enable_ula_internal_ipv6")
+
+    @enable_ula_internal_ipv6.setter
+    def enable_ula_internal_ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ula_internal_ipv6", value)
+
+    @property
     @pulumi.getter(name="gatewayIpv4")
     def gateway_ipv4(self) -> Optional[pulumi.Input[str]]:
         """
@@ -283,6 +351,22 @@ class _NetworkState:
     @gateway_ipv4.setter
     def gateway_ipv4(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gateway_ipv4", value)
+
+    @property
+    @pulumi.getter(name="internalIpv6Range")
+    def internal_ipv6_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        When enabling ula internal ipv6, caller optionally can specify the /48 range
+        they want from the google defined ULA prefix fd20::/20. The input must be a
+        valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+        fail if the speficied /48 is already in used by another resource.
+        If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+        """
+        return pulumi.get(self, "internal_ipv6_range")
+
+    @internal_ipv6_range.setter
+    def internal_ipv6_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internal_ipv6_range", value)
 
     @property
     @pulumi.getter
@@ -366,6 +450,8 @@ class Network(pulumi.CustomResource):
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
+                 internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -428,6 +514,13 @@ class Network(pulumi.CustomResource):
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
+        :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
+               a /48 from google defined ULA prefix fd20::/20.
+        :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range
+               they want from the google defined ULA prefix fd20::/20. The input must be a
+               valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+               fail if the speficied /48 is already in used by another resource.
+               If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
                and the maximum value is 1500 bytes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -516,6 +609,8 @@ class Network(pulumi.CustomResource):
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
+                 internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -535,6 +630,8 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["auto_create_subnetworks"] = auto_create_subnetworks
             __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
+            __props__.__dict__["internal_ipv6_range"] = internal_ipv6_range
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -554,7 +651,9 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
             delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
             gateway_ipv4: Optional[pulumi.Input[str]] = None,
+            internal_ipv6_range: Optional[pulumi.Input[str]] = None,
             mtu: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -576,7 +675,14 @@ class Network(pulumi.CustomResource):
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
+        :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
+               a /48 from google defined ULA prefix fd20::/20.
         :param pulumi.Input[str] gateway_ipv4: The gateway address for default routing out of the network. This value is selected by GCP.
+        :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range
+               they want from the google defined ULA prefix fd20::/20. The input must be a
+               valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+               fail if the speficied /48 is already in used by another resource.
+               If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
                and the maximum value is 1500 bytes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -603,7 +709,9 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["auto_create_subnetworks"] = auto_create_subnetworks
         __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
         __props__.__dict__["gateway_ipv4"] = gateway_ipv4
+        __props__.__dict__["internal_ipv6_range"] = internal_ipv6_range
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -642,12 +750,33 @@ class Network(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableUlaInternalIpv6")
+    def enable_ula_internal_ipv6(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable ULA internal ipv6 on this network. Enabling this feature will assign
+        a /48 from google defined ULA prefix fd20::/20.
+        """
+        return pulumi.get(self, "enable_ula_internal_ipv6")
+
+    @property
     @pulumi.getter(name="gatewayIpv4")
     def gateway_ipv4(self) -> pulumi.Output[str]:
         """
         The gateway address for default routing out of the network. This value is selected by GCP.
         """
         return pulumi.get(self, "gateway_ipv4")
+
+    @property
+    @pulumi.getter(name="internalIpv6Range")
+    def internal_ipv6_range(self) -> pulumi.Output[str]:
+        """
+        When enabling ula internal ipv6, caller optionally can specify the /48 range
+        they want from the google defined ULA prefix fd20::/20. The input must be a
+        valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+        fail if the speficied /48 is already in used by another resource.
+        If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+        """
+        return pulumi.get(self, "internal_ipv6_range")
 
     @property
     @pulumi.getter

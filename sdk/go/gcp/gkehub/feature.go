@@ -88,6 +88,28 @@ import (
 // 	})
 // }
 // ```
+// ### Enable Anthos Service Mesh
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+// 			Location: pulumi.String("global"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

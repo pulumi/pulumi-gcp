@@ -14,11 +14,16 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterMonitoringConfigResult
     {
         public readonly ImmutableArray<string> EnableComponents;
+        public readonly ImmutableArray<Outputs.GetClusterMonitoringConfigManagedPrometheusResult> ManagedPrometheuses;
 
         [OutputConstructor]
-        private GetClusterMonitoringConfigResult(ImmutableArray<string> enableComponents)
+        private GetClusterMonitoringConfigResult(
+            ImmutableArray<string> enableComponents,
+
+            ImmutableArray<Outputs.GetClusterMonitoringConfigManagedPrometheusResult> managedPrometheuses)
         {
             EnableComponents = enableComponents;
+            ManagedPrometheuses = managedPrometheuses;
         }
     }
 }

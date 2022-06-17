@@ -74,7 +74,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// -
         /// The email of the service account for this function.
         /// </summary>
         [Input("serviceAccountEmail")]

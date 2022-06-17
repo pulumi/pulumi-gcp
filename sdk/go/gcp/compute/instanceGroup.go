@@ -181,9 +181,8 @@ type InstanceGroup struct {
 	// An optional textual description of the instance
 	// group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// List of instances in the group. They should be given
-	// as either selfLink or id. When adding instances they must all be in the same
-	// network and zone as the instance group.
+	// The list of instances in the group, in `selfLink` format.
+	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
 	// The name which the port will be mapped to.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -238,9 +237,8 @@ type instanceGroupState struct {
 	// An optional textual description of the instance
 	// group.
 	Description *string `pulumi:"description"`
-	// List of instances in the group. They should be given
-	// as either selfLink or id. When adding instances they must all be in the same
-	// network and zone as the instance group.
+	// The list of instances in the group, in `selfLink` format.
+	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances []string `pulumi:"instances"`
 	// The name which the port will be mapped to.
 	Name *string `pulumi:"name"`
@@ -267,9 +265,8 @@ type InstanceGroupState struct {
 	// An optional textual description of the instance
 	// group.
 	Description pulumi.StringPtrInput
-	// List of instances in the group. They should be given
-	// as either selfLink or id. When adding instances they must all be in the same
-	// network and zone as the instance group.
+	// The list of instances in the group, in `selfLink` format.
+	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances pulumi.StringArrayInput
 	// The name which the port will be mapped to.
 	Name pulumi.StringPtrInput
@@ -300,9 +297,8 @@ type instanceGroupArgs struct {
 	// An optional textual description of the instance
 	// group.
 	Description *string `pulumi:"description"`
-	// List of instances in the group. They should be given
-	// as either selfLink or id. When adding instances they must all be in the same
-	// network and zone as the instance group.
+	// The list of instances in the group, in `selfLink` format.
+	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances []string `pulumi:"instances"`
 	// The name which the port will be mapped to.
 	Name *string `pulumi:"name"`
@@ -326,9 +322,8 @@ type InstanceGroupArgs struct {
 	// An optional textual description of the instance
 	// group.
 	Description pulumi.StringPtrInput
-	// List of instances in the group. They should be given
-	// as either selfLink or id. When adding instances they must all be in the same
-	// network and zone as the instance group.
+	// The list of instances in the group, in `selfLink` format.
+	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances pulumi.StringArrayInput
 	// The name which the port will be mapped to.
 	Name pulumi.StringPtrInput
@@ -440,9 +435,8 @@ func (o InstanceGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// List of instances in the group. They should be given
-// as either selfLink or id. When adding instances they must all be in the same
-// network and zone as the instance group.
+// The list of instances in the group, in `selfLink` format.
+// When adding instances they must all be in the same network and zone as the instance group.
 func (o InstanceGroupOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringArrayOutput { return v.Instances }).(pulumi.StringArrayOutput)
 }

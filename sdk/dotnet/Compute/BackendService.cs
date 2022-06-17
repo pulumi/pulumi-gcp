@@ -83,6 +83,42 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Backend Service Cache Include Named Cookies
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.BackendService("default", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///             {
+    ///                 CacheKeyPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs
+    ///                 {
+    ///                     IncludeHost = true,
+    ///                     IncludeNamedCookies = 
+    ///                     {
+    ///                         "__next_preview_data",
+    ///                         "__prerender_bypass",
+    ///                     },
+    ///                     IncludeProtocol = true,
+    ///                     IncludeQueryString = true,
+    ///                 },
+    ///                 CacheMode = "CACHE_ALL_STATIC",
+    ///                 ClientTtl = 7200,
+    ///                 DefaultTtl = 3600,
+    ///                 MaxTtl = 10800,
+    ///             },
+    ///             EnableCdn = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Backend Service Cache
     /// 
     /// ```csharp

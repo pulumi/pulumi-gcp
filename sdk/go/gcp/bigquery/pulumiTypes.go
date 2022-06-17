@@ -8322,6 +8322,11 @@ type TableExternalDataConfiguration struct {
 	// The compression type of the data source.
 	// Valid values are "NONE" or "GZIP".
 	Compression *string `pulumi:"compression"`
+	// The connection specifying the credentials to be used to read
+	// external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
+	// the form `{{project}}.{{location}}.{{connection_id}}`
+	// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+	ConnectionId *string `pulumi:"connectionId"`
 	// Additional properties to set if
 	// `sourceFormat` is set to "CSV". Structure is documented below.
 	CsvOptions *TableExternalDataConfigurationCsvOptions `pulumi:"csvOptions"`
@@ -8385,6 +8390,11 @@ type TableExternalDataConfigurationArgs struct {
 	// The compression type of the data source.
 	// Valid values are "NONE" or "GZIP".
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
+	// The connection specifying the credentials to be used to read
+	// external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
+	// the form `{{project}}.{{location}}.{{connection_id}}`
+	// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// Additional properties to set if
 	// `sourceFormat` is set to "CSV". Structure is documented below.
 	CsvOptions TableExternalDataConfigurationCsvOptionsPtrInput `pulumi:"csvOptions"`
@@ -8519,6 +8529,14 @@ func (o TableExternalDataConfigurationOutput) Compression() pulumi.StringPtrOutp
 	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
+// The connection specifying the credentials to be used to read
+// external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
+// the form `{{project}}.{{location}}.{{connection_id}}`
+// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+func (o TableExternalDataConfigurationOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
+}
+
 // Additional properties to set if
 // `sourceFormat` is set to "CSV". Structure is documented below.
 func (o TableExternalDataConfigurationOutput) CsvOptions() TableExternalDataConfigurationCsvOptionsPtrOutput {
@@ -8633,6 +8651,19 @@ func (o TableExternalDataConfigurationPtrOutput) Compression() pulumi.StringPtrO
 			return nil
 		}
 		return v.Compression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connection specifying the credentials to be used to read
+// external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
+// the form `{{project}}.{{location}}.{{connection_id}}`
+// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+func (o TableExternalDataConfigurationPtrOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionId
 	}).(pulumi.StringPtrOutput)
 }
 

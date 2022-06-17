@@ -416,6 +416,10 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        account = gcp.service_account.Account("account",
+            account_id="test-service-account",
+            display_name="Test Service Account",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         sub = gcp.pubsub.Topic("sub", opts=pulumi.ResourceOptions(provider=google_beta))
         bucket = gcp.storage.Bucket("bucket",
             location="US",
@@ -451,12 +455,14 @@ class Function(pulumi.CustomResource):
                 },
                 ingress_settings="ALLOW_INTERNAL_ONLY",
                 all_traffic_on_latest_revision=True,
+                service_account_email=account.email,
             ),
             event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
                 trigger_region="us-central1",
                 event_type="google.cloud.pubsub.topic.v1.messagePublished",
                 pubsub_topic=sub.id,
                 retry_policy="RETRY_POLICY_RETRY",
+                service_account_email=account.email,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
@@ -543,6 +549,10 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        account = gcp.service_account.Account("account",
+            account_id="test-service-account",
+            display_name="Test Service Account",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         sub = gcp.pubsub.Topic("sub", opts=pulumi.ResourceOptions(provider=google_beta))
         bucket = gcp.storage.Bucket("bucket",
             location="US",
@@ -578,12 +588,14 @@ class Function(pulumi.CustomResource):
                 },
                 ingress_settings="ALLOW_INTERNAL_ONLY",
                 all_traffic_on_latest_revision=True,
+                service_account_email=account.email,
             ),
             event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
                 trigger_region="us-central1",
                 event_type="google.cloud.pubsub.topic.v1.messagePublished",
                 pubsub_topic=sub.id,
                 retry_policy="RETRY_POLICY_RETRY",
+                service_account_email=account.email,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -129,6 +130,7 @@ export class User extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    public readonly sqlServerUserDetails!: pulumi.Output<outputs.sql.UserSqlServerUserDetails | undefined>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
@@ -155,6 +157,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["sqlServerUserDetails"] = state ? state.sqlServerUserDetails : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
@@ -167,6 +170,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sqlServerUserDetails"] = args ? args.sqlServerUserDetails : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -211,6 +215,7 @@ export interface UserState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    sqlServerUserDetails?: pulumi.Input<inputs.sql.UserSqlServerUserDetails>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
@@ -256,6 +261,7 @@ export interface UserArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    sqlServerUserDetails?: pulumi.Input<inputs.sql.UserSqlServerUserDetails>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags

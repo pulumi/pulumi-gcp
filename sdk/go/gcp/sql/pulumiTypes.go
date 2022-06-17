@@ -2995,6 +2995,154 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) UpdateTrack() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type UserSqlServerUserDetails struct {
+	Disabled    *bool    `pulumi:"disabled"`
+	ServerRoles []string `pulumi:"serverRoles"`
+}
+
+// UserSqlServerUserDetailsInput is an input type that accepts UserSqlServerUserDetailsArgs and UserSqlServerUserDetailsOutput values.
+// You can construct a concrete instance of `UserSqlServerUserDetailsInput` via:
+//
+//          UserSqlServerUserDetailsArgs{...}
+type UserSqlServerUserDetailsInput interface {
+	pulumi.Input
+
+	ToUserSqlServerUserDetailsOutput() UserSqlServerUserDetailsOutput
+	ToUserSqlServerUserDetailsOutputWithContext(context.Context) UserSqlServerUserDetailsOutput
+}
+
+type UserSqlServerUserDetailsArgs struct {
+	Disabled    pulumi.BoolPtrInput     `pulumi:"disabled"`
+	ServerRoles pulumi.StringArrayInput `pulumi:"serverRoles"`
+}
+
+func (UserSqlServerUserDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserSqlServerUserDetails)(nil)).Elem()
+}
+
+func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsOutput() UserSqlServerUserDetailsOutput {
+	return i.ToUserSqlServerUserDetailsOutputWithContext(context.Background())
+}
+
+func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsOutputWithContext(ctx context.Context) UserSqlServerUserDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailsOutput)
+}
+
+func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput {
+	return i.ToUserSqlServerUserDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) UserSqlServerUserDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailsOutput).ToUserSqlServerUserDetailsPtrOutputWithContext(ctx)
+}
+
+// UserSqlServerUserDetailsPtrInput is an input type that accepts UserSqlServerUserDetailsArgs, UserSqlServerUserDetailsPtr and UserSqlServerUserDetailsPtrOutput values.
+// You can construct a concrete instance of `UserSqlServerUserDetailsPtrInput` via:
+//
+//          UserSqlServerUserDetailsArgs{...}
+//
+//  or:
+//
+//          nil
+type UserSqlServerUserDetailsPtrInput interface {
+	pulumi.Input
+
+	ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput
+	ToUserSqlServerUserDetailsPtrOutputWithContext(context.Context) UserSqlServerUserDetailsPtrOutput
+}
+
+type userSqlServerUserDetailsPtrType UserSqlServerUserDetailsArgs
+
+func UserSqlServerUserDetailsPtr(v *UserSqlServerUserDetailsArgs) UserSqlServerUserDetailsPtrInput {
+	return (*userSqlServerUserDetailsPtrType)(v)
+}
+
+func (*userSqlServerUserDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserSqlServerUserDetails)(nil)).Elem()
+}
+
+func (i *userSqlServerUserDetailsPtrType) ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput {
+	return i.ToUserSqlServerUserDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *userSqlServerUserDetailsPtrType) ToUserSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) UserSqlServerUserDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailsPtrOutput)
+}
+
+type UserSqlServerUserDetailsOutput struct{ *pulumi.OutputState }
+
+func (UserSqlServerUserDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserSqlServerUserDetails)(nil)).Elem()
+}
+
+func (o UserSqlServerUserDetailsOutput) ToUserSqlServerUserDetailsOutput() UserSqlServerUserDetailsOutput {
+	return o
+}
+
+func (o UserSqlServerUserDetailsOutput) ToUserSqlServerUserDetailsOutputWithContext(ctx context.Context) UserSqlServerUserDetailsOutput {
+	return o
+}
+
+func (o UserSqlServerUserDetailsOutput) ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput {
+	return o.ToUserSqlServerUserDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o UserSqlServerUserDetailsOutput) ToUserSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) UserSqlServerUserDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserSqlServerUserDetails) *UserSqlServerUserDetails {
+		return &v
+	}).(UserSqlServerUserDetailsPtrOutput)
+}
+
+func (o UserSqlServerUserDetailsOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserSqlServerUserDetails) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o UserSqlServerUserDetailsOutput) ServerRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserSqlServerUserDetails) []string { return v.ServerRoles }).(pulumi.StringArrayOutput)
+}
+
+type UserSqlServerUserDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserSqlServerUserDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserSqlServerUserDetails)(nil)).Elem()
+}
+
+func (o UserSqlServerUserDetailsPtrOutput) ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput {
+	return o
+}
+
+func (o UserSqlServerUserDetailsPtrOutput) ToUserSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) UserSqlServerUserDetailsPtrOutput {
+	return o
+}
+
+func (o UserSqlServerUserDetailsPtrOutput) Elem() UserSqlServerUserDetailsOutput {
+	return o.ApplyT(func(v *UserSqlServerUserDetails) UserSqlServerUserDetails {
+		if v != nil {
+			return *v
+		}
+		var ret UserSqlServerUserDetails
+		return ret
+	}).(UserSqlServerUserDetailsOutput)
+}
+
+func (o UserSqlServerUserDetailsPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserSqlServerUserDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o UserSqlServerUserDetailsPtrOutput) ServerRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserSqlServerUserDetails) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerRoles
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetCaCertsCert struct {
 	// The CA certificate used to connect to the SQL instance via SSL.
 	Cert string `pulumi:"cert"`
@@ -4940,6 +5088,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsLocationPreferencePtrInput)(nil)).Elem(), DatabaseInstanceSettingsLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowPtrInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailsInput)(nil)).Elem(), UserSqlServerUserDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailsPtrInput)(nil)).Elem(), UserSqlServerUserDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertInput)(nil)).Elem(), GetCaCertsCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertArrayInput)(nil)).Elem(), GetCaCertsCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceCloneInput)(nil)).Elem(), GetDatabaseInstanceCloneArgs{})
@@ -5002,6 +5152,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsLocationPreferencePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(UserSqlServerUserDetailsOutput{})
+	pulumi.RegisterOutputType(UserSqlServerUserDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceCloneOutput{})

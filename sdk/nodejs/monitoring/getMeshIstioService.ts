@@ -91,6 +91,7 @@ export interface GetMeshIstioServiceResult {
     readonly serviceName: string;
     readonly serviceNamespace: string;
     readonly telemetries: outputs.monitoring.GetMeshIstioServiceTelemetry[];
+    readonly userLabels: {[key: string]: string};
 }
 
 export function getMeshIstioServiceOutput(args: GetMeshIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMeshIstioServiceResult> {

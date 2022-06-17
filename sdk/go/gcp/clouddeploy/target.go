@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Clouddeploy Target resource
+// The Cloud Deploy `Target` resource
 //
 // ## Example Usage
 // ### Target

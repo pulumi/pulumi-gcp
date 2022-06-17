@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudDeploy
 {
     /// <summary>
-    /// The Clouddeploy Target resource
+    /// The Cloud Deploy `Target` resource
     /// 
     /// ## Example Usage
     /// ### Target

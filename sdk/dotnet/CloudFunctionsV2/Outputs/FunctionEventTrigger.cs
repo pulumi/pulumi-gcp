@@ -29,7 +29,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly string? RetryPolicy;
         /// <summary>
-        /// -
         /// The email of the service account for this function.
         /// </summary>
         public readonly string? ServiceAccountEmail;

@@ -306,6 +306,7 @@ __all__ = [
     'RouterPeerBfdArgs',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
+    'SecurityPolicyAdvancedOptionsConfigArgs',
     'SecurityPolicyRuleArgs',
     'SecurityPolicyRuleMatchArgs',
     'SecurityPolicyRuleMatchConfigArgs',
@@ -2631,12 +2632,14 @@ class BackendServiceCdnPolicyArgs:
 class BackendServiceCdnPolicyCacheKeyPolicyArgs:
     def __init__(__self__, *,
                  include_host: Optional[pulumi.Input[bool]] = None,
+                 include_named_cookies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_protocol: Optional[pulumi.Input[bool]] = None,
                  include_query_string: Optional[pulumi.Input[bool]] = None,
                  query_string_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query_string_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] include_host: If true requests to different hosts will be cached separately.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_named_cookies: Names of cookies to include in cache keys.
         :param pulumi.Input[bool] include_protocol: If true, http and https requests will be cached separately.
         :param pulumi.Input[bool] include_query_string: If true, include query string parameters in the cache key
                according to query_string_whitelist and
@@ -2657,6 +2660,8 @@ class BackendServiceCdnPolicyCacheKeyPolicyArgs:
         """
         if include_host is not None:
             pulumi.set(__self__, "include_host", include_host)
+        if include_named_cookies is not None:
+            pulumi.set(__self__, "include_named_cookies", include_named_cookies)
         if include_protocol is not None:
             pulumi.set(__self__, "include_protocol", include_protocol)
         if include_query_string is not None:
@@ -2677,6 +2682,18 @@ class BackendServiceCdnPolicyCacheKeyPolicyArgs:
     @include_host.setter
     def include_host(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "include_host", value)
+
+    @property
+    @pulumi.getter(name="includeNamedCookies")
+    def include_named_cookies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of cookies to include in cache keys.
+        """
+        return pulumi.get(self, "include_named_cookies")
+
+    @include_named_cookies.setter
+    def include_named_cookies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_named_cookies", value)
 
     @property
     @pulumi.getter(name="includeProtocol")
@@ -12618,12 +12635,14 @@ class RegionBackendServiceCdnPolicyArgs:
 class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
     def __init__(__self__, *,
                  include_host: Optional[pulumi.Input[bool]] = None,
+                 include_named_cookies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_protocol: Optional[pulumi.Input[bool]] = None,
                  include_query_string: Optional[pulumi.Input[bool]] = None,
                  query_string_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query_string_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] include_host: If true requests to different hosts will be cached separately.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_named_cookies: Names of cookies to include in cache keys.
         :param pulumi.Input[bool] include_protocol: If true, http and https requests will be cached separately.
         :param pulumi.Input[bool] include_query_string: If true, include query string parameters in the cache key
                according to query_string_whitelist and
@@ -12644,6 +12663,8 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
         """
         if include_host is not None:
             pulumi.set(__self__, "include_host", include_host)
+        if include_named_cookies is not None:
+            pulumi.set(__self__, "include_named_cookies", include_named_cookies)
         if include_protocol is not None:
             pulumi.set(__self__, "include_protocol", include_protocol)
         if include_query_string is not None:
@@ -12664,6 +12685,18 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
     @include_host.setter
     def include_host(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "include_host", value)
+
+    @property
+    @pulumi.getter(name="includeNamedCookies")
+    def include_named_cookies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of cookies to include in cache keys.
+        """
+        return pulumi.get(self, "include_named_cookies")
+
+    @include_named_cookies.setter
+    def include_named_cookies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_named_cookies", value)
 
     @property
     @pulumi.getter(name="includeProtocol")
@@ -21118,6 +21151,53 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     @rule_visibility.setter
     def rule_visibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rule_visibility", value)
+
+
+@pulumi.input_type
+class SecurityPolicyAdvancedOptionsConfigArgs:
+    def __init__(__self__, *,
+                 json_parsing: Optional[pulumi.Input[str]] = None,
+                 log_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+               * DISABLED - Don't parse JSON payloads in POST bodies.
+               * STANDARD - Parse JSON payloads in POST bodies.
+        :param pulumi.Input[str] log_level: Log level to use. Defaults to `NORMAL`.
+               * NORMAL - Normal log level.
+               * VERBOSE - Verbose log level.
+        """
+        if json_parsing is not None:
+            pulumi.set(__self__, "json_parsing", json_parsing)
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+
+    @property
+    @pulumi.getter(name="jsonParsing")
+    def json_parsing(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+        * DISABLED - Don't parse JSON payloads in POST bodies.
+        * STANDARD - Parse JSON payloads in POST bodies.
+        """
+        return pulumi.get(self, "json_parsing")
+
+    @json_parsing.setter
+    def json_parsing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "json_parsing", value)
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log level to use. Defaults to `NORMAL`.
+        * NORMAL - Normal log level.
+        * VERBOSE - Verbose log level.
+        """
+        return pulumi.get(self, "log_level")
+
+    @log_level.setter
+    def log_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_level", value)
 
 
 @pulumi.input_type

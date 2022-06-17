@@ -86,6 +86,7 @@ type GetMeshIstioServiceResult struct {
 	ServiceName      string                         `pulumi:"serviceName"`
 	ServiceNamespace string                         `pulumi:"serviceNamespace"`
 	Telemetries      []GetMeshIstioServiceTelemetry `pulumi:"telemetries"`
+	UserLabels       map[string]string              `pulumi:"userLabels"`
 }
 
 func GetMeshIstioServiceOutput(ctx *pulumi.Context, args GetMeshIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetMeshIstioServiceResultOutput {
@@ -171,6 +172,10 @@ func (o GetMeshIstioServiceResultOutput) ServiceNamespace() pulumi.StringOutput 
 
 func (o GetMeshIstioServiceResultOutput) Telemetries() GetMeshIstioServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v GetMeshIstioServiceResult) []GetMeshIstioServiceTelemetry { return v.Telemetries }).(GetMeshIstioServiceTelemetryArrayOutput)
+}
+
+func (o GetMeshIstioServiceResultOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceResult) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

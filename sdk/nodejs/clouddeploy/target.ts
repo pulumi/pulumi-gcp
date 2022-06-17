@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * The Clouddeploy Target resource
+ * The Cloud Deploy `Target` resource
  *
  * ## Example Usage
  * ### Target

@@ -410,8 +410,7 @@ class FunctionEventTrigger(dict):
         :param str retry_policy: Describes the retry policy in case of function's execution failure.
                Retried execution is charged as any other execution.
                Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
-        :param str service_account_email: -
-               The email of the service account for this function.
+        :param str service_account_email: The email of the service account for this function.
         :param str trigger: -
                The resource name of the Eventarc trigger.
         :param str trigger_region: The region that the trigger will be in. The trigger will only receive
@@ -463,7 +462,6 @@ class FunctionEventTrigger(dict):
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[str]:
         """
-        -
         The email of the service account for this function.
         """
         return pulumi.get(self, "service_account_email")
@@ -558,8 +556,7 @@ class FunctionServiceConfig(dict):
         :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a
                given time.
         :param str service: Name of the service associated with a Function.
-        :param str service_account_email: -
-               The email of the service account for this function.
+        :param str service_account_email: The email of the service account for this function.
         :param int timeout_seconds: The function execution timeout. Execution is considered failed and
                can be terminated if the function is not completed at the end of the
                timeout period. Defaults to 60 seconds.
@@ -671,7 +668,6 @@ class FunctionServiceConfig(dict):
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[str]:
         """
-        -
         The email of the service account for this function.
         """
         return pulumi.get(self, "service_account_email")

@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * The Clouddeploy DeliveryPipeline resource
+ * The Cloud Deploy `DeliveryPipeline` resource
  *
  * ## Example Usage
  * ### Delivery_pipeline

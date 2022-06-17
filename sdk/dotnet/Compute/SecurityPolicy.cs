@@ -79,6 +79,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.SecurityPolicyAdaptiveProtectionConfig?> AdaptiveProtectionConfig { get; private set; } = null!;
 
         /// <summary>
+        /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        /// </summary>
+        [Output("advancedOptionsConfig")]
+        public Output<Outputs.SecurityPolicyAdvancedOptionsConfig> AdvancedOptionsConfig { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Output("description")]
@@ -176,6 +182,12 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigArgs>? AdaptiveProtectionConfig { get; set; }
 
         /// <summary>
+        /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        /// </summary>
+        [Input("advancedOptionsConfig")]
+        public Input<Inputs.SecurityPolicyAdvancedOptionsConfigArgs>? AdvancedOptionsConfig { get; set; }
+
+        /// <summary>
         /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Input("description")]
@@ -226,6 +238,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("adaptiveProtectionConfig")]
         public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigGetArgs>? AdaptiveProtectionConfig { get; set; }
+
+        /// <summary>
+        /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        /// </summary>
+        [Input("advancedOptionsConfig")]
+        public Input<Inputs.SecurityPolicyAdvancedOptionsConfigGetArgs>? AdvancedOptionsConfig { get; set; }
 
         /// <summary>
         /// An optional description of this rule. Max size is 64.

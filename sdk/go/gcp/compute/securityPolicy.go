@@ -68,6 +68,8 @@ type SecurityPolicy struct {
 
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrOutput `pulumi:"adaptiveProtectionConfig"`
+	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigOutput `pulumi:"advancedOptionsConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Fingerprint of this resource.
@@ -118,6 +120,8 @@ func GetSecurityPolicy(ctx *pulumi.Context,
 type securityPolicyState struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfig"`
+	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description *string `pulumi:"description"`
 	// Fingerprint of this resource.
@@ -140,6 +144,8 @@ type securityPolicyState struct {
 type SecurityPolicyState struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrInput
+	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrInput
 	// Fingerprint of this resource.
@@ -166,6 +172,8 @@ func (SecurityPolicyState) ElementType() reflect.Type {
 type securityPolicyArgs struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfig"`
+	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description *string `pulumi:"description"`
 	// The name of the security policy.
@@ -185,6 +193,8 @@ type securityPolicyArgs struct {
 type SecurityPolicyArgs struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrInput
+	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrInput
 	// The name of the security policy.
@@ -292,6 +302,11 @@ func (o SecurityPolicyOutput) AdaptiveProtectionConfig() SecurityPolicyAdaptiveP
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyAdaptiveProtectionConfigPtrOutput {
 		return v.AdaptiveProtectionConfig
 	}).(SecurityPolicyAdaptiveProtectionConfigPtrOutput)
+}
+
+// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+func (o SecurityPolicyOutput) AdvancedOptionsConfig() SecurityPolicyAdvancedOptionsConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyAdvancedOptionsConfigOutput { return v.AdvancedOptionsConfig }).(SecurityPolicyAdvancedOptionsConfigOutput)
 }
 
 // An optional description of this rule. Max size is 64.

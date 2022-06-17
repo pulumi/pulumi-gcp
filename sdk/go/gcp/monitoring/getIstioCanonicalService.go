@@ -86,6 +86,7 @@ type GetIstioCanonicalServiceResult struct {
 	Project     *string                             `pulumi:"project"`
 	ServiceId   string                              `pulumi:"serviceId"`
 	Telemetries []GetIstioCanonicalServiceTelemetry `pulumi:"telemetries"`
+	UserLabels  map[string]string                   `pulumi:"userLabels"`
 }
 
 func GetIstioCanonicalServiceOutput(ctx *pulumi.Context, args GetIstioCanonicalServiceOutputArgs, opts ...pulumi.InvokeOption) GetIstioCanonicalServiceResultOutput {
@@ -171,6 +172,10 @@ func (o GetIstioCanonicalServiceResultOutput) ServiceId() pulumi.StringOutput {
 
 func (o GetIstioCanonicalServiceResultOutput) Telemetries() GetIstioCanonicalServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceResult) []GetIstioCanonicalServiceTelemetry { return v.Telemetries }).(GetIstioCanonicalServiceTelemetryArrayOutput)
+}
+
+func (o GetIstioCanonicalServiceResultOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIstioCanonicalServiceResult) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

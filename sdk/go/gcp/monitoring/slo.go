@@ -56,6 +56,10 @@ import (
 // 					Threshold: pulumi.String("1s"),
 // 				},
 // 			},
+// 			UserLabels: pulumi.StringMap{
+// 				"my_key":       pulumi.String("my_value"),
+// 				"my_other_key": pulumi.String("my_other_value"),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -155,6 +159,12 @@ type Slo struct {
 	Service pulumi.StringOutput `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringOutput `pulumi:"sloId"`
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
+	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
 	// A windows-based SLI defines the criteria for time windows.
 	// goodService is defined based off the count of these time windows
 	// for which the provided service was of good quality.
@@ -241,6 +251,12 @@ type sloState struct {
 	Service *string `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId *string `pulumi:"sloId"`
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
+	UserLabels map[string]string `pulumi:"userLabels"`
 	// A windows-based SLI defines the criteria for time windows.
 	// goodService is defined based off the count of these time windows
 	// for which the provided service was of good quality.
@@ -293,6 +309,12 @@ type SloState struct {
 	Service pulumi.StringPtrInput
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringPtrInput
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
+	UserLabels pulumi.StringMapInput
 	// A windows-based SLI defines the criteria for time windows.
 	// goodService is defined based off the count of these time windows
 	// for which the provided service was of good quality.
@@ -346,6 +368,12 @@ type sloArgs struct {
 	Service string `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId *string `pulumi:"sloId"`
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
+	UserLabels map[string]string `pulumi:"userLabels"`
 	// A windows-based SLI defines the criteria for time windows.
 	// goodService is defined based off the count of these time windows
 	// for which the provided service was of good quality.
@@ -396,6 +424,12 @@ type SloArgs struct {
 	Service pulumi.StringInput
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringPtrInput
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
+	UserLabels pulumi.StringMapInput
 	// A windows-based SLI defines the criteria for time windows.
 	// goodService is defined based off the count of these time windows
 	// for which the provided service was of good quality.
@@ -562,6 +596,15 @@ func (o SloOutput) Service() pulumi.StringOutput {
 // The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 func (o SloOutput) SloId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.SloId }).(pulumi.StringOutput)
+}
+
+// This field is intended to be used for organizing and identifying the AlertPolicy
+// objects.The field can contain up to 64 entries. Each key and value is limited
+// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+// must begin with a letter.
+func (o SloOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
 // A windows-based SLI defines the criteria for time windows.

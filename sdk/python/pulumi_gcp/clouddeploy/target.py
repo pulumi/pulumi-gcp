@@ -446,7 +446,7 @@ class Target(pulumi.CustomResource):
                  require_approval: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The Clouddeploy Target resource
+        The Cloud Deploy `Target` resource
 
         ## Example Usage
         ### Target
@@ -509,7 +509,7 @@ class Target(pulumi.CustomResource):
                  args: TargetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Clouddeploy Target resource
+        The Cloud Deploy `Target` resource
 
         ## Example Usage
         ### Target

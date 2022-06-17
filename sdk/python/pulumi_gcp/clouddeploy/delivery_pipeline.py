@@ -347,7 +347,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  serial_pipeline: Optional[pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']]] = None,
                  __props__=None):
         """
-        The Clouddeploy DeliveryPipeline resource
+        The Cloud Deploy `DeliveryPipeline` resource
 
         ## Example Usage
         ### Delivery_pipeline
@@ -418,7 +418,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  args: DeliveryPipelineArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Clouddeploy DeliveryPipeline resource
+        The Cloud Deploy `DeliveryPipeline` resource
 
         ## Example Usage
         ### Delivery_pipeline

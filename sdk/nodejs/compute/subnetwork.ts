@@ -106,6 +106,24 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
+ * ### Subnetwork Internal Ipv6
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom_test = new gcp.compute.Network("custom-test", {
+ *     autoCreateSubnetworks: false,
+ *     enableUlaInternalIpv6: true,
+ * });
+ * const subnetwork_internal_ipv6 = new gcp.compute.Subnetwork("subnetwork-internal-ipv6", {
+ *     ipCidrRange: "10.0.0.0/22",
+ *     region: "us-west2",
+ *     stackType: "IPV4_IPV6",
+ *     ipv6AccessType: "INTERNAL",
+ *     network: custom_test.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -190,7 +208,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
-     * Possible values are `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL`.
      */
     public readonly ipv6AccessType!: pulumi.Output<string | undefined>;
     /**
@@ -378,7 +396,7 @@ export interface SubnetworkState {
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
-     * Possible values are `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL`.
      */
     ipv6AccessType?: pulumi.Input<string>;
     /**
@@ -482,7 +500,7 @@ export interface SubnetworkArgs {
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
-     * Possible values are `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL`.
      */
     ipv6AccessType?: pulumi.Input<string>;
     /**

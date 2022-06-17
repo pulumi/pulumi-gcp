@@ -101,10 +101,27 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Enable ULA internal ipv6 on this network. Enabling this feature will assign
+        /// a /48 from google defined ULA prefix fd20::/20.
+        /// </summary>
+        [Output("enableUlaInternalIpv6")]
+        public Output<bool?> EnableUlaInternalIpv6 { get; private set; } = null!;
+
+        /// <summary>
         /// The gateway address for default routing out of the network. This value is selected by GCP.
         /// </summary>
         [Output("gatewayIpv4")]
         public Output<string> GatewayIpv4 { get; private set; } = null!;
+
+        /// <summary>
+        /// When enabling ula internal ipv6, caller optionally can specify the /48 range
+        /// they want from the google defined ULA prefix fd20::/20. The input must be a
+        /// valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+        /// fail if the speficied /48 is already in used by another resource.
+        /// If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+        /// </summary>
+        [Output("internalIpv6Range")]
+        public Output<string> InternalIpv6Range { get; private set; } = null!;
 
         /// <summary>
         /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
@@ -220,6 +237,23 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable ULA internal ipv6 on this network. Enabling this feature will assign
+        /// a /48 from google defined ULA prefix fd20::/20.
+        /// </summary>
+        [Input("enableUlaInternalIpv6")]
+        public Input<bool>? EnableUlaInternalIpv6 { get; set; }
+
+        /// <summary>
+        /// When enabling ula internal ipv6, caller optionally can specify the /48 range
+        /// they want from the google defined ULA prefix fd20::/20. The input must be a
+        /// valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+        /// fail if the speficied /48 is already in used by another resource.
+        /// If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+        /// </summary>
+        [Input("internalIpv6Range")]
+        public Input<string>? InternalIpv6Range { get; set; }
+
+        /// <summary>
         /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
         /// and the maximum value is 1500 bytes.
         /// </summary>
@@ -288,10 +322,27 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable ULA internal ipv6 on this network. Enabling this feature will assign
+        /// a /48 from google defined ULA prefix fd20::/20.
+        /// </summary>
+        [Input("enableUlaInternalIpv6")]
+        public Input<bool>? EnableUlaInternalIpv6 { get; set; }
+
+        /// <summary>
         /// The gateway address for default routing out of the network. This value is selected by GCP.
         /// </summary>
         [Input("gatewayIpv4")]
         public Input<string>? GatewayIpv4 { get; set; }
+
+        /// <summary>
+        /// When enabling ula internal ipv6, caller optionally can specify the /48 range
+        /// they want from the google defined ULA prefix fd20::/20. The input must be a
+        /// valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+        /// fail if the speficied /48 is already in used by another resource.
+        /// If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+        /// </summary>
+        [Input("internalIpv6Range")]
+        public Input<string>? InternalIpv6Range { get; set; }
 
         /// <summary>
         /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460

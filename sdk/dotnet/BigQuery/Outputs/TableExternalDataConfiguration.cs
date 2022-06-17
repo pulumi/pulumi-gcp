@@ -24,6 +24,13 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? Compression;
         /// <summary>
+        /// The connection specifying the credentials to be used to read
+        /// external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+        /// the form `{{project}}.{{location}}.{{connection_id}}`
+        /// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+        /// </summary>
+        public readonly string? ConnectionId;
+        /// <summary>
         /// Additional properties to set if
         /// `source_format` is set to "CSV". Structure is documented below.
         /// </summary>
@@ -89,6 +96,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string? compression,
 
+            string? connectionId,
+
             Outputs.TableExternalDataConfigurationCsvOptions? csvOptions,
 
             Outputs.TableExternalDataConfigurationGoogleSheetsOptions? googleSheetsOptions,
@@ -107,6 +116,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         {
             Autodetect = autodetect;
             Compression = compression;
+            ConnectionId = connectionId;
             CsvOptions = csvOptions;
             GoogleSheetsOptions = googleSheetsOptions;
             HivePartitioningOptions = hivePartitioningOptions;

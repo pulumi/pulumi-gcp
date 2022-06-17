@@ -25,6 +25,7 @@ __all__ = [
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork',
     'DatabaseInstanceSettingsLocationPreference',
     'DatabaseInstanceSettingsMaintenanceWindow',
+    'UserSqlServerUserDetails',
     'GetCaCertsCertResult',
     'GetDatabaseInstanceCloneResult',
     'GetDatabaseInstanceIpAddressResult',
@@ -1307,6 +1308,44 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
         (`stable`)
         """
         return pulumi.get(self, "update_track")
+
+
+@pulumi.output_type
+class UserSqlServerUserDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverRoles":
+            suggest = "server_roles"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserSqlServerUserDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserSqlServerUserDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserSqlServerUserDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disabled: Optional[bool] = None,
+                 server_roles: Optional[Sequence[str]] = None):
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if server_roles is not None:
+            pulumi.set(__self__, "server_roles", server_roles)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="serverRoles")
+    def server_roles(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "server_roles")
 
 
 @pulumi.output_type

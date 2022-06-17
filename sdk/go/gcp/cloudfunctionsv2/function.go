@@ -72,12 +72,20 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("test-service-account"),
+// 			DisplayName: pulumi.String("Test Service Account"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
 // 		sub, err := pubsub.NewTopic(ctx, "sub", nil, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
@@ -122,12 +130,14 @@ import (
 // 				},
 // 				IngressSettings:            pulumi.String("ALLOW_INTERNAL_ONLY"),
 // 				AllTrafficOnLatestRevision: pulumi.Bool(true),
+// 				ServiceAccountEmail:        account.Email,
 // 			},
 // 			EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
-// 				TriggerRegion: pulumi.String("us-central1"),
-// 				EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-// 				PubsubTopic:   sub.ID(),
-// 				RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
+// 				TriggerRegion:       pulumi.String("us-central1"),
+// 				EventType:           pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
+// 				PubsubTopic:         sub.ID(),
+// 				RetryPolicy:         pulumi.String("RETRY_POLICY_RETRY"),
+// 				ServiceAccountEmail: account.Email,
 // 			},
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {

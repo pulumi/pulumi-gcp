@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
         /// <summary>
+        /// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        /// </summary>
+        public readonly bool? PreventDrift;
+        /// <summary>
         /// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         /// </summary>
         public readonly string? SourceFormat;
@@ -27,9 +31,12 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         private FeatureMembershipConfigmanagementConfigSync(
             Outputs.FeatureMembershipConfigmanagementConfigSyncGit? git,
 
+            bool? preventDrift,
+
             string? sourceFormat)
         {
             Git = git;
+            PreventDrift = preventDrift;
             SourceFormat = sourceFormat;
         }
     }

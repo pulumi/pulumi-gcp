@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetBackendServiceCdnPolicyCacheKeyPolicyResult
     {
         public readonly bool IncludeHost;
+        public readonly ImmutableArray<string> IncludeNamedCookies;
         public readonly bool IncludeProtocol;
         public readonly bool IncludeQueryString;
         public readonly ImmutableArray<string> QueryStringBlacklists;
@@ -22,6 +23,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         [OutputConstructor]
         private GetBackendServiceCdnPolicyCacheKeyPolicyResult(
             bool includeHost,
+
+            ImmutableArray<string> includeNamedCookies,
 
             bool includeProtocol,
 
@@ -32,6 +35,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             ImmutableArray<string> queryStringWhitelists)
         {
             IncludeHost = includeHost;
+            IncludeNamedCookies = includeNamedCookies;
             IncludeProtocol = includeProtocol;
             IncludeQueryString = includeQueryString;
             QueryStringBlacklists = queryStringBlacklists;
