@@ -17,10 +17,15 @@
 package main
 
 import (
+	_ "embed"
+
 	gcp "github.com/pulumi/pulumi-gcp/provider/v6"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
+
+//go:embed schema-embed.json
+var pulumiSchema []byte
 
 func main() {
 	tfbridge.Main("gcp", version.Version, gcp.Provider(), pulumiSchema)
