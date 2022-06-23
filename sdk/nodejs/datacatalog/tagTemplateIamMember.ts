@@ -16,50 +16,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_data\_catalog\_tag\_template\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.datacatalog.TagTemplateIamPolicy("policy", {
- *     tagTemplate: google_data_catalog_tag_template.basic_tag_template.name,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_data\_catalog\_tag\_template\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.datacatalog.TagTemplateIamBinding("binding", {
- *     tagTemplate: google_data_catalog_tag_template.basic_tag_template.name,
- *     role: "roles/viewer",
- *     members: ["user:jane@example.com"],
- * });
- * ```
- *
- * ## google\_data\_catalog\_tag\_template\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.datacatalog.TagTemplateIamMember("member", {
- *     tagTemplate: google_data_catalog_tag_template.basic_tag_template.name,
- *     role: "roles/viewer",
- *     member: "user:jane@example.com",
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} * {{project}}/{{region}}/{{tag_template}} * {{region}}/{{tag_template}} * {{tag_template}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog tagtemplate IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

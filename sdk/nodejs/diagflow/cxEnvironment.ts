@@ -17,44 +17,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
- * ### Dialogflowcx Environment Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const agent = new gcp.diagflow.CxAgent("agent", {
- *     displayName: "dialogflowcx-agent",
- *     location: "global",
- *     defaultLanguageCode: "en",
- *     supportedLanguageCodes: [
- *         "fr",
- *         "de",
- *         "es",
- *     ],
- *     timeZone: "America/New_York",
- *     description: "Example description.",
- *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
- *     enableStackdriverLogging: true,
- *     enableSpellCorrection: true,
- *     speechToTextSettings: {
- *         enableSpeechAdaptation: true,
- *     },
- * });
- * const version1 = new gcp.diagflow.CxVersion("version1", {
- *     parent: agent.startFlow,
- *     displayName: "1.0.0",
- *     description: "version 1.0.0",
- * });
- * const development = new gcp.diagflow.CxEnvironment("development", {
- *     parent: agent.id,
- *     displayName: "Development",
- *     description: "Development Environment",
- *     versionConfigs: [{
- *         version: version1.id,
- *     }],
- * });
- * ```
  *
  * ## Import
  *

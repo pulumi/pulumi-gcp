@@ -23,28 +23,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://firebase.google.com/)
  *
  * ## Example Usage
- * ### Firebase Project Location Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultProject = new gcp.organizations.Project("defaultProject", {
- *     projectId: "tf-test",
- *     orgId: "123456789",
- * }, {
- *     provider: google_beta,
- * });
- * const defaultFirebase_projectProject = new gcp.firebase.Project("defaultFirebase/projectProject", {project: defaultProject.projectId}, {
- *     provider: google_beta,
- * });
- * const basic = new gcp.firebase.ProjectLocation("basic", {
- *     project: defaultFirebase / projectProject.project,
- *     locationId: "us-central",
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

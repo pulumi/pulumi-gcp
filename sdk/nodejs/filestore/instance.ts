@@ -70,28 +70,6 @@ import * as utilities from "../utilities";
  *     tier: "BASIC_SSD",
  * });
  * ```
- * ### Filestore Instance Enterprise
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const filestoreKeyring = new gcp.kms.KeyRing("filestoreKeyring", {location: "us-central1"});
- * const filestoreKey = new gcp.kms.CryptoKey("filestoreKey", {keyRing: filestoreKeyring.id});
- * const instance = new gcp.filestore.Instance("instance", {
- *     location: "us-central1",
- *     tier: "ENTERPRISE",
- *     fileShares: {
- *         capacityGb: 2560,
- *         name: "share1",
- *     },
- *     networks: [{
- *         network: "default",
- *         modes: ["MODE_IPV4"],
- *     }],
- *     kmsKeyName: filestoreKey.id,
- * });
- * ```
  *
  * ## Import
  *

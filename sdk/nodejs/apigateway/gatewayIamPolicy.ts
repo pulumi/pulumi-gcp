@@ -15,62 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_api\_gateway\_gateway\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/apigateway.viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.apigateway.GatewayIamPolicy("policy", {
- *     project: google_api_gateway_gateway.api_gw.project,
- *     region: google_api_gateway_gateway.api_gw.region,
- *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
- *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
- * ## google\_api\_gateway\_gateway\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.apigateway.GatewayIamBinding("binding", {
- *     project: google_api_gateway_gateway.api_gw.project,
- *     region: google_api_gateway_gateway.api_gw.region,
- *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
- *     role: "roles/apigateway.viewer",
- *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
- * ## google\_api\_gateway\_gateway\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.apigateway.GatewayIamMember("member", {
- *     project: google_api_gateway_gateway.api_gw.project,
- *     region: google_api_gateway_gateway.api_gw.region,
- *     gateway: google_api_gateway_gateway.api_gw.gateway_id,
- *     role: "roles/apigateway.viewer",
- *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/gateways/{{gateway}} * {{project}}/{{region}}/{{gateway}} * {{region}}/{{gateway}} * {{gateway}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway gateway IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

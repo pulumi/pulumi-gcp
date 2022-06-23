@@ -12,21 +12,6 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
  *
  * > **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
- *
- * ## Example Usage
- *
- * Example file object  stored within a folder.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const key = gcp.storage.getBucketObjectContent({
- *     name: "encryptedkey",
- *     bucket: "keystore",
- * });
- * export const encrypted = key.then(key => key.content);
- * ```
  */
 export function getBucketObjectContent(args: GetBucketObjectContentArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectContentResult> {
     if (!opts) {

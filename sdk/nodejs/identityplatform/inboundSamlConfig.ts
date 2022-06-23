@@ -13,29 +13,6 @@ import * as utilities from "../utilities";
  * the marketplace prior to using this resource.
  *
  * ## Example Usage
- * ### Identity Platform Inbound Saml Config Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
- *
- * const samlConfig = new gcp.identityplatform.InboundSamlConfig("samlConfig", {
- *     displayName: "Display Name",
- *     idpConfig: {
- *         idpEntityId: "tf-idp",
- *         signRequest: true,
- *         ssoUrl: "https://example.com",
- *         idpCertificates: [{
- *             x509Certificate: fs.readFileSync("test-fixtures/rsa_cert.pem"),
- *         }],
- *     },
- *     spConfig: {
- *         spEntityId: "tf-sp",
- *         callbackUri: "https://example.com",
- *     },
- * });
- * ```
  *
  * ## Import
  *

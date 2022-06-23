@@ -107,7 +107,7 @@ import (
 // 			Repository: my_repo.Name,
 // 			Role:       pulumi.String("roles/artifactregistry.reader"),
 // 			Member: test_account.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 // 			}).(pulumi.StringOutput),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {

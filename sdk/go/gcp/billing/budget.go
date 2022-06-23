@@ -97,7 +97,7 @@ import (
 // 			DisplayName:    pulumi.String("Example Billing Budget"),
 // 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
 // 				Projects: pulumi.StringArray{
-// 					pulumi.String(fmt.Sprintf("%v%v", "projects/", project.Number)),
+// 					pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
 // 				},
 // 			},
 // 			Amount: &billing.BudgetAmountArgs{
@@ -146,7 +146,7 @@ import (
 // 			DisplayName:    pulumi.String("Example Billing Budget"),
 // 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
 // 				Projects: pulumi.StringArray{
-// 					pulumi.String(fmt.Sprintf("%v%v", "projects/", project.Number)),
+// 					pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
 // 				},
 // 				CreditTypesTreatment: pulumi.String("EXCLUDE_ALL_CREDITS"),
 // 				Services: pulumi.StringArray{
@@ -217,7 +217,7 @@ import (
 // 			DisplayName:    pulumi.String("Example Billing Budget"),
 // 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
 // 				Projects: pulumi.StringArray{
-// 					pulumi.String(fmt.Sprintf("%v%v", "projects/", project.Number)),
+// 					pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
 // 				},
 // 			},
 // 			Amount: &billing.BudgetAmountArgs{

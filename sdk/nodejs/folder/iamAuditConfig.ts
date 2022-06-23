@@ -20,55 +20,6 @@ import * as utilities from "../utilities";
  * > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
  *
- * ## google\_folder\_iam\_policy
- *
- * !> **Be careful!** You can accidentally lock yourself out of your folder
- *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
- *    from anyone without permissions on its parent folder/organization. Proceed with caution.
- *    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
- *    to avoid locking yourself out, and it should generally only be used with folders
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
- *    applying the change.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const folder = new gcp.folder.IAMPolicy("folder", {
- *     folder: "folders/1234567",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * With IAM Conditions:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         condition: {
- *             description: "Expiring at midnight of 2019-12-31",
- *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *             title: "expires_after_2019_12_31",
- *         },
- *         members: ["user:jane@example.com"],
- *         role: "roles/compute.admin",
- *     }],
- * }));
- * const folder = new gcp.folder.IAMPolicy("folder", {
- *     folder: "folders/1234567",
- *     policyData: admin.policyData,
- * });
- * ```
- *
  * ## google\_folder\_iam\_binding
  *
  * ```typescript

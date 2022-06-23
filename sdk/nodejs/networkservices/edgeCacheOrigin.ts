@@ -20,44 +20,6 @@ import * as utilities from "../utilities";
  *     originAddress: "gs://media-edge-default",
  * });
  * ```
- * ### Network Services Edge Cache Origin Advanced
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const fallback = new gcp.networkservices.EdgeCacheOrigin("fallback", {
- *     originAddress: "gs://media-edge-fallback",
- *     description: "The default bucket for media edge test",
- *     maxAttempts: 3,
- *     protocol: "HTTP",
- *     port: 80,
- *     retryConditions: [
- *         "CONNECT_FAILURE",
- *         "NOT_FOUND",
- *         "HTTP_5XX",
- *         "FORBIDDEN",
- *     ],
- *     timeout: {
- *         connectTimeout: "10s",
- *         maxAttemptsTimeout: "20s",
- *         responseTimeout: "60s",
- *         readTimeout: "5s",
- *     },
- * });
- * const _default = new gcp.networkservices.EdgeCacheOrigin("default", {
- *     originAddress: "gs://media-edge-default",
- *     failoverOrigin: fallback.id,
- *     description: "The default bucket for media edge test",
- *     maxAttempts: 2,
- *     labels: {
- *         a: "b",
- *     },
- *     timeout: {
- *         connectTimeout: "10s",
- *     },
- * });
- * ```
  *
  * ## Import
  *

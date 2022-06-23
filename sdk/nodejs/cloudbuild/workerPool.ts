@@ -23,46 +23,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const servicenetworking = new gcp.projects.Service("servicenetworking", {
- *     service: "servicenetworking.googleapis.com",
- *     disableOnDestroy: false,
- * });
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
- *     dependsOn: [servicenetworking],
- * });
- * const workerRange = new gcp.compute.GlobalAddress("workerRange", {
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 16,
- *     network: network.id,
- * });
- * const workerPoolConn = new gcp.servicenetworking.Connection("workerPoolConn", {
- *     network: network.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [workerRange.name],
- * }, {
- *     dependsOn: [servicenetworking],
- * });
- * const pool = new gcp.cloudbuild.WorkerPool("pool", {
- *     location: "europe-west1",
- *     workerConfig: {
- *         diskSizeGb: 100,
- *         machineType: "e2-standard-4",
- *         noExternalIp: false,
- *     },
- *     networkConfig: {
- *         peeredNetwork: network.id,
- *     },
- * }, {
- *     dependsOn: [workerPoolConn],
- * });
- * ```
  *
  * ## Import
  *

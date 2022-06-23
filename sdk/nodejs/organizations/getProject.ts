@@ -8,16 +8,6 @@ import * as utilities from "../utilities";
  * Use this data source to get project details.
  * For more information see
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * export const projectNumber = project.then(project => project.number);
- * ```
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};

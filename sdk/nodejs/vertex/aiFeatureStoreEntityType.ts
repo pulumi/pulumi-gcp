@@ -7,38 +7,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Vertex Ai Featurestore Entitytype
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
- *     labels: {
- *         foo: "bar",
- *     },
- *     region: "us-central1",
- *     onlineServingConfig: {
- *         fixedNodeCount: 2,
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
- *     labels: {
- *         foo: "bar",
- *     },
- *     featurestore: featurestore.id,
- *     monitoringConfig: {
- *         snapshotAnalysis: {
- *             disabled: false,
- *             monitoringInterval: "86400s",
- *         },
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

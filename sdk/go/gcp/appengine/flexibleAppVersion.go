@@ -70,7 +70,7 @@ import (
 // 			Project: service.Project,
 // 			Role:    pulumi.String("roles/compute.networkUser"),
 // 			Member: myProject.Number.ApplyT(func(number string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v", "serviceAccount:service-", number, "@gae-api-prod.google.com.iam.gserviceaccount.com"), nil
+// 				return fmt.Sprintf("serviceAccount:service-%v@gae-api-prod.google.com.iam.gserviceaccount.com", number), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -103,7 +103,7 @@ import (
 // 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
 // 						bucketName := _args[0].(string)
 // 						objectName := _args[1].(string)
-// 						return fmt.Sprintf("%v%v%v%v", "https://storage.googleapis.com/", bucketName, "/", objectName), nil
+// 						return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
 // 					}).(pulumi.StringOutput),
 // 				},
 // 			},

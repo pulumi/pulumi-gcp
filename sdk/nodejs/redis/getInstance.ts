@@ -7,20 +7,6 @@ import * as utilities from "../utilities";
 
 /**
  * Get info about a Google Cloud Redis instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myInstance = gcp.redis.getInstance({
- *     name: "my-redis-instance",
- * });
- * export const instanceMemorySizeGb = myInstance.then(myInstance => myInstance.memorySizeGb);
- * export const instanceConnectMode = myInstance.then(myInstance => myInstance.connectMode);
- * export const instanceAuthorizedNetwork = myInstance.then(myInstance => myInstance.authorizedNetwork);
- * ```
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     if (!opts) {

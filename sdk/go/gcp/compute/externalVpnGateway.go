@@ -102,7 +102,7 @@ import (
 // 			PeerExternalGatewayInterface: pulumi.Int(0),
 // 			SharedSecret:                 pulumi.String("a secret message"),
 // 			Router: router1.ID().ApplyT(func(id string) (string, error) {
-// 				return fmt.Sprintf("%v%v", " ", id), nil
+// 				return fmt.Sprintf(" %v", id), nil
 // 			}).(pulumi.StringOutput),
 // 			VpnGatewayInterface: pulumi.Int(1),
 // 		})

@@ -6,21 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Creating A New Key
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myaccount = new gcp.serviceaccount.Account("myaccount", {
- *     accountId: "myaccount",
- *     displayName: "My Service Account",
- * });
- * const mykey = new gcp.serviceaccount.Key("mykey", {
- *     serviceAccountId: myaccount.name,
- *     publicKeyType: "TYPE_X509_PEM_FILE",
- * });
- * ```
  *
  * ## Import
  *

@@ -35,25 +35,6 @@ import * as utilities from "../utilities";
  *
  * const ipAddress = new gcp.compute.Address("ip_address", {});
  * ```
- * ### Address With Subnetwork
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
- *     ipCidrRange: "10.0.0.0/16",
- *     region: "us-central1",
- *     network: defaultNetwork.id,
- * });
- * const internalWithSubnetAndAddress = new gcp.compute.Address("internalWithSubnetAndAddress", {
- *     subnetwork: defaultSubnetwork.id,
- *     addressType: "INTERNAL",
- *     address: "10.0.42.42",
- *     region: "us-central1",
- * });
- * ```
  * ### Address With Gce Endpoint
  *
  * ```typescript
@@ -63,48 +44,6 @@ import * as utilities from "../utilities";
  * const internalWithGceEndpoint = new gcp.compute.Address("internal_with_gce_endpoint", {
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
- * });
- * ```
- * ### Instance With Ip
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const static = new gcp.compute.Address("static", {});
- * const debianImage = gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * });
- * const instanceWithIp = new gcp.compute.Instance("instanceWithIp", {
- *     machineType: "f1-micro",
- *     zone: "us-central1-a",
- *     bootDisk: {
- *         initializeParams: {
- *             image: debianImage.then(debianImage => debianImage.selfLink),
- *         },
- *     },
- *     networkInterfaces: [{
- *         network: "default",
- *         accessConfigs: [{
- *             natIp: static.address,
- *         }],
- *     }],
- * });
- * ```
- * ### Compute Address Ipsec Interconnect
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
- * const ipsec_interconnect_address = new gcp.compute.Address("ipsec-interconnect-address", {
- *     addressType: "INTERNAL",
- *     purpose: "IPSEC_INTERCONNECT",
- *     address: "192.168.1.0",
- *     prefixLength: 29,
- *     network: network.selfLink,
  * });
  * ```
  *

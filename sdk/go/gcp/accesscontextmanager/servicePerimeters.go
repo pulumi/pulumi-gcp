@@ -45,12 +45,12 @@ import (
 // 		}
 // 		_, err = accesscontextmanager.NewServicePerimeters(ctx, "service-perimeter", &accesscontextmanager.ServicePerimetersArgs{
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			ServicePerimeters: accesscontextmanager.ServicePerimetersServicePerimeterArray{
 // 				&accesscontextmanager.ServicePerimetersServicePerimeterArgs{
 // 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/servicePerimeters/"), nil
+// 						return fmt.Sprintf("accessPolicies/%v/servicePerimeters/", name), nil
 // 					}).(pulumi.StringOutput),
 // 					Status: &accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs{
 // 						RestrictedServices: pulumi.StringArray{
@@ -61,7 +61,7 @@ import (
 // 				},
 // 				&accesscontextmanager.ServicePerimetersServicePerimeterArgs{
 // 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/servicePerimeters/"), nil
+// 						return fmt.Sprintf("accessPolicies/%v/servicePerimeters/", name), nil
 // 					}).(pulumi.StringOutput),
 // 					Status: &accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs{
 // 						RestrictedServices: pulumi.StringArray{
@@ -96,7 +96,7 @@ import (
 // 				},
 // 			},
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Title: pulumi.String("chromeos_no_lock"),
 // 		})

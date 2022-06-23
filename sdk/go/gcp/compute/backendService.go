@@ -289,7 +289,7 @@ import (
 // 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
 // 			CustomRequestHeaders: pulumi.StringArray{
 // 				proxy.Fqdn.ApplyT(func(fqdn string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "host: ", fqdn), nil
+// 					return fmt.Sprintf("host: %v", fqdn), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 			CustomResponseHeaders: pulumi.StringArray{

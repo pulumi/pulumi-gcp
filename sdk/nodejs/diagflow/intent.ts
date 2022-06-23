@@ -16,67 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  *
  * ## Example Usage
- * ### Dialogflow Intent Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
- *     displayName: "example_agent",
- *     defaultLanguageCode: "en",
- *     timeZone: "America/New_York",
- * });
- * const basicIntent = new gcp.diagflow.Intent("basicIntent", {displayName: "basic-intent"}, {
- *     dependsOn: [basicAgent],
- * });
- * ```
- * ### Dialogflow Intent Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const agentProjectProject = new gcp.organizations.Project("agentProjectProject", {
- *     projectId: "tf-test-dialogflow",
- *     orgId: "123456789",
- * });
- * const agentProjectService = new gcp.projects.Service("agentProjectService", {
- *     project: agentProjectProject.projectId,
- *     service: "dialogflow.googleapis.com",
- *     disableDependentServices: false,
- * });
- * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflowServiceAccount", {accountId: "tf-test-dialogflow"});
- * const agentCreate = new gcp.projects.IAMMember("agentCreate", {
- *     project: agentProjectService.project,
- *     role: "roles/dialogflow.admin",
- *     member: pulumi.interpolate`serviceAccount:${dialogflowServiceAccount.email}`,
- * });
- * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
- *     project: agentProjectProject.projectId,
- *     displayName: "example_agent",
- *     defaultLanguageCode: "en",
- *     timeZone: "America/New_York",
- * });
- * const fullIntent = new gcp.diagflow.Intent("fullIntent", {
- *     project: agentProjectProject.projectId,
- *     displayName: "full-intent",
- *     webhookState: "WEBHOOK_STATE_ENABLED",
- *     priority: 1,
- *     isFallback: false,
- *     mlDisabled: true,
- *     action: "some_action",
- *     resetContexts: true,
- *     inputContextNames: [pulumi.interpolate`projects/${agentProjectProject.projectId}/agent/sessions/-/contexts/some_id`],
- *     events: ["some_event"],
- *     defaultResponsePlatforms: [
- *         "FACEBOOK",
- *         "SLACK",
- *     ],
- * }, {
- *     dependsOn: [basicAgent],
- * });
- * ```
  *
  * ## Import
  *

@@ -20,49 +20,6 @@ import * as utilities from "../utilities";
  * the provider to delete and recreate the node group.
  *
  * ## Example Usage
- * ### Node Group Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
- *     region: "us-central1",
- *     nodeType: "n1-node-96-624",
- * });
- * const nodes = new gcp.compute.NodeGroup("nodes", {
- *     zone: "us-central1-a",
- *     description: "example google_compute_node_group for the Google Provider",
- *     size: 1,
- *     nodeTemplate: soletenant_tmpl.id,
- * });
- * ```
- * ### Node Group Autoscaling Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
- *     region: "us-central1",
- *     nodeType: "n1-node-96-624",
- * });
- * const nodes = new gcp.compute.NodeGroup("nodes", {
- *     zone: "us-central1-a",
- *     description: "example google_compute_node_group for Google Provider",
- *     maintenancePolicy: "RESTART_IN_PLACE",
- *     maintenanceWindow: {
- *         startTime: "08:00",
- *     },
- *     initialSize: 1,
- *     nodeTemplate: soletenant_tmpl.id,
- *     autoscalingPolicy: {
- *         mode: "ONLY_SCALE_OUT",
- *         minNodes: 1,
- *         maxNodes: 10,
- *     },
- * });
- * ```
  *
  * ## Import
  *

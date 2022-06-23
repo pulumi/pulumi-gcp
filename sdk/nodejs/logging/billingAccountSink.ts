@@ -15,25 +15,6 @@ import * as utilities from "../utilities";
  * the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
  * typical IAM roles granted on a project.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const log_bucket = new gcp.storage.Bucket("log-bucket", {location: "US"});
- * const my_sink = new gcp.logging.BillingAccountSink("my-sink", {
- *     description: "some explanation on what this is",
- *     billingAccount: "ABCDEF-012345-GHIJKL",
- *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
- * });
- * const log_writer = new gcp.projects.IAMBinding("log-writer", {
- *     project: "your-project-id",
- *     role: "roles/storage.objectCreator",
- *     members: [my_sink.writerIdentity],
- * });
- * ```
- *
  * ## Import
  *
  * Billing account logging sinks can be imported using this format

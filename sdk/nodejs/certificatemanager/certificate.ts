@@ -14,35 +14,6 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
  *
  * ## Example Usage
- * ### Certificate Manager Certificate Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
- *     description: "The default dnss",
- *     domain: "subdomain.hashicorptest.com",
- * });
- * const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
- *     description: "The default dnss",
- *     domain: "subdomain2.hashicorptest.com",
- * });
- * const _default = new gcp.certificatemanager.Certificate("default", {
- *     description: "The default cert",
- *     scope: "EDGE_CACHE",
- *     managed: {
- *         domains: [
- *             instance.domain,
- *             instance2.domain,
- *         ],
- *         dnsAuthorizations: [
- *             instance.id,
- *             instance2.id,
- *         ],
- *     },
- * });
- * ```
  *
  * ## Import
  *

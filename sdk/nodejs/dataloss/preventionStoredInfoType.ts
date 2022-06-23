@@ -51,34 +51,6 @@ import * as utilities from "../utilities";
  *     parent: "projects/my-project-name",
  * });
  * ```
- * ### Dlp Stored Info Type Large Custom Dictionary
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bucket = new gcp.storage.Bucket("bucket", {
- *     location: "US",
- *     forceDestroy: true,
- * });
- * const object = new gcp.storage.BucketObject("object", {
- *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/dlp/words.txt"),
- * });
- * const large = new gcp.dataloss.PreventionStoredInfoType("large", {
- *     parent: "projects/my-project-name",
- *     description: "Description",
- *     displayName: "Displayname",
- *     largeCustomDictionary: {
- *         cloudStorageFileSet: {
- *             url: pulumi.interpolate`gs://${bucket.name}/${object.name}`,
- *         },
- *         outputPath: {
- *             path: pulumi.interpolate`gs://${bucket.name}/output/dictionary.txt`,
- *         },
- *     },
- * });
- * ```
  *
  * ## Import
  *

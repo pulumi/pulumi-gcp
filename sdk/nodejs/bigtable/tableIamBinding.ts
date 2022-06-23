@@ -16,26 +16,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.bigtable.TableIamBinding` resources **can be** used in conjunction with `gcp.bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_bigtable\_table\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/bigtable.user",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const editor = new gcp.bigtable.TableIamPolicy("editor", {
- *     project: "your-project",
- *     instance: "your-bigtable-instance",
- *     table: "your-bigtable-table",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## google\_bigtable\_table\_iam\_binding
  *
  * ```typescript

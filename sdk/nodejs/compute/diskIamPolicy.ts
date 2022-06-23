@@ -15,53 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.compute.DiskIamBinding` resources **can be** used in conjunction with `gcp.compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_compute\_disk\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.compute.DiskIamPolicy("policy", {
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_compute\_disk\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.compute.DiskIamBinding("binding", {
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
- *     role: "roles/viewer",
- *     members: ["user:jane@example.com"],
- * });
- * ```
- *
- * ## google\_compute\_disk\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.compute.DiskIamMember("member", {
- *     project: google_compute_disk["default"].project,
- *     zone: google_compute_disk["default"].zone,
- *     role: "roles/viewer",
- *     member: "user:jane@example.com",
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/disks/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

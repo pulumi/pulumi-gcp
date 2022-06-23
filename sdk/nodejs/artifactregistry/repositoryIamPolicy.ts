@@ -15,62 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_artifact\_registry\_repository\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.artifactregistry.RepositoryIamPolicy("policy", {
- *     project: google_artifact_registry_repository["my-repo"].project,
- *     location: google_artifact_registry_repository["my-repo"].location,
- *     repository: google_artifact_registry_repository["my-repo"].name,
- *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
- * ## google\_artifact\_registry\_repository\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.artifactregistry.RepositoryIamBinding("binding", {
- *     project: google_artifact_registry_repository["my-repo"].project,
- *     location: google_artifact_registry_repository["my-repo"].location,
- *     repository: google_artifact_registry_repository["my-repo"].name,
- *     role: "roles/viewer",
- *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
- * ## google\_artifact\_registry\_repository\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.artifactregistry.RepositoryIamMember("member", {
- *     project: google_artifact_registry_repository["my-repo"].project,
- *     location: google_artifact_registry_repository["my-repo"].location,
- *     repository: google_artifact_registry_repository["my-repo"].name,
- *     role: "roles/viewer",
- *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

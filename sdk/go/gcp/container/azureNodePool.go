@@ -56,7 +56,7 @@ import (
 // 			},
 // 			AzureRegion: pulumi.String("westus2"),
 // 			Client: basic.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "projects/my-project-number/locations/us-west1/azureClients/", name), nil
+// 				return fmt.Sprintf("projects/my-project-number/locations/us-west1/azureClients/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			ControlPlane: &container.AzureClusterControlPlaneArgs{
 // 				SshConfig: &container.AzureClusterControlPlaneSshConfigArgs{

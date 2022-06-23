@@ -16,51 +16,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_service\_directory\_service\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.servicedirectory.ServiceIamPolicy("policy", {policyData: admin.then(admin => admin.policyData)}, {
- *     provider: google_beta,
- * });
- * ```
- *
- * ## google\_service\_directory\_service\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.servicedirectory.ServiceIamBinding("binding", {
- *     role: "roles/viewer",
- *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
- * ## google\_service\_directory\_service\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const member = new gcp.servicedirectory.ServiceIamMember("member", {
- *     role: "roles/viewer",
- *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}} * {{project}}/{{location}}/{{namespace_id}}/{{service_id}} * {{location}}/{{namespace_id}}/{{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Service Directory service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

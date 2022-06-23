@@ -11,26 +11,6 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
- * ### Secret Version Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
- *     secretId: "secret-version",
- *     labels: {
- *         label: "my-label",
- *     },
- *     replication: {
- *         automatic: true,
- *     },
- * });
- * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
- *     secret: secret_basic.id,
- *     secretData: "secret-data",
- * });
- * ```
  *
  * ## Import
  *

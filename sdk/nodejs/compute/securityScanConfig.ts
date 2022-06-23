@@ -18,23 +18,6 @@ import * as utilities from "../utilities";
  * state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
  *
  * ## Example Usage
- * ### Scan Config Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const scannerStaticIp = new gcp.compute.Address("scannerStaticIp", {}, {
- *     provider: google_beta,
- * });
- * const scan_config = new gcp.compute.SecurityScanConfig("scan-config", {
- *     displayName: "scan-config",
- *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
- *     targetPlatforms: ["COMPUTE"],
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

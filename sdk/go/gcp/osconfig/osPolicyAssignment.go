@@ -83,7 +83,7 @@ import (
 // 									Pkg: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs{
 // 										Deb: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs{
 // 											Source: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs{
-// 												LocalPath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/package.deb")),
+// 												LocalPath: pulumi.String(fmt.Sprintf("$HOME/package.deb")),
 // 											},
 // 										},
 // 										DesiredState: pulumi.String("INSTALLED"),
@@ -146,7 +146,7 @@ import (
 // 										Rpm: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs{
 // 											PullDeps: pulumi.Bool(true),
 // 											Source: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs{
-// 												LocalPath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/package.rpm")),
+// 												LocalPath: pulumi.String(fmt.Sprintf("$HOME/package.rpm")),
 // 											},
 // 										},
 // 									},
@@ -199,7 +199,7 @@ import (
 // 									Pkg: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs{
 // 										Deb: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs{
 // 											Source: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs{
-// 												LocalPath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/package.deb")),
+// 												LocalPath: pulumi.String(fmt.Sprintf("$HOME/package.deb")),
 // 											},
 // 										},
 // 										DesiredState: pulumi.String("INSTALLED"),
@@ -223,7 +223,7 @@ import (
 // 												pulumi.String("REBOOT=ReallySuppress"),
 // 											},
 // 											Source: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs{
-// 												LocalPath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/package.msi")),
+// 												LocalPath: pulumi.String(fmt.Sprintf("$HOME/package.msi")),
 // 											},
 // 										},
 // 									},
@@ -368,17 +368,17 @@ import (
 // 												},
 // 											},
 // 											Interpreter:    pulumi.String("SHELL"),
-// 											OutputFilePath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/out")),
+// 											OutputFilePath: pulumi.String(fmt.Sprintf("$HOME/out")),
 // 										},
 // 										Validate: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{
 // 											Args: pulumi.StringArray{
 // 												pulumi.String("arg1"),
 // 											},
 // 											File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs{
-// 												LocalPath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/script.sh")),
+// 												LocalPath: pulumi.String(fmt.Sprintf("$HOME/script.sh")),
 // 											},
 // 											Interpreter:    pulumi.String("SHELL"),
-// 											OutputFilePath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/out")),
+// 											OutputFilePath: pulumi.String(fmt.Sprintf("$HOME/out")),
 // 										},
 // 									},
 // 									Id: pulumi.String("exec1"),
@@ -390,10 +390,10 @@ import (
 // 												pulumi.String("arg1"),
 // 											},
 // 											File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs{
-// 												LocalPath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/script.sh")),
+// 												LocalPath: pulumi.String(fmt.Sprintf("$HOME/script.sh")),
 // 											},
 // 											Interpreter:    pulumi.String("SHELL"),
-// 											OutputFilePath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/out")),
+// 											OutputFilePath: pulumi.String(fmt.Sprintf("$HOME/out")),
 // 										},
 // 										Validate: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{
 // 											Args: pulumi.StringArray{
@@ -407,7 +407,7 @@ import (
 // 												},
 // 											},
 // 											Interpreter:    pulumi.String("SHELL"),
-// 											OutputFilePath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/out")),
+// 											OutputFilePath: pulumi.String(fmt.Sprintf("$HOME/out")),
 // 										},
 // 									},
 // 									Id: pulumi.String("exec2"),
@@ -416,7 +416,7 @@ import (
 // 									Exec: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs{
 // 										Enforce: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs{
 // 											Interpreter:    pulumi.String("SHELL"),
-// 											OutputFilePath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/out")),
+// 											OutputFilePath: pulumi.String(fmt.Sprintf("$HOME/out")),
 // 											Script:         pulumi.String("pwd"),
 // 										},
 // 										Validate: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{
@@ -429,7 +429,7 @@ import (
 // 												},
 // 											},
 // 											Interpreter:    pulumi.String("SHELL"),
-// 											OutputFilePath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/out")),
+// 											OutputFilePath: pulumi.String(fmt.Sprintf("$HOME/out")),
 // 										},
 // 									},
 // 									Id: pulumi.String("exec3"),
@@ -446,11 +446,11 @@ import (
 // 												},
 // 											},
 // 											Interpreter:    pulumi.String("SHELL"),
-// 											OutputFilePath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/out")),
+// 											OutputFilePath: pulumi.String(fmt.Sprintf("$HOME/out")),
 // 										},
 // 										Validate: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs{
 // 											Interpreter:    pulumi.String("SHELL"),
-// 											OutputFilePath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/out")),
+// 											OutputFilePath: pulumi.String(fmt.Sprintf("$HOME/out")),
 // 											Script:         pulumi.String("pwd"),
 // 										},
 // 									},
@@ -459,9 +459,9 @@ import (
 // 								&osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{
 // 									File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs{
 // 										File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs{
-// 											LocalPath: pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/file")),
+// 											LocalPath: pulumi.String(fmt.Sprintf("$HOME/file")),
 // 										},
-// 										Path:  pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/file")),
+// 										Path:  pulumi.String(fmt.Sprintf("$HOME/file")),
 // 										State: pulumi.String("PRESENT"),
 // 									},
 // 									Id: pulumi.String("file1"),
@@ -479,7 +479,7 @@ import (
 // 												Uri:            pulumi.String("https://www.example.com/file"),
 // 											},
 // 										},
-// 										Path:  pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/file")),
+// 										Path:  pulumi.String(fmt.Sprintf("$HOME/file")),
 // 										State: pulumi.String("PRESENT"),
 // 									},
 // 									Id: pulumi.String("file2"),
@@ -493,7 +493,7 @@ import (
 // 												Object:     pulumi.String("test-object"),
 // 											},
 // 										},
-// 										Path:  pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/file")),
+// 										Path:  pulumi.String(fmt.Sprintf("$HOME/file")),
 // 										State: pulumi.String("PRESENT"),
 // 									},
 // 									Id: pulumi.String("file3"),
@@ -501,7 +501,7 @@ import (
 // 								&osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs{
 // 									File: &osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs{
 // 										Content: pulumi.String("sample-content"),
-// 										Path:    pulumi.String(fmt.Sprintf("%v%v", "$", "HOME/file")),
+// 										Path:    pulumi.String(fmt.Sprintf("$HOME/file")),
 // 										State:   pulumi.String("PRESENT"),
 // 									},
 // 									Id: pulumi.String("file4"),

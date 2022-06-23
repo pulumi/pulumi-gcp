@@ -31,16 +31,6 @@ import * as utilities from "../utilities";
  *     messageRetentionDuration: "86600s",
  * });
  * ```
- * ### Pubsub Topic Cmek
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "global"});
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
- * const example = new gcp.pubsub.Topic("example", {kmsKeyName: cryptoKey.id});
- * ```
  * ### Pubsub Topic Geo Restricted
  *
  * ```typescript
@@ -51,37 +41,6 @@ import * as utilities from "../utilities";
  *     messageStoragePolicy: {
  *         allowedPersistenceRegions: ["europe-west3"],
  *     },
- * });
- * ```
- * ### Pubsub Topic Schema Settings
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const exampleSchema = new gcp.pubsub.Schema("exampleSchema", {
- *     type: "AVRO",
- *     definition: `{
- *   "type" : "record",
- *   "name" : "Avro",
- *   "fields" : [
- *     {
- *       "name" : "StringField",
- *       "type" : "string"
- *     },
- *     {
- *       "name" : "IntField",
- *       "type" : "int"
- *     }
- *   ]
- * }
- * `,
- * });
- * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {schemaSettings: {
- *     schema: "projects/my-project-name/schemas/example",
- *     encoding: "JSON",
- * }}, {
- *     dependsOn: [exampleSchema],
  * });
  * ```
  *

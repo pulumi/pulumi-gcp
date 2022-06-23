@@ -119,61 +119,6 @@ import * as utilities from "../utilities";
  *     type: "SUBORDINATE",
  * });
  * ```
- * ### Privateca Certificate Authority Byo Key
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const privatecaSa = new gcp.projects.ServiceIdentity("privatecaSa", {service: "privateca.googleapis.com"});
- * const privatecaSaKeyuserSignerverifier = new gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier", {
- *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
- *     role: "roles/cloudkms.signerVerifier",
- *     members: [pulumi.interpolate`serviceAccount:${privatecaSa.email}`],
- * });
- * const privatecaSaKeyuserViewer = new gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer", {
- *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
- *     role: "roles/viewer",
- *     members: [pulumi.interpolate`serviceAccount:${privatecaSa.email}`],
- * });
- * const _default = new gcp.certificateauthority.Authority("default", {
- *     pool: "ca-pool",
- *     certificateAuthorityId: "my-certificate-authority",
- *     location: "us-central1",
- *     deletionProtection: true,
- *     keySpec: {
- *         cloudKmsKeyVersion: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
- *     },
- *     config: {
- *         subjectConfig: {
- *             subject: {
- *                 organization: "Example, Org.",
- *                 commonName: "Example Authority",
- *             },
- *         },
- *         x509Config: {
- *             caOptions: {
- *                 isCa: true,
- *                 maxIssuerPathLength: 10,
- *             },
- *             keyUsage: {
- *                 baseKeyUsage: {
- *                     certSign: true,
- *                     crlSign: true,
- *                 },
- *                 extendedKeyUsage: {
- *                     serverAuth: false,
- *                 },
- *             },
- *         },
- *     },
- * }, {
- *     dependsOn: [
- *         privatecaSaKeyuserSignerverifier,
- *         privatecaSaKeyuserViewer,
- *     ],
- * });
- * ```
  *
  * ## Import
  *

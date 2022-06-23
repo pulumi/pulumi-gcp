@@ -10,38 +10,6 @@ import * as utilities from "../utilities";
  *
  * For more information see the [official documentation](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultFirewallPolicy = new gcp.compute.FirewallPolicy("defaultFirewallPolicy", {
- *     parent: "organizations/12345",
- *     shortName: "my-policy",
- *     description: "Example Resource",
- * });
- * const defaultFirewallPolicyRule = new gcp.compute.FirewallPolicyRule("defaultFirewallPolicyRule", {
- *     firewallPolicy: defaultFirewallPolicy.id,
- *     description: "Example Resource",
- *     priority: 9000,
- *     enableLogging: true,
- *     action: "allow",
- *     direction: "EGRESS",
- *     disabled: false,
- *     match: {
- *         layer4Configs: [{
- *             ipProtocol: "tcp",
- *             ports: [
- *                 "80",
- *                 "8080",
- *             ],
- *         }],
- *         destIpRanges: ["11.100.0.1/32"],
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * FirewallPolicyRule can be imported using any of these accepted formats

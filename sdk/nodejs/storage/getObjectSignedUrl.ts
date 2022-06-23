@@ -21,25 +21,6 @@ import * as utilities from "../utilities";
  * }));
  * const vm = new gcp.compute.Instance("vm", {});
  * ```
- * ## Full Example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
- *
- * const getUrl = gcp.storage.getObjectSignedUrl({
- *     bucket: "fried_chicken",
- *     path: "path/to/file",
- *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
- *     contentType: "text/plain",
- *     duration: "2d",
- *     credentials: fs.readFileSync("path/to/credentials.json"),
- *     extensionHeaders: {
- *         "x-goog-if-generation-match": "1",
- *     },
- * });
- * ```
  */
 export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> {
     if (!opts) {

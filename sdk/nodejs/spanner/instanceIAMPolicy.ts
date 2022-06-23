@@ -18,24 +18,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_spanner\_instance\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
- *     instance: "your-instance-name",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## google\_spanner\_instance\_iam\_binding
  *
  * ```typescript

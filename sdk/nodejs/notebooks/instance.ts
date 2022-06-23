@@ -72,40 +72,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Notebook Instance Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myNetwork = gcp.compute.getNetwork({
- *     name: "default",
- * });
- * const mySubnetwork = gcp.compute.getSubnetwork({
- *     name: "default",
- *     region: "us-central1",
- * });
- * const instance = new gcp.notebooks.Instance("instance", {
- *     location: "us-central1-a",
- *     machineType: "e2-medium",
- *     vmImage: {
- *         project: "deeplearning-platform-release",
- *         imageFamily: "tf-latest-cpu",
- *     },
- *     instanceOwners: ["admin@hashicorptest.com"],
- *     serviceAccount: "emailAddress:my@service-account.com",
- *     installGpuDriver: true,
- *     bootDiskType: "PD_SSD",
- *     bootDiskSizeGb: 110,
- *     noPublicIp: true,
- *     noProxyAccess: true,
- *     network: myNetwork.then(myNetwork => myNetwork.id),
- *     subnet: mySubnetwork.then(mySubnetwork => mySubnetwork.id),
- *     labels: {
- *         k: "val",
- *     },
- * });
- * ```
  *
  * ## Import
  *

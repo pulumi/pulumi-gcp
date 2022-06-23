@@ -44,48 +44,6 @@ import * as utilities from "../utilities";
  *     timeZone: "Europe/London",
  * });
  * ```
- * ### Scheduler Job Oauth
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.compute.getDefaultServiceAccount({});
- * const job = new gcp.cloudscheduler.Job("job", {
- *     description: "test http job",
- *     schedule: "*&#47;8 * * * *",
- *     timeZone: "America/New_York",
- *     attemptDeadline: "320s",
- *     httpTarget: {
- *         httpMethod: "GET",
- *         uri: "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
- *         oauthToken: {
- *             serviceAccountEmail: _default.then(_default => _default.email),
- *         },
- *     },
- * });
- * ```
- * ### Scheduler Job Oidc
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.compute.getDefaultServiceAccount({});
- * const job = new gcp.cloudscheduler.Job("job", {
- *     description: "test http job",
- *     schedule: "*&#47;8 * * * *",
- *     timeZone: "America/New_York",
- *     attemptDeadline: "320s",
- *     httpTarget: {
- *         httpMethod: "GET",
- *         uri: "https://example.com/ping",
- *         oidcToken: {
- *             serviceAccountEmail: _default.then(_default => _default.email),
- *         },
- *     },
- * });
- * ```
  *
  * ## Import
  *

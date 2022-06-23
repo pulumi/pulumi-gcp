@@ -45,7 +45,7 @@ import (
 // 			DisplayName: pulumi.String("scan-config"),
 // 			StartingUrls: pulumi.StringArray{
 // 				scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "http://", address), nil
+// 					return fmt.Sprintf("http://%v", address), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 			TargetPlatforms: pulumi.StringArray{

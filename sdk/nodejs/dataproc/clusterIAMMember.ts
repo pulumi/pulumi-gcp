@@ -16,26 +16,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_dataproc\_cluster\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const editor = new gcp.dataproc.ClusterIAMPolicy("editor", {
- *     project: "your-project",
- *     region: "your-region",
- *     cluster: "your-dataproc-cluster",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## google\_dataproc\_cluster\_iam\_binding
  *
  * ```typescript

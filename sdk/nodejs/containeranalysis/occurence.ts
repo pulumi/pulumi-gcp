@@ -16,51 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/container-analysis/)
  *
  * ## Example Usage
- * ### Container Analysis Occurrence Kms
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
- *
- * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
- *     hint: {
- *         humanReadableName: "Attestor Note",
- *     },
- * }});
- * const keyring = gcp.kms.getKMSKeyRing({
- *     name: "my-key-ring",
- *     location: "global",
- * });
- * const crypto-key = keyring.then(keyring => gcp.kms.getKMSCryptoKey({
- *     name: "my-key",
- *     keyRing: keyring.id,
- * }));
- * const version = crypto_key.then(crypto_key => gcp.kms.getKMSCryptoKeyVersion({
- *     cryptoKey: crypto_key.id,
- * }));
- * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
- *     noteReference: note.name,
- *     publicKeys: [{
- *         id: version.then(version => version.id),
- *         pkixPublicKey: {
- *             publicKeyPem: version.then(version => version.publicKeys?[0]?.pem),
- *             signatureAlgorithm: version.then(version => version.publicKeys?[0]?.algorithm),
- *         },
- *     }],
- * }});
- * const occurrence = new gcp.containeranalysis.Occurence("occurrence", {
- *     resourceUri: "gcr.io/my-project/my-image",
- *     noteName: note.id,
- *     attestation: {
- *         serializedPayload: Buffer.from(fs.readFileSync("path/to/my/payload.json"), 'binary').toString('base64'),
- *         signatures: [{
- *             publicKeyId: version.then(version => version.id),
- *             serializedPayload: Buffer.from(fs.readFileSync("path/to/my/payload.json.sig"), 'binary').toString('base64'),
- *         }],
- *     },
- * });
- * ```
  *
  * ## Import
  *

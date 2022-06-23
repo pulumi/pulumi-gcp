@@ -237,25 +237,6 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  * });
  * ```
- * ### Health Check With Logging
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const health_check_with_logging = new gcp.compute.HealthCheck("health-check-with-logging", {
- *     timeoutSec: 1,
- *     checkIntervalSec: 1,
- *     tcpHealthCheck: {
- *         port: 22,
- *     },
- *     logConfig: {
- *         enable: true,
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

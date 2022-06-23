@@ -14,24 +14,6 @@ import * as utilities from "../utilities";
  * This resource is specifically to create a compute instance from a given
  * `sourceMachineImage`. To create an instance without a machine image, use the
  * `gcp.compute.Instance` resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const tpl = new gcp.compute.InstanceFromMachineImage("tpl", {
- *     zone: "us-central1-a",
- *     sourceMachineImage: "projects/PROJECT-ID/global/machineImages/NAME",
- *     canIpForward: false,
- *     labels: {
- *         my_key: "my_value",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  */
 export class InstanceFromMachineImage extends pulumi.CustomResource {
     /**

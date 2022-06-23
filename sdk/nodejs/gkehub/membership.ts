@@ -34,31 +34,6 @@ import * as utilities from "../utilities";
  *     membershipId: "basic",
  * });
  * ```
- * ### Gkehub Membership Issuer
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.container.Cluster("primary", {
- *     location: "us-central1-a",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- * });
- * const membership = new gcp.gkehub.Membership("membership", {
- *     membershipId: "basic",
- *     endpoint: {
- *         gkeCluster: {
- *             resourceLink: primary.id,
- *         },
- *     },
- *     authority: {
- *         issuer: pulumi.interpolate`https://container.googleapis.com/v1/${primary.id}`,
- *     },
- * });
- * ```
  *
  * ## Import
  *

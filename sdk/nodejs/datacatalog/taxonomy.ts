@@ -14,21 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
- * ### Data Catalog Taxonomy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basicTaxonomy = new gcp.datacatalog.Taxonomy("basicTaxonomy", {
- *     region: "us",
- *     displayName: "my_display_name",
- *     description: "A collection of policy tags",
- *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

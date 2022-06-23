@@ -15,32 +15,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
  *
  * ## Example Usage
- * ### Dialogflow Fulfillment Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
- *     displayName: "example_agent",
- *     defaultLanguageCode: "en",
- *     timeZone: "America/New_York",
- * });
- * const basicFulfillment = new gcp.diagflow.Fulfillment("basicFulfillment", {
- *     displayName: "basic-fulfillment",
- *     enabled: true,
- *     genericWebService: {
- *         uri: "https://google.com",
- *         username: "admin",
- *         password: "password",
- *         requestHeaders: {
- *             name: "wrench",
- *         },
- *     },
- * }, {
- *     dependsOn: [basicAgent],
- * });
- * ```
  *
  * ## Import
  *

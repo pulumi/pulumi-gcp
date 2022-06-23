@@ -58,7 +58,7 @@ import (
 // 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
 // 						bucketName := _args[0].(string)
 // 						objectName := _args[1].(string)
-// 						return fmt.Sprintf("%v%v%v%v", "https://storage.googleapis.com/", bucketName, "/", objectName), nil
+// 						return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
 // 					}).(pulumi.StringOutput),
 // 				},
 // 			},

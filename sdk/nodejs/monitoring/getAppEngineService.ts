@@ -21,38 +21,6 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
- * ### Monitoring App Engine Service
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
- * const object = new gcp.storage.BucketObject("object", {
- *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
- * });
- * const myapp = new gcp.appengine.StandardAppVersion("myapp", {
- *     versionId: "v1",
- *     service: "myapp",
- *     runtime: "nodejs10",
- *     entrypoint: {
- *         shell: "node ./app.js",
- *     },
- *     deployment: {
- *         zip: {
- *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
- *         },
- *     },
- *     envVariables: {
- *         port: "8080",
- *     },
- *     deleteServiceOnDestroy: false,
- * });
- * const srv = gcp.monitoring.getAppEngineServiceOutput({
- *     moduleId: myapp.service,
- * });
- * ```
  */
 export function getAppEngineService(args: GetAppEngineServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAppEngineServiceResult> {
     if (!opts) {

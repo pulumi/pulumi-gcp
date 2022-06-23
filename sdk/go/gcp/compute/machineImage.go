@@ -112,7 +112,7 @@ import (
 // 		_, err = projects.NewIAMMember(ctx, "kms-project-binding", &projects.IAMMemberArgs{
 // 			Project: pulumi.String(project.ProjectId),
 // 			Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-// 			Member:  pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:service-", project.Number, "@compute-system.iam.gserviceaccount.com")),
+// 			Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@compute-system.iam.gserviceaccount.com", project.Number)),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err

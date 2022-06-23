@@ -22,38 +22,6 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
- * ### Kms Secret Ciphertext Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
- * const cryptokey = new gcp.kms.CryptoKey("cryptokey", {
- *     keyRing: keyring.id,
- *     rotationPeriod: "100000s",
- * });
- * const myPassword = new gcp.kms.SecretCiphertext("myPassword", {
- *     cryptoKey: cryptokey.id,
- *     plaintext: "my-secret-password",
- * });
- * const instance = new gcp.compute.Instance("instance", {
- *     machineType: "e2-medium",
- *     zone: "us-central1-a",
- *     bootDisk: {
- *         initializeParams: {
- *             image: "debian-cloud/debian-9",
- *         },
- *     },
- *     networkInterfaces: [{
- *         network: "default",
- *         accessConfigs: [{}],
- *     }],
- *     metadata: {
- *         password: myPassword.ciphertext,
- *     },
- * });
- * ```
  *
  * ## Import
  *

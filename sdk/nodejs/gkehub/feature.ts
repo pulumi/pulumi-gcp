@@ -7,65 +7,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Multi Cluster Ingress
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const cluster = new gcp.container.Cluster("cluster", {
- *     location: "us-central1-a",
- *     initialNodeCount: 1,
- * }, {
- *     provider: google_beta,
- * });
- * const membership = new gcp.gkehub.Membership("membership", {
- *     membershipId: "my-membership",
- *     endpoint: {
- *         gkeCluster: {
- *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
- *         },
- *     },
- *     description: "Membership",
- * }, {
- *     provider: google_beta,
- * });
- * const feature = new gcp.gkehub.Feature("feature", {
- *     location: "global",
- *     spec: {
- *         multiclusteringress: {
- *             configMembership: membership.id,
- *         },
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Multi Cluster Service Discovery
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const feature = new gcp.gkehub.Feature("feature", {
- *     location: "global",
- *     labels: {
- *         foo: "bar",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Enable Anthos Service Mesh
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const feature = new gcp.gkehub.Feature("feature", {location: "global"}, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

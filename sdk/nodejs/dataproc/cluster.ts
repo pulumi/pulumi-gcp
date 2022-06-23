@@ -27,65 +27,6 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- * ### Advanced
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.serviceaccount.Account("default", {
- *     accountId: "service-account-id",
- *     displayName: "Service Account",
- * });
- * const mycluster = new gcp.dataproc.Cluster("mycluster", {
- *     region: "us-central1",
- *     gracefulDecommissionTimeout: "120s",
- *     labels: {
- *         foo: "bar",
- *     },
- *     clusterConfig: {
- *         stagingBucket: "dataproc-staging-bucket",
- *         masterConfig: {
- *             numInstances: 1,
- *             machineType: "e2-medium",
- *             diskConfig: {
- *                 bootDiskType: "pd-ssd",
- *                 bootDiskSizeGb: 30,
- *             },
- *         },
- *         workerConfig: {
- *             numInstances: 2,
- *             machineType: "e2-medium",
- *             minCpuPlatform: "Intel Skylake",
- *             diskConfig: {
- *                 bootDiskSizeGb: 30,
- *                 numLocalSsds: 1,
- *             },
- *         },
- *         preemptibleWorkerConfig: {
- *             numInstances: 0,
- *         },
- *         softwareConfig: {
- *             imageVersion: "2.0.35-debian10",
- *             overrideProperties: {
- *                 "dataproc:dataproc.allow.zero.workers": "true",
- *             },
- *         },
- *         gceClusterConfig: {
- *             tags: [
- *                 "foo",
- *                 "bar",
- *             ],
- *             serviceAccount: _default.email,
- *             serviceAccountScopes: ["cloud-platform"],
- *         },
- *         initializationActions: [{
- *             script: "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
- *             timeoutSec: 500,
- *         }],
- *     },
- * });
- * ```
  * ### Using A GPU Accelerator
  *
  * ```typescript

@@ -13,41 +13,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
  *
  * ## Example Usage
- * ### App Engine Service Network Settings
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
- * const object = new gcp.storage.BucketObject("object", {
- *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
- * });
- * const liveappV1 = new gcp.appengine.StandardAppVersion("liveappV1", {
- *     versionId: "v1",
- *     service: "liveapp",
- *     deleteServiceOnDestroy: true,
- *     runtime: "nodejs10",
- *     entrypoint: {
- *         shell: "node ./app.js",
- *     },
- *     deployment: {
- *         zip: {
- *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
- *         },
- *     },
- *     envVariables: {
- *         port: "8080",
- *     },
- * });
- * const liveapp = new gcp.appengine.ServiceNetworkSettings("liveapp", {
- *     service: liveappV1.service,
- *     networkSettings: {
- *         ingressTrafficAllowed: "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
- *     },
- * });
- * ```
  *
  * ## Import
  *

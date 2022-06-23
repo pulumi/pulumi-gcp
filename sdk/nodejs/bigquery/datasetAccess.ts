@@ -7,65 +7,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Bigquery Dataset Access Basic User
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
- * const bqowner = new gcp.serviceaccount.Account("bqowner", {accountId: "bqowner"});
- * const access = new gcp.bigquery.DatasetAccess("access", {
- *     datasetId: dataset.datasetId,
- *     role: "OWNER",
- *     userByEmail: bqowner.email,
- * });
- * ```
- * ### Bigquery Dataset Access View
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _private = new gcp.bigquery.Dataset("private", {datasetId: "example_dataset"});
- * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {datasetId: "example_dataset2"});
- * const publicTable = new gcp.bigquery.Table("publicTable", {
- *     deletionProtection: false,
- *     datasetId: publicDataset.datasetId,
- *     tableId: "example_table",
- *     view: {
- *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
- *         useLegacySql: false,
- *     },
- * });
- * const access = new gcp.bigquery.DatasetAccess("access", {
- *     datasetId: _private.datasetId,
- *     view: {
- *         projectId: publicTable.project,
- *         datasetId: publicDataset.datasetId,
- *         tableId: publicTable.tableId,
- *     },
- * });
- * ```
- * ### Bigquery Dataset Access Authorized Dataset
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _private = new gcp.bigquery.Dataset("private", {datasetId: "private"});
- * const _public = new gcp.bigquery.Dataset("public", {datasetId: "public"});
- * const access = new gcp.bigquery.DatasetAccess("access", {
- *     datasetId: _private.datasetId,
- *     authorizedDataset: {
- *         dataset: {
- *             projectId: _public.project,
- *             datasetId: _public.datasetId,
- *         },
- *         targetTypes: ["VIEWS"],
- *     },
- * });
- * ```
  *
  * ## Import
  *

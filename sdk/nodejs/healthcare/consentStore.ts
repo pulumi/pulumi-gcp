@@ -14,50 +14,6 @@ import * as utilities from "../utilities";
  *     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
  *
  * ## Example Usage
- * ### Healthcare Consent Store Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
- * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id});
- * ```
- * ### Healthcare Consent Store Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
- * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {
- *     dataset: dataset.id,
- *     enableConsentCreateOnUpdate: true,
- *     defaultConsentTtl: "90000s",
- *     labels: {
- *         label1: "labelvalue1",
- *     },
- * });
- * ```
- * ### Healthcare Consent Store Iam
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
- * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id});
- * const test_account = new gcp.serviceaccount.Account("test-account", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * });
- * const test_iam = new gcp.healthcare.ConsentStoreIamMember("test-iam", {
- *     dataset: dataset.id,
- *     consentStoreId: my_consent.name,
- *     role: "roles/editor",
- *     member: pulumi.interpolate`serviceAccount:${test_account.email}`,
- * });
- * ```
  *
  * ## Import
  *

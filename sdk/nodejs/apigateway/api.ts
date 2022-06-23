@@ -14,16 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
  *
  * ## Example Usage
- * ### Apigateway Api Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const api = new gcp.apigateway.Api("api", {apiId: "api"}, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

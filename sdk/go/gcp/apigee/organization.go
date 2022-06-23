@@ -146,7 +146,7 @@ import (
 // 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 // 			Members: pulumi.StringArray{
 // 				apigeeSa.Email.ApplyT(func(email string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 					return fmt.Sprintf("serviceAccount:%v", email), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 		})

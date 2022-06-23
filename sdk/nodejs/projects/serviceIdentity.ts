@@ -19,25 +19,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
  *
  * ## Example Usage
- * ### Service Identity Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const hcSa = new gcp.projects.ServiceIdentity("hcSa", {
- *     project: project.then(project => project.projectId),
- *     service: "healthcare.googleapis.com",
- * }, {
- *     provider: google_beta,
- * });
- * const hcSaBqJobuser = new gcp.projects.IAMMember("hcSaBqJobuser", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.jobUser",
- *     member: pulumi.interpolate`serviceAccount:${hcSa.email}`,
- * });
- * ```
  *
  * ## Import
  *

@@ -23,23 +23,6 @@ import * as utilities from "../utilities";
  *
  * const my_repo = new gcp.sourcerepo.Repository("my-repo", {});
  * ```
- * ### Sourcerepo Repository Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const testAccount = new gcp.serviceaccount.Account("testAccount", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * });
- * const topic = new gcp.pubsub.Topic("topic", {});
- * const my_repo = new gcp.sourcerepo.Repository("my-repo", {pubsubConfigs: [{
- *     topic: topic.id,
- *     messageFormat: "JSON",
- *     serviceAccountEmail: testAccount.email,
- * }]});
- * ```
  *
  * ## Import
  *

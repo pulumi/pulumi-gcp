@@ -11,22 +11,6 @@ import * as utilities from "../utilities";
  * * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
  * * [API notes](https://cloud.google.com/monitoring/settings/manage-api)
  * ## Example Usage
- * ### Basic_monitored_project
- * A basic example of a monitoring monitored project
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.monitoring.MonitoredProject("primary", {metricsScope: "existing-metrics-scope-project"}, {
- *     provider: google_beta,
- * });
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "my-monitored-project",
- *     orgId: "123456789",
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

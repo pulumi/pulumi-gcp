@@ -21,26 +21,6 @@ import * as utilities from "../utilities";
  *     * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
  *
  * ## Example Usage
- * ### Iap Brand
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test",
- *     orgId: "123456789",
- * });
- * const projectService = new gcp.projects.Service("projectService", {
- *     project: project.projectId,
- *     service: "iap.googleapis.com",
- * });
- * const projectBrand = new gcp.iap.Brand("projectBrand", {
- *     supportEmail: "support@example.com",
- *     applicationTitle: "Cloud IAP protected Application",
- *     project: projectService.project,
- * });
- * ```
  *
  * ## Import
  *

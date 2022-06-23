@@ -7,47 +7,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Dns Response Policy Rule Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
- * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
- * const response_policy = new gcp.dns.ResponsePolicy("response-policy", {
- *     responsePolicyName: "example-response-policy",
- *     networks: [
- *         {
- *             networkUrl: network_1.id,
- *         },
- *         {
- *             networkUrl: network_2.id,
- *         },
- *     ],
- * }, {
- *     provider: google_beta,
- * });
- * const example_response_policy_rule = new gcp.dns.ResponsePolicyRule("example-response-policy-rule", {
- *     responsePolicy: response_policy.responsePolicyName,
- *     ruleName: "example-rule",
- *     dnsName: "dns.example.com.",
- *     localData: {
- *         localDatas: [{
- *             name: "dns.example.com.",
- *             type: "A",
- *             ttl: 300,
- *             rrdatas: ["192.0.2.91"],
- *         }],
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

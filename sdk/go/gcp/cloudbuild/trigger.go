@@ -69,7 +69,7 @@ import (
 // 			Build: &cloudbuild.TriggerBuildArgs{
 // 				Artifacts: &cloudbuild.TriggerBuildArtifactsArgs{
 // 					Images: pulumi.StringArray{
-// 						pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "gcr.io/", "$", "PROJECT_ID/", "$", "REPO_NAME:", "$", "COMMIT_SHA")),
+// 						pulumi.String(fmt.Sprintf("gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA")),
 // 					},
 // 					Objects: &cloudbuild.TriggerBuildArtifactsObjectsArgs{
 // 						Location: pulumi.String("gs://bucket/path/to/somewhere/"),
@@ -193,7 +193,7 @@ import (
 // 			Project: pulumi.String(project.ProjectId),
 // 			Role:    pulumi.String("roles/iam.serviceAccountUser"),
 // 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -203,7 +203,7 @@ import (
 // 			Project: pulumi.String(project.ProjectId),
 // 			Role:    pulumi.String("roles/logging.logWriter"),
 // 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -263,7 +263,7 @@ import (
 // 				RepoType: pulumi.String("GITHUB"),
 // 			},
 // 			Substitutions: pulumi.StringMap{
-// 				"_ACTION": pulumi.String(fmt.Sprintf("%v%v", "$", "(body.message.data.action)")),
+// 				"_ACTION": pulumi.String(fmt.Sprintf("$(body.message.data.action)")),
 // 			},
 // 			Filter: pulumi.String("_ACTION.matches('INSERT')"),
 // 		})
@@ -321,7 +321,7 @@ import (
 // 				organizations.GetIAMPolicyBinding{
 // 					Role: "roles/secretmanager.secretAccessor",
 // 					Members: []string{
-// 						fmt.Sprintf("%v%v%v", "serviceAccount:service-", project.Number, "@gcp-sa-cloudbuild.iam.gserviceaccount.com"),
+// 						fmt.Sprintf("serviceAccount:service-%v@gcp-sa-cloudbuild.iam.gserviceaccount.com", project.Number),
 // 					},
 // 				},
 // 			},

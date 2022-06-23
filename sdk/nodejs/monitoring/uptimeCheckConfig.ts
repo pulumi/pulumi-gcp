@@ -84,28 +84,6 @@ import * as utilities from "../utilities";
  *     timeout: "60s",
  * });
  * ```
- * ### Uptime Check Tcp
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const check = new gcp.monitoring.Group("check", {
- *     displayName: "uptime-check-group",
- *     filter: "resource.metadata.name=has_substring(\"foo\")",
- * });
- * const tcpGroup = new gcp.monitoring.UptimeCheckConfig("tcpGroup", {
- *     displayName: "tcp-uptime-check",
- *     timeout: "60s",
- *     tcpCheck: {
- *         port: 888,
- *     },
- *     resourceGroup: {
- *         resourceType: "INSTANCE",
- *         groupId: check.name,
- *     },
- * });
- * ```
  *
  * ## Import
  *

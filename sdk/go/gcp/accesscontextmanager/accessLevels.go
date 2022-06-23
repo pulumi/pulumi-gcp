@@ -66,7 +66,7 @@ import (
 // 						},
 // 					},
 // 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/accessLevels/chromeos_no_lock"), nil
+// 						return fmt.Sprintf("accessPolicies/%v/accessLevels/chromeos_no_lock", name), nil
 // 					}).(pulumi.StringOutput),
 // 					Title: pulumi.String("chromeos_no_lock"),
 // 				},
@@ -91,13 +91,13 @@ import (
 // 						},
 // 					},
 // 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/accessLevels/mac_no_lock"), nil
+// 						return fmt.Sprintf("accessPolicies/%v/accessLevels/mac_no_lock", name), nil
 // 					}).(pulumi.StringOutput),
 // 					Title: pulumi.String("mac_no_lock"),
 // 				},
 // 			},
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {

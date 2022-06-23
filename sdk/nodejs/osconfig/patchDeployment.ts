@@ -80,64 +80,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Os Config Patch Deployment Instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myImage = gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * });
- * const foobar = new gcp.compute.Instance("foobar", {
- *     machineType: "e2-medium",
- *     zone: "us-central1-a",
- *     canIpForward: false,
- *     tags: [
- *         "foo",
- *         "bar",
- *     ],
- *     bootDisk: {
- *         initializeParams: {
- *             image: myImage.then(myImage => myImage.selfLink),
- *         },
- *     },
- *     networkInterfaces: [{
- *         network: "default",
- *     }],
- *     metadata: {
- *         foo: "bar",
- *     },
- * });
- * const patch = new gcp.osconfig.PatchDeployment("patch", {
- *     patchDeploymentId: "patch-deploy",
- *     instanceFilter: {
- *         instances: [foobar.id],
- *     },
- *     patchConfig: {
- *         yum: {
- *             security: true,
- *             minimal: true,
- *             excludes: ["bash"],
- *         },
- *     },
- *     recurringSchedule: {
- *         timeZone: {
- *             id: "America/New_York",
- *         },
- *         timeOfDay: {
- *             hours: 0,
- *             minutes: 30,
- *             seconds: 30,
- *             nanos: 20,
- *         },
- *         monthly: {
- *             monthDay: 1,
- *         },
- *     },
- * });
- * ```
  * ### Os Config Patch Deployment Full
  *
  * ```typescript

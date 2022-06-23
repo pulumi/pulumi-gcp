@@ -45,7 +45,7 @@ import (
 // 		_, err = tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
 // 			Description: pulumi.String("For valuename resources."),
 // 			Parent: key.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "tagKeys/", name), nil
+// 				return fmt.Sprintf("tagKeys/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			ShortName: pulumi.String("valuename"),
 // 		})

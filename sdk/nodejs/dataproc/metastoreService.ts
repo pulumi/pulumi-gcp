@@ -9,56 +9,6 @@ import * as utilities from "../utilities";
  * A managed metastore service that serves metadata queries.
  *
  * ## Example Usage
- * ### Dataproc Metastore Service Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.dataproc.MetastoreService("default", {
- *     serviceId: "metastore-srv",
- *     location: "us-central1",
- *     port: 9080,
- *     tier: "DEVELOPER",
- *     maintenanceWindow: {
- *         hourOfDay: 2,
- *         dayOfWeek: "SUNDAY",
- *     },
- *     hiveMetastoreConfig: {
- *         version: "2.3.6",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Dataproc Metastore Service Cmek Example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"}, {
- *     provider: google_beta,
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
- *     keyRing: keyRing.id,
- *     purpose: "ENCRYPT_DECRYPT",
- * }, {
- *     provider: google_beta,
- * });
- * const _default = new gcp.dataproc.MetastoreService("default", {
- *     serviceId: "example-service",
- *     location: "us-central1",
- *     encryptionConfig: {
- *         kmsKey: cryptoKey.id,
- *     },
- *     hiveMetastoreConfig: {
- *         version: "3.1.2",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

@@ -57,7 +57,7 @@ import (
 // 		}
 // 		_, err = accesscontextmanager.NewServicePerimeter(ctx, "service-perimeter", &accesscontextmanager.ServicePerimeterArgs{
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Status: &accesscontextmanager.ServicePerimeterStatusArgs{
 // 				RestrictedServices: pulumi.StringArray{
@@ -90,7 +90,7 @@ import (
 // 				},
 // 			},
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Title: pulumi.String("chromeos_no_lock"),
 // 		})
@@ -124,12 +124,12 @@ import (
 // 		}
 // 		_, err = accesscontextmanager.NewServicePerimeters(ctx, "secure-data-exchange", &accesscontextmanager.ServicePerimetersArgs{
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			ServicePerimeters: accesscontextmanager.ServicePerimetersServicePerimeterArray{
 // 				&accesscontextmanager.ServicePerimetersServicePerimeterArgs{
 // 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/servicePerimeters/"), nil
+// 						return fmt.Sprintf("accessPolicies/%v/servicePerimeters/", name), nil
 // 					}).(pulumi.StringOutput),
 // 					Title: pulumi.String(""),
 // 					Status: &accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs{
@@ -140,7 +140,7 @@ import (
 // 				},
 // 				&accesscontextmanager.ServicePerimetersServicePerimeterArgs{
 // 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/servicePerimeters/"), nil
+// 						return fmt.Sprintf("accessPolicies/%v/servicePerimeters/", name), nil
 // 					}).(pulumi.StringOutput),
 // 					Title: pulumi.String(""),
 // 					Status: &accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs{
@@ -162,7 +162,7 @@ import (
 // 		}
 // 		_, err = accesscontextmanager.NewAccessLevel(ctx, "access-level", &accesscontextmanager.AccessLevelArgs{
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Title: pulumi.String("secure_data_exchange"),
 // 			Basic: &accesscontextmanager.AccessLevelBasicArgs{
@@ -189,8 +189,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = accesscontextmanager.NewServicePerimeter(ctx, "test-access", &accesscontextmanager.ServicePerimeterArgs{
-// 			Parent:        pulumi.String(fmt.Sprintf("%v%v", "accessPolicies/", google_access_context_manager_access_policy.Test-access.Name)),
-// 			Title:         pulumi.String(fmt.Sprintf("%v%v", "%", "s")),
+// 			Parent:        pulumi.String(fmt.Sprintf("accessPolicies/%v", google_access_context_manager_access_policy.Test-access.Name)),
+// 			Title:         pulumi.String(fmt.Sprintf("%vs", "%")),
 // 			PerimeterType: pulumi.String("PERIMETER_TYPE_REGULAR"),
 // 			Status: &accesscontextmanager.ServicePerimeterStatusArgs{
 // 				RestrictedServices: pulumi.StringArray{
@@ -287,7 +287,7 @@ import (
 // 		}
 // 		_, err = accesscontextmanager.NewServicePerimeter(ctx, "service-perimeter", &accesscontextmanager.ServicePerimeterArgs{
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Spec: &accesscontextmanager.ServicePerimeterSpecArgs{
 // 				RestrictedServices: pulumi.StringArray{

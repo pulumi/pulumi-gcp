@@ -44,7 +44,7 @@ import (
 // 					Content: pulumi.String("\"example\""),
 // 					JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
 // 						JsonMatcher: pulumi.String("EXACT_MATCH"),
-// 						JsonPath:    pulumi.String(fmt.Sprintf("%v%v", "$", ".path")),
+// 						JsonPath:    pulumi.String(fmt.Sprintf("$.path")),
 // 					},
 // 					Matcher: pulumi.String("MATCHES_JSON_PATH"),
 // 				},
@@ -93,7 +93,7 @@ import (
 // 					Content: pulumi.String("example"),
 // 					JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
 // 						JsonMatcher: pulumi.String("REGEX_MATCH"),
-// 						JsonPath:    pulumi.String(fmt.Sprintf("%v%v", "$", ".path")),
+// 						JsonPath:    pulumi.String(fmt.Sprintf("$.path")),
 // 					},
 // 					Matcher: pulumi.String("MATCHES_JSON_PATH"),
 // 				},

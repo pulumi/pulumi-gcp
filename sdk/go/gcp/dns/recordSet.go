@@ -55,7 +55,7 @@ import (
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "frontendRecordSet", &dns.RecordSetArgs{
 // 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 				return fmt.Sprintf("frontend.%v", dnsName), nil
 // 			}).(pulumi.StringOutput),
 // 			Type:        pulumi.String("A"),
 // 			Ttl:         pulumi.Int(300),
@@ -95,7 +95,7 @@ import (
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "recordSet", &dns.RecordSetArgs{
 // 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "backend.", dnsName), nil
+// 				return fmt.Sprintf("backend.%v", dnsName), nil
 // 			}).(pulumi.StringOutput),
 // 			ManagedZone: prod.Name,
 // 			Type:        pulumi.String("A"),
@@ -173,7 +173,7 @@ import (
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "spf", &dns.RecordSetArgs{
 // 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 				return fmt.Sprintf("frontend.%v", dnsName), nil
 // 			}).(pulumi.StringOutput),
 // 			ManagedZone: prod.Name,
 // 			Type:        pulumi.String("TXT"),
@@ -213,7 +213,7 @@ import (
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "cname", &dns.RecordSetArgs{
 // 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 				return fmt.Sprintf("frontend.%v", dnsName), nil
 // 			}).(pulumi.StringOutput),
 // 			ManagedZone: prod.Name,
 // 			Type:        pulumi.String("CNAME"),
@@ -245,7 +245,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := dns.NewRecordSet(ctx, "geo", &dns.RecordSetArgs{
-// 			Name:        pulumi.String(fmt.Sprintf("%v%v", "backend.", google_dns_managed_zone.Prod.Dns_name)),
+// 			Name:        pulumi.String(fmt.Sprintf("backend.%v", google_dns_managed_zone.Prod.Dns_name)),
 // 			ManagedZone: pulumi.Any(google_dns_managed_zone.Prod.Name),
 // 			Type:        pulumi.String("A"),
 // 			Ttl:         pulumi.Int(300),

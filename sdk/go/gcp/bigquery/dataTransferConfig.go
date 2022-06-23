@@ -47,7 +47,7 @@ import (
 // 		permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
 // 			Project: pulumi.String(project.ProjectId),
 // 			Role:    pulumi.String("roles/iam.serviceAccountShortTermTokenMinter"),
-// 			Member:  pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:service-", project.Number, "@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")),
+// 			Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number)),
 // 		})
 // 		if err != nil {
 // 			return err

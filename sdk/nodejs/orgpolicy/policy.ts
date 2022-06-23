@@ -32,26 +32,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Folder_policy
- * A test of an orgpolicy policy for a folder
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.organizations.Folder("basic", {
- *     parent: "organizations/123456789",
- *     displayName: "folder",
- * });
- * const primary = new gcp.orgpolicy.Policy("primary", {
- *     parent: basic.name,
- *     spec: {
- *         inheritFromParent: true,
- *         rules: [{
- *             denyAll: "TRUE",
- *         }],
- *     },
- * });
- * ```
  * ### Organization_policy
  * A test of an orgpolicy policy for an organization
  * ```typescript

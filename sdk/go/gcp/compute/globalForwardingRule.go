@@ -20,196 +20,6 @@ import (
 // <https://cloud.google.com/compute/docs/load-balancing/http/>
 //
 // ## Example Usage
-// ### External Ssl Proxy Lb Mig Backend
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		}, pulumi.Provider(google))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
-// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
-// 			Region:      pulumi.String("us-central1"),
-// 			Network:     defaultNetwork.ID(),
-// 		}, pulumi.Provider(google))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultGlobalAddress, err := compute.NewGlobalAddress(ctx, "defaultGlobalAddress", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultPrivateKey, err := tls.NewPrivateKey(ctx, "defaultPrivateKey", &tls.PrivateKeyArgs{
-// 			Algorithm: pulumi.String("RSA"),
-// 			RsaBits:   pulumi.Int(2048),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "defaultSelfSignedCert", &tls.SelfSignedCertArgs{
-// 			KeyAlgorithm:        defaultPrivateKey.Algorithm,
-// 			PrivateKeyPem:       defaultPrivateKey.PrivateKeyPem,
-// 			ValidityPeriodHours: pulumi.Int(12),
-// 			EarlyRenewalHours:   pulumi.Int(3),
-// 			AllowedUses: pulumi.StringArray{
-// 				pulumi.String("key_encipherment"),
-// 				pulumi.String("digital_signature"),
-// 				pulumi.String("server_auth"),
-// 			},
-// 			DnsNames: pulumi.StringArray{
-// 				pulumi.String("example.com"),
-// 			},
-// 			Subjects: SelfSignedCertSubjectArray{
-// 				&SelfSignedCertSubjectArgs{
-// 					CommonName:   pulumi.String("example.com"),
-// 					Organization: pulumi.String("ACME Examples, Inc"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSSLCertificate, err := compute.NewSSLCertificate(ctx, "defaultSSLCertificate", &compute.SSLCertificateArgs{
-// 			PrivateKey:  defaultPrivateKey.PrivateKeyPem,
-// 			Certificate: defaultSelfSignedCert.CertPem,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "defaultHealthCheck", &compute.HealthCheckArgs{
-// 			TimeoutSec:       pulumi.Int(1),
-// 			CheckIntervalSec: pulumi.Int(1),
-// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
-// 				Port: pulumi.Int(443),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "defaultInstanceTemplate", &compute.InstanceTemplateArgs{
-// 			MachineType: pulumi.String("e2-small"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("allow-health-check"),
-// 			},
-// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-// 					Network:    defaultNetwork.ID(),
-// 					Subnetwork: defaultSubnetwork.ID(),
-// 					AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
-// 						nil,
-// 					},
-// 				},
-// 			},
-// 			Disks: compute.InstanceTemplateDiskArray{
-// 				&compute.InstanceTemplateDiskArgs{
-// 					SourceImage: pulumi.String("debian-cloud/debian-10"),
-// 					AutoDelete:  pulumi.Bool(true),
-// 					Boot:        pulumi.Bool(true),
-// 				},
-// 			},
-// 			Metadata: pulumi.AnyMap{
-// 				"startup-script": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#! /bin/bash\n", "set -euo pipefail\n", "export DEBIAN_FRONTEND=noninteractive\n", "sudo apt-get update\n", "sudo apt-get install  -y apache2 jq\n", "sudo a2ensite default-ssl\n", "sudo a2enmod ssl\n", "sudo service apache2 restart\n", "NAME=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/hostname\")\n", "IP=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\")\n", "METADATA=", "$", "(curl -f -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True\" | jq 'del(.[\"startup-script\"])')\n", "cat <<EOF > /var/www/html/index.html\n", "<h1>SSL Load Balancer</h1>\n", "<pre>\n", "Name: ", "$", "NAME\n", "IP: ", "$", "IP\n", "Metadata: ", "$", "METADATA\n", "</pre>\n", "EOF\n")),
-// 			},
-// 		}, pulumi.Provider(google))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "defaultInstanceGroupManager", &compute.InstanceGroupManagerArgs{
-// 			Zone: pulumi.String("us-central1-c"),
-// 			NamedPorts: compute.InstanceGroupManagerNamedPortArray{
-// 				&compute.InstanceGroupManagerNamedPortArgs{
-// 					Name: pulumi.String("tcp"),
-// 					Port: pulumi.Int(443),
-// 				},
-// 			},
-// 			Versions: compute.InstanceGroupManagerVersionArray{
-// 				&compute.InstanceGroupManagerVersionArgs{
-// 					InstanceTemplate: defaultInstanceTemplate.ID(),
-// 					Name:             pulumi.String("primary"),
-// 				},
-// 			},
-// 			BaseInstanceName: pulumi.String("vm"),
-// 			TargetSize:       pulumi.Int(2),
-// 		}, pulumi.Provider(google))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			Protocol:            pulumi.String("SSL"),
-// 			PortName:            pulumi.String("tcp"),
-// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
-// 			TimeoutSec:          pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
-// 				defaultHealthCheck.ID(),
-// 			},
-// 			Backends: compute.BackendServiceBackendArray{
-// 				&compute.BackendServiceBackendArgs{
-// 					Group:          defaultInstanceGroupManager.InstanceGroup,
-// 					BalancingMode:  pulumi.String("UTILIZATION"),
-// 					MaxUtilization: pulumi.Float64(1),
-// 					CapacityScaler: pulumi.Float64(1),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultTargetSSLProxy, err := compute.NewTargetSSLProxy(ctx, "defaultTargetSSLProxy", &compute.TargetSSLProxyArgs{
-// 			BackendService: defaultBackendService.ID(),
-// 			SslCertificates: pulumi.StringArray{
-// 				defaultSSLCertificate.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
-// 			IpProtocol:          pulumi.String("TCP"),
-// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
-// 			PortRange:           pulumi.String("443"),
-// 			Target:              defaultTargetSSLProxy.ID(),
-// 			IpAddress:           defaultGlobalAddress.ID(),
-// 		}, pulumi.Provider(google))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewFirewall(ctx, "defaultFirewall", &compute.FirewallArgs{
-// 			Direction: pulumi.String("INGRESS"),
-// 			Network:   defaultNetwork.ID(),
-// 			SourceRanges: pulumi.StringArray{
-// 				pulumi.String("130.211.0.0/22"),
-// 				pulumi.String("35.191.0.0/16"),
-// 			},
-// 			Allows: compute.FirewallAllowArray{
-// 				&compute.FirewallAllowArgs{
-// 					Protocol: pulumi.String("tcp"),
-// 				},
-// 			},
-// 			TargetTags: pulumi.StringArray{
-// 				pulumi.String("allow-health-check"),
-// 			},
-// 		}, pulumi.Provider(google))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### External Tcp Proxy Lb Mig Backend
 //
 // ```go
@@ -274,7 +84,22 @@ import (
 // 				},
 // 			},
 // 			Metadata: pulumi.AnyMap{
-// 				"startup-script": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#! /bin/bash\n", "set -euo pipefail\n", "export DEBIAN_FRONTEND=noninteractive\n", "apt-get update\n", "apt-get install -y nginx-light jq\n", "NAME=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/hostname\")\n", "IP=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\")\n", "METADATA=", "$", "(curl -f -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True\" | jq 'del(.[\"startup-script\"])')\n", "cat <<EOF > /var/www/html/index.html\n", "<pre>\n", "Name: ", "$", "NAME\n", "IP: ", "$", "IP\n", "Metadata: ", "$", "METADATA\n", "</pre>\n", "EOF\n")),
+// 				"startup-script": pulumi.Any(fmt.Sprintf(`#! /bin/bash
+// set -euo pipefail
+// export DEBIAN_FRONTEND=noninteractive
+// apt-get update
+// apt-get install -y nginx-light jq
+// NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+// IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+// METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+// cat <<EOF > /var/www/html/index.html
+// <pre>
+// Name: $NAME
+// IP: $IP
+// Metadata: $METADATA
+// </pre>
+// EOF
+// `)),
 // 			},
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
@@ -421,7 +246,25 @@ import (
 // 				},
 // 			},
 // 			Metadata: pulumi.AnyMap{
-// 				"startup-script": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "#! /bin/bash\n", "set -euo pipefail\n", "\n", "export DEBIAN_FRONTEND=noninteractive\n", "apt-get update\n", "apt-get install -y nginx-light jq\n", "\n", "NAME=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/hostname\")\n", "IP=", "$", "(curl -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip\")\n", "METADATA=", "$", "(curl -f -H \"Metadata-Flavor: Google\" \"http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True\" | jq 'del(.[\"startup-script\"])')\n", "\n", "cat <<EOF > /var/www/html/index.html\n", "<pre>\n", "Name: ", "$", "NAME\n", "IP: ", "$", "IP\n", "Metadata: ", "$", "METADATA\n", "</pre>\n", "EOF\n")),
+// 				"startup-script": pulumi.Any(fmt.Sprintf(`#! /bin/bash
+// set -euo pipefail
+//
+// export DEBIAN_FRONTEND=noninteractive
+// apt-get update
+// apt-get install -y nginx-light jq
+//
+// NAME=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/hostname")
+// IP=$(curl -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip")
+// METADATA=$(curl -f -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True" | jq 'del(.["startup-script"])')
+//
+// cat <<EOF > /var/www/html/index.html
+// <pre>
+// Name: $NAME
+// IP: $IP
+// Metadata: $METADATA
+// </pre>
+// EOF
+// `)),
 // 			},
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {

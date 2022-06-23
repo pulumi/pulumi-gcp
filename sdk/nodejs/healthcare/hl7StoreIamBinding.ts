@@ -16,24 +16,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store", {
- *     hl7V2StoreId: "your-hl7-v2-store-id",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
  * ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
  *
  * ```typescript

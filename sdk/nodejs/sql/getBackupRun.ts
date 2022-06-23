@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a Cloud SQL instance backup run.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const backup = gcp.sql.getBackupRun({
- *     instance: google_sql_database_instance.main.name,
- *     mostRecent: true,
- * });
- * ```
  */
 export function getBackupRun(args: GetBackupRunArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupRunResult> {
     if (!opts) {

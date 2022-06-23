@@ -7,24 +7,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Vertex Ai Featurestore
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
- *     labels: {
- *         foo: "bar",
- *     },
- *     region: "us-central1",
- *     onlineServingConfig: {
- *         fixedNodeCount: 2,
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

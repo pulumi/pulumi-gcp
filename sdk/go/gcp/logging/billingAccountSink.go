@@ -46,7 +46,7 @@ import (
 // 			Description:    pulumi.String("some explanation on what this is"),
 // 			BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil
+// 				return fmt.Sprintf("storage.googleapis.com/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {

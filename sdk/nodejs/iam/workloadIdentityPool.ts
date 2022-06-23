@@ -15,31 +15,6 @@ import * as utilities from "../utilities";
  *     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
  *
  * ## Example Usage
- * ### Iam Workload Identity Pool Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.iam.WorkloadIdentityPool("example", {workloadIdentityPoolId: "example-pool"}, {
- *     provider: google_beta,
- * });
- * ```
- * ### Iam Workload Identity Pool Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.iam.WorkloadIdentityPool("example", {
- *     workloadIdentityPoolId: "example-pool",
- *     displayName: "Name of pool",
- *     description: "Identity pool for automated test",
- *     disabled: true,
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

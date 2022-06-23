@@ -53,7 +53,7 @@ import (
 // 		_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucketBucketIAMMember", &storage.BucketIAMMemberArgs{
 // 			Bucket: s3_backup_bucketBucket.Name,
 // 			Role:   pulumi.String("roles/storage.admin"),
-// 			Member: pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", _default.Email)),
+// 			Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			s3_backup_bucketBucket,
 // 		}))

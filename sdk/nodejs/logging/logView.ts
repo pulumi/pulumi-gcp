@@ -8,23 +8,6 @@ import * as utilities from "../utilities";
  * The Logging LogView resource
  *
  * ## Example Usage
- * ### Basic
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.logging.ProjectBucketConfig("basic", {
- *     project: "my-project-name",
- *     location: "global",
- *     retentionDays: 30,
- *     bucketId: "_Default",
- * });
- * const primary = new gcp.logging.LogView("primary", {
- *     bucket: basic.id,
- *     description: "A logging view configured with Terraform",
- *     filter: "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
- * });
- * ```
  *
  * ## Import
  *

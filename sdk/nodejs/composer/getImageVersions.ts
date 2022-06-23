@@ -7,23 +7,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides access to available Cloud Composer versions in a region for a given project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const all = gcp.composer.getImageVersions({});
- * const test = new gcp.composer.Environment("test", {
- *     region: "us-central1",
- *     config: {
- *         softwareConfig: {
- *             imageVersion: all.then(all => all.imageVersions?[0]?.imageVersionId),
- *         },
- *     },
- * });
- * ```
  */
 export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> {
     args = args || {};

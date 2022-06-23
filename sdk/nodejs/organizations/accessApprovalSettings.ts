@@ -36,48 +36,6 @@ import * as utilities from "../utilities";
  *     organizationId: "123456789",
  * });
  * ```
- * ### Organization Access Approval Active Key Version
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myProject = new gcp.organizations.Project("myProject", {
- *     projectId: "your-project-id",
- *     orgId: "123456789",
- * });
- * const keyRing = new gcp.kms.KeyRing("keyRing", {
- *     location: "global",
- *     project: myProject.projectId,
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
- *     keyRing: keyRing.id,
- *     purpose: "ASYMMETRIC_SIGN",
- *     versionTemplate: {
- *         algorithm: "EC_SIGN_P384_SHA384",
- *     },
- * });
- * const serviceAccount = gcp.accessapproval.getOrganizationServiceAccount({
- *     organizationId: "123456789",
- * });
- * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
- *     cryptoKeyId: cryptoKey.id,
- *     role: "roles/cloudkms.signerVerifier",
- *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
- * });
- * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
- *     cryptoKey: cryptoKey.id,
- * });
- * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organizationAccessApproval", {
- *     organizationId: "123456789",
- *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
- *     enrolledServices: [{
- *         cloudProduct: "all",
- *     }],
- * }, {
- *     dependsOn: [iam],
- * });
- * ```
  *
  * ## Import
  *

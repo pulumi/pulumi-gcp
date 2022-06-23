@@ -26,31 +26,6 @@ import * as utilities from "../utilities";
  *     type: "BASIC",
  * });
  * ```
- * ### Data Fusion Instance Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.appengine.getDefaultServiceAccount({});
- * const extendedInstance = new gcp.datafusion.Instance("extendedInstance", {
- *     description: "My Data Fusion instance",
- *     region: "us-central1",
- *     type: "BASIC",
- *     enableStackdriverLogging: true,
- *     enableStackdriverMonitoring: true,
- *     labels: {
- *         example_key: "example_value",
- *     },
- *     privateInstance: true,
- *     networkConfig: {
- *         network: "default",
- *         ipAllocation: "10.89.48.0/22",
- *     },
- *     version: "6.3.0",
- *     dataprocServiceAccount: _default.then(_default => _default.email),
- * });
- * ```
  *
  * ## Import
  *

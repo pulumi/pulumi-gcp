@@ -55,7 +55,21 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"env": pulumi.String("default"),
 // 			},
-// 			Schema: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "[\n", "  {\n", "    \"name\": \"permalink\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\",\n", "    \"description\": \"The Permalink\"\n", "  },\n", "  {\n", "    \"name\": \"state\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\",\n", "    \"description\": \"State where the head office is located\"\n", "  }\n", "]\n")),
+// 			Schema: pulumi.String(fmt.Sprintf(`[
+//   {
+//     "name": "permalink",
+//     "type": "STRING",
+//     "mode": "NULLABLE",
+//     "description": "The Permalink"
+//   },
+//   {
+//     "name": "state",
+//     "type": "STRING",
+//     "mode": "NULLABLE",
+//     "description": "State where the head office is located"
+//   }
+// ]
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err

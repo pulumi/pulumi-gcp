@@ -31,44 +31,6 @@ import * as utilities from "../utilities";
  *     projectId: "my-project-name",
  * });
  * ```
- * ### Project Access Approval Active Key Version
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const keyRing = new gcp.kms.KeyRing("keyRing", {
- *     location: "global",
- *     project: "my-project-name",
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {
- *     keyRing: keyRing.id,
- *     purpose: "ASYMMETRIC_SIGN",
- *     versionTemplate: {
- *         algorithm: "EC_SIGN_P384_SHA384",
- *     },
- * });
- * const serviceAccount = gcp.accessapproval.getProjectServiceAccount({
- *     projectId: "my-project-name",
- * });
- * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
- *     cryptoKeyId: cryptoKey.id,
- *     role: "roles/cloudkms.signerVerifier",
- *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
- * });
- * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
- *     cryptoKey: cryptoKey.id,
- * });
- * const projectAccessApproval = new gcp.projects.AccessApprovalSettings("projectAccessApproval", {
- *     projectId: "my-project-name",
- *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
- *     enrolledServices: [{
- *         cloudProduct: "all",
- *     }],
- * }, {
- *     dependsOn: [iam],
- * });
- * ```
  *
  * ## Import
  *

@@ -24,53 +24,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.bigquery.DatasetIamBinding` resources **can be** used in conjunction with `gcp.bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_bigquery\_dataset\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const owner = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/bigquery.dataOwner",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const datasetDataset = new gcp.bigquery.Dataset("datasetDataset", {datasetId: "example_dataset"});
- * const datasetDatasetIamPolicy = new gcp.bigquery.DatasetIamPolicy("datasetDatasetIamPolicy", {
- *     datasetId: datasetDataset.datasetId,
- *     policyData: owner.then(owner => owner.policyData),
- * });
- * ```
- *
- * ## google\_bigquery\_dataset\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
- * const reader = new gcp.bigquery.DatasetIamBinding("reader", {
- *     datasetId: dataset.datasetId,
- *     role: "roles/bigquery.dataViewer",
- *     members: ["user:jane@example.com"],
- * });
- * ```
- *
- * ## google\_bigquery\_dataset\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
- * const editor = new gcp.bigquery.DatasetIamMember("editor", {
- *     datasetId: dataset.datasetId,
- *     role: "roles/bigquery.dataEditor",
- *     member: "user:jane@example.com",
- * });
- * ```
- *
  * ## Import
  *
  * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

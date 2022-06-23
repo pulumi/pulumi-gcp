@@ -15,50 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_iap\_app\_engine\_service\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/iap.httpsResourceAccessor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.iap.AppEngineServiceIamPolicy("policy", {
- *     project: google_app_engine_standard_app_version.version.project,
- *     appId: google_app_engine_standard_app_version.version.project,
- *     service: google_app_engine_standard_app_version.version.service,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * With IAM Conditions:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/iap.httpsResourceAccessor",
- *         members: ["user:jane@example.com"],
- *         condition: {
- *             title: "expires_after_2019_12_31",
- *             description: "Expiring at midnight of 2019-12-31",
- *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         },
- *     }],
- * });
- * const policy = new gcp.iap.AppEngineServiceIamPolicy("policy", {
- *     project: google_app_engine_standard_app_version.version.project,
- *     appId: google_app_engine_standard_app_version.version.project,
- *     service: google_app_engine_standard_app_version.version.service,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
  * ## google\_iap\_app\_engine\_service\_iam\_binding
  *
  * ```typescript

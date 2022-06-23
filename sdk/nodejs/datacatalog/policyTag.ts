@@ -14,67 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
- * ### Data Catalog Taxonomies Policy Tag Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myTaxonomy = new gcp.datacatalog.Taxonomy("myTaxonomy", {
- *     region: "us",
- *     displayName: "taxonomy_display_name",
- *     description: "A collection of policy tags",
- *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- * }, {
- *     provider: google_beta,
- * });
- * const basicPolicyTag = new gcp.datacatalog.PolicyTag("basicPolicyTag", {
- *     taxonomy: myTaxonomy.id,
- *     displayName: "Low security",
- *     description: "A policy tag normally associated with low security items",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Data Catalog Taxonomies Policy Tag Child Policies
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myTaxonomy = new gcp.datacatalog.Taxonomy("myTaxonomy", {
- *     region: "us",
- *     displayName: "taxonomy_display_name",
- *     description: "A collection of policy tags",
- *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- * }, {
- *     provider: google_beta,
- * });
- * const parentPolicy = new gcp.datacatalog.PolicyTag("parentPolicy", {
- *     taxonomy: myTaxonomy.id,
- *     displayName: "High",
- *     description: "A policy tag category used for high security access",
- * }, {
- *     provider: google_beta,
- * });
- * const childPolicy = new gcp.datacatalog.PolicyTag("childPolicy", {
- *     taxonomy: myTaxonomy.id,
- *     displayName: "ssn",
- *     description: "A hash of the users ssn",
- *     parentPolicyTag: parentPolicy.id,
- * }, {
- *     provider: google_beta,
- * });
- * const childPolicy2 = new gcp.datacatalog.PolicyTag("childPolicy2", {
- *     taxonomy: myTaxonomy.id,
- *     displayName: "dob",
- *     description: "The users date of birth",
- *     parentPolicyTag: parentPolicy.id,
- * }, {
- *     provider: google_beta,
- *     dependsOn: [childPolicy],
- * });
- * ```
  *
  * ## Import
  *

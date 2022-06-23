@@ -314,7 +314,7 @@ import (
 // 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 // 			SecretId: secret.ID(),
 // 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-// 			Member:   pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:", project.Number, "-compute@developer.gserviceaccount.com")),
+// 			Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			secret,
 // 		}))
@@ -404,7 +404,7 @@ import (
 // 		_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
 // 			SecretId: secret.ID(),
 // 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-// 			Member:   pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:", project.Number, "-compute@developer.gserviceaccount.com")),
+// 			Member:   pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number)),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			secret,
 // 		}))
@@ -557,7 +557,7 @@ import (
 // 			Project: pulumi.String(projectProject.Id),
 // 			Role:    pulumi.String("roles/eventarc.eventReceiver"),
 // 			Members: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:", projectProject.Number, "-compute@developer.gserviceaccount.com")),
+// 				pulumi.String(fmt.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", projectProject.Number)),
 // 			},
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
@@ -586,7 +586,7 @@ import (
 // 					Region:  _default.Location,
 // 				},
 // 			},
-// 			ServiceAccount: pulumi.String(fmt.Sprintf("%v%v", projectProject.Number, "-compute@developer.gserviceaccount.com")),
+// 			ServiceAccount: pulumi.String(fmt.Sprintf("%v-compute@developer.gserviceaccount.com", projectProject.Number)),
 // 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 // 			eventarc,
 // 		}))

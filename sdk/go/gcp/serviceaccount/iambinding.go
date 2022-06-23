@@ -179,7 +179,7 @@ import (
 // 			ServiceAccountId: pulumi.String(_default.Name),
 // 			Role:             pulumi.String("roles/iam.serviceAccountUser"),
 // 			Member: sa.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
