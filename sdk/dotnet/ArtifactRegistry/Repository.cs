@@ -147,15 +147,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The format of packages that are stored in the repository. You can only create
-        /// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// - DOCKER
-        /// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-        /// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-        /// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        /// The format of packages that are stored in the repository. Supported formats
+        /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+        /// You can only create alpha formats if you are a member of the
+        /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -273,15 +268,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The format of packages that are stored in the repository. You can only create
-        /// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// - DOCKER
-        /// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-        /// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-        /// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        /// The format of packages that are stored in the repository. Supported formats
+        /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+        /// You can only create alpha formats if you are a member of the
+        /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -360,15 +350,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The format of packages that are stored in the repository. You can only create
-        /// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// - DOCKER
-        /// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-        /// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-        /// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-        /// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+        /// The format of packages that are stored in the repository. Supported formats
+        /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+        /// You can only create alpha formats if you are a member of the
+        /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

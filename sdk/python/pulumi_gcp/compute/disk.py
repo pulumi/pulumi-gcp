@@ -989,7 +989,7 @@ class Disk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
-        state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+        state as plain-text.
 
         ## Example Usage
         ### Disk Basic
@@ -1135,7 +1135,7 @@ class Disk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
-        state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+        state as plain-text.
 
         ## Example Usage
         ### Disk Basic

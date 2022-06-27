@@ -164,7 +164,7 @@ type DatabaseInstance struct {
 	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-	EncryptionKeyName pulumi.StringPtrOutput `pulumi:"encryptionKeyName"`
+	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringOutput                  `pulumi:"firstIpAddress"`
 	IpAddresses    DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
@@ -611,8 +611,8 @@ func (o DatabaseInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 // manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
 // That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 // key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-func (o DatabaseInstanceOutput) EncryptionKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.EncryptionKeyName }).(pulumi.StringPtrOutput)
+func (o DatabaseInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.EncryptionKeyName }).(pulumi.StringOutput)
 }
 
 // The first IPv4 address of any type assigned.

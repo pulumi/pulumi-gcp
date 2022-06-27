@@ -10,17 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ActiveDirectory
 {
     /// <summary>
-    /// Adds a trust between Active Directory domains
-    /// 
-    /// To get more information about DomainTrust, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
-    /// * How-to Guides
-    ///     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
-    /// 
-    /// &gt; **Warning:** All arguments including `trust_handshake_secret` will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-    /// 
     /// ## Example Usage
     /// ### Active Directory Domain Trust Basic
     /// 

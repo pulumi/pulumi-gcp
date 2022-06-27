@@ -227,6 +227,38 @@ import (
 // 	})
 // }
 // ```
+// ### Cloudbuild Trigger Include Build Logs
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudbuild.NewTrigger(ctx, "include-build-logs-trigger", &cloudbuild.TriggerArgs{
+// 			Filename: pulumi.String("cloudbuild.yaml"),
+// 			Github: &cloudbuild.TriggerGithubArgs{
+// 				Name:  pulumi.String("terraform-provider-google-beta"),
+// 				Owner: pulumi.String("hashicorp"),
+// 				Push: &cloudbuild.TriggerGithubPushArgs{
+// 					Branch: pulumi.String(fmt.Sprintf("%v%v", "^main", "$")),
+// 				},
+// 			},
+// 			IncludeBuildLogs: pulumi.String("INCLUDE_BUILD_LOGS_WITH_STATUS"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Cloudbuild Trigger Pubsub Config
 //
 // ```go
@@ -450,6 +482,11 @@ type Trigger struct {
 	// of the ignoredFile globs. If the change has no files that are outside
 	// of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayOutput `pulumi:"ignoredFiles"`
+	// Build logs will be sent back to GitHub as part of the checkrun
+	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+	// INCLUDE_BUILD_LOGS_WITH_STATUS
+	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	IncludeBuildLogs pulumi.StringPtrOutput `pulumi:"includeBuildLogs"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
@@ -569,6 +606,11 @@ type triggerState struct {
 	// of the ignoredFile globs. If the change has no files that are outside
 	// of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles []string `pulumi:"ignoredFiles"`
+	// Build logs will be sent back to GitHub as part of the checkrun
+	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+	// INCLUDE_BUILD_LOGS_WITH_STATUS
+	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	IncludeBuildLogs *string `pulumi:"includeBuildLogs"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
@@ -660,6 +702,11 @@ type TriggerState struct {
 	// of the ignoredFile globs. If the change has no files that are outside
 	// of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayInput
+	// Build logs will be sent back to GitHub as part of the checkrun
+	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+	// INCLUDE_BUILD_LOGS_WITH_STATUS
+	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	IncludeBuildLogs pulumi.StringPtrInput
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
@@ -753,6 +800,11 @@ type triggerArgs struct {
 	// of the ignoredFile globs. If the change has no files that are outside
 	// of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles []string `pulumi:"ignoredFiles"`
+	// Build logs will be sent back to GitHub as part of the checkrun
+	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+	// INCLUDE_BUILD_LOGS_WITH_STATUS
+	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	IncludeBuildLogs *string `pulumi:"includeBuildLogs"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
@@ -841,6 +893,11 @@ type TriggerArgs struct {
 	// of the ignoredFile globs. If the change has no files that are outside
 	// of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayInput
+	// Build logs will be sent back to GitHub as part of the checkrun
+	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+	// INCLUDE_BUILD_LOGS_WITH_STATUS
+	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	IncludeBuildLogs pulumi.StringPtrInput
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
@@ -1044,6 +1101,14 @@ func (o TriggerOutput) Github() TriggerGithubPtrOutput {
 // of the ignoredFiles globs, then we do not trigger a build.
 func (o TriggerOutput) IgnoredFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.IgnoredFiles }).(pulumi.StringArrayOutput)
+}
+
+// Build logs will be sent back to GitHub as part of the checkrun
+// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+// INCLUDE_BUILD_LOGS_WITH_STATUS
+// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+func (o TriggerOutput) IncludeBuildLogs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.IncludeBuildLogs }).(pulumi.StringPtrOutput)
 }
 
 // ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match

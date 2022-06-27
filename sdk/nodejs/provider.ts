@@ -77,6 +77,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dialogflowCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCxCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dnsCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly documentAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly essentialContactsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly eventarcCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly filestoreCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -203,6 +204,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
             resourceInputs["disableGooglePartnerName"] = pulumi.output(args ? args.disableGooglePartnerName : undefined).apply(JSON.stringify);
             resourceInputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
+            resourceInputs["documentAiCustomEndpoint"] = args ? args.documentAiCustomEndpoint : undefined;
             resourceInputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
             resourceInputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
@@ -330,6 +332,7 @@ export interface ProviderArgs {
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
     disableGooglePartnerName?: pulumi.Input<boolean>;
     dnsCustomEndpoint?: pulumi.Input<string>;
+    documentAiCustomEndpoint?: pulumi.Input<string>;
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
     eventarcCustomEndpoint?: pulumi.Input<string>;
     filestoreCustomEndpoint?: pulumi.Input<string>;

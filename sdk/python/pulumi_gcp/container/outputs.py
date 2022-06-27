@@ -127,6 +127,7 @@ __all__ = [
     'ClusterReleaseChannel',
     'ClusterResourceUsageExportConfig',
     'ClusterResourceUsageExportConfigBigqueryDestination',
+    'ClusterTpuConfig',
     'ClusterVerticalPodAutoscaling',
     'ClusterWorkloadIdentityConfig',
     'NodePoolAutoscaling',
@@ -217,6 +218,7 @@ __all__ = [
     'GetClusterReleaseChannelResult',
     'GetClusterResourceUsageExportConfigResult',
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
+    'GetClusterTpuConfigResult',
     'GetClusterVerticalPodAutoscalingResult',
     'GetClusterWorkloadIdentityConfigResult',
 ]
@@ -6586,6 +6588,61 @@ class ClusterResourceUsageExportConfigBigqueryDestination(dict):
 
 
 @pulumi.output_type
+class ClusterTpuConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipv4CidrBlock":
+            suggest = "ipv4_cidr_block"
+        elif key == "useServiceNetworking":
+            suggest = "use_service_networking"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTpuConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTpuConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTpuConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 ipv4_cidr_block: Optional[str] = None,
+                 use_service_networking: Optional[bool] = None):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if ipv4_cidr_block is not None:
+            pulumi.set(__self__, "ipv4_cidr_block", ipv4_cidr_block)
+        if use_service_networking is not None:
+            pulumi.set(__self__, "use_service_networking", use_service_networking)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="ipv4CidrBlock")
+    def ipv4_cidr_block(self) -> Optional[str]:
+        return pulumi.get(self, "ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="useServiceNetworking")
+    def use_service_networking(self) -> Optional[bool]:
+        return pulumi.get(self, "use_service_networking")
+
+
+@pulumi.output_type
 class ClusterVerticalPodAutoscaling(dict):
     def __init__(__self__, *,
                  enabled: bool):
@@ -9177,6 +9234,32 @@ class GetClusterResourceUsageExportConfigBigqueryDestinationResult(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         return pulumi.get(self, "dataset_id")
+
+
+@pulumi.output_type
+class GetClusterTpuConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 ipv4_cidr_block: str,
+                 use_service_networking: bool):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "ipv4_cidr_block", ipv4_cidr_block)
+        pulumi.set(__self__, "use_service_networking", use_service_networking)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="ipv4CidrBlock")
+    def ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="useServiceNetworking")
+    def use_service_networking(self) -> bool:
+        return pulumi.get(self, "use_service_networking")
 
 
 @pulumi.output_type

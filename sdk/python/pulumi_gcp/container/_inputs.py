@@ -126,6 +126,7 @@ __all__ = [
     'ClusterReleaseChannelArgs',
     'ClusterResourceUsageExportConfigArgs',
     'ClusterResourceUsageExportConfigBigqueryDestinationArgs',
+    'ClusterTpuConfigArgs',
     'ClusterVerticalPodAutoscalingArgs',
     'ClusterWorkloadIdentityConfigArgs',
     'NodePoolAutoscalingArgs',
@@ -6163,6 +6164,54 @@ class ClusterResourceUsageExportConfigBigqueryDestinationArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
+
+
+@pulumi.input_type
+class ClusterTpuConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 use_service_networking: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if ipv4_cidr_block is not None:
+            pulumi.set(__self__, "ipv4_cidr_block", ipv4_cidr_block)
+        if use_service_networking is not None:
+            pulumi.set(__self__, "use_service_networking", use_service_networking)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="ipv4CidrBlock")
+    def ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ipv4_cidr_block")
+
+    @ipv4_cidr_block.setter
+    def ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="useServiceNetworking")
+    def use_service_networking(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_service_networking")
+
+    @use_service_networking.setter
+    def use_service_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_service_networking", value)
 
 
 @pulumi.input_type

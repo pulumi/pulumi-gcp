@@ -107,18 +107,29 @@ export class ApiConfig extends pulumi.CustomResource {
      */
     public readonly gatewayConfig!: pulumi.Output<outputs.apigateway.ApiConfigGatewayConfig | undefined>;
     /**
+     * gRPC service definition files. If specified, openapiDocuments must not be included.
+     * Structure is documented below.
+     */
+    public readonly grpcServices!: pulumi.Output<outputs.apigateway.ApiConfigGrpcService[] | undefined>;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+     * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+     * Structure is documented below.
+     */
+    public readonly managedServiceConfigs!: pulumi.Output<outputs.apigateway.ApiConfigManagedServiceConfig[] | undefined>;
     /**
      * The resource name of the API Config.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * An OpenAPI Specification Document describing an API.
+     * OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
      * Structure is documented below.
      */
-    public readonly openapiDocuments!: pulumi.Output<outputs.apigateway.ApiConfigOpenapiDocument[]>;
+    public readonly openapiDocuments!: pulumi.Output<outputs.apigateway.ApiConfigOpenapiDocument[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -147,7 +158,9 @@ export class ApiConfig extends pulumi.CustomResource {
             resourceInputs["apiConfigIdPrefix"] = state ? state.apiConfigIdPrefix : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
+            resourceInputs["grpcServices"] = state ? state.grpcServices : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["managedServiceConfigs"] = state ? state.managedServiceConfigs : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["openapiDocuments"] = state ? state.openapiDocuments : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -157,15 +170,14 @@ export class ApiConfig extends pulumi.CustomResource {
             if ((!args || args.api === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'api'");
             }
-            if ((!args || args.openapiDocuments === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'openapiDocuments'");
-            }
             resourceInputs["api"] = args ? args.api : undefined;
             resourceInputs["apiConfigId"] = args ? args.apiConfigId : undefined;
             resourceInputs["apiConfigIdPrefix"] = args ? args.apiConfigIdPrefix : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
+            resourceInputs["grpcServices"] = args ? args.grpcServices : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["managedServiceConfigs"] = args ? args.managedServiceConfigs : undefined;
             resourceInputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -204,15 +216,26 @@ export interface ApiConfigState {
      */
     gatewayConfig?: pulumi.Input<inputs.apigateway.ApiConfigGatewayConfig>;
     /**
+     * gRPC service definition files. If specified, openapiDocuments must not be included.
+     * Structure is documented below.
+     */
+    grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigGrpcService>[]>;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+     * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+     * Structure is documented below.
+     */
+    managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigManagedServiceConfig>[]>;
     /**
      * The resource name of the API Config.
      */
     name?: pulumi.Input<string>;
     /**
-     * An OpenAPI Specification Document describing an API.
+     * OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
      * Structure is documented below.
      */
     openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigOpenapiDocument>[]>;
@@ -255,14 +278,25 @@ export interface ApiConfigArgs {
      */
     gatewayConfig?: pulumi.Input<inputs.apigateway.ApiConfigGatewayConfig>;
     /**
+     * gRPC service definition files. If specified, openapiDocuments must not be included.
+     * Structure is documented below.
+     */
+    grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigGrpcService>[]>;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * An OpenAPI Specification Document describing an API.
+     * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+     * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      * Structure is documented below.
      */
-    openapiDocuments: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigOpenapiDocument>[]>;
+    managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigManagedServiceConfig>[]>;
+    /**
+     * OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
+     * Structure is documented below.
+     */
+    openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigOpenapiDocument>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -155,6 +155,11 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly sslCertificates!: pulumi.Output<string[]>;
     /**
+     * A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+     * TargetHttpsProxy resource will not have any SSL policy configured.
+     */
+    public readonly sslPolicy!: pulumi.Output<string | undefined>;
+    /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
      */
@@ -181,6 +186,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sslCertificates"] = state ? state.sslCertificates : undefined;
+            resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
             resourceInputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as RegionTargetHttpsProxyArgs | undefined;
@@ -195,6 +201,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
+            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             resourceInputs["urlMap"] = args ? args.urlMap : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["proxyId"] = undefined /*out*/;
@@ -252,6 +259,11 @@ export interface RegionTargetHttpsProxyState {
      */
     sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+     * TargetHttpsProxy resource will not have any SSL policy configured.
+     */
+    sslPolicy?: pulumi.Input<string>;
+    /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
      */
@@ -292,6 +304,11 @@ export interface RegionTargetHttpsProxyArgs {
      * one SSL certificate must be specified.
      */
     sslCertificates: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+     * TargetHttpsProxy resource will not have any SSL policy configured.
+     */
+    sslPolicy?: pulumi.Input<string>;
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.

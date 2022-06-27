@@ -115,6 +115,8 @@ disableGooglePartnerName: Optional[bool]
 
 dnsCustomEndpoint: Optional[str]
 
+documentAiCustomEndpoint: Optional[str]
+
 essentialContactsCustomEndpoint: Optional[str]
 
 eventarcCustomEndpoint: Optional[str]

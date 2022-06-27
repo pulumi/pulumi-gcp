@@ -100,11 +100,18 @@ type ApiConfig struct {
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 	// Structure is documented below.
 	GatewayConfig ApiConfigGatewayConfigPtrOutput `pulumi:"gatewayConfig"`
+	// gRPC service definition files. If specified, openapiDocuments must not be included.
+	// Structure is documented below.
+	GrpcServices ApiConfigGrpcServiceArrayOutput `pulumi:"grpcServices"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+	// Structure is documented below.
+	ManagedServiceConfigs ApiConfigManagedServiceConfigArrayOutput `pulumi:"managedServiceConfigs"`
 	// The resource name of the API Config.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// An OpenAPI Specification Document describing an API.
+	// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
 	// Structure is documented below.
 	OpenapiDocuments ApiConfigOpenapiDocumentArrayOutput `pulumi:"openapiDocuments"`
 	// The ID of the project in which the resource belongs.
@@ -123,9 +130,6 @@ func NewApiConfig(ctx *pulumi.Context,
 
 	if args.Api == nil {
 		return nil, errors.New("invalid value for required argument 'Api'")
-	}
-	if args.OpenapiDocuments == nil {
-		return nil, errors.New("invalid value for required argument 'OpenapiDocuments'")
 	}
 	var resource ApiConfig
 	err := ctx.RegisterResource("gcp:apigateway/apiConfig:ApiConfig", name, args, &resource, opts...)
@@ -162,11 +166,18 @@ type apiConfigState struct {
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 	// Structure is documented below.
 	GatewayConfig *ApiConfigGatewayConfig `pulumi:"gatewayConfig"`
+	// gRPC service definition files. If specified, openapiDocuments must not be included.
+	// Structure is documented below.
+	GrpcServices []ApiConfigGrpcService `pulumi:"grpcServices"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+	// Structure is documented below.
+	ManagedServiceConfigs []ApiConfigManagedServiceConfig `pulumi:"managedServiceConfigs"`
 	// The resource name of the API Config.
 	Name *string `pulumi:"name"`
-	// An OpenAPI Specification Document describing an API.
+	// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
 	// Structure is documented below.
 	OpenapiDocuments []ApiConfigOpenapiDocument `pulumi:"openapiDocuments"`
 	// The ID of the project in which the resource belongs.
@@ -190,11 +201,18 @@ type ApiConfigState struct {
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 	// Structure is documented below.
 	GatewayConfig ApiConfigGatewayConfigPtrInput
+	// gRPC service definition files. If specified, openapiDocuments must not be included.
+	// Structure is documented below.
+	GrpcServices ApiConfigGrpcServiceArrayInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+	// Structure is documented below.
+	ManagedServiceConfigs ApiConfigManagedServiceConfigArrayInput
 	// The resource name of the API Config.
 	Name pulumi.StringPtrInput
-	// An OpenAPI Specification Document describing an API.
+	// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
 	// Structure is documented below.
 	OpenapiDocuments ApiConfigOpenapiDocumentArrayInput
 	// The ID of the project in which the resource belongs.
@@ -222,9 +240,16 @@ type apiConfigArgs struct {
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 	// Structure is documented below.
 	GatewayConfig *ApiConfigGatewayConfig `pulumi:"gatewayConfig"`
+	// gRPC service definition files. If specified, openapiDocuments must not be included.
+	// Structure is documented below.
+	GrpcServices []ApiConfigGrpcService `pulumi:"grpcServices"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// An OpenAPI Specification Document describing an API.
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+	// Structure is documented below.
+	ManagedServiceConfigs []ApiConfigManagedServiceConfig `pulumi:"managedServiceConfigs"`
+	// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
 	// Structure is documented below.
 	OpenapiDocuments []ApiConfigOpenapiDocument `pulumi:"openapiDocuments"`
 	// The ID of the project in which the resource belongs.
@@ -247,9 +272,16 @@ type ApiConfigArgs struct {
 	// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
 	// Structure is documented below.
 	GatewayConfig ApiConfigGatewayConfigPtrInput
+	// gRPC service definition files. If specified, openapiDocuments must not be included.
+	// Structure is documented below.
+	GrpcServices ApiConfigGrpcServiceArrayInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
-	// An OpenAPI Specification Document describing an API.
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+	// Structure is documented below.
+	ManagedServiceConfigs ApiConfigManagedServiceConfigArrayInput
+	// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
 	// Structure is documented below.
 	OpenapiDocuments ApiConfigOpenapiDocumentArrayInput
 	// The ID of the project in which the resource belongs.
@@ -372,9 +404,22 @@ func (o ApiConfigOutput) GatewayConfig() ApiConfigGatewayConfigPtrOutput {
 	return o.ApplyT(func(v *ApiConfig) ApiConfigGatewayConfigPtrOutput { return v.GatewayConfig }).(ApiConfigGatewayConfigPtrOutput)
 }
 
+// gRPC service definition files. If specified, openapiDocuments must not be included.
+// Structure is documented below.
+func (o ApiConfigOutput) GrpcServices() ApiConfigGrpcServiceArrayOutput {
+	return o.ApplyT(func(v *ApiConfig) ApiConfigGrpcServiceArrayOutput { return v.GrpcServices }).(ApiConfigGrpcServiceArrayOutput)
+}
+
 // Resource labels to represent user-provided metadata.
 func (o ApiConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+// Structure is documented below.
+func (o ApiConfigOutput) ManagedServiceConfigs() ApiConfigManagedServiceConfigArrayOutput {
+	return o.ApplyT(func(v *ApiConfig) ApiConfigManagedServiceConfigArrayOutput { return v.ManagedServiceConfigs }).(ApiConfigManagedServiceConfigArrayOutput)
 }
 
 // The resource name of the API Config.
@@ -382,7 +427,7 @@ func (o ApiConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// An OpenAPI Specification Document describing an API.
+// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
 // Structure is documented below.
 func (o ApiConfigOutput) OpenapiDocuments() ApiConfigOpenapiDocumentArrayOutput {
 	return o.ApplyT(func(v *ApiConfig) ApiConfigOpenapiDocumentArrayOutput { return v.OpenapiDocuments }).(ApiConfigOpenapiDocumentArrayOutput)

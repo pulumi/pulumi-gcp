@@ -162,7 +162,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
-    public readonly encryptionKeyName!: pulumi.Output<string | undefined>;
+    public readonly encryptionKeyName!: pulumi.Output<string>;
     /**
      * The first IPv4 address of any type assigned.
      */

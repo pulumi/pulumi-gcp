@@ -1,11 +1,18 @@
 module github.com/pulumi/pulumi-gcp/provider/v6
 
-go 1.17
+go 1.18
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v1.20.1-0.20210315160117-642085ce9b99
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.25.0
 	github.com/pulumi/pulumi/sdk/v3 v3.33.1
+)
+
+replace (
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220523144019-a9dc436975cc
+	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20220627125303-b357def8ed51
+	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
+	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20220505152158-f39f71e6c8f3
 )
 
 require (
@@ -221,11 +228,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600 // indirect
-)
-
-replace (
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220523144019-a9dc436975cc
-	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20220616093159-3f49f5dca146
-	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20220505152158-f39f71e6c8f3
 )

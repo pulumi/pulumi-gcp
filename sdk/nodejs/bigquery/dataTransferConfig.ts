@@ -6,18 +6,6 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Represents a data transfer configuration. A transfer configuration
- * contains all metadata needed to perform a data transfer.
- *
- * To get more information about Config, see:
- *
- * * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
- *
- * > **Warning:** All arguments including `sensitive_params.secret_access_key` will be stored in the raw
- * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
- *
  * ## Example Usage
  * ### Bigquerydatatransfer Config Scheduled Query
  *

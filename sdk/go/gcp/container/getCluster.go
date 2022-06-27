@@ -121,6 +121,7 @@ type LookupClusterResult struct {
 	SelfLink                        string                                     `pulumi:"selfLink"`
 	ServicesIpv4Cidr                string                                     `pulumi:"servicesIpv4Cidr"`
 	Subnetwork                      string                                     `pulumi:"subnetwork"`
+	TpuConfigs                      []GetClusterTpuConfig                      `pulumi:"tpuConfigs"`
 	TpuIpv4CidrBlock                string                                     `pulumi:"tpuIpv4CidrBlock"`
 	VerticalPodAutoscalings         []GetClusterVerticalPodAutoscaling         `pulumi:"verticalPodAutoscalings"`
 	WorkloadIdentityConfigs         []GetClusterWorkloadIdentityConfig         `pulumi:"workloadIdentityConfigs"`
@@ -400,6 +401,10 @@ func (o LookupClusterResultOutput) ServicesIpv4Cidr() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) TpuConfigs() GetClusterTpuConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterTpuConfig { return v.TpuConfigs }).(GetClusterTpuConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) TpuIpv4CidrBlock() pulumi.StringOutput {

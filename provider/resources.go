@@ -483,6 +483,24 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Cloud Functions (2nd gen)
 			"google_cloudfunctions2_function": {Tok: gcpResource(gcpCloudFunctionsV2, "Function")},
+			"google_cloudfunctions2_function_iam_binding": {
+				Tok: gcpResource(gcpCloudFunctionsV2, "FunctionIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudfunctions2_function_iam.html.markdown",
+				},
+			},
+			"google_cloudfunctions2_function_iam_member": {
+				Tok: gcpResource(gcpCloudFunctionsV2, "FunctionIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudfunctions2_function_iam.html.markdown",
+				},
+			},
+			"google_cloudfunctions2_function_iam_policy": {
+				Tok: gcpResource(gcpCloudFunctionsV2, "FunctionIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudfunctions2_function_iam.html.markdown",
+				},
+			},
 
 			// Cloud Scheduler
 			"google_cloud_scheduler_job": {Tok: gcpResource(gcpCloudScheduler, "Job")},
@@ -812,6 +830,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_region_target_http_proxy":      {Tok: gcpResource(gcpCompute, "RegionTargetHttpProxy")},
 			"google_compute_region_target_https_proxy":     {Tok: gcpResource(gcpCompute, "RegionTargetHttpsProxy")},
 			"google_compute_region_network_endpoint_group": {Tok: gcpResource(gcpCompute, "RegionNetworkEndpointGroup")},
+			"google_compute_region_ssl_policy":             {Tok: gcpResource(gcpCompute, "RegionSslPolicy")},
 			"google_compute_resource_policy":               {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
 			"google_compute_route":                         {Tok: gcpResource(gcpCompute, "Route")},
 			"google_compute_router":                        {Tok: gcpResource(gcpCompute, "Router")},
@@ -2195,6 +2214,10 @@ func Provider() tfbridge.ProviderInfo {
 
 			// essential contacts
 			"google_essential_contacts_contact": {Tok: gcpResource(gcpEssentialContacts, "Contact")},
+			"google_document_ai_processor":      {Tok: gcpResource(gcpEssentialContacts, "DocumentAiProcessor")},
+			"google_document_ai_processor_default_version": {
+				Tok: gcpResource(gcpEssentialContacts, "DocumentAiProcessorDefaultVersion"),
+			},
 
 			// workflows
 			"google_workflows_workflow": {Tok: gcpResource(gcpWorkflows, "Workflow")},

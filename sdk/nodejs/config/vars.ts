@@ -432,6 +432,14 @@ Object.defineProperty(exports, "dnsCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const documentAiCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "documentAiCustomEndpoint", {
+    get() {
+        return __config.get("documentAiCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const essentialContactsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "essentialContactsCustomEndpoint", {
     get() {

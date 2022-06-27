@@ -1604,10 +1604,31 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
 
 @pulumi.output_type
 class ServicePerimeterSpecEgressPolicyEgressTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalResources":
+            suggest = "external_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecEgressPolicyEgressTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecEgressPolicyEgressTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecEgressPolicyEgressTo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 external_resources: Optional[Sequence[str]] = None,
                  operations: Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicyEgressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
         :param Sequence['ServicePerimeterSpecEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
@@ -1617,10 +1638,22 @@ class ServicePerimeterSpecEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[Sequence[str]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
 
     @property
     @pulumi.getter
@@ -2414,10 +2447,31 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
 
 @pulumi.output_type
 class ServicePerimeterStatusEgressPolicyEgressTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalResources":
+            suggest = "external_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusEgressPolicyEgressTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusEgressPolicyEgressTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusEgressPolicyEgressTo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 external_resources: Optional[Sequence[str]] = None,
                  operations: Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicyEgressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
         :param Sequence['ServicePerimeterStatusEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
@@ -2427,10 +2481,22 @@ class ServicePerimeterStatusEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[Sequence[str]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
 
     @property
     @pulumi.getter
@@ -3430,10 +3496,31 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalResources":
+            suggest = "external_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 external_resources: Optional[Sequence[str]] = None,
                  operations: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
         :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
@@ -3443,10 +3530,22 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[Sequence[str]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
 
     @property
     @pulumi.getter
@@ -4240,10 +4339,31 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
 
 @pulumi.output_type
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalResources":
+            suggest = "external_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 external_resources: Optional[Sequence[str]] = None,
                  operations: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation']] = None,
                  resources: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
         :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs'] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
@@ -4253,10 +4373,22 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo(dict):
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[Sequence[str]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
 
     @property
     @pulumi.getter

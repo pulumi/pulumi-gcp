@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
  *
  * > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
- * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+ * state as plain-text.
  *
  * ## Example Usage
  * ### Region Disk Basic

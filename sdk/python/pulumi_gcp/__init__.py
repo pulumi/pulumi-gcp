@@ -1134,6 +1134,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "cloudfunctionsv2/functionIamBinding",
+  "fqn": "pulumi_gcp.cloudfunctionsv2",
+  "classes": {
+   "gcp:cloudfunctionsv2/functionIamBinding:FunctionIamBinding": "FunctionIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudfunctionsv2/functionIamMember",
+  "fqn": "pulumi_gcp.cloudfunctionsv2",
+  "classes": {
+   "gcp:cloudfunctionsv2/functionIamMember:FunctionIamMember": "FunctionIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudfunctionsv2/functionIamPolicy",
+  "fqn": "pulumi_gcp.cloudfunctionsv2",
+  "classes": {
+   "gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy": "FunctionIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudidentity/group",
   "fqn": "pulumi_gcp.cloudidentity",
   "classes": {
@@ -1858,6 +1882,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionSslCertificate:RegionSslCertificate": "RegionSslCertificate"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionSslPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionSslPolicy:RegionSslPolicy": "RegionSslPolicy"
   }
  },
  {
@@ -2698,6 +2730,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.essentialcontacts",
   "classes": {
    "gcp:essentialcontacts/contact:Contact": "Contact"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "essentialcontacts/documentAiProcessor",
+  "fqn": "pulumi_gcp.essentialcontacts",
+  "classes": {
+   "gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor": "DocumentAiProcessor"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "essentialcontacts/documentAiProcessorDefaultVersion",
+  "fqn": "pulumi_gcp.essentialcontacts",
+  "classes": {
+   "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion": "DocumentAiProcessorDefaultVersion"
   }
  },
  {

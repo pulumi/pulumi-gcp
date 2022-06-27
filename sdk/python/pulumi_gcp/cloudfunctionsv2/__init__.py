@@ -6,5 +6,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .function import *
+from .function_iam_binding import *
+from .function_iam_member import *
+from .function_iam_policy import *
 from ._inputs import *
 from . import outputs

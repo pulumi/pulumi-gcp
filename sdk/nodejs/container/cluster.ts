@@ -215,7 +215,7 @@ export class Cluster extends pulumi.CustomResource {
      * Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
-    public readonly enableTpu!: pulumi.Output<boolean | undefined>;
+    public readonly enableTpu!: pulumi.Output<boolean>;
     /**
      * The IP address of this cluster's Kubernetes master.
      */
@@ -448,6 +448,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
+     * TPU configuration for the cluster.
+     */
+    public readonly tpuConfig!: pulumi.Output<outputs.container.ClusterTpuConfig>;
+    /**
      * The IP address range of the Cloud TPUs in this cluster, in
      * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`).
@@ -534,6 +538,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["servicesIpv4Cidr"] = state ? state.servicesIpv4Cidr : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["tpuConfig"] = state ? state.tpuConfig : undefined;
             resourceInputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
             resourceInputs["verticalPodAutoscaling"] = state ? state.verticalPodAutoscaling : undefined;
             resourceInputs["workloadIdentityConfig"] = state ? state.workloadIdentityConfig : undefined;
@@ -589,6 +594,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["tpuConfig"] = args ? args.tpuConfig : undefined;
             resourceInputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             resourceInputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
             resourceInputs["endpoint"] = undefined /*out*/;
@@ -945,6 +951,10 @@ export interface ClusterState {
      */
     subnetwork?: pulumi.Input<string>;
     /**
+     * TPU configuration for the cluster.
+     */
+    tpuConfig?: pulumi.Input<inputs.container.ClusterTpuConfig>;
+    /**
      * The IP address range of the Cloud TPUs in this cluster, in
      * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`).
@@ -1277,6 +1287,10 @@ export interface ClusterArgs {
      * subnetwork in which the cluster's instances are launched.
      */
     subnetwork?: pulumi.Input<string>;
+    /**
+     * TPU configuration for the cluster.
+     */
+    tpuConfig?: pulumi.Input<inputs.container.ClusterTpuConfig>;
     /**
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.

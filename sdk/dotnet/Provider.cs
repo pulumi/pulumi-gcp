@@ -171,6 +171,9 @@ namespace Pulumi.Gcp
         [Output("dnsCustomEndpoint")]
         public Output<string?> DnsCustomEndpoint { get; private set; } = null!;
 
+        [Output("documentAiCustomEndpoint")]
+        public Output<string?> DocumentAiCustomEndpoint { get; private set; } = null!;
+
         [Output("essentialContactsCustomEndpoint")]
         public Output<string?> EssentialContactsCustomEndpoint { get; private set; } = null!;
 
@@ -540,6 +543,9 @@ namespace Pulumi.Gcp
 
         [Input("dnsCustomEndpoint")]
         public Input<string>? DnsCustomEndpoint { get; set; }
+
+        [Input("documentAiCustomEndpoint")]
+        public Input<string>? DocumentAiCustomEndpoint { get; set; }
 
         [Input("essentialContactsCustomEndpoint")]
         public Input<string>? EssentialContactsCustomEndpoint { get; set; }

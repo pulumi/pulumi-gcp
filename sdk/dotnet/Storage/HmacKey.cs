@@ -21,8 +21,10 @@ namespace Pulumi.Gcp.Storage
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
     /// 
     /// &gt; **Warning:** All arguments including the `secret` value will be stored in the raw
-    /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
-    /// On import, the `secret` value will not be retrieved.
+    /// state as plain-text. On import, the `secret` value will not be retrieved.
+    /// 
+    /// &gt; **Warning:** All arguments including `secret` will be stored in the raw
+    /// state as plain-text.
     /// 
     /// ## Example Usage
     /// ### Storage Hmac Key
@@ -40,7 +42,7 @@ namespace Pulumi.Gcp.Storage
     ///         {
     ///             AccountId = "my-svc-acc",
     ///         });
-    ///         //Create the HMAC key for the associated service account 
+    ///         //Create the HMAC key for the associated service account
     ///         var key = new Gcp.Storage.HmacKey("key", new Gcp.Storage.HmacKeyArgs
     ///         {
     ///             ServiceAccountEmail = serviceAccount.Email,
