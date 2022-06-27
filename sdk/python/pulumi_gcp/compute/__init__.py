@@ -117,6 +117,7 @@ from .region_instance_group_manager import *
 from .region_network_endpoint_group import *
 from .region_per_instance_config import *
 from .region_ssl_certificate import *
+from .region_ssl_policy import *
 from .region_target_http_proxy import *
 from .region_target_https_proxy import *
 from .region_url_map import *

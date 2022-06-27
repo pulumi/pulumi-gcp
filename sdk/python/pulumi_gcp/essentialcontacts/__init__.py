@@ -6,3 +6,5 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .contact import *
+from .document_ai_processor import *
+from .document_ai_processor_default_version import *

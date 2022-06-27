@@ -119,10 +119,25 @@ namespace Pulumi.Gcp.ApiGateway
         public Output<Outputs.ApiConfigGatewayConfig?> GatewayConfig { get; private set; } = null!;
 
         /// <summary>
+        /// gRPC service definition files. If specified, openapiDocuments must not be included.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("grpcServices")]
+        public Output<ImmutableArray<Outputs.ApiConfigGrpcService>> GrpcServices { get; private set; } = null!;
+
+        /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("managedServiceConfigs")]
+        public Output<ImmutableArray<Outputs.ApiConfigManagedServiceConfig>> ManagedServiceConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the API Config.
@@ -131,7 +146,7 @@ namespace Pulumi.Gcp.ApiGateway
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// An OpenAPI Specification Document describing an API.
+        /// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
         /// Structure is documented below.
         /// </summary>
         [Output("openapiDocuments")]
@@ -229,6 +244,19 @@ namespace Pulumi.Gcp.ApiGateway
         [Input("gatewayConfig")]
         public Input<Inputs.ApiConfigGatewayConfigArgs>? GatewayConfig { get; set; }
 
+        [Input("grpcServices")]
+        private InputList<Inputs.ApiConfigGrpcServiceArgs>? _grpcServices;
+
+        /// <summary>
+        /// gRPC service definition files. If specified, openapiDocuments must not be included.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ApiConfigGrpcServiceArgs> GrpcServices
+        {
+            get => _grpcServices ?? (_grpcServices = new InputList<Inputs.ApiConfigGrpcServiceArgs>());
+            set => _grpcServices = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -241,11 +269,25 @@ namespace Pulumi.Gcp.ApiGateway
             set => _labels = value;
         }
 
-        [Input("openapiDocuments", required: true)]
+        [Input("managedServiceConfigs")]
+        private InputList<Inputs.ApiConfigManagedServiceConfigArgs>? _managedServiceConfigs;
+
+        /// <summary>
+        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ApiConfigManagedServiceConfigArgs> ManagedServiceConfigs
+        {
+            get => _managedServiceConfigs ?? (_managedServiceConfigs = new InputList<Inputs.ApiConfigManagedServiceConfigArgs>());
+            set => _managedServiceConfigs = value;
+        }
+
+        [Input("openapiDocuments")]
         private InputList<Inputs.ApiConfigOpenapiDocumentArgs>? _openapiDocuments;
 
         /// <summary>
-        /// An OpenAPI Specification Document describing an API.
+        /// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ApiConfigOpenapiDocumentArgs> OpenapiDocuments
@@ -301,6 +343,19 @@ namespace Pulumi.Gcp.ApiGateway
         [Input("gatewayConfig")]
         public Input<Inputs.ApiConfigGatewayConfigGetArgs>? GatewayConfig { get; set; }
 
+        [Input("grpcServices")]
+        private InputList<Inputs.ApiConfigGrpcServiceGetArgs>? _grpcServices;
+
+        /// <summary>
+        /// gRPC service definition files. If specified, openapiDocuments must not be included.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ApiConfigGrpcServiceGetArgs> GrpcServices
+        {
+            get => _grpcServices ?? (_grpcServices = new InputList<Inputs.ApiConfigGrpcServiceGetArgs>());
+            set => _grpcServices = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -313,6 +368,20 @@ namespace Pulumi.Gcp.ApiGateway
             set => _labels = value;
         }
 
+        [Input("managedServiceConfigs")]
+        private InputList<Inputs.ApiConfigManagedServiceConfigGetArgs>? _managedServiceConfigs;
+
+        /// <summary>
+        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ApiConfigManagedServiceConfigGetArgs> ManagedServiceConfigs
+        {
+            get => _managedServiceConfigs ?? (_managedServiceConfigs = new InputList<Inputs.ApiConfigManagedServiceConfigGetArgs>());
+            set => _managedServiceConfigs = value;
+        }
+
         /// <summary>
         /// The resource name of the API Config.
         /// </summary>
@@ -323,7 +392,7 @@ namespace Pulumi.Gcp.ApiGateway
         private InputList<Inputs.ApiConfigOpenapiDocumentGetArgs>? _openapiDocuments;
 
         /// <summary>
-        /// An OpenAPI Specification Document describing an API.
+        /// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ApiConfigOpenapiDocumentGetArgs> OpenapiDocuments

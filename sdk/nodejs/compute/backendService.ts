@@ -19,6 +19,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  *
+ * > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+ * state as plain-text.
+ *
  * ## Example Usage
  * ### Backend Service Basic
  *

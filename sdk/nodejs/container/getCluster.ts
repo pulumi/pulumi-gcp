@@ -122,6 +122,7 @@ export interface GetClusterResult {
     readonly selfLink: string;
     readonly servicesIpv4Cidr: string;
     readonly subnetwork: string;
+    readonly tpuConfigs: outputs.container.GetClusterTpuConfig[];
     readonly tpuIpv4CidrBlock: string;
     readonly verticalPodAutoscalings: outputs.container.GetClusterVerticalPodAutoscaling[];
     readonly workloadIdentityConfigs: outputs.container.GetClusterWorkloadIdentityConfig[];

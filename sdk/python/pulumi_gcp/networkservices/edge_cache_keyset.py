@@ -227,11 +227,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                  public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeCacheKeysetPublicKeyArgs']]]]] = None,
                  __props__=None):
         """
-        EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
-
-        > **Warning:** All arguments including `public_key.public_key.value` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-
         ## Example Usage
         ### Network Services Edge Cache Keyset Basic
 
@@ -291,11 +286,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                  args: EdgeCacheKeysetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
-
-        > **Warning:** All arguments including `public_key.public_key.value` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-
         ## Example Usage
         ### Network Services Edge Cache Keyset Basic
 

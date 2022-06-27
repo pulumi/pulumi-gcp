@@ -217,6 +217,7 @@ namespace Pulumi.Gcp.Container
         public readonly string SelfLink;
         public readonly string ServicesIpv4Cidr;
         public readonly string Subnetwork;
+        public readonly ImmutableArray<Outputs.GetClusterTpuConfigResult> TpuConfigs;
         public readonly string TpuIpv4CidrBlock;
         public readonly ImmutableArray<Outputs.GetClusterVerticalPodAutoscalingResult> VerticalPodAutoscalings;
         public readonly ImmutableArray<Outputs.GetClusterWorkloadIdentityConfigResult> WorkloadIdentityConfigs;
@@ -337,6 +338,8 @@ namespace Pulumi.Gcp.Container
 
             string subnetwork,
 
+            ImmutableArray<Outputs.GetClusterTpuConfigResult> tpuConfigs,
+
             string tpuIpv4CidrBlock,
 
             ImmutableArray<Outputs.GetClusterVerticalPodAutoscalingResult> verticalPodAutoscalings,
@@ -400,6 +403,7 @@ namespace Pulumi.Gcp.Container
             SelfLink = selfLink;
             ServicesIpv4Cidr = servicesIpv4Cidr;
             Subnetwork = subnetwork;
+            TpuConfigs = tpuConfigs;
             TpuIpv4CidrBlock = tpuIpv4CidrBlock;
             VerticalPodAutoscalings = verticalPodAutoscalings;
             WorkloadIdentityConfigs = workloadIdentityConfigs;

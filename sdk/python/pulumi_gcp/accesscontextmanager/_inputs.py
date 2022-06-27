@@ -1615,9 +1615,13 @@ class ServicePerimeterSpecEgressPolicyEgressFromArgs:
 @pulumi.input_type
 class ServicePerimeterSpecEgressPolicyEgressToArgs:
     def __init__(__self__, *,
+                 external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
@@ -1627,10 +1631,26 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
+
+    @external_resources.setter
+    def external_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_resources", value)
 
     @property
     @pulumi.getter
@@ -2378,9 +2398,13 @@ class ServicePerimeterStatusEgressPolicyEgressFromArgs:
 @pulumi.input_type
 class ServicePerimeterStatusEgressPolicyEgressToArgs:
     def __init__(__self__, *,
+                 external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
@@ -2390,10 +2414,26 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
+
+    @external_resources.setter
+    def external_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_resources", value)
 
     @property
     @pulumi.getter
@@ -3360,9 +3400,13 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs:
 @pulumi.input_type
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
     def __init__(__self__, *,
+                 external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
@@ -3372,10 +3416,26 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
+
+    @external_resources.setter
+    def external_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_resources", value)
 
     @property
     @pulumi.getter
@@ -4123,9 +4183,13 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs:
 @pulumi.input_type
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
     def __init__(__self__, *,
+                 external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
                if it contains an operation/service in this list.
                Structure is documented below.
@@ -4135,10 +4199,26 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
         """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
+
+    @external_resources.setter
+    def external_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_resources", value)
 
     @property
     @pulumi.getter

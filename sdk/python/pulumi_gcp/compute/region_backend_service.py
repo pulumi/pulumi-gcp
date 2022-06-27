@@ -1192,18 +1192,6 @@ class RegionBackendService(pulumi.CustomResource):
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        A Region Backend Service defines a regionally-scoped group of virtual
-        machines that will serve traffic for load balancing.
-
-        To get more information about RegionBackendService, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
-        * How-to Guides
-            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
-
-        > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-
         ## Example Usage
         ### Region Backend Service Basic
 
@@ -1526,18 +1514,6 @@ class RegionBackendService(pulumi.CustomResource):
                  args: Optional[RegionBackendServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Region Backend Service defines a regionally-scoped group of virtual
-        machines that will serve traffic for load balancing.
-
-        To get more information about RegionBackendService, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
-        * How-to Guides
-            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
-
-        > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-
         ## Example Usage
         ### Region Backend Service Basic
 

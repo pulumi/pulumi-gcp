@@ -187,7 +187,7 @@ type Cluster struct {
 	EnableShieldedNodes pulumi.BoolPtrOutput `pulumi:"enableShieldedNodes"`
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-	EnableTpu pulumi.BoolPtrOutput `pulumi:"enableTpu"`
+	EnableTpu pulumi.BoolOutput `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// . Structure is documented below.
@@ -349,6 +349,8 @@ type Cluster struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
+	// TPU configuration for the cluster.
+	TpuConfig ClusterTpuConfigOutput `pulumi:"tpuConfig"`
 	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
@@ -617,6 +619,8 @@ type clusterState struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork *string `pulumi:"subnetwork"`
+	// TPU configuration for the cluster.
+	TpuConfig *ClusterTpuConfig `pulumi:"tpuConfig"`
 	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
@@ -857,6 +861,8 @@ type ClusterState struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringPtrInput
+	// TPU configuration for the cluster.
+	TpuConfig ClusterTpuConfigPtrInput
 	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
@@ -1085,6 +1091,8 @@ type clusterArgs struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork *string `pulumi:"subnetwork"`
+	// TPU configuration for the cluster.
+	TpuConfig *ClusterTpuConfig `pulumi:"tpuConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
@@ -1306,6 +1314,8 @@ type ClusterArgs struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringPtrInput
+	// TPU configuration for the cluster.
+	TpuConfig ClusterTpuConfigPtrInput
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
@@ -1523,8 +1533,8 @@ func (o ClusterOutput) EnableShieldedNodes() pulumi.BoolPtrOutput {
 
 // Whether to enable Cloud TPU resources in this cluster.
 // See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-func (o ClusterOutput) EnableTpu() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableTpu }).(pulumi.BoolPtrOutput)
+func (o ClusterOutput) EnableTpu() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableTpu }).(pulumi.BoolOutput)
 }
 
 // The IP address of this cluster's Kubernetes master.
@@ -1796,6 +1806,11 @@ func (o ClusterOutput) ServicesIpv4Cidr() pulumi.StringOutput {
 // subnetwork in which the cluster's instances are launched.
 func (o ClusterOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// TPU configuration for the cluster.
+func (o ClusterOutput) TpuConfig() ClusterTpuConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterTpuConfigOutput { return v.TpuConfig }).(ClusterTpuConfigOutput)
 }
 
 // The IP address range of the Cloud TPUs in this cluster, in

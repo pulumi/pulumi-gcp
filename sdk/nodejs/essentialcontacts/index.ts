@@ -6,9 +6,13 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./contact";
+export * from "./documentAiProcessor";
+export * from "./documentAiProcessorDefaultVersion";
 
 // Import resources to register:
 import { Contact } from "./contact";
+import { DocumentAiProcessor } from "./documentAiProcessor";
+import { DocumentAiProcessorDefaultVersion } from "./documentAiProcessorDefaultVersion";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +20,15 @@ const _module = {
         switch (type) {
             case "gcp:essentialcontacts/contact:Contact":
                 return new Contact(name, <any>undefined, { urn })
+            case "gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor":
+                return new DocumentAiProcessor(name, <any>undefined, { urn })
+            case "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion":
+                return new DocumentAiProcessorDefaultVersion(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "essentialcontacts/contact", _module)
+pulumi.runtime.registerResourceModule("gcp", "essentialcontacts/documentAiProcessor", _module)
+pulumi.runtime.registerResourceModule("gcp", "essentialcontacts/documentAiProcessorDefaultVersion", _module)

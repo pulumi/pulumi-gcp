@@ -144,15 +144,10 @@ type Repository struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The format of packages that are stored in the repository. You can only create
-	// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	// - DOCKER
-	// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// The format of packages that are stored in the repository. Supported formats
+	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+	// You can only create alpha formats if you are a member of the
+	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -223,15 +218,10 @@ type repositoryState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
-	// The format of packages that are stored in the repository. You can only create
-	// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	// - DOCKER
-	// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// The format of packages that are stored in the repository. Supported formats
+	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+	// You can only create alpha formats if you are a member of the
+	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 	Format *string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -268,15 +258,10 @@ type RepositoryState struct {
 	CreateTime pulumi.StringPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
-	// The format of packages that are stored in the repository. You can only create
-	// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	// - DOCKER
-	// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// The format of packages that are stored in the repository. Supported formats
+	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+	// You can only create alpha formats if you are a member of the
+	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 	Format pulumi.StringPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -315,15 +300,10 @@ func (RepositoryState) ElementType() reflect.Type {
 type repositoryArgs struct {
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
-	// The format of packages that are stored in the repository. You can only create
-	// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	// - DOCKER
-	// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// The format of packages that are stored in the repository. Supported formats
+	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+	// You can only create alpha formats if you are a member of the
+	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 	Format string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -355,15 +335,10 @@ type repositoryArgs struct {
 type RepositoryArgs struct {
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
-	// The format of packages that are stored in the repository. You can only create
-	// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	// - DOCKER
-	// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-	// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-	// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+	// The format of packages that are stored in the repository. Supported formats
+	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+	// You can only create alpha formats if you are a member of the
+	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 	Format pulumi.StringInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -488,15 +463,10 @@ func (o RepositoryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The format of packages that are stored in the repository. You can only create
-// alpha formats if you are a member of the [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-// - DOCKER
-// - MAVEN ([Preview](https://cloud.google.com/products#product-launch-stages))
-// - NPM ([Preview](https://cloud.google.com/products#product-launch-stages))
-// - PYTHON ([Preview](https://cloud.google.com/products#product-launch-stages))
-// - APT ([alpha](https://cloud.google.com/products#product-launch-stages))
-// - YUM ([alpha](https://cloud.google.com/products#product-launch-stages))
-// - HELM ([alpha](https://cloud.google.com/products#product-launch-stages))
+// The format of packages that are stored in the repository. Supported formats
+// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+// You can only create alpha formats if you are a member of the
+// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
 func (o RepositoryOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }

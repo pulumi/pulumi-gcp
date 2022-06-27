@@ -117,6 +117,7 @@ export * from "./regionInstanceGroupManager";
 export * from "./regionNetworkEndpointGroup";
 export * from "./regionPerInstanceConfig";
 export * from "./regionSslCertificate";
+export * from "./regionSslPolicy";
 export * from "./regionTargetHttpProxy";
 export * from "./regionTargetHttpsProxy";
 export * from "./regionUrlMap";
@@ -233,6 +234,7 @@ import { RegionInstanceGroupManager } from "./regionInstanceGroupManager";
 import { RegionNetworkEndpointGroup } from "./regionNetworkEndpointGroup";
 import { RegionPerInstanceConfig } from "./regionPerInstanceConfig";
 import { RegionSslCertificate } from "./regionSslCertificate";
+import { RegionSslPolicy } from "./regionSslPolicy";
 import { RegionTargetHttpProxy } from "./regionTargetHttpProxy";
 import { RegionTargetHttpsProxy } from "./regionTargetHttpsProxy";
 import { RegionUrlMap } from "./regionUrlMap";
@@ -432,6 +434,8 @@ const _module = {
                 return new RegionPerInstanceConfig(name, <any>undefined, { urn })
             case "gcp:compute/regionSslCertificate:RegionSslCertificate":
                 return new RegionSslCertificate(name, <any>undefined, { urn })
+            case "gcp:compute/regionSslPolicy:RegionSslPolicy":
+                return new RegionSslPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy":
                 return new RegionTargetHttpProxy(name, <any>undefined, { urn })
             case "gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy":
@@ -582,6 +586,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceGroupManager
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpointGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionPerInstanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslCertificate", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionSslPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetHttpProxy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetHttpsProxy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionUrlMap", _module)

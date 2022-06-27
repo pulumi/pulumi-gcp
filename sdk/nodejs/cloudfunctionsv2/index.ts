@@ -6,9 +6,15 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./function";
+export * from "./functionIamBinding";
+export * from "./functionIamMember";
+export * from "./functionIamPolicy";
 
 // Import resources to register:
 import { Function } from "./function";
+import { FunctionIamBinding } from "./functionIamBinding";
+import { FunctionIamMember } from "./functionIamMember";
+import { FunctionIamPolicy } from "./functionIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +22,18 @@ const _module = {
         switch (type) {
             case "gcp:cloudfunctionsv2/function:Function":
                 return new Function(name, <any>undefined, { urn })
+            case "gcp:cloudfunctionsv2/functionIamBinding:FunctionIamBinding":
+                return new FunctionIamBinding(name, <any>undefined, { urn })
+            case "gcp:cloudfunctionsv2/functionIamMember:FunctionIamMember":
+                return new FunctionIamMember(name, <any>undefined, { urn })
+            case "gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy":
+                return new FunctionIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "cloudfunctionsv2/function", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudfunctionsv2/functionIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudfunctionsv2/functionIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudfunctionsv2/functionIamPolicy", _module)

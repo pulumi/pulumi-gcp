@@ -24,6 +24,7 @@ class TriggerArgs:
                  git_file_source: Optional[pulumi.Input['TriggerGitFileSourceArgs']] = None,
                  github: Optional[pulumi.Input['TriggerGithubArgs']] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -60,6 +61,10 @@ class TriggerArgs:
                If ignoredFiles is not empty, then we ignore any files that match any
                of the ignored_file globs. If the change has no files that are outside
                of the ignoredFiles globs, then we do not trigger a build.
+        :param pulumi.Input[str] include_build_logs: Build logs will be sent back to GitHub as part of the checkrun
+               result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+               INCLUDE_BUILD_LOGS_WITH_STATUS
+               Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
@@ -120,6 +125,8 @@ class TriggerArgs:
             pulumi.set(__self__, "github", github)
         if ignored_files is not None:
             pulumi.set(__self__, "ignored_files", ignored_files)
+        if include_build_logs is not None:
+            pulumi.set(__self__, "include_build_logs", include_build_logs)
         if included_files is not None:
             pulumi.set(__self__, "included_files", included_files)
         if name is not None:
@@ -263,6 +270,21 @@ class TriggerArgs:
     @ignored_files.setter
     def ignored_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ignored_files", value)
+
+    @property
+    @pulumi.getter(name="includeBuildLogs")
+    def include_build_logs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Build logs will be sent back to GitHub as part of the checkrun
+        result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+        INCLUDE_BUILD_LOGS_WITH_STATUS
+        Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        """
+        return pulumi.get(self, "include_build_logs")
+
+    @include_build_logs.setter
+    def include_build_logs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "include_build_logs", value)
 
     @property
     @pulumi.getter(name="includedFiles")
@@ -429,6 +451,7 @@ class _TriggerState:
                  git_file_source: Optional[pulumi.Input['TriggerGitFileSourceArgs']] = None,
                  github: Optional[pulumi.Input['TriggerGithubArgs']] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -467,6 +490,10 @@ class _TriggerState:
                If ignoredFiles is not empty, then we ignore any files that match any
                of the ignored_file globs. If the change has no files that are outside
                of the ignoredFiles globs, then we do not trigger a build.
+        :param pulumi.Input[str] include_build_logs: Build logs will be sent back to GitHub as part of the checkrun
+               result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+               INCLUDE_BUILD_LOGS_WITH_STATUS
+               Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
@@ -530,6 +557,8 @@ class _TriggerState:
             pulumi.set(__self__, "github", github)
         if ignored_files is not None:
             pulumi.set(__self__, "ignored_files", ignored_files)
+        if include_build_logs is not None:
+            pulumi.set(__self__, "include_build_logs", include_build_logs)
         if included_files is not None:
             pulumi.set(__self__, "included_files", included_files)
         if name is not None:
@@ -687,6 +716,21 @@ class _TriggerState:
     @ignored_files.setter
     def ignored_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ignored_files", value)
+
+    @property
+    @pulumi.getter(name="includeBuildLogs")
+    def include_build_logs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Build logs will be sent back to GitHub as part of the checkrun
+        result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+        INCLUDE_BUILD_LOGS_WITH_STATUS
+        Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        """
+        return pulumi.get(self, "include_build_logs")
+
+    @include_build_logs.setter
+    def include_build_logs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "include_build_logs", value)
 
     @property
     @pulumi.getter(name="includedFiles")
@@ -866,6 +910,7 @@ class Trigger(pulumi.CustomResource):
                  git_file_source: Optional[pulumi.Input[pulumi.InputType['TriggerGitFileSourceArgs']]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['TriggerGithubArgs']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1010,6 +1055,23 @@ class Trigger(pulumi.CustomResource):
                     logs_writer,
                 ]))
         ```
+        ### Cloudbuild Trigger Include Build Logs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        include_build_logs_trigger = gcp.cloudbuild.Trigger("include-build-logs-trigger",
+            filename="cloudbuild.yaml",
+            github=gcp.cloudbuild.TriggerGithubArgs(
+                name="terraform-provider-google-beta",
+                owner="hashicorp",
+                push=gcp.cloudbuild.TriggerGithubPushArgs(
+                    branch="^main$",
+                ),
+            ),
+            include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
+        ```
         ### Cloudbuild Trigger Pubsub Config
 
         ```python
@@ -1147,6 +1209,10 @@ class Trigger(pulumi.CustomResource):
                If ignoredFiles is not empty, then we ignore any files that match any
                of the ignored_file globs. If the change has no files that are outside
                of the ignoredFiles globs, then we do not trigger a build.
+        :param pulumi.Input[str] include_build_logs: Build logs will be sent back to GitHub as part of the checkrun
+               result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+               INCLUDE_BUILD_LOGS_WITH_STATUS
+               Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
@@ -1328,6 +1394,23 @@ class Trigger(pulumi.CustomResource):
                     logs_writer,
                 ]))
         ```
+        ### Cloudbuild Trigger Include Build Logs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        include_build_logs_trigger = gcp.cloudbuild.Trigger("include-build-logs-trigger",
+            filename="cloudbuild.yaml",
+            github=gcp.cloudbuild.TriggerGithubArgs(
+                name="terraform-provider-google-beta",
+                owner="hashicorp",
+                push=gcp.cloudbuild.TriggerGithubPushArgs(
+                    branch="^main$",
+                ),
+            ),
+            include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
+        ```
         ### Cloudbuild Trigger Pubsub Config
 
         ```python
@@ -1463,6 +1546,7 @@ class Trigger(pulumi.CustomResource):
                  git_file_source: Optional[pulumi.Input[pulumi.InputType['TriggerGitFileSourceArgs']]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['TriggerGithubArgs']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1494,6 +1578,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["git_file_source"] = git_file_source
             __props__.__dict__["github"] = github
             __props__.__dict__["ignored_files"] = ignored_files
+            __props__.__dict__["include_build_logs"] = include_build_logs
             __props__.__dict__["included_files"] = included_files
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -1526,6 +1611,7 @@ class Trigger(pulumi.CustomResource):
             git_file_source: Optional[pulumi.Input[pulumi.InputType['TriggerGitFileSourceArgs']]] = None,
             github: Optional[pulumi.Input[pulumi.InputType['TriggerGithubArgs']]] = None,
             ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            include_build_logs: Optional[pulumi.Input[str]] = None,
             included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1569,6 +1655,10 @@ class Trigger(pulumi.CustomResource):
                If ignoredFiles is not empty, then we ignore any files that match any
                of the ignored_file globs. If the change has no files that are outside
                of the ignoredFiles globs, then we do not trigger a build.
+        :param pulumi.Input[str] include_build_logs: Build logs will be sent back to GitHub as part of the checkrun
+               result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+               INCLUDE_BUILD_LOGS_WITH_STATUS
+               Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
@@ -1626,6 +1716,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["git_file_source"] = git_file_source
         __props__.__dict__["github"] = github
         __props__.__dict__["ignored_files"] = ignored_files
+        __props__.__dict__["include_build_logs"] = include_build_logs
         __props__.__dict__["included_files"] = included_files
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -1733,6 +1824,17 @@ class Trigger(pulumi.CustomResource):
         of the ignoredFiles globs, then we do not trigger a build.
         """
         return pulumi.get(self, "ignored_files")
+
+    @property
+    @pulumi.getter(name="includeBuildLogs")
+    def include_build_logs(self) -> pulumi.Output[Optional[str]]:
+        """
+        Build logs will be sent back to GitHub as part of the checkrun
+        result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+        INCLUDE_BUILD_LOGS_WITH_STATUS
+        Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        """
+        return pulumi.get(self, "include_build_logs")
 
     @property
     @pulumi.getter(name="includedFiles")

@@ -228,6 +228,34 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// }
     /// ```
+    /// ### Cloudbuild Trigger Include Build Logs
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var include_build_logs_trigger = new Gcp.CloudBuild.Trigger("include-build-logs-trigger", new Gcp.CloudBuild.TriggerArgs
+    ///         {
+    ///             Filename = "cloudbuild.yaml",
+    ///             Github = new Gcp.CloudBuild.Inputs.TriggerGithubArgs
+    ///             {
+    ///                 Name = "terraform-provider-google-beta",
+    ///                 Owner = "hashicorp",
+    ///                 Push = new Gcp.CloudBuild.Inputs.TriggerGithubPushArgs
+    ///                 {
+    ///                     Branch = "^main$",
+    ///                 },
+    ///             },
+    ///             IncludeBuildLogs = "INCLUDE_BUILD_LOGS_WITH_STATUS",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Cloudbuild Trigger Pubsub Config
     /// 
     /// ```csharp
@@ -479,6 +507,15 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<ImmutableArray<string>> IgnoredFiles { get; private set; } = null!;
 
         /// <summary>
+        /// Build logs will be sent back to GitHub as part of the checkrun
+        /// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+        /// INCLUDE_BUILD_LOGS_WITH_STATUS
+        /// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        /// </summary>
+        [Output("includeBuildLogs")]
+        public Output<string?> IncludeBuildLogs { get; private set; } = null!;
+
+        /// <summary>
         /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
         /// extended with support for `**`.
         /// If any of the files altered in the commit pass the ignoredFiles filter
@@ -696,6 +733,15 @@ namespace Pulumi.Gcp.CloudBuild
             set => _ignoredFiles = value;
         }
 
+        /// <summary>
+        /// Build logs will be sent back to GitHub as part of the checkrun
+        /// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+        /// INCLUDE_BUILD_LOGS_WITH_STATUS
+        /// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        /// </summary>
+        [Input("includeBuildLogs")]
+        public Input<string>? IncludeBuildLogs { get; set; }
+
         [Input("includedFiles")]
         private InputList<string>? _includedFiles;
 
@@ -892,6 +938,15 @@ namespace Pulumi.Gcp.CloudBuild
             get => _ignoredFiles ?? (_ignoredFiles = new InputList<string>());
             set => _ignoredFiles = value;
         }
+
+        /// <summary>
+        /// Build logs will be sent back to GitHub as part of the checkrun
+        /// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+        /// INCLUDE_BUILD_LOGS_WITH_STATUS
+        /// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        /// </summary>
+        [Input("includeBuildLogs")]
+        public Input<string>? IncludeBuildLogs { get; set; }
 
         [Input("includedFiles")]
         private InputList<string>? _includedFiles;

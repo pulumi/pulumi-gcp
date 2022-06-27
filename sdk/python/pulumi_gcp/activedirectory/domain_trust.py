@@ -311,17 +311,6 @@ class DomainTrust(pulumi.CustomResource):
                  trust_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Adds a trust between Active Directory domains
-
-        To get more information about DomainTrust, see:
-
-        * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
-        * How-to Guides
-            * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
-
-        > **Warning:** All arguments including `trust_handshake_secret` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-
         ## Example Usage
         ### Active Directory Domain Trust Basic
 
@@ -377,17 +366,6 @@ class DomainTrust(pulumi.CustomResource):
                  args: DomainTrustArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Adds a trust between Active Directory domains
-
-        To get more information about DomainTrust, see:
-
-        * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
-        * How-to Guides
-            * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
-
-        > **Warning:** All arguments including `trust_handshake_secret` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-
         ## Example Usage
         ### Active Directory Domain Trust Basic
 

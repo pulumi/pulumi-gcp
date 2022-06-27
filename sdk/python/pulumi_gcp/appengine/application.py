@@ -401,16 +401,6 @@ class Application(pulumi.CustomResource):
                  serving_status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Allows creation and management of an App Engine application.
-
-        > App Engine applications cannot be deleted once they're created; you have to delete the
-           entire project to delete the application. This provider will report the application has been
-           successfully deleted; this is a limitation of the provider, and will go away in the future.
-           This provider is not able to delete App Engine applications.
-
-        > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-
         ## Example Usage
 
         ```python
@@ -456,16 +446,6 @@ class Application(pulumi.CustomResource):
                  args: ApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows creation and management of an App Engine application.
-
-        > App Engine applications cannot be deleted once they're created; you have to delete the
-           entire project to delete the application. This provider will report the application has been
-           successfully deleted; this is a limitation of the provider, and will go away in the future.
-           This provider is not able to delete App Engine applications.
-
-        > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-
         ## Example Usage
 
         ```python

@@ -403,6 +403,13 @@ namespace Pulumi.Gcp
             set => _dnsCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _documentAiCustomEndpoint = new __Value<string?>(() => __config.Get("documentAiCustomEndpoint"));
+        public static string? DocumentAiCustomEndpoint
+        {
+            get => _documentAiCustomEndpoint.Get();
+            set => _documentAiCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _essentialContactsCustomEndpoint = new __Value<string?>(() => __config.Get("essentialContactsCustomEndpoint"));
         public static string? EssentialContactsCustomEndpoint
         {

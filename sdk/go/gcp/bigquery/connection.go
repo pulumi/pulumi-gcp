@@ -10,17 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A connection allows BigQuery connections to external data sources..
-//
-// To get more information about Connection, see:
-//
-// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
-// * How-to Guides
-//     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
-//
-// > **Warning:** All arguments including `cloud_sql.credential.password` will be stored in the raw
-// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-//
 // ## Example Usage
 // ### Bigquery Connection Basic
 //

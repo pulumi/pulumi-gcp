@@ -188,6 +188,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> SslCertificates { get; private set; } = null!;
 
         /// <summary>
+        /// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+        /// TargetHttpsProxy resource will not have any SSL policy configured.
+        /// </summary>
+        [Output("sslPolicy")]
+        public Output<string?> SslPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the RegionUrlMap resource that defines the mapping from URL
         /// to the RegionBackendService.
         /// </summary>
@@ -287,6 +294,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+        /// TargetHttpsProxy resource will not have any SSL policy configured.
+        /// </summary>
+        [Input("sslPolicy")]
+        public Input<string>? SslPolicy { get; set; }
+
+        /// <summary>
         /// A reference to the RegionUrlMap resource that defines the mapping from URL
         /// to the RegionBackendService.
         /// </summary>
@@ -363,6 +377,13 @@ namespace Pulumi.Gcp.Compute
             get => _sslCertificates ?? (_sslCertificates = new InputList<string>());
             set => _sslCertificates = value;
         }
+
+        /// <summary>
+        /// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+        /// TargetHttpsProxy resource will not have any SSL policy configured.
+        /// </summary>
+        [Input("sslPolicy")]
+        public Input<string>? SslPolicy { get; set; }
 
         /// <summary>
         /// A reference to the RegionUrlMap resource that defines the mapping from URL

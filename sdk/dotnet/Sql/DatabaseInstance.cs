@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.Sql
         /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         /// </summary>
         [Output("encryptionKeyName")]
-        public Output<string?> EncryptionKeyName { get; private set; } = null!;
+        public Output<string> EncryptionKeyName { get; private set; } = null!;
 
         /// <summary>
         /// The first IPv4 address of any type assigned.

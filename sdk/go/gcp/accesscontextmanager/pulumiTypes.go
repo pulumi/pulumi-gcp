@@ -3754,6 +3754,10 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulu
 }
 
 type ServicePerimeterSpecEgressPolicyEgressTo struct {
+	// A list of external resources that are allowed to be accessed. A request
+	// matches if it contains an external resource in this list (Example:
+	// s3://bucket/path). Currently '*' is not allowed.
+	ExternalResources []string `pulumi:"externalResources"`
 	// A list of `ApiOperations` that this egress rule applies to. A request matches
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
@@ -3778,6 +3782,10 @@ type ServicePerimeterSpecEgressPolicyEgressToInput interface {
 }
 
 type ServicePerimeterSpecEgressPolicyEgressToArgs struct {
+	// A list of external resources that are allowed to be accessed. A request
+	// matches if it contains an external resource in this list (Example:
+	// s3://bucket/path). Currently '*' is not allowed.
+	ExternalResources pulumi.StringArrayInput `pulumi:"externalResources"`
 	// A list of `ApiOperations` that this egress rule applies to. A request matches
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
@@ -3867,6 +3875,13 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEg
 	}).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
 }
 
+// A list of external resources that are allowed to be accessed. A request
+// matches if it contains an external resource in this list (Example:
+// s3://bucket/path). Currently '*' is not allowed.
+func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ExternalResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) []string { return v.ExternalResources }).(pulumi.StringArrayOutput)
+}
+
 // A list of `ApiOperations` that this egress rule applies to. A request matches
 // if it contains an operation/service in this list.
 // Structure is documented below.
@@ -3907,6 +3922,18 @@ func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem() ServicePerimet
 		var ret ServicePerimeterSpecEgressPolicyEgressTo
 		return ret
 	}).(ServicePerimeterSpecEgressPolicyEgressToOutput)
+}
+
+// A list of external resources that are allowed to be accessed. A request
+// matches if it contains an external resource in this list (Example:
+// s3://bucket/path). Currently '*' is not allowed.
+func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ExternalResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalResources
+	}).(pulumi.StringArrayOutput)
 }
 
 // A list of `ApiOperations` that this egress rule applies to. A request matches
@@ -5862,6 +5889,10 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pu
 }
 
 type ServicePerimeterStatusEgressPolicyEgressTo struct {
+	// A list of external resources that are allowed to be accessed. A request
+	// matches if it contains an external resource in this list (Example:
+	// s3://bucket/path). Currently '*' is not allowed.
+	ExternalResources []string `pulumi:"externalResources"`
 	// A list of `ApiOperations` that this egress rule applies to. A request matches
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
@@ -5886,6 +5917,10 @@ type ServicePerimeterStatusEgressPolicyEgressToInput interface {
 }
 
 type ServicePerimeterStatusEgressPolicyEgressToArgs struct {
+	// A list of external resources that are allowed to be accessed. A request
+	// matches if it contains an external resource in this list (Example:
+	// s3://bucket/path). Currently '*' is not allowed.
+	ExternalResources pulumi.StringArrayInput `pulumi:"externalResources"`
 	// A list of `ApiOperations` that this egress rule applies to. A request matches
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
@@ -5975,6 +6010,13 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStat
 	}).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
 }
 
+// A list of external resources that are allowed to be accessed. A request
+// matches if it contains an external resource in this list (Example:
+// s3://bucket/path). Currently '*' is not allowed.
+func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ExternalResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) []string { return v.ExternalResources }).(pulumi.StringArrayOutput)
+}
+
 // A list of `ApiOperations` that this egress rule applies to. A request matches
 // if it contains an operation/service in this list.
 // Structure is documented below.
@@ -6015,6 +6057,18 @@ func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Elem() ServicePerim
 		var ret ServicePerimeterStatusEgressPolicyEgressTo
 		return ret
 	}).(ServicePerimeterStatusEgressPolicyEgressToOutput)
+}
+
+// A list of external resources that are allowed to be accessed. A request
+// matches if it contains an external resource in this list (Example:
+// s3://bucket/path). Currently '*' is not allowed.
+func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ExternalResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalResources
+	}).(pulumi.StringArrayOutput)
 }
 
 // A list of `ApiOperations` that this egress rule applies to. A request matches
@@ -8250,6 +8304,10 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Id
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo struct {
+	// A list of external resources that are allowed to be accessed. A request
+	// matches if it contains an external resource in this list (Example:
+	// s3://bucket/path). Currently '*' is not allowed.
+	ExternalResources []string `pulumi:"externalResources"`
 	// A list of `ApiOperations` that this egress rule applies to. A request matches
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
@@ -8274,6 +8332,10 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput interface {
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs struct {
+	// A list of external resources that are allowed to be accessed. A request
+	// matches if it contains an external resource in this list (Example:
+	// s3://bucket/path). Currently '*' is not allowed.
+	ExternalResources pulumi.StringArrayInput `pulumi:"externalResources"`
 	// A list of `ApiOperations` that this egress rule applies to. A request matches
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
@@ -8363,6 +8425,13 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServi
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
 }
 
+// A list of external resources that are allowed to be accessed. A request
+// matches if it contains an external resource in this list (Example:
+// s3://bucket/path). Currently '*' is not allowed.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ExternalResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string { return v.ExternalResources }).(pulumi.StringArrayOutput)
+}
+
 // A list of `ApiOperations` that this egress rule applies to. A request matches
 // if it contains an operation/service in this list.
 // Structure is documented below.
@@ -8403,6 +8472,18 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem
 		var ret ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo
 		return ret
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput)
+}
+
+// A list of external resources that are allowed to be accessed. A request
+// matches if it contains an external resource in this list (Example:
+// s3://bucket/path). Currently '*' is not allowed.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ExternalResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalResources
+	}).(pulumi.StringArrayOutput)
 }
 
 // A list of `ApiOperations` that this egress rule applies to. A request matches
@@ -10376,6 +10457,10 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo struct {
+	// A list of external resources that are allowed to be accessed. A request
+	// matches if it contains an external resource in this list (Example:
+	// s3://bucket/path). Currently '*' is not allowed.
+	ExternalResources []string `pulumi:"externalResources"`
 	// A list of `ApiOperations` that this egress rule applies to. A request matches
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
@@ -10400,6 +10485,10 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput interface 
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs struct {
+	// A list of external resources that are allowed to be accessed. A request
+	// matches if it contains an external resource in this list (Example:
+	// s3://bucket/path). Currently '*' is not allowed.
+	ExternalResources pulumi.StringArrayInput `pulumi:"externalResources"`
 	// A list of `ApiOperations` that this egress rule applies to. A request matches
 	// if it contains an operation/service in this list.
 	// Structure is documented below.
@@ -10489,6 +10578,15 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToSer
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
 }
 
+// A list of external resources that are allowed to be accessed. A request
+// matches if it contains an external resource in this list (Example:
+// s3://bucket/path). Currently '*' is not allowed.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ExternalResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string {
+		return v.ExternalResources
+	}).(pulumi.StringArrayOutput)
+}
+
 // A list of `ApiOperations` that this egress rule applies to. A request matches
 // if it contains an operation/service in this list.
 // Structure is documented below.
@@ -10529,6 +10627,18 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) El
 		var ret ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo
 		return ret
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput)
+}
+
+// A list of external resources that are allowed to be accessed. A request
+// matches if it contains an external resource in this list (Example:
+// s3://bucket/path). Currently '*' is not allowed.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) ExternalResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalResources
+	}).(pulumi.StringArrayOutput)
 }
 
 // A list of `ApiOperations` that this egress rule applies to. A request matches

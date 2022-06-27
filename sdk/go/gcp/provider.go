@@ -68,6 +68,7 @@ type Provider struct {
 	DialogflowCustomEndpoint           pulumi.StringPtrOutput `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint         pulumi.StringPtrOutput `pulumi:"dialogflowCxCustomEndpoint"`
 	DnsCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"dnsCustomEndpoint"`
+	DocumentAiCustomEndpoint           pulumi.StringPtrOutput `pulumi:"documentAiCustomEndpoint"`
 	EssentialContactsCustomEndpoint    pulumi.StringPtrOutput `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint             pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"filestoreCustomEndpoint"`
@@ -209,6 +210,7 @@ type providerArgs struct {
 	DialogflowCxCustomEndpoint         *string           `pulumi:"dialogflowCxCustomEndpoint"`
 	DisableGooglePartnerName           *bool             `pulumi:"disableGooglePartnerName"`
 	DnsCustomEndpoint                  *string           `pulumi:"dnsCustomEndpoint"`
+	DocumentAiCustomEndpoint           *string           `pulumi:"documentAiCustomEndpoint"`
 	EssentialContactsCustomEndpoint    *string           `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint             *string           `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint            *string           `pulumi:"filestoreCustomEndpoint"`
@@ -330,6 +332,7 @@ type ProviderArgs struct {
 	DialogflowCxCustomEndpoint         pulumi.StringPtrInput
 	DisableGooglePartnerName           pulumi.BoolPtrInput
 	DnsCustomEndpoint                  pulumi.StringPtrInput
+	DocumentAiCustomEndpoint           pulumi.StringPtrInput
 	EssentialContactsCustomEndpoint    pulumi.StringPtrInput
 	EventarcCustomEndpoint             pulumi.StringPtrInput
 	FilestoreCustomEndpoint            pulumi.StringPtrInput
@@ -635,6 +638,10 @@ func (o ProviderOutput) DialogflowCxCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) DnsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DnsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) DocumentAiCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DocumentAiCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) EssentialContactsCustomEndpoint() pulumi.StringPtrOutput {

@@ -19684,6 +19684,177 @@ func (o ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput) DatasetId(
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterTpuConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled              bool    `pulumi:"enabled"`
+	Ipv4CidrBlock        *string `pulumi:"ipv4CidrBlock"`
+	UseServiceNetworking *bool   `pulumi:"useServiceNetworking"`
+}
+
+// ClusterTpuConfigInput is an input type that accepts ClusterTpuConfigArgs and ClusterTpuConfigOutput values.
+// You can construct a concrete instance of `ClusterTpuConfigInput` via:
+//
+//          ClusterTpuConfigArgs{...}
+type ClusterTpuConfigInput interface {
+	pulumi.Input
+
+	ToClusterTpuConfigOutput() ClusterTpuConfigOutput
+	ToClusterTpuConfigOutputWithContext(context.Context) ClusterTpuConfigOutput
+}
+
+type ClusterTpuConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled              pulumi.BoolInput      `pulumi:"enabled"`
+	Ipv4CidrBlock        pulumi.StringPtrInput `pulumi:"ipv4CidrBlock"`
+	UseServiceNetworking pulumi.BoolPtrInput   `pulumi:"useServiceNetworking"`
+}
+
+func (ClusterTpuConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTpuConfig)(nil)).Elem()
+}
+
+func (i ClusterTpuConfigArgs) ToClusterTpuConfigOutput() ClusterTpuConfigOutput {
+	return i.ToClusterTpuConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterTpuConfigArgs) ToClusterTpuConfigOutputWithContext(ctx context.Context) ClusterTpuConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTpuConfigOutput)
+}
+
+func (i ClusterTpuConfigArgs) ToClusterTpuConfigPtrOutput() ClusterTpuConfigPtrOutput {
+	return i.ToClusterTpuConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTpuConfigArgs) ToClusterTpuConfigPtrOutputWithContext(ctx context.Context) ClusterTpuConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTpuConfigOutput).ToClusterTpuConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterTpuConfigPtrInput is an input type that accepts ClusterTpuConfigArgs, ClusterTpuConfigPtr and ClusterTpuConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterTpuConfigPtrInput` via:
+//
+//          ClusterTpuConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterTpuConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterTpuConfigPtrOutput() ClusterTpuConfigPtrOutput
+	ToClusterTpuConfigPtrOutputWithContext(context.Context) ClusterTpuConfigPtrOutput
+}
+
+type clusterTpuConfigPtrType ClusterTpuConfigArgs
+
+func ClusterTpuConfigPtr(v *ClusterTpuConfigArgs) ClusterTpuConfigPtrInput {
+	return (*clusterTpuConfigPtrType)(v)
+}
+
+func (*clusterTpuConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTpuConfig)(nil)).Elem()
+}
+
+func (i *clusterTpuConfigPtrType) ToClusterTpuConfigPtrOutput() ClusterTpuConfigPtrOutput {
+	return i.ToClusterTpuConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTpuConfigPtrType) ToClusterTpuConfigPtrOutputWithContext(ctx context.Context) ClusterTpuConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTpuConfigPtrOutput)
+}
+
+type ClusterTpuConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterTpuConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTpuConfig)(nil)).Elem()
+}
+
+func (o ClusterTpuConfigOutput) ToClusterTpuConfigOutput() ClusterTpuConfigOutput {
+	return o
+}
+
+func (o ClusterTpuConfigOutput) ToClusterTpuConfigOutputWithContext(ctx context.Context) ClusterTpuConfigOutput {
+	return o
+}
+
+func (o ClusterTpuConfigOutput) ToClusterTpuConfigPtrOutput() ClusterTpuConfigPtrOutput {
+	return o.ToClusterTpuConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTpuConfigOutput) ToClusterTpuConfigPtrOutputWithContext(ctx context.Context) ClusterTpuConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterTpuConfig) *ClusterTpuConfig {
+		return &v
+	}).(ClusterTpuConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterTpuConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterTpuConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o ClusterTpuConfigOutput) Ipv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTpuConfig) *string { return v.Ipv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTpuConfigOutput) UseServiceNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterTpuConfig) *bool { return v.UseServiceNetworking }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterTpuConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTpuConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTpuConfig)(nil)).Elem()
+}
+
+func (o ClusterTpuConfigPtrOutput) ToClusterTpuConfigPtrOutput() ClusterTpuConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTpuConfigPtrOutput) ToClusterTpuConfigPtrOutputWithContext(ctx context.Context) ClusterTpuConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTpuConfigPtrOutput) Elem() ClusterTpuConfigOutput {
+	return o.ApplyT(func(v *ClusterTpuConfig) ClusterTpuConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterTpuConfig
+		return ret
+	}).(ClusterTpuConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterTpuConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTpuConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTpuConfigPtrOutput) Ipv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTpuConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterTpuConfigPtrOutput) UseServiceNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTpuConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseServiceNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterVerticalPodAutoscaling struct {
 	// Enable the PodSecurityPolicy controller for this cluster.
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -30186,6 +30357,112 @@ func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) Index
 	}).(GetClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
+type GetClusterTpuConfig struct {
+	Enabled              bool   `pulumi:"enabled"`
+	Ipv4CidrBlock        string `pulumi:"ipv4CidrBlock"`
+	UseServiceNetworking bool   `pulumi:"useServiceNetworking"`
+}
+
+// GetClusterTpuConfigInput is an input type that accepts GetClusterTpuConfigArgs and GetClusterTpuConfigOutput values.
+// You can construct a concrete instance of `GetClusterTpuConfigInput` via:
+//
+//          GetClusterTpuConfigArgs{...}
+type GetClusterTpuConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterTpuConfigOutput() GetClusterTpuConfigOutput
+	ToGetClusterTpuConfigOutputWithContext(context.Context) GetClusterTpuConfigOutput
+}
+
+type GetClusterTpuConfigArgs struct {
+	Enabled              pulumi.BoolInput   `pulumi:"enabled"`
+	Ipv4CidrBlock        pulumi.StringInput `pulumi:"ipv4CidrBlock"`
+	UseServiceNetworking pulumi.BoolInput   `pulumi:"useServiceNetworking"`
+}
+
+func (GetClusterTpuConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTpuConfig)(nil)).Elem()
+}
+
+func (i GetClusterTpuConfigArgs) ToGetClusterTpuConfigOutput() GetClusterTpuConfigOutput {
+	return i.ToGetClusterTpuConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterTpuConfigArgs) ToGetClusterTpuConfigOutputWithContext(ctx context.Context) GetClusterTpuConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTpuConfigOutput)
+}
+
+// GetClusterTpuConfigArrayInput is an input type that accepts GetClusterTpuConfigArray and GetClusterTpuConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterTpuConfigArrayInput` via:
+//
+//          GetClusterTpuConfigArray{ GetClusterTpuConfigArgs{...} }
+type GetClusterTpuConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterTpuConfigArrayOutput() GetClusterTpuConfigArrayOutput
+	ToGetClusterTpuConfigArrayOutputWithContext(context.Context) GetClusterTpuConfigArrayOutput
+}
+
+type GetClusterTpuConfigArray []GetClusterTpuConfigInput
+
+func (GetClusterTpuConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterTpuConfig)(nil)).Elem()
+}
+
+func (i GetClusterTpuConfigArray) ToGetClusterTpuConfigArrayOutput() GetClusterTpuConfigArrayOutput {
+	return i.ToGetClusterTpuConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterTpuConfigArray) ToGetClusterTpuConfigArrayOutputWithContext(ctx context.Context) GetClusterTpuConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTpuConfigArrayOutput)
+}
+
+type GetClusterTpuConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTpuConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTpuConfig)(nil)).Elem()
+}
+
+func (o GetClusterTpuConfigOutput) ToGetClusterTpuConfigOutput() GetClusterTpuConfigOutput {
+	return o
+}
+
+func (o GetClusterTpuConfigOutput) ToGetClusterTpuConfigOutputWithContext(ctx context.Context) GetClusterTpuConfigOutput {
+	return o
+}
+
+func (o GetClusterTpuConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterTpuConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterTpuConfigOutput) Ipv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTpuConfig) string { return v.Ipv4CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o GetClusterTpuConfigOutput) UseServiceNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterTpuConfig) bool { return v.UseServiceNetworking }).(pulumi.BoolOutput)
+}
+
+type GetClusterTpuConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTpuConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterTpuConfig)(nil)).Elem()
+}
+
+func (o GetClusterTpuConfigArrayOutput) ToGetClusterTpuConfigArrayOutput() GetClusterTpuConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterTpuConfigArrayOutput) ToGetClusterTpuConfigArrayOutputWithContext(ctx context.Context) GetClusterTpuConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterTpuConfigArrayOutput) Index(i pulumi.IntInput) GetClusterTpuConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterTpuConfig {
+		return vs[0].([]GetClusterTpuConfig)[vs[1].(int)]
+	}).(GetClusterTpuConfigOutput)
+}
+
 type GetClusterVerticalPodAutoscaling struct {
 	Enabled bool `pulumi:"enabled"`
 }
@@ -30609,6 +30886,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTpuConfigInput)(nil)).Elem(), ClusterTpuConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTpuConfigPtrInput)(nil)).Elem(), ClusterTpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVerticalPodAutoscalingInput)(nil)).Elem(), ClusterVerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVerticalPodAutoscalingPtrInput)(nil)).Elem(), ClusterVerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadIdentityConfigInput)(nil)).Elem(), ClusterWorkloadIdentityConfigArgs{})
@@ -30789,6 +31068,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigInput)(nil)).Elem(), GetClusterTpuConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigArrayInput)(nil)).Elem(), GetClusterTpuConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
@@ -31027,6 +31308,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTpuConfigOutput{})
+	pulumi.RegisterOutputType(ClusterTpuConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterVerticalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterVerticalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadIdentityConfigOutput{})
@@ -31207,6 +31490,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterTpuConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterTpuConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterWorkloadIdentityConfigOutput{})

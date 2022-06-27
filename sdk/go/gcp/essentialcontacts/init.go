@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:essentialcontacts/contact:Contact":
 		r = &Contact{}
+	case "gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor":
+		r = &DocumentAiProcessor{}
+	case "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion":
+		r = &DocumentAiProcessorDefaultVersion{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +43,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"essentialcontacts/contact",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"essentialcontacts/documentAiProcessor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"essentialcontacts/documentAiProcessorDefaultVersion",
 		&module{version},
 	)
 }

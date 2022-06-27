@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:cloudfunctionsv2/function:Function":
 		r = &Function{}
+	case "gcp:cloudfunctionsv2/functionIamBinding:FunctionIamBinding":
+		r = &FunctionIamBinding{}
+	case "gcp:cloudfunctionsv2/functionIamMember:FunctionIamMember":
+		r = &FunctionIamMember{}
+	case "gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy":
+		r = &FunctionIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +45,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"cloudfunctionsv2/function",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudfunctionsv2/functionIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudfunctionsv2/functionIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudfunctionsv2/functionIamPolicy",
 		&module{version},
 	)
 }

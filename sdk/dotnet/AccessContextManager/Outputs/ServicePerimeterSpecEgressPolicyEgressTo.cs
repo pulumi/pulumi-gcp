@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class ServicePerimeterSpecEgressPolicyEgressTo
     {
         /// <summary>
+        /// A list of external resources that are allowed to be accessed. A request
+        /// matches if it contains an external resource in this list (Example:
+        /// s3://bucket/path). Currently '*' is not allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> ExternalResources;
+        /// <summary>
         /// A list of `ApiOperations` that this egress rule applies to. A request matches
         /// if it contains an operation/service in this list.
         /// Structure is documented below.
@@ -30,10 +36,13 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
 
         [OutputConstructor]
         private ServicePerimeterSpecEgressPolicyEgressTo(
+            ImmutableArray<string> externalResources,
+
             ImmutableArray<Outputs.ServicePerimeterSpecEgressPolicyEgressToOperation> operations,
 
             ImmutableArray<string> resources)
         {
+            ExternalResources = externalResources;
             Operations = operations;
             Resources = resources;
         }

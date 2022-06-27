@@ -18,8 +18,7 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
  *
- * > **Warning:** All arguments including `plaintext` and `additionalAuthenticatedData` will be stored in the raw
- * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+ * > **Warning:** All arguments including `plaintext` and `additionalAuthenticatedData` will be stored in the raw state as plain-text.
  *
  * ## Example Usage
  * ### Kms Secret Ciphertext Basic

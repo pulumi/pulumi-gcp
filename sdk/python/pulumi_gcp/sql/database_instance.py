@@ -1081,7 +1081,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptionKeyName")
-    def encryption_key_name(self) -> pulumi.Output[Optional[str]]:
+    def encryption_key_name(self) -> pulumi.Output[str]:
         """
         The full path to the encryption key used for the CMEK disk encryption.  Setting
         up disk encryption currently requires manual steps outside of this provider.

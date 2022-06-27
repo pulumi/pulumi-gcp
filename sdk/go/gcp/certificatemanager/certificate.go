@@ -10,13 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Certificate represents a HTTP-reachable backend for an Certificate.
-//
-// > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
-//
-// > **Warning:** All arguments including `self_managed.certificate_pem` and `self_managed.private_key_pem` will be stored in the raw
-// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
-//
 // ## Example Usage
 // ### Certificate Manager Certificate Basic
 //

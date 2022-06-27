@@ -167,6 +167,9 @@ func GetDisableGooglePartnerName(ctx *pulumi.Context) bool {
 func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsCustomEndpoint")
 }
+func GetDocumentAiCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:documentAiCustomEndpoint")
+}
 func GetEssentialContactsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:essentialContactsCustomEndpoint")
 }

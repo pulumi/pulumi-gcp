@@ -144,6 +144,24 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Cloudbuild Trigger Include Build Logs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const include_build_logs_trigger = new gcp.cloudbuild.Trigger("include-build-logs-trigger", {
+ *     filename: "cloudbuild.yaml",
+ *     github: {
+ *         name: "terraform-provider-google-beta",
+ *         owner: "hashicorp",
+ *         push: {
+ *             branch: "^main$",
+ *         },
+ *     },
+ *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
+ * });
+ * ```
  * ### Cloudbuild Trigger Pubsub Config
  *
  * ```typescript
@@ -349,6 +367,13 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly ignoredFiles!: pulumi.Output<string[] | undefined>;
     /**
+     * Build logs will be sent back to GitHub as part of the checkrun
+     * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+     * INCLUDE_BUILD_LOGS_WITH_STATUS
+     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     */
+    public readonly includeBuildLogs!: pulumi.Output<string | undefined>;
+    /**
      * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
      * extended with support for `**`.
      * If any of the files altered in the commit pass the ignoredFiles filter
@@ -447,6 +472,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["gitFileSource"] = state ? state.gitFileSource : undefined;
             resourceInputs["github"] = state ? state.github : undefined;
             resourceInputs["ignoredFiles"] = state ? state.ignoredFiles : undefined;
+            resourceInputs["includeBuildLogs"] = state ? state.includeBuildLogs : undefined;
             resourceInputs["includedFiles"] = state ? state.includedFiles : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -469,6 +495,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["gitFileSource"] = args ? args.gitFileSource : undefined;
             resourceInputs["github"] = args ? args.github : undefined;
             resourceInputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
+            resourceInputs["includeBuildLogs"] = args ? args.includeBuildLogs : undefined;
             resourceInputs["includedFiles"] = args ? args.includedFiles : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -546,6 +573,13 @@ export interface TriggerState {
      * of the ignoredFiles globs, then we do not trigger a build.
      */
     ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Build logs will be sent back to GitHub as part of the checkrun
+     * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+     * INCLUDE_BUILD_LOGS_WITH_STATUS
+     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     */
+    includeBuildLogs?: pulumi.Input<string>;
     /**
      * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
      * extended with support for `**`.
@@ -678,6 +712,13 @@ export interface TriggerArgs {
      * of the ignoredFiles globs, then we do not trigger a build.
      */
     ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Build logs will be sent back to GitHub as part of the checkrun
+     * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
+     * INCLUDE_BUILD_LOGS_WITH_STATUS
+     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     */
+    includeBuildLogs?: pulumi.Input<string>;
     /**
      * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
      * extended with support for `**`.

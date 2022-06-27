@@ -5,17 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Adds a trust between Active Directory domains
- *
- * To get more information about DomainTrust, see:
- *
- * * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
- * * How-to Guides
- *     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
- *
- * > **Warning:** All arguments including `trustHandshakeSecret` will be stored in the raw
- * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data.html).
- *
  * ## Example Usage
  * ### Active Directory Domain Trust Basic
  *

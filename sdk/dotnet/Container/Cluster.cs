@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.Container
         /// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         /// </summary>
         [Output("enableTpu")]
-        public Output<bool?> EnableTpu { get; private set; } = null!;
+        public Output<bool> EnableTpu { get; private set; } = null!;
 
         /// <summary>
         /// The IP address of this cluster's Kubernetes master.
@@ -557,6 +557,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// TPU configuration for the cluster.
+        /// </summary>
+        [Output("tpuConfig")]
+        public Output<Outputs.ClusterTpuConfig> TpuConfig { get; private set; } = null!;
 
         /// <summary>
         /// The IP address range of the Cloud TPUs in this cluster, in
@@ -1056,6 +1062,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
+        /// TPU configuration for the cluster.
+        /// </summary>
+        [Input("tpuConfig")]
+        public Input<Inputs.ClusterTpuConfigArgs>? TpuConfig { get; set; }
+
+        /// <summary>
         /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         /// Structure is documented below.
         /// </summary>
@@ -1542,6 +1554,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
+
+        /// <summary>
+        /// TPU configuration for the cluster.
+        /// </summary>
+        [Input("tpuConfig")]
+        public Input<Inputs.ClusterTpuConfigGetArgs>? TpuConfig { get; set; }
 
         /// <summary>
         /// The IP address range of the Cloud TPUs in this cluster, in

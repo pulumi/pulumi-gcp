@@ -65,6 +65,7 @@ class ClusterArgs:
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
@@ -229,6 +230,7 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
+        :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -335,6 +337,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+        if tpu_config is not None:
+            pulumi.set(__self__, "tpu_config", tpu_config)
         if vertical_pod_autoscaling is not None:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
         if workload_identity_config is not None:
@@ -1051,6 +1055,18 @@ class ClusterArgs:
         pulumi.set(self, "subnetwork", value)
 
     @property
+    @pulumi.getter(name="tpuConfig")
+    def tpu_config(self) -> Optional[pulumi.Input['ClusterTpuConfigArgs']]:
+        """
+        TPU configuration for the cluster.
+        """
+        return pulumi.get(self, "tpu_config")
+
+    @tpu_config.setter
+    def tpu_config(self, value: Optional[pulumi.Input['ClusterTpuConfigArgs']]):
+        pulumi.set(self, "tpu_config", value)
+
+    @property
     @pulumi.getter(name="verticalPodAutoscaling")
     def vertical_pod_autoscaling(self) -> Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']]:
         """
@@ -1137,6 +1153,7 @@ class _ClusterState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
@@ -1312,6 +1329,7 @@ class _ClusterState:
                `/16` from the container CIDR.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
+        :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
         :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
@@ -1433,6 +1451,8 @@ class _ClusterState:
             pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+        if tpu_config is not None:
+            pulumi.set(__self__, "tpu_config", tpu_config)
         if tpu_ipv4_cidr_block is not None:
             pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         if vertical_pod_autoscaling is not None:
@@ -2225,6 +2245,18 @@ class _ClusterState:
         pulumi.set(self, "subnetwork", value)
 
     @property
+    @pulumi.getter(name="tpuConfig")
+    def tpu_config(self) -> Optional[pulumi.Input['ClusterTpuConfigArgs']]:
+        """
+        TPU configuration for the cluster.
+        """
+        return pulumi.get(self, "tpu_config")
+
+    @tpu_config.setter
+    def tpu_config(self, value: Optional[pulumi.Input['ClusterTpuConfigArgs']]):
+        pulumi.set(self, "tpu_config", value)
+
+    @property
     @pulumi.getter(name="tpuIpv4CidrBlock")
     def tpu_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2321,6 +2353,7 @@ class Cluster(pulumi.CustomResource):
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']]] = None,
                  __props__=None):
@@ -2556,6 +2589,7 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
+        :param pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']] tpu_config: TPU configuration for the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -2703,6 +2737,7 @@ class Cluster(pulumi.CustomResource):
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']]] = None,
                  __props__=None):
@@ -2767,6 +2802,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
             __props__.__dict__["subnetwork"] = subnetwork
+            __props__.__dict__["tpu_config"] = tpu_config
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
             __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["endpoint"] = None
@@ -2842,6 +2878,7 @@ class Cluster(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
+            tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
             tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
             vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
             workload_identity_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']]] = None) -> 'Cluster':
@@ -3022,6 +3059,7 @@ class Cluster(pulumi.CustomResource):
                `/16` from the container CIDR.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
+        :param pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']] tpu_config: TPU configuration for the cluster.
         :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
@@ -3091,6 +3129,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["services_ipv4_cidr"] = services_ipv4_cidr
         __props__.__dict__["subnetwork"] = subnetwork
+        __props__.__dict__["tpu_config"] = tpu_config
         __props__.__dict__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
         __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
         __props__.__dict__["workload_identity_config"] = workload_identity_config
@@ -3274,7 +3313,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableTpu")
-    def enable_tpu(self) -> pulumi.Output[Optional[bool]]:
+    def enable_tpu(self) -> pulumi.Output[bool]:
         """
         Whether to enable Cloud TPU resources in this cluster.
         See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -3655,6 +3694,14 @@ class Cluster(pulumi.CustomResource):
         subnetwork in which the cluster's instances are launched.
         """
         return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="tpuConfig")
+    def tpu_config(self) -> pulumi.Output['outputs.ClusterTpuConfig']:
+        """
+        TPU configuration for the cluster.
+        """
+        return pulumi.get(self, "tpu_config")
 
     @property
     @pulumi.getter(name="tpuIpv4CidrBlock")
