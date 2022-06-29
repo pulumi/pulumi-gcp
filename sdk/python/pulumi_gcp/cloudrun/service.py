@@ -378,6 +378,49 @@ class Service(pulumi.CustomResource):
         Have a look at the Cloud Run Anthos example below.
 
         ## Example Usage
+        ### Cloud Run Service Pubsub
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )])
+        sa = gcp.service_account.Account("sa",
+            account_id="cloud-run-pubsub-invoker",
+            display_name="Cloud Run Pub/Sub Invoker")
+        binding = gcp.cloudrun.IamBinding("binding",
+            location=default.location,
+            service=default.name,
+            role="roles/run.invoker",
+            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        project = gcp.projects.IAMBinding("project",
+            role="roles/iam.serviceAccountTokenCreator",
+            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        topic = gcp.pubsub.Topic("topic")
+        subscription = gcp.pubsub.Subscription("subscription",
+            topic=topic.name,
+            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+                push_endpoint=default.statuses[0].url,
+                oidc_token=gcp.pubsub.SubscriptionPushConfigOidcTokenArgs(
+                    service_account_email=sa.email,
+                ),
+                attributes={
+                    "x-goog-version": "v1",
+                },
+            ))
+        ```
         ### Cloud Run Service Basic
 
         ```python
@@ -792,6 +835,49 @@ class Service(pulumi.CustomResource):
         Have a look at the Cloud Run Anthos example below.
 
         ## Example Usage
+        ### Cloud Run Service Pubsub
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )])
+        sa = gcp.service_account.Account("sa",
+            account_id="cloud-run-pubsub-invoker",
+            display_name="Cloud Run Pub/Sub Invoker")
+        binding = gcp.cloudrun.IamBinding("binding",
+            location=default.location,
+            service=default.name,
+            role="roles/run.invoker",
+            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        project = gcp.projects.IAMBinding("project",
+            role="roles/iam.serviceAccountTokenCreator",
+            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        topic = gcp.pubsub.Topic("topic")
+        subscription = gcp.pubsub.Subscription("subscription",
+            topic=topic.name,
+            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+                push_endpoint=default.statuses[0].url,
+                oidc_token=gcp.pubsub.SubscriptionPushConfigOidcTokenArgs(
+                    service_account_email=sa.email,
+                ),
+                attributes={
+                    "x-goog-version": "v1",
+                },
+            ))
+        ```
         ### Cloud Run Service Basic
 
         ```python

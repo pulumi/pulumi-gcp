@@ -21,7 +21,7 @@ class GetForwardingRuleResult:
     """
     A collection of values returned by getForwardingRule.
     """
-    def __init__(__self__, all_ports=None, allow_global_access=None, backend_service=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, backend_service=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -76,6 +76,12 @@ class GetForwardingRuleResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if psc_connection_id and not isinstance(psc_connection_id, str):
+            raise TypeError("Expected argument 'psc_connection_id' to be a str")
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if psc_connection_status and not isinstance(psc_connection_status, str):
+            raise TypeError("Expected argument 'psc_connection_status' to be a str")
+        pulumi.set(__self__, "psc_connection_status", psc_connection_status)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -192,6 +198,16 @@ class GetForwardingRuleResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> str:
+        return pulumi.get(self, "psc_connection_status")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -251,6 +267,8 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             port_range=self.port_range,
             ports=self.ports,
             project=self.project,
+            psc_connection_id=self.psc_connection_id,
+            psc_connection_status=self.psc_connection_status,
             region=self.region,
             self_link=self.self_link,
             service_directory_registrations=self.service_directory_registrations,
@@ -312,6 +330,8 @@ def get_forwarding_rule(name: Optional[str] = None,
         port_range=__ret__.port_range,
         ports=__ret__.ports,
         project=__ret__.project,
+        psc_connection_id=__ret__.psc_connection_id,
+        psc_connection_status=__ret__.psc_connection_status,
         region=__ret__.region,
         self_link=__ret__.self_link,
         service_directory_registrations=__ret__.service_directory_registrations,

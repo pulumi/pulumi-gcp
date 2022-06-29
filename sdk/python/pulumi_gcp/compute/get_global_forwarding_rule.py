@@ -21,7 +21,7 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, port_range=None, project=None, self_link=None, target=None):
+    def __init__(__self__, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, self_link=None, target=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -61,6 +61,12 @@ class GetGlobalForwardingRuleResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if psc_connection_id and not isinstance(psc_connection_id, str):
+            raise TypeError("Expected argument 'psc_connection_id' to be a str")
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if psc_connection_status and not isinstance(psc_connection_status, str):
+            raise TypeError("Expected argument 'psc_connection_status' to be a str")
+        pulumi.set(__self__, "psc_connection_status", psc_connection_status)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -137,6 +143,16 @@ class GetGlobalForwardingRuleResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> str:
+        return pulumi.get(self, "psc_connection_status")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -166,6 +182,8 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             network=self.network,
             port_range=self.port_range,
             project=self.project,
+            psc_connection_id=self.psc_connection_id,
+            psc_connection_status=self.psc_connection_status,
             self_link=self.self_link,
             target=self.target)
 
@@ -213,6 +231,8 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         network=__ret__.network,
         port_range=__ret__.port_range,
         project=__ret__.project,
+        psc_connection_id=__ret__.psc_connection_id,
+        psc_connection_status=__ret__.psc_connection_status,
         self_link=__ret__.self_link,
         target=__ret__.target)
 

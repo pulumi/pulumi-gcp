@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *     onlineServingConfig: {
  *         fixedNodeCount: 2,
  *     },
+ *     forceDestroy: true,
  * }, {
  *     provider: google_beta,
  * });

@@ -35,6 +35,87 @@ namespace Pulumi.Gcp.CloudRun
     /// Have a look at the Cloud Run Anthos example below.
     /// 
     /// ## Example Usage
+    /// ### Cloud Run Service Pubsub
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     LatestRevision = true,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var sa = new Gcp.ServiceAccount.Account("sa", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "cloud-run-pubsub-invoker",
+    ///             DisplayName = "Cloud Run Pub/Sub Invoker",
+    ///         });
+    ///         var binding = new Gcp.CloudRun.IamBinding("binding", new Gcp.CloudRun.IamBindingArgs
+    ///         {
+    ///             Location = @default.Location,
+    ///             Service = @default.Name,
+    ///             Role = "roles/run.invoker",
+    ///             Members = 
+    ///             {
+    ///                 sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///             },
+    ///         });
+    ///         var project = new Gcp.Projects.IAMBinding("project", new Gcp.Projects.IAMBindingArgs
+    ///         {
+    ///             Role = "roles/iam.serviceAccountTokenCreator",
+    ///             Members = 
+    ///             {
+    ///                 sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///             },
+    ///         });
+    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var subscription = new Gcp.PubSub.Subscription("subscription", new Gcp.PubSub.SubscriptionArgs
+    ///         {
+    ///             Topic = topic.Name,
+    ///             PushConfig = new Gcp.PubSub.Inputs.SubscriptionPushConfigArgs
+    ///             {
+    ///                 PushEndpoint = @default.Statuses.Apply(statuses =&gt; statuses[0].Url),
+    ///                 OidcToken = new Gcp.PubSub.Inputs.SubscriptionPushConfigOidcTokenArgs
+    ///                 {
+    ///                     ServiceAccountEmail = sa.Email,
+    ///                 },
+    ///                 Attributes = 
+    ///                 {
+    ///                     { "x-goog-version", "v1" },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Cloud Run Service Basic
     /// 
     /// ```csharp

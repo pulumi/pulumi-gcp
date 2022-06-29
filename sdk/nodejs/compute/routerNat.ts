@@ -133,11 +133,13 @@ export class RouterNat extends pulumi.CustomResource {
     public readonly drainNatIps!: pulumi.Output<string[] | undefined>;
     /**
      * Enable Dynamic Port Allocation.
-     * If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+     * If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
      * If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+     * If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
+     * If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
      * Mutually exclusive with enableEndpointIndependentMapping.
      */
-    public readonly enableDynamicPortAllocation!: pulumi.Output<boolean | undefined>;
+    public readonly enableDynamicPortAllocation!: pulumi.Output<boolean>;
     /**
      * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
      * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
@@ -152,6 +154,11 @@ export class RouterNat extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.RouterNatLogConfig | undefined>;
+    /**
+     * Maximum number of ports allocated to a VM from this NAT.
+     * This field can only be set when enableDynamicPortAllocation is enabled.
+     */
+    public readonly maxPortsPerVm!: pulumi.Output<number | undefined>;
     /**
      * Minimum number of ports allocated to a VM from this NAT.
      */
@@ -238,6 +245,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
             resourceInputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
+            resourceInputs["maxPortsPerVm"] = state ? state.maxPortsPerVm : undefined;
             resourceInputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["natIpAllocateOption"] = state ? state.natIpAllocateOption : undefined;
@@ -266,6 +274,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
             resourceInputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["maxPortsPerVm"] = args ? args.maxPortsPerVm : undefined;
             resourceInputs["minPortsPerVm"] = args ? args.minPortsPerVm : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["natIpAllocateOption"] = args ? args.natIpAllocateOption : undefined;
@@ -295,8 +304,10 @@ export interface RouterNatState {
     drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enable Dynamic Port Allocation.
-     * If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+     * If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
      * If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+     * If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
+     * If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
      * Mutually exclusive with enableEndpointIndependentMapping.
      */
     enableDynamicPortAllocation?: pulumi.Input<boolean>;
@@ -314,6 +325,11 @@ export interface RouterNatState {
      * Structure is documented below.
      */
     logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig>;
+    /**
+     * Maximum number of ports allocated to a VM from this NAT.
+     * This field can only be set when enableDynamicPortAllocation is enabled.
+     */
+    maxPortsPerVm?: pulumi.Input<number>;
     /**
      * Minimum number of ports allocated to a VM from this NAT.
      */
@@ -394,8 +410,10 @@ export interface RouterNatArgs {
     drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enable Dynamic Port Allocation.
-     * If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+     * If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
      * If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+     * If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
+     * If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
      * Mutually exclusive with enableEndpointIndependentMapping.
      */
     enableDynamicPortAllocation?: pulumi.Input<boolean>;
@@ -413,6 +431,11 @@ export interface RouterNatArgs {
      * Structure is documented below.
      */
     logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig>;
+    /**
+     * Maximum number of ports allocated to a VM from this NAT.
+     * This field can only be set when enableDynamicPortAllocation is enabled.
+     */
+    maxPortsPerVm?: pulumi.Input<number>;
     /**
      * Minimum number of ports allocated to a VM from this NAT.
      */

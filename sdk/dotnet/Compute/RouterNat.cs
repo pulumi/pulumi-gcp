@@ -154,12 +154,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable Dynamic Port Allocation.
-        /// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        /// If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
         /// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        /// If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
+        /// If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
         /// Mutually exclusive with enableEndpointIndependentMapping.
         /// </summary>
         [Output("enableDynamicPortAllocation")]
-        public Output<bool?> EnableDynamicPortAllocation { get; private set; } = null!;
+        public Output<bool> EnableDynamicPortAllocation { get; private set; } = null!;
 
         /// <summary>
         /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
@@ -180,6 +182,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.RouterNatLogConfig?> LogConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of ports allocated to a VM from this NAT.
+        /// This field can only be set when enableDynamicPortAllocation is enabled.
+        /// </summary>
+        [Output("maxPortsPerVm")]
+        public Output<int?> MaxPortsPerVm { get; private set; } = null!;
 
         /// <summary>
         /// Minimum number of ports allocated to a VM from this NAT.
@@ -333,8 +342,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable Dynamic Port Allocation.
-        /// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        /// If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
         /// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        /// If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
+        /// If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
         /// Mutually exclusive with enableEndpointIndependentMapping.
         /// </summary>
         [Input("enableDynamicPortAllocation")]
@@ -359,6 +370,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RouterNatLogConfigArgs>? LogConfig { get; set; }
+
+        /// <summary>
+        /// Maximum number of ports allocated to a VM from this NAT.
+        /// This field can only be set when enableDynamicPortAllocation is enabled.
+        /// </summary>
+        [Input("maxPortsPerVm")]
+        public Input<int>? MaxPortsPerVm { get; set; }
 
         /// <summary>
         /// Minimum number of ports allocated to a VM from this NAT.
@@ -485,8 +503,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable Dynamic Port Allocation.
-        /// If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
+        /// If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
         /// If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+        /// If maxPortsPerVm is set, maxPortsPerVm must be set to a power of two greater than minPortsPerVm.
+        /// If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
         /// Mutually exclusive with enableEndpointIndependentMapping.
         /// </summary>
         [Input("enableDynamicPortAllocation")]
@@ -511,6 +531,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RouterNatLogConfigGetArgs>? LogConfig { get; set; }
+
+        /// <summary>
+        /// Maximum number of ports allocated to a VM from this NAT.
+        /// This field can only be set when enableDynamicPortAllocation is enabled.
+        /// </summary>
+        [Input("maxPortsPerVm")]
+        public Input<int>? MaxPortsPerVm { get; set; }
 
         /// <summary>
         /// Minimum number of ports allocated to a VM from this NAT.

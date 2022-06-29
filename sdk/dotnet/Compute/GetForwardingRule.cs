@@ -150,6 +150,8 @@ namespace Pulumi.Gcp.Compute
         public readonly string PortRange;
         public readonly ImmutableArray<string> Ports;
         public readonly string? Project;
+        public readonly string PscConnectionId;
+        public readonly string PscConnectionStatus;
         public readonly string? Region;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetForwardingRuleServiceDirectoryRegistrationResult> ServiceDirectoryRegistrations;
@@ -196,6 +198,10 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            string pscConnectionId,
+
+            string pscConnectionStatus,
+
             string? region,
 
             string selfLink,
@@ -228,6 +234,8 @@ namespace Pulumi.Gcp.Compute
             PortRange = portRange;
             Ports = ports;
             Project = project;
+            PscConnectionId = pscConnectionId;
+            PscConnectionStatus = pscConnectionStatus;
             Region = region;
             SelfLink = selfLink;
             ServiceDirectoryRegistrations = serviceDirectoryRegistrations;

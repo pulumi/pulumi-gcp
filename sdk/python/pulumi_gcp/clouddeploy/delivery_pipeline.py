@@ -21,7 +21,8 @@ class DeliveryPipelineArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None):
+                 serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DeliveryPipeline resource.
         :param pulumi.Input[str] location: The location for the resource
@@ -31,6 +32,7 @@ class DeliveryPipelineArgs:
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         """
         pulumi.set(__self__, "location", location)
         if annotations is not None:
@@ -45,6 +47,8 @@ class DeliveryPipelineArgs:
             pulumi.set(__self__, "project", project)
         if serial_pipeline is not None:
             pulumi.set(__self__, "serial_pipeline", serial_pipeline)
+        if suspended is not None:
+            pulumi.set(__self__, "suspended", suspended)
 
     @property
     @pulumi.getter
@@ -130,6 +134,18 @@ class DeliveryPipelineArgs:
     def serial_pipeline(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']]):
         pulumi.set(self, "serial_pipeline", value)
 
+    @property
+    @pulumi.getter
+    def suspended(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        """
+        return pulumi.get(self, "suspended")
+
+    @suspended.setter
+    def suspended(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "suspended", value)
+
 
 @pulumi.input_type
 class _DeliveryPipelineState:
@@ -144,6 +160,7 @@ class _DeliveryPipelineState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -159,6 +176,7 @@ class _DeliveryPipelineState:
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the pipeline was updated.
         """
@@ -182,6 +200,8 @@ class _DeliveryPipelineState:
             pulumi.set(__self__, "project", project)
         if serial_pipeline is not None:
             pulumi.set(__self__, "serial_pipeline", serial_pipeline)
+        if suspended is not None:
+            pulumi.set(__self__, "suspended", suspended)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
@@ -310,6 +330,18 @@ class _DeliveryPipelineState:
 
     @property
     @pulumi.getter
+    def suspended(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        """
+        return pulumi.get(self, "suspended")
+
+    @suspended.setter
+    def suspended(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "suspended", value)
+
+    @property
+    @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
         Output only. Unique identifier of the `DeliveryPipeline`.
@@ -345,6 +377,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  serial_pipeline: Optional[pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         The Cloud Deploy `DeliveryPipeline` resource
@@ -410,6 +443,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         """
         ...
     @overload
@@ -494,6 +528,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  serial_pipeline: Optional[pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']]] = None,
+                 suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -515,6 +550,7 @@ class DeliveryPipeline(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["serial_pipeline"] = serial_pipeline
+            __props__.__dict__["suspended"] = suspended
             __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
@@ -540,6 +576,7 @@ class DeliveryPipeline(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             serial_pipeline: Optional[pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']]] = None,
+            suspended: Optional[pulumi.Input[bool]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'DeliveryPipeline':
         """
@@ -560,6 +597,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the pipeline was updated.
         """
@@ -577,6 +615,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["serial_pipeline"] = serial_pipeline
+        __props__.__dict__["suspended"] = suspended
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return DeliveryPipeline(resource_name, opts=opts, __props__=__props__)
@@ -661,6 +700,14 @@ class DeliveryPipeline(pulumi.CustomResource):
         SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         """
         return pulumi.get(self, "serial_pipeline")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        """
+        return pulumi.get(self, "suspended")
 
     @property
     @pulumi.getter

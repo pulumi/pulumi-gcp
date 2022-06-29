@@ -66,6 +66,8 @@ export interface GetGlobalForwardingRuleResult {
     readonly network: string;
     readonly portRange: string;
     readonly project?: string;
+    readonly pscConnectionId: string;
+    readonly pscConnectionStatus: string;
     readonly selfLink: string;
     readonly target: string;
 }

@@ -544,6 +544,8 @@ class _ForwardingRuleState:
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_connection_id: Optional[pulumi.Input[str]] = None,
+                 psc_connection_status: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
@@ -643,6 +645,9 @@ class _ForwardingRuleState:
                You may specify a maximum of up to 5 ports, which can be non-contiguous.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
+        :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+               CLOSED
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -705,6 +710,10 @@ class _ForwardingRuleState:
             pulumi.set(__self__, "ports", ports)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if psc_connection_status is not None:
+            pulumi.set(__self__, "psc_connection_status", psc_connection_status)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if self_link is not None:
@@ -996,6 +1005,31 @@ class _ForwardingRuleState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PSC connection id of the PSC Forwarding Rule.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_id", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+        CLOSED
+        """
+        return pulumi.get(self, "psc_connection_status")
+
+    @psc_connection_status.setter
+    def psc_connection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_status", value)
 
     @property
     @pulumi.getter
@@ -2842,6 +2876,8 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["target"] = target
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["psc_connection_id"] = None
+            __props__.__dict__["psc_connection_status"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["service_name"] = None
         super(ForwardingRule, __self__).__init__(
@@ -2871,6 +2907,8 @@ class ForwardingRule(pulumi.CustomResource):
             port_range: Optional[pulumi.Input[str]] = None,
             ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            psc_connection_id: Optional[pulumi.Input[str]] = None,
+            psc_connection_status: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
@@ -2975,6 +3013,9 @@ class ForwardingRule(pulumi.CustomResource):
                You may specify a maximum of up to 5 ports, which can be non-contiguous.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
+        :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+               CLOSED
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -3024,6 +3065,8 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["port_range"] = port_range
         __props__.__dict__["ports"] = ports
         __props__.__dict__["project"] = project
+        __props__.__dict__["psc_connection_id"] = psc_connection_id
+        __props__.__dict__["psc_connection_status"] = psc_connection_status
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["service_directory_registrations"] = service_directory_registrations
@@ -3241,6 +3284,23 @@ class ForwardingRule(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> pulumi.Output[str]:
+        """
+        The PSC connection id of the PSC Forwarding Rule.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> pulumi.Output[str]:
+        """
+        The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+        CLOSED
+        """
+        return pulumi.get(self, "psc_connection_status")
 
     @property
     @pulumi.getter
