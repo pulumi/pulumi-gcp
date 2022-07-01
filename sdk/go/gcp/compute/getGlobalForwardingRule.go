@@ -68,6 +68,8 @@ type LookupGlobalForwardingRuleResult struct {
 	Network             string                                  `pulumi:"network"`
 	PortRange           string                                  `pulumi:"portRange"`
 	Project             *string                                 `pulumi:"project"`
+	PscConnectionId     string                                  `pulumi:"pscConnectionId"`
+	PscConnectionStatus string                                  `pulumi:"pscConnectionStatus"`
 	SelfLink            string                                  `pulumi:"selfLink"`
 	Target              string                                  `pulumi:"target"`
 }
@@ -166,6 +168,14 @@ func (o LookupGlobalForwardingRuleResultOutput) PortRange() pulumi.StringOutput 
 
 func (o LookupGlobalForwardingRuleResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
 
 func (o LookupGlobalForwardingRuleResultOutput) SelfLink() pulumi.StringOutput {

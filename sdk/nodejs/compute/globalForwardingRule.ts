@@ -898,6 +898,15 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The PSC connection id of the PSC Forwarding Rule.
+     */
+    public /*out*/ readonly pscConnectionId!: pulumi.Output<string>;
+    /**
+     * The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+     * CLOSED
+     */
+    public /*out*/ readonly pscConnectionStatus!: pulumi.Output<string>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -936,6 +945,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["portRange"] = state ? state.portRange : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pscConnectionId"] = state ? state.pscConnectionId : undefined;
+            resourceInputs["pscConnectionStatus"] = state ? state.pscConnectionStatus : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
         } else {
@@ -956,6 +967,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["pscConnectionId"] = undefined /*out*/;
+            resourceInputs["pscConnectionStatus"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -1079,6 +1092,15 @@ export interface GlobalForwardingRuleState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The PSC connection id of the PSC Forwarding Rule.
+     */
+    pscConnectionId?: pulumi.Input<string>;
+    /**
+     * The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+     * CLOSED
+     */
+    pscConnectionStatus?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */

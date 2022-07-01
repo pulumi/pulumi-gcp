@@ -131,6 +131,8 @@ namespace Pulumi.Gcp.Compute
         public readonly string Network;
         public readonly string PortRange;
         public readonly string? Project;
+        public readonly string PscConnectionId;
+        public readonly string PscConnectionStatus;
         public readonly string SelfLink;
         public readonly string Target;
 
@@ -162,6 +164,10 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            string pscConnectionId,
+
+            string pscConnectionStatus,
+
             string selfLink,
 
             string target)
@@ -179,6 +185,8 @@ namespace Pulumi.Gcp.Compute
             Network = network;
             PortRange = portRange;
             Project = project;
+            PscConnectionId = pscConnectionId;
+            PscConnectionStatus = pscConnectionStatus;
             SelfLink = selfLink;
             Target = target;
         }

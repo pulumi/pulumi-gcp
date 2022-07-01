@@ -1573,6 +1573,19 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The PSC connection id of the PSC Forwarding Rule.
+        /// </summary>
+        [Output("pscConnectionId")]
+        public Output<string> PscConnectionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+        /// CLOSED
+        /// </summary>
+        [Output("pscConnectionStatus")]
+        public Output<string> PscConnectionStatus { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the region where the regional forwarding rule resides.
         /// This field is not applicable to global forwarding rules.
         /// </summary>
@@ -2103,6 +2116,19 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The PSC connection id of the PSC Forwarding Rule.
+        /// </summary>
+        [Input("pscConnectionId")]
+        public Input<string>? PscConnectionId { get; set; }
+
+        /// <summary>
+        /// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+        /// CLOSED
+        /// </summary>
+        [Input("pscConnectionStatus")]
+        public Input<string>? PscConnectionStatus { get; set; }
 
         /// <summary>
         /// A reference to the region where the regional forwarding rule resides.

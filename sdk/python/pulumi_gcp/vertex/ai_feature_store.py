@@ -308,6 +308,7 @@ class AiFeatureStore(pulumi.CustomResource):
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
             ),
+            force_destroy=True,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -364,6 +365,7 @@ class AiFeatureStore(pulumi.CustomResource):
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
             ),
+            force_destroy=True,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 

@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Vertex
     ///             {
     ///                 FixedNodeCount = 2,
     ///             },
+    ///             ForceDestroy = true,
     ///         }, new CustomResourceOptions
     ///         {
     ///             Provider = google_beta,

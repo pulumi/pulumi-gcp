@@ -145,6 +145,12 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<Outputs.DeliveryPipelineSerialPipeline?> SerialPipeline { get; private set; } = null!;
 
         /// <summary>
+        /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        /// </summary>
+        [Output("suspended")]
+        public Output<bool?> Suspended { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Unique identifier of the `DeliveryPipeline`.
         /// </summary>
         [Output("uid")]
@@ -256,6 +262,12 @@ namespace Pulumi.Gcp.CloudDeploy
         [Input("serialPipeline")]
         public Input<Inputs.DeliveryPipelineSerialPipelineArgs>? SerialPipeline { get; set; }
 
+        /// <summary>
+        /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        /// </summary>
+        [Input("suspended")]
+        public Input<bool>? Suspended { get; set; }
+
         public DeliveryPipelineArgs()
         {
         }
@@ -341,6 +353,12 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("serialPipeline")]
         public Input<Inputs.DeliveryPipelineSerialPipelineGetArgs>? SerialPipeline { get; set; }
+
+        /// <summary>
+        /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        /// </summary>
+        [Input("suspended")]
+        public Input<bool>? Suspended { get; set; }
 
         /// <summary>
         /// Output only. Unique identifier of the `DeliveryPipeline`.

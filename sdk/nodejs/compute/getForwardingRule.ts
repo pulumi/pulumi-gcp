@@ -77,6 +77,8 @@ export interface GetForwardingRuleResult {
     readonly portRange: string;
     readonly ports: string[];
     readonly project?: string;
+    readonly pscConnectionId: string;
+    readonly pscConnectionStatus: string;
     readonly region?: string;
     readonly selfLink: string;
     readonly serviceDirectoryRegistrations: outputs.compute.GetForwardingRuleServiceDirectoryRegistration[];

@@ -10,7 +10,7 @@ require (
 
 replace (
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220523144019-a9dc436975cc
-	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20220627125303-b357def8ed51
+	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v0.0.0-20220629223456-eb53026a39e8
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20220505152158-f39f71e6c8f3
 )
@@ -38,7 +38,7 @@ require (
 	github.com/Azure/go-autorest/autorest/validation v0.3.1 // indirect
 	github.com/Azure/go-autorest/logger v0.2.1 // indirect
 	github.com/Azure/go-autorest/tracing v0.6.0 // indirect
-	github.com/GoogleCloudPlatform/declarative-resource-client-library v1.10.0 // indirect
+	github.com/GoogleCloudPlatform/declarative-resource-client-library v1.11.0 // indirect
 	github.com/Masterminds/goutils v1.1.0 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/Masterminds/sprig v2.22.0+incompatible // indirect

@@ -31,6 +31,7 @@ import (
 // 			OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
 // 				FixedNodeCount: pulumi.Int(2),
 // 			},
+// 			ForceDestroy: pulumi.Bool(true),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err

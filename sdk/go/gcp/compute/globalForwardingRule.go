@@ -1108,6 +1108,11 @@ type GlobalForwardingRule struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringOutput `pulumi:"pscConnectionId"`
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+	// CLOSED
+	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The URL of the target resource to receive the matched traffic.
@@ -1239,6 +1244,11 @@ type globalForwardingRuleState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+	// CLOSED
+	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The URL of the target resource to receive the matched traffic.
@@ -1339,6 +1349,11 @@ type GlobalForwardingRuleState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringPtrInput
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+	// CLOSED
+	PscConnectionStatus pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The URL of the target resource to receive the matched traffic.
@@ -1756,6 +1771,17 @@ func (o GlobalForwardingRuleOutput) PortRange() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o GlobalForwardingRuleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC Forwarding Rule.
+func (o GlobalForwardingRuleOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+// CLOSED
+func (o GlobalForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
 
 // The URI of the created resource.

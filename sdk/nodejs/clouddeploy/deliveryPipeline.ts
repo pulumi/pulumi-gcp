@@ -131,6 +131,10 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      */
     public readonly serialPipeline!: pulumi.Output<outputs.clouddeploy.DeliveryPipelineSerialPipeline | undefined>;
     /**
+     * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+     */
+    public readonly suspended!: pulumi.Output<boolean | undefined>;
+    /**
      * Output only. Unique identifier of the `DeliveryPipeline`.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -162,6 +166,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["serialPipeline"] = state ? state.serialPipeline : undefined;
+            resourceInputs["suspended"] = state ? state.suspended : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -176,6 +181,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serialPipeline"] = args ? args.serialPipeline : undefined;
+            resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -233,6 +239,10 @@ export interface DeliveryPipelineState {
      */
     serialPipeline?: pulumi.Input<inputs.clouddeploy.DeliveryPipelineSerialPipeline>;
     /**
+     * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+     */
+    suspended?: pulumi.Input<boolean>;
+    /**
      * Output only. Unique identifier of the `DeliveryPipeline`.
      */
     uid?: pulumi.Input<string>;
@@ -274,4 +284,8 @@ export interface DeliveryPipelineArgs {
      * SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
      */
     serialPipeline?: pulumi.Input<inputs.clouddeploy.DeliveryPipelineSerialPipeline>;
+    /**
+     * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+     */
+    suspended?: pulumi.Input<boolean>;
 }

@@ -101,6 +101,8 @@ type DeliveryPipeline struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrOutput `pulumi:"serialPipeline"`
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
 	// Output only. Unique identifier of the `DeliveryPipeline`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. Most recent time at which the pipeline was updated.
@@ -160,6 +162,8 @@ type deliveryPipelineState struct {
 	Project *string `pulumi:"project"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline *DeliveryPipelineSerialPipeline `pulumi:"serialPipeline"`
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended *bool `pulumi:"suspended"`
 	// Output only. Unique identifier of the `DeliveryPipeline`.
 	Uid *string `pulumi:"uid"`
 	// Output only. Most recent time at which the pipeline was updated.
@@ -188,6 +192,8 @@ type DeliveryPipelineState struct {
 	Project pulumi.StringPtrInput
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrInput
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended pulumi.BoolPtrInput
 	// Output only. Unique identifier of the `DeliveryPipeline`.
 	Uid pulumi.StringPtrInput
 	// Output only. Most recent time at which the pipeline was updated.
@@ -213,6 +219,8 @@ type deliveryPipelineArgs struct {
 	Project *string `pulumi:"project"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline *DeliveryPipelineSerialPipeline `pulumi:"serialPipeline"`
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended *bool `pulumi:"suspended"`
 }
 
 // The set of arguments for constructing a DeliveryPipeline resource.
@@ -231,6 +239,8 @@ type DeliveryPipelineArgs struct {
 	Project pulumi.StringPtrInput
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline DeliveryPipelineSerialPipelinePtrInput
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended pulumi.BoolPtrInput
 }
 
 func (DeliveryPipelineArgs) ElementType() reflect.Type {
@@ -369,6 +379,11 @@ func (o DeliveryPipelineOutput) Project() pulumi.StringOutput {
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 func (o DeliveryPipelineOutput) SerialPipeline() DeliveryPipelineSerialPipelinePtrOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) DeliveryPipelineSerialPipelinePtrOutput { return v.SerialPipeline }).(DeliveryPipelineSerialPipelinePtrOutput)
+}
+
+// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+func (o DeliveryPipelineOutput) Suspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
 }
 
 // Output only. Unique identifier of the `DeliveryPipeline`.

@@ -1273,6 +1273,11 @@ type ForwardingRule struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringOutput `pulumi:"pscConnectionId"`
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+	// CLOSED
+	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -1445,6 +1450,11 @@ type forwardingRuleState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+	// CLOSED
+	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region *string `pulumi:"region"`
@@ -1589,6 +1599,11 @@ type ForwardingRuleState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringPtrInput
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+	// CLOSED
+	PscConnectionStatus pulumi.StringPtrInput
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringPtrInput
@@ -2143,6 +2158,17 @@ func (o ForwardingRuleOutput) Ports() pulumi.StringArrayOutput {
 // If it is not provided, the provider project is used.
 func (o ForwardingRuleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC Forwarding Rule.
+func (o ForwardingRuleOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
+// CLOSED
+func (o ForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
 
 // A reference to the region where the regional forwarding rule resides.
