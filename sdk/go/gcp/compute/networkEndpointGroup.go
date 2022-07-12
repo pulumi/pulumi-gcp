@@ -156,8 +156,9 @@ type NetworkEndpointGroup struct {
 	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
 	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
 	// CONNECTION balancing modes.
+	// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
+	// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -228,8 +229,9 @@ type networkEndpointGroupState struct {
 	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
 	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
 	// CONNECTION balancing modes.
+	// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
+	// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -269,8 +271,9 @@ type NetworkEndpointGroupState struct {
 	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
 	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
 	// CONNECTION balancing modes.
+	// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
+	// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -314,8 +317,9 @@ type networkEndpointGroupArgs struct {
 	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
 	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
 	// CONNECTION balancing modes.
+	// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
+	// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -352,8 +356,9 @@ type NetworkEndpointGroupArgs struct {
 	// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
 	// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
 	// CONNECTION balancing modes.
+	// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
 	// Default value is `GCE_VM_IP_PORT`.
-	// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
+	// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -487,8 +492,9 @@ func (o NetworkEndpointGroupOutput) Network() pulumi.StringOutput {
 // that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
 // INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
 // CONNECTION balancing modes.
+// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
 // Default value is `GCE_VM_IP_PORT`.
-// Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
+// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
 func (o NetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringPtrOutput { return v.NetworkEndpointType }).(pulumi.StringPtrOutput)
 }

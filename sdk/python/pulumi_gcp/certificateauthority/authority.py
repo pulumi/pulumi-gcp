@@ -26,7 +26,9 @@ class AuthorityArgs:
                  ignore_active_certificates_on_deletion: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
+                 pem_ca_certificate: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Authority resource.
@@ -54,12 +56,15 @@ class AuthorityArgs:
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+               with the subordinate configuration, which describes its issuers.
+               Structure is documented below.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-               be manually activated (via Cloud Console of `gcloud`) before they can
-               issue certificates.
+               be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
                Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         """
@@ -80,8 +85,12 @@ class AuthorityArgs:
             pulumi.set(__self__, "labels", labels)
         if lifetime is not None:
             pulumi.set(__self__, "lifetime", lifetime)
+        if pem_ca_certificate is not None:
+            pulumi.set(__self__, "pem_ca_certificate", pem_ca_certificate)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if subordinate_config is not None:
+            pulumi.set(__self__, "subordinate_config", subordinate_config)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -229,6 +238,18 @@ class AuthorityArgs:
         pulumi.set(self, "lifetime", value)
 
     @property
+    @pulumi.getter(name="pemCaCertificate")
+    def pem_ca_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        """
+        return pulumi.get(self, "pem_ca_certificate")
+
+    @pem_ca_certificate.setter
+    def pem_ca_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_ca_certificate", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -242,13 +263,26 @@ class AuthorityArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="subordinateConfig")
+    def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
+        """
+        If this is a subordinate CertificateAuthority, this field will be set
+        with the subordinate configuration, which describes its issuers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subordinate_config")
+
+    @subordinate_config.setter
+    def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]):
+        pulumi.set(self, "subordinate_config", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The Type of this CertificateAuthority.
         > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        be manually activated (via Cloud Console of `gcloud`) before they can
-        issue certificates.
+        be activated before they can issue certificates.
         Default value is `SELF_SIGNED`.
         Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         """
@@ -275,10 +309,12 @@ class _AuthorityState:
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pem_ca_certificate: Optional[pulumi.Input[str]] = None,
                  pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -310,6 +346,7 @@ class _AuthorityState:
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
                that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
                current CertificateAuthority's certificate.
@@ -317,10 +354,12 @@ class _AuthorityState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
+        :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+               with the subordinate configuration, which describes its issuers.
+               Structure is documented below.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-               be manually activated (via Cloud Console of `gcloud`) before they can
-               issue certificates.
+               be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
                Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -352,6 +391,8 @@ class _AuthorityState:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pem_ca_certificate is not None:
+            pulumi.set(__self__, "pem_ca_certificate", pem_ca_certificate)
         if pem_ca_certificates is not None:
             pulumi.set(__self__, "pem_ca_certificates", pem_ca_certificates)
         if pool is not None:
@@ -360,6 +401,8 @@ class _AuthorityState:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if subordinate_config is not None:
+            pulumi.set(__self__, "subordinate_config", subordinate_config)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if update_time is not None:
@@ -534,6 +577,18 @@ class _AuthorityState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="pemCaCertificate")
+    def pem_ca_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        """
+        return pulumi.get(self, "pem_ca_certificate")
+
+    @pem_ca_certificate.setter
+    def pem_ca_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_ca_certificate", value)
+
+    @property
     @pulumi.getter(name="pemCaCertificates")
     def pem_ca_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -585,13 +640,26 @@ class _AuthorityState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="subordinateConfig")
+    def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
+        """
+        If this is a subordinate CertificateAuthority, this field will be set
+        with the subordinate configuration, which describes its issuers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subordinate_config")
+
+    @subordinate_config.setter
+    def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]):
+        pulumi.set(self, "subordinate_config", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The Type of this CertificateAuthority.
         > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        be manually activated (via Cloud Console of `gcloud`) before they can
-        issue certificates.
+        be activated before they can issue certificates.
         Default value is `SELF_SIGNED`.
         Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         """
@@ -630,8 +698,10 @@ class Authority(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 pem_ca_certificate: Optional[pulumi.Input[str]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -694,13 +764,53 @@ class Authority(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.certificateauthority.Authority("default",
-            certificate_authority_id="my-certificate-authority",
+        root_ca = gcp.certificateauthority.Authority("root-ca",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority-root",
+            location="us-central1",
+            deletion_protection=False,
+            ignore_active_certificates_on_deletion=True,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        common_name="my-subordinate-authority",
                         organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ))
+        default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority-sub",
+            location="us-central1",
+            deletion_protection=True,
+            subordinate_config=gcp.certificateauthority.AuthoritySubordinateConfigArgs(
+                certificate_authority=root_ca.name,
+            ),
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-subordinate-authority",
                     ),
                     subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
                         dns_names=["hashicorp.com"],
@@ -713,32 +823,29 @@ class Authority(pulumi.CustomResource):
                     ),
                     key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
                         base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            content_commitment=True,
-                            crl_sign=True,
-                            data_encipherment=True,
-                            decipher_only=True,
                             digital_signature=True,
-                            key_agreement=True,
+                            content_commitment=True,
                             key_encipherment=False,
+                            data_encipherment=True,
+                            key_agreement=True,
+                            cert_sign=True,
+                            crl_sign=True,
+                            decipher_only=True,
                         ),
                         extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            client_auth=False,
-                            code_signing=True,
-                            email_protection=True,
                             server_auth=True,
+                            client_auth=False,
+                            email_protection=True,
+                            code_signing=True,
                             time_stamping=True,
                         ),
                     ),
                 ),
             ),
-            deletion_protection=True,
+            lifetime="86400s",
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
-            lifetime="86400s",
-            location="us-central1",
-            pool="ca-pool",
             type="SUBORDINATE")
         ```
         ### Privateca Certificate Authority Byo Key
@@ -834,13 +941,16 @@ class Authority(pulumi.CustomResource):
                fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
+        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+               with the subordinate configuration, which describes its issuers.
+               Structure is documented below.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-               be manually activated (via Cloud Console of `gcloud`) before they can
-               issue certificates.
+               be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
                Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         """
@@ -910,13 +1020,53 @@ class Authority(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.certificateauthority.Authority("default",
-            certificate_authority_id="my-certificate-authority",
+        root_ca = gcp.certificateauthority.Authority("root-ca",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority-root",
+            location="us-central1",
+            deletion_protection=False,
+            ignore_active_certificates_on_deletion=True,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        common_name="my-subordinate-authority",
                         organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ))
+        default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority-sub",
+            location="us-central1",
+            deletion_protection=True,
+            subordinate_config=gcp.certificateauthority.AuthoritySubordinateConfigArgs(
+                certificate_authority=root_ca.name,
+            ),
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-subordinate-authority",
                     ),
                     subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
                         dns_names=["hashicorp.com"],
@@ -929,32 +1079,29 @@ class Authority(pulumi.CustomResource):
                     ),
                     key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
                         base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            content_commitment=True,
-                            crl_sign=True,
-                            data_encipherment=True,
-                            decipher_only=True,
                             digital_signature=True,
-                            key_agreement=True,
+                            content_commitment=True,
                             key_encipherment=False,
+                            data_encipherment=True,
+                            key_agreement=True,
+                            cert_sign=True,
+                            crl_sign=True,
+                            decipher_only=True,
                         ),
                         extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            client_auth=False,
-                            code_signing=True,
-                            email_protection=True,
                             server_auth=True,
+                            client_auth=False,
+                            email_protection=True,
+                            code_signing=True,
                             time_stamping=True,
                         ),
                     ),
                 ),
             ),
-            deletion_protection=True,
+            lifetime="86400s",
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
-            lifetime="86400s",
-            location="us-central1",
-            pool="ca-pool",
             type="SUBORDINATE")
         ```
         ### Privateca Certificate Authority Byo Key
@@ -1050,8 +1197,10 @@ class Authority(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 pem_ca_certificate: Optional[pulumi.Input[str]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -1083,10 +1232,12 @@ class Authority(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["pem_ca_certificate"] = pem_ca_certificate
             if pool is None and not opts.urn:
                 raise TypeError("Missing required property 'pool'")
             __props__.__dict__["pool"] = pool
             __props__.__dict__["project"] = project
+            __props__.__dict__["subordinate_config"] = subordinate_config
             __props__.__dict__["type"] = type
             __props__.__dict__["access_urls"] = None
             __props__.__dict__["create_time"] = None
@@ -1117,10 +1268,12 @@ class Authority(pulumi.CustomResource):
             lifetime: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            pem_ca_certificate: Optional[pulumi.Input[str]] = None,
             pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             pool: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Authority':
         """
@@ -1157,6 +1310,7 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
                that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
                current CertificateAuthority's certificate.
@@ -1164,10 +1318,12 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
+        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
+               with the subordinate configuration, which describes its issuers.
+               Structure is documented below.
         :param pulumi.Input[str] type: The Type of this CertificateAuthority.
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-               be manually activated (via Cloud Console of `gcloud`) before they can
-               issue certificates.
+               be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
                Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -1190,10 +1346,12 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["lifetime"] = lifetime
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["pem_ca_certificate"] = pem_ca_certificate
         __props__.__dict__["pem_ca_certificates"] = pem_ca_certificates
         __props__.__dict__["pool"] = pool
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
+        __props__.__dict__["subordinate_config"] = subordinate_config
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return Authority(resource_name, opts=opts, __props__=__props__)
@@ -1315,6 +1473,14 @@ class Authority(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pemCaCertificate")
+    def pem_ca_certificate(self) -> pulumi.Output[Optional[str]]:
+        """
+        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        """
+        return pulumi.get(self, "pem_ca_certificate")
+
+    @property
     @pulumi.getter(name="pemCaCertificates")
     def pem_ca_certificates(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -1350,13 +1516,22 @@ class Authority(pulumi.CustomResource):
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="subordinateConfig")
+    def subordinate_config(self) -> pulumi.Output[Optional['outputs.AuthoritySubordinateConfig']]:
+        """
+        If this is a subordinate CertificateAuthority, this field will be set
+        with the subordinate configuration, which describes its issuers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subordinate_config")
+
+    @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         The Type of this CertificateAuthority.
         > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        be manually activated (via Cloud Console of `gcloud`) before they can
-        issue certificates.
+        be activated before they can issue certificates.
         Default value is `SELF_SIGNED`.
         Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         """

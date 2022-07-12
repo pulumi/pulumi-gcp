@@ -7145,7 +7145,7 @@ type ClusterAddonsConfig struct {
 	// Set `enabled = true` to enable.
 	DnsCacheConfig *ClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfig"`
 	// .
-	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
 	GcePersistentDiskCsiDriverConfig *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// The status of the Filestore CSI driver addon,
 	// which allows the usage of filestore instance as volumes.
@@ -7201,7 +7201,7 @@ type ClusterAddonsConfigArgs struct {
 	// Set `enabled = true` to enable.
 	DnsCacheConfig ClusterAddonsConfigDnsCacheConfigPtrInput `pulumi:"dnsCacheConfig"`
 	// .
-	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
 	GcePersistentDiskCsiDriverConfig ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// The status of the Filestore CSI driver addon,
 	// which allows the usage of filestore instance as volumes.
@@ -7331,7 +7331,7 @@ func (o ClusterAddonsConfigOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheC
 }
 
 // .
-// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
 func (o ClusterAddonsConfigOutput) GcePersistentDiskCsiDriverConfig() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 		return v.GcePersistentDiskCsiDriverConfig
@@ -7451,7 +7451,7 @@ func (o ClusterAddonsConfigPtrOutput) DnsCacheConfig() ClusterAddonsConfigDnsCac
 }
 
 // .
-// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
 func (o ClusterAddonsConfigPtrOutput) GcePersistentDiskCsiDriverConfig() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 		if v == nil {

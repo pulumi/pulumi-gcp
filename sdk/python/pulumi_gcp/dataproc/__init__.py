@@ -6,6 +6,9 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .autoscaling_policy import *
+from .autoscaling_policy_iam_binding import *
+from .autoscaling_policy_iam_member import *
+from .autoscaling_policy_iam_policy import *
 from .cluster import *
 from .cluster_iam_binding import *
 from .cluster_iam_member import *
@@ -15,6 +18,9 @@ from .job_iam_binding import *
 from .job_iam_member import *
 from .job_iam_policy import *
 from .metastore_service import *
+from .metastore_service_iam_binding import *
+from .metastore_service_iam_member import *
+from .metastore_service_iam_policy import *
 from .workflow_template import *
 from ._inputs import *
 from . import outputs

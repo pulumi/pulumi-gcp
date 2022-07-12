@@ -119,6 +119,33 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Redis Instance Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const redisKeyring = new gcp.kms.KeyRing("redisKeyring", {location: "us-central1"});
+ * const redisKey = new gcp.kms.CryptoKey("redisKey", {keyRing: redisKeyring.id});
+ * const redis-network = gcp.compute.getNetwork({
+ *     name: "redis-test-network",
+ * });
+ * const cache = new gcp.redis.Instance("cache", {
+ *     tier: "STANDARD_HA",
+ *     memorySizeGb: 1,
+ *     locationId: "us-central1-a",
+ *     alternativeLocationId: "us-central1-f",
+ *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
+ *     redisVersion: "REDIS_6_X",
+ *     displayName: "Terraform Test Instance",
+ *     reservedIpRange: "192.168.0.0/29",
+ *     labels: {
+ *         my_key: "my_val",
+ *         other_key: "other_val",
+ *     },
+ *     customerManagedKey: redisKey.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -210,6 +237,11 @@ export class Instance extends pulumi.CustomResource {
      * [alternativeLocationId] and can change after a failover event.
      */
     public /*out*/ readonly currentLocationId!: pulumi.Output<string>;
+    /**
+     * Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+     * instance. If this is provided, CMEK is enabled.
+     */
+    public readonly customerManagedKey!: pulumi.Output<string | undefined>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */
@@ -366,6 +398,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["connectMode"] = state ? state.connectMode : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["currentLocationId"] = state ? state.currentLocationId : undefined;
+            resourceInputs["customerManagedKey"] = state ? state.customerManagedKey : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -399,6 +432,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["authEnabled"] = args ? args.authEnabled : undefined;
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             resourceInputs["connectMode"] = args ? args.connectMode : undefined;
+            resourceInputs["customerManagedKey"] = args ? args.customerManagedKey : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["locationId"] = args ? args.locationId : undefined;
@@ -478,6 +512,11 @@ export interface InstanceState {
      * [alternativeLocationId] and can change after a failover event.
      */
     currentLocationId?: pulumi.Input<string>;
+    /**
+     * Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+     * instance. If this is provided, CMEK is enabled.
+     */
+    customerManagedKey?: pulumi.Input<string>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */
@@ -644,6 +683,11 @@ export interface InstanceArgs {
      * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
      */
     connectMode?: pulumi.Input<string>;
+    /**
+     * Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+     * instance. If this is provided, CMEK is enabled.
+     */
+    customerManagedKey?: pulumi.Input<string>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */

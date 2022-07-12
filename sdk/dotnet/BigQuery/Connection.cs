@@ -11,6 +11,28 @@ namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Bigquery Connection Cloud Resource
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
+    ///         {
+    ///             CloudResource = ,
+    ///             ConnectionId = "my-connection",
+    ///             Description = "a riveting description",
+    ///             FriendlyName = "👋",
+    ///             Location = "US",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Bigquery Connection Basic
     /// 
     /// ```csharp
@@ -119,28 +141,6 @@ namespace Pulumi.Gcp.BigQuery
     ///                     Password = user.Password,
     ///                 },
     ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Bigquery Connection Cloud Resource
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var connection = new Gcp.BigQuery.Connection("connection", new Gcp.BigQuery.ConnectionArgs
-    ///         {
-    ///             CloudResource = ,
-    ///             ConnectionId = "my-connection",
-    ///             Description = "a riveting description",
-    ///             FriendlyName = "👋",
-    ///             Location = "US",
     ///         });
     ///     }
     /// 

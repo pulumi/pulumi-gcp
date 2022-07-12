@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
- *             .accountId(&#34;test-service-account&#34;)
+ *             .accountId(&#34;s-a&#34;)
  *             .displayName(&#34;Test Service Account&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *             .description(&#34;a new function&#34;)
  *             .buildConfig(FunctionBuildConfigArgs.builder()
  *                 .runtime(&#34;nodejs16&#34;)
- *                 .entryPoint(&#34;helloHttp&#34;)
+ *                 .entryPoint(&#34;helloPubSub&#34;)
  *                 .environmentVariables(Map.of(&#34;BUILD_CONFIG_TEST&#34;, &#34;build_test&#34;))
  *                 .source(FunctionBuildConfigSourceArgs.builder()
  *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()

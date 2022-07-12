@@ -41,7 +41,7 @@ public final class ClusterAddonsConfig {
     private final @Nullable ClusterAddonsConfigDnsCacheConfig dnsCacheConfig;
     /**
      * @return .
-     * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+     * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
      * 
      */
     private final @Nullable ClusterAddonsConfigGcePersistentDiskCsiDriverConfig gcePersistentDiskCsiDriverConfig;
@@ -149,7 +149,7 @@ public final class ClusterAddonsConfig {
     }
     /**
      * @return .
-     * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+     * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
      * 
      */
     public Optional<ClusterAddonsConfigGcePersistentDiskCsiDriverConfig> gcePersistentDiskCsiDriverConfig() {

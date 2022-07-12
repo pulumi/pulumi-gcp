@@ -24,6 +24,7 @@ __all__ = [
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs',
     'DatabaseInstanceSettingsLocationPreferenceArgs',
     'DatabaseInstanceSettingsMaintenanceWindowArgs',
+    'DatabaseInstanceSettingsSqlServerAuditConfigArgs',
     'UserSqlServerUserDetailsArgs',
 ]
 
@@ -469,6 +470,7 @@ class DatabaseInstanceSettingsArgs:
                  location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
                  maintenance_window: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
                  pricing_plan: Optional[pulumi.Input[str]] = None,
+                 sql_server_audit_config: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
@@ -521,6 +523,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
+        if sql_server_audit_config is not None:
+            pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if version is not None:
@@ -701,6 +705,15 @@ class DatabaseInstanceSettingsArgs:
     @pricing_plan.setter
     def pricing_plan(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pricing_plan", value)
+
+    @property
+    @pulumi.getter(name="sqlServerAuditConfig")
+    def sql_server_audit_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]:
+        return pulumi.get(self, "sql_server_audit_config")
+
+    @sql_server_audit_config.setter
+    def sql_server_audit_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]):
+        pulumi.set(self, "sql_server_audit_config", value)
 
     @property
     @pulumi.getter(name="userLabels")
@@ -1182,15 +1195,19 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs:
 class DatabaseInstanceSettingsLocationPreferenceArgs:
     def __init__(__self__, *,
                  follow_gae_application: Optional[pulumi.Input[str]] = None,
+                 secondary_zone: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] follow_gae_application: A GAE application whose zone to remain
                in. Must be in the same region as this instance.
+        :param pulumi.Input[str] secondary_zone: The preferred Compute Engine zone for the secondary/failover.
         :param pulumi.Input[str] zone: The preferred compute engine
                [zone](https://cloud.google.com/compute/docs/zones?hl=en).
         """
         if follow_gae_application is not None:
             pulumi.set(__self__, "follow_gae_application", follow_gae_application)
+        if secondary_zone is not None:
+            pulumi.set(__self__, "secondary_zone", secondary_zone)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -1206,6 +1223,18 @@ class DatabaseInstanceSettingsLocationPreferenceArgs:
     @follow_gae_application.setter
     def follow_gae_application(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "follow_gae_application", value)
+
+    @property
+    @pulumi.getter(name="secondaryZone")
+    def secondary_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The preferred Compute Engine zone for the secondary/failover.
+        """
+        return pulumi.get(self, "secondary_zone")
+
+    @secondary_zone.setter
+    def secondary_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_zone", value)
 
     @property
     @pulumi.getter
@@ -1276,6 +1305,60 @@ class DatabaseInstanceSettingsMaintenanceWindowArgs:
     @update_track.setter
     def update_track(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_track", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 retention_interval: Optional[pulumi.Input[str]] = None,
+                 upload_interval: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket: The name of the destination bucket (e.g., gs://mybucket).
+        :param pulumi.Input[str] retention_interval: How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[str] upload_interval: How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if retention_interval is not None:
+            pulumi.set(__self__, "retention_interval", retention_interval)
+        if upload_interval is not None:
+            pulumi.set(__self__, "upload_interval", upload_interval)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The name of the destination bucket (e.g., gs://mybucket).
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="retentionInterval")
+    def retention_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "retention_interval")
+
+    @retention_interval.setter
+    def retention_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_interval", value)
+
+    @property
+    @pulumi.getter(name="uploadInterval")
+    def upload_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "upload_interval")
+
+    @upload_interval.setter
+    def upload_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upload_interval", value)
 
 
 @pulumi.input_type

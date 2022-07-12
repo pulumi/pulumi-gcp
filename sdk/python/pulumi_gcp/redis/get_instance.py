@@ -21,7 +21,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -43,6 +43,9 @@ class GetInstanceResult:
         if current_location_id and not isinstance(current_location_id, str):
             raise TypeError("Expected argument 'current_location_id' to be a str")
         pulumi.set(__self__, "current_location_id", current_location_id)
+        if customer_managed_key and not isinstance(customer_managed_key, str):
+            raise TypeError("Expected argument 'customer_managed_key' to be a str")
+        pulumi.set(__self__, "customer_managed_key", customer_managed_key)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -153,6 +156,11 @@ class GetInstanceResult:
     @pulumi.getter(name="currentLocationId")
     def current_location_id(self) -> str:
         return pulumi.get(self, "current_location_id")
+
+    @property
+    @pulumi.getter(name="customerManagedKey")
+    def customer_managed_key(self) -> str:
+        return pulumi.get(self, "customer_managed_key")
 
     @property
     @pulumi.getter(name="displayName")
@@ -296,6 +304,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             connect_mode=self.connect_mode,
             create_time=self.create_time,
             current_location_id=self.current_location_id,
+            customer_managed_key=self.customer_managed_key,
             display_name=self.display_name,
             host=self.host,
             id=self.id,
@@ -367,6 +376,7 @@ def get_instance(name: Optional[str] = None,
         connect_mode=__ret__.connect_mode,
         create_time=__ret__.create_time,
         current_location_id=__ret__.current_location_id,
+        customer_managed_key=__ret__.customer_managed_key,
         display_name=__ret__.display_name,
         host=__ret__.host,
         id=__ret__.id,

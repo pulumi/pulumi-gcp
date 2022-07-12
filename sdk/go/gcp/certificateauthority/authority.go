@@ -91,13 +91,59 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
-// 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
+// 		_, err := certificateauthority.NewAuthority(ctx, "root-ca", &certificateauthority.AuthorityArgs{
+// 			Pool:                               pulumi.String("ca-pool"),
+// 			CertificateAuthorityId:             pulumi.String("my-certificate-authority-root"),
+// 			Location:                           pulumi.String("us-central1"),
+// 			DeletionProtection:                 pulumi.Bool(false),
+// 			IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
 // 			Config: &certificateauthority.AuthorityConfigArgs{
 // 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 // 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
-// 						CommonName:   pulumi.String("my-subordinate-authority"),
 // 						Organization: pulumi.String("HashiCorp"),
+// 						CommonName:   pulumi.String("my-certificate-authority"),
+// 					},
+// 					SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
+// 						DnsNames: pulumi.StringArray{
+// 							pulumi.String("hashicorp.com"),
+// 						},
+// 					},
+// 				},
+// 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+// 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+// 						IsCa: pulumi.Bool(true),
+// 					},
+// 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+// 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+// 							CertSign: pulumi.Bool(true),
+// 							CrlSign:  pulumi.Bool(true),
+// 						},
+// 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+// 							ServerAuth: pulumi.Bool(false),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+// 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+// 			Pool:                   pulumi.String("ca-pool"),
+// 			CertificateAuthorityId: pulumi.String("my-certificate-authority-sub"),
+// 			Location:               pulumi.String("us-central1"),
+// 			DeletionProtection:     pulumi.Bool(true),
+// 			SubordinateConfig: &certificateauthority.AuthoritySubordinateConfigArgs{
+// 				CertificateAuthority: root_ca.Name,
+// 			},
+// 			Config: &certificateauthority.AuthorityConfigArgs{
+// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+// 						Organization: pulumi.String("HashiCorp"),
+// 						CommonName:   pulumi.String("my-subordinate-authority"),
 // 					},
 // 					SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
 // 						DnsNames: pulumi.StringArray{
@@ -112,33 +158,30 @@ import (
 // 					},
 // 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
 // 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
-// 							CertSign:          pulumi.Bool(true),
-// 							ContentCommitment: pulumi.Bool(true),
-// 							CrlSign:           pulumi.Bool(true),
-// 							DataEncipherment:  pulumi.Bool(true),
-// 							DecipherOnly:      pulumi.Bool(true),
 // 							DigitalSignature:  pulumi.Bool(true),
-// 							KeyAgreement:      pulumi.Bool(true),
+// 							ContentCommitment: pulumi.Bool(true),
 // 							KeyEncipherment:   pulumi.Bool(false),
+// 							DataEncipherment:  pulumi.Bool(true),
+// 							KeyAgreement:      pulumi.Bool(true),
+// 							CertSign:          pulumi.Bool(true),
+// 							CrlSign:           pulumi.Bool(true),
+// 							DecipherOnly:      pulumi.Bool(true),
 // 						},
 // 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
-// 							ClientAuth:      pulumi.Bool(false),
-// 							CodeSigning:     pulumi.Bool(true),
-// 							EmailProtection: pulumi.Bool(true),
 // 							ServerAuth:      pulumi.Bool(true),
+// 							ClientAuth:      pulumi.Bool(false),
+// 							EmailProtection: pulumi.Bool(true),
+// 							CodeSigning:     pulumi.Bool(true),
 // 							TimeStamping:    pulumi.Bool(true),
 // 						},
 // 					},
 // 				},
 // 			},
-// 			DeletionProtection: pulumi.Bool(true),
+// 			Lifetime: pulumi.String("86400s"),
 // 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 // 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 // 			},
-// 			Lifetime: pulumi.String("86400s"),
-// 			Location: pulumi.String("us-central1"),
-// 			Pool:     pulumi.String("ca-pool"),
-// 			Type:     pulumi.String("SUBORDINATE"),
+// 			Type: pulumi.String("SUBORDINATE"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -294,6 +337,8 @@ type Authority struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+	PemCaCertificate pulumi.StringPtrOutput `pulumi:"pemCaCertificate"`
 	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
 	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
 	// current CertificateAuthority's certificate.
@@ -305,10 +350,13 @@ type Authority struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The State for this CertificateAuthority.
 	State pulumi.StringOutput `pulumi:"state"`
+	// If this is a subordinate CertificateAuthority, this field will be set
+	// with the subordinate configuration, which describes its issuers.
+	// Structure is documented below.
+	SubordinateConfig AuthoritySubordinateConfigPtrOutput `pulumi:"subordinateConfig"`
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-	// be manually activated (via Cloud Console of `gcloud`) before they can
-	// issue certificates.
+	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
 	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -401,6 +449,8 @@ type authorityState struct {
 	Location *string `pulumi:"location"`
 	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
 	Name *string `pulumi:"name"`
+	// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+	PemCaCertificate *string `pulumi:"pemCaCertificate"`
 	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
 	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
 	// current CertificateAuthority's certificate.
@@ -412,10 +462,13 @@ type authorityState struct {
 	Project *string `pulumi:"project"`
 	// The State for this CertificateAuthority.
 	State *string `pulumi:"state"`
+	// If this is a subordinate CertificateAuthority, this field will be set
+	// with the subordinate configuration, which describes its issuers.
+	// Structure is documented below.
+	SubordinateConfig *AuthoritySubordinateConfig `pulumi:"subordinateConfig"`
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-	// be manually activated (via Cloud Console of `gcloud`) before they can
-	// issue certificates.
+	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
 	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 	Type *string `pulumi:"type"`
@@ -465,6 +518,8 @@ type AuthorityState struct {
 	Location pulumi.StringPtrInput
 	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
 	Name pulumi.StringPtrInput
+	// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+	PemCaCertificate pulumi.StringPtrInput
 	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
 	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
 	// current CertificateAuthority's certificate.
@@ -476,10 +531,13 @@ type AuthorityState struct {
 	Project pulumi.StringPtrInput
 	// The State for this CertificateAuthority.
 	State pulumi.StringPtrInput
+	// If this is a subordinate CertificateAuthority, this field will be set
+	// with the subordinate configuration, which describes its issuers.
+	// Structure is documented below.
+	SubordinateConfig AuthoritySubordinateConfigPtrInput
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-	// be manually activated (via Cloud Console of `gcloud`) before they can
-	// issue certificates.
+	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
 	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 	Type pulumi.StringPtrInput
@@ -526,15 +584,20 @@ type authorityArgs struct {
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
 	Location string `pulumi:"location"`
+	// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+	PemCaCertificate *string `pulumi:"pemCaCertificate"`
 	// The name of the CaPool this Certificate Authority belongs to.
 	Pool string `pulumi:"pool"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// If this is a subordinate CertificateAuthority, this field will be set
+	// with the subordinate configuration, which describes its issuers.
+	// Structure is documented below.
+	SubordinateConfig *AuthoritySubordinateConfig `pulumi:"subordinateConfig"`
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-	// be manually activated (via Cloud Console of `gcloud`) before they can
-	// issue certificates.
+	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
 	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 	Type *string `pulumi:"type"`
@@ -575,15 +638,20 @@ type AuthorityArgs struct {
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
 	Location pulumi.StringInput
+	// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+	PemCaCertificate pulumi.StringPtrInput
 	// The name of the CaPool this Certificate Authority belongs to.
 	Pool pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// If this is a subordinate CertificateAuthority, this field will be set
+	// with the subordinate configuration, which describes its issuers.
+	// Structure is documented below.
+	SubordinateConfig AuthoritySubordinateConfigPtrInput
 	// The Type of this CertificateAuthority.
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-	// be manually activated (via Cloud Console of `gcloud`) before they can
-	// issue certificates.
+	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
 	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 	Type pulumi.StringPtrInput
@@ -755,6 +823,11 @@ func (o AuthorityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+func (o AuthorityOutput) PemCaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.PemCaCertificate }).(pulumi.StringPtrOutput)
+}
+
 // This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
 // that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
 // current CertificateAuthority's certificate.
@@ -778,10 +851,16 @@ func (o AuthorityOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
+// If this is a subordinate CertificateAuthority, this field will be set
+// with the subordinate configuration, which describes its issuers.
+// Structure is documented below.
+func (o AuthorityOutput) SubordinateConfig() AuthoritySubordinateConfigPtrOutput {
+	return o.ApplyT(func(v *Authority) AuthoritySubordinateConfigPtrOutput { return v.SubordinateConfig }).(AuthoritySubordinateConfigPtrOutput)
+}
+
 // The Type of this CertificateAuthority.
 // > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-// be manually activated (via Cloud Console of `gcloud`) before they can
-// issue certificates.
+// be activated before they can issue certificates.
 // Default value is `SELF_SIGNED`.
 // Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 func (o AuthorityOutput) Type() pulumi.StringPtrOutput {

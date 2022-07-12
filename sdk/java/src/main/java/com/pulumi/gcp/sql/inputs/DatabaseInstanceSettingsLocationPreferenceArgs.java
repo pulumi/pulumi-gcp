@@ -33,6 +33,21 @@ public final class DatabaseInstanceSettingsLocationPreferenceArgs extends com.pu
     }
 
     /**
+     * The preferred Compute Engine zone for the secondary/failover.
+     * 
+     */
+    @Import(name="secondaryZone")
+    private @Nullable Output<String> secondaryZone;
+
+    /**
+     * @return The preferred Compute Engine zone for the secondary/failover.
+     * 
+     */
+    public Optional<Output<String>> secondaryZone() {
+        return Optional.ofNullable(this.secondaryZone);
+    }
+
+    /**
      * The preferred compute engine
      * [zone](https://cloud.google.com/compute/docs/zones?hl=en).
      * 
@@ -53,6 +68,7 @@ public final class DatabaseInstanceSettingsLocationPreferenceArgs extends com.pu
 
     private DatabaseInstanceSettingsLocationPreferenceArgs(DatabaseInstanceSettingsLocationPreferenceArgs $) {
         this.followGaeApplication = $.followGaeApplication;
+        this.secondaryZone = $.secondaryZone;
         this.zone = $.zone;
     }
 
@@ -95,6 +111,27 @@ public final class DatabaseInstanceSettingsLocationPreferenceArgs extends com.pu
          */
         public Builder followGaeApplication(String followGaeApplication) {
             return followGaeApplication(Output.of(followGaeApplication));
+        }
+
+        /**
+         * @param secondaryZone The preferred Compute Engine zone for the secondary/failover.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryZone(@Nullable Output<String> secondaryZone) {
+            $.secondaryZone = secondaryZone;
+            return this;
+        }
+
+        /**
+         * @param secondaryZone The preferred Compute Engine zone for the secondary/failover.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryZone(String secondaryZone) {
+            return secondaryZone(Output.of(secondaryZone));
         }
 
         /**

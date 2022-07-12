@@ -25,6 +25,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppProfile{}
 	case "gcp:bigquery/connection:Connection":
 		r = &Connection{}
+	case "gcp:bigquery/connectionIamBinding:ConnectionIamBinding":
+		r = &ConnectionIamBinding{}
+	case "gcp:bigquery/connectionIamMember:ConnectionIamMember":
+		r = &ConnectionIamMember{}
+	case "gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy":
+		r = &ConnectionIamPolicy{}
 	case "gcp:bigquery/dataTransferConfig:DataTransferConfig":
 		r = &DataTransferConfig{}
 	case "gcp:bigquery/dataset:Dataset":
@@ -74,6 +80,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigquery/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/connectionIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/connectionIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/connectionIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

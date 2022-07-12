@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:cloudtasks/queue:Queue":
 		r = &Queue{}
+	case "gcp:cloudtasks/queueIamBinding:QueueIamBinding":
+		r = &QueueIamBinding{}
+	case "gcp:cloudtasks/queueIamMember:QueueIamMember":
+		r = &QueueIamMember{}
+	case "gcp:cloudtasks/queueIamPolicy:QueueIamPolicy":
+		r = &QueueIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +45,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"cloudtasks/queue",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudtasks/queueIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudtasks/queueIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudtasks/queueIamPolicy",
 		&module{version},
 	)
 }

@@ -382,6 +382,7 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # [START functions_v2_basic]
         bucket = gcp.storage.Bucket("bucket",
             location="US",
             uniform_bucket_level_access=True,
@@ -390,6 +391,7 @@ class Function(pulumi.CustomResource):
             bucket=bucket.name,
             source=pulumi.FileAsset("path/to/index.zip"),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        # Add path to the zipped function source code
         terraform_test2 = gcp.cloudfunctionsv2.Function("terraform-test2",
             location="us-central1",
             description="a new function",
@@ -416,8 +418,9 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # [START functions_v2_full]
         account = gcp.service_account.Account("account",
-            account_id="test-service-account",
+            account_id="s-a",
             display_name="Test Service Account",
             opts=pulumi.ResourceOptions(provider=google_beta))
         sub = gcp.pubsub.Topic("sub", opts=pulumi.ResourceOptions(provider=google_beta))
@@ -429,12 +432,13 @@ class Function(pulumi.CustomResource):
             bucket=bucket.name,
             source=pulumi.FileAsset("path/to/index.zip"),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        # Add path to the zipped function source code
         terraform_test = gcp.cloudfunctionsv2.Function("terraform-test",
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
                 runtime="nodejs16",
-                entry_point="helloHttp",
+                entry_point="helloPubSub",
                 environment_variables={
                     "BUILD_CONFIG_TEST": "build_test",
                 },
@@ -515,6 +519,7 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # [START functions_v2_basic]
         bucket = gcp.storage.Bucket("bucket",
             location="US",
             uniform_bucket_level_access=True,
@@ -523,6 +528,7 @@ class Function(pulumi.CustomResource):
             bucket=bucket.name,
             source=pulumi.FileAsset("path/to/index.zip"),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        # Add path to the zipped function source code
         terraform_test2 = gcp.cloudfunctionsv2.Function("terraform-test2",
             location="us-central1",
             description="a new function",
@@ -549,8 +555,9 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # [START functions_v2_full]
         account = gcp.service_account.Account("account",
-            account_id="test-service-account",
+            account_id="s-a",
             display_name="Test Service Account",
             opts=pulumi.ResourceOptions(provider=google_beta))
         sub = gcp.pubsub.Topic("sub", opts=pulumi.ResourceOptions(provider=google_beta))
@@ -562,12 +569,13 @@ class Function(pulumi.CustomResource):
             bucket=bucket.name,
             source=pulumi.FileAsset("path/to/index.zip"),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        # Add path to the zipped function source code
         terraform_test = gcp.cloudfunctionsv2.Function("terraform-test",
             location="us-central1",
             description="a new function",
             build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
                 runtime="nodejs16",
-                entry_point="helloHttp",
+                entry_point="helloPubSub",
                 environment_variables={
                     "BUILD_CONFIG_TEST": "build_test",
                 },

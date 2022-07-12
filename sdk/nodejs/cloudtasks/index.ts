@@ -6,9 +6,15 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./queue";
+export * from "./queueIamBinding";
+export * from "./queueIamMember";
+export * from "./queueIamPolicy";
 
 // Import resources to register:
 import { Queue } from "./queue";
+import { QueueIamBinding } from "./queueIamBinding";
+import { QueueIamMember } from "./queueIamMember";
+import { QueueIamPolicy } from "./queueIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +22,18 @@ const _module = {
         switch (type) {
             case "gcp:cloudtasks/queue:Queue":
                 return new Queue(name, <any>undefined, { urn })
+            case "gcp:cloudtasks/queueIamBinding:QueueIamBinding":
+                return new QueueIamBinding(name, <any>undefined, { urn })
+            case "gcp:cloudtasks/queueIamMember:QueueIamMember":
+                return new QueueIamMember(name, <any>undefined, { urn })
+            case "gcp:cloudtasks/queueIamPolicy:QueueIamPolicy":
+                return new QueueIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "cloudtasks/queue", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudtasks/queueIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudtasks/queueIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudtasks/queueIamPolicy", _module)

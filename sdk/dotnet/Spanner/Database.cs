@@ -10,6 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Spanner
 {
     /// <summary>
+    /// A Cloud Spanner Database which is hosted on a Spanner instance.
+    /// 
+    /// To get more information about Database, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/spanner/)
+    /// 
+    /// &gt; **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+    /// 
     /// ## Example Usage
     /// ### Spanner Database Basic
     /// 
@@ -30,6 +40,7 @@ namespace Pulumi.Gcp.Spanner
     ///         var database = new Gcp.Spanner.Database("database", new Gcp.Spanner.DatabaseArgs
     ///         {
     ///             Instance = main.Name,
+    ///             VersionRetentionPeriod = "3d",
     ///             Ddls = 
     ///             {
     ///                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
@@ -66,10 +77,9 @@ namespace Pulumi.Gcp.Spanner
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
-        /// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-        /// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-        /// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-        /// "POSTGRESQL"]
+        /// The dialect of the Cloud Spanner Database.
+        /// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+        /// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         /// </summary>
         [Output("databaseDialect")]
         public Output<string> DatabaseDialect { get; private set; } = null!;
@@ -123,6 +133,16 @@ namespace Pulumi.Gcp.Spanner
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The retention period for the database. The retention period must be between 1 hour
+        /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+        /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+        /// If this property is used, you must avoid adding new DDL statements to `ddl` that
+        /// update the database's version_retention_period.
+        /// </summary>
+        [Output("versionRetentionPeriod")]
+        public Output<string> VersionRetentionPeriod { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Database resource with the given unique name, arguments, and options.
@@ -170,10 +190,9 @@ namespace Pulumi.Gcp.Spanner
     public sealed class DatabaseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-        /// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-        /// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-        /// "POSTGRESQL"]
+        /// The dialect of the Cloud Spanner Database.
+        /// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+        /// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         /// </summary>
         [Input("databaseDialect")]
         public Input<string>? DatabaseDialect { get; set; }
@@ -227,6 +246,16 @@ namespace Pulumi.Gcp.Spanner
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The retention period for the database. The retention period must be between 1 hour
+        /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+        /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+        /// If this property is used, you must avoid adding new DDL statements to `ddl` that
+        /// update the database's version_retention_period.
+        /// </summary>
+        [Input("versionRetentionPeriod")]
+        public Input<string>? VersionRetentionPeriod { get; set; }
+
         public DatabaseArgs()
         {
         }
@@ -235,10 +264,9 @@ namespace Pulumi.Gcp.Spanner
     public sealed class DatabaseState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-        /// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-        /// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-        /// "POSTGRESQL"]
+        /// The dialect of the Cloud Spanner Database.
+        /// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+        /// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         /// </summary>
         [Input("databaseDialect")]
         public Input<string>? DatabaseDialect { get; set; }
@@ -297,6 +325,16 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The retention period for the database. The retention period must be between 1 hour
+        /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+        /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+        /// If this property is used, you must avoid adding new DDL statements to `ddl` that
+        /// update the database's version_retention_period.
+        /// </summary>
+        [Input("versionRetentionPeriod")]
+        public Input<string>? VersionRetentionPeriod { get; set; }
 
         public DatabaseState()
         {

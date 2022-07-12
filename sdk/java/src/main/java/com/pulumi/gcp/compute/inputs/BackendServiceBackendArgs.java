@@ -22,6 +22,8 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
      * For global HTTP(S) or TCP/SSL load balancing, the default is
      * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
      * and CONNECTION (for TCP/SSL).
+     * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+     * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
      * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
      * 
@@ -34,6 +36,8 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
      * For global HTTP(S) or TCP/SSL load balancing, the default is
      * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
      * and CONNECTION (for TCP/SSL).
+     * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+     * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
      * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
      * 
@@ -313,6 +317,8 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          * For global HTTP(S) or TCP/SSL load balancing, the default is
          * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
          * and CONNECTION (for TCP/SSL).
+         * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+         * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
          * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
          * 
@@ -329,6 +335,8 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          * For global HTTP(S) or TCP/SSL load balancing, the default is
          * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
          * and CONNECTION (for TCP/SSL).
+         * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+         * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
          * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
          * 

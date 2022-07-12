@@ -7,6 +7,9 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./appProfile";
 export * from "./connection";
+export * from "./connectionIamBinding";
+export * from "./connectionIamMember";
+export * from "./connectionIamPolicy";
 export * from "./dataTransferConfig";
 export * from "./dataset";
 export * from "./datasetAccess";
@@ -26,6 +29,9 @@ export * from "./table";
 // Import resources to register:
 import { AppProfile } from "./appProfile";
 import { Connection } from "./connection";
+import { ConnectionIamBinding } from "./connectionIamBinding";
+import { ConnectionIamMember } from "./connectionIamMember";
+import { ConnectionIamPolicy } from "./connectionIamPolicy";
 import { DataTransferConfig } from "./dataTransferConfig";
 import { Dataset } from "./dataset";
 import { DatasetAccess } from "./datasetAccess";
@@ -49,6 +55,12 @@ const _module = {
                 return new AppProfile(name, <any>undefined, { urn })
             case "gcp:bigquery/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "gcp:bigquery/connectionIamBinding:ConnectionIamBinding":
+                return new ConnectionIamBinding(name, <any>undefined, { urn })
+            case "gcp:bigquery/connectionIamMember:ConnectionIamMember":
+                return new ConnectionIamMember(name, <any>undefined, { urn })
+            case "gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy":
+                return new ConnectionIamPolicy(name, <any>undefined, { urn })
             case "gcp:bigquery/dataTransferConfig:DataTransferConfig":
                 return new DataTransferConfig(name, <any>undefined, { urn })
             case "gcp:bigquery/dataset:Dataset":
@@ -84,6 +96,9 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "bigquery/appProfile", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connection", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/dataTransferConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/dataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/datasetAccess", _module)

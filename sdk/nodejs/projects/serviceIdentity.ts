@@ -74,7 +74,7 @@ export class ServiceIdentity extends pulumi.CustomResource {
     /**
      * The email address of the Google managed service account.
      */
-    public /*out*/ readonly email!: pulumi.Output<string>;
+    public readonly email!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -106,9 +106,9 @@ export class ServiceIdentity extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
+            resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["email"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceIdentity.__pulumiType, name, resourceInputs, opts);
@@ -138,6 +138,10 @@ export interface ServiceIdentityState {
  * The set of arguments for constructing a ServiceIdentity resource.
  */
 export interface ServiceIdentityArgs {
+    /**
+     * The email address of the Google managed service account.
+     */
+    email?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

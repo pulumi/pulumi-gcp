@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Beta only: Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+ * Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
  * 
  * For more information, see:
  * * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -39,16 +38,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new MonitoredProject(&#34;primary&#34;, MonitoredProjectArgs.builder()        
  *             .metricsScope(&#34;existing-metrics-scope-project&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
  *             .projectId(&#34;my-monitored-project&#34;)
  *             .orgId(&#34;123456789&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

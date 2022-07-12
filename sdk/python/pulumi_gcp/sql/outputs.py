@@ -25,6 +25,7 @@ __all__ = [
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork',
     'DatabaseInstanceSettingsLocationPreference',
     'DatabaseInstanceSettingsMaintenanceWindow',
+    'DatabaseInstanceSettingsSqlServerAuditConfig',
     'UserSqlServerUserDetails',
     'GetCaCertsCertResult',
     'GetDatabaseInstanceCloneResult',
@@ -42,6 +43,7 @@ __all__ = [
     'GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult',
     'GetDatabaseInstanceSettingLocationPreferenceResult',
     'GetDatabaseInstanceSettingMaintenanceWindowResult',
+    'GetDatabaseInstanceSettingSqlServerAuditConfigResult',
 ]
 
 @pulumi.output_type
@@ -515,6 +517,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "maintenance_window"
         elif key == "pricingPlan":
             suggest = "pricing_plan"
+        elif key == "sqlServerAuditConfig":
+            suggest = "sql_server_audit_config"
         elif key == "userLabels":
             suggest = "user_labels"
 
@@ -546,6 +550,7 @@ class DatabaseInstanceSettings(dict):
                  location_preference: Optional['outputs.DatabaseInstanceSettingsLocationPreference'] = None,
                  maintenance_window: Optional['outputs.DatabaseInstanceSettingsMaintenanceWindow'] = None,
                  pricing_plan: Optional[str] = None,
+                 sql_server_audit_config: Optional['outputs.DatabaseInstanceSettingsSqlServerAuditConfig'] = None,
                  user_labels: Optional[Mapping[str, str]] = None,
                  version: Optional[int] = None):
         """
@@ -598,6 +603,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
+        if sql_server_audit_config is not None:
+            pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if version is not None:
@@ -714,6 +721,11 @@ class DatabaseInstanceSettings(dict):
         Pricing plan for this instance, can only be `PER_USE`.
         """
         return pulumi.get(self, "pricing_plan")
+
+    @property
+    @pulumi.getter(name="sqlServerAuditConfig")
+    def sql_server_audit_config(self) -> Optional['outputs.DatabaseInstanceSettingsSqlServerAuditConfig']:
+        return pulumi.get(self, "sql_server_audit_config")
 
     @property
     @pulumi.getter(name="userLabels")
@@ -1203,6 +1215,8 @@ class DatabaseInstanceSettingsLocationPreference(dict):
         suggest = None
         if key == "followGaeApplication":
             suggest = "follow_gae_application"
+        elif key == "secondaryZone":
+            suggest = "secondary_zone"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsLocationPreference. Access the value via the '{suggest}' property getter instead.")
@@ -1217,15 +1231,19 @@ class DatabaseInstanceSettingsLocationPreference(dict):
 
     def __init__(__self__, *,
                  follow_gae_application: Optional[str] = None,
+                 secondary_zone: Optional[str] = None,
                  zone: Optional[str] = None):
         """
         :param str follow_gae_application: A GAE application whose zone to remain
                in. Must be in the same region as this instance.
+        :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover.
         :param str zone: The preferred compute engine
                [zone](https://cloud.google.com/compute/docs/zones?hl=en).
         """
         if follow_gae_application is not None:
             pulumi.set(__self__, "follow_gae_application", follow_gae_application)
+        if secondary_zone is not None:
+            pulumi.set(__self__, "secondary_zone", secondary_zone)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -1237,6 +1255,14 @@ class DatabaseInstanceSettingsLocationPreference(dict):
         in. Must be in the same region as this instance.
         """
         return pulumi.get(self, "follow_gae_application")
+
+    @property
+    @pulumi.getter(name="secondaryZone")
+    def secondary_zone(self) -> Optional[str]:
+        """
+        The preferred Compute Engine zone for the secondary/failover.
+        """
+        return pulumi.get(self, "secondary_zone")
 
     @property
     @pulumi.getter
@@ -1308,6 +1334,67 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
         (`stable`)
         """
         return pulumi.get(self, "update_track")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionInterval":
+            suggest = "retention_interval"
+        elif key == "uploadInterval":
+            suggest = "upload_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsSqlServerAuditConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsSqlServerAuditConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsSqlServerAuditConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: str,
+                 retention_interval: Optional[str] = None,
+                 upload_interval: Optional[str] = None):
+        """
+        :param str bucket: The name of the destination bucket (e.g., gs://mybucket).
+        :param str retention_interval: How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param str upload_interval: How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if retention_interval is not None:
+            pulumi.set(__self__, "retention_interval", retention_interval)
+        if upload_interval is not None:
+            pulumi.set(__self__, "upload_interval", upload_interval)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The name of the destination bucket (e.g., gs://mybucket).
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="retentionInterval")
+    def retention_interval(self) -> Optional[str]:
+        """
+        How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "retention_interval")
+
+    @property
+    @pulumi.getter(name="uploadInterval")
+    def upload_interval(self) -> Optional[str]:
+        """
+        How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "upload_interval")
 
 
 @pulumi.output_type
@@ -1634,6 +1721,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  location_preferences: Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
                  maintenance_windows: Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult'],
                  pricing_plan: str,
+                 sql_server_audit_configs: Sequence['outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult'],
                  tier: str,
                  user_labels: Mapping[str, str],
                  version: int):
@@ -1652,6 +1740,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "location_preferences", location_preferences)
         pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         pulumi.set(__self__, "pricing_plan", pricing_plan)
+        pulumi.set(__self__, "sql_server_audit_configs", sql_server_audit_configs)
         pulumi.set(__self__, "tier", tier)
         pulumi.set(__self__, "user_labels", user_labels)
         pulumi.set(__self__, "version", version)
@@ -1730,6 +1819,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="pricingPlan")
     def pricing_plan(self) -> str:
         return pulumi.get(self, "pricing_plan")
+
+    @property
+    @pulumi.getter(name="sqlServerAuditConfigs")
+    def sql_server_audit_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult']:
+        return pulumi.get(self, "sql_server_audit_configs")
 
     @property
     @pulumi.getter
@@ -1966,14 +2060,21 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
 class GetDatabaseInstanceSettingLocationPreferenceResult(dict):
     def __init__(__self__, *,
                  follow_gae_application: str,
+                 secondary_zone: str,
                  zone: str):
         pulumi.set(__self__, "follow_gae_application", follow_gae_application)
+        pulumi.set(__self__, "secondary_zone", secondary_zone)
         pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="followGaeApplication")
     def follow_gae_application(self) -> str:
         return pulumi.get(self, "follow_gae_application")
+
+    @property
+    @pulumi.getter(name="secondaryZone")
+    def secondary_zone(self) -> str:
+        return pulumi.get(self, "secondary_zone")
 
     @property
     @pulumi.getter
@@ -2005,5 +2106,31 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> str:
         return pulumi.get(self, "update_track")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 retention_interval: str,
+                 upload_interval: str):
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "retention_interval", retention_interval)
+        pulumi.set(__self__, "upload_interval", upload_interval)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="retentionInterval")
+    def retention_interval(self) -> str:
+        return pulumi.get(self, "retention_interval")
+
+    @property
+    @pulumi.getter(name="uploadInterval")
+    def upload_interval(self) -> str:
+        return pulumi.get(self, "upload_interval")
 
 

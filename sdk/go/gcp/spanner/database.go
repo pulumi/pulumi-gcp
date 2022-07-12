@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Cloud Spanner Database which is hosted on a Spanner instance.
+//
+// To get more information about Database, see:
+//
+// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/spanner/)
+//
+// > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
+//
 // ## Example Usage
 // ### Spanner Database Basic
 //
@@ -33,7 +43,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = spanner.NewDatabase(ctx, "database", &spanner.DatabaseArgs{
-// 			Instance: main.Name,
+// 			Instance:               main.Name,
+// 			VersionRetentionPeriod: pulumi.String("3d"),
 // 			Ddls: pulumi.StringArray{
 // 				pulumi.String("CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)"),
 // 				pulumi.String("CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"),
@@ -70,10 +81,9 @@ import (
 type Database struct {
 	pulumi.CustomResourceState
 
-	// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-	// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-	// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-	// "POSTGRESQL"]
+	// The dialect of the Cloud Spanner Database.
+	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
 	DatabaseDialect pulumi.StringOutput `pulumi:"databaseDialect"`
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -96,6 +106,12 @@ type Database struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// An explanation of the status of the database.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The retention period for the database. The retention period must be between 1 hour
+	// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+	// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+	// If this property is used, you must avoid adding new DDL statements to `ddl` that
+	// update the database's version_retention_period.
+	VersionRetentionPeriod pulumi.StringOutput `pulumi:"versionRetentionPeriod"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -130,10 +146,9 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
-	// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-	// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-	// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-	// "POSTGRESQL"]
+	// The dialect of the Cloud Spanner Database.
+	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
 	DatabaseDialect *string `pulumi:"databaseDialect"`
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -156,13 +171,18 @@ type databaseState struct {
 	Project *string `pulumi:"project"`
 	// An explanation of the status of the database.
 	State *string `pulumi:"state"`
+	// The retention period for the database. The retention period must be between 1 hour
+	// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+	// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+	// If this property is used, you must avoid adding new DDL statements to `ddl` that
+	// update the database's version_retention_period.
+	VersionRetentionPeriod *string `pulumi:"versionRetentionPeriod"`
 }
 
 type DatabaseState struct {
-	// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-	// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-	// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-	// "POSTGRESQL"]
+	// The dialect of the Cloud Spanner Database.
+	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
 	DatabaseDialect pulumi.StringPtrInput
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -185,6 +205,12 @@ type DatabaseState struct {
 	Project pulumi.StringPtrInput
 	// An explanation of the status of the database.
 	State pulumi.StringPtrInput
+	// The retention period for the database. The retention period must be between 1 hour
+	// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+	// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+	// If this property is used, you must avoid adding new DDL statements to `ddl` that
+	// update the database's version_retention_period.
+	VersionRetentionPeriod pulumi.StringPtrInput
 }
 
 func (DatabaseState) ElementType() reflect.Type {
@@ -192,10 +218,9 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-	// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-	// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-	// "POSTGRESQL"]
+	// The dialect of the Cloud Spanner Database.
+	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
 	DatabaseDialect *string `pulumi:"databaseDialect"`
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -216,14 +241,19 @@ type databaseArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The retention period for the database. The retention period must be between 1 hour
+	// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+	// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+	// If this property is used, you must avoid adding new DDL statements to `ddl` that
+	// update the database's version_retention_period.
+	VersionRetentionPeriod *string `pulumi:"versionRetentionPeriod"`
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-	// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-	// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-	// "POSTGRESQL"]
+	// The dialect of the Cloud Spanner Database.
+	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
 	DatabaseDialect pulumi.StringPtrInput
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -244,6 +274,12 @@ type DatabaseArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The retention period for the database. The retention period must be between 1 hour
+	// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+	// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+	// If this property is used, you must avoid adding new DDL statements to `ddl` that
+	// update the database's version_retention_period.
+	VersionRetentionPeriod pulumi.StringPtrInput
 }
 
 func (DatabaseArgs) ElementType() reflect.Type {
@@ -333,10 +369,9 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
-// The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-// that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-// therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-// "POSTGRESQL"]
+// The dialect of the Cloud Spanner Database.
+// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
 func (o DatabaseOutput) DatabaseDialect() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseDialect }).(pulumi.StringOutput)
 }
@@ -381,6 +416,15 @@ func (o DatabaseOutput) Project() pulumi.StringOutput {
 // An explanation of the status of the database.
 func (o DatabaseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The retention period for the database. The retention period must be between 1 hour
+// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+// If this property is used, you must avoid adding new DDL statements to `ddl` that
+// update the database's version_retention_period.
+func (o DatabaseOutput) VersionRetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.VersionRetentionPeriod }).(pulumi.StringOutput)
 }
 
 type DatabaseArrayOutput struct{ *pulumi.OutputState }

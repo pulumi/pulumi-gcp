@@ -14,12 +14,17 @@ namespace Pulumi.Gcp.Billing.Outputs
     public sealed class BudgetBudgetFilter
     {
         /// <summary>
-        /// A set of subaccounts of the form billingAccounts/{account_id},
-        /// specifying that usage from only this set of subaccounts should
-        /// be included in the budget. If a subaccount is set to the name of
-        /// the parent account, usage from the parent account will be included.
-        /// If the field is omitted, the report will include usage from the parent
-        /// account and all subaccounts, if they exist.
+        /// A CalendarPeriod represents the abstract concept of a recurring time period that has a
+        /// canonical start. Grammatically, "the start of the current CalendarPeriod".
+        /// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+        /// Exactly one of `calendar_period`, `custom_period` must be provided.
+        /// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+        /// </summary>
+        public readonly string? CalendarPeriod;
+        /// <summary>
+        /// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+        /// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+        /// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         /// </summary>
         public readonly ImmutableArray<string> CreditTypes;
         /// <summary>
@@ -29,6 +34,13 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
         /// </summary>
         public readonly string? CreditTypesTreatment;
+        /// <summary>
+        /// Specifies to track usage from any start date (required) to any end date (optional).
+        /// This time period is static, it does not recur.
+        /// Exactly one of `calendar_period`, `custom_period` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.BudgetBudgetFilterCustomPeriod? CustomPeriod;
         /// <summary>
         /// A single label and value pair specifying that usage from only
         /// this set of labeled resources should be included in the budget.
@@ -63,9 +75,13 @@ namespace Pulumi.Gcp.Billing.Outputs
 
         [OutputConstructor]
         private BudgetBudgetFilter(
+            string? calendarPeriod,
+
             ImmutableArray<string> creditTypes,
 
             string? creditTypesTreatment,
+
+            Outputs.BudgetBudgetFilterCustomPeriod? customPeriod,
 
             ImmutableDictionary<string, string>? labels,
 
@@ -75,8 +91,10 @@ namespace Pulumi.Gcp.Billing.Outputs
 
             ImmutableArray<string> subaccounts)
         {
+            CalendarPeriod = calendarPeriod;
             CreditTypes = creditTypes;
             CreditTypesTreatment = creditTypesTreatment;
+            CustomPeriod = customPeriod;
             Labels = labels;
             Projects = projects;
             Services = services;

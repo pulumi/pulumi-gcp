@@ -475,6 +475,332 @@ func (o AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput) ScaleUpMinWorkerFrac
 	}).(pulumi.Float64PtrOutput)
 }
 
+type AutoscalingPolicyIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AutoscalingPolicyIamBindingConditionInput is an input type that accepts AutoscalingPolicyIamBindingConditionArgs and AutoscalingPolicyIamBindingConditionOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyIamBindingConditionInput` via:
+//
+//          AutoscalingPolicyIamBindingConditionArgs{...}
+type AutoscalingPolicyIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyIamBindingConditionOutput() AutoscalingPolicyIamBindingConditionOutput
+	ToAutoscalingPolicyIamBindingConditionOutputWithContext(context.Context) AutoscalingPolicyIamBindingConditionOutput
+}
+
+type AutoscalingPolicyIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AutoscalingPolicyIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (i AutoscalingPolicyIamBindingConditionArgs) ToAutoscalingPolicyIamBindingConditionOutput() AutoscalingPolicyIamBindingConditionOutput {
+	return i.ToAutoscalingPolicyIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicyIamBindingConditionArgs) ToAutoscalingPolicyIamBindingConditionOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamBindingConditionOutput)
+}
+
+func (i AutoscalingPolicyIamBindingConditionArgs) ToAutoscalingPolicyIamBindingConditionPtrOutput() AutoscalingPolicyIamBindingConditionPtrOutput {
+	return i.ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicyIamBindingConditionArgs) ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamBindingConditionOutput).ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AutoscalingPolicyIamBindingConditionPtrInput is an input type that accepts AutoscalingPolicyIamBindingConditionArgs, AutoscalingPolicyIamBindingConditionPtr and AutoscalingPolicyIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyIamBindingConditionPtrInput` via:
+//
+//          AutoscalingPolicyIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type AutoscalingPolicyIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyIamBindingConditionPtrOutput() AutoscalingPolicyIamBindingConditionPtrOutput
+	ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(context.Context) AutoscalingPolicyIamBindingConditionPtrOutput
+}
+
+type autoscalingPolicyIamBindingConditionPtrType AutoscalingPolicyIamBindingConditionArgs
+
+func AutoscalingPolicyIamBindingConditionPtr(v *AutoscalingPolicyIamBindingConditionArgs) AutoscalingPolicyIamBindingConditionPtrInput {
+	return (*autoscalingPolicyIamBindingConditionPtrType)(v)
+}
+
+func (*autoscalingPolicyIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (i *autoscalingPolicyIamBindingConditionPtrType) ToAutoscalingPolicyIamBindingConditionPtrOutput() AutoscalingPolicyIamBindingConditionPtrOutput {
+	return i.ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalingPolicyIamBindingConditionPtrType) ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamBindingConditionPtrOutput)
+}
+
+type AutoscalingPolicyIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyIamBindingConditionOutput) ToAutoscalingPolicyIamBindingConditionOutput() AutoscalingPolicyIamBindingConditionOutput {
+	return o
+}
+
+func (o AutoscalingPolicyIamBindingConditionOutput) ToAutoscalingPolicyIamBindingConditionOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingConditionOutput {
+	return o
+}
+
+func (o AutoscalingPolicyIamBindingConditionOutput) ToAutoscalingPolicyIamBindingConditionPtrOutput() AutoscalingPolicyIamBindingConditionPtrOutput {
+	return o.ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalingPolicyIamBindingConditionOutput) ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyIamBindingCondition) *AutoscalingPolicyIamBindingCondition {
+		return &v
+	}).(AutoscalingPolicyIamBindingConditionPtrOutput)
+}
+
+func (o AutoscalingPolicyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AutoscalingPolicyIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AutoscalingPolicyIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AutoscalingPolicyIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyIamBindingConditionPtrOutput) ToAutoscalingPolicyIamBindingConditionPtrOutput() AutoscalingPolicyIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AutoscalingPolicyIamBindingConditionPtrOutput) ToAutoscalingPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AutoscalingPolicyIamBindingConditionPtrOutput) Elem() AutoscalingPolicyIamBindingConditionOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyIamBindingCondition) AutoscalingPolicyIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicyIamBindingCondition
+		return ret
+	}).(AutoscalingPolicyIamBindingConditionOutput)
+}
+
+func (o AutoscalingPolicyIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AutoscalingPolicyIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AutoscalingPolicyIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutoscalingPolicyIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AutoscalingPolicyIamMemberConditionInput is an input type that accepts AutoscalingPolicyIamMemberConditionArgs and AutoscalingPolicyIamMemberConditionOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyIamMemberConditionInput` via:
+//
+//          AutoscalingPolicyIamMemberConditionArgs{...}
+type AutoscalingPolicyIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyIamMemberConditionOutput() AutoscalingPolicyIamMemberConditionOutput
+	ToAutoscalingPolicyIamMemberConditionOutputWithContext(context.Context) AutoscalingPolicyIamMemberConditionOutput
+}
+
+type AutoscalingPolicyIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AutoscalingPolicyIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (i AutoscalingPolicyIamMemberConditionArgs) ToAutoscalingPolicyIamMemberConditionOutput() AutoscalingPolicyIamMemberConditionOutput {
+	return i.ToAutoscalingPolicyIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicyIamMemberConditionArgs) ToAutoscalingPolicyIamMemberConditionOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamMemberConditionOutput)
+}
+
+func (i AutoscalingPolicyIamMemberConditionArgs) ToAutoscalingPolicyIamMemberConditionPtrOutput() AutoscalingPolicyIamMemberConditionPtrOutput {
+	return i.ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicyIamMemberConditionArgs) ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamMemberConditionOutput).ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AutoscalingPolicyIamMemberConditionPtrInput is an input type that accepts AutoscalingPolicyIamMemberConditionArgs, AutoscalingPolicyIamMemberConditionPtr and AutoscalingPolicyIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyIamMemberConditionPtrInput` via:
+//
+//          AutoscalingPolicyIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type AutoscalingPolicyIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyIamMemberConditionPtrOutput() AutoscalingPolicyIamMemberConditionPtrOutput
+	ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(context.Context) AutoscalingPolicyIamMemberConditionPtrOutput
+}
+
+type autoscalingPolicyIamMemberConditionPtrType AutoscalingPolicyIamMemberConditionArgs
+
+func AutoscalingPolicyIamMemberConditionPtr(v *AutoscalingPolicyIamMemberConditionArgs) AutoscalingPolicyIamMemberConditionPtrInput {
+	return (*autoscalingPolicyIamMemberConditionPtrType)(v)
+}
+
+func (*autoscalingPolicyIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (i *autoscalingPolicyIamMemberConditionPtrType) ToAutoscalingPolicyIamMemberConditionPtrOutput() AutoscalingPolicyIamMemberConditionPtrOutput {
+	return i.ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalingPolicyIamMemberConditionPtrType) ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamMemberConditionPtrOutput)
+}
+
+type AutoscalingPolicyIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyIamMemberConditionOutput) ToAutoscalingPolicyIamMemberConditionOutput() AutoscalingPolicyIamMemberConditionOutput {
+	return o
+}
+
+func (o AutoscalingPolicyIamMemberConditionOutput) ToAutoscalingPolicyIamMemberConditionOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberConditionOutput {
+	return o
+}
+
+func (o AutoscalingPolicyIamMemberConditionOutput) ToAutoscalingPolicyIamMemberConditionPtrOutput() AutoscalingPolicyIamMemberConditionPtrOutput {
+	return o.ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalingPolicyIamMemberConditionOutput) ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyIamMemberCondition) *AutoscalingPolicyIamMemberCondition {
+		return &v
+	}).(AutoscalingPolicyIamMemberConditionPtrOutput)
+}
+
+func (o AutoscalingPolicyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AutoscalingPolicyIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AutoscalingPolicyIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AutoscalingPolicyIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyIamMemberConditionPtrOutput) ToAutoscalingPolicyIamMemberConditionPtrOutput() AutoscalingPolicyIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AutoscalingPolicyIamMemberConditionPtrOutput) ToAutoscalingPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AutoscalingPolicyIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AutoscalingPolicyIamMemberConditionPtrOutput) Elem() AutoscalingPolicyIamMemberConditionOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyIamMemberCondition) AutoscalingPolicyIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingPolicyIamMemberCondition
+		return ret
+	}).(AutoscalingPolicyIamMemberConditionOutput)
+}
+
+func (o AutoscalingPolicyIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AutoscalingPolicyIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AutoscalingPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AutoscalingPolicySecondaryWorkerConfig struct {
 	// Maximum number of instances for this group. Note that by default, clusters will not use
 	// secondary workers. Required for secondary workers if the minimum secondary instances is set.
@@ -9710,6 +10036,332 @@ func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) CloudS
 			return nil
 		}
 		return &v.CloudSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreServiceIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MetastoreServiceIamBindingConditionInput is an input type that accepts MetastoreServiceIamBindingConditionArgs and MetastoreServiceIamBindingConditionOutput values.
+// You can construct a concrete instance of `MetastoreServiceIamBindingConditionInput` via:
+//
+//          MetastoreServiceIamBindingConditionArgs{...}
+type MetastoreServiceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceIamBindingConditionOutput() MetastoreServiceIamBindingConditionOutput
+	ToMetastoreServiceIamBindingConditionOutputWithContext(context.Context) MetastoreServiceIamBindingConditionOutput
+}
+
+type MetastoreServiceIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MetastoreServiceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i MetastoreServiceIamBindingConditionArgs) ToMetastoreServiceIamBindingConditionOutput() MetastoreServiceIamBindingConditionOutput {
+	return i.ToMetastoreServiceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceIamBindingConditionArgs) ToMetastoreServiceIamBindingConditionOutputWithContext(ctx context.Context) MetastoreServiceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamBindingConditionOutput)
+}
+
+func (i MetastoreServiceIamBindingConditionArgs) ToMetastoreServiceIamBindingConditionPtrOutput() MetastoreServiceIamBindingConditionPtrOutput {
+	return i.ToMetastoreServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceIamBindingConditionArgs) ToMetastoreServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamBindingConditionOutput).ToMetastoreServiceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceIamBindingConditionPtrInput is an input type that accepts MetastoreServiceIamBindingConditionArgs, MetastoreServiceIamBindingConditionPtr and MetastoreServiceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceIamBindingConditionPtrInput` via:
+//
+//          MetastoreServiceIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreServiceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceIamBindingConditionPtrOutput() MetastoreServiceIamBindingConditionPtrOutput
+	ToMetastoreServiceIamBindingConditionPtrOutputWithContext(context.Context) MetastoreServiceIamBindingConditionPtrOutput
+}
+
+type metastoreServiceIamBindingConditionPtrType MetastoreServiceIamBindingConditionArgs
+
+func MetastoreServiceIamBindingConditionPtr(v *MetastoreServiceIamBindingConditionArgs) MetastoreServiceIamBindingConditionPtrInput {
+	return (*metastoreServiceIamBindingConditionPtrType)(v)
+}
+
+func (*metastoreServiceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *metastoreServiceIamBindingConditionPtrType) ToMetastoreServiceIamBindingConditionPtrOutput() MetastoreServiceIamBindingConditionPtrOutput {
+	return i.ToMetastoreServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceIamBindingConditionPtrType) ToMetastoreServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamBindingConditionPtrOutput)
+}
+
+type MetastoreServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o MetastoreServiceIamBindingConditionOutput) ToMetastoreServiceIamBindingConditionOutput() MetastoreServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o MetastoreServiceIamBindingConditionOutput) ToMetastoreServiceIamBindingConditionOutputWithContext(ctx context.Context) MetastoreServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o MetastoreServiceIamBindingConditionOutput) ToMetastoreServiceIamBindingConditionPtrOutput() MetastoreServiceIamBindingConditionPtrOutput {
+	return o.ToMetastoreServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceIamBindingConditionOutput) ToMetastoreServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceIamBindingCondition) *MetastoreServiceIamBindingCondition {
+		return &v
+	}).(MetastoreServiceIamBindingConditionPtrOutput)
+}
+
+func (o MetastoreServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MetastoreServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MetastoreServiceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o MetastoreServiceIamBindingConditionPtrOutput) ToMetastoreServiceIamBindingConditionPtrOutput() MetastoreServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceIamBindingConditionPtrOutput) ToMetastoreServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceIamBindingConditionPtrOutput) Elem() MetastoreServiceIamBindingConditionOutput {
+	return o.ApplyT(func(v *MetastoreServiceIamBindingCondition) MetastoreServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceIamBindingCondition
+		return ret
+	}).(MetastoreServiceIamBindingConditionOutput)
+}
+
+func (o MetastoreServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreServiceIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MetastoreServiceIamMemberConditionInput is an input type that accepts MetastoreServiceIamMemberConditionArgs and MetastoreServiceIamMemberConditionOutput values.
+// You can construct a concrete instance of `MetastoreServiceIamMemberConditionInput` via:
+//
+//          MetastoreServiceIamMemberConditionArgs{...}
+type MetastoreServiceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceIamMemberConditionOutput() MetastoreServiceIamMemberConditionOutput
+	ToMetastoreServiceIamMemberConditionOutputWithContext(context.Context) MetastoreServiceIamMemberConditionOutput
+}
+
+type MetastoreServiceIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MetastoreServiceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i MetastoreServiceIamMemberConditionArgs) ToMetastoreServiceIamMemberConditionOutput() MetastoreServiceIamMemberConditionOutput {
+	return i.ToMetastoreServiceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceIamMemberConditionArgs) ToMetastoreServiceIamMemberConditionOutputWithContext(ctx context.Context) MetastoreServiceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamMemberConditionOutput)
+}
+
+func (i MetastoreServiceIamMemberConditionArgs) ToMetastoreServiceIamMemberConditionPtrOutput() MetastoreServiceIamMemberConditionPtrOutput {
+	return i.ToMetastoreServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceIamMemberConditionArgs) ToMetastoreServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamMemberConditionOutput).ToMetastoreServiceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceIamMemberConditionPtrInput is an input type that accepts MetastoreServiceIamMemberConditionArgs, MetastoreServiceIamMemberConditionPtr and MetastoreServiceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceIamMemberConditionPtrInput` via:
+//
+//          MetastoreServiceIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreServiceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceIamMemberConditionPtrOutput() MetastoreServiceIamMemberConditionPtrOutput
+	ToMetastoreServiceIamMemberConditionPtrOutputWithContext(context.Context) MetastoreServiceIamMemberConditionPtrOutput
+}
+
+type metastoreServiceIamMemberConditionPtrType MetastoreServiceIamMemberConditionArgs
+
+func MetastoreServiceIamMemberConditionPtr(v *MetastoreServiceIamMemberConditionArgs) MetastoreServiceIamMemberConditionPtrInput {
+	return (*metastoreServiceIamMemberConditionPtrType)(v)
+}
+
+func (*metastoreServiceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *metastoreServiceIamMemberConditionPtrType) ToMetastoreServiceIamMemberConditionPtrOutput() MetastoreServiceIamMemberConditionPtrOutput {
+	return i.ToMetastoreServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceIamMemberConditionPtrType) ToMetastoreServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamMemberConditionPtrOutput)
+}
+
+type MetastoreServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o MetastoreServiceIamMemberConditionOutput) ToMetastoreServiceIamMemberConditionOutput() MetastoreServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o MetastoreServiceIamMemberConditionOutput) ToMetastoreServiceIamMemberConditionOutputWithContext(ctx context.Context) MetastoreServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o MetastoreServiceIamMemberConditionOutput) ToMetastoreServiceIamMemberConditionPtrOutput() MetastoreServiceIamMemberConditionPtrOutput {
+	return o.ToMetastoreServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceIamMemberConditionOutput) ToMetastoreServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceIamMemberCondition) *MetastoreServiceIamMemberCondition {
+		return &v
+	}).(MetastoreServiceIamMemberConditionPtrOutput)
+}
+
+func (o MetastoreServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MetastoreServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MetastoreServiceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o MetastoreServiceIamMemberConditionPtrOutput) ToMetastoreServiceIamMemberConditionPtrOutput() MetastoreServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceIamMemberConditionPtrOutput) ToMetastoreServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceIamMemberConditionPtrOutput) Elem() MetastoreServiceIamMemberConditionOutput {
+	return o.ApplyT(func(v *MetastoreServiceIamMemberCondition) MetastoreServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceIamMemberCondition
+		return ret
+	}).(MetastoreServiceIamMemberConditionOutput)
+}
+
+func (o MetastoreServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19992,6 +20644,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyBasicAlgorithmPtrInput)(nil)).Elem(), AutoscalingPolicyBasicAlgorithmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyBasicAlgorithmYarnConfigInput)(nil)).Elem(), AutoscalingPolicyBasicAlgorithmYarnConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyBasicAlgorithmYarnConfigPtrInput)(nil)).Elem(), AutoscalingPolicyBasicAlgorithmYarnConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyIamBindingConditionInput)(nil)).Elem(), AutoscalingPolicyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyIamBindingConditionPtrInput)(nil)).Elem(), AutoscalingPolicyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyIamMemberConditionInput)(nil)).Elem(), AutoscalingPolicyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyIamMemberConditionPtrInput)(nil)).Elem(), AutoscalingPolicyIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicySecondaryWorkerConfigInput)(nil)).Elem(), AutoscalingPolicySecondaryWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicySecondaryWorkerConfigPtrInput)(nil)).Elem(), AutoscalingPolicySecondaryWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyWorkerConfigInput)(nil)).Elem(), AutoscalingPolicyWorkerConfigArgs{})
@@ -20086,6 +20742,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigKerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceIamBindingConditionInput)(nil)).Elem(), MetastoreServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceIamBindingConditionPtrInput)(nil)).Elem(), MetastoreServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceIamMemberConditionInput)(nil)).Elem(), MetastoreServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceIamMemberConditionPtrInput)(nil)).Elem(), MetastoreServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMaintenanceWindowInput)(nil)).Elem(), MetastoreServiceMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMaintenanceWindowPtrInput)(nil)).Elem(), MetastoreServiceMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
@@ -20202,6 +20862,10 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmYarnConfigOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicySecondaryWorkerConfigOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicySecondaryWorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyWorkerConfigOutput{})
@@ -20296,6 +20960,10 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})

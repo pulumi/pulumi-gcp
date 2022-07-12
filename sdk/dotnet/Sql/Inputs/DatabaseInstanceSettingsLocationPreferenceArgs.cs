@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? FollowGaeApplication { get; set; }
 
         /// <summary>
+        /// The preferred Compute Engine zone for the secondary/failover.
+        /// </summary>
+        [Input("secondaryZone")]
+        public Input<string>? SecondaryZone { get; set; }
+
+        /// <summary>
         /// The preferred compute engine
         /// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
         /// </summary>

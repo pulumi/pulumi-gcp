@@ -20,6 +20,7 @@ class InstanceArgs:
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  connect_mode: Optional[pulumi.Input[str]] = None,
+                 customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
@@ -52,6 +53,8 @@ class InstanceArgs:
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+               instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
@@ -112,6 +115,8 @@ class InstanceArgs:
             pulumi.set(__self__, "authorized_network", authorized_network)
         if connect_mode is not None:
             pulumi.set(__self__, "connect_mode", connect_mode)
+        if customer_managed_key is not None:
+            pulumi.set(__self__, "customer_managed_key", customer_managed_key)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
@@ -213,6 +218,19 @@ class InstanceArgs:
     @connect_mode.setter
     def connect_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connect_mode", value)
+
+    @property
+    @pulumi.getter(name="customerManagedKey")
+    def customer_managed_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+        instance. If this is provided, CMEK is enabled.
+        """
+        return pulumi.get(self, "customer_managed_key")
+
+    @customer_managed_key.setter
+    def customer_managed_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_managed_key", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -451,6 +469,7 @@ class _InstanceState:
                  connect_mode: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  current_location_id: Optional[pulumi.Input[str]] = None,
+                 customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -498,6 +517,8 @@ class _InstanceState:
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
                [alternativeLocationId] and can change after a failover event.
+        :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+               instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
@@ -576,6 +597,8 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if current_location_id is not None:
             pulumi.set(__self__, "current_location_id", current_location_id)
+        if customer_managed_key is not None:
+            pulumi.set(__self__, "customer_managed_key", customer_managed_key)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if host is not None:
@@ -722,6 +745,19 @@ class _InstanceState:
     @current_location_id.setter
     def current_location_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "current_location_id", value)
+
+    @property
+    @pulumi.getter(name="customerManagedKey")
+    def customer_managed_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+        instance. If this is provided, CMEK is enabled.
+        """
+        return pulumi.get(self, "customer_managed_key")
+
+    @customer_managed_key.setter
+    def customer_managed_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_managed_key", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -1060,6 +1096,7 @@ class Instance(pulumi.CustomResource):
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  connect_mode: Optional[pulumi.Input[str]] = None,
+                 customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
@@ -1178,6 +1215,30 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+        ### Redis Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_keyring = gcp.kms.KeyRing("redisKeyring", location="us-central1")
+        redis_key = gcp.kms.CryptoKey("redisKey", key_ring=redis_keyring.id)
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_6_X",
+            display_name="Terraform Test Instance",
+            reserved_ip_range="192.168.0.0/29",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            customer_managed_key=redis_key.id)
+        ```
 
         ## Import
 
@@ -1214,6 +1275,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+               instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
@@ -1372,6 +1435,30 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+        ### Redis Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_keyring = gcp.kms.KeyRing("redisKeyring", location="us-central1")
+        redis_key = gcp.kms.CryptoKey("redisKey", key_ring=redis_keyring.id)
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            redis_version="REDIS_6_X",
+            display_name="Terraform Test Instance",
+            reserved_ip_range="192.168.0.0/29",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            customer_managed_key=redis_key.id)
+        ```
 
         ## Import
 
@@ -1412,6 +1499,7 @@ class Instance(pulumi.CustomResource):
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  connect_mode: Optional[pulumi.Input[str]] = None,
+                 customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
@@ -1445,6 +1533,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["auth_enabled"] = auth_enabled
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["connect_mode"] = connect_mode
+            __props__.__dict__["customer_managed_key"] = customer_managed_key
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_id"] = location_id
@@ -1491,6 +1580,7 @@ class Instance(pulumi.CustomResource):
             connect_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             current_location_id: Optional[pulumi.Input[str]] = None,
+            customer_managed_key: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1543,6 +1633,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
                [alternativeLocationId] and can change after a failover event.
+        :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+               instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
@@ -1618,6 +1710,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["connect_mode"] = connect_mode
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["current_location_id"] = current_location_id
+        __props__.__dict__["customer_managed_key"] = customer_managed_key
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["host"] = host
         __props__.__dict__["labels"] = labels
@@ -1713,6 +1806,15 @@ class Instance(pulumi.CustomResource):
         [alternativeLocationId] and can change after a failover event.
         """
         return pulumi.get(self, "current_location_id")
+
+    @property
+    @pulumi.getter(name="customerManagedKey")
+    def customer_managed_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+        instance. If this is provided, CMEK is enabled.
+        """
+        return pulumi.get(self, "customer_managed_key")
 
     @property
     @pulumi.getter(name="displayName")

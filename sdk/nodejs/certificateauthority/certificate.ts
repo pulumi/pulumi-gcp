@@ -397,7 +397,10 @@ export class Certificate extends pulumi.CustomResource {
     }
 
     /**
-     * Certificate Authority name.
+     * The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+     * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+     * should be set to `my-ca`.
      */
     public readonly certificateAuthority!: pulumi.Output<string | undefined>;
     /**
@@ -424,7 +427,7 @@ export class Certificate extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The resource name of the issuing CertificateAuthority in the format
-     * projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*.
+     * 'projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*'.
      */
     public /*out*/ readonly issuerCertificateAuthority!: pulumi.Output<string>;
     /**
@@ -552,7 +555,10 @@ export class Certificate extends pulumi.CustomResource {
  */
 export interface CertificateState {
     /**
-     * Certificate Authority name.
+     * The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+     * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+     * should be set to `my-ca`.
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
@@ -579,7 +585,7 @@ export interface CertificateState {
     createTime?: pulumi.Input<string>;
     /**
      * The resource name of the issuing CertificateAuthority in the format
-     * projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*.
+     * 'projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*'.
      */
     issuerCertificateAuthority?: pulumi.Input<string>;
     /**
@@ -645,7 +651,10 @@ export interface CertificateState {
  */
 export interface CertificateArgs {
     /**
-     * Certificate Authority name.
+     * The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+     * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+     * should be set to `my-ca`.
      */
     certificateAuthority?: pulumi.Input<string>;
     /**

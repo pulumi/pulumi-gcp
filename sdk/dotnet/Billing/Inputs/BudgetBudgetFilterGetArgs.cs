@@ -12,16 +12,23 @@ namespace Pulumi.Gcp.Billing.Inputs
 
     public sealed class BudgetBudgetFilterGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A CalendarPeriod represents the abstract concept of a recurring time period that has a
+        /// canonical start. Grammatically, "the start of the current CalendarPeriod".
+        /// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+        /// Exactly one of `calendar_period`, `custom_period` must be provided.
+        /// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+        /// </summary>
+        [Input("calendarPeriod")]
+        public Input<string>? CalendarPeriod { get; set; }
+
         [Input("creditTypes")]
         private InputList<string>? _creditTypes;
 
         /// <summary>
-        /// A set of subaccounts of the form billingAccounts/{account_id},
-        /// specifying that usage from only this set of subaccounts should
-        /// be included in the budget. If a subaccount is set to the name of
-        /// the parent account, usage from the parent account will be included.
-        /// If the field is omitted, the report will include usage from the parent
-        /// account and all subaccounts, if they exist.
+        /// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+        /// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+        /// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         /// </summary>
         public InputList<string> CreditTypes
         {
@@ -37,6 +44,15 @@ namespace Pulumi.Gcp.Billing.Inputs
         /// </summary>
         [Input("creditTypesTreatment")]
         public Input<string>? CreditTypesTreatment { get; set; }
+
+        /// <summary>
+        /// Specifies to track usage from any start date (required) to any end date (optional).
+        /// This time period is static, it does not recur.
+        /// Exactly one of `calendar_period`, `custom_period` must be provided.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customPeriod")]
+        public Input<Inputs.BudgetBudgetFilterCustomPeriodGetArgs>? CustomPeriod { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

@@ -12,6 +12,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsInsightsConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsLocationPreferenceArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsMaintenanceWindowArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsSqlServerAuditConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -199,6 +200,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.pricingPlan);
     }
 
+    @Import(name="sqlServerAuditConfig")
+    private @Nullable Output<DatabaseInstanceSettingsSqlServerAuditConfigArgs> sqlServerAuditConfig;
+
+    public Optional<Output<DatabaseInstanceSettingsSqlServerAuditConfigArgs>> sqlServerAuditConfig() {
+        return Optional.ofNullable(this.sqlServerAuditConfig);
+    }
+
     /**
      * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
      * for more details and supported versions. Postgres supports only shared-core machine types,
@@ -258,6 +266,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.locationPreference = $.locationPreference;
         this.maintenanceWindow = $.maintenanceWindow;
         this.pricingPlan = $.pricingPlan;
+        this.sqlServerAuditConfig = $.sqlServerAuditConfig;
         this.tier = $.tier;
         this.userLabels = $.userLabels;
         this.version = $.version;
@@ -514,6 +523,15 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder pricingPlan(String pricingPlan) {
             return pricingPlan(Output.of(pricingPlan));
+        }
+
+        public Builder sqlServerAuditConfig(@Nullable Output<DatabaseInstanceSettingsSqlServerAuditConfigArgs> sqlServerAuditConfig) {
+            $.sqlServerAuditConfig = sqlServerAuditConfig;
+            return this;
+        }
+
+        public Builder sqlServerAuditConfig(DatabaseInstanceSettingsSqlServerAuditConfigArgs sqlServerAuditConfig) {
+            return sqlServerAuditConfig(Output.of(sqlServerAuditConfig));
         }
 
         /**

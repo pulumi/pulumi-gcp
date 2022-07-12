@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? FollowGaeApplication;
         /// <summary>
+        /// The preferred Compute Engine zone for the secondary/failover.
+        /// </summary>
+        public readonly string? SecondaryZone;
+        /// <summary>
         /// The preferred compute engine
         /// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
         /// </summary>
@@ -28,9 +32,12 @@ namespace Pulumi.Gcp.Sql.Outputs
         private DatabaseInstanceSettingsLocationPreference(
             string? followGaeApplication,
 
+            string? secondaryZone,
+
             string? zone)
         {
             FollowGaeApplication = followGaeApplication;
+            SecondaryZone = secondaryZone;
             Zone = zone;
         }
     }

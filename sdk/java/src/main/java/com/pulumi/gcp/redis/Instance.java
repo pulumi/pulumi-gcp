@@ -190,6 +190,52 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Redis Instance Cmek
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var redisKeyring = new KeyRing(&#34;redisKeyring&#34;, KeyRingArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var redisKey = new CryptoKey(&#34;redisKey&#34;, CryptoKeyArgs.builder()        
+ *             .keyRing(redisKeyring.id())
+ *             .build());
+ * 
+ *         final var redis-network = Output.of(ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name(&#34;redis-test-network&#34;)
+ *             .build()));
+ * 
+ *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
+ *             .tier(&#34;STANDARD_HA&#34;)
+ *             .memorySizeGb(1)
+ *             .locationId(&#34;us-central1-a&#34;)
+ *             .alternativeLocationId(&#34;us-central1-f&#34;)
+ *             .authorizedNetwork(redis_network.id())
+ *             .redisVersion(&#34;REDIS_6_X&#34;)
+ *             .displayName(&#34;Terraform Test Instance&#34;)
+ *             .reservedIpRange(&#34;192.168.0.0/29&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_key&#34;, &#34;my_val&#34;),
+ *                 Map.entry(&#34;other_key&#34;, &#34;other_val&#34;)
+ *             ))
+ *             .customerManagedKey(redisKey.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -339,6 +385,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> currentLocationId() {
         return this.currentLocationId;
+    }
+    /**
+     * Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+     * instance. If this is provided, CMEK is enabled.
+     * 
+     */
+    @Export(name="customerManagedKey", type=String.class, parameters={})
+    private Output</* @Nullable */ String> customerManagedKey;
+
+    /**
+     * @return Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+     * instance. If this is provided, CMEK is enabled.
+     * 
+     */
+    public Output<Optional<String>> customerManagedKey() {
+        return Codegen.optional(this.customerManagedKey);
     }
     /**
      * An arbitrary and optional user-provided name for the instance.

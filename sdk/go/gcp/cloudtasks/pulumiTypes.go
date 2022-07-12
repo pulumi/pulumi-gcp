@@ -220,6 +220,332 @@ func (o QueueAppEngineRoutingOverridePtrOutput) Version() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type QueueIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// QueueIamBindingConditionInput is an input type that accepts QueueIamBindingConditionArgs and QueueIamBindingConditionOutput values.
+// You can construct a concrete instance of `QueueIamBindingConditionInput` via:
+//
+//          QueueIamBindingConditionArgs{...}
+type QueueIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToQueueIamBindingConditionOutput() QueueIamBindingConditionOutput
+	ToQueueIamBindingConditionOutputWithContext(context.Context) QueueIamBindingConditionOutput
+}
+
+type QueueIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (QueueIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueIamBindingCondition)(nil)).Elem()
+}
+
+func (i QueueIamBindingConditionArgs) ToQueueIamBindingConditionOutput() QueueIamBindingConditionOutput {
+	return i.ToQueueIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i QueueIamBindingConditionArgs) ToQueueIamBindingConditionOutputWithContext(ctx context.Context) QueueIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingConditionOutput)
+}
+
+func (i QueueIamBindingConditionArgs) ToQueueIamBindingConditionPtrOutput() QueueIamBindingConditionPtrOutput {
+	return i.ToQueueIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i QueueIamBindingConditionArgs) ToQueueIamBindingConditionPtrOutputWithContext(ctx context.Context) QueueIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingConditionOutput).ToQueueIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// QueueIamBindingConditionPtrInput is an input type that accepts QueueIamBindingConditionArgs, QueueIamBindingConditionPtr and QueueIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `QueueIamBindingConditionPtrInput` via:
+//
+//          QueueIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type QueueIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToQueueIamBindingConditionPtrOutput() QueueIamBindingConditionPtrOutput
+	ToQueueIamBindingConditionPtrOutputWithContext(context.Context) QueueIamBindingConditionPtrOutput
+}
+
+type queueIamBindingConditionPtrType QueueIamBindingConditionArgs
+
+func QueueIamBindingConditionPtr(v *QueueIamBindingConditionArgs) QueueIamBindingConditionPtrInput {
+	return (*queueIamBindingConditionPtrType)(v)
+}
+
+func (*queueIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueIamBindingCondition)(nil)).Elem()
+}
+
+func (i *queueIamBindingConditionPtrType) ToQueueIamBindingConditionPtrOutput() QueueIamBindingConditionPtrOutput {
+	return i.ToQueueIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *queueIamBindingConditionPtrType) ToQueueIamBindingConditionPtrOutputWithContext(ctx context.Context) QueueIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingConditionPtrOutput)
+}
+
+type QueueIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (QueueIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueIamBindingCondition)(nil)).Elem()
+}
+
+func (o QueueIamBindingConditionOutput) ToQueueIamBindingConditionOutput() QueueIamBindingConditionOutput {
+	return o
+}
+
+func (o QueueIamBindingConditionOutput) ToQueueIamBindingConditionOutputWithContext(ctx context.Context) QueueIamBindingConditionOutput {
+	return o
+}
+
+func (o QueueIamBindingConditionOutput) ToQueueIamBindingConditionPtrOutput() QueueIamBindingConditionPtrOutput {
+	return o.ToQueueIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o QueueIamBindingConditionOutput) ToQueueIamBindingConditionPtrOutputWithContext(ctx context.Context) QueueIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueIamBindingCondition) *QueueIamBindingCondition {
+		return &v
+	}).(QueueIamBindingConditionPtrOutput)
+}
+
+func (o QueueIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o QueueIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o QueueIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type QueueIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueIamBindingCondition)(nil)).Elem()
+}
+
+func (o QueueIamBindingConditionPtrOutput) ToQueueIamBindingConditionPtrOutput() QueueIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o QueueIamBindingConditionPtrOutput) ToQueueIamBindingConditionPtrOutputWithContext(ctx context.Context) QueueIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o QueueIamBindingConditionPtrOutput) Elem() QueueIamBindingConditionOutput {
+	return o.ApplyT(func(v *QueueIamBindingCondition) QueueIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret QueueIamBindingCondition
+		return ret
+	}).(QueueIamBindingConditionOutput)
+}
+
+func (o QueueIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o QueueIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o QueueIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type QueueIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// QueueIamMemberConditionInput is an input type that accepts QueueIamMemberConditionArgs and QueueIamMemberConditionOutput values.
+// You can construct a concrete instance of `QueueIamMemberConditionInput` via:
+//
+//          QueueIamMemberConditionArgs{...}
+type QueueIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToQueueIamMemberConditionOutput() QueueIamMemberConditionOutput
+	ToQueueIamMemberConditionOutputWithContext(context.Context) QueueIamMemberConditionOutput
+}
+
+type QueueIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (QueueIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueIamMemberCondition)(nil)).Elem()
+}
+
+func (i QueueIamMemberConditionArgs) ToQueueIamMemberConditionOutput() QueueIamMemberConditionOutput {
+	return i.ToQueueIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i QueueIamMemberConditionArgs) ToQueueIamMemberConditionOutputWithContext(ctx context.Context) QueueIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueIamMemberConditionOutput)
+}
+
+func (i QueueIamMemberConditionArgs) ToQueueIamMemberConditionPtrOutput() QueueIamMemberConditionPtrOutput {
+	return i.ToQueueIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i QueueIamMemberConditionArgs) ToQueueIamMemberConditionPtrOutputWithContext(ctx context.Context) QueueIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueIamMemberConditionOutput).ToQueueIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// QueueIamMemberConditionPtrInput is an input type that accepts QueueIamMemberConditionArgs, QueueIamMemberConditionPtr and QueueIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `QueueIamMemberConditionPtrInput` via:
+//
+//          QueueIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type QueueIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToQueueIamMemberConditionPtrOutput() QueueIamMemberConditionPtrOutput
+	ToQueueIamMemberConditionPtrOutputWithContext(context.Context) QueueIamMemberConditionPtrOutput
+}
+
+type queueIamMemberConditionPtrType QueueIamMemberConditionArgs
+
+func QueueIamMemberConditionPtr(v *QueueIamMemberConditionArgs) QueueIamMemberConditionPtrInput {
+	return (*queueIamMemberConditionPtrType)(v)
+}
+
+func (*queueIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueIamMemberCondition)(nil)).Elem()
+}
+
+func (i *queueIamMemberConditionPtrType) ToQueueIamMemberConditionPtrOutput() QueueIamMemberConditionPtrOutput {
+	return i.ToQueueIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *queueIamMemberConditionPtrType) ToQueueIamMemberConditionPtrOutputWithContext(ctx context.Context) QueueIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueIamMemberConditionPtrOutput)
+}
+
+type QueueIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (QueueIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueIamMemberCondition)(nil)).Elem()
+}
+
+func (o QueueIamMemberConditionOutput) ToQueueIamMemberConditionOutput() QueueIamMemberConditionOutput {
+	return o
+}
+
+func (o QueueIamMemberConditionOutput) ToQueueIamMemberConditionOutputWithContext(ctx context.Context) QueueIamMemberConditionOutput {
+	return o
+}
+
+func (o QueueIamMemberConditionOutput) ToQueueIamMemberConditionPtrOutput() QueueIamMemberConditionPtrOutput {
+	return o.ToQueueIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o QueueIamMemberConditionOutput) ToQueueIamMemberConditionPtrOutputWithContext(ctx context.Context) QueueIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueIamMemberCondition) *QueueIamMemberCondition {
+		return &v
+	}).(QueueIamMemberConditionPtrOutput)
+}
+
+func (o QueueIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o QueueIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o QueueIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type QueueIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueIamMemberCondition)(nil)).Elem()
+}
+
+func (o QueueIamMemberConditionPtrOutput) ToQueueIamMemberConditionPtrOutput() QueueIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o QueueIamMemberConditionPtrOutput) ToQueueIamMemberConditionPtrOutputWithContext(ctx context.Context) QueueIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o QueueIamMemberConditionPtrOutput) Elem() QueueIamMemberConditionOutput {
+	return o.ApplyT(func(v *QueueIamMemberCondition) QueueIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret QueueIamMemberCondition
+		return ret
+	}).(QueueIamMemberConditionOutput)
+}
+
+func (o QueueIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o QueueIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o QueueIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type QueueRateLimits struct {
 	// -
 	// The max burst size.
@@ -864,6 +1190,10 @@ func (o QueueStackdriverLoggingConfigPtrOutput) SamplingRatio() pulumi.Float64Pt
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueAppEngineRoutingOverrideInput)(nil)).Elem(), QueueAppEngineRoutingOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueAppEngineRoutingOverridePtrInput)(nil)).Elem(), QueueAppEngineRoutingOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueIamBindingConditionInput)(nil)).Elem(), QueueIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueIamBindingConditionPtrInput)(nil)).Elem(), QueueIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueIamMemberConditionInput)(nil)).Elem(), QueueIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueIamMemberConditionPtrInput)(nil)).Elem(), QueueIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueRateLimitsInput)(nil)).Elem(), QueueRateLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueRateLimitsPtrInput)(nil)).Elem(), QueueRateLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueRetryConfigInput)(nil)).Elem(), QueueRetryConfigArgs{})
@@ -872,6 +1202,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueStackdriverLoggingConfigPtrInput)(nil)).Elem(), QueueStackdriverLoggingConfigArgs{})
 	pulumi.RegisterOutputType(QueueAppEngineRoutingOverrideOutput{})
 	pulumi.RegisterOutputType(QueueAppEngineRoutingOverridePtrOutput{})
+	pulumi.RegisterOutputType(QueueIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(QueueIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(QueueIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(QueueIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(QueueRateLimitsOutput{})
 	pulumi.RegisterOutputType(QueueRateLimitsPtrOutput{})
 	pulumi.RegisterOutputType(QueueRetryConfigOutput{})

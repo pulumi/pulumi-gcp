@@ -285,7 +285,7 @@ import (
 // 			NamedPorts: compute.InstanceGroupManagerNamedPortArray{
 // 				&compute.InstanceGroupManagerNamedPortArgs{
 // 					Name: pulumi.String("tcp"),
-// 					Port: pulumi.Int(110),
+// 					Port: pulumi.Int(80),
 // 				},
 // 			},
 // 			Versions: compute.InstanceGroupManagerVersionArray{
@@ -814,11 +814,32 @@ import (
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		subnetworkCidr := "10.0.0.0/24"
+// 		if param := cfg.Get("subnetworkCidr"); param != "" {
+// 			subnetworkCidr = param
+// 		}
 // 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		internalNetwork, err := compute.NewNetwork(ctx, "internalNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		internalSubnetwork, err := compute.NewSubnetwork(ctx, "internalSubnetwork", &compute.SubnetworkArgs{
+// 			Network:               internalNetwork.ID(),
+// 			IpCidrRange:           pulumi.String(subnetworkCidr),
+// 			Region:                pulumi.String("us-central1"),
+// 			PrivateIpGoogleAccess: pulumi.Bool(true),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -827,6 +848,15 @@ import (
 // 			DefaultPort:         pulumi.Int(90),
 // 			Zone:                pulumi.String("us-central1-a"),
 // 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkEndpointGroup(ctx, "internalNetworkEndpointGroup", &compute.NetworkEndpointGroupArgs{
+// 			Network:             internalNetwork.ID(),
+// 			Subnetwork:          internalSubnetwork.ID(),
+// 			Zone:                pulumi.String("us-central1-a"),
+// 			NetworkEndpointType: pulumi.String("GCE_VM_IP"),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -25,6 +25,8 @@ __all__ = [
     'AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage',
     'AuthorityConfigX509ConfigPolicyId',
     'AuthorityKeySpec',
+    'AuthoritySubordinateConfig',
+    'AuthoritySubordinateConfigPemIssuerChain',
     'CaPoolIamBindingCondition',
     'CaPoolIamMemberCondition',
     'CaPoolIssuancePolicy',
@@ -115,6 +117,8 @@ __all__ = [
     'GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult',
     'GetAuthorityConfigX509ConfigPolicyIdResult',
     'GetAuthorityKeySpecResult',
+    'GetAuthoritySubordinateConfigResult',
+    'GetAuthoritySubordinateConfigPemIssuerChainResult',
 ]
 
 @pulumi.output_type
@@ -1187,6 +1191,102 @@ class AuthorityKeySpec(dict):
         `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         """
         return pulumi.get(self, "cloud_kms_key_version")
+
+
+@pulumi.output_type
+class AuthoritySubordinateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthority":
+            suggest = "certificate_authority"
+        elif key == "pemIssuerChain":
+            suggest = "pem_issuer_chain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthoritySubordinateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthoritySubordinateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthoritySubordinateConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_authority: Optional[str] = None,
+                 pem_issuer_chain: Optional['outputs.AuthoritySubordinateConfigPemIssuerChain'] = None):
+        """
+        :param str certificate_authority: This can refer to a CertificateAuthority that was used to create a
+               subordinate CertificateAuthority. This field is used for information
+               and usability purposes only. The resource name is in the format
+               `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        :param 'AuthoritySubordinateConfigPemIssuerChainArgs' pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+               but not pem certificate for this CA itself.
+               Structure is documented below.
+        """
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if pem_issuer_chain is not None:
+            pulumi.set(__self__, "pem_issuer_chain", pem_issuer_chain)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[str]:
+        """
+        This can refer to a CertificateAuthority that was used to create a
+        subordinate CertificateAuthority. This field is used for information
+        and usability purposes only. The resource name is in the format
+        `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @property
+    @pulumi.getter(name="pemIssuerChain")
+    def pem_issuer_chain(self) -> Optional['outputs.AuthoritySubordinateConfigPemIssuerChain']:
+        """
+        Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+        but not pem certificate for this CA itself.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pem_issuer_chain")
+
+
+@pulumi.output_type
+class AuthoritySubordinateConfigPemIssuerChain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificates":
+            suggest = "pem_certificates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthoritySubordinateConfigPemIssuerChain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthoritySubordinateConfigPemIssuerChain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthoritySubordinateConfigPemIssuerChain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificates: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] pem_certificates: Expected to be in leaf-to-root order according to RFC 5246.
+        """
+        if pem_certificates is not None:
+            pulumi.set(__self__, "pem_certificates", pem_certificates)
+
+    @property
+    @pulumi.getter(name="pemCertificates")
+    def pem_certificates(self) -> Optional[Sequence[str]]:
+        """
+        Expected to be in leaf-to-root order according to RFC 5246.
+        """
+        return pulumi.get(self, "pem_certificates")
 
 
 @pulumi.output_type
@@ -6605,5 +6705,36 @@ class GetAuthorityKeySpecResult(dict):
     @pulumi.getter(name="cloudKmsKeyVersion")
     def cloud_kms_key_version(self) -> str:
         return pulumi.get(self, "cloud_kms_key_version")
+
+
+@pulumi.output_type
+class GetAuthoritySubordinateConfigResult(dict):
+    def __init__(__self__, *,
+                 certificate_authority: str,
+                 pem_issuer_chains: Sequence['outputs.GetAuthoritySubordinateConfigPemIssuerChainResult']):
+        pulumi.set(__self__, "certificate_authority", certificate_authority)
+        pulumi.set(__self__, "pem_issuer_chains", pem_issuer_chains)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> str:
+        return pulumi.get(self, "certificate_authority")
+
+    @property
+    @pulumi.getter(name="pemIssuerChains")
+    def pem_issuer_chains(self) -> Sequence['outputs.GetAuthoritySubordinateConfigPemIssuerChainResult']:
+        return pulumi.get(self, "pem_issuer_chains")
+
+
+@pulumi.output_type
+class GetAuthoritySubordinateConfigPemIssuerChainResult(dict):
+    def __init__(__self__, *,
+                 pem_certificates: Sequence[str]):
+        pulumi.set(__self__, "pem_certificates", pem_certificates)
+
+    @property
+    @pulumi.getter(name="pemCertificates")
+    def pem_certificates(self) -> Sequence[str]:
+        return pulumi.get(self, "pem_certificates")
 
 

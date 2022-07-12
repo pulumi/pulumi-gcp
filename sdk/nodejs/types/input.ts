@@ -2616,6 +2616,18 @@ export namespace bigquery {
         username: pulumi.Input<string>;
     }
 
+    export interface ConnectionIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ConnectionIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface DataTransferConfigEmailPreferences {
         /**
          * If true, email notifications will be sent on transfer run failures.
@@ -3821,12 +3833,17 @@ export namespace billing {
 
     export interface BudgetBudgetFilter {
         /**
-         * A set of subaccounts of the form billingAccounts/{account_id},
-         * specifying that usage from only this set of subaccounts should
-         * be included in the budget. If a subaccount is set to the name of
-         * the parent account, usage from the parent account will be included.
-         * If the field is omitted, the report will include usage from the parent
-         * account and all subaccounts, if they exist.
+         * A CalendarPeriod represents the abstract concept of a recurring time period that has a
+         * canonical start. Grammatically, "the start of the current CalendarPeriod".
+         * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+         * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+         * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+         */
+        calendarPeriod?: pulumi.Input<string>;
+        /**
+         * Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+         * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+         * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
          */
         creditTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -3836,6 +3853,13 @@ export namespace billing {
          * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
          */
         creditTypesTreatment?: pulumi.Input<string>;
+        /**
+         * Specifies to track usage from any start date (required) to any end date (optional).
+         * This time period is static, it does not recur.
+         * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+         * Structure is documented below.
+         */
+        customPeriod?: pulumi.Input<inputs.billing.BudgetBudgetFilterCustomPeriod>;
         /**
          * A single label and value pair specifying that usage from only
          * this set of labeled resources should be included in the budget.
@@ -3867,6 +3891,50 @@ export namespace billing {
          * account and all subaccounts, if they exist.
          */
         subaccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BudgetBudgetFilterCustomPeriod {
+        /**
+         * Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+         * If unset, specifies to track all usage incurred since the startDate.
+         * Structure is documented below.
+         */
+        endDate?: pulumi.Input<inputs.billing.BudgetBudgetFilterCustomPeriodEndDate>;
+        /**
+         * A start date is required. The start date must be after January 1, 2017.
+         * Structure is documented below.
+         */
+        startDate: pulumi.Input<inputs.billing.BudgetBudgetFilterCustomPeriodStartDate>;
+    }
+
+    export interface BudgetBudgetFilterCustomPeriodEndDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month.
+         */
+        day: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12.
+         */
+        month: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999.
+         */
+        year: pulumi.Input<number>;
+    }
+
+    export interface BudgetBudgetFilterCustomPeriodStartDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month.
+         */
+        day: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12.
+         */
+        month: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999.
+         */
+        year: pulumi.Input<number>;
     }
 
     export interface BudgetThresholdRule {
@@ -4322,6 +4390,29 @@ export namespace certificateauthority {
          * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
          */
         cloudKmsKeyVersion?: pulumi.Input<string>;
+    }
+
+    export interface AuthoritySubordinateConfig {
+        /**
+         * This can refer to a CertificateAuthority that was used to create a
+         * subordinate CertificateAuthority. This field is used for information
+         * and usability purposes only. The resource name is in the format
+         * `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
+         */
+        certificateAuthority?: pulumi.Input<string>;
+        /**
+         * Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+         * but not pem certificate for this CA itself.
+         * Structure is documented below.
+         */
+        pemIssuerChain?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfigPemIssuerChain>;
+    }
+
+    export interface AuthoritySubordinateConfigPemIssuerChain {
+        /**
+         * Expected to be in leaf-to-root order according to RFC 5246.
+         */
+        pemCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CaPoolIamBindingCondition {
@@ -7641,6 +7732,18 @@ export namespace cloudtasks {
         version?: pulumi.Input<string>;
     }
 
+    export interface QueueIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface QueueIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface QueueRateLimits {
         /**
          * -
@@ -8412,6 +8515,8 @@ export namespace compute {
          * For global HTTP(S) or TCP/SSL load balancing, the default is
          * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
          * and CONNECTION (for TCP/SSL).
+         * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+         * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
          * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
          */
@@ -11180,6 +11285,8 @@ export namespace compute {
     export interface RegionBackendServiceBackend {
         /**
          * Specifies the balancing mode for this backend.
+         * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+         * for an explanation of load balancing modes.
          * Default value is `CONNECTION`.
          * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
          */
@@ -16923,7 +17030,7 @@ export namespace container {
         dnsCacheConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigDnsCacheConfig>;
         /**
          * .
-         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
          */
         gcePersistentDiskCsiDriverConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig>;
         /**
@@ -19724,6 +19831,18 @@ export namespace dataproc {
         scaleUpMinWorkerFraction?: pulumi.Input<number>;
     }
 
+    export interface AutoscalingPolicyIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AutoscalingPolicyIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface AutoscalingPolicySecondaryWorkerConfig {
         /**
          * Maximum number of instances for this group. Note that by default, clusters will not use
@@ -20620,6 +20739,18 @@ export namespace dataproc {
          * "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
          */
         cloudSecret: pulumi.Input<string>;
+    }
+
+    export interface MetastoreServiceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface MetastoreServiceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface MetastoreServiceMaintenanceWindow {
@@ -29845,6 +29976,7 @@ export namespace sql {
          * Pricing plan for this instance, can only be `PER_USE`.
          */
         pricingPlan?: pulumi.Input<string>;
+        sqlServerAuditConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsSqlServerAuditConfig>;
         /**
          * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
          * for more details and supported versions. Postgres supports only shared-core machine types,
@@ -29994,6 +30126,10 @@ export namespace sql {
          */
         followGaeApplication?: pulumi.Input<string>;
         /**
+         * The preferred Compute Engine zone for the secondary/failover.
+         */
+        secondaryZone?: pulumi.Input<string>;
+        /**
          * The preferred compute engine
          * [zone](https://cloud.google.com/compute/docs/zones?hl=en).
          */
@@ -30014,6 +30150,21 @@ export namespace sql {
          * (`stable`)
          */
         updateTrack?: pulumi.Input<string>;
+    }
+
+    export interface DatabaseInstanceSettingsSqlServerAuditConfig {
+        /**
+         * The name of the destination bucket (e.g., gs://mybucket).
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        retentionInterval?: pulumi.Input<string>;
+        /**
+         * How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        uploadInterval?: pulumi.Input<string>;
     }
 
     export interface UserSqlServerUserDetails {

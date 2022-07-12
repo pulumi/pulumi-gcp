@@ -18,6 +18,8 @@ __all__ = [
     'ConnectionCloudSpanner',
     'ConnectionCloudSql',
     'ConnectionCloudSqlCredential',
+    'ConnectionIamBindingCondition',
+    'ConnectionIamMemberCondition',
     'DataTransferConfigEmailPreferences',
     'DataTransferConfigScheduleOptions',
     'DataTransferConfigSensitiveParams',
@@ -485,6 +487,60 @@ class ConnectionCloudSqlCredential(dict):
         Username for database.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ConnectionIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

@@ -366,6 +366,124 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// }
     /// ```
+    /// ### Cloud Run Service Scheduled
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var runApi = new Gcp.Projects.Service("runApi", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Service = "run.googleapis.com",
+    ///             DisableDependentServices = true,
+    ///             DisableOnDestroy = false,
+    ///         });
+    ///         var iamApi = new Gcp.Projects.Service("iamApi", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Service = "iam.googleapis.com",
+    ///             DisableOnDestroy = false,
+    ///         });
+    ///         var resourceManagerApi = new Gcp.Projects.Service("resourceManagerApi", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Service = "cloudresourcemanager.googleapis.com",
+    ///             DisableOnDestroy = false,
+    ///         });
+    ///         var schedulerApi = new Gcp.Projects.Service("schedulerApi", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Service = "cloudscheduler.googleapis.com",
+    ///             DisableOnDestroy = false,
+    ///         });
+    ///         var defaultService = new Gcp.CloudRun.Service("defaultService", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Location = "us-central1",
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     LatestRevision = true,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 runApi,
+    ///             },
+    ///         });
+    ///         var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             AccountId = "scheduler-sa",
+    ///             Description = "Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
+    ///             DisplayName = "scheduler-sa",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 iamApi,
+    ///             },
+    ///         });
+    ///         var defaultJob = new Gcp.CloudScheduler.Job("defaultJob", new Gcp.CloudScheduler.JobArgs
+    ///         {
+    ///             Description = "Invoke a Cloud Run container on a schedule.",
+    ///             Schedule = "*/8 * * * *",
+    ///             TimeZone = "America/New_York",
+    ///             AttemptDeadline = "320s",
+    ///             RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
+    ///             {
+    ///                 RetryCount = 1,
+    ///             },
+    ///             HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
+    ///             {
+    ///                 HttpMethod = "POST",
+    ///                 Uri = defaultService.Statuses.Apply(statuses =&gt; $"{statuses[0].Url}/"),
+    ///                 OidcToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOidcTokenArgs
+    ///                 {
+    ///                     ServiceAccountEmail = defaultAccount.Email,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 schedulerApi,
+    ///             },
+    ///         });
+    ///         var defaultIamMember = new Gcp.CloudRun.IamMember("defaultIamMember", new Gcp.CloudRun.IamMemberArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Location = defaultService.Location,
+    ///             Service = defaultService.Name,
+    ///             Role = "roles/run.invoker",
+    ///             Member = defaultAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Cloud Run Service Secret Environment Variables
     /// 
     /// ```csharp
@@ -568,6 +686,52 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// }
     /// ```
+    /// ### Cloud Run Service Ingress
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "run.googleapis.com/ingress", "internal" },
+    ///                 },
+    ///             },
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     LatestRevision = true,
+    ///                     Percent = 100,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Eventarc Basic Tf
     /// 
     /// ```csharp
@@ -720,6 +884,491 @@ namespace Pulumi.Gcp.CloudRun
     ///             DependsOn = 
     ///             {
     ///                 eventarc,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Run Service Multiple Regions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Cloud Run service replicated across multiple GCP regions
+    ///         var computeApi = new Gcp.Projects.Service("computeApi", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Service = "compute.googleapis.com",
+    ///             DisableDependentServices = true,
+    ///             DisableOnDestroy = false,
+    ///         });
+    ///         var runApi = new Gcp.Projects.Service("runApi", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Service = "run.googleapis.com",
+    ///             DisableDependentServices = true,
+    ///             DisableOnDestroy = false,
+    ///         });
+    ///         var config = new Config();
+    ///         var domainName = config.Get("domainName") ?? "example.com";
+    ///         var runRegions = config.GetObject&lt;dynamic&gt;("runRegions") ?? 
+    ///         {
+    ///             "us-central1",
+    ///             "europe-west1",
+    ///         };
+    ///         var lbDefaultGlobalAddress = new Gcp.Compute.GlobalAddress("lbDefaultGlobalAddress", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 computeApi,
+    ///             },
+    ///         });
+    ///         var runDefault = new List&lt;Gcp.CloudRun.Service&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; runRegions.Length; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             runDefault.Add(new Gcp.CloudRun.Service($"runDefault-{range.Value}", new Gcp.CloudRun.ServiceArgs
+    ///             {
+    ///                 Project = "my-project-name",
+    ///                 Location = runRegions[range.Value],
+    ///                 Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///                 {
+    ///                     Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                     {
+    ///                         Containers = 
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                             {
+    ///                                 Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Traffics = 
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                     {
+    ///                         Percent = 100,
+    ///                         LatestRevision = true,
+    ///                     },
+    ///                 },
+    ///             }, new CustomResourceOptions
+    ///             {
+    ///                 DependsOn = 
+    ///                 {
+    ///                     runApi,
+    ///                 },
+    ///             }));
+    ///         }
+    ///         var lbDefaultRegionNetworkEndpointGroup = new List&lt;Gcp.Compute.RegionNetworkEndpointGroup&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; runRegions.Length; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             lbDefaultRegionNetworkEndpointGroup.Add(new Gcp.Compute.RegionNetworkEndpointGroup($"lbDefaultRegionNetworkEndpointGroup-{range.Value}", new Gcp.Compute.RegionNetworkEndpointGroupArgs
+    ///             {
+    ///                 Project = "my-project-name",
+    ///                 NetworkEndpointType = "SERVERLESS",
+    ///                 Region = runRegions[range.Value],
+    ///                 CloudRun = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupCloudRunArgs
+    ///                 {
+    ///                     Service = runDefault[count.Index].Name,
+    ///                 },
+    ///             }));
+    ///         }
+    ///         var lbDefaultBackendService = new Gcp.Compute.BackendService("lbDefaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///                 {
+    ///                     BalancingMode = "UTILIZATION",
+    ///                     CapacityScaler = 0.85,
+    ///                     Group = lbDefaultRegionNetworkEndpointGroup[0].Id,
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///                 {
+    ///                     BalancingMode = "UTILIZATION",
+    ///                     CapacityScaler = 0.85,
+    ///                     Group = lbDefaultRegionNetworkEndpointGroup[1].Id,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 computeApi,
+    ///             },
+    ///         });
+    ///         var lbDefaultURLMap = new Gcp.Compute.URLMap("lbDefaultURLMap", new Gcp.Compute.URLMapArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             DefaultService = lbDefaultBackendService.Id,
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = lbDefaultBackendService.Id,
+    ///                     RouteRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleArgs
+    ///                         {
+    ///                             Priority = 1,
+    ///                             UrlRedirect = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleUrlRedirectArgs
+    ///                             {
+    ///                                 HttpsRedirect = true,
+    ///                                 RedirectResponseCode = "MOVED_PERMANENTLY_DEFAULT",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var lbDefaultManagedSslCertificate = new Gcp.Compute.ManagedSslCertificate("lbDefaultManagedSslCertificate", new Gcp.Compute.ManagedSslCertificateArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Managed = new Gcp.Compute.Inputs.ManagedSslCertificateManagedArgs
+    ///             {
+    ///                 Domains = 
+    ///                 {
+    ///                     domainName,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var lbDefaultTargetHttpsProxy = new Gcp.Compute.TargetHttpsProxy("lbDefaultTargetHttpsProxy", new Gcp.Compute.TargetHttpsProxyArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             UrlMap = lbDefaultURLMap.Id,
+    ///             SslCertificates = 
+    ///             {
+    ///                 lbDefaultManagedSslCertificate.Name,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 lbDefaultManagedSslCertificate,
+    ///             },
+    ///         });
+    ///         var lbDefaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("lbDefaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///             Target = lbDefaultTargetHttpsProxy.Id,
+    ///             IpAddress = lbDefaultGlobalAddress.Id,
+    ///             PortRange = "443",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 lbDefaultTargetHttpsProxy,
+    ///             },
+    ///         });
+    ///         this.LoadBalancerIpAddr = lbDefaultGlobalAddress.Address;
+    ///         var runAllowUnauthenticated = new List&lt;Gcp.CloudRun.IamMember&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; runRegions.Length; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             runAllowUnauthenticated.Add(new Gcp.CloudRun.IamMember($"runAllowUnauthenticated-{range.Value}", new Gcp.CloudRun.IamMemberArgs
+    ///             {
+    ///                 Project = "my-project-name",
+    ///                 Location = runDefault[range.Value].Location,
+    ///                 Service = runDefault[range.Value].Name,
+    ///                 Role = "roles/run.invoker",
+    ///                 Member = "allUsers",
+    ///             }));
+    ///         }
+    ///         var httpsDefaultURLMap = new Gcp.Compute.URLMap("httpsDefaultURLMap", new Gcp.Compute.URLMapArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             DefaultUrlRedirect = new Gcp.Compute.Inputs.URLMapDefaultUrlRedirectArgs
+    ///             {
+    ///                 RedirectResponseCode = "MOVED_PERMANENTLY_DEFAULT",
+    ///                 HttpsRedirect = true,
+    ///                 StripQuery = false,
+    ///             },
+    ///         });
+    ///         var httpsDefaultTargetHttpProxy = new Gcp.Compute.TargetHttpProxy("httpsDefaultTargetHttpProxy", new Gcp.Compute.TargetHttpProxyArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             UrlMap = httpsDefaultURLMap.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 httpsDefaultURLMap,
+    ///             },
+    ///         });
+    ///         var httpsDefaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("httpsDefaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Target = httpsDefaultTargetHttpProxy.Id,
+    ///             IpAddress = lbDefaultGlobalAddress.Id,
+    ///             PortRange = "80",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 httpsDefaultTargetHttpProxy,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    ///     [Output("loadBalancerIpAddr")]
+    ///     public Output&lt;string&gt; LoadBalancerIpAddr { get; set; }
+    /// }
+    /// ```
+    /// ### Cloud Run Service Remove Tag
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = ,
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     RevisionName = "cloudrun-srv-green",
+    ///                 },
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 0,
+    ///                     RevisionName = "cloudrun-srv-blue",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Run Service Deploy Tag
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
+    ///                 {
+    ///                     Name = "cloudrun-srv-blue",
+    ///                 },
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     RevisionName = "cloudrun-srv-green",
+    ///                 },
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 0,
+    ///                     RevisionName = "cloudrun-srv-blue",
+    ///                     Tag = "tag-name",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Run Service Add Tag
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = ,
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     RevisionName = "cloudrun-srv-green",
+    ///                 },
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 0,
+    ///                     RevisionName = "cloudrun-srv-blue",
+    ///                     Tag = "tag-name",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Run Service Traffic Gradual Rollout
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             AutogenerateRevisionName = true,
+    ///             Location = "us-central1",
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     RevisionName = "cloudrun-srv-green",
+    ///                 },
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     LatestRevision = true,
+    ///                     Percent = 0,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Run Service Traffic Latest Revision
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = ,
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     LatestRevision = true,
+    ///                     Percent = 100,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Run Service Traffic Rollback
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = ,
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     RevisionName = "cloudrun-srv-green",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Run Service Traffic Split Tag
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Template = ,
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 50,
+    ///                     RevisionName = "cloudrun-srv-green",
+    ///                 },
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 50,
+    ///                     Tag = "tag-name",
+    ///                 },
     ///             },
     ///         });
     ///     }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Beta only: Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+ * Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
  *
  * For more information, see:
  * * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
@@ -17,14 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.monitoring.MonitoredProject("primary", {metricsScope: "existing-metrics-scope-project"}, {
- *     provider: google_beta,
- * });
+ * const primary = new gcp.monitoring.MonitoredProject("primary", {metricsScope: "existing-metrics-scope-project"});
  * const basic = new gcp.organizations.Project("basic", {
  *     projectId: "my-monitored-project",
  *     orgId: "123456789",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

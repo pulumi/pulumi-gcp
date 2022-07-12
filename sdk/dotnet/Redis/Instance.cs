@@ -175,6 +175,49 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// }
     /// ```
+    /// ### Redis Instance Cmek
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var redisKeyring = new Gcp.Kms.KeyRing("redisKeyring", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         });
+    ///         var redisKey = new Gcp.Kms.CryptoKey("redisKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = redisKeyring.Id,
+    ///         });
+    ///         var redis_network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         {
+    ///             Name = "redis-test-network",
+    ///         }));
+    ///         var cache = new Gcp.Redis.Instance("cache", new Gcp.Redis.InstanceArgs
+    ///         {
+    ///             Tier = "STANDARD_HA",
+    ///             MemorySizeGb = 1,
+    ///             LocationId = "us-central1-a",
+    ///             AlternativeLocationId = "us-central1-f",
+    ///             AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Id),
+    ///             RedisVersion = "REDIS_6_X",
+    ///             DisplayName = "Terraform Test Instance",
+    ///             ReservedIpRange = "192.168.0.0/29",
+    ///             Labels = 
+    ///             {
+    ///                 { "my_key", "my_val" },
+    ///                 { "other_key", "other_val" },
+    ///             },
+    ///             CustomerManagedKey = redisKey.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -254,6 +297,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("currentLocationId")]
         public Output<string> CurrentLocationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+        /// instance. If this is provided, CMEK is enabled.
+        /// </summary>
+        [Output("customerManagedKey")]
+        public Output<string?> CustomerManagedKey { get; private set; } = null!;
 
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
@@ -518,6 +568,13 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? ConnectMode { get; set; }
 
         /// <summary>
+        /// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+        /// instance. If this is provided, CMEK is enabled.
+        /// </summary>
+        [Input("customerManagedKey")]
+        public Input<string>? CustomerManagedKey { get; set; }
+
+        /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
         [Input("displayName")]
@@ -727,6 +784,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("currentLocationId")]
         public Input<string>? CurrentLocationId { get; set; }
+
+        /// <summary>
+        /// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+        /// instance. If this is provided, CMEK is enabled.
+        /// </summary>
+        [Input("customerManagedKey")]
+        public Input<string>? CustomerManagedKey { get; set; }
 
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.

@@ -18,6 +18,11 @@ public final class DatabaseInstanceSettingsLocationPreference {
      */
     private final @Nullable String followGaeApplication;
     /**
+     * @return The preferred Compute Engine zone for the secondary/failover.
+     * 
+     */
+    private final @Nullable String secondaryZone;
+    /**
      * @return The preferred compute engine
      * [zone](https://cloud.google.com/compute/docs/zones?hl=en).
      * 
@@ -27,8 +32,10 @@ public final class DatabaseInstanceSettingsLocationPreference {
     @CustomType.Constructor
     private DatabaseInstanceSettingsLocationPreference(
         @CustomType.Parameter("followGaeApplication") @Nullable String followGaeApplication,
+        @CustomType.Parameter("secondaryZone") @Nullable String secondaryZone,
         @CustomType.Parameter("zone") @Nullable String zone) {
         this.followGaeApplication = followGaeApplication;
+        this.secondaryZone = secondaryZone;
         this.zone = zone;
     }
 
@@ -39,6 +46,13 @@ public final class DatabaseInstanceSettingsLocationPreference {
      */
     public Optional<String> followGaeApplication() {
         return Optional.ofNullable(this.followGaeApplication);
+    }
+    /**
+     * @return The preferred Compute Engine zone for the secondary/failover.
+     * 
+     */
+    public Optional<String> secondaryZone() {
+        return Optional.ofNullable(this.secondaryZone);
     }
     /**
      * @return The preferred compute engine
@@ -59,6 +73,7 @@ public final class DatabaseInstanceSettingsLocationPreference {
 
     public static final class Builder {
         private @Nullable String followGaeApplication;
+        private @Nullable String secondaryZone;
         private @Nullable String zone;
 
         public Builder() {
@@ -68,6 +83,7 @@ public final class DatabaseInstanceSettingsLocationPreference {
         public Builder(DatabaseInstanceSettingsLocationPreference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.followGaeApplication = defaults.followGaeApplication;
+    	      this.secondaryZone = defaults.secondaryZone;
     	      this.zone = defaults.zone;
         }
 
@@ -75,11 +91,15 @@ public final class DatabaseInstanceSettingsLocationPreference {
             this.followGaeApplication = followGaeApplication;
             return this;
         }
+        public Builder secondaryZone(@Nullable String secondaryZone) {
+            this.secondaryZone = secondaryZone;
+            return this;
+        }
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
         }        public DatabaseInstanceSettingsLocationPreference build() {
-            return new DatabaseInstanceSettingsLocationPreference(followGaeApplication, zone);
+            return new DatabaseInstanceSettingsLocationPreference(followGaeApplication, secondaryZone, zone);
         }
     }
 }

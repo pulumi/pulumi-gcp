@@ -66,6 +66,7 @@ export interface GetInstanceResult {
     readonly connectMode: string;
     readonly createTime: string;
     readonly currentLocationId: string;
+    readonly customerManagedKey: string;
     readonly displayName: string;
     readonly host: string;
     /**

@@ -2600,6 +2600,319 @@ func (o AuthorityKeySpecPtrOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AuthoritySubordinateConfig struct {
+	// This can refer to a CertificateAuthority that was used to create a
+	// subordinate CertificateAuthority. This field is used for information
+	// and usability purposes only. The resource name is in the format
+	// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+	// but not pem certificate for this CA itself.
+	// Structure is documented below.
+	PemIssuerChain *AuthoritySubordinateConfigPemIssuerChain `pulumi:"pemIssuerChain"`
+}
+
+// AuthoritySubordinateConfigInput is an input type that accepts AuthoritySubordinateConfigArgs and AuthoritySubordinateConfigOutput values.
+// You can construct a concrete instance of `AuthoritySubordinateConfigInput` via:
+//
+//          AuthoritySubordinateConfigArgs{...}
+type AuthoritySubordinateConfigInput interface {
+	pulumi.Input
+
+	ToAuthoritySubordinateConfigOutput() AuthoritySubordinateConfigOutput
+	ToAuthoritySubordinateConfigOutputWithContext(context.Context) AuthoritySubordinateConfigOutput
+}
+
+type AuthoritySubordinateConfigArgs struct {
+	// This can refer to a CertificateAuthority that was used to create a
+	// subordinate CertificateAuthority. This field is used for information
+	// and usability purposes only. The resource name is in the format
+	// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+	// but not pem certificate for this CA itself.
+	// Structure is documented below.
+	PemIssuerChain AuthoritySubordinateConfigPemIssuerChainPtrInput `pulumi:"pemIssuerChain"`
+}
+
+func (AuthoritySubordinateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthoritySubordinateConfig)(nil)).Elem()
+}
+
+func (i AuthoritySubordinateConfigArgs) ToAuthoritySubordinateConfigOutput() AuthoritySubordinateConfigOutput {
+	return i.ToAuthoritySubordinateConfigOutputWithContext(context.Background())
+}
+
+func (i AuthoritySubordinateConfigArgs) ToAuthoritySubordinateConfigOutputWithContext(ctx context.Context) AuthoritySubordinateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthoritySubordinateConfigOutput)
+}
+
+func (i AuthoritySubordinateConfigArgs) ToAuthoritySubordinateConfigPtrOutput() AuthoritySubordinateConfigPtrOutput {
+	return i.ToAuthoritySubordinateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AuthoritySubordinateConfigArgs) ToAuthoritySubordinateConfigPtrOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthoritySubordinateConfigOutput).ToAuthoritySubordinateConfigPtrOutputWithContext(ctx)
+}
+
+// AuthoritySubordinateConfigPtrInput is an input type that accepts AuthoritySubordinateConfigArgs, AuthoritySubordinateConfigPtr and AuthoritySubordinateConfigPtrOutput values.
+// You can construct a concrete instance of `AuthoritySubordinateConfigPtrInput` via:
+//
+//          AuthoritySubordinateConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AuthoritySubordinateConfigPtrInput interface {
+	pulumi.Input
+
+	ToAuthoritySubordinateConfigPtrOutput() AuthoritySubordinateConfigPtrOutput
+	ToAuthoritySubordinateConfigPtrOutputWithContext(context.Context) AuthoritySubordinateConfigPtrOutput
+}
+
+type authoritySubordinateConfigPtrType AuthoritySubordinateConfigArgs
+
+func AuthoritySubordinateConfigPtr(v *AuthoritySubordinateConfigArgs) AuthoritySubordinateConfigPtrInput {
+	return (*authoritySubordinateConfigPtrType)(v)
+}
+
+func (*authoritySubordinateConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthoritySubordinateConfig)(nil)).Elem()
+}
+
+func (i *authoritySubordinateConfigPtrType) ToAuthoritySubordinateConfigPtrOutput() AuthoritySubordinateConfigPtrOutput {
+	return i.ToAuthoritySubordinateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *authoritySubordinateConfigPtrType) ToAuthoritySubordinateConfigPtrOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthoritySubordinateConfigPtrOutput)
+}
+
+type AuthoritySubordinateConfigOutput struct{ *pulumi.OutputState }
+
+func (AuthoritySubordinateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthoritySubordinateConfig)(nil)).Elem()
+}
+
+func (o AuthoritySubordinateConfigOutput) ToAuthoritySubordinateConfigOutput() AuthoritySubordinateConfigOutput {
+	return o
+}
+
+func (o AuthoritySubordinateConfigOutput) ToAuthoritySubordinateConfigOutputWithContext(ctx context.Context) AuthoritySubordinateConfigOutput {
+	return o
+}
+
+func (o AuthoritySubordinateConfigOutput) ToAuthoritySubordinateConfigPtrOutput() AuthoritySubordinateConfigPtrOutput {
+	return o.ToAuthoritySubordinateConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AuthoritySubordinateConfigOutput) ToAuthoritySubordinateConfigPtrOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthoritySubordinateConfig) *AuthoritySubordinateConfig {
+		return &v
+	}).(AuthoritySubordinateConfigPtrOutput)
+}
+
+// This can refer to a CertificateAuthority that was used to create a
+// subordinate CertificateAuthority. This field is used for information
+// and usability purposes only. The resource name is in the format
+// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+func (o AuthoritySubordinateConfigOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthoritySubordinateConfig) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+// but not pem certificate for this CA itself.
+// Structure is documented below.
+func (o AuthoritySubordinateConfigOutput) PemIssuerChain() AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return o.ApplyT(func(v AuthoritySubordinateConfig) *AuthoritySubordinateConfigPemIssuerChain { return v.PemIssuerChain }).(AuthoritySubordinateConfigPemIssuerChainPtrOutput)
+}
+
+type AuthoritySubordinateConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthoritySubordinateConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthoritySubordinateConfig)(nil)).Elem()
+}
+
+func (o AuthoritySubordinateConfigPtrOutput) ToAuthoritySubordinateConfigPtrOutput() AuthoritySubordinateConfigPtrOutput {
+	return o
+}
+
+func (o AuthoritySubordinateConfigPtrOutput) ToAuthoritySubordinateConfigPtrOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPtrOutput {
+	return o
+}
+
+func (o AuthoritySubordinateConfigPtrOutput) Elem() AuthoritySubordinateConfigOutput {
+	return o.ApplyT(func(v *AuthoritySubordinateConfig) AuthoritySubordinateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AuthoritySubordinateConfig
+		return ret
+	}).(AuthoritySubordinateConfigOutput)
+}
+
+// This can refer to a CertificateAuthority that was used to create a
+// subordinate CertificateAuthority. This field is used for information
+// and usability purposes only. The resource name is in the format
+// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+func (o AuthoritySubordinateConfigPtrOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthoritySubordinateConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthority
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+// but not pem certificate for this CA itself.
+// Structure is documented below.
+func (o AuthoritySubordinateConfigPtrOutput) PemIssuerChain() AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return o.ApplyT(func(v *AuthoritySubordinateConfig) *AuthoritySubordinateConfigPemIssuerChain {
+		if v == nil {
+			return nil
+		}
+		return v.PemIssuerChain
+	}).(AuthoritySubordinateConfigPemIssuerChainPtrOutput)
+}
+
+type AuthoritySubordinateConfigPemIssuerChain struct {
+	// Expected to be in leaf-to-root order according to RFC 5246.
+	PemCertificates []string `pulumi:"pemCertificates"`
+}
+
+// AuthoritySubordinateConfigPemIssuerChainInput is an input type that accepts AuthoritySubordinateConfigPemIssuerChainArgs and AuthoritySubordinateConfigPemIssuerChainOutput values.
+// You can construct a concrete instance of `AuthoritySubordinateConfigPemIssuerChainInput` via:
+//
+//          AuthoritySubordinateConfigPemIssuerChainArgs{...}
+type AuthoritySubordinateConfigPemIssuerChainInput interface {
+	pulumi.Input
+
+	ToAuthoritySubordinateConfigPemIssuerChainOutput() AuthoritySubordinateConfigPemIssuerChainOutput
+	ToAuthoritySubordinateConfigPemIssuerChainOutputWithContext(context.Context) AuthoritySubordinateConfigPemIssuerChainOutput
+}
+
+type AuthoritySubordinateConfigPemIssuerChainArgs struct {
+	// Expected to be in leaf-to-root order according to RFC 5246.
+	PemCertificates pulumi.StringArrayInput `pulumi:"pemCertificates"`
+}
+
+func (AuthoritySubordinateConfigPemIssuerChainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthoritySubordinateConfigPemIssuerChain)(nil)).Elem()
+}
+
+func (i AuthoritySubordinateConfigPemIssuerChainArgs) ToAuthoritySubordinateConfigPemIssuerChainOutput() AuthoritySubordinateConfigPemIssuerChainOutput {
+	return i.ToAuthoritySubordinateConfigPemIssuerChainOutputWithContext(context.Background())
+}
+
+func (i AuthoritySubordinateConfigPemIssuerChainArgs) ToAuthoritySubordinateConfigPemIssuerChainOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPemIssuerChainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthoritySubordinateConfigPemIssuerChainOutput)
+}
+
+func (i AuthoritySubordinateConfigPemIssuerChainArgs) ToAuthoritySubordinateConfigPemIssuerChainPtrOutput() AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return i.ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(context.Background())
+}
+
+func (i AuthoritySubordinateConfigPemIssuerChainArgs) ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthoritySubordinateConfigPemIssuerChainOutput).ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(ctx)
+}
+
+// AuthoritySubordinateConfigPemIssuerChainPtrInput is an input type that accepts AuthoritySubordinateConfigPemIssuerChainArgs, AuthoritySubordinateConfigPemIssuerChainPtr and AuthoritySubordinateConfigPemIssuerChainPtrOutput values.
+// You can construct a concrete instance of `AuthoritySubordinateConfigPemIssuerChainPtrInput` via:
+//
+//          AuthoritySubordinateConfigPemIssuerChainArgs{...}
+//
+//  or:
+//
+//          nil
+type AuthoritySubordinateConfigPemIssuerChainPtrInput interface {
+	pulumi.Input
+
+	ToAuthoritySubordinateConfigPemIssuerChainPtrOutput() AuthoritySubordinateConfigPemIssuerChainPtrOutput
+	ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(context.Context) AuthoritySubordinateConfigPemIssuerChainPtrOutput
+}
+
+type authoritySubordinateConfigPemIssuerChainPtrType AuthoritySubordinateConfigPemIssuerChainArgs
+
+func AuthoritySubordinateConfigPemIssuerChainPtr(v *AuthoritySubordinateConfigPemIssuerChainArgs) AuthoritySubordinateConfigPemIssuerChainPtrInput {
+	return (*authoritySubordinateConfigPemIssuerChainPtrType)(v)
+}
+
+func (*authoritySubordinateConfigPemIssuerChainPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthoritySubordinateConfigPemIssuerChain)(nil)).Elem()
+}
+
+func (i *authoritySubordinateConfigPemIssuerChainPtrType) ToAuthoritySubordinateConfigPemIssuerChainPtrOutput() AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return i.ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(context.Background())
+}
+
+func (i *authoritySubordinateConfigPemIssuerChainPtrType) ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthoritySubordinateConfigPemIssuerChainPtrOutput)
+}
+
+type AuthoritySubordinateConfigPemIssuerChainOutput struct{ *pulumi.OutputState }
+
+func (AuthoritySubordinateConfigPemIssuerChainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthoritySubordinateConfigPemIssuerChain)(nil)).Elem()
+}
+
+func (o AuthoritySubordinateConfigPemIssuerChainOutput) ToAuthoritySubordinateConfigPemIssuerChainOutput() AuthoritySubordinateConfigPemIssuerChainOutput {
+	return o
+}
+
+func (o AuthoritySubordinateConfigPemIssuerChainOutput) ToAuthoritySubordinateConfigPemIssuerChainOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPemIssuerChainOutput {
+	return o
+}
+
+func (o AuthoritySubordinateConfigPemIssuerChainOutput) ToAuthoritySubordinateConfigPemIssuerChainPtrOutput() AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return o.ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(context.Background())
+}
+
+func (o AuthoritySubordinateConfigPemIssuerChainOutput) ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthoritySubordinateConfigPemIssuerChain) *AuthoritySubordinateConfigPemIssuerChain {
+		return &v
+	}).(AuthoritySubordinateConfigPemIssuerChainPtrOutput)
+}
+
+// Expected to be in leaf-to-root order according to RFC 5246.
+func (o AuthoritySubordinateConfigPemIssuerChainOutput) PemCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthoritySubordinateConfigPemIssuerChain) []string { return v.PemCertificates }).(pulumi.StringArrayOutput)
+}
+
+type AuthoritySubordinateConfigPemIssuerChainPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthoritySubordinateConfigPemIssuerChainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthoritySubordinateConfigPemIssuerChain)(nil)).Elem()
+}
+
+func (o AuthoritySubordinateConfigPemIssuerChainPtrOutput) ToAuthoritySubordinateConfigPemIssuerChainPtrOutput() AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return o
+}
+
+func (o AuthoritySubordinateConfigPemIssuerChainPtrOutput) ToAuthoritySubordinateConfigPemIssuerChainPtrOutputWithContext(ctx context.Context) AuthoritySubordinateConfigPemIssuerChainPtrOutput {
+	return o
+}
+
+func (o AuthoritySubordinateConfigPemIssuerChainPtrOutput) Elem() AuthoritySubordinateConfigPemIssuerChainOutput {
+	return o.ApplyT(func(v *AuthoritySubordinateConfigPemIssuerChain) AuthoritySubordinateConfigPemIssuerChain {
+		if v != nil {
+			return *v
+		}
+		var ret AuthoritySubordinateConfigPemIssuerChain
+		return ret
+	}).(AuthoritySubordinateConfigPemIssuerChainOutput)
+}
+
+// Expected to be in leaf-to-root order according to RFC 5246.
+func (o AuthoritySubordinateConfigPemIssuerChainPtrOutput) PemCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthoritySubordinateConfigPemIssuerChain) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PemCertificates
+	}).(pulumi.StringArrayOutput)
+}
+
 type CaPoolIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
@@ -15793,6 +16106,202 @@ func (o GetAuthorityKeySpecArrayOutput) Index(i pulumi.IntInput) GetAuthorityKey
 	}).(GetAuthorityKeySpecOutput)
 }
 
+type GetAuthoritySubordinateConfig struct {
+	CertificateAuthority string                                        `pulumi:"certificateAuthority"`
+	PemIssuerChains      []GetAuthoritySubordinateConfigPemIssuerChain `pulumi:"pemIssuerChains"`
+}
+
+// GetAuthoritySubordinateConfigInput is an input type that accepts GetAuthoritySubordinateConfigArgs and GetAuthoritySubordinateConfigOutput values.
+// You can construct a concrete instance of `GetAuthoritySubordinateConfigInput` via:
+//
+//          GetAuthoritySubordinateConfigArgs{...}
+type GetAuthoritySubordinateConfigInput interface {
+	pulumi.Input
+
+	ToGetAuthoritySubordinateConfigOutput() GetAuthoritySubordinateConfigOutput
+	ToGetAuthoritySubordinateConfigOutputWithContext(context.Context) GetAuthoritySubordinateConfigOutput
+}
+
+type GetAuthoritySubordinateConfigArgs struct {
+	CertificateAuthority pulumi.StringInput                                    `pulumi:"certificateAuthority"`
+	PemIssuerChains      GetAuthoritySubordinateConfigPemIssuerChainArrayInput `pulumi:"pemIssuerChains"`
+}
+
+func (GetAuthoritySubordinateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthoritySubordinateConfig)(nil)).Elem()
+}
+
+func (i GetAuthoritySubordinateConfigArgs) ToGetAuthoritySubordinateConfigOutput() GetAuthoritySubordinateConfigOutput {
+	return i.ToGetAuthoritySubordinateConfigOutputWithContext(context.Background())
+}
+
+func (i GetAuthoritySubordinateConfigArgs) ToGetAuthoritySubordinateConfigOutputWithContext(ctx context.Context) GetAuthoritySubordinateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthoritySubordinateConfigOutput)
+}
+
+// GetAuthoritySubordinateConfigArrayInput is an input type that accepts GetAuthoritySubordinateConfigArray and GetAuthoritySubordinateConfigArrayOutput values.
+// You can construct a concrete instance of `GetAuthoritySubordinateConfigArrayInput` via:
+//
+//          GetAuthoritySubordinateConfigArray{ GetAuthoritySubordinateConfigArgs{...} }
+type GetAuthoritySubordinateConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthoritySubordinateConfigArrayOutput() GetAuthoritySubordinateConfigArrayOutput
+	ToGetAuthoritySubordinateConfigArrayOutputWithContext(context.Context) GetAuthoritySubordinateConfigArrayOutput
+}
+
+type GetAuthoritySubordinateConfigArray []GetAuthoritySubordinateConfigInput
+
+func (GetAuthoritySubordinateConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthoritySubordinateConfig)(nil)).Elem()
+}
+
+func (i GetAuthoritySubordinateConfigArray) ToGetAuthoritySubordinateConfigArrayOutput() GetAuthoritySubordinateConfigArrayOutput {
+	return i.ToGetAuthoritySubordinateConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthoritySubordinateConfigArray) ToGetAuthoritySubordinateConfigArrayOutputWithContext(ctx context.Context) GetAuthoritySubordinateConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthoritySubordinateConfigArrayOutput)
+}
+
+type GetAuthoritySubordinateConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAuthoritySubordinateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthoritySubordinateConfig)(nil)).Elem()
+}
+
+func (o GetAuthoritySubordinateConfigOutput) ToGetAuthoritySubordinateConfigOutput() GetAuthoritySubordinateConfigOutput {
+	return o
+}
+
+func (o GetAuthoritySubordinateConfigOutput) ToGetAuthoritySubordinateConfigOutputWithContext(ctx context.Context) GetAuthoritySubordinateConfigOutput {
+	return o
+}
+
+func (o GetAuthoritySubordinateConfigOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthoritySubordinateConfig) string { return v.CertificateAuthority }).(pulumi.StringOutput)
+}
+
+func (o GetAuthoritySubordinateConfigOutput) PemIssuerChains() GetAuthoritySubordinateConfigPemIssuerChainArrayOutput {
+	return o.ApplyT(func(v GetAuthoritySubordinateConfig) []GetAuthoritySubordinateConfigPemIssuerChain {
+		return v.PemIssuerChains
+	}).(GetAuthoritySubordinateConfigPemIssuerChainArrayOutput)
+}
+
+type GetAuthoritySubordinateConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthoritySubordinateConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthoritySubordinateConfig)(nil)).Elem()
+}
+
+func (o GetAuthoritySubordinateConfigArrayOutput) ToGetAuthoritySubordinateConfigArrayOutput() GetAuthoritySubordinateConfigArrayOutput {
+	return o
+}
+
+func (o GetAuthoritySubordinateConfigArrayOutput) ToGetAuthoritySubordinateConfigArrayOutputWithContext(ctx context.Context) GetAuthoritySubordinateConfigArrayOutput {
+	return o
+}
+
+func (o GetAuthoritySubordinateConfigArrayOutput) Index(i pulumi.IntInput) GetAuthoritySubordinateConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthoritySubordinateConfig {
+		return vs[0].([]GetAuthoritySubordinateConfig)[vs[1].(int)]
+	}).(GetAuthoritySubordinateConfigOutput)
+}
+
+type GetAuthoritySubordinateConfigPemIssuerChain struct {
+	PemCertificates []string `pulumi:"pemCertificates"`
+}
+
+// GetAuthoritySubordinateConfigPemIssuerChainInput is an input type that accepts GetAuthoritySubordinateConfigPemIssuerChainArgs and GetAuthoritySubordinateConfigPemIssuerChainOutput values.
+// You can construct a concrete instance of `GetAuthoritySubordinateConfigPemIssuerChainInput` via:
+//
+//          GetAuthoritySubordinateConfigPemIssuerChainArgs{...}
+type GetAuthoritySubordinateConfigPemIssuerChainInput interface {
+	pulumi.Input
+
+	ToGetAuthoritySubordinateConfigPemIssuerChainOutput() GetAuthoritySubordinateConfigPemIssuerChainOutput
+	ToGetAuthoritySubordinateConfigPemIssuerChainOutputWithContext(context.Context) GetAuthoritySubordinateConfigPemIssuerChainOutput
+}
+
+type GetAuthoritySubordinateConfigPemIssuerChainArgs struct {
+	PemCertificates pulumi.StringArrayInput `pulumi:"pemCertificates"`
+}
+
+func (GetAuthoritySubordinateConfigPemIssuerChainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthoritySubordinateConfigPemIssuerChain)(nil)).Elem()
+}
+
+func (i GetAuthoritySubordinateConfigPemIssuerChainArgs) ToGetAuthoritySubordinateConfigPemIssuerChainOutput() GetAuthoritySubordinateConfigPemIssuerChainOutput {
+	return i.ToGetAuthoritySubordinateConfigPemIssuerChainOutputWithContext(context.Background())
+}
+
+func (i GetAuthoritySubordinateConfigPemIssuerChainArgs) ToGetAuthoritySubordinateConfigPemIssuerChainOutputWithContext(ctx context.Context) GetAuthoritySubordinateConfigPemIssuerChainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthoritySubordinateConfigPemIssuerChainOutput)
+}
+
+// GetAuthoritySubordinateConfigPemIssuerChainArrayInput is an input type that accepts GetAuthoritySubordinateConfigPemIssuerChainArray and GetAuthoritySubordinateConfigPemIssuerChainArrayOutput values.
+// You can construct a concrete instance of `GetAuthoritySubordinateConfigPemIssuerChainArrayInput` via:
+//
+//          GetAuthoritySubordinateConfigPemIssuerChainArray{ GetAuthoritySubordinateConfigPemIssuerChainArgs{...} }
+type GetAuthoritySubordinateConfigPemIssuerChainArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthoritySubordinateConfigPemIssuerChainArrayOutput() GetAuthoritySubordinateConfigPemIssuerChainArrayOutput
+	ToGetAuthoritySubordinateConfigPemIssuerChainArrayOutputWithContext(context.Context) GetAuthoritySubordinateConfigPemIssuerChainArrayOutput
+}
+
+type GetAuthoritySubordinateConfigPemIssuerChainArray []GetAuthoritySubordinateConfigPemIssuerChainInput
+
+func (GetAuthoritySubordinateConfigPemIssuerChainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthoritySubordinateConfigPemIssuerChain)(nil)).Elem()
+}
+
+func (i GetAuthoritySubordinateConfigPemIssuerChainArray) ToGetAuthoritySubordinateConfigPemIssuerChainArrayOutput() GetAuthoritySubordinateConfigPemIssuerChainArrayOutput {
+	return i.ToGetAuthoritySubordinateConfigPemIssuerChainArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthoritySubordinateConfigPemIssuerChainArray) ToGetAuthoritySubordinateConfigPemIssuerChainArrayOutputWithContext(ctx context.Context) GetAuthoritySubordinateConfigPemIssuerChainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthoritySubordinateConfigPemIssuerChainArrayOutput)
+}
+
+type GetAuthoritySubordinateConfigPemIssuerChainOutput struct{ *pulumi.OutputState }
+
+func (GetAuthoritySubordinateConfigPemIssuerChainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthoritySubordinateConfigPemIssuerChain)(nil)).Elem()
+}
+
+func (o GetAuthoritySubordinateConfigPemIssuerChainOutput) ToGetAuthoritySubordinateConfigPemIssuerChainOutput() GetAuthoritySubordinateConfigPemIssuerChainOutput {
+	return o
+}
+
+func (o GetAuthoritySubordinateConfigPemIssuerChainOutput) ToGetAuthoritySubordinateConfigPemIssuerChainOutputWithContext(ctx context.Context) GetAuthoritySubordinateConfigPemIssuerChainOutput {
+	return o
+}
+
+func (o GetAuthoritySubordinateConfigPemIssuerChainOutput) PemCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthoritySubordinateConfigPemIssuerChain) []string { return v.PemCertificates }).(pulumi.StringArrayOutput)
+}
+
+type GetAuthoritySubordinateConfigPemIssuerChainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthoritySubordinateConfigPemIssuerChainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthoritySubordinateConfigPemIssuerChain)(nil)).Elem()
+}
+
+func (o GetAuthoritySubordinateConfigPemIssuerChainArrayOutput) ToGetAuthoritySubordinateConfigPemIssuerChainArrayOutput() GetAuthoritySubordinateConfigPemIssuerChainArrayOutput {
+	return o
+}
+
+func (o GetAuthoritySubordinateConfigPemIssuerChainArrayOutput) ToGetAuthoritySubordinateConfigPemIssuerChainArrayOutputWithContext(ctx context.Context) GetAuthoritySubordinateConfigPemIssuerChainArrayOutput {
+	return o
+}
+
+func (o GetAuthoritySubordinateConfigPemIssuerChainArrayOutput) Index(i pulumi.IntInput) GetAuthoritySubordinateConfigPemIssuerChainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthoritySubordinateConfigPemIssuerChain {
+		return vs[0].([]GetAuthoritySubordinateConfigPemIssuerChain)[vs[1].(int)]
+	}).(GetAuthoritySubordinateConfigPemIssuerChainOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityAccessUrlInput)(nil)).Elem(), AuthorityAccessUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityAccessUrlArrayInput)(nil)).Elem(), AuthorityAccessUrlArray{})
@@ -15823,6 +16332,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigPolicyIdArrayInput)(nil)).Elem(), AuthorityConfigX509ConfigPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityKeySpecInput)(nil)).Elem(), AuthorityKeySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityKeySpecPtrInput)(nil)).Elem(), AuthorityKeySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthoritySubordinateConfigInput)(nil)).Elem(), AuthoritySubordinateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthoritySubordinateConfigPtrInput)(nil)).Elem(), AuthoritySubordinateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthoritySubordinateConfigPemIssuerChainInput)(nil)).Elem(), AuthoritySubordinateConfigPemIssuerChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthoritySubordinateConfigPemIssuerChainPtrInput)(nil)).Elem(), AuthoritySubordinateConfigPemIssuerChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingConditionInput)(nil)).Elem(), CaPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingConditionPtrInput)(nil)).Elem(), CaPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamMemberConditionInput)(nil)).Elem(), CaPoolIamMemberConditionArgs{})
@@ -16000,6 +16513,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigPolicyIdArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityKeySpecInput)(nil)).Elem(), GetAuthorityKeySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityKeySpecArrayInput)(nil)).Elem(), GetAuthorityKeySpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthoritySubordinateConfigInput)(nil)).Elem(), GetAuthoritySubordinateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthoritySubordinateConfigArrayInput)(nil)).Elem(), GetAuthoritySubordinateConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthoritySubordinateConfigPemIssuerChainInput)(nil)).Elem(), GetAuthoritySubordinateConfigPemIssuerChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthoritySubordinateConfigPemIssuerChainArrayInput)(nil)).Elem(), GetAuthoritySubordinateConfigPemIssuerChainArray{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlOutput{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigOutput{})
@@ -16029,6 +16546,10 @@ func init() {
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityKeySpecOutput{})
 	pulumi.RegisterOutputType(AuthorityKeySpecPtrOutput{})
+	pulumi.RegisterOutputType(AuthoritySubordinateConfigOutput{})
+	pulumi.RegisterOutputType(AuthoritySubordinateConfigPtrOutput{})
+	pulumi.RegisterOutputType(AuthoritySubordinateConfigPemIssuerChainOutput{})
+	pulumi.RegisterOutputType(AuthoritySubordinateConfigPemIssuerChainPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamMemberConditionOutput{})
@@ -16206,4 +16727,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthorityKeySpecOutput{})
 	pulumi.RegisterOutputType(GetAuthorityKeySpecArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthoritySubordinateConfigOutput{})
+	pulumi.RegisterOutputType(GetAuthoritySubordinateConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthoritySubordinateConfigPemIssuerChainOutput{})
+	pulumi.RegisterOutputType(GetAuthoritySubordinateConfigPemIssuerChainArrayOutput{})
 }

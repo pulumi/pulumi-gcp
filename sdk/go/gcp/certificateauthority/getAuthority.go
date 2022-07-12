@@ -76,14 +76,16 @@ type LookupAuthorityResult struct {
 	Lifetime                           string                `pulumi:"lifetime"`
 	Location                           *string               `pulumi:"location"`
 	Name                               string                `pulumi:"name"`
+	PemCaCertificate                   string                `pulumi:"pemCaCertificate"`
 	PemCaCertificates                  []string              `pulumi:"pemCaCertificates"`
 	// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
-	PemCsr     string  `pulumi:"pemCsr"`
-	Pool       *string `pulumi:"pool"`
-	Project    *string `pulumi:"project"`
-	State      string  `pulumi:"state"`
-	Type       string  `pulumi:"type"`
-	UpdateTime string  `pulumi:"updateTime"`
+	PemCsr             string                          `pulumi:"pemCsr"`
+	Pool               *string                         `pulumi:"pool"`
+	Project            *string                         `pulumi:"project"`
+	State              string                          `pulumi:"state"`
+	SubordinateConfigs []GetAuthoritySubordinateConfig `pulumi:"subordinateConfigs"`
+	Type               string                          `pulumi:"type"`
+	UpdateTime         string                          `pulumi:"updateTime"`
 }
 
 func LookupAuthorityOutput(ctx *pulumi.Context, args LookupAuthorityOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorityResultOutput {
@@ -188,6 +190,10 @@ func (o LookupAuthorityResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupAuthorityResultOutput) PemCaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) string { return v.PemCaCertificate }).(pulumi.StringOutput)
+}
+
 func (o LookupAuthorityResultOutput) PemCaCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) []string { return v.PemCaCertificates }).(pulumi.StringArrayOutput)
 }
@@ -207,6 +213,10 @@ func (o LookupAuthorityResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupAuthorityResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupAuthorityResultOutput) SubordinateConfigs() GetAuthoritySubordinateConfigArrayOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) []GetAuthoritySubordinateConfig { return v.SubordinateConfigs }).(GetAuthoritySubordinateConfigArrayOutput)
 }
 
 func (o LookupAuthorityResultOutput) Type() pulumi.StringOutput {

@@ -127,6 +127,12 @@ namespace Pulumi.Gcp.Projects
     public sealed class ServiceIdentityArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The email address of the Google managed service account.
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>

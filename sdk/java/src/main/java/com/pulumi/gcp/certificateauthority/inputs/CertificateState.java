@@ -21,14 +21,20 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     public static final CertificateState Empty = new CertificateState();
 
     /**
-     * Certificate Authority name.
+     * The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+     * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+     * should be set to `my-ca`.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return Certificate Authority name.
+     * @return The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+     * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+     * should be set to `my-ca`.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -109,7 +115,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource name of the issuing CertificateAuthority in the format
-     * projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*.
+     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
      * 
      */
     @Import(name="issuerCertificateAuthority")
@@ -117,7 +123,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource name of the issuing CertificateAuthority in the format
-     * projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*.
+     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
      * 
      */
     public Optional<Output<String>> issuerCertificateAuthority() {
@@ -366,7 +372,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority Certificate Authority name.
+         * @param certificateAuthority The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+         * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+         * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+         * should be set to `my-ca`.
          * 
          * @return builder
          * 
@@ -377,7 +386,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority Certificate Authority name.
+         * @param certificateAuthority The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+         * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+         * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+         * should be set to `my-ca`.
          * 
          * @return builder
          * 
@@ -495,7 +507,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param issuerCertificateAuthority The resource name of the issuing CertificateAuthority in the format
-         * projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*.
+         * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
          * 
          * @return builder
          * 
@@ -507,7 +519,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param issuerCertificateAuthority The resource name of the issuing CertificateAuthority in the format
-         * projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*.
+         * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
          * 
          * @return builder
          * 

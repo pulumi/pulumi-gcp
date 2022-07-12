@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
  *     triggerHttp: true,
+ *     httpsTriggerSecurityLevel: "SECURE_ALWAYS",
  *     timeout: 60,
  *     entryPoint: "helloGET",
  *     labels: {
@@ -158,7 +159,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly eventTrigger!: pulumi.Output<outputs.cloudfunctions.FunctionEventTrigger>;
     /**
-     * The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     * The security level for the function. The following options are available:
      */
     public readonly httpsTriggerSecurityLevel!: pulumi.Output<string>;
     /**
@@ -364,7 +365,7 @@ export interface FunctionState {
      */
     eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
     /**
-     * The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     * The security level for the function. The following options are available:
      */
     httpsTriggerSecurityLevel?: pulumi.Input<string>;
     /**
@@ -489,7 +490,7 @@ export interface FunctionArgs {
      */
     eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
     /**
-     * The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     * The security level for the function. The following options are available:
      */
     httpsTriggerSecurityLevel?: pulumi.Input<string>;
     /**

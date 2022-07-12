@@ -213,6 +213,65 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Billing Budget Customperiod
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var account = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build()));
+ * 
+ *         final var project = Output.of(OrganizationsFunctions.getProject());
+ * 
+ *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
+ *             .billingAccount(account.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+ *             .displayName(&#34;Example Billing Budget&#34;)
+ *             .budgetFilter(BudgetBudgetFilterArgs.builder()
+ *                 .projects(String.format(&#34;projects/%s&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *                 .creditTypesTreatment(&#34;EXCLUDE_ALL_CREDITS&#34;)
+ *                 .services(&#34;services/24E6-581D-38E5&#34;)
+ *                 .customPeriod(BudgetBudgetFilterCustomPeriodArgs.builder()
+ *                     .startDate(BudgetBudgetFilterCustomPeriodStartDateArgs.builder()
+ *                         .year(2022)
+ *                         .month(1)
+ *                         .day(1)
+ *                         .build())
+ *                     .endDate(BudgetBudgetFilterCustomPeriodEndDateArgs.builder()
+ *                         .year(2023)
+ *                         .month(12)
+ *                         .day(31)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .amount(BudgetAmountArgs.builder()
+ *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
+ *                     .currencyCode(&#34;USD&#34;)
+ *                     .units(&#34;100000&#34;)
+ *                     .build())
+ *                 .build())
+ *             .thresholdRules(            
+ *                 BudgetThresholdRuleArgs.builder()
+ *                     .thresholdPercent(0.5)
+ *                     .build(),
+ *                 BudgetThresholdRuleArgs.builder()
+ *                     .thresholdPercent(0.9)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

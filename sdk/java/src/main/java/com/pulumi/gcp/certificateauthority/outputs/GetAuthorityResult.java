@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityAccessUrl;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfig;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityKeySpec;
+import com.pulumi.gcp.certificateauthority.outputs.GetAuthoritySubordinateConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -35,6 +36,7 @@ public final class GetAuthorityResult {
     private final String lifetime;
     private final @Nullable String location;
     private final String name;
+    private final String pemCaCertificate;
     private final List<String> pemCaCertificates;
     /**
      * @return The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
@@ -44,6 +46,7 @@ public final class GetAuthorityResult {
     private final @Nullable String pool;
     private final @Nullable String project;
     private final String state;
+    private final List<GetAuthoritySubordinateConfig> subordinateConfigs;
     private final String type;
     private final String updateTime;
 
@@ -63,11 +66,13 @@ public final class GetAuthorityResult {
         @CustomType.Parameter("lifetime") String lifetime,
         @CustomType.Parameter("location") @Nullable String location,
         @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("pemCaCertificate") String pemCaCertificate,
         @CustomType.Parameter("pemCaCertificates") List<String> pemCaCertificates,
         @CustomType.Parameter("pemCsr") String pemCsr,
         @CustomType.Parameter("pool") @Nullable String pool,
         @CustomType.Parameter("project") @Nullable String project,
         @CustomType.Parameter("state") String state,
+        @CustomType.Parameter("subordinateConfigs") List<GetAuthoritySubordinateConfig> subordinateConfigs,
         @CustomType.Parameter("type") String type,
         @CustomType.Parameter("updateTime") String updateTime) {
         this.accessUrls = accessUrls;
@@ -84,11 +89,13 @@ public final class GetAuthorityResult {
         this.lifetime = lifetime;
         this.location = location;
         this.name = name;
+        this.pemCaCertificate = pemCaCertificate;
         this.pemCaCertificates = pemCaCertificates;
         this.pemCsr = pemCsr;
         this.pool = pool;
         this.project = project;
         this.state = state;
+        this.subordinateConfigs = subordinateConfigs;
         this.type = type;
         this.updateTime = updateTime;
     }
@@ -139,6 +146,9 @@ public final class GetAuthorityResult {
     public String name() {
         return this.name;
     }
+    public String pemCaCertificate() {
+        return this.pemCaCertificate;
+    }
     public List<String> pemCaCertificates() {
         return this.pemCaCertificates;
     }
@@ -157,6 +167,9 @@ public final class GetAuthorityResult {
     }
     public String state() {
         return this.state;
+    }
+    public List<GetAuthoritySubordinateConfig> subordinateConfigs() {
+        return this.subordinateConfigs;
     }
     public String type() {
         return this.type;
@@ -188,11 +201,13 @@ public final class GetAuthorityResult {
         private String lifetime;
         private @Nullable String location;
         private String name;
+        private String pemCaCertificate;
         private List<String> pemCaCertificates;
         private String pemCsr;
         private @Nullable String pool;
         private @Nullable String project;
         private String state;
+        private List<GetAuthoritySubordinateConfig> subordinateConfigs;
         private String type;
         private String updateTime;
 
@@ -216,11 +231,13 @@ public final class GetAuthorityResult {
     	      this.lifetime = defaults.lifetime;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
+    	      this.pemCaCertificate = defaults.pemCaCertificate;
     	      this.pemCaCertificates = defaults.pemCaCertificates;
     	      this.pemCsr = defaults.pemCsr;
     	      this.pool = defaults.pool;
     	      this.project = defaults.project;
     	      this.state = defaults.state;
+    	      this.subordinateConfigs = defaults.subordinateConfigs;
     	      this.type = defaults.type;
     	      this.updateTime = defaults.updateTime;
         }
@@ -290,6 +307,10 @@ public final class GetAuthorityResult {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        public Builder pemCaCertificate(String pemCaCertificate) {
+            this.pemCaCertificate = Objects.requireNonNull(pemCaCertificate);
+            return this;
+        }
         public Builder pemCaCertificates(List<String> pemCaCertificates) {
             this.pemCaCertificates = Objects.requireNonNull(pemCaCertificates);
             return this;
@@ -313,6 +334,13 @@ public final class GetAuthorityResult {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        public Builder subordinateConfigs(List<GetAuthoritySubordinateConfig> subordinateConfigs) {
+            this.subordinateConfigs = Objects.requireNonNull(subordinateConfigs);
+            return this;
+        }
+        public Builder subordinateConfigs(GetAuthoritySubordinateConfig... subordinateConfigs) {
+            return subordinateConfigs(List.of(subordinateConfigs));
+        }
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -321,7 +349,7 @@ public final class GetAuthorityResult {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }        public GetAuthorityResult build() {
-            return new GetAuthorityResult(accessUrls, certificateAuthorityId, configs, createTime, deletionProtection, desiredState, gcsBucket, id, ignoreActiveCertificatesOnDeletion, keySpecs, labels, lifetime, location, name, pemCaCertificates, pemCsr, pool, project, state, type, updateTime);
+            return new GetAuthorityResult(accessUrls, certificateAuthorityId, configs, createTime, deletionProtection, desiredState, gcsBucket, id, ignoreActiveCertificatesOnDeletion, keySpecs, labels, lifetime, location, name, pemCaCertificate, pemCaCertificates, pemCsr, pool, project, state, subordinateConfigs, type, updateTime);
         }
     }
 }

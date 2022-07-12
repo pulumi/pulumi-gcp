@@ -502,7 +502,10 @@ import (
 type Certificate struct {
 	pulumi.CustomResourceState
 
-	// Certificate Authority name.
+	// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+	// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+	// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+	// should be set to `my-ca`.
 	CertificateAuthority pulumi.StringPtrOutput `pulumi:"certificateAuthority"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
 	// this field is present.
@@ -519,7 +522,7 @@ type Certificate struct {
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The resource name of the issuing CertificateAuthority in the format
-	// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+	// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
 	IssuerCertificateAuthority pulumi.StringOutput `pulumi:"issuerCertificateAuthority"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -590,7 +593,10 @@ func GetCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
-	// Certificate Authority name.
+	// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+	// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+	// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+	// should be set to `my-ca`.
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
 	// this field is present.
@@ -607,7 +613,7 @@ type certificateState struct {
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
 	// The resource name of the issuing CertificateAuthority in the format
-	// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+	// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
 	IssuerCertificateAuthority *string `pulumi:"issuerCertificateAuthority"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -644,7 +650,10 @@ type certificateState struct {
 }
 
 type CertificateState struct {
-	// Certificate Authority name.
+	// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+	// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+	// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+	// should be set to `my-ca`.
 	CertificateAuthority pulumi.StringPtrInput
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
 	// this field is present.
@@ -661,7 +670,7 @@ type CertificateState struct {
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
 	// The resource name of the issuing CertificateAuthority in the format
-	// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+	// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
 	IssuerCertificateAuthority pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapInput
@@ -702,7 +711,10 @@ func (CertificateState) ElementType() reflect.Type {
 }
 
 type certificateArgs struct {
-	// Certificate Authority name.
+	// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+	// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+	// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+	// should be set to `my-ca`.
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// The resource name for a CertificateTemplate used to issue this certificate,
 	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
@@ -735,7 +747,10 @@ type certificateArgs struct {
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
-	// Certificate Authority name.
+	// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+	// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+	// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+	// should be set to `my-ca`.
 	CertificateAuthority pulumi.StringPtrInput
 	// The resource name for a CertificateTemplate used to issue this certificate,
 	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
@@ -853,7 +868,10 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 	return o
 }
 
-// Certificate Authority name.
+// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
+// should be set to `my-ca`.
 func (o CertificateOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
 }
@@ -885,7 +903,7 @@ func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The resource name of the issuing CertificateAuthority in the format
-// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
 func (o CertificateOutput) IssuerCertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.IssuerCertificateAuthority }).(pulumi.StringOutput)
 }

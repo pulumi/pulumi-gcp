@@ -99,6 +99,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+     * instance. If this is provided, CMEK is enabled.
+     * 
+     */
+    @Import(name="customerManagedKey")
+    private @Nullable Output<String> customerManagedKey;
+
+    /**
+     * @return Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+     * instance. If this is provided, CMEK is enabled.
+     * 
+     */
+    public Optional<Output<String>> customerManagedKey() {
+        return Optional.ofNullable(this.customerManagedKey);
+    }
+
+    /**
      * An arbitrary and optional user-provided name for the instance.
      * 
      */
@@ -428,6 +445,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.authEnabled = $.authEnabled;
         this.authorizedNetwork = $.authorizedNetwork;
         this.connectMode = $.connectMode;
+        this.customerManagedKey = $.customerManagedKey;
         this.displayName = $.displayName;
         this.labels = $.labels;
         this.locationId = $.locationId;
@@ -565,6 +583,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder connectMode(String connectMode) {
             return connectMode(Output.of(connectMode));
+        }
+
+        /**
+         * @param customerManagedKey Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+         * instance. If this is provided, CMEK is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerManagedKey(@Nullable Output<String> customerManagedKey) {
+            $.customerManagedKey = customerManagedKey;
+            return this;
+        }
+
+        /**
+         * @param customerManagedKey Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+         * instance. If this is provided, CMEK is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerManagedKey(String customerManagedKey) {
+            return customerManagedKey(Output.of(customerManagedKey));
         }
 
         /**

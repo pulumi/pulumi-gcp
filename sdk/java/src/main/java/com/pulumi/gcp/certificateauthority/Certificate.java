@@ -432,14 +432,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:certificateauthority/certificate:Certificate")
 public class Certificate extends com.pulumi.resources.CustomResource {
     /**
-     * Certificate Authority name.
+     * The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+     * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+     * should be set to `my-ca`.
      * 
      */
     @Export(name="certificateAuthority", type=String.class, parameters={})
     private Output</* @Nullable */ String> certificateAuthority;
 
     /**
-     * @return Certificate Authority name.
+     * @return The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+     * a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+     * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+     * should be set to `my-ca`.
      * 
      */
     public Output<Optional<String>> certificateAuthority() {
@@ -515,7 +521,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource name of the issuing CertificateAuthority in the format
-     * projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*.
+     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
      * 
      */
     @Export(name="issuerCertificateAuthority", type=String.class, parameters={})
@@ -523,7 +529,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name of the issuing CertificateAuthority in the format
-     * projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*.
+     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
      * 
      */
     public Output<String> issuerCertificateAuthority() {

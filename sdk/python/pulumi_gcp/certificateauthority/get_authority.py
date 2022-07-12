@@ -21,7 +21,7 @@ class GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
-    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, state=None, type=None, update_time=None):
+    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, state=None, subordinate_configs=None, type=None, update_time=None):
         if access_urls and not isinstance(access_urls, list):
             raise TypeError("Expected argument 'access_urls' to be a list")
         pulumi.set(__self__, "access_urls", access_urls)
@@ -64,6 +64,9 @@ class GetAuthorityResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if pem_ca_certificate and not isinstance(pem_ca_certificate, str):
+            raise TypeError("Expected argument 'pem_ca_certificate' to be a str")
+        pulumi.set(__self__, "pem_ca_certificate", pem_ca_certificate)
         if pem_ca_certificates and not isinstance(pem_ca_certificates, list):
             raise TypeError("Expected argument 'pem_ca_certificates' to be a list")
         pulumi.set(__self__, "pem_ca_certificates", pem_ca_certificates)
@@ -79,6 +82,9 @@ class GetAuthorityResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if subordinate_configs and not isinstance(subordinate_configs, list):
+            raise TypeError("Expected argument 'subordinate_configs' to be a list")
+        pulumi.set(__self__, "subordinate_configs", subordinate_configs)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -160,6 +166,11 @@ class GetAuthorityResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pemCaCertificate")
+    def pem_ca_certificate(self) -> str:
+        return pulumi.get(self, "pem_ca_certificate")
+
+    @property
     @pulumi.getter(name="pemCaCertificates")
     def pem_ca_certificates(self) -> Sequence[str]:
         return pulumi.get(self, "pem_ca_certificates")
@@ -186,6 +197,11 @@ class GetAuthorityResult:
     @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subordinateConfigs")
+    def subordinate_configs(self) -> Sequence['outputs.GetAuthoritySubordinateConfigResult']:
+        return pulumi.get(self, "subordinate_configs")
 
     @property
     @pulumi.getter
@@ -218,11 +234,13 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             lifetime=self.lifetime,
             location=self.location,
             name=self.name,
+            pem_ca_certificate=self.pem_ca_certificate,
             pem_ca_certificates=self.pem_ca_certificates,
             pem_csr=self.pem_csr,
             pool=self.pool,
             project=self.project,
             state=self.state,
+            subordinate_configs=self.subordinate_configs,
             type=self.type,
             update_time=self.update_time)
 
@@ -280,11 +298,13 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         lifetime=__ret__.lifetime,
         location=__ret__.location,
         name=__ret__.name,
+        pem_ca_certificate=__ret__.pem_ca_certificate,
         pem_ca_certificates=__ret__.pem_ca_certificates,
         pem_csr=__ret__.pem_csr,
         pool=__ret__.pool,
         project=__ret__.project,
         state=__ret__.state,
+        subordinate_configs=__ret__.subordinate_configs,
         type=__ret__.type,
         update_time=__ret__.update_time)
 

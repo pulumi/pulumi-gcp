@@ -67,6 +67,7 @@ type LookupInstanceResult struct {
 	ConnectMode           string `pulumi:"connectMode"`
 	CreateTime            string `pulumi:"createTime"`
 	CurrentLocationId     string `pulumi:"currentLocationId"`
+	CustomerManagedKey    string `pulumi:"customerManagedKey"`
 	DisplayName           string `pulumi:"displayName"`
 	Host                  string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
@@ -165,6 +166,10 @@ func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) CurrentLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentLocationId }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) CustomerManagedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CustomerManagedKey }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {

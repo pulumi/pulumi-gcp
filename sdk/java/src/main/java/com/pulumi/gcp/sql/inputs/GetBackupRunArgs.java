@@ -66,12 +66,30 @@ public final class GetBackupRunArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.mostRecent);
     }
 
+    /**
+     * The project to list instances for. If it
+     * is not provided, the provider project is used.
+     * 
+     */
+    @Import(name="project")
+    private @Nullable Output<String> project;
+
+    /**
+     * @return The project to list instances for. If it
+     * is not provided, the provider project is used.
+     * 
+     */
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
+    }
+
     private GetBackupRunArgs() {}
 
     private GetBackupRunArgs(GetBackupRunArgs $) {
         this.backupId = $.backupId;
         this.instance = $.instance;
         this.mostRecent = $.mostRecent;
+        this.project = $.project;
     }
 
     public static Builder builder() {
@@ -157,6 +175,29 @@ public final class GetBackupRunArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder mostRecent(Boolean mostRecent) {
             return mostRecent(Output.of(mostRecent));
+        }
+
+        /**
+         * @param project The project to list instances for. If it
+         * is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param project The project to list instances for. If it
+         * is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         public GetBackupRunArgs build() {

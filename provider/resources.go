@@ -339,6 +339,24 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_bigquery_routine":                {Tok: gcpResource(gcpBigQuery, "Routine")},
 			"google_bigquery_reservation_assignment": {Tok: gcpResource(gcpBigQuery, "ReservationAssignment")},
+			"google_bigquery_connection_iam_binding": {
+				Tok: gcpResource(gcpBigQuery, "ConnectionIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_connection_iam.html.markdown",
+				},
+			},
+			"google_bigquery_connection_iam_member": {
+				Tok: gcpResource(gcpBigQuery, "ConnectionIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_connection_iam.html.markdown",
+				},
+			},
+			"google_bigquery_connection_iam_policy": {
+				Tok: gcpResource(gcpBigQuery, "ConnectionIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_connection_iam.html.markdown",
+				},
+			},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -1059,8 +1077,44 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_dataproc_autoscaling_policy": {Tok: gcpResource(gcpDataProc, "AutoscalingPolicy")},
-			"google_dataproc_metastore_service":  {Tok: gcpResource(gcpDataProc, "MetastoreService")},
-			"google_dataproc_workflow_template":  {Tok: gcpResource(gcpDataProc, "WorkflowTemplate")},
+			"google_dataproc_autoscaling_policy_iam_binding": {
+				Tok: gcpResource(gcpDataProc, "AutoscalingPolicyIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_autoscaling_policy_iam.html.markdown",
+				},
+			},
+			"google_dataproc_autoscaling_policy_iam_member": {
+				Tok: gcpResource(gcpDataProc, "AutoscalingPolicyIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_autoscaling_policy_iam.html.markdown",
+				},
+			},
+			"google_dataproc_autoscaling_policy_iam_policy": {
+				Tok: gcpResource(gcpDataProc, "AutoscalingPolicyIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_autoscaling_policy_iam.html.markdown",
+				},
+			},
+			"google_dataproc_metastore_service": {Tok: gcpResource(gcpDataProc, "MetastoreService")},
+			"google_dataproc_metastore_service_iam_binding": {
+				Tok: gcpResource(gcpDataProc, "MetastoreServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_metastore_service_iam.html.markdown",
+				},
+			},
+			"google_dataproc_metastore_service_iam_member": {
+				Tok: gcpResource(gcpDataProc, "MetastoreServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_metastore_service_iam.html.markdown",
+				},
+			},
+			"google_dataproc_metastore_service_iam_policy": {
+				Tok: gcpResource(gcpDataProc, "MetastoreServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_metastore_service_iam.html.markdown",
+				},
+			},
+			"google_dataproc_workflow_template": {Tok: gcpResource(gcpDataProc, "WorkflowTemplate")},
 
 			// DataStore resources
 			"google_datastore_index": {Tok: gcpResource(gcpDatastore, "DataStoreIndex")},
@@ -1758,6 +1812,24 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Cloudtasks
 			"google_cloud_tasks_queue": {Tok: gcpResource(gcpCloudTasks, "Queue")},
+			"google_cloud_tasks_queue_iam_binding": {
+				Tok: gcpResource(gcpCloudTasks, "QueueIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_tasks_queue_iam.html.markdown",
+				},
+			},
+			"google_cloud_tasks_queue_iam_member": {
+				Tok: gcpResource(gcpCloudTasks, "QueueIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_tasks_queue_iam.html.markdown",
+				},
+			},
+			"google_cloud_tasks_queue_iam_policy": {
+				Tok: gcpResource(gcpCloudTasks, "QueueIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_tasks_queue_iam.html.markdown",
+				},
+			},
 
 			// Deployment Manager
 			"google_deployment_manager_deployment": {Tok: gcpResource(gcpDeploymentManager, "Deployment")},

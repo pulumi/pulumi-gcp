@@ -21,14 +21,14 @@ class DatabaseArgs:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input['DatabaseEncryptionConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 version_retention_period: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] instance: The instance to create the database on.
-        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-               that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-               therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-               "POSTGRESQL"]
+        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
+               If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+               Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -41,6 +41,11 @@ class DatabaseArgs:
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] version_retention_period: The retention period for the database. The retention period must be between 1 hour
+               and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+               the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+               If this property is used, you must avoid adding new DDL statements to `ddl` that
+               update the database's version_retention_period.
         """
         pulumi.set(__self__, "instance", instance)
         if database_dialect is not None:
@@ -55,6 +60,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if version_retention_period is not None:
+            pulumi.set(__self__, "version_retention_period", version_retention_period)
 
     @property
     @pulumi.getter
@@ -72,10 +79,9 @@ class DatabaseArgs:
     @pulumi.getter(name="databaseDialect")
     def database_dialect(self) -> Optional[pulumi.Input[str]]:
         """
-        The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-        that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-        therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-        "POSTGRESQL"]
+        The dialect of the Cloud Spanner Database.
+        If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+        Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         """
         return pulumi.get(self, "database_dialect")
 
@@ -150,6 +156,22 @@ class DatabaseArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="versionRetentionPeriod")
+    def version_retention_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The retention period for the database. The retention period must be between 1 hour
+        and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+        the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+        If this property is used, you must avoid adding new DDL statements to `ddl` that
+        update the database's version_retention_period.
+        """
+        return pulumi.get(self, "version_retention_period")
+
+    @version_retention_period.setter
+    def version_retention_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_retention_period", value)
+
 
 @pulumi.input_type
 class _DatabaseState:
@@ -161,13 +183,13 @@ class _DatabaseState:
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input[str]] = None,
+                 version_retention_period: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
-        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-               that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-               therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-               "POSTGRESQL"]
+        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
+               If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+               Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -182,6 +204,11 @@ class _DatabaseState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: An explanation of the status of the database.
+        :param pulumi.Input[str] version_retention_period: The retention period for the database. The retention period must be between 1 hour
+               and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+               the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+               If this property is used, you must avoid adding new DDL statements to `ddl` that
+               update the database's version_retention_period.
         """
         if database_dialect is not None:
             pulumi.set(__self__, "database_dialect", database_dialect)
@@ -199,15 +226,16 @@ class _DatabaseState:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if version_retention_period is not None:
+            pulumi.set(__self__, "version_retention_period", version_retention_period)
 
     @property
     @pulumi.getter(name="databaseDialect")
     def database_dialect(self) -> Optional[pulumi.Input[str]]:
         """
-        The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-        that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-        therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-        "POSTGRESQL"]
+        The dialect of the Cloud Spanner Database.
+        If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+        Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         """
         return pulumi.get(self, "database_dialect")
 
@@ -306,6 +334,22 @@ class _DatabaseState:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+    @property
+    @pulumi.getter(name="versionRetentionPeriod")
+    def version_retention_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The retention period for the database. The retention period must be between 1 hour
+        and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+        the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+        If this property is used, you must avoid adding new DDL statements to `ddl` that
+        update the database's version_retention_period.
+        """
+        return pulumi.get(self, "version_retention_period")
+
+    @version_retention_period.setter
+    def version_retention_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_retention_period", value)
+
 
 class Database(pulumi.CustomResource):
     @overload
@@ -319,8 +363,19 @@ class Database(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 version_retention_period: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Cloud Spanner Database which is hosted on a Spanner instance.
+
+        To get more information about Database, see:
+
+        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/spanner/)
+
+        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+
         ## Example Usage
         ### Spanner Database Basic
 
@@ -334,6 +389,7 @@ class Database(pulumi.CustomResource):
             num_nodes=1)
         database = gcp.spanner.Database("database",
             instance=main.name,
+            version_retention_period="3d",
             ddls=[
                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
                 "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
@@ -363,10 +419,9 @@ class Database(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-               that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-               therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-               "POSTGRESQL"]
+        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
+               If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+               Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -380,6 +435,11 @@ class Database(pulumi.CustomResource):
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] version_retention_period: The retention period for the database. The retention period must be between 1 hour
+               and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+               the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+               If this property is used, you must avoid adding new DDL statements to `ddl` that
+               update the database's version_retention_period.
         """
         ...
     @overload
@@ -388,6 +448,16 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Cloud Spanner Database which is hosted on a Spanner instance.
+
+        To get more information about Database, see:
+
+        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/spanner/)
+
+        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+
         ## Example Usage
         ### Spanner Database Basic
 
@@ -401,6 +471,7 @@ class Database(pulumi.CustomResource):
             num_nodes=1)
         database = gcp.spanner.Database("database",
             instance=main.name,
+            version_retention_period="3d",
             ddls=[
                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
                 "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
@@ -450,6 +521,7 @@ class Database(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 version_retention_period: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -471,6 +543,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["instance"] = instance
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["version_retention_period"] = version_retention_period
             __props__.__dict__["state"] = None
         super(Database, __self__).__init__(
             'gcp:spanner/database:Database',
@@ -489,7 +562,8 @@ class Database(pulumi.CustomResource):
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            state: Optional[pulumi.Input[str]] = None) -> 'Database':
+            state: Optional[pulumi.Input[str]] = None,
+            version_retention_period: Optional[pulumi.Input[str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -497,10 +571,9 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-               that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-               therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-               "POSTGRESQL"]
+        :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
+               If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+               Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -515,6 +588,11 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: An explanation of the status of the database.
+        :param pulumi.Input[str] version_retention_period: The retention period for the database. The retention period must be between 1 hour
+               and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+               the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+               If this property is used, you must avoid adding new DDL statements to `ddl` that
+               update the database's version_retention_period.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -528,16 +606,16 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
+        __props__.__dict__["version_retention_period"] = version_retention_period
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="databaseDialect")
     def database_dialect(self) -> pulumi.Output[str]:
         """
-        The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-        that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-        therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-        "POSTGRESQL"]
+        The dialect of the Cloud Spanner Database.
+        If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+        Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
         """
         return pulumi.get(self, "database_dialect")
 
@@ -603,4 +681,16 @@ class Database(pulumi.CustomResource):
         An explanation of the status of the database.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="versionRetentionPeriod")
+    def version_retention_period(self) -> pulumi.Output[str]:
+        """
+        The retention period for the database. The retention period must be between 1 hour
+        and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+        the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+        If this property is used, you must avoid adding new DDL statements to `ddl` that
+        update the database's version_retention_period.
+        """
+        return pulumi.get(self, "version_retention_period")
 

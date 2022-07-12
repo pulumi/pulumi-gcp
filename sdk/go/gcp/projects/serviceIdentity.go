@@ -137,6 +137,8 @@ func (ServiceIdentityState) ElementType() reflect.Type {
 }
 
 type serviceIdentityArgs struct {
+	// The email address of the Google managed service account.
+	Email *string `pulumi:"email"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -146,6 +148,8 @@ type serviceIdentityArgs struct {
 
 // The set of arguments for constructing a ServiceIdentity resource.
 type ServiceIdentityArgs struct {
+	// The email address of the Google managed service account.
+	Email pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

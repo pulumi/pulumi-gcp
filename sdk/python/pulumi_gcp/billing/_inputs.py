@@ -15,6 +15,9 @@ __all__ = [
     'BudgetAmountArgs',
     'BudgetAmountSpecifiedAmountArgs',
     'BudgetBudgetFilterArgs',
+    'BudgetBudgetFilterCustomPeriodArgs',
+    'BudgetBudgetFilterCustomPeriodEndDateArgs',
+    'BudgetBudgetFilterCustomPeriodStartDateArgs',
     'BudgetThresholdRuleArgs',
 ]
 
@@ -312,23 +315,31 @@ class BudgetAmountSpecifiedAmountArgs:
 @pulumi.input_type
 class BudgetBudgetFilterArgs:
     def __init__(__self__, *,
+                 calendar_period: Optional[pulumi.Input[str]] = None,
                  credit_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  credit_types_treatment: Optional[pulumi.Input[str]] = None,
+                 custom_period: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subaccounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: A set of subaccounts of the form billingAccounts/{account_id},
-               specifying that usage from only this set of subaccounts should
-               be included in the budget. If a subaccount is set to the name of
-               the parent account, usage from the parent account will be included.
-               If the field is omitted, the report will include usage from the parent
-               account and all subaccounts, if they exist.
+        :param pulumi.Input[str] calendar_period: A CalendarPeriod represents the abstract concept of a recurring time period that has a
+               canonical start. Grammatically, "the start of the current CalendarPeriod".
+               All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+               Exactly one of `calendar_period`, `custom_period` must be provided.
+               Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+               this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+               If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         :param pulumi.Input[str] credit_types_treatment: Specifies how credits should be treated when determining spend
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
                Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+        :param pulumi.Input['BudgetBudgetFilterCustomPeriodArgs'] custom_period: Specifies to track usage from any start date (required) to any end date (optional).
+               This time period is static, it does not recur.
+               Exactly one of `calendar_period`, `custom_period` must be provided.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A single label and value pair specifying that usage from only
                this set of labeled resources should be included in the budget.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: A set of projects of the form projects/{project_number},
@@ -349,10 +360,14 @@ class BudgetBudgetFilterArgs:
                If the field is omitted, the report will include usage from the parent
                account and all subaccounts, if they exist.
         """
+        if calendar_period is not None:
+            pulumi.set(__self__, "calendar_period", calendar_period)
         if credit_types is not None:
             pulumi.set(__self__, "credit_types", credit_types)
         if credit_types_treatment is not None:
             pulumi.set(__self__, "credit_types_treatment", credit_types_treatment)
+        if custom_period is not None:
+            pulumi.set(__self__, "custom_period", custom_period)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if projects is not None:
@@ -363,15 +378,28 @@ class BudgetBudgetFilterArgs:
             pulumi.set(__self__, "subaccounts", subaccounts)
 
     @property
+    @pulumi.getter(name="calendarPeriod")
+    def calendar_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        A CalendarPeriod represents the abstract concept of a recurring time period that has a
+        canonical start. Grammatically, "the start of the current CalendarPeriod".
+        All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+        Exactly one of `calendar_period`, `custom_period` must be provided.
+        Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "calendar_period")
+
+    @calendar_period.setter
+    def calendar_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "calendar_period", value)
+
+    @property
     @pulumi.getter(name="creditTypes")
     def credit_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of subaccounts of the form billingAccounts/{account_id},
-        specifying that usage from only this set of subaccounts should
-        be included in the budget. If a subaccount is set to the name of
-        the parent account, usage from the parent account will be included.
-        If the field is omitted, the report will include usage from the parent
-        account and all subaccounts, if they exist.
+        Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+        this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+        If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         """
         return pulumi.get(self, "credit_types")
 
@@ -393,6 +421,21 @@ class BudgetBudgetFilterArgs:
     @credit_types_treatment.setter
     def credit_types_treatment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "credit_types_treatment", value)
+
+    @property
+    @pulumi.getter(name="customPeriod")
+    def custom_period(self) -> Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']]:
+        """
+        Specifies to track usage from any start date (required) to any end date (optional).
+        This time period is static, it does not recur.
+        Exactly one of `calendar_period`, `custom_period` must be provided.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_period")
+
+    @custom_period.setter
+    def custom_period(self, value: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']]):
+        pulumi.set(self, "custom_period", value)
 
     @property
     @pulumi.getter
@@ -456,6 +499,154 @@ class BudgetBudgetFilterArgs:
     @subaccounts.setter
     def subaccounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "subaccounts", value)
+
+
+@pulumi.input_type
+class BudgetBudgetFilterCustomPeriodArgs:
+    def __init__(__self__, *,
+                 start_date: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs'],
+                 end_date: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']] = None):
+        """
+        :param pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs'] start_date: A start date is required. The start date must be after January 1, 2017.
+               Structure is documented below.
+        :param pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs'] end_date: Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+               If unset, specifies to track all usage incurred since the startDate.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "start_date", start_date)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs']:
+        """
+        A start date is required. The start date must be after January 1, 2017.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs']):
+        pulumi.set(self, "start_date", value)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']]:
+        """
+        Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+        If unset, specifies to track all usage incurred since the startDate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']]):
+        pulumi.set(self, "end_date", value)
+
+
+@pulumi.input_type
+class BudgetBudgetFilterCustomPeriodEndDateArgs:
+    def __init__(__self__, *,
+                 day: pulumi.Input[int],
+                 month: pulumi.Input[int],
+                 year: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month.
+        :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12.
+        :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> pulumi.Input[int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def month(self) -> pulumi.Input[int]:
+        """
+        Month of a year. Must be from 1 to 12.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: pulumi.Input[int]):
+        pulumi.set(self, "month", value)
+
+    @property
+    @pulumi.getter
+    def year(self) -> pulumi.Input[int]:
+        """
+        Year of the date. Must be from 1 to 9999.
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: pulumi.Input[int]):
+        pulumi.set(self, "year", value)
+
+
+@pulumi.input_type
+class BudgetBudgetFilterCustomPeriodStartDateArgs:
+    def __init__(__self__, *,
+                 day: pulumi.Input[int],
+                 month: pulumi.Input[int],
+                 year: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month.
+        :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12.
+        :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> pulumi.Input[int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def month(self) -> pulumi.Input[int]:
+        """
+        Month of a year. Must be from 1 to 12.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: pulumi.Input[int]):
+        pulumi.set(self, "month", value)
+
+    @property
+    @pulumi.getter
+    def year(self) -> pulumi.Input[int]:
+        """
+        Year of the date. Must be from 1 to 9999.
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: pulumi.Input[int]):
+        pulumi.set(self, "year", value)
 
 
 @pulumi.input_type

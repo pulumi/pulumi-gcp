@@ -2616,6 +2616,18 @@ export namespace bigquery {
         username: string;
     }
 
+    export interface ConnectionIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ConnectionIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface DataTransferConfigEmailPreferences {
         /**
          * If true, email notifications will be sent on transfer run failures.
@@ -3182,7 +3194,7 @@ export namespace bigquery {
          * The destination table.
          * Structure is documented below.
          */
-        destinationTable?: outputs.bigquery.JobQueryDestinationTable;
+        destinationTable: outputs.bigquery.JobQueryDestinationTable;
         /**
          * If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
          * allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
@@ -3823,12 +3835,17 @@ export namespace billing {
 
     export interface BudgetBudgetFilter {
         /**
-         * A set of subaccounts of the form billingAccounts/{account_id},
-         * specifying that usage from only this set of subaccounts should
-         * be included in the budget. If a subaccount is set to the name of
-         * the parent account, usage from the parent account will be included.
-         * If the field is omitted, the report will include usage from the parent
-         * account and all subaccounts, if they exist.
+         * A CalendarPeriod represents the abstract concept of a recurring time period that has a
+         * canonical start. Grammatically, "the start of the current CalendarPeriod".
+         * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+         * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+         * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+         */
+        calendarPeriod?: string;
+        /**
+         * Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+         * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+         * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
          */
         creditTypes: string[];
         /**
@@ -3838,6 +3855,13 @@ export namespace billing {
          * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
          */
         creditTypesTreatment?: string;
+        /**
+         * Specifies to track usage from any start date (required) to any end date (optional).
+         * This time period is static, it does not recur.
+         * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+         * Structure is documented below.
+         */
+        customPeriod?: outputs.billing.BudgetBudgetFilterCustomPeriod;
         /**
          * A single label and value pair specifying that usage from only
          * this set of labeled resources should be included in the budget.
@@ -3869,6 +3893,50 @@ export namespace billing {
          * account and all subaccounts, if they exist.
          */
         subaccounts: string[];
+    }
+
+    export interface BudgetBudgetFilterCustomPeriod {
+        /**
+         * Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+         * If unset, specifies to track all usage incurred since the startDate.
+         * Structure is documented below.
+         */
+        endDate?: outputs.billing.BudgetBudgetFilterCustomPeriodEndDate;
+        /**
+         * A start date is required. The start date must be after January 1, 2017.
+         * Structure is documented below.
+         */
+        startDate: outputs.billing.BudgetBudgetFilterCustomPeriodStartDate;
+    }
+
+    export interface BudgetBudgetFilterCustomPeriodEndDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month.
+         */
+        day: number;
+        /**
+         * Month of a year. Must be from 1 to 12.
+         */
+        month: number;
+        /**
+         * Year of the date. Must be from 1 to 9999.
+         */
+        year: number;
+    }
+
+    export interface BudgetBudgetFilterCustomPeriodStartDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month.
+         */
+        day: number;
+        /**
+         * Month of a year. Must be from 1 to 12.
+         */
+        month: number;
+        /**
+         * Year of the date. Must be from 1 to 9999.
+         */
+        year: number;
     }
 
     export interface BudgetThresholdRule {
@@ -4326,6 +4394,29 @@ export namespace certificateauthority {
          * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
          */
         cloudKmsKeyVersion?: string;
+    }
+
+    export interface AuthoritySubordinateConfig {
+        /**
+         * This can refer to a CertificateAuthority that was used to create a
+         * subordinate CertificateAuthority. This field is used for information
+         * and usability purposes only. The resource name is in the format
+         * `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
+         */
+        certificateAuthority?: string;
+        /**
+         * Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+         * but not pem certificate for this CA itself.
+         * Structure is documented below.
+         */
+        pemIssuerChain?: outputs.certificateauthority.AuthoritySubordinateConfigPemIssuerChain;
+    }
+
+    export interface AuthoritySubordinateConfigPemIssuerChain {
+        /**
+         * Expected to be in leaf-to-root order according to RFC 5246.
+         */
+        pemCertificates?: string[];
     }
 
     export interface CaPoolIamBindingCondition {
@@ -5677,6 +5768,15 @@ export namespace certificateauthority {
     export interface GetAuthorityKeySpec {
         algorithm: string;
         cloudKmsKeyVersion: string;
+    }
+
+    export interface GetAuthoritySubordinateConfig {
+        certificateAuthority: string;
+        pemIssuerChains: outputs.certificateauthority.GetAuthoritySubordinateConfigPemIssuerChain[];
+    }
+
+    export interface GetAuthoritySubordinateConfigPemIssuerChain {
+        pemCertificates: string[];
     }
 
 }
@@ -8043,6 +8143,18 @@ export namespace cloudtasks {
         version?: string;
     }
 
+    export interface QueueIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface QueueIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface QueueRateLimits {
         /**
          * -
@@ -8949,6 +9061,8 @@ export namespace compute {
          * For global HTTP(S) or TCP/SSL load balancing, the default is
          * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
          * and CONNECTION (for TCP/SSL).
+         * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+         * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
          * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
          */
@@ -12667,6 +12781,8 @@ export namespace compute {
     export interface RegionBackendServiceBackend {
         /**
          * Specifies the balancing mode for this backend.
+         * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+         * for an explanation of load balancing modes.
          * Default value is `CONNECTION`.
          * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
          */
@@ -18473,7 +18589,7 @@ export namespace container {
         dnsCacheConfig: outputs.container.ClusterAddonsConfigDnsCacheConfig;
         /**
          * .
-         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
          */
         gcePersistentDiskCsiDriverConfig: outputs.container.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig;
         /**
@@ -18990,7 +19106,7 @@ export namespace container {
          * [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
          * for more information.
          */
-        minCpuPlatform?: string;
+        minCpuPlatform: string;
         /**
          * Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
          */
@@ -19318,7 +19434,7 @@ export namespace container {
          * [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
          * for more information.
          */
-        minCpuPlatform?: string;
+        minCpuPlatform: string;
         /**
          * Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
          */
@@ -20119,7 +20235,7 @@ export namespace container {
         localSsdCount: number;
         machineType: string;
         metadata: {[key: string]: string};
-        minCpuPlatform?: string;
+        minCpuPlatform: string;
         nodeGroup?: string;
         oauthScopes: string[];
         preemptible?: boolean;
@@ -21713,6 +21829,18 @@ export namespace dataproc {
         scaleUpMinWorkerFraction?: number;
     }
 
+    export interface AutoscalingPolicyIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AutoscalingPolicyIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface AutoscalingPolicySecondaryWorkerConfig {
         /**
          * Maximum number of instances for this group. Note that by default, clusters will not use
@@ -22609,6 +22737,18 @@ export namespace dataproc {
          * "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
          */
         cloudSecret: string;
+    }
+
+    export interface MetastoreServiceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface MetastoreServiceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface MetastoreServiceMaintenanceWindow {
@@ -32194,6 +32334,7 @@ export namespace sql {
          * Pricing plan for this instance, can only be `PER_USE`.
          */
         pricingPlan?: string;
+        sqlServerAuditConfig?: outputs.sql.DatabaseInstanceSettingsSqlServerAuditConfig;
         /**
          * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
          * for more details and supported versions. Postgres supports only shared-core machine types,
@@ -32343,6 +32484,10 @@ export namespace sql {
          */
         followGaeApplication?: string;
         /**
+         * The preferred Compute Engine zone for the secondary/failover.
+         */
+        secondaryZone?: string;
+        /**
          * The preferred compute engine
          * [zone](https://cloud.google.com/compute/docs/zones?hl=en).
          */
@@ -32363,6 +32508,21 @@ export namespace sql {
          * (`stable`)
          */
         updateTrack?: string;
+    }
+
+    export interface DatabaseInstanceSettingsSqlServerAuditConfig {
+        /**
+         * The name of the destination bucket (e.g., gs://mybucket).
+         */
+        bucket: string;
+        /**
+         * How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        retentionInterval?: string;
+        /**
+         * How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        uploadInterval?: string;
     }
 
     export interface GetCaCertsCert {
@@ -32447,6 +32607,7 @@ export namespace sql {
         locationPreferences: outputs.sql.GetDatabaseInstanceSettingLocationPreference[];
         maintenanceWindows: outputs.sql.GetDatabaseInstanceSettingMaintenanceWindow[];
         pricingPlan: string;
+        sqlServerAuditConfigs: outputs.sql.GetDatabaseInstanceSettingSqlServerAuditConfig[];
         tier: string;
         userLabels: {[key: string]: string};
         version: number;
@@ -32505,6 +32666,7 @@ export namespace sql {
 
     export interface GetDatabaseInstanceSettingLocationPreference {
         followGaeApplication: string;
+        secondaryZone: string;
         zone: string;
     }
 
@@ -32512,6 +32674,12 @@ export namespace sql {
         day: number;
         hour: number;
         updateTrack: string;
+    }
+
+    export interface GetDatabaseInstanceSettingSqlServerAuditConfig {
+        bucket: string;
+        retentionInterval: string;
+        uploadInterval: string;
     }
 
     export interface UserSqlServerUserDetails {

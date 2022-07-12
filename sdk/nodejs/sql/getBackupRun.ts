@@ -29,6 +29,7 @@ export function getBackupRun(args: GetBackupRunArgs, opts?: pulumi.InvokeOptions
         "backupId": args.backupId,
         "instance": args.instance,
         "mostRecent": args.mostRecent,
+        "project": args.project,
     }, opts);
 }
 
@@ -50,6 +51,11 @@ export interface GetBackupRunArgs {
      * Cloud SQL instance.
      */
     mostRecent?: boolean;
+    /**
+     * The project to list instances for. If it
+     * is not provided, the provider project is used.
+     */
+    project?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export interface GetBackupRunResult {
      */
     readonly location: string;
     readonly mostRecent?: boolean;
+    readonly project: string;
     /**
      * The time the backup operation actually started in UTC timezone in RFC 3339 format, for 
      * example 2012-11-15T16:19:00.094Z.
@@ -100,4 +107,9 @@ export interface GetBackupRunOutputArgs {
      * Cloud SQL instance.
      */
     mostRecent?: pulumi.Input<boolean>;
+    /**
+     * The project to list instances for. If it
+     * is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
 }

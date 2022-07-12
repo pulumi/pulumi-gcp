@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:dataproc/autoscalingPolicy:AutoscalingPolicy":
 		r = &AutoscalingPolicy{}
+	case "gcp:dataproc/autoscalingPolicyIamBinding:AutoscalingPolicyIamBinding":
+		r = &AutoscalingPolicyIamBinding{}
+	case "gcp:dataproc/autoscalingPolicyIamMember:AutoscalingPolicyIamMember":
+		r = &AutoscalingPolicyIamMember{}
+	case "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy":
+		r = &AutoscalingPolicyIamPolicy{}
 	case "gcp:dataproc/cluster:Cluster":
 		r = &Cluster{}
 	case "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding":
@@ -41,6 +47,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JobIAMPolicy{}
 	case "gcp:dataproc/metastoreService:MetastoreService":
 		r = &MetastoreService{}
+	case "gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding":
+		r = &MetastoreServiceIamBinding{}
+	case "gcp:dataproc/metastoreServiceIamMember:MetastoreServiceIamMember":
+		r = &MetastoreServiceIamMember{}
+	case "gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy":
+		r = &MetastoreServiceIamPolicy{}
 	case "gcp:dataproc/workflowTemplate:WorkflowTemplate":
 		r = &WorkflowTemplate{}
 	default:
@@ -59,6 +71,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/autoscalingPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/autoscalingPolicyIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/autoscalingPolicyIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/autoscalingPolicyIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -104,6 +131,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/metastoreService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreServiceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreServiceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreServiceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

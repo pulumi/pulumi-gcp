@@ -68,13 +68,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
- *     certificateAuthorityId: "my-certificate-authority",
+ * const root_ca = new gcp.certificateauthority.Authority("root-ca", {
+ *     pool: "ca-pool",
+ *     certificateAuthorityId: "my-certificate-authority-root",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     ignoreActiveCertificatesOnDeletion: true,
  *     config: {
  *         subjectConfig: {
  *             subject: {
- *                 commonName: "my-subordinate-authority",
  *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
  *             },
  *             subjectAltName: {
  *                 dnsNames: ["hashicorp.com"],
@@ -83,39 +87,70 @@ import * as utilities from "../utilities";
  *         x509Config: {
  *             caOptions: {
  *                 isCa: true,
- *                 // Force the sub CA to only issue leaf certs
- *                 maxIssuerPathLength: 0,
  *             },
  *             keyUsage: {
  *                 baseKeyUsage: {
  *                     certSign: true,
- *                     contentCommitment: true,
  *                     crlSign: true,
- *                     dataEncipherment: true,
- *                     decipherOnly: true,
- *                     digitalSignature: true,
- *                     keyAgreement: true,
- *                     keyEncipherment: false,
  *                 },
  *                 extendedKeyUsage: {
- *                     clientAuth: false,
- *                     codeSigning: true,
- *                     emailProtection: true,
+ *                     serverAuth: false,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * });
+ * const _default = new gcp.certificateauthority.Authority("default", {
+ *     pool: "ca-pool",
+ *     certificateAuthorityId: "my-certificate-authority-sub",
+ *     location: "us-central1",
+ *     deletionProtection: true,
+ *     subordinateConfig: {
+ *         certificateAuthority: root_ca.name,
+ *     },
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-subordinate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *                 maxIssuerPathLength: 0,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     digitalSignature: true,
+ *                     contentCommitment: true,
+ *                     keyEncipherment: false,
+ *                     dataEncipherment: true,
+ *                     keyAgreement: true,
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                     decipherOnly: true,
+ *                 },
+ *                 extendedKeyUsage: {
  *                     serverAuth: true,
+ *                     clientAuth: false,
+ *                     emailProtection: true,
+ *                     codeSigning: true,
  *                     timeStamping: true,
  *                 },
  *             },
  *         },
  *     },
- *     deletionProtection: true,
+ *     lifetime: "86400s",
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
- *     lifetime: "86400s",
- *     location: "us-central1",
- *     // This example assumes this pool already exists.
- *     // Pools cannot be deleted in normal test circumstances, so we depend on static pools
- *     pool: "ca-pool",
  *     type: "SUBORDINATE",
  * });
  * ```
@@ -284,6 +319,10 @@ export class Authority extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+     */
+    public readonly pemCaCertificate!: pulumi.Output<string | undefined>;
+    /**
      * This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
      * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
      * current CertificateAuthority's certificate.
@@ -303,10 +342,15 @@ export class Authority extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
+     */
+    public readonly subordinateConfig!: pulumi.Output<outputs.certificateauthority.AuthoritySubordinateConfig | undefined>;
+    /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-     * be manually activated (via Cloud Console of `gcloud`) before they can
-     * issue certificates.
+     * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
      * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
      */
@@ -343,10 +387,12 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["lifetime"] = state ? state.lifetime : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pemCaCertificate"] = state ? state.pemCaCertificate : undefined;
             resourceInputs["pemCaCertificates"] = state ? state.pemCaCertificates : undefined;
             resourceInputs["pool"] = state ? state.pool : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["subordinateConfig"] = state ? state.subordinateConfig : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -376,8 +422,10 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["lifetime"] = args ? args.lifetime : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["pemCaCertificate"] = args ? args.pemCaCertificate : undefined;
             resourceInputs["pool"] = args ? args.pool : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["accessUrls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -460,6 +508,10 @@ export interface AuthorityState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+     */
+    pemCaCertificate?: pulumi.Input<string>;
+    /**
      * This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
      * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
      * current CertificateAuthority's certificate.
@@ -479,10 +531,15 @@ export interface AuthorityState {
      */
     state?: pulumi.Input<string>;
     /**
+     * If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
+     */
+    subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig>;
+    /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-     * be manually activated (via Cloud Console of `gcloud`) before they can
-     * issue certificates.
+     * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
      * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
      */
@@ -550,6 +607,10 @@ export interface AuthorityArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+     */
+    pemCaCertificate?: pulumi.Input<string>;
+    /**
      * The name of the CaPool this Certificate Authority belongs to.
      */
     pool: pulumi.Input<string>;
@@ -559,10 +620,15 @@ export interface AuthorityArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
+     */
+    subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig>;
+    /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-     * be manually activated (via Cloud Console of `gcloud`) before they can
-     * issue certificates.
+     * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
      * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
      */

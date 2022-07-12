@@ -195,6 +195,60 @@ import (
 // 	})
 // }
 // ```
+// ### Redis Instance Cmek
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		redisKeyring, err := kms.NewKeyRing(ctx, "redisKeyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		redisKey, err := kms.NewCryptoKey(ctx, "redisKey", &kms.CryptoKeyArgs{
+// 			KeyRing: redisKeyring.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+// 			Name: "redis-test-network",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+// 			Tier:                  pulumi.String("STANDARD_HA"),
+// 			MemorySizeGb:          pulumi.Int(1),
+// 			LocationId:            pulumi.String("us-central1-a"),
+// 			AlternativeLocationId: pulumi.String("us-central1-f"),
+// 			AuthorizedNetwork:     pulumi.String(redis_network.Id),
+// 			RedisVersion:          pulumi.String("REDIS_6_X"),
+// 			DisplayName:           pulumi.String("Terraform Test Instance"),
+// 			ReservedIpRange:       pulumi.String("192.168.0.0/29"),
+// 			Labels: pulumi.StringMap{
+// 				"my_key":    pulumi.String("my_val"),
+// 				"other_key": pulumi.String("other_val"),
+// 			},
+// 			CustomerManagedKey: redisKey.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -246,6 +300,9 @@ type Instance struct {
 	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
 	// [alternativeLocationId] and can change after a failover event.
 	CurrentLocationId pulumi.StringOutput `pulumi:"currentLocationId"`
+	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+	// instance. If this is provided, CMEK is enabled.
+	CustomerManagedKey pulumi.StringPtrOutput `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
@@ -395,6 +452,9 @@ type instanceState struct {
 	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
 	// [alternativeLocationId] and can change after a failover event.
 	CurrentLocationId *string `pulumi:"currentLocationId"`
+	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+	// instance. If this is provided, CMEK is enabled.
+	CustomerManagedKey *string `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
@@ -513,6 +573,9 @@ type InstanceState struct {
 	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
 	// [alternativeLocationId] and can change after a failover event.
 	CurrentLocationId pulumi.StringPtrInput
+	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+	// instance. If this is provided, CMEK is enabled.
+	CustomerManagedKey pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
@@ -624,6 +687,9 @@ type instanceArgs struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
+	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+	// instance. If this is provided, CMEK is enabled.
+	CustomerManagedKey *string `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user provided metadata.
@@ -713,6 +779,9 @@ type InstanceArgs struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
+	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+	// instance. If this is provided, CMEK is enabled.
+	CustomerManagedKey pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
@@ -917,6 +986,12 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // [alternativeLocationId] and can change after a failover event.
 func (o InstanceOutput) CurrentLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CurrentLocationId }).(pulumi.StringOutput)
+}
+
+// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
+// instance. If this is provided, CMEK is enabled.
+func (o InstanceOutput) CustomerManagedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CustomerManagedKey }).(pulumi.StringPtrOutput)
 }
 
 // An arbitrary and optional user-provided name for the instance.
