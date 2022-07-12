@@ -212,8 +212,9 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
      * CONNECTION balancing modes.
+     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
      * 
      */
     @Export(name="networkEndpointType", type=String.class, parameters={})
@@ -227,8 +228,9 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
      * CONNECTION balancing modes.
+     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP_PORT` and `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
      * 
      */
     public Output<Optional<String>> networkEndpointType() {

@@ -113,6 +113,7 @@ import javax.annotation.Nullable;
  *             .sourceArchiveBucket(bucket.name())
  *             .sourceArchiveObject(archive.name())
  *             .triggerHttp(true)
+ *             .httpsTriggerSecurityLevel(&#34;SECURE_ALWAYS&#34;)
  *             .timeout(60)
  *             .entryPoint(&#34;helloGET&#34;)
  *             .labels(Map.of(&#34;my-label&#34;, &#34;my-label-value&#34;))
@@ -259,14 +260,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.eventTrigger;
     }
     /**
-     * The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     * The security level for the function. The following options are available:
      * 
      */
     @Export(name="httpsTriggerSecurityLevel", type=String.class, parameters={})
     private Output<String> httpsTriggerSecurityLevel;
 
     /**
-     * @return The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     * @return The security level for the function. The following options are available:
      * 
      */
     public Output<String> httpsTriggerSecurityLevel() {

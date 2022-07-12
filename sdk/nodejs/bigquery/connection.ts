@@ -7,6 +7,20 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Bigquery Connection Cloud Resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     cloudResource: {},
+ *     connectionId: "my-connection",
+ *     description: "a riveting description",
+ *     friendlyName: "👋",
+ *     location: "US",
+ * });
+ * ```
  * ### Bigquery Connection Basic
  *
  * ```typescript
@@ -84,20 +98,6 @@ import * as utilities from "../utilities";
  *             password: user.password,
  *         },
  *     },
- * });
- * ```
- * ### Bigquery Connection Cloud Resource
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const connection = new gcp.bigquery.Connection("connection", {
- *     cloudResource: {},
- *     connectionId: "my-connection",
- *     description: "a riveting description",
- *     friendlyName: "👋",
- *     location: "US",
  * });
  * ```
  * ### Bigquery Connection Aws

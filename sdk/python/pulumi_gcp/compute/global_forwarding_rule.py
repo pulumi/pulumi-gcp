@@ -980,7 +980,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             zone="us-central1-c",
             named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
                 name="tcp",
-                port=110,
+                port=80,
             )],
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 instance_template=default_instance_template.id,
@@ -1304,14 +1304,29 @@ class GlobalForwardingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # Roughly mirrors https://cloud.google.com/load-balancing/docs/https/setting-up-ext-https-hybrid
+        config = pulumi.Config()
+        subnetwork_cidr = config.get("subnetworkCidr")
+        if subnetwork_cidr is None:
+            subnetwork_cidr = "10.0.0.0/24"
         default_network = gcp.compute.Network("defaultNetwork")
+        internal_network = gcp.compute.Network("internalNetwork", auto_create_subnetworks=False)
+        internal_subnetwork = gcp.compute.Subnetwork("internalSubnetwork",
+            network=internal_network.id,
+            ip_cidr_range=subnetwork_cidr,
+            region="us-central1",
+            private_ip_google_access=True)
         # Zonal NEG with GCE_VM_IP_PORT
         default_network_endpoint_group = gcp.compute.NetworkEndpointGroup("defaultNetworkEndpointGroup",
             network=default_network.id,
             default_port=90,
             zone="us-central1-a",
             network_endpoint_type="GCE_VM_IP_PORT")
+        # Zonal NEG with GCE_VM_IP
+        internal_network_endpoint_group = gcp.compute.NetworkEndpointGroup("internalNetworkEndpointGroup",
+            network=internal_network.id,
+            subnetwork=internal_subnetwork.id,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP")
         # Hybrid connectivity NEG
         hybrid_network_endpoint_group = gcp.compute.NetworkEndpointGroup("hybridNetworkEndpointGroup",
             network=default_network.id,
@@ -1727,7 +1742,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             zone="us-central1-c",
             named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
                 name="tcp",
-                port=110,
+                port=80,
             )],
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 instance_template=default_instance_template.id,
@@ -2051,14 +2066,29 @@ class GlobalForwardingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # Roughly mirrors https://cloud.google.com/load-balancing/docs/https/setting-up-ext-https-hybrid
+        config = pulumi.Config()
+        subnetwork_cidr = config.get("subnetworkCidr")
+        if subnetwork_cidr is None:
+            subnetwork_cidr = "10.0.0.0/24"
         default_network = gcp.compute.Network("defaultNetwork")
+        internal_network = gcp.compute.Network("internalNetwork", auto_create_subnetworks=False)
+        internal_subnetwork = gcp.compute.Subnetwork("internalSubnetwork",
+            network=internal_network.id,
+            ip_cidr_range=subnetwork_cidr,
+            region="us-central1",
+            private_ip_google_access=True)
         # Zonal NEG with GCE_VM_IP_PORT
         default_network_endpoint_group = gcp.compute.NetworkEndpointGroup("defaultNetworkEndpointGroup",
             network=default_network.id,
             default_port=90,
             zone="us-central1-a",
             network_endpoint_type="GCE_VM_IP_PORT")
+        # Zonal NEG with GCE_VM_IP
+        internal_network_endpoint_group = gcp.compute.NetworkEndpointGroup("internalNetworkEndpointGroup",
+            network=internal_network.id,
+            subnetwork=internal_subnetwork.id,
+            zone="us-central1-a",
+            network_endpoint_type="GCE_VM_IP")
         # Hybrid connectivity NEG
         hybrid_network_endpoint_group = gcp.compute.NetworkEndpointGroup("hybridNetworkEndpointGroup",
             network=default_network.id,

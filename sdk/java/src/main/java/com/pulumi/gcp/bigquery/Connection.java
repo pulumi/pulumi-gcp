@@ -22,6 +22,32 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ### Bigquery Connection Cloud Resource
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
+ *             .cloudResource()
+ *             .connectionId(&#34;my-connection&#34;)
+ *             .description(&#34;a riveting description&#34;)
+ *             .friendlyName(&#34;👋&#34;)
+ *             .location(&#34;US&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Bigquery Connection Basic
  * ```java
  * package generated_program;
@@ -130,32 +156,6 @@ import javax.annotation.Nullable;
  *                     .password(user.password())
  *                     .build())
  *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Bigquery Connection Cloud Resource
- * ```java
- * package generated_program;
- * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .cloudResource()
- *             .connectionId(&#34;my-connection&#34;)
- *             .description(&#34;a riveting description&#34;)
- *             .friendlyName(&#34;👋&#34;)
- *             .location(&#34;US&#34;)
  *             .build());
  * 
  *     }

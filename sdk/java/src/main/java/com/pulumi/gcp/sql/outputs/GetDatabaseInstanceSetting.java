@@ -11,6 +11,7 @@ import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingInsightsConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingLocationPreference;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingMaintenanceWindow;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingSqlServerAuditConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -35,6 +36,7 @@ public final class GetDatabaseInstanceSetting {
     private final List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
     private final List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
     private final String pricingPlan;
+    private final List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
     private final String tier;
     private final Map<String,String> userLabels;
     private final Integer version;
@@ -56,6 +58,7 @@ public final class GetDatabaseInstanceSetting {
         @CustomType.Parameter("locationPreferences") List<GetDatabaseInstanceSettingLocationPreference> locationPreferences,
         @CustomType.Parameter("maintenanceWindows") List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows,
         @CustomType.Parameter("pricingPlan") String pricingPlan,
+        @CustomType.Parameter("sqlServerAuditConfigs") List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs,
         @CustomType.Parameter("tier") String tier,
         @CustomType.Parameter("userLabels") Map<String,String> userLabels,
         @CustomType.Parameter("version") Integer version) {
@@ -74,6 +77,7 @@ public final class GetDatabaseInstanceSetting {
         this.locationPreferences = locationPreferences;
         this.maintenanceWindows = maintenanceWindows;
         this.pricingPlan = pricingPlan;
+        this.sqlServerAuditConfigs = sqlServerAuditConfigs;
         this.tier = tier;
         this.userLabels = userLabels;
         this.version = version;
@@ -124,6 +128,9 @@ public final class GetDatabaseInstanceSetting {
     public String pricingPlan() {
         return this.pricingPlan;
     }
+    public List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs() {
+        return this.sqlServerAuditConfigs;
+    }
     public String tier() {
         return this.tier;
     }
@@ -158,6 +165,7 @@ public final class GetDatabaseInstanceSetting {
         private List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
         private List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
         private String pricingPlan;
+        private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
         private String tier;
         private Map<String,String> userLabels;
         private Integer version;
@@ -183,6 +191,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.locationPreferences = defaults.locationPreferences;
     	      this.maintenanceWindows = defaults.maintenanceWindows;
     	      this.pricingPlan = defaults.pricingPlan;
+    	      this.sqlServerAuditConfigs = defaults.sqlServerAuditConfigs;
     	      this.tier = defaults.tier;
     	      this.userLabels = defaults.userLabels;
     	      this.version = defaults.version;
@@ -269,6 +278,13 @@ public final class GetDatabaseInstanceSetting {
             this.pricingPlan = Objects.requireNonNull(pricingPlan);
             return this;
         }
+        public Builder sqlServerAuditConfigs(List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs) {
+            this.sqlServerAuditConfigs = Objects.requireNonNull(sqlServerAuditConfigs);
+            return this;
+        }
+        public Builder sqlServerAuditConfigs(GetDatabaseInstanceSettingSqlServerAuditConfig... sqlServerAuditConfigs) {
+            return sqlServerAuditConfigs(List.of(sqlServerAuditConfigs));
+        }
         public Builder tier(String tier) {
             this.tier = Objects.requireNonNull(tier);
             return this;
@@ -281,7 +297,7 @@ public final class GetDatabaseInstanceSetting {
             this.version = Objects.requireNonNull(version);
             return this;
         }        public GetDatabaseInstanceSetting build() {
-            return new GetDatabaseInstanceSetting(activationPolicy, activeDirectoryConfigs, availabilityType, backupConfigurations, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfigs, ipConfigurations, locationPreferences, maintenanceWindows, pricingPlan, tier, userLabels, version);
+            return new GetDatabaseInstanceSetting(activationPolicy, activeDirectoryConfigs, availabilityType, backupConfigurations, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfigs, ipConfigurations, locationPreferences, maintenanceWindows, pricingPlan, sqlServerAuditConfigs, tier, userLabels, version);
         }
     }
 }

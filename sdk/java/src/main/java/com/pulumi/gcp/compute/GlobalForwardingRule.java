@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  *             .zone(&#34;us-central1-c&#34;)
  *             .namedPorts(InstanceGroupManagerNamedPortArgs.builder()
  *                 .name(&#34;tcp&#34;)
- *                 .port(110)
+ *                 .port(80)
  *                 .build())
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(defaultInstanceTemplate.id())
@@ -732,13 +732,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var subnetworkCidr = config.get(&#34;subnetworkCidr&#34;).orElse(&#34;10.0.0.0/24&#34;);
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
+ * 
+ *         var internalNetwork = new Network(&#34;internalNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var internalSubnetwork = new Subnetwork(&#34;internalSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .network(internalNetwork.id())
+ *             .ipCidrRange(subnetworkCidr)
+ *             .region(&#34;us-central1&#34;)
+ *             .privateIpGoogleAccess(true)
+ *             .build());
  * 
  *         var defaultNetworkEndpointGroup = new NetworkEndpointGroup(&#34;defaultNetworkEndpointGroup&#34;, NetworkEndpointGroupArgs.builder()        
  *             .network(defaultNetwork.id())
  *             .defaultPort(&#34;90&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .networkEndpointType(&#34;GCE_VM_IP_PORT&#34;)
+ *             .build());
+ * 
+ *         var internalNetworkEndpointGroup = new NetworkEndpointGroup(&#34;internalNetworkEndpointGroup&#34;, NetworkEndpointGroupArgs.builder()        
+ *             .network(internalNetwork.id())
+ *             .subnetwork(internalSubnetwork.id())
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .networkEndpointType(&#34;GCE_VM_IP&#34;)
  *             .build());
  * 
  *         var hybridNetworkEndpointGroup = new NetworkEndpointGroup(&#34;hybridNetworkEndpointGroup&#34;, NetworkEndpointGroupArgs.builder()        

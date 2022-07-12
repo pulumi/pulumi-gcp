@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// {
     ///     public MyStack()
     ///     {
+    ///         // [START functions_v2_basic]
     ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
     ///         {
     ///             Location = "US",
@@ -37,6 +38,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         {
     ///             Provider = google_beta,
     ///         });
+    ///         // Add path to the zipped function source code
     ///         var terraform_test2 = new Gcp.CloudFunctionsV2.Function("terraform-test2", new Gcp.CloudFunctionsV2.FunctionArgs
     ///         {
     ///             Location = "us-central1",
@@ -78,9 +80,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// {
     ///     public MyStack()
     ///     {
+    ///         // [START functions_v2_full]
     ///         var account = new Gcp.ServiceAccount.Account("account", new Gcp.ServiceAccount.AccountArgs
     ///         {
-    ///             AccountId = "test-service-account",
+    ///             AccountId = "s-a",
     ///             DisplayName = "Test Service Account",
     ///         }, new CustomResourceOptions
     ///         {
@@ -108,6 +111,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         {
     ///             Provider = google_beta,
     ///         });
+    ///         // Add path to the zipped function source code
     ///         var terraform_test = new Gcp.CloudFunctionsV2.Function("terraform-test", new Gcp.CloudFunctionsV2.FunctionArgs
     ///         {
     ///             Location = "us-central1",
@@ -115,7 +119,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///             BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
     ///             {
     ///                 Runtime = "nodejs16",
-    ///                 EntryPoint = "helloHttp",
+    ///                 EntryPoint = "helloPubSub",
     ///                 EnvironmentVariables = 
     ///                 {
     ///                     { "BUILD_CONFIG_TEST", "build_test" },

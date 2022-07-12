@@ -92,6 +92,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///             SourceArchiveBucket = bucket.Name,
     ///             SourceArchiveObject = archive.Name,
     ///             TriggerHttp = true,
+    ///             HttpsTriggerSecurityLevel = "SECURE_ALWAYS",
     ///             Timeout = 60,
     ///             EntryPoint = "helloGET",
     ///             Labels = 
@@ -181,7 +182,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<Outputs.FunctionEventTrigger> EventTrigger { get; private set; } = null!;
 
         /// <summary>
-        /// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        /// The security level for the function. The following options are available:
         /// </summary>
         [Output("httpsTriggerSecurityLevel")]
         public Output<string> HttpsTriggerSecurityLevel { get; private set; } = null!;
@@ -416,7 +417,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<Inputs.FunctionEventTriggerArgs>? EventTrigger { get; set; }
 
         /// <summary>
-        /// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        /// The security level for the function. The following options are available:
         /// </summary>
         [Input("httpsTriggerSecurityLevel")]
         public Input<string>? HttpsTriggerSecurityLevel { get; set; }
@@ -630,7 +631,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<Inputs.FunctionEventTriggerGetArgs>? EventTrigger { get; set; }
 
         /// <summary>
-        /// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        /// The security level for the function. The following options are available:
         /// </summary>
         [Input("httpsTriggerSecurityLevel")]
         public Input<string>? HttpsTriggerSecurityLevel { get; set; }

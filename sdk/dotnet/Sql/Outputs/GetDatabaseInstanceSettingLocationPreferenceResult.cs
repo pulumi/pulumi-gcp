@@ -14,15 +14,19 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstanceSettingLocationPreferenceResult
     {
         public readonly string FollowGaeApplication;
+        public readonly string SecondaryZone;
         public readonly string Zone;
 
         [OutputConstructor]
         private GetDatabaseInstanceSettingLocationPreferenceResult(
             string followGaeApplication,
 
+            string secondaryZone,
+
             string zone)
         {
             FollowGaeApplication = followGaeApplication;
+            SecondaryZone = secondaryZone;
             Zone = zone;
         }
     }

@@ -2314,6 +2314,8 @@ class BackendServiceBackend(dict):
                For global HTTP(S) or TCP/SSL load balancing, the default is
                UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
                and CONNECTION (for TCP/SSL).
+               See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+               for an explanation of load balancing modes.
                Default value is `UTILIZATION`.
                Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
         :param float capacity_scaler: A multiplier applied to the group's maximum servicing capacity
@@ -2405,6 +2407,8 @@ class BackendServiceBackend(dict):
         For global HTTP(S) or TCP/SSL load balancing, the default is
         UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
         and CONNECTION (for TCP/SSL).
+        See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+        for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
         Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
         """
@@ -12224,6 +12228,8 @@ class RegionBackendServiceBackend(dict):
                Group resource using the fully-qualified URL, rather than a
                partial URL.
         :param str balancing_mode: Specifies the balancing mode for this backend.
+               See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+               for an explanation of load balancing modes.
                Default value is `CONNECTION`.
                Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
         :param float capacity_scaler: A multiplier applied to the group's maximum servicing capacity
@@ -12326,6 +12332,8 @@ class RegionBackendServiceBackend(dict):
     def balancing_mode(self) -> Optional[str]:
         """
         Specifies the balancing mode for this backend.
+        See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+        for an explanation of load balancing modes.
         Default value is `CONNECTION`.
         Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
         """

@@ -166,6 +166,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string Lifetime;
         public readonly string? Location;
         public readonly string Name;
+        public readonly string PemCaCertificate;
         public readonly ImmutableArray<string> PemCaCertificates;
         /// <summary>
         /// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
@@ -174,6 +175,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string? Pool;
         public readonly string? Project;
         public readonly string State;
+        public readonly ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> SubordinateConfigs;
         public readonly string Type;
         public readonly string UpdateTime;
 
@@ -207,6 +209,8 @@ namespace Pulumi.Gcp.CertificateAuthority
 
             string name,
 
+            string pemCaCertificate,
+
             ImmutableArray<string> pemCaCertificates,
 
             string pemCsr,
@@ -216,6 +220,8 @@ namespace Pulumi.Gcp.CertificateAuthority
             string? project,
 
             string state,
+
+            ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> subordinateConfigs,
 
             string type,
 
@@ -235,11 +241,13 @@ namespace Pulumi.Gcp.CertificateAuthority
             Lifetime = lifetime;
             Location = location;
             Name = name;
+            PemCaCertificate = pemCaCertificate;
             PemCaCertificates = pemCaCertificates;
             PemCsr = pemCsr;
             Pool = pool;
             Project = project;
             State = state;
+            SubordinateConfigs = subordinateConfigs;
             Type = type;
             UpdateTime = updateTime;
         }

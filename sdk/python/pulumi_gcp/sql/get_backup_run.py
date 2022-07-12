@@ -20,7 +20,7 @@ class GetBackupRunResult:
     """
     A collection of values returned by getBackupRun.
     """
-    def __init__(__self__, backup_id=None, id=None, instance=None, location=None, most_recent=None, start_time=None, status=None):
+    def __init__(__self__, backup_id=None, id=None, instance=None, location=None, most_recent=None, project=None, start_time=None, status=None):
         if backup_id and not isinstance(backup_id, int):
             raise TypeError("Expected argument 'backup_id' to be a int")
         pulumi.set(__self__, "backup_id", backup_id)
@@ -36,6 +36,9 @@ class GetBackupRunResult:
         if most_recent and not isinstance(most_recent, bool):
             raise TypeError("Expected argument 'most_recent' to be a bool")
         pulumi.set(__self__, "most_recent", most_recent)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
         if start_time and not isinstance(start_time, str):
             raise TypeError("Expected argument 'start_time' to be a str")
         pulumi.set(__self__, "start_time", start_time)
@@ -75,6 +78,11 @@ class GetBackupRunResult:
         return pulumi.get(self, "most_recent")
 
     @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         """
@@ -103,6 +111,7 @@ class AwaitableGetBackupRunResult(GetBackupRunResult):
             instance=self.instance,
             location=self.location,
             most_recent=self.most_recent,
+            project=self.project,
             start_time=self.start_time,
             status=self.status)
 
@@ -110,6 +119,7 @@ class AwaitableGetBackupRunResult(GetBackupRunResult):
 def get_backup_run(backup_id: Optional[int] = None,
                    instance: Optional[str] = None,
                    most_recent: Optional[bool] = None,
+                   project: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackupRunResult:
     """
     Use this data source to get information about a Cloud SQL instance backup run.
@@ -130,11 +140,14 @@ def get_backup_run(backup_id: Optional[int] = None,
     :param str instance: The name of the instance the backup is taken from.
     :param bool most_recent: Toggles use of the most recent backup run if multiple backups exist for a 
            Cloud SQL instance.
+    :param str project: The project to list instances for. If it
+           is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['backupId'] = backup_id
     __args__['instance'] = instance
     __args__['mostRecent'] = most_recent
+    __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -147,6 +160,7 @@ def get_backup_run(backup_id: Optional[int] = None,
         instance=__ret__.instance,
         location=__ret__.location,
         most_recent=__ret__.most_recent,
+        project=__ret__.project,
         start_time=__ret__.start_time,
         status=__ret__.status)
 
@@ -155,6 +169,7 @@ def get_backup_run(backup_id: Optional[int] = None,
 def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = None,
                           instance: Optional[pulumi.Input[str]] = None,
                           most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
+                          project: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupRunResult]:
     """
     Use this data source to get information about a Cloud SQL instance backup run.
@@ -175,5 +190,7 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
     :param str instance: The name of the instance the backup is taken from.
     :param bool most_recent: Toggles use of the most recent backup run if multiple backups exist for a 
            Cloud SQL instance.
+    :param str project: The project to list instances for. If it
+           is not provided, the provider project is used.
     """
     ...

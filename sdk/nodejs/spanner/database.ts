@@ -6,6 +6,16 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * A Cloud Spanner Database which is hosted on a Spanner instance.
+ *
+ * To get more information about Database, see:
+ *
+ * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/spanner/)
+ *
+ * > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
+ *
  * ## Example Usage
  * ### Spanner Database Basic
  *
@@ -20,6 +30,7 @@ import * as utilities from "../utilities";
  * });
  * const database = new gcp.spanner.Database("database", {
  *     instance: main.name,
+ *     versionRetentionPeriod: "3d",
  *     ddls: [
  *         "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
  *         "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
@@ -77,10 +88,9 @@ export class Database extends pulumi.CustomResource {
     }
 
     /**
-     * The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-     * that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-     * therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-     * "POSTGRESQL"]
+     * The dialect of the Cloud Spanner Database.
+     * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
      */
     public readonly databaseDialect!: pulumi.Output<string>;
     /**
@@ -118,6 +128,14 @@ export class Database extends pulumi.CustomResource {
      * An explanation of the status of the database.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The retention period for the database. The retention period must be between 1 hour
+     * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+     * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+     * If this property is used, you must avoid adding new DDL statements to `ddl` that
+     * update the database's version_retention_period.
+     */
+    public readonly versionRetentionPeriod!: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -140,6 +158,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["versionRetentionPeriod"] = state ? state.versionRetentionPeriod : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
@@ -152,6 +171,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["versionRetentionPeriod"] = args ? args.versionRetentionPeriod : undefined;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -164,10 +184,9 @@ export class Database extends pulumi.CustomResource {
  */
 export interface DatabaseState {
     /**
-     * The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-     * that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-     * therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-     * "POSTGRESQL"]
+     * The dialect of the Cloud Spanner Database.
+     * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
      */
     databaseDialect?: pulumi.Input<string>;
     /**
@@ -205,6 +224,14 @@ export interface DatabaseState {
      * An explanation of the status of the database.
      */
     state?: pulumi.Input<string>;
+    /**
+     * The retention period for the database. The retention period must be between 1 hour
+     * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+     * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+     * If this property is used, you must avoid adding new DDL statements to `ddl` that
+     * update the database's version_retention_period.
+     */
+    versionRetentionPeriod?: pulumi.Input<string>;
 }
 
 /**
@@ -212,10 +239,9 @@ export interface DatabaseState {
  */
 export interface DatabaseArgs {
     /**
-     * The dialect of the Cloud Spanner Database. If it is not provided, "GOOGLE_STANDARD_SQL" will be used. Note: Databases
-     * that are created with POSTGRESQL dialect do not support extra DDL statements in the 'CreateDatabase' call. You must
-     * therefore re-apply terraform with ddl on the same database after creation. Possible values: ["GOOGLE_STANDARD_SQL",
-     * "POSTGRESQL"]
+     * The dialect of the Cloud Spanner Database.
+     * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
+     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
      */
     databaseDialect?: pulumi.Input<string>;
     /**
@@ -249,4 +275,12 @@ export interface DatabaseArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The retention period for the database. The retention period must be between 1 hour
+     * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+     * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+     * If this property is used, you must avoid adding new DDL statements to `ddl` that
+     * update the database's version_retention_period.
+     */
+    versionRetentionPeriod?: pulumi.Input<string>;
 }

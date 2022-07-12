@@ -30,7 +30,10 @@ class CertificateArgs:
         :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
-        :param pulumi.Input[str] certificate_authority: Certificate Authority name.
+        :param pulumi.Input[str] certificate_authority: The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+               a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+               argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+               should be set to `my-ca`.
         :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
                in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
                the caller must have the necessary permission to use this template. If this is
@@ -95,7 +98,10 @@ class CertificateArgs:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate Authority name.
+        The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+        a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+        argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        should be set to `my-ca`.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -219,7 +225,10 @@ class _CertificateState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
-        :param pulumi.Input[str] certificate_authority: Certificate Authority name.
+        :param pulumi.Input[str] certificate_authority: The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+               a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+               argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+               should be set to `my-ca`.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
                this field is present.
         :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
@@ -231,7 +240,7 @@ class _CertificateState:
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
         :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format
-               projects/*/locations/*/caPools/*/certificateAuthorities/*.
+               'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -295,7 +304,10 @@ class _CertificateState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate Authority name.
+        The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+        a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+        argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        should be set to `my-ca`.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -362,7 +374,7 @@ class _CertificateState:
     def issuer_certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the issuing CertificateAuthority in the format
-        projects/*/locations/*/caPools/*/certificateAuthorities/*.
+        'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
         """
         return pulumi.get(self, "issuer_certificate_authority")
 
@@ -890,7 +902,10 @@ class Certificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_authority: Certificate Authority name.
+        :param pulumi.Input[str] certificate_authority: The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+               a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+               argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+               should be set to `my-ca`.
         :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
                in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
                the caller must have the necessary permission to use this template. If this is
@@ -1361,7 +1376,10 @@ class Certificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_authority: Certificate Authority name.
+        :param pulumi.Input[str] certificate_authority: The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+               a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+               argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+               should be set to `my-ca`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateCertificateDescriptionArgs']]]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
                this field is present.
         :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
@@ -1373,7 +1391,7 @@ class Certificate(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
         :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format
-               projects/*/locations/*/caPools/*/certificateAuthorities/*.
+               'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -1421,7 +1439,10 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[Optional[str]]:
         """
-        Certificate Authority name.
+        The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+        a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+        argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        should be set to `my-ca`.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -1468,7 +1489,7 @@ class Certificate(pulumi.CustomResource):
     def issuer_certificate_authority(self) -> pulumi.Output[str]:
         """
         The resource name of the issuing CertificateAuthority in the format
-        projects/*/locations/*/caPools/*/certificateAuthorities/*.
+        'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
         """
         return pulumi.get(self, "issuer_certificate_authority")
 

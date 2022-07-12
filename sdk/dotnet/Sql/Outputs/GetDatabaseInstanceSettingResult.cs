@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingLocationPreferenceResult> LocationPreferences;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingMaintenanceWindowResult> MaintenanceWindows;
         public readonly string PricingPlan;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult> SqlServerAuditConfigs;
         public readonly string Tier;
         public readonly ImmutableDictionary<string, string> UserLabels;
         public readonly int Version;
@@ -64,6 +65,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string pricingPlan,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult> sqlServerAuditConfigs,
+
             string tier,
 
             ImmutableDictionary<string, string> userLabels,
@@ -85,6 +88,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             LocationPreferences = locationPreferences;
             MaintenanceWindows = maintenanceWindows;
             PricingPlan = pricingPlan;
+            SqlServerAuditConfigs = sqlServerAuditConfigs;
             Tier = tier;
             UserLabels = userLabels;
             Version = version;

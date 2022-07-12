@@ -318,6 +318,104 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloud Run Service Scheduled
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var runApi = new Service(&#34;runApi&#34;, ServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .service(&#34;run.googleapis.com&#34;)
+ *             .disableDependentServices(true)
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         var iamApi = new Service(&#34;iamApi&#34;, ServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .service(&#34;iam.googleapis.com&#34;)
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         var resourceManagerApi = new Service(&#34;resourceManagerApi&#34;, ServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .service(&#34;cloudresourcemanager.googleapis.com&#34;)
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         var schedulerApi = new Service(&#34;schedulerApi&#34;, ServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .service(&#34;cloudscheduler.googleapis.com&#34;)
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .spec(ServiceTemplateSpecArgs.builder()
+ *                     .containers(ServiceTemplateSpecContainerArgs.builder()
+ *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .traffics(ServiceTrafficArgs.builder()
+ *                 .percent(100)
+ *                 .latestRevision(true)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(runApi)
+ *                 .build());
+ * 
+ *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .accountId(&#34;scheduler-sa&#34;)
+ *             .description(&#34;Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.&#34;)
+ *             .displayName(&#34;scheduler-sa&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(iamApi)
+ *                 .build());
+ * 
+ *         var defaultJob = new Job(&#34;defaultJob&#34;, JobArgs.builder()        
+ *             .description(&#34;Invoke a Cloud Run container on a schedule.&#34;)
+ *             .schedule(&#34;*{@literal /}8 * * * *&#34;)
+ *             .timeZone(&#34;America/New_York&#34;)
+ *             .attemptDeadline(&#34;320s&#34;)
+ *             .retryConfig(JobRetryConfigArgs.builder()
+ *                 .retryCount(1)
+ *                 .build())
+ *             .httpTarget(JobHttpTargetArgs.builder()
+ *                 .httpMethod(&#34;POST&#34;)
+ *                 .uri(defaultService.statuses().apply(statuses -&gt; String.format(&#34;%s/&#34;, statuses[0].url())))
+ *                 .oidcToken(JobHttpTargetOidcTokenArgs.builder()
+ *                     .serviceAccountEmail(defaultAccount.email())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(schedulerApi)
+ *                 .build());
+ * 
+ *         var defaultIamMember = new IamMember(&#34;defaultIamMember&#34;, IamMemberArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .location(defaultService.location())
+ *             .service(defaultService.name())
+ *             .role(&#34;roles/run.invoker&#34;)
+ *             .member(defaultAccount.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Cloud Run Service Secret Environment Variables
  * ```java
  * package generated_program;
@@ -467,6 +565,42 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloud Run Service Ingress
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .metadata(ServiceMetadataArgs.builder()
+ *                 .annotations(Map.of(&#34;run.googleapis.com/ingress&#34;, &#34;internal&#34;))
+ *                 .build())
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .spec(ServiceTemplateSpecArgs.builder()
+ *                     .containers(ServiceTemplateSpecContainerArgs.builder()
+ *                         .image(&#34;gcr.io/cloudrun/hello&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .traffics(ServiceTrafficArgs.builder()
+ *                 .latestRevision(true)
+ *                 .percent(100)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Eventarc Basic Tf
  * ```java
  * package generated_program;
@@ -578,6 +712,412 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .dependsOn(eventarc)
  *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloud Run Service Multiple Regions
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         var computeApi = new Service(&#34;computeApi&#34;, ServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .service(&#34;compute.googleapis.com&#34;)
+ *             .disableDependentServices(true)
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         var runApi = new Service(&#34;runApi&#34;, ServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .service(&#34;run.googleapis.com&#34;)
+ *             .disableDependentServices(true)
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;example.com&#34;);
+ *         final var runRegions = config.get(&#34;runRegions&#34;).orElse(        
+ *             &#34;us-central1&#34;,
+ *             &#34;europe-west1&#34;);
+ *         var lbDefaultGlobalAddress = new GlobalAddress(&#34;lbDefaultGlobalAddress&#34;, GlobalAddressArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(computeApi)
+ *                 .build());
+ * 
+ *         for (var i = 0; i &lt; runRegions.length(); i++) {
+ *             new Service(&#34;runDefault-&#34; + i, ServiceArgs.builder()            
+ *                 .project(&#34;my-project-name&#34;)
+ *                 .location(runRegions[range.value()])
+ *                 .template(ServiceTemplateArgs.builder()
+ *                     .spec(ServiceTemplateSpecArgs.builder()
+ *                         .containers(ServiceTemplateSpecContainerArgs.builder()
+ *                             .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .traffics(ServiceTrafficArgs.builder()
+ *                     .percent(100)
+ *                     .latestRevision(true)
+ *                     .build())
+ *                 .build(), CustomResourceOptions.builder()
+ *                     .dependsOn(runApi)
+ *                     .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i &lt; runRegions.length(); i++) {
+ *             new RegionNetworkEndpointGroup(&#34;lbDefaultRegionNetworkEndpointGroup-&#34; + i, RegionNetworkEndpointGroupArgs.builder()            
+ *                 .project(&#34;my-project-name&#34;)
+ *                 .networkEndpointType(&#34;SERVERLESS&#34;)
+ *                 .region(runRegions[range.value()])
+ *                 .cloudRun(RegionNetworkEndpointGroupCloudRunArgs.builder()
+ *                     .service(runDefault[count.index()].name())
+ *                     .build())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var lbDefaultBackendService = new BackendService(&#34;lbDefaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .backends(            
+ *                 BackendServiceBackendArgs.builder()
+ *                     .balancingMode(&#34;UTILIZATION&#34;)
+ *                     .capacityScaler(0.85)
+ *                     .group(lbDefaultRegionNetworkEndpointGroup[0].id())
+ *                     .build(),
+ *                 BackendServiceBackendArgs.builder()
+ *                     .balancingMode(&#34;UTILIZATION&#34;)
+ *                     .capacityScaler(0.85)
+ *                     .group(lbDefaultRegionNetworkEndpointGroup[1].id())
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(computeApi)
+ *                 .build());
+ * 
+ *         var lbDefaultURLMap = new URLMap(&#34;lbDefaultURLMap&#34;, URLMapArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .defaultService(lbDefaultBackendService.id())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name(&#34;allpaths&#34;)
+ *                 .defaultService(lbDefaultBackendService.id())
+ *                 .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
+ *                     .priority(1)
+ *                     .urlRedirect(URLMapPathMatcherRouteRuleUrlRedirectArgs.builder()
+ *                         .httpsRedirect(true)
+ *                         .redirectResponseCode(&#34;MOVED_PERMANENTLY_DEFAULT&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var lbDefaultManagedSslCertificate = new ManagedSslCertificate(&#34;lbDefaultManagedSslCertificate&#34;, ManagedSslCertificateArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .managed(ManagedSslCertificateManagedArgs.builder()
+ *                 .domains(domainName)
+ *                 .build())
+ *             .build());
+ * 
+ *         var lbDefaultTargetHttpsProxy = new TargetHttpsProxy(&#34;lbDefaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .urlMap(lbDefaultURLMap.id())
+ *             .sslCertificates(lbDefaultManagedSslCertificate.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(lbDefaultManagedSslCertificate)
+ *                 .build());
+ * 
+ *         var lbDefaultGlobalForwardingRule = new GlobalForwardingRule(&#34;lbDefaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .target(lbDefaultTargetHttpsProxy.id())
+ *             .ipAddress(lbDefaultGlobalAddress.id())
+ *             .portRange(&#34;443&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(lbDefaultTargetHttpsProxy)
+ *                 .build());
+ * 
+ *         ctx.export(&#34;loadBalancerIpAddr&#34;, lbDefaultGlobalAddress.address());
+ *         for (var i = 0; i &lt; runRegions.length(); i++) {
+ *             new IamMember(&#34;runAllowUnauthenticated-&#34; + i, IamMemberArgs.builder()            
+ *                 .project(&#34;my-project-name&#34;)
+ *                 .location(runDefault[range.value()].location())
+ *                 .service(runDefault[range.value()].name())
+ *                 .role(&#34;roles/run.invoker&#34;)
+ *                 .member(&#34;allUsers&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var httpsDefaultURLMap = new URLMap(&#34;httpsDefaultURLMap&#34;, URLMapArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .defaultUrlRedirect(URLMapDefaultUrlRedirectArgs.builder()
+ *                 .redirectResponseCode(&#34;MOVED_PERMANENTLY_DEFAULT&#34;)
+ *                 .httpsRedirect(true)
+ *                 .stripQuery(false)
+ *                 .build())
+ *             .build());
+ * 
+ *         var httpsDefaultTargetHttpProxy = new TargetHttpProxy(&#34;httpsDefaultTargetHttpProxy&#34;, TargetHttpProxyArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .urlMap(httpsDefaultURLMap.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(httpsDefaultURLMap)
+ *                 .build());
+ * 
+ *         var httpsDefaultGlobalForwardingRule = new GlobalForwardingRule(&#34;httpsDefaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .target(httpsDefaultTargetHttpProxy.id())
+ *             .ipAddress(lbDefaultGlobalAddress.id())
+ *             .portRange(&#34;80&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(httpsDefaultTargetHttpProxy)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloud Run Service Remove Tag
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .template()
+ *             .traffics(            
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(100)
+ *                     .revisionName(&#34;cloudrun-srv-green&#34;)
+ *                     .build(),
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(0)
+ *                     .revisionName(&#34;cloudrun-srv-blue&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloud Run Service Deploy Tag
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .metadata(ServiceTemplateMetadataArgs.builder()
+ *                     .name(&#34;cloudrun-srv-blue&#34;)
+ *                     .build())
+ *                 .spec(ServiceTemplateSpecArgs.builder()
+ *                     .containers(ServiceTemplateSpecContainerArgs.builder()
+ *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .traffics(            
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(100)
+ *                     .revisionName(&#34;cloudrun-srv-green&#34;)
+ *                     .build(),
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(0)
+ *                     .revisionName(&#34;cloudrun-srv-blue&#34;)
+ *                     .tag(&#34;tag-name&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloud Run Service Add Tag
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .template()
+ *             .traffics(            
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(100)
+ *                     .revisionName(&#34;cloudrun-srv-green&#34;)
+ *                     .build(),
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(0)
+ *                     .revisionName(&#34;cloudrun-srv-blue&#34;)
+ *                     .tag(&#34;tag-name&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloud Run Service Traffic Gradual Rollout
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .autogenerateRevisionName(true)
+ *             .location(&#34;us-central1&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .spec(ServiceTemplateSpecArgs.builder()
+ *                     .containers(ServiceTemplateSpecContainerArgs.builder()
+ *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .traffics(            
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(100)
+ *                     .revisionName(&#34;cloudrun-srv-green&#34;)
+ *                     .build(),
+ *                 ServiceTrafficArgs.builder()
+ *                     .latestRevision(true)
+ *                     .percent(0)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloud Run Service Traffic Latest Revision
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .template()
+ *             .traffics(ServiceTrafficArgs.builder()
+ *                 .latestRevision(true)
+ *                 .percent(100)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloud Run Service Traffic Rollback
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .template()
+ *             .traffics(ServiceTrafficArgs.builder()
+ *                 .percent(100)
+ *                 .revisionName(&#34;cloudrun-srv-green&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloud Run Service Traffic Split Tag
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .template()
+ *             .traffics(            
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(50)
+ *                     .revisionName(&#34;cloudrun-srv-green&#34;)
+ *                     .build(),
+ *                 ServiceTrafficArgs.builder()
+ *                     .percent(50)
+ *                     .tag(&#34;tag-name&#34;)
+ *                     .build())
+ *             .build());
  * 
  *     }
  * }

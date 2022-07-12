@@ -240,7 +240,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-c",
  *     namedPorts: [{
  *         name: "tcp",
- *         port: 110,
+ *         port: 80,
  *     }],
  *     versions: [{
  *         instanceTemplate: defaultInstanceTemplate.id,
@@ -616,14 +616,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // Roughly mirrors https://cloud.google.com/load-balancing/docs/https/setting-up-ext-https-hybrid
+ * const config = new pulumi.Config();
+ * const subnetworkCidr = config.get("subnetworkCidr") || "10.0.0.0/24";
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const internalNetwork = new gcp.compute.Network("internalNetwork", {autoCreateSubnetworks: false});
+ * const internalSubnetwork = new gcp.compute.Subnetwork("internalSubnetwork", {
+ *     network: internalNetwork.id,
+ *     ipCidrRange: subnetworkCidr,
+ *     region: "us-central1",
+ *     privateIpGoogleAccess: true,
+ * });
  * // Zonal NEG with GCE_VM_IP_PORT
  * const defaultNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("defaultNetworkEndpointGroup", {
  *     network: defaultNetwork.id,
  *     defaultPort: 90,
  *     zone: "us-central1-a",
  *     networkEndpointType: "GCE_VM_IP_PORT",
+ * });
+ * // Zonal NEG with GCE_VM_IP
+ * const internalNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("internalNetworkEndpointGroup", {
+ *     network: internalNetwork.id,
+ *     subnetwork: internalSubnetwork.id,
+ *     zone: "us-central1-a",
+ *     networkEndpointType: "GCE_VM_IP",
  * });
  * // Hybrid connectivity NEG
  * const hybridNetworkEndpointGroup = new gcp.compute.NetworkEndpointGroup("hybridNetworkEndpointGroup", {

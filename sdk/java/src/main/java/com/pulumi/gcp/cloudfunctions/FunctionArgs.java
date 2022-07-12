@@ -145,14 +145,14 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     * The security level for the function. The following options are available:
      * 
      */
     @Import(name="httpsTriggerSecurityLevel")
     private @Nullable Output<String> httpsTriggerSecurityLevel;
 
     /**
-     * @return The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+     * @return The security level for the function. The following options are available:
      * 
      */
     public Optional<Output<String>> httpsTriggerSecurityLevel() {
@@ -686,7 +686,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpsTriggerSecurityLevel The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+         * @param httpsTriggerSecurityLevel The security level for the function. The following options are available:
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpsTriggerSecurityLevel The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+         * @param httpsTriggerSecurityLevel The security level for the function. The following options are available:
          * 
          * @return builder
          * 

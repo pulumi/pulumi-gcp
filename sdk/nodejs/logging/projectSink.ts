@@ -6,6 +6,86 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_sink = new gcp.logging.ProjectSink("my-sink", {
+ *     // Can export to pubsub, cloud storage, or bigquery
+ *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+ *     // Log all WARN or higher severity messages relating to instances
+ *     filter: "resource.type = gce_instance AND severity >= WARNING",
+ *     // Use a unique writer (creates a unique service account used for writing)
+ *     uniqueWriterIdentity: true,
+ * });
+ * ```
+ *
+ * A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+ * cloud storage bucket. Because we are using `uniqueWriterIdentity`, we must grant it access to the bucket. Note that
+ * this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
+ * used with this provider.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Our logged compute instance
+ * const my_logged_instance = new gcp.compute.Instance("my-logged-instance", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *         accessConfigs: [{}],
+ *     }],
+ * });
+ * // A bucket to store logs in
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {location: "US"});
+ * // Our sink; this logs all activity related to our "my-logged-instance" instance
+ * const instance_sink = new gcp.logging.ProjectSink("instance-sink", {
+ *     description: "some explanation on what this is",
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
+ *     filter: pulumi.interpolate`resource.type = gce_instance AND resource.labels.instance_id = "${my_logged_instance.instanceId}"`,
+ *     uniqueWriterIdentity: true,
+ * });
+ * // Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+ * const log_writer = new gcp.projects.IAMBinding("log-writer", {
+ *     project: "your-project-id",
+ *     role: "roles/storage.objectCreator",
+ *     members: [instance_sink.writerIdentity],
+ * });
+ * ```
+ *
+ * The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const log_bucket = new gcp.logging.ProjectSink("log-bucket", {
+ *     destination: "logging.googleapis.com/projects/my-project/locations/global/buckets/_Default",
+ *     exclusions: [
+ *         {
+ *             description: "Exclude logs from namespace-1 in k8s",
+ *             filter: "resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" ",
+ *             name: "nsexcllusion1",
+ *         },
+ *         {
+ *             description: "Exclude logs from namespace-2 in k8s",
+ *             filter: "resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" ",
+ *             name: "nsexcllusion2",
+ *         },
+ *     ],
+ *     uniqueWriterIdentity: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Project-level logging sinks can be imported using their URI, e.g.

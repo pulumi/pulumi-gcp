@@ -5,6 +5,7 @@ package com.pulumi.gcp.billing.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterCustomPeriodArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,24 +19,41 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
     public static final BudgetBudgetFilterArgs Empty = new BudgetBudgetFilterArgs();
 
     /**
-     * A set of subaccounts of the form billingAccounts/{account_id},
-     * specifying that usage from only this set of subaccounts should
-     * be included in the budget. If a subaccount is set to the name of
-     * the parent account, usage from the parent account will be included.
-     * If the field is omitted, the report will include usage from the parent
-     * account and all subaccounts, if they exist.
+     * A CalendarPeriod represents the abstract concept of a recurring time period that has a
+     * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
+     * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+     * Exactly one of `calendar_period`, `custom_period` must be provided.
+     * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+     * 
+     */
+    @Import(name="calendarPeriod")
+    private @Nullable Output<String> calendarPeriod;
+
+    /**
+     * @return A CalendarPeriod represents the abstract concept of a recurring time period that has a
+     * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
+     * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+     * Exactly one of `calendar_period`, `custom_period` must be provided.
+     * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+     * 
+     */
+    public Optional<Output<String>> calendarPeriod() {
+        return Optional.ofNullable(this.calendarPeriod);
+    }
+
+    /**
+     * Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+     * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+     * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
      * 
      */
     @Import(name="creditTypes")
     private @Nullable Output<List<String>> creditTypes;
 
     /**
-     * @return A set of subaccounts of the form billingAccounts/{account_id},
-     * specifying that usage from only this set of subaccounts should
-     * be included in the budget. If a subaccount is set to the name of
-     * the parent account, usage from the parent account will be included.
-     * If the field is omitted, the report will include usage from the parent
-     * account and all subaccounts, if they exist.
+     * @return Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+     * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+     * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
      * 
      */
     public Optional<Output<List<String>>> creditTypes() {
@@ -61,6 +79,27 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> creditTypesTreatment() {
         return Optional.ofNullable(this.creditTypesTreatment);
+    }
+
+    /**
+     * Specifies to track usage from any start date (required) to any end date (optional).
+     * This time period is static, it does not recur.
+     * Exactly one of `calendar_period`, `custom_period` must be provided.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customPeriod")
+    private @Nullable Output<BudgetBudgetFilterCustomPeriodArgs> customPeriod;
+
+    /**
+     * @return Specifies to track usage from any start date (required) to any end date (optional).
+     * This time period is static, it does not recur.
+     * Exactly one of `calendar_period`, `custom_period` must be provided.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BudgetBudgetFilterCustomPeriodArgs>> customPeriod() {
+        return Optional.ofNullable(this.customPeriod);
     }
 
     /**
@@ -156,8 +195,10 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
     private BudgetBudgetFilterArgs() {}
 
     private BudgetBudgetFilterArgs(BudgetBudgetFilterArgs $) {
+        this.calendarPeriod = $.calendarPeriod;
         this.creditTypes = $.creditTypes;
         this.creditTypesTreatment = $.creditTypesTreatment;
+        this.customPeriod = $.customPeriod;
         this.labels = $.labels;
         this.projects = $.projects;
         this.services = $.services;
@@ -183,12 +224,38 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param creditTypes A set of subaccounts of the form billingAccounts/{account_id},
-         * specifying that usage from only this set of subaccounts should
-         * be included in the budget. If a subaccount is set to the name of
-         * the parent account, usage from the parent account will be included.
-         * If the field is omitted, the report will include usage from the parent
-         * account and all subaccounts, if they exist.
+         * @param calendarPeriod A CalendarPeriod represents the abstract concept of a recurring time period that has a
+         * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
+         * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+         * Exactly one of `calendar_period`, `custom_period` must be provided.
+         * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder calendarPeriod(@Nullable Output<String> calendarPeriod) {
+            $.calendarPeriod = calendarPeriod;
+            return this;
+        }
+
+        /**
+         * @param calendarPeriod A CalendarPeriod represents the abstract concept of a recurring time period that has a
+         * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
+         * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+         * Exactly one of `calendar_period`, `custom_period` must be provided.
+         * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder calendarPeriod(String calendarPeriod) {
+            return calendarPeriod(Output.of(calendarPeriod));
+        }
+
+        /**
+         * @param creditTypes Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+         * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+         * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
          * 
          * @return builder
          * 
@@ -199,12 +266,9 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param creditTypes A set of subaccounts of the form billingAccounts/{account_id},
-         * specifying that usage from only this set of subaccounts should
-         * be included in the budget. If a subaccount is set to the name of
-         * the parent account, usage from the parent account will be included.
-         * If the field is omitted, the report will include usage from the parent
-         * account and all subaccounts, if they exist.
+         * @param creditTypes Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+         * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+         * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
          * 
          * @return builder
          * 
@@ -214,12 +278,9 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param creditTypes A set of subaccounts of the form billingAccounts/{account_id},
-         * specifying that usage from only this set of subaccounts should
-         * be included in the budget. If a subaccount is set to the name of
-         * the parent account, usage from the parent account will be included.
-         * If the field is omitted, the report will include usage from the parent
-         * account and all subaccounts, if they exist.
+         * @param creditTypes Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+         * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+         * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
          * 
          * @return builder
          * 
@@ -253,6 +314,33 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          */
         public Builder creditTypesTreatment(String creditTypesTreatment) {
             return creditTypesTreatment(Output.of(creditTypesTreatment));
+        }
+
+        /**
+         * @param customPeriod Specifies to track usage from any start date (required) to any end date (optional).
+         * This time period is static, it does not recur.
+         * Exactly one of `calendar_period`, `custom_period` must be provided.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPeriod(@Nullable Output<BudgetBudgetFilterCustomPeriodArgs> customPeriod) {
+            $.customPeriod = customPeriod;
+            return this;
+        }
+
+        /**
+         * @param customPeriod Specifies to track usage from any start date (required) to any end date (optional).
+         * This time period is static, it does not recur.
+         * Exactly one of `calendar_period`, `custom_period` must be provided.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPeriod(BudgetBudgetFilterCustomPeriodArgs customPeriod) {
+            return customPeriod(Output.of(customPeriod));
         }
 
         /**

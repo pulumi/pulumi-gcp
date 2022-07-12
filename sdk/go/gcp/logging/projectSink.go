@@ -11,6 +11,141 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := logging.NewProjectSink(ctx, "my-sink", &logging.ProjectSinkArgs{
+// 			Destination:          pulumi.String("pubsub.googleapis.com/projects/my-project/topics/instance-activity"),
+// 			Filter:               pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
+// 			UniqueWriterIdentity: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+// cloud storage bucket. Because we are using `uniqueWriterIdentity`, we must grant it access to the bucket. Note that
+// this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
+// used with this provider.
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstance(ctx, "my-logged-instance", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("debian-cloud/debian-9"),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewProjectSink(ctx, "instance-sink", &logging.ProjectSinkArgs{
+// 			Description: pulumi.String("some explanation on what this is"),
+// 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Filter: my_logged_instance.InstanceId.ApplyT(func(instanceId string) (string, error) {
+// 				return fmt.Sprintf("%v%v%v", "resource.type = gce_instance AND resource.labels.instance_id = \"", instanceId, "\""), nil
+// 			}).(pulumi.StringOutput),
+// 			UniqueWriterIdentity: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
+// 			Project: pulumi.String("your-project-id"),
+// 			Role:    pulumi.String("roles/storage.objectCreator"),
+// 			Members: pulumi.StringArray{
+// 				instance_sink.WriterIdentity,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := logging.NewProjectSink(ctx, "log-bucket", &logging.ProjectSinkArgs{
+// 			Destination: pulumi.String("logging.googleapis.com/projects/my-project/locations/global/buckets/_Default"),
+// 			Exclusions: logging.ProjectSinkExclusionArray{
+// 				&logging.ProjectSinkExclusionArgs{
+// 					Description: pulumi.String("Exclude logs from namespace-1 in k8s"),
+// 					Filter:      pulumi.String("resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" "),
+// 					Name:        pulumi.String("nsexcllusion1"),
+// 				},
+// 				&logging.ProjectSinkExclusionArgs{
+// 					Description: pulumi.String("Exclude logs from namespace-2 in k8s"),
+// 					Filter:      pulumi.String("resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" "),
+// 					Name:        pulumi.String("nsexcllusion2"),
+// 				},
+// 			},
+// 			UniqueWriterIdentity: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Project-level logging sinks can be imported using their URI, e.g.

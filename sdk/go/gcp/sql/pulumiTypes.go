@@ -985,7 +985,8 @@ type DatabaseInstanceSettings struct {
 	LocationPreference *DatabaseInstanceSettingsLocationPreference `pulumi:"locationPreference"`
 	MaintenanceWindow  *DatabaseInstanceSettingsMaintenanceWindow  `pulumi:"maintenanceWindow"`
 	// Pricing plan for this instance, can only be `PER_USE`.
-	PricingPlan *string `pulumi:"pricingPlan"`
+	PricingPlan          *string                                       `pulumi:"pricingPlan"`
+	SqlServerAuditConfig *DatabaseInstanceSettingsSqlServerAuditConfig `pulumi:"sqlServerAuditConfig"`
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
@@ -1034,7 +1035,8 @@ type DatabaseInstanceSettingsArgs struct {
 	LocationPreference DatabaseInstanceSettingsLocationPreferencePtrInput `pulumi:"locationPreference"`
 	MaintenanceWindow  DatabaseInstanceSettingsMaintenanceWindowPtrInput  `pulumi:"maintenanceWindow"`
 	// Pricing plan for this instance, can only be `PER_USE`.
-	PricingPlan pulumi.StringPtrInput `pulumi:"pricingPlan"`
+	PricingPlan          pulumi.StringPtrInput                                `pulumi:"pricingPlan"`
+	SqlServerAuditConfig DatabaseInstanceSettingsSqlServerAuditConfigPtrInput `pulumi:"sqlServerAuditConfig"`
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
@@ -1200,6 +1202,12 @@ func (o DatabaseInstanceSettingsOutput) MaintenanceWindow() DatabaseInstanceSett
 // Pricing plan for this instance, can only be `PER_USE`.
 func (o DatabaseInstanceSettingsOutput) PricingPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsOutput) SqlServerAuditConfig() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsSqlServerAuditConfig {
+		return v.SqlServerAuditConfig
+	}).(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput)
 }
 
 // The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
@@ -1388,6 +1396,15 @@ func (o DatabaseInstanceSettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput 
 		}
 		return v.PricingPlan
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsPtrOutput) SqlServerAuditConfig() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsSqlServerAuditConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerAuditConfig
+	}).(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput)
 }
 
 // The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
@@ -2656,6 +2673,8 @@ type DatabaseInstanceSettingsLocationPreference struct {
 	// A GAE application whose zone to remain
 	// in. Must be in the same region as this instance.
 	FollowGaeApplication *string `pulumi:"followGaeApplication"`
+	// The preferred Compute Engine zone for the secondary/failover.
+	SecondaryZone *string `pulumi:"secondaryZone"`
 	// The preferred compute engine
 	// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
 	Zone *string `pulumi:"zone"`
@@ -2676,6 +2695,8 @@ type DatabaseInstanceSettingsLocationPreferenceArgs struct {
 	// A GAE application whose zone to remain
 	// in. Must be in the same region as this instance.
 	FollowGaeApplication pulumi.StringPtrInput `pulumi:"followGaeApplication"`
+	// The preferred Compute Engine zone for the secondary/failover.
+	SecondaryZone pulumi.StringPtrInput `pulumi:"secondaryZone"`
 	// The preferred compute engine
 	// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
@@ -2764,6 +2785,11 @@ func (o DatabaseInstanceSettingsLocationPreferenceOutput) FollowGaeApplication()
 	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.FollowGaeApplication }).(pulumi.StringPtrOutput)
 }
 
+// The preferred Compute Engine zone for the secondary/failover.
+func (o DatabaseInstanceSettingsLocationPreferenceOutput) SecondaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.SecondaryZone }).(pulumi.StringPtrOutput)
+}
+
 // The preferred compute engine
 // [zone](https://cloud.google.com/compute/docs/zones?hl=en).
 func (o DatabaseInstanceSettingsLocationPreferenceOutput) Zone() pulumi.StringPtrOutput {
@@ -2802,6 +2828,16 @@ func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) FollowGaeApplicatio
 			return nil
 		}
 		return v.FollowGaeApplication
+	}).(pulumi.StringPtrOutput)
+}
+
+// The preferred Compute Engine zone for the secondary/failover.
+func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) SecondaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsLocationPreference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryZone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2992,6 +3028,181 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) UpdateTrack() pulumi
 			return nil
 		}
 		return v.UpdateTrack
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsSqlServerAuditConfig struct {
+	// The name of the destination bucket (e.g., gs://mybucket).
+	Bucket string `pulumi:"bucket"`
+	// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	RetentionInterval *string `pulumi:"retentionInterval"`
+	// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	UploadInterval *string `pulumi:"uploadInterval"`
+}
+
+// DatabaseInstanceSettingsSqlServerAuditConfigInput is an input type that accepts DatabaseInstanceSettingsSqlServerAuditConfigArgs and DatabaseInstanceSettingsSqlServerAuditConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsSqlServerAuditConfigInput` via:
+//
+//          DatabaseInstanceSettingsSqlServerAuditConfigArgs{...}
+type DatabaseInstanceSettingsSqlServerAuditConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsSqlServerAuditConfigOutput() DatabaseInstanceSettingsSqlServerAuditConfigOutput
+	ToDatabaseInstanceSettingsSqlServerAuditConfigOutputWithContext(context.Context) DatabaseInstanceSettingsSqlServerAuditConfigOutput
+}
+
+type DatabaseInstanceSettingsSqlServerAuditConfigArgs struct {
+	// The name of the destination bucket (e.g., gs://mybucket).
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	RetentionInterval pulumi.StringPtrInput `pulumi:"retentionInterval"`
+	// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	UploadInterval pulumi.StringPtrInput `pulumi:"uploadInterval"`
+}
+
+func (DatabaseInstanceSettingsSqlServerAuditConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsSqlServerAuditConfigArgs) ToDatabaseInstanceSettingsSqlServerAuditConfigOutput() DatabaseInstanceSettingsSqlServerAuditConfigOutput {
+	return i.ToDatabaseInstanceSettingsSqlServerAuditConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsSqlServerAuditConfigArgs) ToDatabaseInstanceSettingsSqlServerAuditConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsSqlServerAuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsSqlServerAuditConfigOutput)
+}
+
+func (i DatabaseInstanceSettingsSqlServerAuditConfigArgs) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutput() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsSqlServerAuditConfigArgs) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsSqlServerAuditConfigOutput).ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsSqlServerAuditConfigPtrInput is an input type that accepts DatabaseInstanceSettingsSqlServerAuditConfigArgs, DatabaseInstanceSettingsSqlServerAuditConfigPtr and DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsSqlServerAuditConfigPtrInput` via:
+//
+//          DatabaseInstanceSettingsSqlServerAuditConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseInstanceSettingsSqlServerAuditConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutput() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput
+	ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(context.Context) DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput
+}
+
+type databaseInstanceSettingsSqlServerAuditConfigPtrType DatabaseInstanceSettingsSqlServerAuditConfigArgs
+
+func DatabaseInstanceSettingsSqlServerAuditConfigPtr(v *DatabaseInstanceSettingsSqlServerAuditConfigArgs) DatabaseInstanceSettingsSqlServerAuditConfigPtrInput {
+	return (*databaseInstanceSettingsSqlServerAuditConfigPtrType)(v)
+}
+
+func (*databaseInstanceSettingsSqlServerAuditConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsSqlServerAuditConfigPtrType) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutput() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsSqlServerAuditConfigPtrType) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput)
+}
+
+type DatabaseInstanceSettingsSqlServerAuditConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsSqlServerAuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) ToDatabaseInstanceSettingsSqlServerAuditConfigOutput() DatabaseInstanceSettingsSqlServerAuditConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) ToDatabaseInstanceSettingsSqlServerAuditConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsSqlServerAuditConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutput() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return o.ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsSqlServerAuditConfig) *DatabaseInstanceSettingsSqlServerAuditConfig {
+		return &v
+	}).(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput)
+}
+
+// The name of the destination bucket (e.g., gs://mybucket).
+func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsSqlServerAuditConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) RetentionInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsSqlServerAuditConfig) *string { return v.RetentionInterval }).(pulumi.StringPtrOutput)
+}
+
+// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) UploadInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsSqlServerAuditConfig) *string { return v.UploadInterval }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutput() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) ToDatabaseInstanceSettingsSqlServerAuditConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) Elem() DatabaseInstanceSettingsSqlServerAuditConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsSqlServerAuditConfig) DatabaseInstanceSettingsSqlServerAuditConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsSqlServerAuditConfig
+		return ret
+	}).(DatabaseInstanceSettingsSqlServerAuditConfigOutput)
+}
+
+// The name of the destination bucket (e.g., gs://mybucket).
+func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsSqlServerAuditConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) RetentionInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsSqlServerAuditConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) UploadInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsSqlServerAuditConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UploadInterval
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3885,6 +4096,7 @@ type GetDatabaseInstanceSetting struct {
 	LocationPreferences    []GetDatabaseInstanceSettingLocationPreference    `pulumi:"locationPreferences"`
 	MaintenanceWindows     []GetDatabaseInstanceSettingMaintenanceWindow     `pulumi:"maintenanceWindows"`
 	PricingPlan            string                                            `pulumi:"pricingPlan"`
+	SqlServerAuditConfigs  []GetDatabaseInstanceSettingSqlServerAuditConfig  `pulumi:"sqlServerAuditConfigs"`
 	Tier                   string                                            `pulumi:"tier"`
 	UserLabels             map[string]string                                 `pulumi:"userLabels"`
 	Version                int                                               `pulumi:"version"`
@@ -3917,6 +4129,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	LocationPreferences    GetDatabaseInstanceSettingLocationPreferenceArrayInput    `pulumi:"locationPreferences"`
 	MaintenanceWindows     GetDatabaseInstanceSettingMaintenanceWindowArrayInput     `pulumi:"maintenanceWindows"`
 	PricingPlan            pulumi.StringInput                                        `pulumi:"pricingPlan"`
+	SqlServerAuditConfigs  GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput  `pulumi:"sqlServerAuditConfigs"`
 	Tier                   pulumi.StringInput                                        `pulumi:"tier"`
 	UserLabels             pulumi.StringMapInput                                     `pulumi:"userLabels"`
 	Version                pulumi.IntInput                                           `pulumi:"version"`
@@ -4043,6 +4256,12 @@ func (o GetDatabaseInstanceSettingOutput) MaintenanceWindows() GetDatabaseInstan
 
 func (o GetDatabaseInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) SqlServerAuditConfigs() GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingSqlServerAuditConfig {
+		return v.SqlServerAuditConfigs
+	}).(GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) Tier() pulumi.StringOutput {
@@ -4853,6 +5072,7 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) I
 
 type GetDatabaseInstanceSettingLocationPreference struct {
 	FollowGaeApplication string `pulumi:"followGaeApplication"`
+	SecondaryZone        string `pulumi:"secondaryZone"`
 	Zone                 string `pulumi:"zone"`
 }
 
@@ -4869,6 +5089,7 @@ type GetDatabaseInstanceSettingLocationPreferenceInput interface {
 
 type GetDatabaseInstanceSettingLocationPreferenceArgs struct {
 	FollowGaeApplication pulumi.StringInput `pulumi:"followGaeApplication"`
+	SecondaryZone        pulumi.StringInput `pulumi:"secondaryZone"`
 	Zone                 pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -4925,6 +5146,10 @@ func (o GetDatabaseInstanceSettingLocationPreferenceOutput) ToGetDatabaseInstanc
 
 func (o GetDatabaseInstanceSettingLocationPreferenceOutput) FollowGaeApplication() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingLocationPreference) string { return v.FollowGaeApplication }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingLocationPreferenceOutput) SecondaryZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingLocationPreference) string { return v.SecondaryZone }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstanceSettingLocationPreferenceOutput) Zone() pulumi.StringOutput {
@@ -5057,6 +5282,112 @@ func (o GetDatabaseInstanceSettingMaintenanceWindowArrayOutput) Index(i pulumi.I
 	}).(GetDatabaseInstanceSettingMaintenanceWindowOutput)
 }
 
+type GetDatabaseInstanceSettingSqlServerAuditConfig struct {
+	Bucket            string `pulumi:"bucket"`
+	RetentionInterval string `pulumi:"retentionInterval"`
+	UploadInterval    string `pulumi:"uploadInterval"`
+}
+
+// GetDatabaseInstanceSettingSqlServerAuditConfigInput is an input type that accepts GetDatabaseInstanceSettingSqlServerAuditConfigArgs and GetDatabaseInstanceSettingSqlServerAuditConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingSqlServerAuditConfigInput` via:
+//
+//          GetDatabaseInstanceSettingSqlServerAuditConfigArgs{...}
+type GetDatabaseInstanceSettingSqlServerAuditConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingSqlServerAuditConfigOutput() GetDatabaseInstanceSettingSqlServerAuditConfigOutput
+	ToGetDatabaseInstanceSettingSqlServerAuditConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingSqlServerAuditConfigOutput
+}
+
+type GetDatabaseInstanceSettingSqlServerAuditConfigArgs struct {
+	Bucket            pulumi.StringInput `pulumi:"bucket"`
+	RetentionInterval pulumi.StringInput `pulumi:"retentionInterval"`
+	UploadInterval    pulumi.StringInput `pulumi:"uploadInterval"`
+}
+
+func (GetDatabaseInstanceSettingSqlServerAuditConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingSqlServerAuditConfigArgs) ToGetDatabaseInstanceSettingSqlServerAuditConfigOutput() GetDatabaseInstanceSettingSqlServerAuditConfigOutput {
+	return i.ToGetDatabaseInstanceSettingSqlServerAuditConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingSqlServerAuditConfigArgs) ToGetDatabaseInstanceSettingSqlServerAuditConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingSqlServerAuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingSqlServerAuditConfigOutput)
+}
+
+// GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingSqlServerAuditConfigArray and GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput` via:
+//
+//          GetDatabaseInstanceSettingSqlServerAuditConfigArray{ GetDatabaseInstanceSettingSqlServerAuditConfigArgs{...} }
+type GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput() GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput
+	ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingSqlServerAuditConfigArray []GetDatabaseInstanceSettingSqlServerAuditConfigInput
+
+func (GetDatabaseInstanceSettingSqlServerAuditConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingSqlServerAuditConfigArray) ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput() GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingSqlServerAuditConfigArray) ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingSqlServerAuditConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingSqlServerAuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) ToGetDatabaseInstanceSettingSqlServerAuditConfigOutput() GetDatabaseInstanceSettingSqlServerAuditConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) ToGetDatabaseInstanceSettingSqlServerAuditConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingSqlServerAuditConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingSqlServerAuditConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) RetentionInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingSqlServerAuditConfig) string { return v.RetentionInterval }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingSqlServerAuditConfigOutput) UploadInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingSqlServerAuditConfig) string { return v.UploadInterval }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput() GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) ToGetDatabaseInstanceSettingSqlServerAuditConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingSqlServerAuditConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingSqlServerAuditConfig {
+		return vs[0].([]GetDatabaseInstanceSettingSqlServerAuditConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingSqlServerAuditConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceCloneInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceClonePtrInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
@@ -5088,6 +5419,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsLocationPreferencePtrInput)(nil)).Elem(), DatabaseInstanceSettingsLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowPtrInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfigInput)(nil)).Elem(), DatabaseInstanceSettingsSqlServerAuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailsInput)(nil)).Elem(), UserSqlServerUserDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailsPtrInput)(nil)).Elem(), UserSqlServerUserDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertInput)(nil)).Elem(), GetCaCertsCertArgs{})
@@ -5122,6 +5455,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingLocationPreferenceArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingLocationPreferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingMaintenanceWindowInput)(nil)).Elem(), GetDatabaseInstanceSettingMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArray{})
 	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceClonePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressOutput{})
@@ -5152,6 +5487,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsLocationPreferencePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsSqlServerAuditConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput{})
 	pulumi.RegisterOutputType(UserSqlServerUserDetailsOutput{})
 	pulumi.RegisterOutputType(UserSqlServerUserDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertOutput{})
@@ -5186,4 +5523,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingLocationPreferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput{})
 }

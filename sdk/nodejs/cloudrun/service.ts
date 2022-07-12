@@ -230,6 +230,84 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Cloud Run Service Scheduled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const runApi = new gcp.projects.Service("runApi", {
+ *     project: "my-project-name",
+ *     service: "run.googleapis.com",
+ *     disableDependentServices: true,
+ *     disableOnDestroy: false,
+ * });
+ * const iamApi = new gcp.projects.Service("iamApi", {
+ *     project: "my-project-name",
+ *     service: "iam.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
+ * const resourceManagerApi = new gcp.projects.Service("resourceManagerApi", {
+ *     project: "my-project-name",
+ *     service: "cloudresourcemanager.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
+ * const schedulerApi = new gcp.projects.Service("schedulerApi", {
+ *     project: "my-project-name",
+ *     service: "cloudscheduler.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
+ * const defaultService = new gcp.cloudrun.Service("defaultService", {
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         percent: 100,
+ *         latestRevision: true,
+ *     }],
+ * }, {
+ *     dependsOn: [runApi],
+ * });
+ * const defaultAccount = new gcp.serviceaccount.Account("defaultAccount", {
+ *     project: "my-project-name",
+ *     accountId: "scheduler-sa",
+ *     description: "Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
+ *     displayName: "scheduler-sa",
+ * }, {
+ *     dependsOn: [iamApi],
+ * });
+ * const defaultJob = new gcp.cloudscheduler.Job("defaultJob", {
+ *     description: "Invoke a Cloud Run container on a schedule.",
+ *     schedule: "*&#47;8 * * * *",
+ *     timeZone: "America/New_York",
+ *     attemptDeadline: "320s",
+ *     retryConfig: {
+ *         retryCount: 1,
+ *     },
+ *     httpTarget: {
+ *         httpMethod: "POST",
+ *         uri: defaultService.statuses.apply(statuses => `${statuses[0].url}/`),
+ *         oidcToken: {
+ *             serviceAccountEmail: defaultAccount.email,
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [schedulerApi],
+ * });
+ * const defaultIamMember = new gcp.cloudrun.IamMember("defaultIamMember", {
+ *     project: "my-project-name",
+ *     location: defaultService.location,
+ *     service: defaultService.name,
+ *     role: "roles/run.invoker",
+ *     member: pulumi.interpolate`serviceAccount:${defaultAccount.email}`,
+ * });
+ * ```
  * ### Cloud Run Service Secret Environment Variables
  *
  * ```typescript
@@ -349,6 +427,34 @@ import * as utilities from "../utilities";
  *     dependsOn: [secret_version_data],
  * });
  * ```
+ * ### Cloud Run Service Ingress
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     metadata: {
+ *         annotations: {
+ *             // For valid annotation values and descriptions, see
+ *             // https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress
+ *             "run.googleapis.com/ingress": "internal",
+ *         },
+ *     },
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello", //public image for your service
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         latestRevision: true,
+ *         percent: 100,
+ *     }],
+ * });
+ * ```
  * ### Eventarc Basic Tf
  *
  * ```typescript
@@ -450,6 +556,324 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  *     dependsOn: [eventarc],
+ * });
+ * ```
+ * ### Cloud Run Service Multiple Regions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Cloud Run service replicated across multiple GCP regions
+ * const computeApi = new gcp.projects.Service("computeApi", {
+ *     project: "my-project-name",
+ *     service: "compute.googleapis.com",
+ *     disableDependentServices: true,
+ *     disableOnDestroy: false,
+ * });
+ * const runApi = new gcp.projects.Service("runApi", {
+ *     project: "my-project-name",
+ *     service: "run.googleapis.com",
+ *     disableDependentServices: true,
+ *     disableOnDestroy: false,
+ * });
+ * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "example.com";
+ * const runRegions = config.getObject("runRegions") || [
+ *     "us-central1",
+ *     "europe-west1",
+ * ];
+ * const lbDefaultGlobalAddress = new gcp.compute.GlobalAddress("lbDefaultGlobalAddress", {project: "my-project-name"}, {
+ *     dependsOn: [computeApi],
+ * });
+ * const runDefault: gcp.cloudrun.Service[];
+ * for (const range = {value: 0}; range.value < runRegions.length; range.value++) {
+ *     runDefault.push(new gcp.cloudrun.Service(`runDefault-${range.value}`, {
+ *         project: "my-project-name",
+ *         location: runRegions[range.value],
+ *         template: {
+ *             spec: {
+ *                 containers: [{
+ *                     image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 }],
+ *             },
+ *         },
+ *         traffics: [{
+ *             percent: 100,
+ *             latestRevision: true,
+ *         }],
+ *     }, {
+ *     dependsOn: [runApi],
+ * }));
+ * }
+ * const lbDefaultRegionNetworkEndpointGroup: gcp.compute.RegionNetworkEndpointGroup[];
+ * for (const range = {value: 0}; range.value < runRegions.length; range.value++) {
+ *     lbDefaultRegionNetworkEndpointGroup.push(new gcp.compute.RegionNetworkEndpointGroup(`lbDefaultRegionNetworkEndpointGroup-${range.value}`, {
+ *         project: "my-project-name",
+ *         networkEndpointType: "SERVERLESS",
+ *         region: runRegions[range.value],
+ *         cloudRun: {
+ *             service: runDefault[count.index].name,
+ *         },
+ *     }));
+ * }
+ * const lbDefaultBackendService = new gcp.compute.BackendService("lbDefaultBackendService", {
+ *     project: "my-project-name",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     backends: [
+ *         {
+ *             balancingMode: "UTILIZATION",
+ *             capacityScaler: 0.85,
+ *             group: lbDefaultRegionNetworkEndpointGroup[0].id,
+ *         },
+ *         {
+ *             balancingMode: "UTILIZATION",
+ *             capacityScaler: 0.85,
+ *             group: lbDefaultRegionNetworkEndpointGroup[1].id,
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [computeApi],
+ * });
+ * const lbDefaultURLMap = new gcp.compute.URLMap("lbDefaultURLMap", {
+ *     project: "my-project-name",
+ *     defaultService: lbDefaultBackendService.id,
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: lbDefaultBackendService.id,
+ *         routeRules: [{
+ *             priority: 1,
+ *             urlRedirect: {
+ *                 httpsRedirect: true,
+ *                 redirectResponseCode: "MOVED_PERMANENTLY_DEFAULT",
+ *             },
+ *         }],
+ *     }],
+ * });
+ * const lbDefaultManagedSslCertificate = new gcp.compute.ManagedSslCertificate("lbDefaultManagedSslCertificate", {
+ *     project: "my-project-name",
+ *     managed: {
+ *         domains: [domainName],
+ *     },
+ * });
+ * const lbDefaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("lbDefaultTargetHttpsProxy", {
+ *     project: "my-project-name",
+ *     urlMap: lbDefaultURLMap.id,
+ *     sslCertificates: [lbDefaultManagedSslCertificate.name],
+ * }, {
+ *     dependsOn: [lbDefaultManagedSslCertificate],
+ * });
+ * const lbDefaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("lbDefaultGlobalForwardingRule", {
+ *     project: "my-project-name",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     target: lbDefaultTargetHttpsProxy.id,
+ *     ipAddress: lbDefaultGlobalAddress.id,
+ *     portRange: "443",
+ * }, {
+ *     dependsOn: [lbDefaultTargetHttpsProxy],
+ * });
+ * export const loadBalancerIpAddr = lbDefaultGlobalAddress.address;
+ * const runAllowUnauthenticated: gcp.cloudrun.IamMember[];
+ * for (const range = {value: 0}; range.value < runRegions.length; range.value++) {
+ *     runAllowUnauthenticated.push(new gcp.cloudrun.IamMember(`runAllowUnauthenticated-${range.value}`, {
+ *         project: "my-project-name",
+ *         location: runDefault[range.value].location,
+ *         service: runDefault[range.value].name,
+ *         role: "roles/run.invoker",
+ *         member: "allUsers",
+ *     }));
+ * }
+ * const httpsDefaultURLMap = new gcp.compute.URLMap("httpsDefaultURLMap", {
+ *     project: "my-project-name",
+ *     defaultUrlRedirect: {
+ *         redirectResponseCode: "MOVED_PERMANENTLY_DEFAULT",
+ *         httpsRedirect: true,
+ *         stripQuery: false,
+ *     },
+ * });
+ * const httpsDefaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("httpsDefaultTargetHttpProxy", {
+ *     project: "my-project-name",
+ *     urlMap: httpsDefaultURLMap.id,
+ * }, {
+ *     dependsOn: [httpsDefaultURLMap],
+ * });
+ * const httpsDefaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("httpsDefaultGlobalForwardingRule", {
+ *     project: "my-project-name",
+ *     target: httpsDefaultTargetHttpProxy.id,
+ *     ipAddress: lbDefaultGlobalAddress.id,
+ *     portRange: "80",
+ * }, {
+ *     dependsOn: [httpsDefaultTargetHttpProxy],
+ * });
+ * ```
+ * ### Cloud Run Service Remove Tag
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {},
+ *     traffics: [
+ *         {
+ *             percent: 100,
+ *             // This revision needs to already exist
+ *             revisionName: "cloudrun-srv-green",
+ *         },
+ *         {
+ *             // No tags for this revision
+ *             // Keep revision at 0% traffic
+ *             percent: 0,
+ *             // This revision needs to already exist
+ *             revisionName: "cloudrun-srv-blue",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Cloud Run Service Deploy Tag
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         metadata: {
+ *             name: "cloudrun-srv-blue",
+ *         },
+ *         spec: {
+ *             containers: [{
+ *                 // image or tag must be different from previous revision
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [
+ *         {
+ *             percent: 100,
+ *             // This revision needs to already exist
+ *             revisionName: "cloudrun-srv-green",
+ *         },
+ *         {
+ *             // Deploy new revision with 0% traffic
+ *             percent: 0,
+ *             revisionName: "cloudrun-srv-blue",
+ *             tag: "tag-name",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Cloud Run Service Add Tag
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {},
+ *     traffics: [
+ *         {
+ *             percent: 100,
+ *             // This revision needs to already exist
+ *             revisionName: "cloudrun-srv-green",
+ *         },
+ *         {
+ *             // Deploy new revision with 0% traffic
+ *             percent: 0,
+ *             revisionName: "cloudrun-srv-blue",
+ *             tag: "tag-name",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Cloud Run Service Traffic Gradual Rollout
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     autogenerateRevisionName: true,
+ *     location: "us-central1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 // Image or image tag must be different from previous revision
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [
+ *         {
+ *             percent: 100,
+ *             // This revision needs to already exist
+ *             revisionName: "cloudrun-srv-green",
+ *         },
+ *         {
+ *             latestRevision: true,
+ *             // Deploy new revision with 0% traffic
+ *             percent: 0,
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Cloud Run Service Traffic Latest Revision
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {},
+ *     traffics: [{
+ *         latestRevision: true,
+ *         percent: 100,
+ *     }],
+ * });
+ * ```
+ * ### Cloud Run Service Traffic Rollback
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {},
+ *     traffics: [{
+ *         percent: 100,
+ *         // This revision needs to already exist
+ *         revisionName: "cloudrun-srv-green",
+ *     }],
+ * });
+ * ```
+ * ### Cloud Run Service Traffic Split Tag
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {},
+ *     traffics: [
+ *         {
+ *             // Update revision to 50% traffic
+ *             percent: 50,
+ *             // This revision needs to already exist
+ *             revisionName: "cloudrun-srv-green",
+ *         },
+ *         {
+ *             // Update tag to 50% traffic
+ *             percent: 50,
+ *             // This tag needs to already exist
+ *             tag: "tag-name",
+ *         },
+ *     ],
  * });
  * ```
  *

@@ -95,6 +95,13 @@ namespace Pulumi.Gcp.Sql
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
 
+        /// <summary>
+        /// The project to list instances for. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
+
         public GetBackupRunArgs()
         {
         }
@@ -122,6 +129,13 @@ namespace Pulumi.Gcp.Sql
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }
 
+        /// <summary>
+        /// The project to list instances for. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
         public GetBackupRunInvokeArgs()
         {
         }
@@ -142,6 +156,7 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         public readonly string Location;
         public readonly bool? MostRecent;
+        public readonly string Project;
         /// <summary>
         /// The time the backup operation actually started in UTC timezone in RFC 3339 format, for 
         /// example 2012-11-15T16:19:00.094Z.
@@ -164,6 +179,8 @@ namespace Pulumi.Gcp.Sql
 
             bool? mostRecent,
 
+            string project,
+
             string startTime,
 
             string status)
@@ -173,6 +190,7 @@ namespace Pulumi.Gcp.Sql
             Instance = instance;
             Location = location;
             MostRecent = mostRecent;
+            Project = project;
             StartTime = startTime;
             Status = status;
         }

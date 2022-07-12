@@ -18,6 +18,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Cloud Spanner Database which is hosted on a Spanner instance.
+ * 
+ * To get more information about Database, see:
+ * 
+ * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/spanner/)
+ * 
+ * &gt; **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+ * 
  * ## Example Usage
  * ### Spanner Database Basic
  * ```java
@@ -42,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .instance(main.name())
+ *             .versionRetentionPeriod(&#34;3d&#34;)
  *             .ddls(            
  *                 &#34;CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)&#34;,
  *                 &#34;CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)&#34;)
@@ -76,20 +87,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:spanner/database:Database")
 public class Database extends com.pulumi.resources.CustomResource {
     /**
-     * The dialect of the Cloud Spanner Database. If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used. Note: Databases
-     * that are created with POSTGRESQL dialect do not support extra DDL statements in the &#39;CreateDatabase&#39; call. You must
-     * therefore re-apply terraform with ddl on the same database after creation. Possible values: [&#34;GOOGLE_STANDARD_SQL&#34;,
-     * &#34;POSTGRESQL&#34;]
+     * The dialect of the Cloud Spanner Database.
+     * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
+     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
      * 
      */
     @Export(name="databaseDialect", type=String.class, parameters={})
     private Output<String> databaseDialect;
 
     /**
-     * @return The dialect of the Cloud Spanner Database. If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used. Note: Databases
-     * that are created with POSTGRESQL dialect do not support extra DDL statements in the &#39;CreateDatabase&#39; call. You must
-     * therefore re-apply terraform with ddl on the same database after creation. Possible values: [&#34;GOOGLE_STANDARD_SQL&#34;,
-     * &#34;POSTGRESQL&#34;]
+     * @return The dialect of the Cloud Spanner Database.
+     * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
+     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
      * 
      */
     public Output<String> databaseDialect() {
@@ -206,6 +215,28 @@ public class Database extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * The retention period for the database. The retention period must be between 1 hour
+     * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+     * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+     * If this property is used, you must avoid adding new DDL statements to `ddl` that
+     * update the database&#39;s version_retention_period.
+     * 
+     */
+    @Export(name="versionRetentionPeriod", type=String.class, parameters={})
+    private Output<String> versionRetentionPeriod;
+
+    /**
+     * @return The retention period for the database. The retention period must be between 1 hour
+     * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+     * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+     * If this property is used, you must avoid adding new DDL statements to `ddl` that
+     * update the database&#39;s version_retention_period.
+     * 
+     */
+    public Output<String> versionRetentionPeriod() {
+        return this.versionRetentionPeriod;
     }
 
     /**

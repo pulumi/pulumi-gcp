@@ -229,6 +229,76 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// }
     /// ```
+    /// ### Billing Budget Customperiod
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var account = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
+    ///         {
+    ///             BillingAccount = "000000-0000000-0000000-000000",
+    ///         }));
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
+    ///         {
+    ///             BillingAccount = account.Apply(account =&gt; account.Id),
+    ///             DisplayName = "Example Billing Budget",
+    ///             BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
+    ///             {
+    ///                 Projects = 
+    ///                 {
+    ///                     project.Apply(project =&gt; $"projects/{project.Number}"),
+    ///                 },
+    ///                 CreditTypesTreatment = "EXCLUDE_ALL_CREDITS",
+    ///                 Services = 
+    ///                 {
+    ///                     "services/24E6-581D-38E5",
+    ///                 },
+    ///                 CustomPeriod = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodArgs
+    ///                 {
+    ///                     StartDate = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodStartDateArgs
+    ///                     {
+    ///                         Year = 2022,
+    ///                         Month = 1,
+    ///                         Day = 1,
+    ///                     },
+    ///                     EndDate = new Gcp.Billing.Inputs.BudgetBudgetFilterCustomPeriodEndDateArgs
+    ///                     {
+    ///                         Year = 2023,
+    ///                         Month = 12,
+    ///                         Day = 31,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
+    ///             {
+    ///                 SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
+    ///                 {
+    ///                     CurrencyCode = "USD",
+    ///                     Units = "100000",
+    ///                 },
+    ///             },
+    ///             ThresholdRules = 
+    ///             {
+    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///                 {
+    ///                     ThresholdPercent = 0.5,
+    ///                 },
+    ///                 new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
+    ///                 {
+    ///                     ThresholdPercent = 0.9,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

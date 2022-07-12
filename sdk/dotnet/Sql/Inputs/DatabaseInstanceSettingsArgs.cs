@@ -89,6 +89,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("pricingPlan")]
         public Input<string>? PricingPlan { get; set; }
 
+        [Input("sqlServerAuditConfig")]
+        public Input<Inputs.DatabaseInstanceSettingsSqlServerAuditConfigArgs>? SqlServerAuditConfig { get; set; }
+
         /// <summary>
         /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
         /// for more details and supported versions. Postgres supports only shared-core machine types,

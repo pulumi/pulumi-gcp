@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly Outputs.ClusterAddonsConfigDnsCacheConfig? DnsCacheConfig;
         /// <summary>
         /// .
-        /// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+        /// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig? GcePersistentDiskCsiDriverConfig;
         /// <summary>

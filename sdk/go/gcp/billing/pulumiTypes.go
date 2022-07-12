@@ -958,18 +958,26 @@ func (o BudgetAmountSpecifiedAmountPtrOutput) Units() pulumi.StringPtrOutput {
 }
 
 type BudgetBudgetFilter struct {
-	// A set of subaccounts of the form billingAccounts/{account_id},
-	// specifying that usage from only this set of subaccounts should
-	// be included in the budget. If a subaccount is set to the name of
-	// the parent account, usage from the parent account will be included.
-	// If the field is omitted, the report will include usage from the parent
-	// account and all subaccounts, if they exist.
+	// A CalendarPeriod represents the abstract concept of a recurring time period that has a
+	// canonical start. Grammatically, "the start of the current CalendarPeriod".
+	// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+	// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+	// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+	CalendarPeriod *string `pulumi:"calendarPeriod"`
+	// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+	// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+	// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
 	CreditTypes []string `pulumi:"creditTypes"`
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
 	// Default value is `INCLUDE_ALL_CREDITS`.
 	// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
 	CreditTypesTreatment *string `pulumi:"creditTypesTreatment"`
+	// Specifies to track usage from any start date (required) to any end date (optional).
+	// This time period is static, it does not recur.
+	// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+	// Structure is documented below.
+	CustomPeriod *BudgetBudgetFilterCustomPeriod `pulumi:"customPeriod"`
 	// A single label and value pair specifying that usage from only
 	// this set of labeled resources should be included in the budget.
 	Labels map[string]string `pulumi:"labels"`
@@ -1007,18 +1015,26 @@ type BudgetBudgetFilterInput interface {
 }
 
 type BudgetBudgetFilterArgs struct {
-	// A set of subaccounts of the form billingAccounts/{account_id},
-	// specifying that usage from only this set of subaccounts should
-	// be included in the budget. If a subaccount is set to the name of
-	// the parent account, usage from the parent account will be included.
-	// If the field is omitted, the report will include usage from the parent
-	// account and all subaccounts, if they exist.
+	// A CalendarPeriod represents the abstract concept of a recurring time period that has a
+	// canonical start. Grammatically, "the start of the current CalendarPeriod".
+	// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+	// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+	// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+	CalendarPeriod pulumi.StringPtrInput `pulumi:"calendarPeriod"`
+	// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+	// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+	// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
 	CreditTypes pulumi.StringArrayInput `pulumi:"creditTypes"`
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
 	// Default value is `INCLUDE_ALL_CREDITS`.
 	// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
 	CreditTypesTreatment pulumi.StringPtrInput `pulumi:"creditTypesTreatment"`
+	// Specifies to track usage from any start date (required) to any end date (optional).
+	// This time period is static, it does not recur.
+	// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+	// Structure is documented below.
+	CustomPeriod BudgetBudgetFilterCustomPeriodPtrInput `pulumi:"customPeriod"`
 	// A single label and value pair specifying that usage from only
 	// this set of labeled resources should be included in the budget.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -1121,12 +1137,18 @@ func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx c
 	}).(BudgetBudgetFilterPtrOutput)
 }
 
-// A set of subaccounts of the form billingAccounts/{account_id},
-// specifying that usage from only this set of subaccounts should
-// be included in the budget. If a subaccount is set to the name of
-// the parent account, usage from the parent account will be included.
-// If the field is omitted, the report will include usage from the parent
-// account and all subaccounts, if they exist.
+// A CalendarPeriod represents the abstract concept of a recurring time period that has a
+// canonical start. Grammatically, "the start of the current CalendarPeriod".
+// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+func (o BudgetBudgetFilterOutput) CalendarPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CalendarPeriod }).(pulumi.StringPtrOutput)
+}
+
+// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
 func (o BudgetBudgetFilterOutput) CreditTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.CreditTypes }).(pulumi.StringArrayOutput)
 }
@@ -1137,6 +1159,14 @@ func (o BudgetBudgetFilterOutput) CreditTypes() pulumi.StringArrayOutput {
 // Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
 func (o BudgetBudgetFilterOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
+}
+
+// Specifies to track usage from any start date (required) to any end date (optional).
+// This time period is static, it does not recur.
+// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+// Structure is documented below.
+func (o BudgetBudgetFilterOutput) CustomPeriod() BudgetBudgetFilterCustomPeriodPtrOutput {
+	return o.ApplyT(func(v BudgetBudgetFilter) *BudgetBudgetFilterCustomPeriod { return v.CustomPeriod }).(BudgetBudgetFilterCustomPeriodPtrOutput)
 }
 
 // A single label and value pair specifying that usage from only
@@ -1198,12 +1228,23 @@ func (o BudgetBudgetFilterPtrOutput) Elem() BudgetBudgetFilterOutput {
 	}).(BudgetBudgetFilterOutput)
 }
 
-// A set of subaccounts of the form billingAccounts/{account_id},
-// specifying that usage from only this set of subaccounts should
-// be included in the budget. If a subaccount is set to the name of
-// the parent account, usage from the parent account will be included.
-// If the field is omitted, the report will include usage from the parent
-// account and all subaccounts, if they exist.
+// A CalendarPeriod represents the abstract concept of a recurring time period that has a
+// canonical start. Grammatically, "the start of the current CalendarPeriod".
+// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+func (o BudgetBudgetFilterPtrOutput) CalendarPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CalendarPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
+// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
+// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
 func (o BudgetBudgetFilterPtrOutput) CreditTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
 		if v == nil {
@@ -1224,6 +1265,19 @@ func (o BudgetBudgetFilterPtrOutput) CreditTypesTreatment() pulumi.StringPtrOutp
 		}
 		return v.CreditTypesTreatment
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies to track usage from any start date (required) to any end date (optional).
+// This time period is static, it does not recur.
+// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
+// Structure is documented below.
+func (o BudgetBudgetFilterPtrOutput) CustomPeriod() BudgetBudgetFilterCustomPeriodPtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilter) *BudgetBudgetFilterCustomPeriod {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPeriod
+	}).(BudgetBudgetFilterCustomPeriodPtrOutput)
 }
 
 // A single label and value pair specifying that usage from only
@@ -1279,6 +1333,524 @@ func (o BudgetBudgetFilterPtrOutput) Subaccounts() pulumi.StringArrayOutput {
 		}
 		return v.Subaccounts
 	}).(pulumi.StringArrayOutput)
+}
+
+type BudgetBudgetFilterCustomPeriod struct {
+	// Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+	// If unset, specifies to track all usage incurred since the startDate.
+	// Structure is documented below.
+	EndDate *BudgetBudgetFilterCustomPeriodEndDate `pulumi:"endDate"`
+	// A start date is required. The start date must be after January 1, 2017.
+	// Structure is documented below.
+	StartDate BudgetBudgetFilterCustomPeriodStartDate `pulumi:"startDate"`
+}
+
+// BudgetBudgetFilterCustomPeriodInput is an input type that accepts BudgetBudgetFilterCustomPeriodArgs and BudgetBudgetFilterCustomPeriodOutput values.
+// You can construct a concrete instance of `BudgetBudgetFilterCustomPeriodInput` via:
+//
+//          BudgetBudgetFilterCustomPeriodArgs{...}
+type BudgetBudgetFilterCustomPeriodInput interface {
+	pulumi.Input
+
+	ToBudgetBudgetFilterCustomPeriodOutput() BudgetBudgetFilterCustomPeriodOutput
+	ToBudgetBudgetFilterCustomPeriodOutputWithContext(context.Context) BudgetBudgetFilterCustomPeriodOutput
+}
+
+type BudgetBudgetFilterCustomPeriodArgs struct {
+	// Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+	// If unset, specifies to track all usage incurred since the startDate.
+	// Structure is documented below.
+	EndDate BudgetBudgetFilterCustomPeriodEndDatePtrInput `pulumi:"endDate"`
+	// A start date is required. The start date must be after January 1, 2017.
+	// Structure is documented below.
+	StartDate BudgetBudgetFilterCustomPeriodStartDateInput `pulumi:"startDate"`
+}
+
+func (BudgetBudgetFilterCustomPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetBudgetFilterCustomPeriod)(nil)).Elem()
+}
+
+func (i BudgetBudgetFilterCustomPeriodArgs) ToBudgetBudgetFilterCustomPeriodOutput() BudgetBudgetFilterCustomPeriodOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodOutputWithContext(context.Background())
+}
+
+func (i BudgetBudgetFilterCustomPeriodArgs) ToBudgetBudgetFilterCustomPeriodOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodOutput)
+}
+
+func (i BudgetBudgetFilterCustomPeriodArgs) ToBudgetBudgetFilterCustomPeriodPtrOutput() BudgetBudgetFilterCustomPeriodPtrOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(context.Background())
+}
+
+func (i BudgetBudgetFilterCustomPeriodArgs) ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodOutput).ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(ctx)
+}
+
+// BudgetBudgetFilterCustomPeriodPtrInput is an input type that accepts BudgetBudgetFilterCustomPeriodArgs, BudgetBudgetFilterCustomPeriodPtr and BudgetBudgetFilterCustomPeriodPtrOutput values.
+// You can construct a concrete instance of `BudgetBudgetFilterCustomPeriodPtrInput` via:
+//
+//          BudgetBudgetFilterCustomPeriodArgs{...}
+//
+//  or:
+//
+//          nil
+type BudgetBudgetFilterCustomPeriodPtrInput interface {
+	pulumi.Input
+
+	ToBudgetBudgetFilterCustomPeriodPtrOutput() BudgetBudgetFilterCustomPeriodPtrOutput
+	ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(context.Context) BudgetBudgetFilterCustomPeriodPtrOutput
+}
+
+type budgetBudgetFilterCustomPeriodPtrType BudgetBudgetFilterCustomPeriodArgs
+
+func BudgetBudgetFilterCustomPeriodPtr(v *BudgetBudgetFilterCustomPeriodArgs) BudgetBudgetFilterCustomPeriodPtrInput {
+	return (*budgetBudgetFilterCustomPeriodPtrType)(v)
+}
+
+func (*budgetBudgetFilterCustomPeriodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetBudgetFilterCustomPeriod)(nil)).Elem()
+}
+
+func (i *budgetBudgetFilterCustomPeriodPtrType) ToBudgetBudgetFilterCustomPeriodPtrOutput() BudgetBudgetFilterCustomPeriodPtrOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(context.Background())
+}
+
+func (i *budgetBudgetFilterCustomPeriodPtrType) ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodPtrOutput)
+}
+
+type BudgetBudgetFilterCustomPeriodOutput struct{ *pulumi.OutputState }
+
+func (BudgetBudgetFilterCustomPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetBudgetFilterCustomPeriod)(nil)).Elem()
+}
+
+func (o BudgetBudgetFilterCustomPeriodOutput) ToBudgetBudgetFilterCustomPeriodOutput() BudgetBudgetFilterCustomPeriodOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodOutput) ToBudgetBudgetFilterCustomPeriodOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodOutput) ToBudgetBudgetFilterCustomPeriodPtrOutput() BudgetBudgetFilterCustomPeriodPtrOutput {
+	return o.ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(context.Background())
+}
+
+func (o BudgetBudgetFilterCustomPeriodOutput) ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetBudgetFilterCustomPeriod) *BudgetBudgetFilterCustomPeriod {
+		return &v
+	}).(BudgetBudgetFilterCustomPeriodPtrOutput)
+}
+
+// Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+// If unset, specifies to track all usage incurred since the startDate.
+// Structure is documented below.
+func (o BudgetBudgetFilterCustomPeriodOutput) EndDate() BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return o.ApplyT(func(v BudgetBudgetFilterCustomPeriod) *BudgetBudgetFilterCustomPeriodEndDate { return v.EndDate }).(BudgetBudgetFilterCustomPeriodEndDatePtrOutput)
+}
+
+// A start date is required. The start date must be after January 1, 2017.
+// Structure is documented below.
+func (o BudgetBudgetFilterCustomPeriodOutput) StartDate() BudgetBudgetFilterCustomPeriodStartDateOutput {
+	return o.ApplyT(func(v BudgetBudgetFilterCustomPeriod) BudgetBudgetFilterCustomPeriodStartDate { return v.StartDate }).(BudgetBudgetFilterCustomPeriodStartDateOutput)
+}
+
+type BudgetBudgetFilterCustomPeriodPtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetBudgetFilterCustomPeriodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetBudgetFilterCustomPeriod)(nil)).Elem()
+}
+
+func (o BudgetBudgetFilterCustomPeriodPtrOutput) ToBudgetBudgetFilterCustomPeriodPtrOutput() BudgetBudgetFilterCustomPeriodPtrOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodPtrOutput) ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodPtrOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodPtrOutput) Elem() BudgetBudgetFilterCustomPeriodOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriod) BudgetBudgetFilterCustomPeriod {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetBudgetFilterCustomPeriod
+		return ret
+	}).(BudgetBudgetFilterCustomPeriodOutput)
+}
+
+// Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+// If unset, specifies to track all usage incurred since the startDate.
+// Structure is documented below.
+func (o BudgetBudgetFilterCustomPeriodPtrOutput) EndDate() BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriod) *BudgetBudgetFilterCustomPeriodEndDate {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(BudgetBudgetFilterCustomPeriodEndDatePtrOutput)
+}
+
+// A start date is required. The start date must be after January 1, 2017.
+// Structure is documented below.
+func (o BudgetBudgetFilterCustomPeriodPtrOutput) StartDate() BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriod) *BudgetBudgetFilterCustomPeriodStartDate {
+		if v == nil {
+			return nil
+		}
+		return &v.StartDate
+	}).(BudgetBudgetFilterCustomPeriodStartDatePtrOutput)
+}
+
+type BudgetBudgetFilterCustomPeriodEndDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999.
+	Year int `pulumi:"year"`
+}
+
+// BudgetBudgetFilterCustomPeriodEndDateInput is an input type that accepts BudgetBudgetFilterCustomPeriodEndDateArgs and BudgetBudgetFilterCustomPeriodEndDateOutput values.
+// You can construct a concrete instance of `BudgetBudgetFilterCustomPeriodEndDateInput` via:
+//
+//          BudgetBudgetFilterCustomPeriodEndDateArgs{...}
+type BudgetBudgetFilterCustomPeriodEndDateInput interface {
+	pulumi.Input
+
+	ToBudgetBudgetFilterCustomPeriodEndDateOutput() BudgetBudgetFilterCustomPeriodEndDateOutput
+	ToBudgetBudgetFilterCustomPeriodEndDateOutputWithContext(context.Context) BudgetBudgetFilterCustomPeriodEndDateOutput
+}
+
+type BudgetBudgetFilterCustomPeriodEndDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month pulumi.IntInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999.
+	Year pulumi.IntInput `pulumi:"year"`
+}
+
+func (BudgetBudgetFilterCustomPeriodEndDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetBudgetFilterCustomPeriodEndDate)(nil)).Elem()
+}
+
+func (i BudgetBudgetFilterCustomPeriodEndDateArgs) ToBudgetBudgetFilterCustomPeriodEndDateOutput() BudgetBudgetFilterCustomPeriodEndDateOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodEndDateOutputWithContext(context.Background())
+}
+
+func (i BudgetBudgetFilterCustomPeriodEndDateArgs) ToBudgetBudgetFilterCustomPeriodEndDateOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodEndDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodEndDateOutput)
+}
+
+func (i BudgetBudgetFilterCustomPeriodEndDateArgs) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutput() BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i BudgetBudgetFilterCustomPeriodEndDateArgs) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodEndDateOutput).ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(ctx)
+}
+
+// BudgetBudgetFilterCustomPeriodEndDatePtrInput is an input type that accepts BudgetBudgetFilterCustomPeriodEndDateArgs, BudgetBudgetFilterCustomPeriodEndDatePtr and BudgetBudgetFilterCustomPeriodEndDatePtrOutput values.
+// You can construct a concrete instance of `BudgetBudgetFilterCustomPeriodEndDatePtrInput` via:
+//
+//          BudgetBudgetFilterCustomPeriodEndDateArgs{...}
+//
+//  or:
+//
+//          nil
+type BudgetBudgetFilterCustomPeriodEndDatePtrInput interface {
+	pulumi.Input
+
+	ToBudgetBudgetFilterCustomPeriodEndDatePtrOutput() BudgetBudgetFilterCustomPeriodEndDatePtrOutput
+	ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(context.Context) BudgetBudgetFilterCustomPeriodEndDatePtrOutput
+}
+
+type budgetBudgetFilterCustomPeriodEndDatePtrType BudgetBudgetFilterCustomPeriodEndDateArgs
+
+func BudgetBudgetFilterCustomPeriodEndDatePtr(v *BudgetBudgetFilterCustomPeriodEndDateArgs) BudgetBudgetFilterCustomPeriodEndDatePtrInput {
+	return (*budgetBudgetFilterCustomPeriodEndDatePtrType)(v)
+}
+
+func (*budgetBudgetFilterCustomPeriodEndDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetBudgetFilterCustomPeriodEndDate)(nil)).Elem()
+}
+
+func (i *budgetBudgetFilterCustomPeriodEndDatePtrType) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutput() BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i *budgetBudgetFilterCustomPeriodEndDatePtrType) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodEndDatePtrOutput)
+}
+
+type BudgetBudgetFilterCustomPeriodEndDateOutput struct{ *pulumi.OutputState }
+
+func (BudgetBudgetFilterCustomPeriodEndDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetBudgetFilterCustomPeriodEndDate)(nil)).Elem()
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDateOutput) ToBudgetBudgetFilterCustomPeriodEndDateOutput() BudgetBudgetFilterCustomPeriodEndDateOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDateOutput) ToBudgetBudgetFilterCustomPeriodEndDateOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodEndDateOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDateOutput) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutput() BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return o.ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(context.Background())
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDateOutput) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetBudgetFilterCustomPeriodEndDate) *BudgetBudgetFilterCustomPeriodEndDate {
+		return &v
+	}).(BudgetBudgetFilterCustomPeriodEndDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o BudgetBudgetFilterCustomPeriodEndDateOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v BudgetBudgetFilterCustomPeriodEndDate) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o BudgetBudgetFilterCustomPeriodEndDateOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v BudgetBudgetFilterCustomPeriodEndDate) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// Year of the date. Must be from 1 to 9999.
+func (o BudgetBudgetFilterCustomPeriodEndDateOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v BudgetBudgetFilterCustomPeriodEndDate) int { return v.Year }).(pulumi.IntOutput)
+}
+
+type BudgetBudgetFilterCustomPeriodEndDatePtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetBudgetFilterCustomPeriodEndDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetBudgetFilterCustomPeriodEndDate)(nil)).Elem()
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutput() BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) Elem() BudgetBudgetFilterCustomPeriodEndDateOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriodEndDate) BudgetBudgetFilterCustomPeriodEndDate {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetBudgetFilterCustomPeriodEndDate
+		return ret
+	}).(BudgetBudgetFilterCustomPeriodEndDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriodEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriodEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999.
+func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriodEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type BudgetBudgetFilterCustomPeriodStartDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999.
+	Year int `pulumi:"year"`
+}
+
+// BudgetBudgetFilterCustomPeriodStartDateInput is an input type that accepts BudgetBudgetFilterCustomPeriodStartDateArgs and BudgetBudgetFilterCustomPeriodStartDateOutput values.
+// You can construct a concrete instance of `BudgetBudgetFilterCustomPeriodStartDateInput` via:
+//
+//          BudgetBudgetFilterCustomPeriodStartDateArgs{...}
+type BudgetBudgetFilterCustomPeriodStartDateInput interface {
+	pulumi.Input
+
+	ToBudgetBudgetFilterCustomPeriodStartDateOutput() BudgetBudgetFilterCustomPeriodStartDateOutput
+	ToBudgetBudgetFilterCustomPeriodStartDateOutputWithContext(context.Context) BudgetBudgetFilterCustomPeriodStartDateOutput
+}
+
+type BudgetBudgetFilterCustomPeriodStartDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month pulumi.IntInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999.
+	Year pulumi.IntInput `pulumi:"year"`
+}
+
+func (BudgetBudgetFilterCustomPeriodStartDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetBudgetFilterCustomPeriodStartDate)(nil)).Elem()
+}
+
+func (i BudgetBudgetFilterCustomPeriodStartDateArgs) ToBudgetBudgetFilterCustomPeriodStartDateOutput() BudgetBudgetFilterCustomPeriodStartDateOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodStartDateOutputWithContext(context.Background())
+}
+
+func (i BudgetBudgetFilterCustomPeriodStartDateArgs) ToBudgetBudgetFilterCustomPeriodStartDateOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodStartDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodStartDateOutput)
+}
+
+func (i BudgetBudgetFilterCustomPeriodStartDateArgs) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutput() BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i BudgetBudgetFilterCustomPeriodStartDateArgs) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodStartDateOutput).ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(ctx)
+}
+
+// BudgetBudgetFilterCustomPeriodStartDatePtrInput is an input type that accepts BudgetBudgetFilterCustomPeriodStartDateArgs, BudgetBudgetFilterCustomPeriodStartDatePtr and BudgetBudgetFilterCustomPeriodStartDatePtrOutput values.
+// You can construct a concrete instance of `BudgetBudgetFilterCustomPeriodStartDatePtrInput` via:
+//
+//          BudgetBudgetFilterCustomPeriodStartDateArgs{...}
+//
+//  or:
+//
+//          nil
+type BudgetBudgetFilterCustomPeriodStartDatePtrInput interface {
+	pulumi.Input
+
+	ToBudgetBudgetFilterCustomPeriodStartDatePtrOutput() BudgetBudgetFilterCustomPeriodStartDatePtrOutput
+	ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(context.Context) BudgetBudgetFilterCustomPeriodStartDatePtrOutput
+}
+
+type budgetBudgetFilterCustomPeriodStartDatePtrType BudgetBudgetFilterCustomPeriodStartDateArgs
+
+func BudgetBudgetFilterCustomPeriodStartDatePtr(v *BudgetBudgetFilterCustomPeriodStartDateArgs) BudgetBudgetFilterCustomPeriodStartDatePtrInput {
+	return (*budgetBudgetFilterCustomPeriodStartDatePtrType)(v)
+}
+
+func (*budgetBudgetFilterCustomPeriodStartDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetBudgetFilterCustomPeriodStartDate)(nil)).Elem()
+}
+
+func (i *budgetBudgetFilterCustomPeriodStartDatePtrType) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutput() BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return i.ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i *budgetBudgetFilterCustomPeriodStartDatePtrType) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodStartDatePtrOutput)
+}
+
+type BudgetBudgetFilterCustomPeriodStartDateOutput struct{ *pulumi.OutputState }
+
+func (BudgetBudgetFilterCustomPeriodStartDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetBudgetFilterCustomPeriodStartDate)(nil)).Elem()
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDateOutput) ToBudgetBudgetFilterCustomPeriodStartDateOutput() BudgetBudgetFilterCustomPeriodStartDateOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDateOutput) ToBudgetBudgetFilterCustomPeriodStartDateOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodStartDateOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDateOutput) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutput() BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return o.ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(context.Background())
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDateOutput) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetBudgetFilterCustomPeriodStartDate) *BudgetBudgetFilterCustomPeriodStartDate {
+		return &v
+	}).(BudgetBudgetFilterCustomPeriodStartDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o BudgetBudgetFilterCustomPeriodStartDateOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v BudgetBudgetFilterCustomPeriodStartDate) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o BudgetBudgetFilterCustomPeriodStartDateOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v BudgetBudgetFilterCustomPeriodStartDate) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// Year of the date. Must be from 1 to 9999.
+func (o BudgetBudgetFilterCustomPeriodStartDateOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v BudgetBudgetFilterCustomPeriodStartDate) int { return v.Year }).(pulumi.IntOutput)
+}
+
+type BudgetBudgetFilterCustomPeriodStartDatePtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetBudgetFilterCustomPeriodStartDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetBudgetFilterCustomPeriodStartDate)(nil)).Elem()
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutput() BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
+	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) Elem() BudgetBudgetFilterCustomPeriodStartDateOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriodStartDate) BudgetBudgetFilterCustomPeriodStartDate {
+		if v != nil {
+			return *v
+		}
+		var ret BudgetBudgetFilterCustomPeriodStartDate
+		return ret
+	}).(BudgetBudgetFilterCustomPeriodStartDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriodStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriodStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999.
+func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilterCustomPeriodStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Year
+	}).(pulumi.IntPtrOutput)
 }
 
 type BudgetThresholdRule struct {
@@ -1412,6 +1984,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetAmountSpecifiedAmountPtrInput)(nil)).Elem(), BudgetAmountSpecifiedAmountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterInput)(nil)).Elem(), BudgetBudgetFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterPtrInput)(nil)).Elem(), BudgetBudgetFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterCustomPeriodInput)(nil)).Elem(), BudgetBudgetFilterCustomPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterCustomPeriodPtrInput)(nil)).Elem(), BudgetBudgetFilterCustomPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterCustomPeriodEndDateInput)(nil)).Elem(), BudgetBudgetFilterCustomPeriodEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterCustomPeriodEndDatePtrInput)(nil)).Elem(), BudgetBudgetFilterCustomPeriodEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterCustomPeriodStartDateInput)(nil)).Elem(), BudgetBudgetFilterCustomPeriodStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetBudgetFilterCustomPeriodStartDatePtrInput)(nil)).Elem(), BudgetBudgetFilterCustomPeriodStartDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetThresholdRuleInput)(nil)).Elem(), BudgetThresholdRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetThresholdRuleArrayInput)(nil)).Elem(), BudgetThresholdRuleArray{})
 	pulumi.RegisterOutputType(AccountIamBindingConditionOutput{})
@@ -1426,6 +2004,12 @@ func init() {
 	pulumi.RegisterOutputType(BudgetAmountSpecifiedAmountPtrOutput{})
 	pulumi.RegisterOutputType(BudgetBudgetFilterOutput{})
 	pulumi.RegisterOutputType(BudgetBudgetFilterPtrOutput{})
+	pulumi.RegisterOutputType(BudgetBudgetFilterCustomPeriodOutput{})
+	pulumi.RegisterOutputType(BudgetBudgetFilterCustomPeriodPtrOutput{})
+	pulumi.RegisterOutputType(BudgetBudgetFilterCustomPeriodEndDateOutput{})
+	pulumi.RegisterOutputType(BudgetBudgetFilterCustomPeriodEndDatePtrOutput{})
+	pulumi.RegisterOutputType(BudgetBudgetFilterCustomPeriodStartDateOutput{})
+	pulumi.RegisterOutputType(BudgetBudgetFilterCustomPeriodStartDatePtrOutput{})
 	pulumi.RegisterOutputType(BudgetThresholdRuleOutput{})
 	pulumi.RegisterOutputType(BudgetThresholdRuleArrayOutput{})
 }

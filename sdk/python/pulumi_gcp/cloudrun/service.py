@@ -562,6 +562,73 @@ class Service(pulumi.CustomResource):
                 ),
             ])
         ```
+        ### Cloud Run Service Scheduled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        run_api = gcp.projects.Service("runApi",
+            project="my-project-name",
+            service="run.googleapis.com",
+            disable_dependent_services=True,
+            disable_on_destroy=False)
+        iam_api = gcp.projects.Service("iamApi",
+            project="my-project-name",
+            service="iam.googleapis.com",
+            disable_on_destroy=False)
+        resource_manager_api = gcp.projects.Service("resourceManagerApi",
+            project="my-project-name",
+            service="cloudresourcemanager.googleapis.com",
+            disable_on_destroy=False)
+        scheduler_api = gcp.projects.Service("schedulerApi",
+            project="my-project-name",
+            service="cloudscheduler.googleapis.com",
+            disable_on_destroy=False)
+        default_service = gcp.cloudrun.Service("defaultService",
+            project="my-project-name",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[run_api]))
+        default_account = gcp.service_account.Account("defaultAccount",
+            project="my-project-name",
+            account_id="scheduler-sa",
+            description="Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
+            display_name="scheduler-sa",
+            opts=pulumi.ResourceOptions(depends_on=[iam_api]))
+        default_job = gcp.cloudscheduler.Job("defaultJob",
+            description="Invoke a Cloud Run container on a schedule.",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                retry_count=1,
+            ),
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="POST",
+                uri=default_service.statuses.apply(lambda statuses: f"{statuses[0].url}/"),
+                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
+                    service_account_email=default_account.email,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[scheduler_api]))
+        default_iam_member = gcp.cloudrun.IamMember("defaultIamMember",
+            project="my-project-name",
+            location=default_service.location,
+            service=default_service.name,
+            role="roles/run.invoker",
+            member=default_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
         ### Cloud Run Service Secret Environment Variables
 
         ```python
@@ -669,6 +736,31 @@ class Service(pulumi.CustomResource):
             autogenerate_revision_name=True,
             opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         ```
+        ### Cloud Run Service Ingress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/ingress": "internal",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        ```
         ### Eventarc Basic Tf
 
         ```python
@@ -757,6 +849,281 @@ class Service(pulumi.CustomResource):
             service_account=f"{project_project.number}-compute@developer.gserviceaccount.com",
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[eventarc]))
+        ```
+        ### Cloud Run Service Multiple Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Cloud Run service replicated across multiple GCP regions
+        compute_api = gcp.projects.Service("computeApi",
+            project="my-project-name",
+            service="compute.googleapis.com",
+            disable_dependent_services=True,
+            disable_on_destroy=False)
+        run_api = gcp.projects.Service("runApi",
+            project="my-project-name",
+            service="run.googleapis.com",
+            disable_dependent_services=True,
+            disable_on_destroy=False)
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        run_regions = config.get_object("runRegions")
+        if run_regions is None:
+            run_regions = [
+                "us-central1",
+                "europe-west1",
+            ]
+        lb_default_global_address = gcp.compute.GlobalAddress("lbDefaultGlobalAddress", project="my-project-name",
+        opts=pulumi.ResourceOptions(depends_on=[compute_api]))
+        run_default = []
+        for range in [{"value": i} for i in range(0, len(run_regions))]:
+            run_default.append(gcp.cloudrun.Service(f"runDefault-{range['value']}",
+                project="my-project-name",
+                location=run_regions[range["value"]],
+                template=gcp.cloudrun.ServiceTemplateArgs(
+                    spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                        containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                        )],
+                    ),
+                ),
+                traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    latest_revision=True,
+                )],
+                opts=pulumi.ResourceOptions(depends_on=[run_api])))
+        lb_default_region_network_endpoint_group = []
+        for range in [{"value": i} for i in range(0, len(run_regions))]:
+            lb_default_region_network_endpoint_group.append(gcp.compute.RegionNetworkEndpointGroup(f"lbDefaultRegionNetworkEndpointGroup-{range['value']}",
+                project="my-project-name",
+                network_endpoint_type="SERVERLESS",
+                region=run_regions[range["value"]],
+                cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArgs(
+                    service=run_default[count["index"]].name,
+                )))
+        lb_default_backend_service = gcp.compute.BackendService("lbDefaultBackendService",
+            project="my-project-name",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[
+                gcp.compute.BackendServiceBackendArgs(
+                    balancing_mode="UTILIZATION",
+                    capacity_scaler=0.85,
+                    group=lb_default_region_network_endpoint_group[0].id,
+                ),
+                gcp.compute.BackendServiceBackendArgs(
+                    balancing_mode="UTILIZATION",
+                    capacity_scaler=0.85,
+                    group=lb_default_region_network_endpoint_group[1].id,
+                ),
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[compute_api]))
+        lb_default_url_map = gcp.compute.URLMap("lbDefaultURLMap",
+            project="my-project-name",
+            default_service=lb_default_backend_service.id,
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=lb_default_backend_service.id,
+                route_rules=[gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                    priority=1,
+                    url_redirect=gcp.compute.URLMapPathMatcherRouteRuleUrlRedirectArgs(
+                        https_redirect=True,
+                        redirect_response_code="MOVED_PERMANENTLY_DEFAULT",
+                    ),
+                )],
+            )])
+        lb_default_managed_ssl_certificate = gcp.compute.ManagedSslCertificate("lbDefaultManagedSslCertificate",
+            project="my-project-name",
+            managed=gcp.compute.ManagedSslCertificateManagedArgs(
+                domains=[domain_name],
+            ))
+        lb_default_target_https_proxy = gcp.compute.TargetHttpsProxy("lbDefaultTargetHttpsProxy",
+            project="my-project-name",
+            url_map=lb_default_url_map.id,
+            ssl_certificates=[lb_default_managed_ssl_certificate.name],
+            opts=pulumi.ResourceOptions(depends_on=[lb_default_managed_ssl_certificate]))
+        lb_default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("lbDefaultGlobalForwardingRule",
+            project="my-project-name",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            target=lb_default_target_https_proxy.id,
+            ip_address=lb_default_global_address.id,
+            port_range="443",
+            opts=pulumi.ResourceOptions(depends_on=[lb_default_target_https_proxy]))
+        pulumi.export("loadBalancerIpAddr", lb_default_global_address.address)
+        run_allow_unauthenticated = []
+        for range in [{"value": i} for i in range(0, len(run_regions))]:
+            run_allow_unauthenticated.append(gcp.cloudrun.IamMember(f"runAllowUnauthenticated-{range['value']}",
+                project="my-project-name",
+                location=run_default[range["value"]].location,
+                service=run_default[range["value"]].name,
+                role="roles/run.invoker",
+                member="allUsers"))
+        https_default_url_map = gcp.compute.URLMap("httpsDefaultURLMap",
+            project="my-project-name",
+            default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
+                redirect_response_code="MOVED_PERMANENTLY_DEFAULT",
+                https_redirect=True,
+                strip_query=False,
+            ))
+        https_default_target_http_proxy = gcp.compute.TargetHttpProxy("httpsDefaultTargetHttpProxy",
+            project="my-project-name",
+            url_map=https_default_url_map.id,
+            opts=pulumi.ResourceOptions(depends_on=[https_default_url_map]))
+        https_default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("httpsDefaultGlobalForwardingRule",
+            project="my-project-name",
+            target=https_default_target_http_proxy.id,
+            ip_address=lb_default_global_address.id,
+            port_range="80",
+            opts=pulumi.ResourceOptions(depends_on=[https_default_target_http_proxy]))
+        ```
+        ### Cloud Run Service Remove Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=0,
+                    revision_name="cloudrun-srv-blue",
+                ),
+            ])
+        ```
+        ### Cloud Run Service Deploy Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    name="cloudrun-srv-blue",
+                ),
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=0,
+                    revision_name="cloudrun-srv-blue",
+                    tag="tag-name",
+                ),
+            ])
+        ```
+        ### Cloud Run Service Add Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=0,
+                    revision_name="cloudrun-srv-blue",
+                    tag="tag-name",
+                ),
+            ])
+        ```
+        ### Cloud Run Service Traffic Gradual Rollout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            autogenerate_revision_name=True,
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    latest_revision=True,
+                    percent=0,
+                ),
+            ])
+        ```
+        ### Cloud Run Service Traffic Latest Revision
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        ```
+        ### Cloud Run Service Traffic Rollback
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                revision_name="cloudrun-srv-green",
+            )])
+        ```
+        ### Cloud Run Service Traffic Split Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=50,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=50,
+                    tag="tag-name",
+                ),
+            ])
         ```
 
         ## Import
@@ -1019,6 +1386,73 @@ class Service(pulumi.CustomResource):
                 ),
             ])
         ```
+        ### Cloud Run Service Scheduled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        run_api = gcp.projects.Service("runApi",
+            project="my-project-name",
+            service="run.googleapis.com",
+            disable_dependent_services=True,
+            disable_on_destroy=False)
+        iam_api = gcp.projects.Service("iamApi",
+            project="my-project-name",
+            service="iam.googleapis.com",
+            disable_on_destroy=False)
+        resource_manager_api = gcp.projects.Service("resourceManagerApi",
+            project="my-project-name",
+            service="cloudresourcemanager.googleapis.com",
+            disable_on_destroy=False)
+        scheduler_api = gcp.projects.Service("schedulerApi",
+            project="my-project-name",
+            service="cloudscheduler.googleapis.com",
+            disable_on_destroy=False)
+        default_service = gcp.cloudrun.Service("defaultService",
+            project="my-project-name",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[run_api]))
+        default_account = gcp.service_account.Account("defaultAccount",
+            project="my-project-name",
+            account_id="scheduler-sa",
+            description="Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
+            display_name="scheduler-sa",
+            opts=pulumi.ResourceOptions(depends_on=[iam_api]))
+        default_job = gcp.cloudscheduler.Job("defaultJob",
+            description="Invoke a Cloud Run container on a schedule.",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                retry_count=1,
+            ),
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="POST",
+                uri=default_service.statuses.apply(lambda statuses: f"{statuses[0].url}/"),
+                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
+                    service_account_email=default_account.email,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[scheduler_api]))
+        default_iam_member = gcp.cloudrun.IamMember("defaultIamMember",
+            project="my-project-name",
+            location=default_service.location,
+            service=default_service.name,
+            role="roles/run.invoker",
+            member=default_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
         ### Cloud Run Service Secret Environment Variables
 
         ```python
@@ -1126,6 +1560,31 @@ class Service(pulumi.CustomResource):
             autogenerate_revision_name=True,
             opts=pulumi.ResourceOptions(depends_on=[secret_version_data]))
         ```
+        ### Cloud Run Service Ingress
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/ingress": "internal",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        ```
         ### Eventarc Basic Tf
 
         ```python
@@ -1214,6 +1673,281 @@ class Service(pulumi.CustomResource):
             service_account=f"{project_project.number}-compute@developer.gserviceaccount.com",
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[eventarc]))
+        ```
+        ### Cloud Run Service Multiple Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Cloud Run service replicated across multiple GCP regions
+        compute_api = gcp.projects.Service("computeApi",
+            project="my-project-name",
+            service="compute.googleapis.com",
+            disable_dependent_services=True,
+            disable_on_destroy=False)
+        run_api = gcp.projects.Service("runApi",
+            project="my-project-name",
+            service="run.googleapis.com",
+            disable_dependent_services=True,
+            disable_on_destroy=False)
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        run_regions = config.get_object("runRegions")
+        if run_regions is None:
+            run_regions = [
+                "us-central1",
+                "europe-west1",
+            ]
+        lb_default_global_address = gcp.compute.GlobalAddress("lbDefaultGlobalAddress", project="my-project-name",
+        opts=pulumi.ResourceOptions(depends_on=[compute_api]))
+        run_default = []
+        for range in [{"value": i} for i in range(0, len(run_regions))]:
+            run_default.append(gcp.cloudrun.Service(f"runDefault-{range['value']}",
+                project="my-project-name",
+                location=run_regions[range["value"]],
+                template=gcp.cloudrun.ServiceTemplateArgs(
+                    spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                        containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                        )],
+                    ),
+                ),
+                traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    latest_revision=True,
+                )],
+                opts=pulumi.ResourceOptions(depends_on=[run_api])))
+        lb_default_region_network_endpoint_group = []
+        for range in [{"value": i} for i in range(0, len(run_regions))]:
+            lb_default_region_network_endpoint_group.append(gcp.compute.RegionNetworkEndpointGroup(f"lbDefaultRegionNetworkEndpointGroup-{range['value']}",
+                project="my-project-name",
+                network_endpoint_type="SERVERLESS",
+                region=run_regions[range["value"]],
+                cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArgs(
+                    service=run_default[count["index"]].name,
+                )))
+        lb_default_backend_service = gcp.compute.BackendService("lbDefaultBackendService",
+            project="my-project-name",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[
+                gcp.compute.BackendServiceBackendArgs(
+                    balancing_mode="UTILIZATION",
+                    capacity_scaler=0.85,
+                    group=lb_default_region_network_endpoint_group[0].id,
+                ),
+                gcp.compute.BackendServiceBackendArgs(
+                    balancing_mode="UTILIZATION",
+                    capacity_scaler=0.85,
+                    group=lb_default_region_network_endpoint_group[1].id,
+                ),
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[compute_api]))
+        lb_default_url_map = gcp.compute.URLMap("lbDefaultURLMap",
+            project="my-project-name",
+            default_service=lb_default_backend_service.id,
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=lb_default_backend_service.id,
+                route_rules=[gcp.compute.URLMapPathMatcherRouteRuleArgs(
+                    priority=1,
+                    url_redirect=gcp.compute.URLMapPathMatcherRouteRuleUrlRedirectArgs(
+                        https_redirect=True,
+                        redirect_response_code="MOVED_PERMANENTLY_DEFAULT",
+                    ),
+                )],
+            )])
+        lb_default_managed_ssl_certificate = gcp.compute.ManagedSslCertificate("lbDefaultManagedSslCertificate",
+            project="my-project-name",
+            managed=gcp.compute.ManagedSslCertificateManagedArgs(
+                domains=[domain_name],
+            ))
+        lb_default_target_https_proxy = gcp.compute.TargetHttpsProxy("lbDefaultTargetHttpsProxy",
+            project="my-project-name",
+            url_map=lb_default_url_map.id,
+            ssl_certificates=[lb_default_managed_ssl_certificate.name],
+            opts=pulumi.ResourceOptions(depends_on=[lb_default_managed_ssl_certificate]))
+        lb_default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("lbDefaultGlobalForwardingRule",
+            project="my-project-name",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            target=lb_default_target_https_proxy.id,
+            ip_address=lb_default_global_address.id,
+            port_range="443",
+            opts=pulumi.ResourceOptions(depends_on=[lb_default_target_https_proxy]))
+        pulumi.export("loadBalancerIpAddr", lb_default_global_address.address)
+        run_allow_unauthenticated = []
+        for range in [{"value": i} for i in range(0, len(run_regions))]:
+            run_allow_unauthenticated.append(gcp.cloudrun.IamMember(f"runAllowUnauthenticated-{range['value']}",
+                project="my-project-name",
+                location=run_default[range["value"]].location,
+                service=run_default[range["value"]].name,
+                role="roles/run.invoker",
+                member="allUsers"))
+        https_default_url_map = gcp.compute.URLMap("httpsDefaultURLMap",
+            project="my-project-name",
+            default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
+                redirect_response_code="MOVED_PERMANENTLY_DEFAULT",
+                https_redirect=True,
+                strip_query=False,
+            ))
+        https_default_target_http_proxy = gcp.compute.TargetHttpProxy("httpsDefaultTargetHttpProxy",
+            project="my-project-name",
+            url_map=https_default_url_map.id,
+            opts=pulumi.ResourceOptions(depends_on=[https_default_url_map]))
+        https_default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("httpsDefaultGlobalForwardingRule",
+            project="my-project-name",
+            target=https_default_target_http_proxy.id,
+            ip_address=lb_default_global_address.id,
+            port_range="80",
+            opts=pulumi.ResourceOptions(depends_on=[https_default_target_http_proxy]))
+        ```
+        ### Cloud Run Service Remove Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=0,
+                    revision_name="cloudrun-srv-blue",
+                ),
+            ])
+        ```
+        ### Cloud Run Service Deploy Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    name="cloudrun-srv-blue",
+                ),
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=0,
+                    revision_name="cloudrun-srv-blue",
+                    tag="tag-name",
+                ),
+            ])
+        ```
+        ### Cloud Run Service Add Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=0,
+                    revision_name="cloudrun-srv-blue",
+                    tag="tag-name",
+                ),
+            ])
+        ```
+        ### Cloud Run Service Traffic Gradual Rollout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            autogenerate_revision_name=True,
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=100,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    latest_revision=True,
+                    percent=0,
+                ),
+            ])
+        ```
+        ### Cloud Run Service Traffic Latest Revision
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        ```
+        ### Cloud Run Service Traffic Rollback
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                revision_name="cloudrun-srv-green",
+            )])
+        ```
+        ### Cloud Run Service Traffic Split Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=50,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=50,
+                    tag="tag-name",
+                ),
+            ])
         ```
 
         ## Import

@@ -10,18 +10,24 @@ import java.util.Objects;
 @CustomType
 public final class GetDatabaseInstanceSettingLocationPreference {
     private final String followGaeApplication;
+    private final String secondaryZone;
     private final String zone;
 
     @CustomType.Constructor
     private GetDatabaseInstanceSettingLocationPreference(
         @CustomType.Parameter("followGaeApplication") String followGaeApplication,
+        @CustomType.Parameter("secondaryZone") String secondaryZone,
         @CustomType.Parameter("zone") String zone) {
         this.followGaeApplication = followGaeApplication;
+        this.secondaryZone = secondaryZone;
         this.zone = zone;
     }
 
     public String followGaeApplication() {
         return this.followGaeApplication;
+    }
+    public String secondaryZone() {
+        return this.secondaryZone;
     }
     public String zone() {
         return this.zone;
@@ -37,6 +43,7 @@ public final class GetDatabaseInstanceSettingLocationPreference {
 
     public static final class Builder {
         private String followGaeApplication;
+        private String secondaryZone;
         private String zone;
 
         public Builder() {
@@ -46,6 +53,7 @@ public final class GetDatabaseInstanceSettingLocationPreference {
         public Builder(GetDatabaseInstanceSettingLocationPreference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.followGaeApplication = defaults.followGaeApplication;
+    	      this.secondaryZone = defaults.secondaryZone;
     	      this.zone = defaults.zone;
         }
 
@@ -53,11 +61,15 @@ public final class GetDatabaseInstanceSettingLocationPreference {
             this.followGaeApplication = Objects.requireNonNull(followGaeApplication);
             return this;
         }
+        public Builder secondaryZone(String secondaryZone) {
+            this.secondaryZone = Objects.requireNonNull(secondaryZone);
+            return this;
+        }
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
         }        public GetDatabaseInstanceSettingLocationPreference build() {
-            return new GetDatabaseInstanceSettingLocationPreference(followGaeApplication, zone);
+            return new GetDatabaseInstanceSettingLocationPreference(followGaeApplication, secondaryZone, zone);
         }
     }
 }

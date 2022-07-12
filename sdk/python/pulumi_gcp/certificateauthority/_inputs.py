@@ -24,6 +24,8 @@ __all__ = [
     'AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs',
     'AuthorityConfigX509ConfigPolicyIdArgs',
     'AuthorityKeySpecArgs',
+    'AuthoritySubordinateConfigArgs',
+    'AuthoritySubordinateConfigPemIssuerChainArgs',
     'CaPoolIamBindingConditionArgs',
     'CaPoolIamMemberConditionArgs',
     'CaPoolIssuancePolicyArgs',
@@ -1068,6 +1070,78 @@ class AuthorityKeySpecArgs:
     @cloud_kms_key_version.setter
     def cloud_kms_key_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_kms_key_version", value)
+
+
+@pulumi.input_type
+class AuthoritySubordinateConfigArgs:
+    def __init__(__self__, *,
+                 certificate_authority: Optional[pulumi.Input[str]] = None,
+                 pem_issuer_chain: Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgs']] = None):
+        """
+        :param pulumi.Input[str] certificate_authority: This can refer to a CertificateAuthority that was used to create a
+               subordinate CertificateAuthority. This field is used for information
+               and usability purposes only. The resource name is in the format
+               `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        :param pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgs'] pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+               but not pem certificate for this CA itself.
+               Structure is documented below.
+        """
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if pem_issuer_chain is not None:
+            pulumi.set(__self__, "pem_issuer_chain", pem_issuer_chain)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        This can refer to a CertificateAuthority that was used to create a
+        subordinate CertificateAuthority. This field is used for information
+        and usability purposes only. The resource name is in the format
+        `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @certificate_authority.setter
+    def certificate_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter(name="pemIssuerChain")
+    def pem_issuer_chain(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgs']]:
+        """
+        Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+        but not pem certificate for this CA itself.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pem_issuer_chain")
+
+    @pem_issuer_chain.setter
+    def pem_issuer_chain(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigPemIssuerChainArgs']]):
+        pulumi.set(self, "pem_issuer_chain", value)
+
+
+@pulumi.input_type
+class AuthoritySubordinateConfigPemIssuerChainArgs:
+    def __init__(__self__, *,
+                 pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Expected to be in leaf-to-root order according to RFC 5246.
+        """
+        if pem_certificates is not None:
+            pulumi.set(__self__, "pem_certificates", pem_certificates)
+
+    @property
+    @pulumi.getter(name="pemCertificates")
+    def pem_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Expected to be in leaf-to-root order according to RFC 5246.
+        """
+        return pulumi.get(self, "pem_certificates")
+
+    @pem_certificates.setter
+    def pem_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pem_certificates", value)
 
 
 @pulumi.input_type

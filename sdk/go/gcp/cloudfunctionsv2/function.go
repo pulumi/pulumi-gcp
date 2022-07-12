@@ -80,7 +80,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("test-service-account"),
+// 			AccountId:   pulumi.String("s-a"),
 // 			DisplayName: pulumi.String("Test Service Account"),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
@@ -109,7 +109,7 @@ import (
 // 			Description: pulumi.String("a new function"),
 // 			BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
 // 				Runtime:    pulumi.String("nodejs16"),
-// 				EntryPoint: pulumi.String("helloHttp"),
+// 				EntryPoint: pulumi.String("helloPubSub"),
 // 				EnvironmentVariables: pulumi.StringMap{
 // 					"BUILD_CONFIG_TEST": pulumi.String("build_test"),
 // 				},

@@ -56,7 +56,7 @@ class FunctionArgs:
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
-        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. The following options are available:
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -250,7 +250,7 @@ class FunctionArgs:
     @pulumi.getter(name="httpsTriggerSecurityLevel")
     def https_trigger_security_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        The security level for the function. The following options are available:
         """
         return pulumi.get(self, "https_trigger_security_level")
 
@@ -531,7 +531,7 @@ class _FunctionState:
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
-        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. The following options are available:
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -715,7 +715,7 @@ class _FunctionState:
     @pulumi.getter(name="httpsTriggerSecurityLevel")
     def https_trigger_security_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        The security level for the function. The following options are available:
         """
         return pulumi.get(self, "https_trigger_security_level")
 
@@ -1059,6 +1059,7 @@ class Function(pulumi.CustomResource):
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
             trigger_http=True,
+            https_trigger_security_level="SECURE_ALWAYS",
             timeout=60,
             entry_point="helloGET",
             labels={
@@ -1098,7 +1099,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
-        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. The following options are available:
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -1186,6 +1187,7 @@ class Function(pulumi.CustomResource):
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
             trigger_http=True,
+            https_trigger_security_level="SECURE_ALWAYS",
             timeout=60,
             entry_point="helloGET",
             labels={
@@ -1356,7 +1358,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
-        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        :param pulumi.Input[str] https_trigger_security_level: The security level for the function. The following options are available:
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
         :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
@@ -1484,7 +1486,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="httpsTriggerSecurityLevel")
     def https_trigger_security_level(self) -> pulumi.Output[str]:
         """
-        The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+        The security level for the function. The following options are available:
         """
         return pulumi.get(self, "https_trigger_security_level")
 

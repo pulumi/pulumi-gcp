@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.Compute
     ///                 new Gcp.Compute.Inputs.InstanceGroupManagerNamedPortArgs
     ///                 {
     ///                     Name = "tcp",
-    ///                     Port = 110,
+    ///                     Port = 80,
     ///                 },
     ///             },
     ///             Versions = 
@@ -987,9 +987,21 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     public MyStack()
     ///     {
-    ///         // Roughly mirrors https://cloud.google.com/load-balancing/docs/https/setting-up-ext-https-hybrid
+    ///         var config = new Config();
+    ///         var subnetworkCidr = config.Get("subnetworkCidr") ?? "10.0.0.0/24";
     ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
     ///         {
+    ///         });
+    ///         var internalNetwork = new Gcp.Compute.Network("internalNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var internalSubnetwork = new Gcp.Compute.Subnetwork("internalSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             Network = internalNetwork.Id,
+    ///             IpCidrRange = subnetworkCidr,
+    ///             Region = "us-central1",
+    ///             PrivateIpGoogleAccess = true,
     ///         });
     ///         // Zonal NEG with GCE_VM_IP_PORT
     ///         var defaultNetworkEndpointGroup = new Gcp.Compute.NetworkEndpointGroup("defaultNetworkEndpointGroup", new Gcp.Compute.NetworkEndpointGroupArgs
@@ -998,6 +1010,14 @@ namespace Pulumi.Gcp.Compute
     ///             DefaultPort = 90,
     ///             Zone = "us-central1-a",
     ///             NetworkEndpointType = "GCE_VM_IP_PORT",
+    ///         });
+    ///         // Zonal NEG with GCE_VM_IP
+    ///         var internalNetworkEndpointGroup = new Gcp.Compute.NetworkEndpointGroup("internalNetworkEndpointGroup", new Gcp.Compute.NetworkEndpointGroupArgs
+    ///         {
+    ///             Network = internalNetwork.Id,
+    ///             Subnetwork = internalSubnetwork.Id,
+    ///             Zone = "us-central1-a",
+    ///             NetworkEndpointType = "GCE_VM_IP",
     ///         });
     ///         // Hybrid connectivity NEG
     ///         var hybridNetworkEndpointGroup = new Gcp.Compute.NetworkEndpointGroup("hybridNetworkEndpointGroup", new Gcp.Compute.NetworkEndpointGroupArgs

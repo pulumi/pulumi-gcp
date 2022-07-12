@@ -11,6 +11,7 @@ import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsInsightsConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsIpConfiguration;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsLocationPreference;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsMaintenanceWindow;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsSqlServerAuditConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -71,6 +72,7 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private final @Nullable String pricingPlan;
+    private final @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
     /**
      * @return The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
      * for more details and supported versions. Postgres supports only shared-core machine types,
@@ -102,6 +104,7 @@ public final class DatabaseInstanceSettings {
         @CustomType.Parameter("locationPreference") @Nullable DatabaseInstanceSettingsLocationPreference locationPreference,
         @CustomType.Parameter("maintenanceWindow") @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow,
         @CustomType.Parameter("pricingPlan") @Nullable String pricingPlan,
+        @CustomType.Parameter("sqlServerAuditConfig") @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig,
         @CustomType.Parameter("tier") String tier,
         @CustomType.Parameter("userLabels") @Nullable Map<String,String> userLabels,
         @CustomType.Parameter("version") @Nullable Integer version) {
@@ -120,6 +123,7 @@ public final class DatabaseInstanceSettings {
         this.locationPreference = locationPreference;
         this.maintenanceWindow = maintenanceWindow;
         this.pricingPlan = pricingPlan;
+        this.sqlServerAuditConfig = sqlServerAuditConfig;
         this.tier = tier;
         this.userLabels = userLabels;
         this.version = version;
@@ -204,6 +208,9 @@ public final class DatabaseInstanceSettings {
     public Optional<String> pricingPlan() {
         return Optional.ofNullable(this.pricingPlan);
     }
+    public Optional<DatabaseInstanceSettingsSqlServerAuditConfig> sqlServerAuditConfig() {
+        return Optional.ofNullable(this.sqlServerAuditConfig);
+    }
     /**
      * @return The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
      * for more details and supported versions. Postgres supports only shared-core machine types,
@@ -248,6 +255,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
         private @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
         private @Nullable String pricingPlan;
+        private @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
         private String tier;
         private @Nullable Map<String,String> userLabels;
         private @Nullable Integer version;
@@ -273,6 +281,7 @@ public final class DatabaseInstanceSettings {
     	      this.locationPreference = defaults.locationPreference;
     	      this.maintenanceWindow = defaults.maintenanceWindow;
     	      this.pricingPlan = defaults.pricingPlan;
+    	      this.sqlServerAuditConfig = defaults.sqlServerAuditConfig;
     	      this.tier = defaults.tier;
     	      this.userLabels = defaults.userLabels;
     	      this.version = defaults.version;
@@ -341,6 +350,10 @@ public final class DatabaseInstanceSettings {
             this.pricingPlan = pricingPlan;
             return this;
         }
+        public Builder sqlServerAuditConfig(@Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig) {
+            this.sqlServerAuditConfig = sqlServerAuditConfig;
+            return this;
+        }
         public Builder tier(String tier) {
             this.tier = Objects.requireNonNull(tier);
             return this;
@@ -353,7 +366,7 @@ public final class DatabaseInstanceSettings {
             this.version = version;
             return this;
         }        public DatabaseInstanceSettings build() {
-            return new DatabaseInstanceSettings(activationPolicy, activeDirectoryConfig, availabilityType, backupConfiguration, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfig, ipConfiguration, locationPreference, maintenanceWindow, pricingPlan, tier, userLabels, version);
+            return new DatabaseInstanceSettings(activationPolicy, activeDirectoryConfig, availabilityType, backupConfiguration, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfig, ipConfiguration, locationPreference, maintenanceWindow, pricingPlan, sqlServerAuditConfig, tier, userLabels, version);
         }
     }
 }

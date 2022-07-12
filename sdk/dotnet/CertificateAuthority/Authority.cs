@@ -95,17 +95,73 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// {
     ///     public MyStack()
     ///     {
-    ///         var @default = new Gcp.CertificateAuthority.Authority("default", new Gcp.CertificateAuthority.AuthorityArgs
+    ///         var root_ca = new Gcp.CertificateAuthority.Authority("root-ca", new Gcp.CertificateAuthority.AuthorityArgs
     ///         {
-    ///             CertificateAuthorityId = "my-certificate-authority",
+    ///             Pool = "ca-pool",
+    ///             CertificateAuthorityId = "my-certificate-authority-root",
+    ///             Location = "us-central1",
+    ///             DeletionProtection = false,
+    ///             IgnoreActiveCertificatesOnDeletion = true,
     ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///             {
     ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
     ///                 {
     ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                     {
-    ///                         CommonName = "my-subordinate-authority",
     ///                         Organization = "HashiCorp",
+    ///                         CommonName = "my-certificate-authority",
+    ///                     },
+    ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+    ///                     {
+    ///                         DnsNames = 
+    ///                         {
+    ///                             "hashicorp.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///                 {
+    ///                     CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                     {
+    ///                         IsCa = true,
+    ///                     },
+    ///                     KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                     {
+    ///                         BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                         {
+    ///                             CertSign = true,
+    ///                             CrlSign = true,
+    ///                         },
+    ///                         ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                         {
+    ///                             ServerAuth = false,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///             {
+    ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///             },
+    ///         });
+    ///         var @default = new Gcp.CertificateAuthority.Authority("default", new Gcp.CertificateAuthority.AuthorityArgs
+    ///         {
+    ///             Pool = "ca-pool",
+    ///             CertificateAuthorityId = "my-certificate-authority-sub",
+    ///             Location = "us-central1",
+    ///             DeletionProtection = true,
+    ///             SubordinateConfig = new Gcp.CertificateAuthority.Inputs.AuthoritySubordinateConfigArgs
+    ///             {
+    ///                 CertificateAuthority = root_ca.Name,
+    ///             },
+    ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///             {
+    ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///                 {
+    ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                     {
+    ///                         Organization = "HashiCorp",
+    ///                         CommonName = "my-subordinate-authority",
     ///                     },
     ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
     ///                     {
@@ -126,34 +182,31 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     {
     ///                         BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
     ///                         {
-    ///                             CertSign = true,
-    ///                             ContentCommitment = true,
-    ///                             CrlSign = true,
-    ///                             DataEncipherment = true,
-    ///                             DecipherOnly = true,
     ///                             DigitalSignature = true,
-    ///                             KeyAgreement = true,
+    ///                             ContentCommitment = true,
     ///                             KeyEncipherment = false,
+    ///                             DataEncipherment = true,
+    ///                             KeyAgreement = true,
+    ///                             CertSign = true,
+    ///                             CrlSign = true,
+    ///                             DecipherOnly = true,
     ///                         },
     ///                         ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
     ///                         {
-    ///                             ClientAuth = false,
-    ///                             CodeSigning = true,
-    ///                             EmailProtection = true,
     ///                             ServerAuth = true,
+    ///                             ClientAuth = false,
+    ///                             EmailProtection = true,
+    ///                             CodeSigning = true,
     ///                             TimeStamping = true,
     ///                         },
     ///                     },
     ///                 },
     ///             },
-    ///             DeletionProtection = true,
+    ///             Lifetime = "86400s",
     ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///             {
     ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
     ///             },
-    ///             Lifetime = "86400s",
-    ///             Location = "us-central1",
-    ///             Pool = "ca-pool",
     ///             Type = "SUBORDINATE",
     ///         });
     ///     }
@@ -356,6 +409,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        /// </summary>
+        [Output("pemCaCertificate")]
+        public Output<string?> PemCaCertificate { get; private set; } = null!;
+
+        /// <summary>
         /// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
         /// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
         /// current CertificateAuthority's certificate.
@@ -383,10 +442,17 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// If this is a subordinate CertificateAuthority, this field will be set
+        /// with the subordinate configuration, which describes its issuers.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("subordinateConfig")]
+        public Output<Outputs.AuthoritySubordinateConfig?> SubordinateConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The Type of this CertificateAuthority.
         /// &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        /// be manually activated (via Cloud Console of `gcloud`) before they can
-        /// issue certificates.
+        /// be activated before they can issue certificates.
         /// Default value is `SELF_SIGNED`.
         /// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         /// </summary>
@@ -524,6 +590,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        /// </summary>
+        [Input("pemCaCertificate")]
+        public Input<string>? PemCaCertificate { get; set; }
+
+        /// <summary>
         /// The name of the CaPool this Certificate Authority belongs to.
         /// </summary>
         [Input("pool", required: true)]
@@ -537,10 +609,17 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// If this is a subordinate CertificateAuthority, this field will be set
+        /// with the subordinate configuration, which describes its issuers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("subordinateConfig")]
+        public Input<Inputs.AuthoritySubordinateConfigArgs>? SubordinateConfig { get; set; }
+
+        /// <summary>
         /// The Type of this CertificateAuthority.
         /// &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        /// be manually activated (via Cloud Console of `gcloud`) before they can
-        /// issue certificates.
+        /// be activated before they can issue certificates.
         /// Default value is `SELF_SIGNED`.
         /// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         /// </summary>
@@ -656,6 +735,12 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        /// </summary>
+        [Input("pemCaCertificate")]
+        public Input<string>? PemCaCertificate { get; set; }
+
         [Input("pemCaCertificates")]
         private InputList<string>? _pemCaCertificates;
 
@@ -690,10 +775,17 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? State { get; set; }
 
         /// <summary>
+        /// If this is a subordinate CertificateAuthority, this field will be set
+        /// with the subordinate configuration, which describes its issuers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("subordinateConfig")]
+        public Input<Inputs.AuthoritySubordinateConfigGetArgs>? SubordinateConfig { get; set; }
+
+        /// <summary>
         /// The Type of this CertificateAuthority.
         /// &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        /// be manually activated (via Cloud Console of `gcloud`) before they can
-        /// issue certificates.
+        /// be activated before they can issue certificates.
         /// Default value is `SELF_SIGNED`.
         /// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
         /// </summary>

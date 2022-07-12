@@ -26,6 +26,7 @@ public final class GetInstanceResult {
     private final String connectMode;
     private final String createTime;
     private final String currentLocationId;
+    private final String customerManagedKey;
     private final String displayName;
     private final String host;
     /**
@@ -65,6 +66,7 @@ public final class GetInstanceResult {
         @CustomType.Parameter("connectMode") String connectMode,
         @CustomType.Parameter("createTime") String createTime,
         @CustomType.Parameter("currentLocationId") String currentLocationId,
+        @CustomType.Parameter("customerManagedKey") String customerManagedKey,
         @CustomType.Parameter("displayName") String displayName,
         @CustomType.Parameter("host") String host,
         @CustomType.Parameter("id") String id,
@@ -97,6 +99,7 @@ public final class GetInstanceResult {
         this.connectMode = connectMode;
         this.createTime = createTime;
         this.currentLocationId = currentLocationId;
+        this.customerManagedKey = customerManagedKey;
         this.displayName = displayName;
         this.host = host;
         this.id = id;
@@ -144,6 +147,9 @@ public final class GetInstanceResult {
     }
     public String currentLocationId() {
         return this.currentLocationId;
+    }
+    public String customerManagedKey() {
+        return this.customerManagedKey;
     }
     public String displayName() {
         return this.displayName;
@@ -241,6 +247,7 @@ public final class GetInstanceResult {
         private String connectMode;
         private String createTime;
         private String currentLocationId;
+        private String customerManagedKey;
         private String displayName;
         private String host;
         private String id;
@@ -280,6 +287,7 @@ public final class GetInstanceResult {
     	      this.connectMode = defaults.connectMode;
     	      this.createTime = defaults.createTime;
     	      this.currentLocationId = defaults.currentLocationId;
+    	      this.customerManagedKey = defaults.customerManagedKey;
     	      this.displayName = defaults.displayName;
     	      this.host = defaults.host;
     	      this.id = defaults.id;
@@ -333,6 +341,10 @@ public final class GetInstanceResult {
         }
         public Builder currentLocationId(String currentLocationId) {
             this.currentLocationId = Objects.requireNonNull(currentLocationId);
+            return this;
+        }
+        public Builder customerManagedKey(String customerManagedKey) {
+            this.customerManagedKey = Objects.requireNonNull(customerManagedKey);
             return this;
         }
         public Builder displayName(String displayName) {
@@ -447,7 +459,7 @@ public final class GetInstanceResult {
             this.transitEncryptionMode = Objects.requireNonNull(transitEncryptionMode);
             return this;
         }        public GetInstanceResult build() {
-            return new GetInstanceResult(alternativeLocationId, authEnabled, authString, authorizedNetwork, connectMode, createTime, currentLocationId, displayName, host, id, labels, locationId, maintenancePolicies, maintenanceSchedules, memorySizeGb, name, nodes, persistenceIamIdentity, port, project, readEndpoint, readEndpointPort, readReplicasMode, redisConfigs, redisVersion, region, replicaCount, reservedIpRange, secondaryIpRange, serverCaCerts, tier, transitEncryptionMode);
+            return new GetInstanceResult(alternativeLocationId, authEnabled, authString, authorizedNetwork, connectMode, createTime, currentLocationId, customerManagedKey, displayName, host, id, labels, locationId, maintenancePolicies, maintenanceSchedules, memorySizeGb, name, nodes, persistenceIamIdentity, port, project, readEndpoint, readEndpointPort, readReplicasMode, redisConfigs, redisVersion, region, replicaCount, reservedIpRange, secondaryIpRange, serverCaCerts, tier, transitEncryptionMode);
         }
     }
 }

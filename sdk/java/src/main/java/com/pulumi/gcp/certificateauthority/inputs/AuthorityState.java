@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityAccessUrlArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+import com.pulumi.gcp.certificateauthority.inputs.AuthoritySubordinateConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -239,6 +240,21 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
+     * 
+     */
+    @Import(name="pemCaCertificate")
+    private @Nullable Output<String> pemCaCertificate;
+
+    /**
+     * @return The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
+     * 
+     */
+    public Optional<Output<String>> pemCaCertificate() {
+        return Optional.ofNullable(this.pemCaCertificate);
+    }
+
+    /**
      * This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
      * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
      * current CertificateAuthority&#39;s certificate.
@@ -305,10 +321,28 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="subordinateConfig")
+    private @Nullable Output<AuthoritySubordinateConfigArgs> subordinateConfig;
+
+    /**
+     * @return If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AuthoritySubordinateConfigArgs>> subordinateConfig() {
+        return Optional.ofNullable(this.subordinateConfig);
+    }
+
+    /**
      * The Type of this CertificateAuthority.
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-     * be manually activated (via Cloud Console of `gcloud`) before they can
-     * issue certificates.
+     * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
      * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
      * 
@@ -319,8 +353,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Type of this CertificateAuthority.
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-     * be manually activated (via Cloud Console of `gcloud`) before they can
-     * issue certificates.
+     * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
      * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
      * 
@@ -362,10 +395,12 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         this.lifetime = $.lifetime;
         this.location = $.location;
         this.name = $.name;
+        this.pemCaCertificate = $.pemCaCertificate;
         this.pemCaCertificates = $.pemCaCertificates;
         this.pool = $.pool;
         this.project = $.project;
         this.state = $.state;
+        this.subordinateConfig = $.subordinateConfig;
         this.type = $.type;
         this.updateTime = $.updateTime;
     }
@@ -690,6 +725,27 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pemCaCertificate The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pemCaCertificate(@Nullable Output<String> pemCaCertificate) {
+            $.pemCaCertificate = pemCaCertificate;
+            return this;
+        }
+
+        /**
+         * @param pemCaCertificate The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pemCaCertificate(String pemCaCertificate) {
+            return pemCaCertificate(Output.of(pemCaCertificate));
+        }
+
+        /**
          * @param pemCaCertificates This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
          * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
          * current CertificateAuthority&#39;s certificate.
@@ -792,10 +848,34 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param subordinateConfig If this is a subordinate CertificateAuthority, this field will be set
+         * with the subordinate configuration, which describes its issuers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subordinateConfig(@Nullable Output<AuthoritySubordinateConfigArgs> subordinateConfig) {
+            $.subordinateConfig = subordinateConfig;
+            return this;
+        }
+
+        /**
+         * @param subordinateConfig If this is a subordinate CertificateAuthority, this field will be set
+         * with the subordinate configuration, which describes its issuers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subordinateConfig(AuthoritySubordinateConfigArgs subordinateConfig) {
+            return subordinateConfig(Output.of(subordinateConfig));
+        }
+
+        /**
          * @param type The Type of this CertificateAuthority.
          * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-         * be manually activated (via Cloud Console of `gcloud`) before they can
-         * issue certificates.
+         * be activated before they can issue certificates.
          * Default value is `SELF_SIGNED`.
          * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
          * 
@@ -810,8 +890,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The Type of this CertificateAuthority.
          * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-         * be manually activated (via Cloud Console of `gcloud`) before they can
-         * issue certificates.
+         * be activated before they can issue certificates.
          * Default value is `SELF_SIGNED`.
          * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
          * 

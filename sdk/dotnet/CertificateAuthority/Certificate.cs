@@ -542,7 +542,10 @@ namespace Pulumi.Gcp.CertificateAuthority
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>
-        /// Certificate Authority name.
+        /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+        /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+        /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        /// should be set to `my-ca`.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<string?> CertificateAuthority { get; private set; } = null!;
@@ -579,7 +582,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The resource name of the issuing CertificateAuthority in the format
-        /// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+        /// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
         /// </summary>
         [Output("issuerCertificateAuthority")]
         public Output<string> IssuerCertificateAuthority { get; private set; } = null!;
@@ -709,7 +712,10 @@ namespace Pulumi.Gcp.CertificateAuthority
     public sealed class CertificateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Certificate Authority name.
+        /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+        /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+        /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        /// should be set to `my-ca`.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
@@ -791,7 +797,10 @@ namespace Pulumi.Gcp.CertificateAuthority
     public sealed class CertificateState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Certificate Authority name.
+        /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
+        /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
+        /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+        /// should be set to `my-ca`.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
@@ -834,7 +843,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The resource name of the issuing CertificateAuthority in the format
-        /// projects/*/locations/*/caPools/*/certificateAuthorities/*.
+        /// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
         /// </summary>
         [Input("issuerCertificateAuthority")]
         public Input<string>? IssuerCertificateAuthority { get; set; }

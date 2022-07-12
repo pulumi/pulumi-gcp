@@ -13,6 +13,7 @@ import com.pulumi.gcp.certificateauthority.inputs.AuthorityState;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityAccessUrl;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfig;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityKeySpec;
+import com.pulumi.gcp.certificateauthority.outputs.AuthoritySubordinateConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -102,13 +103,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        
- *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
+ *         var root_ca = new Authority(&#34;root-ca&#34;, AuthorityArgs.builder()        
+ *             .pool(&#34;ca-pool&#34;)
+ *             .certificateAuthorityId(&#34;my-certificate-authority-root&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .deletionProtection(false)
+ *             .ignoreActiveCertificatesOnDeletion(true)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
- *                         .commonName(&#34;my-subordinate-authority&#34;)
  *                         .organization(&#34;HashiCorp&#34;)
+ *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .build())
+ *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
+ *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(false)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        
+ *             .pool(&#34;ca-pool&#34;)
+ *             .certificateAuthorityId(&#34;my-certificate-authority-sub&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .deletionProtection(&#34;true&#34;)
+ *             .subordinateConfig(AuthoritySubordinateConfigArgs.builder()
+ *                 .certificateAuthority(root_ca.name())
+ *                 .build())
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization(&#34;HashiCorp&#34;)
+ *                         .commonName(&#34;my-subordinate-authority&#34;)
  *                         .build())
  *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
  *                         .dnsNames(&#34;hashicorp.com&#34;)
@@ -121,32 +164,29 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
  *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
- *                             .certSign(true)
- *                             .contentCommitment(true)
- *                             .crlSign(true)
- *                             .dataEncipherment(true)
- *                             .decipherOnly(true)
  *                             .digitalSignature(true)
- *                             .keyAgreement(true)
+ *                             .contentCommitment(true)
  *                             .keyEncipherment(false)
+ *                             .dataEncipherment(true)
+ *                             .keyAgreement(true)
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .decipherOnly(true)
  *                             .build())
  *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
- *                             .clientAuth(false)
- *                             .codeSigning(true)
- *                             .emailProtection(true)
  *                             .serverAuth(true)
+ *                             .clientAuth(false)
+ *                             .emailProtection(true)
+ *                             .codeSigning(true)
  *                             .timeStamping(true)
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
- *             .deletionProtection(&#34;true&#34;)
+ *             .lifetime(&#34;86400s&#34;)
  *             .keySpec(AuthorityKeySpecArgs.builder()
  *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
  *                 .build())
- *             .lifetime(&#34;86400s&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .pool(&#34;ca-pool&#34;)
  *             .type(&#34;SUBORDINATE&#34;)
  *             .build());
  * 
@@ -450,6 +490,20 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
+     * 
+     */
+    @Export(name="pemCaCertificate", type=String.class, parameters={})
+    private Output</* @Nullable */ String> pemCaCertificate;
+
+    /**
+     * @return The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
+     * 
+     */
+    public Output<Optional<String>> pemCaCertificate() {
+        return Codegen.optional(this.pemCaCertificate);
+    }
+    /**
      * This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
      * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
      * current CertificateAuthority&#39;s certificate.
@@ -512,10 +566,27 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
+     * If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="subordinateConfig", type=AuthoritySubordinateConfig.class, parameters={})
+    private Output</* @Nullable */ AuthoritySubordinateConfig> subordinateConfig;
+
+    /**
+     * @return If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AuthoritySubordinateConfig>> subordinateConfig() {
+        return Codegen.optional(this.subordinateConfig);
+    }
+    /**
      * The Type of this CertificateAuthority.
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-     * be manually activated (via Cloud Console of `gcloud`) before they can
-     * issue certificates.
+     * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
      * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
      * 
@@ -526,8 +597,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
     /**
      * @return The Type of this CertificateAuthority.
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-     * be manually activated (via Cloud Console of `gcloud`) before they can
-     * issue certificates.
+     * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
      * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
      * 

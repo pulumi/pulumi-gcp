@@ -448,6 +448,19 @@ class Connection(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Bigquery Connection Cloud Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
         ### Bigquery Connection Basic
 
         ```python
@@ -518,19 +531,6 @@ class Connection(pulumi.CustomResource):
                     password=user.password,
                 ),
             ))
-        ```
-        ### Bigquery Connection Cloud Resource
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
         ```
         ### Bigquery Connection Aws
 
@@ -629,6 +629,19 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Bigquery Connection Cloud Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
         ### Bigquery Connection Basic
 
         ```python
@@ -699,19 +712,6 @@ class Connection(pulumi.CustomResource):
                     password=user.password,
                 ),
             ))
-        ```
-        ### Bigquery Connection Cloud Resource
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        connection = gcp.bigquery.Connection("connection",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs(),
-            connection_id="my-connection",
-            description="a riveting description",
-            friendly_name="👋",
-            location="US")
         ```
         ### Bigquery Connection Aws
 

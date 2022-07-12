@@ -54,6 +54,9 @@ type GetBackupRunArgs struct {
 	// Toggles use of the most recent backup run if multiple backups exist for a
 	// Cloud SQL instance.
 	MostRecent *bool `pulumi:"mostRecent"`
+	// The project to list instances for. If it
+	// is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getBackupRun.
@@ -65,6 +68,7 @@ type GetBackupRunResult struct {
 	// Location of the backups.
 	Location   string `pulumi:"location"`
 	MostRecent *bool  `pulumi:"mostRecent"`
+	Project    string `pulumi:"project"`
 	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for
 	// example 2012-11-15T16:19:00.094Z.
 	StartTime string `pulumi:"startTime"`
@@ -95,6 +99,9 @@ type GetBackupRunOutputArgs struct {
 	// Toggles use of the most recent backup run if multiple backups exist for a
 	// Cloud SQL instance.
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
+	// The project to list instances for. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (GetBackupRunOutputArgs) ElementType() reflect.Type {
@@ -136,6 +143,10 @@ func (o GetBackupRunResultOutput) Location() pulumi.StringOutput {
 
 func (o GetBackupRunResultOutput) MostRecent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetBackupRunResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetBackupRunResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupRunResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // The time the backup operation actually started in UTC timezone in RFC 3339 format, for

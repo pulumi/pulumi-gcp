@@ -7,6 +7,9 @@ import typing
 # Export this package's modules as members:
 from .app_profile import *
 from .connection import *
+from .connection_iam_binding import *
+from .connection_iam_member import *
+from .connection_iam_policy import *
 from .data_transfer_config import *
 from .dataset import *
 from .dataset_access import *

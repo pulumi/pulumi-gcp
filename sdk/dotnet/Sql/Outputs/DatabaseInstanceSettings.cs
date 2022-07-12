@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Pricing plan for this instance, can only be `PER_USE`.
         /// </summary>
         public readonly string? PricingPlan;
+        public readonly Outputs.DatabaseInstanceSettingsSqlServerAuditConfig? SqlServerAuditConfig;
         /// <summary>
         /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
         /// for more details and supported versions. Postgres supports only shared-core machine types,
@@ -99,6 +100,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? pricingPlan,
 
+            Outputs.DatabaseInstanceSettingsSqlServerAuditConfig? sqlServerAuditConfig,
+
             string tier,
 
             ImmutableDictionary<string, string>? userLabels,
@@ -120,6 +123,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             LocationPreference = locationPreference;
             MaintenanceWindow = maintenanceWindow;
             PricingPlan = pricingPlan;
+            SqlServerAuditConfig = sqlServerAuditConfig;
             Tier = tier;
             UserLabels = userLabels;
             Version = version;

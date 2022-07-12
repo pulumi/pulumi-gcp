@@ -12,6 +12,8 @@ from . import outputs
 __all__ = [
     'AutoscalingPolicyBasicAlgorithm',
     'AutoscalingPolicyBasicAlgorithmYarnConfig',
+    'AutoscalingPolicyIamBindingCondition',
+    'AutoscalingPolicyIamMemberCondition',
     'AutoscalingPolicySecondaryWorkerConfig',
     'AutoscalingPolicyWorkerConfig',
     'ClusterClusterConfig',
@@ -59,6 +61,8 @@ __all__ = [
     'MetastoreServiceHiveMetastoreConfig',
     'MetastoreServiceHiveMetastoreConfigKerberosConfig',
     'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab',
+    'MetastoreServiceIamBindingCondition',
+    'MetastoreServiceIamMemberCondition',
     'MetastoreServiceMaintenanceWindow',
     'WorkflowTemplateJob',
     'WorkflowTemplateJobHadoopJob',
@@ -301,6 +305,60 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig(dict):
         Bounds: [0.0, 1.0]. Default: 0.0.
         """
         return pulumi.get(self, "scale_up_min_worker_fraction")
+
+
+@pulumi.output_type
+class AutoscalingPolicyIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AutoscalingPolicyIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -3794,6 +3852,60 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab(dict):
         "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
         """
         return pulumi.get(self, "cloud_secret")
+
+
+@pulumi.output_type
+class MetastoreServiceIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class MetastoreServiceIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

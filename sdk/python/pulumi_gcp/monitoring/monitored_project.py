@@ -114,7 +114,7 @@ class MonitoredProject(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Beta only: Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+        Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
 
         For more information, see:
         * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
@@ -126,12 +126,10 @@ class MonitoredProject(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="existing-metrics-scope-project",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="existing-metrics-scope-project")
         basic = gcp.organizations.Project("basic",
             project_id="my-monitored-project",
-            org_id="123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            org_id="123456789")
         ```
 
         ## Import
@@ -158,7 +156,7 @@ class MonitoredProject(pulumi.CustomResource):
                  args: MonitoredProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Beta only: Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+        Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
 
         For more information, see:
         * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
@@ -170,12 +168,10 @@ class MonitoredProject(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="existing-metrics-scope-project",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="existing-metrics-scope-project")
         basic = gcp.organizations.Project("basic",
             project_id="my-monitored-project",
-            org_id="123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            org_id="123456789")
         ```
 
         ## Import

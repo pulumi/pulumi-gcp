@@ -19,20 +19,18 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     public static final DatabaseArgs Empty = new DatabaseArgs();
 
     /**
-     * The dialect of the Cloud Spanner Database. If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used. Note: Databases
-     * that are created with POSTGRESQL dialect do not support extra DDL statements in the &#39;CreateDatabase&#39; call. You must
-     * therefore re-apply terraform with ddl on the same database after creation. Possible values: [&#34;GOOGLE_STANDARD_SQL&#34;,
-     * &#34;POSTGRESQL&#34;]
+     * The dialect of the Cloud Spanner Database.
+     * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
+     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
      * 
      */
     @Import(name="databaseDialect")
     private @Nullable Output<String> databaseDialect;
 
     /**
-     * @return The dialect of the Cloud Spanner Database. If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used. Note: Databases
-     * that are created with POSTGRESQL dialect do not support extra DDL statements in the &#39;CreateDatabase&#39; call. You must
-     * therefore re-apply terraform with ddl on the same database after creation. Possible values: [&#34;GOOGLE_STANDARD_SQL&#34;,
-     * &#34;POSTGRESQL&#34;]
+     * @return The dialect of the Cloud Spanner Database.
+     * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
+     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
      * 
      */
     public Optional<Output<String>> databaseDialect() {
@@ -143,6 +141,29 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The retention period for the database. The retention period must be between 1 hour
+     * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+     * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+     * If this property is used, you must avoid adding new DDL statements to `ddl` that
+     * update the database&#39;s version_retention_period.
+     * 
+     */
+    @Import(name="versionRetentionPeriod")
+    private @Nullable Output<String> versionRetentionPeriod;
+
+    /**
+     * @return The retention period for the database. The retention period must be between 1 hour
+     * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+     * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+     * If this property is used, you must avoid adding new DDL statements to `ddl` that
+     * update the database&#39;s version_retention_period.
+     * 
+     */
+    public Optional<Output<String>> versionRetentionPeriod() {
+        return Optional.ofNullable(this.versionRetentionPeriod);
+    }
+
     private DatabaseArgs() {}
 
     private DatabaseArgs(DatabaseArgs $) {
@@ -153,6 +174,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         this.instance = $.instance;
         this.name = $.name;
         this.project = $.project;
+        this.versionRetentionPeriod = $.versionRetentionPeriod;
     }
 
     public static Builder builder() {
@@ -174,10 +196,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseDialect The dialect of the Cloud Spanner Database. If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used. Note: Databases
-         * that are created with POSTGRESQL dialect do not support extra DDL statements in the &#39;CreateDatabase&#39; call. You must
-         * therefore re-apply terraform with ddl on the same database after creation. Possible values: [&#34;GOOGLE_STANDARD_SQL&#34;,
-         * &#34;POSTGRESQL&#34;]
+         * @param databaseDialect The dialect of the Cloud Spanner Database.
+         * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
+         * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
          * 
          * @return builder
          * 
@@ -188,10 +209,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseDialect The dialect of the Cloud Spanner Database. If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used. Note: Databases
-         * that are created with POSTGRESQL dialect do not support extra DDL statements in the &#39;CreateDatabase&#39; call. You must
-         * therefore re-apply terraform with ddl on the same database after creation. Possible values: [&#34;GOOGLE_STANDARD_SQL&#34;,
-         * &#34;POSTGRESQL&#34;]
+         * @param databaseDialect The dialect of the Cloud Spanner Database.
+         * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
+         * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
          * 
          * @return builder
          * 
@@ -351,6 +371,35 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param versionRetentionPeriod The retention period for the database. The retention period must be between 1 hour
+         * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+         * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+         * If this property is used, you must avoid adding new DDL statements to `ddl` that
+         * update the database&#39;s version_retention_period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionRetentionPeriod(@Nullable Output<String> versionRetentionPeriod) {
+            $.versionRetentionPeriod = versionRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param versionRetentionPeriod The retention period for the database. The retention period must be between 1 hour
+         * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
+         * the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
+         * If this property is used, you must avoid adding new DDL statements to `ddl` that
+         * update the database&#39;s version_retention_period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionRetentionPeriod(String versionRetentionPeriod) {
+            return versionRetentionPeriod(Output.of(versionRetentionPeriod));
         }
 
         public DatabaseArgs build() {

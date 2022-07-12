@@ -147,6 +147,52 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Billing Budget Customperiod
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budgetFilter: {
+ *         projects: [project.then(project => `projects/${project.number}`)],
+ *         creditTypesTreatment: "EXCLUDE_ALL_CREDITS",
+ *         services: ["services/24E6-581D-38E5"],
+ *         customPeriod: {
+ *             startDate: {
+ *                 year: 2022,
+ *                 month: 1,
+ *                 day: 1,
+ *             },
+ *             endDate: {
+ *                 year: 2023,
+ *                 month: 12,
+ *                 day: 31,
+ *             },
+ *         },
+ *     },
+ *     amount: {
+ *         specifiedAmount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     thresholdRules: [
+ *         {
+ *             thresholdPercent: 0.5,
+ *         },
+ *         {
+ *             thresholdPercent: 0.9,
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

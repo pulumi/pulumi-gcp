@@ -26,6 +26,7 @@ public final class GetBackupRunResult {
      */
     private final String location;
     private final @Nullable Boolean mostRecent;
+    private final String project;
     /**
      * @return The time the backup operation actually started in UTC timezone in RFC 3339 format, for
      * example 2012-11-15T16:19:00.094Z.
@@ -45,6 +46,7 @@ public final class GetBackupRunResult {
         @CustomType.Parameter("instance") String instance,
         @CustomType.Parameter("location") String location,
         @CustomType.Parameter("mostRecent") @Nullable Boolean mostRecent,
+        @CustomType.Parameter("project") String project,
         @CustomType.Parameter("startTime") String startTime,
         @CustomType.Parameter("status") String status) {
         this.backupId = backupId;
@@ -52,6 +54,7 @@ public final class GetBackupRunResult {
         this.instance = instance;
         this.location = location;
         this.mostRecent = mostRecent;
+        this.project = project;
         this.startTime = startTime;
         this.status = status;
     }
@@ -78,6 +81,9 @@ public final class GetBackupRunResult {
     }
     public Optional<Boolean> mostRecent() {
         return Optional.ofNullable(this.mostRecent);
+    }
+    public String project() {
+        return this.project;
     }
     /**
      * @return The time the backup operation actually started in UTC timezone in RFC 3339 format, for
@@ -109,6 +115,7 @@ public final class GetBackupRunResult {
         private String instance;
         private String location;
         private @Nullable Boolean mostRecent;
+        private String project;
         private String startTime;
         private String status;
 
@@ -123,6 +130,7 @@ public final class GetBackupRunResult {
     	      this.instance = defaults.instance;
     	      this.location = defaults.location;
     	      this.mostRecent = defaults.mostRecent;
+    	      this.project = defaults.project;
     	      this.startTime = defaults.startTime;
     	      this.status = defaults.status;
         }
@@ -147,6 +155,10 @@ public final class GetBackupRunResult {
             this.mostRecent = mostRecent;
             return this;
         }
+        public Builder project(String project) {
+            this.project = Objects.requireNonNull(project);
+            return this;
+        }
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
@@ -155,7 +167,7 @@ public final class GetBackupRunResult {
             this.status = Objects.requireNonNull(status);
             return this;
         }        public GetBackupRunResult build() {
-            return new GetBackupRunResult(backupId, id, instance, location, mostRecent, startTime, status);
+            return new GetBackupRunResult(backupId, id, instance, location, mostRecent, project, startTime, status);
         }
     }
 }

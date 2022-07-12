@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string ConnectMode;
         public readonly string CreateTime;
         public readonly string CurrentLocationId;
+        public readonly string CustomerManagedKey;
         public readonly string DisplayName;
         public readonly string Host;
         /// <summary>
@@ -198,6 +199,8 @@ namespace Pulumi.Gcp.Redis
             string createTime,
 
             string currentLocationId,
+
+            string customerManagedKey,
 
             string displayName,
 
@@ -256,6 +259,7 @@ namespace Pulumi.Gcp.Redis
             ConnectMode = connectMode;
             CreateTime = createTime;
             CurrentLocationId = currentLocationId;
+            CustomerManagedKey = customerManagedKey;
             DisplayName = displayName;
             Host = host;
             Id = id;

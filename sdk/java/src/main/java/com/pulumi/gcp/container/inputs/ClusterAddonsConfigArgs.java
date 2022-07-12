@@ -78,7 +78,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
 
     /**
      * .
-     * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+     * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
      * 
      */
     @Import(name="gcePersistentDiskCsiDriverConfig")
@@ -86,7 +86,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
 
     /**
      * @return .
-     * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+     * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
      * 
      */
     public Optional<Output<ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs>> gcePersistentDiskCsiDriverConfig() {
@@ -335,7 +335,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param gcePersistentDiskCsiDriverConfig .
-         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param gcePersistentDiskCsiDriverConfig .
-         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
          * 
          * @return builder
          * 

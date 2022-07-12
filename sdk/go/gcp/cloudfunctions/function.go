@@ -103,14 +103,15 @@ import (
 // 			return err
 // 		}
 // 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
-// 			Description:         pulumi.String("My function"),
-// 			Runtime:             pulumi.String("nodejs16"),
-// 			AvailableMemoryMb:   pulumi.Int(128),
-// 			SourceArchiveBucket: bucket.Name,
-// 			SourceArchiveObject: archive.Name,
-// 			TriggerHttp:         pulumi.Bool(true),
-// 			Timeout:             pulumi.Int(60),
-// 			EntryPoint:          pulumi.String("helloGET"),
+// 			Description:               pulumi.String("My function"),
+// 			Runtime:                   pulumi.String("nodejs16"),
+// 			AvailableMemoryMb:         pulumi.Int(128),
+// 			SourceArchiveBucket:       bucket.Name,
+// 			SourceArchiveObject:       archive.Name,
+// 			TriggerHttp:               pulumi.Bool(true),
+// 			HttpsTriggerSecurityLevel: pulumi.String("SECURE_ALWAYS"),
+// 			Timeout:                   pulumi.Int(60),
+// 			EntryPoint:                pulumi.String("helloGET"),
 // 			Labels: pulumi.AnyMap{
 // 				"my-label": pulumi.Any("my-label-value"),
 // 			},
@@ -166,7 +167,7 @@ type Function struct {
 	EnvironmentVariables pulumi.MapOutput `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerOutput `pulumi:"eventTrigger"`
-	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	// The security level for the function. The following options are available:
 	HttpsTriggerSecurityLevel pulumi.StringOutput `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringOutput `pulumi:"httpsTriggerUrl"`
@@ -261,7 +262,7 @@ type functionState struct {
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
-	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	// The security level for the function. The following options are available:
 	HttpsTriggerSecurityLevel *string `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
@@ -325,7 +326,7 @@ type FunctionState struct {
 	EnvironmentVariables pulumi.MapInput
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerPtrInput
-	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	// The security level for the function. The following options are available:
 	HttpsTriggerSecurityLevel pulumi.StringPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
@@ -393,7 +394,7 @@ type functionArgs struct {
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
-	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	// The security level for the function. The following options are available:
 	HttpsTriggerSecurityLevel *string `pulumi:"httpsTriggerSecurityLevel"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
@@ -458,7 +459,7 @@ type FunctionArgs struct {
 	EnvironmentVariables pulumi.MapInput
 	// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
 	EventTrigger FunctionEventTriggerPtrInput
-	// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+	// The security level for the function. The following options are available:
 	HttpsTriggerSecurityLevel pulumi.StringPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
@@ -632,7 +633,7 @@ func (o FunctionOutput) EventTrigger() FunctionEventTriggerOutput {
 	return o.ApplyT(func(v *Function) FunctionEventTriggerOutput { return v.EventTrigger }).(FunctionEventTriggerOutput)
 }
 
-// The security level for the function. Defaults to SECURE_OPTIONAL. Valid only if trigger_http is used.
+// The security level for the function. The following options are available:
 func (o FunctionOutput) HttpsTriggerSecurityLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.HttpsTriggerSecurityLevel }).(pulumi.StringOutput)
 }

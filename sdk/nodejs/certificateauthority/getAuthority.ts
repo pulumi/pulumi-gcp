@@ -81,6 +81,7 @@ export interface GetAuthorityResult {
     readonly lifetime: string;
     readonly location?: string;
     readonly name: string;
+    readonly pemCaCertificate: string;
     readonly pemCaCertificates: string[];
     /**
      * The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
@@ -89,6 +90,7 @@ export interface GetAuthorityResult {
     readonly pool?: string;
     readonly project?: string;
     readonly state: string;
+    readonly subordinateConfigs: outputs.certificateauthority.GetAuthoritySubordinateConfig[];
     readonly type: string;
     readonly updateTime: string;
 }

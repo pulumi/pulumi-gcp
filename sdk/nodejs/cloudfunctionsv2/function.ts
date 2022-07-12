@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // [START functions_v2_basic]
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     location: "US",
  *     uniformBucketLevelAccess: true,
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
+ * // Add path to the zipped function source code
  * const terraform_test2 = new gcp.cloudfunctionsv2.Function("terraform-test2", {
  *     location: "us-central1",
  *     description: "a new function",
@@ -53,8 +55,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // [START functions_v2_full]
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "test-service-account",
+ *     accountId: "s-a",
  *     displayName: "Test Service Account",
  * }, {
  *     provider: google_beta,
@@ -74,12 +77,13 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
+ * // Add path to the zipped function source code
  * const terraform_test = new gcp.cloudfunctionsv2.Function("terraform-test", {
  *     location: "us-central1",
  *     description: "a new function",
  *     buildConfig: {
  *         runtime: "nodejs16",
- *         entryPoint: "helloHttp",
+ *         entryPoint: "helloPubSub",
  *         environmentVariables: {
  *             BUILD_CONFIG_TEST: "build_test",
  *         },

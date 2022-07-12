@@ -678,6 +678,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigquery/connectionIamBinding",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/connectionIamBinding:ConnectionIamBinding": "ConnectionIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquery/connectionIamMember",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/connectionIamMember:ConnectionIamMember": "ConnectionIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquery/connectionIamPolicy",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy": "ConnectionIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigquery/dataTransferConfig",
   "fqn": "pulumi_gcp.bigquery",
   "classes": {
@@ -1226,6 +1250,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudtasks",
   "classes": {
    "gcp:cloudtasks/queue:Queue": "Queue"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudtasks/queueIamBinding",
+  "fqn": "pulumi_gcp.cloudtasks",
+  "classes": {
+   "gcp:cloudtasks/queueIamBinding:QueueIamBinding": "QueueIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudtasks/queueIamMember",
+  "fqn": "pulumi_gcp.cloudtasks",
+  "classes": {
+   "gcp:cloudtasks/queueIamMember:QueueIamMember": "QueueIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudtasks/queueIamPolicy",
+  "fqn": "pulumi_gcp.cloudtasks",
+  "classes": {
+   "gcp:cloudtasks/queueIamPolicy:QueueIamPolicy": "QueueIamPolicy"
   }
  },
  {
@@ -2446,6 +2494,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataproc/autoscalingPolicyIamBinding",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/autoscalingPolicyIamBinding:AutoscalingPolicyIamBinding": "AutoscalingPolicyIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/autoscalingPolicyIamMember",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/autoscalingPolicyIamMember:AutoscalingPolicyIamMember": "AutoscalingPolicyIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/autoscalingPolicyIamPolicy",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy": "AutoscalingPolicyIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataproc/cluster",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
@@ -2514,6 +2586,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
    "gcp:dataproc/metastoreService:MetastoreService": "MetastoreService"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreServiceIamBinding",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding": "MetastoreServiceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreServiceIamMember",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreServiceIamMember:MetastoreServiceIamMember": "MetastoreServiceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreServiceIamPolicy",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy": "MetastoreServiceIamPolicy"
   }
  },
  {
