@@ -865,9 +865,27 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_shared_vpc_host_project":    {Tok: gcpResource(gcpCompute, "SharedVPCHostProject")},
 			"google_compute_shared_vpc_service_project": {Tok: gcpResource(gcpCompute, "SharedVPCServiceProject")},
 			"google_compute_snapshot":                   {Tok: gcpResource(gcpCompute, "Snapshot")},
-			"google_compute_ssl_certificate":            {Tok: gcpResource(gcpCompute, "SSLCertificate")},
-			"google_compute_ssl_policy":                 {Tok: gcpResource(gcpCompute, "SSLPolicy")},
-			"google_compute_subnetwork":                 {Tok: gcpResource(gcpCompute, "Subnetwork")},
+			"google_compute_snapshot_iam_binding": {
+				Tok: gcpResource(gcpCompute, "SnapshotIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_snapshot_iam.html.markdown",
+				},
+			},
+			"google_compute_snapshot_iam_member": {
+				Tok: gcpResource(gcpCompute, "SnapshotIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_snapshot_iam.html.markdown",
+				},
+			},
+			"google_compute_snapshot_iam_policy": {
+				Tok: gcpResource(gcpCompute, "SnapshotIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_snapshot_iam.html.markdown",
+				},
+			},
+			"google_compute_ssl_certificate": {Tok: gcpResource(gcpCompute, "SSLCertificate")},
+			"google_compute_ssl_policy":      {Tok: gcpResource(gcpCompute, "SSLPolicy")},
+			"google_compute_subnetwork":      {Tok: gcpResource(gcpCompute, "Subnetwork")},
 			"google_compute_subnetwork_iam_binding": {
 				Tok: gcpResource(gcpCompute, "SubnetworkIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -2120,6 +2138,24 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CloudIOT
 			"google_cloudiot_device": {Tok: gcpResource(gcpIot, "Device")},
+			"google_cloudiot_registry_iam_binding": {
+				Tok: gcpResource(gcpIot, "RegistryIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudiot_registry_iam.html.markdown",
+				},
+			},
+			"google_cloudiot_registry_iam_member": {
+				Tok: gcpResource(gcpIot, "RegistryIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudiot_registry_iam.html.markdown",
+				},
+			},
+			"google_cloudiot_registry_iam_policy": {
+				Tok: gcpResource(gcpIot, "RegistryIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudiot_registry_iam.html.markdown",
+				},
+			},
 
 			// CloudAsset
 			"google_cloud_asset_folder_feed":       {Tok: gcpResource(gcpCloudAsset, "FolderFeed")},

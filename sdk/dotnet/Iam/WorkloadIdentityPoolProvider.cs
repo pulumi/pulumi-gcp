@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// To get more information about WorkloadIdentityPoolProvider, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
     /// * How-to Guides
     ///     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
     /// 
@@ -32,9 +32,6 @@ namespace Pulumi.Gcp.Iam
     ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
     ///         {
     ///             WorkloadIdentityPoolId = "example-pool",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
     ///         {
@@ -44,9 +41,6 @@ namespace Pulumi.Gcp.Iam
     ///             {
     ///                 AccountId = "999999999999",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -65,9 +59,6 @@ namespace Pulumi.Gcp.Iam
     ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
     ///         {
     ///             WorkloadIdentityPoolId = "example-pool",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
     ///         {
@@ -87,9 +78,6 @@ namespace Pulumi.Gcp.Iam
     ///             {
     ///                 AccountId = "999999999999",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -108,9 +96,6 @@ namespace Pulumi.Gcp.Iam
     ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
     ///         {
     ///             WorkloadIdentityPoolId = "example-pool",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
     ///         {
@@ -124,9 +109,6 @@ namespace Pulumi.Gcp.Iam
     ///             {
     ///                 IssuerUri = "https://sts.windows.net/azure-tenant-id",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -145,9 +127,6 @@ namespace Pulumi.Gcp.Iam
     ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
     ///         {
     ///             WorkloadIdentityPoolId = "example-pool",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
     ///         {
@@ -176,9 +155,6 @@ namespace Pulumi.Gcp.Iam
     ///                 },
     ///                 IssuerUri = "https://sts.windows.net/azure-tenant-id",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

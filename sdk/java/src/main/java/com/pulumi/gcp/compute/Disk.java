@@ -347,14 +347,14 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="provisionedIops", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> provisionedIops;
+    private Output<Integer> provisionedIops;
 
     /**
      * @return Indicates how many IOPS must be provisioned for the disk.
      * 
      */
-    public Output<Optional<Integer>> provisionedIops() {
-        return Codegen.optional(this.provisionedIops);
+    public Output<Integer> provisionedIops() {
+        return this.provisionedIops;
     }
     /**
      * Resource policies applied to this disk for automatic snapshot creations.

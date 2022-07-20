@@ -25,22 +25,19 @@ namespace Pulumi.Gcp.Dataproc
     ///     {
     ///         var @default = new Gcp.Dataproc.MetastoreService("default", new Gcp.Dataproc.MetastoreServiceArgs
     ///         {
-    ///             ServiceId = "metastore-srv",
-    ///             Location = "us-central1",
-    ///             Port = 9080,
-    ///             Tier = "DEVELOPER",
-    ///             MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
-    ///             {
-    ///                 HourOfDay = 2,
-    ///                 DayOfWeek = "SUNDAY",
-    ///             },
     ///             HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
     ///             {
     ///                 Version = "2.3.6",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
+    ///             Location = "us-central1",
+    ///             MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
+    ///             {
+    ///                 DayOfWeek = "SUNDAY",
+    ///                 HourOfDay = 2,
+    ///             },
+    ///             Port = 9080,
+    ///             ServiceId = "metastore-srv",
+    ///             Tier = "DEVELOPER",
     ///         });
     ///     }
     /// 
@@ -83,9 +80,6 @@ namespace Pulumi.Gcp.Dataproc
     ///             {
     ///                 Version = "3.1.2",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -118,6 +112,14 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> ArtifactGcsUri { get; private set; } = null!;
 
         /// <summary>
+        /// The database type that the Metastore service stores its data.
+        /// Default value is `MYSQL`.
+        /// Possible values are `MYSQL` and `SPANNER`.
+        /// </summary>
+        [Output("databaseType")]
+        public Output<string?> DatabaseType { get; private set; } = null!;
+
+        /// <summary>
         /// Information used to configure the Dataproc Metastore service to encrypt
         /// customer data at rest.
         /// Structure is documented below.
@@ -145,7 +147,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The  location where the autoscaling policy should reside.
+        /// The location where the metastore service should reside.
         /// The default value is `global`.
         /// </summary>
         [Output("location")]
@@ -154,6 +156,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The one hour maintenance window of the metastore service.
         /// This specifies when the service can be restarted for maintenance purposes in UTC time.
+        /// Maintenance window is not needed for services with the `SPANNER` database type.
         /// Structure is documented below.
         /// </summary>
         [Output("maintenanceWindow")]
@@ -186,6 +189,14 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The release channel of the service. If unspecified, defaults to `STABLE`.
+        /// Default value is `STABLE`.
+        /// Possible values are `CANARY` and `STABLE`.
+        /// </summary>
+        [Output("releaseChannel")]
+        public Output<string?> ReleaseChannel { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
@@ -211,6 +222,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
+
+        /// <summary>
+        /// The globally unique resource identifier of the metastore service.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
 
 
         /// <summary>
@@ -259,6 +276,14 @@ namespace Pulumi.Gcp.Dataproc
     public sealed class MetastoreServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The database type that the Metastore service stores its data.
+        /// Default value is `MYSQL`.
+        /// Possible values are `MYSQL` and `SPANNER`.
+        /// </summary>
+        [Input("databaseType")]
+        public Input<string>? DatabaseType { get; set; }
+
+        /// <summary>
         /// Information used to configure the Dataproc Metastore service to encrypt
         /// customer data at rest.
         /// Structure is documented below.
@@ -286,7 +311,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// The  location where the autoscaling policy should reside.
+        /// The location where the metastore service should reside.
         /// The default value is `global`.
         /// </summary>
         [Input("location")]
@@ -295,6 +320,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The one hour maintenance window of the metastore service.
         /// This specifies when the service can be restarted for maintenance purposes in UTC time.
+        /// Maintenance window is not needed for services with the `SPANNER` database type.
         /// Structure is documented below.
         /// </summary>
         [Input("maintenanceWindow")]
@@ -319,6 +345,14 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The release channel of the service. If unspecified, defaults to `STABLE`.
+        /// Default value is `STABLE`.
+        /// Possible values are `CANARY` and `STABLE`.
+        /// </summary>
+        [Input("releaseChannel")]
+        public Input<string>? ReleaseChannel { get; set; }
 
         /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -347,6 +381,14 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("artifactGcsUri")]
         public Input<string>? ArtifactGcsUri { get; set; }
+
+        /// <summary>
+        /// The database type that the Metastore service stores its data.
+        /// Default value is `MYSQL`.
+        /// Possible values are `MYSQL` and `SPANNER`.
+        /// </summary>
+        [Input("databaseType")]
+        public Input<string>? DatabaseType { get; set; }
 
         /// <summary>
         /// Information used to configure the Dataproc Metastore service to encrypt
@@ -382,7 +424,7 @@ namespace Pulumi.Gcp.Dataproc
         }
 
         /// <summary>
-        /// The  location where the autoscaling policy should reside.
+        /// The location where the metastore service should reside.
         /// The default value is `global`.
         /// </summary>
         [Input("location")]
@@ -391,6 +433,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The one hour maintenance window of the metastore service.
         /// This specifies when the service can be restarted for maintenance purposes in UTC time.
+        /// Maintenance window is not needed for services with the `SPANNER` database type.
         /// Structure is documented below.
         /// </summary>
         [Input("maintenanceWindow")]
@@ -423,6 +466,14 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The release channel of the service. If unspecified, defaults to `STABLE`.
+        /// Default value is `STABLE`.
+        /// Possible values are `CANARY` and `STABLE`.
+        /// </summary>
+        [Input("releaseChannel")]
+        public Input<string>? ReleaseChannel { get; set; }
+
+        /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
@@ -448,6 +499,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
+
+        /// <summary>
+        /// The globally unique resource identifier of the metastore service.
+        /// </summary>
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
 
         public MetastoreServiceState()
         {

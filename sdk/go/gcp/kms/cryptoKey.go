@@ -120,7 +120,7 @@ type CryptoKey struct {
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
 	// Default value is `ENCRYPT_DECRYPT`.
-	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
@@ -183,7 +183,7 @@ type cryptoKeyState struct {
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
 	// Default value is `ENCRYPT_DECRYPT`.
-	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
 	Purpose *string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
@@ -215,7 +215,7 @@ type CryptoKeyState struct {
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
 	// Default value is `ENCRYPT_DECRYPT`.
-	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
 	Purpose pulumi.StringPtrInput
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
@@ -251,7 +251,7 @@ type cryptoKeyArgs struct {
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
 	// Default value is `ENCRYPT_DECRYPT`.
-	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
 	Purpose *string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
@@ -284,7 +284,7 @@ type CryptoKeyArgs struct {
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
 	// Default value is `ENCRYPT_DECRYPT`.
-	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
 	Purpose pulumi.StringPtrInput
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
@@ -417,7 +417,7 @@ func (o CryptoKeyOutput) Name() pulumi.StringOutput {
 // [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 // for possible inputs.
 // Default value is `ENCRYPT_DECRYPT`.
-// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
 func (o CryptoKeyOutput) Purpose() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringPtrOutput { return v.Purpose }).(pulumi.StringPtrOutput)
 }

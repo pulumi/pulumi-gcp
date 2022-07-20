@@ -158,14 +158,14 @@ public class Target extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="executionConfigs", type=List.class, parameters={TargetExecutionConfig.class})
-    private Output</* @Nullable */ List<TargetExecutionConfig>> executionConfigs;
+    private Output<List<TargetExecutionConfig>> executionConfigs;
 
     /**
      * @return Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
      * 
      */
-    public Output<Optional<List<TargetExecutionConfig>>> executionConfigs() {
-        return Codegen.optional(this.executionConfigs);
+    public Output<List<TargetExecutionConfig>> executionConfigs() {
+        return this.executionConfigs;
     }
     /**
      * Information specifying a GKE Cluster.

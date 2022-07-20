@@ -14,6 +14,103 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+ * 
+ * * `gcp.dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+ * * `gcp.dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+ * * `gcp.dataproc.MetastoreServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+ * 
+ * &gt; **Note:** `gcp.dataproc.MetastoreServiceIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.MetastoreServiceIamBinding` and `gcp.dataproc.MetastoreServiceIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `gcp.dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_dataproc\_metastore\_service\_iam\_policy
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/viewer&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build()));
+ * 
+ *         var policy = new MetastoreServiceIamPolicy(&#34;policy&#34;, MetastoreServiceIamPolicyArgs.builder()        
+ *             .project(google_dataproc_metastore_service.default().project())
+ *             .location(google_dataproc_metastore_service.default().location())
+ *             .serviceId(google_dataproc_metastore_service.default().service_id())
+ *             .policyData(admin.apply(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_dataproc\_metastore\_service\_iam\_binding
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new MetastoreServiceIamBinding(&#34;binding&#34;, MetastoreServiceIamBindingArgs.builder()        
+ *             .project(google_dataproc_metastore_service.default().project())
+ *             .location(google_dataproc_metastore_service.default().location())
+ *             .serviceId(google_dataproc_metastore_service.default().service_id())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_dataproc\_metastore\_service\_iam\_member
+ * ```java
+ * package generated_program;
+ * 
+ * import java.util.*;
+ * import java.io.*;
+ * import java.nio.*;
+ * import com.pulumi.*;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new MetastoreServiceIamMember(&#34;member&#34;, MetastoreServiceIamMemberArgs.builder()        
+ *             .project(google_dataproc_metastore_service.default().project())
+ *             .location(google_dataproc_metastore_service.default().location())
+ *             .serviceId(google_dataproc_metastore_service.default().service_id())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -56,7 +153,7 @@ public class MetastoreServiceIamPolicy extends com.pulumi.resources.CustomResour
         return this.etag;
     }
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      * Used to find the parent resource to bind the IAM policy to
      * 
@@ -65,7 +162,7 @@ public class MetastoreServiceIamPolicy extends com.pulumi.resources.CustomResour
     private Output<String> location;
 
     /**
-     * @return The  location where the autoscaling policy should reside.
+     * @return The location where the metastore service should reside.
      * The default value is `global`.
      * Used to find the parent resource to bind the IAM policy to
      * 

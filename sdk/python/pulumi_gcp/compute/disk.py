@@ -1541,7 +1541,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> pulumi.Output[Optional[int]]:
+    def provisioned_iops(self) -> pulumi.Output[int]:
         """
         Indicates how many IOPS must be provisioned for the disk.
         """

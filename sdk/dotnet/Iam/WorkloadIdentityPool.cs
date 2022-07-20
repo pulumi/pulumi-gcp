@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// To get more information about WorkloadIdentityPool, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools)
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools)
     /// * How-to Guides
     ///     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
     /// 
@@ -33,9 +33,6 @@ namespace Pulumi.Gcp.Iam
     ///         var example = new Gcp.Iam.WorkloadIdentityPool("example", new Gcp.Iam.WorkloadIdentityPoolArgs
     ///         {
     ///             WorkloadIdentityPoolId = "example-pool",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -53,13 +50,10 @@ namespace Pulumi.Gcp.Iam
     ///     {
     ///         var example = new Gcp.Iam.WorkloadIdentityPool("example", new Gcp.Iam.WorkloadIdentityPoolArgs
     ///         {
-    ///             WorkloadIdentityPoolId = "example-pool",
-    ///             DisplayName = "Name of pool",
     ///             Description = "Identity pool for automated test",
     ///             Disabled = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
+    ///             DisplayName = "Name of pool",
+    ///             WorkloadIdentityPoolId = "example-pool",
     ///         });
     ///     }
     /// 

@@ -10,6 +10,101 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+    /// * `gcp.dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+    /// * `gcp.dataproc.MetastoreServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.dataproc.MetastoreServiceIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.MetastoreServiceIamBinding` and `gcp.dataproc.MetastoreServiceIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `gcp.dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_dataproc\_metastore\_service\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/viewer",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.Dataproc.MetastoreServiceIamPolicy("policy", new Gcp.Dataproc.MetastoreServiceIamPolicyArgs
+    ///         {
+    ///             Project = google_dataproc_metastore_service.Default.Project,
+    ///             Location = google_dataproc_metastore_service.Default.Location,
+    ///             ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_dataproc\_metastore\_service\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Dataproc.MetastoreServiceIamBinding("binding", new Gcp.Dataproc.MetastoreServiceIamBindingArgs
+    ///         {
+    ///             Project = google_dataproc_metastore_service.Default.Project,
+    ///             Location = google_dataproc_metastore_service.Default.Location,
+    ///             ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///             Role = "roles/viewer",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_dataproc\_metastore\_service\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.Dataproc.MetastoreServiceIamMember("member", new Gcp.Dataproc.MetastoreServiceIamMemberArgs
+    ///         {
+    ///             Project = google_dataproc_metastore_service.Default.Project,
+    ///             Location = google_dataproc_metastore_service.Default.Location,
+    ///             ServiceId = google_dataproc_metastore_service.Default.Service_id,
+    ///             Role = "roles/viewer",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -47,7 +142,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The  location where the autoscaling policy should reside.
+        /// The location where the metastore service should reside.
         /// The default value is `global`.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
@@ -125,7 +220,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.MetastoreServiceIamMemberConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// The  location where the autoscaling policy should reside.
+        /// The location where the metastore service should reside.
         /// The default value is `global`.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
@@ -170,7 +265,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The  location where the autoscaling policy should reside.
+        /// The location where the metastore service should reside.
         /// The default value is `global`.
         /// Used to find the parent resource to bind the IAM policy to
         /// </summary>

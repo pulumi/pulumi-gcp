@@ -187,7 +187,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
      * Default value is `ENCRYPT_DECRYPT`.
-     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
      * 
      */
     @Export(name="purpose", type=String.class, parameters={})
@@ -198,7 +198,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
      * Default value is `ENCRYPT_DECRYPT`.
-     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
      * 
      */
     public Output<Optional<String>> purpose() {

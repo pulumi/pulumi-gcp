@@ -102,7 +102,7 @@ export class Target extends pulumi.CustomResource {
     /**
      * Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
      */
-    public readonly executionConfigs!: pulumi.Output<outputs.clouddeploy.TargetExecutionConfig[] | undefined>;
+    public readonly executionConfigs!: pulumi.Output<outputs.clouddeploy.TargetExecutionConfig[]>;
     /**
      * Information specifying a GKE Cluster.
      */

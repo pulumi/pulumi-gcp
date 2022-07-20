@@ -486,7 +486,7 @@ class DatabaseInstanceSettingsArgs:
                For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`.
         :param pulumi.Input[str] collation: The name of server instance collation.
-        :param pulumi.Input[bool] disk_autoresize: Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+        :param pulumi.Input[bool] disk_autoresize: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
         :param pulumi.Input[str] disk_type: The type of data disk: PD_SSD or PD_HDD.
         :param pulumi.Input[str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
@@ -617,7 +617,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+        The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         """
         return pulumi.get(self, "disk_autoresize")
 

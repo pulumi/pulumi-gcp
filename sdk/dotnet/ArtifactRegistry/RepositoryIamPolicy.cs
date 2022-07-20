@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///             {
     ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
     ///                 {
-    ///                     Role = "roles/viewer",
+    ///                     Role = "roles/artifactregistry.reader",
     ///                     Members = 
     ///                     {
     ///                         "user:jane@example.com",
@@ -50,9 +50,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///             Location = google_artifact_registry_repository.My_repo.Location,
     ///             Repository = google_artifact_registry_repository.My_repo.Name,
     ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -74,14 +71,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///             Project = google_artifact_registry_repository.My_repo.Project,
     ///             Location = google_artifact_registry_repository.My_repo.Location,
     ///             Repository = google_artifact_registry_repository.My_repo.Name,
-    ///             Role = "roles/viewer",
+    ///             Role = "roles/artifactregistry.reader",
     ///             Members = 
     ///             {
     ///                 "user:jane@example.com",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -103,11 +97,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///             Project = google_artifact_registry_repository.My_repo.Project,
     ///             Location = google_artifact_registry_repository.My_repo.Location,
     ///             Repository = google_artifact_registry_repository.My_repo.Name,
-    ///             Role = "roles/viewer",
+    ///             Role = "roles/artifactregistry.reader",
     ///             Member = "user:jane@example.com",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -119,13 +110,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer user:jane@example.com"
+    ///  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer"
+    ///  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question, e.g.

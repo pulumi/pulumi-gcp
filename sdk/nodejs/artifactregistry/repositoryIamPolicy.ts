@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
- *         role: "roles/viewer",
+ *         role: "roles/artifactregistry.reader",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     location: google_artifact_registry_repository["my-repo"].location,
  *     repository: google_artifact_registry_repository["my-repo"].name,
  *     policyData: admin.then(admin => admin.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -47,10 +45,8 @@ import * as utilities from "../utilities";
  *     project: google_artifact_registry_repository["my-repo"].project,
  *     location: google_artifact_registry_repository["my-repo"].location,
  *     repository: google_artifact_registry_repository["my-repo"].name,
- *     role: "roles/viewer",
+ *     role: "roles/artifactregistry.reader",
  *     members: ["user:jane@example.com"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -64,10 +60,8 @@ import * as utilities from "../utilities";
  *     project: google_artifact_registry_repository["my-repo"].project,
  *     location: google_artifact_registry_repository["my-repo"].location,
  *     repository: google_artifact_registry_repository["my-repo"].name,
- *     role: "roles/viewer",
+ *     role: "roles/artifactregistry.reader",
  *     member: "user:jane@example.com",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -76,13 +70,13 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer user:jane@example.com"
+ *  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer"
+ *  $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question, e.g.

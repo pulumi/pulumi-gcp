@@ -49,14 +49,14 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Format: `projects/{project_id}/releases/{release_id}`
+     * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Format: `projects/{project_id}/releases/{release_id}`
+     * @return Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
     public Optional<Output<String>> name() {
@@ -79,14 +79,14 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      * 
      */
     @Import(name="rulesetName")
     private @Nullable Output<String> rulesetName;
 
     /**
-     * @return Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+     * @return Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      * 
      */
     public Optional<Output<String>> rulesetName() {
@@ -182,7 +182,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Format: `projects/{project_id}/releases/{release_id}`
+         * @param name Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Format: `projects/{project_id}/releases/{release_id}`
+         * @param name Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rulesetName Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+         * @param rulesetName Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rulesetName Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+         * @param rulesetName Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
          * 
          * @return builder
          * 

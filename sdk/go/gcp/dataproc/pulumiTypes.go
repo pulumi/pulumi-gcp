@@ -4795,8 +4795,10 @@ type ClusterClusterConfigSoftwareConfig struct {
 	// used to modify various aspects of the common configuration files used when creating
 	// a cluster. For a list of valid properties please see
 	// [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
-	OverrideProperties map[string]string      `pulumi:"overrideProperties"`
-	Properties         map[string]interface{} `pulumi:"properties"`
+	OverrideProperties map[string]string `pulumi:"overrideProperties"`
+	// The properties to set on daemon config files. Property keys are specified in prefix:property format,
+	// for example spark:spark.kubernetes.container.image.
+	Properties map[string]interface{} `pulumi:"properties"`
 }
 
 // ClusterClusterConfigSoftwareConfigInput is an input type that accepts ClusterClusterConfigSoftwareConfigArgs and ClusterClusterConfigSoftwareConfigOutput values.
@@ -4836,7 +4838,9 @@ type ClusterClusterConfigSoftwareConfigArgs struct {
 	// a cluster. For a list of valid properties please see
 	// [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
 	OverrideProperties pulumi.StringMapInput `pulumi:"overrideProperties"`
-	Properties         pulumi.MapInput       `pulumi:"properties"`
+	// The properties to set on daemon config files. Property keys are specified in prefix:property format,
+	// for example spark:spark.kubernetes.container.image.
+	Properties pulumi.MapInput `pulumi:"properties"`
 }
 
 func (ClusterClusterConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -4950,6 +4954,8 @@ func (o ClusterClusterConfigSoftwareConfigOutput) OverrideProperties() pulumi.St
 	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) map[string]string { return v.OverrideProperties }).(pulumi.StringMapOutput)
 }
 
+// The properties to set on daemon config files. Property keys are specified in prefix:property format,
+// for example spark:spark.kubernetes.container.image.
 func (o ClusterClusterConfigSoftwareConfigOutput) Properties() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
 }
@@ -5027,6 +5033,8 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) OverrideProperties() pulumi
 	}).(pulumi.StringMapOutput)
 }
 
+// The properties to set on daemon config files. Property keys are specified in prefix:property format,
+// for example spark:spark.kubernetes.container.image.
 func (o ClusterClusterConfigSoftwareConfigPtrOutput) Properties() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigSoftwareConfig) map[string]interface{} {
 		if v == nil {
@@ -9535,7 +9543,8 @@ func (o MetastoreServiceEncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutp
 type MetastoreServiceHiveMetastoreConfig struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
 	// The mappings override system defaults (some keys cannot be overridden)
-	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	ConfigOverrides  map[string]string `pulumi:"configOverrides"`
+	EndpointProtocol *string           `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
 	// Structure is documented below.
 	KerberosConfig *MetastoreServiceHiveMetastoreConfigKerberosConfig `pulumi:"kerberosConfig"`
@@ -9557,7 +9566,8 @@ type MetastoreServiceHiveMetastoreConfigInput interface {
 type MetastoreServiceHiveMetastoreConfigArgs struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
 	// The mappings override system defaults (some keys cannot be overridden)
-	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	ConfigOverrides  pulumi.StringMapInput `pulumi:"configOverrides"`
+	EndpointProtocol pulumi.StringPtrInput `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
 	// Structure is documented below.
 	KerberosConfig MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput `pulumi:"kerberosConfig"`
@@ -9648,6 +9658,10 @@ func (o MetastoreServiceHiveMetastoreConfigOutput) ConfigOverrides() pulumi.Stri
 	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+func (o MetastoreServiceHiveMetastoreConfigOutput) EndpointProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) *string { return v.EndpointProtocol }).(pulumi.StringPtrOutput)
+}
+
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
 // Structure is documented below.
 func (o MetastoreServiceHiveMetastoreConfigOutput) KerberosConfig() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
@@ -9694,6 +9708,15 @@ func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.S
 		}
 		return v.ConfigOverrides
 	}).(pulumi.StringMapOutput)
+}
+
+func (o MetastoreServiceHiveMetastoreConfigPtrOutput) EndpointProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointProtocol
+	}).(pulumi.StringPtrOutput)
 }
 
 // Information used to configure the Hive metastore service as a service principal in a Kerberos realm.

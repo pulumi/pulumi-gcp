@@ -973,7 +973,7 @@ type DatabaseInstanceSettings struct {
 	// The name of server instance collation.
 	Collation     *string                                `pulumi:"collation"`
 	DatabaseFlags []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
-	// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresize      *bool `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit *int  `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
@@ -1023,7 +1023,7 @@ type DatabaseInstanceSettingsArgs struct {
 	// The name of server instance collation.
 	Collation     pulumi.StringPtrInput                          `pulumi:"collation"`
 	DatabaseFlags DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
-	// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresize      pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit pulumi.IntPtrInput  `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
@@ -1160,7 +1160,7 @@ func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettings
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 func (o DatabaseInstanceSettingsOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
 }
@@ -1313,7 +1313,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSetti
 	}).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
 		if v == nil {

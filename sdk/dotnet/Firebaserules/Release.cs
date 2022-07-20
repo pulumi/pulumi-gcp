@@ -10,8 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebaserules
 {
     /// <summary>
-    /// The Firebaserules Release resource
-    /// 
+    /// For more information, see:
+    /// * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
     /// ## Example Usage
     /// ### Basic_release
     /// Creates a basic Firebase Rules Release
@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.Firebaserules
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Format: `projects/{project_id}/releases/{release_id}`
+        /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Firebaserules
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         /// </summary>
         [Output("rulesetName")]
         public Output<string> RulesetName { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.Firebaserules
     public sealed class ReleaseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Format: `projects/{project_id}/releases/{release_id}`
+        /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.Firebaserules
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         /// </summary>
         [Input("rulesetName", required: true)]
         public Input<string> RulesetName { get; set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.Firebaserules
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Format: `projects/{project_id}/releases/{release_id}`
+        /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.Firebaserules
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         /// </summary>
         [Input("rulesetName")]
         public Input<string>? RulesetName { get; set; }

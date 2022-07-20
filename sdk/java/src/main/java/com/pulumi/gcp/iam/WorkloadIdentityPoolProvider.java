@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about WorkloadIdentityPoolProvider, see:
  * 
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
  * * How-to Guides
  *     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
  * 
@@ -36,7 +36,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -46,9 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
  *             .workloadIdentityPoolId(&#34;example-pool&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
@@ -56,9 +53,7 @@ import javax.annotation.Nullable;
  *             .aws(WorkloadIdentityPoolProviderAwsArgs.builder()
  *                 .accountId(&#34;999999999999&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -71,7 +66,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -81,9 +75,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
  *             .workloadIdentityPoolId(&#34;example-pool&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
@@ -100,9 +92,7 @@ import javax.annotation.Nullable;
  *             .aws(WorkloadIdentityPoolProviderAwsArgs.builder()
  *                 .accountId(&#34;999999999999&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -115,7 +105,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -125,9 +114,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
  *             .workloadIdentityPoolId(&#34;example-pool&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
@@ -136,9 +123,7 @@ import javax.annotation.Nullable;
  *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
  *                 .issuerUri(&#34;https://sts.windows.net/azure-tenant-id&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -151,7 +136,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -161,9 +145,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
  *             .workloadIdentityPoolId(&#34;example-pool&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
  *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
@@ -188,9 +170,7 @@ import javax.annotation.Nullable;
  *                     &#34;example.com/gcp-oidc-federation&#34;)
  *                 .issuerUri(&#34;https://sts.windows.net/azure-tenant-id&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

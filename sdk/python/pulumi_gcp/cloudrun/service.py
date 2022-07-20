@@ -478,6 +478,7 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # Example of how to deploy a publicly-accessible Cloud Run application
         default = gcp.cloudrun.Service("default",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
@@ -572,19 +573,23 @@ class Service(pulumi.CustomResource):
             project="my-project-name",
             service="run.googleapis.com",
             disable_dependent_services=True,
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         iam_api = gcp.projects.Service("iamApi",
             project="my-project-name",
             service="iam.googleapis.com",
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         resource_manager_api = gcp.projects.Service("resourceManagerApi",
             project="my-project-name",
             service="cloudresourcemanager.googleapis.com",
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         scheduler_api = gcp.projects.Service("schedulerApi",
             project="my-project-name",
             service="cloudscheduler.googleapis.com",
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_service = gcp.cloudrun.Service("defaultService",
             project="my-project-name",
             location="us-central1",
@@ -599,13 +604,15 @@ class Service(pulumi.CustomResource):
                 percent=100,
                 latest_revision=True,
             )],
-            opts=pulumi.ResourceOptions(depends_on=[run_api]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[run_api]))
         default_account = gcp.service_account.Account("defaultAccount",
             project="my-project-name",
             account_id="scheduler-sa",
             description="Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
             display_name="scheduler-sa",
-            opts=pulumi.ResourceOptions(depends_on=[iam_api]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[iam_api]))
         default_job = gcp.cloudscheduler.Job("defaultJob",
             description="Invoke a Cloud Run container on a schedule.",
             schedule="*/8 * * * *",
@@ -616,12 +623,13 @@ class Service(pulumi.CustomResource):
             ),
             http_target=gcp.cloudscheduler.JobHttpTargetArgs(
                 http_method="POST",
-                uri=default_service.statuses.apply(lambda statuses: f"{statuses[0].url}/"),
+                uri=default_service.statuses[0].url,
                 oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
                     service_account_email=default_account.email,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[scheduler_api]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[scheduler_api]))
         default_iam_member = gcp.cloudrun.IamMember("defaultIamMember",
             project="my-project-name",
             location=default_service.location,
@@ -744,11 +752,6 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                annotations={
-                    "run.googleapis.com/ingress": "internal",
-                },
-            ),
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
@@ -757,9 +760,15 @@ class Service(pulumi.CustomResource):
                 ),
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                latest_revision=True,
                 percent=100,
-            )])
+                latest_revision=True,
+            )],
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/ingress": "internal",
+                },
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Eventarc Basic Tf
 
@@ -861,12 +870,14 @@ class Service(pulumi.CustomResource):
             project="my-project-name",
             service="compute.googleapis.com",
             disable_dependent_services=True,
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         run_api = gcp.projects.Service("runApi",
             project="my-project-name",
             service="run.googleapis.com",
             disable_dependent_services=True,
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         config = pulumi.Config()
         domain_name = config.get("domainName")
         if domain_name is None:
@@ -878,7 +889,8 @@ class Service(pulumi.CustomResource):
                 "europe-west1",
             ]
         lb_default_global_address = gcp.compute.GlobalAddress("lbDefaultGlobalAddress", project="my-project-name",
-        opts=pulumi.ResourceOptions(depends_on=[compute_api]))
+        opts=pulumi.ResourceOptions(provider=google_beta,
+            depends_on=[compute_api]))
         run_default = []
         for range in [{"value": i} for i in range(0, len(run_regions))]:
             run_default.append(gcp.cloudrun.Service(f"runDefault-{range['value']}",
@@ -895,7 +907,8 @@ class Service(pulumi.CustomResource):
                     percent=100,
                     latest_revision=True,
                 )],
-                opts=pulumi.ResourceOptions(depends_on=[run_api])))
+                opts=pulumi.ResourceOptions(provider=google_beta,
+                    depends_on=[run_api])))
         lb_default_region_network_endpoint_group = []
         for range in [{"value": i} for i in range(0, len(run_regions))]:
             lb_default_region_network_endpoint_group.append(gcp.compute.RegionNetworkEndpointGroup(f"lbDefaultRegionNetworkEndpointGroup-{range['value']}",
@@ -904,7 +917,8 @@ class Service(pulumi.CustomResource):
                 region=run_regions[range["value"]],
                 cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArgs(
                     service=run_default[count["index"]].name,
-                )))
+                ),
+                opts=pulumi.ResourceOptions(provider=google_beta)))
         lb_default_backend_service = gcp.compute.BackendService("lbDefaultBackendService",
             project="my-project-name",
             load_balancing_scheme="EXTERNAL_MANAGED",
@@ -920,7 +934,8 @@ class Service(pulumi.CustomResource):
                     group=lb_default_region_network_endpoint_group[1].id,
                 ),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[compute_api]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[compute_api]))
         lb_default_url_map = gcp.compute.URLMap("lbDefaultURLMap",
             project="my-project-name",
             default_service=lb_default_backend_service.id,
@@ -934,24 +949,28 @@ class Service(pulumi.CustomResource):
                         redirect_response_code="MOVED_PERMANENTLY_DEFAULT",
                     ),
                 )],
-            )])
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         lb_default_managed_ssl_certificate = gcp.compute.ManagedSslCertificate("lbDefaultManagedSslCertificate",
             project="my-project-name",
             managed=gcp.compute.ManagedSslCertificateManagedArgs(
                 domains=[domain_name],
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         lb_default_target_https_proxy = gcp.compute.TargetHttpsProxy("lbDefaultTargetHttpsProxy",
             project="my-project-name",
             url_map=lb_default_url_map.id,
             ssl_certificates=[lb_default_managed_ssl_certificate.name],
-            opts=pulumi.ResourceOptions(depends_on=[lb_default_managed_ssl_certificate]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[lb_default_managed_ssl_certificate]))
         lb_default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("lbDefaultGlobalForwardingRule",
             project="my-project-name",
             load_balancing_scheme="EXTERNAL_MANAGED",
             target=lb_default_target_https_proxy.id,
             ip_address=lb_default_global_address.id,
             port_range="443",
-            opts=pulumi.ResourceOptions(depends_on=[lb_default_target_https_proxy]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[lb_default_target_https_proxy]))
         pulumi.export("loadBalancerIpAddr", lb_default_global_address.address)
         run_allow_unauthenticated = []
         for range in [{"value": i} for i in range(0, len(run_regions))]:
@@ -960,24 +979,28 @@ class Service(pulumi.CustomResource):
                 location=run_default[range["value"]].location,
                 service=run_default[range["value"]].name,
                 role="roles/run.invoker",
-                member="allUsers"))
+                member="allUsers",
+                opts=pulumi.ResourceOptions(provider=google_beta)))
         https_default_url_map = gcp.compute.URLMap("httpsDefaultURLMap",
             project="my-project-name",
             default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
                 redirect_response_code="MOVED_PERMANENTLY_DEFAULT",
                 https_redirect=True,
                 strip_query=False,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         https_default_target_http_proxy = gcp.compute.TargetHttpProxy("httpsDefaultTargetHttpProxy",
             project="my-project-name",
             url_map=https_default_url_map.id,
-            opts=pulumi.ResourceOptions(depends_on=[https_default_url_map]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[https_default_url_map]))
         https_default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("httpsDefaultGlobalForwardingRule",
             project="my-project-name",
             target=https_default_target_http_proxy.id,
             ip_address=lb_default_global_address.id,
             port_range="80",
-            opts=pulumi.ResourceOptions(depends_on=[https_default_target_http_proxy]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[https_default_target_http_proxy]))
         ```
         ### Cloud Run Service Remove Tag
 
@@ -1302,6 +1325,7 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # Example of how to deploy a publicly-accessible Cloud Run application
         default = gcp.cloudrun.Service("default",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
@@ -1396,19 +1420,23 @@ class Service(pulumi.CustomResource):
             project="my-project-name",
             service="run.googleapis.com",
             disable_dependent_services=True,
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         iam_api = gcp.projects.Service("iamApi",
             project="my-project-name",
             service="iam.googleapis.com",
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         resource_manager_api = gcp.projects.Service("resourceManagerApi",
             project="my-project-name",
             service="cloudresourcemanager.googleapis.com",
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         scheduler_api = gcp.projects.Service("schedulerApi",
             project="my-project-name",
             service="cloudscheduler.googleapis.com",
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_service = gcp.cloudrun.Service("defaultService",
             project="my-project-name",
             location="us-central1",
@@ -1423,13 +1451,15 @@ class Service(pulumi.CustomResource):
                 percent=100,
                 latest_revision=True,
             )],
-            opts=pulumi.ResourceOptions(depends_on=[run_api]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[run_api]))
         default_account = gcp.service_account.Account("defaultAccount",
             project="my-project-name",
             account_id="scheduler-sa",
             description="Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
             display_name="scheduler-sa",
-            opts=pulumi.ResourceOptions(depends_on=[iam_api]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[iam_api]))
         default_job = gcp.cloudscheduler.Job("defaultJob",
             description="Invoke a Cloud Run container on a schedule.",
             schedule="*/8 * * * *",
@@ -1440,12 +1470,13 @@ class Service(pulumi.CustomResource):
             ),
             http_target=gcp.cloudscheduler.JobHttpTargetArgs(
                 http_method="POST",
-                uri=default_service.statuses.apply(lambda statuses: f"{statuses[0].url}/"),
+                uri=default_service.statuses[0].url,
                 oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
                     service_account_email=default_account.email,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[scheduler_api]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[scheduler_api]))
         default_iam_member = gcp.cloudrun.IamMember("defaultIamMember",
             project="my-project-name",
             location=default_service.location,
@@ -1568,11 +1599,6 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                annotations={
-                    "run.googleapis.com/ingress": "internal",
-                },
-            ),
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
@@ -1581,9 +1607,15 @@ class Service(pulumi.CustomResource):
                 ),
             ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                latest_revision=True,
                 percent=100,
-            )])
+                latest_revision=True,
+            )],
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/ingress": "internal",
+                },
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Eventarc Basic Tf
 
@@ -1685,12 +1717,14 @@ class Service(pulumi.CustomResource):
             project="my-project-name",
             service="compute.googleapis.com",
             disable_dependent_services=True,
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         run_api = gcp.projects.Service("runApi",
             project="my-project-name",
             service="run.googleapis.com",
             disable_dependent_services=True,
-            disable_on_destroy=False)
+            disable_on_destroy=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         config = pulumi.Config()
         domain_name = config.get("domainName")
         if domain_name is None:
@@ -1702,7 +1736,8 @@ class Service(pulumi.CustomResource):
                 "europe-west1",
             ]
         lb_default_global_address = gcp.compute.GlobalAddress("lbDefaultGlobalAddress", project="my-project-name",
-        opts=pulumi.ResourceOptions(depends_on=[compute_api]))
+        opts=pulumi.ResourceOptions(provider=google_beta,
+            depends_on=[compute_api]))
         run_default = []
         for range in [{"value": i} for i in range(0, len(run_regions))]:
             run_default.append(gcp.cloudrun.Service(f"runDefault-{range['value']}",
@@ -1719,7 +1754,8 @@ class Service(pulumi.CustomResource):
                     percent=100,
                     latest_revision=True,
                 )],
-                opts=pulumi.ResourceOptions(depends_on=[run_api])))
+                opts=pulumi.ResourceOptions(provider=google_beta,
+                    depends_on=[run_api])))
         lb_default_region_network_endpoint_group = []
         for range in [{"value": i} for i in range(0, len(run_regions))]:
             lb_default_region_network_endpoint_group.append(gcp.compute.RegionNetworkEndpointGroup(f"lbDefaultRegionNetworkEndpointGroup-{range['value']}",
@@ -1728,7 +1764,8 @@ class Service(pulumi.CustomResource):
                 region=run_regions[range["value"]],
                 cloud_run=gcp.compute.RegionNetworkEndpointGroupCloudRunArgs(
                     service=run_default[count["index"]].name,
-                )))
+                ),
+                opts=pulumi.ResourceOptions(provider=google_beta)))
         lb_default_backend_service = gcp.compute.BackendService("lbDefaultBackendService",
             project="my-project-name",
             load_balancing_scheme="EXTERNAL_MANAGED",
@@ -1744,7 +1781,8 @@ class Service(pulumi.CustomResource):
                     group=lb_default_region_network_endpoint_group[1].id,
                 ),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[compute_api]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[compute_api]))
         lb_default_url_map = gcp.compute.URLMap("lbDefaultURLMap",
             project="my-project-name",
             default_service=lb_default_backend_service.id,
@@ -1758,24 +1796,28 @@ class Service(pulumi.CustomResource):
                         redirect_response_code="MOVED_PERMANENTLY_DEFAULT",
                     ),
                 )],
-            )])
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         lb_default_managed_ssl_certificate = gcp.compute.ManagedSslCertificate("lbDefaultManagedSslCertificate",
             project="my-project-name",
             managed=gcp.compute.ManagedSslCertificateManagedArgs(
                 domains=[domain_name],
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         lb_default_target_https_proxy = gcp.compute.TargetHttpsProxy("lbDefaultTargetHttpsProxy",
             project="my-project-name",
             url_map=lb_default_url_map.id,
             ssl_certificates=[lb_default_managed_ssl_certificate.name],
-            opts=pulumi.ResourceOptions(depends_on=[lb_default_managed_ssl_certificate]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[lb_default_managed_ssl_certificate]))
         lb_default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("lbDefaultGlobalForwardingRule",
             project="my-project-name",
             load_balancing_scheme="EXTERNAL_MANAGED",
             target=lb_default_target_https_proxy.id,
             ip_address=lb_default_global_address.id,
             port_range="443",
-            opts=pulumi.ResourceOptions(depends_on=[lb_default_target_https_proxy]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[lb_default_target_https_proxy]))
         pulumi.export("loadBalancerIpAddr", lb_default_global_address.address)
         run_allow_unauthenticated = []
         for range in [{"value": i} for i in range(0, len(run_regions))]:
@@ -1784,24 +1826,28 @@ class Service(pulumi.CustomResource):
                 location=run_default[range["value"]].location,
                 service=run_default[range["value"]].name,
                 role="roles/run.invoker",
-                member="allUsers"))
+                member="allUsers",
+                opts=pulumi.ResourceOptions(provider=google_beta)))
         https_default_url_map = gcp.compute.URLMap("httpsDefaultURLMap",
             project="my-project-name",
             default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
                 redirect_response_code="MOVED_PERMANENTLY_DEFAULT",
                 https_redirect=True,
                 strip_query=False,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         https_default_target_http_proxy = gcp.compute.TargetHttpProxy("httpsDefaultTargetHttpProxy",
             project="my-project-name",
             url_map=https_default_url_map.id,
-            opts=pulumi.ResourceOptions(depends_on=[https_default_url_map]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[https_default_url_map]))
         https_default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("httpsDefaultGlobalForwardingRule",
             project="my-project-name",
             target=https_default_target_http_proxy.id,
             ip_address=lb_default_global_address.id,
             port_range="80",
-            opts=pulumi.ResourceOptions(depends_on=[https_default_target_http_proxy]))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[https_default_target_http_proxy]))
         ```
         ### Cloud Run Service Remove Tag
 

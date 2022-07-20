@@ -16,7 +16,7 @@ public final class MetastoreServiceIamPolicyArgs extends com.pulumi.resources.Re
     public static final MetastoreServiceIamPolicyArgs Empty = new MetastoreServiceIamPolicyArgs();
 
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      * Used to find the parent resource to bind the IAM policy to
      * 
@@ -25,7 +25,7 @@ public final class MetastoreServiceIamPolicyArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> location;
 
     /**
-     * @return The  location where the autoscaling policy should reside.
+     * @return The location where the metastore service should reside.
      * The default value is `global`.
      * Used to find the parent resource to bind the IAM policy to
      * 
@@ -103,7 +103,7 @@ public final class MetastoreServiceIamPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param location The  location where the autoscaling policy should reside.
+         * @param location The location where the metastore service should reside.
          * The default value is `global`.
          * Used to find the parent resource to bind the IAM policy to
          * 
@@ -116,7 +116,7 @@ public final class MetastoreServiceIamPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param location The  location where the autoscaling policy should reside.
+         * @param location The location where the metastore service should reside.
          * The default value is `global`.
          * Used to find the parent resource to bind the IAM policy to
          * 

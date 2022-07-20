@@ -391,7 +391,7 @@ import (
 // 			Service:                  pulumi.String("run.googleapis.com"),
 // 			DisableDependentServices: pulumi.Bool(true),
 // 			DisableOnDestroy:         pulumi.Bool(false),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -399,7 +399,7 @@ import (
 // 			Project:          pulumi.String("my-project-name"),
 // 			Service:          pulumi.String("iam.googleapis.com"),
 // 			DisableOnDestroy: pulumi.Bool(false),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -407,7 +407,7 @@ import (
 // 			Project:          pulumi.String("my-project-name"),
 // 			Service:          pulumi.String("cloudresourcemanager.googleapis.com"),
 // 			DisableOnDestroy: pulumi.Bool(false),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -415,7 +415,7 @@ import (
 // 			Project:          pulumi.String("my-project-name"),
 // 			Service:          pulumi.String("cloudscheduler.googleapis.com"),
 // 			DisableOnDestroy: pulumi.Bool(false),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -437,7 +437,7 @@ import (
 // 					LatestRevision: pulumi.Bool(true),
 // 				},
 // 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 // 			runApi,
 // 		}))
 // 		if err != nil {
@@ -448,7 +448,7 @@ import (
 // 			AccountId:   pulumi.String("scheduler-sa"),
 // 			Description: pulumi.String("Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs."),
 // 			DisplayName: pulumi.String("scheduler-sa"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 // 			iamApi,
 // 		}))
 // 		if err != nil {
@@ -465,13 +465,13 @@ import (
 // 			HttpTarget: &cloudscheduler.JobHttpTargetArgs{
 // 				HttpMethod: pulumi.String("POST"),
 // 				Uri: defaultService.Statuses.ApplyT(func(statuses []cloudrun.ServiceStatus) (string, error) {
-// 					return fmt.Sprintf("%v%v", statuses[0].Url, "/"), nil
+// 					return statuses[0].Url, nil
 // 				}).(pulumi.StringOutput),
 // 				OidcToken: &cloudscheduler.JobHttpTargetOidcTokenArgs{
 // 					ServiceAccountEmail: defaultAccount.Email,
 // 				},
 // 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 // 			schedulerApi,
 // 		}))
 // 		if err != nil {
@@ -698,11 +698,6 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
 // 			Location: pulumi.String("us-central1"),
-// 			Metadata: &cloudrun.ServiceMetadataArgs{
-// 				Annotations: pulumi.StringMap{
-// 					"run.googleapis.com/ingress": pulumi.String("internal"),
-// 				},
-// 			},
 // 			Template: &cloudrun.ServiceTemplateArgs{
 // 				Spec: &cloudrun.ServiceTemplateSpecArgs{
 // 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
@@ -714,11 +709,16 @@ import (
 // 			},
 // 			Traffics: cloudrun.ServiceTrafficArray{
 // 				&cloudrun.ServiceTrafficArgs{
-// 					LatestRevision: pulumi.Bool(true),
 // 					Percent:        pulumi.Int(100),
+// 					LatestRevision: pulumi.Bool(true),
 // 				},
 // 			},
-// 		})
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Annotations: pulumi.StringMap{
+// 					"run.googleapis.com/ingress": pulumi.String("internal"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

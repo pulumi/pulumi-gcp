@@ -15,7 +15,7 @@ import (
 //
 // To get more information about WorkloadIdentityPoolProvider, see:
 //
-// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
 // * How-to Guides
 //     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 //
@@ -34,7 +34,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
 // 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -44,7 +44,7 @@ import (
 // 			Aws: &iam.WorkloadIdentityPoolProviderAwsArgs{
 // 				AccountId: pulumi.String("999999999999"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -66,7 +66,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
 // 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -85,7 +85,7 @@ import (
 // 			Aws: &iam.WorkloadIdentityPoolProviderAwsArgs{
 // 				AccountId: pulumi.String("999999999999"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -107,7 +107,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
 // 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -120,7 +120,7 @@ import (
 // 			Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
 // 				IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -144,7 +144,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
 // 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -167,7 +167,7 @@ import (
 // 				},
 // 				IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

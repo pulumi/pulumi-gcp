@@ -930,6 +930,332 @@ func (o RegistryEventNotificationConfigItemArrayOutput) Index(i pulumi.IntInput)
 	}).(RegistryEventNotificationConfigItemOutput)
 }
 
+type RegistryIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RegistryIamBindingConditionInput is an input type that accepts RegistryIamBindingConditionArgs and RegistryIamBindingConditionOutput values.
+// You can construct a concrete instance of `RegistryIamBindingConditionInput` via:
+//
+//          RegistryIamBindingConditionArgs{...}
+type RegistryIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToRegistryIamBindingConditionOutput() RegistryIamBindingConditionOutput
+	ToRegistryIamBindingConditionOutputWithContext(context.Context) RegistryIamBindingConditionOutput
+}
+
+type RegistryIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RegistryIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryIamBindingCondition)(nil)).Elem()
+}
+
+func (i RegistryIamBindingConditionArgs) ToRegistryIamBindingConditionOutput() RegistryIamBindingConditionOutput {
+	return i.ToRegistryIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i RegistryIamBindingConditionArgs) ToRegistryIamBindingConditionOutputWithContext(ctx context.Context) RegistryIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamBindingConditionOutput)
+}
+
+func (i RegistryIamBindingConditionArgs) ToRegistryIamBindingConditionPtrOutput() RegistryIamBindingConditionPtrOutput {
+	return i.ToRegistryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryIamBindingConditionArgs) ToRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) RegistryIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamBindingConditionOutput).ToRegistryIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// RegistryIamBindingConditionPtrInput is an input type that accepts RegistryIamBindingConditionArgs, RegistryIamBindingConditionPtr and RegistryIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `RegistryIamBindingConditionPtrInput` via:
+//
+//          RegistryIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type RegistryIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToRegistryIamBindingConditionPtrOutput() RegistryIamBindingConditionPtrOutput
+	ToRegistryIamBindingConditionPtrOutputWithContext(context.Context) RegistryIamBindingConditionPtrOutput
+}
+
+type registryIamBindingConditionPtrType RegistryIamBindingConditionArgs
+
+func RegistryIamBindingConditionPtr(v *RegistryIamBindingConditionArgs) RegistryIamBindingConditionPtrInput {
+	return (*registryIamBindingConditionPtrType)(v)
+}
+
+func (*registryIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryIamBindingCondition)(nil)).Elem()
+}
+
+func (i *registryIamBindingConditionPtrType) ToRegistryIamBindingConditionPtrOutput() RegistryIamBindingConditionPtrOutput {
+	return i.ToRegistryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *registryIamBindingConditionPtrType) ToRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) RegistryIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamBindingConditionPtrOutput)
+}
+
+type RegistryIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (RegistryIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryIamBindingCondition)(nil)).Elem()
+}
+
+func (o RegistryIamBindingConditionOutput) ToRegistryIamBindingConditionOutput() RegistryIamBindingConditionOutput {
+	return o
+}
+
+func (o RegistryIamBindingConditionOutput) ToRegistryIamBindingConditionOutputWithContext(ctx context.Context) RegistryIamBindingConditionOutput {
+	return o
+}
+
+func (o RegistryIamBindingConditionOutput) ToRegistryIamBindingConditionPtrOutput() RegistryIamBindingConditionPtrOutput {
+	return o.ToRegistryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryIamBindingConditionOutput) ToRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) RegistryIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryIamBindingCondition) *RegistryIamBindingCondition {
+		return &v
+	}).(RegistryIamBindingConditionPtrOutput)
+}
+
+func (o RegistryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RegistryIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RegistryIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RegistryIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryIamBindingCondition)(nil)).Elem()
+}
+
+func (o RegistryIamBindingConditionPtrOutput) ToRegistryIamBindingConditionPtrOutput() RegistryIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RegistryIamBindingConditionPtrOutput) ToRegistryIamBindingConditionPtrOutputWithContext(ctx context.Context) RegistryIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RegistryIamBindingConditionPtrOutput) Elem() RegistryIamBindingConditionOutput {
+	return o.ApplyT(func(v *RegistryIamBindingCondition) RegistryIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryIamBindingCondition
+		return ret
+	}).(RegistryIamBindingConditionOutput)
+}
+
+func (o RegistryIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegistryIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegistryIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegistryIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RegistryIamMemberConditionInput is an input type that accepts RegistryIamMemberConditionArgs and RegistryIamMemberConditionOutput values.
+// You can construct a concrete instance of `RegistryIamMemberConditionInput` via:
+//
+//          RegistryIamMemberConditionArgs{...}
+type RegistryIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToRegistryIamMemberConditionOutput() RegistryIamMemberConditionOutput
+	ToRegistryIamMemberConditionOutputWithContext(context.Context) RegistryIamMemberConditionOutput
+}
+
+type RegistryIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RegistryIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryIamMemberCondition)(nil)).Elem()
+}
+
+func (i RegistryIamMemberConditionArgs) ToRegistryIamMemberConditionOutput() RegistryIamMemberConditionOutput {
+	return i.ToRegistryIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i RegistryIamMemberConditionArgs) ToRegistryIamMemberConditionOutputWithContext(ctx context.Context) RegistryIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamMemberConditionOutput)
+}
+
+func (i RegistryIamMemberConditionArgs) ToRegistryIamMemberConditionPtrOutput() RegistryIamMemberConditionPtrOutput {
+	return i.ToRegistryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RegistryIamMemberConditionArgs) ToRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) RegistryIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamMemberConditionOutput).ToRegistryIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// RegistryIamMemberConditionPtrInput is an input type that accepts RegistryIamMemberConditionArgs, RegistryIamMemberConditionPtr and RegistryIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `RegistryIamMemberConditionPtrInput` via:
+//
+//          RegistryIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type RegistryIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToRegistryIamMemberConditionPtrOutput() RegistryIamMemberConditionPtrOutput
+	ToRegistryIamMemberConditionPtrOutputWithContext(context.Context) RegistryIamMemberConditionPtrOutput
+}
+
+type registryIamMemberConditionPtrType RegistryIamMemberConditionArgs
+
+func RegistryIamMemberConditionPtr(v *RegistryIamMemberConditionArgs) RegistryIamMemberConditionPtrInput {
+	return (*registryIamMemberConditionPtrType)(v)
+}
+
+func (*registryIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryIamMemberCondition)(nil)).Elem()
+}
+
+func (i *registryIamMemberConditionPtrType) ToRegistryIamMemberConditionPtrOutput() RegistryIamMemberConditionPtrOutput {
+	return i.ToRegistryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *registryIamMemberConditionPtrType) ToRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) RegistryIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamMemberConditionPtrOutput)
+}
+
+type RegistryIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (RegistryIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryIamMemberCondition)(nil)).Elem()
+}
+
+func (o RegistryIamMemberConditionOutput) ToRegistryIamMemberConditionOutput() RegistryIamMemberConditionOutput {
+	return o
+}
+
+func (o RegistryIamMemberConditionOutput) ToRegistryIamMemberConditionOutputWithContext(ctx context.Context) RegistryIamMemberConditionOutput {
+	return o
+}
+
+func (o RegistryIamMemberConditionOutput) ToRegistryIamMemberConditionPtrOutput() RegistryIamMemberConditionPtrOutput {
+	return o.ToRegistryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryIamMemberConditionOutput) ToRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) RegistryIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryIamMemberCondition) *RegistryIamMemberCondition {
+		return &v
+	}).(RegistryIamMemberConditionPtrOutput)
+}
+
+func (o RegistryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RegistryIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RegistryIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RegistryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RegistryIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryIamMemberCondition)(nil)).Elem()
+}
+
+func (o RegistryIamMemberConditionPtrOutput) ToRegistryIamMemberConditionPtrOutput() RegistryIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RegistryIamMemberConditionPtrOutput) ToRegistryIamMemberConditionPtrOutputWithContext(ctx context.Context) RegistryIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RegistryIamMemberConditionPtrOutput) Elem() RegistryIamMemberConditionOutput {
+	return o.ApplyT(func(v *RegistryIamMemberCondition) RegistryIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryIamMemberCondition
+		return ret
+	}).(RegistryIamMemberConditionOutput)
+}
+
+func (o RegistryIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegistryIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegistryIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceConfigInput)(nil)).Elem(), DeviceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceConfigArrayInput)(nil)).Elem(), DeviceConfigArray{})
@@ -946,6 +1272,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryCredentialArrayInput)(nil)).Elem(), RegistryCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEventNotificationConfigItemInput)(nil)).Elem(), RegistryEventNotificationConfigItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEventNotificationConfigItemArrayInput)(nil)).Elem(), RegistryEventNotificationConfigItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryIamBindingConditionInput)(nil)).Elem(), RegistryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryIamBindingConditionPtrInput)(nil)).Elem(), RegistryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryIamMemberConditionInput)(nil)).Elem(), RegistryIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryIamMemberConditionPtrInput)(nil)).Elem(), RegistryIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(DeviceConfigOutput{})
 	pulumi.RegisterOutputType(DeviceConfigArrayOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialOutput{})
@@ -961,4 +1291,8 @@ func init() {
 	pulumi.RegisterOutputType(RegistryCredentialArrayOutput{})
 	pulumi.RegisterOutputType(RegistryEventNotificationConfigItemOutput{})
 	pulumi.RegisterOutputType(RegistryEventNotificationConfigItemArrayOutput{})
+	pulumi.RegisterOutputType(RegistryIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(RegistryIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(RegistryIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(RegistryIamMemberConditionPtrOutput{})
 }

@@ -221,6 +221,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SharedVPCServiceProject{}
 	case "gcp:compute/snapshot:Snapshot":
 		r = &Snapshot{}
+	case "gcp:compute/snapshotIamBinding:SnapshotIamBinding":
+		r = &SnapshotIamBinding{}
+	case "gcp:compute/snapshotIamMember:SnapshotIamMember":
+		r = &SnapshotIamMember{}
+	case "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy":
+		r = &SnapshotIamPolicy{}
 	case "gcp:compute/subnetwork:Subnetwork":
 		r = &Subnetwork{}
 	case "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding":
@@ -760,6 +766,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/snapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/snapshotIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/snapshotIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/snapshotIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -18,8 +18,8 @@ class ReleaseArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Release resource.
-        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
-        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`
+        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "ruleset_name", ruleset_name)
@@ -32,7 +32,7 @@ class ReleaseArgs:
     @pulumi.getter(name="rulesetName")
     def ruleset_name(self) -> pulumi.Input[str]:
         """
-        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         """
         return pulumi.get(self, "ruleset_name")
 
@@ -44,7 +44,7 @@ class ReleaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Format: `projects/{project_id}/releases/{release_id}`
+        Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         """
         return pulumi.get(self, "name")
 
@@ -79,9 +79,9 @@ class _ReleaseState:
         :param pulumi.Input[str] create_time: Output only. Time the release was created.
         :param pulumi.Input[bool] disabled: Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
                from this Release.
-        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`
+        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         :param pulumi.Input[str] update_time: Output only. Time the release was updated.
         """
         if create_time is not None:
@@ -126,7 +126,7 @@ class _ReleaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Format: `projects/{project_id}/releases/{release_id}`
+        Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         """
         return pulumi.get(self, "name")
 
@@ -150,7 +150,7 @@ class _ReleaseState:
     @pulumi.getter(name="rulesetName")
     def ruleset_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         """
         return pulumi.get(self, "ruleset_name")
 
@@ -181,8 +181,8 @@ class Release(pulumi.CustomResource):
                  ruleset_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Firebaserules Release resource
-
+        For more information, see:
+        * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
         ### Basic_release
         Creates a basic Firebase Rules Release
@@ -241,9 +241,9 @@ class Release(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`
+        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         """
         ...
     @overload
@@ -252,8 +252,8 @@ class Release(pulumi.CustomResource):
                  args: ReleaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Firebaserules Release resource
-
+        For more information, see:
+        * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
         ### Basic_release
         Creates a basic Firebase Rules Release
@@ -374,9 +374,9 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Time the release was created.
         :param pulumi.Input[bool] disabled: Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
                from this Release.
-        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`
+        :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         :param pulumi.Input[str] update_time: Output only. Time the release was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -412,7 +412,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Format: `projects/{project_id}/releases/{release_id}`
+        Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         """
         return pulumi.get(self, "name")
 
@@ -428,7 +428,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter(name="rulesetName")
     def ruleset_name(self) -> pulumi.Output[str]:
         """
-        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         """
         return pulumi.get(self, "ruleset_name")
 

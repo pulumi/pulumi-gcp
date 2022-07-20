@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -40,20 +39,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
- *             .serviceId(&#34;metastore-srv&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .port(9080)
- *             .tier(&#34;DEVELOPER&#34;)
- *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
- *                 .hourOfDay(2)
- *                 .dayOfWeek(&#34;SUNDAY&#34;)
- *                 .build())
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
  *                 .version(&#34;2.3.6&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .location(&#34;us-central1&#34;)
+ *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
+ *                 .dayOfWeek(&#34;SUNDAY&#34;)
+ *                 .hourOfDay(2)
+ *                 .build())
+ *             .port(9080)
+ *             .serviceId(&#34;metastore-srv&#34;)
+ *             .tier(&#34;DEVELOPER&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -96,9 +93,7 @@ import javax.annotation.Nullable;
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
  *                 .version(&#34;3.1.2&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -136,6 +131,24 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> artifactGcsUri() {
         return this.artifactGcsUri;
+    }
+    /**
+     * The database type that the Metastore service stores its data.
+     * Default value is `MYSQL`.
+     * Possible values are `MYSQL` and `SPANNER`.
+     * 
+     */
+    @Export(name="databaseType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> databaseType;
+
+    /**
+     * @return The database type that the Metastore service stores its data.
+     * Default value is `MYSQL`.
+     * Possible values are `MYSQL` and `SPANNER`.
+     * 
+     */
+    public Output<Optional<String>> databaseType() {
+        return Codegen.optional(this.databaseType);
     }
     /**
      * Information used to configure the Dataproc Metastore service to encrypt
@@ -200,7 +213,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      * 
      */
@@ -208,7 +221,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return The  location where the autoscaling policy should reside.
+     * @return The location where the metastore service should reside.
      * The default value is `global`.
      * 
      */
@@ -218,6 +231,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      * 
      */
@@ -227,6 +241,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     /**
      * @return The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      * 
      */
@@ -294,6 +309,24 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The release channel of the service. If unspecified, defaults to `STABLE`.
+     * Default value is `STABLE`.
+     * Possible values are `CANARY` and `STABLE`.
+     * 
+     */
+    @Export(name="releaseChannel", type=String.class, parameters={})
+    private Output</* @Nullable */ String> releaseChannel;
+
+    /**
+     * @return The release channel of the service. If unspecified, defaults to `STABLE`.
+     * Default value is `STABLE`.
+     * Possible values are `CANARY` and `STABLE`.
+     * 
+     */
+    public Output<Optional<String>> releaseChannel() {
+        return Codegen.optional(this.releaseChannel);
+    }
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -354,6 +387,20 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tier() {
         return this.tier;
+    }
+    /**
+     * The globally unique resource identifier of the metastore service.
+     * 
+     */
+    @Export(name="uid", type=String.class, parameters={})
+    private Output<String> uid;
+
+    /**
+     * @return The globally unique resource identifier of the metastore service.
+     * 
+     */
+    public Output<String> uid() {
+        return this.uid;
     }
 
     /**

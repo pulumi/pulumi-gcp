@@ -65,6 +65,7 @@ type LookupClusterArgs struct {
 type LookupClusterResult struct {
 	AddonsConfigs              []GetClusterAddonsConfig              `pulumi:"addonsConfigs"`
 	AuthenticatorGroupsConfigs []GetClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfigs"`
+	BinaryAuthorizations       []GetClusterBinaryAuthorization       `pulumi:"binaryAuthorizations"`
 	ClusterAutoscalings        []GetClusterClusterAutoscaling        `pulumi:"clusterAutoscalings"`
 	ClusterIpv4Cidr            string                                `pulumi:"clusterIpv4Cidr"`
 	ClusterTelemetries         []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
@@ -178,6 +179,10 @@ func (o LookupClusterResultOutput) AddonsConfigs() GetClusterAddonsConfigArrayOu
 
 func (o LookupClusterResultOutput) AuthenticatorGroupsConfigs() GetClusterAuthenticatorGroupsConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterAuthenticatorGroupsConfig { return v.AuthenticatorGroupsConfigs }).(GetClusterAuthenticatorGroupsConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) BinaryAuthorizations() GetClusterBinaryAuthorizationArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterBinaryAuthorization { return v.BinaryAuthorizations }).(GetClusterBinaryAuthorizationArrayOutput)
 }
 
 func (o LookupClusterResultOutput) ClusterAutoscalings() GetClusterClusterAutoscalingArrayOutput {

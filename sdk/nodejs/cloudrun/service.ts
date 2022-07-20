@@ -139,6 +139,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // Example of how to deploy a publicly-accessible Cloud Run application
  * const _default = new gcp.cloudrun.Service("default", {
  *     location: "us-central1",
  *     template: {
@@ -241,21 +242,29 @@ import * as utilities from "../utilities";
  *     service: "run.googleapis.com",
  *     disableDependentServices: true,
  *     disableOnDestroy: false,
+ * }, {
+ *     provider: google_beta,
  * });
  * const iamApi = new gcp.projects.Service("iamApi", {
  *     project: "my-project-name",
  *     service: "iam.googleapis.com",
  *     disableOnDestroy: false,
+ * }, {
+ *     provider: google_beta,
  * });
  * const resourceManagerApi = new gcp.projects.Service("resourceManagerApi", {
  *     project: "my-project-name",
  *     service: "cloudresourcemanager.googleapis.com",
  *     disableOnDestroy: false,
+ * }, {
+ *     provider: google_beta,
  * });
  * const schedulerApi = new gcp.projects.Service("schedulerApi", {
  *     project: "my-project-name",
  *     service: "cloudscheduler.googleapis.com",
  *     disableOnDestroy: false,
+ * }, {
+ *     provider: google_beta,
  * });
  * const defaultService = new gcp.cloudrun.Service("defaultService", {
  *     project: "my-project-name",
@@ -272,6 +281,7 @@ import * as utilities from "../utilities";
  *         latestRevision: true,
  *     }],
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [runApi],
  * });
  * const defaultAccount = new gcp.serviceaccount.Account("defaultAccount", {
@@ -280,6 +290,7 @@ import * as utilities from "../utilities";
  *     description: "Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
  *     displayName: "scheduler-sa",
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [iamApi],
  * });
  * const defaultJob = new gcp.cloudscheduler.Job("defaultJob", {
@@ -292,12 +303,13 @@ import * as utilities from "../utilities";
  *     },
  *     httpTarget: {
  *         httpMethod: "POST",
- *         uri: defaultService.statuses.apply(statuses => `${statuses[0].url}/`),
+ *         uri: defaultService.statuses.apply(statuses => statuses[0].url),
  *         oidcToken: {
  *             serviceAccountEmail: defaultAccount.email,
  *         },
  *     },
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [schedulerApi],
  * });
  * const defaultIamMember = new gcp.cloudrun.IamMember("defaultIamMember", {
@@ -433,26 +445,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultService = new gcp.cloudrun.Service("default", {
+ * const _default = new gcp.cloudrun.Service("default", {
  *     location: "us-central1",
- *     metadata: {
- *         annotations: {
- *             // For valid annotation values and descriptions, see
- *             // https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress
- *             "run.googleapis.com/ingress": "internal",
- *         },
- *     },
  *     template: {
  *         spec: {
  *             containers: [{
- *                 image: "gcr.io/cloudrun/hello", //public image for your service
+ *                 image: "gcr.io/cloudrun/hello",
  *             }],
  *         },
  *     },
  *     traffics: [{
- *         latestRevision: true,
  *         percent: 100,
+ *         latestRevision: true,
  *     }],
+ *     metadata: {
+ *         annotations: {
+ *             "run.googleapis.com/ingress": "internal",
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  * ### Eventarc Basic Tf
@@ -570,12 +582,16 @@ import * as utilities from "../utilities";
  *     service: "compute.googleapis.com",
  *     disableDependentServices: true,
  *     disableOnDestroy: false,
+ * }, {
+ *     provider: google_beta,
  * });
  * const runApi = new gcp.projects.Service("runApi", {
  *     project: "my-project-name",
  *     service: "run.googleapis.com",
  *     disableDependentServices: true,
  *     disableOnDestroy: false,
+ * }, {
+ *     provider: google_beta,
  * });
  * const config = new pulumi.Config();
  * const domainName = config.get("domainName") || "example.com";
@@ -584,6 +600,7 @@ import * as utilities from "../utilities";
  *     "europe-west1",
  * ];
  * const lbDefaultGlobalAddress = new gcp.compute.GlobalAddress("lbDefaultGlobalAddress", {project: "my-project-name"}, {
+ *     provider: google_beta,
  *     dependsOn: [computeApi],
  * });
  * const runDefault: gcp.cloudrun.Service[];
@@ -603,6 +620,7 @@ import * as utilities from "../utilities";
  *             latestRevision: true,
  *         }],
  *     }, {
+ *     provider: google_beta,
  *     dependsOn: [runApi],
  * }));
  * }
@@ -615,7 +633,9 @@ import * as utilities from "../utilities";
  *         cloudRun: {
  *             service: runDefault[count.index].name,
  *         },
- *     }));
+ *     }, {
+ *     provider: google_beta,
+ * }));
  * }
  * const lbDefaultBackendService = new gcp.compute.BackendService("lbDefaultBackendService", {
  *     project: "my-project-name",
@@ -633,6 +653,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [computeApi],
  * });
  * const lbDefaultURLMap = new gcp.compute.URLMap("lbDefaultURLMap", {
@@ -649,18 +670,23 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     }],
+ * }, {
+ *     provider: google_beta,
  * });
  * const lbDefaultManagedSslCertificate = new gcp.compute.ManagedSslCertificate("lbDefaultManagedSslCertificate", {
  *     project: "my-project-name",
  *     managed: {
  *         domains: [domainName],
  *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * const lbDefaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("lbDefaultTargetHttpsProxy", {
  *     project: "my-project-name",
  *     urlMap: lbDefaultURLMap.id,
  *     sslCertificates: [lbDefaultManagedSslCertificate.name],
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [lbDefaultManagedSslCertificate],
  * });
  * const lbDefaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("lbDefaultGlobalForwardingRule", {
@@ -670,6 +696,7 @@ import * as utilities from "../utilities";
  *     ipAddress: lbDefaultGlobalAddress.id,
  *     portRange: "443",
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [lbDefaultTargetHttpsProxy],
  * });
  * export const loadBalancerIpAddr = lbDefaultGlobalAddress.address;
@@ -681,7 +708,9 @@ import * as utilities from "../utilities";
  *         service: runDefault[range.value].name,
  *         role: "roles/run.invoker",
  *         member: "allUsers",
- *     }));
+ *     }, {
+ *     provider: google_beta,
+ * }));
  * }
  * const httpsDefaultURLMap = new gcp.compute.URLMap("httpsDefaultURLMap", {
  *     project: "my-project-name",
@@ -690,11 +719,14 @@ import * as utilities from "../utilities";
  *         httpsRedirect: true,
  *         stripQuery: false,
  *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * const httpsDefaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("httpsDefaultTargetHttpProxy", {
  *     project: "my-project-name",
  *     urlMap: httpsDefaultURLMap.id,
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [httpsDefaultURLMap],
  * });
  * const httpsDefaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("httpsDefaultGlobalForwardingRule", {
@@ -703,6 +735,7 @@ import * as utilities from "../utilities";
  *     ipAddress: lbDefaultGlobalAddress.id,
  *     portRange: "80",
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [httpsDefaultTargetHttpProxy],
  * });
  * ```

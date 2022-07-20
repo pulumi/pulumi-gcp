@@ -36,6 +36,25 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The database type that the Metastore service stores its data.
+     * Default value is `MYSQL`.
+     * Possible values are `MYSQL` and `SPANNER`.
+     * 
+     */
+    @Import(name="databaseType")
+    private @Nullable Output<String> databaseType;
+
+    /**
+     * @return The database type that the Metastore service stores its data.
+     * Default value is `MYSQL`.
+     * Possible values are `MYSQL` and `SPANNER`.
+     * 
+     */
+    public Optional<Output<String>> databaseType() {
+        return Optional.ofNullable(this.databaseType);
+    }
+
+    /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
      * Structure is documented below.
@@ -102,7 +121,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      * 
      */
@@ -110,7 +129,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> location;
 
     /**
-     * @return The  location where the autoscaling policy should reside.
+     * @return The location where the metastore service should reside.
      * The default value is `global`.
      * 
      */
@@ -121,6 +140,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      * 
      */
@@ -130,6 +150,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     /**
      * @return The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      * 
      */
@@ -202,6 +223,25 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The release channel of the service. If unspecified, defaults to `STABLE`.
+     * Default value is `STABLE`.
+     * Possible values are `CANARY` and `STABLE`.
+     * 
+     */
+    @Import(name="releaseChannel")
+    private @Nullable Output<String> releaseChannel;
+
+    /**
+     * @return The release channel of the service. If unspecified, defaults to `STABLE`.
+     * Default value is `STABLE`.
+     * Possible values are `CANARY` and `STABLE`.
+     * 
+     */
+    public Optional<Output<String>> releaseChannel() {
+        return Optional.ofNullable(this.releaseChannel);
+    }
+
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -267,10 +307,26 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tier);
     }
 
+    /**
+     * The globally unique resource identifier of the metastore service.
+     * 
+     */
+    @Import(name="uid")
+    private @Nullable Output<String> uid;
+
+    /**
+     * @return The globally unique resource identifier of the metastore service.
+     * 
+     */
+    public Optional<Output<String>> uid() {
+        return Optional.ofNullable(this.uid);
+    }
+
     private MetastoreServiceState() {}
 
     private MetastoreServiceState(MetastoreServiceState $) {
         this.artifactGcsUri = $.artifactGcsUri;
+        this.databaseType = $.databaseType;
         this.encryptionConfig = $.encryptionConfig;
         this.endpointUri = $.endpointUri;
         this.hiveMetastoreConfig = $.hiveMetastoreConfig;
@@ -281,10 +337,12 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         this.network = $.network;
         this.port = $.port;
         this.project = $.project;
+        this.releaseChannel = $.releaseChannel;
         this.serviceId = $.serviceId;
         this.state = $.state;
         this.stateMessage = $.stateMessage;
         this.tier = $.tier;
+        this.uid = $.uid;
     }
 
     public static Builder builder() {
@@ -324,6 +382,31 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder artifactGcsUri(String artifactGcsUri) {
             return artifactGcsUri(Output.of(artifactGcsUri));
+        }
+
+        /**
+         * @param databaseType The database type that the Metastore service stores its data.
+         * Default value is `MYSQL`.
+         * Possible values are `MYSQL` and `SPANNER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseType(@Nullable Output<String> databaseType) {
+            $.databaseType = databaseType;
+            return this;
+        }
+
+        /**
+         * @param databaseType The database type that the Metastore service stores its data.
+         * Default value is `MYSQL`.
+         * Possible values are `MYSQL` and `SPANNER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseType(String databaseType) {
+            return databaseType(Output.of(databaseType));
         }
 
         /**
@@ -417,7 +500,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param location The  location where the autoscaling policy should reside.
+         * @param location The location where the metastore service should reside.
          * The default value is `global`.
          * 
          * @return builder
@@ -429,7 +512,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param location The  location where the autoscaling policy should reside.
+         * @param location The location where the metastore service should reside.
          * The default value is `global`.
          * 
          * @return builder
@@ -442,6 +525,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         /**
          * @param maintenanceWindow The one hour maintenance window of the metastore service.
          * This specifies when the service can be restarted for maintenance purposes in UTC time.
+         * Maintenance window is not needed for services with the `SPANNER` database type.
          * Structure is documented below.
          * 
          * @return builder
@@ -455,6 +539,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         /**
          * @param maintenanceWindow The one hour maintenance window of the metastore service.
          * This specifies when the service can be restarted for maintenance purposes in UTC time.
+         * Maintenance window is not needed for services with the `SPANNER` database type.
          * Structure is documented below.
          * 
          * @return builder
@@ -553,6 +638,31 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param releaseChannel The release channel of the service. If unspecified, defaults to `STABLE`.
+         * Default value is `STABLE`.
+         * Possible values are `CANARY` and `STABLE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder releaseChannel(@Nullable Output<String> releaseChannel) {
+            $.releaseChannel = releaseChannel;
+            return this;
+        }
+
+        /**
+         * @param releaseChannel The release channel of the service. If unspecified, defaults to `STABLE`.
+         * Default value is `STABLE`.
+         * Possible values are `CANARY` and `STABLE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder releaseChannel(String releaseChannel) {
+            return releaseChannel(Output.of(releaseChannel));
+        }
+
+        /**
          * @param serviceId The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
          * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
          * 3 and 63 characters.
@@ -640,6 +750,27 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder tier(String tier) {
             return tier(Output.of(tier));
+        }
+
+        /**
+         * @param uid The globally unique resource identifier of the metastore service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uid(@Nullable Output<String> uid) {
+            $.uid = uid;
+            return this;
+        }
+
+        /**
+         * @param uid The globally unique resource identifier of the metastore service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uid(String uid) {
+            return uid(Output.of(uid));
         }
 
         public MetastoreServiceState build() {

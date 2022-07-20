@@ -49,14 +49,14 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+     * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+     * @return The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -166,7 +166,7 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+         * @param name The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+         * @param name The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
          * 
          * @return builder
          * 

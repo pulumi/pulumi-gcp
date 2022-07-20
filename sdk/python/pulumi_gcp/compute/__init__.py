@@ -135,6 +135,9 @@ from .service_attachment import *
 from .shared_vpc_host_project import *
 from .shared_vpc_service_project import *
 from .snapshot import *
+from .snapshot_iam_binding import *
+from .snapshot_iam_member import *
+from .snapshot_iam_policy import *
 from .ssl_certificate import *
 from .ssl_policy import *
 from .subnetwork import *

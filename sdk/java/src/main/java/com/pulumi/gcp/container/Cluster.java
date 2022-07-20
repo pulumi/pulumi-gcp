@@ -12,6 +12,7 @@ import com.pulumi.gcp.container.ClusterArgs;
 import com.pulumi.gcp.container.inputs.ClusterState;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfig;
 import com.pulumi.gcp.container.outputs.ClusterAuthenticatorGroupsConfig;
+import com.pulumi.gcp.container.outputs.ClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.ClusterClusterAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterClusterTelemetry;
 import com.pulumi.gcp.container.outputs.ClusterConfidentialNodes;
@@ -222,6 +223,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.authenticatorGroupsConfig;
     }
     /**
+     * Configuration options for the Binary
+     * Authorization feature. Structure is documented below.
+     * 
+     */
+    @Export(name="binaryAuthorization", type=ClusterBinaryAuthorization.class, parameters={})
+    private Output</* @Nullable */ ClusterBinaryAuthorization> binaryAuthorization;
+
+    /**
+     * @return Configuration options for the Binary
+     * Authorization feature. Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterBinaryAuthorization>> binaryAuthorization() {
+        return Codegen.optional(this.binaryAuthorization);
+    }
+    /**
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster&#39;s workload. See the
@@ -408,14 +425,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * Deprecated in favor of `binary_authorization`.
+     * 
+     * @deprecated
+     * Deprecated in favor of binary_authorization.
      * 
      */
+    @Deprecated /* Deprecated in favor of binary_authorization. */
     @Export(name="enableBinaryAuthorization", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableBinaryAuthorization;
 
     /**
      * @return Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * Deprecated in favor of `binary_authorization`.
      * 
      */
     public Output<Optional<Boolean>> enableBinaryAuthorization() {

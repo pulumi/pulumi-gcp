@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
-        /// Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+        /// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         /// </summary>
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }

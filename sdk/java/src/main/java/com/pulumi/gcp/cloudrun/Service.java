@@ -339,25 +339,33 @@ import javax.annotation.Nullable;
  *             .service(&#34;run.googleapis.com&#34;)
  *             .disableDependentServices(true)
  *             .disableOnDestroy(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var iamApi = new Service(&#34;iamApi&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .service(&#34;iam.googleapis.com&#34;)
  *             .disableOnDestroy(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var resourceManagerApi = new Service(&#34;resourceManagerApi&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .service(&#34;cloudresourcemanager.googleapis.com&#34;)
  *             .disableOnDestroy(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var schedulerApi = new Service(&#34;schedulerApi&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .service(&#34;cloudscheduler.googleapis.com&#34;)
  *             .disableOnDestroy(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
@@ -374,6 +382,7 @@ import javax.annotation.Nullable;
  *                 .latestRevision(true)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(runApi)
  *                 .build());
  * 
@@ -383,6 +392,7 @@ import javax.annotation.Nullable;
  *             .description(&#34;Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.&#34;)
  *             .displayName(&#34;scheduler-sa&#34;)
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(iamApi)
  *                 .build());
  * 
@@ -396,12 +406,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .httpTarget(JobHttpTargetArgs.builder()
  *                 .httpMethod(&#34;POST&#34;)
- *                 .uri(defaultService.statuses().apply(statuses -&gt; String.format(&#34;%s/&#34;, statuses[0].url())))
+ *                 .uri(defaultService.statuses().apply(statuses -&gt; statuses[0].url()))
  *                 .oidcToken(JobHttpTargetOidcTokenArgs.builder()
  *                     .serviceAccountEmail(defaultAccount.email())
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(schedulerApi)
  *                 .build());
  * 
@@ -573,6 +584,7 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
+ * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -582,9 +594,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .metadata(ServiceMetadataArgs.builder()
- *                 .annotations(Map.of(&#34;run.googleapis.com/ingress&#34;, &#34;internal&#34;))
- *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
  *                     .containers(ServiceTemplateSpecContainerArgs.builder()
@@ -593,10 +602,15 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .traffics(ServiceTrafficArgs.builder()
- *                 .latestRevision(true)
  *                 .percent(100)
+ *                 .latestRevision(true)
  *                 .build())
- *             .build());
+ *             .metadata(ServiceMetadataArgs.builder()
+ *                 .annotations(Map.of(&#34;run.googleapis.com/ingress&#34;, &#34;internal&#34;))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *     }
  * }
@@ -739,14 +753,18 @@ import javax.annotation.Nullable;
  *             .service(&#34;compute.googleapis.com&#34;)
  *             .disableDependentServices(true)
  *             .disableOnDestroy(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var runApi = new Service(&#34;runApi&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .service(&#34;run.googleapis.com&#34;)
  *             .disableDependentServices(true)
  *             .disableOnDestroy(false)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;example.com&#34;);
  *         final var runRegions = config.get(&#34;runRegions&#34;).orElse(        
@@ -755,6 +773,7 @@ import javax.annotation.Nullable;
  *         var lbDefaultGlobalAddress = new GlobalAddress(&#34;lbDefaultGlobalAddress&#34;, GlobalAddressArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(computeApi)
  *                 .build());
  * 
@@ -774,6 +793,7 @@ import javax.annotation.Nullable;
  *                     .latestRevision(true)
  *                     .build())
  *                 .build(), CustomResourceOptions.builder()
+ *                     .provider(google_beta)
  *                     .dependsOn(runApi)
  *                     .build());
  * 
@@ -787,7 +807,9 @@ import javax.annotation.Nullable;
  *                 .cloudRun(RegionNetworkEndpointGroupCloudRunArgs.builder()
  *                     .service(runDefault[count.index()].name())
  *                     .build())
- *                 .build());
+ *                 .build(), CustomResourceOptions.builder()
+ *                     .provider(google_beta)
+ *                     .build());
  * 
  *         
  * }
@@ -806,6 +828,7 @@ import javax.annotation.Nullable;
  *                     .group(lbDefaultRegionNetworkEndpointGroup[1].id())
  *                     .build())
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(computeApi)
  *                 .build());
  * 
@@ -823,20 +846,25 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var lbDefaultManagedSslCertificate = new ManagedSslCertificate(&#34;lbDefaultManagedSslCertificate&#34;, ManagedSslCertificateArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .managed(ManagedSslCertificateManagedArgs.builder()
  *                 .domains(domainName)
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var lbDefaultTargetHttpsProxy = new TargetHttpsProxy(&#34;lbDefaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .urlMap(lbDefaultURLMap.id())
  *             .sslCertificates(lbDefaultManagedSslCertificate.name())
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(lbDefaultManagedSslCertificate)
  *                 .build());
  * 
@@ -847,6 +875,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(lbDefaultGlobalAddress.id())
  *             .portRange(&#34;443&#34;)
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(lbDefaultTargetHttpsProxy)
  *                 .build());
  * 
@@ -858,7 +887,9 @@ import javax.annotation.Nullable;
  *                 .service(runDefault[range.value()].name())
  *                 .role(&#34;roles/run.invoker&#34;)
  *                 .member(&#34;allUsers&#34;)
- *                 .build());
+ *                 .build(), CustomResourceOptions.builder()
+ *                     .provider(google_beta)
+ *                     .build());
  * 
  *         
  * }
@@ -869,12 +900,15 @@ import javax.annotation.Nullable;
  *                 .httpsRedirect(true)
  *                 .stripQuery(false)
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var httpsDefaultTargetHttpProxy = new TargetHttpProxy(&#34;httpsDefaultTargetHttpProxy&#34;, TargetHttpProxyArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .urlMap(httpsDefaultURLMap.id())
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(httpsDefaultURLMap)
  *                 .build());
  * 
@@ -884,6 +918,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(lbDefaultGlobalAddress.id())
  *             .portRange(&#34;80&#34;)
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(httpsDefaultTargetHttpProxy)
  *                 .build());
  * 

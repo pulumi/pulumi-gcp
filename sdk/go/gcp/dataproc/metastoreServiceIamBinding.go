@@ -11,6 +11,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+//
+// * `dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+// * `dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+// * `dataproc.MetastoreServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+//
+// > **Note:** `dataproc.MetastoreServiceIamPolicy` **cannot** be used in conjunction with `dataproc.MetastoreServiceIamBinding` and `dataproc.MetastoreServiceIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_dataproc\_metastore\_service\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewMetastoreServiceIamPolicy(ctx, "policy", &dataproc.MetastoreServiceIamPolicyArgs{
+// 			Project:    pulumi.Any(google_dataproc_metastore_service.Default.Project),
+// 			Location:   pulumi.Any(google_dataproc_metastore_service.Default.Location),
+// 			ServiceId:  pulumi.Any(google_dataproc_metastore_service.Default.Service_id),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_dataproc\_metastore\_service\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewMetastoreServiceIamBinding(ctx, "binding", &dataproc.MetastoreServiceIamBindingArgs{
+// 			Project:   pulumi.Any(google_dataproc_metastore_service.Default.Project),
+// 			Location:  pulumi.Any(google_dataproc_metastore_service.Default.Location),
+// 			ServiceId: pulumi.Any(google_dataproc_metastore_service.Default.Service_id),
+// 			Role:      pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_dataproc\_metastore\_service\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewMetastoreServiceIamMember(ctx, "member", &dataproc.MetastoreServiceIamMemberArgs{
+// 			Project:   pulumi.Any(google_dataproc_metastore_service.Default.Project),
+// 			Location:  pulumi.Any(google_dataproc_metastore_service.Default.Location),
+// 			ServiceId: pulumi.Any(google_dataproc_metastore_service.Default.Service_id),
+// 			Role:      pulumi.String("roles/viewer"),
+// 			Member:    pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -40,7 +146,7 @@ type MetastoreServiceIamBinding struct {
 	Condition MetastoreServiceIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	// Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringOutput      `pulumi:"location"`
@@ -96,7 +202,7 @@ type metastoreServiceIamBindingState struct {
 	Condition *MetastoreServiceIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	// Used to find the parent resource to bind the IAM policy to
 	Location *string  `pulumi:"location"`
@@ -115,7 +221,7 @@ type MetastoreServiceIamBindingState struct {
 	Condition MetastoreServiceIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	// Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
@@ -136,7 +242,7 @@ func (MetastoreServiceIamBindingState) ElementType() reflect.Type {
 
 type metastoreServiceIamBindingArgs struct {
 	Condition *MetastoreServiceIamBindingCondition `pulumi:"condition"`
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	// Used to find the parent resource to bind the IAM policy to
 	Location *string  `pulumi:"location"`
@@ -154,7 +260,7 @@ type metastoreServiceIamBindingArgs struct {
 // The set of arguments for constructing a MetastoreServiceIamBinding resource.
 type MetastoreServiceIamBindingArgs struct {
 	Condition MetastoreServiceIamBindingConditionPtrInput
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	// Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
@@ -265,7 +371,7 @@ func (o MetastoreServiceIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreServiceIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The  location where the autoscaling policy should reside.
+// The location where the metastore service should reside.
 // The default value is `global`.
 // Used to find the parent resource to bind the IAM policy to
 func (o MetastoreServiceIamBindingOutput) Location() pulumi.StringOutput {

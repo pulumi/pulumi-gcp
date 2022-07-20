@@ -719,7 +719,7 @@ class Target(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="executionConfigs")
-    def execution_configs(self) -> pulumi.Output[Optional[Sequence['outputs.TargetExecutionConfig']]]:
+    def execution_configs(self) -> pulumi.Output[Sequence['outputs.TargetExecutionConfig']]:
         """
         Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         """

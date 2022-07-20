@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// To get more information about Repository, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
+    /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
     /// 
@@ -31,13 +31,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///     {
     ///         var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new Gcp.ArtifactRegistry.RepositoryArgs
     ///         {
-    ///             Location = "us-central1",
-    ///             RepositoryId = "my-repository",
     ///             Description = "example docker repository",
     ///             Format = "DOCKER",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
+    ///             Location = "us-central1",
+    ///             RepositoryId = "my-repository",
     ///         });
     ///     }
     /// 
@@ -55,56 +52,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///     {
     ///         var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new Gcp.ArtifactRegistry.RepositoryArgs
     ///         {
-    ///             Location = "us-central1",
-    ///             RepositoryId = "my-repository",
     ///             Description = "example docker repository with cmek",
     ///             Format = "DOCKER",
     ///             KmsKeyName = "kms-key",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Artifact Registry Repository Iam
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new Gcp.ArtifactRegistry.RepositoryArgs
-    ///         {
     ///             Location = "us-central1",
     ///             RepositoryId = "my-repository",
-    ///             Description = "example docker repository with iam",
-    ///             Format = "DOCKER",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var test_account = new Gcp.ServiceAccount.Account("test-account", new Gcp.ServiceAccount.AccountArgs
-    ///         {
-    ///             AccountId = "my-account",
-    ///             DisplayName = "Test Service Account",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
-    ///         });
-    ///         var test_iam = new Gcp.ArtifactRegistry.RepositoryIamMember("test-iam", new Gcp.ArtifactRegistry.RepositoryIamMemberArgs
-    ///         {
-    ///             Location = my_repo.Location,
-    ///             Repository = my_repo.Name,
-    ///             Role = "roles/artifactregistry.reader",
-    ///             Member = test_account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

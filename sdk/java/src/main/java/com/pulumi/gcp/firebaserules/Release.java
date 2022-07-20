@@ -15,8 +15,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Firebaserules Release resource
- * 
+ * For more information, see:
+ * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
  * ### Basic_release
  * Creates a basic Firebase Rules Release
@@ -141,14 +141,14 @@ public class Release extends com.pulumi.resources.CustomResource {
         return this.disabled;
     }
     /**
-     * Format: `projects/{project_id}/releases/{release_id}`
+     * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Format: `projects/{project_id}/releases/{release_id}`
+     * @return Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
     public Output<String> name() {
@@ -169,14 +169,14 @@ public class Release extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      * 
      */
     @Export(name="rulesetName", type=String.class, parameters={})
     private Output<String> rulesetName;
 
     /**
-     * @return Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+     * @return Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      * 
      */
     public Output<String> rulesetName() {

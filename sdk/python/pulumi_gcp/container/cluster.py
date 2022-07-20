@@ -17,6 +17,7 @@ class ClusterArgs:
     def __init__(__self__, *,
                  addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
@@ -75,6 +76,8 @@ class ClusterArgs:
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary
+               Authorization feature. Structure is documented below.
         :param pulumi.Input['ClusterClusterAutoscalingArgs'] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
@@ -103,6 +106,7 @@ class ClusterArgs:
                for available features.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
+               Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -241,6 +245,8 @@ class ClusterArgs:
             pulumi.set(__self__, "addons_config", addons_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+        if binary_authorization is not None:
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_autoscaling is not None:
             pulumi.set(__self__, "cluster_autoscaling", cluster_autoscaling)
         if cluster_ipv4_cidr is not None:
@@ -263,6 +269,9 @@ class ClusterArgs:
             pulumi.set(__self__, "dns_config", dns_config)
         if enable_autopilot is not None:
             pulumi.set(__self__, "enable_autopilot", enable_autopilot)
+        if enable_binary_authorization is not None:
+            warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
+            pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
         if enable_binary_authorization is not None:
             pulumi.set(__self__, "enable_binary_authorization", enable_binary_authorization)
         if enable_intranode_visibility is not None:
@@ -370,6 +379,19 @@ class ClusterArgs:
     @authenticator_groups_config.setter
     def authenticator_groups_config(self, value: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']]:
+        """
+        Configuration options for the Binary
+        Authorization feature. Structure is documented below.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter(name="clusterAutoscaling")
@@ -524,6 +546,7 @@ class ClusterArgs:
         """
         Enable Binary Authorization for this cluster.
         If enabled, all container images will be validated by Google Binary Authorization.
+        Deprecated in favor of `binary_authorization`.
         """
         return pulumi.get(self, "enable_binary_authorization")
 
@@ -1099,6 +1122,7 @@ class _ClusterState:
     def __init__(__self__, *,
                  addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
@@ -1164,6 +1188,8 @@ class _ClusterState:
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary
+               Authorization feature. Structure is documented below.
         :param pulumi.Input['ClusterClusterAutoscalingArgs'] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
@@ -1192,6 +1218,7 @@ class _ClusterState:
                for available features.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
+               Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -1343,6 +1370,8 @@ class _ClusterState:
             pulumi.set(__self__, "addons_config", addons_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+        if binary_authorization is not None:
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_autoscaling is not None:
             pulumi.set(__self__, "cluster_autoscaling", cluster_autoscaling)
         if cluster_ipv4_cidr is not None:
@@ -1365,6 +1394,9 @@ class _ClusterState:
             pulumi.set(__self__, "dns_config", dns_config)
         if enable_autopilot is not None:
             pulumi.set(__self__, "enable_autopilot", enable_autopilot)
+        if enable_binary_authorization is not None:
+            warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
+            pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
         if enable_binary_authorization is not None:
             pulumi.set(__self__, "enable_binary_authorization", enable_binary_authorization)
         if enable_intranode_visibility is not None:
@@ -1486,6 +1518,19 @@ class _ClusterState:
     @authenticator_groups_config.setter
     def authenticator_groups_config(self, value: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']]:
+        """
+        Configuration options for the Binary
+        Authorization feature. Structure is documented below.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter(name="clusterAutoscaling")
@@ -1640,6 +1685,7 @@ class _ClusterState:
         """
         Enable Binary Authorization for this cluster.
         If enabled, all container images will be validated by Google Binary Authorization.
+        Deprecated in favor of `binary_authorization`.
         """
         return pulumi.get(self, "enable_binary_authorization")
 
@@ -2305,6 +2351,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['ClusterBinaryAuthorizationArgs']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
@@ -2434,6 +2481,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterBinaryAuthorizationArgs']] binary_authorization: Configuration options for the Binary
+               Authorization feature. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
@@ -2462,6 +2511,7 @@ class Cluster(pulumi.CustomResource):
                for available features.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
+               Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -2689,6 +2739,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['ClusterBinaryAuthorizationArgs']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
@@ -2754,6 +2805,7 @@ class Cluster(pulumi.CustomResource):
 
             __props__.__dict__["addons_config"] = addons_config
             __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
+            __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
             __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
             __props__.__dict__["cluster_telemetry"] = cluster_telemetry
@@ -2765,6 +2817,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["enable_autopilot"] = enable_autopilot
+            if enable_binary_authorization is not None and not opts.urn:
+                warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
+                pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
             __props__.__dict__["enable_binary_authorization"] = enable_binary_authorization
             __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
             __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
@@ -2824,6 +2879,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
             authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
+            binary_authorization: Optional[pulumi.Input[pulumi.InputType['ClusterBinaryAuthorizationArgs']]] = None,
             cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
             cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
             cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
@@ -2894,6 +2950,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterBinaryAuthorizationArgs']] binary_authorization: Configuration options for the Binary
+               Authorization feature. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
@@ -2922,6 +2980,7 @@ class Cluster(pulumi.CustomResource):
                for available features.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
+               Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -3075,6 +3134,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["addons_config"] = addons_config
         __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
+        __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
         __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
         __props__.__dict__["cluster_telemetry"] = cluster_telemetry
@@ -3153,6 +3213,15 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "authenticator_groups_config")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> pulumi.Output[Optional['outputs.ClusterBinaryAuthorization']]:
+        """
+        Configuration options for the Binary
+        Authorization feature. Structure is documented below.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="clusterAutoscaling")
@@ -3263,6 +3332,7 @@ class Cluster(pulumi.CustomResource):
         """
         Enable Binary Authorization for this cluster.
         If enabled, all container images will be validated by Google Binary Authorization.
+        Deprecated in favor of `binary_authorization`.
         """
         return pulumi.get(self, "enable_binary_authorization")
 
