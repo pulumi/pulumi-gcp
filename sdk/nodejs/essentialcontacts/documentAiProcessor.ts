@@ -32,7 +32,15 @@ import * as utilities from "../utilities";
  * Processor can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{name}}
+ *  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default projects/{{project}}/locations/{{location}}/processors/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{project}}/{{location}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{location}}/{{name}}
  * ```
  */
 export class DocumentAiProcessor extends pulumi.CustomResource {

@@ -15,20 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.dataproc.MetastoreService("default", {
- *     serviceId: "metastore-srv",
- *     location: "us-central1",
- *     port: 9080,
- *     tier: "DEVELOPER",
- *     maintenanceWindow: {
- *         hourOfDay: 2,
- *         dayOfWeek: "SUNDAY",
- *     },
+ * const defaultMetastoreService = new gcp.dataproc.MetastoreService("default", {
  *     hiveMetastoreConfig: {
  *         version: "2.3.6",
  *     },
- * }, {
- *     provider: google_beta,
+ *     location: "us-central1",
+ *     maintenanceWindow: {
+ *         dayOfWeek: "SUNDAY",
+ *         hourOfDay: 2,
+ *     },
+ *     port: 9080,
+ *     serviceId: "metastore-srv",
+ *     tier: "DEVELOPER",
  * });
  * ```
  * ### Dataproc Metastore Service Cmek Example
@@ -55,8 +53,6 @@ import * as utilities from "../utilities";
  *     hiveMetastoreConfig: {
  *         version: "3.1.2",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -109,6 +105,12 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public /*out*/ readonly artifactGcsUri!: pulumi.Output<string>;
     /**
+     * The database type that the Metastore service stores its data.
+     * Default value is `MYSQL`.
+     * Possible values are `MYSQL` and `SPANNER`.
+     */
+    public readonly databaseType!: pulumi.Output<string | undefined>;
+    /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
      * Structure is documented below.
@@ -128,13 +130,14 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      */
     public readonly maintenanceWindow!: pulumi.Output<outputs.dataproc.MetastoreServiceMaintenanceWindow | undefined>;
@@ -157,6 +160,12 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The release channel of the service. If unspecified, defaults to `STABLE`.
+     * Default value is `STABLE`.
+     * Possible values are `CANARY` and `STABLE`.
+     */
+    public readonly releaseChannel!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -175,6 +184,10 @@ export class MetastoreService extends pulumi.CustomResource {
      * Possible values are `DEVELOPER` and `ENTERPRISE`.
      */
     public readonly tier!: pulumi.Output<string>;
+    /**
+     * The globally unique resource identifier of the metastore service.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
 
     /**
      * Create a MetastoreService resource with the given unique name, arguments, and options.
@@ -190,6 +203,7 @@ export class MetastoreService extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MetastoreServiceState | undefined;
             resourceInputs["artifactGcsUri"] = state ? state.artifactGcsUri : undefined;
+            resourceInputs["databaseType"] = state ? state.databaseType : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
             resourceInputs["hiveMetastoreConfig"] = state ? state.hiveMetastoreConfig : undefined;
@@ -200,15 +214,18 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as MetastoreServiceArgs | undefined;
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
+            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -217,6 +234,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["artifactGcsUri"] = undefined /*out*/;
@@ -224,6 +242,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MetastoreService.__pulumiType, name, resourceInputs, opts);
@@ -238,6 +257,12 @@ export interface MetastoreServiceState {
      * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
      */
     artifactGcsUri?: pulumi.Input<string>;
+    /**
+     * The database type that the Metastore service stores its data.
+     * Default value is `MYSQL`.
+     * Possible values are `MYSQL` and `SPANNER`.
+     */
+    databaseType?: pulumi.Input<string>;
     /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
@@ -258,13 +283,14 @@ export interface MetastoreServiceState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      */
     location?: pulumi.Input<string>;
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      */
     maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
@@ -287,6 +313,12 @@ export interface MetastoreServiceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The release channel of the service. If unspecified, defaults to `STABLE`.
+     * Default value is `STABLE`.
+     * Possible values are `CANARY` and `STABLE`.
+     */
+    releaseChannel?: pulumi.Input<string>;
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -305,12 +337,22 @@ export interface MetastoreServiceState {
      * Possible values are `DEVELOPER` and `ENTERPRISE`.
      */
     tier?: pulumi.Input<string>;
+    /**
+     * The globally unique resource identifier of the metastore service.
+     */
+    uid?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a MetastoreService resource.
  */
 export interface MetastoreServiceArgs {
+    /**
+     * The database type that the Metastore service stores its data.
+     * Default value is `MYSQL`.
+     * Possible values are `MYSQL` and `SPANNER`.
+     */
+    databaseType?: pulumi.Input<string>;
     /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
@@ -327,13 +369,14 @@ export interface MetastoreServiceArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      */
     location?: pulumi.Input<string>;
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
+     * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      */
     maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
@@ -351,6 +394,12 @@ export interface MetastoreServiceArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The release channel of the service. If unspecified, defaults to `STABLE`.
+     * Default value is `STABLE`.
+     * Possible values are `CANARY` and `STABLE`.
+     */
+    releaseChannel?: pulumi.Input<string>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between

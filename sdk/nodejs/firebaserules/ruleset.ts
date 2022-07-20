@@ -6,8 +6,8 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * The Firebaserules Ruleset resource
- *
+ * For more information, see:
+ * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
  * ### Basic_ruleset
  * Creates a basic Firestore ruleset

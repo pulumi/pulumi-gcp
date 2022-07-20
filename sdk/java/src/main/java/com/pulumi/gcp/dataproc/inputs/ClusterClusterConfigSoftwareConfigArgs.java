@@ -101,9 +101,19 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.overrideProperties);
     }
 
+    /**
+     * The properties to set on daemon config files. Property keys are specified in prefix:property format,
+     * for example spark:spark.kubernetes.container.image.
+     * 
+     */
     @Import(name="properties")
     private @Nullable Output<Map<String,Object>> properties;
 
+    /**
+     * @return The properties to set on daemon config files. Property keys are specified in prefix:property format,
+     * for example spark:spark.kubernetes.container.image.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> properties() {
         return Optional.ofNullable(this.properties);
     }
@@ -258,11 +268,25 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
             return overrideProperties(Output.of(overrideProperties));
         }
 
+        /**
+         * @param properties The properties to set on daemon config files. Property keys are specified in prefix:property format,
+         * for example spark:spark.kubernetes.container.image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(@Nullable Output<Map<String,Object>> properties) {
             $.properties = properties;
             return this;
         }
 
+        /**
+         * @param properties The properties to set on daemon config files. Property keys are specified in prefix:property format,
+         * for example spark:spark.kubernetes.container.image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(Map<String,Object> properties) {
             return properties(Output.of(properties));
         }

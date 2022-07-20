@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Repository, see:
  *
- * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
+ * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
@@ -22,12 +22,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
- *     location: "us-central1",
- *     repositoryId: "my-repository",
  *     description: "example docker repository",
  *     format: "DOCKER",
- * }, {
- *     provider: google_beta,
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
  * });
  * ```
  * ### Artifact Registry Repository Cmek
@@ -37,42 +35,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
- *     location: "us-central1",
- *     repositoryId: "my-repository",
  *     description: "example docker repository with cmek",
  *     format: "DOCKER",
  *     kmsKeyName: "kms-key",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Artifact Registry Repository Iam
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
- *     description: "example docker repository with iam",
- *     format: "DOCKER",
- * }, {
- *     provider: google_beta,
- * });
- * const test_account = new gcp.serviceaccount.Account("test-account", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * }, {
- *     provider: google_beta,
- * });
- * const test_iam = new gcp.artifactregistry.RepositoryIamMember("test-iam", {
- *     location: my_repo.location,
- *     repository: my_repo.name,
- *     role: "roles/artifactregistry.reader",
- *     member: pulumi.interpolate`serviceAccount:${test_account.email}`,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -44,6 +44,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
         /// </summary>
         public readonly ImmutableDictionary<string, string>? OverrideProperties;
+        /// <summary>
+        /// The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+        /// for example spark:spark.kubernetes.container.image.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Properties;
 
         [OutputConstructor]

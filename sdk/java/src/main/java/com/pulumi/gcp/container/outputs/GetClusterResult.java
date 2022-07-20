@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAuthenticatorGroupsConfig;
+import com.pulumi.gcp.container.outputs.GetClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterClusterTelemetry;
 import com.pulumi.gcp.container.outputs.GetClusterConfidentialNode;
@@ -43,6 +44,7 @@ import javax.annotation.Nullable;
 public final class GetClusterResult {
     private final List<GetClusterAddonsConfig> addonsConfigs;
     private final List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
+    private final List<GetClusterBinaryAuthorization> binaryAuthorizations;
     private final List<GetClusterClusterAutoscaling> clusterAutoscalings;
     private final String clusterIpv4Cidr;
     private final List<GetClusterClusterTelemetry> clusterTelemetries;
@@ -111,6 +113,7 @@ public final class GetClusterResult {
     private GetClusterResult(
         @CustomType.Parameter("addonsConfigs") List<GetClusterAddonsConfig> addonsConfigs,
         @CustomType.Parameter("authenticatorGroupsConfigs") List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs,
+        @CustomType.Parameter("binaryAuthorizations") List<GetClusterBinaryAuthorization> binaryAuthorizations,
         @CustomType.Parameter("clusterAutoscalings") List<GetClusterClusterAutoscaling> clusterAutoscalings,
         @CustomType.Parameter("clusterIpv4Cidr") String clusterIpv4Cidr,
         @CustomType.Parameter("clusterTelemetries") List<GetClusterClusterTelemetry> clusterTelemetries,
@@ -172,6 +175,7 @@ public final class GetClusterResult {
         @CustomType.Parameter("workloadIdentityConfigs") List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs) {
         this.addonsConfigs = addonsConfigs;
         this.authenticatorGroupsConfigs = authenticatorGroupsConfigs;
+        this.binaryAuthorizations = binaryAuthorizations;
         this.clusterAutoscalings = clusterAutoscalings;
         this.clusterIpv4Cidr = clusterIpv4Cidr;
         this.clusterTelemetries = clusterTelemetries;
@@ -238,6 +242,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs() {
         return this.authenticatorGroupsConfigs;
+    }
+    public List<GetClusterBinaryAuthorization> binaryAuthorizations() {
+        return this.binaryAuthorizations;
     }
     public List<GetClusterClusterAutoscaling> clusterAutoscalings() {
         return this.clusterAutoscalings;
@@ -432,6 +439,7 @@ public final class GetClusterResult {
     public static final class Builder {
         private List<GetClusterAddonsConfig> addonsConfigs;
         private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
+        private List<GetClusterBinaryAuthorization> binaryAuthorizations;
         private List<GetClusterClusterAutoscaling> clusterAutoscalings;
         private String clusterIpv4Cidr;
         private List<GetClusterClusterTelemetry> clusterTelemetries;
@@ -500,6 +508,7 @@ public final class GetClusterResult {
     	      Objects.requireNonNull(defaults);
     	      this.addonsConfigs = defaults.addonsConfigs;
     	      this.authenticatorGroupsConfigs = defaults.authenticatorGroupsConfigs;
+    	      this.binaryAuthorizations = defaults.binaryAuthorizations;
     	      this.clusterAutoscalings = defaults.clusterAutoscalings;
     	      this.clusterIpv4Cidr = defaults.clusterIpv4Cidr;
     	      this.clusterTelemetries = defaults.clusterTelemetries;
@@ -574,6 +583,13 @@ public final class GetClusterResult {
         }
         public Builder authenticatorGroupsConfigs(GetClusterAuthenticatorGroupsConfig... authenticatorGroupsConfigs) {
             return authenticatorGroupsConfigs(List.of(authenticatorGroupsConfigs));
+        }
+        public Builder binaryAuthorizations(List<GetClusterBinaryAuthorization> binaryAuthorizations) {
+            this.binaryAuthorizations = Objects.requireNonNull(binaryAuthorizations);
+            return this;
+        }
+        public Builder binaryAuthorizations(GetClusterBinaryAuthorization... binaryAuthorizations) {
+            return binaryAuthorizations(List.of(binaryAuthorizations));
         }
         public Builder clusterAutoscalings(List<GetClusterClusterAutoscaling> clusterAutoscalings) {
             this.clusterAutoscalings = Objects.requireNonNull(clusterAutoscalings);
@@ -886,7 +902,7 @@ public final class GetClusterResult {
         public Builder workloadIdentityConfigs(GetClusterWorkloadIdentityConfig... workloadIdentityConfigs) {
             return workloadIdentityConfigs(List.of(workloadIdentityConfigs));
         }        public GetClusterResult build() {
-            return new GetClusterResult(addonsConfigs, authenticatorGroupsConfigs, clusterAutoscalings, clusterIpv4Cidr, clusterTelemetries, confidentialNodes, databaseEncryptions, datapathProvider, defaultMaxPodsPerNode, defaultSnatStatuses, description, dnsConfigs, enableAutopilot, enableBinaryAuthorization, enableIntranodeVisibility, enableKubernetesAlpha, enableL4IlbSubsetting, enableLegacyAbac, enableShieldedNodes, enableTpu, endpoint, id, identityServiceConfigs, initialNodeCount, ipAllocationPolicies, labelFingerprint, location, loggingConfigs, loggingService, maintenancePolicies, masterAuthorizedNetworksConfigs, masterAuths, masterVersion, minMasterVersion, monitoringConfigs, monitoringService, name, network, networkPolicies, networkingMode, nodeConfigs, nodeLocations, nodePools, nodeVersion, notificationConfigs, operation, podSecurityPolicyConfigs, privateClusterConfigs, privateIpv6GoogleAccess, project, releaseChannels, removeDefaultNodePool, resourceLabels, resourceUsageExportConfigs, selfLink, servicesIpv4Cidr, subnetwork, tpuConfigs, tpuIpv4CidrBlock, verticalPodAutoscalings, workloadIdentityConfigs);
+            return new GetClusterResult(addonsConfigs, authenticatorGroupsConfigs, binaryAuthorizations, clusterAutoscalings, clusterIpv4Cidr, clusterTelemetries, confidentialNodes, databaseEncryptions, datapathProvider, defaultMaxPodsPerNode, defaultSnatStatuses, description, dnsConfigs, enableAutopilot, enableBinaryAuthorization, enableIntranodeVisibility, enableKubernetesAlpha, enableL4IlbSubsetting, enableLegacyAbac, enableShieldedNodes, enableTpu, endpoint, id, identityServiceConfigs, initialNodeCount, ipAllocationPolicies, labelFingerprint, location, loggingConfigs, loggingService, maintenancePolicies, masterAuthorizedNetworksConfigs, masterAuths, masterVersion, minMasterVersion, monitoringConfigs, monitoringService, name, network, networkPolicies, networkingMode, nodeConfigs, nodeLocations, nodePools, nodeVersion, notificationConfigs, operation, podSecurityPolicyConfigs, privateClusterConfigs, privateIpv6GoogleAccess, project, releaseChannels, removeDefaultNodePool, resourceLabels, resourceUsageExportConfigs, selfLink, servicesIpv4Cidr, subnetwork, tpuConfigs, tpuIpv4CidrBlock, verticalPodAutoscalings, workloadIdentityConfigs);
         }
     }
 }

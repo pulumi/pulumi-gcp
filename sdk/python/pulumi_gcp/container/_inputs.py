@@ -67,6 +67,7 @@ __all__ = [
     'ClusterAddonsConfigKalmConfigArgs',
     'ClusterAddonsConfigNetworkPolicyConfigArgs',
     'ClusterAuthenticatorGroupsConfigArgs',
+    'ClusterBinaryAuthorizationArgs',
     'ClusterClusterAutoscalingArgs',
     'ClusterClusterAutoscalingAutoProvisioningDefaultsArgs',
     'ClusterClusterAutoscalingResourceLimitArgs',
@@ -2721,6 +2722,50 @@ class ClusterAuthenticatorGroupsConfigArgs:
     @security_group.setter
     def security_group(self, value: pulumi.Input[str]):
         pulumi.set(self, "security_group", value)
+
+
+@pulumi.input_type
+class ClusterBinaryAuthorizationArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 evaluation_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param pulumi.Input[str] evaluation_mode: Mode of operation for Binary Authorization policy evaluation.
+        """
+        if enabled is not None:
+            warnings.warn("""Deprecated in favor of evaluation_mode.""", DeprecationWarning)
+            pulumi.log.warn("""enabled is deprecated: Deprecated in favor of evaluation_mode.""")
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mode of operation for Binary Authorization policy evaluation.
+        """
+        return pulumi.get(self, "evaluation_mode")
+
+    @evaluation_mode.setter
+    def evaluation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluation_mode", value)
 
 
 @pulumi.input_type

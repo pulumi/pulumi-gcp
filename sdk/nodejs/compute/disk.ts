@@ -183,7 +183,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * Indicates how many IOPS must be provisioned for the disk.
      */
-    public readonly provisionedIops!: pulumi.Output<number | undefined>;
+    public readonly provisionedIops!: pulumi.Output<number>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the

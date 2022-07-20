@@ -9277,6 +9277,174 @@ func (o ClusterAuthenticatorGroupsConfigPtrOutput) SecurityGroup() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterBinaryAuthorization struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
+	// Deprecated: Deprecated in favor of evaluation_mode.
+	Enabled *bool `pulumi:"enabled"`
+	// Mode of operation for Binary Authorization policy evaluation.
+	EvaluationMode *string `pulumi:"evaluationMode"`
+}
+
+// ClusterBinaryAuthorizationInput is an input type that accepts ClusterBinaryAuthorizationArgs and ClusterBinaryAuthorizationOutput values.
+// You can construct a concrete instance of `ClusterBinaryAuthorizationInput` via:
+//
+//          ClusterBinaryAuthorizationArgs{...}
+type ClusterBinaryAuthorizationInput interface {
+	pulumi.Input
+
+	ToClusterBinaryAuthorizationOutput() ClusterBinaryAuthorizationOutput
+	ToClusterBinaryAuthorizationOutputWithContext(context.Context) ClusterBinaryAuthorizationOutput
+}
+
+type ClusterBinaryAuthorizationArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
+	// Deprecated: Deprecated in favor of evaluation_mode.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Mode of operation for Binary Authorization policy evaluation.
+	EvaluationMode pulumi.StringPtrInput `pulumi:"evaluationMode"`
+}
+
+func (ClusterBinaryAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i ClusterBinaryAuthorizationArgs) ToClusterBinaryAuthorizationOutput() ClusterBinaryAuthorizationOutput {
+	return i.ToClusterBinaryAuthorizationOutputWithContext(context.Background())
+}
+
+func (i ClusterBinaryAuthorizationArgs) ToClusterBinaryAuthorizationOutputWithContext(ctx context.Context) ClusterBinaryAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBinaryAuthorizationOutput)
+}
+
+func (i ClusterBinaryAuthorizationArgs) ToClusterBinaryAuthorizationPtrOutput() ClusterBinaryAuthorizationPtrOutput {
+	return i.ToClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterBinaryAuthorizationArgs) ToClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) ClusterBinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBinaryAuthorizationOutput).ToClusterBinaryAuthorizationPtrOutputWithContext(ctx)
+}
+
+// ClusterBinaryAuthorizationPtrInput is an input type that accepts ClusterBinaryAuthorizationArgs, ClusterBinaryAuthorizationPtr and ClusterBinaryAuthorizationPtrOutput values.
+// You can construct a concrete instance of `ClusterBinaryAuthorizationPtrInput` via:
+//
+//          ClusterBinaryAuthorizationArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterBinaryAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToClusterBinaryAuthorizationPtrOutput() ClusterBinaryAuthorizationPtrOutput
+	ToClusterBinaryAuthorizationPtrOutputWithContext(context.Context) ClusterBinaryAuthorizationPtrOutput
+}
+
+type clusterBinaryAuthorizationPtrType ClusterBinaryAuthorizationArgs
+
+func ClusterBinaryAuthorizationPtr(v *ClusterBinaryAuthorizationArgs) ClusterBinaryAuthorizationPtrInput {
+	return (*clusterBinaryAuthorizationPtrType)(v)
+}
+
+func (*clusterBinaryAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i *clusterBinaryAuthorizationPtrType) ToClusterBinaryAuthorizationPtrOutput() ClusterBinaryAuthorizationPtrOutput {
+	return i.ToClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterBinaryAuthorizationPtrType) ToClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) ClusterBinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBinaryAuthorizationPtrOutput)
+}
+
+type ClusterBinaryAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (ClusterBinaryAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o ClusterBinaryAuthorizationOutput) ToClusterBinaryAuthorizationOutput() ClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o ClusterBinaryAuthorizationOutput) ToClusterBinaryAuthorizationOutputWithContext(ctx context.Context) ClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o ClusterBinaryAuthorizationOutput) ToClusterBinaryAuthorizationPtrOutput() ClusterBinaryAuthorizationPtrOutput {
+	return o.ToClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterBinaryAuthorizationOutput) ToClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) ClusterBinaryAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterBinaryAuthorization) *ClusterBinaryAuthorization {
+		return &v
+	}).(ClusterBinaryAuthorizationPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
+// Deprecated: Deprecated in favor of evaluation_mode.
+func (o ClusterBinaryAuthorizationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterBinaryAuthorization) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Mode of operation for Binary Authorization policy evaluation.
+func (o ClusterBinaryAuthorizationOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterBinaryAuthorization) *string { return v.EvaluationMode }).(pulumi.StringPtrOutput)
+}
+
+type ClusterBinaryAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterBinaryAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o ClusterBinaryAuthorizationPtrOutput) ToClusterBinaryAuthorizationPtrOutput() ClusterBinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o ClusterBinaryAuthorizationPtrOutput) ToClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) ClusterBinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o ClusterBinaryAuthorizationPtrOutput) Elem() ClusterBinaryAuthorizationOutput {
+	return o.ApplyT(func(v *ClusterBinaryAuthorization) ClusterBinaryAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterBinaryAuthorization
+		return ret
+	}).(ClusterBinaryAuthorizationOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
+// Deprecated: Deprecated in favor of evaluation_mode.
+func (o ClusterBinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterBinaryAuthorization) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Mode of operation for Binary Authorization policy evaluation.
+func (o ClusterBinaryAuthorizationPtrOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterBinaryAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterClusterAutoscaling struct {
 	// Contains defaults for a node pool created by NAP.
 	// Structure is documented below.
@@ -24058,6 +24226,106 @@ func (o GetClusterAuthenticatorGroupsConfigArrayOutput) Index(i pulumi.IntInput)
 	}).(GetClusterAuthenticatorGroupsConfigOutput)
 }
 
+type GetClusterBinaryAuthorization struct {
+	Enabled        bool   `pulumi:"enabled"`
+	EvaluationMode string `pulumi:"evaluationMode"`
+}
+
+// GetClusterBinaryAuthorizationInput is an input type that accepts GetClusterBinaryAuthorizationArgs and GetClusterBinaryAuthorizationOutput values.
+// You can construct a concrete instance of `GetClusterBinaryAuthorizationInput` via:
+//
+//          GetClusterBinaryAuthorizationArgs{...}
+type GetClusterBinaryAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetClusterBinaryAuthorizationOutput() GetClusterBinaryAuthorizationOutput
+	ToGetClusterBinaryAuthorizationOutputWithContext(context.Context) GetClusterBinaryAuthorizationOutput
+}
+
+type GetClusterBinaryAuthorizationArgs struct {
+	Enabled        pulumi.BoolInput   `pulumi:"enabled"`
+	EvaluationMode pulumi.StringInput `pulumi:"evaluationMode"`
+}
+
+func (GetClusterBinaryAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i GetClusterBinaryAuthorizationArgs) ToGetClusterBinaryAuthorizationOutput() GetClusterBinaryAuthorizationOutput {
+	return i.ToGetClusterBinaryAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetClusterBinaryAuthorizationArgs) ToGetClusterBinaryAuthorizationOutputWithContext(ctx context.Context) GetClusterBinaryAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterBinaryAuthorizationOutput)
+}
+
+// GetClusterBinaryAuthorizationArrayInput is an input type that accepts GetClusterBinaryAuthorizationArray and GetClusterBinaryAuthorizationArrayOutput values.
+// You can construct a concrete instance of `GetClusterBinaryAuthorizationArrayInput` via:
+//
+//          GetClusterBinaryAuthorizationArray{ GetClusterBinaryAuthorizationArgs{...} }
+type GetClusterBinaryAuthorizationArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterBinaryAuthorizationArrayOutput() GetClusterBinaryAuthorizationArrayOutput
+	ToGetClusterBinaryAuthorizationArrayOutputWithContext(context.Context) GetClusterBinaryAuthorizationArrayOutput
+}
+
+type GetClusterBinaryAuthorizationArray []GetClusterBinaryAuthorizationInput
+
+func (GetClusterBinaryAuthorizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i GetClusterBinaryAuthorizationArray) ToGetClusterBinaryAuthorizationArrayOutput() GetClusterBinaryAuthorizationArrayOutput {
+	return i.ToGetClusterBinaryAuthorizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterBinaryAuthorizationArray) ToGetClusterBinaryAuthorizationArrayOutputWithContext(ctx context.Context) GetClusterBinaryAuthorizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterBinaryAuthorizationArrayOutput)
+}
+
+type GetClusterBinaryAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetClusterBinaryAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o GetClusterBinaryAuthorizationOutput) ToGetClusterBinaryAuthorizationOutput() GetClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o GetClusterBinaryAuthorizationOutput) ToGetClusterBinaryAuthorizationOutputWithContext(ctx context.Context) GetClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o GetClusterBinaryAuthorizationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterBinaryAuthorization) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterBinaryAuthorizationOutput) EvaluationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterBinaryAuthorization) string { return v.EvaluationMode }).(pulumi.StringOutput)
+}
+
+type GetClusterBinaryAuthorizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterBinaryAuthorizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o GetClusterBinaryAuthorizationArrayOutput) ToGetClusterBinaryAuthorizationArrayOutput() GetClusterBinaryAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetClusterBinaryAuthorizationArrayOutput) ToGetClusterBinaryAuthorizationArrayOutputWithContext(ctx context.Context) GetClusterBinaryAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetClusterBinaryAuthorizationArrayOutput) Index(i pulumi.IntInput) GetClusterBinaryAuthorizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterBinaryAuthorization {
+		return vs[0].([]GetClusterBinaryAuthorization)[vs[1].(int)]
+	}).(GetClusterBinaryAuthorizationOutput)
+}
+
 type GetClusterClusterAutoscaling struct {
 	AutoProvisioningDefaults []GetClusterClusterAutoscalingAutoProvisioningDefault `pulumi:"autoProvisioningDefaults"`
 	AutoscalingProfile       string                                                `pulumi:"autoscalingProfile"`
@@ -30768,6 +31036,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthenticatorGroupsConfigInput)(nil)).Elem(), ClusterAuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthenticatorGroupsConfigPtrInput)(nil)).Elem(), ClusterAuthenticatorGroupsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBinaryAuthorizationInput)(nil)).Elem(), ClusterBinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBinaryAuthorizationPtrInput)(nil)).Elem(), ClusterBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingInput)(nil)).Elem(), ClusterClusterAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingPtrInput)(nil)).Elem(), ClusterClusterAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsArgs{})
@@ -30950,6 +31220,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAuthenticatorGroupsConfigInput)(nil)).Elem(), GetClusterAuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAuthenticatorGroupsConfigArrayInput)(nil)).Elem(), GetClusterAuthenticatorGroupsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterBinaryAuthorizationInput)(nil)).Elem(), GetClusterBinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterBinaryAuthorizationArrayInput)(nil)).Elem(), GetClusterBinaryAuthorizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingInput)(nil)).Elem(), GetClusterClusterAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingArrayInput)(nil)).Elem(), GetClusterClusterAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultArgs{})
@@ -31190,6 +31462,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterBinaryAuthorizationOutput{})
+	pulumi.RegisterOutputType(ClusterBinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsOutput{})
@@ -31372,6 +31646,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAuthenticatorGroupsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAuthenticatorGroupsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterBinaryAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetClusterBinaryAuthorizationArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultOutput{})

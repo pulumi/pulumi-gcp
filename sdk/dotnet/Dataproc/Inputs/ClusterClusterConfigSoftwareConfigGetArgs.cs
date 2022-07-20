@@ -63,6 +63,11 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         [Input("properties")]
         private InputMap<object>? _properties;
+
+        /// <summary>
+        /// The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+        /// for example spark:spark.kubernetes.container.image.
+        /// </summary>
         public InputMap<object> Properties
         {
             get => _properties ?? (_properties = new InputMap<object>());

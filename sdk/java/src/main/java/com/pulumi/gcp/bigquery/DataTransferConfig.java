@@ -232,18 +232,22 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationPubsubTopic);
     }
     /**
-     * Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39;
-     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39; section
+     * for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+     * parameter that cannot be updated (due to api limitations) [please force recreation of the
+     * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
      * 
      */
     @Export(name="params", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> params;
 
     /**
-     * @return Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39;
-     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * @return Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39; section
+     * for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+     * parameter that cannot be updated (due to api limitations) [please force recreation of the
+     * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
      * 
      */
     public Output<Map<String,String>> params() {

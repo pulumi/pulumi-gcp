@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// The mappings override system defaults (some keys cannot be overridden)
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ConfigOverrides;
+        public readonly string? EndpointProtocol;
         /// <summary>
         /// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
         /// Structure is documented below.
@@ -32,11 +33,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         private MetastoreServiceHiveMetastoreConfig(
             ImmutableDictionary<string, string>? configOverrides,
 
+            string? endpointProtocol,
+
             Outputs.MetastoreServiceHiveMetastoreConfigKerberosConfig? kerberosConfig,
 
             string version)
         {
             ConfigOverrides = configOverrides;
+            EndpointProtocol = endpointProtocol;
             KerberosConfig = kerberosConfig;
             Version = version;
         }

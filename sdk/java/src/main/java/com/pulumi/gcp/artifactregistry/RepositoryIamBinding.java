@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -45,7 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .role(&#34;roles/viewer&#34;)
+ *                 .role(&#34;roles/artifactregistry.reader&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build()));
@@ -55,9 +54,7 @@ import javax.annotation.Nullable;
  *             .location(google_artifact_registry_repository.my-repo().location())
  *             .repository(google_artifact_registry_repository.my-repo().name())
  *             .policyData(admin.apply(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -71,7 +68,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -83,11 +79,9 @@ import javax.annotation.Nullable;
  *             .project(google_artifact_registry_repository.my-repo().project())
  *             .location(google_artifact_registry_repository.my-repo().location())
  *             .repository(google_artifact_registry_repository.my-repo().name())
- *             .role(&#34;roles/viewer&#34;)
+ *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -101,7 +95,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -113,11 +106,9 @@ import javax.annotation.Nullable;
  *             .project(google_artifact_registry_repository.my-repo().project())
  *             .location(google_artifact_registry_repository.my-repo().location())
  *             .repository(google_artifact_registry_repository.my-repo().name())
- *             .role(&#34;roles/viewer&#34;)
+ *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -128,13 +119,13 @@ import javax.annotation.Nullable;
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding editor &#34;projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer user:jane@example.com&#34;
+ *  $ pulumi import gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding editor &#34;projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding editor &#34;projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer&#34;
+ *  $ pulumi import gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding editor &#34;projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question, e.g.

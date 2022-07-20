@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about Repository, see:
  * 
- * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
+ * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  * 
@@ -34,7 +34,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -43,13 +42,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
  *             .description(&#34;example docker repository&#34;)
  *             .format(&#34;DOCKER&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;my-repository&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -62,7 +59,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -71,58 +67,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
  *             .description(&#34;example docker repository with cmek&#34;)
  *             .format(&#34;DOCKER&#34;)
  *             .kmsKeyName(&#34;kms-key&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
- * ### Artifact Registry Repository Iam
- * ```java
- * package generated_program;
- * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .repositoryId(&#34;my-repository&#34;)
- *             .description(&#34;example docker repository with iam&#34;)
- *             .format(&#34;DOCKER&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var test_account = new Account(&#34;test-account&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-account&#34;)
- *             .displayName(&#34;Test Service Account&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var test_iam = new RepositoryIamMember(&#34;test-iam&#34;, RepositoryIamMemberArgs.builder()        
- *             .location(my_repo.location())
- *             .repository(my_repo.name())
- *             .role(&#34;roles/artifactregistry.reader&#34;)
- *             .member(test_account.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

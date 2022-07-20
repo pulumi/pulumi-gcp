@@ -148,8 +148,8 @@ class Ruleset(pulumi.CustomResource):
                  source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArgs']]] = None,
                  __props__=None):
         """
-        The Firebaserules Ruleset resource
-
+        For more information, see:
+        * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
         ### Basic_ruleset
         Creates a basic Firestore ruleset
@@ -212,8 +212,8 @@ class Ruleset(pulumi.CustomResource):
                  args: RulesetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Firebaserules Ruleset resource
-
+        For more information, see:
+        * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
         ### Basic_ruleset
         Creates a basic Firestore ruleset

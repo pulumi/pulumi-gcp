@@ -255,7 +255,7 @@ type ApiKey struct {
 	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
 	// method.
 	KeyString pulumi.StringOutput `pulumi:"keyString"`
-	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -297,7 +297,7 @@ type apiKeyState struct {
 	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
 	// method.
 	KeyString *string `pulumi:"keyString"`
-	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -311,7 +311,7 @@ type ApiKeyState struct {
 	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
 	// method.
 	KeyString pulumi.StringPtrInput
-	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -326,7 +326,7 @@ func (ApiKeyState) ElementType() reflect.Type {
 type apiKeyArgs struct {
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName *string `pulumi:"displayName"`
-	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -338,7 +338,7 @@ type apiKeyArgs struct {
 type ApiKeyArgs struct {
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName pulumi.StringPtrInput
-	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -444,7 +444,7 @@ func (o ApiKeyOutput) KeyString() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.KeyString }).(pulumi.StringOutput)
 }
 
-// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: a-z?.
+// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 func (o ApiKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

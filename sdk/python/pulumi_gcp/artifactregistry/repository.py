@@ -409,7 +409,7 @@ class Repository(pulumi.CustomResource):
 
         To get more information about Repository, see:
 
-        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
+        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
@@ -421,11 +421,10 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
             description="example docker repository",
             format="DOCKER",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1",
+            repository_id="my-repository")
         ```
         ### Artifact Registry Repository Cmek
 
@@ -434,35 +433,11 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
             description="example docker repository with cmek",
             format="DOCKER",
             kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Artifact Registry Repository Iam
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with iam",
-            format="DOCKER",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        test_account = gcp.service_account.Account("test-account",
-            account_id="my-account",
-            display_name="Test Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        test_iam = gcp.artifactregistry.RepositoryIamMember("test-iam",
-            location=my_repo.location,
-            repository=my_repo.name,
-            role="roles/artifactregistry.reader",
-            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            repository_id="my-repository")
         ```
 
         ## Import
@@ -522,7 +497,7 @@ class Repository(pulumi.CustomResource):
 
         To get more information about Repository, see:
 
-        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
+        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
@@ -534,11 +509,10 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
             description="example docker repository",
             format="DOCKER",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1",
+            repository_id="my-repository")
         ```
         ### Artifact Registry Repository Cmek
 
@@ -547,35 +521,11 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
             description="example docker repository with cmek",
             format="DOCKER",
             kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-        ### Artifact Registry Repository Iam
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with iam",
-            format="DOCKER",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        test_account = gcp.service_account.Account("test-account",
-            account_id="my-account",
-            display_name="Test Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        test_iam = gcp.artifactregistry.RepositoryIamMember("test-iam",
-            location=my_repo.location,
-            repository=my_repo.name,
-            role="roles/artifactregistry.reader",
-            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            repository_id="my-repository")
         ```
 
         ## Import

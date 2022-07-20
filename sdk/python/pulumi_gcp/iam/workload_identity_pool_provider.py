@@ -663,7 +663,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
         To get more information about WorkloadIdentityPoolProvider, see:
 
-        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
         * How-to Guides
             * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 
@@ -674,15 +674,13 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
             aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
                 account_id="999999999999",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Iam Workload Identity Pool Provider Aws Full
 
@@ -690,8 +688,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
@@ -706,8 +703,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             },
             aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
                 account_id="999999999999",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Iam Workload Identity Pool Provider Oidc Basic
 
@@ -715,8 +711,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
@@ -725,8 +720,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             },
             oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Iam Workload Identity Pool Provider Oidc Full
 
@@ -734,8 +728,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
@@ -758,8 +751,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                     "example.com/gcp-oidc-federation",
                 ],
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -866,7 +858,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
         To get more information about WorkloadIdentityPoolProvider, see:
 
-        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
         * How-to Guides
             * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 
@@ -877,15 +869,13 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
             aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
                 account_id="999999999999",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Iam Workload Identity Pool Provider Aws Full
 
@@ -893,8 +883,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
@@ -909,8 +898,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             },
             aws=gcp.iam.WorkloadIdentityPoolProviderAwsArgs(
                 account_id="999999999999",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Iam Workload Identity Pool Provider Oidc Basic
 
@@ -918,8 +906,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
@@ -928,8 +915,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             },
             oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Iam Workload Identity Pool Provider Oidc Full
 
@@ -937,8 +923,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
         example = gcp.iam.WorkloadIdentityPoolProvider("example",
             workload_identity_pool_id=pool.workload_identity_pool_id,
             workload_identity_pool_provider_id="example-prvdr",
@@ -961,8 +946,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                     "example.com/gcp-oidc-federation",
                 ],
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

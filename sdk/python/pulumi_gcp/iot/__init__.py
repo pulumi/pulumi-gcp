@@ -7,5 +7,8 @@ import typing
 # Export this package's modules as members:
 from .device import *
 from .registry import *
+from .registry_iam_binding import *
+from .registry_iam_member import *
+from .registry_iam_policy import *
 from ._inputs import *
 from . import outputs

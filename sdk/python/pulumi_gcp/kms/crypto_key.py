@@ -37,7 +37,7 @@ class CryptoKeyArgs:
                [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
                for possible inputs.
                Default value is `ENCRYPT_DECRYPT`.
-               Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+               Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
         :param pulumi.Input[str] rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
@@ -135,7 +135,7 @@ class CryptoKeyArgs:
         [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         for possible inputs.
         Default value is `ENCRYPT_DECRYPT`.
-        Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+        Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
         """
         return pulumi.get(self, "purpose")
 
@@ -210,7 +210,7 @@ class _CryptoKeyState:
                [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
                for possible inputs.
                Default value is `ENCRYPT_DECRYPT`.
-               Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+               Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
         :param pulumi.Input[str] rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
@@ -309,7 +309,7 @@ class _CryptoKeyState:
         [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         for possible inputs.
         Default value is `ENCRYPT_DECRYPT`.
-        Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+        Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
         """
         return pulumi.get(self, "purpose")
 
@@ -443,7 +443,7 @@ class CryptoKey(pulumi.CustomResource):
                [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
                for possible inputs.
                Default value is `ENCRYPT_DECRYPT`.
-               Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+               Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
         :param pulumi.Input[str] rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
@@ -599,7 +599,7 @@ class CryptoKey(pulumi.CustomResource):
                [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
                for possible inputs.
                Default value is `ENCRYPT_DECRYPT`.
-               Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+               Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
         :param pulumi.Input[str] rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
@@ -674,7 +674,7 @@ class CryptoKey(pulumi.CustomResource):
         [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         for possible inputs.
         Default value is `ENCRYPT_DECRYPT`.
-        Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
+        Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
         """
         return pulumi.get(self, "purpose")
 

@@ -130,6 +130,9 @@ type Cluster struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigOutput `pulumi:"authenticatorGroupsConfig"`
+	// Configuration options for the Binary
+	// Authorization feature. Structure is documented below.
+	BinaryAuthorization ClusterBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
 	// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
 	// automatically adjust the size of the cluster and create/delete node pools based
 	// on the current needs of the cluster's workload. See the
@@ -169,6 +172,9 @@ type Cluster struct {
 	EnableAutopilot pulumi.BoolPtrOutput `pulumi:"enableAutopilot"`
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
+	// Deprecated in favor of `binaryAuthorization`.
+	//
+	// Deprecated: Deprecated in favor of binary_authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrOutput `pulumi:"enableBinaryAuthorization"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility pulumi.BoolOutput `pulumi:"enableIntranodeVisibility"`
@@ -400,6 +406,9 @@ type clusterState struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig *ClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfig"`
+	// Configuration options for the Binary
+	// Authorization feature. Structure is documented below.
+	BinaryAuthorization *ClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
 	// automatically adjust the size of the cluster and create/delete node pools based
 	// on the current needs of the cluster's workload. See the
@@ -439,6 +448,9 @@ type clusterState struct {
 	EnableAutopilot *bool `pulumi:"enableAutopilot"`
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
+	// Deprecated in favor of `binaryAuthorization`.
+	//
+	// Deprecated: Deprecated in favor of binary_authorization.
 	EnableBinaryAuthorization *bool `pulumi:"enableBinaryAuthorization"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility *bool `pulumi:"enableIntranodeVisibility"`
@@ -642,6 +654,9 @@ type ClusterState struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigPtrInput
+	// Configuration options for the Binary
+	// Authorization feature. Structure is documented below.
+	BinaryAuthorization ClusterBinaryAuthorizationPtrInput
 	// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
 	// automatically adjust the size of the cluster and create/delete node pools based
 	// on the current needs of the cluster's workload. See the
@@ -681,6 +696,9 @@ type ClusterState struct {
 	EnableAutopilot pulumi.BoolPtrInput
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
+	// Deprecated in favor of `binaryAuthorization`.
+	//
+	// Deprecated: Deprecated in favor of binary_authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility pulumi.BoolPtrInput
@@ -888,6 +906,9 @@ type clusterArgs struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig *ClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfig"`
+	// Configuration options for the Binary
+	// Authorization feature. Structure is documented below.
+	BinaryAuthorization *ClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
 	// automatically adjust the size of the cluster and create/delete node pools based
 	// on the current needs of the cluster's workload. See the
@@ -927,6 +948,9 @@ type clusterArgs struct {
 	EnableAutopilot *bool `pulumi:"enableAutopilot"`
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
+	// Deprecated in favor of `binaryAuthorization`.
+	//
+	// Deprecated: Deprecated in favor of binary_authorization.
 	EnableBinaryAuthorization *bool `pulumi:"enableBinaryAuthorization"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility *bool `pulumi:"enableIntranodeVisibility"`
@@ -1111,6 +1135,9 @@ type ClusterArgs struct {
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig ClusterAuthenticatorGroupsConfigPtrInput
+	// Configuration options for the Binary
+	// Authorization feature. Structure is documented below.
+	BinaryAuthorization ClusterBinaryAuthorizationPtrInput
 	// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
 	// automatically adjust the size of the cluster and create/delete node pools based
 	// on the current needs of the cluster's workload. See the
@@ -1150,6 +1177,9 @@ type ClusterArgs struct {
 	EnableAutopilot pulumi.BoolPtrInput
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
+	// Deprecated in favor of `binaryAuthorization`.
+	//
+	// Deprecated: Deprecated in favor of binary_authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility pulumi.BoolPtrInput
@@ -1425,6 +1455,12 @@ func (o ClusterOutput) AuthenticatorGroupsConfig() ClusterAuthenticatorGroupsCon
 	return o.ApplyT(func(v *Cluster) ClusterAuthenticatorGroupsConfigOutput { return v.AuthenticatorGroupsConfig }).(ClusterAuthenticatorGroupsConfigOutput)
 }
 
+// Configuration options for the Binary
+// Authorization feature. Structure is documented below.
+func (o ClusterOutput) BinaryAuthorization() ClusterBinaryAuthorizationPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterBinaryAuthorizationPtrOutput { return v.BinaryAuthorization }).(ClusterBinaryAuthorizationPtrOutput)
+}
+
 // Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
 // automatically adjust the size of the cluster and create/delete node pools based
 // on the current needs of the cluster's workload. See the
@@ -1497,6 +1533,9 @@ func (o ClusterOutput) EnableAutopilot() pulumi.BoolPtrOutput {
 
 // Enable Binary Authorization for this cluster.
 // If enabled, all container images will be validated by Google Binary Authorization.
+// Deprecated in favor of `binaryAuthorization`.
+//
+// Deprecated: Deprecated in favor of binary_authorization.
 func (o ClusterOutput) EnableBinaryAuthorization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableBinaryAuthorization }).(pulumi.BoolPtrOutput)
 }

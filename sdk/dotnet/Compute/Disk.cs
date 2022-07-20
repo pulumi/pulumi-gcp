@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.Compute
         /// Indicates how many IOPS must be provisioned for the disk.
         /// </summary>
         [Output("provisionedIops")]
-        public Output<int?> ProvisionedIops { get; private set; } = null!;
+        public Output<int> ProvisionedIops { get; private set; } = null!;
 
         /// <summary>
         /// Resource policies applied to this disk for automatic snapshot creations.

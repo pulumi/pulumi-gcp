@@ -21,13 +21,16 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
         if authenticator_groups_configs and not isinstance(authenticator_groups_configs, list):
             raise TypeError("Expected argument 'authenticator_groups_configs' to be a list")
         pulumi.set(__self__, "authenticator_groups_configs", authenticator_groups_configs)
+        if binary_authorizations and not isinstance(binary_authorizations, list):
+            raise TypeError("Expected argument 'binary_authorizations' to be a list")
+        pulumi.set(__self__, "binary_authorizations", binary_authorizations)
         if cluster_autoscalings and not isinstance(cluster_autoscalings, list):
             raise TypeError("Expected argument 'cluster_autoscalings' to be a list")
         pulumi.set(__self__, "cluster_autoscalings", cluster_autoscalings)
@@ -215,6 +218,11 @@ class GetClusterResult:
     @pulumi.getter(name="authenticatorGroupsConfigs")
     def authenticator_groups_configs(self) -> Sequence['outputs.GetClusterAuthenticatorGroupsConfigResult']:
         return pulumi.get(self, "authenticator_groups_configs")
+
+    @property
+    @pulumi.getter(name="binaryAuthorizations")
+    def binary_authorizations(self) -> Sequence['outputs.GetClusterBinaryAuthorizationResult']:
+        return pulumi.get(self, "binary_authorizations")
 
     @property
     @pulumi.getter(name="clusterAutoscalings")
@@ -523,6 +531,7 @@ class AwaitableGetClusterResult(GetClusterResult):
         return GetClusterResult(
             addons_configs=self.addons_configs,
             authenticator_groups_configs=self.authenticator_groups_configs,
+            binary_authorizations=self.binary_authorizations,
             cluster_autoscalings=self.cluster_autoscalings,
             cluster_ipv4_cidr=self.cluster_ipv4_cidr,
             cluster_telemetries=self.cluster_telemetries,
@@ -626,6 +635,7 @@ def get_cluster(location: Optional[str] = None,
     return AwaitableGetClusterResult(
         addons_configs=__ret__.addons_configs,
         authenticator_groups_configs=__ret__.authenticator_groups_configs,
+        binary_authorizations=__ret__.binary_authorizations,
         cluster_autoscalings=__ret__.cluster_autoscalings,
         cluster_ipv4_cidr=__ret__.cluster_ipv4_cidr,
         cluster_telemetries=__ret__.cluster_telemetries,

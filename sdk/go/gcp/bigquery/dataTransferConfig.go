@@ -111,9 +111,11 @@ type DataTransferConfig struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrOutput `pulumi:"notificationPubsubTopic"`
-	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
-	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
+	// for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+	// parameter that cannot be updated (due to api limitations) [please force recreation of the
+	// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
 	Params pulumi.StringMapOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,9 +212,11 @@ type dataTransferConfigState struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
-	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
-	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
+	// for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+	// parameter that cannot be updated (due to api limitations) [please force recreation of the
+	// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -272,9 +276,11 @@ type DataTransferConfigState struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrInput
-	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
-	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
+	// for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+	// parameter that cannot be updated (due to api limitations) [please force recreation of the
+	// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -334,9 +340,11 @@ type dataTransferConfigArgs struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
-	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
-	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
+	// for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+	// parameter that cannot be updated (due to api limitations) [please force recreation of the
+	// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -393,9 +401,11 @@ type DataTransferConfigArgs struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrInput
-	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
-	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
+	// for each data source. For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+	// parameter that cannot be updated (due to api limitations) [please force recreation of the
+	// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -568,9 +578,11 @@ func (o DataTransferConfigOutput) NotificationPubsubTopic() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringPtrOutput { return v.NotificationPubsubTopic }).(pulumi.StringPtrOutput)
 }
 
-// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
-// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
+// for each data source. For example the parameters for Cloud Storage transfers are listed here:
+// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+// parameter that cannot be updated (due to api limitations) [please force recreation of the
+// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
 func (o DataTransferConfigOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringMapOutput { return v.Params }).(pulumi.StringMapOutput)
 }

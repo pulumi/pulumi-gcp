@@ -15,7 +15,7 @@ import (
 //
 // To get more information about Repository, see:
 //
-// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
+// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 //
@@ -33,11 +33,11 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-// 			Location:     pulumi.String("us-central1"),
-// 			RepositoryId: pulumi.String("my-repository"),
 // 			Description:  pulumi.String("example docker repository"),
 // 			Format:       pulumi.String("DOCKER"),
-// 		}, pulumi.Provider(google_beta))
+// 			Location:     pulumi.String("us-central1"),
+// 			RepositoryId: pulumi.String("my-repository"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -58,58 +58,12 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-// 			Location:     pulumi.String("us-central1"),
-// 			RepositoryId: pulumi.String("my-repository"),
 // 			Description:  pulumi.String("example docker repository with cmek"),
 // 			Format:       pulumi.String("DOCKER"),
 // 			KmsKeyName:   pulumi.String("kms-key"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Artifact Registry Repository Iam
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
 // 			Location:     pulumi.String("us-central1"),
 // 			RepositoryId: pulumi.String("my-repository"),
-// 			Description:  pulumi.String("example docker repository with iam"),
-// 			Format:       pulumi.String("DOCKER"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = serviceAccount.NewAccount(ctx, "test-account", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("my-account"),
-// 			DisplayName: pulumi.String("Test Service Account"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = artifactregistry.NewRepositoryIamMember(ctx, "test-iam", &artifactregistry.RepositoryIamMemberArgs{
-// 			Location:   my_repo.Location,
-// 			Repository: my_repo.Name,
-// 			Role:       pulumi.String("roles/artifactregistry.reader"),
-// 			Member: test_account.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
-// 			}).(pulumi.StringOutput),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

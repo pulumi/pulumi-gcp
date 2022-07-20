@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The Firebaserules Release resource
- *
+ * For more information, see:
+ * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
  * ### Basic_release
  * Creates a basic Firebase Rules Release
@@ -106,7 +106,7 @@ export class Release extends pulumi.CustomResource {
      */
     public /*out*/ readonly disabled!: pulumi.Output<boolean>;
     /**
-     * Format: `projects/{project_id}/releases/{release_id}`
+     * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -114,7 +114,7 @@ export class Release extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      */
     public readonly rulesetName!: pulumi.Output<string>;
     /**
@@ -172,7 +172,7 @@ export interface ReleaseState {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Format: `projects/{project_id}/releases/{release_id}`
+     * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
      */
     name?: pulumi.Input<string>;
     /**
@@ -180,7 +180,7 @@ export interface ReleaseState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      */
     rulesetName?: pulumi.Input<string>;
     /**
@@ -194,7 +194,7 @@ export interface ReleaseState {
  */
 export interface ReleaseArgs {
     /**
-     * Format: `projects/{project_id}/releases/{release_id}`
+     * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
      */
     name?: pulumi.Input<string>;
     /**
@@ -202,7 +202,7 @@ export interface ReleaseArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      */
     rulesetName: pulumi.Input<string>;
 }

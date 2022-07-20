@@ -2086,6 +2086,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/snapshotIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/snapshotIamBinding:SnapshotIamBinding": "SnapshotIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/snapshotIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/snapshotIamMember:SnapshotIamMember": "SnapshotIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/snapshotIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy": "SnapshotIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/subnetwork",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3490,6 +3514,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.iot",
   "classes": {
    "gcp:iot/registry:Registry": "Registry"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iot/registryIamBinding",
+  "fqn": "pulumi_gcp.iot",
+  "classes": {
+   "gcp:iot/registryIamBinding:RegistryIamBinding": "RegistryIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iot/registryIamMember",
+  "fqn": "pulumi_gcp.iot",
+  "classes": {
+   "gcp:iot/registryIamMember:RegistryIamMember": "RegistryIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iot/registryIamPolicy",
+  "fqn": "pulumi_gcp.iot",
+  "classes": {
+   "gcp:iot/registryIamPolicy:RegistryIamPolicy": "RegistryIamPolicy"
   }
  },
  {

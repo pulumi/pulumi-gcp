@@ -14377,6 +14377,18 @@ export namespace compute {
         projectIdOrNum: pulumi.Input<string>;
     }
 
+    export interface SnapshotIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SnapshotIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface SnapshotSnapshotEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
@@ -17183,6 +17195,20 @@ export namespace container {
         securityGroup: pulumi.Input<string>;
     }
 
+    export interface ClusterBinaryAuthorization {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
+         * @deprecated Deprecated in favor of evaluation_mode.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Mode of operation for Binary Authorization policy evaluation.
+         */
+        evaluationMode?: pulumi.Input<string>;
+    }
+
     export interface ClusterClusterAutoscaling {
         /**
          * Contains defaults for a node pool created by NAP.
@@ -18329,6 +18355,7 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
+
 }
 
 export namespace containeranalysis {
@@ -20343,6 +20370,10 @@ export namespace dataproc {
          * [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
          */
         overrideProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+         * for example spark:spark.kubernetes.container.image.
+         */
         properties?: pulumi.Input<{[key: string]: any}>;
     }
 
@@ -20706,6 +20737,7 @@ export namespace dataproc {
          * The mappings override system defaults (some keys cannot be overridden)
          */
         configOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        endpointProtocol?: pulumi.Input<string>;
         /**
          * Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
          * Structure is documented below.
@@ -24066,6 +24098,18 @@ export namespace iot {
          * item.
          */
         subfolderMatches?: pulumi.Input<string>;
+    }
+
+    export interface RegistryIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface RegistryIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -29956,7 +30000,7 @@ export namespace sql {
         collation?: pulumi.Input<string>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
         /**
-         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
          */
         diskAutoresize?: pulumi.Input<boolean>;
         diskAutoresizeLimit?: pulumi.Input<number>;

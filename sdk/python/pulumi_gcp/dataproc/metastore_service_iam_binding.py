@@ -26,7 +26,7 @@ class MetastoreServiceIamBindingArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.MetastoreServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
+        :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -87,7 +87,7 @@ class MetastoreServiceIamBindingArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The  location where the autoscaling policy should reside.
+        The location where the metastore service should reside.
         The default value is `global`.
         Used to find the parent resource to bind the IAM policy to
         """
@@ -124,7 +124,7 @@ class _MetastoreServiceIamBindingState:
         """
         Input properties used for looking up and filtering MetastoreServiceIamBinding resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
+        :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -173,7 +173,7 @@ class _MetastoreServiceIamBindingState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The  location where the autoscaling policy should reside.
+        The location where the metastore service should reside.
         The default value is `global`.
         Used to find the parent resource to bind the IAM policy to
         """
@@ -242,6 +242,61 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+
+        * `dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+        * `dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+        * `dataproc.MetastoreServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+
+        > **Note:** `dataproc.MetastoreServiceIamPolicy` **cannot** be used in conjunction with `dataproc.MetastoreServiceIamBinding` and `dataproc.MetastoreServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_dataproc\_metastore\_service\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataproc.MetastoreServiceIamPolicy("policy",
+            project=google_dataproc_metastore_service["default"]["project"],
+            location=google_dataproc_metastore_service["default"]["location"],
+            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_dataproc\_metastore\_service\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataproc.MetastoreServiceIamBinding("binding",
+            project=google_dataproc_metastore_service["default"]["project"],
+            location=google_dataproc_metastore_service["default"]["location"],
+            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_dataproc\_metastore\_service\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataproc.MetastoreServiceIamMember("member",
+            project=google_dataproc_metastore_service["default"]["project"],
+            location=google_dataproc_metastore_service["default"]["location"],
+            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -268,7 +323,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
+        :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -284,6 +339,61 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
                  args: MetastoreServiceIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+
+        * `dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+        * `dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+        * `dataproc.MetastoreServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+
+        > **Note:** `dataproc.MetastoreServiceIamPolicy` **cannot** be used in conjunction with `dataproc.MetastoreServiceIamBinding` and `dataproc.MetastoreServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_dataproc\_metastore\_service\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataproc.MetastoreServiceIamPolicy("policy",
+            project=google_dataproc_metastore_service["default"]["project"],
+            location=google_dataproc_metastore_service["default"]["location"],
+            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_dataproc\_metastore\_service\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataproc.MetastoreServiceIamBinding("binding",
+            project=google_dataproc_metastore_service["default"]["project"],
+            location=google_dataproc_metastore_service["default"]["location"],
+            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_dataproc\_metastore\_service\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataproc.MetastoreServiceIamMember("member",
+            project=google_dataproc_metastore_service["default"]["project"],
+            location=google_dataproc_metastore_service["default"]["location"],
+            service_id=google_dataproc_metastore_service["default"]["service_id"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -379,7 +489,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
+        :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -418,7 +528,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The  location where the autoscaling policy should reside.
+        The location where the metastore service should reside.
         The default value is `global`.
         Used to find the parent resource to bind the IAM policy to
         """

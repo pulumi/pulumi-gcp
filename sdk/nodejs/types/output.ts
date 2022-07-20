@@ -6620,11 +6620,11 @@ export namespace clouddeploy {
         /**
          * Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
          */
-        artifactStorage?: string;
+        artifactStorage: string;
         /**
          * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
          */
-        serviceAccount?: string;
+        serviceAccount: string;
         /**
          * Required. Usages when this configuration should be applied.
          */
@@ -15931,6 +15931,18 @@ export namespace compute {
         projectIdOrNum: string;
     }
 
+    export interface SnapshotIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface SnapshotIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface SnapshotSnapshotEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
@@ -17993,6 +18005,7 @@ export namespace compute {
          */
         service: string;
     }
+
 }
 
 export namespace config {
@@ -18740,6 +18753,20 @@ export namespace container {
          * The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
          */
         securityGroup: string;
+    }
+
+    export interface ClusterBinaryAuthorization {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
+         * @deprecated Deprecated in favor of evaluation_mode.
+         */
+        enabled?: boolean;
+        /**
+         * Mode of operation for Binary Authorization policy evaluation.
+         */
+        evaluationMode?: string;
     }
 
     export interface ClusterClusterAutoscaling {
@@ -19818,6 +19845,11 @@ export namespace container {
 
     export interface GetClusterAuthenticatorGroupsConfig {
         securityGroup: string;
+    }
+
+    export interface GetClusterBinaryAuthorization {
+        enabled: boolean;
+        evaluationMode: string;
     }
 
     export interface GetClusterClusterAutoscaling {
@@ -22341,6 +22373,10 @@ export namespace dataproc {
          * [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
          */
         overrideProperties?: {[key: string]: string};
+        /**
+         * The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+         * for example spark:spark.kubernetes.container.image.
+         */
         properties: {[key: string]: any};
     }
 
@@ -22704,6 +22740,7 @@ export namespace dataproc {
          * The mappings override system defaults (some keys cannot be overridden)
          */
         configOverrides: {[key: string]: string};
+        endpointProtocol?: string;
         /**
          * Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
          * Structure is documented below.
@@ -26243,6 +26280,18 @@ export namespace iot {
          * item.
          */
         subfolderMatches?: string;
+    }
+
+    export interface RegistryIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RegistryIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
 }
@@ -32314,7 +32363,7 @@ export namespace sql {
         collation?: string;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
         /**
-         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
          */
         diskAutoresize?: boolean;
         diskAutoresizeLimit?: number;

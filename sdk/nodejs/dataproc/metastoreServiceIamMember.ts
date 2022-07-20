@@ -6,6 +6,66 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
+ *
+ * * `gcp.dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
+ * * `gcp.dataproc.MetastoreServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
+ * * `gcp.dataproc.MetastoreServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+ *
+ * > **Note:** `gcp.dataproc.MetastoreServiceIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.MetastoreServiceIamBinding` and `gcp.dataproc.MetastoreServiceIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.dataproc.MetastoreServiceIamBinding` resources **can be** used in conjunction with `gcp.dataproc.MetastoreServiceIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_dataproc\_metastore\_service\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.dataproc.MetastoreServiceIamPolicy("policy", {
+ *     project: google_dataproc_metastore_service["default"].project,
+ *     location: google_dataproc_metastore_service["default"].location,
+ *     serviceId: google_dataproc_metastore_service["default"].service_id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_dataproc\_metastore\_service\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.dataproc.MetastoreServiceIamBinding("binding", {
+ *     project: google_dataproc_metastore_service["default"].project,
+ *     location: google_dataproc_metastore_service["default"].location,
+ *     serviceId: google_dataproc_metastore_service["default"].service_id,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## google\_dataproc\_metastore\_service\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.dataproc.MetastoreServiceIamMember("member", {
+ *     project: google_dataproc_metastore_service["default"].project,
+ *     location: google_dataproc_metastore_service["default"].location,
+ *     serviceId: google_dataproc_metastore_service["default"].service_id,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service_id}} * {{project}}/{{location}}/{{service_id}} * {{location}}/{{service_id}} * {{service_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataproc metastore service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -64,7 +124,7 @@ export class MetastoreServiceIamMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      * Used to find the parent resource to bind the IAM policy to
      */
@@ -137,7 +197,7 @@ export interface MetastoreServiceIamMemberState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      * Used to find the parent resource to bind the IAM policy to
      */
@@ -163,7 +223,7 @@ export interface MetastoreServiceIamMemberState {
 export interface MetastoreServiceIamMemberArgs {
     condition?: pulumi.Input<inputs.dataproc.MetastoreServiceIamMemberCondition>;
     /**
-     * The  location where the autoscaling policy should reside.
+     * The location where the metastore service should reside.
      * The default value is `global`.
      * Used to find the parent resource to bind the IAM policy to
      */

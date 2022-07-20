@@ -68,6 +68,7 @@ __all__ = [
     'ClusterAddonsConfigKalmConfig',
     'ClusterAddonsConfigNetworkPolicyConfig',
     'ClusterAuthenticatorGroupsConfig',
+    'ClusterBinaryAuthorization',
     'ClusterClusterAutoscaling',
     'ClusterClusterAutoscalingAutoProvisioningDefaults',
     'ClusterClusterAutoscalingResourceLimit',
@@ -159,6 +160,7 @@ __all__ = [
     'GetClusterAddonsConfigKalmConfigResult',
     'GetClusterAddonsConfigNetworkPolicyConfigResult',
     'GetClusterAuthenticatorGroupsConfigResult',
+    'GetClusterBinaryAuthorizationResult',
     'GetClusterClusterAutoscalingResult',
     'GetClusterClusterAutoscalingAutoProvisioningDefaultResult',
     'GetClusterClusterAutoscalingResourceLimitResult',
@@ -3070,6 +3072,56 @@ class ClusterAuthenticatorGroupsConfig(dict):
         The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
         """
         return pulumi.get(self, "security_group")
+
+
+@pulumi.output_type
+class ClusterBinaryAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMode":
+            suggest = "evaluation_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterBinaryAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterBinaryAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterBinaryAuthorization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 evaluation_mode: Optional[str] = None):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param str evaluation_mode: Mode of operation for Binary Authorization policy evaluation.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[str]:
+        """
+        Mode of operation for Binary Authorization policy evaluation.
+        """
+        return pulumi.get(self, "evaluation_mode")
 
 
 @pulumi.output_type
@@ -7694,6 +7746,25 @@ class GetClusterAuthenticatorGroupsConfigResult(dict):
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> str:
         return pulumi.get(self, "security_group")
+
+
+@pulumi.output_type
+class GetClusterBinaryAuthorizationResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 evaluation_mode: str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> str:
+        return pulumi.get(self, "evaluation_mode")
 
 
 @pulumi.output_type

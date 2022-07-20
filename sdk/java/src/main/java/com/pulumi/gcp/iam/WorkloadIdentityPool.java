@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about WorkloadIdentityPool, see:
  * 
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools)
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools)
  * * How-to Guides
  *     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
  * 
@@ -34,7 +34,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -44,9 +43,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new WorkloadIdentityPool(&#34;example&#34;, WorkloadIdentityPoolArgs.builder()        
  *             .workloadIdentityPoolId(&#34;example-pool&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -59,7 +56,6 @@ import javax.annotation.Nullable;
  * import java.io.*;
  * import java.nio.*;
  * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -68,13 +64,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new WorkloadIdentityPool(&#34;example&#34;, WorkloadIdentityPoolArgs.builder()        
- *             .workloadIdentityPoolId(&#34;example-pool&#34;)
- *             .displayName(&#34;Name of pool&#34;)
  *             .description(&#34;Identity pool for automated test&#34;)
  *             .disabled(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .displayName(&#34;Name of pool&#34;)
+ *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *             .build());
  * 
  *     }
  * }

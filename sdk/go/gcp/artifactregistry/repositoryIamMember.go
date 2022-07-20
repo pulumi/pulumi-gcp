@@ -37,7 +37,7 @@ import (
 // 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 // 			Bindings: []organizations.GetIAMPolicyBinding{
 // 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/viewer",
+// 					Role: "roles/artifactregistry.reader",
 // 					Members: []string{
 // 						"user:jane@example.com",
 // 					},
@@ -52,7 +52,7 @@ import (
 // 			Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
 // 			Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
 // 			PolicyData: pulumi.String(admin.PolicyData),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -77,11 +77,11 @@ import (
 // 			Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
 // 			Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
 // 			Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
-// 			Role:       pulumi.String("roles/viewer"),
+// 			Role:       pulumi.String("roles/artifactregistry.reader"),
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -106,9 +106,9 @@ import (
 // 			Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
 // 			Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
 // 			Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
-// 			Role:       pulumi.String("roles/viewer"),
+// 			Role:       pulumi.String("roles/artifactregistry.reader"),
 // 			Member:     pulumi.String("user:jane@example.com"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -122,13 +122,13 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:artifactregistry/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer user:jane@example.com"
+//  $ pulumi import gcp:artifactregistry/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
 // ```
 //
 //  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:artifactregistry/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer"
+//  $ pulumi import gcp:artifactregistry/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
 // ```
 //
 //  IAM policy imports use the identifier of the resource in question, e.g.

@@ -34,6 +34,13 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.configOverrides);
     }
 
+    @Import(name="endpointProtocol")
+    private @Nullable Output<String> endpointProtocol;
+
+    public Optional<Output<String>> endpointProtocol() {
+        return Optional.ofNullable(this.endpointProtocol);
+    }
+
     /**
      * Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
      * Structure is documented below.
@@ -70,6 +77,7 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
 
     private MetastoreServiceHiveMetastoreConfigArgs(MetastoreServiceHiveMetastoreConfigArgs $) {
         this.configOverrides = $.configOverrides;
+        this.endpointProtocol = $.endpointProtocol;
         this.kerberosConfig = $.kerberosConfig;
         this.version = $.version;
     }
@@ -113,6 +121,15 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
          */
         public Builder configOverrides(Map<String,String> configOverrides) {
             return configOverrides(Output.of(configOverrides));
+        }
+
+        public Builder endpointProtocol(@Nullable Output<String> endpointProtocol) {
+            $.endpointProtocol = endpointProtocol;
+            return this;
+        }
+
+        public Builder endpointProtocol(String endpointProtocol) {
+            return endpointProtocol(Output.of(endpointProtocol));
         }
 
         /**

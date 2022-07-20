@@ -126,6 +126,13 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterAuthenticatorGroupsConfig> AuthenticatorGroupsConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration options for the Binary
+        /// Authorization feature. Structure is documented below.
+        /// </summary>
+        [Output("binaryAuthorization")]
+        public Output<Outputs.ClusterBinaryAuthorization?> BinaryAuthorization { get; private set; } = null!;
+
+        /// <summary>
         /// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         /// automatically adjust the size of the cluster and create/delete node pools based
         /// on the current needs of the cluster's workload. See the
@@ -209,6 +216,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
+        /// Deprecated in favor of `binary_authorization`.
         /// </summary>
         [Output("enableBinaryAuthorization")]
         public Output<bool?> EnableBinaryAuthorization { get; private set; } = null!;
@@ -649,6 +657,13 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterAuthenticatorGroupsConfigArgs>? AuthenticatorGroupsConfig { get; set; }
 
         /// <summary>
+        /// Configuration options for the Binary
+        /// Authorization feature. Structure is documented below.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.ClusterBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
+
+        /// <summary>
         /// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         /// automatically adjust the size of the cluster and create/delete node pools based
         /// on the current needs of the cluster's workload. See the
@@ -732,6 +747,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
+        /// Deprecated in favor of `binary_authorization`.
         /// </summary>
         [Input("enableBinaryAuthorization")]
         public Input<bool>? EnableBinaryAuthorization { get; set; }
@@ -1105,6 +1121,13 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterAuthenticatorGroupsConfigGetArgs>? AuthenticatorGroupsConfig { get; set; }
 
         /// <summary>
+        /// Configuration options for the Binary
+        /// Authorization feature. Structure is documented below.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.ClusterBinaryAuthorizationGetArgs>? BinaryAuthorization { get; set; }
+
+        /// <summary>
         /// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         /// automatically adjust the size of the cluster and create/delete node pools based
         /// on the current needs of the cluster's workload. See the
@@ -1188,6 +1211,7 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
+        /// Deprecated in favor of `binary_authorization`.
         /// </summary>
         [Input("enableBinaryAuthorization")]
         public Input<bool>? EnableBinaryAuthorization { get; set; }

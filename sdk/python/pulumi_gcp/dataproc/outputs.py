@@ -2079,6 +2079,8 @@ class ClusterClusterConfigSoftwareConfig(dict):
                used to modify various aspects of the common configuration files used when creating
                a cluster. For a list of valid properties please see
                [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
+        :param Mapping[str, Any] properties: The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+               for example spark:spark.kubernetes.container.image.
         """
         if image_version is not None:
             pulumi.set(__self__, "image_version", image_version)
@@ -2135,6 +2137,10 @@ class ClusterClusterConfigSoftwareConfig(dict):
     @property
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, Any]]:
+        """
+        The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+        for example spark:spark.kubernetes.container.image.
+        """
         return pulumi.get(self, "properties")
 
 
@@ -3700,6 +3706,8 @@ class MetastoreServiceHiveMetastoreConfig(dict):
         suggest = None
         if key == "configOverrides":
             suggest = "config_overrides"
+        elif key == "endpointProtocol":
+            suggest = "endpoint_protocol"
         elif key == "kerberosConfig":
             suggest = "kerberos_config"
 
@@ -3717,6 +3725,7 @@ class MetastoreServiceHiveMetastoreConfig(dict):
     def __init__(__self__, *,
                  version: str,
                  config_overrides: Optional[Mapping[str, str]] = None,
+                 endpoint_protocol: Optional[str] = None,
                  kerberos_config: Optional['outputs.MetastoreServiceHiveMetastoreConfigKerberosConfig'] = None):
         """
         :param str version: The Hive metastore schema version.
@@ -3728,6 +3737,8 @@ class MetastoreServiceHiveMetastoreConfig(dict):
         pulumi.set(__self__, "version", version)
         if config_overrides is not None:
             pulumi.set(__self__, "config_overrides", config_overrides)
+        if endpoint_protocol is not None:
+            pulumi.set(__self__, "endpoint_protocol", endpoint_protocol)
         if kerberos_config is not None:
             pulumi.set(__self__, "kerberos_config", kerberos_config)
 
@@ -3747,6 +3758,11 @@ class MetastoreServiceHiveMetastoreConfig(dict):
         The mappings override system defaults (some keys cannot be overridden)
         """
         return pulumi.get(self, "config_overrides")
+
+    @property
+    @pulumi.getter(name="endpointProtocol")
+    def endpoint_protocol(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint_protocol")
 
     @property
     @pulumi.getter(name="kerberosConfig")

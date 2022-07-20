@@ -159,6 +159,7 @@ namespace Pulumi.Gcp.Container
     {
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigResult> AddonsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> AuthenticatorGroupsConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterBinaryAuthorizationResult> BinaryAuthorizations;
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> ClusterAutoscalings;
         public readonly string ClusterIpv4Cidr;
         public readonly ImmutableArray<Outputs.GetClusterClusterTelemetryResult> ClusterTelemetries;
@@ -227,6 +228,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterAddonsConfigResult> addonsConfigs,
 
             ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> authenticatorGroupsConfigs,
+
+            ImmutableArray<Outputs.GetClusterBinaryAuthorizationResult> binaryAuthorizations,
 
             ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> clusterAutoscalings,
 
@@ -348,6 +351,7 @@ namespace Pulumi.Gcp.Container
         {
             AddonsConfigs = addonsConfigs;
             AuthenticatorGroupsConfigs = authenticatorGroupsConfigs;
+            BinaryAuthorizations = binaryAuthorizations;
             ClusterAutoscalings = clusterAutoscalings;
             ClusterIpv4Cidr = clusterIpv4Cidr;
             ClusterTelemetries = clusterTelemetries;

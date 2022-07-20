@@ -27,18 +27,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
-// 			ServiceId: pulumi.String("metastore-srv"),
-// 			Location:  pulumi.String("us-central1"),
-// 			Port:      pulumi.Int(9080),
-// 			Tier:      pulumi.String("DEVELOPER"),
-// 			MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
-// 				HourOfDay: pulumi.Int(2),
-// 				DayOfWeek: pulumi.String("SUNDAY"),
-// 			},
 // 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 // 				Version: pulumi.String("2.3.6"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 			Location: pulumi.String("us-central1"),
+// 			MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
+// 				DayOfWeek: pulumi.String("SUNDAY"),
+// 				HourOfDay: pulumi.Int(2),
+// 			},
+// 			Port:      pulumi.Int(9080),
+// 			ServiceId: pulumi.String("metastore-srv"),
+// 			Tier:      pulumi.String("DEVELOPER"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -81,7 +81,7 @@ import (
 // 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 // 				Version: pulumi.String("3.1.2"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -110,6 +110,10 @@ type MetastoreService struct {
 
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri pulumi.StringOutput `pulumi:"artifactGcsUri"`
+	// The database type that the Metastore service stores its data.
+	// Default value is `MYSQL`.
+	// Possible values are `MYSQL` and `SPANNER`.
+	DatabaseType pulumi.StringPtrOutput `pulumi:"databaseType"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -121,11 +125,12 @@ type MetastoreService struct {
 	HiveMetastoreConfig MetastoreServiceHiveMetastoreConfigPtrOutput `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The one hour maintenance window of the metastore service.
 	// This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// Maintenance window is not needed for services with the `SPANNER` database type.
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrOutput `pulumi:"maintenanceWindow"`
 	// The relative resource name of the metastore service.
@@ -138,6 +143,10 @@ type MetastoreService struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The release channel of the service. If unspecified, defaults to `STABLE`.
+	// Default value is `STABLE`.
+	// Possible values are `CANARY` and `STABLE`.
+	ReleaseChannel pulumi.StringPtrOutput `pulumi:"releaseChannel"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -149,6 +158,8 @@ type MetastoreService struct {
 	// The tier of the service.
 	// Possible values are `DEVELOPER` and `ENTERPRISE`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
+	// The globally unique resource identifier of the metastore service.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
 // NewMetastoreService registers a new resource with the given unique name, arguments, and options.
@@ -185,6 +196,10 @@ func GetMetastoreService(ctx *pulumi.Context,
 type metastoreServiceState struct {
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri *string `pulumi:"artifactGcsUri"`
+	// The database type that the Metastore service stores its data.
+	// Default value is `MYSQL`.
+	// Possible values are `MYSQL` and `SPANNER`.
+	DatabaseType *string `pulumi:"databaseType"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -196,11 +211,12 @@ type metastoreServiceState struct {
 	HiveMetastoreConfig *MetastoreServiceHiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
 	Labels map[string]string `pulumi:"labels"`
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The one hour maintenance window of the metastore service.
 	// This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// Maintenance window is not needed for services with the `SPANNER` database type.
 	// Structure is documented below.
 	MaintenanceWindow *MetastoreServiceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The relative resource name of the metastore service.
@@ -213,6 +229,10 @@ type metastoreServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The release channel of the service. If unspecified, defaults to `STABLE`.
+	// Default value is `STABLE`.
+	// Possible values are `CANARY` and `STABLE`.
+	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -224,11 +244,17 @@ type metastoreServiceState struct {
 	// The tier of the service.
 	// Possible values are `DEVELOPER` and `ENTERPRISE`.
 	Tier *string `pulumi:"tier"`
+	// The globally unique resource identifier of the metastore service.
+	Uid *string `pulumi:"uid"`
 }
 
 type MetastoreServiceState struct {
 	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
 	ArtifactGcsUri pulumi.StringPtrInput
+	// The database type that the Metastore service stores its data.
+	// Default value is `MYSQL`.
+	// Possible values are `MYSQL` and `SPANNER`.
+	DatabaseType pulumi.StringPtrInput
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -240,11 +266,12 @@ type MetastoreServiceState struct {
 	HiveMetastoreConfig MetastoreServiceHiveMetastoreConfigPtrInput
 	// User-defined labels for the metastore service.
 	Labels pulumi.StringMapInput
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The one hour maintenance window of the metastore service.
 	// This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// Maintenance window is not needed for services with the `SPANNER` database type.
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrInput
 	// The relative resource name of the metastore service.
@@ -257,6 +284,10 @@ type MetastoreServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The release channel of the service. If unspecified, defaults to `STABLE`.
+	// Default value is `STABLE`.
+	// Possible values are `CANARY` and `STABLE`.
+	ReleaseChannel pulumi.StringPtrInput
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -268,6 +299,8 @@ type MetastoreServiceState struct {
 	// The tier of the service.
 	// Possible values are `DEVELOPER` and `ENTERPRISE`.
 	Tier pulumi.StringPtrInput
+	// The globally unique resource identifier of the metastore service.
+	Uid pulumi.StringPtrInput
 }
 
 func (MetastoreServiceState) ElementType() reflect.Type {
@@ -275,6 +308,10 @@ func (MetastoreServiceState) ElementType() reflect.Type {
 }
 
 type metastoreServiceArgs struct {
+	// The database type that the Metastore service stores its data.
+	// Default value is `MYSQL`.
+	// Possible values are `MYSQL` and `SPANNER`.
+	DatabaseType *string `pulumi:"databaseType"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -284,11 +321,12 @@ type metastoreServiceArgs struct {
 	HiveMetastoreConfig *MetastoreServiceHiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
 	Labels map[string]string `pulumi:"labels"`
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The one hour maintenance window of the metastore service.
 	// This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// Maintenance window is not needed for services with the `SPANNER` database type.
 	// Structure is documented below.
 	MaintenanceWindow *MetastoreServiceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
@@ -299,6 +337,10 @@ type metastoreServiceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The release channel of the service. If unspecified, defaults to `STABLE`.
+	// Default value is `STABLE`.
+	// Possible values are `CANARY` and `STABLE`.
+	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -310,6 +352,10 @@ type metastoreServiceArgs struct {
 
 // The set of arguments for constructing a MetastoreService resource.
 type MetastoreServiceArgs struct {
+	// The database type that the Metastore service stores its data.
+	// Default value is `MYSQL`.
+	// Possible values are `MYSQL` and `SPANNER`.
+	DatabaseType pulumi.StringPtrInput
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -319,11 +365,12 @@ type MetastoreServiceArgs struct {
 	HiveMetastoreConfig MetastoreServiceHiveMetastoreConfigPtrInput
 	// User-defined labels for the metastore service.
 	Labels pulumi.StringMapInput
-	// The  location where the autoscaling policy should reside.
+	// The location where the metastore service should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The one hour maintenance window of the metastore service.
 	// This specifies when the service can be restarted for maintenance purposes in UTC time.
+	// Maintenance window is not needed for services with the `SPANNER` database type.
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrInput
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
@@ -334,6 +381,10 @@ type MetastoreServiceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The release channel of the service. If unspecified, defaults to `STABLE`.
+	// Default value is `STABLE`.
+	// Possible values are `CANARY` and `STABLE`.
+	ReleaseChannel pulumi.StringPtrInput
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -435,6 +486,13 @@ func (o MetastoreServiceOutput) ArtifactGcsUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.ArtifactGcsUri }).(pulumi.StringOutput)
 }
 
+// The database type that the Metastore service stores its data.
+// Default value is `MYSQL`.
+// Possible values are `MYSQL` and `SPANNER`.
+func (o MetastoreServiceOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.DatabaseType }).(pulumi.StringPtrOutput)
+}
+
 // Information used to configure the Dataproc Metastore service to encrypt
 // customer data at rest.
 // Structure is documented below.
@@ -458,7 +516,7 @@ func (o MetastoreServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The  location where the autoscaling policy should reside.
+// The location where the metastore service should reside.
 // The default value is `global`.
 func (o MetastoreServiceOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
@@ -466,6 +524,7 @@ func (o MetastoreServiceOutput) Location() pulumi.StringPtrOutput {
 
 // The one hour maintenance window of the metastore service.
 // This specifies when the service can be restarted for maintenance purposes in UTC time.
+// Maintenance window is not needed for services with the `SPANNER` database type.
 // Structure is documented below.
 func (o MetastoreServiceOutput) MaintenanceWindow() MetastoreServiceMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) MetastoreServiceMaintenanceWindowPtrOutput { return v.MaintenanceWindow }).(MetastoreServiceMaintenanceWindowPtrOutput)
@@ -493,6 +552,13 @@ func (o MetastoreServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The release channel of the service. If unspecified, defaults to `STABLE`.
+// Default value is `STABLE`.
+// Possible values are `CANARY` and `STABLE`.
+func (o MetastoreServiceOutput) ReleaseChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.ReleaseChannel }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 // and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 // 3 and 63 characters.
@@ -514,6 +580,11 @@ func (o MetastoreServiceOutput) StateMessage() pulumi.StringOutput {
 // Possible values are `DEVELOPER` and `ENTERPRISE`.
 func (o MetastoreServiceOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
+}
+
+// The globally unique resource identifier of the metastore service.
+func (o MetastoreServiceOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
 type MetastoreServiceArrayOutput struct{ *pulumi.OutputState }

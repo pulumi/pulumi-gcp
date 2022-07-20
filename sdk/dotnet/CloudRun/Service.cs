@@ -216,6 +216,7 @@ namespace Pulumi.Gcp.CloudRun
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Example of how to deploy a publicly-accessible Cloud Run application
     ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
     ///         {
     ///             Location = "us-central1",
@@ -382,24 +383,36 @@ namespace Pulumi.Gcp.CloudRun
     ///             Service = "run.googleapis.com",
     ///             DisableDependentServices = true,
     ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var iamApi = new Gcp.Projects.Service("iamApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
     ///             Service = "iam.googleapis.com",
     ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var resourceManagerApi = new Gcp.Projects.Service("resourceManagerApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
     ///             Service = "cloudresourcemanager.googleapis.com",
     ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var schedulerApi = new Gcp.Projects.Service("schedulerApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
     ///             Service = "cloudscheduler.googleapis.com",
     ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var defaultService = new Gcp.CloudRun.Service("defaultService", new Gcp.CloudRun.ServiceArgs
     ///         {
@@ -428,6 +441,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             },
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 runApi,
@@ -441,6 +455,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             DisplayName = "scheduler-sa",
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 iamApi,
@@ -459,7 +474,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
     ///             {
     ///                 HttpMethod = "POST",
-    ///                 Uri = defaultService.Statuses.Apply(statuses =&gt; $"{statuses[0].Url}/"),
+    ///                 Uri = defaultService.Statuses.Apply(statuses =&gt; statuses[0].Url),
     ///                 OidcToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOidcTokenArgs
     ///                 {
     ///                     ServiceAccountEmail = defaultAccount.Email,
@@ -467,6 +482,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             },
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 schedulerApi,
@@ -699,13 +715,6 @@ namespace Pulumi.Gcp.CloudRun
     ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
     ///         {
     ///             Location = "us-central1",
-    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-    ///             {
-    ///                 Annotations = 
-    ///                 {
-    ///                     { "run.googleapis.com/ingress", "internal" },
-    ///                 },
-    ///             },
     ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///             {
     ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
@@ -723,10 +732,20 @@ namespace Pulumi.Gcp.CloudRun
     ///             {
     ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
     ///                 {
-    ///                     LatestRevision = true,
     ///                     Percent = 100,
+    ///                     LatestRevision = true,
     ///                 },
     ///             },
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "run.googleapis.com/ingress", "internal" },
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -908,6 +927,9 @@ namespace Pulumi.Gcp.CloudRun
     ///             Service = "compute.googleapis.com",
     ///             DisableDependentServices = true,
     ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var runApi = new Gcp.Projects.Service("runApi", new Gcp.Projects.ServiceArgs
     ///         {
@@ -915,6 +937,9 @@ namespace Pulumi.Gcp.CloudRun
     ///             Service = "run.googleapis.com",
     ///             DisableDependentServices = true,
     ///             DisableOnDestroy = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var config = new Config();
     ///         var domainName = config.Get("domainName") ?? "example.com";
@@ -928,6 +953,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             Project = "my-project-name",
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 computeApi,
@@ -964,6 +990,7 @@ namespace Pulumi.Gcp.CloudRun
     ///                 },
     ///             }, new CustomResourceOptions
     ///             {
+    ///                 Provider = google_beta,
     ///                 DependsOn = 
     ///                 {
     ///                     runApi,
@@ -983,6 +1010,9 @@ namespace Pulumi.Gcp.CloudRun
     ///                 {
     ///                     Service = runDefault[count.Index].Name,
     ///                 },
+    ///             }, new CustomResourceOptions
+    ///             {
+    ///                 Provider = google_beta,
     ///             }));
     ///         }
     ///         var lbDefaultBackendService = new Gcp.Compute.BackendService("lbDefaultBackendService", new Gcp.Compute.BackendServiceArgs
@@ -1006,6 +1036,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             },
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 computeApi,
@@ -1035,6 +1066,9 @@ namespace Pulumi.Gcp.CloudRun
     ///                     },
     ///                 },
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var lbDefaultManagedSslCertificate = new Gcp.Compute.ManagedSslCertificate("lbDefaultManagedSslCertificate", new Gcp.Compute.ManagedSslCertificateArgs
     ///         {
@@ -1046,6 +1080,9 @@ namespace Pulumi.Gcp.CloudRun
     ///                     domainName,
     ///                 },
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var lbDefaultTargetHttpsProxy = new Gcp.Compute.TargetHttpsProxy("lbDefaultTargetHttpsProxy", new Gcp.Compute.TargetHttpsProxyArgs
     ///         {
@@ -1057,6 +1094,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             },
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 lbDefaultManagedSslCertificate,
@@ -1071,6 +1109,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             PortRange = "443",
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 lbDefaultTargetHttpsProxy,
@@ -1088,6 +1127,9 @@ namespace Pulumi.Gcp.CloudRun
     ///                 Service = runDefault[range.Value].Name,
     ///                 Role = "roles/run.invoker",
     ///                 Member = "allUsers",
+    ///             }, new CustomResourceOptions
+    ///             {
+    ///                 Provider = google_beta,
     ///             }));
     ///         }
     ///         var httpsDefaultURLMap = new Gcp.Compute.URLMap("httpsDefaultURLMap", new Gcp.Compute.URLMapArgs
@@ -1099,6 +1141,9 @@ namespace Pulumi.Gcp.CloudRun
     ///                 HttpsRedirect = true,
     ///                 StripQuery = false,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var httpsDefaultTargetHttpProxy = new Gcp.Compute.TargetHttpProxy("httpsDefaultTargetHttpProxy", new Gcp.Compute.TargetHttpProxyArgs
     ///         {
@@ -1106,6 +1151,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             UrlMap = httpsDefaultURLMap.Id,
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 httpsDefaultURLMap,
@@ -1119,6 +1165,7 @@ namespace Pulumi.Gcp.CloudRun
     ///             PortRange = "80",
     ///         }, new CustomResourceOptions
     ///         {
+    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 httpsDefaultTargetHttpProxy,

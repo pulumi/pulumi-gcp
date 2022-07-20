@@ -7,10 +7,16 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./device";
 export * from "./registry";
+export * from "./registryIamBinding";
+export * from "./registryIamMember";
+export * from "./registryIamPolicy";
 
 // Import resources to register:
 import { Device } from "./device";
 import { Registry } from "./registry";
+import { RegistryIamBinding } from "./registryIamBinding";
+import { RegistryIamMember } from "./registryIamMember";
+import { RegistryIamPolicy } from "./registryIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,6 +26,12 @@ const _module = {
                 return new Device(name, <any>undefined, { urn })
             case "gcp:iot/registry:Registry":
                 return new Registry(name, <any>undefined, { urn })
+            case "gcp:iot/registryIamBinding:RegistryIamBinding":
+                return new RegistryIamBinding(name, <any>undefined, { urn })
+            case "gcp:iot/registryIamMember:RegistryIamMember":
+                return new RegistryIamMember(name, <any>undefined, { urn })
+            case "gcp:iot/registryIamPolicy:RegistryIamPolicy":
+                return new RegistryIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -27,3 +39,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "iot/device", _module)
 pulumi.runtime.registerResourceModule("gcp", "iot/registry", _module)
+pulumi.runtime.registerResourceModule("gcp", "iot/registryIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iot/registryIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iot/registryIamPolicy", _module)

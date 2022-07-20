@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAuthenticatorGroupsConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterTelemetryArgs;
 import com.pulumi.gcp.container.inputs.ClusterConfidentialNodesArgs;
@@ -79,6 +80,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterAuthenticatorGroupsConfigArgs>> authenticatorGroupsConfig() {
         return Optional.ofNullable(this.authenticatorGroupsConfig);
+    }
+
+    /**
+     * Configuration options for the Binary
+     * Authorization feature. Structure is documented below.
+     * 
+     */
+    @Import(name="binaryAuthorization")
+    private @Nullable Output<ClusterBinaryAuthorizationArgs> binaryAuthorization;
+
+    /**
+     * @return Configuration options for the Binary
+     * Authorization feature. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterBinaryAuthorizationArgs>> binaryAuthorization() {
+        return Optional.ofNullable(this.binaryAuthorization);
     }
 
     /**
@@ -279,16 +297,26 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * Deprecated in favor of `binary_authorization`.
+     * 
+     * @deprecated
+     * Deprecated in favor of binary_authorization.
      * 
      */
+    @Deprecated /* Deprecated in favor of binary_authorization. */
     @Import(name="enableBinaryAuthorization")
     private @Nullable Output<Boolean> enableBinaryAuthorization;
 
     /**
      * @return Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * Deprecated in favor of `binary_authorization`.
+     * 
+     * @deprecated
+     * Deprecated in favor of binary_authorization.
      * 
      */
+    @Deprecated /* Deprecated in favor of binary_authorization. */
     public Optional<Output<Boolean>> enableBinaryAuthorization() {
         return Optional.ofNullable(this.enableBinaryAuthorization);
     }
@@ -1071,6 +1099,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private ClusterArgs(ClusterArgs $) {
         this.addonsConfig = $.addonsConfig;
         this.authenticatorGroupsConfig = $.authenticatorGroupsConfig;
+        this.binaryAuthorization = $.binaryAuthorization;
         this.clusterAutoscaling = $.clusterAutoscaling;
         this.clusterIpv4Cidr = $.clusterIpv4Cidr;
         this.clusterTelemetry = $.clusterTelemetry;
@@ -1188,6 +1217,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authenticatorGroupsConfig(ClusterAuthenticatorGroupsConfigArgs authenticatorGroupsConfig) {
             return authenticatorGroupsConfig(Output.of(authenticatorGroupsConfig));
+        }
+
+        /**
+         * @param binaryAuthorization Configuration options for the Binary
+         * Authorization feature. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(@Nullable Output<ClusterBinaryAuthorizationArgs> binaryAuthorization) {
+            $.binaryAuthorization = binaryAuthorization;
+            return this;
+        }
+
+        /**
+         * @param binaryAuthorization Configuration options for the Binary
+         * Authorization feature. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(ClusterBinaryAuthorizationArgs binaryAuthorization) {
+            return binaryAuthorization(Output.of(binaryAuthorization));
         }
 
         /**
@@ -1454,10 +1506,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enableBinaryAuthorization Enable Binary Authorization for this cluster.
          * If enabled, all container images will be validated by Google Binary Authorization.
+         * Deprecated in favor of `binary_authorization`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in favor of binary_authorization.
+         * 
          */
+        @Deprecated /* Deprecated in favor of binary_authorization. */
         public Builder enableBinaryAuthorization(@Nullable Output<Boolean> enableBinaryAuthorization) {
             $.enableBinaryAuthorization = enableBinaryAuthorization;
             return this;
@@ -1466,10 +1523,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enableBinaryAuthorization Enable Binary Authorization for this cluster.
          * If enabled, all container images will be validated by Google Binary Authorization.
+         * Deprecated in favor of `binary_authorization`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in favor of binary_authorization.
+         * 
          */
+        @Deprecated /* Deprecated in favor of binary_authorization. */
         public Builder enableBinaryAuthorization(Boolean enableBinaryAuthorization) {
             return enableBinaryAuthorization(Output.of(enableBinaryAuthorization));
         }

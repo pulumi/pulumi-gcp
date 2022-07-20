@@ -135,6 +135,9 @@ export * from "./serviceAttachment";
 export * from "./sharedVPCHostProject";
 export * from "./sharedVPCServiceProject";
 export * from "./snapshot";
+export * from "./snapshotIamBinding";
+export * from "./snapshotIamMember";
+export * from "./snapshotIamPolicy";
 export * from "./sslcertificate";
 export * from "./sslpolicy";
 export * from "./subnetwork";
@@ -253,6 +256,9 @@ import { ServiceAttachment } from "./serviceAttachment";
 import { SharedVPCHostProject } from "./sharedVPCHostProject";
 import { SharedVPCServiceProject } from "./sharedVPCServiceProject";
 import { Snapshot } from "./snapshot";
+import { SnapshotIamBinding } from "./snapshotIamBinding";
+import { SnapshotIamMember } from "./snapshotIamMember";
+import { SnapshotIamPolicy } from "./snapshotIamPolicy";
 import { Subnetwork } from "./subnetwork";
 import { SubnetworkIAMBinding } from "./subnetworkIAMBinding";
 import { SubnetworkIAMMember } from "./subnetworkIAMMember";
@@ -472,6 +478,12 @@ const _module = {
                 return new SharedVPCServiceProject(name, <any>undefined, { urn })
             case "gcp:compute/snapshot:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
+            case "gcp:compute/snapshotIamBinding:SnapshotIamBinding":
+                return new SnapshotIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/snapshotIamMember:SnapshotIamMember":
+                return new SnapshotIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy":
+                return new SnapshotIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/subnetwork:Subnetwork":
                 return new Subnetwork(name, <any>undefined, { urn })
             case "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding":
@@ -605,6 +617,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/serviceAttachment", _modul
 pulumi.runtime.registerResourceModule("gcp", "compute/sharedVPCHostProject", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sharedVPCServiceProject", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshot", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/subnetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIAMMember", _module)

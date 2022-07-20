@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Firebaserules Ruleset resource
-//
+// For more information, see:
+// * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
 // ## Example Usage
 // ### Basic_ruleset
 // Creates a basic Firestore ruleset

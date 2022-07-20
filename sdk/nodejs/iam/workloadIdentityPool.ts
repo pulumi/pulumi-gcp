@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about WorkloadIdentityPool, see:
  *
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools)
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools)
  * * How-to Guides
  *     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
  *
@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.iam.WorkloadIdentityPool("example", {workloadIdentityPoolId: "example-pool"}, {
- *     provider: google_beta,
+ * const example = new gcp.iam.WorkloadIdentityPool("example", {
+ *     workloadIdentityPoolId: "example-pool",
  * });
  * ```
  * ### Iam Workload Identity Pool Full
@@ -32,12 +32,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkloadIdentityPool("example", {
- *     workloadIdentityPoolId: "example-pool",
- *     displayName: "Name of pool",
  *     description: "Identity pool for automated test",
  *     disabled: true,
- * }, {
- *     provider: google_beta,
+ *     displayName: "Name of pool",
+ *     workloadIdentityPoolId: "example-pool",
  * });
  * ```
  *

@@ -123,6 +123,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly authenticatorGroupsConfig!: pulumi.Output<outputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
+     * Configuration options for the Binary
+     * Authorization feature. Structure is documented below.
+     */
+    public readonly binaryAuthorization!: pulumi.Output<outputs.container.ClusterBinaryAuthorization | undefined>;
+    /**
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -184,6 +189,9 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * Deprecated in favor of `binaryAuthorization`.
+     *
+     * @deprecated Deprecated in favor of binary_authorization.
      */
     public readonly enableBinaryAuthorization!: pulumi.Output<boolean | undefined>;
     /**
@@ -484,6 +492,7 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["addonsConfig"] = state ? state.addonsConfig : undefined;
             resourceInputs["authenticatorGroupsConfig"] = state ? state.authenticatorGroupsConfig : undefined;
+            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
             resourceInputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
             resourceInputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
             resourceInputs["clusterTelemetry"] = state ? state.clusterTelemetry : undefined;
@@ -546,6 +555,7 @@ export class Cluster extends pulumi.CustomResource {
             const args = argsOrState as ClusterArgs | undefined;
             resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             resourceInputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
+            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
             resourceInputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             resourceInputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
@@ -626,6 +636,11 @@ export interface ClusterState {
      */
     authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
+     * Configuration options for the Binary
+     * Authorization feature. Structure is documented below.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.container.ClusterBinaryAuthorization>;
+    /**
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -687,6 +702,9 @@ export interface ClusterState {
     /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * Deprecated in favor of `binaryAuthorization`.
+     *
+     * @deprecated Deprecated in favor of binary_authorization.
      */
     enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
@@ -989,6 +1007,11 @@ export interface ClusterArgs {
      */
     authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
+     * Configuration options for the Binary
+     * Authorization feature. Structure is documented below.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.container.ClusterBinaryAuthorization>;
+    /**
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -1050,6 +1073,9 @@ export interface ClusterArgs {
     /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
+     * Deprecated in favor of `binaryAuthorization`.
+     *
+     * @deprecated Deprecated in favor of binary_authorization.
      */
     enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**

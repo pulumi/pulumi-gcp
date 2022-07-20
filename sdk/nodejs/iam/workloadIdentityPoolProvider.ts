@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about WorkloadIdentityPoolProvider, see:
  *
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
  * * How-to Guides
  *     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
  *
@@ -21,17 +21,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"}, {
- *     provider: google_beta,
- * });
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
  * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
  *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
  *     workloadIdentityPoolProviderId: "example-prvdr",
  *     aws: {
  *         accountId: "999999999999",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Iam Workload Identity Pool Provider Aws Full
@@ -40,9 +36,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"}, {
- *     provider: google_beta,
- * });
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
  * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
  *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
  *     workloadIdentityPoolProviderId: "example-prvdr",
@@ -58,8 +52,6 @@ import * as utilities from "../utilities";
  *     aws: {
  *         accountId: "999999999999",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Iam Workload Identity Pool Provider Oidc Basic
@@ -68,9 +60,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"}, {
- *     provider: google_beta,
- * });
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
  * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
  *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
  *     workloadIdentityPoolProviderId: "example-prvdr",
@@ -80,8 +70,6 @@ import * as utilities from "../utilities";
  *     oidc: {
  *         issuerUri: "https://sts.windows.net/azure-tenant-id",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Iam Workload Identity Pool Provider Oidc Full
@@ -90,9 +78,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"}, {
- *     provider: google_beta,
- * });
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
  * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
  *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
  *     workloadIdentityPoolProviderId: "example-prvdr",
@@ -116,8 +102,6 @@ import * as utilities from "../utilities";
  *         ],
  *         issuerUri: "https://sts.windows.net/azure-tenant-id",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

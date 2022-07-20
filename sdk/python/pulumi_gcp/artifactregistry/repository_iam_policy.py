@@ -208,15 +208,14 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
+            role="roles/artifactregistry.reader",
             members=["user:jane@example.com"],
         )])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=google_artifact_registry_repository["my-repo"]["project"],
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=admin.policy_data)
         ```
 
         ## google\_artifact\_registry\_repository\_iam\_binding
@@ -229,9 +228,8 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             project=google_artifact_registry_repository["my-repo"]["project"],
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            role="roles/artifactregistry.reader",
+            members=["user:jane@example.com"])
         ```
 
         ## google\_artifact\_registry\_repository\_iam\_member
@@ -244,9 +242,8 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             project=google_artifact_registry_repository["my-repo"]["project"],
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            role="roles/artifactregistry.reader",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -254,13 +251,13 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer user:jane@example.com"
+         $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
         ```
 
          IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer"
+         $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
@@ -307,15 +304,14 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
+            role="roles/artifactregistry.reader",
             members=["user:jane@example.com"],
         )])
         policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
             project=google_artifact_registry_repository["my-repo"]["project"],
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
-            policy_data=admin.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=admin.policy_data)
         ```
 
         ## google\_artifact\_registry\_repository\_iam\_binding
@@ -328,9 +324,8 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             project=google_artifact_registry_repository["my-repo"]["project"],
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            role="roles/artifactregistry.reader",
+            members=["user:jane@example.com"])
         ```
 
         ## google\_artifact\_registry\_repository\_iam\_member
@@ -343,9 +338,8 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             project=google_artifact_registry_repository["my-repo"]["project"],
             location=google_artifact_registry_repository["my-repo"]["location"],
             repository=google_artifact_registry_repository["my-repo"]["name"],
-            role="roles/viewer",
-            member="user:jane@example.com",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            role="roles/artifactregistry.reader",
+            member="user:jane@example.com")
         ```
 
         ## Import
@@ -353,13 +347,13 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/repositories/{{repository}} * {{project}}/{{location}}/{{repository}} * {{location}}/{{repository}} * {{repository}} Any variables not passed in the import command will be taken from the provider configuration. Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer user:jane@example.com"
+         $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
         ```
 
          IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/viewer"
+         $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.

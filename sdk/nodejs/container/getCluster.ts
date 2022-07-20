@@ -64,6 +64,7 @@ export interface GetClusterArgs {
 export interface GetClusterResult {
     readonly addonsConfigs: outputs.container.GetClusterAddonsConfig[];
     readonly authenticatorGroupsConfigs: outputs.container.GetClusterAuthenticatorGroupsConfig[];
+    readonly binaryAuthorizations: outputs.container.GetClusterBinaryAuthorization[];
     readonly clusterAutoscalings: outputs.container.GetClusterClusterAutoscaling[];
     readonly clusterIpv4Cidr: string;
     readonly clusterTelemetries: outputs.container.GetClusterClusterTelemetry[];

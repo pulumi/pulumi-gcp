@@ -177,18 +177,22 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39;
-     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39; section
+     * for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+     * parameter that cannot be updated (due to api limitations) [please force recreation of the
+     * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
      * 
      */
     @Import(name="params")
     private @Nullable Output<Map<String,String>> params;
 
     /**
-     * @return Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39;
-     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * @return Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39; section
+     * for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+     * parameter that cannot be updated (due to api limitations) [please force recreation of the
+     * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
      * 
      */
     public Optional<Output<Map<String,String>>> params() {
@@ -552,9 +556,11 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param params Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39;
-         * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-         * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+         * @param params Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39; section
+         * for each data source. For example the parameters for Cloud Storage transfers are listed here:
+         * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+         * parameter that cannot be updated (due to api limitations) [please force recreation of the
+         * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
          * 
          * @return builder
          * 
@@ -565,9 +571,11 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param params Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39;
-         * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-         * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+         * @param params Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39; section
+         * for each data source. For example the parameters for Cloud Storage transfers are listed here:
+         * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
+         * parameter that cannot be updated (due to api limitations) [please force recreation of the
+         * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
          * 
          * @return builder
          * 

@@ -25,6 +25,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
             set => _configOverrides = value;
         }
 
+        [Input("endpointProtocol")]
+        public Input<string>? EndpointProtocol { get; set; }
+
         /// <summary>
         /// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
         /// Structure is documented below.

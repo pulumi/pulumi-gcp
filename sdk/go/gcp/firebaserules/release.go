@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Firebaserules Release resource
-//
+// For more information, see:
+// * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
 // ## Example Usage
 // ### Basic_release
 // Creates a basic Firebase Rules Release
@@ -128,11 +128,11 @@ type Release struct {
 	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
 	// from this Release.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
-	// Format: `projects/{project_id}/releases/{release_id}`
+	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 	RulesetName pulumi.StringOutput `pulumi:"rulesetName"`
 	// Output only. Time the release was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -175,11 +175,11 @@ type releaseState struct {
 	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
 	// from this Release.
 	Disabled *bool `pulumi:"disabled"`
-	// Format: `projects/{project_id}/releases/{release_id}`
+	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 	RulesetName *string `pulumi:"rulesetName"`
 	// Output only. Time the release was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -191,11 +191,11 @@ type ReleaseState struct {
 	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
 	// from this Release.
 	Disabled pulumi.BoolPtrInput
-	// Format: `projects/{project_id}/releases/{release_id}`
+	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 	RulesetName pulumi.StringPtrInput
 	// Output only. Time the release was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -206,21 +206,21 @@ func (ReleaseState) ElementType() reflect.Type {
 }
 
 type releaseArgs struct {
-	// Format: `projects/{project_id}/releases/{release_id}`
+	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 	RulesetName string `pulumi:"rulesetName"`
 }
 
 // The set of arguments for constructing a Release resource.
 type ReleaseArgs struct {
-	// Format: `projects/{project_id}/releases/{release_id}`
+	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 	RulesetName pulumi.StringInput
 }
 
@@ -322,7 +322,7 @@ func (o ReleaseOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Release) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// Format: `projects/{project_id}/releases/{release_id}`
+// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 func (o ReleaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -332,7 +332,7 @@ func (o ReleaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 func (o ReleaseOutput) RulesetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RulesetName }).(pulumi.StringOutput)
 }

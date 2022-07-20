@@ -25,6 +25,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Device{}
 	case "gcp:iot/registry:Registry":
 		r = &Registry{}
+	case "gcp:iot/registryIamBinding:RegistryIamBinding":
+		r = &RegistryIamBinding{}
+	case "gcp:iot/registryIamMember:RegistryIamMember":
+		r = &RegistryIamMember{}
+	case "gcp:iot/registryIamPolicy:RegistryIamPolicy":
+		r = &RegistryIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +52,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iot/registry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iot/registryIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iot/registryIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iot/registryIamPolicy",
 		&module{version},
 	)
 }
