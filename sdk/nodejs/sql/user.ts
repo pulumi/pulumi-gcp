@@ -159,7 +159,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sqlServerUserDetails"] = state ? state.sqlServerUserDetails : undefined;
+            resourceInputs["sqlserverUserDetails"] = state ? state.sqlServerUserDetails : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
@@ -172,7 +172,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sqlServerUserDetails"] = args ? args.sqlServerUserDetails : undefined;
+            resourceInputs["sqlserverUserDetails"] = args ? args.sqlServerUserDetails : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

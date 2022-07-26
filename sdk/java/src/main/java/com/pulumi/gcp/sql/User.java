@@ -216,7 +216,7 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="sqlServerUserDetails", type=UserSqlServerUserDetails.class, parameters={})
+    @Export(name="sqlserverUserDetails", type=UserSqlServerUserDetails.class, parameters={})
     private Output</* @Nullable */ UserSqlServerUserDetails> sqlServerUserDetails;
 
     public Output<Optional<UserSqlServerUserDetails>> sqlServerUserDetails() {

@@ -124,7 +124,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
-    @Import(name="sqlServerUserDetails")
+    @Import(name="sqlserverUserDetails")
     private @Nullable Output<UserSqlServerUserDetailsArgs> sqlServerUserDetails;
 
     public Optional<Output<UserSqlServerUserDetailsArgs>> sqlServerUserDetails() {

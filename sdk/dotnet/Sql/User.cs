@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Sql
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
-        [Output("sqlServerUserDetails")]
+        [Output("sqlserverUserDetails")]
         public Output<Outputs.UserSqlServerUserDetails?> SqlServerUserDetails { get; private set; } = null!;
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace Pulumi.Gcp.Sql
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("sqlServerUserDetails")]
+        [Input("sqlserverUserDetails")]
         public Input<Inputs.UserSqlServerUserDetailsArgs>? SqlServerUserDetails { get; set; }
 
         /// <summary>
@@ -318,7 +318,7 @@ namespace Pulumi.Gcp.Sql
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("sqlServerUserDetails")]
+        [Input("sqlserverUserDetails")]
         public Input<Inputs.UserSqlServerUserDetailsGetArgs>? SqlServerUserDetails { get; set; }
 
         /// <summary>

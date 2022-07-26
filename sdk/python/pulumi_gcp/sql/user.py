@@ -142,7 +142,7 @@ class UserArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="sqlServerUserDetails")
+    @pulumi.getter(name="sqlserverUserDetails")
     def sql_server_user_details(self) -> Optional[pulumi.Input['UserSqlServerUserDetailsArgs']]:
         return pulumi.get(self, "sql_server_user_details")
 
@@ -296,7 +296,7 @@ class _UserState:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="sqlServerUserDetails")
+    @pulumi.getter(name="sqlserverUserDetails")
     def sql_server_user_details(self) -> Optional[pulumi.Input['UserSqlServerUserDetailsArgs']]:
         return pulumi.get(self, "sql_server_user_details")
 
@@ -645,7 +645,7 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter(name="sqlServerUserDetails")
+    @pulumi.getter(name="sqlserverUserDetails")
     def sql_server_user_details(self) -> pulumi.Output[Optional['outputs.UserSqlServerUserDetails']]:
         return pulumi.get(self, "sql_server_user_details")
 

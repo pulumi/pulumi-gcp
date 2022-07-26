@@ -141,7 +141,7 @@ type User struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project              pulumi.StringOutput               `pulumi:"project"`
-	SqlServerUserDetails UserSqlServerUserDetailsPtrOutput `pulumi:"sqlServerUserDetails"`
+	SqlServerUserDetails UserSqlServerUserDetailsPtrOutput `pulumi:"sqlserverUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
 	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
@@ -201,7 +201,7 @@ type userState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project              *string                   `pulumi:"project"`
-	SqlServerUserDetails *UserSqlServerUserDetails `pulumi:"sqlServerUserDetails"`
+	SqlServerUserDetails *UserSqlServerUserDetails `pulumi:"sqlserverUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
 	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
@@ -263,7 +263,7 @@ type userArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project              *string                   `pulumi:"project"`
-	SqlServerUserDetails *UserSqlServerUserDetails `pulumi:"sqlServerUserDetails"`
+	SqlServerUserDetails *UserSqlServerUserDetails `pulumi:"sqlserverUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
 	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
