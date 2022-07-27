@@ -26,10 +26,17 @@ public final class ProjectsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -37,12 +44,12 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policy = Output.of(ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
      *             .project(&#34;project-id&#34;)
      *             .constraint(&#34;constraints/serviceuser.services&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.apply(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
      *     }
      * }
      * ```
@@ -60,10 +67,17 @@ public final class ProjectsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -71,12 +85,12 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policy = Output.of(ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
      *             .project(&#34;project-id&#34;)
      *             .constraint(&#34;constraints/serviceuser.services&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.apply(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
      *     }
      * }
      * ```
@@ -94,10 +108,17 @@ public final class ProjectsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -105,12 +126,12 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policy = Output.of(ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
      *             .project(&#34;project-id&#34;)
      *             .constraint(&#34;constraints/serviceuser.services&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.apply(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
      *     }
      * }
      * ```
@@ -128,10 +149,17 @@ public final class ProjectsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -139,12 +167,12 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policy = Output.of(ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
      *             .project(&#34;project-id&#34;)
      *             .constraint(&#34;constraints/serviceuser.services&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.apply(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
      *     }
      * }
      * ```
@@ -163,10 +191,18 @@ public final class ProjectsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -174,13 +210,13 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = Output.of(ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
      *             .filter(&#34;parent.id:012345678910 lifecycleState:DELETE_REQUESTED&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var deletion-candidate = Output.of(OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -200,10 +236,18 @@ public final class ProjectsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -211,13 +255,13 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = Output.of(ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
      *             .filter(&#34;parent.id:012345678910 lifecycleState:DELETE_REQUESTED&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var deletion-candidate = Output.of(OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -237,10 +281,18 @@ public final class ProjectsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -248,13 +300,13 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = Output.of(ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
      *             .filter(&#34;parent.id:012345678910 lifecycleState:DELETE_REQUESTED&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var deletion-candidate = Output.of(OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -274,10 +326,18 @@ public final class ProjectsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -285,13 +345,13 @@ public final class ProjectsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-projects = Output.of(ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
      *             .filter(&#34;parent.id:012345678910 lifecycleState:DELETE_REQUESTED&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var deletion-candidate = Output.of(OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
      *             .projectId(my_org_projects.projects()[0].projectId())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

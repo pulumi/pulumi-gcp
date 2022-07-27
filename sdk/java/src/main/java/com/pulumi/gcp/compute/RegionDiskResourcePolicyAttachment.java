@@ -24,10 +24,30 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.Snapshot;
+ * import com.pulumi.gcp.compute.SnapshotArgs;
+ * import com.pulumi.gcp.compute.RegionDisk;
+ * import com.pulumi.gcp.compute.RegionDiskArgs;
+ * import com.pulumi.gcp.compute.RegionDiskResourcePolicyAttachment;
+ * import com.pulumi.gcp.compute.RegionDiskResourcePolicyAttachmentArgs;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -74,10 +94,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *     }
  * }

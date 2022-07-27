@@ -50,7 +50,7 @@ import (
 // 			Description: pulumi.String("some explanation on what this is"),
 // 			Folder:      my_folder.Name,
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil
+// 				return fmt.Sprintf("storage.googleapis.com/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Filter: pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
 // 		})

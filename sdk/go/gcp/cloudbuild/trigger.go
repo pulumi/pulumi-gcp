@@ -51,117 +51,6 @@ import (
 // 	})
 // }
 // ```
-// ### Cloudbuild Trigger Build
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudbuild.NewTrigger(ctx, "build-trigger", &cloudbuild.TriggerArgs{
-// 			Build: &cloudbuild.TriggerBuildArgs{
-// 				Artifacts: &cloudbuild.TriggerBuildArtifactsArgs{
-// 					Images: pulumi.StringArray{
-// 						pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "gcr.io/", "$", "PROJECT_ID/", "$", "REPO_NAME:", "$", "COMMIT_SHA")),
-// 					},
-// 					Objects: &cloudbuild.TriggerBuildArtifactsObjectsArgs{
-// 						Location: pulumi.String("gs://bucket/path/to/somewhere/"),
-// 						Paths: pulumi.StringArray{
-// 							pulumi.String("path"),
-// 						},
-// 					},
-// 				},
-// 				AvailableSecrets: &cloudbuild.TriggerBuildAvailableSecretsArgs{
-// 					SecretManager: []map[string]interface{}{
-// 						map[string]interface{}{
-// 							"env":         "MY_SECRET",
-// 							"versionName": "projects/myProject/secrets/mySecret/versions/latest",
-// 						},
-// 					},
-// 				},
-// 				LogsBucket: pulumi.String("gs://mybucket/logs"),
-// 				Options: &cloudbuild.TriggerBuildOptionsArgs{
-// 					DiskSizeGb:           pulumi.Int(100),
-// 					DynamicSubstitutions: pulumi.Bool(true),
-// 					Env: []string{
-// 						"ekey = evalue",
-// 					},
-// 					LogStreamingOption:    pulumi.String("STREAM_OFF"),
-// 					Logging:               pulumi.String("LEGACY"),
-// 					MachineType:           pulumi.String("N1_HIGHCPU_8"),
-// 					RequestedVerifyOption: pulumi.String("VERIFIED"),
-// 					SecretEnv: []string{
-// 						"secretenv = svalue",
-// 					},
-// 					SourceProvenanceHash: []string{
-// 						"MD5",
-// 					},
-// 					SubstitutionOption: pulumi.String("ALLOW_LOOSE"),
-// 					Volumes: cloudbuild.TriggerBuildOptionsVolumeArray{
-// 						&cloudbuild.TriggerBuildOptionsVolumeArgs{
-// 							Name: pulumi.String("v1"),
-// 							Path: pulumi.String("v1"),
-// 						},
-// 					},
-// 					WorkerPool: pulumi.String("pool"),
-// 				},
-// 				QueueTtl: pulumi.String("20s"),
-// 				Secrets: cloudbuild.TriggerBuildSecretArray{
-// 					&cloudbuild.TriggerBuildSecretArgs{
-// 						KmsKeyName: pulumi.String("projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name"),
-// 						SecretEnv: pulumi.StringMap{
-// 							"PASSWORD": pulumi.String("ZW5jcnlwdGVkLXBhc3N3b3JkCg=="),
-// 						},
-// 					},
-// 				},
-// 				Source: &cloudbuild.TriggerBuildSourceArgs{
-// 					StorageSource: &cloudbuild.TriggerBuildSourceStorageSourceArgs{
-// 						Bucket: pulumi.String("mybucket"),
-// 						Object: pulumi.String("source_code.tar.gz"),
-// 					},
-// 				},
-// 				Steps: cloudbuild.TriggerBuildStepArray{
-// 					&cloudbuild.TriggerBuildStepArgs{
-// 						Args: pulumi.StringArray{
-// 							pulumi.String("cp"),
-// 							pulumi.String("gs://mybucket/remotefile.zip"),
-// 							pulumi.String("localfile.zip"),
-// 						},
-// 						Name: pulumi.String("gcr.io/cloud-builders/gsutil"),
-// 						SecretEnv: []string{
-// 							"MY_SECRET",
-// 						},
-// 						Timeout: pulumi.String("120s"),
-// 					},
-// 				},
-// 				Substitutions: pulumi.StringMap{
-// 					"_BAZ": pulumi.String("qux"),
-// 					"_FOO": pulumi.String("bar"),
-// 				},
-// 				Tags: pulumi.StringArray{
-// 					pulumi.String("build"),
-// 					pulumi.String("newFeature"),
-// 				},
-// 			},
-// 			TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
-// 				BranchName: pulumi.String("main"),
-// 				RepoName:   pulumi.String("my-repo"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Cloudbuild Trigger Service Account
 //
 // ```go
@@ -193,7 +82,7 @@ import (
 // 			Project: pulumi.String(project.ProjectId),
 // 			Role:    pulumi.String("roles/iam.serviceAccountUser"),
 // 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -203,7 +92,7 @@ import (
 // 			Project: pulumi.String(project.ProjectId),
 // 			Role:    pulumi.String("roles/logging.logWriter"),
 // 			Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -247,7 +136,7 @@ import (
 // 				Name:  pulumi.String("terraform-provider-google-beta"),
 // 				Owner: pulumi.String("hashicorp"),
 // 				Push: &cloudbuild.TriggerGithubPushArgs{
-// 					Branch: pulumi.String(fmt.Sprintf("%v%v", "^main", "$")),
+// 					Branch: pulumi.String(fmt.Sprintf("^main$")),
 // 				},
 // 			},
 // 			IncludeBuildLogs: pulumi.String("INCLUDE_BUILD_LOGS_WITH_STATUS"),
@@ -295,7 +184,7 @@ import (
 // 				RepoType: pulumi.String("GITHUB"),
 // 			},
 // 			Substitutions: pulumi.StringMap{
-// 				"_ACTION": pulumi.String(fmt.Sprintf("%v%v", "$", "(body.message.data.action)")),
+// 				"_ACTION": pulumi.String(fmt.Sprintf("$(body.message.data.action)")),
 // 			},
 // 			Filter: pulumi.String("_ACTION.matches('INSERT')"),
 // 		})
@@ -353,7 +242,7 @@ import (
 // 				organizations.GetIAMPolicyBinding{
 // 					Role: "roles/secretmanager.secretAccessor",
 // 					Members: []string{
-// 						fmt.Sprintf("%v%v%v", "serviceAccount:service-", project.Number, "@gcp-sa-cloudbuild.iam.gserviceaccount.com"),
+// 						fmt.Sprintf("serviceAccount:service-%v@gcp-sa-cloudbuild.iam.gserviceaccount.com", project.Number),
 // 					},
 // 				},
 // 			},

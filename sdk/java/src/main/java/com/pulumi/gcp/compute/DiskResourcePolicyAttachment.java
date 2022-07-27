@@ -24,10 +24,26 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.DiskResourcePolicyAttachment;
+ * import com.pulumi.gcp.compute.DiskResourcePolicyAttachmentArgs;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -35,13 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var ssd = new Disk(&#34;ssd&#34;, DiskArgs.builder()        
- *             .image(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+ *             .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *             .size(50)
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;us-central1-a&#34;)

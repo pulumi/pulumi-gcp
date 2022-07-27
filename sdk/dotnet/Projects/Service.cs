@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Projects
     ///         {
     ///             DisableDependentServices = true,
     ///             Project = "your-project-id",
-    ///             Service = "iam.googleapis.com",
+    ///             ServiceName = "iam.googleapis.com",
     ///         });
     ///     }
     /// 

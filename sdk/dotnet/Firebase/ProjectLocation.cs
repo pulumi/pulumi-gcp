@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Firebase
     ///         });
     ///         var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new Gcp.Firebase.ProjectArgs
     ///         {
-    ///             Project = defaultProject.ProjectId,
+    ///             ProjectID = defaultProject.ProjectId,
     ///         }, new CustomResourceOptions
     ///         {
     ///             Provider = google_beta,

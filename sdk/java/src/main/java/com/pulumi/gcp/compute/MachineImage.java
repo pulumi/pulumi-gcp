@@ -33,11 +33,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.MachineImage;
+ * import com.pulumi.gcp.compute.MachineImageArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -72,11 +84,32 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.compute.MachineImage;
+ * import com.pulumi.gcp.compute.MachineImageArgs;
+ * import com.pulumi.gcp.compute.inputs.MachineImageMachineImageEncryptionKeyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -110,12 +143,12 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .build());
  * 
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var kms_project_binding = new IAMMember(&#34;kms-project-binding&#34;, IAMMemberArgs.builder()        
- *             .project(project.apply(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@compute-system.iam.gserviceaccount.com&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *             .member(String.format(&#34;serviceAccount:service-%s@compute-system.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());

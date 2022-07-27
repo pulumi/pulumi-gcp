@@ -28,10 +28,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyAndroidSettingsArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -60,10 +69,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyIosSettingsArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -92,10 +110,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -121,10 +147,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -156,10 +191,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

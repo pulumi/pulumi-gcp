@@ -36,10 +36,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NodeTemplate;
+ * import com.pulumi.gcp.compute.NodeTemplateArgs;
+ * import com.pulumi.gcp.compute.NodeGroup;
+ * import com.pulumi.gcp.compute.NodeGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -66,10 +75,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NodeTemplate;
+ * import com.pulumi.gcp.compute.NodeTemplateArgs;
+ * import com.pulumi.gcp.compute.NodeGroup;
+ * import com.pulumi.gcp.compute.NodeGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.NodeGroupMaintenanceWindowArgs;
+ * import com.pulumi.gcp.compute.inputs.NodeGroupAutoscalingPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

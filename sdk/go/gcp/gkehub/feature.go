@@ -39,7 +39,7 @@ import (
 // 			Endpoint: &gkehub.MembershipEndpointArgs{
 // 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 // 					ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
-// 						return fmt.Sprintf("%v%v", "//container.googleapis.com/", id), nil
+// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 // 					}).(pulumi.StringOutput),
 // 				},
 // 			},

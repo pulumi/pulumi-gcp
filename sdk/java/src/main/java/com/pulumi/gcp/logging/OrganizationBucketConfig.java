@@ -26,10 +26,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+ * import com.pulumi.gcp.logging.OrganizationBucketConfig;
+ * import com.pulumi.gcp.logging.OrganizationBucketConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -37,9 +46,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = Output.of(OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+ *         final var default = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
  *             .organization(&#34;123456789&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var basic = new OrganizationBucketConfig(&#34;basic&#34;, OrganizationBucketConfigArgs.builder()        
  *             .organization(default_.organization())

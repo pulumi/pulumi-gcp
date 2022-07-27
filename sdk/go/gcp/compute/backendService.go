@@ -27,74 +27,6 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
-// ### Backend Service Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
-// 			RequestPath:      pulumi.String("/"),
-// 			CheckIntervalSec: pulumi.Int(1),
-// 			TimeoutSec:       pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String{
-// 				defaultHttpHealthCheck.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Backend Service Cache Simple
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
-// 			RequestPath:      pulumi.String("/"),
-// 			CheckIntervalSec: pulumi.Int(1),
-// 			TimeoutSec:       pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String{
-// 				defaultHttpHealthCheck.ID(),
-// 			},
-// 			EnableCdn: pulumi.Bool(true),
-// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
-// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Backend Service Cache Include Named Cookies
 //
 // ```go
@@ -125,131 +57,6 @@ import (
 // 			},
 // 			EnableCdn: pulumi.Bool(true),
 // 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Backend Service Cache
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
-// 			RequestPath:      pulumi.String("/"),
-// 			CheckIntervalSec: pulumi.Int(1),
-// 			TimeoutSec:       pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String{
-// 				defaultHttpHealthCheck.ID(),
-// 			},
-// 			EnableCdn: pulumi.Bool(true),
-// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
-// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
-// 				DefaultTtl:              pulumi.Int(3600),
-// 				ClientTtl:               pulumi.Int(7200),
-// 				MaxTtl:                  pulumi.Int(10800),
-// 				NegativeCaching:         pulumi.Bool(true),
-// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Backend Service Traffic Director Round Robin
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		healthCheck, err := compute.NewHealthCheck(ctx, "healthCheck", &compute.HealthCheckArgs{
-// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
-// 				Port: pulumi.Int(80),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String{
-// 				healthCheck.ID(),
-// 			},
-// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-// 			LocalityLbPolicy:    pulumi.String("ROUND_ROBIN"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Backend Service Traffic Director Ring Hash
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		healthCheck, err := compute.NewHealthCheck(ctx, "healthCheck", &compute.HealthCheckArgs{
-// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
-// 				Port: pulumi.Int(80),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String{
-// 				healthCheck.ID(),
-// 			},
-// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-// 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
-// 			SessionAffinity:     pulumi.String("HTTP_COOKIE"),
-// 			CircuitBreakers: &compute.BackendServiceCircuitBreakersArgs{
-// 				MaxConnections: pulumi.Int(10),
-// 			},
-// 			ConsistentHash: &compute.BackendServiceConsistentHashArgs{
-// 				HttpCookie: &compute.BackendServiceConsistentHashHttpCookieArgs{
-// 					Ttl: &compute.BackendServiceConsistentHashHttpCookieTtlArgs{
-// 						Seconds: pulumi.Int(11),
-// 						Nanos:   pulumi.Int(1111),
-// 					},
-// 					Name: pulumi.String("mycookie"),
-// 				},
-// 			},
-// 			OutlierDetection: &compute.BackendServiceOutlierDetectionArgs{
-// 				ConsecutiveErrors: pulumi.Int(2),
-// 			},
-// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -292,7 +99,7 @@ import (
 // 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
 // 			CustomRequestHeaders: pulumi.StringArray{
 // 				proxy.Fqdn.ApplyT(func(fqdn string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "host: ", fqdn), nil
+// 					return fmt.Sprintf("host: %v", fqdn), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 			CustomResponseHeaders: pulumi.StringArray{
@@ -304,39 +111,6 @@ import (
 // 				},
 // 			},
 // 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Backend Service External Managed
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "defaultHealthCheck", &compute.HealthCheckArgs{
-// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
-// 				Port: pulumi.Int(80),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			HealthChecks: pulumi.String{
-// 				defaultHealthCheck.ID(),
-// 			},
-// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-// 		})
 // 		if err != nil {
 // 			return err
 // 		}

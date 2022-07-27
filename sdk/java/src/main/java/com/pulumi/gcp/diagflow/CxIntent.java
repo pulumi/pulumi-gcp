@@ -34,10 +34,22 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+ * import com.pulumi.gcp.diagflow.CxIntent;
+ * import com.pulumi.gcp.diagflow.CxIntentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhraseArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxIntentParameterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

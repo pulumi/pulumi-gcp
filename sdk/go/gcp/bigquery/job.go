@@ -219,7 +219,24 @@ import (
 // 			DeletionProtection: pulumi.Bool(false),
 // 			DatasetId:          source_oneDataset.DatasetId,
 // 			TableId:            pulumi.String("job_extract_table"),
-// 			Schema:             pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "[\n", "  {\n", "    \"name\": \"name\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\"\n", "  },\n", "  {\n", "    \"name\": \"post_abbr\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\"\n", "  },\n", "  {\n", "    \"name\": \"date\",\n", "    \"type\": \"DATE\",\n", "    \"mode\": \"NULLABLE\"\n", "  }\n", "]\n")),
+// 			Schema: pulumi.String(fmt.Sprintf(`[
+//   {
+//     "name": "name",
+//     "type": "STRING",
+//     "mode": "NULLABLE"
+//   },
+//   {
+//     "name": "post_abbr",
+//     "type": "STRING",
+//     "mode": "NULLABLE"
+//   },
+//   {
+//     "name": "date",
+//     "type": "DATE",
+//     "mode": "NULLABLE"
+//   }
+// ]
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -236,7 +253,7 @@ import (
 // 			Extract: &bigquery.JobExtractArgs{
 // 				DestinationUris: pulumi.StringArray{
 // 					dest.Url.ApplyT(func(url string) (string, error) {
-// 						return fmt.Sprintf("%v%v", url, "/extract"), nil
+// 						return fmt.Sprintf("%v/extract", url), nil
 // 					}).(pulumi.StringOutput),
 // 				},
 // 				SourceTable: &bigquery.JobExtractSourceTableArgs{

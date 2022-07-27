@@ -57,7 +57,7 @@ import (
 // 		}
 // 		_, err = accesscontextmanager.NewAccessLevel(ctx, "access-level-service-account", &accesscontextmanager.AccessLevelArgs{
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Title: pulumi.String("tf_test_chromeos_no_lock"),
 // 			Basic: &accesscontextmanager.AccessLevelBasicArgs{
@@ -98,7 +98,7 @@ import (
 // 				pulumi.String("user:test@google.com"),
 // 				pulumi.String("user:test2@google.com"),
 // 				created_later.Email.ApplyT(func(email string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 					return fmt.Sprintf("serviceAccount:%v", email), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 			Negate: pulumi.Bool(false),

@@ -69,7 +69,7 @@ import (
 // 				},
 // 			},
 // 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 				return fmt.Sprintf("accessPolicies/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Title: pulumi.String("chromeos_no_lock"),
 // 		})

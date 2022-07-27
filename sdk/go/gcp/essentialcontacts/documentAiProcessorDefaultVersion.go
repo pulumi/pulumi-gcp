@@ -39,7 +39,7 @@ import (
 // 		_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processorDocumentAiProcessorDefaultVersion", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
 // 			Processor: processorDocumentAiProcessor.ID(),
 // 			Version: processorDocumentAiProcessor.ID().ApplyT(func(id string) (string, error) {
-// 				return fmt.Sprintf("%v%v", id, "/processorVersions/pretrained-next"), nil
+// 				return fmt.Sprintf("%v/processorVersions/pretrained-next", id), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {

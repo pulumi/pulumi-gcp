@@ -45,7 +45,32 @@ import (
 // 			Region:         pulumi.String("us-central1"),
 // 			Description:    pulumi.String("Magic"),
 // 			ServiceAccount: testAccount.ID(),
-// 			SourceContents: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "# This is a sample workflow, feel free to replace it with your source code\n", "#\n", "# This workflow does the following:\n", "# - reads current time and date information from an external API and stores\n", "#   the response in CurrentDateTime variable\n", "# - retrieves a list of Wikipedia articles related to the day of the week\n", "#   from CurrentDateTime\n", "# - returns the list of articles as an output of the workflow\n", "# FYI, In terraform you need to escape the ", "$", "$", " or it will cause errors.\n", "\n", "- getCurrentTime:\n", "    call: http.get\n", "    args:\n", "        url: https://us-central1-workflowsample.cloudfunctions.net/datetime\n", "    result: CurrentDateTime\n", "- readWikipedia:\n", "    call: http.get\n", "    args:\n", "        url: https://en.wikipedia.org/w/api.php\n", "        query:\n", "            action: opensearch\n", "            search: ", CurrentDateTime.Body.DayOfTheWeek, "\n", "    result: WikiResult\n", "- returnOutput:\n", "    return: ", WikiResult.Body[1], "\n")),
+// 			SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow, feel free to replace it with your source code
+// #
+// # This workflow does the following:
+// # - reads current time and date information from an external API and stores
+// #   the response in CurrentDateTime variable
+// # - retrieves a list of Wikipedia articles related to the day of the week
+// #   from CurrentDateTime
+// # - returns the list of articles as an output of the workflow
+// # FYI, In terraform you need to escape the $$ or it will cause errors.
+//
+// - getCurrentTime:
+//     call: http.get
+//     args:
+//         url: https://us-central1-workflowsample.cloudfunctions.net/datetime
+//     result: CurrentDateTime
+// - readWikipedia:
+//     call: http.get
+//     args:
+//         url: https://en.wikipedia.org/w/api.php
+//         query:
+//             action: opensearch
+//             search: %v
+//     result: WikiResult
+// - returnOutput:
+//     return: %v
+// `, CurrentDateTime.Body.DayOfTheWeek, WikiResult.Body[1])),
 // 		})
 // 		if err != nil {
 // 			return err

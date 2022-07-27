@@ -143,7 +143,26 @@ import (
 // 			InstanceName: instance.ID(),
 // 			Table:        table.Name,
 // 			ColumnFamily: pulumi.String("cf1"),
-// 			GcRules:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"mode\": \"union\",\n", "  \"rules\": [\n", "    {\n", "      \"max_age\": \"10h\"\n", "    },\n", "    {\n", "      \"mode\": \"intersection\",\n", "      \"rules\": [\n", "        {\n", "          \"max_age\": \"2h\"\n", "        },\n", "        {\n", "          \"max_version\": 2\n", "        }\n", "      ]\n", "    }\n", "  ]\n", "}\n")),
+// 			GcRules: pulumi.String(fmt.Sprintf(`{
+//   "mode": "union",
+//   "rules": [
+//     {
+//       "max_age": "10h"
+//     },
+//     {
+//       "mode": "intersection",
+//       "rules": [
+//         {
+//           "max_age": "2h"
+//         },
+//         {
+//           "max_version": 2
+//         }
+//       ]
+//     }
+//   ]
+// }
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err

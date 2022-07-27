@@ -23,57 +23,6 @@ import javax.annotation.Nullable;
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  * 
  * ## Example Usage
- * ### Apigee Endpoint Attachment Basic
- * ```java
- * package generated_program;
- * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var current = Output.of(OrganizationsFunctions.getClientConfig());
- * 
- *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;);
- * 
- *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
- *             .purpose(&#34;VPC_PEERING&#34;)
- *             .addressType(&#34;INTERNAL&#34;)
- *             .prefixLength(16)
- *             .network(apigeeNetwork.id())
- *             .build());
- * 
- *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
- *             .network(apigeeNetwork.id())
- *             .service(&#34;servicenetworking.googleapis.com&#34;)
- *             .reservedPeeringRanges(apigeeRange.name())
- *             .build());
- * 
- *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
- *             .analyticsRegion(&#34;us-central1&#34;)
- *             .projectId(current.apply(getClientConfigResult -&gt; getClientConfigResult.project()))
- *             .authorizedNetwork(apigeeNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(apigeeVpcConnection)
- *                 .build());
- * 
- *         var apigeeEndpointAttachment = new EndpointAttachment(&#34;apigeeEndpointAttachment&#34;, EndpointAttachmentArgs.builder()        
- *             .orgId(apigeeOrg.id())
- *             .endpointAttachmentId(&#34;test1&#34;)
- *             .location(&#34;{google_compute_service_attachment location}&#34;)
- *             .serviceAttachment(&#34;{google_compute_service_attachment id}&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 

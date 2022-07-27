@@ -29,10 +29,22 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.containeranalysis.Note;
+ * import com.pulumi.gcp.containeranalysis.NoteArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityHintArgs;
+ * import com.pulumi.gcp.binaryauthorization.Attestor;
+ * import com.pulumi.gcp.binaryauthorization.AttestorArgs;
+ * import com.pulumi.gcp.binaryauthorization.inputs.AttestorAttestationAuthorityNoteArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -80,10 +92,29 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.kms.inputs.CryptoKeyVersionTemplateArgs;
+ * import com.pulumi.gcp.kms.KmsFunctions;
+ * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+ * import com.pulumi.gcp.containeranalysis.Note;
+ * import com.pulumi.gcp.containeranalysis.NoteArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityHintArgs;
+ * import com.pulumi.gcp.binaryauthorization.Attestor;
+ * import com.pulumi.gcp.binaryauthorization.AttestorArgs;
+ * import com.pulumi.gcp.binaryauthorization.inputs.AttestorAttestationAuthorityNoteArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -119,10 +150,10 @@ import javax.annotation.Nullable;
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()
- *                     .id(version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).apply(version -&gt; version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id())))
+ *                     .id(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(version -&gt; version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id())))
  *                     .pkixPublicKey(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs.builder()
- *                         .publicKeyPem(version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).apply(version -&gt; version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].pem())))
- *                         .signatureAlgorithm(version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).apply(version -&gt; version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].algorithm())))
+ *                         .publicKeyPem(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(version -&gt; version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].pem())))
+ *                         .signatureAlgorithm(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(version -&gt; version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].algorithm())))
  *                         .build())
  *                     .build())
  *                 .build())

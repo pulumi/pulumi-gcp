@@ -42,7 +42,7 @@ import (
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "frontend", &dns.RecordSetArgs{
 // 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 				return fmt.Sprintf("frontend.%v", dnsName), nil
 // 			}).(pulumi.StringOutput),
 // 			Type:        pulumi.String("A"),
 // 			Ttl:         pulumi.Int(300),

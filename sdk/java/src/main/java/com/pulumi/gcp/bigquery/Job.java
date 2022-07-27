@@ -36,10 +36,24 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.bigquery.Job;
+ * import com.pulumi.gcp.bigquery.JobArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobQueryArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobQueryDestinationTableArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobQueryScriptOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -85,10 +99,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.bigquery.Job;
+ * import com.pulumi.gcp.bigquery.JobArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobQueryArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobQueryDestinationTableArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobQueryDefaultDatasetArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobQueryScriptOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -135,10 +164,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.bigquery.Job;
+ * import com.pulumi.gcp.bigquery.JobArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobLoadArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobLoadDestinationTableArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -185,10 +227,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.bigquery.Job;
+ * import com.pulumi.gcp.bigquery.JobArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobExtractArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobExtractSourceTableArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -236,7 +293,7 @@ import javax.annotation.Nullable;
  *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
  *             .jobId(&#34;job_extract&#34;)
  *             .extract(JobExtractArgs.builder()
- *                 .destinationUris(dest.url().apply(url -&gt; String.format(&#34;%s/extract&#34;, url)))
+ *                 .destinationUris(dest.url().applyValue(url -&gt; String.format(&#34;%s/extract&#34;, url)))
  *                 .sourceTable(JobExtractSourceTableArgs.builder()
  *                     .projectId(source_oneTable.project())
  *                     .datasetId(source_oneTable.datasetId())

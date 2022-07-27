@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const test_ca = new gcp.certificateauthority.Authority("test-ca", {
  *     certificateAuthorityId: "my-certificate-authority",
@@ -101,8 +101,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const template = new gcp.certificateauthority.CertificateTemplate("template", {
  *     location: "us-central1",
@@ -224,8 +224,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const test_ca = new gcp.certificateauthority.Authority("test-ca", {
  *     pool: "",
@@ -273,8 +273,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const authority = new gcp.certificateauthority.Authority("authority", {
  *     pool: "",

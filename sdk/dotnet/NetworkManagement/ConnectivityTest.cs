@@ -122,14 +122,14 @@ namespace Pulumi.Gcp.NetworkManagement
     ///         {
     ///             Subnetwork = subnet.Id,
     ///             AddressType = "INTERNAL",
-    ///             Address = "10.0.42.42",
+    ///             IPAddress = "10.0.42.42",
     ///             Region = "us-central1",
     ///         });
     ///         var dest_addr = new Gcp.Compute.Address("dest-addr", new Gcp.Compute.AddressArgs
     ///         {
     ///             Subnetwork = subnet.Id,
     ///             AddressType = "INTERNAL",
-    ///             Address = "10.0.43.43",
+    ///             IPAddress = "10.0.43.43",
     ///             Region = "us-central1",
     ///         });
     ///         var address_test = new Gcp.NetworkManagement.ConnectivityTest("address-test", new Gcp.NetworkManagement.ConnectivityTestArgs

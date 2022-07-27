@@ -32,10 +32,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceAccount.IAMPolicy;
+ * import com.pulumi.gcp.serviceAccount.IAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -43,12 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role(&#34;roles/iam.serviceAccountUser&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
- *             .build()));
+ *             .build());
  * 
  *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
  *             .accountId(&#34;my-service-account&#34;)
@@ -57,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var admin_account_iam = new IAMPolicy(&#34;admin-account-iam&#34;, IAMPolicyArgs.builder()        
  *             .serviceAccountId(sa.name())
- *             .policyData(admin.apply(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -68,10 +79,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceAccount.IAMBinding;
+ * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -98,10 +118,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceAccount.IAMBinding;
+ * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+ * import com.pulumi.gcp.serviceAccount.inputs.IAMBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -133,10 +163,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceAccount.IAMMember;
+ * import com.pulumi.gcp.serviceAccount.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -144,7 +185,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+ *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
  *             .accountId(&#34;my-service-account&#34;)
@@ -160,7 +201,7 @@ import javax.annotation.Nullable;
  *         var gce_default_account_iam = new IAMMember(&#34;gce-default-account-iam&#34;, IAMMemberArgs.builder()        
  *             .serviceAccountId(default_.name())
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
- *             .member(sa.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .member(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
  *     }
@@ -171,10 +212,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.serviceAccount.IAMMember;
+ * import com.pulumi.gcp.serviceAccount.IAMMemberArgs;
+ * import com.pulumi.gcp.serviceAccount.inputs.IAMMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

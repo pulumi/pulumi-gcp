@@ -33,10 +33,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudscheduler.Job;
+ * import com.pulumi.gcp.cloudscheduler.JobArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetAppEngineRoutingArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -73,10 +83,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.cloudscheduler.Job;
+ * import com.pulumi.gcp.cloudscheduler.JobArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetOauthTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -84,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+ *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
  *             .description(&#34;test http job&#34;)
@@ -107,10 +128,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.cloudscheduler.Job;
+ * import com.pulumi.gcp.cloudscheduler.JobArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetOidcTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -118,7 +150,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+ *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
  *             .description(&#34;test http job&#34;)

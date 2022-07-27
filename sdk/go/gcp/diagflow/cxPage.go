@@ -101,7 +101,7 @@ import (
 // 			},
 // 			TransitionRoutes: diagflow.CxPageTransitionRouteArray{
 // 				&diagflow.CxPageTransitionRouteArgs{
-// 					Condition: pulumi.String(fmt.Sprintf("%v%v", "$", "page.params.status = 'FINAL'")),
+// 					Condition: pulumi.String(fmt.Sprintf("$page.params.status = 'FINAL'")),
 // 					TriggerFulfillment: &diagflow.CxPageTransitionRouteTriggerFulfillmentArgs{
 // 						Messages: diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArray{
 // 							&diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs{

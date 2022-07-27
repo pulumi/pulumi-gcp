@@ -51,10 +51,27 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.BucketObject;
+     * import com.pulumi.gcp.storage.BucketObjectArgs;
+     * import com.pulumi.gcp.appengine.StandardAppVersion;
+     * import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentZipArgs;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetAppEngineServiceArgs;
+     * import com.pulumi.asset.FileAsset;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -80,7 +97,7 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .deployment(StandardAppVersionDeploymentArgs.builder()
      *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).apply(values -&gt; {
+     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
      *                         var bucketName = values.t1;
      *                         var objectName = values.t2;
      *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
@@ -123,10 +140,27 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.BucketObject;
+     * import com.pulumi.gcp.storage.BucketObjectArgs;
+     * import com.pulumi.gcp.appengine.StandardAppVersion;
+     * import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentZipArgs;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetAppEngineServiceArgs;
+     * import com.pulumi.asset.FileAsset;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -152,7 +186,7 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .deployment(StandardAppVersionDeploymentArgs.builder()
      *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).apply(values -&gt; {
+     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
      *                         var bucketName = values.t1;
      *                         var objectName = values.t2;
      *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
@@ -195,10 +229,27 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.BucketObject;
+     * import com.pulumi.gcp.storage.BucketObjectArgs;
+     * import com.pulumi.gcp.appengine.StandardAppVersion;
+     * import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentZipArgs;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetAppEngineServiceArgs;
+     * import com.pulumi.asset.FileAsset;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -224,7 +275,7 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .deployment(StandardAppVersionDeploymentArgs.builder()
      *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).apply(values -&gt; {
+     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
      *                         var bucketName = values.t1;
      *                         var objectName = values.t2;
      *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
@@ -267,10 +318,27 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.BucketObject;
+     * import com.pulumi.gcp.storage.BucketObjectArgs;
+     * import com.pulumi.gcp.appengine.StandardAppVersion;
+     * import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+     * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentZipArgs;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetAppEngineServiceArgs;
+     * import com.pulumi.asset.FileAsset;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -296,7 +364,7 @@ public final class MonitoringFunctions {
      *                 .build())
      *             .deployment(StandardAppVersionDeploymentArgs.builder()
      *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).apply(values -&gt; {
+     *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
      *                         var bucketName = values.t1;
      *                         var objectName = values.t2;
      *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
@@ -339,10 +407,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetClusterIstioServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -350,12 +425,12 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
      *             .clusterName(&#34;west&#34;)
      *             .location(&#34;us-west2-a&#34;)
      *             .serviceName(&#34;istio-policy&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -385,10 +460,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetClusterIstioServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -396,12 +478,12 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
      *             .clusterName(&#34;west&#34;)
      *             .location(&#34;us-west2-a&#34;)
      *             .serviceName(&#34;istio-policy&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -431,10 +513,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetClusterIstioServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -442,12 +531,12 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
      *             .clusterName(&#34;west&#34;)
      *             .location(&#34;us-west2-a&#34;)
      *             .serviceName(&#34;istio-policy&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -477,10 +566,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetClusterIstioServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -488,12 +584,12 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
      *             .clusterName(&#34;west&#34;)
      *             .location(&#34;us-west2-a&#34;)
      *             .serviceName(&#34;istio-policy&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -523,10 +619,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetIstioCanonicalServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -534,11 +637,11 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
      *             .canonicalService(&#34;prometheus&#34;)
      *             .canonicalServiceNamespace(&#34;istio-system&#34;)
      *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -568,10 +671,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetIstioCanonicalServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -579,11 +689,11 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
      *             .canonicalService(&#34;prometheus&#34;)
      *             .canonicalServiceNamespace(&#34;istio-system&#34;)
      *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -613,10 +723,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetIstioCanonicalServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -624,11 +741,11 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
      *             .canonicalService(&#34;prometheus&#34;)
      *             .canonicalServiceNamespace(&#34;istio-system&#34;)
      *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -658,10 +775,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetIstioCanonicalServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -669,11 +793,11 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
      *             .canonicalService(&#34;prometheus&#34;)
      *             .canonicalServiceNamespace(&#34;istio-system&#34;)
      *             .meshUid(&#34;proj-573164786102&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -703,10 +827,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetMeshIstioServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -714,11 +845,11 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .serviceName(&#34;prometheus&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -748,10 +879,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetMeshIstioServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -759,11 +897,11 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .serviceName(&#34;prometheus&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -793,10 +931,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetMeshIstioServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -804,11 +949,11 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .serviceName(&#34;prometheus&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -838,10 +983,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetMeshIstioServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -849,11 +1001,11 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
+     *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .serviceName(&#34;prometheus&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -881,10 +1033,21 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetNotificationChannelArgs;
+     * import com.pulumi.gcp.monitoring.AlertPolicy;
+     * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -892,13 +1055,13 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
+     *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName(&#34;Test Notification Channel&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
      *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.apply(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
      *             .combiner(&#34;OR&#34;)
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName(&#34;test condition&#34;)
@@ -940,10 +1103,21 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetNotificationChannelArgs;
+     * import com.pulumi.gcp.monitoring.AlertPolicy;
+     * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -951,13 +1125,13 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
+     *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName(&#34;Test Notification Channel&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
      *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.apply(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
      *             .combiner(&#34;OR&#34;)
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName(&#34;test condition&#34;)
@@ -999,10 +1173,21 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetNotificationChannelArgs;
+     * import com.pulumi.gcp.monitoring.AlertPolicy;
+     * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1010,13 +1195,13 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
+     *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName(&#34;Test Notification Channel&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
      *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.apply(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
      *             .combiner(&#34;OR&#34;)
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName(&#34;test condition&#34;)
@@ -1058,10 +1243,21 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetNotificationChannelArgs;
+     * import com.pulumi.gcp.monitoring.AlertPolicy;
+     * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1069,13 +1265,13 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
+     *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName(&#34;Test Notification Channel&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
      *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.apply(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
      *             .combiner(&#34;OR&#34;)
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName(&#34;test condition&#34;)
@@ -1117,10 +1313,21 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetNotificationChannelArgs;
+     * import com.pulumi.gcp.monitoring.AlertPolicy;
+     * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1128,13 +1335,13 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
+     *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName(&#34;Test Notification Channel&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
      *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.apply(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
      *             .combiner(&#34;OR&#34;)
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName(&#34;test condition&#34;)
@@ -1176,10 +1383,21 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetNotificationChannelArgs;
+     * import com.pulumi.gcp.monitoring.AlertPolicy;
+     * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+     * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1187,13 +1405,13 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
+     *         final var basic = MonitoringFunctions.getNotificationChannel(GetNotificationChannelArgs.builder()
      *             .displayName(&#34;Test Notification Channel&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
      *             .displayName(&#34;My Alert Policy&#34;)
-     *             .notificationChannels(basic.apply(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -&gt; getNotificationChannelResult.name()))
      *             .combiner(&#34;OR&#34;)
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName(&#34;test condition&#34;)
@@ -1224,10 +1442,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetSecretVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1235,9 +1460,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
+     *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
      *             .secret(&#34;my-secret&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1258,10 +1483,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetSecretVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1269,9 +1501,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
+     *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
      *             .secret(&#34;my-secret&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1292,10 +1524,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetSecretVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1303,9 +1542,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
+     *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
      *             .secret(&#34;my-secret&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1326,10 +1565,17 @@ public final class MonitoringFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.monitoring.inputs.GetSecretVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1337,9 +1583,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var basic = Output.of(SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
+     *         final var basic = SecretmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
      *             .secret(&#34;my-secret&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1358,26 +1604,6 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = Output.of(MonitoringFunctions.getUptimeCheckIPs());
-     * 
-     *         ctx.export(&#34;ipList&#34;, ips.apply(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs() {
@@ -1388,26 +1614,6 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = Output.of(MonitoringFunctions.getUptimeCheckIPs());
-     * 
-     *         ctx.export(&#34;ipList&#34;, ips.apply(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain() {
@@ -1418,26 +1624,6 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = Output.of(MonitoringFunctions.getUptimeCheckIPs());
-     * 
-     *         ctx.export(&#34;ipList&#34;, ips.apply(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs(InvokeArgs args) {
@@ -1448,26 +1634,6 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = Output.of(MonitoringFunctions.getUptimeCheckIPs());
-     * 
-     *         ctx.export(&#34;ipList&#34;, ips.apply(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain(InvokeArgs args) {
@@ -1478,26 +1644,6 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = Output.of(MonitoringFunctions.getUptimeCheckIPs());
-     * 
-     *         ctx.export(&#34;ipList&#34;, ips.apply(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs(InvokeArgs args, InvokeOptions options) {
@@ -1508,26 +1654,6 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ips = Output.of(MonitoringFunctions.getUptimeCheckIPs());
-     * 
-     *         ctx.export(&#34;ipList&#34;, ips.apply(getUptimeCheckIPsResult -&gt; getUptimeCheckIPsResult.uptimeCheckIps()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain(InvokeArgs args, InvokeOptions options) {

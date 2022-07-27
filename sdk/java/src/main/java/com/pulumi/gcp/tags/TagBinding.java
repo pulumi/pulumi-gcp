@@ -27,10 +27,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.tags.TagBinding;
+ * import com.pulumi.gcp.tags.TagBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -51,13 +64,13 @@ import javax.annotation.Nullable;
  * 
  *         var value = new TagValue(&#34;value&#34;, TagValueArgs.builder()        
  *             .description(&#34;For valuename resources.&#34;)
- *             .parent(key.name().apply(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
+ *             .parent(key.name().applyValue(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
  *             .shortName(&#34;valuename&#34;)
  *             .build());
  * 
  *         var binding = new TagBinding(&#34;binding&#34;, TagBindingArgs.builder()        
- *             .parent(project.number().apply(number -&gt; String.format(&#34;//cloudresourcemanager.googleapis.com/projects/%s&#34;, number)))
- *             .tagValue(value.name().apply(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
+ *             .parent(project.number().applyValue(number -&gt; String.format(&#34;//cloudresourcemanager.googleapis.com/projects/%s&#34;, number)))
+ *             .tagValue(value.name().applyValue(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
  *             .build());
  * 
  *     }

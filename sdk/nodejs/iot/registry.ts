@@ -39,8 +39,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
  * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});

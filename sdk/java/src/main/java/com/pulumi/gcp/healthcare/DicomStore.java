@@ -33,10 +33,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.healthcare.Dataset;
+ * import com.pulumi.gcp.healthcare.DatasetArgs;
+ * import com.pulumi.gcp.healthcare.DicomStore;
+ * import com.pulumi.gcp.healthcare.DicomStoreArgs;
+ * import com.pulumi.gcp.healthcare.inputs.DicomStoreNotificationConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -65,11 +76,29 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.healthcare.Dataset;
+ * import com.pulumi.gcp.healthcare.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.healthcare.DicomStore;
+ * import com.pulumi.gcp.healthcare.DicomStoreArgs;
+ * import com.pulumi.gcp.healthcare.inputs.DicomStoreNotificationConfigArgs;
+ * import com.pulumi.gcp.healthcare.inputs.DicomStoreStreamConfigArgs;
+ * import com.pulumi.gcp.healthcare.inputs.DicomStoreStreamConfigBigqueryDestinationArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -113,7 +142,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
  *             .streamConfigs(DicomStoreStreamConfigArgs.builder()
  *                 .bigqueryDestination(DicomStoreStreamConfigBigqueryDestinationArgs.builder()
- *                     .tableUri(Output.tuple(bqDataset.project(), bqDataset.datasetId(), bqTable.tableId()).apply(values -&gt; {
+ *                     .tableUri(Output.tuple(bqDataset.project(), bqDataset.datasetId(), bqTable.tableId()).applyValue(values -&gt; {
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
  *                         var tableId = values.t3;

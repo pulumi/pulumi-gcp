@@ -47,7 +47,7 @@ import (
 // 		_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
 // 			Project: pulumi.String("my-project-name"),
 // 			RulesetName: basic.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "projects/my-project-name/rulesets/", name), nil
+// 				return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -102,7 +102,7 @@ import (
 // 		_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
 // 			Project: pulumi.String("my-project-name"),
 // 			RulesetName: minimal.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "projects/my-project-name/rulesets/", name), nil
+// 				return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {

@@ -36,10 +36,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -47,10 +54,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
      *     }
@@ -68,10 +75,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -79,10 +93,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
      *     }
@@ -100,10 +114,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -111,10 +132,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
      *     }
@@ -132,10 +153,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -143,10 +171,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
      *     }
@@ -164,10 +192,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -175,10 +210,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
      *     }
@@ -196,10 +231,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -207,10 +249,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_aws_versions().versions().valid_versions()[0]);
      *     }
@@ -228,10 +270,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -239,10 +288,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
      *     }
@@ -260,10 +309,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -271,10 +327,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
      *     }
@@ -292,10 +348,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -303,10 +366,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
      *     }
@@ -324,10 +387,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -335,10 +405,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
      *     }
@@ -356,10 +426,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -367,10 +444,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
      *     }
@@ -388,10 +465,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -399,10 +483,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .project(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_azure_versions().versions().valid_versions()[0]);
      *     }
@@ -420,10 +504,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -431,15 +522,15 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCluster = Output.of(ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
      *             .name(&#34;my-cluster&#34;)
      *             .location(&#34;us-east1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.endpoint()));
-     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export(&#34;nodeConfig&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodeConfigs()));
-     *         ctx.export(&#34;nodePools&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodePools()));
+     *         ctx.export(&#34;endpoint&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.endpoint()));
+     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
+     *         ctx.export(&#34;nodeConfig&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodeConfigs()));
+     *         ctx.export(&#34;nodePools&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()));
      *     }
      * }
      * ```
@@ -455,10 +546,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -466,15 +564,15 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCluster = Output.of(ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
      *             .name(&#34;my-cluster&#34;)
      *             .location(&#34;us-east1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.endpoint()));
-     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export(&#34;nodeConfig&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodeConfigs()));
-     *         ctx.export(&#34;nodePools&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodePools()));
+     *         ctx.export(&#34;endpoint&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.endpoint()));
+     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
+     *         ctx.export(&#34;nodeConfig&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodeConfigs()));
+     *         ctx.export(&#34;nodePools&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()));
      *     }
      * }
      * ```
@@ -490,10 +588,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -501,15 +606,15 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCluster = Output.of(ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
      *             .name(&#34;my-cluster&#34;)
      *             .location(&#34;us-east1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.endpoint()));
-     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export(&#34;nodeConfig&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodeConfigs()));
-     *         ctx.export(&#34;nodePools&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodePools()));
+     *         ctx.export(&#34;endpoint&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.endpoint()));
+     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
+     *         ctx.export(&#34;nodeConfig&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodeConfigs()));
+     *         ctx.export(&#34;nodePools&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()));
      *     }
      * }
      * ```
@@ -525,10 +630,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -536,15 +648,15 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCluster = Output.of(ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
      *             .name(&#34;my-cluster&#34;)
      *             .location(&#34;us-east1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.endpoint()));
-     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export(&#34;nodeConfig&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodeConfigs()));
-     *         ctx.export(&#34;nodePools&#34;, myCluster.apply(getClusterResult -&gt; getClusterResult.nodePools()));
+     *         ctx.export(&#34;endpoint&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.endpoint()));
+     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
+     *         ctx.export(&#34;nodeConfig&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodeConfigs()));
+     *         ctx.export(&#34;nodePools&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()));
      *     }
      * }
      * ```
@@ -566,10 +678,19 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -577,18 +698,18 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
      *             .location(&#34;us-central1-b&#34;)
      *             .versionPrefix(&#34;1.12.&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
      *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
      *     }
      * }
      * ```
@@ -610,10 +731,19 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -621,18 +751,18 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
      *             .location(&#34;us-central1-b&#34;)
      *             .versionPrefix(&#34;1.12.&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
      *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
      *     }
      * }
      * ```
@@ -654,10 +784,19 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -665,18 +804,18 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
      *             .location(&#34;us-central1-b&#34;)
      *             .versionPrefix(&#34;1.12.&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
      *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
      *     }
      * }
      * ```
@@ -698,10 +837,19 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -709,18 +857,18 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
      *             .location(&#34;us-central1-b&#34;)
      *             .versionPrefix(&#34;1.12.&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
      *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
      *     }
      * }
      * ```
@@ -742,10 +890,19 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -753,18 +910,18 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
      *             .location(&#34;us-central1-b&#34;)
      *             .versionPrefix(&#34;1.12.&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
      *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
      *     }
      * }
      * ```
@@ -786,10 +943,19 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
+     * import com.pulumi.gcp.container.Cluster;
+     * import com.pulumi.gcp.container.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -797,18 +963,18 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
+     *         final var central1b = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
      *             .location(&#34;us-central1-b&#34;)
      *             .versionPrefix(&#34;1.12.&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var foo = new Cluster(&#34;foo&#34;, ClusterArgs.builder()        
      *             .location(&#34;us-central1-b&#34;)
-     *             .nodeVersion(central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.latestNodeVersion()))
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.apply(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
      *     }
      * }
      * ```
@@ -826,10 +992,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -837,11 +1010,11 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var debian = Output.of(ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
+     *         final var debian = ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
      *             .name(&#34;debian&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, debian.apply(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, debian.applyValue(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
      *     }
      * }
      * ```
@@ -859,10 +1032,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -870,11 +1050,11 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var debian = Output.of(ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
+     *         final var debian = ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
      *             .name(&#34;debian&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, debian.apply(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, debian.applyValue(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
      *     }
      * }
      * ```
@@ -892,10 +1072,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -903,11 +1090,11 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var debian = Output.of(ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
+     *         final var debian = ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
      *             .name(&#34;debian&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, debian.apply(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, debian.applyValue(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
      *     }
      * }
      * ```
@@ -925,10 +1112,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -936,11 +1130,11 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var debian = Output.of(ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
+     *         final var debian = ContainerFunctions.getRegistryImage(GetRegistryImageArgs.builder()
      *             .name(&#34;debian&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, debian.apply(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, debian.applyValue(getRegistryImageResult -&gt; getRegistryImageResult.imageUrl()));
      *     }
      * }
      * ```
@@ -958,10 +1152,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -969,9 +1170,9 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(ContainerFunctions.getRegistryRepository());
+     *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.apply(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
      * ```
@@ -989,10 +1190,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1000,9 +1208,9 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(ContainerFunctions.getRegistryRepository());
+     *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.apply(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
      * ```
@@ -1020,10 +1228,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1031,9 +1246,9 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(ContainerFunctions.getRegistryRepository());
+     *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.apply(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
      * ```
@@ -1051,10 +1266,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1062,9 +1284,9 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(ContainerFunctions.getRegistryRepository());
+     *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.apply(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
      * ```
@@ -1082,10 +1304,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1093,9 +1322,9 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(ContainerFunctions.getRegistryRepository());
+     *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.apply(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
      * ```
@@ -1113,10 +1342,17 @@ public final class ContainerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1124,9 +1360,9 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(ContainerFunctions.getRegistryRepository());
+     *         final var foo = ContainerFunctions.getRegistryRepository();
      * 
-     *         ctx.export(&#34;gcrLocation&#34;, foo.apply(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export(&#34;gcrLocation&#34;, foo.applyValue(getRegistryRepositoryResult -&gt; getRegistryRepositoryResult.repositoryUrl()));
      *     }
      * }
      * ```

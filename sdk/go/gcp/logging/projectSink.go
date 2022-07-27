@@ -85,10 +85,10 @@ import (
 // 		_, err = logging.NewProjectSink(ctx, "instance-sink", &logging.ProjectSinkArgs{
 // 			Description: pulumi.String("some explanation on what this is"),
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil
+// 				return fmt.Sprintf("storage.googleapis.com/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Filter: my_logged_instance.InstanceId.ApplyT(func(instanceId string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v", "resource.type = gce_instance AND resource.labels.instance_id = \"", instanceId, "\""), nil
+// 				return fmt.Sprintf("resource.type = gce_instance AND resource.labels.instance_id = \"%v\"", instanceId), nil
 // 			}).(pulumi.StringOutput),
 // 			UniqueWriterIdentity: pulumi.Bool(true),
 // 		})

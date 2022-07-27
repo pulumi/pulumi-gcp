@@ -116,7 +116,7 @@ import (
 // 						DatasetUri: pulumi.All(bqDataset.Project, bqDataset.DatasetId).ApplyT(func(_args []interface{}) (string, error) {
 // 							project := _args[0].(string)
 // 							datasetId := _args[1].(string)
-// 							return fmt.Sprintf("%v%v%v%v", "bq://", project, ".", datasetId), nil
+// 							return fmt.Sprintf("bq://%v.%v", project, datasetId), nil
 // 						}).(pulumi.StringOutput),
 // 						SchemaConfig: &healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs{
 // 							RecursiveStructureDepth: pulumi.Int(3),

@@ -53,7 +53,7 @@ import (
 // 		value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
 // 			Description: pulumi.String("For valuename resources."),
 // 			Parent: key.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "tagKeys/", name), nil
+// 				return fmt.Sprintf("tagKeys/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			ShortName: pulumi.String("valuename"),
 // 		})
@@ -62,10 +62,10 @@ import (
 // 		}
 // 		_, err = tags.NewTagBinding(ctx, "binding", &tags.TagBindingArgs{
 // 			Parent: project.Number.ApplyT(func(number string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "//cloudresourcemanager.googleapis.com/projects/", number), nil
+// 				return fmt.Sprintf("//cloudresourcemanager.googleapis.com/projects/%v", number), nil
 // 			}).(pulumi.StringOutput),
 // 			TagValue: value.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "tagValues/", name), nil
+// 				return fmt.Sprintf("tagValues/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {

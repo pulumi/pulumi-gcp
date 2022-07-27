@@ -217,7 +217,7 @@ import (
 // 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 // 			Members: pulumi.StringArray{
 // 				privatecaSa.Email.ApplyT(func(email string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 					return fmt.Sprintf("serviceAccount:%v", email), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 		})
@@ -229,7 +229,7 @@ import (
 // 			Role:        pulumi.String("roles/viewer"),
 // 			Members: pulumi.StringArray{
 // 				privatecaSa.Email.ApplyT(func(email string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 					return fmt.Sprintf("serviceAccount:%v", email), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 		})

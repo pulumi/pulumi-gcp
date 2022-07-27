@@ -112,7 +112,7 @@ import (
 // 			CryptoKeyId: cryptoKey.ID(),
 // 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 // 			Member: serviceAccount.ApplyT(func(serviceAccount accessapproval.GetFolderServiceAccountResult) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", serviceAccount.AccountEmail), nil
+// 				return fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {

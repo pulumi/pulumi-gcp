@@ -23,10 +23,17 @@ public final class GameservicesFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gameservices.GameservicesFunctions;
+     * import com.pulumi.gcp.gameservices.inputs.GetGameServerDeploymentRolloutArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -34,9 +41,9 @@ public final class GameservicesFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = Output.of(GameservicesFunctions.getGameServerDeploymentRollout(GetGameServerDeploymentRolloutArgs.builder()
+     *         final var qa = GameservicesFunctions.getGameServerDeploymentRollout(GetGameServerDeploymentRolloutArgs.builder()
      *             .deploymentId(&#34;tf-test-deployment-s8sn12jt2c&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -55,10 +62,17 @@ public final class GameservicesFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gameservices.GameservicesFunctions;
+     * import com.pulumi.gcp.gameservices.inputs.GetGameServerDeploymentRolloutArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -66,9 +80,9 @@ public final class GameservicesFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = Output.of(GameservicesFunctions.getGameServerDeploymentRollout(GetGameServerDeploymentRolloutArgs.builder()
+     *         final var qa = GameservicesFunctions.getGameServerDeploymentRollout(GetGameServerDeploymentRolloutArgs.builder()
      *             .deploymentId(&#34;tf-test-deployment-s8sn12jt2c&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -87,10 +101,17 @@ public final class GameservicesFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gameservices.GameservicesFunctions;
+     * import com.pulumi.gcp.gameservices.inputs.GetGameServerDeploymentRolloutArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -98,9 +119,9 @@ public final class GameservicesFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = Output.of(GameservicesFunctions.getGameServerDeploymentRollout(GetGameServerDeploymentRolloutArgs.builder()
+     *         final var qa = GameservicesFunctions.getGameServerDeploymentRollout(GetGameServerDeploymentRolloutArgs.builder()
      *             .deploymentId(&#34;tf-test-deployment-s8sn12jt2c&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -119,10 +140,17 @@ public final class GameservicesFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gameservices.GameservicesFunctions;
+     * import com.pulumi.gcp.gameservices.inputs.GetGameServerDeploymentRolloutArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -130,9 +158,9 @@ public final class GameservicesFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = Output.of(GameservicesFunctions.getGameServerDeploymentRollout(GetGameServerDeploymentRolloutArgs.builder()
+     *         final var qa = GameservicesFunctions.getGameServerDeploymentRollout(GetGameServerDeploymentRolloutArgs.builder()
      *             .deploymentId(&#34;tf-test-deployment-s8sn12jt2c&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

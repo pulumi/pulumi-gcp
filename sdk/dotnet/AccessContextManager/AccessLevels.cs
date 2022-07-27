@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///         });
     ///         var access_levels = new Gcp.AccessContextManager.AccessLevels("access-levels", new Gcp.AccessContextManager.AccessLevelsArgs
     ///         {
-    ///             AccessLevels = 
+    ///             AccessLevelDetails = 
     ///             {
     ///                 new Gcp.AccessContextManager.Inputs.AccessLevelsAccessLevelArgs
     ///                 {

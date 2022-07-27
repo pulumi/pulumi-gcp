@@ -119,7 +119,7 @@ import (
 // 							project := _args[0].(string)
 // 							datasetId := _args[1].(string)
 // 							tableId := _args[2].(string)
-// 							return fmt.Sprintf("%v%v%v%v%v%v", "bq://", project, ".", datasetId, ".", tableId), nil
+// 							return fmt.Sprintf("bq://%v.%v.%v", project, datasetId, tableId), nil
 // 						}).(pulumi.StringOutput),
 // 					},
 // 				},

@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.VpcAccess
     ///     {
     ///         var vpcaccessApi = new Gcp.Projects.Service("vpcaccessApi", new Gcp.Projects.ServiceArgs
     ///         {
-    ///             Service = "vpcaccess.googleapis.com",
+    ///             ServiceName = "vpcaccess.googleapis.com",
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions
     ///         {

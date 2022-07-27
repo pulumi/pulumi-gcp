@@ -28,10 +28,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -39,11 +46,11 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var roleinfo = Output.of(IamFunctions.getRule(GetRuleArgs.builder()
+     *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
      *             .name(&#34;roles/compute.viewer&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.apply(getRuleResult -&gt; getRuleResult.includedPermissions()));
+     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.applyValue(getRuleResult -&gt; getRuleResult.includedPermissions()));
      *     }
      * }
      * ```
@@ -57,10 +64,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -68,11 +82,11 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var roleinfo = Output.of(IamFunctions.getRule(GetRuleArgs.builder()
+     *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
      *             .name(&#34;roles/compute.viewer&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.apply(getRuleResult -&gt; getRuleResult.includedPermissions()));
+     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.applyValue(getRuleResult -&gt; getRuleResult.includedPermissions()));
      *     }
      * }
      * ```
@@ -86,10 +100,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -97,11 +118,11 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var roleinfo = Output.of(IamFunctions.getRule(GetRuleArgs.builder()
+     *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
      *             .name(&#34;roles/compute.viewer&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.apply(getRuleResult -&gt; getRuleResult.includedPermissions()));
+     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.applyValue(getRuleResult -&gt; getRuleResult.includedPermissions()));
      *     }
      * }
      * ```
@@ -115,10 +136,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -126,11 +154,11 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var roleinfo = Output.of(IamFunctions.getRule(GetRuleArgs.builder()
+     *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
      *             .name(&#34;roles/compute.viewer&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.apply(getRuleResult -&gt; getRuleResult.includedPermissions()));
+     *         ctx.export(&#34;theRolePermissions&#34;, roleinfo.applyValue(getRuleResult -&gt; getRuleResult.includedPermissions()));
      *     }
      * }
      * ```
@@ -148,10 +176,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -159,12 +194,12 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var perms = Output.of(IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
+     *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
      *             .fullResourceName(&#34;//cloudresourcemanager.googleapis.com/projects/my-project&#34;)
      *             .stages(            
      *                 &#34;GA&#34;,
      *                 &#34;BETA&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -183,10 +218,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -194,12 +236,12 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var perms = Output.of(IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
+     *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
      *             .fullResourceName(&#34;//cloudresourcemanager.googleapis.com/projects/my-project&#34;)
      *             .stages(            
      *                 &#34;GA&#34;,
      *                 &#34;BETA&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -218,10 +260,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -229,12 +278,12 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var perms = Output.of(IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
+     *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
      *             .fullResourceName(&#34;//cloudresourcemanager.googleapis.com/projects/my-project&#34;)
      *             .stages(            
      *                 &#34;GA&#34;,
      *                 &#34;BETA&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -253,10 +302,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -264,12 +320,12 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var perms = Output.of(IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
+     *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
      *             .fullResourceName(&#34;//cloudresourcemanager.googleapis.com/projects/my-project&#34;)
      *             .stages(            
      *                 &#34;GA&#34;,
      *                 &#34;BETA&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -286,10 +342,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -297,9 +360,9 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
+     *         final var foo = IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
      *             .workloadIdentityPoolId(&#34;foo-pool&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -316,10 +379,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -327,9 +397,9 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
+     *         final var foo = IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
      *             .workloadIdentityPoolId(&#34;foo-pool&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -346,10 +416,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -357,9 +434,9 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
+     *         final var foo = IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
      *             .workloadIdentityPoolId(&#34;foo-pool&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -376,10 +453,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -387,9 +471,9 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
+     *         final var foo = IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
      *             .workloadIdentityPoolId(&#34;foo-pool&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -406,10 +490,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -417,10 +508,10 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
+     *         final var foo = IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
      *             .workloadIdentityPoolId(&#34;foo-pool&#34;)
      *             .workloadIdentityPoolProviderId(&#34;bar-provider&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -437,10 +528,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -448,10 +546,10 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
+     *         final var foo = IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
      *             .workloadIdentityPoolId(&#34;foo-pool&#34;)
      *             .workloadIdentityPoolProviderId(&#34;bar-provider&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -468,10 +566,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -479,10 +584,10 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
+     *         final var foo = IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
      *             .workloadIdentityPoolId(&#34;foo-pool&#34;)
      *             .workloadIdentityPoolProviderId(&#34;bar-provider&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -499,10 +604,17 @@ public final class IamFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -510,10 +622,10 @@ public final class IamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = Output.of(IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
+     *         final var foo = IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
      *             .workloadIdentityPoolId(&#34;foo-pool&#34;)
      *             .workloadIdentityPoolProviderId(&#34;bar-provider&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

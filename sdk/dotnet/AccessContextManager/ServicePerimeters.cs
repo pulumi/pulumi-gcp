@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///         var service_perimeter = new Gcp.AccessContextManager.ServicePerimeters("service-perimeter", new Gcp.AccessContextManager.ServicePerimetersArgs
     ///         {
     ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///             ServicePerimeters = 
+    ///             ServicePerimeterDetails = 
     ///             {
     ///                 new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterArgs
     ///                 {

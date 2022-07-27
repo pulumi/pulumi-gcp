@@ -45,10 +45,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeter;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeterArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevel;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -62,7 +75,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_perimeter = new ServicePerimeter(&#34;service-perimeter&#34;, ServicePerimeterArgs.builder()        
- *             .parent(access_policy.name().apply(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
  *             .status(ServicePerimeterStatusArgs.builder()
  *                 .restrictedServices(&#34;storage.googleapis.com&#34;)
  *                 .build())
@@ -84,7 +97,7 @@ import javax.annotation.Nullable;
  *                         &#34;US&#34;)
  *                     .build())
  *                 .build())
- *             .parent(access_policy.name().apply(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
  *             .title(&#34;chromeos_no_lock&#34;)
  *             .build());
  * 
@@ -95,10 +108,29 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeters;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimetersArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimetersServicePerimeterArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimetersServicePerimeterStatusArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevel;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeter;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeterArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusVpcAccessibleServicesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -112,17 +144,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var secure_data_exchange = new ServicePerimeters(&#34;secure-data-exchange&#34;, ServicePerimetersArgs.builder()        
- *             .parent(access_policy.name().apply(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
  *             .servicePerimeters(            
  *                 ServicePerimetersServicePerimeterArgs.builder()
- *                     .name(access_policy.name().apply(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/&#34;, name)))
+ *                     .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/&#34;, name)))
  *                     .title(&#34;&#34;)
  *                     .status(ServicePerimetersServicePerimeterStatusArgs.builder()
  *                         .restrictedServices(&#34;storage.googleapis.com&#34;)
  *                         .build())
  *                     .build(),
  *                 ServicePerimetersServicePerimeterArgs.builder()
- *                     .name(access_policy.name().apply(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/&#34;, name)))
+ *                     .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s/servicePerimeters/&#34;, name)))
  *                     .title(&#34;&#34;)
  *                     .status(ServicePerimetersServicePerimeterStatusArgs.builder()
  *                         .restrictedServices(&#34;bigtable.googleapis.com&#34;)
@@ -135,7 +167,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_level = new AccessLevel(&#34;access-level&#34;, AccessLevelArgs.builder()        
- *             .parent(access_policy.name().apply(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
  *             .title(&#34;secure_data_exchange&#34;)
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
@@ -214,10 +246,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeter;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeterArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterSpecArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -231,7 +274,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_perimeter = new ServicePerimeter(&#34;service-perimeter&#34;, ServicePerimeterArgs.builder()        
- *             .parent(access_policy.name().apply(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
  *             .spec(ServicePerimeterSpecArgs.builder()
  *                 .restrictedServices(&#34;storage.googleapis.com&#34;)
  *                 .build())

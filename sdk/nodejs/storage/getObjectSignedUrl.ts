@@ -25,8 +25,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const getUrl = gcp.storage.getObjectSignedUrl({
  *     bucket: "fried_chicken",

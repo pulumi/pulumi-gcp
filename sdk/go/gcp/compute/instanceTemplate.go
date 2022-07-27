@@ -17,108 +17,6 @@ import (
 // [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultAccount, err := serviceAccount.NewAccount(ctx, "defaultAccount", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("service-account-id"),
-// 			DisplayName: pulumi.String("Service Account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-9"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		foobar, err := compute.NewDisk(ctx, "foobar", &compute.DiskArgs{
-// 			Image: pulumi.String(myImage.SelfLink),
-// 			Size:  pulumi.Int(10),
-// 			Type:  pulumi.String("pd-ssd"),
-// 			Zone:  pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		dailyBackup, err := compute.NewResourcePolicy(ctx, "dailyBackup", &compute.ResourcePolicyArgs{
-// 			Region: pulumi.String("us-central1"),
-// 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
-// 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
-// 					DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
-// 						DaysInCycle: pulumi.Int(1),
-// 						StartTime:   pulumi.String("04:00"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstanceTemplate(ctx, "defaultInstanceTemplate", &compute.InstanceTemplateArgs{
-// 			Description: pulumi.String("This template is used to create app server instances."),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 				pulumi.String("bar"),
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"environment": pulumi.String("dev"),
-// 			},
-// 			InstanceDescription: pulumi.String("description assigned to instances"),
-// 			MachineType:         pulumi.String("e2-medium"),
-// 			CanIpForward:        pulumi.Bool(false),
-// 			Scheduling: &compute.InstanceTemplateSchedulingArgs{
-// 				AutomaticRestart:  pulumi.Bool(true),
-// 				OnHostMaintenance: pulumi.String("MIGRATE"),
-// 			},
-// 			Disks: compute.InstanceTemplateDiskArray{
-// 				&compute.InstanceTemplateDiskArgs{
-// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
-// 					AutoDelete:  pulumi.Bool(true),
-// 					Boot:        pulumi.Bool(true),
-// 					ResourcePolicies: pulumi.String{
-// 						dailyBackup.ID(),
-// 					},
-// 				},
-// 				&compute.InstanceTemplateDiskArgs{
-// 					Source:     foobar.Name,
-// 					AutoDelete: pulumi.Bool(false),
-// 					Boot:       pulumi.Bool(false),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 			Metadata: pulumi.AnyMap{
-// 				"foo": pulumi.Any("bar"),
-// 			},
-// 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
-// 				Email: defaultAccount.Email,
-// 				Scopes: pulumi.StringArray{
-// 					pulumi.String("cloud-platform"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Automatic Envoy Deployment
 //
 // ```go
@@ -168,10 +66,37 @@ import (
 // 				AutomaticRestart: pulumi.Bool(true),
 // 			},
 // 			Metadata: pulumi.AnyMap{
-// 				"gce-software-declaration": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"softwareRecipes\": [{\n", "    \"name\": \"install-gce-service-proxy-agent\",\n", "    \"desired_state\": \"INSTALLED\",\n", "    \"installSteps\": [{\n", "      \"scriptRun\": {\n", "        \"script\": \"#! /bin/bash\\nZONE=", "$", "(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\nexport SERVICE_PROXY_AGENT_DIRECTORY=", "$", "(mktemp -d)\\nsudo gsutil cp   gs://gce-service-proxy-\"", "$", "ZONE\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \"", "$", "SERVICE_PROXY_AGENT_DIRECTORY\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \"", "$", "SERVICE_PROXY_AGENT_DIRECTORY\"\\nsudo tar -xzf \"", "$", "SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent-0.2.tgz -C \"", "$", "SERVICE_PROXY_AGENT_DIRECTORY\"\\n\"", "$", "SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\"\n", "      }\n", "    }]\n", "  }]\n", "}\n")),
-// 				"gce-service-proxy":        pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"api-version\": \"0.2\",\n", "  \"proxy-spec\": {\n", "    \"proxy-port\": 15001,\n", "    \"network\": \"my-network\",\n", "    \"tracing\": \"ON\",\n", "    \"access-log\": \"/var/log/envoy/access.log\"\n", "  }\n", "  \"service\": {\n", "    \"serving-ports\": [80, 81]\n", "  },\n", " \"labels\": {\n", "   \"app_name\": \"bookserver_app\",\n", "   \"app_version\": \"STABLE\"\n", "  }\n", "}\n")),
-// 				"enable-guest-attributes":  pulumi.Any("true"),
-// 				"enable-osconfig":          pulumi.Any("true"),
+// 				"gce-software-declaration": pulumi.Any(fmt.Sprintf(`{
+//   "softwareRecipes": [{
+//     "name": "install-gce-service-proxy-agent",
+//     "desired_state": "INSTALLED",
+//     "installSteps": [{
+//       "scriptRun": {
+//         "script": "#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
+//       }
+//     }]
+//   }]
+// }
+// `)),
+// 				"gce-service-proxy": pulumi.Any(fmt.Sprintf(`{
+//   "api-version": "0.2",
+//   "proxy-spec": {
+//     "proxy-port": 15001,
+//     "network": "my-network",
+//     "tracing": "ON",
+//     "access-log": "/var/log/envoy/access.log"
+//   }
+//   "service": {
+//     "serving-ports": [80, 81]
+//   },
+//  "labels": {
+//    "app_name": "bookserver_app",
+//    "app_version": "STABLE"
+//   }
+// }
+// `)),
+// 				"enable-guest-attributes": pulumi.Any("true"),
+// 				"enable-osconfig":         pulumi.Any("true"),
 // 			},
 // 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
 // 				Email: pulumi.String(_default.Email),

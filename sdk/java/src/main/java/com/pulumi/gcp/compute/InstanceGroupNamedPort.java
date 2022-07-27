@@ -31,10 +31,24 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupNamedPort;
+ * import com.pulumi.gcp.compute.InstanceGroupNamedPortArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -64,13 +78,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myPort = new InstanceGroupNamedPort(&#34;myPort&#34;, InstanceGroupNamedPortArgs.builder()        
- *             .group(myCluster.nodePools().apply(nodePools -&gt; nodePools[0].instanceGroupUrls()[0]))
+ *             .group(myCluster.nodePools().applyValue(nodePools -&gt; nodePools[0].instanceGroupUrls()[0]))
  *             .zone(&#34;us-central1-a&#34;)
  *             .port(8080)
  *             .build());
  * 
  *         var myPorts = new InstanceGroupNamedPort(&#34;myPorts&#34;, InstanceGroupNamedPortArgs.builder()        
- *             .group(myCluster.nodePools().apply(nodePools -&gt; nodePools[0].instanceGroupUrls()[0]))
+ *             .group(myCluster.nodePools().applyValue(nodePools -&gt; nodePools[0].instanceGroupUrls()[0]))
  *             .zone(&#34;us-central1-a&#34;)
  *             .port(4443)
  *             .build());

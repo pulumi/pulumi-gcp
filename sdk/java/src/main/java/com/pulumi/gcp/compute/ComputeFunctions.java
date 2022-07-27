@@ -114,10 +114,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -125,20 +136,20 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAddress = Output.of(ComputeFunctions.getAddress(GetAddressArgs.builder()
+     *         final var myAddress = ComputeFunctions.getAddress(GetAddressArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
      *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
      *             .type(&#34;A&#34;)
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.apply(getAddressResult -&gt; getAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getAddressResult -&gt; getAddressResult.address()))
      *             .build());
      * 
      *     }
@@ -157,10 +168,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -168,20 +190,20 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAddress = Output.of(ComputeFunctions.getAddress(GetAddressArgs.builder()
+     *         final var myAddress = ComputeFunctions.getAddress(GetAddressArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
      *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
      *             .type(&#34;A&#34;)
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.apply(getAddressResult -&gt; getAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getAddressResult -&gt; getAddressResult.address()))
      *             .build());
      * 
      *     }
@@ -200,10 +222,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -211,20 +244,20 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAddress = Output.of(ComputeFunctions.getAddress(GetAddressArgs.builder()
+     *         final var myAddress = ComputeFunctions.getAddress(GetAddressArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
      *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
      *             .type(&#34;A&#34;)
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.apply(getAddressResult -&gt; getAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getAddressResult -&gt; getAddressResult.address()))
      *             .build());
      * 
      *     }
@@ -243,10 +276,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -254,20 +298,20 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAddress = Output.of(ComputeFunctions.getAddress(GetAddressArgs.builder()
+     *         final var myAddress = ComputeFunctions.getAddress(GetAddressArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
      *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
      *             .type(&#34;A&#34;)
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.apply(getAddressResult -&gt; getAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getAddressResult -&gt; getAddressResult.address()))
      *             .build());
      * 
      *     }
@@ -285,10 +329,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -296,9 +347,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-backend-bucket = Output.of(ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
+     *         final var my-backend-bucket = ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
      *             .name(&#34;my-backend&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -315,10 +366,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -326,9 +384,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-backend-bucket = Output.of(ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
+     *         final var my-backend-bucket = ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
      *             .name(&#34;my-backend&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -345,10 +403,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -356,9 +421,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-backend-bucket = Output.of(ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
+     *         final var my-backend-bucket = ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
      *             .name(&#34;my-backend&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -375,10 +440,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -386,9 +458,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-backend-bucket = Output.of(ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
+     *         final var my-backend-bucket = ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
      *             .name(&#34;my-backend&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -441,10 +513,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -452,13 +531,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCert = Output.of(ComputeFunctions.getCertificate(GetCertificateArgs.builder()
+     *         final var myCert = ComputeFunctions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;my-cert&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;certificate&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.certificate()));
-     *         ctx.export(&#34;certificateId&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.certificateId()));
-     *         ctx.export(&#34;selfLink&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.selfLink()));
+     *         ctx.export(&#34;certificate&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.certificate()));
+     *         ctx.export(&#34;certificateId&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.certificateId()));
+     *         ctx.export(&#34;selfLink&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.selfLink()));
      *     }
      * }
      * ```
@@ -474,10 +553,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -485,13 +571,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCert = Output.of(ComputeFunctions.getCertificate(GetCertificateArgs.builder()
+     *         final var myCert = ComputeFunctions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;my-cert&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;certificate&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.certificate()));
-     *         ctx.export(&#34;certificateId&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.certificateId()));
-     *         ctx.export(&#34;selfLink&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.selfLink()));
+     *         ctx.export(&#34;certificate&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.certificate()));
+     *         ctx.export(&#34;certificateId&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.certificateId()));
+     *         ctx.export(&#34;selfLink&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.selfLink()));
      *     }
      * }
      * ```
@@ -507,10 +593,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -518,13 +611,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCert = Output.of(ComputeFunctions.getCertificate(GetCertificateArgs.builder()
+     *         final var myCert = ComputeFunctions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;my-cert&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;certificate&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.certificate()));
-     *         ctx.export(&#34;certificateId&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.certificateId()));
-     *         ctx.export(&#34;selfLink&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.selfLink()));
+     *         ctx.export(&#34;certificate&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.certificate()));
+     *         ctx.export(&#34;certificateId&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.certificateId()));
+     *         ctx.export(&#34;selfLink&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.selfLink()));
      *     }
      * }
      * ```
@@ -540,10 +633,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -551,13 +651,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCert = Output.of(ComputeFunctions.getCertificate(GetCertificateArgs.builder()
+     *         final var myCert = ComputeFunctions.getCertificate(GetCertificateArgs.builder()
      *             .name(&#34;my-cert&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;certificate&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.certificate()));
-     *         ctx.export(&#34;certificateId&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.certificateId()));
-     *         ctx.export(&#34;selfLink&#34;, myCert.apply(getCertificateResult -&gt; getCertificateResult.selfLink()));
+     *         ctx.export(&#34;certificate&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.certificate()));
+     *         ctx.export(&#34;certificateId&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.certificateId()));
+     *         ctx.export(&#34;selfLink&#34;, myCert.applyValue(getCertificateResult -&gt; getCertificateResult.selfLink()));
      *     }
      * }
      * ```
@@ -573,10 +673,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -584,7 +691,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+     *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -602,10 +709,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -613,7 +727,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+     *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -631,10 +745,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -642,7 +763,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+     *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -660,10 +781,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -671,7 +799,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+     *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -689,10 +817,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -700,7 +835,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+     *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -718,10 +853,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -729,7 +871,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(ComputeFunctions.getDefaultServiceAccount());
+     *         final var default = ComputeFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -749,10 +891,20 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -760,10 +912,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var persistent-boot-disk = Output.of(ComputeFunctions.getDisk(GetDiskArgs.builder()
+     *         final var persistent-boot-disk = ComputeFunctions.getDisk(GetDiskArgs.builder()
      *             .name(&#34;persistent-boot-disk&#34;)
      *             .project(&#34;example&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -789,10 +941,20 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -800,10 +962,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var persistent-boot-disk = Output.of(ComputeFunctions.getDisk(GetDiskArgs.builder()
+     *         final var persistent-boot-disk = ComputeFunctions.getDisk(GetDiskArgs.builder()
      *             .name(&#34;persistent-boot-disk&#34;)
      *             .project(&#34;example&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -829,10 +991,20 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -840,10 +1012,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var persistent-boot-disk = Output.of(ComputeFunctions.getDisk(GetDiskArgs.builder()
+     *         final var persistent-boot-disk = ComputeFunctions.getDisk(GetDiskArgs.builder()
      *             .name(&#34;persistent-boot-disk&#34;)
      *             .project(&#34;example&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -869,10 +1041,20 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -880,10 +1062,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var persistent-boot-disk = Output.of(ComputeFunctions.getDisk(GetDiskArgs.builder()
+     *         final var persistent-boot-disk = ComputeFunctions.getDisk(GetDiskArgs.builder()
      *             .name(&#34;persistent-boot-disk&#34;)
      *             .project(&#34;example&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
@@ -907,10 +1089,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -918,9 +1107,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-forwarding-rule = Output.of(ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
+     *         final var my-forwarding-rule = ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
      *             .name(&#34;forwarding-rule-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -937,10 +1126,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -948,9 +1144,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-forwarding-rule = Output.of(ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
+     *         final var my-forwarding-rule = ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
      *             .name(&#34;forwarding-rule-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -967,10 +1163,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -978,9 +1181,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-forwarding-rule = Output.of(ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
+     *         final var my-forwarding-rule = ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
      *             .name(&#34;forwarding-rule-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -997,10 +1200,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1008,9 +1218,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-forwarding-rule = Output.of(ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
+     *         final var my-forwarding-rule = ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
      *             .name(&#34;forwarding-rule-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1028,10 +1238,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalAddressArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1039,20 +1260,20 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAddress = Output.of(ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
+     *         final var myAddress = ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
      *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
      *             .type(&#34;A&#34;)
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.apply(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
      *             .build());
      * 
      *     }
@@ -1071,10 +1292,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalAddressArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1082,20 +1314,20 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAddress = Output.of(ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
+     *         final var myAddress = ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
      *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
      *             .type(&#34;A&#34;)
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.apply(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
      *             .build());
      * 
      *     }
@@ -1114,10 +1346,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalAddressArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1125,20 +1368,20 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAddress = Output.of(ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
+     *         final var myAddress = ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
      *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
      *             .type(&#34;A&#34;)
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.apply(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
      *             .build());
      * 
      *     }
@@ -1157,10 +1400,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalAddressArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1168,20 +1422,20 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myAddress = Output.of(ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
+     *         final var myAddress = ComputeFunctions.getGlobalAddress(GetGlobalAddressArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
      *             .dnsName(&#34;prod.mydomain.com.&#34;)
      *             .build());
      * 
      *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
-     *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;lb.%s&#34;, dnsName)))
      *             .type(&#34;A&#34;)
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.apply(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -&gt; getGlobalAddressResult.address()))
      *             .build());
      * 
      *     }
@@ -1199,10 +1453,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1210,9 +1471,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-forwarding-rule = Output.of(ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
+     *         final var my-forwarding-rule = ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
      *             .name(&#34;forwarding-rule-global&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1229,10 +1490,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1240,9 +1508,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-forwarding-rule = Output.of(ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
+     *         final var my-forwarding-rule = ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
      *             .name(&#34;forwarding-rule-global&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1259,10 +1527,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1270,9 +1545,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-forwarding-rule = Output.of(ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
+     *         final var my-forwarding-rule = ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
      *             .name(&#34;forwarding-rule-global&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1289,10 +1564,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1300,9 +1582,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-forwarding-rule = Output.of(ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
+     *         final var my-forwarding-rule = ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
      *             .name(&#34;forwarding-rule-global&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1319,10 +1601,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1330,9 +1619,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gateway = Output.of(ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
+     *         final var gateway = ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1349,10 +1638,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1360,9 +1656,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gateway = Output.of(ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
+     *         final var gateway = ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1379,10 +1675,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1390,9 +1693,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gateway = Output.of(ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
+     *         final var gateway = ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1409,10 +1712,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1420,9 +1730,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gateway = Output.of(ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
+     *         final var gateway = ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
      *             .name(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1439,10 +1749,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1450,9 +1767,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var healthCheck = Output.of(ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
+     *         final var healthCheck = ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
      *             .name(&#34;my-hc&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1469,10 +1786,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1480,9 +1804,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var healthCheck = Output.of(ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
+     *         final var healthCheck = ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
      *             .name(&#34;my-hc&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1499,10 +1823,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1510,9 +1841,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var healthCheck = Output.of(ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
+     *         final var healthCheck = ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
      *             .name(&#34;my-hc&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1529,10 +1860,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1540,9 +1878,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var healthCheck = Output.of(ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
+     *         final var healthCheck = ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
      *             .name(&#34;my-hc&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1560,10 +1898,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1571,15 +1920,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+     *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
      *             .family(&#34;debian-9&#34;)
      *             .project(&#34;debian-cloud&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -1600,10 +1949,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1611,15 +1971,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+     *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
      *             .family(&#34;debian-9&#34;)
      *             .project(&#34;debian-cloud&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -1640,10 +2000,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1651,15 +2022,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+     *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
      *             .family(&#34;debian-9&#34;)
      *             .project(&#34;debian-cloud&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -1680,10 +2051,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1691,15 +2073,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+     *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
      *             .family(&#34;debian-9&#34;)
      *             .project(&#34;debian-cloud&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -1720,10 +2102,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1731,15 +2124,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+     *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
      *             .family(&#34;debian-9&#34;)
      *             .project(&#34;debian-cloud&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -1760,10 +2153,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1771,15 +2175,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+     *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
      *             .family(&#34;debian-9&#34;)
      *             .project(&#34;debian-cloud&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+     *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -1802,10 +2206,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1813,10 +2224,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appserver = Output.of(ComputeFunctions.getInstance(GetInstanceArgs.builder()
+     *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
      *             .name(&#34;primary-application-server&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1836,10 +2247,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1847,10 +2265,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appserver = Output.of(ComputeFunctions.getInstance(GetInstanceArgs.builder()
+     *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
      *             .name(&#34;primary-application-server&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1870,10 +2288,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1881,10 +2306,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appserver = Output.of(ComputeFunctions.getInstance(GetInstanceArgs.builder()
+     *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
      *             .name(&#34;primary-application-server&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1904,10 +2329,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1915,10 +2347,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appserver = Output.of(ComputeFunctions.getInstance(GetInstanceArgs.builder()
+     *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
      *             .name(&#34;primary-application-server&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1938,10 +2370,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1949,10 +2388,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appserver = Output.of(ComputeFunctions.getInstance(GetInstanceArgs.builder()
+     *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
      *             .name(&#34;primary-application-server&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1972,10 +2411,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1983,10 +2429,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appserver = Output.of(ComputeFunctions.getInstance(GetInstanceArgs.builder()
+     *         final var appserver = ComputeFunctions.getInstance(GetInstanceArgs.builder()
      *             .name(&#34;primary-application-server&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2003,10 +2449,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2014,10 +2467,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
+     *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2034,10 +2487,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2045,10 +2505,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
+     *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2065,10 +2525,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2076,10 +2543,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
+     *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2096,10 +2563,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2107,10 +2581,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
+     *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2127,10 +2601,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2138,10 +2619,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
+     *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2158,10 +2639,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2169,10 +2657,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
+     *         final var all = ComputeFunctions.getInstanceGroup(GetInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2190,10 +2678,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2201,13 +2696,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serial = Output.of(ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
      *             .instance(&#34;my-instance&#34;)
      *             .zone(&#34;us-central1-a&#34;)
      *             .port(1)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
+     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
      *     }
      * }
      * ```
@@ -2216,11 +2711,24 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2265,7 +2773,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).apply(serial -&gt; serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
+     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).applyValue(serial -&gt; serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
      *     }
      * }
      * ```
@@ -2282,10 +2790,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2293,13 +2808,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serial = Output.of(ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
      *             .instance(&#34;my-instance&#34;)
      *             .zone(&#34;us-central1-a&#34;)
      *             .port(1)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
+     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
      *     }
      * }
      * ```
@@ -2308,11 +2823,24 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2357,7 +2885,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).apply(serial -&gt; serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
+     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).applyValue(serial -&gt; serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
      *     }
      * }
      * ```
@@ -2374,10 +2902,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2385,13 +2920,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serial = Output.of(ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
      *             .instance(&#34;my-instance&#34;)
      *             .zone(&#34;us-central1-a&#34;)
      *             .port(1)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
+     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
      *     }
      * }
      * ```
@@ -2400,11 +2935,24 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2449,7 +2997,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).apply(serial -&gt; serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
+     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).applyValue(serial -&gt; serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
      *     }
      * }
      * ```
@@ -2466,10 +3014,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2477,13 +3032,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serial = Output.of(ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
      *             .instance(&#34;my-instance&#34;)
      *             .zone(&#34;us-central1-a&#34;)
      *             .port(1)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
+     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents()));
      *     }
      * }
      * ```
@@ -2492,11 +3047,24 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2541,7 +3109,7 @@ public final class ComputeFunctions {
      *             .port(4)
      *             .build());
      * 
-     *         ctx.export(&#34;serialOut&#34;, serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).apply(serial -&gt; serial.apply(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
+     *         ctx.export(&#34;serialOut&#34;, serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult).applyValue(serial -&gt; serial.applyValue(getInstanceSerialPortResult -&gt; getInstanceSerialPortResult.contents())));
      *     }
      * }
      * ```
@@ -2560,10 +3128,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2571,14 +3146,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var generic-regex = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2598,10 +3173,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2609,14 +3191,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var generic-regex = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2636,10 +3218,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2647,14 +3236,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var generic-regex = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2674,10 +3263,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2685,14 +3281,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var generic-regex = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2712,10 +3308,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2723,14 +3326,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var generic-regex = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2750,10 +3353,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2761,14 +3371,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var generic-regex = Output.of(ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -2784,35 +3394,6 @@ public final class ComputeFunctions {
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = Output.of(ComputeFunctions.getLBIPRanges());
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.apply(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges() {
@@ -2824,35 +3405,6 @@ public final class ComputeFunctions {
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = Output.of(ComputeFunctions.getLBIPRanges());
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.apply(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain() {
@@ -2864,35 +3416,6 @@ public final class ComputeFunctions {
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = Output.of(ComputeFunctions.getLBIPRanges());
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.apply(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges(InvokeArgs args) {
@@ -2904,35 +3427,6 @@ public final class ComputeFunctions {
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = Output.of(ComputeFunctions.getLBIPRanges());
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.apply(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args) {
@@ -2944,35 +3438,6 @@ public final class ComputeFunctions {
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = Output.of(ComputeFunctions.getLBIPRanges());
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.apply(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges(InvokeArgs args, InvokeOptions options) {
@@ -2984,35 +3449,6 @@ public final class ComputeFunctions {
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = Output.of(ComputeFunctions.getLBIPRanges());
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.apply(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args, InvokeOptions options) {
@@ -3026,10 +3462,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3037,11 +3480,11 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = Output.of(ComputeFunctions.getNetblockIPRanges());
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
      * 
-     *         ctx.export(&#34;cidrBlocks&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export(&#34;cidrBlocks&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
      *     }
      * }
      * ```
@@ -3049,10 +3492,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3060,9 +3514,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var legacy-hcs = Output.of(ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
      *             .rangeType(&#34;legacy-health-checkers&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Network(&#34;default&#34;);
      * 
@@ -3091,10 +3545,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3102,11 +3563,11 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = Output.of(ComputeFunctions.getNetblockIPRanges());
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
      * 
-     *         ctx.export(&#34;cidrBlocks&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export(&#34;cidrBlocks&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
      *     }
      * }
      * ```
@@ -3114,10 +3575,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3125,9 +3597,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var legacy-hcs = Output.of(ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
      *             .rangeType(&#34;legacy-health-checkers&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Network(&#34;default&#34;);
      * 
@@ -3156,10 +3628,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3167,11 +3646,11 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = Output.of(ComputeFunctions.getNetblockIPRanges());
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
      * 
-     *         ctx.export(&#34;cidrBlocks&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export(&#34;cidrBlocks&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
      *     }
      * }
      * ```
@@ -3179,10 +3658,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3190,9 +3680,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var legacy-hcs = Output.of(ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
      *             .rangeType(&#34;legacy-health-checkers&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Network(&#34;default&#34;);
      * 
@@ -3221,10 +3711,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3232,11 +3729,11 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = Output.of(ComputeFunctions.getNetblockIPRanges());
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
      * 
-     *         ctx.export(&#34;cidrBlocks&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export(&#34;cidrBlocks&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
      *     }
      * }
      * ```
@@ -3244,10 +3741,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3255,9 +3763,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var legacy-hcs = Output.of(ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
      *             .rangeType(&#34;legacy-health-checkers&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Network(&#34;default&#34;);
      * 
@@ -3286,10 +3794,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3297,11 +3812,11 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = Output.of(ComputeFunctions.getNetblockIPRanges());
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
      * 
-     *         ctx.export(&#34;cidrBlocks&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export(&#34;cidrBlocks&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
      *     }
      * }
      * ```
@@ -3309,10 +3824,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3320,9 +3846,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var legacy-hcs = Output.of(ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
      *             .rangeType(&#34;legacy-health-checkers&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Network(&#34;default&#34;);
      * 
@@ -3351,10 +3877,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3362,11 +3895,11 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = Output.of(ComputeFunctions.getNetblockIPRanges());
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
      * 
-     *         ctx.export(&#34;cidrBlocks&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.apply(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export(&#34;cidrBlocks&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export(&#34;cidrBlocksIpv4&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export(&#34;cidrBlocksIpv6&#34;, netblock.applyValue(getNetblockIPRangesResult -&gt; getNetblockIPRangesResult.cidrBlocksIpv6s()));
      *     }
      * }
      * ```
@@ -3374,10 +3907,21 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3385,9 +3929,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var legacy-hcs = Output.of(ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
      *             .rangeType(&#34;legacy-health-checkers&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var default_ = new Network(&#34;default&#34;);
      * 
@@ -3415,10 +3959,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3426,9 +3977,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-network = Output.of(ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3445,10 +3996,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3456,9 +4014,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-network = Output.of(ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3475,10 +4033,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3486,9 +4051,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-network = Output.of(ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3505,10 +4070,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3516,9 +4088,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-network = Output.of(ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3537,10 +4109,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3548,14 +4127,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var neg1 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var neg2 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3574,10 +4153,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3585,14 +4171,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var neg1 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var neg2 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3611,10 +4197,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3622,14 +4215,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var neg1 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var neg2 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3648,10 +4241,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3659,14 +4259,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var neg1 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var neg2 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3685,10 +4285,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3696,14 +4303,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var neg1 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var neg2 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3722,10 +4329,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3733,14 +4347,14 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var neg1 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg1 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
      *             .zone(&#34;us-central1-a&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var neg2 = Output.of(ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
+     *         final var neg2 = ComputeFunctions.getNetworkEndpointGroup(GetNetworkEndpointGroupArgs.builder()
      *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -3758,10 +4372,19 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+     * import com.pulumi.gcp.compute.NodeTemplate;
+     * import com.pulumi.gcp.compute.NodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3769,9 +4392,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+     *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
      *             .zone(&#34;us-central1-b&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
      *             .region(&#34;us-central1&#34;)
@@ -3794,10 +4417,19 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+     * import com.pulumi.gcp.compute.NodeTemplate;
+     * import com.pulumi.gcp.compute.NodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3805,9 +4437,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+     *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
      *             .zone(&#34;us-central1-b&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
      *             .region(&#34;us-central1&#34;)
@@ -3830,10 +4462,19 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+     * import com.pulumi.gcp.compute.NodeTemplate;
+     * import com.pulumi.gcp.compute.NodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3841,9 +4482,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+     *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
      *             .zone(&#34;us-central1-b&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
      *             .region(&#34;us-central1&#34;)
@@ -3866,10 +4507,19 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+     * import com.pulumi.gcp.compute.NodeTemplate;
+     * import com.pulumi.gcp.compute.NodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3877,9 +4527,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+     *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
      *             .zone(&#34;us-central1-b&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
      *             .region(&#34;us-central1&#34;)
@@ -3902,10 +4552,19 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+     * import com.pulumi.gcp.compute.NodeTemplate;
+     * import com.pulumi.gcp.compute.NodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3913,9 +4572,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+     *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
      *             .zone(&#34;us-central1-b&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
      *             .region(&#34;us-central1&#34;)
@@ -3938,10 +4597,19 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+     * import com.pulumi.gcp.compute.NodeTemplate;
+     * import com.pulumi.gcp.compute.NodeTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3949,9 +4617,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var central1b = Output.of(ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+     *         final var central1b = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
      *             .zone(&#34;us-central1-b&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var tmpl = new NodeTemplate(&#34;tmpl&#34;, NodeTemplateArgs.builder()        
      *             .region(&#34;us-central1&#34;)
@@ -3972,10 +4640,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3983,9 +4658,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var group = Output.of(ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
+     *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4003,10 +4678,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4014,9 +4696,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var group = Output.of(ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
+     *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4034,10 +4716,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4045,9 +4734,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var group = Output.of(ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
+     *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4065,10 +4754,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4076,9 +4772,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var group = Output.of(ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
+     *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4096,10 +4792,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4107,9 +4810,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var group = Output.of(ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
+     *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4127,10 +4830,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4138,9 +4848,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var group = Output.of(ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
+     *         final var group = ComputeFunctions.getRegionInstanceGroup(GetRegionInstanceGroupArgs.builder()
      *             .name(&#34;instance-group-name&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4159,10 +4869,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4170,13 +4887,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCert = Output.of(ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
+     *         final var myCert = ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
      *             .name(&#34;my-cert&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;certificate&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificate()));
-     *         ctx.export(&#34;certificateId&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificateId()));
-     *         ctx.export(&#34;selfLink&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.selfLink()));
+     *         ctx.export(&#34;certificate&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificate()));
+     *         ctx.export(&#34;certificateId&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificateId()));
+     *         ctx.export(&#34;selfLink&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.selfLink()));
      *     }
      * }
      * ```
@@ -4192,10 +4909,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4203,13 +4927,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCert = Output.of(ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
+     *         final var myCert = ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
      *             .name(&#34;my-cert&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;certificate&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificate()));
-     *         ctx.export(&#34;certificateId&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificateId()));
-     *         ctx.export(&#34;selfLink&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.selfLink()));
+     *         ctx.export(&#34;certificate&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificate()));
+     *         ctx.export(&#34;certificateId&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificateId()));
+     *         ctx.export(&#34;selfLink&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.selfLink()));
      *     }
      * }
      * ```
@@ -4225,10 +4949,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4236,13 +4967,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCert = Output.of(ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
+     *         final var myCert = ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
      *             .name(&#34;my-cert&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;certificate&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificate()));
-     *         ctx.export(&#34;certificateId&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificateId()));
-     *         ctx.export(&#34;selfLink&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.selfLink()));
+     *         ctx.export(&#34;certificate&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificate()));
+     *         ctx.export(&#34;certificateId&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificateId()));
+     *         ctx.export(&#34;selfLink&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.selfLink()));
      *     }
      * }
      * ```
@@ -4258,10 +4989,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4269,13 +5007,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myCert = Output.of(ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
+     *         final var myCert = ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
      *             .name(&#34;my-cert&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;certificate&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificate()));
-     *         ctx.export(&#34;certificateId&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificateId()));
-     *         ctx.export(&#34;selfLink&#34;, myCert.apply(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.selfLink()));
+     *         ctx.export(&#34;certificate&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificate()));
+     *         ctx.export(&#34;certificateId&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.certificateId()));
+     *         ctx.export(&#34;selfLink&#34;, myCert.applyValue(getRegionSslCertificateResult -&gt; getRegionSslCertificateResult.selfLink()));
      *     }
      * }
      * ```
@@ -4337,10 +5075,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4348,10 +5093,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var daily = Output.of(ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
      *             .name(&#34;daily&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4366,10 +5111,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4377,10 +5129,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var daily = Output.of(ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
      *             .name(&#34;daily&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4395,10 +5147,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4406,10 +5165,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var daily = Output.of(ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
      *             .name(&#34;daily&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4424,10 +5183,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4435,10 +5201,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var daily = Output.of(ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
+     *         final var daily = ComputeFunctions.getResourcePolicy(GetResourcePolicyArgs.builder()
      *             .name(&#34;daily&#34;)
      *             .region(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4455,10 +5221,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4466,10 +5239,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouter(GetRouterArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouter(GetRouterArgs.builder()
      *             .name(&#34;myrouter-us-east1&#34;)
      *             .network(&#34;my-network&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4486,10 +5259,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4497,10 +5277,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouter(GetRouterArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouter(GetRouterArgs.builder()
      *             .name(&#34;myrouter-us-east1&#34;)
      *             .network(&#34;my-network&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4517,10 +5297,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4528,10 +5315,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouter(GetRouterArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouter(GetRouterArgs.builder()
      *             .name(&#34;myrouter-us-east1&#34;)
      *             .network(&#34;my-network&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4548,10 +5335,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4559,10 +5353,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouter(GetRouterArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouter(GetRouterArgs.builder()
      *             .name(&#34;myrouter-us-east1&#34;)
      *             .network(&#34;my-network&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4584,10 +5378,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4595,9 +5396,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
      *             .name(&#34;myrouter&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4619,10 +5420,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4630,9 +5438,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
      *             .name(&#34;myrouter&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4654,10 +5462,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4665,9 +5480,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
      *             .name(&#34;myrouter&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4689,10 +5504,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4700,9 +5522,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
      *             .name(&#34;myrouter&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4720,10 +5542,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4731,9 +5560,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-ssl-policy = Output.of(ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
+     *         final var my-ssl-policy = ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
      *             .name(&#34;production-ssl-policy&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4751,10 +5580,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4762,9 +5598,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-ssl-policy = Output.of(ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
+     *         final var my-ssl-policy = ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
      *             .name(&#34;production-ssl-policy&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4782,10 +5618,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4793,9 +5636,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-ssl-policy = Output.of(ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
+     *         final var my-ssl-policy = ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
      *             .name(&#34;production-ssl-policy&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4813,10 +5656,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4824,9 +5674,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-ssl-policy = Output.of(ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
+     *         final var my-ssl-policy = ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
      *             .name(&#34;production-ssl-policy&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4843,10 +5693,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4854,10 +5711,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-subnetwork = Output.of(ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
+     *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
      *             .region(&#34;us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4874,10 +5731,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4885,10 +5749,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-subnetwork = Output.of(ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
+     *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
      *             .region(&#34;us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4905,10 +5769,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4916,10 +5787,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-subnetwork = Output.of(ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
+     *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
      *             .region(&#34;us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4936,10 +5807,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4947,10 +5825,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-subnetwork = Output.of(ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
+     *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
      *             .region(&#34;us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4967,10 +5845,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4978,10 +5863,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-subnetwork = Output.of(ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
+     *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
      *             .region(&#34;us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -4998,10 +5883,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5009,10 +5901,10 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-subnetwork = Output.of(ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
+     *         final var my-subnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
      *             .name(&#34;default-us-east1&#34;)
      *             .region(&#34;us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -5029,10 +5921,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5040,9 +5939,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-vpn-gateway = Output.of(ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
+     *         final var my-vpn-gateway = ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
      *             .name(&#34;vpn-gateway-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -5059,10 +5958,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5070,9 +5976,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-vpn-gateway = Output.of(ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
+     *         final var my-vpn-gateway = ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
      *             .name(&#34;vpn-gateway-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -5089,10 +5995,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5100,9 +6013,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-vpn-gateway = Output.of(ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
+     *         final var my-vpn-gateway = ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
      *             .name(&#34;vpn-gateway-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -5119,10 +6032,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5130,9 +6050,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-vpn-gateway = Output.of(ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
+     *         final var my-vpn-gateway = ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
      *             .name(&#34;vpn-gateway-us-east1&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -5202,10 +6122,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5213,9 +6140,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
      *             .name(&#34;myrouter&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -5241,10 +6168,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5252,9 +6186,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
      *             .name(&#34;myrouter&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -5280,10 +6214,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5291,9 +6232,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
      *             .name(&#34;myrouter&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -5319,10 +6260,17 @@ public final class ComputeFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -5330,9 +6278,9 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-router = Output.of(ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
+     *         final var my-router = ComputeFunctions.getRouterStatus(GetRouterStatusArgs.builder()
      *             .name(&#34;myrouter&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

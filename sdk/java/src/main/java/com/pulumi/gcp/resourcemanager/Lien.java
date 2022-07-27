@@ -22,10 +22,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.resourcemanager.Lien;
+ * import com.pulumi.gcp.resourcemanager.LienArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -39,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *         var lien = new Lien(&#34;lien&#34;, LienArgs.builder()        
  *             .origin(&#34;machine-readable-explanation&#34;)
- *             .parent(project.number().apply(number -&gt; String.format(&#34;projects/%s&#34;, number)))
+ *             .parent(project.number().applyValue(number -&gt; String.format(&#34;projects/%s&#34;, number)))
  *             .reason(&#34;This project is an important environment&#34;)
  *             .restrictions(&#34;resourcemanager.projects.delete&#34;)
  *             .build());

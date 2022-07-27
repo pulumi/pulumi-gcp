@@ -55,7 +55,7 @@ import (
 // 			Project: pulumi.String(project.ProjectId),
 // 			Role:    pulumi.String("roles/bigquery.jobUser"),
 // 			Member: hcSa.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {

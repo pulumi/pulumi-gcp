@@ -23,10 +23,24 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -53,11 +67,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var frontendRecordSet = new RecordSet(&#34;frontendRecordSet&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+ *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
  *             .type(&#34;A&#34;)
  *             .ttl(300)
  *             .managedZone(prod.name())
- *             .rrdatas(frontendInstance.networkInterfaces().apply(networkInterfaces -&gt; networkInterfaces[0].accessConfigs()[0].natIp()))
+ *             .rrdatas(frontendInstance.networkInterfaces().applyValue(networkInterfaces -&gt; networkInterfaces[0].accessConfigs()[0].natIp()))
  *             .build());
  * 
  *     }
@@ -67,10 +81,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -83,7 +106,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var recordSet = new RecordSet(&#34;recordSet&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
+ *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
  *             .managedZone(prod.name())
  *             .type(&#34;A&#34;)
  *             .ttl(300)
@@ -97,10 +120,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -134,10 +166,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -150,7 +191,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var spf = new RecordSet(&#34;spf&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+ *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
  *             .managedZone(prod.name())
  *             .type(&#34;TXT&#34;)
  *             .ttl(300)
@@ -166,10 +207,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -182,7 +232,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cname = new RecordSet(&#34;cname&#34;, RecordSetArgs.builder()        
- *             .name(prod.dnsName().apply(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+ *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
  *             .managedZone(prod.name())
  *             .type(&#34;CNAME&#34;)
  *             .ttl(300)
@@ -197,10 +247,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

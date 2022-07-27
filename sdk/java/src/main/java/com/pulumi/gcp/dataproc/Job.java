@@ -38,10 +38,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.Cluster;
+ * import com.pulumi.gcp.dataproc.ClusterArgs;
+ * import com.pulumi.gcp.dataproc.Job;
+ * import com.pulumi.gcp.dataproc.JobArgs;
+ * import com.pulumi.gcp.dataproc.inputs.JobPlacementArgs;
+ * import com.pulumi.gcp.dataproc.inputs.JobSparkConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.JobSparkConfigLoggingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.JobPysparkConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -82,8 +95,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         ctx.export(&#34;sparkStatus&#34;, spark.statuses().apply(statuses -&gt; statuses[0].state()));
- *         ctx.export(&#34;pysparkStatus&#34;, pyspark.statuses().apply(statuses -&gt; statuses[0].state()));
+ *         ctx.export(&#34;sparkStatus&#34;, spark.statuses().applyValue(statuses -&gt; statuses[0].state()));
+ *         ctx.export(&#34;pysparkStatus&#34;, pyspark.statuses().applyValue(statuses -&gt; statuses[0].state()));
  *     }
  * }
  * ```

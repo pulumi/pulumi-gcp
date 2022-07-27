@@ -34,10 +34,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.healthcare.Dataset;
+ * import com.pulumi.gcp.healthcare.DatasetArgs;
+ * import com.pulumi.gcp.healthcare.FhirStore;
+ * import com.pulumi.gcp.healthcare.FhirStoreArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -71,10 +82,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.healthcare.Dataset;
+ * import com.pulumi.gcp.healthcare.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.healthcare.FhirStore;
+ * import com.pulumi.gcp.healthcare.FhirStoreArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -105,7 +131,7 @@ import javax.annotation.Nullable;
  *             .streamConfigs(FhirStoreStreamConfigArgs.builder()
  *                 .resourceTypes(&#34;Observation&#34;)
  *                 .bigqueryDestination(FhirStoreStreamConfigBigqueryDestinationArgs.builder()
- *                     .datasetUri(Output.tuple(bqDataset.project(), bqDataset.datasetId()).apply(values -&gt; {
+ *                     .datasetUri(Output.tuple(bqDataset.project(), bqDataset.datasetId()).applyValue(values -&gt; {
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
  *                         return String.format(&#34;bq://%s.%s&#34;, project,datasetId);

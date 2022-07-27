@@ -41,10 +41,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -71,10 +79,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -153,11 +176,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -165,22 +202,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cloudbuildServiceAccount = new Account(&#34;cloudbuildServiceAccount&#34;, AccountArgs.builder()        
  *             .accountId(&#34;my-service-account&#34;)
  *             .build());
  * 
  *         var actAs = new IAMMember(&#34;actAs&#34;, IAMMemberArgs.builder()        
- *             .project(project.apply(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
- *             .member(cloudbuildServiceAccount.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .member(cloudbuildServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
  *         var logsWriter = new IAMMember(&#34;logsWriter&#34;, IAMMemberArgs.builder()        
- *             .project(project.apply(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/logging.logWriter&#34;)
- *             .member(cloudbuildServiceAccount.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .member(cloudbuildServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
  *         var service_account_trigger = new Trigger(&#34;service-account-trigger&#34;, TriggerArgs.builder()        
@@ -203,10 +240,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGithubArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGithubPushArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -233,10 +279,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerPubsubConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -273,10 +330,31 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerWebhookConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -300,19 +378,19 @@ import javax.annotation.Nullable;
  *             .secretData(&#34;secretkeygoeshere&#34;)
  *             .build());
  * 
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
- *         final var secretAccessor = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *         final var secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *                 .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-cloudbuild.iam.gserviceaccount.com&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *                 .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-cloudbuild.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *                 .build())
- *             .build()));
+ *             .build());
  * 
  *         var policy = new SecretIamPolicy(&#34;policy&#34;, SecretIamPolicyArgs.builder()        
  *             .project(webhookTriggerSecretKey.project())
  *             .secretId(webhookTriggerSecretKey.secretId())
- *             .policyData(secretAccessor.apply(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(secretAccessor.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *         var webhook_config_trigger = new Trigger(&#34;webhook-config-trigger&#34;, TriggerArgs.builder()        
@@ -340,10 +418,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerApprovalConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

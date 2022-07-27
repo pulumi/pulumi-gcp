@@ -35,7 +35,19 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
-// 			DashboardJson: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"displayName\": \"Demo Dashboard\",\n", "  \"gridLayout\": {\n", "    \"widgets\": [\n", "      {\n", "        \"blank\": {}\n", "      }\n", "    ]\n", "  }\n", "}\n", "\n", "\n")),
+// 			DashboardJson: pulumi.String(fmt.Sprintf(`{
+//   "displayName": "Demo Dashboard",
+//   "gridLayout": {
+//     "widgets": [
+//       {
+//         "blank": {}
+//       }
+//     ]
+//   }
+// }
+//
+//
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -59,7 +71,67 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
-// 			DashboardJson: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"displayName\": \"Grid Layout Example\",\n", "  \"gridLayout\": {\n", "    \"columns\": \"2\",\n", "    \"widgets\": [\n", "      {\n", "        \"title\": \"Widget 1\",\n", "        \"xyChart\": {\n", "          \"dataSets\": [{\n", "            \"timeSeriesQuery\": {\n", "              \"timeSeriesFilter\": {\n", "                \"filter\": \"metric.type=\\\"agent.googleapis.com/nginx/connections/accepted_count\\\"\",\n", "                \"aggregation\": {\n", "                  \"perSeriesAligner\": \"ALIGN_RATE\"\n", "                }\n", "              },\n", "              \"unitOverride\": \"1\"\n", "            },\n", "            \"plotType\": \"LINE\"\n", "          }],\n", "          \"timeshiftDuration\": \"0s\",\n", "          \"yAxis\": {\n", "            \"label\": \"y1Axis\",\n", "            \"scale\": \"LINEAR\"\n", "          }\n", "        }\n", "      },\n", "      {\n", "        \"text\": {\n", "          \"content\": \"Widget 2\",\n", "          \"format\": \"MARKDOWN\"\n", "        }\n", "      },\n", "      {\n", "        \"title\": \"Widget 3\",\n", "        \"xyChart\": {\n", "          \"dataSets\": [{\n", "            \"timeSeriesQuery\": {\n", "              \"timeSeriesFilter\": {\n", "                \"filter\": \"metric.type=\\\"agent.googleapis.com/nginx/connections/accepted_count\\\"\",\n", "                \"aggregation\": {\n", "                  \"perSeriesAligner\": \"ALIGN_RATE\"\n", "                }\n", "              },\n", "              \"unitOverride\": \"1\"\n", "            },\n", "            \"plotType\": \"STACKED_BAR\"\n", "          }],\n", "          \"timeshiftDuration\": \"0s\",\n", "          \"yAxis\": {\n", "            \"label\": \"y1Axis\",\n", "            \"scale\": \"LINEAR\"\n", "          }\n", "        }\n", "      }\n", "    ]\n", "  }\n", "}\n", "\n", "\n")),
+// 			DashboardJson: pulumi.String(fmt.Sprintf(`{
+//   "displayName": "Grid Layout Example",
+//   "gridLayout": {
+//     "columns": "2",
+//     "widgets": [
+//       {
+//         "title": "Widget 1",
+//         "xyChart": {
+//           "dataSets": [{
+//             "timeSeriesQuery": {
+//               "timeSeriesFilter": {
+//                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+//                 "aggregation": {
+//                   "perSeriesAligner": "ALIGN_RATE"
+//                 }
+//               },
+//               "unitOverride": "1"
+//             },
+//             "plotType": "LINE"
+//           }],
+//           "timeshiftDuration": "0s",
+//           "yAxis": {
+//             "label": "y1Axis",
+//             "scale": "LINEAR"
+//           }
+//         }
+//       },
+//       {
+//         "text": {
+//           "content": "Widget 2",
+//           "format": "MARKDOWN"
+//         }
+//       },
+//       {
+//         "title": "Widget 3",
+//         "xyChart": {
+//           "dataSets": [{
+//             "timeSeriesQuery": {
+//               "timeSeriesFilter": {
+//                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+//                 "aggregation": {
+//                   "perSeriesAligner": "ALIGN_RATE"
+//                 }
+//               },
+//               "unitOverride": "1"
+//             },
+//             "plotType": "STACKED_BAR"
+//           }],
+//           "timeshiftDuration": "0s",
+//           "yAxis": {
+//             "label": "y1Axis",
+//             "scale": "LINEAR"
+//           }
+//         }
+//       }
+//     ]
+//   }
+// }
+//
+//
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err

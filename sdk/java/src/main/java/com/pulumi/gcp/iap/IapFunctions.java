@@ -21,10 +21,19 @@ public final class IapFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -32,14 +41,14 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
      *             .projectId(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var projectClient = Output.of(IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
      *             .clientId(FOO.apps().googleusercontent().com())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -56,10 +65,19 @@ public final class IapFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -67,14 +85,14 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
      *             .projectId(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var projectClient = Output.of(IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
      *             .clientId(FOO.apps().googleusercontent().com())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -91,10 +109,19 @@ public final class IapFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -102,14 +129,14 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
      *             .projectId(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var projectClient = Output.of(IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
      *             .clientId(FOO.apps().googleusercontent().com())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -126,10 +153,19 @@ public final class IapFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -137,14 +173,14 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
      *             .projectId(&#34;foobar&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var projectClient = Output.of(IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
      *             .clientId(FOO.apps().googleusercontent().com())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

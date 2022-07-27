@@ -38,10 +38,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -61,10 +68,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -79,7 +95,7 @@ import javax.annotation.Nullable;
  * 
  *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
  *             .parent(&#34;organizations/123456789&#34;)
- *             .scopes(project.number().apply(number -&gt; String.format(&#34;projects/%s&#34;, number)))
+ *             .scopes(project.number().applyValue(number -&gt; String.format(&#34;projects/%s&#34;, number)))
  *             .title(&#34;Scoped Access Policy&#34;)
  *             .build());
  * 

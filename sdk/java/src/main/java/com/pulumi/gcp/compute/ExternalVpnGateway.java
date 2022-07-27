@@ -28,10 +28,33 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.HaVpnGateway;
+ * import com.pulumi.gcp.compute.HaVpnGatewayArgs;
+ * import com.pulumi.gcp.compute.ExternalVpnGateway;
+ * import com.pulumi.gcp.compute.ExternalVpnGatewayArgs;
+ * import com.pulumi.gcp.compute.inputs.ExternalVpnGatewayInterfaceArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
+ * import com.pulumi.gcp.compute.VPNTunnel;
+ * import com.pulumi.gcp.compute.VPNTunnelArgs;
+ * import com.pulumi.gcp.compute.RouterInterface;
+ * import com.pulumi.gcp.compute.RouterInterfaceArgs;
+ * import com.pulumi.gcp.compute.RouterPeer;
+ * import com.pulumi.gcp.compute.RouterPeerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -93,7 +116,7 @@ import javax.annotation.Nullable;
  *             .peerExternalGateway(externalGateway.id())
  *             .peerExternalGatewayInterface(0)
  *             .sharedSecret(&#34;a secret message&#34;)
- *             .router(router1.id().apply(id -&gt; String.format(&#34; %s&#34;, id)))
+ *             .router(router1.id().applyValue(id -&gt; String.format(&#34; %s&#34;, id)))
  *             .vpnGatewayInterface(1)
  *             .build());
  * 

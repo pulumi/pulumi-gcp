@@ -28,8 +28,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const registry = new gcp.iot.Registry("registry", {});
  * const test_device = new gcp.iot.Device("test-device", {

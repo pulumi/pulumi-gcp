@@ -95,7 +95,7 @@ import (
 // 			Project: agentProjectService.Project,
 // 			Role:    pulumi.String("roles/dialogflow.admin"),
 // 			Member: dialogflowServiceAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 // 			}).(pulumi.StringOutput),
 // 		})
 // 		if err != nil {
@@ -121,7 +121,7 @@ import (
 // 			ResetContexts: pulumi.Bool(true),
 // 			InputContextNames: pulumi.StringArray{
 // 				agentProjectProject.ProjectId.ApplyT(func(projectId string) (string, error) {
-// 					return fmt.Sprintf("%v%v%v", "projects/", projectId, "/agent/sessions/-/contexts/some_id"), nil
+// 					return fmt.Sprintf("projects/%v/agent/sessions/-/contexts/some_id", projectId), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 			Events: pulumi.StringArray{

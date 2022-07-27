@@ -39,10 +39,22 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+ * import com.pulumi.gcp.billing.Budget;
+ * import com.pulumi.gcp.billing.BudgetArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountSpecifiedAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetThresholdRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -50,12 +62,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var account = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+ *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+ *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
  *             .displayName(&#34;Example Billing Budget&#34;)
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
@@ -75,10 +87,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.billing.Budget;
+ * import com.pulumi.gcp.billing.BudgetArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetThresholdRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -86,17 +111,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var account = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+ *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
- *             .build()));
+ *             .build());
  * 
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+ *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
  *             .displayName(&#34;Example Billing Budget&#34;)
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format(&#34;projects/%s&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .lastPeriodAmount(true)
@@ -113,10 +138,24 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.billing.Budget;
+ * import com.pulumi.gcp.billing.BudgetArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountSpecifiedAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetThresholdRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -124,17 +163,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var account = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+ *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
- *             .build()));
+ *             .build());
  * 
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+ *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
  *             .displayName(&#34;Example Billing Budget&#34;)
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format(&#34;projects/%s&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *                 .creditTypesTreatment(&#34;EXCLUDE_ALL_CREDITS&#34;)
  *                 .services(&#34;services/24E6-581D-38E5&#34;)
  *                 .build())
@@ -161,10 +200,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.monitoring.NotificationChannel;
+ * import com.pulumi.gcp.monitoring.NotificationChannelArgs;
+ * import com.pulumi.gcp.billing.Budget;
+ * import com.pulumi.gcp.billing.BudgetArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountSpecifiedAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetThresholdRuleArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAllUpdatesRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -172,11 +228,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var account = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+ *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
- *             .build()));
+ *             .build());
  * 
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var notificationChannel = new NotificationChannel(&#34;notificationChannel&#34;, NotificationChannelArgs.builder()        
  *             .displayName(&#34;Example Notification Channel&#34;)
@@ -185,10 +241,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+ *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
  *             .displayName(&#34;Example Billing Budget&#34;)
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format(&#34;projects/%s&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
@@ -217,10 +273,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.billing.Budget;
+ * import com.pulumi.gcp.billing.BudgetArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterCustomPeriodArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterCustomPeriodStartDateArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterCustomPeriodEndDateArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountSpecifiedAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetThresholdRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -228,17 +301,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var account = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+ *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
- *             .build()));
+ *             .build());
  * 
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var budget = new Budget(&#34;budget&#34;, BudgetArgs.builder()        
- *             .billingAccount(account.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+ *             .billingAccount(account.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
  *             .displayName(&#34;Example Billing Budget&#34;)
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format(&#34;projects/%s&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *                 .creditTypesTreatment(&#34;EXCLUDE_ALL_CREDITS&#34;)
  *                 .services(&#34;services/24E6-581D-38E5&#34;)
  *                 .customPeriod(BudgetBudgetFilterCustomPeriodArgs.builder()

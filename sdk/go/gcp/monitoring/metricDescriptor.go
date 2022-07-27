@@ -92,7 +92,7 @@ import (
 // 						Comparison: pulumi.String("COMPARISON_GT"),
 // 						Duration:   pulumi.String("60s"),
 // 						Filter: withAlert.Type.ApplyT(func(_type string) (string, error) {
-// 							return fmt.Sprintf("%v%v%v", "metric.type=\"", _type, "\" AND resource.type=\"gce_instance\""), nil
+// 							return fmt.Sprintf("metric.type=\"%v\" AND resource.type=\"gce_instance\"", _type), nil
 // 						}).(pulumi.StringOutput),
 // 					},
 // 					DisplayName: pulumi.String("test condition"),

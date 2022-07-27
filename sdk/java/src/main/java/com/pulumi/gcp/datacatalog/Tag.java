@@ -32,10 +32,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.EntryGroup;
+ * import com.pulumi.gcp.datacatalog.EntryGroupArgs;
+ * import com.pulumi.gcp.datacatalog.Entry;
+ * import com.pulumi.gcp.datacatalog.EntryArgs;
+ * import com.pulumi.gcp.datacatalog.TagTemplate;
+ * import com.pulumi.gcp.datacatalog.TagTemplateArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeArgs;
+ * import com.pulumi.gcp.datacatalog.Tag;
+ * import com.pulumi.gcp.datacatalog.TagArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -111,10 +128,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.EntryGroup;
+ * import com.pulumi.gcp.datacatalog.EntryGroupArgs;
+ * import com.pulumi.gcp.datacatalog.Entry;
+ * import com.pulumi.gcp.datacatalog.EntryArgs;
+ * import com.pulumi.gcp.datacatalog.TagTemplate;
+ * import com.pulumi.gcp.datacatalog.TagTemplateArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeArgs;
+ * import com.pulumi.gcp.datacatalog.Tag;
+ * import com.pulumi.gcp.datacatalog.TagArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -197,10 +231,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.EntryGroup;
+ * import com.pulumi.gcp.datacatalog.EntryGroupArgs;
+ * import com.pulumi.gcp.datacatalog.Entry;
+ * import com.pulumi.gcp.datacatalog.EntryArgs;
+ * import com.pulumi.gcp.datacatalog.TagTemplate;
+ * import com.pulumi.gcp.datacatalog.TagTemplateArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldTypeEnumTypeArgs;
+ * import com.pulumi.gcp.datacatalog.Tag;
+ * import com.pulumi.gcp.datacatalog.TagArgs;
+ * import com.pulumi.gcp.datacatalog.inputs.TagFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

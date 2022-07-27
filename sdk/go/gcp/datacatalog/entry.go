@@ -119,7 +119,43 @@ import (
 // 			LinkedResource:      pulumi.String("my/linked/resource"),
 // 			DisplayName:         pulumi.String("my custom type entry"),
 // 			Description:         pulumi.String("a custom type entry for a user specified system"),
-// 			Schema:              pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"columns\": [\n", "    {\n", "      \"column\": \"first_name\",\n", "      \"description\": \"First name\",\n", "      \"mode\": \"REQUIRED\",\n", "      \"type\": \"STRING\"\n", "    },\n", "    {\n", "      \"column\": \"last_name\",\n", "      \"description\": \"Last name\",\n", "      \"mode\": \"REQUIRED\",\n", "      \"type\": \"STRING\"\n", "    },\n", "    {\n", "      \"column\": \"address\",\n", "      \"description\": \"Address\",\n", "      \"mode\": \"REPEATED\",\n", "      \"subcolumns\": [\n", "        {\n", "          \"column\": \"city\",\n", "          \"description\": \"City\",\n", "          \"mode\": \"NULLABLE\",\n", "          \"type\": \"STRING\"\n", "        },\n", "        {\n", "          \"column\": \"state\",\n", "          \"description\": \"State\",\n", "          \"mode\": \"NULLABLE\",\n", "          \"type\": \"STRING\"\n", "        }\n", "      ],\n", "      \"type\": \"RECORD\"\n", "    }\n", "  ]\n", "}\n")),
+// 			Schema: pulumi.String(fmt.Sprintf(`{
+//   "columns": [
+//     {
+//       "column": "first_name",
+//       "description": "First name",
+//       "mode": "REQUIRED",
+//       "type": "STRING"
+//     },
+//     {
+//       "column": "last_name",
+//       "description": "Last name",
+//       "mode": "REQUIRED",
+//       "type": "STRING"
+//     },
+//     {
+//       "column": "address",
+//       "description": "Address",
+//       "mode": "REPEATED",
+//       "subcolumns": [
+//         {
+//           "column": "city",
+//           "description": "City",
+//           "mode": "NULLABLE",
+//           "type": "STRING"
+//         },
+//         {
+//           "column": "state",
+//           "description": "State",
+//           "mode": "NULLABLE",
+//           "type": "STRING"
+//         }
+//       ],
+//       "type": "RECORD"
+//     }
+//   ]
+// }
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err

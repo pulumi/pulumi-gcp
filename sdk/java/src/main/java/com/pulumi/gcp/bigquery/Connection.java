@@ -26,10 +26,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudResourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -52,10 +60,28 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -108,10 +134,28 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -165,10 +209,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionAwsArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionAwsAccessRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -195,10 +248,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionAzureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -223,10 +284,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSpannerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

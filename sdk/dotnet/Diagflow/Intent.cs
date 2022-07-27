@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         var agentProjectService = new Gcp.Projects.Service("agentProjectService", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = agentProjectProject.ProjectId,
-    ///             Service = "dialogflow.googleapis.com",
+    ///             ServiceName = "dialogflow.googleapis.com",
     ///             DisableDependentServices = false,
     ///         });
     ///         var dialogflowServiceAccount = new Gcp.ServiceAccount.Account("dialogflowServiceAccount", new Gcp.ServiceAccount.AccountArgs

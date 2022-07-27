@@ -109,7 +109,7 @@ import (
 // 				"region": pulumi.String("us-central1"),
 // 			},
 // 			Network: exampleNetwork.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v", "projects/", project.Number, "/locations/global/networks/", name), nil
+// 				return fmt.Sprintf("projects/%v/locations/global/networks/%v", project.Number, name), nil
 // 			}).(pulumi.StringOutput),
 // 			Address: pulumi.String("1.2.3.4"),
 // 			Port:    pulumi.Int(5353),

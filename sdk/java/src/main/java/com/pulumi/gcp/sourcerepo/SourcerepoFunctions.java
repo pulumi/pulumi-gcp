@@ -24,10 +24,17 @@ public final class SourcerepoFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
+     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -35,9 +42,9 @@ public final class SourcerepoFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-repo = Output.of(SourcerepoFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var my-repo = SourcerepoFunctions.getRepository(GetRepositoryArgs.builder()
      *             .name(&#34;my-repository&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -57,10 +64,17 @@ public final class SourcerepoFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
+     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -68,9 +82,9 @@ public final class SourcerepoFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-repo = Output.of(SourcerepoFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var my-repo = SourcerepoFunctions.getRepository(GetRepositoryArgs.builder()
      *             .name(&#34;my-repository&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -90,10 +104,17 @@ public final class SourcerepoFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
+     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -101,9 +122,9 @@ public final class SourcerepoFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-repo = Output.of(SourcerepoFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var my-repo = SourcerepoFunctions.getRepository(GetRepositoryArgs.builder()
      *             .name(&#34;my-repository&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -123,10 +144,17 @@ public final class SourcerepoFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
+     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -134,9 +162,9 @@ public final class SourcerepoFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-repo = Output.of(SourcerepoFunctions.getRepository(GetRepositoryArgs.builder()
+     *         final var my-repo = SourcerepoFunctions.getRepository(GetRepositoryArgs.builder()
      *             .name(&#34;my-repository&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

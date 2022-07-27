@@ -39,10 +39,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -50,9 +57,9 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-bucket = Output.of(StorageFunctions.getBucket(GetBucketArgs.builder()
+     *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
      *             .name(&#34;my-bucket&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -72,10 +79,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -83,9 +97,9 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-bucket = Output.of(StorageFunctions.getBucket(GetBucketArgs.builder()
+     *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
      *             .name(&#34;my-bucket&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -105,10 +119,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -116,9 +137,9 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-bucket = Output.of(StorageFunctions.getBucket(GetBucketArgs.builder()
+     *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
      *             .name(&#34;my-bucket&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -138,10 +159,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -149,9 +177,9 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-bucket = Output.of(StorageFunctions.getBucket(GetBucketArgs.builder()
+     *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
      *             .name(&#34;my-bucket&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -173,10 +201,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -184,10 +219,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var picture = Output.of(StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
+     *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
      *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -209,10 +244,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -220,10 +262,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var picture = Output.of(StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
+     *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
      *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -245,10 +287,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -256,10 +305,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var picture = Output.of(StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
+     *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
      *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -281,10 +330,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -292,10 +348,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var picture = Output.of(StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
+     *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
      *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -317,10 +373,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -328,10 +391,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var picture = Output.of(StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
+     *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
      *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -353,10 +416,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -364,10 +434,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var picture = Output.of(StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
+     *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
      *             .bucket(&#34;image-store&#34;)
      *             .name(&#34;folder/butterfly01.jpg&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -391,10 +461,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -402,12 +479,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var key = Output.of(StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
+     *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
      *             .name(&#34;encryptedkey&#34;)
      *             .bucket(&#34;keystore&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;encrypted&#34;, key.apply(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
+     *         ctx.export(&#34;encrypted&#34;, key.applyValue(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
      *     }
      * }
      * ```
@@ -430,10 +507,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -441,12 +525,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var key = Output.of(StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
+     *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
      *             .name(&#34;encryptedkey&#34;)
      *             .bucket(&#34;keystore&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;encrypted&#34;, key.apply(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
+     *         ctx.export(&#34;encrypted&#34;, key.applyValue(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
      *     }
      * }
      * ```
@@ -469,10 +553,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -480,12 +571,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var key = Output.of(StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
+     *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
      *             .name(&#34;encryptedkey&#34;)
      *             .bucket(&#34;keystore&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;encrypted&#34;, key.apply(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
+     *         ctx.export(&#34;encrypted&#34;, key.applyValue(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
      *     }
      * }
      * ```
@@ -508,10 +599,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -519,12 +617,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var key = Output.of(StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
+     *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
      *             .name(&#34;encryptedkey&#34;)
      *             .bucket(&#34;keystore&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;encrypted&#34;, key.apply(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
+     *         ctx.export(&#34;encrypted&#34;, key.applyValue(getBucketObjectContentResult -&gt; getBucketObjectContentResult.content()));
      *     }
      * }
      * ```
@@ -542,10 +640,18 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -553,10 +659,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var artifact = Output.of(StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
      *             .bucket(&#34;install_binaries&#34;)
      *             .path(&#34;path/to/install_file.bin&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var vm = new Instance(&#34;vm&#34;);
      * 
@@ -567,10 +673,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -578,15 +691,15 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var getUrl = Output.of(StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
      *             .bucket(&#34;fried_chicken&#34;)
      *             .path(&#34;path/to/file&#34;)
      *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
      *             .contentType(&#34;text/plain&#34;)
      *             .duration(&#34;2d&#34;)
-     *             .credentials(Files.readString(&#34;path/to/credentials.json&#34;))
+     *             .credentials(Files.readString(Paths.get(&#34;path/to/credentials.json&#34;)))
      *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -605,10 +718,18 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -616,10 +737,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var artifact = Output.of(StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
      *             .bucket(&#34;install_binaries&#34;)
      *             .path(&#34;path/to/install_file.bin&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var vm = new Instance(&#34;vm&#34;);
      * 
@@ -630,10 +751,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -641,15 +769,15 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var getUrl = Output.of(StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
      *             .bucket(&#34;fried_chicken&#34;)
      *             .path(&#34;path/to/file&#34;)
      *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
      *             .contentType(&#34;text/plain&#34;)
      *             .duration(&#34;2d&#34;)
-     *             .credentials(Files.readString(&#34;path/to/credentials.json&#34;))
+     *             .credentials(Files.readString(Paths.get(&#34;path/to/credentials.json&#34;)))
      *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -668,10 +796,18 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -679,10 +815,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var artifact = Output.of(StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
      *             .bucket(&#34;install_binaries&#34;)
      *             .path(&#34;path/to/install_file.bin&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var vm = new Instance(&#34;vm&#34;);
      * 
@@ -693,10 +829,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -704,15 +847,15 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var getUrl = Output.of(StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
      *             .bucket(&#34;fried_chicken&#34;)
      *             .path(&#34;path/to/file&#34;)
      *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
      *             .contentType(&#34;text/plain&#34;)
      *             .duration(&#34;2d&#34;)
-     *             .credentials(Files.readString(&#34;path/to/credentials.json&#34;))
+     *             .credentials(Files.readString(Paths.get(&#34;path/to/credentials.json&#34;)))
      *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -731,10 +874,18 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -742,10 +893,10 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var artifact = Output.of(StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
      *             .bucket(&#34;install_binaries&#34;)
      *             .path(&#34;path/to/install_file.bin&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var vm = new Instance(&#34;vm&#34;);
      * 
@@ -756,10 +907,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -767,15 +925,15 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var getUrl = Output.of(StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
      *             .bucket(&#34;fried_chicken&#34;)
      *             .path(&#34;path/to/file&#34;)
      *             .contentMd5(&#34;pRviqwS4c4OTJRTe03FD1w==&#34;)
      *             .contentType(&#34;text/plain&#34;)
      *             .duration(&#34;2d&#34;)
-     *             .credentials(Files.readString(&#34;path/to/credentials.json&#34;))
+     *             .credentials(Files.readString(Paths.get(&#34;path/to/credentials.json&#34;)))
      *             .extensionHeaders(Map.of(&#34;x-goog-if-generation-match&#34;, 1))
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -824,10 +982,19 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -835,12 +1002,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
@@ -850,11 +1017,23 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -862,12 +1041,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
@@ -926,10 +1105,19 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -937,12 +1125,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
@@ -952,11 +1140,23 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -964,12 +1164,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
@@ -1028,10 +1228,19 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1039,12 +1248,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
@@ -1054,11 +1263,23 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1066,12 +1287,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
@@ -1130,10 +1351,19 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1141,12 +1371,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
@@ -1156,11 +1386,23 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1168,12 +1410,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
@@ -1232,10 +1474,19 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1243,12 +1494,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
@@ -1258,11 +1509,23 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1270,12 +1533,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
@@ -1334,10 +1597,19 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1345,12 +1617,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *     }
@@ -1360,11 +1632,23 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1372,12 +1656,12 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
      *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
-     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
      *             .build());
      * 
      *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
@@ -1404,10 +1688,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1415,7 +1706,7 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(StorageFunctions.getTransferProjectServieAccount());
+     *         final var default = StorageFunctions.getTransferProjectServieAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -1433,10 +1724,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1444,7 +1742,7 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(StorageFunctions.getTransferProjectServieAccount());
+     *         final var default = StorageFunctions.getTransferProjectServieAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -1462,10 +1760,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1473,7 +1778,7 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(StorageFunctions.getTransferProjectServieAccount());
+     *         final var default = StorageFunctions.getTransferProjectServieAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -1491,10 +1796,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1502,7 +1814,7 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(StorageFunctions.getTransferProjectServieAccount());
+     *         final var default = StorageFunctions.getTransferProjectServieAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -1520,10 +1832,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1531,7 +1850,7 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(StorageFunctions.getTransferProjectServieAccount());
+     *         final var default = StorageFunctions.getTransferProjectServieAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -1549,10 +1868,17 @@ public final class StorageFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1560,7 +1886,7 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(StorageFunctions.getTransferProjectServieAccount());
+     *         final var default = StorageFunctions.getTransferProjectServieAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }

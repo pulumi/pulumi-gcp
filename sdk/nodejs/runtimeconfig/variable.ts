@@ -27,8 +27,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {description: "Runtime configuration values for my service"});
  * const my_secret = new gcp.runtimeconfig.Variable("my-secret", {

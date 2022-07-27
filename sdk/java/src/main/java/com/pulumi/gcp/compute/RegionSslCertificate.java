@@ -34,10 +34,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionSslCertificate;
+ * import com.pulumi.gcp.compute.RegionSslCertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -49,8 +56,8 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .namePrefix(&#34;my-certificate-&#34;)
  *             .description(&#34;a description&#34;)
- *             .privateKey(Files.readString(&#34;path/to/private.key&#34;))
- *             .certificate(Files.readString(&#34;path/to/certificate.crt&#34;))
+ *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
+ *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
  *             .build());
  * 
  *     }
@@ -60,10 +67,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionSslCertificate;
+ * import com.pulumi.gcp.compute.RegionSslCertificateArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -73,8 +89,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new RegionSslCertificate(&#34;default&#34;, RegionSslCertificateArgs.builder()        
  *             .region(&#34;us-central1&#34;)
- *             .privateKey(Files.readString(&#34;path/to/private.key&#34;))
- *             .certificate(Files.readString(&#34;path/to/certificate.crt&#34;))
+ *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
+ *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
  *             .build());
  * 
  *         var certificate = new RandomId(&#34;certificate&#34;, RandomIdArgs.builder()        
@@ -90,13 +106,32 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Region Ssl Certificate Target Https Proxies
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionSslCertificate;
+ * import com.pulumi.gcp.compute.RegionSslCertificateArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.RegionTargetHttpsProxy;
+ * import com.pulumi.gcp.compute.RegionTargetHttpsProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -107,8 +142,8 @@ import javax.annotation.Nullable;
  *         var defaultRegionSslCertificate = new RegionSslCertificate(&#34;defaultRegionSslCertificate&#34;, RegionSslCertificateArgs.builder()        
  *             .region(&#34;us-central1&#34;)
  *             .namePrefix(&#34;my-certificate-&#34;)
- *             .privateKey(Files.readString(&#34;path/to/private.key&#34;))
- *             .certificate(Files.readString(&#34;path/to/certificate.crt&#34;))
+ *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
+ *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
  *             .build());
  * 
  *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        

@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         var service = new Gcp.Projects.Service("service", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = myProject.ProjectId,
-    ///             Service = "appengineflex.googleapis.com",
+    ///             ServiceName = "appengineflex.googleapis.com",
     ///             DisableDependentServices = false,
     ///         });
     ///         var gaeApi = new Gcp.Projects.IAMMember("gaeApi", new Gcp.Projects.IAMMemberArgs

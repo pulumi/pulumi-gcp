@@ -42,7 +42,7 @@ import (
 // 		}
 // 		_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
 // 			Parent: basic.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "projects/", name), nil
+// 				return fmt.Sprintf("projects/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Spec: &orgpolicy.PolicySpecArgs{
 // 				Rules: orgpolicy.PolicySpecRuleArray{
@@ -146,7 +146,7 @@ import (
 // 		}
 // 		_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
 // 			Parent: basic.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "projects/", name), nil
+// 				return fmt.Sprintf("projects/%v", name), nil
 // 			}).(pulumi.StringOutput),
 // 			Spec: &orgpolicy.PolicySpecArgs{
 // 				Rules: orgpolicy.PolicySpecRuleArray{

@@ -42,10 +42,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -53,10 +60,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var department1 = Output.of(OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
+     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
      *             .displayName(&#34;Department 1&#34;)
      *             .parent(&#34;organizations/1234567&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -73,10 +80,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -84,10 +98,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var department1 = Output.of(OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
+     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
      *             .displayName(&#34;Department 1&#34;)
      *             .parent(&#34;organizations/1234567&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -104,10 +118,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -115,10 +136,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var department1 = Output.of(OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
+     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
      *             .displayName(&#34;Department 1&#34;)
      *             .parent(&#34;organizations/1234567&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -135,10 +156,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -146,10 +174,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var department1 = Output.of(OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
+     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
      *             .displayName(&#34;Department 1&#34;)
      *             .parent(&#34;organizations/1234567&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -164,10 +192,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+     * import com.pulumi.gcp.organizations.Project;
+     * import com.pulumi.gcp.organizations.ProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -175,15 +212,15 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var acct = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+     *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
      *             .displayName(&#34;My Billing Account&#34;)
      *             .open(true)
-     *             .build()));
+     *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
      *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
@@ -199,10 +236,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+     * import com.pulumi.gcp.organizations.Project;
+     * import com.pulumi.gcp.organizations.ProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -210,15 +256,15 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var acct = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+     *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
      *             .displayName(&#34;My Billing Account&#34;)
      *             .open(true)
-     *             .build()));
+     *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
      *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
@@ -234,10 +280,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+     * import com.pulumi.gcp.organizations.Project;
+     * import com.pulumi.gcp.organizations.ProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -245,15 +300,15 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var acct = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+     *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
      *             .displayName(&#34;My Billing Account&#34;)
      *             .open(true)
-     *             .build()));
+     *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
      *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
@@ -269,10 +324,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+     * import com.pulumi.gcp.organizations.Project;
+     * import com.pulumi.gcp.organizations.ProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -280,15 +344,15 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var acct = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+     *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
      *             .displayName(&#34;My Billing Account&#34;)
      *             .open(true)
-     *             .build()));
+     *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
      *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
@@ -304,10 +368,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+     * import com.pulumi.gcp.organizations.Project;
+     * import com.pulumi.gcp.organizations.ProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -315,15 +388,15 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var acct = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+     *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
      *             .displayName(&#34;My Billing Account&#34;)
      *             .open(true)
-     *             .build()));
+     *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
      *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
@@ -339,10 +412,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+     * import com.pulumi.gcp.organizations.Project;
+     * import com.pulumi.gcp.organizations.ProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -350,15 +432,15 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var acct = Output.of(OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+     *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
      *             .displayName(&#34;My Billing Account&#34;)
      *             .open(true)
-     *             .build()));
+     *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
      *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
-     *             .billingAccount(acct.apply(getBillingAccountResult -&gt; getBillingAccountResult.id()))
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
      * 
      *     }
@@ -371,26 +453,6 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = Output.of(OrganizationsFunctions.getClientConfig());
-     * 
-     *         ctx.export(&#34;project&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig() {
@@ -398,26 +460,6 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = Output.of(OrganizationsFunctions.getClientConfig());
-     * 
-     *         ctx.export(&#34;project&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain() {
@@ -425,26 +467,6 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = Output.of(OrganizationsFunctions.getClientConfig());
-     * 
-     *         ctx.export(&#34;project&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args) {
@@ -452,26 +474,6 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = Output.of(OrganizationsFunctions.getClientConfig());
-     * 
-     *         ctx.export(&#34;project&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args) {
@@ -479,26 +481,6 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = Output.of(OrganizationsFunctions.getClientConfig());
-     * 
-     *         ctx.export(&#34;project&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOptions options) {
@@ -506,26 +488,6 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = Output.of(OrganizationsFunctions.getClientConfig());
-     * 
-     *         ctx.export(&#34;project&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
@@ -545,27 +507,6 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
-     * ### Exporting An Email
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var me = Output.of(OrganizationsFunctions.getClientOpenIdUserInfo());
-     * 
-     *         ctx.export(&#34;my-email&#34;, me.apply(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo() {
@@ -585,27 +526,6 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
-     * ### Exporting An Email
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var me = Output.of(OrganizationsFunctions.getClientOpenIdUserInfo());
-     * 
-     *         ctx.export(&#34;my-email&#34;, me.apply(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain() {
@@ -625,27 +545,6 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
-     * ### Exporting An Email
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var me = Output.of(OrganizationsFunctions.getClientOpenIdUserInfo());
-     * 
-     *         ctx.export(&#34;my-email&#34;, me.apply(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args) {
@@ -665,27 +564,6 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
-     * ### Exporting An Email
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var me = Output.of(OrganizationsFunctions.getClientOpenIdUserInfo());
-     * 
-     *         ctx.export(&#34;my-email&#34;, me.apply(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args) {
@@ -705,27 +583,6 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
-     * ### Exporting An Email
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var me = Output.of(OrganizationsFunctions.getClientOpenIdUserInfo());
-     * 
-     *         ctx.export(&#34;my-email&#34;, me.apply(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args, InvokeOptions options) {
@@ -745,27 +602,6 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
-     * ### Exporting An Email
-     * ```java
-     * package generated_program;
-     * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var me = Output.of(OrganizationsFunctions.getClientOpenIdUserInfo());
-     * 
-     *         ctx.export(&#34;my-email&#34;, me.apply(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args, InvokeOptions options) {
@@ -776,10 +612,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -787,17 +630,17 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myFolder1 = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(&#34;folders/12345&#34;)
      *             .lookupOrganization(true)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myFolder2 = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(&#34;folders/23456&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.apply(getFolderResult -&gt; getFolderResult.organization()));
-     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.apply(getFolderResult -&gt; getFolderResult.parent()));
+     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.applyValue(getFolderResult -&gt; getFolderResult.organization()));
+     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.applyValue(getFolderResult -&gt; getFolderResult.parent()));
      *     }
      * }
      * ```
@@ -811,10 +654,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -822,17 +672,17 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myFolder1 = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(&#34;folders/12345&#34;)
      *             .lookupOrganization(true)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myFolder2 = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(&#34;folders/23456&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.apply(getFolderResult -&gt; getFolderResult.organization()));
-     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.apply(getFolderResult -&gt; getFolderResult.parent()));
+     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.applyValue(getFolderResult -&gt; getFolderResult.organization()));
+     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.applyValue(getFolderResult -&gt; getFolderResult.parent()));
      *     }
      * }
      * ```
@@ -846,10 +696,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -857,17 +714,17 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myFolder1 = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(&#34;folders/12345&#34;)
      *             .lookupOrganization(true)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myFolder2 = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(&#34;folders/23456&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.apply(getFolderResult -&gt; getFolderResult.organization()));
-     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.apply(getFolderResult -&gt; getFolderResult.parent()));
+     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.applyValue(getFolderResult -&gt; getFolderResult.organization()));
+     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.applyValue(getFolderResult -&gt; getFolderResult.parent()));
      *     }
      * }
      * ```
@@ -881,10 +738,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -892,17 +756,17 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myFolder1 = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(&#34;folders/12345&#34;)
      *             .lookupOrganization(true)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myFolder2 = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(&#34;folders/23456&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.apply(getFolderResult -&gt; getFolderResult.organization()));
-     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.apply(getFolderResult -&gt; getFolderResult.parent()));
+     *         ctx.export(&#34;myFolder1Organization&#34;, myFolder1.applyValue(getFolderResult -&gt; getFolderResult.organization()));
+     *         ctx.export(&#34;myFolder2Parent&#34;, myFolder2.applyValue(getFolderResult -&gt; getFolderResult.parent()));
      *     }
      * }
      * ```
@@ -921,10 +785,18 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFoldersArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -932,13 +804,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-folders = Output.of(OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
+     *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
      *             .parentId(String.format(&#34;organizations/%s&#34;, var_.organization_id()))
-     *             .build()));
+     *             .build());
      * 
-     *         final var first-folder = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(my_org_folders.folders()[0].name())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -958,10 +830,18 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFoldersArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -969,13 +849,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-folders = Output.of(OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
+     *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
      *             .parentId(String.format(&#34;organizations/%s&#34;, var_.organization_id()))
-     *             .build()));
+     *             .build());
      * 
-     *         final var first-folder = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(my_org_folders.folders()[0].name())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -995,10 +875,18 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFoldersArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1006,13 +894,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-folders = Output.of(OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
+     *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
      *             .parentId(String.format(&#34;organizations/%s&#34;, var_.organization_id()))
-     *             .build()));
+     *             .build());
      * 
-     *         final var first-folder = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(my_org_folders.folders()[0].name())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1032,10 +920,18 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFoldersArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1043,13 +939,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var my-org-folders = Output.of(OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
+     *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
      *             .parentId(String.format(&#34;organizations/%s&#34;, var_.organization_id()))
-     *             .build()));
+     *             .build());
      * 
-     *         final var first-folder = Output.of(OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
      *             .folder(my_org_folders.folders()[0].name())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1067,10 +963,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1078,7 +981,7 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
      *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
      *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
@@ -1102,7 +1005,7 @@ public final class OrganizationsFunctions {
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1124,10 +1027,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1135,7 +1045,7 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
      *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
      *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
@@ -1159,7 +1069,7 @@ public final class OrganizationsFunctions {
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1181,10 +1091,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1192,7 +1109,7 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
      *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
      *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
@@ -1216,7 +1133,7 @@ public final class OrganizationsFunctions {
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1238,10 +1155,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1249,7 +1173,7 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
      *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
      *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
@@ -1273,7 +1197,7 @@ public final class OrganizationsFunctions {
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1295,10 +1219,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1306,7 +1237,7 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
      *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
      *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
@@ -1330,7 +1261,7 @@ public final class OrganizationsFunctions {
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1352,10 +1283,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1363,7 +1301,7 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
      *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
      *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
@@ -1387,7 +1325,7 @@ public final class OrganizationsFunctions {
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1406,10 +1344,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+     * import com.pulumi.gcp.organizations.Folder;
+     * import com.pulumi.gcp.organizations.FolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1417,13 +1364,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var org = Output.of(OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+     *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
      *             .domain(&#34;example.com&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
      *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.apply(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
      *             .build());
      * 
      *     }
@@ -1439,10 +1386,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+     * import com.pulumi.gcp.organizations.Folder;
+     * import com.pulumi.gcp.organizations.FolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1450,13 +1406,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var org = Output.of(OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+     *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
      *             .domain(&#34;example.com&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
      *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.apply(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
      *             .build());
      * 
      *     }
@@ -1472,10 +1428,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+     * import com.pulumi.gcp.organizations.Folder;
+     * import com.pulumi.gcp.organizations.FolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1483,13 +1448,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var org = Output.of(OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+     *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
      *             .domain(&#34;example.com&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
      *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.apply(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
      *             .build());
      * 
      *     }
@@ -1505,10 +1470,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+     * import com.pulumi.gcp.organizations.Folder;
+     * import com.pulumi.gcp.organizations.FolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1516,13 +1490,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var org = Output.of(OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+     *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
      *             .domain(&#34;example.com&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
      *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.apply(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
      *             .build());
      * 
      *     }
@@ -1538,10 +1512,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+     * import com.pulumi.gcp.organizations.Folder;
+     * import com.pulumi.gcp.organizations.FolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1549,13 +1532,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var org = Output.of(OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+     *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
      *             .domain(&#34;example.com&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
      *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.apply(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
      *             .build());
      * 
      *     }
@@ -1571,10 +1554,19 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+     * import com.pulumi.gcp.organizations.Folder;
+     * import com.pulumi.gcp.organizations.FolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1582,13 +1574,13 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var org = Output.of(OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+     *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
      *             .domain(&#34;example.com&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var sales = new Folder(&#34;sales&#34;, FolderArgs.builder()        
      *             .displayName(&#34;Sales&#34;)
-     *             .parent(org.apply(getOrganizationResult -&gt; getOrganizationResult.name()))
+     *             .parent(org.applyValue(getOrganizationResult -&gt; getOrganizationResult.name()))
      *             .build());
      * 
      *     }
@@ -1608,10 +1600,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1619,9 +1618,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject());
+     *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.apply(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
      *     }
      * }
      * ```
@@ -1639,10 +1638,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1650,9 +1656,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject());
+     *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.apply(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
      *     }
      * }
      * ```
@@ -1670,10 +1676,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1681,9 +1694,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject());
+     *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.apply(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
      *     }
      * }
      * ```
@@ -1701,10 +1714,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1712,9 +1732,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject());
+     *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.apply(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
      *     }
      * }
      * ```
@@ -1732,10 +1752,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1743,9 +1770,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject());
+     *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.apply(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
      *     }
      * }
      * ```
@@ -1763,10 +1790,17 @@ public final class OrganizationsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1774,9 +1808,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = Output.of(OrganizationsFunctions.getProject());
+     *         final var project = OrganizationsFunctions.getProject();
      * 
-     *         ctx.export(&#34;projectNumber&#34;, project.apply(getProjectResult -&gt; getProjectResult.number()));
+     *         ctx.export(&#34;projectNumber&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()));
      *     }
      * }
      * ```

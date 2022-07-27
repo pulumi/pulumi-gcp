@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///     {
     ///         var servicenetworking = new Gcp.Projects.Service("servicenetworking", new Gcp.Projects.ServiceArgs
     ///         {
-    ///             Service = "servicenetworking.googleapis.com",
+    ///             ServiceName = "servicenetworking.googleapis.com",
     ///             DisableOnDestroy = false,
     ///         });
     ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs

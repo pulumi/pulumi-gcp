@@ -31,10 +31,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkPeering;
+ * import com.pulumi.gcp.compute.NetworkPeeringArgs;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfig;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -76,10 +87,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfig;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -119,13 +147,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .masterAuthorizedNetworksConfig()
  *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
- *                 .clusterSecondaryRangeName(containerSubnetwork.secondaryIpRanges().apply(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
- *                 .servicesSecondaryRangeName(containerSubnetwork.secondaryIpRanges().apply(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
+ *                 .clusterSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
+ *                 .servicesSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
  *                 .build())
  *             .build());
  * 
  *         var peeringGkeRoutes = new NetworkPeeringRoutesConfig(&#34;peeringGkeRoutes&#34;, NetworkPeeringRoutesConfigArgs.builder()        
- *             .peering(privateCluster.privateClusterConfig().apply(privateClusterConfig -&gt; privateClusterConfig.peeringName()))
+ *             .peering(privateCluster.privateClusterConfig().applyValue(privateClusterConfig -&gt; privateClusterConfig.peeringName()))
  *             .network(containerNetwork.name())
  *             .importCustomRoutes(true)
  *             .exportCustomRoutes(true)

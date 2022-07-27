@@ -34,10 +34,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.osconfig.PatchDeployment;
+ * import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentOneTimeScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -62,10 +71,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.osconfig.PatchDeployment;
+ * import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -98,10 +118,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.osconfig.PatchDeployment;
+ * import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -134,10 +165,31 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.osconfig.PatchDeployment;
+ * import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigYumArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleMonthlyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -145,10 +197,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var foobar = new Instance(&#34;foobar&#34;, InstanceArgs.builder()        
  *             .machineType(&#34;e2-medium&#34;)
@@ -159,7 +211,7 @@ import javax.annotation.Nullable;
  *                 &#34;bar&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()

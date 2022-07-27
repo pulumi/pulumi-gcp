@@ -38,17 +38,17 @@ namespace Pulumi.Gcp.Apigee
     ///         var apigee = new Gcp.Projects.Service("apigee", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = project.ProjectId,
-    ///             Service = "apigee.googleapis.com",
+    ///             ServiceName = "apigee.googleapis.com",
     ///         });
     ///         var compute = new Gcp.Projects.Service("compute", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = project.ProjectId,
-    ///             Service = "compute.googleapis.com",
+    ///             ServiceName = "compute.googleapis.com",
     ///         });
     ///         var servicenetworking = new Gcp.Projects.Service("servicenetworking", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = project.ProjectId,
-    ///             Service = "servicenetworking.googleapis.com",
+    ///             ServiceName = "servicenetworking.googleapis.com",
     ///         });
     ///         var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork", new Gcp.Compute.NetworkArgs
     ///         {

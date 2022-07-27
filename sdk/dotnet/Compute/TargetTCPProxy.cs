@@ -21,42 +21,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
     /// 
     /// ## Example Usage
-    /// ### Target Tcp Proxy Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultHealthCheck = new Gcp.Compute.HealthCheck("defaultHealthCheck", new Gcp.Compute.HealthCheckArgs
-    ///         {
-    ///             TimeoutSec = 1,
-    ///             CheckIntervalSec = 1,
-    ///             TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
-    ///             {
-    ///                 Port = 443,
-    ///             },
-    ///         });
-    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
-    ///         {
-    ///             Protocol = "TCP",
-    ///             TimeoutSec = 10,
-    ///             HealthChecks = 
-    ///             {
-    ///                 defaultHealthCheck.Id,
-    ///             },
-    ///         });
-    ///         var defaultTargetTCPProxy = new Gcp.Compute.TargetTCPProxy("defaultTargetTCPProxy", new Gcp.Compute.TargetTCPProxyArgs
-    ///         {
-    ///             BackendService = defaultBackendService.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// 
     /// ## Import
     /// 

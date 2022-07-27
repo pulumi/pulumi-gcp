@@ -24,10 +24,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.endpoints.Service;
+ * import com.pulumi.gcp.endpoints.ServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -38,13 +45,13 @@ import javax.annotation.Nullable;
  *         var openapiService = new Service(&#34;openapiService&#34;, ServiceArgs.builder()        
  *             .serviceName(&#34;api-name.endpoints.project-id.cloud.goog&#34;)
  *             .project(&#34;project-id&#34;)
- *             .openapiConfig(Files.readString(&#34;openapi_spec.yml&#34;))
+ *             .openapiConfig(Files.readString(Paths.get(&#34;openapi_spec.yml&#34;)))
  *             .build());
  * 
  *         var grpcService = new Service(&#34;grpcService&#34;, ServiceArgs.builder()        
  *             .serviceName(&#34;api-name.endpoints.project-id.cloud.goog&#34;)
  *             .project(&#34;project-id&#34;)
- *             .grpcConfig(Files.readString(&#34;service_spec.yml&#34;))
+ *             .grpcConfig(Files.readString(Paths.get(&#34;service_spec.yml&#34;)))
  *             .protocOutputBase64(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;compiled_descriptor_file.pb&#34;))))
  *             .build());
  * 

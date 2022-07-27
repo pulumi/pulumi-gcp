@@ -15,49 +15,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
- * ### Target Https Proxy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
- *
- * const defaultSSLCertificate = new gcp.compute.SSLCertificate("defaultSSLCertificate", {
- *     privateKey: fs.readFileSync("path/to/private.key"),
- *     certificate: fs.readFileSync("path/to/certificate.crt"),
- * });
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
- *     requestPath: "/",
- *     checkIntervalSec: 1,
- *     timeoutSec: 1,
- * });
- * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
- *     portName: "http",
- *     protocol: "HTTP",
- *     timeoutSec: 10,
- *     healthChecks: [defaultHttpHealthCheck.id],
- * });
- * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
- *     description: "a description",
- *     defaultService: defaultBackendService.id,
- *     hostRules: [{
- *         hosts: ["mysite.com"],
- *         pathMatcher: "allpaths",
- *     }],
- *     pathMatchers: [{
- *         name: "allpaths",
- *         defaultService: defaultBackendService.id,
- *         pathRules: [{
- *             paths: ["/*"],
- *             service: defaultBackendService.id,
- *         }],
- *     }],
- * });
- * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
- *     urlMap: defaultURLMap.id,
- *     sslCertificates: [defaultSSLCertificate.id],
- * });
- * ```
  *
  * ## Import
  *

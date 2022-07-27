@@ -23,10 +23,17 @@ public final class FolderFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.folder.FolderFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -34,12 +41,12 @@ public final class FolderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policy = Output.of(FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
      *             .folder(&#34;folders/folderid&#34;)
      *             .constraint(&#34;constraints/compute.trustedImageProjects&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.apply(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
      *     }
      * }
      * ```
@@ -57,10 +64,17 @@ public final class FolderFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.folder.FolderFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -68,12 +82,12 @@ public final class FolderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policy = Output.of(FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
      *             .folder(&#34;folders/folderid&#34;)
      *             .constraint(&#34;constraints/compute.trustedImageProjects&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.apply(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
      *     }
      * }
      * ```
@@ -91,10 +105,17 @@ public final class FolderFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.folder.FolderFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -102,12 +123,12 @@ public final class FolderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policy = Output.of(FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
      *             .folder(&#34;folders/folderid&#34;)
      *             .constraint(&#34;constraints/compute.trustedImageProjects&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.apply(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
      *     }
      * }
      * ```
@@ -125,10 +146,17 @@ public final class FolderFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.folder.FolderFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -136,12 +164,12 @@ public final class FolderFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var policy = Output.of(FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
      *             .folder(&#34;folders/folderid&#34;)
      *             .constraint(&#34;constraints/compute.trustedImageProjects&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;version&#34;, policy.apply(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
+     *         ctx.export(&#34;version&#34;, policy.applyValue(getOrganizationPolicyResult -&gt; getOrganizationPolicyResult.version()));
      *     }
      * }
      * ```

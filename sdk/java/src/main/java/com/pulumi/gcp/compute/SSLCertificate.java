@@ -34,10 +34,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SSLCertificate;
+ * import com.pulumi.gcp.compute.SSLCertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -48,8 +55,8 @@ import javax.annotation.Nullable;
  *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
  *             .namePrefix(&#34;my-certificate-&#34;)
  *             .description(&#34;a description&#34;)
- *             .privateKey(Files.readString(&#34;path/to/private.key&#34;))
- *             .certificate(Files.readString(&#34;path/to/certificate.crt&#34;))
+ *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
+ *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
  *             .build());
  * 
  *     }
@@ -59,10 +66,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SSLCertificate;
+ * import com.pulumi.gcp.compute.SSLCertificateArgs;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -71,8 +87,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
- *             .privateKey(Files.readString(&#34;path/to/private.key&#34;))
- *             .certificate(Files.readString(&#34;path/to/certificate.crt&#34;))
+ *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
+ *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
  *             .build());
  * 
  *         var certificate = new RandomId(&#34;certificate&#34;, RandomIdArgs.builder()        
@@ -88,13 +104,31 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Ssl Certificate Target Https Proxies
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SSLCertificate;
+ * import com.pulumi.gcp.compute.SSLCertificateArgs;
+ * import com.pulumi.gcp.compute.HttpHealthCheck;
+ * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpsProxy;
+ * import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -104,8 +138,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
  *             .namePrefix(&#34;my-certificate-&#34;)
- *             .privateKey(Files.readString(&#34;path/to/private.key&#34;))
- *             .certificate(Files.readString(&#34;path/to/certificate.crt&#34;))
+ *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
+ *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
  *             .build());
  * 
  *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        

@@ -33,10 +33,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetFolderServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -44,14 +53,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
      *             .folderId(&#34;my-folder&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -75,10 +84,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetFolderServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -86,14 +104,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
      *             .folderId(&#34;my-folder&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -117,10 +135,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetFolderServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -128,14 +155,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
      *             .folderId(&#34;my-folder&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -159,10 +186,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetFolderServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -170,14 +206,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
      *             .folderId(&#34;my-folder&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getFolderServiceAccountResult -&gt; getFolderServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -201,10 +237,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetOrganizationServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -212,14 +257,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
      *             .organizationId(&#34;my-organization&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -243,10 +288,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetOrganizationServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -254,14 +308,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
      *             .organizationId(&#34;my-organization&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -285,10 +339,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetOrganizationServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -296,14 +359,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
      *             .organizationId(&#34;my-organization&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -327,10 +390,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetOrganizationServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -338,14 +410,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
      *             .organizationId(&#34;my-organization&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getOrganizationServiceAccountResult -&gt; getOrganizationServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -369,10 +441,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -380,14 +461,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
      *             .projectId(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -411,10 +492,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -422,14 +512,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
      *             .projectId(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -453,10 +543,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -464,14 +563,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
      *             .projectId(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }
@@ -495,10 +594,19 @@ public final class AccessapprovalFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -506,14 +614,14 @@ public final class AccessapprovalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var serviceAccount = Output.of(AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
      *             .projectId(&#34;my-project&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
      *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
-     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+     *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
      *             .build());
      * 
      *     }

@@ -15,54 +15,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
- * ### Region Target Https Proxy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
- *
- * const defaultRegionSslCertificate = new gcp.compute.RegionSslCertificate("defaultRegionSslCertificate", {
- *     region: "us-central1",
- *     privateKey: fs.readFileSync("path/to/private.key"),
- *     certificate: fs.readFileSync("path/to/certificate.crt"),
- * });
- * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
- *     region: "us-central1",
- *     httpHealthCheck: {
- *         port: 80,
- *     },
- * });
- * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
- *     region: "us-central1",
- *     protocol: "HTTP",
- *     loadBalancingScheme: "INTERNAL_MANAGED",
- *     timeoutSec: 10,
- *     healthChecks: [defaultRegionHealthCheck.id],
- * });
- * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
- *     region: "us-central1",
- *     description: "a description",
- *     defaultService: defaultRegionBackendService.id,
- *     hostRules: [{
- *         hosts: ["mysite.com"],
- *         pathMatcher: "allpaths",
- *     }],
- *     pathMatchers: [{
- *         name: "allpaths",
- *         defaultService: defaultRegionBackendService.id,
- *         pathRules: [{
- *             paths: ["/*"],
- *             service: defaultRegionBackendService.id,
- *         }],
- *     }],
- * });
- * const defaultRegionTargetHttpsProxy = new gcp.compute.RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy", {
- *     region: "us-central1",
- *     urlMap: defaultRegionUrlMap.id,
- *     sslCertificates: [defaultRegionSslCertificate.id],
- * });
- * ```
  *
  * ## Import
  *

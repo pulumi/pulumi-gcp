@@ -21,10 +21,17 @@ public final class AppengineFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.appengine.AppengineFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -32,7 +39,7 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(AppengineFunctions.getDefaultServiceAccount());
+     *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -50,10 +57,17 @@ public final class AppengineFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.appengine.AppengineFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -61,7 +75,7 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(AppengineFunctions.getDefaultServiceAccount());
+     *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -79,10 +93,17 @@ public final class AppengineFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.appengine.AppengineFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -90,7 +111,7 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(AppengineFunctions.getDefaultServiceAccount());
+     *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -108,10 +129,17 @@ public final class AppengineFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.appengine.AppengineFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -119,7 +147,7 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(AppengineFunctions.getDefaultServiceAccount());
+     *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -137,10 +165,17 @@ public final class AppengineFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.appengine.AppengineFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -148,7 +183,7 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(AppengineFunctions.getDefaultServiceAccount());
+     *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -166,10 +201,17 @@ public final class AppengineFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.appengine.AppengineFunctions;
+     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -177,7 +219,7 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(AppengineFunctions.getDefaultServiceAccount());
+     *         final var default = AppengineFunctions.getDefaultServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }

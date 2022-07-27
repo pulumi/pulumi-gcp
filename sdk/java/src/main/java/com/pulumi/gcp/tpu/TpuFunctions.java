@@ -21,10 +21,17 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -32,7 +39,7 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *     }
      * }
@@ -41,10 +48,19 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import com.pulumi.gcp.tpu.Node;
+     * import com.pulumi.gcp.tpu.NodeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -52,12 +68,12 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.apply(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
      *             .cidrBlock(&#34;10.2.0.0/29&#34;)
      *             .build());
      * 
@@ -76,10 +92,17 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -87,7 +110,7 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *     }
      * }
@@ -96,10 +119,19 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import com.pulumi.gcp.tpu.Node;
+     * import com.pulumi.gcp.tpu.NodeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -107,12 +139,12 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.apply(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
      *             .cidrBlock(&#34;10.2.0.0/29&#34;)
      *             .build());
      * 
@@ -131,10 +163,17 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -142,7 +181,7 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *     }
      * }
@@ -151,10 +190,19 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import com.pulumi.gcp.tpu.Node;
+     * import com.pulumi.gcp.tpu.NodeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -162,12 +210,12 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.apply(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
      *             .cidrBlock(&#34;10.2.0.0/29&#34;)
      *             .build());
      * 
@@ -186,10 +234,17 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -197,7 +252,7 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *     }
      * }
@@ -206,10 +261,19 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import com.pulumi.gcp.tpu.Node;
+     * import com.pulumi.gcp.tpu.NodeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -217,12 +281,12 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.apply(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
      *             .cidrBlock(&#34;10.2.0.0/29&#34;)
      *             .build());
      * 
@@ -241,10 +305,17 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -252,7 +323,7 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *     }
      * }
@@ -261,10 +332,19 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import com.pulumi.gcp.tpu.Node;
+     * import com.pulumi.gcp.tpu.NodeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -272,12 +352,12 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.apply(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
      *             .cidrBlock(&#34;10.2.0.0/29&#34;)
      *             .build());
      * 
@@ -296,10 +376,17 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -307,7 +394,7 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *     }
      * }
@@ -316,10 +403,19 @@ public final class TpuFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+     * import com.pulumi.gcp.tpu.Node;
+     * import com.pulumi.gcp.tpu.NodeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -327,12 +423,12 @@ public final class TpuFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+     *         final var available = TpuFunctions.getTensorflowVersions();
      * 
      *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
      *             .zone(&#34;us-central1-b&#34;)
      *             .acceleratorType(&#34;v3-8&#34;)
-     *             .tensorflowVersion(available.apply(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
+     *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
      *             .cidrBlock(&#34;10.2.0.0/29&#34;)
      *             .build());
      * 
