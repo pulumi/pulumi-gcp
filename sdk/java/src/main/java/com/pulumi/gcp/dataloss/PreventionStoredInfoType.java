@@ -31,10 +31,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionStoredInfoType;
+ * import com.pulumi.gcp.dataloss.PreventionStoredInfoTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeRegexArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -59,10 +67,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionStoredInfoType;
+ * import com.pulumi.gcp.dataloss.PreventionStoredInfoTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeDictionaryArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeDictionaryWordListArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -90,10 +107,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.dataloss.PreventionStoredInfoType;
+ * import com.pulumi.gcp.dataloss.PreventionStoredInfoTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -117,14 +149,14 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Displayname&#34;)
  *             .largeCustomDictionary(PreventionStoredInfoTypeLargeCustomDictionaryArgs.builder()
  *                 .cloudStorageFileSet(PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs.builder()
- *                     .url(Output.tuple(bucket.name(), object.name()).apply(values -&gt; {
+ *                     .url(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
  *                         return String.format(&#34;gs://%s/%s&#34;, bucketName,objectName);
  *                     }))
  *                     .build())
  *                 .outputPath(PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs.builder()
- *                     .path(bucket.name().apply(name -&gt; String.format(&#34;gs://%s/output/dictionary.txt&#34;, name)))
+ *                     .path(bucket.name().applyValue(name -&gt; String.format(&#34;gs://%s/output/dictionary.txt&#34;, name)))
  *                     .build())
  *                 .build())
  *             .build());

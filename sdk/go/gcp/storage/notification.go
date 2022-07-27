@@ -55,7 +55,7 @@ import (
 // 			Topic: topic.ID(),
 // 			Role:  pulumi.String("roles/pubsub.publisher"),
 // 			Members: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", gcsAccount.EmailAddress)),
+// 				pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
 // 			},
 // 		})
 // 		if err != nil {

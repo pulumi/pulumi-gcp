@@ -15,46 +15,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
- * ### Region Target Http Proxy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
- *     region: "us-central1",
- *     httpHealthCheck: {
- *         port: 80,
- *     },
- * });
- * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
- *     region: "us-central1",
- *     protocol: "HTTP",
- *     timeoutSec: 10,
- *     loadBalancingScheme: "INTERNAL_MANAGED",
- *     healthChecks: [defaultRegionHealthCheck.id],
- * });
- * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
- *     region: "us-central1",
- *     defaultService: defaultRegionBackendService.id,
- *     hostRules: [{
- *         hosts: ["mysite.com"],
- *         pathMatcher: "allpaths",
- *     }],
- *     pathMatchers: [{
- *         name: "allpaths",
- *         defaultService: defaultRegionBackendService.id,
- *         pathRules: [{
- *             paths: ["/*"],
- *             service: defaultRegionBackendService.id,
- *         }],
- *     }],
- * });
- * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {
- *     region: "us-central1",
- *     urlMap: defaultRegionUrlMap.id,
- * });
- * ```
  * ### Region Target Http Proxy Https Redirect
  *
  * ```typescript

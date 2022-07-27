@@ -41,10 +41,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.MonitoringFunctions;
+ * import com.pulumi.gcp.monitoring.inputs.GetAppEngineServiceArgs;
+ * import com.pulumi.gcp.monitoring.Slo;
+ * import com.pulumi.gcp.monitoring.SloArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloBasicSliArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloBasicSliLatencyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -52,9 +63,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = Output.of(MonitoringFunctions.getAppEngineService(GetAppEngineServiceArgs.builder()
+ *         final var default = MonitoringFunctions.getAppEngineService(GetAppEngineServiceArgs.builder()
  *             .moduleId(&#34;default&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var appengSlo = new Slo(&#34;appengSlo&#34;, SloArgs.builder()        
  *             .service(default_.serviceId())
@@ -80,10 +91,22 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.CustomService;
+ * import com.pulumi.gcp.monitoring.CustomServiceArgs;
+ * import com.pulumi.gcp.monitoring.Slo;
+ * import com.pulumi.gcp.monitoring.SloArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloRequestBasedSliArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloRequestBasedSliDistributionCutArgs;
+ * import com.pulumi.gcp.monitoring.inputs.SloRequestBasedSliDistributionCutRangeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

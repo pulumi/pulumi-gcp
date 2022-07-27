@@ -41,10 +41,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.notebooks.Instance;
+ * import com.pulumi.gcp.notebooks.InstanceArgs;
+ * import com.pulumi.gcp.notebooks.inputs.InstanceVmImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -68,10 +76,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.notebooks.Instance;
+ * import com.pulumi.gcp.notebooks.InstanceArgs;
+ * import com.pulumi.gcp.notebooks.inputs.InstanceContainerImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -96,10 +112,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.notebooks.Instance;
+ * import com.pulumi.gcp.notebooks.InstanceArgs;
+ * import com.pulumi.gcp.notebooks.inputs.InstanceAcceleratorConfigArgs;
+ * import com.pulumi.gcp.notebooks.inputs.InstanceVmImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -128,10 +153,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
+ * import com.pulumi.gcp.notebooks.Instance;
+ * import com.pulumi.gcp.notebooks.InstanceArgs;
+ * import com.pulumi.gcp.notebooks.inputs.InstanceVmImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -139,14 +175,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myNetwork = Output.of(ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *         final var myNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;default&#34;)
- *             .build()));
+ *             .build());
  * 
- *         final var mySubnetwork = Output.of(ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
+ *         final var mySubnetwork = ComputeFunctions.getSubnetwork(GetSubnetworkArgs.builder()
  *             .name(&#34;default&#34;)
  *             .region(&#34;us-central1&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
  *             .location(&#34;us-central1-a&#34;)
@@ -162,8 +198,8 @@ import javax.annotation.Nullable;
  *             .bootDiskSizeGb(110)
  *             .noPublicIp(true)
  *             .noProxyAccess(true)
- *             .network(myNetwork.apply(getNetworkResult -&gt; getNetworkResult.id()))
- *             .subnet(mySubnetwork.apply(getSubnetworkResult -&gt; getSubnetworkResult.id()))
+ *             .network(myNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .subnet(mySubnetwork.applyValue(getSubnetworkResult -&gt; getSubnetworkResult.id()))
  *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
  *             .build());
  * 

@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             AddressType = "INTERNAL",
     ///             Purpose = "IPSEC_INTERCONNECT",
-    ///             Address = "192.168.1.0",
+    ///             IPAddress = "192.168.1.0",
     ///             PrefixLength = 29,
     ///             Network = network.SelfLink,
     ///         });
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             AddressType = "INTERNAL",
     ///             Purpose = "IPSEC_INTERCONNECT",
-    ///             Address = "192.168.2.0",
+    ///             IPAddress = "192.168.2.0",
     ///             PrefixLength = 29,
     ///             Network = network.SelfLink,
     ///         });

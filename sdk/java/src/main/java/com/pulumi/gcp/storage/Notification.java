@@ -38,11 +38,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.StorageFunctions;
+ * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+ * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.Notification;
+ * import com.pulumi.gcp.storage.NotificationArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -50,14 +64,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var gcsAccount = Output.of(StorageFunctions.getProjectServiceAccount());
+ *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
  * 
  *         var topic = new Topic(&#34;topic&#34;);
  * 
  *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
  *             .topic(topic.id())
  *             .role(&#34;roles/pubsub.publisher&#34;)
- *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
+ *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
  *             .build());
  * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        

@@ -29,10 +29,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.AccessApprovalSettings;
+ * import com.pulumi.gcp.projects.AccessApprovalSettingsArgs;
+ * import com.pulumi.gcp.projects.inputs.AccessApprovalSettingsEnrolledServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -58,11 +66,30 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.kms.inputs.CryptoKeyVersionTemplateArgs;
+ * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+ * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.kms.KmsFunctions;
+ * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+ * import com.pulumi.gcp.projects.AccessApprovalSettings;
+ * import com.pulumi.gcp.projects.AccessApprovalSettingsArgs;
+ * import com.pulumi.gcp.projects.inputs.AccessApprovalSettingsEnrolledServiceArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -83,14 +110,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var serviceAccount = Output.of(AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+ *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
  *             .projectId(&#34;my-project-name&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
  *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
- *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.apply(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
+ *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
  *             .build());
  * 
  *         final var cryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -99,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  *         var projectAccessApproval = new AccessApprovalSettings(&#34;projectAccessApproval&#34;, AccessApprovalSettingsArgs.builder()        
  *             .projectId(&#34;my-project-name&#34;)
- *             .activeKeyVersion(cryptoKeyVersion.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).apply(cryptoKeyVersion -&gt; cryptoKeyVersion.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.name())))
+ *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -&gt; cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.name())))
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
  *                 .cloudProduct(&#34;all&#34;)
  *                 .build())

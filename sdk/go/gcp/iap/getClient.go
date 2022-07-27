@@ -34,7 +34,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = iap.LookupClient(ctx, &iap.LookupClientArgs{
-// 			Brand:    fmt.Sprintf("%v%v%v", "projects/", project.Number, "/brands/[BRAND_NUMBER]"),
+// 			Brand:    fmt.Sprintf("projects/%v/brands/[BRAND_NUMBER]", project.Number),
 // 			ClientId: FOO.Apps.Googleusercontent.Com,
 // 		}, nil)
 // 		if err != nil {

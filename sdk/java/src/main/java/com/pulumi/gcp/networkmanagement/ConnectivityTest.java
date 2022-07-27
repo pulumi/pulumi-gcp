@@ -34,10 +34,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.networkmanagement.ConnectivityTest;
+ * import com.pulumi.gcp.networkmanagement.ConnectivityTestArgs;
+ * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceArgs;
+ * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -47,16 +64,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var vpc = new Network(&#34;vpc&#34;);
  * 
- *         final var debian9 = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var source = new Instance(&#34;source&#34;, InstanceArgs.builder()        
  *             .machineType(&#34;e2-medium&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(debian9.apply(getImageResult -&gt; getImageResult.id()))
+ *                     .image(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -69,7 +86,7 @@ import javax.annotation.Nullable;
  *             .machineType(&#34;e2-medium&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(debian9.apply(getImageResult -&gt; getImageResult.id()))
+ *                     .image(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -95,10 +112,24 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.networkmanagement.ConnectivityTest;
+ * import com.pulumi.gcp.networkmanagement.ConnectivityTestArgs;
+ * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceArgs;
+ * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

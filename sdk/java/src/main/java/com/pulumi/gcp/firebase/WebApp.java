@@ -27,12 +27,29 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.firebase.Project;
+ * import com.pulumi.gcp.firebase.ProjectArgs;
+ * import com.pulumi.gcp.firebase.WebApp;
+ * import com.pulumi.gcp.firebase.WebAppArgs;
+ * import com.pulumi.gcp.firebase.FirebaseFunctions;
+ * import com.pulumi.gcp.firebase.inputs.GetWebAppConfigArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -73,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.name())
- *             .content(Output.tuple(basicWebApp.appId(), basicWebAppConfig.apply(getWebAppConfigResult -&gt; getWebAppConfigResult), basicWebAppConfig.apply(getWebAppConfigResult -&gt; getWebAppConfigResult), basicWebAppConfig.apply(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;database_url&#34;], basicWebAppConfig.apply(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;storage_bucket&#34;], basicWebAppConfig.apply(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;messaging_sender_id&#34;], basicWebAppConfig.apply(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;measurement_id&#34;]).apply(values -&gt; {
+ *             .content(Output.tuple(basicWebApp.appId(), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;database_url&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;storage_bucket&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;messaging_sender_id&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;measurement_id&#34;]).applyValue(values -&gt; {
  *                 var appId = values.t1;
  *                 var basicWebAppConfig = values.t2;
  *                 var basicWebAppConfig1 = values.t3;
@@ -84,7 +101,7 @@ import javax.annotation.Nullable;
  *                 return serializeJson(
  *                     jsonObject(
  *                         jsonProperty(&#34;appId&#34;, appId),
- *                         jsonProperty(&#34;apiKey&#34;, basicWebAppConfig.apply(getWebAppConfigResult -&gt; getWebAppConfigResult.apiKey())),
+ *                         jsonProperty(&#34;apiKey&#34;, basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult.apiKey())),
  *                         jsonProperty(&#34;authDomain&#34;, basicWebAppConfig1.authDomain()),
  *                         jsonProperty(&#34;databaseURL&#34;, s),
  *                         jsonProperty(&#34;storageBucket&#34;, s1),

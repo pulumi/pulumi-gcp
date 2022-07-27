@@ -34,10 +34,30 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.ContainerFunctions;
+ * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+ * import com.pulumi.gcp.container.AwsCluster;
+ * import com.pulumi.gcp.container.AwsClusterArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneDatabaseEncryptionArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneMainVolumeArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneProxyConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneRootVolumeArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneSshConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterFleetArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterNetworkingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -45,10 +65,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var versions = Output.of(ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+ *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
  *             .location(&#34;us-west1&#34;)
  *             .project(&#34;my-project-name&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
@@ -93,7 +113,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .subnetIds(&#34;subnet-00000000000000000&#34;)
  *                 .tags(Map.of(&#34;owner&#34;, &#34;emailAddress:my@service-account.com&#34;))
- *                 .version(versions.apply(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
+ *                 .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
  *                 .build())
  *             .description(&#34;A sample aws cluster&#34;)
  *             .fleet(AwsClusterFleetArgs.builder()

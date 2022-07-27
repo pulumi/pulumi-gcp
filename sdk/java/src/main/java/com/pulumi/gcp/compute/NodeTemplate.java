@@ -33,10 +33,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NodeTemplate;
+ * import com.pulumi.gcp.compute.NodeTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -56,10 +63,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+ * import com.pulumi.gcp.compute.NodeTemplate;
+ * import com.pulumi.gcp.compute.NodeTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.NodeTemplateServerBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -67,9 +84,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var central1a = Output.of(ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+ *         final var central1a = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
  *             .zone(&#34;us-central1-a&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var template = new NodeTemplate(&#34;template&#34;, NodeTemplateArgs.builder()        
  *             .nodeAffinityLabels(Map.of(&#34;foo&#34;, &#34;baz&#34;))

@@ -27,10 +27,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.InstanceGroup;
+ * import com.pulumi.gcp.compute.InstanceGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -51,10 +58,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.InstanceGroup;
+ * import com.pulumi.gcp.compute.InstanceGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupNamedPortArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -86,13 +101,34 @@ import javax.annotation.Nullable;
  * Recreating an instance group that&#39;s in use by another resource will give a
  * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
  * as shown in this example to avoid this type of error.
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.InstanceGroup;
+ * import com.pulumi.gcp.compute.InstanceGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupNamedPortArgs;
+ * import com.pulumi.gcp.compute.HttpsHealthCheck;
+ * import com.pulumi.gcp.compute.HttpsHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -100,17 +136,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var debianImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var stagingVm = new Instance(&#34;stagingVm&#34;, InstanceArgs.builder()        
  *             .machineType(&#34;e2-medium&#34;)
  *             .zone(&#34;us-central1-c&#34;)
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(debianImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .image(debianImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()

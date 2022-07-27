@@ -31,10 +31,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -54,10 +61,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.appengine.AppengineFunctions;
+ * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -65,7 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = Output.of(AppengineFunctions.getDefaultServiceAccount());
+ *         final var default = AppengineFunctions.getDefaultServiceAccount();
  * 
  *         var extendedInstance = new Instance(&#34;extendedInstance&#34;, InstanceArgs.builder()        
  *             .description(&#34;My Data Fusion instance&#34;)

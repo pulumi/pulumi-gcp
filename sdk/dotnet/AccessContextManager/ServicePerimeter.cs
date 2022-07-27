@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///         var secure_data_exchange = new Gcp.AccessContextManager.ServicePerimeters("secure-data-exchange", new Gcp.AccessContextManager.ServicePerimetersArgs
     ///         {
     ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///             ServicePerimeters = 
+    ///             ServicePerimeterDetails = 
     ///             {
     ///                 new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterArgs
     ///                 {

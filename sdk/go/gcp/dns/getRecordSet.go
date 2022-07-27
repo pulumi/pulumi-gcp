@@ -38,7 +38,7 @@ import (
 // 		}
 // 		_, err = dns.LookupRecordSet(ctx, &dns.LookupRecordSetArgs{
 // 			ManagedZone: sample.Name,
-// 			Name:        fmt.Sprintf("%v%v", "my-record.", sample.DnsName),
+// 			Name:        fmt.Sprintf("my-record.%v", sample.DnsName),
 // 			Type:        "A",
 // 		}, nil)
 // 		if err != nil {

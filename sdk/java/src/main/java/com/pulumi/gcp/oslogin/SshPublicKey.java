@@ -24,31 +24,6 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
  * 
  * ## Example Usage
- * ### Os Login Ssh Key Basic
- * ```java
- * package generated_program;
- * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var me = Output.of(OrganizationsFunctions.getClientOpenIdUserInfo());
- * 
- *         var cache = new SshPublicKey(&#34;cache&#34;, SshPublicKeyArgs.builder()        
- *             .user(me.apply(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()))
- *             .key(Files.readString(&#34;path/to/id_rsa.pub&#34;))
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 

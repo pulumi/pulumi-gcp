@@ -27,181 +27,48 @@ import javax.annotation.Nullable;
  * &lt;https://cloud.google.com/compute/docs/load-balancing/http/&gt;
  * 
  * ## Example Usage
- * ### External Ssl Proxy Lb Mig Backend
- * ```java
- * package generated_program;
- * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
- * import com.pulumi.resources.CustomResourceOptions;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google)
- *                 .build());
- * 
- *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
- *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .network(defaultNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google)
- *                 .build());
- * 
- *         var defaultGlobalAddress = new GlobalAddress(&#34;defaultGlobalAddress&#34;);
- * 
- *         var defaultPrivateKey = new PrivateKey(&#34;defaultPrivateKey&#34;, PrivateKeyArgs.builder()        
- *             .algorithm(&#34;RSA&#34;)
- *             .rsaBits(2048)
- *             .build());
- * 
- *         var defaultSelfSignedCert = new SelfSignedCert(&#34;defaultSelfSignedCert&#34;, SelfSignedCertArgs.builder()        
- *             .keyAlgorithm(defaultPrivateKey.algorithm())
- *             .privateKeyPem(defaultPrivateKey.privateKeyPem())
- *             .validityPeriodHours(12)
- *             .earlyRenewalHours(3)
- *             .allowedUses(            
- *                 &#34;key_encipherment&#34;,
- *                 &#34;digital_signature&#34;,
- *                 &#34;server_auth&#34;)
- *             .dnsNames(&#34;example.com&#34;)
- *             .subjects(SelfSignedCertSubjectArgs.builder()
- *                 .commonName(&#34;example.com&#34;)
- *                 .organization(&#34;ACME Examples, Inc&#34;)
- *                 .build())
- *             .build());
- * 
- *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
- *             .privateKey(defaultPrivateKey.privateKeyPem())
- *             .certificate(defaultSelfSignedCert.certPem())
- *             .build());
- * 
- *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
- *             .timeoutSec(1)
- *             .checkIntervalSec(1)
- *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(&#34;443&#34;)
- *                 .build())
- *             .build());
- * 
- *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .machineType(&#34;e2-small&#34;)
- *             .tags(&#34;allow-health-check&#34;)
- *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .network(defaultNetwork.id())
- *                 .subnetwork(defaultSubnetwork.id())
- *                 .accessConfigs()
- *                 .build())
- *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-10&#34;)
- *                 .autoDelete(true)
- *                 .boot(true)
- *                 .build())
- *             .metadata(Map.of(&#34;startup-script&#34;, &#34;&#34;&#34;
- * #! /bin/bash
- * set -euo pipefail
- * export DEBIAN_FRONTEND=noninteractive
- * sudo apt-get update
- * sudo apt-get install  -y apache2 jq
- * sudo a2ensite default-ssl
- * sudo a2enmod ssl
- * sudo service apache2 restart
- * NAME=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/hostname&#34;)
- * IP=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip&#34;)
- * METADATA=$(curl -f -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True&#34; | jq &#39;del(.[&#34;startup-script&#34;])&#39;)
- * cat &lt;&lt;EOF &gt; /var/www/html/index.html
- * &lt;h1&gt;SSL Load Balancer&lt;/h1&gt;
- * &lt;pre&gt;
- * Name: $NAME
- * IP: $IP
- * Metadata: $METADATA
- * &lt;/pre&gt;
- * EOF
- *             &#34;&#34;&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google)
- *                 .build());
- * 
- *         var defaultInstanceGroupManager = new InstanceGroupManager(&#34;defaultInstanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
- *             .zone(&#34;us-central1-c&#34;)
- *             .namedPorts(InstanceGroupManagerNamedPortArgs.builder()
- *                 .name(&#34;tcp&#34;)
- *                 .port(443)
- *                 .build())
- *             .versions(InstanceGroupManagerVersionArgs.builder()
- *                 .instanceTemplate(defaultInstanceTemplate.id())
- *                 .name(&#34;primary&#34;)
- *                 .build())
- *             .baseInstanceName(&#34;vm&#34;)
- *             .targetSize(2)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google)
- *                 .build());
- * 
- *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
- *             .protocol(&#34;SSL&#34;)
- *             .portName(&#34;tcp&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
- *             .timeoutSec(10)
- *             .healthChecks(defaultHealthCheck.id())
- *             .backends(BackendServiceBackendArgs.builder()
- *                 .group(defaultInstanceGroupManager.instanceGroup())
- *                 .balancingMode(&#34;UTILIZATION&#34;)
- *                 .maxUtilization(1)
- *                 .capacityScaler(1)
- *                 .build())
- *             .build());
- * 
- *         var defaultTargetSSLProxy = new TargetSSLProxy(&#34;defaultTargetSSLProxy&#34;, TargetSSLProxyArgs.builder()        
- *             .backendService(defaultBackendService.id())
- *             .sslCertificates(defaultSSLCertificate.id())
- *             .build());
- * 
- *         var defaultGlobalForwardingRule = new GlobalForwardingRule(&#34;defaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
- *             .ipProtocol(&#34;TCP&#34;)
- *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
- *             .portRange(&#34;443&#34;)
- *             .target(defaultTargetSSLProxy.id())
- *             .ipAddress(defaultGlobalAddress.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google)
- *                 .build());
- * 
- *         var defaultFirewall = new Firewall(&#34;defaultFirewall&#34;, FirewallArgs.builder()        
- *             .direction(&#34;INGRESS&#34;)
- *             .network(defaultNetwork.id())
- *             .sourceRanges(            
- *                 &#34;130.211.0.0/22&#34;,
- *                 &#34;35.191.0.0/16&#34;)
- *             .allows(FirewallAllowArgs.builder()
- *                 .protocol(&#34;tcp&#34;)
- *                 .build())
- *             .targetTags(&#34;allow-health-check&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google)
- *                 .build());
- * 
- *     }
- * }
- * ```
  * ### External Tcp Proxy Lb Mig Backend
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.TargetTCPProxy;
+ * import com.pulumi.gcp.compute.TargetTCPProxyArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.Firewall;
+ * import com.pulumi.gcp.compute.FirewallArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -337,14 +204,49 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### External Http Lb Mig Backend Custom Header
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.Firewall;
+ * import com.pulumi.gcp.compute.FirewallArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -489,13 +391,31 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Global Forwarding Rule Http
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HttpHealthCheck;
+ * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -547,14 +467,44 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Global Forwarding Rule Internal
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleMetadataFilterArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -562,10 +512,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var debianImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .machineType(&#34;e2-medium&#34;)
@@ -573,7 +523,7 @@ import javax.annotation.Nullable;
  *                 .network(&#34;default&#34;)
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debianImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+ *                 .sourceImage(debianImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
@@ -668,10 +618,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -718,13 +683,41 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Global Forwarding Rule Hybrid
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpoint;
+ * import com.pulumi.gcp.compute.NetworkEndpointArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -846,11 +839,24 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

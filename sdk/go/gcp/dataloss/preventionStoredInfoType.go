@@ -120,12 +120,12 @@ import (
 // 					Url: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
 // 						bucketName := _args[0].(string)
 // 						objectName := _args[1].(string)
-// 						return fmt.Sprintf("%v%v%v%v", "gs://", bucketName, "/", objectName), nil
+// 						return fmt.Sprintf("gs://%v/%v", bucketName, objectName), nil
 // 					}).(pulumi.StringOutput),
 // 				},
 // 				OutputPath: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{
 // 					Path: bucket.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("%v%v%v", "gs://", name, "/output/dictionary.txt"), nil
+// 						return fmt.Sprintf("gs://%v/output/dictionary.txt", name), nil
 // 					}).(pulumi.StringOutput),
 // 				},
 // 			},

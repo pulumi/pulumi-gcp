@@ -29,10 +29,20 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -52,7 +62,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.apply(getKeysResult -&gt; getKeysResult).apply(fooDnsKeys -&gt; fooDnsKeys.apply(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult).applyValue(fooDnsKeys -&gt; fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
      *     }
      * }
      * ```
@@ -70,10 +80,20 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -93,7 +113,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.apply(getKeysResult -&gt; getKeysResult).apply(fooDnsKeys -&gt; fooDnsKeys.apply(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult).applyValue(fooDnsKeys -&gt; fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
      *     }
      * }
      * ```
@@ -111,10 +131,20 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -134,7 +164,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.apply(getKeysResult -&gt; getKeysResult).apply(fooDnsKeys -&gt; fooDnsKeys.apply(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult).applyValue(fooDnsKeys -&gt; fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
      *     }
      * }
      * ```
@@ -152,10 +182,20 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -175,7 +215,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.apply(getKeysResult -&gt; getKeysResult).apply(fooDnsKeys -&gt; fooDnsKeys.apply(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export(&#34;fooDnsDsRecord&#34;, fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult).applyValue(fooDnsKeys -&gt; fooDnsKeys.applyValue(getKeysResult -&gt; getKeysResult.keySigningKeys()[0].dsRecord())));
      *     }
      * }
      * ```
@@ -193,10 +233,19 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -204,15 +253,15 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var envDnsZone = Output.of(DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
      *             .name(&#34;qa-zone&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var dns = new RecordSet(&#34;dns&#34;, RecordSetArgs.builder()        
-     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.apply(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
+     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
      *             .type(&#34;TXT&#34;)
      *             .ttl(300)
-     *             .managedZone(envDnsZone.apply(getManagedZoneResult -&gt; getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
      *             .rrdatas(&#34;test&#34;)
      *             .build());
      * 
@@ -233,10 +282,19 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -244,15 +302,15 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var envDnsZone = Output.of(DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
      *             .name(&#34;qa-zone&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var dns = new RecordSet(&#34;dns&#34;, RecordSetArgs.builder()        
-     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.apply(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
+     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
      *             .type(&#34;TXT&#34;)
      *             .ttl(300)
-     *             .managedZone(envDnsZone.apply(getManagedZoneResult -&gt; getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
      *             .rrdatas(&#34;test&#34;)
      *             .build());
      * 
@@ -273,10 +331,19 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -284,15 +351,15 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var envDnsZone = Output.of(DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
      *             .name(&#34;qa-zone&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var dns = new RecordSet(&#34;dns&#34;, RecordSetArgs.builder()        
-     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.apply(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
+     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
      *             .type(&#34;TXT&#34;)
      *             .ttl(300)
-     *             .managedZone(envDnsZone.apply(getManagedZoneResult -&gt; getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
      *             .rrdatas(&#34;test&#34;)
      *             .build());
      * 
@@ -313,10 +380,19 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -324,15 +400,15 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var envDnsZone = Output.of(DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *         final var envDnsZone = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
      *             .name(&#34;qa-zone&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         var dns = new RecordSet(&#34;dns&#34;, RecordSetArgs.builder()        
-     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.apply(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
+     *             .name(String.format(&#34;my-address.%s&#34;, envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
      *             .type(&#34;TXT&#34;)
      *             .ttl(300)
-     *             .managedZone(envDnsZone.apply(getManagedZoneResult -&gt; getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
      *             .rrdatas(&#34;test&#34;)
      *             .build());
      * 
@@ -355,10 +431,18 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -366,15 +450,15 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample = Output.of(DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
      *             .name(&#34;sample-zone&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var rs = Output.of(DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.apply(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .name(String.format(&#34;my-record.%s&#34;, sample.apply(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
+     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
+     *             .managedZone(sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
+     *             .name(String.format(&#34;my-record.%s&#34;, sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
      *             .type(&#34;A&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -395,10 +479,18 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -406,15 +498,15 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample = Output.of(DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
      *             .name(&#34;sample-zone&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var rs = Output.of(DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.apply(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .name(String.format(&#34;my-record.%s&#34;, sample.apply(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
+     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
+     *             .managedZone(sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
+     *             .name(String.format(&#34;my-record.%s&#34;, sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
      *             .type(&#34;A&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -435,10 +527,18 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -446,15 +546,15 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample = Output.of(DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
      *             .name(&#34;sample-zone&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var rs = Output.of(DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.apply(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .name(String.format(&#34;my-record.%s&#34;, sample.apply(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
+     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
+     *             .managedZone(sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
+     *             .name(String.format(&#34;my-record.%s&#34;, sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
      *             .type(&#34;A&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -475,10 +575,18 @@ public final class DnsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -486,15 +594,15 @@ public final class DnsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sample = Output.of(DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
      *             .name(&#34;sample-zone&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var rs = Output.of(DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.apply(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .name(String.format(&#34;my-record.%s&#34;, sample.apply(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
+     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
+     *             .managedZone(sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
+     *             .name(String.format(&#34;my-record.%s&#34;, sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
      *             .type(&#34;A&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

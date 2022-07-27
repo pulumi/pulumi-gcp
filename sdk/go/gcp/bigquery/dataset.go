@@ -40,12 +40,12 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"env": pulumi.String("default"),
 // 			},
-// 			Accesses: bigquery.DatasetAccessArray{
-// 				&bigquery.DatasetAccessArgs{
+// 			Accesses: bigquery.DatasetAccessTypeArray{
+// 				&bigquery.DatasetAccessTypeArgs{
 // 					Role:        pulumi.String("OWNER"),
 // 					UserByEmail: bqowner.Email,
 // 				},
-// 				&bigquery.DatasetAccessArgs{
+// 				&bigquery.DatasetAccessTypeArgs{
 // 					Role:   pulumi.String("READER"),
 // 					Domain: pulumi.String("hashicorp.com"),
 // 				},
@@ -128,12 +128,12 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"env": pulumi.String("default"),
 // 			},
-// 			Accesses: bigquery.DatasetAccessArray{
-// 				&bigquery.DatasetAccessArgs{
+// 			Accesses: bigquery.DatasetAccessTypeArray{
+// 				&bigquery.DatasetAccessTypeArgs{
 // 					Role:        pulumi.String("OWNER"),
 // 					UserByEmail: bqowner.Email,
 // 				},
-// 				&bigquery.DatasetAccessArgs{
+// 				&bigquery.DatasetAccessTypeArgs{
 // 					Role:   pulumi.String("READER"),
 // 					Domain: pulumi.String("hashicorp.com"),
 // 				},
@@ -151,16 +151,16 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"env": pulumi.String("default"),
 // 			},
-// 			Accesses: bigquery.DatasetAccessArray{
-// 				&bigquery.DatasetAccessArgs{
+// 			Accesses: bigquery.DatasetAccessTypeArray{
+// 				&bigquery.DatasetAccessTypeArgs{
 // 					Role:        pulumi.String("OWNER"),
 // 					UserByEmail: bqowner.Email,
 // 				},
-// 				&bigquery.DatasetAccessArgs{
+// 				&bigquery.DatasetAccessTypeArgs{
 // 					Role:   pulumi.String("READER"),
 // 					Domain: pulumi.String("hashicorp.com"),
 // 				},
-// 				&bigquery.DatasetAccessArgs{
+// 				&bigquery.DatasetAccessTypeArgs{
 // 					Dataset: &bigquery.DatasetAccessDatasetArgs{
 // 						Dataset: &bigquery.DatasetAccessDatasetDatasetArgs{
 // 							ProjectId: public.Project,

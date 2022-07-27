@@ -32,10 +32,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.cloudfunctions.Function;
+ * import com.pulumi.gcp.cloudfunctions.FunctionArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudFunctionArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -78,10 +93,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudRunArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -119,10 +147,34 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.appengine.FlexibleAppVersion;
+ * import com.pulumi.gcp.appengine.FlexibleAppVersionArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionEntrypointArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionDeploymentArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionDeploymentZipArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionLivenessCheckArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionReadinessCheckArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionHandlerArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionHandlerStaticFilesArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupAppEngineArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -148,7 +200,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .deployment(FlexibleAppVersionDeploymentArgs.builder()
  *                 .zip(FlexibleAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(appengineNegBucket.name(), appengineNegBucketObject.name()).apply(values -&gt; {
+ *                     .sourceUrl(Output.tuple(appengineNegBucket.name(), appengineNegBucketObject.name()).applyValue(values -&gt; {
  *                         var appengineNegBucketName = values.t1;
  *                         var appengineNegBucketObjectName = values.t2;
  *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, appengineNegBucketName,appengineNegBucketObjectName);
@@ -197,10 +249,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const _default = new gcp.compute.SSLCertificate("default", {
  *     namePrefix: "my-certificate-",
@@ -38,9 +38,9 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as crypto from "crypto";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
- * import * from "fs";
  *
  * func computeFilebase64sha256(path string) string {
  * 	const fileData = Buffer.from(fs.readFileSync(path), 'binary')
@@ -59,55 +59,6 @@ import * as utilities from "../utilities";
  *         private_key: computeFilebase64sha256("path/to/private.key"),
  *         certificate: computeFilebase64sha256("path/to/certificate.crt"),
  *     },
- * });
- * ```
- * ### Ssl Certificate Target Https Proxies
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
- *
- * // Using with Target HTTPS Proxies
- * //
- * // SSL certificates cannot be updated after creation. In order to apply
- * // the specified configuration, the provider will destroy the existing
- * // resource and create a replacement. Example:
- * const defaultSSLCertificate = new gcp.compute.SSLCertificate("defaultSSLCertificate", {
- *     namePrefix: "my-certificate-",
- *     privateKey: fs.readFileSync("path/to/private.key"),
- *     certificate: fs.readFileSync("path/to/certificate.crt"),
- * });
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
- *     requestPath: "/",
- *     checkIntervalSec: 1,
- *     timeoutSec: 1,
- * });
- * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
- *     portName: "http",
- *     protocol: "HTTP",
- *     timeoutSec: 10,
- *     healthChecks: [defaultHttpHealthCheck.id],
- * });
- * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
- *     description: "a description",
- *     defaultService: defaultBackendService.id,
- *     hostRules: [{
- *         hosts: ["mysite.com"],
- *         pathMatcher: "allpaths",
- *     }],
- *     pathMatchers: [{
- *         name: "allpaths",
- *         defaultService: defaultBackendService.id,
- *         pathRules: [{
- *             paths: ["/*"],
- *             service: defaultBackendService.id,
- *         }],
- *     }],
- * });
- * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
- *     urlMap: defaultURLMap.id,
- *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
  *

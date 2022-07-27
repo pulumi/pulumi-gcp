@@ -24,6 +24,99 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
  * 
  * ## Example Usage
+ * ### App Engine Service Split Traffic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.appengine.StandardAppVersion;
+ * import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentZipArgs;
+ * import com.pulumi.gcp.appengine.EngineSplitTraffic;
+ * import com.pulumi.gcp.appengine.EngineSplitTrafficArgs;
+ * import com.pulumi.gcp.appengine.inputs.EngineSplitTrafficSplitArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .build());
+ * 
+ *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset(&#34;./test-fixtures/appengine/hello-world.zip&#34;))
+ *             .build());
+ * 
+ *         var liveappV1 = new StandardAppVersion(&#34;liveappV1&#34;, StandardAppVersionArgs.builder()        
+ *             .versionId(&#34;v1&#34;)
+ *             .service(&#34;liveapp&#34;)
+ *             .deleteServiceOnDestroy(true)
+ *             .runtime(&#34;nodejs10&#34;)
+ *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
+ *                 .shell(&#34;node ./app.js&#34;)
+ *                 .build())
+ *             .deployment(StandardAppVersionDeploymentArgs.builder()
+ *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+ *                         var bucketName = values.t1;
+ *                         var objectName = values.t2;
+ *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+ *                     }))
+ *                     .build())
+ *                 .build())
+ *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+ *             .build());
+ * 
+ *         var liveappV2 = new StandardAppVersion(&#34;liveappV2&#34;, StandardAppVersionArgs.builder()        
+ *             .versionId(&#34;v2&#34;)
+ *             .service(&#34;liveapp&#34;)
+ *             .noopOnDestroy(true)
+ *             .runtime(&#34;nodejs10&#34;)
+ *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
+ *                 .shell(&#34;node ./app.js&#34;)
+ *                 .build())
+ *             .deployment(StandardAppVersionDeploymentArgs.builder()
+ *                 .zip(StandardAppVersionDeploymentZipArgs.builder()
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
+ *                         var bucketName = values.t1;
+ *                         var objectName = values.t2;
+ *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);
+ *                     }))
+ *                     .build())
+ *                 .build())
+ *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
+ *             .build());
+ * 
+ *         var liveapp = new EngineSplitTraffic(&#34;liveapp&#34;, EngineSplitTrafficArgs.builder()        
+ *             .service(liveappV2.service())
+ *             .migrateTraffic(false)
+ *             .split(EngineSplitTrafficSplitArgs.builder()
+ *                 .shardBy(&#34;IP&#34;)
+ *                 %!v(PANIC=Format method: fatal: An assertion has failed))
+ *                 .build());
+ * 
+ *         }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -78,7 +78,7 @@ import (
 // 		_, err = accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
 // 			Parent: pulumi.String("organizations/123456789"),
 // 			Scopes: project.Number.ApplyT(func(number string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "projects/", number), nil
+// 				return fmt.Sprintf("projects/%v", number), nil
 // 			}).(pulumi.StringOutput),
 // 			Title: pulumi.String("Scoped Access Policy"),
 // 		})

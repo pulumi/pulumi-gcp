@@ -27,13 +27,33 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Container Analysis Occurrence Kms
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.containeranalysis.Note;
+ * import com.pulumi.gcp.containeranalysis.NoteArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityHintArgs;
+ * import com.pulumi.gcp.kms.KmsFunctions;
+ * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+ * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+ * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+ * import com.pulumi.gcp.binaryauthorization.Attestor;
+ * import com.pulumi.gcp.binaryauthorization.AttestorArgs;
+ * import com.pulumi.gcp.binaryauthorization.inputs.AttestorAttestationAuthorityNoteArgs;
+ * import com.pulumi.gcp.containeranalysis.Occurence;
+ * import com.pulumi.gcp.containeranalysis.OccurenceArgs;
+ * import com.pulumi.gcp.containeranalysis.inputs.OccurenceAttestationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -49,28 +69,28 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var keyring = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+ *         final var keyring = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
  *             .name(&#34;my-key-ring&#34;)
  *             .location(&#34;global&#34;)
- *             .build()));
+ *             .build());
  * 
- *         final var crypto-key = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+ *         final var crypto-key = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
  *             .name(&#34;my-key&#34;)
- *             .keyRing(keyring.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
- *             .build()));
+ *             .keyRing(keyring.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+ *             .build());
  * 
- *         final var version = Output.of(KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
+ *         final var version = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
  *             .cryptoKey(crypto_key.id())
- *             .build()));
+ *             .build());
  * 
  *         var attestor = new Attestor(&#34;attestor&#34;, AttestorArgs.builder()        
  *             .attestationAuthorityNote(AttestorAttestationAuthorityNoteArgs.builder()
  *                 .noteReference(note.name())
  *                 .publicKeys(AttestorAttestationAuthorityNotePublicKeyArgs.builder()
- *                     .id(version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id()))
+ *                     .id(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id()))
  *                     .pkixPublicKey(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs.builder()
- *                         .publicKeyPem(version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].pem()))
- *                         .signatureAlgorithm(version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].algorithm()))
+ *                         .publicKeyPem(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].pem()))
+ *                         .signatureAlgorithm(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.publicKeys()[0].algorithm()))
  *                         .build())
  *                     .build())
  *                 .build())
@@ -82,7 +102,7 @@ import javax.annotation.Nullable;
  *             .attestation(OccurenceAttestationArgs.builder()
  *                 .serializedPayload(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;path/to/my/payload.json&#34;))))
  *                 .signatures(OccurenceAttestationSignatureArgs.builder()
- *                     .publicKeyId(version.apply(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id()))
+ *                     .publicKeyId(version.applyValue(getKMSCryptoKeyVersionResult -&gt; getKMSCryptoKeyVersionResult.id()))
  *                     .serializedPayload(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;path/to/my/payload.json.sig&#34;))))
  *                     .build())
  *                 .build())

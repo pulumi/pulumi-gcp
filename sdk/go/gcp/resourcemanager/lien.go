@@ -38,7 +38,7 @@ import (
 // 		_, err = resourcemanager.NewLien(ctx, "lien", &resourcemanager.LienArgs{
 // 			Origin: pulumi.String("machine-readable-explanation"),
 // 			Parent: project.Number.ApplyT(func(number string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "projects/", number), nil
+// 				return fmt.Sprintf("projects/%v", number), nil
 // 			}).(pulumi.StringOutput),
 // 			Reason: pulumi.String("This project is an important environment"),
 // 			Restrictions: pulumi.StringArray{

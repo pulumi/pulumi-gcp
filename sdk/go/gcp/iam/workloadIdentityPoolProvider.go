@@ -158,7 +158,7 @@ import (
 // 			AttributeMapping: pulumi.StringMap{
 // 				"google.subject":                  pulumi.String("\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
 // 				"attribute.tid":                   pulumi.String("assertion.tid"),
-// 				"attribute.managed_identity_name": pulumi.String(fmt.Sprintf("%v%v%v%v", "      {\n", "        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n", "        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n", "      }[assertion.oid]\n")),
+// 				"attribute.managed_identity_name": pulumi.String(fmt.Sprintf("      {\n        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n      }[assertion.oid]\n")),
 // 			},
 // 			Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
 // 				AllowedAudiences: pulumi.StringArray{

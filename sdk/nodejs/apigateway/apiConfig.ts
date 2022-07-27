@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const apiCfgApi = new gcp.apigateway.Api("apiCfgApi", {apiId: "api-cfg"}, {
  *     provider: google_beta,

@@ -31,10 +31,17 @@ public final class ServiceAccountFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -42,9 +49,9 @@ public final class ServiceAccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var objectViewer = Output.of(ServiceAccountFunctions.getAccount(GetAccountArgs.builder()
+     *         final var objectViewer = ServiceAccountFunctions.getAccount(GetAccountArgs.builder()
      *             .accountId(&#34;object-viewer&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -62,10 +69,17 @@ public final class ServiceAccountFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -73,9 +87,9 @@ public final class ServiceAccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var objectViewer = Output.of(ServiceAccountFunctions.getAccount(GetAccountArgs.builder()
+     *         final var objectViewer = ServiceAccountFunctions.getAccount(GetAccountArgs.builder()
      *             .accountId(&#34;object-viewer&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -93,10 +107,17 @@ public final class ServiceAccountFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -104,9 +125,9 @@ public final class ServiceAccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var objectViewer = Output.of(ServiceAccountFunctions.getAccount(GetAccountArgs.builder()
+     *         final var objectViewer = ServiceAccountFunctions.getAccount(GetAccountArgs.builder()
      *             .accountId(&#34;object-viewer&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -124,10 +145,17 @@ public final class ServiceAccountFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -135,9 +163,9 @@ public final class ServiceAccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var objectViewer = Output.of(ServiceAccountFunctions.getAccount(GetAccountArgs.builder()
+     *         final var objectViewer = ServiceAccountFunctions.getAccount(GetAccountArgs.builder()
      *             .accountId(&#34;object-viewer&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -278,10 +306,21 @@ public final class ServiceAccountFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.Account;
+     * import com.pulumi.gcp.serviceAccount.AccountArgs;
+     * import com.pulumi.gcp.serviceAccount.Key;
+     * import com.pulumi.gcp.serviceAccount.KeyArgs;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -317,10 +356,21 @@ public final class ServiceAccountFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.Account;
+     * import com.pulumi.gcp.serviceAccount.AccountArgs;
+     * import com.pulumi.gcp.serviceAccount.Key;
+     * import com.pulumi.gcp.serviceAccount.KeyArgs;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -356,10 +406,21 @@ public final class ServiceAccountFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.Account;
+     * import com.pulumi.gcp.serviceAccount.AccountArgs;
+     * import com.pulumi.gcp.serviceAccount.Key;
+     * import com.pulumi.gcp.serviceAccount.KeyArgs;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -395,10 +456,21 @@ public final class ServiceAccountFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.Account;
+     * import com.pulumi.gcp.serviceAccount.AccountArgs;
+     * import com.pulumi.gcp.serviceAccount.Key;
+     * import com.pulumi.gcp.serviceAccount.KeyArgs;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {

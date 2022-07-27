@@ -380,7 +380,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         var runApi = new Gcp.Projects.Service("runApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
-    ///             Service = "run.googleapis.com",
+    ///             ServiceName = "run.googleapis.com",
     ///             DisableDependentServices = true,
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions
@@ -390,7 +390,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         var iamApi = new Gcp.Projects.Service("iamApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
-    ///             Service = "iam.googleapis.com",
+    ///             ServiceName = "iam.googleapis.com",
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions
     ///         {
@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         var resourceManagerApi = new Gcp.Projects.Service("resourceManagerApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
-    ///             Service = "cloudresourcemanager.googleapis.com",
+    ///             ServiceName = "cloudresourcemanager.googleapis.com",
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions
     ///         {
@@ -408,7 +408,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         var schedulerApi = new Gcp.Projects.Service("schedulerApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
-    ///             Service = "cloudscheduler.googleapis.com",
+    ///             ServiceName = "cloudscheduler.googleapis.com",
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions
     ///         {
@@ -765,7 +765,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         // Enable Cloud Run API
     ///         var run = new Gcp.Projects.Service("run", new Gcp.Projects.ServiceArgs
     ///         {
-    ///             Service = "run.googleapis.com",
+    ///             ServiceName = "run.googleapis.com",
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions
     ///         {
@@ -774,7 +774,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         // Enable Eventarc API
     ///         var eventarc = new Gcp.Projects.Service("eventarc", new Gcp.Projects.ServiceArgs
     ///         {
-    ///             Service = "eventarc.googleapis.com",
+    ///             ServiceName = "eventarc.googleapis.com",
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions
     ///         {
@@ -924,7 +924,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         var computeApi = new Gcp.Projects.Service("computeApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
-    ///             Service = "compute.googleapis.com",
+    ///             ServiceName = "compute.googleapis.com",
     ///             DisableDependentServices = true,
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions
@@ -934,7 +934,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         var runApi = new Gcp.Projects.Service("runApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
-    ///             Service = "run.googleapis.com",
+    ///             ServiceName = "run.googleapis.com",
     ///             DisableDependentServices = true,
     ///             DisableOnDestroy = false,
     ///         }, new CustomResourceOptions

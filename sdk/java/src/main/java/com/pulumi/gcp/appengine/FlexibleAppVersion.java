@@ -49,10 +49,39 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.appengine.Application;
+ * import com.pulumi.gcp.appengine.ApplicationArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.appengine.FlexibleAppVersion;
+ * import com.pulumi.gcp.appengine.FlexibleAppVersionArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionEntrypointArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionDeploymentArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionDeploymentZipArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionLivenessCheckArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionReadinessCheckArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionHandlerArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionHandlerStaticFilesArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingArgs;
+ * import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -80,7 +109,7 @@ import javax.annotation.Nullable;
  *         var gaeApi = new IAMMember(&#34;gaeApi&#34;, IAMMemberArgs.builder()        
  *             .project(service.project())
  *             .role(&#34;roles/compute.networkUser&#34;)
- *             .member(myProject.number().apply(number -&gt; String.format(&#34;serviceAccount:service-%s@gae-api-prod.google.com.iam.gserviceaccount.com&#34;, number)))
+ *             .member(myProject.number().applyValue(number -&gt; String.format(&#34;serviceAccount:service-%s@gae-api-prod.google.com.iam.gserviceaccount.com&#34;, number)))
  *             .build());
  * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
@@ -103,7 +132,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .deployment(FlexibleAppVersionDeploymentArgs.builder()
  *                 .zip(FlexibleAppVersionDeploymentZipArgs.builder()
- *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).apply(values -&gt; {
+ *                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -&gt; {
  *                         var bucketName = values.t1;
  *                         var objectName = values.t2;
  *                         return String.format(&#34;https://storage.googleapis.com/%s/%s&#34;, bucketName,objectName);

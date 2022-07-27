@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Subnetwork = defaultSubnetwork.Id,
     ///             AddressType = "INTERNAL",
-    ///             Address = "10.0.42.42",
+    ///             IPAddress = "10.0.42.42",
     ///             Region = "us-central1",
     ///         });
     ///     }
@@ -164,7 +164,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             AddressType = "INTERNAL",
     ///             Purpose = "IPSEC_INTERCONNECT",
-    ///             Address = "192.168.1.0",
+    ///             IPAddress = "192.168.1.0",
     ///             PrefixLength = 29,
     ///             Network = network.SelfLink,
     ///         });

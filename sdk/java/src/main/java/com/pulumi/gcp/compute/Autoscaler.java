@@ -35,11 +35,31 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.compute.TargetPool;
+ * import com.pulumi.gcp.compute.TargetPoolArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.Autoscaler;
+ * import com.pulumi.gcp.compute.AutoscalerArgs;
+ * import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -47,10 +67,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var debian9 = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .machineType(&#34;e2-medium&#34;)
@@ -59,7 +79,7 @@ import javax.annotation.Nullable;
  *                 &#34;foo&#34;,
  *                 &#34;bar&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debian9.apply(getImageResult -&gt; getImageResult.id()))
+ *                 .sourceImage(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(&#34;default&#34;)
@@ -115,10 +135,30 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.compute.TargetPool;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.Autoscaler;
+ * import com.pulumi.gcp.compute.AutoscalerArgs;
+ * import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyCpuUtilizationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -126,10 +166,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var debian9 = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var foobarInstanceTemplate = new InstanceTemplate(&#34;foobarInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .machineType(&#34;e2-medium&#34;)
@@ -138,7 +178,7 @@ import javax.annotation.Nullable;
  *                 &#34;foo&#34;,
  *                 &#34;bar&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debian9.apply(getImageResult -&gt; getImageResult.id()))
+ *                 .sourceImage(debian9.applyValue(getImageResult -&gt; getImageResult.id()))
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(&#34;default&#34;)

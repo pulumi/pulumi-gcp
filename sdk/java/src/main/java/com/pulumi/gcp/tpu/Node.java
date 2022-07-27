@@ -33,10 +33,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.tpu.TpuFunctions;
+ * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+ * import com.pulumi.gcp.tpu.Node;
+ * import com.pulumi.gcp.tpu.NodeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -44,12 +53,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+ *         final var available = TpuFunctions.getTensorflowVersions();
  * 
  *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
  *             .zone(&#34;us-central1-b&#34;)
  *             .acceleratorType(&#34;v3-8&#34;)
- *             .tensorflowVersion(available.apply(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
+ *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
  *             .cidrBlock(&#34;10.2.0.0/29&#34;)
  *             .build());
  * 
@@ -60,10 +69,26 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.tpu.TpuFunctions;
+ * import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.tpu.Node;
+ * import com.pulumi.gcp.tpu.NodeArgs;
+ * import com.pulumi.gcp.tpu.inputs.NodeSchedulingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -71,21 +96,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var available = Output.of(TpuFunctions.getTensorflowVersions());
+ *         final var available = TpuFunctions.getTensorflowVersions();
  * 
- *         final var network = Output.of(ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *         final var network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;default&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
- *             .network(network.apply(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(network.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .build());
  * 
  *         var privateServiceConnection = new Connection(&#34;privateServiceConnection&#34;, ConnectionArgs.builder()        
- *             .network(network.apply(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(network.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());
@@ -93,7 +118,7 @@ import javax.annotation.Nullable;
  *         var tpu = new Node(&#34;tpu&#34;, NodeArgs.builder()        
  *             .zone(&#34;us-central1-b&#34;)
  *             .acceleratorType(&#34;v3-8&#34;)
- *             .tensorflowVersion(available.apply(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
+ *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -&gt; getTensorflowVersionsResult.versions()[0]))
  *             .description(&#34;Google Provider test TPU&#34;)
  *             .useServiceNetworking(true)
  *             .network(privateServiceConnection.network())

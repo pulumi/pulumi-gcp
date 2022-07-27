@@ -32,10 +32,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.Cluster;
+ * import com.pulumi.gcp.dataproc.ClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -54,10 +61,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.dataproc.Cluster;
+ * import com.pulumi.gcp.dataproc.ClusterArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigDiskConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSoftwareConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -121,10 +145,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.Cluster;
+ * import com.pulumi.gcp.dataproc.ClusterArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

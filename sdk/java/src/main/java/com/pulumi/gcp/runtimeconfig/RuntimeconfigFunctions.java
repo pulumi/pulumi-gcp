@@ -22,10 +22,17 @@ public final class RuntimeconfigFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
+     * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -33,9 +40,9 @@ public final class RuntimeconfigFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = Output.of(RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
+     *         final var run-service = RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
      *             .name(&#34;my-service&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -50,10 +57,17 @@ public final class RuntimeconfigFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
+     * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -61,9 +75,9 @@ public final class RuntimeconfigFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = Output.of(RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
+     *         final var run-service = RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
      *             .name(&#34;my-service&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -78,10 +92,17 @@ public final class RuntimeconfigFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
+     * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -89,9 +110,9 @@ public final class RuntimeconfigFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = Output.of(RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
+     *         final var run-service = RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
      *             .name(&#34;my-service&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -106,10 +127,17 @@ public final class RuntimeconfigFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
+     * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -117,9 +145,9 @@ public final class RuntimeconfigFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = Output.of(RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
+     *         final var run-service = RuntimeconfigFunctions.getConfig(GetConfigArgs.builder()
      *             .name(&#34;my-service&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -134,10 +162,17 @@ public final class RuntimeconfigFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
+     * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -145,10 +180,10 @@ public final class RuntimeconfigFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = Output.of(RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
+     *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
      *             .name(&#34;prod-variables/hostname&#34;)
      *             .parent(&#34;my-service&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -163,10 +198,17 @@ public final class RuntimeconfigFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
+     * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -174,10 +216,10 @@ public final class RuntimeconfigFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = Output.of(RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
+     *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
      *             .name(&#34;prod-variables/hostname&#34;)
      *             .parent(&#34;my-service&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -192,10 +234,17 @@ public final class RuntimeconfigFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
+     * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -203,10 +252,10 @@ public final class RuntimeconfigFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = Output.of(RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
+     *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
      *             .name(&#34;prod-variables/hostname&#34;)
      *             .parent(&#34;my-service&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -221,10 +270,17 @@ public final class RuntimeconfigFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
+     * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -232,10 +288,10 @@ public final class RuntimeconfigFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var run-service = Output.of(RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
+     *         final var run-service = RuntimeconfigFunctions.getVariable(GetVariableArgs.builder()
      *             .name(&#34;prod-variables/hostname&#34;)
      *             .parent(&#34;my-service&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

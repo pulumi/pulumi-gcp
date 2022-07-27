@@ -36,10 +36,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.memcache.Instance;
+ * import com.pulumi.gcp.memcache.InstanceArgs;
+ * import com.pulumi.gcp.memcache.inputs.InstanceNodeConfigArgs;
+ * import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -47,19 +62,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var memcacheNetwork = Output.of(ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *         final var memcacheNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;test-network&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var serviceRange = new GlobalAddress(&#34;serviceRange&#34;, GlobalAddressArgs.builder()        
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(16)
- *             .network(memcacheNetwork.apply(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(memcacheNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .build());
  * 
  *         var privateServiceConnection = new Connection(&#34;privateServiceConnection&#34;, ConnectionArgs.builder()        
- *             .network(memcacheNetwork.apply(getNetworkResult -&gt; getNetworkResult.id()))
+ *             .network(memcacheNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(serviceRange.name())
  *             .build());

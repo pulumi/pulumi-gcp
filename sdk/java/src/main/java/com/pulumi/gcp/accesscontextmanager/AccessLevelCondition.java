@@ -44,10 +44,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevel;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelCondition;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelConditionArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionDevicePolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -61,7 +76,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_level_service_account = new AccessLevel(&#34;access-level-service-account&#34;, AccessLevelArgs.builder()        
- *             .parent(access_policy.name().apply(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
  *             .title(&#34;tf_test_chromeos_no_lock&#34;)
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
@@ -89,7 +104,7 @@ import javax.annotation.Nullable;
  *             .members(            
  *                 &#34;user:test@google.com&#34;,
  *                 &#34;user:test2@google.com&#34;,
- *                 created_later.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *                 created_later.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .negate(false)
  *             .devicePolicy(AccessLevelConditionDevicePolicyArgs.builder()
  *                 .requireScreenLock(false)

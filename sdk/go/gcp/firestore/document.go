@@ -77,7 +77,7 @@ import (
 // 		}
 // 		subDocument, err := firestore.NewDocument(ctx, "subDocument", &firestore.DocumentArgs{
 // 			Collection: mydoc.Path.ApplyT(func(path string) (string, error) {
-// 				return fmt.Sprintf("%v%v", path, "/subdocs"), nil
+// 				return fmt.Sprintf("%v/subdocs", path), nil
 // 			}).(pulumi.StringOutput),
 // 			DocumentId: pulumi.String("bitcoinkey"),
 // 			Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}"),
@@ -88,7 +88,7 @@ import (
 // 		}
 // 		_, err = firestore.NewDocument(ctx, "subSubDocument", &firestore.DocumentArgs{
 // 			Collection: subDocument.Path.ApplyT(func(path string) (string, error) {
-// 				return fmt.Sprintf("%v%v", path, "/subsubdocs"), nil
+// 				return fmt.Sprintf("%v/subsubdocs", path), nil
 // 			}).(pulumi.StringOutput),
 // 			DocumentId: pulumi.String("asecret"),
 // 			Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}"),

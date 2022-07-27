@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Iap
     ///         var projectService = new Gcp.Projects.Service("projectService", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = project.ProjectId,
-    ///             Service = "iap.googleapis.com",
+    ///             ServiceName = "iap.googleapis.com",
     ///         });
     ///         var projectBrand = new Gcp.Iap.Brand("projectBrand", new Gcp.Iap.BrandArgs
     ///         {

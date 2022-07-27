@@ -12,8 +12,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const openapiService = new gcp.endpoints.Service("openapiService", {
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",

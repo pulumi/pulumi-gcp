@@ -52,10 +52,21 @@ public final class ComposerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetImageVersionsArgs;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -63,13 +74,13 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComposerFunctions.getImageVersions());
+     *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.apply(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -89,10 +100,21 @@ public final class ComposerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetImageVersionsArgs;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -100,13 +122,13 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComposerFunctions.getImageVersions());
+     *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.apply(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -126,10 +148,21 @@ public final class ComposerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetImageVersionsArgs;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -137,13 +170,13 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComposerFunctions.getImageVersions());
+     *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.apply(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -163,10 +196,21 @@ public final class ComposerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetImageVersionsArgs;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -174,13 +218,13 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComposerFunctions.getImageVersions());
+     *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.apply(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -200,10 +244,21 @@ public final class ComposerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetImageVersionsArgs;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -211,13 +266,13 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComposerFunctions.getImageVersions());
+     *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.apply(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -237,10 +292,21 @@ public final class ComposerFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetImageVersionsArgs;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -248,13 +314,13 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(ComposerFunctions.getImageVersions());
+     *         final var all = ComposerFunctions.getImageVersions();
      * 
      *         var test = new Environment(&#34;test&#34;, EnvironmentArgs.builder()        
      *             .region(&#34;us-central1&#34;)
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.apply(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.applyValue(getImageVersionsResult -&gt; getImageVersionsResult.imageVersions()[0].imageVersionId()))
      *                     .build())
      *                 .build())
      *             .build());

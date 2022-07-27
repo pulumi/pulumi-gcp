@@ -24,10 +24,17 @@ public final class TagsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -35,10 +42,10 @@ public final class TagsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = Output.of(TagsFunctions.getTagKey(GetTagKeyArgs.builder()
+     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
      *             .parent(&#34;organizations/12345&#34;)
      *             .shortName(&#34;environment&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -55,10 +62,17 @@ public final class TagsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -66,10 +80,10 @@ public final class TagsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = Output.of(TagsFunctions.getTagKey(GetTagKeyArgs.builder()
+     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
      *             .parent(&#34;organizations/12345&#34;)
      *             .shortName(&#34;environment&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -86,10 +100,17 @@ public final class TagsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -97,10 +118,10 @@ public final class TagsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = Output.of(TagsFunctions.getTagKey(GetTagKeyArgs.builder()
+     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
      *             .parent(&#34;organizations/12345&#34;)
      *             .shortName(&#34;environment&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -117,10 +138,17 @@ public final class TagsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -128,10 +156,10 @@ public final class TagsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = Output.of(TagsFunctions.getTagKey(GetTagKeyArgs.builder()
+     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
      *             .parent(&#34;organizations/12345&#34;)
      *             .shortName(&#34;environment&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -148,10 +176,17 @@ public final class TagsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -159,10 +194,10 @@ public final class TagsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var environmentProdTagValue = Output.of(TagsFunctions.getTagValue(GetTagValueArgs.builder()
+     *         final var environmentProdTagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
      *             .parent(&#34;tagKeys/56789&#34;)
      *             .shortName(&#34;production&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -179,10 +214,17 @@ public final class TagsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -190,10 +232,10 @@ public final class TagsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var environmentProdTagValue = Output.of(TagsFunctions.getTagValue(GetTagValueArgs.builder()
+     *         final var environmentProdTagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
      *             .parent(&#34;tagKeys/56789&#34;)
      *             .shortName(&#34;production&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -210,10 +252,17 @@ public final class TagsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -221,10 +270,10 @@ public final class TagsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var environmentProdTagValue = Output.of(TagsFunctions.getTagValue(GetTagValueArgs.builder()
+     *         final var environmentProdTagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
      *             .parent(&#34;tagKeys/56789&#34;)
      *             .shortName(&#34;production&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -241,10 +290,17 @@ public final class TagsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -252,10 +308,10 @@ public final class TagsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var environmentProdTagValue = Output.of(TagsFunctions.getTagValue(GetTagValueArgs.builder()
+     *         final var environmentProdTagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
      *             .parent(&#34;tagKeys/56789&#34;)
      *             .shortName(&#34;production&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

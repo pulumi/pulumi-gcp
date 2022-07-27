@@ -163,7 +163,7 @@ import (
 // 					SourceUrl: pulumi.All(appengineNegBucket.Name, appengineNegBucketObject.Name).ApplyT(func(_args []interface{}) (string, error) {
 // 						appengineNegBucketName := _args[0].(string)
 // 						appengineNegBucketObjectName := _args[1].(string)
-// 						return fmt.Sprintf("%v%v%v%v", "https://storage.googleapis.com/", appengineNegBucketName, "/", appengineNegBucketObjectName), nil
+// 						return fmt.Sprintf("https://storage.googleapis.com/%v/%v", appengineNegBucketName, appengineNegBucketObjectName), nil
 // 					}).(pulumi.StringOutput),
 // 				},
 // 			},

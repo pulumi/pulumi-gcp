@@ -28,10 +28,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.logging.FolderSink;
+ * import com.pulumi.gcp.logging.FolderSinkArgs;
+ * import com.pulumi.gcp.projects.IAMBinding;
+ * import com.pulumi.gcp.projects.IAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -51,7 +64,7 @@ import javax.annotation.Nullable;
  *         var my_sink = new FolderSink(&#34;my-sink&#34;, FolderSinkArgs.builder()        
  *             .description(&#34;some explanation on what this is&#34;)
  *             .folder(my_folder.name())
- *             .destination(log_bucket.name().apply(name -&gt; String.format(&#34;storage.googleapis.com/%s&#34;, name)))
+ *             .destination(log_bucket.name().applyValue(name -&gt; String.format(&#34;storage.googleapis.com/%s&#34;, name)))
  *             .filter(&#34;resource.type = gce_instance AND severity &gt;= WARNING&#34;)
  *             .build());
  * 
@@ -110,10 +123,15 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -136,10 +154,15 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {

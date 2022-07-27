@@ -21,10 +21,17 @@ public final class CertificateauthorityFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -32,11 +39,11 @@ public final class CertificateauthorityFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .pool(&#34;pool-name&#34;)
      *             .certificateAuthorityId(&#34;ca-id&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;csr&#34;, default_.pemCsr());
      *     }
@@ -54,10 +61,17 @@ public final class CertificateauthorityFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -65,11 +79,11 @@ public final class CertificateauthorityFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .pool(&#34;pool-name&#34;)
      *             .certificateAuthorityId(&#34;ca-id&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;csr&#34;, default_.pemCsr());
      *     }
@@ -87,10 +101,17 @@ public final class CertificateauthorityFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -98,11 +119,11 @@ public final class CertificateauthorityFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .pool(&#34;pool-name&#34;)
      *             .certificateAuthorityId(&#34;ca-id&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;csr&#34;, default_.pemCsr());
      *     }
@@ -120,10 +141,17 @@ public final class CertificateauthorityFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -131,11 +159,11 @@ public final class CertificateauthorityFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .pool(&#34;pool-name&#34;)
      *             .certificateAuthorityId(&#34;ca-id&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;csr&#34;, default_.pemCsr());
      *     }
@@ -153,10 +181,17 @@ public final class CertificateauthorityFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -164,11 +199,11 @@ public final class CertificateauthorityFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .pool(&#34;pool-name&#34;)
      *             .certificateAuthorityId(&#34;ca-id&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;csr&#34;, default_.pemCsr());
      *     }
@@ -186,10 +221,17 @@ public final class CertificateauthorityFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -197,11 +239,11 @@ public final class CertificateauthorityFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Output.of(CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
      *             .location(&#34;us-west1&#34;)
      *             .pool(&#34;pool-name&#34;)
      *             .certificateAuthorityId(&#34;ca-id&#34;)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export(&#34;csr&#34;, default_.pemCsr());
      *     }

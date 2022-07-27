@@ -28,10 +28,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.orgpolicy.Policy;
+ * import com.pulumi.gcp.orgpolicy.PolicyArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -45,7 +55,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
- *             .parent(basic.name().apply(name -&gt; String.format(&#34;projects/%s&#34;, name)))
+ *             .parent(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s&#34;, name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()
  *                     .enforce(&#34;FALSE&#34;)
@@ -61,10 +71,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.orgpolicy.Policy;
+ * import com.pulumi.gcp.orgpolicy.PolicyArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -95,10 +115,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.orgpolicy.Policy;
+ * import com.pulumi.gcp.orgpolicy.PolicyArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -121,10 +149,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.orgpolicy.Policy;
+ * import com.pulumi.gcp.orgpolicy.PolicyArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -138,7 +176,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
- *             .parent(basic.name().apply(name -&gt; String.format(&#34;projects/%s&#34;, name)))
+ *             .parent(basic.name().applyValue(name -&gt; String.format(&#34;projects/%s&#34;, name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(                
  *                     PolicySpecRuleArgs.builder()

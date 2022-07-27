@@ -31,10 +31,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.MetricDescriptor;
+ * import com.pulumi.gcp.monitoring.MetricDescriptorArgs;
+ * import com.pulumi.gcp.monitoring.inputs.MetricDescriptorLabelArgs;
+ * import com.pulumi.gcp.monitoring.inputs.MetricDescriptorMetadataArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -68,10 +77,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.MetricDescriptor;
+ * import com.pulumi.gcp.monitoring.MetricDescriptorArgs;
+ * import com.pulumi.gcp.monitoring.AlertPolicy;
+ * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -94,7 +114,7 @@ import javax.annotation.Nullable;
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
  *                     .comparison(&#34;COMPARISON_GT&#34;)
  *                     .duration(&#34;60s&#34;)
- *                     .filter(withAlert.type().apply(type -&gt; String.format(&#34;metric.type=\&#34;%s\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;, type)))
+ *                     .filter(withAlert.type().applyValue(type -&gt; String.format(&#34;metric.type=\&#34;%s\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;, type)))
  *                     .build())
  *                 .displayName(&#34;test condition&#34;)
  *                 .build())

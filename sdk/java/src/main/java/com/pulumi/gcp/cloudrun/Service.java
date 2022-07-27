@@ -50,10 +50,31 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.cloudrun.IamBinding;
+ * import com.pulumi.gcp.cloudrun.IamBindingArgs;
+ * import com.pulumi.gcp.projects.IAMBinding;
+ * import com.pulumi.gcp.projects.IAMBindingArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigOidcTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -85,12 +106,12 @@ import javax.annotation.Nullable;
  *             .location(default_.location())
  *             .service(default_.name())
  *             .role(&#34;roles/run.invoker&#34;)
- *             .members(sa.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .members(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
  *         var project = new IAMBinding(&#34;project&#34;, IAMBindingArgs.builder()        
  *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
- *             .members(sa.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .members(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
  *         var topic = new Topic(&#34;topic&#34;);
@@ -98,7 +119,7 @@ import javax.annotation.Nullable;
  *         var subscription = new Subscription(&#34;subscription&#34;, SubscriptionArgs.builder()        
  *             .topic(topic.name())
  *             .pushConfig(SubscriptionPushConfigArgs.builder()
- *                 .pushEndpoint(default_.statuses().apply(statuses -&gt; statuses[0].url()))
+ *                 .pushEndpoint(default_.statuses().applyValue(statuses -&gt; statuses[0].url()))
  *                 .oidcToken(SubscriptionPushConfigOidcTokenArgs.builder()
  *                     .serviceAccountEmail(sa.email())
  *                     .build())
@@ -113,10 +134,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -146,10 +177,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -192,10 +236,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.cloudrun.IamPolicy;
+ * import com.pulumi.gcp.cloudrun.IamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -214,18 +271,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var noauthIAMPolicy = Output.of(OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *         final var noauthIAMPolicy = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role(&#34;roles/run.invoker&#34;)
  *                 .members(&#34;allUsers&#34;)
  *                 .build())
- *             .build()));
+ *             .build());
  * 
  *         var noauthIamPolicy = new IamPolicy(&#34;noauthIamPolicy&#34;, IamPolicyArgs.builder()        
  *             .location(default_.location())
  *             .project(default_.project())
  *             .service(default_.name())
- *             .policyData(noauthIAMPolicy.apply(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(noauthIAMPolicy.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -235,10 +292,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -281,10 +349,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -322,11 +401,32 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.cloudscheduler.Job;
+ * import com.pulumi.gcp.cloudscheduler.JobArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
+ * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetOidcTokenArgs;
+ * import com.pulumi.gcp.cloudrun.IamMember;
+ * import com.pulumi.gcp.cloudrun.IamMemberArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -406,7 +506,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .httpTarget(JobHttpTargetArgs.builder()
  *                 .httpMethod(&#34;POST&#34;)
- *                 .uri(defaultService.statuses().apply(statuses -&gt; statuses[0].url()))
+ *                 .uri(defaultService.statuses().applyValue(statuses -&gt; statuses[0].url()))
  *                 .oidcToken(JobHttpTargetOidcTokenArgs.builder()
  *                     .serviceAccountEmail(defaultAccount.email())
  *                     .build())
@@ -421,7 +521,7 @@ import javax.annotation.Nullable;
  *             .location(defaultService.location())
  *             .service(defaultService.name())
  *             .role(&#34;roles/run.invoker&#34;)
- *             .member(defaultAccount.email().apply(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .member(defaultAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
  *     }
@@ -431,11 +531,31 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -443,7 +563,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret&#34;)
@@ -460,7 +580,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
  *             .secretId(secret.id())
  *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret)
  *                 .build());
@@ -502,11 +622,31 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -514,7 +654,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = Output.of(OrganizationsFunctions.getProject());
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret&#34;)
@@ -531,7 +671,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
  *             .secretId(secret.id())
  *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
- *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.apply(getProjectResult -&gt; getProjectResult.number())))
+ *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret)
  *                 .build());
@@ -580,11 +720,22 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -619,11 +770,34 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import com.pulumi.gcp.cloudrun.IamMember;
+ * import com.pulumi.gcp.cloudrun.IamMemberArgs;
+ * import com.pulumi.gcp.eventarc.Trigger;
+ * import com.pulumi.gcp.eventarc.TriggerArgs;
+ * import com.pulumi.gcp.eventarc.inputs.TriggerMatchingCriteriaArgs;
+ * import com.pulumi.gcp.eventarc.inputs.TriggerDestinationArgs;
+ * import com.pulumi.gcp.eventarc.inputs.TriggerDestinationCloudRunServiceArgs;
+ * import com.pulumi.gcp.projects.IAMBinding;
+ * import com.pulumi.gcp.projects.IAMBindingArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -631,7 +805,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var projectProject = Output.of(OrganizationsFunctions.getProject());
+ *         final var projectProject = OrganizationsFunctions.getProject();
  * 
  *         var run = new Service(&#34;run&#34;, ServiceArgs.builder()        
  *             .service(&#34;run.googleapis.com&#34;)
@@ -692,16 +866,16 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var projectIAMBinding = new IAMBinding(&#34;projectIAMBinding&#34;, IAMBindingArgs.builder()        
- *             .project(projectProject.apply(getProjectResult -&gt; getProjectResult.id()))
+ *             .project(projectProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
  *             .role(&#34;roles/eventarc.eventReceiver&#34;)
- *             .members(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, projectProject.apply(getProjectResult -&gt; getProjectResult.number())))
+ *             .members(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, projectProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
  * 
  *         var trigger_auditlog_tf = new Trigger(&#34;trigger-auditlog-tf&#34;, TriggerArgs.builder()        
  *             .location(default_.location())
- *             .project(projectProject.apply(getProjectResult -&gt; getProjectResult.id()))
+ *             .project(projectProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
  *             .matchingCriterias(            
  *                 TriggerMatchingCriteriaArgs.builder()
  *                     .attribute(&#34;type&#34;)
@@ -721,7 +895,7 @@ import javax.annotation.Nullable;
  *                     .region(default_.location())
  *                     .build())
  *                 .build())
- *             .serviceAccount(String.format(&#34;%s-compute@developer.gserviceaccount.com&#34;, projectProject.apply(getProjectResult -&gt; getProjectResult.number())))
+ *             .serviceAccount(String.format(&#34;%s-compute@developer.gserviceaccount.com&#34;, projectProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .dependsOn(eventarc)
@@ -734,12 +908,47 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudRunArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.ManagedSslCertificate;
+ * import com.pulumi.gcp.compute.ManagedSslCertificateArgs;
+ * import com.pulumi.gcp.compute.inputs.ManagedSslCertificateManagedArgs;
+ * import com.pulumi.gcp.compute.TargetHttpsProxy;
+ * import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import com.pulumi.gcp.cloudrun.IamMember;
+ * import com.pulumi.gcp.cloudrun.IamMemberArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultUrlRedirectArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -929,10 +1138,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -961,10 +1179,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -1003,10 +1232,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -1036,10 +1274,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -1075,10 +1323,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -1102,10 +1359,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -1129,10 +1395,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

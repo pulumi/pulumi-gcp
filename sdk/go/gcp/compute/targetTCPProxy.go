@@ -22,48 +22,6 @@ import (
 //     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
 //
 // ## Example Usage
-// ### Target Tcp Proxy Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "defaultHealthCheck", &compute.HealthCheckArgs{
-// 			TimeoutSec:       pulumi.Int(1),
-// 			CheckIntervalSec: pulumi.Int(1),
-// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
-// 				Port: pulumi.Int(443),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
-// 			Protocol:   pulumi.String("TCP"),
-// 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String{
-// 				defaultHealthCheck.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewTargetTCPProxy(ctx, "defaultTargetTCPProxy", &compute.TargetTCPProxyArgs{
-// 			BackendService: defaultBackendService.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 //
 // ## Import
 //

@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
  *
  * const apiGwApi = new gcp.apigateway.Api("apiGwApi", {apiId: "api-gw"}, {
  *     provider: google_beta,

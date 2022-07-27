@@ -30,10 +30,34 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.ContainerFunctions;
+ * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
+ * import com.pulumi.gcp.container.AzureClient;
+ * import com.pulumi.gcp.container.AzureClientArgs;
+ * import com.pulumi.gcp.container.AzureCluster;
+ * import com.pulumi.gcp.container.AzureClusterArgs;
+ * import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneArgs;
+ * import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneSshConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AzureClusterFleetArgs;
+ * import com.pulumi.gcp.container.inputs.AzureClusterNetworkingArgs;
+ * import com.pulumi.gcp.container.AzureNodePool;
+ * import com.pulumi.gcp.container.AzureNodePoolArgs;
+ * import com.pulumi.gcp.container.inputs.AzureNodePoolAutoscalingArgs;
+ * import com.pulumi.gcp.container.inputs.AzureNodePoolConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AzureNodePoolConfigSshConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AzureNodePoolConfigProxyConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AzureNodePoolConfigRootVolumeArgs;
+ * import com.pulumi.gcp.container.inputs.AzureNodePoolMaxPodsConstraintArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -41,10 +65,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var versions = Output.of(ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
+ *         final var versions = ContainerFunctions.getAzureVersions(GetAzureVersionsArgs.builder()
  *             .project(&#34;my-project-name&#34;)
  *             .location(&#34;us-west1&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var basic = new AzureClient(&#34;basic&#34;, AzureClientArgs.builder()        
  *             .applicationId(&#34;12345678-1234-1234-1234-123456789111&#34;)
@@ -60,13 +84,13 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .azureRegion(&#34;westus2&#34;)
- *             .client(basic.name().apply(name -&gt; String.format(&#34;projects/my-project-number/locations/us-west1/azureClients/%s&#34;, name)))
+ *             .client(basic.name().applyValue(name -&gt; String.format(&#34;projects/my-project-number/locations/us-west1/azureClients/%s&#34;, name)))
  *             .controlPlane(AzureClusterControlPlaneArgs.builder()
  *                 .sshConfig(AzureClusterControlPlaneSshConfigArgs.builder()
  *                     .authorizedKey(&#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers&#34;)
  *                     .build())
  *                 .subnetId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default&#34;)
- *                 .version(versions.apply(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
+ *                 .version(versions.applyValue(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
  *                 .build())
  *             .fleet(AzureClusterFleetArgs.builder()
  *                 .project(&#34;my-project-number&#34;)
@@ -106,7 +130,7 @@ import javax.annotation.Nullable;
  *                 .maxPodsPerNode(110)
  *                 .build())
  *             .subnetId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default&#34;)
- *             .version(versions.apply(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
+ *             .version(versions.applyValue(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
  *             .annotations(Map.of(&#34;annotation-one&#34;, &#34;value-one&#34;))
  *             .project(&#34;my-project-name&#34;)
  *             .build());

@@ -46,7 +46,7 @@ import (
 // 			Endpoint: &gkehub.MembershipEndpointArgs{
 // 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 // 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
-// 						return fmt.Sprintf("%v%v", "//container.googleapis.com/", id), nil
+// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 // 					}).(pulumi.StringOutput),
 // 				},
 // 			},
@@ -93,7 +93,7 @@ import (
 // 			},
 // 			Authority: &gkehub.MembershipAuthorityArgs{
 // 				Issuer: primary.ID().ApplyT(func(id string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "https://container.googleapis.com/v1/", id), nil
+// 					return fmt.Sprintf("https://container.googleapis.com/v1/%v", id), nil
 // 				}).(pulumi.StringOutput),
 // 			},
 // 		})

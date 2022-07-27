@@ -31,10 +31,30 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.PerInstanceConfig;
+ * import com.pulumi.gcp.compute.PerInstanceConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.PerInstanceConfigPreservedStateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -42,10 +62,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var myImage = Output.of(ComputeFunctions.getImage(GetImageArgs.builder()
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family(&#34;debian-9&#34;)
  *             .project(&#34;debian-cloud&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var igm_basic = new InstanceTemplate(&#34;igm-basic&#34;, InstanceTemplateArgs.builder()        
  *             .machineType(&#34;e2-medium&#34;)
@@ -54,7 +74,7 @@ import javax.annotation.Nullable;
  *                 &#34;foo&#34;,
  *                 &#34;bar&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(myImage.apply(getImageResult -&gt; getImageResult.selfLink()))
+ *                 .sourceImage(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())

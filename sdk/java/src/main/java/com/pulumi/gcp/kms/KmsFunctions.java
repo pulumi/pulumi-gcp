@@ -42,10 +42,18 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -53,15 +61,15 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .name(&#34;my-key-ring&#34;)
      *             .location(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myCryptoKey = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
-     *             .build()));
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .build());
      * 
      *     }
      * }
@@ -84,10 +92,18 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -95,15 +111,15 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .name(&#34;my-key-ring&#34;)
      *             .location(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myCryptoKey = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
-     *             .build()));
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .build());
      * 
      *     }
      * }
@@ -126,10 +142,18 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -137,15 +161,15 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .name(&#34;my-key-ring&#34;)
      *             .location(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myCryptoKey = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
-     *             .build()));
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .build());
      * 
      *     }
      * }
@@ -168,10 +192,18 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -179,15 +211,15 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .name(&#34;my-key-ring&#34;)
      *             .location(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myCryptoKey = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
-     *             .build()));
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .build());
      * 
      *     }
      * }
@@ -209,10 +241,19 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -220,19 +261,19 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .name(&#34;my-key-ring&#34;)
      *             .location(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myCryptoKey = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
-     *             .build()));
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .build());
      * 
-     *         final var myCryptoKeyVersion = Output.of(KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
+     *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
      *             .cryptoKey(data.google_kms_crypto_key().my_key().id())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -254,10 +295,19 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -265,19 +315,19 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .name(&#34;my-key-ring&#34;)
      *             .location(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myCryptoKey = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
-     *             .build()));
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .build());
      * 
-     *         final var myCryptoKeyVersion = Output.of(KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
+     *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
      *             .cryptoKey(data.google_kms_crypto_key().my_key().id())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -299,10 +349,19 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -310,19 +369,19 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .name(&#34;my-key-ring&#34;)
      *             .location(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myCryptoKey = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
-     *             .build()));
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .build());
      * 
-     *         final var myCryptoKeyVersion = Output.of(KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
+     *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
      *             .cryptoKey(data.google_kms_crypto_key().my_key().id())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -344,10 +403,19 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -355,19 +423,19 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .name(&#34;my-key-ring&#34;)
      *             .location(&#34;us-central1&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         final var myCryptoKey = Output.of(KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name(&#34;my-crypto-key&#34;)
-     *             .keyRing(myKeyRing.apply(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
-     *             .build()));
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
+     *             .build());
      * 
-     *         final var myCryptoKeyVersion = Output.of(KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
+     *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
      *             .cryptoKey(data.google_kms_crypto_key().my_key().id())
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -390,10 +458,17 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -401,10 +476,10 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-key-ring&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -427,10 +502,17 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -438,10 +520,10 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-key-ring&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -464,10 +546,17 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -475,10 +564,10 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-key-ring&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -501,10 +590,17 @@ public final class KmsFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -512,10 +608,10 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myKeyRing = Output.of(KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
      *             .location(&#34;us-central1&#34;)
      *             .name(&#34;my-key-ring&#34;)
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }

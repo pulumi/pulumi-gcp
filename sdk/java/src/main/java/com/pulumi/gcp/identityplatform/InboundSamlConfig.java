@@ -29,10 +29,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.identityplatform.InboundSamlConfig;
+ * import com.pulumi.gcp.identityplatform.InboundSamlConfigArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigIdpConfigArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigSpConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -47,7 +56,7 @@ import javax.annotation.Nullable;
  *                 .signRequest(true)
  *                 .ssoUrl(&#34;https://example.com&#34;)
  *                 .idpCertificates(InboundSamlConfigIdpConfigIdpCertificateArgs.builder()
- *                     .x509Certificate(Files.readString(&#34;test-fixtures/rsa_cert.pem&#34;))
+ *                     .x509Certificate(Files.readString(Paths.get(&#34;test-fixtures/rsa_cert.pem&#34;)))
  *                     .build())
  *                 .build())
  *             .spConfig(InboundSamlConfigSpConfigArgs.builder()
