@@ -53,16 +53,14 @@ public final class PacketMirroringFilterArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Protocols that apply as a filter on mirrored traffic.
-     * Each value may be one of `tcp`, `udp`, and `icmp`.
+     * Possible IP protocols including tcp, udp, icmp and esp
      * 
      */
     @Import(name="ipProtocols")
     private @Nullable Output<List<String>> ipProtocols;
 
     /**
-     * @return Protocols that apply as a filter on mirrored traffic.
-     * Each value may be one of `tcp`, `udp`, and `icmp`.
+     * @return Possible IP protocols including tcp, udp, icmp and esp
      * 
      */
     public Optional<Output<List<String>>> ipProtocols() {
@@ -155,8 +153,7 @@ public final class PacketMirroringFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipProtocols Protocols that apply as a filter on mirrored traffic.
-         * Each value may be one of `tcp`, `udp`, and `icmp`.
+         * @param ipProtocols Possible IP protocols including tcp, udp, icmp and esp
          * 
          * @return builder
          * 
@@ -167,8 +164,7 @@ public final class PacketMirroringFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipProtocols Protocols that apply as a filter on mirrored traffic.
-         * Each value may be one of `tcp`, `udp`, and `icmp`.
+         * @param ipProtocols Possible IP protocols including tcp, udp, icmp and esp
          * 
          * @return builder
          * 
@@ -178,8 +174,7 @@ public final class PacketMirroringFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipProtocols Protocols that apply as a filter on mirrored traffic.
-         * Each value may be one of `tcp`, `udp`, and `icmp`.
+         * @param ipProtocols Possible IP protocols including tcp, udp, icmp and esp
          * 
          * @return builder
          * 

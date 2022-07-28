@@ -107,6 +107,14 @@ public final class AlertPolicyConditionConditionThreshold {
      */
     private final String duration;
     /**
+     * @return A condition control that determines how
+     * metric-threshold conditions are evaluated when
+     * data stops arriving.
+     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * 
+     */
+    private final @Nullable String evaluationMissingData;
+    /**
      * @return A logs-based filter.
      * 
      */
@@ -138,6 +146,7 @@ public final class AlertPolicyConditionConditionThreshold {
         @CustomType.Parameter("denominatorAggregations") @Nullable List<AlertPolicyConditionConditionThresholdDenominatorAggregation> denominatorAggregations,
         @CustomType.Parameter("denominatorFilter") @Nullable String denominatorFilter,
         @CustomType.Parameter("duration") String duration,
+        @CustomType.Parameter("evaluationMissingData") @Nullable String evaluationMissingData,
         @CustomType.Parameter("filter") @Nullable String filter,
         @CustomType.Parameter("thresholdValue") @Nullable Double thresholdValue,
         @CustomType.Parameter("trigger") @Nullable AlertPolicyConditionConditionThresholdTrigger trigger) {
@@ -146,6 +155,7 @@ public final class AlertPolicyConditionConditionThreshold {
         this.denominatorAggregations = denominatorAggregations;
         this.denominatorFilter = denominatorFilter;
         this.duration = duration;
+        this.evaluationMissingData = evaluationMissingData;
         this.filter = filter;
         this.thresholdValue = thresholdValue;
         this.trigger = trigger;
@@ -252,6 +262,16 @@ public final class AlertPolicyConditionConditionThreshold {
         return this.duration;
     }
     /**
+     * @return A condition control that determines how
+     * metric-threshold conditions are evaluated when
+     * data stops arriving.
+     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * 
+     */
+    public Optional<String> evaluationMissingData() {
+        return Optional.ofNullable(this.evaluationMissingData);
+    }
+    /**
      * @return A logs-based filter.
      * 
      */
@@ -296,6 +316,7 @@ public final class AlertPolicyConditionConditionThreshold {
         private @Nullable List<AlertPolicyConditionConditionThresholdDenominatorAggregation> denominatorAggregations;
         private @Nullable String denominatorFilter;
         private String duration;
+        private @Nullable String evaluationMissingData;
         private @Nullable String filter;
         private @Nullable Double thresholdValue;
         private @Nullable AlertPolicyConditionConditionThresholdTrigger trigger;
@@ -311,6 +332,7 @@ public final class AlertPolicyConditionConditionThreshold {
     	      this.denominatorAggregations = defaults.denominatorAggregations;
     	      this.denominatorFilter = defaults.denominatorFilter;
     	      this.duration = defaults.duration;
+    	      this.evaluationMissingData = defaults.evaluationMissingData;
     	      this.filter = defaults.filter;
     	      this.thresholdValue = defaults.thresholdValue;
     	      this.trigger = defaults.trigger;
@@ -342,6 +364,10 @@ public final class AlertPolicyConditionConditionThreshold {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        public Builder evaluationMissingData(@Nullable String evaluationMissingData) {
+            this.evaluationMissingData = evaluationMissingData;
+            return this;
+        }
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
@@ -354,7 +380,7 @@ public final class AlertPolicyConditionConditionThreshold {
             this.trigger = trigger;
             return this;
         }        public AlertPolicyConditionConditionThreshold build() {
-            return new AlertPolicyConditionConditionThreshold(aggregations, comparison, denominatorAggregations, denominatorFilter, duration, filter, thresholdValue, trigger);
+            return new AlertPolicyConditionConditionThreshold(aggregations, comparison, denominatorAggregations, denominatorFilter, duration, evaluationMissingData, filter, thresholdValue, trigger);
         }
     }
 }

@@ -130,7 +130,7 @@ class CryptoKeyVersionTemplate(dict):
         """
         :param str algorithm: The algorithm to use when creating a version based on this template.
                See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
-        :param str protection_level: The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
+        :param str protection_level: The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
         """
         pulumi.set(__self__, "algorithm", algorithm)
         if protection_level is not None:
@@ -149,7 +149,7 @@ class CryptoKeyVersionTemplate(dict):
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> Optional[str]:
         """
-        The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
+        The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
         """
         return pulumi.get(self, "protection_level")
 

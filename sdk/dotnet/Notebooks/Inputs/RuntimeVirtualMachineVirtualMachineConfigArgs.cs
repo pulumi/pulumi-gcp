@@ -135,6 +135,13 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<string>? NicType { get; set; }
 
         /// <summary>
+        /// Reserved IP Range name is used for VPC Peering. The
+        /// subnetwork allocation will use the range *name* if it's assigned.
+        /// </summary>
+        [Input("reservedIpRange")]
+        public Input<string>? ReservedIpRange { get; set; }
+
+        /// <summary>
         /// Shielded VM Instance configuration settings.
         /// Structure is documented below.
         /// </summary>

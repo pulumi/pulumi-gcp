@@ -29,8 +29,11 @@ __all__ = [
     'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
     'AutoscalerAutoscalingPolicyScalingScheduleArgs',
     'BackendBucketCdnPolicyArgs',
+    'BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs',
     'BackendBucketCdnPolicyCacheKeyPolicyArgs',
     'BackendBucketCdnPolicyNegativeCachingPolicyArgs',
+    'BackendBucketIamBindingConditionArgs',
+    'BackendBucketIamMemberConditionArgs',
     'BackendServiceBackendArgs',
     'BackendServiceCdnPolicyArgs',
     'BackendServiceCdnPolicyCacheKeyPolicyArgs',
@@ -115,10 +118,12 @@ __all__ = [
     'InstanceFromTemplateScratchDiskArgs',
     'InstanceFromTemplateServiceAccountArgs',
     'InstanceFromTemplateShieldedInstanceConfigArgs',
+    'InstanceGroupManagerAllInstancesConfigArgs',
     'InstanceGroupManagerAutoHealingPoliciesArgs',
     'InstanceGroupManagerNamedPortArgs',
     'InstanceGroupManagerStatefulDiskArgs',
     'InstanceGroupManagerStatusArgs',
+    'InstanceGroupManagerStatusAllInstancesConfigArgs',
     'InstanceGroupManagerStatusStatefulArgs',
     'InstanceGroupManagerStatusStatefulPerInstanceConfigArgs',
     'InstanceGroupManagerStatusVersionTargetArgs',
@@ -217,10 +222,12 @@ __all__ = [
     'RegionHealthCheckLogConfigArgs',
     'RegionHealthCheckSslHealthCheckArgs',
     'RegionHealthCheckTcpHealthCheckArgs',
+    'RegionInstanceGroupManagerAllInstancesConfigArgs',
     'RegionInstanceGroupManagerAutoHealingPoliciesArgs',
     'RegionInstanceGroupManagerNamedPortArgs',
     'RegionInstanceGroupManagerStatefulDiskArgs',
     'RegionInstanceGroupManagerStatusArgs',
+    'RegionInstanceGroupManagerStatusAllInstancesConfigArgs',
     'RegionInstanceGroupManagerStatusStatefulArgs',
     'RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs',
     'RegionInstanceGroupManagerStatusVersionTargetArgs',
@@ -1916,6 +1923,7 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
 @pulumi.input_type
 class BackendBucketCdnPolicyArgs:
     def __init__(__self__, *,
+                 bypass_cache_on_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]] = None,
                  cache_key_policy: Optional[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[int]] = None,
@@ -1923,9 +1931,12 @@ class BackendBucketCdnPolicyArgs:
                  max_ttl: Optional[pulumi.Input[int]] = None,
                  negative_caching: Optional[pulumi.Input[bool]] = None,
                  negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 request_coalescing: Optional[pulumi.Input[bool]] = None,
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+               Structure is documented below.
         :param pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
@@ -1939,6 +1950,7 @@ class BackendBucketCdnPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
                Structure is documented below.
+        :param pulumi.Input[bool] request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
         :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
         :param pulumi.Input[int] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will
                be considered fresh. After this time period,
@@ -1949,6 +1961,8 @@ class BackendBucketCdnPolicyArgs:
                max-age=[TTL]" header, regardless of any existing Cache-Control
                header. The actual headers served in responses will not be altered.
         """
+        if bypass_cache_on_request_headers is not None:
+            pulumi.set(__self__, "bypass_cache_on_request_headers", bypass_cache_on_request_headers)
         if cache_key_policy is not None:
             pulumi.set(__self__, "cache_key_policy", cache_key_policy)
         if cache_mode is not None:
@@ -1963,10 +1977,25 @@ class BackendBucketCdnPolicyArgs:
             pulumi.set(__self__, "negative_caching", negative_caching)
         if negative_caching_policies is not None:
             pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        if request_coalescing is not None:
+            pulumi.set(__self__, "request_coalescing", request_coalescing)
         if serve_while_stale is not None:
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="bypassCacheOnRequestHeaders")
+    def bypass_cache_on_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]]:
+        """
+        Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bypass_cache_on_request_headers")
+
+    @bypass_cache_on_request_headers.setter
+    def bypass_cache_on_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]]):
+        pulumi.set(self, "bypass_cache_on_request_headers", value)
 
     @property
     @pulumi.getter(name="cacheKeyPolicy")
@@ -2059,6 +2088,18 @@ class BackendBucketCdnPolicyArgs:
         pulumi.set(self, "negative_caching_policies", value)
 
     @property
+    @pulumi.getter(name="requestCoalescing")
+    def request_coalescing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+        """
+        return pulumi.get(self, "request_coalescing")
+
+    @request_coalescing.setter
+    def request_coalescing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "request_coalescing", value)
+
+    @property
     @pulumi.getter(name="serveWhileStale")
     def serve_while_stale(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2088,6 +2129,29 @@ class BackendBucketCdnPolicyArgs:
     @signed_url_cache_max_age_sec.setter
     def signed_url_cache_max_age_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
+
+
+@pulumi.input_type
+class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] header_name: The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_name", value)
 
 
 @pulumi.input_type
@@ -2176,6 +2240,84 @@ class BackendBucketCdnPolicyNegativeCachingPolicyArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
+
+
+@pulumi.input_type
+class BackendBucketIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class BackendBucketIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
@@ -6725,6 +6867,7 @@ class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
 class InstanceFromMachineImageSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_termination_action: Optional[pulumi.Input[str]] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
@@ -6732,6 +6875,8 @@ class InstanceFromMachineImageSchedulingArgs:
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if instance_termination_action is not None:
+            pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -6751,6 +6896,15 @@ class InstanceFromMachineImageSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="instanceTerminationAction")
+    def instance_termination_action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_termination_action")
+
+    @instance_termination_action.setter
+    def instance_termination_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_termination_action", value)
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -7576,6 +7730,7 @@ class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
 class InstanceFromTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_termination_action: Optional[pulumi.Input[str]] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
@@ -7583,6 +7738,8 @@ class InstanceFromTemplateSchedulingArgs:
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if instance_termination_action is not None:
+            pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -7602,6 +7759,15 @@ class InstanceFromTemplateSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="instanceTerminationAction")
+    def instance_termination_action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_termination_action")
+
+    @instance_termination_action.setter
+    def instance_termination_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_termination_action", value)
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -7773,6 +7939,45 @@ class InstanceFromTemplateShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
+class InstanceGroupManagerAllInstancesConfigArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ), The label key-value pairs that you want to patch onto the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        ), The label key-value pairs that you want to patch onto the instance.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
 class InstanceGroupManagerAutoHealingPoliciesArgs:
     def __init__(__self__, *,
                  health_check: pulumi.Input[str],
@@ -7891,20 +8096,42 @@ class InstanceGroupManagerStatefulDiskArgs:
 @pulumi.input_type
 class InstanceGroupManagerStatusArgs:
     def __init__(__self__, *,
+                 all_instances_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]]] = None,
                  is_stable: Optional[pulumi.Input[bool]] = None,
                  statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]] = None,
                  version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]] all_instances_configs: )
+               Properties to set on all instances in the group. After setting
+               allInstancesConfig on the group, you must update the group's instances to
+               apply the configuration.
         :param pulumi.Input[bool] is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]] statefuls: Stateful status of the given Instance Group Manager.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
+        if all_instances_configs is not None:
+            pulumi.set(__self__, "all_instances_configs", all_instances_configs)
         if is_stable is not None:
             pulumi.set(__self__, "is_stable", is_stable)
         if statefuls is not None:
             pulumi.set(__self__, "statefuls", statefuls)
         if version_targets is not None:
             pulumi.set(__self__, "version_targets", version_targets)
+
+    @property
+    @pulumi.getter(name="allInstancesConfigs")
+    def all_instances_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]]]:
+        """
+        )
+        Properties to set on all instances in the group. After setting
+        allInstancesConfig on the group, you must update the group's instances to
+        apply the configuration.
+        """
+        return pulumi.get(self, "all_instances_configs")
+
+    @all_instances_configs.setter
+    def all_instances_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]]]):
+        pulumi.set(self, "all_instances_configs", value)
 
     @property
     @pulumi.getter(name="isStable")
@@ -7941,6 +8168,23 @@ class InstanceGroupManagerStatusArgs:
     @version_targets.setter
     def version_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]]):
         pulumi.set(self, "version_targets", value)
+
+
+@pulumi.input_type
+class InstanceGroupManagerStatusAllInstancesConfigArgs:
+    def __init__(__self__, *,
+                 effective: Optional[pulumi.Input[bool]] = None):
+        if effective is not None:
+            pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter
+    def effective(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "effective")
+
+    @effective.setter
+    def effective(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "effective", value)
 
 
 @pulumi.input_type
@@ -8975,6 +9219,7 @@ class InstanceReservationAffinitySpecificReservationArgs:
 class InstanceSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_termination_action: Optional[pulumi.Input[str]] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
@@ -8984,6 +9229,7 @@ class InstanceSchedulingArgs:
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
+        :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
@@ -9003,6 +9249,8 @@ class InstanceSchedulingArgs:
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if instance_termination_action is not None:
+            pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -9027,6 +9275,18 @@ class InstanceSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="instanceTerminationAction")
+    def instance_termination_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        """
+        return pulumi.get(self, "instance_termination_action")
+
+    @instance_termination_action.setter
+    def instance_termination_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_termination_action", value)
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -10173,6 +10433,7 @@ class InstanceTemplateReservationAffinitySpecificReservationArgs:
 class InstanceTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_termination_action: Optional[pulumi.Input[str]] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
@@ -10182,6 +10443,7 @@ class InstanceTemplateSchedulingArgs:
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -10192,13 +10454,15 @@ class InstanceTemplateSchedulingArgs:
         :param pulumi.Input[bool] preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
-        :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
                `preemptible` should be `true` and `auto_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if instance_termination_action is not None:
+            pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -10223,6 +10487,18 @@ class InstanceTemplateSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="instanceTerminationAction")
+    def instance_termination_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        """
+        return pulumi.get(self, "instance_termination_action")
+
+    @instance_termination_action.setter
+    def instance_termination_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_termination_action", value)
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -10280,7 +10556,7 @@ class InstanceTemplateSchedulingArgs:
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
         """
-        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
         `preemptible` should be `true` and `auto_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -11101,8 +11377,7 @@ class PacketMirroringFilterArgs:
         :param pulumi.Input[str] direction: Direction of traffic to mirror.
                Default value is `BOTH`.
                Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_protocols: Protocols that apply as a filter on mirrored traffic.
-               Each value may be one of `tcp`, `udp`, and `icmp`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_protocols: Possible IP protocols including tcp, udp, icmp and esp
         """
         if cidr_ranges is not None:
             pulumi.set(__self__, "cidr_ranges", cidr_ranges)
@@ -11142,8 +11417,7 @@ class PacketMirroringFilterArgs:
     @pulumi.getter(name="ipProtocols")
     def ip_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Protocols that apply as a filter on mirrored traffic.
-        Each value may be one of `tcp`, `udp`, and `icmp`.
+        Possible IP protocols including tcp, udp, icmp and esp
         """
         return pulumi.get(self, "ip_protocols")
 
@@ -15008,6 +15282,45 @@ class RegionHealthCheckTcpHealthCheckArgs:
 
 
 @pulumi.input_type
+class RegionInstanceGroupManagerAllInstancesConfigArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ), The label key-value pairs that you want to patch onto the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        ), The label key-value pairs that you want to patch onto the instance.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
 class RegionInstanceGroupManagerAutoHealingPoliciesArgs:
     def __init__(__self__, *,
                  health_check: pulumi.Input[str],
@@ -15126,20 +15439,42 @@ class RegionInstanceGroupManagerStatefulDiskArgs:
 @pulumi.input_type
 class RegionInstanceGroupManagerStatusArgs:
     def __init__(__self__, *,
+                 all_instances_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]]] = None,
                  is_stable: Optional[pulumi.Input[bool]] = None,
                  statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]] = None,
                  version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]] all_instances_configs: )
+               Properties to set on all instances in the group. After setting
+               allInstancesConfig on the group, you must update the group's instances to
+               apply the configuration.
         :param pulumi.Input[bool] is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]] statefuls: Stateful status of the given Instance Group Manager.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]] version_targets: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
         """
+        if all_instances_configs is not None:
+            pulumi.set(__self__, "all_instances_configs", all_instances_configs)
         if is_stable is not None:
             pulumi.set(__self__, "is_stable", is_stable)
         if statefuls is not None:
             pulumi.set(__self__, "statefuls", statefuls)
         if version_targets is not None:
             pulumi.set(__self__, "version_targets", version_targets)
+
+    @property
+    @pulumi.getter(name="allInstancesConfigs")
+    def all_instances_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]]]:
+        """
+        )
+        Properties to set on all instances in the group. After setting
+        allInstancesConfig on the group, you must update the group's instances to
+        apply the configuration.
+        """
+        return pulumi.get(self, "all_instances_configs")
+
+    @all_instances_configs.setter
+    def all_instances_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]]]):
+        pulumi.set(self, "all_instances_configs", value)
 
     @property
     @pulumi.getter(name="isStable")
@@ -15176,6 +15511,23 @@ class RegionInstanceGroupManagerStatusArgs:
     @version_targets.setter
     def version_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]]):
         pulumi.set(self, "version_targets", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerStatusAllInstancesConfigArgs:
+    def __init__(__self__, *,
+                 effective: Optional[pulumi.Input[bool]] = None):
+        if effective is not None:
+            pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter
+    def effective(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "effective")
+
+    @effective.setter
+    def effective(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "effective", value)
 
 
 @pulumi.input_type
@@ -21235,10 +21587,8 @@ class SecurityPolicyRuleArgs:
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[bool] preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: )
-               Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
-        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: )
-               Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "match", match)
@@ -21324,7 +21674,6 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter(name="rateLimitOptions")
     def rate_limit_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]:
         """
-        )
         Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
         """
         return pulumi.get(self, "rate_limit_options")
@@ -21337,7 +21686,6 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter(name="redirectOptions")
     def redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]:
         """
-        )
         Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
         """
         return pulumi.get(self, "redirect_options")

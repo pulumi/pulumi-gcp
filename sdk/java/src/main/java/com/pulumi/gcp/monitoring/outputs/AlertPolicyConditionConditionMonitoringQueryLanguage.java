@@ -32,6 +32,14 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
      */
     private final String duration;
     /**
+     * @return A condition control that determines how
+     * metric-threshold conditions are evaluated when
+     * data stops arriving.
+     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * 
+     */
+    private final @Nullable String evaluationMissingData;
+    /**
      * @return Monitoring Query Language query that outputs a boolean stream.
      * 
      */
@@ -53,9 +61,11 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
     @CustomType.Constructor
     private AlertPolicyConditionConditionMonitoringQueryLanguage(
         @CustomType.Parameter("duration") String duration,
+        @CustomType.Parameter("evaluationMissingData") @Nullable String evaluationMissingData,
         @CustomType.Parameter("query") String query,
         @CustomType.Parameter("trigger") @Nullable AlertPolicyConditionConditionMonitoringQueryLanguageTrigger trigger) {
         this.duration = duration;
+        this.evaluationMissingData = evaluationMissingData;
         this.query = query;
         this.trigger = trigger;
     }
@@ -80,6 +90,16 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
      */
     public String duration() {
         return this.duration;
+    }
+    /**
+     * @return A condition control that determines how
+     * metric-threshold conditions are evaluated when
+     * data stops arriving.
+     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * 
+     */
+    public Optional<String> evaluationMissingData() {
+        return Optional.ofNullable(this.evaluationMissingData);
     }
     /**
      * @return Monitoring Query Language query that outputs a boolean stream.
@@ -114,6 +134,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
 
     public static final class Builder {
         private String duration;
+        private @Nullable String evaluationMissingData;
         private String query;
         private @Nullable AlertPolicyConditionConditionMonitoringQueryLanguageTrigger trigger;
 
@@ -124,12 +145,17 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
         public Builder(AlertPolicyConditionConditionMonitoringQueryLanguage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.duration = defaults.duration;
+    	      this.evaluationMissingData = defaults.evaluationMissingData;
     	      this.query = defaults.query;
     	      this.trigger = defaults.trigger;
         }
 
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
+            return this;
+        }
+        public Builder evaluationMissingData(@Nullable String evaluationMissingData) {
+            this.evaluationMissingData = evaluationMissingData;
             return this;
         }
         public Builder query(String query) {
@@ -140,7 +166,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
             this.trigger = trigger;
             return this;
         }        public AlertPolicyConditionConditionMonitoringQueryLanguage build() {
-            return new AlertPolicyConditionConditionMonitoringQueryLanguage(duration, query, trigger);
+            return new AlertPolicyConditionConditionMonitoringQueryLanguage(duration, evaluationMissingData, query, trigger);
         }
     }
 }

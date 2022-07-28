@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerState;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAutoHealingPolicies;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulDisk;
@@ -45,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.InstanceGroupManager;
  * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAllInstancesConfigArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs;
  * import java.util.List;
@@ -77,10 +79,14 @@ import javax.annotation.Nullable;
  *             .versions(InstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(google_compute_instance_template.appserver().id())
  *                 .build())
+ *             .allInstancesConfig(InstanceGroupManagerAllInstancesConfigArgs.builder()
+ *                 .metadata(Map.of(&#34;metadata_key&#34;, &#34;metadata_value&#34;))
+ *                 .labels(Map.of(&#34;label_key&#34;, &#34;label_value&#34;))
+ *                 .build())
  *             .targetPools(google_compute_target_pool.appserver().id())
  *             .targetSize(2)
  *             .namedPorts(InstanceGroupManagerNamedPortArgs.builder()
- *                 .name(&#34;customHTTP&#34;)
+ *                 .name(&#34;customhttp&#34;)
  *                 .port(8888)
  *                 .build())
  *             .autoHealingPolicies(InstanceGroupManagerAutoHealingPoliciesArgs.builder()
@@ -164,6 +170,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/instanceGroupManager:InstanceGroupManager")
 public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
+    /**
+     * )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    @Export(name="allInstancesConfig", type=InstanceGroupManagerAllInstancesConfig.class, parameters={})
+    private Output</* @Nullable */ InstanceGroupManagerAllInstancesConfig> allInstancesConfig;
+
+    /**
+     * @return )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    public Output<Optional<InstanceGroupManagerAllInstancesConfig>> allInstancesConfig() {
+        return Codegen.optional(this.allInstancesConfig);
+    }
     /**
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -315,14 +341,14 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+     * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      * 
      */
     @Export(name="statefulDisks", type=List.class, parameters={InstanceGroupManagerStatefulDisk.class})
     private Output</* @Nullable */ List<InstanceGroupManagerStatefulDisk>> statefulDisks;
 
     /**
-     * @return ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+     * @return Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      * 
      */
     public Output<Optional<List<InstanceGroupManagerStatefulDisk>>> statefulDisks() {

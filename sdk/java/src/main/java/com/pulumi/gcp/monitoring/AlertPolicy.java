@@ -78,6 +78,52 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Monitoring Alert Policy Evaluation Missing Data
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.AlertPolicy;
+ * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
+ *             .combiner(&#34;OR&#34;)
+ *             .conditions(AlertPolicyConditionArgs.builder()
+ *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
+ *                     .aggregations(AlertPolicyConditionConditionThresholdAggregationArgs.builder()
+ *                         .alignmentPeriod(&#34;60s&#34;)
+ *                         .perSeriesAligner(&#34;ALIGN_RATE&#34;)
+ *                         .build())
+ *                     .comparison(&#34;COMPARISON_GT&#34;)
+ *                     .duration(&#34;60s&#34;)
+ *                     .evaluationMissingData(&#34;EVALUATION_MISSING_DATA_INACTIVE&#34;)
+ *                     .filter(&#34;metric.type=\&#34;compute.googleapis.com/instance/disk/write_bytes_count\&#34; AND resource.type=\&#34;gce_instance\&#34;&#34;)
+ *                     .build())
+ *                 .displayName(&#34;test condition&#34;)
+ *                 .build())
+ *             .displayName(&#34;My Alert Policy&#34;)
+ *             .userLabels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

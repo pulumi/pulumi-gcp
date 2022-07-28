@@ -26,6 +26,13 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
         return Optional.ofNullable(this.automaticRestart);
     }
 
+    @Import(name="instanceTerminationAction")
+    private @Nullable Output<String> instanceTerminationAction;
+
+    public Optional<Output<String>> instanceTerminationAction() {
+        return Optional.ofNullable(this.instanceTerminationAction);
+    }
+
     @Import(name="minNodeCpus")
     private @Nullable Output<Integer> minNodeCpus;
 
@@ -65,6 +72,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
 
     private InstanceFromMachineImageSchedulingArgs(InstanceFromMachineImageSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
+        this.instanceTerminationAction = $.instanceTerminationAction;
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
@@ -97,6 +105,15 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
 
         public Builder automaticRestart(Boolean automaticRestart) {
             return automaticRestart(Output.of(automaticRestart));
+        }
+
+        public Builder instanceTerminationAction(@Nullable Output<String> instanceTerminationAction) {
+            $.instanceTerminationAction = instanceTerminationAction;
+            return this;
+        }
+
+        public Builder instanceTerminationAction(String instanceTerminationAction) {
+            return instanceTerminationAction(Output.of(instanceTerminationAction));
         }
 
         public Builder minNodeCpus(@Nullable Output<Integer> minNodeCpus) {

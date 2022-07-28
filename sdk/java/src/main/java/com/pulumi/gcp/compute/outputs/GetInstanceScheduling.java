@@ -19,6 +19,11 @@ public final class GetInstanceScheduling {
      * 
      */
     private final Boolean automaticRestart;
+    /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    private final String instanceTerminationAction;
     private final Integer minNodeCpus;
     private final List<GetInstanceSchedulingNodeAffinity> nodeAffinities;
     /**
@@ -34,7 +39,7 @@ public final class GetInstanceScheduling {
      */
     private final Boolean preemptible;
     /**
-     * @return (Beta) Describe the type of preemptible VM.
+     * @return Describe the type of preemptible VM.
      * 
      */
     private final String provisioningModel;
@@ -42,12 +47,14 @@ public final class GetInstanceScheduling {
     @CustomType.Constructor
     private GetInstanceScheduling(
         @CustomType.Parameter("automaticRestart") Boolean automaticRestart,
+        @CustomType.Parameter("instanceTerminationAction") String instanceTerminationAction,
         @CustomType.Parameter("minNodeCpus") Integer minNodeCpus,
         @CustomType.Parameter("nodeAffinities") List<GetInstanceSchedulingNodeAffinity> nodeAffinities,
         @CustomType.Parameter("onHostMaintenance") String onHostMaintenance,
         @CustomType.Parameter("preemptible") Boolean preemptible,
         @CustomType.Parameter("provisioningModel") String provisioningModel) {
         this.automaticRestart = automaticRestart;
+        this.instanceTerminationAction = instanceTerminationAction;
         this.minNodeCpus = minNodeCpus;
         this.nodeAffinities = nodeAffinities;
         this.onHostMaintenance = onHostMaintenance;
@@ -62,6 +69,13 @@ public final class GetInstanceScheduling {
      */
     public Boolean automaticRestart() {
         return this.automaticRestart;
+    }
+    /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    public String instanceTerminationAction() {
+        return this.instanceTerminationAction;
     }
     public Integer minNodeCpus() {
         return this.minNodeCpus;
@@ -86,7 +100,7 @@ public final class GetInstanceScheduling {
         return this.preemptible;
     }
     /**
-     * @return (Beta) Describe the type of preemptible VM.
+     * @return Describe the type of preemptible VM.
      * 
      */
     public String provisioningModel() {
@@ -103,6 +117,7 @@ public final class GetInstanceScheduling {
 
     public static final class Builder {
         private Boolean automaticRestart;
+        private String instanceTerminationAction;
         private Integer minNodeCpus;
         private List<GetInstanceSchedulingNodeAffinity> nodeAffinities;
         private String onHostMaintenance;
@@ -116,6 +131,7 @@ public final class GetInstanceScheduling {
         public Builder(GetInstanceScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
@@ -125,6 +141,10 @@ public final class GetInstanceScheduling {
 
         public Builder automaticRestart(Boolean automaticRestart) {
             this.automaticRestart = Objects.requireNonNull(automaticRestart);
+            return this;
+        }
+        public Builder instanceTerminationAction(String instanceTerminationAction) {
+            this.instanceTerminationAction = Objects.requireNonNull(instanceTerminationAction);
             return this;
         }
         public Builder minNodeCpus(Integer minNodeCpus) {
@@ -150,7 +170,7 @@ public final class GetInstanceScheduling {
             this.provisioningModel = Objects.requireNonNull(provisioningModel);
             return this;
         }        public GetInstanceScheduling build() {
-            return new GetInstanceScheduling(automaticRestart, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+            return new GetInstanceScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
         }
     }
 }

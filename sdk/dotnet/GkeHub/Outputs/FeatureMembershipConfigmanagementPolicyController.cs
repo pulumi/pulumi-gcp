@@ -29,6 +29,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// Logs all denies and dry run failures.
         /// </summary>
         public readonly bool? LogDeniesEnabled;
+        public readonly Outputs.FeatureMembershipConfigmanagementPolicyControllerMonitoring? Monitoring;
+        public readonly bool? MutationEnabled;
         /// <summary>
         /// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         /// </summary>
@@ -48,6 +50,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             bool? logDeniesEnabled,
 
+            Outputs.FeatureMembershipConfigmanagementPolicyControllerMonitoring? monitoring,
+
+            bool? mutationEnabled,
+
             bool? referentialRulesEnabled,
 
             bool? templateLibraryInstalled)
@@ -56,6 +62,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
             Enabled = enabled;
             ExemptableNamespaces = exemptableNamespaces;
             LogDeniesEnabled = logDeniesEnabled;
+            Monitoring = monitoring;
+            MutationEnabled = mutationEnabled;
             ReferentialRulesEnabled = referentialRulesEnabled;
             TemplateLibraryInstalled = templateLibraryInstalled;
         }

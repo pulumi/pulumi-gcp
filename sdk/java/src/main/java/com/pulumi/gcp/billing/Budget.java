@@ -471,7 +471,7 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="thresholdRules", type=List.class, parameters={BudgetThresholdRule.class})
-    private Output<List<BudgetThresholdRule>> thresholdRules;
+    private Output</* @Nullable */ List<BudgetThresholdRule>> thresholdRules;
 
     /**
      * @return Rules that trigger alerts (notifications of thresholds being
@@ -480,8 +480,8 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<List<BudgetThresholdRule>> thresholdRules() {
-        return this.thresholdRules;
+    public Output<Optional<List<BudgetThresholdRule>>> thresholdRules() {
+        return Codegen.optional(this.thresholdRules);
     }
 
     /**

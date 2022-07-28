@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs;
 import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyNegativeCachingPolicyArgs;
 import java.lang.Boolean;
@@ -19,6 +20,23 @@ import javax.annotation.Nullable;
 public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BackendBucketCdnPolicyArgs Empty = new BackendBucketCdnPolicyArgs();
+
+    /**
+     * Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bypassCacheOnRequestHeaders")
+    private @Nullable Output<List<BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>> bypassCacheOnRequestHeaders;
+
+    /**
+     * @return Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>>> bypassCacheOnRequestHeaders() {
+        return Optional.ofNullable(this.bypassCacheOnRequestHeaders);
+    }
 
     /**
      * The CacheKeyPolicy for this CdnPolicy.
@@ -138,6 +156,21 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+     * 
+     */
+    @Import(name="requestCoalescing")
+    private @Nullable Output<Boolean> requestCoalescing;
+
+    /**
+     * @return If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+     * 
+     */
+    public Optional<Output<Boolean>> requestCoalescing() {
+        return Optional.ofNullable(this.requestCoalescing);
+    }
+
+    /**
      * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
      * 
      */
@@ -184,6 +217,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
     private BackendBucketCdnPolicyArgs() {}
 
     private BackendBucketCdnPolicyArgs(BackendBucketCdnPolicyArgs $) {
+        this.bypassCacheOnRequestHeaders = $.bypassCacheOnRequestHeaders;
         this.cacheKeyPolicy = $.cacheKeyPolicy;
         this.cacheMode = $.cacheMode;
         this.clientTtl = $.clientTtl;
@@ -191,6 +225,7 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
         this.maxTtl = $.maxTtl;
         this.negativeCaching = $.negativeCaching;
         this.negativeCachingPolicies = $.negativeCachingPolicies;
+        this.requestCoalescing = $.requestCoalescing;
         this.serveWhileStale = $.serveWhileStale;
         this.signedUrlCacheMaxAgeSec = $.signedUrlCacheMaxAgeSec;
     }
@@ -211,6 +246,40 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
 
         public Builder(BackendBucketCdnPolicyArgs defaults) {
             $ = new BackendBucketCdnPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bypassCacheOnRequestHeaders Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassCacheOnRequestHeaders(@Nullable Output<List<BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>> bypassCacheOnRequestHeaders) {
+            $.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
+            return this;
+        }
+
+        /**
+         * @param bypassCacheOnRequestHeaders Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassCacheOnRequestHeaders(List<BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs> bypassCacheOnRequestHeaders) {
+            return bypassCacheOnRequestHeaders(Output.of(bypassCacheOnRequestHeaders));
+        }
+
+        /**
+         * @param bypassCacheOnRequestHeaders Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassCacheOnRequestHeaders(BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs... bypassCacheOnRequestHeaders) {
+            return bypassCacheOnRequestHeaders(List.of(bypassCacheOnRequestHeaders));
         }
 
         /**
@@ -382,6 +451,27 @@ public final class BackendBucketCdnPolicyArgs extends com.pulumi.resources.Resou
          */
         public Builder negativeCachingPolicies(BackendBucketCdnPolicyNegativeCachingPolicyArgs... negativeCachingPolicies) {
             return negativeCachingPolicies(List.of(negativeCachingPolicies));
+        }
+
+        /**
+         * @param requestCoalescing If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestCoalescing(@Nullable Output<Boolean> requestCoalescing) {
+            $.requestCoalescing = requestCoalescing;
+            return this;
+        }
+
+        /**
+         * @param requestCoalescing If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestCoalescing(Boolean requestCoalescing) {
+            return requestCoalescing(Output.of(requestCoalescing));
         }
 
         /**

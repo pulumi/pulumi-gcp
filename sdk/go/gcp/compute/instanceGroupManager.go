@@ -52,13 +52,21 @@ import (
 // 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
 // 				},
 // 			},
+// 			AllInstancesConfig: &compute.InstanceGroupManagerAllInstancesConfigArgs{
+// 				Metadata: pulumi.StringMap{
+// 					"metadata_key": pulumi.String("metadata_value"),
+// 				},
+// 				Labels: pulumi.StringMap{
+// 					"label_key": pulumi.String("label_value"),
+// 				},
+// 			},
 // 			TargetPools: pulumi.StringArray{
 // 				pulumi.Any(google_compute_target_pool.Appserver.Id),
 // 			},
 // 			TargetSize: pulumi.Int(2),
 // 			NamedPorts: compute.InstanceGroupManagerNamedPortArray{
 // 				&compute.InstanceGroupManagerNamedPortArgs{
-// 					Name: pulumi.String("customHTTP"),
+// 					Name: pulumi.String("customhttp"),
 // 					Port: pulumi.Int(8888),
 // 				},
 // 			},
@@ -133,6 +141,11 @@ import (
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig InstanceGroupManagerAllInstancesConfigPtrOutput `pulumi:"allInstancesConfig"`
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPoliciesPtrOutput `pulumi:"autoHealingPolicies"`
@@ -161,7 +174,7 @@ type InstanceGroupManager struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
 	// The status of this managed instance group.
 	Statuses InstanceGroupManagerStatusArrayOutput `pulumi:"statuses"`
@@ -226,6 +239,11 @@ func GetInstanceGroupManager(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceGroupManager resources.
 type instanceGroupManagerState struct {
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig *InstanceGroupManagerAllInstancesConfig `pulumi:"allInstancesConfig"`
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies *InstanceGroupManagerAutoHealingPolicies `pulumi:"autoHealingPolicies"`
@@ -254,7 +272,7 @@ type instanceGroupManagerState struct {
 	Project *string `pulumi:"project"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks []InstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// The status of this managed instance group.
 	Statuses []InstanceGroupManagerStatus `pulumi:"statuses"`
@@ -285,6 +303,11 @@ type instanceGroupManagerState struct {
 }
 
 type InstanceGroupManagerState struct {
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig InstanceGroupManagerAllInstancesConfigPtrInput
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPoliciesPtrInput
@@ -313,7 +336,7 @@ type InstanceGroupManagerState struct {
 	Project pulumi.StringPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayInput
 	// The status of this managed instance group.
 	Statuses InstanceGroupManagerStatusArrayInput
@@ -348,6 +371,11 @@ func (InstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type instanceGroupManagerArgs struct {
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig *InstanceGroupManagerAllInstancesConfig `pulumi:"allInstancesConfig"`
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies *InstanceGroupManagerAutoHealingPolicies `pulumi:"autoHealingPolicies"`
@@ -369,7 +397,7 @@ type instanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks []InstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
@@ -399,6 +427,11 @@ type instanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a InstanceGroupManager resource.
 type InstanceGroupManagerArgs struct {
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig InstanceGroupManagerAllInstancesConfigPtrInput
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPoliciesPtrInput
@@ -420,7 +453,7 @@ type InstanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayInput
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
@@ -535,6 +568,16 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx 
 	return o
 }
 
+// )
+// Properties to set on all instances in the group. After setting
+// allInstancesConfig on the group, you must update the group's instances to
+// apply the configuration.
+func (o InstanceGroupManagerOutput) AllInstancesConfig() InstanceGroupManagerAllInstancesConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerAllInstancesConfigPtrOutput {
+		return v.AllInstancesConfig
+	}).(InstanceGroupManagerAllInstancesConfigPtrOutput)
+}
+
 // The autohealing policies for this managed instance
 // group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 func (o InstanceGroupManagerOutput) AutoHealingPolicies() InstanceGroupManagerAutoHealingPoliciesPtrOutput {
@@ -595,7 +638,7 @@ func (o InstanceGroupManagerOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 func (o InstanceGroupManagerOutput) StatefulDisks() InstanceGroupManagerStatefulDiskArrayOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerStatefulDiskArrayOutput { return v.StatefulDisks }).(InstanceGroupManagerStatefulDiskArrayOutput)
 }

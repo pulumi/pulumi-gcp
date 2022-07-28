@@ -33,6 +33,15 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<string> Duration { get; set; } = null!;
 
         /// <summary>
+        /// A condition control that determines how
+        /// metric-threshold conditions are evaluated when
+        /// data stops arriving.
+        /// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+        /// </summary>
+        [Input("evaluationMissingData")]
+        public Input<string>? EvaluationMissingData { get; set; }
+
+        /// <summary>
         /// Monitoring Query Language query that outputs a boolean stream.
         /// </summary>
         [Input("query", required: true)]

@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// terminated by a user). This defaults to true.
         /// </summary>
         public readonly bool AutomaticRestart;
+        /// <summary>
+        /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        /// </summary>
+        public readonly string InstanceTerminationAction;
         public readonly int MinNodeCpus;
         /// <summary>
         /// Specifies node affinities or anti-affinities
@@ -40,13 +44,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool Preemptible;
         /// <summary>
-        /// (Beta) Describe the type of preemptible VM.
+        /// Describe the type of preemptible VM.
         /// </summary>
         public readonly string ProvisioningModel;
 
         [OutputConstructor]
         private GetInstanceTemplateSchedulingResult(
             bool automaticRestart,
+
+            string instanceTerminationAction,
 
             int minNodeCpus,
 
@@ -59,6 +65,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            InstanceTerminationAction = instanceTerminationAction;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;

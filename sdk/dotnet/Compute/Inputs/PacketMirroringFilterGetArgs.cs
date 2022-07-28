@@ -37,8 +37,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _ipProtocols;
 
         /// <summary>
-        /// Protocols that apply as a filter on mirrored traffic.
-        /// Each value may be one of `tcp`, `udp`, and `icmp`.
+        /// Possible IP protocols including tcp, udp, icmp and esp
         /// </summary>
         public InputList<string> IpProtocols
         {

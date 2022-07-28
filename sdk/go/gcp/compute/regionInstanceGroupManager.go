@@ -61,6 +61,14 @@ import (
 // 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
 // 				},
 // 			},
+// 			AllInstancesConfig: &compute.RegionInstanceGroupManagerAllInstancesConfigArgs{
+// 				Metadata: pulumi.StringMap{
+// 					"metadata_key": pulumi.String("metadata_value"),
+// 				},
+// 				Labels: pulumi.StringMap{
+// 					"label_key": pulumi.String("label_value"),
+// 				},
+// 			},
 // 			TargetPools: pulumi.StringArray{
 // 				pulumi.Any(google_compute_target_pool.Appserver.Id),
 // 			},
@@ -128,6 +136,11 @@ import (
 type RegionInstanceGroupManager struct {
 	pulumi.CustomResourceState
 
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig RegionInstanceGroupManagerAllInstancesConfigPtrOutput `pulumi:"allInstancesConfig"`
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies RegionInstanceGroupManagerAutoHealingPoliciesPtrOutput `pulumi:"autoHealingPolicies"`
@@ -224,6 +237,11 @@ func GetRegionInstanceGroupManager(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionInstanceGroupManager resources.
 type regionInstanceGroupManagerState struct {
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig *RegionInstanceGroupManagerAllInstancesConfig `pulumi:"allInstancesConfig"`
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies *RegionInstanceGroupManagerAutoHealingPolicies `pulumi:"autoHealingPolicies"`
@@ -286,6 +304,11 @@ type regionInstanceGroupManagerState struct {
 }
 
 type RegionInstanceGroupManagerState struct {
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig RegionInstanceGroupManagerAllInstancesConfigPtrInput
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies RegionInstanceGroupManagerAutoHealingPoliciesPtrInput
@@ -352,6 +375,11 @@ func (RegionInstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type regionInstanceGroupManagerArgs struct {
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig *RegionInstanceGroupManagerAllInstancesConfig `pulumi:"allInstancesConfig"`
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies *RegionInstanceGroupManagerAutoHealingPolicies `pulumi:"autoHealingPolicies"`
@@ -407,6 +435,11 @@ type regionInstanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a RegionInstanceGroupManager resource.
 type RegionInstanceGroupManagerArgs struct {
+	// )
+	// Properties to set on all instances in the group. After setting
+	// allInstancesConfig on the group, you must update the group's instances to
+	// apply the configuration.
+	AllInstancesConfig RegionInstanceGroupManagerAllInstancesConfigPtrInput
 	// The autohealing policies for this managed instance
 	// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 	AutoHealingPolicies RegionInstanceGroupManagerAutoHealingPoliciesPtrInput
@@ -545,6 +578,16 @@ func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutput() R
 
 func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWithContext(ctx context.Context) RegionInstanceGroupManagerOutput {
 	return o
+}
+
+// )
+// Properties to set on all instances in the group. After setting
+// allInstancesConfig on the group, you must update the group's instances to
+// apply the configuration.
+func (o RegionInstanceGroupManagerOutput) AllInstancesConfig() RegionInstanceGroupManagerAllInstancesConfigPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerAllInstancesConfigPtrOutput {
+		return v.AllInstancesConfig
+	}).(RegionInstanceGroupManagerAllInstancesConfigPtrOutput)
 }
 
 // The autohealing policies for this managed instance

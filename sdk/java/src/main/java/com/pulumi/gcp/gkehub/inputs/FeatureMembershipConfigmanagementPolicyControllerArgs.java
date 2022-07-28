@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -77,6 +78,20 @@ public final class FeatureMembershipConfigmanagementPolicyControllerArgs extends
         return Optional.ofNullable(this.logDeniesEnabled);
     }
 
+    @Import(name="monitoring")
+    private @Nullable Output<FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs> monitoring;
+
+    public Optional<Output<FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs>> monitoring() {
+        return Optional.ofNullable(this.monitoring);
+    }
+
+    @Import(name="mutationEnabled")
+    private @Nullable Output<Boolean> mutationEnabled;
+
+    public Optional<Output<Boolean>> mutationEnabled() {
+        return Optional.ofNullable(this.mutationEnabled);
+    }
+
     /**
      * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
      * 
@@ -114,6 +129,8 @@ public final class FeatureMembershipConfigmanagementPolicyControllerArgs extends
         this.enabled = $.enabled;
         this.exemptableNamespaces = $.exemptableNamespaces;
         this.logDeniesEnabled = $.logDeniesEnabled;
+        this.monitoring = $.monitoring;
+        this.mutationEnabled = $.mutationEnabled;
         this.referentialRulesEnabled = $.referentialRulesEnabled;
         this.templateLibraryInstalled = $.templateLibraryInstalled;
     }
@@ -228,6 +245,24 @@ public final class FeatureMembershipConfigmanagementPolicyControllerArgs extends
          */
         public Builder logDeniesEnabled(Boolean logDeniesEnabled) {
             return logDeniesEnabled(Output.of(logDeniesEnabled));
+        }
+
+        public Builder monitoring(@Nullable Output<FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs> monitoring) {
+            $.monitoring = monitoring;
+            return this;
+        }
+
+        public Builder monitoring(FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs monitoring) {
+            return monitoring(Output.of(monitoring));
+        }
+
+        public Builder mutationEnabled(@Nullable Output<Boolean> mutationEnabled) {
+            $.mutationEnabled = mutationEnabled;
+            return this;
+        }
+
+        public Builder mutationEnabled(Boolean mutationEnabled) {
+            return mutationEnabled(Output.of(mutationEnabled));
         }
 
         /**

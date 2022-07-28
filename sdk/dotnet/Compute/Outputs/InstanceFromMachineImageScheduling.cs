@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceFromMachineImageScheduling
     {
         public readonly bool? AutomaticRestart;
+        public readonly string? InstanceTerminationAction;
         public readonly int? MinNodeCpus;
         public readonly ImmutableArray<Outputs.InstanceFromMachineImageSchedulingNodeAffinity> NodeAffinities;
         public readonly string? OnHostMaintenance;
@@ -23,6 +24,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         [OutputConstructor]
         private InstanceFromMachineImageScheduling(
             bool? automaticRestart,
+
+            string? instanceTerminationAction,
 
             int? minNodeCpus,
 
@@ -35,6 +38,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            InstanceTerminationAction = instanceTerminationAction;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;

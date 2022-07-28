@@ -26,8 +26,7 @@ public final class PacketMirroringFilter {
      */
     private final @Nullable String direction;
     /**
-     * @return Protocols that apply as a filter on mirrored traffic.
-     * Each value may be one of `tcp`, `udp`, and `icmp`.
+     * @return Possible IP protocols including tcp, udp, icmp and esp
      * 
      */
     private final @Nullable List<String> ipProtocols;
@@ -60,8 +59,7 @@ public final class PacketMirroringFilter {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return Protocols that apply as a filter on mirrored traffic.
-     * Each value may be one of `tcp`, `udp`, and `icmp`.
+     * @return Possible IP protocols including tcp, udp, icmp and esp
      * 
      */
     public List<String> ipProtocols() {

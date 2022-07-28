@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceFromTemplateScheduling
     {
         public readonly bool? AutomaticRestart;
+        public readonly string? InstanceTerminationAction;
         public readonly int? MinNodeCpus;
         public readonly ImmutableArray<Outputs.InstanceFromTemplateSchedulingNodeAffinity> NodeAffinities;
         public readonly string? OnHostMaintenance;
@@ -23,6 +24,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         [OutputConstructor]
         private InstanceFromTemplateScheduling(
             bool? automaticRestart,
+
+            string? instanceTerminationAction,
 
             int? minNodeCpus,
 
@@ -35,6 +38,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            InstanceTerminationAction = instanceTerminationAction;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;

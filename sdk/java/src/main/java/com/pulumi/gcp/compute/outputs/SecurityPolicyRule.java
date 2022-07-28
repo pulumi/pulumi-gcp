@@ -50,14 +50,12 @@ public final class SecurityPolicyRule {
      */
     private final Integer priority;
     /**
-     * @return )
-     * Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+     * @return Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     private final @Nullable SecurityPolicyRuleRateLimitOptions rateLimitOptions;
     /**
-     * @return )
-     * Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+     * @return Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     private final @Nullable SecurityPolicyRuleRedirectOptions redirectOptions;
@@ -124,16 +122,14 @@ public final class SecurityPolicyRule {
         return this.priority;
     }
     /**
-     * @return )
-     * Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+     * @return Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     public Optional<SecurityPolicyRuleRateLimitOptions> rateLimitOptions() {
         return Optional.ofNullable(this.rateLimitOptions);
     }
     /**
-     * @return )
-     * Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+     * @return Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     public Optional<SecurityPolicyRuleRedirectOptions> redirectOptions() {

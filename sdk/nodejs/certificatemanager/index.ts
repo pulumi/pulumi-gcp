@@ -6,10 +6,14 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./certificate";
+export * from "./certificateMap";
+export * from "./certificateMapEntry";
 export * from "./dnsAuthorization";
 
 // Import resources to register:
 import { Certificate } from "./certificate";
+import { CertificateMap } from "./certificateMap";
+import { CertificateMapEntry } from "./certificateMapEntry";
 import { DnsAuthorization } from "./dnsAuthorization";
 
 const _module = {
@@ -18,6 +22,10 @@ const _module = {
         switch (type) {
             case "gcp:certificatemanager/certificate:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
+            case "gcp:certificatemanager/certificateMap:CertificateMap":
+                return new CertificateMap(name, <any>undefined, { urn })
+            case "gcp:certificatemanager/certificateMapEntry:CertificateMapEntry":
+                return new CertificateMapEntry(name, <any>undefined, { urn })
             case "gcp:certificatemanager/dnsAuthorization:DnsAuthorization":
                 return new DnsAuthorization(name, <any>undefined, { urn })
             default:
@@ -26,4 +34,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificate", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateMap", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateMapEntry", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/dnsAuthorization", _module)

@@ -64,6 +64,49 @@ import (
 // 	})
 // }
 // ```
+// ### Monitoring Alert Policy Evaluation Missing Data
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
+// 			Combiner: pulumi.String("OR"),
+// 			Conditions: monitoring.AlertPolicyConditionArray{
+// 				&monitoring.AlertPolicyConditionArgs{
+// 					ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+// 						Aggregations: monitoring.AlertPolicyConditionConditionThresholdAggregationArray{
+// 							&monitoring.AlertPolicyConditionConditionThresholdAggregationArgs{
+// 								AlignmentPeriod:  pulumi.String("60s"),
+// 								PerSeriesAligner: pulumi.String("ALIGN_RATE"),
+// 							},
+// 						},
+// 						Comparison:            pulumi.String("COMPARISON_GT"),
+// 						Duration:              pulumi.String("60s"),
+// 						EvaluationMissingData: pulumi.String("EVALUATION_MISSING_DATA_INACTIVE"),
+// 						Filter:                pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
+// 					},
+// 					DisplayName: pulumi.String("test condition"),
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("My Alert Policy"),
+// 			UserLabels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

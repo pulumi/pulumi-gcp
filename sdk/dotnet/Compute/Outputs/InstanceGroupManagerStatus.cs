@@ -14,6 +14,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceGroupManagerStatus
     {
         /// <summary>
+        /// )
+        /// Properties to set on all instances in the group. After setting
+        /// allInstancesConfig on the group, you must update the group's instances to
+        /// apply the configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.InstanceGroupManagerStatusAllInstancesConfig> AllInstancesConfigs;
+        /// <summary>
         /// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         /// </summary>
         public readonly bool? IsStable;
@@ -28,12 +35,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private InstanceGroupManagerStatus(
+            ImmutableArray<Outputs.InstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs,
+
             bool? isStable,
 
             ImmutableArray<Outputs.InstanceGroupManagerStatusStateful> statefuls,
 
             ImmutableArray<Outputs.InstanceGroupManagerStatusVersionTarget> versionTargets)
         {
+            AllInstancesConfigs = allInstancesConfigs;
             IsStable = isStable;
             Statefuls = statefuls;
             VersionTargets = versionTargets;

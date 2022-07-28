@@ -90,6 +90,11 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly string? NicType;
         /// <summary>
+        /// Reserved IP Range name is used for VPC Peering. The
+        /// subnetwork allocation will use the range *name* if it's assigned.
+        /// </summary>
+        public readonly string? ReservedIpRange;
+        /// <summary>
         /// Shielded VM Instance configuration settings.
         /// Structure is documented below.
         /// </summary>
@@ -139,6 +144,8 @@ namespace Pulumi.Gcp.Notebooks.Outputs
 
             string? nicType,
 
+            string? reservedIpRange,
+
             Outputs.RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig? shieldedInstanceConfig,
 
             string? subnet,
@@ -158,6 +165,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
             Metadata = metadata;
             Network = network;
             NicType = nicType;
+            ReservedIpRange = reservedIpRange;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             Subnet = subnet;
             Tags = tags;

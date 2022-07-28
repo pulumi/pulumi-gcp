@@ -378,9 +378,6 @@ func NewBudget(ctx *pulumi.Context,
 	if args.BillingAccount == nil {
 		return nil, errors.New("invalid value for required argument 'BillingAccount'")
 	}
-	if args.ThresholdRules == nil {
-		return nil, errors.New("invalid value for required argument 'ThresholdRules'")
-	}
 	var resource Budget
 	err := ctx.RegisterResource("gcp:billing/budget:Budget", name, args, &resource, opts...)
 	if err != nil {

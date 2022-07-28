@@ -22,6 +22,11 @@ public final class InstanceTemplateScheduling {
      * 
      */
     private final @Nullable Boolean automaticRestart;
+    /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    private final @Nullable String instanceTerminationAction;
     private final @Nullable Integer minNodeCpus;
     /**
      * @return Specifies node affinities or anti-affinities
@@ -57,12 +62,14 @@ public final class InstanceTemplateScheduling {
     @CustomType.Constructor
     private InstanceTemplateScheduling(
         @CustomType.Parameter("automaticRestart") @Nullable Boolean automaticRestart,
+        @CustomType.Parameter("instanceTerminationAction") @Nullable String instanceTerminationAction,
         @CustomType.Parameter("minNodeCpus") @Nullable Integer minNodeCpus,
         @CustomType.Parameter("nodeAffinities") @Nullable List<InstanceTemplateSchedulingNodeAffinity> nodeAffinities,
         @CustomType.Parameter("onHostMaintenance") @Nullable String onHostMaintenance,
         @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
         @CustomType.Parameter("provisioningModel") @Nullable String provisioningModel) {
         this.automaticRestart = automaticRestart;
+        this.instanceTerminationAction = instanceTerminationAction;
         this.minNodeCpus = minNodeCpus;
         this.nodeAffinities = nodeAffinities;
         this.onHostMaintenance = onHostMaintenance;
@@ -78,6 +85,13 @@ public final class InstanceTemplateScheduling {
      */
     public Optional<Boolean> automaticRestart() {
         return Optional.ofNullable(this.automaticRestart);
+    }
+    /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    public Optional<String> instanceTerminationAction() {
+        return Optional.ofNullable(this.instanceTerminationAction);
     }
     public Optional<Integer> minNodeCpus() {
         return Optional.ofNullable(this.minNodeCpus);
@@ -131,6 +145,7 @@ public final class InstanceTemplateScheduling {
 
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
+        private @Nullable String instanceTerminationAction;
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceTemplateSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
@@ -144,6 +159,7 @@ public final class InstanceTemplateScheduling {
         public Builder(InstanceTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
@@ -153,6 +169,10 @@ public final class InstanceTemplateScheduling {
 
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
             this.automaticRestart = automaticRestart;
+            return this;
+        }
+        public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
+            this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
         public Builder minNodeCpus(@Nullable Integer minNodeCpus) {
@@ -178,7 +198,7 @@ public final class InstanceTemplateScheduling {
             this.provisioningModel = provisioningModel;
             return this;
         }        public InstanceTemplateScheduling build() {
-            return new InstanceTemplateScheduling(automaticRestart, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+            return new InstanceTemplateScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
         }
     }
 }

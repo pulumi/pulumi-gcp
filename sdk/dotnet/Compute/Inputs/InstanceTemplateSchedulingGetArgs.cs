@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
 
+        /// <summary>
+        /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        /// </summary>
+        [Input("instanceTerminationAction")]
+        public Input<string>? InstanceTerminationAction { get; set; }
+
         [Input("minNodeCpus")]
         public Input<int>? MinNodeCpus { get; set; }
 
@@ -55,7 +61,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
-        /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
         /// `preemptible` should be `true` and `auto_restart` should be
         /// `false`. For more info about
         /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)

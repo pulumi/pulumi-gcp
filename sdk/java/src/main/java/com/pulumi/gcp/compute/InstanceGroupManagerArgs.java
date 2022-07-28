@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulDiskArgs;
@@ -22,6 +23,27 @@ import javax.annotation.Nullable;
 public final class InstanceGroupManagerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceGroupManagerArgs Empty = new InstanceGroupManagerArgs();
+
+    /**
+     * )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    @Import(name="allInstancesConfig")
+    private @Nullable Output<InstanceGroupManagerAllInstancesConfigArgs> allInstancesConfig;
+
+    /**
+     * @return )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    public Optional<Output<InstanceGroupManagerAllInstancesConfigArgs>> allInstancesConfig() {
+        return Optional.ofNullable(this.allInstancesConfig);
+    }
 
     /**
      * The autohealing policies for this managed instance
@@ -132,14 +154,14 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+     * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      * 
      */
     @Import(name="statefulDisks")
     private @Nullable Output<List<InstanceGroupManagerStatefulDiskArgs>> statefulDisks;
 
     /**
-     * @return ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+     * @return Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      * 
      */
     public Optional<Output<List<InstanceGroupManagerStatefulDiskArgs>>> statefulDisks() {
@@ -274,6 +296,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     private InstanceGroupManagerArgs() {}
 
     private InstanceGroupManagerArgs(InstanceGroupManagerArgs $) {
+        this.allInstancesConfig = $.allInstancesConfig;
         this.autoHealingPolicies = $.autoHealingPolicies;
         this.baseInstanceName = $.baseInstanceName;
         this.description = $.description;
@@ -306,6 +329,33 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
         public Builder(InstanceGroupManagerArgs defaults) {
             $ = new InstanceGroupManagerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allInstancesConfig )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group&#39;s instances to
+         * apply the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allInstancesConfig(@Nullable Output<InstanceGroupManagerAllInstancesConfigArgs> allInstancesConfig) {
+            $.allInstancesConfig = allInstancesConfig;
+            return this;
+        }
+
+        /**
+         * @param allInstancesConfig )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group&#39;s instances to
+         * apply the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allInstancesConfig(InstanceGroupManagerAllInstancesConfigArgs allInstancesConfig) {
+            return allInstancesConfig(Output.of(allInstancesConfig));
         }
 
         /**
@@ -464,7 +514,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulDisks ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+         * @param statefulDisks Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
          * 
          * @return builder
          * 
@@ -475,7 +525,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulDisks ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+         * @param statefulDisks Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
          * 
          * @return builder
          * 
@@ -485,7 +535,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulDisks ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+         * @param statefulDisks Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
          * 
          * @return builder
          * 

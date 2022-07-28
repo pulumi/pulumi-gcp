@@ -1552,6 +1552,11 @@ type AlertPolicyConditionConditionMonitoringQueryLanguage struct {
 	// that unhealthy states are detected and
 	// alerted on quickly.
 	Duration string `pulumi:"duration"`
+	// A condition control that determines how
+	// metric-threshold conditions are evaluated when
+	// data stops arriving.
+	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+	EvaluationMissingData *string `pulumi:"evaluationMissingData"`
 	// Monitoring Query Language query that outputs a boolean stream.
 	Query string `pulumi:"query"`
 	// The number/percent of time series for which
@@ -1594,6 +1599,11 @@ type AlertPolicyConditionConditionMonitoringQueryLanguageArgs struct {
 	// that unhealthy states are detected and
 	// alerted on quickly.
 	Duration pulumi.StringInput `pulumi:"duration"`
+	// A condition control that determines how
+	// metric-threshold conditions are evaluated when
+	// data stops arriving.
+	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+	EvaluationMissingData pulumi.StringPtrInput `pulumi:"evaluationMissingData"`
 	// Monitoring Query Language query that outputs a boolean stream.
 	Query pulumi.StringInput `pulumi:"query"`
 	// The number/percent of time series for which
@@ -1704,6 +1714,14 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) Duration() p
 	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) string { return v.Duration }).(pulumi.StringOutput)
 }
 
+// A condition control that determines how
+// metric-threshold conditions are evaluated when
+// data stops arriving.
+// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) EvaluationMissingData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) *string { return v.EvaluationMissingData }).(pulumi.StringPtrOutput)
+}
+
 // Monitoring Query Language query that outputs a boolean stream.
 func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) string { return v.Query }).(pulumi.StringOutput)
@@ -1769,6 +1787,19 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) Duration(
 			return nil
 		}
 		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// A condition control that determines how
+// metric-threshold conditions are evaluated when
+// data stops arriving.
+// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) EvaluationMissingData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMissingData
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2048,6 +2079,11 @@ type AlertPolicyConditionConditionThreshold struct {
 	// that unhealthy states are detected and
 	// alerted on quickly.
 	Duration string `pulumi:"duration"`
+	// A condition control that determines how
+	// metric-threshold conditions are evaluated when
+	// data stops arriving.
+	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+	EvaluationMissingData *string `pulumi:"evaluationMissingData"`
 	// A logs-based filter.
 	Filter *string `pulumi:"filter"`
 	// A value against which to compare the time
@@ -2152,6 +2188,11 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// that unhealthy states are detected and
 	// alerted on quickly.
 	Duration pulumi.StringInput `pulumi:"duration"`
+	// A condition control that determines how
+	// metric-threshold conditions are evaluated when
+	// data stops arriving.
+	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+	EvaluationMissingData pulumi.StringPtrInput `pulumi:"evaluationMissingData"`
 	// A logs-based filter.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// A value against which to compare the time
@@ -2340,6 +2381,14 @@ func (o AlertPolicyConditionConditionThresholdOutput) Duration() pulumi.StringOu
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) string { return v.Duration }).(pulumi.StringOutput)
 }
 
+// A condition control that determines how
+// metric-threshold conditions are evaluated when
+// data stops arriving.
+// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+func (o AlertPolicyConditionConditionThresholdOutput) EvaluationMissingData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.EvaluationMissingData }).(pulumi.StringPtrOutput)
+}
+
 // A logs-based filter.
 func (o AlertPolicyConditionConditionThresholdOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
@@ -2502,6 +2551,19 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) Duration() pulumi.Strin
 			return nil
 		}
 		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// A condition control that determines how
+// metric-threshold conditions are evaluated when
+// data stops arriving.
+// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+func (o AlertPolicyConditionConditionThresholdPtrOutput) EvaluationMissingData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMissingData
 	}).(pulumi.StringPtrOutput)
 }
 

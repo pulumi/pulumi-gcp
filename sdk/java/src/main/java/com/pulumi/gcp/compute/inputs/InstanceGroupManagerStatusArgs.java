@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatusAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatusStatefulArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatusVersionTargetArgs;
 import java.lang.Boolean;
@@ -17,6 +18,27 @@ import javax.annotation.Nullable;
 public final class InstanceGroupManagerStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceGroupManagerStatusArgs Empty = new InstanceGroupManagerStatusArgs();
+
+    /**
+     * )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    @Import(name="allInstancesConfigs")
+    private @Nullable Output<List<InstanceGroupManagerStatusAllInstancesConfigArgs>> allInstancesConfigs;
+
+    /**
+     * @return )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    public Optional<Output<List<InstanceGroupManagerStatusAllInstancesConfigArgs>>> allInstancesConfigs() {
+        return Optional.ofNullable(this.allInstancesConfigs);
+    }
 
     /**
      * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
@@ -66,6 +88,7 @@ public final class InstanceGroupManagerStatusArgs extends com.pulumi.resources.R
     private InstanceGroupManagerStatusArgs() {}
 
     private InstanceGroupManagerStatusArgs(InstanceGroupManagerStatusArgs $) {
+        this.allInstancesConfigs = $.allInstancesConfigs;
         this.isStable = $.isStable;
         this.statefuls = $.statefuls;
         this.versionTargets = $.versionTargets;
@@ -87,6 +110,46 @@ public final class InstanceGroupManagerStatusArgs extends com.pulumi.resources.R
 
         public Builder(InstanceGroupManagerStatusArgs defaults) {
             $ = new InstanceGroupManagerStatusArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allInstancesConfigs )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group&#39;s instances to
+         * apply the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allInstancesConfigs(@Nullable Output<List<InstanceGroupManagerStatusAllInstancesConfigArgs>> allInstancesConfigs) {
+            $.allInstancesConfigs = allInstancesConfigs;
+            return this;
+        }
+
+        /**
+         * @param allInstancesConfigs )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group&#39;s instances to
+         * apply the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allInstancesConfigs(List<InstanceGroupManagerStatusAllInstancesConfigArgs> allInstancesConfigs) {
+            return allInstancesConfigs(Output.of(allInstancesConfigs));
+        }
+
+        /**
+         * @param allInstancesConfigs )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group&#39;s instances to
+         * apply the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allInstancesConfigs(InstanceGroupManagerStatusAllInstancesConfigArgs... allInstancesConfigs) {
+            return allInstancesConfigs(List.of(allInstancesConfigs));
         }
 
         /**

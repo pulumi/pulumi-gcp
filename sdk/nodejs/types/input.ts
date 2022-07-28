@@ -5688,6 +5688,17 @@ export namespace certificatemanager {
         state?: pulumi.Input<string>;
     }
 
+    export interface CertificateMapGclbTarget {
+        ipConfigs?: pulumi.Input<pulumi.Input<inputs.certificatemanager.CertificateMapGclbTargetIpConfig>[]>;
+        targetHttpsProxy?: pulumi.Input<string>;
+        targetSslProxy?: pulumi.Input<string>;
+    }
+
+    export interface CertificateMapGclbTargetIpConfig {
+        ipAddress?: pulumi.Input<string>;
+        ports?: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
     export interface CertificateSelfManaged {
         /**
          * The certificate chain in PEM-encoded form.
@@ -8432,6 +8443,11 @@ export namespace compute {
 
     export interface BackendBucketCdnPolicy {
         /**
+         * Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         */
+        bypassCacheOnRequestHeaders?: pulumi.Input<pulumi.Input<inputs.compute.BackendBucketCdnPolicyBypassCacheOnRequestHeader>[]>;
+        /**
          * The CacheKeyPolicy for this CdnPolicy.
          * Structure is documented below.
          */
@@ -8466,6 +8482,10 @@ export namespace compute {
          */
         negativeCachingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.BackendBucketCdnPolicyNegativeCachingPolicy>[]>;
         /**
+         * If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+         */
+        requestCoalescing?: pulumi.Input<boolean>;
+        /**
          * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
          */
         serveWhileStale?: pulumi.Input<number>;
@@ -8480,6 +8500,13 @@ export namespace compute {
          * header. The actual headers served in responses will not be altered.
          */
         signedUrlCacheMaxAgeSec?: pulumi.Input<number>;
+    }
+
+    export interface BackendBucketCdnPolicyBypassCacheOnRequestHeader {
+        /**
+         * The header field name to match on when bypassing cache. Values are case-insensitive.
+         */
+        headerName?: pulumi.Input<string>;
     }
 
     export interface BackendBucketCdnPolicyCacheKeyPolicy {
@@ -8507,6 +8534,18 @@ export namespace compute {
          * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
          */
         ttl?: pulumi.Input<number>;
+    }
+
+    export interface BackendBucketIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface BackendBucketIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface BackendServiceBackend {
@@ -9816,6 +9855,7 @@ export namespace compute {
 
     export interface InstanceFromMachineImageScheduling {
         automaticRestart?: pulumi.Input<boolean>;
+        instanceTerminationAction?: pulumi.Input<string>;
         minNodeCpus?: pulumi.Input<number>;
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingNodeAffinity>[]>;
         onHostMaintenance?: pulumi.Input<string>;
@@ -9938,6 +9978,7 @@ export namespace compute {
 
     export interface InstanceFromTemplateScheduling {
         automaticRestart?: pulumi.Input<boolean>;
+        instanceTerminationAction?: pulumi.Input<string>;
         minNodeCpus?: pulumi.Input<number>;
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingNodeAffinity>[]>;
         onHostMaintenance?: pulumi.Input<string>;
@@ -9964,6 +10005,17 @@ export namespace compute {
         enableIntegrityMonitoring?: pulumi.Input<boolean>;
         enableSecureBoot?: pulumi.Input<boolean>;
         enableVtpm?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceGroupManagerAllInstancesConfig {
+        /**
+         * ), The label key-value pairs that you want to patch onto the instance.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+         */
+        metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface InstanceGroupManagerAutoHealingPolicies {
@@ -10003,6 +10055,13 @@ export namespace compute {
 
     export interface InstanceGroupManagerStatus {
         /**
+         * )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group's instances to
+         * apply the configuration.
+         */
+        allInstancesConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatusAllInstancesConfig>[]>;
+        /**
          * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
          */
         isStable?: pulumi.Input<boolean>;
@@ -10014,6 +10073,10 @@ export namespace compute {
          * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
          */
         versionTargets?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatusVersionTarget>[]>;
+    }
+
+    export interface InstanceGroupManagerStatusAllInstancesConfig {
+        effective?: pulumi.Input<boolean>;
     }
 
     export interface InstanceGroupManagerStatusStateful {
@@ -10319,6 +10382,10 @@ export namespace compute {
          * Defaults to true.
          */
         automaticRestart?: pulumi.Input<boolean>;
+        /**
+         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         */
+        instanceTerminationAction?: pulumi.Input<string>;
         /**
          * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
          */
@@ -10668,6 +10735,10 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart?: pulumi.Input<boolean>;
+        /**
+         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         */
+        instanceTerminationAction?: pulumi.Input<string>;
         minNodeCpus?: pulumi.Input<number>;
         /**
          * Specifies node affinities or anti-affinities
@@ -10689,7 +10760,7 @@ export namespace compute {
          */
         preemptible?: pulumi.Input<boolean>;
         /**
-         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
          * `preemptible` should be `true` and `autoRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -10956,8 +11027,7 @@ export namespace compute {
          */
         direction?: pulumi.Input<string>;
         /**
-         * Protocols that apply as a filter on mirrored traffic.
-         * Each value may be one of `tcp`, `udp`, and `icmp`.
+         * Possible IP protocols including tcp, udp, icmp and esp
          */
         ipProtocols?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -12186,6 +12256,17 @@ export namespace compute {
         response?: pulumi.Input<string>;
     }
 
+    export interface RegionInstanceGroupManagerAllInstancesConfig {
+        /**
+         * ), The label key-value pairs that you want to patch onto the instance.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+         */
+        metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
     export interface RegionInstanceGroupManagerAutoHealingPolicies {
         /**
          * The health check resource that signals autohealing.
@@ -12223,6 +12304,13 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerStatus {
         /**
+         * )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group's instances to
+         * apply the configuration.
+         */
+        allInstancesConfigs?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatusAllInstancesConfig>[]>;
+        /**
          * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
          */
         isStable?: pulumi.Input<boolean>;
@@ -12234,6 +12322,10 @@ export namespace compute {
          * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
          */
         versionTargets?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatusVersionTarget>[]>;
+    }
+
+    export interface RegionInstanceGroupManagerStatusAllInstancesConfig {
+        effective?: pulumi.Input<boolean>;
     }
 
     export interface RegionInstanceGroupManagerStatusStateful {
@@ -14175,12 +14267,10 @@ export namespace compute {
          */
         priority: pulumi.Input<number>;
         /**
-         * )
          * Must be specified if the `action` is "rateBasedBad" or "throttle". Cannot be specified for other actions. Structure is documented below.
          */
         rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
         /**
-         * )
          * Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
          */
         redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions>;
@@ -20723,6 +20813,34 @@ export namespace dataproc {
         substate?: pulumi.Input<string>;
     }
 
+    export interface MetastoreFederationBackendMetastore {
+        /**
+         * The type of the backend metastore.
+         * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+         */
+        metastoreType: pulumi.Input<string>;
+        /**
+         * The relative resource name of the metastore that is being federated.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        rank: pulumi.Input<string>;
+    }
+
+    export interface MetastoreFederationIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface MetastoreFederationIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface MetastoreServiceEncryptionConfig {
         /**
          * The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
@@ -23301,6 +23419,8 @@ export namespace gkehub {
          * Logs all denies and dry run failures.
          */
         logDeniesEnabled?: pulumi.Input<boolean>;
+        monitoring?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementPolicyControllerMonitoring>;
+        mutationEnabled?: pulumi.Input<boolean>;
         /**
          * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
          */
@@ -23309,6 +23429,10 @@ export namespace gkehub {
          * Installs the default template library along with Policy Controller.
          */
         templateLibraryInstalled?: pulumi.Input<boolean>;
+    }
+
+    export interface FeatureMembershipConfigmanagementPolicyControllerMonitoring {
+        backends?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface FeatureResourceState {
@@ -24151,7 +24275,7 @@ export namespace kms {
          */
         algorithm: pulumi.Input<string>;
         /**
-         * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
+         * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
          */
         protectionLevel?: pulumi.Input<string>;
     }
@@ -24842,6 +24966,13 @@ export namespace monitoring {
          */
         duration: pulumi.Input<string>;
         /**
+         * A condition control that determines how
+         * metric-threshold conditions are evaluated when
+         * data stops arriving.
+         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         */
+        evaluationMissingData?: pulumi.Input<string>;
+        /**
          * Monitoring Query Language query that outputs a boolean stream.
          */
         query: pulumi.Input<string>;
@@ -24960,6 +25091,13 @@ export namespace monitoring {
          * alerted on quickly.
          */
         duration: pulumi.Input<string>;
+        /**
+         * A condition control that determines how
+         * metric-threshold conditions are evaluated when
+         * data stops arriving.
+         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         */
+        evaluationMissingData?: pulumi.Input<string>;
         /**
          * A logs-based filter.
          */
@@ -26758,6 +26896,11 @@ export namespace notebooks {
          * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
          */
         nicType?: pulumi.Input<string>;
+        /**
+         * Reserved IP Range name is used for VPC Peering. The
+         * subnetwork allocation will use the range *name* if it's assigned.
+         */
+        reservedIpRange?: pulumi.Input<string>;
         /**
          * Shielded VM Instance configuration settings.
          * Structure is documented below.

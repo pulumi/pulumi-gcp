@@ -10,6 +10,9 @@ export * from "./attachedDisk";
 export * from "./autoscalar";
 export * from "./autoscaler";
 export * from "./backendBucket";
+export * from "./backendBucketIamBinding";
+export * from "./backendBucketIamMember";
+export * from "./backendBucketIamPolicy";
 export * from "./backendBucketSignedUrlKey";
 export * from "./backendService";
 export * from "./backendServiceIamBinding";
@@ -161,6 +164,9 @@ import { AttachedDisk } from "./attachedDisk";
 import { Autoscalar } from "./autoscalar";
 import { Autoscaler } from "./autoscaler";
 import { BackendBucket } from "./backendBucket";
+import { BackendBucketIamBinding } from "./backendBucketIamBinding";
+import { BackendBucketIamMember } from "./backendBucketIamMember";
+import { BackendBucketIamPolicy } from "./backendBucketIamPolicy";
 import { BackendBucketSignedUrlKey } from "./backendBucketSignedUrlKey";
 import { BackendService } from "./backendService";
 import { BackendServiceIamBinding } from "./backendServiceIamBinding";
@@ -288,6 +294,12 @@ const _module = {
                 return new Autoscaler(name, <any>undefined, { urn })
             case "gcp:compute/backendBucket:BackendBucket":
                 return new BackendBucket(name, <any>undefined, { urn })
+            case "gcp:compute/backendBucketIamBinding:BackendBucketIamBinding":
+                return new BackendBucketIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/backendBucketIamMember:BackendBucketIamMember":
+                return new BackendBucketIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy":
+                return new BackendBucketIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey":
                 return new BackendBucketSignedUrlKey(name, <any>undefined, { urn })
             case "gcp:compute/backendService:BackendService":
@@ -522,6 +534,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/attachedDisk", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/autoscalar", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/autoscaler", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendBucket", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/backendBucketIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/backendBucketIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/backendBucketIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendBucketSignedUrlKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendService", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamBinding", _module)

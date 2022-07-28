@@ -20,6 +20,11 @@ public final class GetInstanceTemplateScheduling {
      * 
      */
     private final Boolean automaticRestart;
+    /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    private final String instanceTerminationAction;
     private final Integer minNodeCpus;
     /**
      * @return Specifies node affinities or anti-affinities
@@ -44,7 +49,7 @@ public final class GetInstanceTemplateScheduling {
      */
     private final Boolean preemptible;
     /**
-     * @return (Beta) Describe the type of preemptible VM.
+     * @return Describe the type of preemptible VM.
      * 
      */
     private final String provisioningModel;
@@ -52,12 +57,14 @@ public final class GetInstanceTemplateScheduling {
     @CustomType.Constructor
     private GetInstanceTemplateScheduling(
         @CustomType.Parameter("automaticRestart") Boolean automaticRestart,
+        @CustomType.Parameter("instanceTerminationAction") String instanceTerminationAction,
         @CustomType.Parameter("minNodeCpus") Integer minNodeCpus,
         @CustomType.Parameter("nodeAffinities") List<GetInstanceTemplateSchedulingNodeAffinity> nodeAffinities,
         @CustomType.Parameter("onHostMaintenance") String onHostMaintenance,
         @CustomType.Parameter("preemptible") Boolean preemptible,
         @CustomType.Parameter("provisioningModel") String provisioningModel) {
         this.automaticRestart = automaticRestart;
+        this.instanceTerminationAction = instanceTerminationAction;
         this.minNodeCpus = minNodeCpus;
         this.nodeAffinities = nodeAffinities;
         this.onHostMaintenance = onHostMaintenance;
@@ -73,6 +80,13 @@ public final class GetInstanceTemplateScheduling {
      */
     public Boolean automaticRestart() {
         return this.automaticRestart;
+    }
+    /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    public String instanceTerminationAction() {
+        return this.instanceTerminationAction;
     }
     public Integer minNodeCpus() {
         return this.minNodeCpus;
@@ -106,7 +120,7 @@ public final class GetInstanceTemplateScheduling {
         return this.preemptible;
     }
     /**
-     * @return (Beta) Describe the type of preemptible VM.
+     * @return Describe the type of preemptible VM.
      * 
      */
     public String provisioningModel() {
@@ -123,6 +137,7 @@ public final class GetInstanceTemplateScheduling {
 
     public static final class Builder {
         private Boolean automaticRestart;
+        private String instanceTerminationAction;
         private Integer minNodeCpus;
         private List<GetInstanceTemplateSchedulingNodeAffinity> nodeAffinities;
         private String onHostMaintenance;
@@ -136,6 +151,7 @@ public final class GetInstanceTemplateScheduling {
         public Builder(GetInstanceTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
@@ -145,6 +161,10 @@ public final class GetInstanceTemplateScheduling {
 
         public Builder automaticRestart(Boolean automaticRestart) {
             this.automaticRestart = Objects.requireNonNull(automaticRestart);
+            return this;
+        }
+        public Builder instanceTerminationAction(String instanceTerminationAction) {
+            this.instanceTerminationAction = Objects.requireNonNull(instanceTerminationAction);
             return this;
         }
         public Builder minNodeCpus(Integer minNodeCpus) {
@@ -170,7 +190,7 @@ public final class GetInstanceTemplateScheduling {
             this.provisioningModel = Objects.requireNonNull(provisioningModel);
             return this;
         }        public GetInstanceTemplateScheduling build() {
-            return new GetInstanceTemplateScheduling(automaticRestart, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+            return new GetInstanceTemplateScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
         }
     }
 }

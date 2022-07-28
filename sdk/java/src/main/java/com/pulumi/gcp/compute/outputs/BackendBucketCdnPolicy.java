@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.BackendBucketCdnPolicyBypassCacheOnRequestHeader;
 import com.pulumi.gcp.compute.outputs.BackendBucketCdnPolicyCacheKeyPolicy;
 import com.pulumi.gcp.compute.outputs.BackendBucketCdnPolicyNegativeCachingPolicy;
 import java.lang.Boolean;
@@ -16,6 +17,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BackendBucketCdnPolicy {
+    /**
+     * @return Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * Structure is documented below.
+     * 
+     */
+    private final @Nullable List<BackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
     /**
      * @return The CacheKeyPolicy for this CdnPolicy.
      * Structure is documented below.
@@ -58,6 +65,11 @@ public final class BackendBucketCdnPolicy {
      */
     private final @Nullable List<BackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
     /**
+     * @return If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+     * 
+     */
+    private final @Nullable Boolean requestCoalescing;
+    /**
      * @return Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
      * 
      */
@@ -77,6 +89,7 @@ public final class BackendBucketCdnPolicy {
 
     @CustomType.Constructor
     private BackendBucketCdnPolicy(
+        @CustomType.Parameter("bypassCacheOnRequestHeaders") @Nullable List<BackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders,
         @CustomType.Parameter("cacheKeyPolicy") @Nullable BackendBucketCdnPolicyCacheKeyPolicy cacheKeyPolicy,
         @CustomType.Parameter("cacheMode") @Nullable String cacheMode,
         @CustomType.Parameter("clientTtl") @Nullable Integer clientTtl,
@@ -84,8 +97,10 @@ public final class BackendBucketCdnPolicy {
         @CustomType.Parameter("maxTtl") @Nullable Integer maxTtl,
         @CustomType.Parameter("negativeCaching") @Nullable Boolean negativeCaching,
         @CustomType.Parameter("negativeCachingPolicies") @Nullable List<BackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies,
+        @CustomType.Parameter("requestCoalescing") @Nullable Boolean requestCoalescing,
         @CustomType.Parameter("serveWhileStale") @Nullable Integer serveWhileStale,
         @CustomType.Parameter("signedUrlCacheMaxAgeSec") @Nullable Integer signedUrlCacheMaxAgeSec) {
+        this.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
         this.cacheKeyPolicy = cacheKeyPolicy;
         this.cacheMode = cacheMode;
         this.clientTtl = clientTtl;
@@ -93,10 +108,19 @@ public final class BackendBucketCdnPolicy {
         this.maxTtl = maxTtl;
         this.negativeCaching = negativeCaching;
         this.negativeCachingPolicies = negativeCachingPolicies;
+        this.requestCoalescing = requestCoalescing;
         this.serveWhileStale = serveWhileStale;
         this.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
     }
 
+    /**
+     * @return Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * Structure is documented below.
+     * 
+     */
+    public List<BackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders() {
+        return this.bypassCacheOnRequestHeaders == null ? List.of() : this.bypassCacheOnRequestHeaders;
+    }
     /**
      * @return The CacheKeyPolicy for this CdnPolicy.
      * Structure is documented below.
@@ -153,6 +177,13 @@ public final class BackendBucketCdnPolicy {
         return this.negativeCachingPolicies == null ? List.of() : this.negativeCachingPolicies;
     }
     /**
+     * @return If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+     * 
+     */
+    public Optional<Boolean> requestCoalescing() {
+        return Optional.ofNullable(this.requestCoalescing);
+    }
+    /**
      * @return Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
      * 
      */
@@ -183,6 +214,7 @@ public final class BackendBucketCdnPolicy {
     }
 
     public static final class Builder {
+        private @Nullable List<BackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
         private @Nullable BackendBucketCdnPolicyCacheKeyPolicy cacheKeyPolicy;
         private @Nullable String cacheMode;
         private @Nullable Integer clientTtl;
@@ -190,6 +222,7 @@ public final class BackendBucketCdnPolicy {
         private @Nullable Integer maxTtl;
         private @Nullable Boolean negativeCaching;
         private @Nullable List<BackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
+        private @Nullable Boolean requestCoalescing;
         private @Nullable Integer serveWhileStale;
         private @Nullable Integer signedUrlCacheMaxAgeSec;
 
@@ -199,6 +232,7 @@ public final class BackendBucketCdnPolicy {
 
         public Builder(BackendBucketCdnPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bypassCacheOnRequestHeaders = defaults.bypassCacheOnRequestHeaders;
     	      this.cacheKeyPolicy = defaults.cacheKeyPolicy;
     	      this.cacheMode = defaults.cacheMode;
     	      this.clientTtl = defaults.clientTtl;
@@ -206,10 +240,18 @@ public final class BackendBucketCdnPolicy {
     	      this.maxTtl = defaults.maxTtl;
     	      this.negativeCaching = defaults.negativeCaching;
     	      this.negativeCachingPolicies = defaults.negativeCachingPolicies;
+    	      this.requestCoalescing = defaults.requestCoalescing;
     	      this.serveWhileStale = defaults.serveWhileStale;
     	      this.signedUrlCacheMaxAgeSec = defaults.signedUrlCacheMaxAgeSec;
         }
 
+        public Builder bypassCacheOnRequestHeaders(@Nullable List<BackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders) {
+            this.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
+            return this;
+        }
+        public Builder bypassCacheOnRequestHeaders(BackendBucketCdnPolicyBypassCacheOnRequestHeader... bypassCacheOnRequestHeaders) {
+            return bypassCacheOnRequestHeaders(List.of(bypassCacheOnRequestHeaders));
+        }
         public Builder cacheKeyPolicy(@Nullable BackendBucketCdnPolicyCacheKeyPolicy cacheKeyPolicy) {
             this.cacheKeyPolicy = cacheKeyPolicy;
             return this;
@@ -241,6 +283,10 @@ public final class BackendBucketCdnPolicy {
         public Builder negativeCachingPolicies(BackendBucketCdnPolicyNegativeCachingPolicy... negativeCachingPolicies) {
             return negativeCachingPolicies(List.of(negativeCachingPolicies));
         }
+        public Builder requestCoalescing(@Nullable Boolean requestCoalescing) {
+            this.requestCoalescing = requestCoalescing;
+            return this;
+        }
         public Builder serveWhileStale(@Nullable Integer serveWhileStale) {
             this.serveWhileStale = serveWhileStale;
             return this;
@@ -249,7 +295,7 @@ public final class BackendBucketCdnPolicy {
             this.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
             return this;
         }        public BackendBucketCdnPolicy build() {
-            return new BackendBucketCdnPolicy(cacheKeyPolicy, cacheMode, clientTtl, defaultTtl, maxTtl, negativeCaching, negativeCachingPolicies, serveWhileStale, signedUrlCacheMaxAgeSec);
+            return new BackendBucketCdnPolicy(bypassCacheOnRequestHeaders, cacheKeyPolicy, cacheMode, clientTtl, defaultTtl, maxTtl, negativeCaching, negativeCachingPolicies, requestCoalescing, serveWhileStale, signedUrlCacheMaxAgeSec);
         }
     }
 }

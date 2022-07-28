@@ -2686,6 +2686,9 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// or VirtioNet.
 	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
 	NicType *string `pulumi:"nicType"`
+	// Reserved IP Range name is used for VPC Peering. The
+	// subnetwork allocation will use the range *name* if it's assigned.
+	ReservedIpRange *string `pulumi:"reservedIpRange"`
 	// Shielded VM Instance configuration settings.
 	// Structure is documented below.
 	ShieldedInstanceConfig *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -2771,6 +2774,9 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// or VirtioNet.
 	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
 	NicType pulumi.StringPtrInput `pulumi:"nicType"`
+	// Reserved IP Range name is used for VPC Peering. The
+	// subnetwork allocation will use the range *name* if it's assigned.
+	ReservedIpRange pulumi.StringPtrInput `pulumi:"reservedIpRange"`
 	// Shielded VM Instance configuration settings.
 	// Structure is documented below.
 	ShieldedInstanceConfig RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -2960,6 +2966,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Network() pulumi.String
 // Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) NicType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.NicType }).(pulumi.StringPtrOutput)
+}
+
+// Reserved IP Range name is used for VPC Peering. The
+// subnetwork allocation will use the range *name* if it's assigned.
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ReservedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.ReservedIpRange }).(pulumi.StringPtrOutput)
 }
 
 // Shielded VM Instance configuration settings.
@@ -3156,6 +3168,17 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) NicType() pulumi.Str
 			return nil
 		}
 		return v.NicType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reserved IP Range name is used for VPC Peering. The
+// subnetwork allocation will use the range *name* if it's assigned.
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ReservedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReservedIpRange
 	}).(pulumi.StringPtrOutput)
 }
 

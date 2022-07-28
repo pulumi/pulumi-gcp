@@ -272,6 +272,12 @@ namespace Pulumi.Gcp.Projects
         [Output("restrictions")]
         public Output<Outputs.ApiKeyRestrictions?> Restrictions { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. Unique id in UUID4 format.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ApiKey resource with the given unique name, arguments, and options.
@@ -379,6 +385,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Input("restrictions")]
         public Input<Inputs.ApiKeyRestrictionsGetArgs>? Restrictions { get; set; }
+
+        /// <summary>
+        /// Output only. Unique id in UUID4 format.
+        /// </summary>
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
 
         public ApiKeyState()
         {

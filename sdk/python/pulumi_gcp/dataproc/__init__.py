@@ -17,6 +17,10 @@ from .job import *
 from .job_iam_binding import *
 from .job_iam_member import *
 from .job_iam_policy import *
+from .metastore_federation import *
+from .metastore_federation_iam_binding import *
+from .metastore_federation_iam_member import *
+from .metastore_federation_iam_policy import *
 from .metastore_service import *
 from .metastore_service_iam_binding import *
 from .metastore_service_iam_member import *

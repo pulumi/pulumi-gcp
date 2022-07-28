@@ -25,8 +25,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Protocols that apply as a filter on mirrored traffic.
-        /// Each value may be one of `tcp`, `udp`, and `icmp`.
+        /// Possible IP protocols including tcp, udp, icmp and esp
         /// </summary>
         public readonly ImmutableArray<string> IpProtocols;
 

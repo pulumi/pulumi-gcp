@@ -42,6 +42,12 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("logDeniesEnabled")]
         public Input<bool>? LogDeniesEnabled { get; set; }
 
+        [Input("monitoring")]
+        public Input<Inputs.FeatureMembershipConfigmanagementPolicyControllerMonitoringGetArgs>? Monitoring { get; set; }
+
+        [Input("mutationEnabled")]
+        public Input<bool>? MutationEnabled { get; set; }
+
         /// <summary>
         /// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         /// </summary>

@@ -33,14 +33,14 @@ public final class CryptoKeyVersionTemplateArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;. Defaults to &#34;SOFTWARE&#34;.
+     * The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
      * 
      */
     @Import(name="protectionLevel")
     private @Nullable Output<String> protectionLevel;
 
     /**
-     * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;. Defaults to &#34;SOFTWARE&#34;.
+     * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
      * 
      */
     public Optional<Output<String>> protectionLevel() {
@@ -96,7 +96,7 @@ public final class CryptoKeyVersionTemplateArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param protectionLevel The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;. Defaults to &#34;SOFTWARE&#34;.
+         * @param protectionLevel The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class CryptoKeyVersionTemplateArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param protectionLevel The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;. Defaults to &#34;SOFTWARE&#34;.
+         * @param protectionLevel The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
          * 
          * @return builder
          * 

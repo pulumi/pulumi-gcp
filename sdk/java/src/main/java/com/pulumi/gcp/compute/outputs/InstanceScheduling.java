@@ -23,6 +23,11 @@ public final class InstanceScheduling {
      */
     private final @Nullable Boolean automaticRestart;
     /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    private final @Nullable String instanceTerminationAction;
+    /**
      * @return The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
      * 
      */
@@ -62,12 +67,14 @@ public final class InstanceScheduling {
     @CustomType.Constructor
     private InstanceScheduling(
         @CustomType.Parameter("automaticRestart") @Nullable Boolean automaticRestart,
+        @CustomType.Parameter("instanceTerminationAction") @Nullable String instanceTerminationAction,
         @CustomType.Parameter("minNodeCpus") @Nullable Integer minNodeCpus,
         @CustomType.Parameter("nodeAffinities") @Nullable List<InstanceSchedulingNodeAffinity> nodeAffinities,
         @CustomType.Parameter("onHostMaintenance") @Nullable String onHostMaintenance,
         @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
         @CustomType.Parameter("provisioningModel") @Nullable String provisioningModel) {
         this.automaticRestart = automaticRestart;
+        this.instanceTerminationAction = instanceTerminationAction;
         this.minNodeCpus = minNodeCpus;
         this.nodeAffinities = nodeAffinities;
         this.onHostMaintenance = onHostMaintenance;
@@ -83,6 +90,13 @@ public final class InstanceScheduling {
      */
     public Optional<Boolean> automaticRestart() {
         return Optional.ofNullable(this.automaticRestart);
+    }
+    /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    public Optional<String> instanceTerminationAction() {
+        return Optional.ofNullable(this.instanceTerminationAction);
     }
     /**
      * @return The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -141,6 +155,7 @@ public final class InstanceScheduling {
 
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
+        private @Nullable String instanceTerminationAction;
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
@@ -154,6 +169,7 @@ public final class InstanceScheduling {
         public Builder(InstanceScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
@@ -163,6 +179,10 @@ public final class InstanceScheduling {
 
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
             this.automaticRestart = automaticRestart;
+            return this;
+        }
+        public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
+            this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
         public Builder minNodeCpus(@Nullable Integer minNodeCpus) {
@@ -188,7 +208,7 @@ public final class InstanceScheduling {
             this.provisioningModel = provisioningModel;
             return this;
         }        public InstanceScheduling build() {
-            return new InstanceScheduling(automaticRestart, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+            return new InstanceScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
         }
     }
 }

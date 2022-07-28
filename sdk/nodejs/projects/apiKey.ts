@@ -189,6 +189,10 @@ export class ApiKey extends pulumi.CustomResource {
      * Key restrictions.
      */
     public readonly restrictions!: pulumi.Output<outputs.projects.ApiKeyRestrictions | undefined>;
+    /**
+     * Output only. Unique id in UUID4 format.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
 
     /**
      * Create a ApiKey resource with the given unique name, arguments, and options.
@@ -208,6 +212,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["restrictions"] = state ? state.restrictions : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as ApiKeyArgs | undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -215,6 +220,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["restrictions"] = args ? args.restrictions : undefined;
             resourceInputs["keyString"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiKey.__pulumiType, name, resourceInputs, opts);
@@ -246,6 +252,10 @@ export interface ApiKeyState {
      * Key restrictions.
      */
     restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions>;
+    /**
+     * Output only. Unique id in UUID4 format.
+     */
+    uid?: pulumi.Input<string>;
 }
 
 /**

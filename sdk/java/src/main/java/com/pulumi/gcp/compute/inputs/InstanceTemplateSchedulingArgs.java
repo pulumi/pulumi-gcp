@@ -38,6 +38,21 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.automaticRestart);
     }
 
+    /**
+     * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    @Import(name="instanceTerminationAction")
+    private @Nullable Output<String> instanceTerminationAction;
+
+    /**
+     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * 
+     */
+    public Optional<Output<String>> instanceTerminationAction() {
+        return Optional.ofNullable(this.instanceTerminationAction);
+    }
+
     @Import(name="minNodeCpus")
     private @Nullable Output<Integer> minNodeCpus;
 
@@ -129,6 +144,7 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
 
     private InstanceTemplateSchedulingArgs(InstanceTemplateSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
+        this.instanceTerminationAction = $.instanceTerminationAction;
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
@@ -177,6 +193,27 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
          */
         public Builder automaticRestart(Boolean automaticRestart) {
             return automaticRestart(Output.of(automaticRestart));
+        }
+
+        /**
+         * @param instanceTerminationAction Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTerminationAction(@Nullable Output<String> instanceTerminationAction) {
+            $.instanceTerminationAction = instanceTerminationAction;
+            return this;
+        }
+
+        /**
+         * @param instanceTerminationAction Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTerminationAction(String instanceTerminationAction) {
+            return instanceTerminationAction(Output.of(instanceTerminationAction));
         }
 
         public Builder minNodeCpus(@Nullable Output<Integer> minNodeCpus) {
