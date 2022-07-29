@@ -261,6 +261,8 @@ type ApiKey struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Key restrictions.
 	Restrictions ApiKeyRestrictionsPtrOutput `pulumi:"restrictions"`
+	// Output only. Unique id in UUID4 format.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
 // NewApiKey registers a new resource with the given unique name, arguments, and options.
@@ -303,6 +305,8 @@ type apiKeyState struct {
 	Project *string `pulumi:"project"`
 	// Key restrictions.
 	Restrictions *ApiKeyRestrictions `pulumi:"restrictions"`
+	// Output only. Unique id in UUID4 format.
+	Uid *string `pulumi:"uid"`
 }
 
 type ApiKeyState struct {
@@ -317,6 +321,8 @@ type ApiKeyState struct {
 	Project pulumi.StringPtrInput
 	// Key restrictions.
 	Restrictions ApiKeyRestrictionsPtrInput
+	// Output only. Unique id in UUID4 format.
+	Uid pulumi.StringPtrInput
 }
 
 func (ApiKeyState) ElementType() reflect.Type {
@@ -457,6 +463,11 @@ func (o ApiKeyOutput) Project() pulumi.StringOutput {
 // Key restrictions.
 func (o ApiKeyOutput) Restrictions() ApiKeyRestrictionsPtrOutput {
 	return o.ApplyT(func(v *ApiKey) ApiKeyRestrictionsPtrOutput { return v.Restrictions }).(ApiKeyRestrictionsPtrOutput)
+}
+
+// Output only. Unique id in UUID4 format.
+func (o ApiKeyOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
 type ApiKeyArrayOutput struct{ *pulumi.OutputState }

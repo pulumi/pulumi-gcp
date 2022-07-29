@@ -18,6 +18,7 @@ class InstanceGroupManagerArgs:
     def __init__(__self__, *,
                  base_instance_name: pulumi.Input[str],
                  versions: pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]],
+                 all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,10 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
+        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: )
+               Properties to set on all instances in the group. After setting
+               allInstancesConfig on the group, you must update the group's instances to
+               apply the configuration.
         :param pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         :param pulumi.Input[str] description: An optional textual description of the instance
@@ -50,7 +55,7 @@ class InstanceGroupManagerArgs:
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -68,6 +73,8 @@ class InstanceGroupManagerArgs:
         """
         pulumi.set(__self__, "base_instance_name", base_instance_name)
         pulumi.set(__self__, "versions", versions)
+        if all_instances_config is not None:
+            pulumi.set(__self__, "all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if description is not None:
@@ -123,6 +130,21 @@ class InstanceGroupManagerArgs:
     @versions.setter
     def versions(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]):
         pulumi.set(self, "versions", value)
+
+    @property
+    @pulumi.getter(name="allInstancesConfig")
+    def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
+        """
+        )
+        Properties to set on all instances in the group. After setting
+        allInstancesConfig on the group, you must update the group's instances to
+        apply the configuration.
+        """
+        return pulumi.get(self, "all_instances_config")
+
+    @all_instances_config.setter
+    def all_instances_config(self, value: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]):
+        pulumi.set(self, "all_instances_config", value)
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
@@ -192,7 +214,7 @@ class InstanceGroupManagerArgs:
     @pulumi.getter(name="statefulDisks")
     def stateful_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]]:
         """
-        ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         """
         return pulumi.get(self, "stateful_disks")
 
@@ -284,6 +306,7 @@ class InstanceGroupManagerArgs:
 @pulumi.input_type
 class _InstanceGroupManagerState:
     def __init__(__self__, *,
+                 all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -305,6 +328,10 @@ class _InstanceGroupManagerState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroupManager resources.
+        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: )
+               Properties to set on all instances in the group. After setting
+               allInstancesConfig on the group, you must update the group's instances to
+               apply the configuration.
         :param pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         :param pulumi.Input[str] base_instance_name: The base instance name to use for
@@ -323,7 +350,7 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusArgs']]] statuses: The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
@@ -343,6 +370,8 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
         """
+        if all_instances_config is not None:
+            pulumi.set(__self__, "all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if base_instance_name is not None:
@@ -381,6 +410,21 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "wait_for_instances_status", wait_for_instances_status)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="allInstancesConfig")
+    def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
+        """
+        )
+        Properties to set on all instances in the group. After setting
+        allInstancesConfig on the group, you must update the group's instances to
+        apply the configuration.
+        """
+        return pulumi.get(self, "all_instances_config")
+
+    @all_instances_config.setter
+    def all_instances_config(self, value: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]):
+        pulumi.set(self, "all_instances_config", value)
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
@@ -512,7 +556,7 @@ class _InstanceGroupManagerState:
     @pulumi.getter(name="statefulDisks")
     def stateful_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]]:
         """
-        ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         """
         return pulumi.get(self, "stateful_disks")
 
@@ -632,6 +676,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -677,10 +722,18 @@ class InstanceGroupManager(pulumi.CustomResource):
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 instance_template=google_compute_instance_template["appserver"]["id"],
             )],
+            all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
+                metadata={
+                    "metadata_key": "metadata_value",
+                },
+                labels={
+                    "label_key": "label_value",
+                },
+            ),
             target_pools=[google_compute_target_pool["appserver"]["id"]],
             target_size=2,
             named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
-                name="customHTTP",
+                name="customhttp",
                 port=8888,
             )],
             auto_healing_policies=gcp.compute.InstanceGroupManagerAutoHealingPoliciesArgs(
@@ -735,6 +788,10 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: )
+               Properties to set on all instances in the group. After setting
+               allInstancesConfig on the group, you must update the group's instances to
+               apply the configuration.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         :param pulumi.Input[str] base_instance_name: The base instance name to use for
@@ -750,7 +807,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -805,10 +862,18 @@ class InstanceGroupManager(pulumi.CustomResource):
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 instance_template=google_compute_instance_template["appserver"]["id"],
             )],
+            all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
+                metadata={
+                    "metadata_key": "metadata_value",
+                },
+                labels={
+                    "label_key": "label_value",
+                },
+            ),
             target_pools=[google_compute_target_pool["appserver"]["id"]],
             target_size=2,
             named_ports=[gcp.compute.InstanceGroupManagerNamedPortArgs(
-                name="customHTTP",
+                name="customhttp",
                 port=8888,
             )],
             auto_healing_policies=gcp.compute.InstanceGroupManagerAutoHealingPoliciesArgs(
@@ -876,6 +941,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -899,6 +965,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceGroupManagerArgs.__new__(InstanceGroupManagerArgs)
 
+            __props__.__dict__["all_instances_config"] = all_instances_config
             __props__.__dict__["auto_healing_policies"] = auto_healing_policies
             if base_instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'base_instance_name'")
@@ -932,6 +999,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
             auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
             base_instance_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -958,6 +1026,10 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: )
+               Properties to set on all instances in the group. After setting
+               allInstancesConfig on the group, you must update the group's instances to
+               apply the configuration.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         :param pulumi.Input[str] base_instance_name: The base instance name to use for
@@ -976,7 +1048,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']]]] statuses: The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
@@ -1000,6 +1072,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         __props__ = _InstanceGroupManagerState.__new__(_InstanceGroupManagerState)
 
+        __props__.__dict__["all_instances_config"] = all_instances_config
         __props__.__dict__["auto_healing_policies"] = auto_healing_policies
         __props__.__dict__["base_instance_name"] = base_instance_name
         __props__.__dict__["description"] = description
@@ -1020,6 +1093,17 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["wait_for_instances_status"] = wait_for_instances_status
         __props__.__dict__["zone"] = zone
         return InstanceGroupManager(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allInstancesConfig")
+    def all_instances_config(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerAllInstancesConfig']]:
+        """
+        )
+        Properties to set on all instances in the group. After setting
+        allInstancesConfig on the group, you must update the group's instances to
+        apply the configuration.
+        """
+        return pulumi.get(self, "all_instances_config")
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
@@ -1111,7 +1195,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="statefulDisks")
     def stateful_disks(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceGroupManagerStatefulDisk']]]:
         """
-        ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         """
         return pulumi.get(self, "stateful_disks")
 

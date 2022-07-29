@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementPolicyControllerMonitoring;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -33,6 +34,8 @@ public final class FeatureMembershipConfigmanagementPolicyController {
      * 
      */
     private final @Nullable Boolean logDeniesEnabled;
+    private final @Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring;
+    private final @Nullable Boolean mutationEnabled;
     /**
      * @return Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
      * 
@@ -50,12 +53,16 @@ public final class FeatureMembershipConfigmanagementPolicyController {
         @CustomType.Parameter("enabled") @Nullable Boolean enabled,
         @CustomType.Parameter("exemptableNamespaces") @Nullable List<String> exemptableNamespaces,
         @CustomType.Parameter("logDeniesEnabled") @Nullable Boolean logDeniesEnabled,
+        @CustomType.Parameter("monitoring") @Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring,
+        @CustomType.Parameter("mutationEnabled") @Nullable Boolean mutationEnabled,
         @CustomType.Parameter("referentialRulesEnabled") @Nullable Boolean referentialRulesEnabled,
         @CustomType.Parameter("templateLibraryInstalled") @Nullable Boolean templateLibraryInstalled) {
         this.auditIntervalSeconds = auditIntervalSeconds;
         this.enabled = enabled;
         this.exemptableNamespaces = exemptableNamespaces;
         this.logDeniesEnabled = logDeniesEnabled;
+        this.monitoring = monitoring;
+        this.mutationEnabled = mutationEnabled;
         this.referentialRulesEnabled = referentialRulesEnabled;
         this.templateLibraryInstalled = templateLibraryInstalled;
     }
@@ -88,6 +95,12 @@ public final class FeatureMembershipConfigmanagementPolicyController {
     public Optional<Boolean> logDeniesEnabled() {
         return Optional.ofNullable(this.logDeniesEnabled);
     }
+    public Optional<FeatureMembershipConfigmanagementPolicyControllerMonitoring> monitoring() {
+        return Optional.ofNullable(this.monitoring);
+    }
+    public Optional<Boolean> mutationEnabled() {
+        return Optional.ofNullable(this.mutationEnabled);
+    }
     /**
      * @return Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
      * 
@@ -116,6 +129,8 @@ public final class FeatureMembershipConfigmanagementPolicyController {
         private @Nullable Boolean enabled;
         private @Nullable List<String> exemptableNamespaces;
         private @Nullable Boolean logDeniesEnabled;
+        private @Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring;
+        private @Nullable Boolean mutationEnabled;
         private @Nullable Boolean referentialRulesEnabled;
         private @Nullable Boolean templateLibraryInstalled;
 
@@ -129,6 +144,8 @@ public final class FeatureMembershipConfigmanagementPolicyController {
     	      this.enabled = defaults.enabled;
     	      this.exemptableNamespaces = defaults.exemptableNamespaces;
     	      this.logDeniesEnabled = defaults.logDeniesEnabled;
+    	      this.monitoring = defaults.monitoring;
+    	      this.mutationEnabled = defaults.mutationEnabled;
     	      this.referentialRulesEnabled = defaults.referentialRulesEnabled;
     	      this.templateLibraryInstalled = defaults.templateLibraryInstalled;
         }
@@ -152,6 +169,14 @@ public final class FeatureMembershipConfigmanagementPolicyController {
             this.logDeniesEnabled = logDeniesEnabled;
             return this;
         }
+        public Builder monitoring(@Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring) {
+            this.monitoring = monitoring;
+            return this;
+        }
+        public Builder mutationEnabled(@Nullable Boolean mutationEnabled) {
+            this.mutationEnabled = mutationEnabled;
+            return this;
+        }
         public Builder referentialRulesEnabled(@Nullable Boolean referentialRulesEnabled) {
             this.referentialRulesEnabled = referentialRulesEnabled;
             return this;
@@ -160,7 +185,7 @@ public final class FeatureMembershipConfigmanagementPolicyController {
             this.templateLibraryInstalled = templateLibraryInstalled;
             return this;
         }        public FeatureMembershipConfigmanagementPolicyController build() {
-            return new FeatureMembershipConfigmanagementPolicyController(auditIntervalSeconds, enabled, exemptableNamespaces, logDeniesEnabled, referentialRulesEnabled, templateLibraryInstalled);
+            return new FeatureMembershipConfigmanagementPolicyController(auditIntervalSeconds, enabled, exemptableNamespaces, logDeniesEnabled, monitoring, mutationEnabled, referentialRulesEnabled, templateLibraryInstalled);
         }
     }
 }

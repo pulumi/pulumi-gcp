@@ -175,7 +175,7 @@ export class Runtime extends pulumi.CustomResource {
      */
     public /*out*/ readonly metrics!: pulumi.Output<outputs.notebooks.RuntimeMetric[]>;
     /**
-     * The name specified for the Notebook instance.
+     * The name specified for the Notebook runtime.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -263,7 +263,7 @@ export interface RuntimeState {
      */
     metrics?: pulumi.Input<pulumi.Input<inputs.notebooks.RuntimeMetric>[]>;
     /**
-     * The name specified for the Notebook instance.
+     * The name specified for the Notebook runtime.
      */
     name?: pulumi.Input<string>;
     /**
@@ -301,7 +301,7 @@ export interface RuntimeArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * The name specified for the Notebook instance.
+     * The name specified for the Notebook runtime.
      */
     name?: pulumi.Input<string>;
     /**

@@ -114,8 +114,8 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="thresholdRules", required=true)
-    private Output<List<BudgetThresholdRuleArgs>> thresholdRules;
+    @Import(name="thresholdRules")
+    private @Nullable Output<List<BudgetThresholdRuleArgs>> thresholdRules;
 
     /**
      * @return Rules that trigger alerts (notifications of thresholds being
@@ -124,8 +124,8 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    public Output<List<BudgetThresholdRuleArgs>> thresholdRules() {
-        return this.thresholdRules;
+    public Optional<Output<List<BudgetThresholdRuleArgs>>> thresholdRules() {
+        return Optional.ofNullable(this.thresholdRules);
     }
 
     private BudgetArgs() {}
@@ -283,7 +283,7 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder thresholdRules(Output<List<BudgetThresholdRuleArgs>> thresholdRules) {
+        public Builder thresholdRules(@Nullable Output<List<BudgetThresholdRuleArgs>> thresholdRules) {
             $.thresholdRules = thresholdRules;
             return this;
         }
@@ -317,7 +317,6 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
         public BudgetArgs build() {
             $.amount = Objects.requireNonNull($.amount, "expected parameter 'amount' to be non-null");
             $.billingAccount = Objects.requireNonNull($.billingAccount, "expected parameter 'billingAccount' to be non-null");
-            $.thresholdRules = Objects.requireNonNull($.thresholdRules, "expected parameter 'thresholdRules' to be non-null");
             return $;
         }
     }

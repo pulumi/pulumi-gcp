@@ -45,6 +45,14 @@ import * as utilities from "../utilities";
  *     versions: [{
  *         instanceTemplate: google_compute_instance_template.appserver.id,
  *     }],
+ *     allInstancesConfig: {
+ *         metadata: {
+ *             metadata_key: "metadata_value",
+ *         },
+ *         labels: {
+ *             label_key: "label_value",
+ *         },
+ *     },
  *     targetPools: [google_compute_target_pool.appserver.id],
  *     targetSize: 2,
  *     namedPorts: [{
@@ -116,6 +124,13 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionInstanceGroupManager.__pulumiType;
     }
 
+    /**
+     * )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group's instances to
+     * apply the configuration.
+     */
+    public readonly allInstancesConfig!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerAllInstancesConfig | undefined>;
     /**
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -229,6 +244,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionInstanceGroupManagerState | undefined;
+            resourceInputs["allInstancesConfig"] = state ? state.allInstancesConfig : undefined;
             resourceInputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             resourceInputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -257,6 +273,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             if ((!args || args.versions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versions'");
             }
+            resourceInputs["allInstancesConfig"] = args ? args.allInstancesConfig : undefined;
             resourceInputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             resourceInputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -287,6 +304,13 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionInstanceGroupManager resources.
  */
 export interface RegionInstanceGroupManagerState {
+    /**
+     * )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group's instances to
+     * apply the configuration.
+     */
+    allInstancesConfig?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAllInstancesConfig>;
     /**
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -392,6 +416,13 @@ export interface RegionInstanceGroupManagerState {
  * The set of arguments for constructing a RegionInstanceGroupManager resource.
  */
 export interface RegionInstanceGroupManagerArgs {
+    /**
+     * )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group's instances to
+     * apply the configuration.
+     */
+    allInstancesConfig?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAllInstancesConfig>;
     /**
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).

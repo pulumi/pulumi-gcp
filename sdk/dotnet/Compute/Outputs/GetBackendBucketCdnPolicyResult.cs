@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetBackendBucketCdnPolicyResult
     {
+        public readonly ImmutableArray<Outputs.GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult> BypassCacheOnRequestHeaders;
         public readonly ImmutableArray<Outputs.GetBackendBucketCdnPolicyCacheKeyPolicyResult> CacheKeyPolicies;
         public readonly string CacheMode;
         public readonly int ClientTtl;
@@ -20,11 +21,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int MaxTtl;
         public readonly bool NegativeCaching;
         public readonly ImmutableArray<Outputs.GetBackendBucketCdnPolicyNegativeCachingPolicyResult> NegativeCachingPolicies;
+        public readonly bool RequestCoalescing;
         public readonly int ServeWhileStale;
         public readonly int SignedUrlCacheMaxAgeSec;
 
         [OutputConstructor]
         private GetBackendBucketCdnPolicyResult(
+            ImmutableArray<Outputs.GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult> bypassCacheOnRequestHeaders,
+
             ImmutableArray<Outputs.GetBackendBucketCdnPolicyCacheKeyPolicyResult> cacheKeyPolicies,
 
             string cacheMode,
@@ -39,10 +43,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.GetBackendBucketCdnPolicyNegativeCachingPolicyResult> negativeCachingPolicies,
 
+            bool requestCoalescing,
+
             int serveWhileStale,
 
             int signedUrlCacheMaxAgeSec)
         {
+            BypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
             CacheKeyPolicies = cacheKeyPolicies;
             CacheMode = cacheMode;
             ClientTtl = clientTtl;
@@ -50,6 +57,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             MaxTtl = maxTtl;
             NegativeCaching = negativeCaching;
             NegativeCachingPolicies = negativeCachingPolicies;
+            RequestCoalescing = requestCoalescing;
             ServeWhileStale = serveWhileStale;
             SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
         }

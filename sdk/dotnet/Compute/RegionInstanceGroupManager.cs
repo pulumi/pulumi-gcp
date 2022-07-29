@@ -61,6 +61,17 @@ namespace Pulumi.Gcp.Compute
     ///                     InstanceTemplate = google_compute_instance_template.Appserver.Id,
     ///                 },
     ///             },
+    ///             AllInstancesConfig = new Gcp.Compute.Inputs.RegionInstanceGroupManagerAllInstancesConfigArgs
+    ///             {
+    ///                 Metadata = 
+    ///                 {
+    ///                     { "metadata_key", "metadata_value" },
+    ///                 },
+    ///                 Labels = 
+    ///                 {
+    ///                     { "label_key", "label_value" },
+    ///                 },
+    ///             },
     ///             TargetPools = 
     ///             {
     ///                 google_compute_target_pool.Appserver.Id,
@@ -130,6 +141,15 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager")]
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
     {
+        /// <summary>
+        /// )
+        /// Properties to set on all instances in the group. After setting
+        /// allInstancesConfig on the group, you must update the group's instances to
+        /// apply the configuration.
+        /// </summary>
+        [Output("allInstancesConfig")]
+        public Output<Outputs.RegionInstanceGroupManagerAllInstancesConfig?> AllInstancesConfig { get; private set; } = null!;
+
         /// <summary>
         /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -316,6 +336,15 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionInstanceGroupManagerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// )
+        /// Properties to set on all instances in the group. After setting
+        /// allInstancesConfig on the group, you must update the group's instances to
+        /// apply the configuration.
+        /// </summary>
+        [Input("allInstancesConfig")]
+        public Input<Inputs.RegionInstanceGroupManagerAllInstancesConfigArgs>? AllInstancesConfig { get; set; }
+
+        /// <summary>
         /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         /// </summary>
@@ -467,6 +496,15 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RegionInstanceGroupManagerState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// )
+        /// Properties to set on all instances in the group. After setting
+        /// allInstancesConfig on the group, you must update the group's instances to
+        /// apply the configuration.
+        /// </summary>
+        [Input("allInstancesConfig")]
+        public Input<Inputs.RegionInstanceGroupManagerAllInstancesConfigGetArgs>? AllInstancesConfig { get; set; }
+
         /// <summary>
         /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).

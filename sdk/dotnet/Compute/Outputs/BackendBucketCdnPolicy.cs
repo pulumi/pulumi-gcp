@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class BackendBucketCdnPolicy
     {
         /// <summary>
+        /// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BackendBucketCdnPolicyBypassCacheOnRequestHeader> BypassCacheOnRequestHeaders;
+        /// <summary>
         /// The CacheKeyPolicy for this CdnPolicy.
         /// Structure is documented below.
         /// </summary>
@@ -48,6 +53,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.BackendBucketCdnPolicyNegativeCachingPolicy> NegativeCachingPolicies;
         /// <summary>
+        /// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+        /// </summary>
+        public readonly bool? RequestCoalescing;
+        /// <summary>
         /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
         /// </summary>
         public readonly int? ServeWhileStale;
@@ -65,6 +74,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private BackendBucketCdnPolicy(
+            ImmutableArray<Outputs.BackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders,
+
             Outputs.BackendBucketCdnPolicyCacheKeyPolicy? cacheKeyPolicy,
 
             string? cacheMode,
@@ -79,10 +90,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.BackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies,
 
+            bool? requestCoalescing,
+
             int? serveWhileStale,
 
             int? signedUrlCacheMaxAgeSec)
         {
+            BypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
             CacheKeyPolicy = cacheKeyPolicy;
             CacheMode = cacheMode;
             ClientTtl = clientTtl;
@@ -90,6 +104,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             MaxTtl = maxTtl;
             NegativeCaching = negativeCaching;
             NegativeCachingPolicies = negativeCachingPolicies;
+            RequestCoalescing = requestCoalescing;
             ServeWhileStale = serveWhileStale;
             SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
         }

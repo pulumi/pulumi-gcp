@@ -58,6 +58,9 @@ __all__ = [
     'JobSparksqlConfig',
     'JobSparksqlConfigLoggingConfig',
     'JobStatus',
+    'MetastoreFederationBackendMetastore',
+    'MetastoreFederationIamBindingCondition',
+    'MetastoreFederationIamMemberCondition',
     'MetastoreServiceEncryptionConfig',
     'MetastoreServiceHiveMetastoreConfig',
     'MetastoreServiceHiveMetastoreConfigKerberosConfig',
@@ -3661,6 +3664,119 @@ class JobStatus(dict):
     @pulumi.getter
     def substate(self) -> Optional[str]:
         return pulumi.get(self, "substate")
+
+
+@pulumi.output_type
+class MetastoreFederationBackendMetastore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metastoreType":
+            suggest = "metastore_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreFederationBackendMetastore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreFederationBackendMetastore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreFederationBackendMetastore.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metastore_type: str,
+                 name: str,
+                 rank: str):
+        """
+        :param str metastore_type: The type of the backend metastore.
+               Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+        :param str name: The relative resource name of the metastore that is being federated.
+        :param str rank: The identifier for this object. Format specified above.
+        """
+        pulumi.set(__self__, "metastore_type", metastore_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rank", rank)
+
+    @property
+    @pulumi.getter(name="metastoreType")
+    def metastore_type(self) -> str:
+        """
+        The type of the backend metastore.
+        Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+        """
+        return pulumi.get(self, "metastore_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The relative resource name of the metastore that is being federated.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def rank(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
+class MetastoreFederationIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class MetastoreFederationIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

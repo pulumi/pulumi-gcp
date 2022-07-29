@@ -18,19 +18,15 @@ class BudgetArgs:
     def __init__(__self__, *,
                  amount: pulumi.Input['BudgetAmountArgs'],
                  billing_account: pulumi.Input[str],
-                 threshold_rules: pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]],
                  all_updates_rule: Optional[pulumi.Input['BudgetAllUpdatesRuleArgs']] = None,
                  budget_filter: Optional[pulumi.Input['BudgetBudgetFilterArgs']] = None,
-                 display_name: Optional[pulumi.Input[str]] = None):
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None):
         """
         The set of arguments for constructing a Budget resource.
         :param pulumi.Input['BudgetAmountArgs'] amount: The budgeted amount for each usage period.
                Structure is documented below.
         :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
-        :param pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
-               crossed) when spend exceeds the specified percentages of the
-               budget.
-               Structure is documented below.
         :param pulumi.Input['BudgetAllUpdatesRuleArgs'] all_updates_rule: Defines notifications that are sent on every update to the
                billing account's spend, regardless of the thresholds defined
                using threshold rules.
@@ -39,16 +35,21 @@ class BudgetArgs:
                spend against the budget.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
+        :param pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
+               crossed) when spend exceeds the specified percentages of the
+               budget.
+               Structure is documented below.
         """
         pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "billing_account", billing_account)
-        pulumi.set(__self__, "threshold_rules", threshold_rules)
         if all_updates_rule is not None:
             pulumi.set(__self__, "all_updates_rule", all_updates_rule)
         if budget_filter is not None:
             pulumi.set(__self__, "budget_filter", budget_filter)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if threshold_rules is not None:
+            pulumi.set(__self__, "threshold_rules", threshold_rules)
 
     @property
     @pulumi.getter
@@ -74,21 +75,6 @@ class BudgetArgs:
     @billing_account.setter
     def billing_account(self, value: pulumi.Input[str]):
         pulumi.set(self, "billing_account", value)
-
-    @property
-    @pulumi.getter(name="thresholdRules")
-    def threshold_rules(self) -> pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]:
-        """
-        Rules that trigger alerts (notifications of thresholds being
-        crossed) when spend exceeds the specified percentages of the
-        budget.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "threshold_rules")
-
-    @threshold_rules.setter
-    def threshold_rules(self, value: pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]):
-        pulumi.set(self, "threshold_rules", value)
 
     @property
     @pulumi.getter(name="allUpdatesRule")
@@ -130,6 +116,21 @@ class BudgetArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="thresholdRules")
+    def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]]:
+        """
+        Rules that trigger alerts (notifications of thresholds being
+        crossed) when spend exceeds the specified percentages of the
+        budget.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "threshold_rules")
+
+    @threshold_rules.setter
+    def threshold_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]]):
+        pulumi.set(self, "threshold_rules", value)
 
 
 @pulumi.input_type
@@ -725,8 +726,6 @@ class Budget(pulumi.CustomResource):
             __props__.__dict__["billing_account"] = billing_account
             __props__.__dict__["budget_filter"] = budget_filter
             __props__.__dict__["display_name"] = display_name
-            if threshold_rules is None and not opts.urn:
-                raise TypeError("Missing required property 'threshold_rules'")
             __props__.__dict__["threshold_rules"] = threshold_rules
             __props__.__dict__["name"] = None
         super(Budget, __self__).__init__(
@@ -841,7 +840,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="thresholdRules")
-    def threshold_rules(self) -> pulumi.Output[Sequence['outputs.BudgetThresholdRule']]:
+    def threshold_rules(self) -> pulumi.Output[Optional[Sequence['outputs.BudgetThresholdRule']]]:
         """
         Rules that trigger alerts (notifications of thresholds being
         crossed) when spend exceeds the specified percentages of the

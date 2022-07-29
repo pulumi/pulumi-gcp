@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceFromMachineImageScheduling {
     private final @Nullable Boolean automaticRestart;
+    private final @Nullable String instanceTerminationAction;
     private final @Nullable Integer minNodeCpus;
     private final @Nullable List<InstanceFromMachineImageSchedulingNodeAffinity> nodeAffinities;
     private final @Nullable String onHostMaintenance;
@@ -25,12 +26,14 @@ public final class InstanceFromMachineImageScheduling {
     @CustomType.Constructor
     private InstanceFromMachineImageScheduling(
         @CustomType.Parameter("automaticRestart") @Nullable Boolean automaticRestart,
+        @CustomType.Parameter("instanceTerminationAction") @Nullable String instanceTerminationAction,
         @CustomType.Parameter("minNodeCpus") @Nullable Integer minNodeCpus,
         @CustomType.Parameter("nodeAffinities") @Nullable List<InstanceFromMachineImageSchedulingNodeAffinity> nodeAffinities,
         @CustomType.Parameter("onHostMaintenance") @Nullable String onHostMaintenance,
         @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
         @CustomType.Parameter("provisioningModel") @Nullable String provisioningModel) {
         this.automaticRestart = automaticRestart;
+        this.instanceTerminationAction = instanceTerminationAction;
         this.minNodeCpus = minNodeCpus;
         this.nodeAffinities = nodeAffinities;
         this.onHostMaintenance = onHostMaintenance;
@@ -40,6 +43,9 @@ public final class InstanceFromMachineImageScheduling {
 
     public Optional<Boolean> automaticRestart() {
         return Optional.ofNullable(this.automaticRestart);
+    }
+    public Optional<String> instanceTerminationAction() {
+        return Optional.ofNullable(this.instanceTerminationAction);
     }
     public Optional<Integer> minNodeCpus() {
         return Optional.ofNullable(this.minNodeCpus);
@@ -67,6 +73,7 @@ public final class InstanceFromMachineImageScheduling {
 
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
+        private @Nullable String instanceTerminationAction;
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceFromMachineImageSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
@@ -80,6 +87,7 @@ public final class InstanceFromMachineImageScheduling {
         public Builder(InstanceFromMachineImageScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
@@ -89,6 +97,10 @@ public final class InstanceFromMachineImageScheduling {
 
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
             this.automaticRestart = automaticRestart;
+            return this;
+        }
+        public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
+            this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
         public Builder minNodeCpus(@Nullable Integer minNodeCpus) {
@@ -114,7 +126,7 @@ public final class InstanceFromMachineImageScheduling {
             this.provisioningModel = provisioningModel;
             return this;
         }        public InstanceFromMachineImageScheduling build() {
-            return new InstanceFromMachineImageScheduling(automaticRestart, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+            return new InstanceFromMachineImageScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
         }
     }
 }

@@ -348,6 +348,20 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
     public Output<Optional<ApiKeyRestrictions>> restrictions() {
         return Codegen.optional(this.restrictions);
     }
+    /**
+     * Output only. Unique id in UUID4 format.
+     * 
+     */
+    @Export(name="uid", type=String.class, parameters={})
+    private Output<String> uid;
+
+    /**
+     * @return Output only. Unique id in UUID4 format.
+     * 
+     */
+    public Output<String> uid() {
+        return this.uid;
+    }
 
     /**
      *

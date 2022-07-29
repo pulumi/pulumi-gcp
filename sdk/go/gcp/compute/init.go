@@ -31,6 +31,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Autoscaler{}
 	case "gcp:compute/backendBucket:BackendBucket":
 		r = &BackendBucket{}
+	case "gcp:compute/backendBucketIamBinding:BackendBucketIamBinding":
+		r = &BackendBucketIamBinding{}
+	case "gcp:compute/backendBucketIamMember:BackendBucketIamMember":
+		r = &BackendBucketIamMember{}
+	case "gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy":
+		r = &BackendBucketIamPolicy{}
 	case "gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey":
 		r = &BackendBucketSignedUrlKey{}
 	case "gcp:compute/backendService:BackendService":
@@ -291,6 +297,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/backendBucket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/backendBucketIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/backendBucketIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/backendBucketIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

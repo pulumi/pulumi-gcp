@@ -8,9 +8,12 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'CertificateManaged',
+    'CertificateMapGclbTarget',
+    'CertificateMapGclbTargetIpConfig',
     'CertificateSelfManaged',
     'DnsAuthorizationDnsResourceRecord',
 ]
@@ -77,6 +80,94 @@ class CertificateManaged(dict):
         State of the managed certificate resource.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class CertificateMapGclbTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipConfigs":
+            suggest = "ip_configs"
+        elif key == "targetHttpsProxy":
+            suggest = "target_https_proxy"
+        elif key == "targetSslProxy":
+            suggest = "target_ssl_proxy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateMapGclbTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateMapGclbTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateMapGclbTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_configs: Optional[Sequence['outputs.CertificateMapGclbTargetIpConfig']] = None,
+                 target_https_proxy: Optional[str] = None,
+                 target_ssl_proxy: Optional[str] = None):
+        if ip_configs is not None:
+            pulumi.set(__self__, "ip_configs", ip_configs)
+        if target_https_proxy is not None:
+            pulumi.set(__self__, "target_https_proxy", target_https_proxy)
+        if target_ssl_proxy is not None:
+            pulumi.set(__self__, "target_ssl_proxy", target_ssl_proxy)
+
+    @property
+    @pulumi.getter(name="ipConfigs")
+    def ip_configs(self) -> Optional[Sequence['outputs.CertificateMapGclbTargetIpConfig']]:
+        return pulumi.get(self, "ip_configs")
+
+    @property
+    @pulumi.getter(name="targetHttpsProxy")
+    def target_https_proxy(self) -> Optional[str]:
+        return pulumi.get(self, "target_https_proxy")
+
+    @property
+    @pulumi.getter(name="targetSslProxy")
+    def target_ssl_proxy(self) -> Optional[str]:
+        return pulumi.get(self, "target_ssl_proxy")
+
+
+@pulumi.output_type
+class CertificateMapGclbTargetIpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateMapGclbTargetIpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateMapGclbTargetIpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateMapGclbTargetIpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_address: Optional[str] = None,
+                 ports: Optional[Sequence[int]] = None):
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[str]:
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[int]]:
+        return pulumi.get(self, "ports")
 
 
 @pulumi.output_type

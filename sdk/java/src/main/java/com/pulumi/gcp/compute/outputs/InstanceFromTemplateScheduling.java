@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceFromTemplateScheduling {
     private final @Nullable Boolean automaticRestart;
+    private final @Nullable String instanceTerminationAction;
     private final @Nullable Integer minNodeCpus;
     private final @Nullable List<InstanceFromTemplateSchedulingNodeAffinity> nodeAffinities;
     private final @Nullable String onHostMaintenance;
@@ -25,12 +26,14 @@ public final class InstanceFromTemplateScheduling {
     @CustomType.Constructor
     private InstanceFromTemplateScheduling(
         @CustomType.Parameter("automaticRestart") @Nullable Boolean automaticRestart,
+        @CustomType.Parameter("instanceTerminationAction") @Nullable String instanceTerminationAction,
         @CustomType.Parameter("minNodeCpus") @Nullable Integer minNodeCpus,
         @CustomType.Parameter("nodeAffinities") @Nullable List<InstanceFromTemplateSchedulingNodeAffinity> nodeAffinities,
         @CustomType.Parameter("onHostMaintenance") @Nullable String onHostMaintenance,
         @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
         @CustomType.Parameter("provisioningModel") @Nullable String provisioningModel) {
         this.automaticRestart = automaticRestart;
+        this.instanceTerminationAction = instanceTerminationAction;
         this.minNodeCpus = minNodeCpus;
         this.nodeAffinities = nodeAffinities;
         this.onHostMaintenance = onHostMaintenance;
@@ -40,6 +43,9 @@ public final class InstanceFromTemplateScheduling {
 
     public Optional<Boolean> automaticRestart() {
         return Optional.ofNullable(this.automaticRestart);
+    }
+    public Optional<String> instanceTerminationAction() {
+        return Optional.ofNullable(this.instanceTerminationAction);
     }
     public Optional<Integer> minNodeCpus() {
         return Optional.ofNullable(this.minNodeCpus);
@@ -67,6 +73,7 @@ public final class InstanceFromTemplateScheduling {
 
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
+        private @Nullable String instanceTerminationAction;
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceFromTemplateSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
@@ -80,6 +87,7 @@ public final class InstanceFromTemplateScheduling {
         public Builder(InstanceFromTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
@@ -89,6 +97,10 @@ public final class InstanceFromTemplateScheduling {
 
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
             this.automaticRestart = automaticRestart;
+            return this;
+        }
+        public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
+            this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
         public Builder minNodeCpus(@Nullable Integer minNodeCpus) {
@@ -114,7 +126,7 @@ public final class InstanceFromTemplateScheduling {
             this.provisioningModel = provisioningModel;
             return this;
         }        public InstanceFromTemplateScheduling build() {
-            return new InstanceFromTemplateScheduling(automaticRestart, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+            return new InstanceFromTemplateScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
         }
     }
 }

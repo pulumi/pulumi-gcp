@@ -45,6 +45,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JobIAMMember{}
 	case "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
 		r = &JobIAMPolicy{}
+	case "gcp:dataproc/metastoreFederation:MetastoreFederation":
+		r = &MetastoreFederation{}
+	case "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding":
+		r = &MetastoreFederationIamBinding{}
+	case "gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember":
+		r = &MetastoreFederationIamMember{}
+	case "gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy":
+		r = &MetastoreFederationIamPolicy{}
 	case "gcp:dataproc/metastoreService:MetastoreService":
 		r = &MetastoreService{}
 	case "gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding":
@@ -126,6 +134,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/jobIAMPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreFederation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreFederationIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreFederationIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreFederationIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

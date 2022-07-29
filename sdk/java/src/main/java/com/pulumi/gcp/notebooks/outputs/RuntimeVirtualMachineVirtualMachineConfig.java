@@ -107,6 +107,12 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      */
     private final @Nullable String nicType;
     /**
+     * @return Reserved IP Range name is used for VPC Peering. The
+     * subnetwork allocation will use the range *name* if it&#39;s assigned.
+     * 
+     */
+    private final @Nullable String reservedIpRange;
+    /**
      * @return Shielded VM Instance configuration settings.
      * Structure is documented below.
      * 
@@ -149,6 +155,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata,
         @CustomType.Parameter("network") @Nullable String network,
         @CustomType.Parameter("nicType") @Nullable String nicType,
+        @CustomType.Parameter("reservedIpRange") @Nullable String reservedIpRange,
         @CustomType.Parameter("shieldedInstanceConfig") @Nullable RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig shieldedInstanceConfig,
         @CustomType.Parameter("subnet") @Nullable String subnet,
         @CustomType.Parameter("tags") @Nullable List<String> tags,
@@ -164,6 +171,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         this.metadata = metadata;
         this.network = network;
         this.nicType = nicType;
+        this.reservedIpRange = reservedIpRange;
         this.shieldedInstanceConfig = shieldedInstanceConfig;
         this.subnet = subnet;
         this.tags = tags;
@@ -280,6 +288,14 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         return Optional.ofNullable(this.nicType);
     }
     /**
+     * @return Reserved IP Range name is used for VPC Peering. The
+     * subnetwork allocation will use the range *name* if it&#39;s assigned.
+     * 
+     */
+    public Optional<String> reservedIpRange() {
+        return Optional.ofNullable(this.reservedIpRange);
+    }
+    /**
      * @return Shielded VM Instance configuration settings.
      * Structure is documented below.
      * 
@@ -337,6 +353,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         private @Nullable Map<String,String> metadata;
         private @Nullable String network;
         private @Nullable String nicType;
+        private @Nullable String reservedIpRange;
         private @Nullable RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable String subnet;
         private @Nullable List<String> tags;
@@ -359,6 +376,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     	      this.metadata = defaults.metadata;
     	      this.network = defaults.network;
     	      this.nicType = defaults.nicType;
+    	      this.reservedIpRange = defaults.reservedIpRange;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.subnet = defaults.subnet;
     	      this.tags = defaults.tags;
@@ -412,6 +430,10 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
             this.nicType = nicType;
             return this;
         }
+        public Builder reservedIpRange(@Nullable String reservedIpRange) {
+            this.reservedIpRange = reservedIpRange;
+            return this;
+        }
         public Builder shieldedInstanceConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig shieldedInstanceConfig) {
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
@@ -431,7 +453,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
             this.zone = zone;
             return this;
         }        public RuntimeVirtualMachineVirtualMachineConfig build() {
-            return new RuntimeVirtualMachineVirtualMachineConfig(acceleratorConfig, containerImages, dataDisk, encryptionConfig, guestAttributes, internalIpOnly, labels, machineType, metadata, network, nicType, shieldedInstanceConfig, subnet, tags, zone);
+            return new RuntimeVirtualMachineVirtualMachineConfig(acceleratorConfig, containerImages, dataDisk, encryptionConfig, guestAttributes, internalIpOnly, labels, machineType, metadata, network, nicType, reservedIpRange, shieldedInstanceConfig, subnet, tags, zone);
         }
     }
 }

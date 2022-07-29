@@ -181,7 +181,7 @@ type Runtime struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab status
 	Metrics RuntimeMetricArrayOutput `pulumi:"metrics"`
-	// The name specified for the Notebook instance.
+	// The name specified for the Notebook runtime.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -238,7 +238,7 @@ type runtimeState struct {
 	Location *string `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab status
 	Metrics []RuntimeMetric `pulumi:"metrics"`
-	// The name specified for the Notebook instance.
+	// The name specified for the Notebook runtime.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -264,7 +264,7 @@ type RuntimeState struct {
 	Location pulumi.StringPtrInput
 	// Contains Runtime daemon metrics such as Service status and JupyterLab status
 	Metrics RuntimeMetricArrayInput
-	// The name specified for the Notebook instance.
+	// The name specified for the Notebook runtime.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -289,7 +289,7 @@ type runtimeArgs struct {
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
 	// A reference to the zone where the machine resides.
 	Location string `pulumi:"location"`
-	// The name specified for the Notebook instance.
+	// The name specified for the Notebook runtime.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -309,7 +309,7 @@ type RuntimeArgs struct {
 	AccessConfig RuntimeAccessConfigPtrInput
 	// A reference to the zone where the machine resides.
 	Location pulumi.StringInput
-	// The name specified for the Notebook instance.
+	// The name specified for the Notebook runtime.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -431,7 +431,7 @@ func (o RuntimeOutput) Metrics() RuntimeMetricArrayOutput {
 	return o.ApplyT(func(v *Runtime) RuntimeMetricArrayOutput { return v.Metrics }).(RuntimeMetricArrayOutput)
 }
 
-// The name specified for the Notebook instance.
+// The name specified for the Notebook runtime.
 func (o RuntimeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

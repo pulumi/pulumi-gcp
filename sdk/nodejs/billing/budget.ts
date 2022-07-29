@@ -275,7 +275,7 @@ export class Budget extends pulumi.CustomResource {
      * budget.
      * Structure is documented below.
      */
-    public readonly thresholdRules!: pulumi.Output<outputs.billing.BudgetThresholdRule[]>;
+    public readonly thresholdRules!: pulumi.Output<outputs.billing.BudgetThresholdRule[] | undefined>;
 
     /**
      * Create a Budget resource with the given unique name, arguments, and options.
@@ -304,9 +304,6 @@ export class Budget extends pulumi.CustomResource {
             }
             if ((!args || args.billingAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
-            }
-            if ((!args || args.thresholdRules === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'thresholdRules'");
             }
             resourceInputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
             resourceInputs["amount"] = args ? args.amount : undefined;
@@ -401,5 +398,5 @@ export interface BudgetArgs {
      * budget.
      * Structure is documented below.
      */
-    thresholdRules: pulumi.Input<pulumi.Input<inputs.billing.BudgetThresholdRule>[]>;
+    thresholdRules?: pulumi.Input<pulumi.Input<inputs.billing.BudgetThresholdRule>[]>;
 }

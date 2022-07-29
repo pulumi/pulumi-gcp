@@ -17,6 +17,10 @@ export * from "./job";
 export * from "./jobIAMBinding";
 export * from "./jobIAMMember";
 export * from "./jobIAMPolicy";
+export * from "./metastoreFederation";
+export * from "./metastoreFederationIamBinding";
+export * from "./metastoreFederationIamMember";
+export * from "./metastoreFederationIamPolicy";
 export * from "./metastoreService";
 export * from "./metastoreServiceIamBinding";
 export * from "./metastoreServiceIamMember";
@@ -36,6 +40,10 @@ import { Job } from "./job";
 import { JobIAMBinding } from "./jobIAMBinding";
 import { JobIAMMember } from "./jobIAMMember";
 import { JobIAMPolicy } from "./jobIAMPolicy";
+import { MetastoreFederation } from "./metastoreFederation";
+import { MetastoreFederationIamBinding } from "./metastoreFederationIamBinding";
+import { MetastoreFederationIamMember } from "./metastoreFederationIamMember";
+import { MetastoreFederationIamPolicy } from "./metastoreFederationIamPolicy";
 import { MetastoreService } from "./metastoreService";
 import { MetastoreServiceIamBinding } from "./metastoreServiceIamBinding";
 import { MetastoreServiceIamMember } from "./metastoreServiceIamMember";
@@ -70,6 +78,14 @@ const _module = {
                 return new JobIAMMember(name, <any>undefined, { urn })
             case "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
                 return new JobIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreFederation:MetastoreFederation":
+                return new MetastoreFederation(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding":
+                return new MetastoreFederationIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember":
+                return new MetastoreFederationIamMember(name, <any>undefined, { urn })
+            case "gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy":
+                return new MetastoreFederationIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreService:MetastoreService":
                 return new MetastoreService(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding":
@@ -97,6 +113,10 @@ pulumi.runtime.registerResourceModule("gcp", "dataproc/job", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederation", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederationIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederationIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederationIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreService", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreServiceIamMember", _module)

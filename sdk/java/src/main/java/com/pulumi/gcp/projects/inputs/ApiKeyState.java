@@ -93,6 +93,21 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.restrictions);
     }
 
+    /**
+     * Output only. Unique id in UUID4 format.
+     * 
+     */
+    @Import(name="uid")
+    private @Nullable Output<String> uid;
+
+    /**
+     * @return Output only. Unique id in UUID4 format.
+     * 
+     */
+    public Optional<Output<String>> uid() {
+        return Optional.ofNullable(this.uid);
+    }
+
     private ApiKeyState() {}
 
     private ApiKeyState(ApiKeyState $) {
@@ -101,6 +116,7 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.restrictions = $.restrictions;
+        this.uid = $.uid;
     }
 
     public static Builder builder() {
@@ -226,6 +242,27 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder restrictions(ApiKeyRestrictionsArgs restrictions) {
             return restrictions(Output.of(restrictions));
+        }
+
+        /**
+         * @param uid Output only. Unique id in UUID4 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uid(@Nullable Output<String> uid) {
+            $.uid = uid;
+            return this;
+        }
+
+        /**
+         * @param uid Output only. Unique id in UUID4 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uid(String uid) {
+            return uid(Output.of(uid));
         }
 
         public ApiKeyState build() {

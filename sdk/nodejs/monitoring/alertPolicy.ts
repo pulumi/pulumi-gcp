@@ -43,6 +43,33 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Monitoring Alert Policy Evaluation Missing Data
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     combiner: "OR",
+ *     conditions: [{
+ *         conditionThreshold: {
+ *             aggregations: [{
+ *                 alignmentPeriod: "60s",
+ *                 perSeriesAligner: "ALIGN_RATE",
+ *             }],
+ *             comparison: "COMPARISON_GT",
+ *             duration: "60s",
+ *             evaluationMissingData: "EVALUATION_MISSING_DATA_INACTIVE",
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *         },
+ *         displayName: "test condition",
+ *     }],
+ *     displayName: "My Alert Policy",
+ *     userLabels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

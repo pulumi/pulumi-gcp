@@ -112,7 +112,6 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * )
      * Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
@@ -120,8 +119,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<SecurityPolicyRuleRateLimitOptionsArgs> rateLimitOptions;
 
     /**
-     * @return )
-     * Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+     * @return Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     public Optional<Output<SecurityPolicyRuleRateLimitOptionsArgs>> rateLimitOptions() {
@@ -129,7 +127,6 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * )
      * Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
@@ -137,8 +134,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<SecurityPolicyRuleRedirectOptionsArgs> redirectOptions;
 
     /**
-     * @return )
-     * Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+     * @return Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     public Optional<Output<SecurityPolicyRuleRedirectOptionsArgs>> redirectOptions() {
@@ -297,8 +293,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rateLimitOptions )
-         * Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+         * @param rateLimitOptions Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
          * 
          * @return builder
          * 
@@ -309,8 +304,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rateLimitOptions )
-         * Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+         * @param rateLimitOptions Must be specified if the `action` is &#34;rate_based_bad&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
          * 
          * @return builder
          * 
@@ -320,8 +314,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param redirectOptions )
-         * Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+         * @param redirectOptions Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
          * 
          * @return builder
          * 
@@ -332,8 +325,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param redirectOptions )
-         * Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+         * @param redirectOptions Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
          * 
          * @return builder
          * 

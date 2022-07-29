@@ -57,6 +57,9 @@ __all__ = [
     'JobSparksqlConfigArgs',
     'JobSparksqlConfigLoggingConfigArgs',
     'JobStatusArgs',
+    'MetastoreFederationBackendMetastoreArgs',
+    'MetastoreFederationIamBindingConditionArgs',
+    'MetastoreFederationIamMemberConditionArgs',
     'MetastoreServiceEncryptionConfigArgs',
     'MetastoreServiceHiveMetastoreConfigArgs',
     'MetastoreServiceHiveMetastoreConfigKerberosConfigArgs',
@@ -3503,6 +3506,138 @@ class JobStatusArgs:
     @substate.setter
     def substate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "substate", value)
+
+
+@pulumi.input_type
+class MetastoreFederationBackendMetastoreArgs:
+    def __init__(__self__, *,
+                 metastore_type: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 rank: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] metastore_type: The type of the backend metastore.
+               Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+        :param pulumi.Input[str] name: The relative resource name of the metastore that is being federated.
+        :param pulumi.Input[str] rank: The identifier for this object. Format specified above.
+        """
+        pulumi.set(__self__, "metastore_type", metastore_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rank", rank)
+
+    @property
+    @pulumi.getter(name="metastoreType")
+    def metastore_type(self) -> pulumi.Input[str]:
+        """
+        The type of the backend metastore.
+        Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+        """
+        return pulumi.get(self, "metastore_type")
+
+    @metastore_type.setter
+    def metastore_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metastore_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The relative resource name of the metastore that is being federated.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def rank(self) -> pulumi.Input[str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "rank")
+
+    @rank.setter
+    def rank(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rank", value)
+
+
+@pulumi.input_type
+class MetastoreFederationIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class MetastoreFederationIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type

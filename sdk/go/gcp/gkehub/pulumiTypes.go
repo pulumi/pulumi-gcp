@@ -1004,7 +1004,9 @@ type FeatureMembershipConfigmanagementPolicyController struct {
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
 	// Logs all denies and dry run failures.
-	LogDeniesEnabled *bool `pulumi:"logDeniesEnabled"`
+	LogDeniesEnabled *bool                                                        `pulumi:"logDeniesEnabled"`
+	Monitoring       *FeatureMembershipConfigmanagementPolicyControllerMonitoring `pulumi:"monitoring"`
+	MutationEnabled  *bool                                                        `pulumi:"mutationEnabled"`
 	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
 	ReferentialRulesEnabled *bool `pulumi:"referentialRulesEnabled"`
 	// Installs the default template library along with Policy Controller.
@@ -1030,7 +1032,9 @@ type FeatureMembershipConfigmanagementPolicyControllerArgs struct {
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
 	// Logs all denies and dry run failures.
-	LogDeniesEnabled pulumi.BoolPtrInput `pulumi:"logDeniesEnabled"`
+	LogDeniesEnabled pulumi.BoolPtrInput                                                 `pulumi:"logDeniesEnabled"`
+	Monitoring       FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput `pulumi:"monitoring"`
+	MutationEnabled  pulumi.BoolPtrInput                                                 `pulumi:"mutationEnabled"`
 	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
 	ReferentialRulesEnabled pulumi.BoolPtrInput `pulumi:"referentialRulesEnabled"`
 	// Installs the default template library along with Policy Controller.
@@ -1134,6 +1138,16 @@ func (o FeatureMembershipConfigmanagementPolicyControllerOutput) LogDeniesEnable
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.LogDeniesEnabled }).(pulumi.BoolPtrOutput)
 }
 
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) Monitoring() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyControllerMonitoring {
+		return v.Monitoring
+	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) MutationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.MutationEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
 func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ReferentialRulesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.ReferentialRulesEnabled }).(pulumi.BoolPtrOutput)
@@ -1208,6 +1222,24 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) LogDeniesEna
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Monitoring() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyControllerMonitoring {
+		if v == nil {
+			return nil
+		}
+		return v.Monitoring
+	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) MutationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MutationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ReferentialRulesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *bool {
@@ -1226,6 +1258,139 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) TemplateLibr
 		}
 		return v.TemplateLibraryInstalled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementPolicyControllerMonitoring struct {
+	Backends []string `pulumi:"backends"`
+}
+
+// FeatureMembershipConfigmanagementPolicyControllerMonitoringInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs and FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerMonitoringInput` via:
+//
+//          FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
+type FeatureMembershipConfigmanagementPolicyControllerMonitoringInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput
+	ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutputWithContext(context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput
+}
+
+type FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs struct {
+	Backends pulumi.StringArrayInput `pulumi:"backends"`
+}
+
+func (FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerMonitoring)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput {
+	return i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput)
+}
+
+func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput).ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput is an input type that accepts FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs, FeatureMembershipConfigmanagementPolicyControllerMonitoringPtr and FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput` via:
+//
+//          FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput
+	ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput
+}
+
+type featureMembershipConfigmanagementPolicyControllerMonitoringPtrType FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs
+
+func FeatureMembershipConfigmanagementPolicyControllerMonitoringPtr(v *FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput {
+	return (*featureMembershipConfigmanagementPolicyControllerMonitoringPtrType)(v)
+}
+
+func (*featureMembershipConfigmanagementPolicyControllerMonitoringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementPolicyControllerMonitoring)(nil)).Elem()
+}
+
+func (i *featureMembershipConfigmanagementPolicyControllerMonitoringPtrType) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipConfigmanagementPolicyControllerMonitoringPtrType) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerMonitoring)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return o.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementPolicyControllerMonitoring) *FeatureMembershipConfigmanagementPolicyControllerMonitoring {
+		return &v
+	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) Backends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyControllerMonitoring) []string { return v.Backends }).(pulumi.StringArrayOutput)
+}
+
+type FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementPolicyControllerMonitoring)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Elem() FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyControllerMonitoring) FeatureMembershipConfigmanagementPolicyControllerMonitoring {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipConfigmanagementPolicyControllerMonitoring
+		return ret
+	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput)
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Backends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyControllerMonitoring) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Backends
+	}).(pulumi.StringArrayOutput)
 }
 
 type FeatureResourceState struct {
@@ -2226,6 +2391,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementHierarchyControllerPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementHierarchyControllerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerMonitoringInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateInput)(nil)).Elem(), FeatureResourceStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateArrayInput)(nil)).Elem(), FeatureResourceStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecInput)(nil)).Elem(), FeatureSpecArgs{})
@@ -2254,6 +2421,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput{})
 	pulumi.RegisterOutputType(FeatureResourceStateOutput{})
 	pulumi.RegisterOutputType(FeatureResourceStateArrayOutput{})
 	pulumi.RegisterOutputType(FeatureSpecOutput{})

@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.Notebooks
         public Output<ImmutableArray<Outputs.RuntimeMetric>> Metrics { get; private set; } = null!;
 
         /// <summary>
-        /// The name specified for the Notebook instance.
+        /// The name specified for the Notebook runtime.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -298,7 +298,7 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The name specified for the Notebook instance.
+        /// The name specified for the Notebook runtime.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -364,7 +364,7 @@ namespace Pulumi.Gcp.Notebooks
         }
 
         /// <summary>
-        /// The name specified for the Notebook instance.
+        /// The name specified for the Notebook runtime.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

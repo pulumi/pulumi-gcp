@@ -453,7 +453,7 @@ namespace Pulumi.Gcp.Billing
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("thresholdRules", required: true)]
+        [Input("thresholdRules")]
         private InputList<Inputs.BudgetThresholdRuleArgs>? _thresholdRules;
 
         /// <summary>

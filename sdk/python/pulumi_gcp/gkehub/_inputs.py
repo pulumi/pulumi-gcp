@@ -16,6 +16,7 @@ __all__ = [
     'FeatureMembershipConfigmanagementConfigSyncGitArgs',
     'FeatureMembershipConfigmanagementHierarchyControllerArgs',
     'FeatureMembershipConfigmanagementPolicyControllerArgs',
+    'FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs',
     'FeatureResourceStateArgs',
     'FeatureSpecArgs',
     'FeatureSpecMulticlusteringressArgs',
@@ -390,6 +391,8 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  log_denies_enabled: Optional[pulumi.Input[bool]] = None,
+                 monitoring: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']] = None,
+                 mutation_enabled: Optional[pulumi.Input[bool]] = None,
                  referential_rules_enabled: Optional[pulumi.Input[bool]] = None,
                  template_library_installed: Optional[pulumi.Input[bool]] = None):
         """
@@ -408,6 +411,10 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
             pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
         if log_denies_enabled is not None:
             pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if mutation_enabled is not None:
+            pulumi.set(__self__, "mutation_enabled", mutation_enabled)
         if referential_rules_enabled is not None:
             pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
         if template_library_installed is not None:
@@ -462,6 +469,24 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
         pulumi.set(self, "log_denies_enabled", value)
 
     @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]:
+        return pulumi.get(self, "monitoring")
+
+    @monitoring.setter
+    def monitoring(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]):
+        pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter(name="mutationEnabled")
+    def mutation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "mutation_enabled")
+
+    @mutation_enabled.setter
+    def mutation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mutation_enabled", value)
+
+    @property
     @pulumi.getter(name="referentialRulesEnabled")
     def referential_rules_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -484,6 +509,23 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
     @template_library_installed.setter
     def template_library_installed(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "template_library_installed", value)
+
+
+@pulumi.input_type
+class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
+    def __init__(__self__, *,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if backends is not None:
+            pulumi.set(__self__, "backends", backends)
+
+    @property
+    @pulumi.getter
+    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "backends")
+
+    @backends.setter
+    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "backends", value)
 
 
 @pulumi.input_type

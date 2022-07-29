@@ -27,7 +27,7 @@ class RuntimeArgs:
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name specified for the Notebook instance.
+        :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
@@ -76,7 +76,7 @@ class RuntimeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name specified for the Notebook instance.
+        The name specified for the Notebook runtime.
         """
         return pulumi.get(self, "name")
 
@@ -144,7 +144,7 @@ class _RuntimeState:
                'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
         :param pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab status
-        :param pulumi.Input[str] name: The name specified for the Notebook instance.
+        :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
@@ -226,7 +226,7 @@ class _RuntimeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name specified for the Notebook instance.
+        The name specified for the Notebook runtime.
         """
         return pulumi.get(self, "name")
 
@@ -423,7 +423,7 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-        :param pulumi.Input[str] name: The name specified for the Notebook instance.
+        :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
@@ -630,7 +630,7 @@ class Runtime(pulumi.CustomResource):
                'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArgs']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab status
-        :param pulumi.Input[str] name: The name specified for the Notebook instance.
+        :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
@@ -692,7 +692,7 @@ class Runtime(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name specified for the Notebook instance.
+        The name specified for the Notebook runtime.
         """
         return pulumi.get(self, "name")
 

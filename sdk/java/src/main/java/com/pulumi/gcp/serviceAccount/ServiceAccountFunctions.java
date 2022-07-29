@@ -13,11 +13,14 @@ import com.pulumi.gcp.serviceAccount.inputs.GetAccountAccessTokenPlainArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountIdTokenArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountIdTokenPlainArgs;
+import com.pulumi.gcp.serviceAccount.inputs.GetAccountJwtArgs;
+import com.pulumi.gcp.serviceAccount.inputs.GetAccountJwtPlainArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountKeyArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountKeyPlainArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountPlainArgs;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountAccessTokenResult;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountIdTokenResult;
+import com.pulumi.gcp.serviceAccount.outputs.GetAccountJwtResult;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountKeyResult;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountResult;
 import java.util.concurrent.CompletableFuture;
@@ -298,6 +301,190 @@ public final class ServiceAccountFunctions {
      */
     public static CompletableFuture<GetAccountIdTokenResult> getAccountIdTokenPlain(GetAccountIdTokenPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", TypeShape.of(GetAccountIdTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
+     * 
+     * ## Example Usage
+     * 
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountJwtArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceAccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
+     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .payload(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
+     *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
+     *                 )))
+     *             .build());
+     * 
+     *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountJwtResult> getAccountJwt(GetAccountJwtArgs args) {
+        return getAccountJwt(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
+     * 
+     * ## Example Usage
+     * 
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountJwtArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceAccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
+     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .payload(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
+     *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
+     *                 )))
+     *             .build());
+     * 
+     *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountJwtResult> getAccountJwtPlain(GetAccountJwtPlainArgs args) {
+        return getAccountJwtPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
+     * 
+     * ## Example Usage
+     * 
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountJwtArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceAccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
+     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .payload(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
+     *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
+     *                 )))
+     *             .build());
+     * 
+     *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountJwtResult> getAccountJwt(GetAccountJwtArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:serviceAccount/getAccountJwt:getAccountJwt", TypeShape.of(GetAccountJwtResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
+     * 
+     * ## Example Usage
+     * 
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountJwtArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceAccountFunctions.getAccountJwt(GetAccountJwtArgs.builder()
+     *             .targetServiceAccount(&#34;impersonated-account@project.iam.gserviceaccount.com&#34;)
+     *             .payload(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
+     *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
+     *                 )))
+     *             .build());
+     * 
+     *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountJwtResult> getAccountJwtPlain(GetAccountJwtPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:serviceAccount/getAccountJwt:getAccountJwt", TypeShape.of(GetAccountJwtResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).

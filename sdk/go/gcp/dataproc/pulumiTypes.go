@@ -9399,6 +9399,450 @@ func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
 	}).(JobStatusOutput)
 }
 
+type MetastoreFederationBackendMetastore struct {
+	// The type of the backend metastore.
+	// Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+	MetastoreType string `pulumi:"metastoreType"`
+	// The relative resource name of the metastore that is being federated.
+	Name string `pulumi:"name"`
+	// The identifier for this object. Format specified above.
+	Rank string `pulumi:"rank"`
+}
+
+// MetastoreFederationBackendMetastoreInput is an input type that accepts MetastoreFederationBackendMetastoreArgs and MetastoreFederationBackendMetastoreOutput values.
+// You can construct a concrete instance of `MetastoreFederationBackendMetastoreInput` via:
+//
+//          MetastoreFederationBackendMetastoreArgs{...}
+type MetastoreFederationBackendMetastoreInput interface {
+	pulumi.Input
+
+	ToMetastoreFederationBackendMetastoreOutput() MetastoreFederationBackendMetastoreOutput
+	ToMetastoreFederationBackendMetastoreOutputWithContext(context.Context) MetastoreFederationBackendMetastoreOutput
+}
+
+type MetastoreFederationBackendMetastoreArgs struct {
+	// The type of the backend metastore.
+	// Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+	MetastoreType pulumi.StringInput `pulumi:"metastoreType"`
+	// The relative resource name of the metastore that is being federated.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The identifier for this object. Format specified above.
+	Rank pulumi.StringInput `pulumi:"rank"`
+}
+
+func (MetastoreFederationBackendMetastoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreFederationBackendMetastore)(nil)).Elem()
+}
+
+func (i MetastoreFederationBackendMetastoreArgs) ToMetastoreFederationBackendMetastoreOutput() MetastoreFederationBackendMetastoreOutput {
+	return i.ToMetastoreFederationBackendMetastoreOutputWithContext(context.Background())
+}
+
+func (i MetastoreFederationBackendMetastoreArgs) ToMetastoreFederationBackendMetastoreOutputWithContext(ctx context.Context) MetastoreFederationBackendMetastoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationBackendMetastoreOutput)
+}
+
+// MetastoreFederationBackendMetastoreArrayInput is an input type that accepts MetastoreFederationBackendMetastoreArray and MetastoreFederationBackendMetastoreArrayOutput values.
+// You can construct a concrete instance of `MetastoreFederationBackendMetastoreArrayInput` via:
+//
+//          MetastoreFederationBackendMetastoreArray{ MetastoreFederationBackendMetastoreArgs{...} }
+type MetastoreFederationBackendMetastoreArrayInput interface {
+	pulumi.Input
+
+	ToMetastoreFederationBackendMetastoreArrayOutput() MetastoreFederationBackendMetastoreArrayOutput
+	ToMetastoreFederationBackendMetastoreArrayOutputWithContext(context.Context) MetastoreFederationBackendMetastoreArrayOutput
+}
+
+type MetastoreFederationBackendMetastoreArray []MetastoreFederationBackendMetastoreInput
+
+func (MetastoreFederationBackendMetastoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetastoreFederationBackendMetastore)(nil)).Elem()
+}
+
+func (i MetastoreFederationBackendMetastoreArray) ToMetastoreFederationBackendMetastoreArrayOutput() MetastoreFederationBackendMetastoreArrayOutput {
+	return i.ToMetastoreFederationBackendMetastoreArrayOutputWithContext(context.Background())
+}
+
+func (i MetastoreFederationBackendMetastoreArray) ToMetastoreFederationBackendMetastoreArrayOutputWithContext(ctx context.Context) MetastoreFederationBackendMetastoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationBackendMetastoreArrayOutput)
+}
+
+type MetastoreFederationBackendMetastoreOutput struct{ *pulumi.OutputState }
+
+func (MetastoreFederationBackendMetastoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreFederationBackendMetastore)(nil)).Elem()
+}
+
+func (o MetastoreFederationBackendMetastoreOutput) ToMetastoreFederationBackendMetastoreOutput() MetastoreFederationBackendMetastoreOutput {
+	return o
+}
+
+func (o MetastoreFederationBackendMetastoreOutput) ToMetastoreFederationBackendMetastoreOutputWithContext(ctx context.Context) MetastoreFederationBackendMetastoreOutput {
+	return o
+}
+
+// The type of the backend metastore.
+// Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+func (o MetastoreFederationBackendMetastoreOutput) MetastoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreFederationBackendMetastore) string { return v.MetastoreType }).(pulumi.StringOutput)
+}
+
+// The relative resource name of the metastore that is being federated.
+func (o MetastoreFederationBackendMetastoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreFederationBackendMetastore) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o MetastoreFederationBackendMetastoreOutput) Rank() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreFederationBackendMetastore) string { return v.Rank }).(pulumi.StringOutput)
+}
+
+type MetastoreFederationBackendMetastoreArrayOutput struct{ *pulumi.OutputState }
+
+func (MetastoreFederationBackendMetastoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetastoreFederationBackendMetastore)(nil)).Elem()
+}
+
+func (o MetastoreFederationBackendMetastoreArrayOutput) ToMetastoreFederationBackendMetastoreArrayOutput() MetastoreFederationBackendMetastoreArrayOutput {
+	return o
+}
+
+func (o MetastoreFederationBackendMetastoreArrayOutput) ToMetastoreFederationBackendMetastoreArrayOutputWithContext(ctx context.Context) MetastoreFederationBackendMetastoreArrayOutput {
+	return o
+}
+
+func (o MetastoreFederationBackendMetastoreArrayOutput) Index(i pulumi.IntInput) MetastoreFederationBackendMetastoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetastoreFederationBackendMetastore {
+		return vs[0].([]MetastoreFederationBackendMetastore)[vs[1].(int)]
+	}).(MetastoreFederationBackendMetastoreOutput)
+}
+
+type MetastoreFederationIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MetastoreFederationIamBindingConditionInput is an input type that accepts MetastoreFederationIamBindingConditionArgs and MetastoreFederationIamBindingConditionOutput values.
+// You can construct a concrete instance of `MetastoreFederationIamBindingConditionInput` via:
+//
+//          MetastoreFederationIamBindingConditionArgs{...}
+type MetastoreFederationIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToMetastoreFederationIamBindingConditionOutput() MetastoreFederationIamBindingConditionOutput
+	ToMetastoreFederationIamBindingConditionOutputWithContext(context.Context) MetastoreFederationIamBindingConditionOutput
+}
+
+type MetastoreFederationIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MetastoreFederationIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreFederationIamBindingCondition)(nil)).Elem()
+}
+
+func (i MetastoreFederationIamBindingConditionArgs) ToMetastoreFederationIamBindingConditionOutput() MetastoreFederationIamBindingConditionOutput {
+	return i.ToMetastoreFederationIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i MetastoreFederationIamBindingConditionArgs) ToMetastoreFederationIamBindingConditionOutputWithContext(ctx context.Context) MetastoreFederationIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamBindingConditionOutput)
+}
+
+func (i MetastoreFederationIamBindingConditionArgs) ToMetastoreFederationIamBindingConditionPtrOutput() MetastoreFederationIamBindingConditionPtrOutput {
+	return i.ToMetastoreFederationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreFederationIamBindingConditionArgs) ToMetastoreFederationIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamBindingConditionOutput).ToMetastoreFederationIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// MetastoreFederationIamBindingConditionPtrInput is an input type that accepts MetastoreFederationIamBindingConditionArgs, MetastoreFederationIamBindingConditionPtr and MetastoreFederationIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `MetastoreFederationIamBindingConditionPtrInput` via:
+//
+//          MetastoreFederationIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreFederationIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreFederationIamBindingConditionPtrOutput() MetastoreFederationIamBindingConditionPtrOutput
+	ToMetastoreFederationIamBindingConditionPtrOutputWithContext(context.Context) MetastoreFederationIamBindingConditionPtrOutput
+}
+
+type metastoreFederationIamBindingConditionPtrType MetastoreFederationIamBindingConditionArgs
+
+func MetastoreFederationIamBindingConditionPtr(v *MetastoreFederationIamBindingConditionArgs) MetastoreFederationIamBindingConditionPtrInput {
+	return (*metastoreFederationIamBindingConditionPtrType)(v)
+}
+
+func (*metastoreFederationIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreFederationIamBindingCondition)(nil)).Elem()
+}
+
+func (i *metastoreFederationIamBindingConditionPtrType) ToMetastoreFederationIamBindingConditionPtrOutput() MetastoreFederationIamBindingConditionPtrOutput {
+	return i.ToMetastoreFederationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreFederationIamBindingConditionPtrType) ToMetastoreFederationIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamBindingConditionPtrOutput)
+}
+
+type MetastoreFederationIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreFederationIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreFederationIamBindingCondition)(nil)).Elem()
+}
+
+func (o MetastoreFederationIamBindingConditionOutput) ToMetastoreFederationIamBindingConditionOutput() MetastoreFederationIamBindingConditionOutput {
+	return o
+}
+
+func (o MetastoreFederationIamBindingConditionOutput) ToMetastoreFederationIamBindingConditionOutputWithContext(ctx context.Context) MetastoreFederationIamBindingConditionOutput {
+	return o
+}
+
+func (o MetastoreFederationIamBindingConditionOutput) ToMetastoreFederationIamBindingConditionPtrOutput() MetastoreFederationIamBindingConditionPtrOutput {
+	return o.ToMetastoreFederationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreFederationIamBindingConditionOutput) ToMetastoreFederationIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreFederationIamBindingCondition) *MetastoreFederationIamBindingCondition {
+		return &v
+	}).(MetastoreFederationIamBindingConditionPtrOutput)
+}
+
+func (o MetastoreFederationIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreFederationIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreFederationIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreFederationIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MetastoreFederationIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreFederationIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MetastoreFederationIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreFederationIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreFederationIamBindingCondition)(nil)).Elem()
+}
+
+func (o MetastoreFederationIamBindingConditionPtrOutput) ToMetastoreFederationIamBindingConditionPtrOutput() MetastoreFederationIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreFederationIamBindingConditionPtrOutput) ToMetastoreFederationIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreFederationIamBindingConditionPtrOutput) Elem() MetastoreFederationIamBindingConditionOutput {
+	return o.ApplyT(func(v *MetastoreFederationIamBindingCondition) MetastoreFederationIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreFederationIamBindingCondition
+		return ret
+	}).(MetastoreFederationIamBindingConditionOutput)
+}
+
+func (o MetastoreFederationIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreFederationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreFederationIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreFederationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreFederationIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreFederationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreFederationIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MetastoreFederationIamMemberConditionInput is an input type that accepts MetastoreFederationIamMemberConditionArgs and MetastoreFederationIamMemberConditionOutput values.
+// You can construct a concrete instance of `MetastoreFederationIamMemberConditionInput` via:
+//
+//          MetastoreFederationIamMemberConditionArgs{...}
+type MetastoreFederationIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToMetastoreFederationIamMemberConditionOutput() MetastoreFederationIamMemberConditionOutput
+	ToMetastoreFederationIamMemberConditionOutputWithContext(context.Context) MetastoreFederationIamMemberConditionOutput
+}
+
+type MetastoreFederationIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MetastoreFederationIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreFederationIamMemberCondition)(nil)).Elem()
+}
+
+func (i MetastoreFederationIamMemberConditionArgs) ToMetastoreFederationIamMemberConditionOutput() MetastoreFederationIamMemberConditionOutput {
+	return i.ToMetastoreFederationIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i MetastoreFederationIamMemberConditionArgs) ToMetastoreFederationIamMemberConditionOutputWithContext(ctx context.Context) MetastoreFederationIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamMemberConditionOutput)
+}
+
+func (i MetastoreFederationIamMemberConditionArgs) ToMetastoreFederationIamMemberConditionPtrOutput() MetastoreFederationIamMemberConditionPtrOutput {
+	return i.ToMetastoreFederationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreFederationIamMemberConditionArgs) ToMetastoreFederationIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamMemberConditionOutput).ToMetastoreFederationIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// MetastoreFederationIamMemberConditionPtrInput is an input type that accepts MetastoreFederationIamMemberConditionArgs, MetastoreFederationIamMemberConditionPtr and MetastoreFederationIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `MetastoreFederationIamMemberConditionPtrInput` via:
+//
+//          MetastoreFederationIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreFederationIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreFederationIamMemberConditionPtrOutput() MetastoreFederationIamMemberConditionPtrOutput
+	ToMetastoreFederationIamMemberConditionPtrOutputWithContext(context.Context) MetastoreFederationIamMemberConditionPtrOutput
+}
+
+type metastoreFederationIamMemberConditionPtrType MetastoreFederationIamMemberConditionArgs
+
+func MetastoreFederationIamMemberConditionPtr(v *MetastoreFederationIamMemberConditionArgs) MetastoreFederationIamMemberConditionPtrInput {
+	return (*metastoreFederationIamMemberConditionPtrType)(v)
+}
+
+func (*metastoreFederationIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreFederationIamMemberCondition)(nil)).Elem()
+}
+
+func (i *metastoreFederationIamMemberConditionPtrType) ToMetastoreFederationIamMemberConditionPtrOutput() MetastoreFederationIamMemberConditionPtrOutput {
+	return i.ToMetastoreFederationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreFederationIamMemberConditionPtrType) ToMetastoreFederationIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamMemberConditionPtrOutput)
+}
+
+type MetastoreFederationIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreFederationIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreFederationIamMemberCondition)(nil)).Elem()
+}
+
+func (o MetastoreFederationIamMemberConditionOutput) ToMetastoreFederationIamMemberConditionOutput() MetastoreFederationIamMemberConditionOutput {
+	return o
+}
+
+func (o MetastoreFederationIamMemberConditionOutput) ToMetastoreFederationIamMemberConditionOutputWithContext(ctx context.Context) MetastoreFederationIamMemberConditionOutput {
+	return o
+}
+
+func (o MetastoreFederationIamMemberConditionOutput) ToMetastoreFederationIamMemberConditionPtrOutput() MetastoreFederationIamMemberConditionPtrOutput {
+	return o.ToMetastoreFederationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreFederationIamMemberConditionOutput) ToMetastoreFederationIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreFederationIamMemberCondition) *MetastoreFederationIamMemberCondition {
+		return &v
+	}).(MetastoreFederationIamMemberConditionPtrOutput)
+}
+
+func (o MetastoreFederationIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreFederationIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreFederationIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreFederationIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MetastoreFederationIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreFederationIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MetastoreFederationIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreFederationIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreFederationIamMemberCondition)(nil)).Elem()
+}
+
+func (o MetastoreFederationIamMemberConditionPtrOutput) ToMetastoreFederationIamMemberConditionPtrOutput() MetastoreFederationIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreFederationIamMemberConditionPtrOutput) ToMetastoreFederationIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreFederationIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreFederationIamMemberConditionPtrOutput) Elem() MetastoreFederationIamMemberConditionOutput {
+	return o.ApplyT(func(v *MetastoreFederationIamMemberCondition) MetastoreFederationIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreFederationIamMemberCondition
+		return ret
+	}).(MetastoreFederationIamMemberConditionOutput)
+}
+
+func (o MetastoreFederationIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreFederationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreFederationIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreFederationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreFederationIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreFederationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type MetastoreServiceEncryptionConfig struct {
 	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
 	// Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
@@ -20757,6 +21201,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparksqlConfigLoggingConfigPtrInput)(nil)).Elem(), JobSparksqlConfigLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusInput)(nil)).Elem(), JobStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusArrayInput)(nil)).Elem(), JobStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationBackendMetastoreInput)(nil)).Elem(), MetastoreFederationBackendMetastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationBackendMetastoreArrayInput)(nil)).Elem(), MetastoreFederationBackendMetastoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationIamBindingConditionInput)(nil)).Elem(), MetastoreFederationIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationIamBindingConditionPtrInput)(nil)).Elem(), MetastoreFederationIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationIamMemberConditionInput)(nil)).Elem(), MetastoreFederationIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationIamMemberConditionPtrInput)(nil)).Elem(), MetastoreFederationIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceEncryptionConfigInput)(nil)).Elem(), MetastoreServiceEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceEncryptionConfigPtrInput)(nil)).Elem(), MetastoreServiceEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigInput)(nil)).Elem(), MetastoreServiceHiveMetastoreConfigArgs{})
@@ -20975,6 +21425,12 @@ func init() {
 	pulumi.RegisterOutputType(JobSparksqlConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
 	pulumi.RegisterOutputType(JobStatusArrayOutput{})
+	pulumi.RegisterOutputType(MetastoreFederationBackendMetastoreOutput{})
+	pulumi.RegisterOutputType(MetastoreFederationBackendMetastoreArrayOutput{})
+	pulumi.RegisterOutputType(MetastoreFederationIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(MetastoreFederationIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreFederationIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(MetastoreFederationIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigOutput{})

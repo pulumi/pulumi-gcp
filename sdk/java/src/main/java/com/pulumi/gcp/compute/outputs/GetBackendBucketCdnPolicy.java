@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.GetBackendBucketCdnPolicyBypassCacheOnRequestHeader;
 import com.pulumi.gcp.compute.outputs.GetBackendBucketCdnPolicyCacheKeyPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendBucketCdnPolicyNegativeCachingPolicy;
 import java.lang.Boolean;
@@ -14,6 +15,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendBucketCdnPolicy {
+    private final List<GetBackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
     private final List<GetBackendBucketCdnPolicyCacheKeyPolicy> cacheKeyPolicies;
     private final String cacheMode;
     private final Integer clientTtl;
@@ -21,11 +23,13 @@ public final class GetBackendBucketCdnPolicy {
     private final Integer maxTtl;
     private final Boolean negativeCaching;
     private final List<GetBackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
+    private final Boolean requestCoalescing;
     private final Integer serveWhileStale;
     private final Integer signedUrlCacheMaxAgeSec;
 
     @CustomType.Constructor
     private GetBackendBucketCdnPolicy(
+        @CustomType.Parameter("bypassCacheOnRequestHeaders") List<GetBackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders,
         @CustomType.Parameter("cacheKeyPolicies") List<GetBackendBucketCdnPolicyCacheKeyPolicy> cacheKeyPolicies,
         @CustomType.Parameter("cacheMode") String cacheMode,
         @CustomType.Parameter("clientTtl") Integer clientTtl,
@@ -33,8 +37,10 @@ public final class GetBackendBucketCdnPolicy {
         @CustomType.Parameter("maxTtl") Integer maxTtl,
         @CustomType.Parameter("negativeCaching") Boolean negativeCaching,
         @CustomType.Parameter("negativeCachingPolicies") List<GetBackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies,
+        @CustomType.Parameter("requestCoalescing") Boolean requestCoalescing,
         @CustomType.Parameter("serveWhileStale") Integer serveWhileStale,
         @CustomType.Parameter("signedUrlCacheMaxAgeSec") Integer signedUrlCacheMaxAgeSec) {
+        this.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
         this.cacheKeyPolicies = cacheKeyPolicies;
         this.cacheMode = cacheMode;
         this.clientTtl = clientTtl;
@@ -42,10 +48,14 @@ public final class GetBackendBucketCdnPolicy {
         this.maxTtl = maxTtl;
         this.negativeCaching = negativeCaching;
         this.negativeCachingPolicies = negativeCachingPolicies;
+        this.requestCoalescing = requestCoalescing;
         this.serveWhileStale = serveWhileStale;
         this.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
     }
 
+    public List<GetBackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders() {
+        return this.bypassCacheOnRequestHeaders;
+    }
     public List<GetBackendBucketCdnPolicyCacheKeyPolicy> cacheKeyPolicies() {
         return this.cacheKeyPolicies;
     }
@@ -67,6 +77,9 @@ public final class GetBackendBucketCdnPolicy {
     public List<GetBackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies() {
         return this.negativeCachingPolicies;
     }
+    public Boolean requestCoalescing() {
+        return this.requestCoalescing;
+    }
     public Integer serveWhileStale() {
         return this.serveWhileStale;
     }
@@ -83,6 +96,7 @@ public final class GetBackendBucketCdnPolicy {
     }
 
     public static final class Builder {
+        private List<GetBackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
         private List<GetBackendBucketCdnPolicyCacheKeyPolicy> cacheKeyPolicies;
         private String cacheMode;
         private Integer clientTtl;
@@ -90,6 +104,7 @@ public final class GetBackendBucketCdnPolicy {
         private Integer maxTtl;
         private Boolean negativeCaching;
         private List<GetBackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
+        private Boolean requestCoalescing;
         private Integer serveWhileStale;
         private Integer signedUrlCacheMaxAgeSec;
 
@@ -99,6 +114,7 @@ public final class GetBackendBucketCdnPolicy {
 
         public Builder(GetBackendBucketCdnPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bypassCacheOnRequestHeaders = defaults.bypassCacheOnRequestHeaders;
     	      this.cacheKeyPolicies = defaults.cacheKeyPolicies;
     	      this.cacheMode = defaults.cacheMode;
     	      this.clientTtl = defaults.clientTtl;
@@ -106,10 +122,18 @@ public final class GetBackendBucketCdnPolicy {
     	      this.maxTtl = defaults.maxTtl;
     	      this.negativeCaching = defaults.negativeCaching;
     	      this.negativeCachingPolicies = defaults.negativeCachingPolicies;
+    	      this.requestCoalescing = defaults.requestCoalescing;
     	      this.serveWhileStale = defaults.serveWhileStale;
     	      this.signedUrlCacheMaxAgeSec = defaults.signedUrlCacheMaxAgeSec;
         }
 
+        public Builder bypassCacheOnRequestHeaders(List<GetBackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders) {
+            this.bypassCacheOnRequestHeaders = Objects.requireNonNull(bypassCacheOnRequestHeaders);
+            return this;
+        }
+        public Builder bypassCacheOnRequestHeaders(GetBackendBucketCdnPolicyBypassCacheOnRequestHeader... bypassCacheOnRequestHeaders) {
+            return bypassCacheOnRequestHeaders(List.of(bypassCacheOnRequestHeaders));
+        }
         public Builder cacheKeyPolicies(List<GetBackendBucketCdnPolicyCacheKeyPolicy> cacheKeyPolicies) {
             this.cacheKeyPolicies = Objects.requireNonNull(cacheKeyPolicies);
             return this;
@@ -144,6 +168,10 @@ public final class GetBackendBucketCdnPolicy {
         public Builder negativeCachingPolicies(GetBackendBucketCdnPolicyNegativeCachingPolicy... negativeCachingPolicies) {
             return negativeCachingPolicies(List.of(negativeCachingPolicies));
         }
+        public Builder requestCoalescing(Boolean requestCoalescing) {
+            this.requestCoalescing = Objects.requireNonNull(requestCoalescing);
+            return this;
+        }
         public Builder serveWhileStale(Integer serveWhileStale) {
             this.serveWhileStale = Objects.requireNonNull(serveWhileStale);
             return this;
@@ -152,7 +180,7 @@ public final class GetBackendBucketCdnPolicy {
             this.signedUrlCacheMaxAgeSec = Objects.requireNonNull(signedUrlCacheMaxAgeSec);
             return this;
         }        public GetBackendBucketCdnPolicy build() {
-            return new GetBackendBucketCdnPolicy(cacheKeyPolicies, cacheMode, clientTtl, defaultTtl, maxTtl, negativeCaching, negativeCachingPolicies, serveWhileStale, signedUrlCacheMaxAgeSec);
+            return new GetBackendBucketCdnPolicy(bypassCacheOnRequestHeaders, cacheKeyPolicies, cacheMode, clientTtl, defaultTtl, maxTtl, negativeCaching, negativeCachingPolicies, requestCoalescing, serveWhileStale, signedUrlCacheMaxAgeSec);
         }
     }
 }

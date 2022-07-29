@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerState;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAutoHealingPolicies;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulDisk;
@@ -50,6 +51,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionInstanceGroupManager;
  * import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
  * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAllInstancesConfigArgs;
  * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerNamedPortArgs;
  * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs;
  * import java.util.List;
@@ -84,6 +86,10 @@ import javax.annotation.Nullable;
  *                 &#34;us-central1-f&#34;)
  *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
  *                 .instanceTemplate(google_compute_instance_template.appserver().id())
+ *                 .build())
+ *             .allInstancesConfig(RegionInstanceGroupManagerAllInstancesConfigArgs.builder()
+ *                 .metadata(Map.of(&#34;metadata_key&#34;, &#34;metadata_value&#34;))
+ *                 .labels(Map.of(&#34;label_key&#34;, &#34;label_value&#34;))
  *                 .build())
  *             .targetPools(google_compute_target_pool.appserver().id())
  *             .targetSize(2)
@@ -155,6 +161,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager")
 public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResource {
+    /**
+     * )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    @Export(name="allInstancesConfig", type=RegionInstanceGroupManagerAllInstancesConfig.class, parameters={})
+    private Output</* @Nullable */ RegionInstanceGroupManagerAllInstancesConfig> allInstancesConfig;
+
+    /**
+     * @return )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    public Output<Optional<RegionInstanceGroupManagerAllInstancesConfig>> allInstancesConfig() {
+        return Codegen.optional(this.allInstancesConfig);
+    }
     /**
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).

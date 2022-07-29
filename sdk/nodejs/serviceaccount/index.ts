@@ -9,6 +9,7 @@ export * from "./account";
 export * from "./getAccount";
 export * from "./getAccountAccessToken";
 export * from "./getAccountIdToken";
+export * from "./getAccountJwt";
 export * from "./getAccountKey";
 export * from "./iambinding";
 export * from "./iammember";

@@ -18,7 +18,7 @@ public final class CryptoKeyVersionTemplate {
      */
     private final String algorithm;
     /**
-     * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;. Defaults to &#34;SOFTWARE&#34;.
+     * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
      * 
      */
     private final @Nullable String protectionLevel;
@@ -40,7 +40,7 @@ public final class CryptoKeyVersionTemplate {
         return this.algorithm;
     }
     /**
-     * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;. Defaults to &#34;SOFTWARE&#34;.
+     * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
      * 
      */
     public Optional<String> protectionLevel() {

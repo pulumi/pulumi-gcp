@@ -32,6 +32,13 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string Duration;
         /// <summary>
+        /// A condition control that determines how
+        /// metric-threshold conditions are evaluated when
+        /// data stops arriving.
+        /// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+        /// </summary>
+        public readonly string? EvaluationMissingData;
+        /// <summary>
         /// Monitoring Query Language query that outputs a boolean stream.
         /// </summary>
         public readonly string Query;
@@ -52,11 +59,14 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private AlertPolicyConditionConditionMonitoringQueryLanguage(
             string duration,
 
+            string? evaluationMissingData,
+
             string query,
 
             Outputs.AlertPolicyConditionConditionMonitoringQueryLanguageTrigger? trigger)
         {
             Duration = duration;
+            EvaluationMissingData = evaluationMissingData;
             Query = query;
             Trigger = trigger;
         }

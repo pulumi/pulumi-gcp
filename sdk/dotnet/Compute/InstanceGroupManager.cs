@@ -51,6 +51,17 @@ namespace Pulumi.Gcp.Compute
     ///                     InstanceTemplate = google_compute_instance_template.Appserver.Id,
     ///                 },
     ///             },
+    ///             AllInstancesConfig = new Gcp.Compute.Inputs.InstanceGroupManagerAllInstancesConfigArgs
+    ///             {
+    ///                 Metadata = 
+    ///                 {
+    ///                     { "metadata_key", "metadata_value" },
+    ///                 },
+    ///                 Labels = 
+    ///                 {
+    ///                     { "label_key", "label_value" },
+    ///                 },
+    ///             },
     ///             TargetPools = 
     ///             {
     ///                 google_compute_target_pool.Appserver.Id,
@@ -60,7 +71,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 new Gcp.Compute.Inputs.InstanceGroupManagerNamedPortArgs
     ///                 {
-    ///                     Name = "customHTTP",
+    ///                     Name = "customhttp",
     ///                     Port = 8888,
     ///                 },
     ///             },
@@ -138,6 +149,15 @@ namespace Pulumi.Gcp.Compute
     public partial class InstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>
+        /// )
+        /// Properties to set on all instances in the group. After setting
+        /// allInstancesConfig on the group, you must update the group's instances to
+        /// apply the configuration.
+        /// </summary>
+        [Output("allInstancesConfig")]
+        public Output<Outputs.InstanceGroupManagerAllInstancesConfig?> AllInstancesConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         /// </summary>
@@ -204,7 +224,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         /// </summary>
         [Output("statefulDisks")]
         public Output<ImmutableArray<Outputs.InstanceGroupManagerStatefulDisk>> StatefulDisks { get; private set; } = null!;
@@ -314,6 +334,15 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// )
+        /// Properties to set on all instances in the group. After setting
+        /// allInstancesConfig on the group, you must update the group's instances to
+        /// apply the configuration.
+        /// </summary>
+        [Input("allInstancesConfig")]
+        public Input<Inputs.InstanceGroupManagerAllInstancesConfigArgs>? AllInstancesConfig { get; set; }
+
+        /// <summary>
         /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         /// </summary>
@@ -368,7 +397,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerStatefulDiskArgs>? _statefulDisks;
 
         /// <summary>
-        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatefulDiskArgs> StatefulDisks
         {
@@ -448,6 +477,15 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// )
+        /// Properties to set on all instances in the group. After setting
+        /// allInstancesConfig on the group, you must update the group's instances to
+        /// apply the configuration.
+        /// </summary>
+        [Input("allInstancesConfig")]
+        public Input<Inputs.InstanceGroupManagerAllInstancesConfigGetArgs>? AllInstancesConfig { get; set; }
+
+        /// <summary>
         /// The autohealing policies for this managed instance
         /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         /// </summary>
@@ -523,7 +561,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerStatefulDiskGetArgs>? _statefulDisks;
 
         /// <summary>
-        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatefulDiskGetArgs> StatefulDisks
         {

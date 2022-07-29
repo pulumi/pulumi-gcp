@@ -845,6 +845,8 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
             suggest = "internal_ip_only"
         elif key == "nicType":
             suggest = "nic_type"
+        elif key == "reservedIpRange":
+            suggest = "reserved_ip_range"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
 
@@ -871,6 +873,7 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
                  metadata: Optional[Mapping[str, str]] = None,
                  network: Optional[str] = None,
                  nic_type: Optional[str] = None,
+                 reserved_ip_range: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig'] = None,
                  subnet: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
@@ -919,6 +922,8 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
         :param str nic_type: The type of vNIC to be used on this interface. This may be gVNIC
                or VirtioNet.
                Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        :param str reserved_ip_range: Reserved IP Range name is used for VPC Peering. The
+               subnetwork allocation will use the range *name* if it's assigned.
         :param 'RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded VM Instance configuration settings.
                Structure is documented below.
         :param str subnet: The Compute Engine subnetwork to be used for machine
@@ -953,6 +958,8 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
             pulumi.set(__self__, "network", network)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if reserved_ip_range is not None:
+            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if subnet is not None:
@@ -1081,6 +1088,15 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
         Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
+
+    @property
+    @pulumi.getter(name="reservedIpRange")
+    def reserved_ip_range(self) -> Optional[str]:
+        """
+        Reserved IP Range name is used for VPC Peering. The
+        subnetwork allocation will use the range *name* if it's assigned.
+        """
+        return pulumi.get(self, "reserved_ip_range")
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")

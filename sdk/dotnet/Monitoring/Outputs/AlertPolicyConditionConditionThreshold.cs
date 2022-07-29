@@ -99,6 +99,13 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string Duration;
         /// <summary>
+        /// A condition control that determines how
+        /// metric-threshold conditions are evaluated when
+        /// data stops arriving.
+        /// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+        /// </summary>
+        public readonly string? EvaluationMissingData;
+        /// <summary>
         /// A logs-based filter.
         /// </summary>
         public readonly string? Filter;
@@ -132,6 +139,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             string duration,
 
+            string? evaluationMissingData,
+
             string? filter,
 
             double? thresholdValue,
@@ -143,6 +152,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
             DenominatorAggregations = denominatorAggregations;
             DenominatorFilter = denominatorFilter;
             Duration = duration;
+            EvaluationMissingData = evaluationMissingData;
             Filter = filter;
             ThresholdValue = thresholdValue;
             Trigger = trigger;

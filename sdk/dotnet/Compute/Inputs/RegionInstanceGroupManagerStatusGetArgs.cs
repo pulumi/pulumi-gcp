@@ -12,6 +12,21 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RegionInstanceGroupManagerStatusGetArgs : Pulumi.ResourceArgs
     {
+        [Input("allInstancesConfigs")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatusAllInstancesConfigGetArgs>? _allInstancesConfigs;
+
+        /// <summary>
+        /// )
+        /// Properties to set on all instances in the group. After setting
+        /// allInstancesConfig on the group, you must update the group's instances to
+        /// apply the configuration.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatusAllInstancesConfigGetArgs> AllInstancesConfigs
+        {
+            get => _allInstancesConfigs ?? (_allInstancesConfigs = new InputList<Inputs.RegionInstanceGroupManagerStatusAllInstancesConfigGetArgs>());
+            set => _allInstancesConfigs = value;
+        }
+
         /// <summary>
         /// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         /// </summary>

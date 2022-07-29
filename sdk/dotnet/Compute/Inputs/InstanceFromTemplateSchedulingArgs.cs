@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
 
+        [Input("instanceTerminationAction")]
+        public Input<string>? InstanceTerminationAction { get; set; }
+
         [Input("minNodeCpus")]
         public Input<int>? MinNodeCpus { get; set; }
 

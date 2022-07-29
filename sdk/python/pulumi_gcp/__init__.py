@@ -1054,6 +1054,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "certificatemanager/certificateMap",
+  "fqn": "pulumi_gcp.certificatemanager",
+  "classes": {
+   "gcp:certificatemanager/certificateMap:CertificateMap": "CertificateMap"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "certificatemanager/certificateMapEntry",
+  "fqn": "pulumi_gcp.certificatemanager",
+  "classes": {
+   "gcp:certificatemanager/certificateMapEntry:CertificateMapEntry": "CertificateMapEntry"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "certificatemanager/dnsAuthorization",
   "fqn": "pulumi_gcp.certificatemanager",
   "classes": {
@@ -1322,6 +1338,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/backendBucket:BackendBucket": "BackendBucket"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/backendBucketIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/backendBucketIamBinding:BackendBucketIamBinding": "BackendBucketIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/backendBucketIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/backendBucketIamMember:BackendBucketIamMember": "BackendBucketIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/backendBucketIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy": "BackendBucketIamPolicy"
   }
  },
  {
@@ -2602,6 +2642,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
    "gcp:dataproc/jobIAMPolicy:JobIAMPolicy": "JobIAMPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreFederation",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreFederation:MetastoreFederation": "MetastoreFederation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreFederationIamBinding",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding": "MetastoreFederationIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreFederationIamMember",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember": "MetastoreFederationIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreFederationIamPolicy",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy": "MetastoreFederationIamPolicy"
   }
  },
  {

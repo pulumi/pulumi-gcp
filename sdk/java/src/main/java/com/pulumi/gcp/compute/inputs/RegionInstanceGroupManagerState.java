@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulDiskArgs;
@@ -23,6 +24,27 @@ import javax.annotation.Nullable;
 public final class RegionInstanceGroupManagerState extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionInstanceGroupManagerState Empty = new RegionInstanceGroupManagerState();
+
+    /**
+     * )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    @Import(name="allInstancesConfig")
+    private @Nullable Output<RegionInstanceGroupManagerAllInstancesConfigArgs> allInstancesConfig;
+
+    /**
+     * @return )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    public Optional<Output<RegionInstanceGroupManagerAllInstancesConfigArgs>> allInstancesConfig() {
+        return Optional.ofNullable(this.allInstancesConfig);
+    }
 
     /**
      * The autohealing policies for this managed instance
@@ -365,6 +387,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     private RegionInstanceGroupManagerState() {}
 
     private RegionInstanceGroupManagerState(RegionInstanceGroupManagerState $) {
+        this.allInstancesConfig = $.allInstancesConfig;
         this.autoHealingPolicies = $.autoHealingPolicies;
         this.baseInstanceName = $.baseInstanceName;
         this.description = $.description;
@@ -403,6 +426,33 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
 
         public Builder(RegionInstanceGroupManagerState defaults) {
             $ = new RegionInstanceGroupManagerState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allInstancesConfig )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group&#39;s instances to
+         * apply the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allInstancesConfig(@Nullable Output<RegionInstanceGroupManagerAllInstancesConfigArgs> allInstancesConfig) {
+            $.allInstancesConfig = allInstancesConfig;
+            return this;
+        }
+
+        /**
+         * @param allInstancesConfig )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group&#39;s instances to
+         * apply the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allInstancesConfig(RegionInstanceGroupManagerAllInstancesConfigArgs allInstancesConfig) {
+            return allInstancesConfig(Output.of(allInstancesConfig));
         }
 
         /**

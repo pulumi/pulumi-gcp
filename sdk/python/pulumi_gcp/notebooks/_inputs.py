@@ -832,6 +832,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
+                 reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -880,6 +881,8 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. This may be gVNIC
                or VirtioNet.
                Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        :param pulumi.Input[str] reserved_ip_range: Reserved IP Range name is used for VPC Peering. The
+               subnetwork allocation will use the range *name* if it's assigned.
         :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded VM Instance configuration settings.
                Structure is documented below.
         :param pulumi.Input[str] subnet: The Compute Engine subnetwork to be used for machine
@@ -914,6 +917,8 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
             pulumi.set(__self__, "network", network)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if reserved_ip_range is not None:
+            pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if subnet is not None:
@@ -1086,6 +1091,19 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="reservedIpRange")
+    def reserved_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reserved IP Range name is used for VPC Peering. The
+        subnetwork allocation will use the range *name* if it's assigned.
+        """
+        return pulumi.get(self, "reserved_ip_range")
+
+    @reserved_ip_range.setter
+    def reserved_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_ip_range", value)
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")

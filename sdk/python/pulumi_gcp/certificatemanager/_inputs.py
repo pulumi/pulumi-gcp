@@ -11,6 +11,8 @@ from .. import _utilities
 
 __all__ = [
     'CertificateManagedArgs',
+    'CertificateMapGclbTargetArgs',
+    'CertificateMapGclbTargetIpConfigArgs',
     'CertificateSelfManagedArgs',
     'DnsAuthorizationDnsResourceRecordArgs',
 ]
@@ -72,6 +74,76 @@ class CertificateManagedArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class CertificateMapGclbTargetArgs:
+    def __init__(__self__, *,
+                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]] = None,
+                 target_https_proxy: Optional[pulumi.Input[str]] = None,
+                 target_ssl_proxy: Optional[pulumi.Input[str]] = None):
+        if ip_configs is not None:
+            pulumi.set(__self__, "ip_configs", ip_configs)
+        if target_https_proxy is not None:
+            pulumi.set(__self__, "target_https_proxy", target_https_proxy)
+        if target_ssl_proxy is not None:
+            pulumi.set(__self__, "target_ssl_proxy", target_ssl_proxy)
+
+    @property
+    @pulumi.getter(name="ipConfigs")
+    def ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]:
+        return pulumi.get(self, "ip_configs")
+
+    @ip_configs.setter
+    def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]):
+        pulumi.set(self, "ip_configs", value)
+
+    @property
+    @pulumi.getter(name="targetHttpsProxy")
+    def target_https_proxy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "target_https_proxy")
+
+    @target_https_proxy.setter
+    def target_https_proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_https_proxy", value)
+
+    @property
+    @pulumi.getter(name="targetSslProxy")
+    def target_ssl_proxy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "target_ssl_proxy")
+
+    @target_ssl_proxy.setter
+    def target_ssl_proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_ssl_proxy", value)
+
+
+@pulumi.input_type
+class CertificateMapGclbTargetIpConfigArgs:
+    def __init__(__self__, *,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "ports", value)
 
 
 @pulumi.input_type

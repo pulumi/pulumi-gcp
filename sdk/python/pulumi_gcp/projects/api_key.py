@@ -92,7 +92,8 @@ class _ApiKeyState:
                  key_string: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None):
+                 restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApiKey resources.
         :param pulumi.Input[str] display_name: Human-readable display name of this API key. Modifiable by user.
@@ -101,6 +102,7 @@ class _ApiKeyState:
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
+        :param pulumi.Input[str] uid: Output only. Unique id in UUID4 format.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -112,6 +114,8 @@ class _ApiKeyState:
             pulumi.set(__self__, "project", project)
         if restrictions is not None:
             pulumi.set(__self__, "restrictions", restrictions)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter(name="displayName")
@@ -173,6 +177,18 @@ class _ApiKeyState:
     @restrictions.setter
     def restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsArgs']]):
         pulumi.set(self, "restrictions", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Unique id in UUID4 format.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
 
 
 class ApiKey(pulumi.CustomResource):
@@ -481,6 +497,7 @@ class ApiKey(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["restrictions"] = restrictions
             __props__.__dict__["key_string"] = None
+            __props__.__dict__["uid"] = None
         super(ApiKey, __self__).__init__(
             'gcp:projects/apiKey:ApiKey',
             resource_name,
@@ -495,7 +512,8 @@ class ApiKey(pulumi.CustomResource):
             key_string: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']]] = None) -> 'ApiKey':
+            restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']]] = None,
+            uid: Optional[pulumi.Input[str]] = None) -> 'ApiKey':
         """
         Get an existing ApiKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -509,6 +527,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']] restrictions: Key restrictions.
+        :param pulumi.Input[str] uid: Output only. Unique id in UUID4 format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -519,6 +538,7 @@ class ApiKey(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["restrictions"] = restrictions
+        __props__.__dict__["uid"] = uid
         return ApiKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -561,4 +581,12 @@ class ApiKey(pulumi.CustomResource):
         Key restrictions.
         """
         return pulumi.get(self, "restrictions")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        Output only. Unique id in UUID4 format.
+        """
+        return pulumi.get(self, "uid")
 

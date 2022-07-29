@@ -742,6 +742,24 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_backend_bucket.html.markdown",
 				},
 			},
+			"google_compute_backend_bucket_iam_binding": {
+				Tok: gcpResource(gcpCompute, "BackendBucketIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_bucket_iam.html.markdown",
+				},
+			},
+			"google_compute_backend_bucket_iam_member": {
+				Tok: gcpResource(gcpCompute, "BackendBucketIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_bucket_iam.html.markdown",
+				},
+			},
+			"google_compute_backend_bucket_iam_policy": {
+				Tok: gcpResource(gcpCompute, "BackendBucketIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_bucket_iam.html.markdown",
+				},
+			},
 			"google_compute_backend_bucket_signed_url_key": {
 				Tok: gcpResource(gcpCompute, "BackendBucketSignedUrlKey"),
 				Docs: &tfbridge.DocInfo{
@@ -1132,6 +1150,26 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "dataproc_metastore_service_iam.html.markdown",
 				},
 			},
+			"google_dataproc_metastore_federation": {Tok: gcpResource(gcpDataProc, "MetastoreFederation")},
+			"google_dataproc_metastore_federation_iam_binding": {
+				Tok: gcpResource(gcpDataProc, "MetastoreFederationIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_metastore_federation_iam.html.markdown",
+				},
+			},
+			"google_dataproc_metastore_federation_iam_member": {
+				Tok: gcpResource(gcpDataProc, "MetastoreFederationIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_metastore_federation_iam.html.markdown",
+				},
+			},
+			"google_dataproc_metastore_federation_iam_policy": {
+				Tok: gcpResource(gcpDataProc, "MetastoreFederationIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataproc_metastore_federation_iam.html.markdown",
+				},
+			},
+
 			"google_dataproc_workflow_template": {Tok: gcpResource(gcpDataProc, "WorkflowTemplate")},
 
 			// DataStore resources
@@ -2317,8 +2355,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Certificate Manager
-			"google_certificate_manager_certificate":       {Tok: gcpResource(gcpCertificateManager, "Certificate")},
-			"google_certificate_manager_dns_authorization": {Tok: gcpResource(gcpCertificateManager, "DnsAuthorization")},
+			"google_certificate_manager_certificate":           {Tok: gcpResource(gcpCertificateManager, "Certificate")},
+			"google_certificate_manager_dns_authorization":     {Tok: gcpResource(gcpCertificateManager, "DnsAuthorization")},
+			"google_certificate_manager_certificate_map":       {Tok: gcpResource(gcpCertificateManager, "CertificateMap")},
+			"google_certificate_manager_certificate_map_entry": {Tok: gcpResource(gcpCertificateManager, "CertificateMapEntry")},
 
 			// essential contacts
 			"google_essential_contacts_contact": {Tok: gcpResource(gcpEssentialContacts, "Contact")},
@@ -2764,6 +2804,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_service_account.html.markdown",
 				},
 			},
+			"google_service_account_jwt": {Tok: gcpDataSource(gcpServiceAccount, "getAccountJwt")},
 			"google_service_account_id_token": {
 				Tok: gcpDataSource(gcpServiceAccount, "getAccountIdToken"),
 				Docs: &tfbridge.DocInfo{

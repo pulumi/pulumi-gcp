@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class BackendBucketCdnPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("bypassCacheOnRequestHeaders")]
+        private InputList<Inputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>? _bypassCacheOnRequestHeaders;
+
+        /// <summary>
+        /// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs> BypassCacheOnRequestHeaders
+        {
+            get => _bypassCacheOnRequestHeaders ?? (_bypassCacheOnRequestHeaders = new InputList<Inputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>());
+            set => _bypassCacheOnRequestHeaders = value;
+        }
+
         /// <summary>
         /// The CacheKeyPolicy for this CdnPolicy.
         /// Structure is documented below.
@@ -65,6 +78,12 @@ namespace Pulumi.Gcp.Compute.Inputs
             get => _negativeCachingPolicies ?? (_negativeCachingPolicies = new InputList<Inputs.BackendBucketCdnPolicyNegativeCachingPolicyArgs>());
             set => _negativeCachingPolicies = value;
         }
+
+        /// <summary>
+        /// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+        /// </summary>
+        [Input("requestCoalescing")]
+        public Input<bool>? RequestCoalescing { get; set; }
 
         /// <summary>
         /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.

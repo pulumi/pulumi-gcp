@@ -719,9 +719,27 @@ class AlertPolicyConditionConditionMatchedLog(dict):
 
 @pulumi.output_type
 class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMissingData":
+            suggest = "evaluation_missing_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyConditionConditionMonitoringQueryLanguage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyConditionConditionMonitoringQueryLanguage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyConditionConditionMonitoringQueryLanguage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  duration: str,
                  query: str,
+                 evaluation_missing_data: Optional[str] = None,
                  trigger: Optional['outputs.AlertPolicyConditionConditionMonitoringQueryLanguageTrigger'] = None):
         """
         :param str duration: The amount of time that a time series must
@@ -740,6 +758,10 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
                that unhealthy states are detected and
                alerted on quickly.
         :param str query: Monitoring Query Language query that outputs a boolean stream.
+        :param str evaluation_missing_data: A condition control that determines how
+               metric-threshold conditions are evaluated when
+               data stops arriving.
+               Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
         :param 'AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs' trigger: The number/percent of time series for which
                the comparison must hold in order for the
                condition to trigger. If unspecified, then
@@ -752,6 +774,8 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "query", query)
+        if evaluation_missing_data is not None:
+            pulumi.set(__self__, "evaluation_missing_data", evaluation_missing_data)
         if trigger is not None:
             pulumi.set(__self__, "trigger", trigger)
 
@@ -784,6 +808,17 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage(dict):
         Monitoring Query Language query that outputs a boolean stream.
         """
         return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="evaluationMissingData")
+    def evaluation_missing_data(self) -> Optional[str]:
+        """
+        A condition control that determines how
+        metric-threshold conditions are evaluated when
+        data stops arriving.
+        Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+        """
+        return pulumi.get(self, "evaluation_missing_data")
 
     @property
     @pulumi.getter
@@ -850,6 +885,8 @@ class AlertPolicyConditionConditionThreshold(dict):
             suggest = "denominator_aggregations"
         elif key == "denominatorFilter":
             suggest = "denominator_filter"
+        elif key == "evaluationMissingData":
+            suggest = "evaluation_missing_data"
         elif key == "thresholdValue":
             suggest = "threshold_value"
 
@@ -870,6 +907,7 @@ class AlertPolicyConditionConditionThreshold(dict):
                  aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionThresholdAggregation']] = None,
                  denominator_aggregations: Optional[Sequence['outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation']] = None,
                  denominator_filter: Optional[str] = None,
+                 evaluation_missing_data: Optional[str] = None,
                  filter: Optional[str] = None,
                  threshold_value: Optional[float] = None,
                  trigger: Optional['outputs.AlertPolicyConditionConditionThresholdTrigger'] = None):
@@ -944,6 +982,10 @@ class AlertPolicyConditionConditionThreshold(dict):
                resource labels, and metric labels. This
                field may not exceed 2048 Unicode characters
                in length.
+        :param str evaluation_missing_data: A condition control that determines how
+               metric-threshold conditions are evaluated when
+               data stops arriving.
+               Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
         :param str filter: A logs-based filter.
         :param float threshold_value: A value against which to compare the time
                series.
@@ -965,6 +1007,8 @@ class AlertPolicyConditionConditionThreshold(dict):
             pulumi.set(__self__, "denominator_aggregations", denominator_aggregations)
         if denominator_filter is not None:
             pulumi.set(__self__, "denominator_filter", denominator_filter)
+        if evaluation_missing_data is not None:
+            pulumi.set(__self__, "evaluation_missing_data", evaluation_missing_data)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
         if threshold_value is not None:
@@ -1076,6 +1120,17 @@ class AlertPolicyConditionConditionThreshold(dict):
         in length.
         """
         return pulumi.get(self, "denominator_filter")
+
+    @property
+    @pulumi.getter(name="evaluationMissingData")
+    def evaluation_missing_data(self) -> Optional[str]:
+        """
+        A condition control that determines how
+        metric-threshold conditions are evaluated when
+        data stops arriving.
+        Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+        """
+        return pulumi.get(self, "evaluation_missing_data")
 
     @property
     @pulumi.getter

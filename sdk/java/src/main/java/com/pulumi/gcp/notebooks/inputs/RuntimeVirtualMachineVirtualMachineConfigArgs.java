@@ -253,6 +253,23 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     }
 
     /**
+     * Reserved IP Range name is used for VPC Peering. The
+     * subnetwork allocation will use the range *name* if it&#39;s assigned.
+     * 
+     */
+    @Import(name="reservedIpRange")
+    private @Nullable Output<String> reservedIpRange;
+
+    /**
+     * @return Reserved IP Range name is used for VPC Peering. The
+     * subnetwork allocation will use the range *name* if it&#39;s assigned.
+     * 
+     */
+    public Optional<Output<String>> reservedIpRange() {
+        return Optional.ofNullable(this.reservedIpRange);
+    }
+
+    /**
      * Shielded VM Instance configuration settings.
      * Structure is documented below.
      * 
@@ -344,6 +361,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         this.metadata = $.metadata;
         this.network = $.network;
         this.nicType = $.nicType;
+        this.reservedIpRange = $.reservedIpRange;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.subnet = $.subnet;
         this.tags = $.tags;
@@ -672,6 +690,29 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
          */
         public Builder nicType(String nicType) {
             return nicType(Output.of(nicType));
+        }
+
+        /**
+         * @param reservedIpRange Reserved IP Range name is used for VPC Peering. The
+         * subnetwork allocation will use the range *name* if it&#39;s assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedIpRange(@Nullable Output<String> reservedIpRange) {
+            $.reservedIpRange = reservedIpRange;
+            return this;
+        }
+
+        /**
+         * @param reservedIpRange Reserved IP Range name is used for VPC Peering. The
+         * subnetwork allocation will use the range *name* if it&#39;s assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedIpRange(String reservedIpRange) {
+            return reservedIpRange(Output.of(reservedIpRange));
         }
 
         /**

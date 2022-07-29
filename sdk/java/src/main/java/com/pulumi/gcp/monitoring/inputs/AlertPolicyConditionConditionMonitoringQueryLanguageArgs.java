@@ -60,6 +60,27 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
     }
 
     /**
+     * A condition control that determines how
+     * metric-threshold conditions are evaluated when
+     * data stops arriving.
+     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * 
+     */
+    @Import(name="evaluationMissingData")
+    private @Nullable Output<String> evaluationMissingData;
+
+    /**
+     * @return A condition control that determines how
+     * metric-threshold conditions are evaluated when
+     * data stops arriving.
+     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * 
+     */
+    public Optional<Output<String>> evaluationMissingData() {
+        return Optional.ofNullable(this.evaluationMissingData);
+    }
+
+    /**
      * Monitoring Query Language query that outputs a boolean stream.
      * 
      */
@@ -109,6 +130,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
 
     private AlertPolicyConditionConditionMonitoringQueryLanguageArgs(AlertPolicyConditionConditionMonitoringQueryLanguageArgs $) {
         this.duration = $.duration;
+        this.evaluationMissingData = $.evaluationMissingData;
         this.query = $.query;
         this.trigger = $.trigger;
     }
@@ -178,6 +200,33 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
          */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
+        }
+
+        /**
+         * @param evaluationMissingData A condition control that determines how
+         * metric-threshold conditions are evaluated when
+         * data stops arriving.
+         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evaluationMissingData(@Nullable Output<String> evaluationMissingData) {
+            $.evaluationMissingData = evaluationMissingData;
+            return this;
+        }
+
+        /**
+         * @param evaluationMissingData A condition control that determines how
+         * metric-threshold conditions are evaluated when
+         * data stops arriving.
+         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evaluationMissingData(String evaluationMissingData) {
+            return evaluationMissingData(Output.of(evaluationMissingData));
         }
 
         /**

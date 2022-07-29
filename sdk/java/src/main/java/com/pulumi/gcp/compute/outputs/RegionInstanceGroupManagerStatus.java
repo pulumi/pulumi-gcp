@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatusAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatusStateful;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatusVersionTarget;
 import java.lang.Boolean;
@@ -14,6 +15,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionInstanceGroupManagerStatus {
+    /**
+     * @return )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    private final @Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
     /**
      * @return A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
      * 
@@ -32,14 +41,26 @@ public final class RegionInstanceGroupManagerStatus {
 
     @CustomType.Constructor
     private RegionInstanceGroupManagerStatus(
+        @CustomType.Parameter("allInstancesConfigs") @Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs,
         @CustomType.Parameter("isStable") @Nullable Boolean isStable,
         @CustomType.Parameter("statefuls") @Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls,
         @CustomType.Parameter("versionTargets") @Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets) {
+        this.allInstancesConfigs = allInstancesConfigs;
         this.isStable = isStable;
         this.statefuls = statefuls;
         this.versionTargets = versionTargets;
     }
 
+    /**
+     * @return )
+     * Properties to set on all instances in the group. After setting
+     * allInstancesConfig on the group, you must update the group&#39;s instances to
+     * apply the configuration.
+     * 
+     */
+    public List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs() {
+        return this.allInstancesConfigs == null ? List.of() : this.allInstancesConfigs;
+    }
     /**
      * @return A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
      * 
@@ -71,6 +92,7 @@ public final class RegionInstanceGroupManagerStatus {
     }
 
     public static final class Builder {
+        private @Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
         private @Nullable Boolean isStable;
         private @Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls;
         private @Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets;
@@ -81,11 +103,19 @@ public final class RegionInstanceGroupManagerStatus {
 
         public Builder(RegionInstanceGroupManagerStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allInstancesConfigs = defaults.allInstancesConfigs;
     	      this.isStable = defaults.isStable;
     	      this.statefuls = defaults.statefuls;
     	      this.versionTargets = defaults.versionTargets;
         }
 
+        public Builder allInstancesConfigs(@Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs) {
+            this.allInstancesConfigs = allInstancesConfigs;
+            return this;
+        }
+        public Builder allInstancesConfigs(RegionInstanceGroupManagerStatusAllInstancesConfig... allInstancesConfigs) {
+            return allInstancesConfigs(List.of(allInstancesConfigs));
+        }
         public Builder isStable(@Nullable Boolean isStable) {
             this.isStable = isStable;
             return this;
@@ -104,7 +134,7 @@ public final class RegionInstanceGroupManagerStatus {
         public Builder versionTargets(RegionInstanceGroupManagerStatusVersionTarget... versionTargets) {
             return versionTargets(List.of(versionTargets));
         }        public RegionInstanceGroupManagerStatus build() {
-            return new RegionInstanceGroupManagerStatus(isStable, statefuls, versionTargets);
+            return new RegionInstanceGroupManagerStatus(allInstancesConfigs, isStable, statefuls, versionTargets);
         }
     }
 }

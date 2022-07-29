@@ -279,14 +279,14 @@ public class Runtime extends com.pulumi.resources.CustomResource {
         return this.metrics;
     }
     /**
-     * The name specified for the Notebook instance.
+     * The name specified for the Notebook runtime.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name specified for the Notebook instance.
+     * @return The name specified for the Notebook runtime.
      * 
      */
     public Output<String> name() {

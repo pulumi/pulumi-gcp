@@ -5799,6 +5799,17 @@ export namespace certificatemanager {
         state: string;
     }
 
+    export interface CertificateMapGclbTarget {
+        ipConfigs?: outputs.certificatemanager.CertificateMapGclbTargetIpConfig[];
+        targetHttpsProxy?: string;
+        targetSslProxy?: string;
+    }
+
+    export interface CertificateMapGclbTargetIpConfig {
+        ipAddress?: string;
+        ports?: number[];
+    }
+
     export interface CertificateSelfManaged {
         /**
          * The certificate chain in PEM-encoded form.
@@ -8978,6 +8989,11 @@ export namespace compute {
 
     export interface BackendBucketCdnPolicy {
         /**
+         * Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         */
+        bypassCacheOnRequestHeaders?: outputs.compute.BackendBucketCdnPolicyBypassCacheOnRequestHeader[];
+        /**
          * The CacheKeyPolicy for this CdnPolicy.
          * Structure is documented below.
          */
@@ -9012,6 +9028,10 @@ export namespace compute {
          */
         negativeCachingPolicies?: outputs.compute.BackendBucketCdnPolicyNegativeCachingPolicy[];
         /**
+         * If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+         */
+        requestCoalescing?: boolean;
+        /**
          * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
          */
         serveWhileStale: number;
@@ -9026,6 +9046,13 @@ export namespace compute {
          * header. The actual headers served in responses will not be altered.
          */
         signedUrlCacheMaxAgeSec?: number;
+    }
+
+    export interface BackendBucketCdnPolicyBypassCacheOnRequestHeader {
+        /**
+         * The header field name to match on when bypassing cache. Values are case-insensitive.
+         */
+        headerName?: string;
     }
 
     export interface BackendBucketCdnPolicyCacheKeyPolicy {
@@ -9053,6 +9080,18 @@ export namespace compute {
          * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
          */
         ttl?: number;
+    }
+
+    export interface BackendBucketIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface BackendBucketIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface BackendServiceBackend {
@@ -9735,6 +9774,7 @@ export namespace compute {
     }
 
     export interface GetBackendBucketCdnPolicy {
+        bypassCacheOnRequestHeaders: outputs.compute.GetBackendBucketCdnPolicyBypassCacheOnRequestHeader[];
         cacheKeyPolicies: outputs.compute.GetBackendBucketCdnPolicyCacheKeyPolicy[];
         cacheMode: string;
         clientTtl: number;
@@ -9742,8 +9782,13 @@ export namespace compute {
         maxTtl: number;
         negativeCaching: boolean;
         negativeCachingPolicies: outputs.compute.GetBackendBucketCdnPolicyNegativeCachingPolicy[];
+        requestCoalescing: boolean;
         serveWhileStale: number;
         signedUrlCacheMaxAgeSec: number;
+    }
+
+    export interface GetBackendBucketCdnPolicyBypassCacheOnRequestHeader {
+        headerName: string;
     }
 
     export interface GetBackendBucketCdnPolicyCacheKeyPolicy {
@@ -10176,6 +10221,10 @@ export namespace compute {
          * restarted if it was terminated by Compute Engine (not a user).
          */
         automaticRestart: boolean;
+        /**
+         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         */
+        instanceTerminationAction: string;
         minNodeCpus: number;
         nodeAffinities: outputs.compute.GetInstanceSchedulingNodeAffinity[];
         /**
@@ -10189,7 +10238,7 @@ export namespace compute {
          */
         preemptible: boolean;
         /**
-         * (Beta) Describe the type of preemptible VM.
+         * Describe the type of preemptible VM.
          */
         provisioningModel: string;
     }
@@ -10451,6 +10500,10 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart: boolean;
+        /**
+         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         */
+        instanceTerminationAction: string;
         minNodeCpus: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -10472,7 +10525,7 @@ export namespace compute {
          */
         preemptible: boolean;
         /**
-         * (Beta) Describe the type of preemptible VM.
+         * Describe the type of preemptible VM.
          */
         provisioningModel: string;
     }
@@ -11312,6 +11365,7 @@ export namespace compute {
 
     export interface InstanceFromMachineImageScheduling {
         automaticRestart: boolean;
+        instanceTerminationAction: string;
         minNodeCpus: number;
         nodeAffinities: outputs.compute.InstanceFromMachineImageSchedulingNodeAffinity[];
         onHostMaintenance: string;
@@ -11434,6 +11488,7 @@ export namespace compute {
 
     export interface InstanceFromTemplateScheduling {
         automaticRestart: boolean;
+        instanceTerminationAction: string;
         minNodeCpus: number;
         nodeAffinities: outputs.compute.InstanceFromTemplateSchedulingNodeAffinity[];
         onHostMaintenance: string;
@@ -11460,6 +11515,17 @@ export namespace compute {
         enableIntegrityMonitoring: boolean;
         enableSecureBoot: boolean;
         enableVtpm: boolean;
+    }
+
+    export interface InstanceGroupManagerAllInstancesConfig {
+        /**
+         * ), The label key-value pairs that you want to patch onto the instance.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+         */
+        metadata?: {[key: string]: string};
     }
 
     export interface InstanceGroupManagerAutoHealingPolicies {
@@ -11499,6 +11565,13 @@ export namespace compute {
 
     export interface InstanceGroupManagerStatus {
         /**
+         * )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group's instances to
+         * apply the configuration.
+         */
+        allInstancesConfigs: outputs.compute.InstanceGroupManagerStatusAllInstancesConfig[];
+        /**
          * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
          */
         isStable: boolean;
@@ -11510,6 +11583,10 @@ export namespace compute {
          * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
          */
         versionTargets: outputs.compute.InstanceGroupManagerStatusVersionTarget[];
+    }
+
+    export interface InstanceGroupManagerStatusAllInstancesConfig {
+        effective: boolean;
     }
 
     export interface InstanceGroupManagerStatusStateful {
@@ -11815,6 +11892,10 @@ export namespace compute {
          * Defaults to true.
          */
         automaticRestart?: boolean;
+        /**
+         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         */
+        instanceTerminationAction?: string;
         /**
          * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
          */
@@ -12164,6 +12245,10 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart?: boolean;
+        /**
+         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         */
+        instanceTerminationAction?: string;
         minNodeCpus?: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -12185,7 +12270,7 @@ export namespace compute {
          */
         preemptible?: boolean;
         /**
-         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
          * `preemptible` should be `true` and `autoRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -12452,8 +12537,7 @@ export namespace compute {
          */
         direction?: string;
         /**
-         * Protocols that apply as a filter on mirrored traffic.
-         * Each value may be one of `tcp`, `udp`, and `icmp`.
+         * Possible IP protocols including tcp, udp, icmp and esp
          */
         ipProtocols?: string[];
     }
@@ -13682,6 +13766,17 @@ export namespace compute {
         response?: string;
     }
 
+    export interface RegionInstanceGroupManagerAllInstancesConfig {
+        /**
+         * ), The label key-value pairs that you want to patch onto the instance.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+         */
+        metadata?: {[key: string]: string};
+    }
+
     export interface RegionInstanceGroupManagerAutoHealingPolicies {
         /**
          * The health check resource that signals autohealing.
@@ -13719,6 +13814,13 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerStatus {
         /**
+         * )
+         * Properties to set on all instances in the group. After setting
+         * allInstancesConfig on the group, you must update the group's instances to
+         * apply the configuration.
+         */
+        allInstancesConfigs: outputs.compute.RegionInstanceGroupManagerStatusAllInstancesConfig[];
+        /**
          * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
          */
         isStable: boolean;
@@ -13730,6 +13832,10 @@ export namespace compute {
          * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
          */
         versionTargets: outputs.compute.RegionInstanceGroupManagerStatusVersionTarget[];
+    }
+
+    export interface RegionInstanceGroupManagerStatusAllInstancesConfig {
+        effective: boolean;
     }
 
     export interface RegionInstanceGroupManagerStatusStateful {
@@ -15729,12 +15835,10 @@ export namespace compute {
          */
         priority: number;
         /**
-         * )
          * Must be specified if the `action` is "rateBasedBad" or "throttle". Cannot be specified for other actions. Structure is documented below.
          */
         rateLimitOptions?: outputs.compute.SecurityPolicyRuleRateLimitOptions;
         /**
-         * )
          * Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
          */
         redirectOptions?: outputs.compute.SecurityPolicyRuleRedirectOptions;
@@ -22726,6 +22830,34 @@ export namespace dataproc {
         substate: string;
     }
 
+    export interface MetastoreFederationBackendMetastore {
+        /**
+         * The type of the backend metastore.
+         * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+         */
+        metastoreType: string;
+        /**
+         * The relative resource name of the metastore that is being federated.
+         */
+        name: string;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        rank: string;
+    }
+
+    export interface MetastoreFederationIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface MetastoreFederationIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface MetastoreServiceEncryptionConfig {
         /**
          * The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
@@ -25448,6 +25580,8 @@ export namespace gkehub {
          * Logs all denies and dry run failures.
          */
         logDeniesEnabled?: boolean;
+        monitoring: outputs.gkehub.FeatureMembershipConfigmanagementPolicyControllerMonitoring;
+        mutationEnabled?: boolean;
         /**
          * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
          */
@@ -25456,6 +25590,10 @@ export namespace gkehub {
          * Installs the default template library along with Policy Controller.
          */
         templateLibraryInstalled?: boolean;
+    }
+
+    export interface FeatureMembershipConfigmanagementPolicyControllerMonitoring {
+        backends: string[];
     }
 
     export interface FeatureResourceState {
@@ -26334,7 +26472,7 @@ export namespace kms {
          */
         algorithm: string;
         /**
-         * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL". Defaults to "SOFTWARE".
+         * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
          */
         protectionLevel?: string;
     }
@@ -27045,6 +27183,13 @@ export namespace monitoring {
          */
         duration: string;
         /**
+         * A condition control that determines how
+         * metric-threshold conditions are evaluated when
+         * data stops arriving.
+         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         */
+        evaluationMissingData?: string;
+        /**
          * Monitoring Query Language query that outputs a boolean stream.
          */
         query: string;
@@ -27163,6 +27308,13 @@ export namespace monitoring {
          * alerted on quickly.
          */
         duration: string;
+        /**
+         * A condition control that determines how
+         * metric-threshold conditions are evaluated when
+         * data stops arriving.
+         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         */
+        evaluationMissingData?: string;
         /**
          * A logs-based filter.
          */
@@ -29003,6 +29155,11 @@ export namespace notebooks {
          * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
          */
         nicType?: string;
+        /**
+         * Reserved IP Range name is used for VPC Peering. The
+         * subnetwork allocation will use the range *name* if it's assigned.
+         */
+        reservedIpRange?: string;
         /**
          * Shielded VM Instance configuration settings.
          * Structure is documented below.

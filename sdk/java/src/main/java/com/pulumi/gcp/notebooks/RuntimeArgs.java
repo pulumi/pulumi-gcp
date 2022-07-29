@@ -51,14 +51,14 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name specified for the Notebook instance.
+     * The name specified for the Notebook runtime.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name specified for the Notebook instance.
+     * @return The name specified for the Notebook runtime.
      * 
      */
     public Optional<Output<String>> name() {
@@ -190,7 +190,7 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name specified for the Notebook instance.
+         * @param name The name specified for the Notebook runtime.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name specified for the Notebook instance.
+         * @param name The name specified for the Notebook runtime.
          * 
          * @return builder
          * 
