@@ -9283,7 +9283,9 @@ type ClusterBinaryAuthorization struct {
 	//
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled *bool `pulumi:"enabled"`
-	// Mode of operation for Binary Authorization policy evaluation.
+	// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+	// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+	// deprecated `enableBinaryAuthorization` parameter being set to `true`.
 	EvaluationMode *string `pulumi:"evaluationMode"`
 }
 
@@ -9304,7 +9306,9 @@ type ClusterBinaryAuthorizationArgs struct {
 	//
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Mode of operation for Binary Authorization policy evaluation.
+	// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+	// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+	// deprecated `enableBinaryAuthorization` parameter being set to `true`.
 	EvaluationMode pulumi.StringPtrInput `pulumi:"evaluationMode"`
 }
 
@@ -9393,7 +9397,9 @@ func (o ClusterBinaryAuthorizationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterBinaryAuthorization) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Mode of operation for Binary Authorization policy evaluation.
+// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+// deprecated `enableBinaryAuthorization` parameter being set to `true`.
 func (o ClusterBinaryAuthorizationOutput) EvaluationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBinaryAuthorization) *string { return v.EvaluationMode }).(pulumi.StringPtrOutput)
 }
@@ -9435,7 +9441,9 @@ func (o ClusterBinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Mode of operation for Binary Authorization policy evaluation.
+// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+// deprecated `enableBinaryAuthorization` parameter being set to `true`.
 func (o ClusterBinaryAuthorizationPtrOutput) EvaluationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBinaryAuthorization) *string {
 		if v == nil {
@@ -9674,6 +9682,8 @@ func (o ClusterClusterAutoscalingPtrOutput) ResourceLimits() ClusterClusterAutos
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
@@ -9704,6 +9714,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
@@ -9799,6 +9811,11 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ToClusterCluste
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
 // The image type to use for this node. Note that changing the image type
 // will delete and recreate all nodes in the node pool.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ImageType() pulumi.StringPtrOutput {
@@ -9849,6 +9866,16 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) Elem() Clust
 		var ret ClusterClusterAutoscalingAutoProvisioningDefaults
 		return ret
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsOutput)
+}
+
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskKmsKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -24443,6 +24470,7 @@ func (o GetClusterClusterAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefault struct {
+	BootDiskKmsKey string   `pulumi:"bootDiskKmsKey"`
 	ImageType      string   `pulumi:"imageType"`
 	MinCpuPlatform string   `pulumi:"minCpuPlatform"`
 	OauthScopes    []string `pulumi:"oauthScopes"`
@@ -24461,6 +24489,7 @@ type GetClusterClusterAutoscalingAutoProvisioningDefaultInput interface {
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefaultArgs struct {
+	BootDiskKmsKey pulumi.StringInput      `pulumi:"bootDiskKmsKey"`
 	ImageType      pulumi.StringInput      `pulumi:"imageType"`
 	MinCpuPlatform pulumi.StringInput      `pulumi:"minCpuPlatform"`
 	OauthScopes    pulumi.StringArrayInput `pulumi:"oauthScopes"`
@@ -24516,6 +24545,10 @@ func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ToGetClusterC
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultOutput {
 	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) BootDiskKmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ImageType() pulumi.StringOutput {

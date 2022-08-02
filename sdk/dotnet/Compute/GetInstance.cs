@@ -201,7 +201,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string LabelFingerprint;
         /// <summary>
-        /// A set of key/value label pairs assigned to the instance.
+        /// A set of key/value label pairs assigned to the disk.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>

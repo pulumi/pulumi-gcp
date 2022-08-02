@@ -304,9 +304,7 @@ class Instance(pulumi.CustomResource):
         ## +---
 
         subcategory: "Cloud Bigtable"
-        layout: "google"
         page_title: "Google: bigtable.Instance"
-        sidebar_current: "docs-google-bigtable-instance"
         description: |-
           Creates a Google Bigtable instance.
         ---
@@ -409,9 +407,7 @@ class Instance(pulumi.CustomResource):
         ## +---
 
         subcategory: "Cloud Bigtable"
-        layout: "google"
         page_title: "Google: bigtable.Instance"
-        sidebar_current: "docs-google-bigtable-instance"
         description: |-
           Creates a Google Bigtable instance.
         ---

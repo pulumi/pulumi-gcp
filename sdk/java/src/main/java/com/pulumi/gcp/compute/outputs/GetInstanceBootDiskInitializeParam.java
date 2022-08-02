@@ -18,7 +18,7 @@ public final class GetInstanceBootDiskInitializeParam {
      */
     private final String image;
     /**
-     * @return A set of key/value label pairs assigned to the instance.
+     * @return A set of key/value label pairs assigned to the disk.
      * 
      */
     private final Map<String,Object> labels;
@@ -53,7 +53,7 @@ public final class GetInstanceBootDiskInitializeParam {
         return this.image;
     }
     /**
-     * @return A set of key/value label pairs assigned to the instance.
+     * @return A set of key/value label pairs assigned to the disk.
      * 
      */
     public Map<String,Object> labels() {

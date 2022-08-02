@@ -10080,7 +10080,7 @@ export namespace compute {
          */
         image: string;
         /**
-         * A set of key/value label pairs assigned to the instance.
+         * A set of key/value label pairs assigned to the disk.
          */
         labels: {[key: string]: any};
         /**
@@ -18868,7 +18868,9 @@ export namespace container {
          */
         enabled?: boolean;
         /**
-         * Mode of operation for Binary Authorization policy evaluation.
+         * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+         * deprecated `enableBinaryAuthorization` parameter being set to `true`.
          */
         evaluationMode?: string;
     }
@@ -18901,6 +18903,10 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+         */
+        bootDiskKmsKey?: string;
         /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
@@ -19964,6 +19970,7 @@ export namespace container {
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefault {
+        bootDiskKmsKey: string;
         imageType: string;
         minCpuPlatform: string;
         oauthScopes: string[];
@@ -21902,6 +21909,76 @@ export namespace dataplex {
         message: string;
         state: string;
         updateTime: string;
+    }
+
+    export interface ZoneAssetStatus {
+        activeAssets: number;
+        securityPolicyApplyingAssets: number;
+        updateTime: string;
+    }
+
+    export interface ZoneDiscoverySpec {
+        /**
+         * Optional. Configuration for CSV data.
+         */
+        csvOptions?: outputs.dataplex.ZoneDiscoverySpecCsvOptions;
+        /**
+         * Required. Whether discovery is enabled.
+         */
+        enabled: boolean;
+        /**
+         * Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        excludePatterns?: string[];
+        /**
+         * Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        includePatterns?: string[];
+        /**
+         * Optional. Configuration for Json data.
+         */
+        jsonOptions?: outputs.dataplex.ZoneDiscoverySpecJsonOptions;
+        /**
+         * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+         */
+        schedule: string;
+    }
+
+    export interface ZoneDiscoverySpecCsvOptions {
+        /**
+         * Optional. The delimiter being used to separate values. This defaults to ','.
+         */
+        delimiter?: string;
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: boolean;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: string;
+        /**
+         * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+         */
+        headerRows?: number;
+    }
+
+    export interface ZoneDiscoverySpecJsonOptions {
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: boolean;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: string;
+    }
+
+    export interface ZoneResourceSpec {
+        /**
+         * Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+         */
+        locationType: string;
     }
 
 }
@@ -29048,6 +29125,11 @@ export namespace notebooks {
          */
         installGpuDriver?: boolean;
         /**
+         * Use a list of container images to use as Kernels in the notebook instance.
+         * Structure is documented below.
+         */
+        kernels?: outputs.notebooks.RuntimeSoftwareConfigKernel[];
+        /**
          * Cron expression in UTC timezone for schedule instance auto upgrade.
          * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
          */
@@ -29058,6 +29140,28 @@ export namespace notebooks {
          * Cloud Storage path (gs://path-to-file/file-name).
          */
         postStartupScript?: string;
+        /**
+         * Behavior for the post startup script.
+         * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+         */
+        postStartupScriptBehavior?: string;
+        /**
+         * -
+         * Bool indicating whether an newer image is available in an image family.
+         */
+        upgradeable: boolean;
+    }
+
+    export interface RuntimeSoftwareConfigKernel {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: string;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: string;
     }
 
     export interface RuntimeVirtualMachine {
@@ -32520,9 +32624,12 @@ export namespace sql {
         collation?: string;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
         /**
-         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
          */
         diskAutoresize?: boolean;
+        /**
+         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         */
         diskAutoresizeLimit?: number;
         /**
          * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
@@ -32993,9 +33100,17 @@ export namespace storage {
          */
         daysSinceNoncurrentTime?: number;
         /**
+         * One or more matching name prefixes to satisfy this condition.
+         */
+        matchesPrefixes?: string[];
+        /**
          * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: string[];
+        /**
+         * One or more matching name suffixes to satisfy this condition.
+         */
+        matchesSuffixes?: string[];
         /**
          * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
          */
@@ -33096,7 +33211,9 @@ export namespace storage {
         customTimeBefore: string;
         daysSinceCustomTime: number;
         daysSinceNoncurrentTime: number;
+        matchesPrefixes: string[];
         matchesStorageClasses: string[];
+        matchesSuffixes: string[];
         noncurrentTimeBefore: string;
         numNewerVersions: number;
         withState: string;

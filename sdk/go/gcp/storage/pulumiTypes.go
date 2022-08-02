@@ -795,8 +795,12 @@ type BucketLifecycleRuleCondition struct {
 	DaysSinceCustomTime *int `pulumi:"daysSinceCustomTime"`
 	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
 	DaysSinceNoncurrentTime *int `pulumi:"daysSinceNoncurrentTime"`
+	// One or more matching name prefixes to satisfy this condition.
+	MatchesPrefixes []string `pulumi:"matchesPrefixes"`
 	// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
+	// One or more matching name suffixes to satisfy this condition.
+	MatchesSuffixes []string `pulumi:"matchesSuffixes"`
 	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
 	NoncurrentTimeBefore *string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
@@ -827,8 +831,12 @@ type BucketLifecycleRuleConditionArgs struct {
 	DaysSinceCustomTime pulumi.IntPtrInput `pulumi:"daysSinceCustomTime"`
 	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
 	DaysSinceNoncurrentTime pulumi.IntPtrInput `pulumi:"daysSinceNoncurrentTime"`
+	// One or more matching name prefixes to satisfy this condition.
+	MatchesPrefixes pulumi.StringArrayInput `pulumi:"matchesPrefixes"`
 	// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
+	// One or more matching name suffixes to satisfy this condition.
+	MatchesSuffixes pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
 	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
 	NoncurrentTimeBefore pulumi.StringPtrInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
@@ -888,9 +896,19 @@ func (o BucketLifecycleRuleConditionOutput) DaysSinceNoncurrentTime() pulumi.Int
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.DaysSinceNoncurrentTime }).(pulumi.IntPtrOutput)
 }
 
+// One or more matching name prefixes to satisfy this condition.
+func (o BucketLifecycleRuleConditionOutput) MatchesPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesPrefixes }).(pulumi.StringArrayOutput)
+}
+
 // [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
 func (o BucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesStorageClasses }).(pulumi.StringArrayOutput)
+}
+
+// One or more matching name suffixes to satisfy this condition.
+func (o BucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
 }
 
 // Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
@@ -5084,7 +5102,9 @@ type GetBucketLifecycleRuleCondition struct {
 	CustomTimeBefore        string   `pulumi:"customTimeBefore"`
 	DaysSinceCustomTime     int      `pulumi:"daysSinceCustomTime"`
 	DaysSinceNoncurrentTime int      `pulumi:"daysSinceNoncurrentTime"`
+	MatchesPrefixes         []string `pulumi:"matchesPrefixes"`
 	MatchesStorageClasses   []string `pulumi:"matchesStorageClasses"`
+	MatchesSuffixes         []string `pulumi:"matchesSuffixes"`
 	NoncurrentTimeBefore    string   `pulumi:"noncurrentTimeBefore"`
 	NumNewerVersions        int      `pulumi:"numNewerVersions"`
 	WithState               string   `pulumi:"withState"`
@@ -5107,7 +5127,9 @@ type GetBucketLifecycleRuleConditionArgs struct {
 	CustomTimeBefore        pulumi.StringInput      `pulumi:"customTimeBefore"`
 	DaysSinceCustomTime     pulumi.IntInput         `pulumi:"daysSinceCustomTime"`
 	DaysSinceNoncurrentTime pulumi.IntInput         `pulumi:"daysSinceNoncurrentTime"`
+	MatchesPrefixes         pulumi.StringArrayInput `pulumi:"matchesPrefixes"`
 	MatchesStorageClasses   pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
+	MatchesSuffixes         pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
 	NoncurrentTimeBefore    pulumi.StringInput      `pulumi:"noncurrentTimeBefore"`
 	NumNewerVersions        pulumi.IntInput         `pulumi:"numNewerVersions"`
 	WithState               pulumi.StringInput      `pulumi:"withState"`
@@ -5184,8 +5206,16 @@ func (o GetBucketLifecycleRuleConditionOutput) DaysSinceNoncurrentTime() pulumi.
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.DaysSinceNoncurrentTime }).(pulumi.IntOutput)
 }
 
+func (o GetBucketLifecycleRuleConditionOutput) MatchesPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesPrefixes }).(pulumi.StringArrayOutput)
+}
+
 func (o GetBucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesStorageClasses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
 }
 
 func (o GetBucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringOutput {

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaults
     {
         /// <summary>
+        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+        /// </summary>
+        public readonly string? BootDiskKmsKey;
+        /// <summary>
         /// The image type to use for this node. Note that changing the image type
         /// will delete and recreate all nodes in the node pool.
         /// </summary>
@@ -40,6 +44,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterClusterAutoscalingAutoProvisioningDefaults(
+            string? bootDiskKmsKey,
+
             string? imageType,
 
             string? minCpuPlatform,
@@ -48,6 +54,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? serviceAccount)
         {
+            BootDiskKmsKey = bootDiskKmsKey;
             ImageType = imageType;
             MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;

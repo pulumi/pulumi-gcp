@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Output("bootDiskType")]
         public Output<string?> BootDiskType { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Output("dataDiskType")]
         public Output<string?> DataDiskType { get; private set; } = null!;
@@ -482,7 +482,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
@@ -518,7 +518,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
@@ -750,7 +750,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
@@ -786,7 +786,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }

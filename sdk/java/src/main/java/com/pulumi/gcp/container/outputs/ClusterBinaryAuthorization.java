@@ -23,7 +23,9 @@ public final class ClusterBinaryAuthorization {
     @Deprecated /* Deprecated in favor of evaluation_mode. */
     private final @Nullable Boolean enabled;
     /**
-     * @return Mode of operation for Binary Authorization policy evaluation.
+     * @return Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+     * deprecated `enable_binary_authorization` parameter being set to `true`.
      * 
      */
     private final @Nullable String evaluationMode;
@@ -49,7 +51,9 @@ public final class ClusterBinaryAuthorization {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Mode of operation for Binary Authorization policy evaluation.
+     * @return Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+     * deprecated `enable_binary_authorization` parameter being set to `true`.
      * 
      */
     public Optional<String> evaluationMode() {

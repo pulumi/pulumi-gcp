@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
-        /// A set of key/value label pairs assigned to the instance.
+        /// A set of key/value label pairs assigned to the disk.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         /// <summary>

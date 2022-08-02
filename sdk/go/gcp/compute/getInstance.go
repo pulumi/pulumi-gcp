@@ -92,7 +92,7 @@ type LookupInstanceResult struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint string `pulumi:"labelFingerprint"`
-	// A set of key/value label pairs assigned to the instance.
+	// A set of key/value label pairs assigned to the disk.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType string `pulumi:"machineType"`
@@ -256,7 +256,7 @@ func (o LookupInstanceResultOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// A set of key/value label pairs assigned to the instance.
+// A set of key/value label pairs assigned to the disk.
 func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

@@ -22,9 +22,7 @@ import javax.annotation.Nullable;
  * ## +---
  * 
  * subcategory: &#34;Cloud Bigtable&#34;
- * layout: &#34;google&#34;
  * page_title: &#34;Google: gcp.bigtable.Instance&#34;
- * sidebar_current: &#34;docs-google-bigtable-instance&#34;
  * description: |-
  *   Creates a Google Bigtable instance.
  * ---

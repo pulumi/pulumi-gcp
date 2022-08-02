@@ -60,62 +60,6 @@ import (
 // 	})
 // }
 // ```
-// ### Ssl Certificate Random Provider
-//
-// ```go
-// package main
-//
-// import (
-// 	"crypto/sha256"
-// 	"fmt"
-// 	"io/ioutil"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func filebase64sha256OrPanic(path string) pulumi.StringPtrInput {
-// 	if fileData, err := ioutil.ReadFile(path); err == nil {
-// 		hashedData := sha256.Sum256([]byte(fileData))
-// 		return pulumi.String(base64.StdEncoding.EncodeToString(hashedData[:]))
-// 	} else {
-// 		panic(err.Error())
-// 	}
-// }
-//
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
-// 			PrivateKey:  readFileOrPanic("path/to/private.key"),
-// 			Certificate: readFileOrPanic("path/to/certificate.crt"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
-// 			ByteLength: pulumi.Int(4),
-// 			Prefix:     pulumi.String("my-certificate-"),
-// 			Keepers: pulumi.AnyMap{
-// 				"private_key": filebase64sha256OrPanic("path/to/private.key"),
-// 				"certificate": filebase64sha256OrPanic("path/to/certificate.crt"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 //
 // ## Import
 //

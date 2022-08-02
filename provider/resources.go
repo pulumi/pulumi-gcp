@@ -2220,6 +2220,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Dataplex
 			"google_dataplex_lake": {Tok: gcpResource(gcpDataPlex, "Lake")},
+			"google_dataplex_zone": {Tok: gcpResource(gcpDataPlex, "Zone")},
 
 			// IAM
 			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},

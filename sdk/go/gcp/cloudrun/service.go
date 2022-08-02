@@ -391,7 +391,7 @@ import (
 // 			Service:                  pulumi.String("run.googleapis.com"),
 // 			DisableDependentServices: pulumi.Bool(true),
 // 			DisableOnDestroy:         pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -399,7 +399,7 @@ import (
 // 			Project:          pulumi.String("my-project-name"),
 // 			Service:          pulumi.String("iam.googleapis.com"),
 // 			DisableOnDestroy: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -407,7 +407,7 @@ import (
 // 			Project:          pulumi.String("my-project-name"),
 // 			Service:          pulumi.String("cloudresourcemanager.googleapis.com"),
 // 			DisableOnDestroy: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -415,7 +415,7 @@ import (
 // 			Project:          pulumi.String("my-project-name"),
 // 			Service:          pulumi.String("cloudscheduler.googleapis.com"),
 // 			DisableOnDestroy: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -437,7 +437,7 @@ import (
 // 					LatestRevision: pulumi.Bool(true),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			runApi,
 // 		}))
 // 		if err != nil {
@@ -448,7 +448,7 @@ import (
 // 			AccountId:   pulumi.String("scheduler-sa"),
 // 			Description: pulumi.String("Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs."),
 // 			DisplayName: pulumi.String("scheduler-sa"),
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			iamApi,
 // 		}))
 // 		if err != nil {
@@ -471,7 +471,7 @@ import (
 // 					ServiceAccountEmail: defaultAccount.Email,
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			schedulerApi,
 // 		}))
 // 		if err != nil {

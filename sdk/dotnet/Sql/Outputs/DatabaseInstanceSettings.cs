@@ -35,9 +35,12 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string? Collation;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
         /// <summary>
-        /// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        /// Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
         /// </summary>
         public readonly bool? DiskAutoresize;
+        /// <summary>
+        /// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        /// </summary>
         public readonly int? DiskAutoresizeLimit;
         /// <summary>
         /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.

@@ -3100,7 +3100,9 @@ class ClusterBinaryAuthorization(dict):
         """
         :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
-        :param str evaluation_mode: Mode of operation for Binary Authorization policy evaluation.
+        :param str evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+               and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+               deprecated `enable_binary_authorization` parameter being set to `true`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -3120,7 +3122,9 @@ class ClusterBinaryAuthorization(dict):
     @pulumi.getter(name="evaluationMode")
     def evaluation_mode(self) -> Optional[str]:
         """
-        Mode of operation for Binary Authorization policy evaluation.
+        Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+        and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+        deprecated `enable_binary_authorization` parameter being set to `true`.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -3221,7 +3225,9 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "imageType":
+        if key == "bootDiskKmsKey":
+            suggest = "boot_disk_kms_key"
+        elif key == "imageType":
             suggest = "image_type"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
@@ -3242,11 +3248,13 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 boot_disk_kms_key: Optional[str] = None,
                  image_type: Optional[str] = None,
                  min_cpu_platform: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  service_account: Optional[str] = None):
         """
+        :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance.
@@ -3260,6 +3268,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         """
+        if boot_disk_kms_key is not None:
+            pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if min_cpu_platform is not None:
@@ -3268,6 +3278,14 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="bootDiskKmsKey")
+    def boot_disk_kms_key(self) -> Optional[str]:
+        """
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        """
+        return pulumi.get(self, "boot_disk_kms_key")
 
     @property
     @pulumi.getter(name="imageType")
@@ -7804,14 +7822,21 @@ class GetClusterClusterAutoscalingResult(dict):
 @pulumi.output_type
 class GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
     def __init__(__self__, *,
+                 boot_disk_kms_key: str,
                  image_type: str,
                  min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
                  service_account: str):
+        pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="bootDiskKmsKey")
+    def boot_disk_kms_key(self) -> str:
+        return pulumi.get(self, "boot_disk_kms_key")
 
     @property
     @pulumi.getter(name="imageType")

@@ -13,6 +13,11 @@ __all__ = [
     'LakeAssetStatusArgs',
     'LakeMetastoreArgs',
     'LakeMetastoreStatusArgs',
+    'ZoneAssetStatusArgs',
+    'ZoneDiscoverySpecArgs',
+    'ZoneDiscoverySpecCsvOptionsArgs',
+    'ZoneDiscoverySpecJsonOptionsArgs',
+    'ZoneResourceSpecArgs',
 ]
 
 @pulumi.input_type
@@ -130,5 +135,280 @@ class LakeMetastoreStatusArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class ZoneAssetStatusArgs:
+    def __init__(__self__, *,
+                 active_assets: Optional[pulumi.Input[int]] = None,
+                 security_policy_applying_assets: Optional[pulumi.Input[int]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        if active_assets is not None:
+            pulumi.set(__self__, "active_assets", active_assets)
+        if security_policy_applying_assets is not None:
+            pulumi.set(__self__, "security_policy_applying_assets", security_policy_applying_assets)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="activeAssets")
+    def active_assets(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "active_assets")
+
+    @active_assets.setter
+    def active_assets(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "active_assets", value)
+
+    @property
+    @pulumi.getter(name="securityPolicyApplyingAssets")
+    def security_policy_applying_assets(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "security_policy_applying_assets")
+
+    @security_policy_applying_assets.setter
+    def security_policy_applying_assets(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "security_policy_applying_assets", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class ZoneDiscoverySpecArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 csv_options: Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArgs']] = None,
+                 exclude_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 json_options: Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs']] = None,
+                 schedule: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Required. Whether discovery is enabled.
+        :param pulumi.Input['ZoneDiscoverySpecCsvOptionsArgs'] csv_options: Optional. Configuration for CSV data.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        :param pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs'] json_options: Optional. Configuration for Json data.
+        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if csv_options is not None:
+            pulumi.set(__self__, "csv_options", csv_options)
+        if exclude_patterns is not None:
+            pulumi.set(__self__, "exclude_patterns", exclude_patterns)
+        if include_patterns is not None:
+            pulumi.set(__self__, "include_patterns", include_patterns)
+        if json_options is not None:
+            pulumi.set(__self__, "json_options", json_options)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Required. Whether discovery is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="csvOptions")
+    def csv_options(self) -> Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArgs']]:
+        """
+        Optional. Configuration for CSV data.
+        """
+        return pulumi.get(self, "csv_options")
+
+    @csv_options.setter
+    def csv_options(self, value: Optional[pulumi.Input['ZoneDiscoverySpecCsvOptionsArgs']]):
+        pulumi.set(self, "csv_options", value)
+
+    @property
+    @pulumi.getter(name="excludePatterns")
+    def exclude_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        return pulumi.get(self, "exclude_patterns")
+
+    @exclude_patterns.setter
+    def exclude_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_patterns", value)
+
+    @property
+    @pulumi.getter(name="includePatterns")
+    def include_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        return pulumi.get(self, "include_patterns")
+
+    @include_patterns.setter
+    def include_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_patterns", value)
+
+    @property
+    @pulumi.getter(name="jsonOptions")
+    def json_options(self) -> Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs']]:
+        """
+        Optional. Configuration for Json data.
+        """
+        return pulumi.get(self, "json_options")
+
+    @json_options.setter
+    def json_options(self, value: Optional[pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs']]):
+        pulumi.set(self, "json_options", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
+
+@pulumi.input_type
+class ZoneDiscoverySpecCsvOptionsArgs:
+    def __init__(__self__, *,
+                 delimiter: Optional[pulumi.Input[str]] = None,
+                 disable_type_inference: Optional[pulumi.Input[bool]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 header_rows: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] delimiter: Optional. The delimiter being used to separate values. This defaults to ','.
+        :param pulumi.Input[bool] disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param pulumi.Input[str] encoding: Optional. The character encoding of the data. The default is UTF-8.
+        :param pulumi.Input[int] header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+        if delimiter is not None:
+            pulumi.set(__self__, "delimiter", delimiter)
+        if disable_type_inference is not None:
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if header_rows is not None:
+            pulumi.set(__self__, "header_rows", header_rows)
+
+    @property
+    @pulumi.getter
+    def delimiter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The delimiter being used to separate values. This defaults to ','.
+        """
+        return pulumi.get(self, "delimiter")
+
+    @delimiter.setter
+    def delimiter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delimiter", value)
+
+    @property
+    @pulumi.getter(name="disableTypeInference")
+    def disable_type_inference(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        """
+        return pulumi.get(self, "disable_type_inference")
+
+    @disable_type_inference.setter
+    def disable_type_inference(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_type_inference", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter(name="headerRows")
+    def header_rows(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+        return pulumi.get(self, "header_rows")
+
+    @header_rows.setter
+    def header_rows(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "header_rows", value)
+
+
+@pulumi.input_type
+class ZoneDiscoverySpecJsonOptionsArgs:
+    def __init__(__self__, *,
+                 disable_type_inference: Optional[pulumi.Input[bool]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param pulumi.Input[str] encoding: Optional. The character encoding of the data. The default is UTF-8.
+        """
+        if disable_type_inference is not None:
+            pulumi.set(__self__, "disable_type_inference", disable_type_inference)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+
+    @property
+    @pulumi.getter(name="disableTypeInference")
+    def disable_type_inference(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        """
+        return pulumi.get(self, "disable_type_inference")
+
+    @disable_type_inference.setter
+    def disable_type_inference(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_type_inference", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+
+@pulumi.input_type
+class ZoneResourceSpecArgs:
+    def __init__(__self__, *,
+                 location_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] location_type: Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+        """
+        pulumi.set(__self__, "location_type", location_type)
+
+    @property
+    @pulumi.getter(name="locationType")
+    def location_type(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+        """
+        return pulumi.get(self, "location_type")
+
+    @location_type.setter
+    def location_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location_type", value)
 
 

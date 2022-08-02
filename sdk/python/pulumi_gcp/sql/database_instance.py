@@ -685,40 +685,6 @@ class DatabaseInstance(pulumi.CustomResource):
                 tier="db-f1-micro",
             ))
         ```
-        ### Private IP Instance
-        > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        private_network = gcp.compute.Network("privateNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=private_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
-            network=private_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        instance = gcp.sql.DatabaseInstance("instance",
-            region="us-central1",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    ipv4_enabled=False,
-                    private_network=private_network.id,
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[private_vpc_connection]))
-        ```
 
         ## Import
 
@@ -811,40 +777,6 @@ class DatabaseInstance(pulumi.CustomResource):
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
             ))
-        ```
-        ### Private IP Instance
-        > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        private_network = gcp.compute.Network("privateNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
-        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=private_network.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
-            network=private_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_address.name],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        instance = gcp.sql.DatabaseInstance("instance",
-            region="us-central1",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    ipv4_enabled=False,
-                    private_network=private_network.id,
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[private_vpc_connection]))
         ```
 
         ## Import

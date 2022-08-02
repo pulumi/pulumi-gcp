@@ -42,6 +42,18 @@ namespace Pulumi.Gcp.Storage.Inputs
         [Input("daysSinceNoncurrentTime")]
         public Input<int>? DaysSinceNoncurrentTime { get; set; }
 
+        [Input("matchesPrefixes")]
+        private InputList<string>? _matchesPrefixes;
+
+        /// <summary>
+        /// One or more matching name prefixes to satisfy this condition.
+        /// </summary>
+        public InputList<string> MatchesPrefixes
+        {
+            get => _matchesPrefixes ?? (_matchesPrefixes = new InputList<string>());
+            set => _matchesPrefixes = value;
+        }
+
         [Input("matchesStorageClasses")]
         private InputList<string>? _matchesStorageClasses;
 
@@ -52,6 +64,18 @@ namespace Pulumi.Gcp.Storage.Inputs
         {
             get => _matchesStorageClasses ?? (_matchesStorageClasses = new InputList<string>());
             set => _matchesStorageClasses = value;
+        }
+
+        [Input("matchesSuffixes")]
+        private InputList<string>? _matchesSuffixes;
+
+        /// <summary>
+        /// One or more matching name suffixes to satisfy this condition.
+        /// </summary>
+        public InputList<string> MatchesSuffixes
+        {
+            get => _matchesSuffixes ?? (_matchesSuffixes = new InputList<string>());
+            set => _matchesSuffixes = value;
         }
 
         /// <summary>

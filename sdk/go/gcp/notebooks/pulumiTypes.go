@@ -2181,6 +2181,9 @@ type RuntimeSoftwareConfig struct {
 	IdleShutdownTimeout *int `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
+	// Use a list of container images to use as Kernels in the notebook instance.
+	// Structure is documented below.
+	Kernels []RuntimeSoftwareConfigKernel `pulumi:"kernels"`
 	// Cron expression in UTC timezone for schedule instance auto upgrade.
 	// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule *string `pulumi:"notebookUpgradeSchedule"`
@@ -2188,6 +2191,12 @@ type RuntimeSoftwareConfig struct {
 	// fully boots up. The path must be a URL or
 	// Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
+	// Behavior for the post startup script.
+	// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+	PostStartupScriptBehavior *string `pulumi:"postStartupScriptBehavior"`
+	// -
+	// Bool indicating whether an newer image is available in an image family.
+	Upgradeable *bool `pulumi:"upgradeable"`
 }
 
 // RuntimeSoftwareConfigInput is an input type that accepts RuntimeSoftwareConfigArgs and RuntimeSoftwareConfigOutput values.
@@ -2215,6 +2224,9 @@ type RuntimeSoftwareConfigArgs struct {
 	IdleShutdownTimeout pulumi.IntPtrInput `pulumi:"idleShutdownTimeout"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver pulumi.BoolPtrInput `pulumi:"installGpuDriver"`
+	// Use a list of container images to use as Kernels in the notebook instance.
+	// Structure is documented below.
+	Kernels RuntimeSoftwareConfigKernelArrayInput `pulumi:"kernels"`
 	// Cron expression in UTC timezone for schedule instance auto upgrade.
 	// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule pulumi.StringPtrInput `pulumi:"notebookUpgradeSchedule"`
@@ -2222,6 +2234,12 @@ type RuntimeSoftwareConfigArgs struct {
 	// fully boots up. The path must be a URL or
 	// Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput `pulumi:"postStartupScript"`
+	// Behavior for the post startup script.
+	// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+	PostStartupScriptBehavior pulumi.StringPtrInput `pulumi:"postStartupScriptBehavior"`
+	// -
+	// Bool indicating whether an newer image is available in an image family.
+	Upgradeable pulumi.BoolPtrInput `pulumi:"upgradeable"`
 }
 
 func (RuntimeSoftwareConfigArgs) ElementType() reflect.Type {
@@ -2329,6 +2347,12 @@ func (o RuntimeSoftwareConfigOutput) InstallGpuDriver() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.InstallGpuDriver }).(pulumi.BoolPtrOutput)
 }
 
+// Use a list of container images to use as Kernels in the notebook instance.
+// Structure is documented below.
+func (o RuntimeSoftwareConfigOutput) Kernels() RuntimeSoftwareConfigKernelArrayOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) []RuntimeSoftwareConfigKernel { return v.Kernels }).(RuntimeSoftwareConfigKernelArrayOutput)
+}
+
 // Cron expression in UTC timezone for schedule instance auto upgrade.
 // Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 func (o RuntimeSoftwareConfigOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
@@ -2340,6 +2364,18 @@ func (o RuntimeSoftwareConfigOutput) NotebookUpgradeSchedule() pulumi.StringPtrO
 // Cloud Storage path (gs://path-to-file/file-name).
 func (o RuntimeSoftwareConfigOutput) PostStartupScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.PostStartupScript }).(pulumi.StringPtrOutput)
+}
+
+// Behavior for the post startup script.
+// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+func (o RuntimeSoftwareConfigOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.PostStartupScriptBehavior }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Bool indicating whether an newer image is available in an image family.
+func (o RuntimeSoftwareConfigOutput) Upgradeable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.Upgradeable }).(pulumi.BoolPtrOutput)
 }
 
 type RuntimeSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2419,6 +2455,17 @@ func (o RuntimeSoftwareConfigPtrOutput) InstallGpuDriver() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Use a list of container images to use as Kernels in the notebook instance.
+// Structure is documented below.
+func (o RuntimeSoftwareConfigPtrOutput) Kernels() RuntimeSoftwareConfigKernelArrayOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) []RuntimeSoftwareConfigKernel {
+		if v == nil {
+			return nil
+		}
+		return v.Kernels
+	}).(RuntimeSoftwareConfigKernelArrayOutput)
+}
+
 // Cron expression in UTC timezone for schedule instance auto upgrade.
 // Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 func (o RuntimeSoftwareConfigPtrOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
@@ -2440,6 +2487,137 @@ func (o RuntimeSoftwareConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutp
 		}
 		return v.PostStartupScript
 	}).(pulumi.StringPtrOutput)
+}
+
+// Behavior for the post startup script.
+// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+func (o RuntimeSoftwareConfigPtrOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Bool indicating whether an newer image is available in an image family.
+func (o RuntimeSoftwareConfigPtrOutput) Upgradeable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Upgradeable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RuntimeSoftwareConfigKernel struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository string `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag *string `pulumi:"tag"`
+}
+
+// RuntimeSoftwareConfigKernelInput is an input type that accepts RuntimeSoftwareConfigKernelArgs and RuntimeSoftwareConfigKernelOutput values.
+// You can construct a concrete instance of `RuntimeSoftwareConfigKernelInput` via:
+//
+//          RuntimeSoftwareConfigKernelArgs{...}
+type RuntimeSoftwareConfigKernelInput interface {
+	pulumi.Input
+
+	ToRuntimeSoftwareConfigKernelOutput() RuntimeSoftwareConfigKernelOutput
+	ToRuntimeSoftwareConfigKernelOutputWithContext(context.Context) RuntimeSoftwareConfigKernelOutput
+}
+
+type RuntimeSoftwareConfigKernelArgs struct {
+	// The path to the container image repository.
+	// For example: gcr.io/{project_id}/{imageName}
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (RuntimeSoftwareConfigKernelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeSoftwareConfigKernel)(nil)).Elem()
+}
+
+func (i RuntimeSoftwareConfigKernelArgs) ToRuntimeSoftwareConfigKernelOutput() RuntimeSoftwareConfigKernelOutput {
+	return i.ToRuntimeSoftwareConfigKernelOutputWithContext(context.Background())
+}
+
+func (i RuntimeSoftwareConfigKernelArgs) ToRuntimeSoftwareConfigKernelOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigKernelOutput)
+}
+
+// RuntimeSoftwareConfigKernelArrayInput is an input type that accepts RuntimeSoftwareConfigKernelArray and RuntimeSoftwareConfigKernelArrayOutput values.
+// You can construct a concrete instance of `RuntimeSoftwareConfigKernelArrayInput` via:
+//
+//          RuntimeSoftwareConfigKernelArray{ RuntimeSoftwareConfigKernelArgs{...} }
+type RuntimeSoftwareConfigKernelArrayInput interface {
+	pulumi.Input
+
+	ToRuntimeSoftwareConfigKernelArrayOutput() RuntimeSoftwareConfigKernelArrayOutput
+	ToRuntimeSoftwareConfigKernelArrayOutputWithContext(context.Context) RuntimeSoftwareConfigKernelArrayOutput
+}
+
+type RuntimeSoftwareConfigKernelArray []RuntimeSoftwareConfigKernelInput
+
+func (RuntimeSoftwareConfigKernelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeSoftwareConfigKernel)(nil)).Elem()
+}
+
+func (i RuntimeSoftwareConfigKernelArray) ToRuntimeSoftwareConfigKernelArrayOutput() RuntimeSoftwareConfigKernelArrayOutput {
+	return i.ToRuntimeSoftwareConfigKernelArrayOutputWithContext(context.Background())
+}
+
+func (i RuntimeSoftwareConfigKernelArray) ToRuntimeSoftwareConfigKernelArrayOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigKernelArrayOutput)
+}
+
+type RuntimeSoftwareConfigKernelOutput struct{ *pulumi.OutputState }
+
+func (RuntimeSoftwareConfigKernelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeSoftwareConfigKernel)(nil)).Elem()
+}
+
+func (o RuntimeSoftwareConfigKernelOutput) ToRuntimeSoftwareConfigKernelOutput() RuntimeSoftwareConfigKernelOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigKernelOutput) ToRuntimeSoftwareConfigKernelOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelOutput {
+	return o
+}
+
+// The path to the container image repository.
+// For example: gcr.io/{project_id}/{imageName}
+func (o RuntimeSoftwareConfigKernelOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigKernel) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o RuntimeSoftwareConfigKernelOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigKernel) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeSoftwareConfigKernelArrayOutput struct{ *pulumi.OutputState }
+
+func (RuntimeSoftwareConfigKernelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeSoftwareConfigKernel)(nil)).Elem()
+}
+
+func (o RuntimeSoftwareConfigKernelArrayOutput) ToRuntimeSoftwareConfigKernelArrayOutput() RuntimeSoftwareConfigKernelArrayOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigKernelArrayOutput) ToRuntimeSoftwareConfigKernelArrayOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelArrayOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigKernelArrayOutput) Index(i pulumi.IntInput) RuntimeSoftwareConfigKernelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeSoftwareConfigKernel {
+		return vs[0].([]RuntimeSoftwareConfigKernel)[vs[1].(int)]
+	}).(RuntimeSoftwareConfigKernelOutput)
 }
 
 type RuntimeVirtualMachine struct {
@@ -4682,6 +4860,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetricArrayInput)(nil)).Elem(), RuntimeMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigPtrInput)(nil)).Elem(), RuntimeSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigKernelInput)(nil)).Elem(), RuntimeSoftwareConfigKernelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigKernelArrayInput)(nil)).Elem(), RuntimeSoftwareConfigKernelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineInput)(nil)).Elem(), RuntimeVirtualMachineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachinePtrInput)(nil)).Elem(), RuntimeVirtualMachineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeVirtualMachineVirtualMachineConfigInput)(nil)).Elem(), RuntimeVirtualMachineVirtualMachineConfigArgs{})
@@ -4726,6 +4906,8 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeMetricArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(RuntimeSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeSoftwareConfigKernelOutput{})
+	pulumi.RegisterOutputType(RuntimeSoftwareConfigKernelArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeVirtualMachineOutput{})
 	pulumi.RegisterOutputType(RuntimeVirtualMachinePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeVirtualMachineVirtualMachineConfigOutput{})

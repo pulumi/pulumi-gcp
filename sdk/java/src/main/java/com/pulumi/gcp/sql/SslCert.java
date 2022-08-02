@@ -18,55 +18,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** All arguments including the private key will be stored in the raw state as plain-text
  * 
- * ## Example Usage
- * 
- * Example creating a SQL Client Certificate.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomId;
- * import com.pulumi.random.RandomIdArgs;
- * import com.pulumi.gcp.sql.DatabaseInstance;
- * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
- * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
- * import com.pulumi.gcp.sql.SslCert;
- * import com.pulumi.gcp.sql.SslCertArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var dbNameSuffix = new RandomId(&#34;dbNameSuffix&#34;, RandomIdArgs.builder()        
- *             .byteLength(4)
- *             .build());
- * 
- *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
- *             .databaseVersion(&#34;MYSQL_5_7&#34;)
- *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier(&#34;db-f1-micro&#34;)
- *                 .build())
- *             .build());
- * 
- *         var clientCert = new SslCert(&#34;clientCert&#34;, SslCertArgs.builder()        
- *             .commonName(&#34;client-name&#34;)
- *             .instance(main.name())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.

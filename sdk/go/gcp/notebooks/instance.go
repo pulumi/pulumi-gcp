@@ -197,7 +197,7 @@ type Instance struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrOutput `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	BootDiskType pulumi.StringPtrOutput `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -213,7 +213,7 @@ type Instance struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrOutput `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrOutput `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -341,7 +341,7 @@ type instanceState struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -357,7 +357,7 @@ type instanceState struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb *int `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -451,7 +451,7 @@ type InstanceState struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	BootDiskType pulumi.StringPtrInput
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -467,7 +467,7 @@ type InstanceState struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -565,7 +565,7 @@ type instanceArgs struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -581,7 +581,7 @@ type instanceArgs struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb *int `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -672,7 +672,7 @@ type InstanceArgs struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	BootDiskType pulumi.StringPtrInput
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -688,7 +688,7 @@ type InstanceArgs struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
@@ -870,7 +870,7 @@ func (o InstanceOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Possible disk types for notebook instances.
-// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 func (o InstanceOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
@@ -901,7 +901,7 @@ func (o InstanceOutput) DataDiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Possible disk types for notebook instances.
-// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
 func (o InstanceOutput) DataDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DataDiskType }).(pulumi.StringPtrOutput)
 }

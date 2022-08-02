@@ -263,26 +263,6 @@ class SslCert(pulumi.CustomResource):
 
         > **Note:** All arguments including the private key will be stored in the raw state as plain-text
 
-        ## Example Usage
-
-        Example creating a SQL Client Certificate.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
-        client_cert = gcp.sql.SslCert("clientCert",
-            common_name="client-name",
-            instance=main.name)
-        ```
-
         ## Import
 
         Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.
@@ -306,26 +286,6 @@ class SslCert(pulumi.CustomResource):
         Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
 
         > **Note:** All arguments including the private key will be stored in the raw state as plain-text
-
-        ## Example Usage
-
-        Example creating a SQL Client Certificate.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
-        client_cert = gcp.sql.SslCert("clientCert",
-            common_name="client-name",
-            instance=main.name)
-        ```
 
         ## Import
 

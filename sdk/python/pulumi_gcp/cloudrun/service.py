@@ -574,23 +574,19 @@ class Service(pulumi.CustomResource):
             project="my-project-name",
             service="run.googleapis.com",
             disable_dependent_services=True,
-            disable_on_destroy=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            disable_on_destroy=False)
         iam_api = gcp.projects.Service("iamApi",
             project="my-project-name",
             service="iam.googleapis.com",
-            disable_on_destroy=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            disable_on_destroy=False)
         resource_manager_api = gcp.projects.Service("resourceManagerApi",
             project="my-project-name",
             service="cloudresourcemanager.googleapis.com",
-            disable_on_destroy=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            disable_on_destroy=False)
         scheduler_api = gcp.projects.Service("schedulerApi",
             project="my-project-name",
             service="cloudscheduler.googleapis.com",
-            disable_on_destroy=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            disable_on_destroy=False)
         default_service = gcp.cloudrun.Service("defaultService",
             project="my-project-name",
             location="us-central1",
@@ -605,15 +601,13 @@ class Service(pulumi.CustomResource):
                 percent=100,
                 latest_revision=True,
             )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[run_api]))
+            opts=pulumi.ResourceOptions(depends_on=[run_api]))
         default_account = gcp.service_account.Account("defaultAccount",
             project="my-project-name",
             account_id="scheduler-sa",
             description="Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
             display_name="scheduler-sa",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[iam_api]))
+            opts=pulumi.ResourceOptions(depends_on=[iam_api]))
         default_job = gcp.cloudscheduler.Job("defaultJob",
             description="Invoke a Cloud Run container on a schedule.",
             schedule="*/8 * * * *",
@@ -629,8 +623,7 @@ class Service(pulumi.CustomResource):
                     service_account_email=default_account.email,
                 ),
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[scheduler_api]))
+            opts=pulumi.ResourceOptions(depends_on=[scheduler_api]))
         default_iam_member = gcp.cloudrun.IamMember("defaultIamMember",
             project="my-project-name",
             location=default_service.location,
@@ -1421,23 +1414,19 @@ class Service(pulumi.CustomResource):
             project="my-project-name",
             service="run.googleapis.com",
             disable_dependent_services=True,
-            disable_on_destroy=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            disable_on_destroy=False)
         iam_api = gcp.projects.Service("iamApi",
             project="my-project-name",
             service="iam.googleapis.com",
-            disable_on_destroy=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            disable_on_destroy=False)
         resource_manager_api = gcp.projects.Service("resourceManagerApi",
             project="my-project-name",
             service="cloudresourcemanager.googleapis.com",
-            disable_on_destroy=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            disable_on_destroy=False)
         scheduler_api = gcp.projects.Service("schedulerApi",
             project="my-project-name",
             service="cloudscheduler.googleapis.com",
-            disable_on_destroy=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            disable_on_destroy=False)
         default_service = gcp.cloudrun.Service("defaultService",
             project="my-project-name",
             location="us-central1",
@@ -1452,15 +1441,13 @@ class Service(pulumi.CustomResource):
                 percent=100,
                 latest_revision=True,
             )],
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[run_api]))
+            opts=pulumi.ResourceOptions(depends_on=[run_api]))
         default_account = gcp.service_account.Account("defaultAccount",
             project="my-project-name",
             account_id="scheduler-sa",
             description="Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
             display_name="scheduler-sa",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[iam_api]))
+            opts=pulumi.ResourceOptions(depends_on=[iam_api]))
         default_job = gcp.cloudscheduler.Job("defaultJob",
             description="Invoke a Cloud Run container on a schedule.",
             schedule="*/8 * * * *",
@@ -1476,8 +1463,7 @@ class Service(pulumi.CustomResource):
                     service_account_email=default_account.email,
                 ),
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[scheduler_api]))
+            opts=pulumi.ResourceOptions(depends_on=[scheduler_api]))
         default_iam_member = gcp.cloudrun.IamMember("defaultIamMember",
             project="my-project-name",
             location=default_service.location,

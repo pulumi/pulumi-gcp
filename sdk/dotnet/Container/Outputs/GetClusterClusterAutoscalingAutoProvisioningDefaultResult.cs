@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterClusterAutoscalingAutoProvisioningDefaultResult
     {
+        public readonly string BootDiskKmsKey;
         public readonly string ImageType;
         public readonly string MinCpuPlatform;
         public readonly ImmutableArray<string> OauthScopes;
@@ -20,6 +21,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterClusterAutoscalingAutoProvisioningDefaultResult(
+            string bootDiskKmsKey,
+
             string imageType,
 
             string minCpuPlatform,
@@ -28,6 +31,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string serviceAccount)
         {
+            BootDiskKmsKey = bootDiskKmsKey;
             ImageType = imageType;
             MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;

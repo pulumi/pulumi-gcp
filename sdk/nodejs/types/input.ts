@@ -17294,7 +17294,9 @@ export namespace container {
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Mode of operation for Binary Authorization policy evaluation.
+         * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
+         * deprecated `enableBinaryAuthorization` parameter being set to `true`.
          */
         evaluationMode?: pulumi.Input<string>;
     }
@@ -17327,6 +17329,10 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+         */
+        bootDiskKmsKey?: pulumi.Input<string>;
         /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
@@ -19886,6 +19892,76 @@ export namespace dataplex {
         message?: pulumi.Input<string>;
         state?: pulumi.Input<string>;
         updateTime?: pulumi.Input<string>;
+    }
+
+    export interface ZoneAssetStatus {
+        activeAssets?: pulumi.Input<number>;
+        securityPolicyApplyingAssets?: pulumi.Input<number>;
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface ZoneDiscoverySpec {
+        /**
+         * Optional. Configuration for CSV data.
+         */
+        csvOptions?: pulumi.Input<inputs.dataplex.ZoneDiscoverySpecCsvOptions>;
+        /**
+         * Required. Whether discovery is enabled.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        excludePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+         */
+        includePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Configuration for Json data.
+         */
+        jsonOptions?: pulumi.Input<inputs.dataplex.ZoneDiscoverySpecJsonOptions>;
+        /**
+         * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+         */
+        schedule?: pulumi.Input<string>;
+    }
+
+    export interface ZoneDiscoverySpecCsvOptions {
+        /**
+         * Optional. The delimiter being used to separate values. This defaults to ','.
+         */
+        delimiter?: pulumi.Input<string>;
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: pulumi.Input<boolean>;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+         */
+        headerRows?: pulumi.Input<number>;
+    }
+
+    export interface ZoneDiscoverySpecJsonOptions {
+        /**
+         * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         */
+        disableTypeInference?: pulumi.Input<boolean>;
+        /**
+         * Optional. The character encoding of the data. The default is UTF-8.
+         */
+        encoding?: pulumi.Input<string>;
+    }
+
+    export interface ZoneResourceSpec {
+        /**
+         * Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+         */
+        locationType: pulumi.Input<string>;
     }
 }
 
@@ -26789,6 +26865,11 @@ export namespace notebooks {
          */
         installGpuDriver?: pulumi.Input<boolean>;
         /**
+         * Use a list of container images to use as Kernels in the notebook instance.
+         * Structure is documented below.
+         */
+        kernels?: pulumi.Input<pulumi.Input<inputs.notebooks.RuntimeSoftwareConfigKernel>[]>;
+        /**
          * Cron expression in UTC timezone for schedule instance auto upgrade.
          * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
          */
@@ -26799,6 +26880,28 @@ export namespace notebooks {
          * Cloud Storage path (gs://path-to-file/file-name).
          */
         postStartupScript?: pulumi.Input<string>;
+        /**
+         * Behavior for the post startup script.
+         * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+         */
+        postStartupScriptBehavior?: pulumi.Input<string>;
+        /**
+         * -
+         * Bool indicating whether an newer image is available in an image family.
+         */
+        upgradeable?: pulumi.Input<boolean>;
+    }
+
+    export interface RuntimeSoftwareConfigKernel {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: pulumi.Input<string>;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: pulumi.Input<string>;
     }
 
     export interface RuntimeVirtualMachine {
@@ -27115,7 +27218,6 @@ export namespace notebooks {
          */
         enableVtpm?: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace organizations {
@@ -30143,9 +30245,12 @@ export namespace sql {
         collation?: pulumi.Input<string>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
         /**
-         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
          */
         diskAutoresize?: pulumi.Input<boolean>;
+        /**
+         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         */
         diskAutoresizeLimit?: pulumi.Input<number>;
         /**
          * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
@@ -30458,9 +30563,17 @@ export namespace storage {
          */
         daysSinceNoncurrentTime?: pulumi.Input<number>;
         /**
+         * One or more matching name prefixes to satisfy this condition.
+         */
+        matchesPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * One or more matching name suffixes to satisfy this condition.
+         */
+        matchesSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
          */

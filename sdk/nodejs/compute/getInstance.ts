@@ -116,7 +116,7 @@ export interface GetInstanceResult {
      */
     readonly labelFingerprint: string;
     /**
-     * A set of key/value label pairs assigned to the instance.
+     * A set of key/value label pairs assigned to the disk.
      */
     readonly labels: {[key: string]: string};
     /**

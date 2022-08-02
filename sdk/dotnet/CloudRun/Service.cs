@@ -383,36 +383,24 @@ namespace Pulumi.Gcp.CloudRun
     ///             ServiceName = "run.googleapis.com",
     ///             DisableDependentServices = true,
     ///             DisableOnDestroy = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var iamApi = new Gcp.Projects.Service("iamApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
     ///             ServiceName = "iam.googleapis.com",
     ///             DisableOnDestroy = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var resourceManagerApi = new Gcp.Projects.Service("resourceManagerApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
     ///             ServiceName = "cloudresourcemanager.googleapis.com",
     ///             DisableOnDestroy = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var schedulerApi = new Gcp.Projects.Service("schedulerApi", new Gcp.Projects.ServiceArgs
     ///         {
     ///             Project = "my-project-name",
     ///             ServiceName = "cloudscheduler.googleapis.com",
     ///             DisableOnDestroy = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultService = new Gcp.CloudRun.Service("defaultService", new Gcp.CloudRun.ServiceArgs
     ///         {
@@ -441,7 +429,6 @@ namespace Pulumi.Gcp.CloudRun
     ///             },
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 runApi,
@@ -455,7 +442,6 @@ namespace Pulumi.Gcp.CloudRun
     ///             DisplayName = "scheduler-sa",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 iamApi,
@@ -482,7 +468,6 @@ namespace Pulumi.Gcp.CloudRun
     ///             },
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 schedulerApi,

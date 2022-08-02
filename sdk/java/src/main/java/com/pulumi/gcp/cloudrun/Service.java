@@ -439,33 +439,25 @@ import javax.annotation.Nullable;
  *             .service(&#34;run.googleapis.com&#34;)
  *             .disableDependentServices(true)
  *             .disableOnDestroy(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var iamApi = new Service(&#34;iamApi&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .service(&#34;iam.googleapis.com&#34;)
  *             .disableOnDestroy(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var resourceManagerApi = new Service(&#34;resourceManagerApi&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .service(&#34;cloudresourcemanager.googleapis.com&#34;)
  *             .disableOnDestroy(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var schedulerApi = new Service(&#34;schedulerApi&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .service(&#34;cloudscheduler.googleapis.com&#34;)
  *             .disableOnDestroy(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
@@ -482,7 +474,6 @@ import javax.annotation.Nullable;
  *                 .latestRevision(true)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(runApi)
  *                 .build());
  * 
@@ -492,7 +483,6 @@ import javax.annotation.Nullable;
  *             .description(&#34;Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.&#34;)
  *             .displayName(&#34;scheduler-sa&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(iamApi)
  *                 .build());
  * 
@@ -512,7 +502,6 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(schedulerApi)
  *                 .build());
  * 

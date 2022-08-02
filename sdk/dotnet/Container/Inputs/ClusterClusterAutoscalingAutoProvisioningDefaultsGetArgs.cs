@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaultsGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+        /// </summary>
+        [Input("bootDiskKmsKey")]
+        public Input<string>? BootDiskKmsKey { get; set; }
+
+        /// <summary>
         /// The image type to use for this node. Note that changing the image type
         /// will delete and recreate all nodes in the node pool.
         /// </summary>

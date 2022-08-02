@@ -26,56 +26,6 @@ import javax.annotation.Nullable;
  * state as plain-text.
  * 
  * ## Example Usage
- * ### Backend Bucket Signed Url Key
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomId;
- * import com.pulumi.random.RandomIdArgs;
- * import com.pulumi.gcp.storage.Bucket;
- * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.compute.BackendBucket;
- * import com.pulumi.gcp.compute.BackendBucketArgs;
- * import com.pulumi.gcp.compute.BackendBucketSignedUrlKey;
- * import com.pulumi.gcp.compute.BackendBucketSignedUrlKeyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var urlSignature = new RandomId(&#34;urlSignature&#34;, RandomIdArgs.builder()        
- *             .byteLength(16)
- *             .build());
- * 
- *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
- *             .location(&#34;EU&#34;)
- *             .build());
- * 
- *         var testBackend = new BackendBucket(&#34;testBackend&#34;, BackendBucketArgs.builder()        
- *             .description(&#34;Contains beautiful images&#34;)
- *             .bucketName(bucket.name())
- *             .enableCdn(true)
- *             .build());
- * 
- *         var backendKey = new BackendBucketSignedUrlKey(&#34;backendKey&#34;, BackendBucketSignedUrlKeyArgs.builder()        
- *             .keyValue(urlSignature.b64Url())
- *             .backendBucket(testBackend.name())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 

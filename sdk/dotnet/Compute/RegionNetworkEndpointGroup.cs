@@ -292,6 +292,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// This field is only used for PSC.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses
+        /// "default" project network if unspecified.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
         /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -331,6 +339,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("serverlessDeployment")]
         public Output<Outputs.RegionNetworkEndpointGroupServerlessDeployment?> ServerlessDeployment { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is only used for PSC.
+        /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
+        [Output("subnetwork")]
+        public Output<string?> Subnetwork { get; private set; } = null!;
 
 
         /// <summary>
@@ -422,6 +437,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This field is only used for PSC.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses
+        /// "default" project network if unspecified.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
         /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -455,6 +478,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("serverlessDeployment")]
         public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentArgs>? ServerlessDeployment { get; set; }
+
+        /// <summary>
+        /// This field is only used for PSC.
+        /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
 
         public RegionNetworkEndpointGroupArgs()
         {
@@ -507,6 +537,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This field is only used for PSC.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses
+        /// "default" project network if unspecified.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
         /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -546,6 +584,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("serverlessDeployment")]
         public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentGetArgs>? ServerlessDeployment { get; set; }
+
+        /// <summary>
+        /// This field is only used for PSC.
+        /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
 
         public RegionNetworkEndpointGroupState()
         {

@@ -383,6 +383,7 @@
         "dataloss/preventionStoredInfoType.ts",
         "dataplex/index.ts",
         "dataplex/lake.ts",
+        "dataplex/zone.ts",
         "dataproc/autoscalingPolicy.ts",
         "dataproc/autoscalingPolicyIamBinding.ts",
         "dataproc/autoscalingPolicyIamMember.ts",

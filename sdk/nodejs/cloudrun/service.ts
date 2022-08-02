@@ -242,29 +242,21 @@ import * as utilities from "../utilities";
  *     service: "run.googleapis.com",
  *     disableDependentServices: true,
  *     disableOnDestroy: false,
- * }, {
- *     provider: google_beta,
  * });
  * const iamApi = new gcp.projects.Service("iamApi", {
  *     project: "my-project-name",
  *     service: "iam.googleapis.com",
  *     disableOnDestroy: false,
- * }, {
- *     provider: google_beta,
  * });
  * const resourceManagerApi = new gcp.projects.Service("resourceManagerApi", {
  *     project: "my-project-name",
  *     service: "cloudresourcemanager.googleapis.com",
  *     disableOnDestroy: false,
- * }, {
- *     provider: google_beta,
  * });
  * const schedulerApi = new gcp.projects.Service("schedulerApi", {
  *     project: "my-project-name",
  *     service: "cloudscheduler.googleapis.com",
  *     disableOnDestroy: false,
- * }, {
- *     provider: google_beta,
  * });
  * const defaultService = new gcp.cloudrun.Service("defaultService", {
  *     project: "my-project-name",
@@ -281,7 +273,6 @@ import * as utilities from "../utilities";
  *         latestRevision: true,
  *     }],
  * }, {
- *     provider: google_beta,
  *     dependsOn: [runApi],
  * });
  * const defaultAccount = new gcp.serviceaccount.Account("defaultAccount", {
@@ -290,7 +281,6 @@ import * as utilities from "../utilities";
  *     description: "Cloud Scheduler service account; used to trigger scheduled Cloud Run jobs.",
  *     displayName: "scheduler-sa",
  * }, {
- *     provider: google_beta,
  *     dependsOn: [iamApi],
  * });
  * const defaultJob = new gcp.cloudscheduler.Job("defaultJob", {
@@ -309,7 +299,6 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * }, {
- *     provider: google_beta,
  *     dependsOn: [schedulerApi],
  * });
  * const defaultIamMember = new gcp.cloudrun.IamMember("defaultIamMember", {

@@ -5,9 +5,11 @@ package com.pulumi.gcp.notebooks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.notebooks.inputs.RuntimeSoftwareConfigKernelArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -99,6 +101,23 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Use a list of container images to use as Kernels in the notebook instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="kernels")
+    private @Nullable Output<List<RuntimeSoftwareConfigKernelArgs>> kernels;
+
+    /**
+     * @return Use a list of container images to use as Kernels in the notebook instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RuntimeSoftwareConfigKernelArgs>>> kernels() {
+        return Optional.ofNullable(this.kernels);
+    }
+
+    /**
      * Cron expression in UTC timezone for schedule instance auto upgrade.
      * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
      * 
@@ -134,6 +153,40 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.postStartupScript);
     }
 
+    /**
+     * Behavior for the post startup script.
+     * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+     * 
+     */
+    @Import(name="postStartupScriptBehavior")
+    private @Nullable Output<String> postStartupScriptBehavior;
+
+    /**
+     * @return Behavior for the post startup script.
+     * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+     * 
+     */
+    public Optional<Output<String>> postStartupScriptBehavior() {
+        return Optional.ofNullable(this.postStartupScriptBehavior);
+    }
+
+    /**
+     * - 
+     * Bool indicating whether an newer image is available in an image family.
+     * 
+     */
+    @Import(name="upgradeable")
+    private @Nullable Output<Boolean> upgradeable;
+
+    /**
+     * @return -
+     * Bool indicating whether an newer image is available in an image family.
+     * 
+     */
+    public Optional<Output<Boolean>> upgradeable() {
+        return Optional.ofNullable(this.upgradeable);
+    }
+
     private RuntimeSoftwareConfigArgs() {}
 
     private RuntimeSoftwareConfigArgs(RuntimeSoftwareConfigArgs $) {
@@ -142,8 +195,11 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
         this.idleShutdown = $.idleShutdown;
         this.idleShutdownTimeout = $.idleShutdownTimeout;
         this.installGpuDriver = $.installGpuDriver;
+        this.kernels = $.kernels;
         this.notebookUpgradeSchedule = $.notebookUpgradeSchedule;
         this.postStartupScript = $.postStartupScript;
+        this.postStartupScriptBehavior = $.postStartupScriptBehavior;
+        this.upgradeable = $.upgradeable;
     }
 
     public static Builder builder() {
@@ -276,6 +332,40 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param kernels Use a list of container images to use as Kernels in the notebook instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernels(@Nullable Output<List<RuntimeSoftwareConfigKernelArgs>> kernels) {
+            $.kernels = kernels;
+            return this;
+        }
+
+        /**
+         * @param kernels Use a list of container images to use as Kernels in the notebook instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernels(List<RuntimeSoftwareConfigKernelArgs> kernels) {
+            return kernels(Output.of(kernels));
+        }
+
+        /**
+         * @param kernels Use a list of container images to use as Kernels in the notebook instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernels(RuntimeSoftwareConfigKernelArgs... kernels) {
+            return kernels(List.of(kernels));
+        }
+
+        /**
          * @param notebookUpgradeSchedule Cron expression in UTC timezone for schedule instance auto upgrade.
          * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
          * 
@@ -321,6 +411,52 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder postStartupScript(String postStartupScript) {
             return postStartupScript(Output.of(postStartupScript));
+        }
+
+        /**
+         * @param postStartupScriptBehavior Behavior for the post startup script.
+         * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postStartupScriptBehavior(@Nullable Output<String> postStartupScriptBehavior) {
+            $.postStartupScriptBehavior = postStartupScriptBehavior;
+            return this;
+        }
+
+        /**
+         * @param postStartupScriptBehavior Behavior for the post startup script.
+         * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postStartupScriptBehavior(String postStartupScriptBehavior) {
+            return postStartupScriptBehavior(Output.of(postStartupScriptBehavior));
+        }
+
+        /**
+         * @param upgradeable -
+         * Bool indicating whether an newer image is available in an image family.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradeable(@Nullable Output<Boolean> upgradeable) {
+            $.upgradeable = upgradeable;
+            return this;
+        }
+
+        /**
+         * @param upgradeable -
+         * Bool indicating whether an newer image is available in an image family.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradeable(Boolean upgradeable) {
+            return upgradeable(Output.of(upgradeable));
         }
 
         public RuntimeSoftwareConfigArgs build() {

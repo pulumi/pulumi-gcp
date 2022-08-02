@@ -284,6 +284,10 @@ type RegionNetworkEndpointGroup struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// This field is only used for PSC.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses
+	// "default" project network if unspecified.
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
 	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -301,6 +305,9 @@ type RegionNetworkEndpointGroup struct {
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
 	// serverlessDeployment may be set.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrOutput `pulumi:"serverlessDeployment"`
+	// This field is only used for PSC.
+	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+	Subnetwork pulumi.StringPtrOutput `pulumi:"subnetwork"`
 }
 
 // NewRegionNetworkEndpointGroup registers a new resource with the given unique name, arguments, and options.
@@ -358,6 +365,10 @@ type regionNetworkEndpointGroupState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// This field is only used for PSC.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses
+	// "default" project network if unspecified.
+	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
 	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -375,6 +386,9 @@ type regionNetworkEndpointGroupState struct {
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
 	// serverlessDeployment may be set.
 	ServerlessDeployment *RegionNetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
+	// This field is only used for PSC.
+	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 type RegionNetworkEndpointGroupState struct {
@@ -401,6 +415,10 @@ type RegionNetworkEndpointGroupState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// This field is only used for PSC.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses
+	// "default" project network if unspecified.
+	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
 	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -418,6 +436,9 @@ type RegionNetworkEndpointGroupState struct {
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
 	// serverlessDeployment may be set.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrInput
+	// This field is only used for PSC.
+	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+	Subnetwork pulumi.StringPtrInput
 }
 
 func (RegionNetworkEndpointGroupState) ElementType() reflect.Type {
@@ -448,6 +469,10 @@ type regionNetworkEndpointGroupArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// This field is only used for PSC.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses
+	// "default" project network if unspecified.
+	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
 	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -463,6 +488,9 @@ type regionNetworkEndpointGroupArgs struct {
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
 	// serverlessDeployment may be set.
 	ServerlessDeployment *RegionNetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
+	// This field is only used for PSC.
+	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 // The set of arguments for constructing a RegionNetworkEndpointGroup resource.
@@ -490,6 +518,10 @@ type RegionNetworkEndpointGroupArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// This field is only used for PSC.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses
+	// "default" project network if unspecified.
+	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
 	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -505,6 +537,9 @@ type RegionNetworkEndpointGroupArgs struct {
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
 	// serverlessDeployment may be set.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrInput
+	// This field is only used for PSC.
+	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+	Subnetwork pulumi.StringPtrInput
 }
 
 func (RegionNetworkEndpointGroupArgs) ElementType() reflect.Type {
@@ -634,6 +669,13 @@ func (o RegionNetworkEndpointGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// This field is only used for PSC.
+// The URL of the network to which all network endpoints in the NEG belong. Uses
+// "default" project network if unspecified.
+func (o RegionNetworkEndpointGroupOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
+}
+
 // Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 // Default value is `SERVERLESS`.
 // Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
@@ -669,6 +711,12 @@ func (o RegionNetworkEndpointGroupOutput) ServerlessDeployment() RegionNetworkEn
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) RegionNetworkEndpointGroupServerlessDeploymentPtrOutput {
 		return v.ServerlessDeployment
 	}).(RegionNetworkEndpointGroupServerlessDeploymentPtrOutput)
+}
+
+// This field is only used for PSC.
+// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+func (o RegionNetworkEndpointGroupOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
 type RegionNetworkEndpointGroupArrayOutput struct{ *pulumi.OutputState }

@@ -166,7 +166,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly bootDiskSizeGb!: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      */
     public readonly bootDiskType!: pulumi.Output<string | undefined>;
     /**
@@ -192,7 +192,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly dataDiskSizeGb!: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      */
     public readonly dataDiskType!: pulumi.Output<string | undefined>;
     /**
@@ -441,7 +441,7 @@ export interface InstanceState {
     bootDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      */
     bootDiskType?: pulumi.Input<string>;
     /**
@@ -467,7 +467,7 @@ export interface InstanceState {
     dataDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      */
     dataDiskType?: pulumi.Input<string>;
     /**
@@ -622,7 +622,7 @@ export interface InstanceArgs {
     bootDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      */
     bootDiskType?: pulumi.Input<string>;
     /**
@@ -648,7 +648,7 @@ export interface InstanceArgs {
     dataDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      */
     dataDiskType?: pulumi.Input<string>;
     /**

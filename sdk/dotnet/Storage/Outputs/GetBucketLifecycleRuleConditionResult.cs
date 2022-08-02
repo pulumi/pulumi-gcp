@@ -18,7 +18,9 @@ namespace Pulumi.Gcp.Storage.Outputs
         public readonly string CustomTimeBefore;
         public readonly int DaysSinceCustomTime;
         public readonly int DaysSinceNoncurrentTime;
+        public readonly ImmutableArray<string> MatchesPrefixes;
         public readonly ImmutableArray<string> MatchesStorageClasses;
+        public readonly ImmutableArray<string> MatchesSuffixes;
         public readonly string NoncurrentTimeBefore;
         public readonly int NumNewerVersions;
         public readonly string WithState;
@@ -35,7 +37,11 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             int daysSinceNoncurrentTime,
 
+            ImmutableArray<string> matchesPrefixes,
+
             ImmutableArray<string> matchesStorageClasses,
+
+            ImmutableArray<string> matchesSuffixes,
 
             string noncurrentTimeBefore,
 
@@ -48,7 +54,9 @@ namespace Pulumi.Gcp.Storage.Outputs
             CustomTimeBefore = customTimeBefore;
             DaysSinceCustomTime = daysSinceCustomTime;
             DaysSinceNoncurrentTime = daysSinceNoncurrentTime;
+            MatchesPrefixes = matchesPrefixes;
             MatchesStorageClasses = matchesStorageClasses;
+            MatchesSuffixes = matchesSuffixes;
             NoncurrentTimeBefore = noncurrentTimeBefore;
             NumNewerVersions = numNewerVersions;
             WithState = withState;

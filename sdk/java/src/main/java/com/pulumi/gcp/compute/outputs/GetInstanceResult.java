@@ -84,7 +84,7 @@ public final class GetInstanceResult {
      */
     private final String labelFingerprint;
     /**
-     * @return A set of key/value label pairs assigned to the instance.
+     * @return A set of key/value label pairs assigned to the disk.
      * 
      */
     private final Map<String,String> labels;
@@ -330,7 +330,7 @@ public final class GetInstanceResult {
         return this.labelFingerprint;
     }
     /**
-     * @return A set of key/value label pairs assigned to the instance.
+     * @return A set of key/value label pairs assigned to the disk.
      * 
      */
     public Map<String,String> labels() {

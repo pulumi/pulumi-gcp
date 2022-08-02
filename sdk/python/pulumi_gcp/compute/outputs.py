@@ -31118,7 +31118,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
                  type: str):
         """
         :param str image: The image from which this disk was initialised.
-        :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the instance.
+        :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk.
         :param int size: The size of the image in gigabytes.
         :param str type: The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
         """
@@ -31139,7 +31139,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
         """
-        A set of key/value label pairs assigned to the instance.
+        A set of key/value label pairs assigned to the disk.
         """
         return pulumi.get(self, "labels")
 

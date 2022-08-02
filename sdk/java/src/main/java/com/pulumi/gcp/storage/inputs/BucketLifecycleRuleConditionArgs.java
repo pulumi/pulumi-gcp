@@ -93,6 +93,21 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
+     * One or more matching name prefixes to satisfy this condition.
+     * 
+     */
+    @Import(name="matchesPrefixes")
+    private @Nullable Output<List<String>> matchesPrefixes;
+
+    /**
+     * @return One or more matching name prefixes to satisfy this condition.
+     * 
+     */
+    public Optional<Output<List<String>>> matchesPrefixes() {
+        return Optional.ofNullable(this.matchesPrefixes);
+    }
+
+    /**
      * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
      * 
      */
@@ -105,6 +120,21 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
      */
     public Optional<Output<List<String>>> matchesStorageClasses() {
         return Optional.ofNullable(this.matchesStorageClasses);
+    }
+
+    /**
+     * One or more matching name suffixes to satisfy this condition.
+     * 
+     */
+    @Import(name="matchesSuffixes")
+    private @Nullable Output<List<String>> matchesSuffixes;
+
+    /**
+     * @return One or more matching name suffixes to satisfy this condition.
+     * 
+     */
+    public Optional<Output<List<String>>> matchesSuffixes() {
+        return Optional.ofNullable(this.matchesSuffixes);
     }
 
     /**
@@ -160,7 +190,9 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         this.customTimeBefore = $.customTimeBefore;
         this.daysSinceCustomTime = $.daysSinceCustomTime;
         this.daysSinceNoncurrentTime = $.daysSinceNoncurrentTime;
+        this.matchesPrefixes = $.matchesPrefixes;
         this.matchesStorageClasses = $.matchesStorageClasses;
+        this.matchesSuffixes = $.matchesSuffixes;
         this.noncurrentTimeBefore = $.noncurrentTimeBefore;
         this.numNewerVersions = $.numNewerVersions;
         this.withState = $.withState;
@@ -290,6 +322,37 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         }
 
         /**
+         * @param matchesPrefixes One or more matching name prefixes to satisfy this condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchesPrefixes(@Nullable Output<List<String>> matchesPrefixes) {
+            $.matchesPrefixes = matchesPrefixes;
+            return this;
+        }
+
+        /**
+         * @param matchesPrefixes One or more matching name prefixes to satisfy this condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchesPrefixes(List<String> matchesPrefixes) {
+            return matchesPrefixes(Output.of(matchesPrefixes));
+        }
+
+        /**
+         * @param matchesPrefixes One or more matching name prefixes to satisfy this condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchesPrefixes(String... matchesPrefixes) {
+            return matchesPrefixes(List.of(matchesPrefixes));
+        }
+
+        /**
          * @param matchesStorageClasses [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
          * 
          * @return builder
@@ -318,6 +381,37 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
          */
         public Builder matchesStorageClasses(String... matchesStorageClasses) {
             return matchesStorageClasses(List.of(matchesStorageClasses));
+        }
+
+        /**
+         * @param matchesSuffixes One or more matching name suffixes to satisfy this condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchesSuffixes(@Nullable Output<List<String>> matchesSuffixes) {
+            $.matchesSuffixes = matchesSuffixes;
+            return this;
+        }
+
+        /**
+         * @param matchesSuffixes One or more matching name suffixes to satisfy this condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchesSuffixes(List<String> matchesSuffixes) {
+            return matchesSuffixes(Output.of(matchesSuffixes));
+        }
+
+        /**
+         * @param matchesSuffixes One or more matching name suffixes to satisfy this condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchesSuffixes(String... matchesSuffixes) {
+            return matchesSuffixes(List.of(matchesSuffixes));
         }
 
         /**

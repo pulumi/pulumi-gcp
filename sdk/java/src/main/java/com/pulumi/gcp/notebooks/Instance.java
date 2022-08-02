@@ -266,7 +266,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      * 
      */
     @Export(name="bootDiskType", type=String.class, parameters={})
@@ -274,7 +274,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      * 
      */
     public Output<Optional<String>> bootDiskType() {
@@ -348,7 +348,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      * 
      */
     @Export(name="dataDiskType", type=String.class, parameters={})
@@ -356,7 +356,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, and `PD_BALANCED`.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
      * 
      */
     public Output<Optional<String>> dataDiskType() {

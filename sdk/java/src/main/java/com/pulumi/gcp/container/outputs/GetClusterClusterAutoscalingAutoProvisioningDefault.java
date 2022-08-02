@@ -10,6 +10,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
+    private final String bootDiskKmsKey;
     private final String imageType;
     private final String minCpuPlatform;
     private final List<String> oauthScopes;
@@ -17,16 +18,21 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
 
     @CustomType.Constructor
     private GetClusterClusterAutoscalingAutoProvisioningDefault(
+        @CustomType.Parameter("bootDiskKmsKey") String bootDiskKmsKey,
         @CustomType.Parameter("imageType") String imageType,
         @CustomType.Parameter("minCpuPlatform") String minCpuPlatform,
         @CustomType.Parameter("oauthScopes") List<String> oauthScopes,
         @CustomType.Parameter("serviceAccount") String serviceAccount) {
+        this.bootDiskKmsKey = bootDiskKmsKey;
         this.imageType = imageType;
         this.minCpuPlatform = minCpuPlatform;
         this.oauthScopes = oauthScopes;
         this.serviceAccount = serviceAccount;
     }
 
+    public String bootDiskKmsKey() {
+        return this.bootDiskKmsKey;
+    }
     public String imageType() {
         return this.imageType;
     }
@@ -49,6 +55,7 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     }
 
     public static final class Builder {
+        private String bootDiskKmsKey;
         private String imageType;
         private String minCpuPlatform;
         private List<String> oauthScopes;
@@ -60,12 +67,17 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
 
         public Builder(GetClusterClusterAutoscalingAutoProvisioningDefault defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.imageType = defaults.imageType;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.serviceAccount = defaults.serviceAccount;
         }
 
+        public Builder bootDiskKmsKey(String bootDiskKmsKey) {
+            this.bootDiskKmsKey = Objects.requireNonNull(bootDiskKmsKey);
+            return this;
+        }
         public Builder imageType(String imageType) {
             this.imageType = Objects.requireNonNull(imageType);
             return this;
@@ -85,7 +97,7 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
             this.serviceAccount = Objects.requireNonNull(serviceAccount);
             return this;
         }        public GetClusterClusterAutoscalingAutoProvisioningDefault build() {
-            return new GetClusterClusterAutoscalingAutoProvisioningDefault(imageType, minCpuPlatform, oauthScopes, serviceAccount);
+            return new GetClusterClusterAutoscalingAutoProvisioningDefault(bootDiskKmsKey, imageType, minCpuPlatform, oauthScopes, serviceAccount);
         }
     }
 }

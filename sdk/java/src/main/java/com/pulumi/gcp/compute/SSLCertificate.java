@@ -62,47 +62,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Ssl Certificate Random Provider
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.SSLCertificate;
- * import com.pulumi.gcp.compute.SSLCertificateArgs;
- * import com.pulumi.random.RandomId;
- * import com.pulumi.random.RandomIdArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
- *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
- *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
- *             .build());
- * 
- *         var certificate = new RandomId(&#34;certificate&#34;, RandomIdArgs.builder()        
- *             .byteLength(4)
- *             .prefix(&#34;my-certificate-&#34;)
- *             .keepers(Map.ofEntries(
- *                 Map.entry(&#34;private_key&#34;, computeFileBase64Sha256(&#34;path/to/private.key&#34;)),
- *                 Map.entry(&#34;certificate&#34;, computeFileBase64Sha256(&#34;path/to/certificate.crt&#34;))
- *             ))
- *             .build());
- * 
- *     }
- * }
- * ```
  * ### Ssl Certificate Target Https Proxies
  * 
  * ```java

@@ -6,9 +6,11 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./lake";
+export * from "./zone";
 
 // Import resources to register:
 import { Lake } from "./lake";
+import { Zone } from "./zone";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +18,12 @@ const _module = {
         switch (type) {
             case "gcp:dataplex/lake:Lake":
                 return new Lake(name, <any>undefined, { urn })
+            case "gcp:dataplex/zone:Zone":
+                return new Zone(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lake", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/zone", _module)

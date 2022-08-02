@@ -2550,6 +2550,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/zone",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/zone:Zone": "Zone"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataproc/autoscalingPolicy",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
