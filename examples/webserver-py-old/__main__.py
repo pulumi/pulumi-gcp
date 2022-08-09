@@ -46,7 +46,7 @@ compute_instance = compute.Instance(
     zone=region_zone,
     boot_disk={
         "initializeParams": {
-            "image": "debian-cloud/debian-9",
+            "image": "debian-cloud/debian-11",
         },
     },
     network_interfaces=[{
