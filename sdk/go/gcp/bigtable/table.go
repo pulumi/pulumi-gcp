@@ -21,58 +21,67 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
-// 			Clusters: bigtable.InstanceClusterArray{
-// 				&bigtable.InstanceClusterArgs{
-// 					ClusterId:   pulumi.String("tf-instance-cluster"),
-// 					Zone:        pulumi.String("us-central1-b"),
-// 					NumNodes:    pulumi.Int(3),
-// 					StorageType: pulumi.String("HDD"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
-// 			InstanceName: instance.Name,
-// 			SplitKeys: pulumi.StringArray{
-// 				pulumi.String("a"),
-// 				pulumi.String("b"),
-// 				pulumi.String("c"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("tf-instance-cluster"),
+//						Zone:        pulumi.String("us-central1-b"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
+//				InstanceName: instance.Name,
+//				SplitKeys: pulumi.StringArray{
+//					pulumi.String("a"),
+//					pulumi.String("b"),
+//					pulumi.String("c"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Bigtable Tables can be imported using any of these accepted formats
+// # Bigtable Tables can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
+//
+//	$ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
+//
+//	$ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
+//
+//	$ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
+//
 // ```
 //
-//  The following fields can't be read and will show diffs if set in config when imported- `split_keys`
+//	The following fields can't be read and will show diffs if set in config when imported- `split_keys`
 type Table struct {
 	pulumi.CustomResourceState
 
@@ -217,7 +226,7 @@ func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 // TableArrayInput is an input type that accepts TableArray and TableArrayOutput values.
 // You can construct a concrete instance of `TableArrayInput` via:
 //
-//          TableArray{ TableArgs{...} }
+//	TableArray{ TableArgs{...} }
 type TableArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +251,7 @@ func (i TableArray) ToTableArrayOutputWithContext(ctx context.Context) TableArra
 // TableMapInput is an input type that accepts TableMap and TableMapOutput values.
 // You can construct a concrete instance of `TableMapInput` via:
 //
-//          TableMap{ "key": TableArgs{...} }
+//	TableMap{ "key": TableArgs{...} }
 type TableMapInput interface {
 	pulumi.Input
 

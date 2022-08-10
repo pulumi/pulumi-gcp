@@ -329,7 +329,7 @@ func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 // JobArrayInput is an input type that accepts JobArray and JobArrayOutput values.
 // You can construct a concrete instance of `JobArrayInput` via:
 //
-//          JobArray{ JobArgs{...} }
+//	JobArray{ JobArgs{...} }
 type JobArrayInput interface {
 	pulumi.Input
 
@@ -354,7 +354,7 @@ func (i JobArray) ToJobArrayOutputWithContext(ctx context.Context) JobArrayOutpu
 // JobMapInput is an input type that accepts JobMap and JobMapOutput values.
 // You can construct a concrete instance of `JobMapInput` via:
 //
-//          JobMap{ "key": JobArgs{...} }
+//	JobMap{ "key": JobArgs{...} }
 type JobMapInput interface {
 	pulumi.Input
 

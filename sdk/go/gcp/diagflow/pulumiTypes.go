@@ -18,7 +18,7 @@ type CxAgentSpeechToTextSettings struct {
 // CxAgentSpeechToTextSettingsInput is an input type that accepts CxAgentSpeechToTextSettingsArgs and CxAgentSpeechToTextSettingsOutput values.
 // You can construct a concrete instance of `CxAgentSpeechToTextSettingsInput` via:
 //
-//          CxAgentSpeechToTextSettingsArgs{...}
+//	CxAgentSpeechToTextSettingsArgs{...}
 type CxAgentSpeechToTextSettingsInput interface {
 	pulumi.Input
 
@@ -54,11 +54,11 @@ func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsPtrOutputW
 // CxAgentSpeechToTextSettingsPtrInput is an input type that accepts CxAgentSpeechToTextSettingsArgs, CxAgentSpeechToTextSettingsPtr and CxAgentSpeechToTextSettingsPtrOutput values.
 // You can construct a concrete instance of `CxAgentSpeechToTextSettingsPtrInput` via:
 //
-//          CxAgentSpeechToTextSettingsArgs{...}
+//	        CxAgentSpeechToTextSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxAgentSpeechToTextSettingsPtrInput interface {
 	pulumi.Input
 
@@ -158,7 +158,7 @@ type CxEntityTypeEntity struct {
 // CxEntityTypeEntityInput is an input type that accepts CxEntityTypeEntityArgs and CxEntityTypeEntityOutput values.
 // You can construct a concrete instance of `CxEntityTypeEntityInput` via:
 //
-//          CxEntityTypeEntityArgs{...}
+//	CxEntityTypeEntityArgs{...}
 type CxEntityTypeEntityInput interface {
 	pulumi.Input
 
@@ -189,7 +189,7 @@ func (i CxEntityTypeEntityArgs) ToCxEntityTypeEntityOutputWithContext(ctx contex
 // CxEntityTypeEntityArrayInput is an input type that accepts CxEntityTypeEntityArray and CxEntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `CxEntityTypeEntityArrayInput` via:
 //
-//          CxEntityTypeEntityArray{ CxEntityTypeEntityArgs{...} }
+//	CxEntityTypeEntityArray{ CxEntityTypeEntityArgs{...} }
 type CxEntityTypeEntityArrayInput interface {
 	pulumi.Input
 
@@ -264,7 +264,7 @@ type CxEntityTypeExcludedPhrase struct {
 // CxEntityTypeExcludedPhraseInput is an input type that accepts CxEntityTypeExcludedPhraseArgs and CxEntityTypeExcludedPhraseOutput values.
 // You can construct a concrete instance of `CxEntityTypeExcludedPhraseInput` via:
 //
-//          CxEntityTypeExcludedPhraseArgs{...}
+//	CxEntityTypeExcludedPhraseArgs{...}
 type CxEntityTypeExcludedPhraseInput interface {
 	pulumi.Input
 
@@ -292,7 +292,7 @@ func (i CxEntityTypeExcludedPhraseArgs) ToCxEntityTypeExcludedPhraseOutputWithCo
 // CxEntityTypeExcludedPhraseArrayInput is an input type that accepts CxEntityTypeExcludedPhraseArray and CxEntityTypeExcludedPhraseArrayOutput values.
 // You can construct a concrete instance of `CxEntityTypeExcludedPhraseArrayInput` via:
 //
-//          CxEntityTypeExcludedPhraseArray{ CxEntityTypeExcludedPhraseArgs{...} }
+//	CxEntityTypeExcludedPhraseArray{ CxEntityTypeExcludedPhraseArgs{...} }
 type CxEntityTypeExcludedPhraseArrayInput interface {
 	pulumi.Input
 
@@ -361,7 +361,7 @@ type CxEnvironmentVersionConfig struct {
 // CxEnvironmentVersionConfigInput is an input type that accepts CxEnvironmentVersionConfigArgs and CxEnvironmentVersionConfigOutput values.
 // You can construct a concrete instance of `CxEnvironmentVersionConfigInput` via:
 //
-//          CxEnvironmentVersionConfigArgs{...}
+//	CxEnvironmentVersionConfigArgs{...}
 type CxEnvironmentVersionConfigInput interface {
 	pulumi.Input
 
@@ -389,7 +389,7 @@ func (i CxEnvironmentVersionConfigArgs) ToCxEnvironmentVersionConfigOutputWithCo
 // CxEnvironmentVersionConfigArrayInput is an input type that accepts CxEnvironmentVersionConfigArray and CxEnvironmentVersionConfigArrayOutput values.
 // You can construct a concrete instance of `CxEnvironmentVersionConfigArrayInput` via:
 //
-//          CxEnvironmentVersionConfigArray{ CxEnvironmentVersionConfigArgs{...} }
+//	CxEnvironmentVersionConfigArray{ CxEnvironmentVersionConfigArgs{...} }
 type CxEnvironmentVersionConfigArrayInput interface {
 	pulumi.Input
 
@@ -470,7 +470,7 @@ type CxFlowEventHandler struct {
 // CxFlowEventHandlerInput is an input type that accepts CxFlowEventHandlerArgs and CxFlowEventHandlerOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerInput` via:
 //
-//          CxFlowEventHandlerArgs{...}
+//	CxFlowEventHandlerArgs{...}
 type CxFlowEventHandlerInput interface {
 	pulumi.Input
 
@@ -510,7 +510,7 @@ func (i CxFlowEventHandlerArgs) ToCxFlowEventHandlerOutputWithContext(ctx contex
 // CxFlowEventHandlerArrayInput is an input type that accepts CxFlowEventHandlerArray and CxFlowEventHandlerArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerArrayInput` via:
 //
-//          CxFlowEventHandlerArray{ CxFlowEventHandlerArgs{...} }
+//	CxFlowEventHandlerArray{ CxFlowEventHandlerArgs{...} }
 type CxFlowEventHandlerArrayInput interface {
 	pulumi.Input
 
@@ -610,7 +610,7 @@ type CxFlowEventHandlerTriggerFulfillment struct {
 // CxFlowEventHandlerTriggerFulfillmentInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentArgs and CxFlowEventHandlerTriggerFulfillmentOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentInput` via:
 //
-//          CxFlowEventHandlerTriggerFulfillmentArgs{...}
+//	CxFlowEventHandlerTriggerFulfillmentArgs{...}
 type CxFlowEventHandlerTriggerFulfillmentInput interface {
 	pulumi.Input
 
@@ -653,11 +653,11 @@ func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFul
 // CxFlowEventHandlerTriggerFulfillmentPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentArgs, CxFlowEventHandlerTriggerFulfillmentPtr and CxFlowEventHandlerTriggerFulfillmentPtrOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentPtrInput` via:
 //
-//          CxFlowEventHandlerTriggerFulfillmentArgs{...}
+//	        CxFlowEventHandlerTriggerFulfillmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxFlowEventHandlerTriggerFulfillmentPtrInput interface {
 	pulumi.Input
 
@@ -803,7 +803,7 @@ type CxFlowEventHandlerTriggerFulfillmentMessage struct {
 // CxFlowEventHandlerTriggerFulfillmentMessageInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageArgs and CxFlowEventHandlerTriggerFulfillmentMessageOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageInput` via:
 //
-//          CxFlowEventHandlerTriggerFulfillmentMessageArgs{...}
+//	CxFlowEventHandlerTriggerFulfillmentMessageArgs{...}
 type CxFlowEventHandlerTriggerFulfillmentMessageInput interface {
 	pulumi.Input
 
@@ -831,7 +831,7 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageArgs) ToCxFlowEventHandlerTri
 // CxFlowEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageArray and CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageArrayInput` via:
 //
-//          CxFlowEventHandlerTriggerFulfillmentMessageArray{ CxFlowEventHandlerTriggerFulfillmentMessageArgs{...} }
+//	CxFlowEventHandlerTriggerFulfillmentMessageArray{ CxFlowEventHandlerTriggerFulfillmentMessageArgs{...} }
 type CxFlowEventHandlerTriggerFulfillmentMessageArrayInput interface {
 	pulumi.Input
 
@@ -905,7 +905,7 @@ type CxFlowEventHandlerTriggerFulfillmentMessageText struct {
 // CxFlowEventHandlerTriggerFulfillmentMessageTextInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageTextArgs and CxFlowEventHandlerTriggerFulfillmentMessageTextOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageTextInput` via:
 //
-//          CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{...}
+//	CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{...}
 type CxFlowEventHandlerTriggerFulfillmentMessageTextInput interface {
 	pulumi.Input
 
@@ -944,11 +944,11 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandle
 // CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageTextArgs, CxFlowEventHandlerTriggerFulfillmentMessageTextPtr and CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput` via:
 //
-//          CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{...}
+//	        CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput interface {
 	pulumi.Input
 
@@ -1073,7 +1073,7 @@ type CxFlowNluSettings struct {
 // CxFlowNluSettingsInput is an input type that accepts CxFlowNluSettingsArgs and CxFlowNluSettingsOutput values.
 // You can construct a concrete instance of `CxFlowNluSettingsInput` via:
 //
-//          CxFlowNluSettingsArgs{...}
+//	CxFlowNluSettingsArgs{...}
 type CxFlowNluSettingsInput interface {
 	pulumi.Input
 
@@ -1120,11 +1120,11 @@ func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsPtrOutputWithContext(ctx conte
 // CxFlowNluSettingsPtrInput is an input type that accepts CxFlowNluSettingsArgs, CxFlowNluSettingsPtr and CxFlowNluSettingsPtrOutput values.
 // You can construct a concrete instance of `CxFlowNluSettingsPtrInput` via:
 //
-//          CxFlowNluSettingsArgs{...}
+//	        CxFlowNluSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxFlowNluSettingsPtrInput interface {
 	pulumi.Input
 
@@ -1181,17 +1181,17 @@ func (o CxFlowNluSettingsOutput) ClassificationThreshold() pulumi.Float64PtrOutp
 }
 
 // Indicates NLU model training mode.
-// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
-// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+//   - MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+//   - MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+//     Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
 func (o CxFlowNluSettingsOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowNluSettings) *string { return v.ModelTrainingMode }).(pulumi.StringPtrOutput)
 }
 
 // Indicates the type of NLU model.
-// * MODEL_TYPE_STANDARD: Use standard NLU model.
-// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+//   - MODEL_TYPE_STANDARD: Use standard NLU model.
+//   - MODEL_TYPE_ADVANCED: Use advanced NLU model.
+//     Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
 func (o CxFlowNluSettingsOutput) ModelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowNluSettings) *string { return v.ModelType }).(pulumi.StringPtrOutput)
 }
@@ -1232,9 +1232,9 @@ func (o CxFlowNluSettingsPtrOutput) ClassificationThreshold() pulumi.Float64PtrO
 }
 
 // Indicates NLU model training mode.
-// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
-// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+//   - MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+//   - MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+//     Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
 func (o CxFlowNluSettingsPtrOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowNluSettings) *string {
 		if v == nil {
@@ -1245,9 +1245,9 @@ func (o CxFlowNluSettingsPtrOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 }
 
 // Indicates the type of NLU model.
-// * MODEL_TYPE_STANDARD: Use standard NLU model.
-// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+//   - MODEL_TYPE_STANDARD: Use standard NLU model.
+//   - MODEL_TYPE_ADVANCED: Use advanced NLU model.
+//     Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
 func (o CxFlowNluSettingsPtrOutput) ModelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowNluSettings) *string {
 		if v == nil {
@@ -1281,7 +1281,7 @@ type CxFlowTransitionRoute struct {
 // CxFlowTransitionRouteInput is an input type that accepts CxFlowTransitionRouteArgs and CxFlowTransitionRouteOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteInput` via:
 //
-//          CxFlowTransitionRouteArgs{...}
+//	CxFlowTransitionRouteArgs{...}
 type CxFlowTransitionRouteInput interface {
 	pulumi.Input
 
@@ -1325,7 +1325,7 @@ func (i CxFlowTransitionRouteArgs) ToCxFlowTransitionRouteOutputWithContext(ctx 
 // CxFlowTransitionRouteArrayInput is an input type that accepts CxFlowTransitionRouteArray and CxFlowTransitionRouteArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteArrayInput` via:
 //
-//          CxFlowTransitionRouteArray{ CxFlowTransitionRouteArgs{...} }
+//	CxFlowTransitionRouteArray{ CxFlowTransitionRouteArgs{...} }
 type CxFlowTransitionRouteArrayInput interface {
 	pulumi.Input
 
@@ -1432,7 +1432,7 @@ type CxFlowTransitionRouteTriggerFulfillment struct {
 // CxFlowTransitionRouteTriggerFulfillmentInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentArgs and CxFlowTransitionRouteTriggerFulfillmentOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentInput` via:
 //
-//          CxFlowTransitionRouteTriggerFulfillmentArgs{...}
+//	CxFlowTransitionRouteTriggerFulfillmentArgs{...}
 type CxFlowTransitionRouteTriggerFulfillmentInput interface {
 	pulumi.Input
 
@@ -1475,11 +1475,11 @@ func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTrig
 // CxFlowTransitionRouteTriggerFulfillmentPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentArgs, CxFlowTransitionRouteTriggerFulfillmentPtr and CxFlowTransitionRouteTriggerFulfillmentPtrOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentPtrInput` via:
 //
-//          CxFlowTransitionRouteTriggerFulfillmentArgs{...}
+//	        CxFlowTransitionRouteTriggerFulfillmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxFlowTransitionRouteTriggerFulfillmentPtrInput interface {
 	pulumi.Input
 
@@ -1625,7 +1625,7 @@ type CxFlowTransitionRouteTriggerFulfillmentMessage struct {
 // CxFlowTransitionRouteTriggerFulfillmentMessageInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageArgs and CxFlowTransitionRouteTriggerFulfillmentMessageOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageInput` via:
 //
-//          CxFlowTransitionRouteTriggerFulfillmentMessageArgs{...}
+//	CxFlowTransitionRouteTriggerFulfillmentMessageArgs{...}
 type CxFlowTransitionRouteTriggerFulfillmentMessageInput interface {
 	pulumi.Input
 
@@ -1653,7 +1653,7 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageArgs) ToCxFlowTransitionRo
 // CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageArray and CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput` via:
 //
-//          CxFlowTransitionRouteTriggerFulfillmentMessageArray{ CxFlowTransitionRouteTriggerFulfillmentMessageArgs{...} }
+//	CxFlowTransitionRouteTriggerFulfillmentMessageArray{ CxFlowTransitionRouteTriggerFulfillmentMessageArgs{...} }
 type CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput interface {
 	pulumi.Input
 
@@ -1727,7 +1727,7 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageText struct {
 // CxFlowTransitionRouteTriggerFulfillmentMessageTextInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs and CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageTextInput` via:
 //
-//          CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{...}
+//	CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{...}
 type CxFlowTransitionRouteTriggerFulfillmentMessageTextInput interface {
 	pulumi.Input
 
@@ -1766,11 +1766,11 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransiti
 // CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs, CxFlowTransitionRouteTriggerFulfillmentMessageTextPtr and CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput` via:
 //
-//          CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{...}
+//	        CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput interface {
 	pulumi.Input
 
@@ -1892,7 +1892,7 @@ type CxIntentParameter struct {
 // CxIntentParameterInput is an input type that accepts CxIntentParameterArgs and CxIntentParameterOutput values.
 // You can construct a concrete instance of `CxIntentParameterInput` via:
 //
-//          CxIntentParameterArgs{...}
+//	CxIntentParameterArgs{...}
 type CxIntentParameterInput interface {
 	pulumi.Input
 
@@ -1928,7 +1928,7 @@ func (i CxIntentParameterArgs) ToCxIntentParameterOutputWithContext(ctx context.
 // CxIntentParameterArrayInput is an input type that accepts CxIntentParameterArray and CxIntentParameterArrayOutput values.
 // You can construct a concrete instance of `CxIntentParameterArrayInput` via:
 //
-//          CxIntentParameterArray{ CxIntentParameterArgs{...} }
+//	CxIntentParameterArray{ CxIntentParameterArgs{...} }
 type CxIntentParameterArrayInput interface {
 	pulumi.Input
 
@@ -2025,7 +2025,7 @@ type CxIntentTrainingPhrase struct {
 // CxIntentTrainingPhraseInput is an input type that accepts CxIntentTrainingPhraseArgs and CxIntentTrainingPhraseOutput values.
 // You can construct a concrete instance of `CxIntentTrainingPhraseInput` via:
 //
-//          CxIntentTrainingPhraseArgs{...}
+//	CxIntentTrainingPhraseArgs{...}
 type CxIntentTrainingPhraseInput interface {
 	pulumi.Input
 
@@ -2064,7 +2064,7 @@ func (i CxIntentTrainingPhraseArgs) ToCxIntentTrainingPhraseOutputWithContext(ct
 // CxIntentTrainingPhraseArrayInput is an input type that accepts CxIntentTrainingPhraseArray and CxIntentTrainingPhraseArrayOutput values.
 // You can construct a concrete instance of `CxIntentTrainingPhraseArrayInput` via:
 //
-//          CxIntentTrainingPhraseArray{ CxIntentTrainingPhraseArgs{...} }
+//	CxIntentTrainingPhraseArray{ CxIntentTrainingPhraseArgs{...} }
 type CxIntentTrainingPhraseArrayInput interface {
 	pulumi.Input
 
@@ -2152,7 +2152,7 @@ type CxIntentTrainingPhrasePart struct {
 // CxIntentTrainingPhrasePartInput is an input type that accepts CxIntentTrainingPhrasePartArgs and CxIntentTrainingPhrasePartOutput values.
 // You can construct a concrete instance of `CxIntentTrainingPhrasePartInput` via:
 //
-//          CxIntentTrainingPhrasePartArgs{...}
+//	CxIntentTrainingPhrasePartArgs{...}
 type CxIntentTrainingPhrasePartInput interface {
 	pulumi.Input
 
@@ -2182,7 +2182,7 @@ func (i CxIntentTrainingPhrasePartArgs) ToCxIntentTrainingPhrasePartOutputWithCo
 // CxIntentTrainingPhrasePartArrayInput is an input type that accepts CxIntentTrainingPhrasePartArray and CxIntentTrainingPhrasePartArrayOutput values.
 // You can construct a concrete instance of `CxIntentTrainingPhrasePartArrayInput` via:
 //
-//          CxIntentTrainingPhrasePartArray{ CxIntentTrainingPhrasePartArgs{...} }
+//	CxIntentTrainingPhrasePartArray{ CxIntentTrainingPhrasePartArgs{...} }
 type CxIntentTrainingPhrasePartArrayInput interface {
 	pulumi.Input
 
@@ -2263,7 +2263,7 @@ type CxPageEntryFulfillment struct {
 // CxPageEntryFulfillmentInput is an input type that accepts CxPageEntryFulfillmentArgs and CxPageEntryFulfillmentOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentInput` via:
 //
-//          CxPageEntryFulfillmentArgs{...}
+//	CxPageEntryFulfillmentArgs{...}
 type CxPageEntryFulfillmentInput interface {
 	pulumi.Input
 
@@ -2306,11 +2306,11 @@ func (i CxPageEntryFulfillmentArgs) ToCxPageEntryFulfillmentPtrOutputWithContext
 // CxPageEntryFulfillmentPtrInput is an input type that accepts CxPageEntryFulfillmentArgs, CxPageEntryFulfillmentPtr and CxPageEntryFulfillmentPtrOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentPtrInput` via:
 //
-//          CxPageEntryFulfillmentArgs{...}
+//	        CxPageEntryFulfillmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageEntryFulfillmentPtrInput interface {
 	pulumi.Input
 
@@ -2454,7 +2454,7 @@ type CxPageEntryFulfillmentMessage struct {
 // CxPageEntryFulfillmentMessageInput is an input type that accepts CxPageEntryFulfillmentMessageArgs and CxPageEntryFulfillmentMessageOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentMessageInput` via:
 //
-//          CxPageEntryFulfillmentMessageArgs{...}
+//	CxPageEntryFulfillmentMessageArgs{...}
 type CxPageEntryFulfillmentMessageInput interface {
 	pulumi.Input
 
@@ -2482,7 +2482,7 @@ func (i CxPageEntryFulfillmentMessageArgs) ToCxPageEntryFulfillmentMessageOutput
 // CxPageEntryFulfillmentMessageArrayInput is an input type that accepts CxPageEntryFulfillmentMessageArray and CxPageEntryFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentMessageArrayInput` via:
 //
-//          CxPageEntryFulfillmentMessageArray{ CxPageEntryFulfillmentMessageArgs{...} }
+//	CxPageEntryFulfillmentMessageArray{ CxPageEntryFulfillmentMessageArgs{...} }
 type CxPageEntryFulfillmentMessageArrayInput interface {
 	pulumi.Input
 
@@ -2554,7 +2554,7 @@ type CxPageEntryFulfillmentMessageText struct {
 // CxPageEntryFulfillmentMessageTextInput is an input type that accepts CxPageEntryFulfillmentMessageTextArgs and CxPageEntryFulfillmentMessageTextOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentMessageTextInput` via:
 //
-//          CxPageEntryFulfillmentMessageTextArgs{...}
+//	CxPageEntryFulfillmentMessageTextArgs{...}
 type CxPageEntryFulfillmentMessageTextInput interface {
 	pulumi.Input
 
@@ -2593,11 +2593,11 @@ func (i CxPageEntryFulfillmentMessageTextArgs) ToCxPageEntryFulfillmentMessageTe
 // CxPageEntryFulfillmentMessageTextPtrInput is an input type that accepts CxPageEntryFulfillmentMessageTextArgs, CxPageEntryFulfillmentMessageTextPtr and CxPageEntryFulfillmentMessageTextPtrOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentMessageTextPtrInput` via:
 //
-//          CxPageEntryFulfillmentMessageTextArgs{...}
+//	        CxPageEntryFulfillmentMessageTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageEntryFulfillmentMessageTextPtrInput interface {
 	pulumi.Input
 
@@ -2723,7 +2723,7 @@ type CxPageEventHandler struct {
 // CxPageEventHandlerInput is an input type that accepts CxPageEventHandlerArgs and CxPageEventHandlerOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerInput` via:
 //
-//          CxPageEventHandlerArgs{...}
+//	CxPageEventHandlerArgs{...}
 type CxPageEventHandlerInput interface {
 	pulumi.Input
 
@@ -2763,7 +2763,7 @@ func (i CxPageEventHandlerArgs) ToCxPageEventHandlerOutputWithContext(ctx contex
 // CxPageEventHandlerArrayInput is an input type that accepts CxPageEventHandlerArray and CxPageEventHandlerArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerArrayInput` via:
 //
-//          CxPageEventHandlerArray{ CxPageEventHandlerArgs{...} }
+//	CxPageEventHandlerArray{ CxPageEventHandlerArgs{...} }
 type CxPageEventHandlerArrayInput interface {
 	pulumi.Input
 
@@ -2863,7 +2863,7 @@ type CxPageEventHandlerTriggerFulfillment struct {
 // CxPageEventHandlerTriggerFulfillmentInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentArgs and CxPageEventHandlerTriggerFulfillmentOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentInput` via:
 //
-//          CxPageEventHandlerTriggerFulfillmentArgs{...}
+//	CxPageEventHandlerTriggerFulfillmentArgs{...}
 type CxPageEventHandlerTriggerFulfillmentInput interface {
 	pulumi.Input
 
@@ -2906,11 +2906,11 @@ func (i CxPageEventHandlerTriggerFulfillmentArgs) ToCxPageEventHandlerTriggerFul
 // CxPageEventHandlerTriggerFulfillmentPtrInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentArgs, CxPageEventHandlerTriggerFulfillmentPtr and CxPageEventHandlerTriggerFulfillmentPtrOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentPtrInput` via:
 //
-//          CxPageEventHandlerTriggerFulfillmentArgs{...}
+//	        CxPageEventHandlerTriggerFulfillmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageEventHandlerTriggerFulfillmentPtrInput interface {
 	pulumi.Input
 
@@ -3056,7 +3056,7 @@ type CxPageEventHandlerTriggerFulfillmentMessage struct {
 // CxPageEventHandlerTriggerFulfillmentMessageInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageArgs and CxPageEventHandlerTriggerFulfillmentMessageOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageInput` via:
 //
-//          CxPageEventHandlerTriggerFulfillmentMessageArgs{...}
+//	CxPageEventHandlerTriggerFulfillmentMessageArgs{...}
 type CxPageEventHandlerTriggerFulfillmentMessageInput interface {
 	pulumi.Input
 
@@ -3084,7 +3084,7 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageArgs) ToCxPageEventHandlerTri
 // CxPageEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageArray and CxPageEventHandlerTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageArrayInput` via:
 //
-//          CxPageEventHandlerTriggerFulfillmentMessageArray{ CxPageEventHandlerTriggerFulfillmentMessageArgs{...} }
+//	CxPageEventHandlerTriggerFulfillmentMessageArray{ CxPageEventHandlerTriggerFulfillmentMessageArgs{...} }
 type CxPageEventHandlerTriggerFulfillmentMessageArrayInput interface {
 	pulumi.Input
 
@@ -3158,7 +3158,7 @@ type CxPageEventHandlerTriggerFulfillmentMessageText struct {
 // CxPageEventHandlerTriggerFulfillmentMessageTextInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageTextArgs and CxPageEventHandlerTriggerFulfillmentMessageTextOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageTextInput` via:
 //
-//          CxPageEventHandlerTriggerFulfillmentMessageTextArgs{...}
+//	CxPageEventHandlerTriggerFulfillmentMessageTextArgs{...}
 type CxPageEventHandlerTriggerFulfillmentMessageTextInput interface {
 	pulumi.Input
 
@@ -3197,11 +3197,11 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageEventHandle
 // CxPageEventHandlerTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageTextArgs, CxPageEventHandlerTriggerFulfillmentMessageTextPtr and CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageTextPtrInput` via:
 //
-//          CxPageEventHandlerTriggerFulfillmentMessageTextArgs{...}
+//	        CxPageEventHandlerTriggerFulfillmentMessageTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageEventHandlerTriggerFulfillmentMessageTextPtrInput interface {
 	pulumi.Input
 
@@ -3316,7 +3316,7 @@ type CxPageForm struct {
 // CxPageFormInput is an input type that accepts CxPageFormArgs and CxPageFormOutput values.
 // You can construct a concrete instance of `CxPageFormInput` via:
 //
-//          CxPageFormArgs{...}
+//	CxPageFormArgs{...}
 type CxPageFormInput interface {
 	pulumi.Input
 
@@ -3353,11 +3353,11 @@ func (i CxPageFormArgs) ToCxPageFormPtrOutputWithContext(ctx context.Context) Cx
 // CxPageFormPtrInput is an input type that accepts CxPageFormArgs, CxPageFormPtr and CxPageFormPtrOutput values.
 // You can construct a concrete instance of `CxPageFormPtrInput` via:
 //
-//          CxPageFormArgs{...}
+//	        CxPageFormArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageFormPtrInput interface {
 	pulumi.Input
 
@@ -3470,7 +3470,7 @@ type CxPageFormParameter struct {
 // CxPageFormParameterInput is an input type that accepts CxPageFormParameterArgs and CxPageFormParameterOutput values.
 // You can construct a concrete instance of `CxPageFormParameterInput` via:
 //
-//          CxPageFormParameterArgs{...}
+//	CxPageFormParameterArgs{...}
 type CxPageFormParameterInput interface {
 	pulumi.Input
 
@@ -3512,7 +3512,7 @@ func (i CxPageFormParameterArgs) ToCxPageFormParameterOutputWithContext(ctx cont
 // CxPageFormParameterArrayInput is an input type that accepts CxPageFormParameterArray and CxPageFormParameterArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterArrayInput` via:
 //
-//          CxPageFormParameterArray{ CxPageFormParameterArgs{...} }
+//	CxPageFormParameterArray{ CxPageFormParameterArgs{...} }
 type CxPageFormParameterArrayInput interface {
 	pulumi.Input
 
@@ -3611,7 +3611,7 @@ type CxPageFormParameterFillBehavior struct {
 // CxPageFormParameterFillBehaviorInput is an input type that accepts CxPageFormParameterFillBehaviorArgs and CxPageFormParameterFillBehaviorOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInput` via:
 //
-//          CxPageFormParameterFillBehaviorArgs{...}
+//	CxPageFormParameterFillBehaviorArgs{...}
 type CxPageFormParameterFillBehaviorInput interface {
 	pulumi.Input
 
@@ -3648,11 +3648,11 @@ func (i CxPageFormParameterFillBehaviorArgs) ToCxPageFormParameterFillBehaviorPt
 // CxPageFormParameterFillBehaviorPtrInput is an input type that accepts CxPageFormParameterFillBehaviorArgs, CxPageFormParameterFillBehaviorPtr and CxPageFormParameterFillBehaviorPtrOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorPtrInput` via:
 //
-//          CxPageFormParameterFillBehaviorArgs{...}
+//	        CxPageFormParameterFillBehaviorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageFormParameterFillBehaviorPtrInput interface {
 	pulumi.Input
 
@@ -3760,7 +3760,7 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillment struct {
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentInput` via:
 //
-//          CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{...}
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{...}
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentInput interface {
 	pulumi.Input
 
@@ -3803,11 +3803,11 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs) ToCxPageFor
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs, CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtr and CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrInput` via:
 //
-//          CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{...}
+//	        CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrInput interface {
 	pulumi.Input
 
@@ -3953,7 +3953,7 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage struct {
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageInput` via:
 //
-//          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs{...}
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs{...}
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageInput interface {
 	pulumi.Input
 
@@ -3981,7 +3981,7 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs) ToCx
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput` via:
 //
-//          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray{ CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs{...} }
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray{ CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs{...} }
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput interface {
 	pulumi.Input
 
@@ -4055,7 +4055,7 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText struct {
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextInput` via:
 //
-//          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs{...}
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs{...}
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextInput interface {
 	pulumi.Input
 
@@ -4094,11 +4094,11 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs) 
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs, CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtr and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrInput` via:
 //
-//          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs{...}
+//	        CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrInput interface {
 	pulumi.Input
 
@@ -4230,7 +4230,7 @@ type CxPageTransitionRoute struct {
 // CxPageTransitionRouteInput is an input type that accepts CxPageTransitionRouteArgs and CxPageTransitionRouteOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteInput` via:
 //
-//          CxPageTransitionRouteArgs{...}
+//	CxPageTransitionRouteArgs{...}
 type CxPageTransitionRouteInput interface {
 	pulumi.Input
 
@@ -4274,7 +4274,7 @@ func (i CxPageTransitionRouteArgs) ToCxPageTransitionRouteOutputWithContext(ctx 
 // CxPageTransitionRouteArrayInput is an input type that accepts CxPageTransitionRouteArray and CxPageTransitionRouteArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteArrayInput` via:
 //
-//          CxPageTransitionRouteArray{ CxPageTransitionRouteArgs{...} }
+//	CxPageTransitionRouteArray{ CxPageTransitionRouteArgs{...} }
 type CxPageTransitionRouteArrayInput interface {
 	pulumi.Input
 
@@ -4381,7 +4381,7 @@ type CxPageTransitionRouteTriggerFulfillment struct {
 // CxPageTransitionRouteTriggerFulfillmentInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentArgs and CxPageTransitionRouteTriggerFulfillmentOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentInput` via:
 //
-//          CxPageTransitionRouteTriggerFulfillmentArgs{...}
+//	CxPageTransitionRouteTriggerFulfillmentArgs{...}
 type CxPageTransitionRouteTriggerFulfillmentInput interface {
 	pulumi.Input
 
@@ -4424,11 +4424,11 @@ func (i CxPageTransitionRouteTriggerFulfillmentArgs) ToCxPageTransitionRouteTrig
 // CxPageTransitionRouteTriggerFulfillmentPtrInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentArgs, CxPageTransitionRouteTriggerFulfillmentPtr and CxPageTransitionRouteTriggerFulfillmentPtrOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentPtrInput` via:
 //
-//          CxPageTransitionRouteTriggerFulfillmentArgs{...}
+//	        CxPageTransitionRouteTriggerFulfillmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageTransitionRouteTriggerFulfillmentPtrInput interface {
 	pulumi.Input
 
@@ -4574,7 +4574,7 @@ type CxPageTransitionRouteTriggerFulfillmentMessage struct {
 // CxPageTransitionRouteTriggerFulfillmentMessageInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageArgs and CxPageTransitionRouteTriggerFulfillmentMessageOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageInput` via:
 //
-//          CxPageTransitionRouteTriggerFulfillmentMessageArgs{...}
+//	CxPageTransitionRouteTriggerFulfillmentMessageArgs{...}
 type CxPageTransitionRouteTriggerFulfillmentMessageInput interface {
 	pulumi.Input
 
@@ -4602,7 +4602,7 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageArgs) ToCxPageTransitionRo
 // CxPageTransitionRouteTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageArray and CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageArrayInput` via:
 //
-//          CxPageTransitionRouteTriggerFulfillmentMessageArray{ CxPageTransitionRouteTriggerFulfillmentMessageArgs{...} }
+//	CxPageTransitionRouteTriggerFulfillmentMessageArray{ CxPageTransitionRouteTriggerFulfillmentMessageArgs{...} }
 type CxPageTransitionRouteTriggerFulfillmentMessageArrayInput interface {
 	pulumi.Input
 
@@ -4676,7 +4676,7 @@ type CxPageTransitionRouteTriggerFulfillmentMessageText struct {
 // CxPageTransitionRouteTriggerFulfillmentMessageTextInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageTextArgs and CxPageTransitionRouteTriggerFulfillmentMessageTextOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageTextInput` via:
 //
-//          CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{...}
+//	CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{...}
 type CxPageTransitionRouteTriggerFulfillmentMessageTextInput interface {
 	pulumi.Input
 
@@ -4715,11 +4715,11 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxPageTransiti
 // CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageTextArgs, CxPageTransitionRouteTriggerFulfillmentMessageTextPtr and CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput` via:
 //
-//          CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{...}
+//	        CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput interface {
 	pulumi.Input
 
@@ -4834,7 +4834,7 @@ type CxVersionNluSetting struct {
 // CxVersionNluSettingInput is an input type that accepts CxVersionNluSettingArgs and CxVersionNluSettingOutput values.
 // You can construct a concrete instance of `CxVersionNluSettingInput` via:
 //
-//          CxVersionNluSettingArgs{...}
+//	CxVersionNluSettingArgs{...}
 type CxVersionNluSettingInput interface {
 	pulumi.Input
 
@@ -4863,7 +4863,7 @@ func (i CxVersionNluSettingArgs) ToCxVersionNluSettingOutputWithContext(ctx cont
 // CxVersionNluSettingArrayInput is an input type that accepts CxVersionNluSettingArray and CxVersionNluSettingArrayOutput values.
 // You can construct a concrete instance of `CxVersionNluSettingArrayInput` via:
 //
-//          CxVersionNluSettingArray{ CxVersionNluSettingArgs{...} }
+//	CxVersionNluSettingArray{ CxVersionNluSettingArgs{...} }
 type CxVersionNluSettingArrayInput interface {
 	pulumi.Input
 
@@ -4949,7 +4949,7 @@ type EntityTypeEntity struct {
 // EntityTypeEntityInput is an input type that accepts EntityTypeEntityArgs and EntityTypeEntityOutput values.
 // You can construct a concrete instance of `EntityTypeEntityInput` via:
 //
-//          EntityTypeEntityArgs{...}
+//	EntityTypeEntityArgs{...}
 type EntityTypeEntityInput interface {
 	pulumi.Input
 
@@ -4987,7 +4987,7 @@ func (i EntityTypeEntityArgs) ToEntityTypeEntityOutputWithContext(ctx context.Co
 // EntityTypeEntityArrayInput is an input type that accepts EntityTypeEntityArray and EntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `EntityTypeEntityArrayInput` via:
 //
-//          EntityTypeEntityArray{ EntityTypeEntityArgs{...} }
+//	EntityTypeEntityArray{ EntityTypeEntityArgs{...} }
 type EntityTypeEntityArrayInput interface {
 	pulumi.Input
 
@@ -5034,9 +5034,9 @@ func (o EntityTypeEntityOutput) Synonyms() pulumi.StringArrayOutput {
 // The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
 // could be scallions.
 // For KIND_MAP entity types:
-// * A reference value to be used in place of synonyms.
-//   For KIND_LIST entity types:
-// * A string that can contain references to other entity types (with or without aliases).
+//   - A reference value to be used in place of synonyms.
+//     For KIND_LIST entity types:
+//   - A string that can contain references to other entity types (with or without aliases).
 func (o EntityTypeEntityOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityTypeEntity) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5071,7 +5071,7 @@ type FulfillmentFeature struct {
 // FulfillmentFeatureInput is an input type that accepts FulfillmentFeatureArgs and FulfillmentFeatureOutput values.
 // You can construct a concrete instance of `FulfillmentFeatureInput` via:
 //
-//          FulfillmentFeatureArgs{...}
+//	FulfillmentFeatureArgs{...}
 type FulfillmentFeatureInput interface {
 	pulumi.Input
 
@@ -5101,7 +5101,7 @@ func (i FulfillmentFeatureArgs) ToFulfillmentFeatureOutputWithContext(ctx contex
 // FulfillmentFeatureArrayInput is an input type that accepts FulfillmentFeatureArray and FulfillmentFeatureArrayOutput values.
 // You can construct a concrete instance of `FulfillmentFeatureArrayInput` via:
 //
-//          FulfillmentFeatureArray{ FulfillmentFeatureArgs{...} }
+//	FulfillmentFeatureArray{ FulfillmentFeatureArgs{...} }
 type FulfillmentFeatureArrayInput interface {
 	pulumi.Input
 
@@ -5138,8 +5138,8 @@ func (o FulfillmentFeatureOutput) ToFulfillmentFeatureOutputWithContext(ctx cont
 }
 
 // The type of the feature that enabled for fulfillment.
-// * SMALLTALK: Fulfillment is enabled for SmallTalk.
-//   Possible values are `SMALLTALK`.
+//   - SMALLTALK: Fulfillment is enabled for SmallTalk.
+//     Possible values are `SMALLTALK`.
 func (o FulfillmentFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v FulfillmentFeature) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5178,7 +5178,7 @@ type FulfillmentGenericWebService struct {
 // FulfillmentGenericWebServiceInput is an input type that accepts FulfillmentGenericWebServiceArgs and FulfillmentGenericWebServiceOutput values.
 // You can construct a concrete instance of `FulfillmentGenericWebServiceInput` via:
 //
-//          FulfillmentGenericWebServiceArgs{...}
+//	FulfillmentGenericWebServiceArgs{...}
 type FulfillmentGenericWebServiceInput interface {
 	pulumi.Input
 
@@ -5220,11 +5220,11 @@ func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServicePtrOutpu
 // FulfillmentGenericWebServicePtrInput is an input type that accepts FulfillmentGenericWebServiceArgs, FulfillmentGenericWebServicePtr and FulfillmentGenericWebServicePtrOutput values.
 // You can construct a concrete instance of `FulfillmentGenericWebServicePtrInput` via:
 //
-//          FulfillmentGenericWebServiceArgs{...}
+//	        FulfillmentGenericWebServiceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FulfillmentGenericWebServicePtrInput interface {
 	pulumi.Input
 
@@ -5368,7 +5368,7 @@ type IntentFollowupIntentInfo struct {
 // IntentFollowupIntentInfoInput is an input type that accepts IntentFollowupIntentInfoArgs and IntentFollowupIntentInfoOutput values.
 // You can construct a concrete instance of `IntentFollowupIntentInfoInput` via:
 //
-//          IntentFollowupIntentInfoArgs{...}
+//	IntentFollowupIntentInfoArgs{...}
 type IntentFollowupIntentInfoInput interface {
 	pulumi.Input
 
@@ -5398,7 +5398,7 @@ func (i IntentFollowupIntentInfoArgs) ToIntentFollowupIntentInfoOutputWithContex
 // IntentFollowupIntentInfoArrayInput is an input type that accepts IntentFollowupIntentInfoArray and IntentFollowupIntentInfoArrayOutput values.
 // You can construct a concrete instance of `IntentFollowupIntentInfoArrayInput` via:
 //
-//          IntentFollowupIntentInfoArray{ IntentFollowupIntentInfoArgs{...} }
+//	IntentFollowupIntentInfoArray{ IntentFollowupIntentInfoArgs{...} }
 type IntentFollowupIntentInfoArrayInput interface {
 	pulumi.Input
 

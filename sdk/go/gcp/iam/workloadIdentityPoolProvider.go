@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
 // * How-to Guides
-//     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+//   - [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 //
 // ## Example Usage
 // ### Iam Workload Identity Pool Provider Aws Basic
@@ -26,31 +26,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
-// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
-// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
-// 			WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
-// 			Aws: &iam.WorkloadIdentityPoolProviderAwsArgs{
-// 				AccountId: pulumi.String("999999999999"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				Aws: &iam.WorkloadIdentityPoolProviderAwsArgs{
+//					AccountId: pulumi.String("999999999999"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Iam Workload Identity Pool Provider Aws Full
 //
@@ -58,40 +61,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
-// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
-// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
-// 			WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
-// 			DisplayName:                    pulumi.String("Name of provider"),
-// 			Description:                    pulumi.String("AWS identity pool provider for automated test"),
-// 			Disabled:                       pulumi.Bool(true),
-// 			AttributeCondition:             pulumi.String("attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\""),
-// 			AttributeMapping: pulumi.StringMap{
-// 				"google.subject":        pulumi.String("assertion.arn"),
-// 				"attribute.aws_account": pulumi.String("assertion.account"),
-// 				"attribute.environment": pulumi.String("assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""),
-// 			},
-// 			Aws: &iam.WorkloadIdentityPoolProviderAwsArgs{
-// 				AccountId: pulumi.String("999999999999"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				DisplayName:                    pulumi.String("Name of provider"),
+//				Description:                    pulumi.String("AWS identity pool provider for automated test"),
+//				Disabled:                       pulumi.Bool(true),
+//				AttributeCondition:             pulumi.String("attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\""),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject":        pulumi.String("assertion.arn"),
+//					"attribute.aws_account": pulumi.String("assertion.account"),
+//					"attribute.environment": pulumi.String("assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""),
+//				},
+//				Aws: &iam.WorkloadIdentityPoolProviderAwsArgs{
+//					AccountId: pulumi.String("999999999999"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Iam Workload Identity Pool Provider Oidc Basic
 //
@@ -99,34 +105,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
-// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
-// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
-// 			WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
-// 			AttributeMapping: pulumi.StringMap{
-// 				"google.subject": pulumi.String("assertion.sub"),
-// 			},
-// 			Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
-// 				IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.sub"),
+//				},
+//				Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
+//					IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Iam Workload Identity Pool Provider Oidc Full
 //
@@ -134,62 +143,71 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
-// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
-// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
-// 			WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
-// 			DisplayName:                    pulumi.String("Name of provider"),
-// 			Description:                    pulumi.String("OIDC identity pool provider for automated test"),
-// 			Disabled:                       pulumi.Bool(true),
-// 			AttributeCondition:             pulumi.String("\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups"),
-// 			AttributeMapping: pulumi.StringMap{
-// 				"google.subject":                  pulumi.String("\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
-// 				"attribute.tid":                   pulumi.String("assertion.tid"),
-// 				"attribute.managed_identity_name": pulumi.String(fmt.Sprintf("      {\n        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n      }[assertion.oid]\n")),
-// 			},
-// 			Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
-// 				AllowedAudiences: pulumi.StringArray{
-// 					pulumi.String("https://example.com/gcp-oidc-federation"),
-// 					pulumi.String("example.com/gcp-oidc-federation"),
-// 				},
-// 				IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				DisplayName:                    pulumi.String("Name of provider"),
+//				Description:                    pulumi.String("OIDC identity pool provider for automated test"),
+//				Disabled:                       pulumi.Bool(true),
+//				AttributeCondition:             pulumi.String("\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject":                  pulumi.String("\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
+//					"attribute.tid":                   pulumi.String("assertion.tid"),
+//					"attribute.managed_identity_name": pulumi.String(fmt.Sprintf("      {\n        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n      }[assertion.oid]\n")),
+//				},
+//				Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
+//					AllowedAudiences: pulumi.StringArray{
+//						pulumi.String("https://example.com/gcp-oidc-federation"),
+//						pulumi.String("example.com/gcp-oidc-federation"),
+//					},
+//					IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// WorkloadIdentityPoolProvider can be imported using any of these accepted formats
+// # WorkloadIdentityPoolProvider can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
+//
+//	$ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+//
+//	$ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+//
+//	$ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+//
 // ```
 type WorkloadIdentityPoolProvider struct {
 	pulumi.CustomResourceState
@@ -867,7 +885,7 @@ func (i *WorkloadIdentityPoolProvider) ToWorkloadIdentityPoolProviderOutputWithC
 // WorkloadIdentityPoolProviderArrayInput is an input type that accepts WorkloadIdentityPoolProviderArray and WorkloadIdentityPoolProviderArrayOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolProviderArrayInput` via:
 //
-//          WorkloadIdentityPoolProviderArray{ WorkloadIdentityPoolProviderArgs{...} }
+//	WorkloadIdentityPoolProviderArray{ WorkloadIdentityPoolProviderArgs{...} }
 type WorkloadIdentityPoolProviderArrayInput interface {
 	pulumi.Input
 
@@ -892,7 +910,7 @@ func (i WorkloadIdentityPoolProviderArray) ToWorkloadIdentityPoolProviderArrayOu
 // WorkloadIdentityPoolProviderMapInput is an input type that accepts WorkloadIdentityPoolProviderMap and WorkloadIdentityPoolProviderMapOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolProviderMapInput` via:
 //
-//          WorkloadIdentityPoolProviderMap{ "key": WorkloadIdentityPoolProviderArgs{...} }
+//	WorkloadIdentityPoolProviderMap{ "key": WorkloadIdentityPoolProviderArgs{...} }
 type WorkloadIdentityPoolProviderMapInput interface {
 	pulumi.Input
 
@@ -933,25 +951,29 @@ func (o WorkloadIdentityPoolProviderOutput) ToWorkloadIdentityPoolProviderOutput
 // provider should not be accepted.
 // The expression must output a boolean representing whether to allow the federation.
 // The following keywords may be referenced in the expressions:
-// * `assertion`: JSON representing the authentication credential issued by the provider.
-// * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-// * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-//   The maximum length of the attribute condition expression is 4096 characters. If
-//   unspecified, all valid authentication credential are accepted.
-//   The following example shows how to only allow credentials with a mapped `google.groups`
-//   value of `admins`:
+//   - `assertion`: JSON representing the authentication credential issued by the provider.
+//   - `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
+//   - `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
+//     The maximum length of the attribute condition expression is 4096 characters. If
+//     unspecified, all valid authentication credential are accepted.
+//     The following example shows how to only allow credentials with a mapped `google.groups`
+//     value of `admins`:
+//
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 func (o WorkloadIdentityPoolProviderOutput) AttributeCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringPtrOutput { return v.AttributeCondition }).(pulumi.StringPtrOutput)
@@ -961,64 +983,72 @@ func (o WorkloadIdentityPoolProviderOutput) AttributeCondition() pulumi.StringPt
 // to Google Cloud attributes, such as `subject` and `segment`.
 // Each key must be a string specifying the Google Cloud IAM attribute to map to.
 // The following keys are supported:
-// * `google.subject`: The principal IAM is authenticating. You can reference this value
-//   in IAM bindings. This is also the subject that appears in Cloud Logging logs.
-//   Cannot exceed 127 characters.
-// * `google.groups`: Groups the external identity belongs to. You can grant groups
-//   access to resources using an IAM `principalSet` binding; access applies to all
-//   members of the group.
-//   You can also provide custom attributes by specifying `attribute.{custom_attribute}`,
-//   where `{custom_attribute}` is the name of the custom attribute to be mapped. You can
-//   define a maximum of 50 custom attributes. The maximum length of a mapped attribute key
-//   is 100 characters, and the key may only contain the characters [a-z0-9_].
-//   You can reference these attributes in IAM policies to define fine-grained access for a
-//   workload to Google Cloud resources. For example:
-// * `google.subject`:
-//   `principal://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/subject/{value}`
-// * `google.groups`:
-//   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
-// * `attribute.{custom_attribute}`:
-//   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-//   Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
-//   function that maps an identity provider credential to the normalized attribute specified
-//   by the corresponding map key.
-//   You can use the `assertion` keyword in the expression to access a JSON representation of
-//   the authentication credential issued by the provider.
-//   The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
-//   the total size of all mapped attributes must not exceed 8KB.
-//   For AWS providers, the following rules apply:
-// - If no attribute mapping is defined, the following default mapping applies:
+//   - `google.subject`: The principal IAM is authenticating. You can reference this value
+//     in IAM bindings. This is also the subject that appears in Cloud Logging logs.
+//     Cannot exceed 127 characters.
+//   - `google.groups`: Groups the external identity belongs to. You can grant groups
+//     access to resources using an IAM `principalSet` binding; access applies to all
+//     members of the group.
+//     You can also provide custom attributes by specifying `attribute.{custom_attribute}`,
+//     where `{custom_attribute}` is the name of the custom attribute to be mapped. You can
+//     define a maximum of 50 custom attributes. The maximum length of a mapped attribute key
+//     is 100 characters, and the key may only contain the characters [a-z0-9_].
+//     You can reference these attributes in IAM policies to define fine-grained access for a
+//     workload to Google Cloud resources. For example:
+//   - `google.subject`:
+//     `principal://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/subject/{value}`
+//   - `google.groups`:
+//     `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
+//   - `attribute.{custom_attribute}`:
+//     `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
+//     Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+//     function that maps an identity provider credential to the normalized attribute specified
+//     by the corresponding map key.
+//     You can use the `assertion` keyword in the expression to access a JSON representation of
+//     the authentication credential issued by the provider.
+//     The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
+//     the total size of all mapped attributes must not exceed 8KB.
+//     For AWS providers, the following rules apply:
+//   - If no attribute mapping is defined, the following default mapping applies:
+//
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
-// - If any custom attribute mappings are defined, they must include a mapping to the
-//   `google.subject` attribute.
-//   For OIDC providers, the following rules apply:
-// - Custom attribute mappings must be defined, and must include a mapping to the
-//   `google.subject` attribute. For example, the following maps the `sub` claim of the
-//   incoming credential to the `subject` attribute on a Google token.
+//   - If any custom attribute mappings are defined, they must include a mapping to the
+//     `google.subject` attribute.
+//     For OIDC providers, the following rules apply:
+//   - Custom attribute mappings must be defined, and must include a mapping to the
+//     `google.subject` attribute. For example, the following maps the `sub` claim of the
+//     incoming credential to the `subject` attribute on a Google token.
+//
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 func (o WorkloadIdentityPoolProviderOutput) AttributeMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringMapOutput { return v.AttributeMapping }).(pulumi.StringMapOutput)

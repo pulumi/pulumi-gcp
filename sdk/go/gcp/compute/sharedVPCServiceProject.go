@@ -28,22 +28,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewSharedVPCServiceProject(ctx, "service1", &compute.SharedVPCServiceProjectArgs{
-// 			HostProject:    pulumi.String("host-project-id"),
-// 			ServiceProject: pulumi.String("service-project-id-1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewSharedVPCServiceProject(ctx, "service1", &compute.SharedVPCServiceProjectArgs{
+//				HostProject:    pulumi.String("host-project-id"),
+//				ServiceProject: pulumi.String("service-project-id-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // For a complete Shared VPC example with both host and service projects, see
@@ -54,7 +57,9 @@ import (
 // Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject service1 host-project-id/service-project-id-1
+//
+//	$ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject service1 host-project-id/service-project-id-1
+//
 // ```
 type SharedVPCServiceProject struct {
 	pulumi.CustomResourceState
@@ -158,7 +163,7 @@ func (i *SharedVPCServiceProject) ToSharedVPCServiceProjectOutputWithContext(ctx
 // SharedVPCServiceProjectArrayInput is an input type that accepts SharedVPCServiceProjectArray and SharedVPCServiceProjectArrayOutput values.
 // You can construct a concrete instance of `SharedVPCServiceProjectArrayInput` via:
 //
-//          SharedVPCServiceProjectArray{ SharedVPCServiceProjectArgs{...} }
+//	SharedVPCServiceProjectArray{ SharedVPCServiceProjectArgs{...} }
 type SharedVPCServiceProjectArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +188,7 @@ func (i SharedVPCServiceProjectArray) ToSharedVPCServiceProjectArrayOutputWithCo
 // SharedVPCServiceProjectMapInput is an input type that accepts SharedVPCServiceProjectMap and SharedVPCServiceProjectMapOutput values.
 // You can construct a concrete instance of `SharedVPCServiceProjectMapInput` via:
 //
-//          SharedVPCServiceProjectMap{ "key": SharedVPCServiceProjectArgs{...} }
+//	SharedVPCServiceProjectMap{ "key": SharedVPCServiceProjectArgs{...} }
 type SharedVPCServiceProjectMapInput interface {
 	pulumi.Input
 

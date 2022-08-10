@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest/v1/users.sshPublicKeys)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
+//   - [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 //
 // ## Example Usage
 // ### Os Login Ssh Key Basic
@@ -26,49 +26,56 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/oslogin"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/oslogin"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		me, err := organizations.GetClientOpenIdUserInfo(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = oslogin.NewSshPublicKey(ctx, "cache", &oslogin.SshPublicKeyArgs{
-// 			User: pulumi.String(me.Email),
-// 			Key:  readFileOrPanic("path/to/id_rsa.pub"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			me, err := organizations.GetClientOpenIdUserInfo(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oslogin.NewSshPublicKey(ctx, "cache", &oslogin.SshPublicKeyArgs{
+//				User: pulumi.String(me.Email),
+//				Key:  readFileOrPanic("path/to/id_rsa.pub"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// SSHPublicKey can be imported using any of these accepted formats
+// # SSHPublicKey can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}
+//
+//	$ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default {{user}}/{{fingerprint}}
+//
+//	$ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default {{user}}/{{fingerprint}}
+//
 // ```
 type SshPublicKey struct {
 	pulumi.CustomResourceState
@@ -198,7 +205,7 @@ func (i *SshPublicKey) ToSshPublicKeyOutputWithContext(ctx context.Context) SshP
 // SshPublicKeyArrayInput is an input type that accepts SshPublicKeyArray and SshPublicKeyArrayOutput values.
 // You can construct a concrete instance of `SshPublicKeyArrayInput` via:
 //
-//          SshPublicKeyArray{ SshPublicKeyArgs{...} }
+//	SshPublicKeyArray{ SshPublicKeyArgs{...} }
 type SshPublicKeyArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +230,7 @@ func (i SshPublicKeyArray) ToSshPublicKeyArrayOutputWithContext(ctx context.Cont
 // SshPublicKeyMapInput is an input type that accepts SshPublicKeyMap and SshPublicKeyMapOutput values.
 // You can construct a concrete instance of `SshPublicKeyMapInput` via:
 //
-//          SshPublicKeyMap{ "key": SshPublicKeyArgs{...} }
+//	SshPublicKeyMap{ "key": SshPublicKeyArgs{...} }
 type SshPublicKeyMapInput interface {
 	pulumi.Input
 

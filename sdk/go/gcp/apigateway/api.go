@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+//   - [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 //
 // ## Example Usage
 // ### Apigateway Api Basic
@@ -26,37 +26,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigateway.NewApi(ctx, "api", &apigateway.ApiArgs{
-// 			ApiId: pulumi.String("api"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigateway.NewApi(ctx, "api", &apigateway.ApiArgs{
+//				ApiId: pulumi.String("api"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Api can be imported using any of these accepted formats
+// # Api can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
+//
+//	$ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
+//
+//	$ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:apigateway/api:Api default {{api_id}}
+//
+//	$ pulumi import gcp:apigateway/api:Api default {{api_id}}
+//
 // ```
 type Api struct {
 	pulumi.CustomResourceState
@@ -209,7 +218,7 @@ func (i *Api) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 // ApiArrayInput is an input type that accepts ApiArray and ApiArrayOutput values.
 // You can construct a concrete instance of `ApiArrayInput` via:
 //
-//          ApiArray{ ApiArgs{...} }
+//	ApiArray{ ApiArgs{...} }
 type ApiArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +243,7 @@ func (i ApiArray) ToApiArrayOutputWithContext(ctx context.Context) ApiArrayOutpu
 // ApiMapInput is an input type that accepts ApiMap and ApiMapOutput values.
 // You can construct a concrete instance of `ApiMapInput` via:
 //
-//          ApiMap{ "key": ApiArgs{...} }
+//	ApiMap{ "key": ApiArgs{...} }
 type ApiMapInput interface {
 	pulumi.Input
 

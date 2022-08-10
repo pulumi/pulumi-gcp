@@ -19,53 +19,56 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			AuditConfigs: []organizations.GetIAMPolicyAuditConfig{
-// 				organizations.GetIAMPolicyAuditConfig{
-// 					AuditLogConfigs: []organizations.GetIAMPolicyAuditConfigAuditLogConfig{
-// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
-// 							ExemptedMembers: []string{
-// 								"user:you@domain.com",
-// 							},
-// 							LogType: "DATA_READ",
-// 						},
-// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
-// 							LogType: "DATA_WRITE",
-// 						},
-// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
-// 							LogType: "ADMIN_READ",
-// 						},
-// 					},
-// 					Service: "cloudkms.googleapis.com",
-// 				},
-// 			},
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Members: []string{
-// 						"serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
-// 					},
-// 					Role: "roles/compute.instanceAdmin",
-// 				},
-// 				organizations.GetIAMPolicyBinding{
-// 					Members: []string{
-// 						"user:alice@gmail.com",
-// 					},
-// 					Role: "roles/storage.objectViewer",
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				AuditConfigs: []organizations.GetIAMPolicyAuditConfig{
+//					organizations.GetIAMPolicyAuditConfig{
+//						AuditLogConfigs: []organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+//							organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+//								ExemptedMembers: []string{
+//									"user:you@domain.com",
+//								},
+//								LogType: "DATA_READ",
+//							},
+//							organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+//								LogType: "DATA_WRITE",
+//							},
+//							organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+//								LogType: "ADMIN_READ",
+//							},
+//						},
+//						Service: "cloudkms.googleapis.com",
+//					},
+//				},
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Members: []string{
+//							"serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
+//						},
+//						Role: "roles/compute.instanceAdmin",
+//					},
+//					organizations.GetIAMPolicyBinding{
+//						Members: []string{
+//							"user:alice@gmail.com",
+//						},
+//						Role: "roles/storage.objectViewer",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // This data source is used to define IAM policies to apply to other resources.

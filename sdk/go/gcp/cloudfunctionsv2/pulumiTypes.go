@@ -38,7 +38,7 @@ type FunctionBuildConfig struct {
 // FunctionBuildConfigInput is an input type that accepts FunctionBuildConfigArgs and FunctionBuildConfigOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigInput` via:
 //
-//          FunctionBuildConfigArgs{...}
+//	FunctionBuildConfigArgs{...}
 type FunctionBuildConfigInput interface {
 	pulumi.Input
 
@@ -94,11 +94,11 @@ func (i FunctionBuildConfigArgs) ToFunctionBuildConfigPtrOutputWithContext(ctx c
 // FunctionBuildConfigPtrInput is an input type that accepts FunctionBuildConfigArgs, FunctionBuildConfigPtr and FunctionBuildConfigPtrOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigPtrInput` via:
 //
-//          FunctionBuildConfigArgs{...}
+//	        FunctionBuildConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionBuildConfigPtrInput interface {
 	pulumi.Input
 
@@ -305,7 +305,7 @@ type FunctionBuildConfigSource struct {
 // FunctionBuildConfigSourceInput is an input type that accepts FunctionBuildConfigSourceArgs and FunctionBuildConfigSourceOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceInput` via:
 //
-//          FunctionBuildConfigSourceArgs{...}
+//	FunctionBuildConfigSourceArgs{...}
 type FunctionBuildConfigSourceInput interface {
 	pulumi.Input
 
@@ -345,11 +345,11 @@ func (i FunctionBuildConfigSourceArgs) ToFunctionBuildConfigSourcePtrOutputWithC
 // FunctionBuildConfigSourcePtrInput is an input type that accepts FunctionBuildConfigSourceArgs, FunctionBuildConfigSourcePtr and FunctionBuildConfigSourcePtrOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourcePtrInput` via:
 //
-//          FunctionBuildConfigSourceArgs{...}
+//	        FunctionBuildConfigSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionBuildConfigSourcePtrInput interface {
 	pulumi.Input
 
@@ -479,7 +479,7 @@ type FunctionBuildConfigSourceRepoSource struct {
 // FunctionBuildConfigSourceRepoSourceInput is an input type that accepts FunctionBuildConfigSourceRepoSourceArgs and FunctionBuildConfigSourceRepoSourceOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceRepoSourceInput` via:
 //
-//          FunctionBuildConfigSourceRepoSourceArgs{...}
+//	FunctionBuildConfigSourceRepoSourceArgs{...}
 type FunctionBuildConfigSourceRepoSourceInput interface {
 	pulumi.Input
 
@@ -529,11 +529,11 @@ func (i FunctionBuildConfigSourceRepoSourceArgs) ToFunctionBuildConfigSourceRepo
 // FunctionBuildConfigSourceRepoSourcePtrInput is an input type that accepts FunctionBuildConfigSourceRepoSourceArgs, FunctionBuildConfigSourceRepoSourcePtr and FunctionBuildConfigSourceRepoSourcePtrOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceRepoSourcePtrInput` via:
 //
-//          FunctionBuildConfigSourceRepoSourceArgs{...}
+//	        FunctionBuildConfigSourceRepoSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionBuildConfigSourceRepoSourcePtrInput interface {
 	pulumi.Input
 
@@ -729,7 +729,7 @@ type FunctionBuildConfigSourceStorageSource struct {
 // FunctionBuildConfigSourceStorageSourceInput is an input type that accepts FunctionBuildConfigSourceStorageSourceArgs and FunctionBuildConfigSourceStorageSourceOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceStorageSourceInput` via:
 //
-//          FunctionBuildConfigSourceStorageSourceArgs{...}
+//	FunctionBuildConfigSourceStorageSourceArgs{...}
 type FunctionBuildConfigSourceStorageSourceInput interface {
 	pulumi.Input
 
@@ -770,11 +770,11 @@ func (i FunctionBuildConfigSourceStorageSourceArgs) ToFunctionBuildConfigSourceS
 // FunctionBuildConfigSourceStorageSourcePtrInput is an input type that accepts FunctionBuildConfigSourceStorageSourceArgs, FunctionBuildConfigSourceStorageSourcePtr and FunctionBuildConfigSourceStorageSourcePtrOutput values.
 // You can construct a concrete instance of `FunctionBuildConfigSourceStorageSourcePtrInput` via:
 //
-//          FunctionBuildConfigSourceStorageSourceArgs{...}
+//	        FunctionBuildConfigSourceStorageSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionBuildConfigSourceStorageSourcePtrInput interface {
 	pulumi.Input
 
@@ -920,7 +920,7 @@ type FunctionEventTrigger struct {
 // FunctionEventTriggerInput is an input type that accepts FunctionEventTriggerArgs and FunctionEventTriggerOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerInput` via:
 //
-//          FunctionEventTriggerArgs{...}
+//	FunctionEventTriggerArgs{...}
 type FunctionEventTriggerInput interface {
 	pulumi.Input
 
@@ -973,11 +973,11 @@ func (i FunctionEventTriggerArgs) ToFunctionEventTriggerPtrOutputWithContext(ctx
 // FunctionEventTriggerPtrInput is an input type that accepts FunctionEventTriggerArgs, FunctionEventTriggerPtr and FunctionEventTriggerPtrOutput values.
 // You can construct a concrete instance of `FunctionEventTriggerPtrInput` via:
 //
-//          FunctionEventTriggerArgs{...}
+//	        FunctionEventTriggerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionEventTriggerPtrInput interface {
 	pulumi.Input
 
@@ -1164,7 +1164,7 @@ type FunctionIamBindingCondition struct {
 // FunctionIamBindingConditionInput is an input type that accepts FunctionIamBindingConditionArgs and FunctionIamBindingConditionOutput values.
 // You can construct a concrete instance of `FunctionIamBindingConditionInput` via:
 //
-//          FunctionIamBindingConditionArgs{...}
+//	FunctionIamBindingConditionArgs{...}
 type FunctionIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -1201,11 +1201,11 @@ func (i FunctionIamBindingConditionArgs) ToFunctionIamBindingConditionPtrOutputW
 // FunctionIamBindingConditionPtrInput is an input type that accepts FunctionIamBindingConditionArgs, FunctionIamBindingConditionPtr and FunctionIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `FunctionIamBindingConditionPtrInput` via:
 //
-//          FunctionIamBindingConditionArgs{...}
+//	        FunctionIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1327,7 +1327,7 @@ type FunctionIamMemberCondition struct {
 // FunctionIamMemberConditionInput is an input type that accepts FunctionIamMemberConditionArgs and FunctionIamMemberConditionOutput values.
 // You can construct a concrete instance of `FunctionIamMemberConditionInput` via:
 //
-//          FunctionIamMemberConditionArgs{...}
+//	FunctionIamMemberConditionArgs{...}
 type FunctionIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1364,11 +1364,11 @@ func (i FunctionIamMemberConditionArgs) ToFunctionIamMemberConditionPtrOutputWit
 // FunctionIamMemberConditionPtrInput is an input type that accepts FunctionIamMemberConditionArgs, FunctionIamMemberConditionPtr and FunctionIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `FunctionIamMemberConditionPtrInput` via:
 //
-//          FunctionIamMemberConditionArgs{...}
+//	        FunctionIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1524,7 +1524,7 @@ type FunctionServiceConfig struct {
 // FunctionServiceConfigInput is an input type that accepts FunctionServiceConfigArgs and FunctionServiceConfigOutput values.
 // You can construct a concrete instance of `FunctionServiceConfigInput` via:
 //
-//          FunctionServiceConfigArgs{...}
+//	FunctionServiceConfigArgs{...}
 type FunctionServiceConfigInput interface {
 	pulumi.Input
 
@@ -1595,11 +1595,11 @@ func (i FunctionServiceConfigArgs) ToFunctionServiceConfigPtrOutputWithContext(c
 // FunctionServiceConfigPtrInput is an input type that accepts FunctionServiceConfigArgs, FunctionServiceConfigPtr and FunctionServiceConfigPtrOutput values.
 // You can construct a concrete instance of `FunctionServiceConfigPtrInput` via:
 //
-//          FunctionServiceConfigArgs{...}
+//	        FunctionServiceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FunctionServiceConfigPtrInput interface {
 	pulumi.Input
 

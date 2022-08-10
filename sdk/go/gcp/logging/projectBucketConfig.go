@@ -23,66 +23,74 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("your-project-id"),
-// 			OrgId:     pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
-// 			Project:       _default.ID(),
-// 			Location:      pulumi.String("global"),
-// 			RetentionDays: pulumi.Int(30),
-// 			BucketId:      pulumi.String("_Default"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("your-project-id"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
+//				Project:       _default.ID(),
+//				Location:      pulumi.String("global"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("_Default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Create logging bucket with customId
+// # Create logging bucket with customId
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
-// 			BucketId:      pulumi.String("custom-bucket"),
-// 			Location:      pulumi.String("global"),
-// 			Project:       pulumi.String("project_id"),
-// 			RetentionDays: pulumi.Int(30),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
+//				BucketId:      pulumi.String("custom-bucket"),
+//				Location:      pulumi.String("global"),
+//				Project:       pulumi.String("project_id"),
+//				RetentionDays: pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// This resource can be imported using the following format
+// # This resource can be imported using the following format
 //
 // ```sh
-//  $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
+//
+//	$ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
+//
 // ```
 type ProjectBucketConfig struct {
 	pulumi.CustomResourceState
@@ -231,7 +239,7 @@ func (i *ProjectBucketConfig) ToProjectBucketConfigOutputWithContext(ctx context
 // ProjectBucketConfigArrayInput is an input type that accepts ProjectBucketConfigArray and ProjectBucketConfigArrayOutput values.
 // You can construct a concrete instance of `ProjectBucketConfigArrayInput` via:
 //
-//          ProjectBucketConfigArray{ ProjectBucketConfigArgs{...} }
+//	ProjectBucketConfigArray{ ProjectBucketConfigArgs{...} }
 type ProjectBucketConfigArrayInput interface {
 	pulumi.Input
 
@@ -256,7 +264,7 @@ func (i ProjectBucketConfigArray) ToProjectBucketConfigArrayOutputWithContext(ct
 // ProjectBucketConfigMapInput is an input type that accepts ProjectBucketConfigMap and ProjectBucketConfigMapOutput values.
 // You can construct a concrete instance of `ProjectBucketConfigMapInput` via:
 //
-//          ProjectBucketConfigMap{ "key": ProjectBucketConfigArgs{...} }
+//	ProjectBucketConfigMap{ "key": ProjectBucketConfigArgs{...} }
 type ProjectBucketConfigMapInput interface {
 	pulumi.Input
 

@@ -16,7 +16,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
 // * How-to Guides
-//     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+//   - [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
 //
 // > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
 // by using the `projects.ServiceIdentity` resource.
@@ -28,24 +28,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
-// 			Labels: pulumi.StringMap{
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 			MessageRetentionDuration: pulumi.String("86600s"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				MessageRetentionDuration: pulumi.String("86600s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Pubsub Topic Cmek
 //
@@ -53,34 +56,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
-// 			Location: pulumi.String("global"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
-// 			KeyRing: keyRing.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
-// 			KmsKeyName: cryptoKey.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//				KeyRing: keyRing.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				KmsKeyName: cryptoKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Pubsub Topic Geo Restricted
 //
@@ -88,25 +94,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
-// 			MessageStoragePolicy: &pubsub.TopicMessageStoragePolicyArgs{
-// 				AllowedPersistenceRegions: pulumi.StringArray{
-// 					pulumi.String("europe-west3"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				MessageStoragePolicy: &pubsub.TopicMessageStoragePolicyArgs{
+//					AllowedPersistenceRegions: pulumi.StringArray{
+//						pulumi.String("europe-west3"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Pubsub Topic Schema Settings
 //
@@ -114,49 +123,58 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
-// 			Type:       pulumi.String("AVRO"),
-// 			Definition: pulumi.String("{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
-// 			SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
-// 				Schema:   pulumi.String("projects/my-project-name/schemas/example"),
-// 				Encoding: pulumi.String("JSON"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			exampleSchema,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
+//				Type:       pulumi.String("AVRO"),
+//				Definition: pulumi.String("{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
+//				SchemaSettings: &pubsub.TopicSchemaSettingsArgs{
+//					Schema:   pulumi.String("projects/my-project-name/schemas/example"),
+//					Encoding: pulumi.String("JSON"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exampleSchema,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Topic can be imported using any of these accepted formats
+// # Topic can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
+//
+//	$ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/topic:Topic default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:pubsub/topic:Topic default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/topic:Topic default {{name}}
+//
+//	$ pulumi import gcp:pubsub/topic:Topic default {{name}}
+//
 // ```
 type Topic struct {
 	pulumi.CustomResourceState
@@ -379,7 +397,7 @@ func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 // TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
 // You can construct a concrete instance of `TopicArrayInput` via:
 //
-//          TopicArray{ TopicArgs{...} }
+//	TopicArray{ TopicArgs{...} }
 type TopicArrayInput interface {
 	pulumi.Input
 
@@ -404,7 +422,7 @@ func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArra
 // TopicMapInput is an input type that accepts TopicMap and TopicMapOutput values.
 // You can construct a concrete instance of `TopicMapInput` via:
 //
-//          TopicMap{ "key": TopicArgs{...} }
+//	TopicMap{ "key": TopicArgs{...} }
 type TopicMapInput interface {
 	pulumi.Input
 

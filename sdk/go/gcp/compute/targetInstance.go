@@ -22,7 +22,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetInstances)
 // * How-to Guides
-//     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
+//   - [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 //
 // ## Example Usage
 // ### Target Instance Basic
@@ -31,45 +31,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-9"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("e2-medium"),
-// 			Zone:        pulumi.String("us-central1-a"),
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String(vmimage.SelfLink),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
-// 			Instance: target_vm.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-9"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				Zone:        pulumi.String("us-central1-a"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String(vmimage.SelfLink),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
+//				Instance: target_vm.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Target Instance Custom Network
 //
@@ -77,72 +80,83 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		target_vmNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-// 			Name: "default",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-10"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "target-vmInstance", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("e2-medium"),
-// 			Zone:        pulumi.String("us-central1-a"),
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String(vmimage.SelfLink),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewTargetInstance(ctx, "customNetwork", &compute.TargetInstanceArgs{
-// 			Instance: target_vmInstance.ID(),
-// 			Network:  pulumi.String(target_vmNetwork.SelfLink),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			target_vmNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "default",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vmimage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-10"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "target-vmInstance", &compute.InstanceArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				Zone:        pulumi.String("us-central1-a"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String(vmimage.SelfLink),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewTargetInstance(ctx, "customNetwork", &compute.TargetInstanceArgs{
+//				Instance: target_vmInstance.ID(),
+//				Network:  pulumi.String(target_vmNetwork.SelfLink),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// TargetInstance can be imported using any of these accepted formats
+// # TargetInstance can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
+//
+//	$ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
+//
+//	$ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
+//
+//	$ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
+//
+//	$ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
+//
 // ```
 type TargetInstance struct {
 	pulumi.CustomResourceState
@@ -380,7 +394,7 @@ func (i *TargetInstance) ToTargetInstanceOutputWithContext(ctx context.Context) 
 // TargetInstanceArrayInput is an input type that accepts TargetInstanceArray and TargetInstanceArrayOutput values.
 // You can construct a concrete instance of `TargetInstanceArrayInput` via:
 //
-//          TargetInstanceArray{ TargetInstanceArgs{...} }
+//	TargetInstanceArray{ TargetInstanceArgs{...} }
 type TargetInstanceArrayInput interface {
 	pulumi.Input
 
@@ -405,7 +419,7 @@ func (i TargetInstanceArray) ToTargetInstanceArrayOutputWithContext(ctx context.
 // TargetInstanceMapInput is an input type that accepts TargetInstanceMap and TargetInstanceMapOutput values.
 // You can construct a concrete instance of `TargetInstanceMapInput` via:
 //
-//          TargetInstanceMap{ "key": TargetInstanceArgs{...} }
+//	TargetInstanceMap{ "key": TargetInstanceArgs{...} }
 type TargetInstanceMapInput interface {
 	pulumi.Input
 

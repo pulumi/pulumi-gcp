@@ -33,31 +33,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
-// 			Location: pulumi.String("EU"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewDefaultObjectACL(ctx, "image-store-default-acl", &storage.DefaultObjectACLArgs{
-// 			Bucket: image_store.Name,
-// 			RoleEntities: pulumi.StringArray{
-// 				pulumi.String("OWNER:user-my.email@gmail.com"),
-// 				pulumi.String("READER:group-mygroup"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "image-store", &storage.BucketArgs{
+//				Location: pulumi.String("EU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewDefaultObjectACL(ctx, "image-store-default-acl", &storage.DefaultObjectACLArgs{
+//				Bucket: image_store.Name,
+//				RoleEntities: pulumi.StringArray{
+//					pulumi.String("OWNER:user-my.email@gmail.com"),
+//					pulumi.String("READER:group-mygroup"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -172,7 +175,7 @@ func (i *DefaultObjectACL) ToDefaultObjectACLOutputWithContext(ctx context.Conte
 // DefaultObjectACLArrayInput is an input type that accepts DefaultObjectACLArray and DefaultObjectACLArrayOutput values.
 // You can construct a concrete instance of `DefaultObjectACLArrayInput` via:
 //
-//          DefaultObjectACLArray{ DefaultObjectACLArgs{...} }
+//	DefaultObjectACLArray{ DefaultObjectACLArgs{...} }
 type DefaultObjectACLArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +200,7 @@ func (i DefaultObjectACLArray) ToDefaultObjectACLArrayOutputWithContext(ctx cont
 // DefaultObjectACLMapInput is an input type that accepts DefaultObjectACLMap and DefaultObjectACLMapOutput values.
 // You can construct a concrete instance of `DefaultObjectACLMapInput` via:
 //
-//          DefaultObjectACLMap{ "key": DefaultObjectACLArgs{...} }
+//	DefaultObjectACLMap{ "key": DefaultObjectACLArgs{...} }
 type DefaultObjectACLMapInput interface {
 	pulumi.Input
 

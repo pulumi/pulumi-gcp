@@ -16,22 +16,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} * {{project}}/{{location}}/{{cloud_function}} * {{location}}/{{cloud_function}} * {{cloud_function}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Functions (2nd gen) function IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy editor "projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} roles/viewer user:jane@example.com"
+//
+//	$ pulumi import gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy editor "projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} roles/viewer user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy editor "projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} roles/viewer"
+//
+//	$ pulumi import gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy editor "projects/{{project}}/locations/{{location}}/functions/{{cloud_function}} roles/viewer"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy editor projects/{{project}}/locations/{{location}}/functions/{{cloud_function}}
+//
+//	$ pulumi import gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy editor projects/{{project}}/locations/{{location}}/functions/{{cloud_function}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type FunctionIamPolicy struct {
@@ -172,7 +178,7 @@ func (i *FunctionIamPolicy) ToFunctionIamPolicyOutputWithContext(ctx context.Con
 // FunctionIamPolicyArrayInput is an input type that accepts FunctionIamPolicyArray and FunctionIamPolicyArrayOutput values.
 // You can construct a concrete instance of `FunctionIamPolicyArrayInput` via:
 //
-//          FunctionIamPolicyArray{ FunctionIamPolicyArgs{...} }
+//	FunctionIamPolicyArray{ FunctionIamPolicyArgs{...} }
 type FunctionIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +203,7 @@ func (i FunctionIamPolicyArray) ToFunctionIamPolicyArrayOutputWithContext(ctx co
 // FunctionIamPolicyMapInput is an input type that accepts FunctionIamPolicyMap and FunctionIamPolicyMapOutput values.
 // You can construct a concrete instance of `FunctionIamPolicyMapInput` via:
 //
-//          FunctionIamPolicyMap{ "key": FunctionIamPolicyArgs{...} }
+//	FunctionIamPolicyMap{ "key": FunctionIamPolicyArgs{...} }
 type FunctionIamPolicyMapInput interface {
 	pulumi.Input
 

@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
 // ## Example Usage
 // ### Tag Value Basic
@@ -26,47 +26,54 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
-// 			Description: pulumi.String("For keyname resources."),
-// 			Parent:      pulumi.String("organizations/123456789"),
-// 			ShortName:   pulumi.String("keyname"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-// 			Description: pulumi.String("For valuename resources."),
-// 			Parent: key.Name.ApplyT(func(name string) (string, error) {
-// 				return fmt.Sprintf("tagKeys/%v", name), nil
-// 			}).(pulumi.StringOutput),
-// 			ShortName: pulumi.String("valuename"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
+//				Description: pulumi.String("For keyname resources."),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				ShortName:   pulumi.String("keyname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
+//				Description: pulumi.String("For valuename resources."),
+//				Parent: key.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("tagKeys/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ShortName: pulumi.String("valuename"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// TagValue can be imported using any of these accepted formats
+// # TagValue can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:tags/tagValue:TagValue default tagValues/{{name}}
+//
+//	$ pulumi import gcp:tags/tagValue:TagValue default tagValues/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:tags/tagValue:TagValue default {{name}}
+//
+//	$ pulumi import gcp:tags/tagValue:TagValue default {{name}}
+//
 // ```
 type TagValue struct {
 	pulumi.CustomResourceState
@@ -215,7 +222,7 @@ func (i *TagValue) ToTagValueOutputWithContext(ctx context.Context) TagValueOutp
 // TagValueArrayInput is an input type that accepts TagValueArray and TagValueArrayOutput values.
 // You can construct a concrete instance of `TagValueArrayInput` via:
 //
-//          TagValueArray{ TagValueArgs{...} }
+//	TagValueArray{ TagValueArgs{...} }
 type TagValueArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +247,7 @@ func (i TagValueArray) ToTagValueArrayOutputWithContext(ctx context.Context) Tag
 // TagValueMapInput is an input type that accepts TagValueMap and TagValueMapOutput values.
 // You can construct a concrete instance of `TagValueMapInput` via:
 //
-//          TagValueMap{ "key": TagValueArgs{...} }
+//	TagValueMap{ "key": TagValueArgs{...} }
 type TagValueMapInput interface {
 	pulumi.Input
 

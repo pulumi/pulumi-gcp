@@ -27,37 +27,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/bigtable.user",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigtable.NewInstanceIamPolicy(ctx, "editor", &bigtable.InstanceIamPolicyArgs{
-// 			Project:    pulumi.String("your-project"),
-// 			Instance:   pulumi.String("your-bigtable-instance"),
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/bigtable.user",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigtable.NewInstanceIamPolicy(ctx, "editor", &bigtable.InstanceIamPolicyArgs{
+//				Project:    pulumi.String("your-project"),
+//				Instance:   pulumi.String("your-bigtable-instance"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_bigtable\_instance\_iam\_binding
@@ -66,25 +69,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigtable.NewInstanceIamBinding(ctx, "editor", &bigtable.InstanceIamBindingArgs{
-// 			Instance: pulumi.String("your-bigtable-instance"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 			Role: pulumi.String("roles/bigtable.user"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigtable.NewInstanceIamBinding(ctx, "editor", &bigtable.InstanceIamBindingArgs{
+//				Instance: pulumi.String("your-bigtable-instance"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Role: pulumi.String("roles/bigtable.user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_bigtable\_instance\_iam\_member
@@ -93,23 +99,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigtable.NewInstanceIamMember(ctx, "editor", &bigtable.InstanceIamMemberArgs{
-// 			Instance: pulumi.String("your-bigtable-instance"),
-// 			Member:   pulumi.String("user:jane@example.com"),
-// 			Role:     pulumi.String("roles/bigtable.user"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigtable.NewInstanceIamMember(ctx, "editor", &bigtable.InstanceIamMemberArgs{
+//				Instance: pulumi.String("your-bigtable-instance"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//				Role:     pulumi.String("roles/bigtable.user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -117,18 +126,24 @@ import (
 // Instance IAM resources can be imported using the project, instance name, role and/or member.
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance}"
+//
+//	$ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance}"
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance} roles/editor"
+//
+//	$ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance} roles/editor"
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance} roles/editor user:jane@example.com"
+//
+//	$ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance} roles/editor user:jane@example.com"
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type InstanceIamMember struct {
@@ -277,7 +292,7 @@ func (i *InstanceIamMember) ToInstanceIamMemberOutputWithContext(ctx context.Con
 // InstanceIamMemberArrayInput is an input type that accepts InstanceIamMemberArray and InstanceIamMemberArrayOutput values.
 // You can construct a concrete instance of `InstanceIamMemberArrayInput` via:
 //
-//          InstanceIamMemberArray{ InstanceIamMemberArgs{...} }
+//	InstanceIamMemberArray{ InstanceIamMemberArgs{...} }
 type InstanceIamMemberArrayInput interface {
 	pulumi.Input
 
@@ -302,7 +317,7 @@ func (i InstanceIamMemberArray) ToInstanceIamMemberArrayOutputWithContext(ctx co
 // InstanceIamMemberMapInput is an input type that accepts InstanceIamMemberMap and InstanceIamMemberMapOutput values.
 // You can construct a concrete instance of `InstanceIamMemberMapInput` via:
 //
-//          InstanceIamMemberMap{ "key": InstanceIamMemberArgs{...} }
+//	InstanceIamMemberMap{ "key": InstanceIamMemberArgs{...} }
 type InstanceIamMemberMapInput interface {
 	pulumi.Input
 

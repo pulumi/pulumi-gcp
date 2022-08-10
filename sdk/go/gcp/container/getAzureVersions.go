@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := container.GetAzureVersions(ctx, &container.GetAzureVersionsArgs{
-// 			Location: pulumi.StringRef("us-west1"),
-// 			Project:  pulumi.StringRef("my-project"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstAvailableVersion", data.Google_container_azure_versions.Versions.Valid_versions[0])
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := container.GetAzureVersions(ctx, &container.GetAzureVersionsArgs{
+//				Location: pulumi.StringRef("us-west1"),
+//				Project:  pulumi.StringRef("my-project"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstAvailableVersion", data.Google_container_azure_versions.Versions.Valid_versions[0])
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAzureVersions(ctx *pulumi.Context, args *GetAzureVersionsArgs, opts ...pulumi.InvokeOption) (*GetAzureVersionsResult, error) {
 	var rv GetAzureVersionsResult

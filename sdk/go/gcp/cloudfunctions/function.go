@@ -15,7 +15,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/functions/docs)
+//   - [Official Documentation](https://cloud.google.com/functions/docs)
 //
 // > **Warning:** As of November 1, 2019, newly created Functions are
 // private-by-default and will require [appropriate IAM permissions](https://cloud.google.com/functions/docs/reference/iam/roles)
@@ -30,51 +30,54 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctions"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctions"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-// 			Location: pulumi.String("US"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
-// 			Bucket: bucket.Name,
-// 			Source: pulumi.NewFileAsset("./path/to/zip/file/which/contains/code"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
-// 			Description:         pulumi.String("My function"),
-// 			Runtime:             pulumi.String("nodejs16"),
-// 			AvailableMemoryMb:   pulumi.Int(128),
-// 			SourceArchiveBucket: bucket.Name,
-// 			SourceArchiveObject: archive.Name,
-// 			TriggerHttp:         pulumi.Bool(true),
-// 			EntryPoint:          pulumi.String("helloGET"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudfunctions.NewFunctionIamMember(ctx, "invoker", &cloudfunctions.FunctionIamMemberArgs{
-// 			Project:       function.Project,
-// 			Region:        function.Region,
-// 			CloudFunction: function.Name,
-// 			Role:          pulumi.String("roles/cloudfunctions.invoker"),
-// 			Member:        pulumi.String("allUsers"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./path/to/zip/file/which/contains/code"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
+//				Description:         pulumi.String("My function"),
+//				Runtime:             pulumi.String("nodejs16"),
+//				AvailableMemoryMb:   pulumi.Int(128),
+//				SourceArchiveBucket: bucket.Name,
+//				SourceArchiveObject: archive.Name,
+//				TriggerHttp:         pulumi.Bool(true),
+//				EntryPoint:          pulumi.String("helloGET"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfunctions.NewFunctionIamMember(ctx, "invoker", &cloudfunctions.FunctionIamMemberArgs{
+//				Project:       function.Project,
+//				Region:        function.Region,
+//				CloudFunction: function.Name,
+//				Role:          pulumi.String("roles/cloudfunctions.invoker"),
+//				Member:        pulumi.String("allUsers"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Single User
 //
@@ -82,59 +85,62 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctions"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctions"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-// 			Location: pulumi.String("US"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
-// 			Bucket: bucket.Name,
-// 			Source: pulumi.NewFileAsset("./path/to/zip/file/which/contains/code"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
-// 			Description:               pulumi.String("My function"),
-// 			Runtime:                   pulumi.String("nodejs16"),
-// 			AvailableMemoryMb:         pulumi.Int(128),
-// 			SourceArchiveBucket:       bucket.Name,
-// 			SourceArchiveObject:       archive.Name,
-// 			TriggerHttp:               pulumi.Bool(true),
-// 			HttpsTriggerSecurityLevel: pulumi.String("SECURE_ALWAYS"),
-// 			Timeout:                   pulumi.Int(60),
-// 			EntryPoint:                pulumi.String("helloGET"),
-// 			Labels: pulumi.AnyMap{
-// 				"my-label": pulumi.Any("my-label-value"),
-// 			},
-// 			EnvironmentVariables: pulumi.AnyMap{
-// 				"MY_ENV_VAR": pulumi.Any("my-env-var-value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudfunctions.NewFunctionIamMember(ctx, "invoker", &cloudfunctions.FunctionIamMemberArgs{
-// 			Project:       function.Project,
-// 			Region:        function.Region,
-// 			CloudFunction: function.Name,
-// 			Role:          pulumi.String("roles/cloudfunctions.invoker"),
-// 			Member:        pulumi.String("user:myFunctionInvoker@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./path/to/zip/file/which/contains/code"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
+//				Description:               pulumi.String("My function"),
+//				Runtime:                   pulumi.String("nodejs16"),
+//				AvailableMemoryMb:         pulumi.Int(128),
+//				SourceArchiveBucket:       bucket.Name,
+//				SourceArchiveObject:       archive.Name,
+//				TriggerHttp:               pulumi.Bool(true),
+//				HttpsTriggerSecurityLevel: pulumi.String("SECURE_ALWAYS"),
+//				Timeout:                   pulumi.Int(60),
+//				EntryPoint:                pulumi.String("helloGET"),
+//				Labels: pulumi.AnyMap{
+//					"my-label": pulumi.Any("my-label-value"),
+//				},
+//				EnvironmentVariables: pulumi.AnyMap{
+//					"MY_ENV_VAR": pulumi.Any("my-env-var-value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfunctions.NewFunctionIamMember(ctx, "invoker", &cloudfunctions.FunctionIamMemberArgs{
+//				Project:       function.Project,
+//				Region:        function.Region,
+//				CloudFunction: function.Name,
+//				Role:          pulumi.String("roles/cloudfunctions.invoker"),
+//				Member:        pulumi.String("user:myFunctionInvoker@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -142,11 +148,15 @@ import (
 // Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:cloudfunctions/function:Function default function-test
+//
+//	$ pulumi import gcp:cloudfunctions/function:Function default function-test
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/function-test
+//
+//	$ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/function-test
+//
 // ```
 type Function struct {
 	pulumi.CustomResourceState
@@ -532,7 +542,7 @@ func (i *Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutp
 // FunctionArrayInput is an input type that accepts FunctionArray and FunctionArrayOutput values.
 // You can construct a concrete instance of `FunctionArrayInput` via:
 //
-//          FunctionArray{ FunctionArgs{...} }
+//	FunctionArray{ FunctionArgs{...} }
 type FunctionArrayInput interface {
 	pulumi.Input
 
@@ -557,7 +567,7 @@ func (i FunctionArray) ToFunctionArrayOutputWithContext(ctx context.Context) Fun
 // FunctionMapInput is an input type that accepts FunctionMap and FunctionMapOutput values.
 // You can construct a concrete instance of `FunctionMapInput` via:
 //
-//          FunctionMap{ "key": FunctionArgs{...} }
+//	FunctionMap{ "key": FunctionArgs{...} }
 type FunctionMapInput interface {
 	pulumi.Input
 

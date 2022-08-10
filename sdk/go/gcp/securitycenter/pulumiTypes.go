@@ -36,7 +36,7 @@ type NotificationConfigStreamingConfig struct {
 // NotificationConfigStreamingConfigInput is an input type that accepts NotificationConfigStreamingConfigArgs and NotificationConfigStreamingConfigOutput values.
 // You can construct a concrete instance of `NotificationConfigStreamingConfigInput` via:
 //
-//          NotificationConfigStreamingConfigArgs{...}
+//	NotificationConfigStreamingConfigArgs{...}
 type NotificationConfigStreamingConfigInput interface {
 	pulumi.Input
 
@@ -90,11 +90,11 @@ func (i NotificationConfigStreamingConfigArgs) ToNotificationConfigStreamingConf
 // NotificationConfigStreamingConfigPtrInput is an input type that accepts NotificationConfigStreamingConfigArgs, NotificationConfigStreamingConfigPtr and NotificationConfigStreamingConfigPtrOutput values.
 // You can construct a concrete instance of `NotificationConfigStreamingConfigPtrInput` via:
 //
-//          NotificationConfigStreamingConfigArgs{...}
+//	        NotificationConfigStreamingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NotificationConfigStreamingConfigPtrInput interface {
 	pulumi.Input
 
@@ -153,16 +153,16 @@ func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingCo
 // a - character in front of them to indicate negation. The fields
 // map to those defined in the corresponding resource.
 // The supported operators are:
-// * = for all value types.
-// * > , <, >=, <= for integer values.
-// * :, meaning substring matching, for strings.
-//   The supported value types are:
-// * string literals in quotes.
-// * integer literals without quotes.
-// * boolean literals true and false without quotes.
-//   See
-//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-//   for information on how to write a filter.
+//   - = for all value types.
+//   - > , <, >=, <= for integer values.
+//   - :, meaning substring matching, for strings.
+//     The supported value types are:
+//   - string literals in quotes.
+//   - integer literals without quotes.
+//   - boolean literals true and false without quotes.
+//     See
+//     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+//     for information on how to write a filter.
 func (o NotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -200,16 +200,16 @@ func (o NotificationConfigStreamingConfigPtrOutput) Elem() NotificationConfigStr
 // a - character in front of them to indicate negation. The fields
 // map to those defined in the corresponding resource.
 // The supported operators are:
-// * = for all value types.
-// * > , <, >=, <= for integer values.
-// * :, meaning substring matching, for strings.
-//   The supported value types are:
-// * string literals in quotes.
-// * integer literals without quotes.
-// * boolean literals true and false without quotes.
-//   See
-//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-//   for information on how to write a filter.
+//   - = for all value types.
+//   - > , <, >=, <= for integer values.
+//   - :, meaning substring matching, for strings.
+//     The supported value types are:
+//   - string literals in quotes.
+//   - integer literals without quotes.
+//   - boolean literals true and false without quotes.
+//     See
+//     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+//     for information on how to write a filter.
 func (o NotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationConfigStreamingConfig) *string {
 		if v == nil {

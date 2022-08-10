@@ -28,96 +28,107 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := compute.NewNetwork(ctx, "network1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		targetGateway, err := compute.NewVPNGateway(ctx, "targetGateway", &compute.VPNGatewayArgs{
-// 			Network: network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vpnStaticIp, err := compute.NewAddress(ctx, "vpnStaticIp", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		frEsp, err := compute.NewForwardingRule(ctx, "frEsp", &compute.ForwardingRuleArgs{
-// 			IpProtocol: pulumi.String("ESP"),
-// 			IpAddress:  vpnStaticIp.Address,
-// 			Target:     targetGateway.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		frUdp500, err := compute.NewForwardingRule(ctx, "frUdp500", &compute.ForwardingRuleArgs{
-// 			IpProtocol: pulumi.String("UDP"),
-// 			PortRange:  pulumi.String("500"),
-// 			IpAddress:  vpnStaticIp.Address,
-// 			Target:     targetGateway.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		frUdp4500, err := compute.NewForwardingRule(ctx, "frUdp4500", &compute.ForwardingRuleArgs{
-// 			IpProtocol: pulumi.String("UDP"),
-// 			PortRange:  pulumi.String("4500"),
-// 			IpAddress:  vpnStaticIp.Address,
-// 			Target:     targetGateway.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
-// 			PeerIp:           pulumi.String("15.0.0.120"),
-// 			SharedSecret:     pulumi.String("a secret message"),
-// 			TargetVpnGateway: targetGateway.ID(),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			frEsp,
-// 			frUdp500,
-// 			frUdp4500,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
-// 			Network:          network1.Name,
-// 			DestRange:        pulumi.String("15.0.0.0/24"),
-// 			Priority:         pulumi.Int(1000),
-// 			NextHopVpnTunnel: tunnel1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := compute.NewNetwork(ctx, "network1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			targetGateway, err := compute.NewVPNGateway(ctx, "targetGateway", &compute.VPNGatewayArgs{
+//				Network: network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpnStaticIp, err := compute.NewAddress(ctx, "vpnStaticIp", nil)
+//			if err != nil {
+//				return err
+//			}
+//			frEsp, err := compute.NewForwardingRule(ctx, "frEsp", &compute.ForwardingRuleArgs{
+//				IpProtocol: pulumi.String("ESP"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frUdp500, err := compute.NewForwardingRule(ctx, "frUdp500", &compute.ForwardingRuleArgs{
+//				IpProtocol: pulumi.String("UDP"),
+//				PortRange:  pulumi.String("500"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frUdp4500, err := compute.NewForwardingRule(ctx, "frUdp4500", &compute.ForwardingRuleArgs{
+//				IpProtocol: pulumi.String("UDP"),
+//				PortRange:  pulumi.String("4500"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGateway.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+//				PeerIp:           pulumi.String("15.0.0.120"),
+//				SharedSecret:     pulumi.String("a secret message"),
+//				TargetVpnGateway: targetGateway.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				frEsp,
+//				frUdp500,
+//				frUdp4500,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+//				Network:          network1.Name,
+//				DestRange:        pulumi.String("15.0.0.0/24"),
+//				Priority:         pulumi.Int(1000),
+//				NextHopVpnTunnel: tunnel1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// VpnGateway can be imported using any of these accepted formats
+// # VpnGateway can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
+//
+//	$ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/vPNGateway:VPNGateway default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/vPNGateway:VPNGateway default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
+//
+//	$ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
+//
 // ```
 type VPNGateway struct {
 	pulumi.CustomResourceState
@@ -301,7 +312,7 @@ func (i *VPNGateway) ToVPNGatewayOutputWithContext(ctx context.Context) VPNGatew
 // VPNGatewayArrayInput is an input type that accepts VPNGatewayArray and VPNGatewayArrayOutput values.
 // You can construct a concrete instance of `VPNGatewayArrayInput` via:
 //
-//          VPNGatewayArray{ VPNGatewayArgs{...} }
+//	VPNGatewayArray{ VPNGatewayArgs{...} }
 type VPNGatewayArrayInput interface {
 	pulumi.Input
 
@@ -326,7 +337,7 @@ func (i VPNGatewayArray) ToVPNGatewayArrayOutputWithContext(ctx context.Context)
 // VPNGatewayMapInput is an input type that accepts VPNGatewayMap and VPNGatewayMapOutput values.
 // You can construct a concrete instance of `VPNGatewayMapInput` via:
 //
-//          VPNGatewayMap{ "key": VPNGatewayArgs{...} }
+//	VPNGatewayMap{ "key": VPNGatewayArgs{...} }
 type VPNGatewayMapInput interface {
 	pulumi.Input
 

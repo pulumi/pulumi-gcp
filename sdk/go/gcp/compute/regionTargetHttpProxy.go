@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+//   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
 // ### Region Target Http Proxy Https Redirect
@@ -27,52 +27,63 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "defaultRegionUrlMap", &compute.RegionUrlMapArgs{
-// 			Region: pulumi.String("us-central1"),
-// 			DefaultUrlRedirect: &compute.RegionUrlMapDefaultUrlRedirectArgs{
-// 				HttpsRedirect: pulumi.Bool(true),
-// 				StripQuery:    pulumi.Bool(false),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewRegionTargetHttpProxy(ctx, "defaultRegionTargetHttpProxy", &compute.RegionTargetHttpProxyArgs{
-// 			Region: pulumi.String("us-central1"),
-// 			UrlMap: defaultRegionUrlMap.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "defaultRegionUrlMap", &compute.RegionUrlMapArgs{
+//				Region: pulumi.String("us-central1"),
+//				DefaultUrlRedirect: &compute.RegionUrlMapDefaultUrlRedirectArgs{
+//					HttpsRedirect: pulumi.Bool(true),
+//					StripQuery:    pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionTargetHttpProxy(ctx, "defaultRegionTargetHttpProxy", &compute.RegionTargetHttpProxyArgs{
+//				Region: pulumi.String("us-central1"),
+//				UrlMap: defaultRegionUrlMap.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// RegionTargetHttpProxy can be imported using any of these accepted formats
+// # RegionTargetHttpProxy can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}
+//
+//	$ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{name}}
+//
+//	$ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{name}}
+//
 // ```
 type RegionTargetHttpProxy struct {
 	pulumi.CustomResourceState
@@ -266,7 +277,7 @@ func (i *RegionTargetHttpProxy) ToRegionTargetHttpProxyOutputWithContext(ctx con
 // RegionTargetHttpProxyArrayInput is an input type that accepts RegionTargetHttpProxyArray and RegionTargetHttpProxyArrayOutput values.
 // You can construct a concrete instance of `RegionTargetHttpProxyArrayInput` via:
 //
-//          RegionTargetHttpProxyArray{ RegionTargetHttpProxyArgs{...} }
+//	RegionTargetHttpProxyArray{ RegionTargetHttpProxyArgs{...} }
 type RegionTargetHttpProxyArrayInput interface {
 	pulumi.Input
 
@@ -291,7 +302,7 @@ func (i RegionTargetHttpProxyArray) ToRegionTargetHttpProxyArrayOutputWithContex
 // RegionTargetHttpProxyMapInput is an input type that accepts RegionTargetHttpProxyMap and RegionTargetHttpProxyMapOutput values.
 // You can construct a concrete instance of `RegionTargetHttpProxyMapInput` via:
 //
-//          RegionTargetHttpProxyMap{ "key": RegionTargetHttpProxyArgs{...} }
+//	RegionTargetHttpProxyMap{ "key": RegionTargetHttpProxyArgs{...} }
 type RegionTargetHttpProxyMapInput interface {
 	pulumi.Input
 

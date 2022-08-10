@@ -19,7 +19,7 @@ type ApiConfigGatewayConfig struct {
 // ApiConfigGatewayConfigInput is an input type that accepts ApiConfigGatewayConfigArgs and ApiConfigGatewayConfigOutput values.
 // You can construct a concrete instance of `ApiConfigGatewayConfigInput` via:
 //
-//          ApiConfigGatewayConfigArgs{...}
+//	ApiConfigGatewayConfigArgs{...}
 type ApiConfigGatewayConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i ApiConfigGatewayConfigArgs) ToApiConfigGatewayConfigPtrOutputWithContext
 // ApiConfigGatewayConfigPtrInput is an input type that accepts ApiConfigGatewayConfigArgs, ApiConfigGatewayConfigPtr and ApiConfigGatewayConfigPtrOutput values.
 // You can construct a concrete instance of `ApiConfigGatewayConfigPtrInput` via:
 //
-//          ApiConfigGatewayConfigArgs{...}
+//	        ApiConfigGatewayConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiConfigGatewayConfigPtrInput interface {
 	pulumi.Input
 
@@ -160,7 +160,7 @@ type ApiConfigGatewayConfigBackendConfig struct {
 // ApiConfigGatewayConfigBackendConfigInput is an input type that accepts ApiConfigGatewayConfigBackendConfigArgs and ApiConfigGatewayConfigBackendConfigOutput values.
 // You can construct a concrete instance of `ApiConfigGatewayConfigBackendConfigInput` via:
 //
-//          ApiConfigGatewayConfigBackendConfigArgs{...}
+//	ApiConfigGatewayConfigBackendConfigArgs{...}
 type ApiConfigGatewayConfigBackendConfigInput interface {
 	pulumi.Input
 
@@ -197,11 +197,11 @@ func (i ApiConfigGatewayConfigBackendConfigArgs) ToApiConfigGatewayConfigBackend
 // ApiConfigGatewayConfigBackendConfigPtrInput is an input type that accepts ApiConfigGatewayConfigBackendConfigArgs, ApiConfigGatewayConfigBackendConfigPtr and ApiConfigGatewayConfigBackendConfigPtrOutput values.
 // You can construct a concrete instance of `ApiConfigGatewayConfigBackendConfigPtrInput` via:
 //
-//          ApiConfigGatewayConfigBackendConfigArgs{...}
+//	        ApiConfigGatewayConfigBackendConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiConfigGatewayConfigBackendConfigPtrInput interface {
 	pulumi.Input
 
@@ -306,7 +306,7 @@ type ApiConfigGrpcService struct {
 // ApiConfigGrpcServiceInput is an input type that accepts ApiConfigGrpcServiceArgs and ApiConfigGrpcServiceOutput values.
 // You can construct a concrete instance of `ApiConfigGrpcServiceInput` via:
 //
-//          ApiConfigGrpcServiceArgs{...}
+//	ApiConfigGrpcServiceArgs{...}
 type ApiConfigGrpcServiceInput interface {
 	pulumi.Input
 
@@ -340,7 +340,7 @@ func (i ApiConfigGrpcServiceArgs) ToApiConfigGrpcServiceOutputWithContext(ctx co
 // ApiConfigGrpcServiceArrayInput is an input type that accepts ApiConfigGrpcServiceArray and ApiConfigGrpcServiceArrayOutput values.
 // You can construct a concrete instance of `ApiConfigGrpcServiceArrayInput` via:
 //
-//          ApiConfigGrpcServiceArray{ ApiConfigGrpcServiceArgs{...} }
+//	ApiConfigGrpcServiceArray{ ApiConfigGrpcServiceArgs{...} }
 type ApiConfigGrpcServiceArrayInput interface {
 	pulumi.Input
 
@@ -420,7 +420,7 @@ type ApiConfigGrpcServiceFileDescriptorSet struct {
 // ApiConfigGrpcServiceFileDescriptorSetInput is an input type that accepts ApiConfigGrpcServiceFileDescriptorSetArgs and ApiConfigGrpcServiceFileDescriptorSetOutput values.
 // You can construct a concrete instance of `ApiConfigGrpcServiceFileDescriptorSetInput` via:
 //
-//          ApiConfigGrpcServiceFileDescriptorSetArgs{...}
+//	ApiConfigGrpcServiceFileDescriptorSetArgs{...}
 type ApiConfigGrpcServiceFileDescriptorSetInput interface {
 	pulumi.Input
 
@@ -481,7 +481,7 @@ type ApiConfigGrpcServiceSource struct {
 // ApiConfigGrpcServiceSourceInput is an input type that accepts ApiConfigGrpcServiceSourceArgs and ApiConfigGrpcServiceSourceOutput values.
 // You can construct a concrete instance of `ApiConfigGrpcServiceSourceInput` via:
 //
-//          ApiConfigGrpcServiceSourceArgs{...}
+//	ApiConfigGrpcServiceSourceArgs{...}
 type ApiConfigGrpcServiceSourceInput interface {
 	pulumi.Input
 
@@ -511,7 +511,7 @@ func (i ApiConfigGrpcServiceSourceArgs) ToApiConfigGrpcServiceSourceOutputWithCo
 // ApiConfigGrpcServiceSourceArrayInput is an input type that accepts ApiConfigGrpcServiceSourceArray and ApiConfigGrpcServiceSourceArrayOutput values.
 // You can construct a concrete instance of `ApiConfigGrpcServiceSourceArrayInput` via:
 //
-//          ApiConfigGrpcServiceSourceArray{ ApiConfigGrpcServiceSourceArgs{...} }
+//	ApiConfigGrpcServiceSourceArray{ ApiConfigGrpcServiceSourceArgs{...} }
 type ApiConfigGrpcServiceSourceArrayInput interface {
 	pulumi.Input
 
@@ -586,7 +586,7 @@ type ApiConfigIamBindingCondition struct {
 // ApiConfigIamBindingConditionInput is an input type that accepts ApiConfigIamBindingConditionArgs and ApiConfigIamBindingConditionOutput values.
 // You can construct a concrete instance of `ApiConfigIamBindingConditionInput` via:
 //
-//          ApiConfigIamBindingConditionArgs{...}
+//	ApiConfigIamBindingConditionArgs{...}
 type ApiConfigIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -623,11 +623,11 @@ func (i ApiConfigIamBindingConditionArgs) ToApiConfigIamBindingConditionPtrOutpu
 // ApiConfigIamBindingConditionPtrInput is an input type that accepts ApiConfigIamBindingConditionArgs, ApiConfigIamBindingConditionPtr and ApiConfigIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `ApiConfigIamBindingConditionPtrInput` via:
 //
-//          ApiConfigIamBindingConditionArgs{...}
+//	        ApiConfigIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiConfigIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -749,7 +749,7 @@ type ApiConfigIamMemberCondition struct {
 // ApiConfigIamMemberConditionInput is an input type that accepts ApiConfigIamMemberConditionArgs and ApiConfigIamMemberConditionOutput values.
 // You can construct a concrete instance of `ApiConfigIamMemberConditionInput` via:
 //
-//          ApiConfigIamMemberConditionArgs{...}
+//	ApiConfigIamMemberConditionArgs{...}
 type ApiConfigIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -786,11 +786,11 @@ func (i ApiConfigIamMemberConditionArgs) ToApiConfigIamMemberConditionPtrOutputW
 // ApiConfigIamMemberConditionPtrInput is an input type that accepts ApiConfigIamMemberConditionArgs, ApiConfigIamMemberConditionPtr and ApiConfigIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `ApiConfigIamMemberConditionPtrInput` via:
 //
-//          ApiConfigIamMemberConditionArgs{...}
+//	        ApiConfigIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiConfigIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -913,7 +913,7 @@ type ApiConfigManagedServiceConfig struct {
 // ApiConfigManagedServiceConfigInput is an input type that accepts ApiConfigManagedServiceConfigArgs and ApiConfigManagedServiceConfigOutput values.
 // You can construct a concrete instance of `ApiConfigManagedServiceConfigInput` via:
 //
-//          ApiConfigManagedServiceConfigArgs{...}
+//	ApiConfigManagedServiceConfigArgs{...}
 type ApiConfigManagedServiceConfigInput interface {
 	pulumi.Input
 
@@ -943,7 +943,7 @@ func (i ApiConfigManagedServiceConfigArgs) ToApiConfigManagedServiceConfigOutput
 // ApiConfigManagedServiceConfigArrayInput is an input type that accepts ApiConfigManagedServiceConfigArray and ApiConfigManagedServiceConfigArrayOutput values.
 // You can construct a concrete instance of `ApiConfigManagedServiceConfigArrayInput` via:
 //
-//          ApiConfigManagedServiceConfigArray{ ApiConfigManagedServiceConfigArgs{...} }
+//	ApiConfigManagedServiceConfigArray{ ApiConfigManagedServiceConfigArgs{...} }
 type ApiConfigManagedServiceConfigArrayInput interface {
 	pulumi.Input
 
@@ -1018,7 +1018,7 @@ type ApiConfigOpenapiDocument struct {
 // ApiConfigOpenapiDocumentInput is an input type that accepts ApiConfigOpenapiDocumentArgs and ApiConfigOpenapiDocumentOutput values.
 // You can construct a concrete instance of `ApiConfigOpenapiDocumentInput` via:
 //
-//          ApiConfigOpenapiDocumentArgs{...}
+//	ApiConfigOpenapiDocumentArgs{...}
 type ApiConfigOpenapiDocumentInput interface {
 	pulumi.Input
 
@@ -1047,7 +1047,7 @@ func (i ApiConfigOpenapiDocumentArgs) ToApiConfigOpenapiDocumentOutputWithContex
 // ApiConfigOpenapiDocumentArrayInput is an input type that accepts ApiConfigOpenapiDocumentArray and ApiConfigOpenapiDocumentArrayOutput values.
 // You can construct a concrete instance of `ApiConfigOpenapiDocumentArrayInput` via:
 //
-//          ApiConfigOpenapiDocumentArray{ ApiConfigOpenapiDocumentArgs{...} }
+//	ApiConfigOpenapiDocumentArray{ ApiConfigOpenapiDocumentArgs{...} }
 type ApiConfigOpenapiDocumentArrayInput interface {
 	pulumi.Input
 
@@ -1119,7 +1119,7 @@ type ApiConfigOpenapiDocumentDocument struct {
 // ApiConfigOpenapiDocumentDocumentInput is an input type that accepts ApiConfigOpenapiDocumentDocumentArgs and ApiConfigOpenapiDocumentDocumentOutput values.
 // You can construct a concrete instance of `ApiConfigOpenapiDocumentDocumentInput` via:
 //
-//          ApiConfigOpenapiDocumentDocumentArgs{...}
+//	ApiConfigOpenapiDocumentDocumentArgs{...}
 type ApiConfigOpenapiDocumentDocumentInput interface {
 	pulumi.Input
 
@@ -1179,7 +1179,7 @@ type ApiIamBindingCondition struct {
 // ApiIamBindingConditionInput is an input type that accepts ApiIamBindingConditionArgs and ApiIamBindingConditionOutput values.
 // You can construct a concrete instance of `ApiIamBindingConditionInput` via:
 //
-//          ApiIamBindingConditionArgs{...}
+//	ApiIamBindingConditionArgs{...}
 type ApiIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -1216,11 +1216,11 @@ func (i ApiIamBindingConditionArgs) ToApiIamBindingConditionPtrOutputWithContext
 // ApiIamBindingConditionPtrInput is an input type that accepts ApiIamBindingConditionArgs, ApiIamBindingConditionPtr and ApiIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `ApiIamBindingConditionPtrInput` via:
 //
-//          ApiIamBindingConditionArgs{...}
+//	        ApiIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1342,7 +1342,7 @@ type ApiIamMemberCondition struct {
 // ApiIamMemberConditionInput is an input type that accepts ApiIamMemberConditionArgs and ApiIamMemberConditionOutput values.
 // You can construct a concrete instance of `ApiIamMemberConditionInput` via:
 //
-//          ApiIamMemberConditionArgs{...}
+//	ApiIamMemberConditionArgs{...}
 type ApiIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1379,11 +1379,11 @@ func (i ApiIamMemberConditionArgs) ToApiIamMemberConditionPtrOutputWithContext(c
 // ApiIamMemberConditionPtrInput is an input type that accepts ApiIamMemberConditionArgs, ApiIamMemberConditionPtr and ApiIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `ApiIamMemberConditionPtrInput` via:
 //
-//          ApiIamMemberConditionArgs{...}
+//	        ApiIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1505,7 +1505,7 @@ type GatewayIamBindingCondition struct {
 // GatewayIamBindingConditionInput is an input type that accepts GatewayIamBindingConditionArgs and GatewayIamBindingConditionOutput values.
 // You can construct a concrete instance of `GatewayIamBindingConditionInput` via:
 //
-//          GatewayIamBindingConditionArgs{...}
+//	GatewayIamBindingConditionArgs{...}
 type GatewayIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -1542,11 +1542,11 @@ func (i GatewayIamBindingConditionArgs) ToGatewayIamBindingConditionPtrOutputWit
 // GatewayIamBindingConditionPtrInput is an input type that accepts GatewayIamBindingConditionArgs, GatewayIamBindingConditionPtr and GatewayIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `GatewayIamBindingConditionPtrInput` via:
 //
-//          GatewayIamBindingConditionArgs{...}
+//	        GatewayIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GatewayIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1668,7 +1668,7 @@ type GatewayIamMemberCondition struct {
 // GatewayIamMemberConditionInput is an input type that accepts GatewayIamMemberConditionArgs and GatewayIamMemberConditionOutput values.
 // You can construct a concrete instance of `GatewayIamMemberConditionInput` via:
 //
-//          GatewayIamMemberConditionArgs{...}
+//	GatewayIamMemberConditionArgs{...}
 type GatewayIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1705,11 +1705,11 @@ func (i GatewayIamMemberConditionArgs) ToGatewayIamMemberConditionPtrOutputWithC
 // GatewayIamMemberConditionPtrInput is an input type that accepts GatewayIamMemberConditionArgs, GatewayIamMemberConditionPtr and GatewayIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `GatewayIamMemberConditionPtrInput` via:
 //
-//          GatewayIamMemberConditionArgs{...}
+//	        GatewayIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GatewayIamMemberConditionPtrInput interface {
 	pulumi.Input
 

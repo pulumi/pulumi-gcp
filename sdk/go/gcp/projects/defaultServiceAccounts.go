@@ -32,22 +32,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := projects.NewDefaultServiceAccounts(ctx, "myProject", &projects.DefaultServiceAccountsArgs{
-// 			Action:  pulumi.String("DELETE"),
-// 			Project: pulumi.String("my-project-id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.NewDefaultServiceAccounts(ctx, "myProject", &projects.DefaultServiceAccountsArgs{
+//				Action:  pulumi.String("DELETE"),
+//				Project: pulumi.String("my-project-id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // To enable the default service accounts on the resource destroy:
@@ -56,23 +59,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := projects.NewDefaultServiceAccounts(ctx, "myProject", &projects.DefaultServiceAccountsArgs{
-// 			Action:        pulumi.String("DISABLE"),
-// 			Project:       pulumi.String("my-project-id"),
-// 			RestorePolicy: pulumi.String("REVERT"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.NewDefaultServiceAccounts(ctx, "myProject", &projects.DefaultServiceAccountsArgs{
+//				Action:        pulumi.String("DISABLE"),
+//				Project:       pulumi.String("my-project-id"),
+//				RestorePolicy: pulumi.String("REVERT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -211,7 +217,7 @@ func (i *DefaultServiceAccounts) ToDefaultServiceAccountsOutputWithContext(ctx c
 // DefaultServiceAccountsArrayInput is an input type that accepts DefaultServiceAccountsArray and DefaultServiceAccountsArrayOutput values.
 // You can construct a concrete instance of `DefaultServiceAccountsArrayInput` via:
 //
-//          DefaultServiceAccountsArray{ DefaultServiceAccountsArgs{...} }
+//	DefaultServiceAccountsArray{ DefaultServiceAccountsArgs{...} }
 type DefaultServiceAccountsArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +242,7 @@ func (i DefaultServiceAccountsArray) ToDefaultServiceAccountsArrayOutputWithCont
 // DefaultServiceAccountsMapInput is an input type that accepts DefaultServiceAccountsMap and DefaultServiceAccountsMapOutput values.
 // You can construct a concrete instance of `DefaultServiceAccountsMapInput` via:
 //
-//          DefaultServiceAccountsMap{ "key": DefaultServiceAccountsArgs{...} }
+//	DefaultServiceAccountsMap{ "key": DefaultServiceAccountsArgs{...} }
 type DefaultServiceAccountsMapInput interface {
 	pulumi.Input
 

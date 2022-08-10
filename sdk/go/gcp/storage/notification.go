@@ -12,7 +12,9 @@ import (
 )
 
 // Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
-//  For more information see
+//
+//	For more information see
+//
 // [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
@@ -34,59 +36,62 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-// 			Topic: topic.ID(),
-// 			Role:  pulumi.String("roles/pubsub.publisher"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-// 			Location: pulumi.String("US"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewNotification(ctx, "notification", &storage.NotificationArgs{
-// 			Bucket:        bucket.Name,
-// 			PayloadFormat: pulumi.String("JSON_API_V1"),
-// 			Topic:         topic.ID(),
-// 			EventTypes: pulumi.StringArray{
-// 				pulumi.String("OBJECT_FINALIZE"),
-// 				pulumi.String("OBJECT_METADATA_UPDATE"),
-// 			},
-// 			CustomAttributes: pulumi.StringMap{
-// 				"new-attribute": pulumi.String("new-attribute-value"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			binding,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+//				Topic: topic.ID(),
+//				Role:  pulumi.String("roles/pubsub.publisher"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewNotification(ctx, "notification", &storage.NotificationArgs{
+//				Bucket:        bucket.Name,
+//				PayloadFormat: pulumi.String("JSON_API_V1"),
+//				Topic:         topic.ID(),
+//				EventTypes: pulumi.StringArray{
+//					pulumi.String("OBJECT_FINALIZE"),
+//					pulumi.String("OBJECT_METADATA_UPDATE"),
+//				},
+//				CustomAttributes: pulumi.StringMap{
+//					"new-attribute": pulumi.String("new-attribute-value"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				binding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -94,7 +99,9 @@ import (
 // Storage notifications can be imported using the notification `id` in the format `<bucket_name>/notificationConfigs/<id>` e.g.
 //
 // ```sh
-//  $ pulumi import gcp:storage/notification:Notification notification default_bucket/notificationConfigs/102
+//
+//	$ pulumi import gcp:storage/notification:Notification notification default_bucket/notificationConfigs/102
+//
 // ```
 type Notification struct {
 	pulumi.CustomResourceState
@@ -268,7 +275,7 @@ func (i *Notification) ToNotificationOutputWithContext(ctx context.Context) Noti
 // NotificationArrayInput is an input type that accepts NotificationArray and NotificationArrayOutput values.
 // You can construct a concrete instance of `NotificationArrayInput` via:
 //
-//          NotificationArray{ NotificationArgs{...} }
+//	NotificationArray{ NotificationArgs{...} }
 type NotificationArrayInput interface {
 	pulumi.Input
 
@@ -293,7 +300,7 @@ func (i NotificationArray) ToNotificationArrayOutputWithContext(ctx context.Cont
 // NotificationMapInput is an input type that accepts NotificationMap and NotificationMapOutput values.
 // You can construct a concrete instance of `NotificationMapInput` via:
 //
-//          NotificationMap{ "key": NotificationArgs{...} }
+//	NotificationMap{ "key": NotificationArgs{...} }
 type NotificationMapInput interface {
 	pulumi.Input
 

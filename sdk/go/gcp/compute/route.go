@@ -38,7 +38,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
 // * How-to Guides
-//     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
+//   - [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 //
 // ## Example Usage
 // ### Route Basic
@@ -47,44 +47,53 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewRoute(ctx, "defaultRoute", &compute.RouteArgs{
-// 			DestRange: pulumi.String("15.0.0.0/24"),
-// 			Network:   defaultNetwork.Name,
-// 			NextHopIp: pulumi.String("10.132.1.5"),
-// 			Priority:  pulumi.Int(100),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRoute(ctx, "defaultRoute", &compute.RouteArgs{
+//				DestRange: pulumi.String("15.0.0.0/24"),
+//				Network:   defaultNetwork.Name,
+//				NextHopIp: pulumi.String("10.132.1.5"),
+//				Priority:  pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Route can be imported using any of these accepted formats
+// # Route can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
+//
+//	$ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/route:Route default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/route:Route default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/route:Route default {{name}}
+//
+//	$ pulumi import gcp:compute/route:Route default {{name}}
+//
 // ```
 type Route struct {
 	pulumi.CustomResourceState
@@ -505,7 +514,7 @@ func (i *Route) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 // RouteArrayInput is an input type that accepts RouteArray and RouteArrayOutput values.
 // You can construct a concrete instance of `RouteArrayInput` via:
 //
-//          RouteArray{ RouteArgs{...} }
+//	RouteArray{ RouteArgs{...} }
 type RouteArrayInput interface {
 	pulumi.Input
 
@@ -530,7 +539,7 @@ func (i RouteArray) ToRouteArrayOutputWithContext(ctx context.Context) RouteArra
 // RouteMapInput is an input type that accepts RouteMap and RouteMapOutput values.
 // You can construct a concrete instance of `RouteMapInput` via:
 //
-//          RouteMap{ "key": RouteArgs{...} }
+//	RouteMap{ "key": RouteArgs{...} }
 type RouteMapInput interface {
 	pulumi.Input
 
@@ -611,13 +620,13 @@ func (o RouteOutput) NextHopGateway() pulumi.StringPtrOutput {
 // With the GA provider you can only specify the forwarding
 // rule as a partial or full URL. For example, the following
 // are all valid values:
-// * 10.128.0.56
-// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-// * regions/region/forwardingRules/forwardingRule
-//   When the beta provider, you can also specify the IP address
-//   of a forwarding rule from the same VPC or any peered VPC.
-//   Note that this can only be used when the destinationRange is
-//   a public (non-RFC 1918) IP CIDR range.
+//   - 10.128.0.56
+//   - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+//   - regions/region/forwardingRules/forwardingRule
+//     When the beta provider, you can also specify the IP address
+//     of a forwarding rule from the same VPC or any peered VPC.
+//     Note that this can only be used when the destinationRange is
+//     a public (non-RFC 1918) IP CIDR range.
 func (o RouteOutput) NextHopIlb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.NextHopIlb }).(pulumi.StringPtrOutput)
 }

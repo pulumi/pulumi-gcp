@@ -18,67 +18,72 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
-// 			Project: pulumi.String(project.ProjectId),
-// 			Role:    pulumi.String("roles/iam.serviceAccountShortTermTokenMinter"),
-// 			Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myDataset, err := bigquery.NewDataset(ctx, "myDataset", &bigquery.DatasetArgs{
-// 			DatasetId:    pulumi.String("my_dataset"),
-// 			FriendlyName: pulumi.String("foo"),
-// 			Description:  pulumi.String("bar"),
-// 			Location:     pulumi.String("asia-northeast1"),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			permissions,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewDataTransferConfig(ctx, "queryConfig", &bigquery.DataTransferConfigArgs{
-// 			DisplayName:          pulumi.String("my-query"),
-// 			Location:             pulumi.String("asia-northeast1"),
-// 			DataSourceId:         pulumi.String("scheduled_query"),
-// 			Schedule:             pulumi.String("first sunday of quarter 00:00"),
-// 			DestinationDatasetId: myDataset.DatasetId,
-// 			Params: pulumi.StringMap{
-// 				"destination_table_name_template": pulumi.String("my_table"),
-// 				"write_disposition":               pulumi.String("WRITE_APPEND"),
-// 				"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			permissions,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/iam.serviceAccountShortTermTokenMinter"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myDataset, err := bigquery.NewDataset(ctx, "myDataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("my_dataset"),
+//				FriendlyName: pulumi.String("foo"),
+//				Description:  pulumi.String("bar"),
+//				Location:     pulumi.String("asia-northeast1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				permissions,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDataTransferConfig(ctx, "queryConfig", &bigquery.DataTransferConfigArgs{
+//				DisplayName:          pulumi.String("my-query"),
+//				Location:             pulumi.String("asia-northeast1"),
+//				DataSourceId:         pulumi.String("scheduled_query"),
+//				Schedule:             pulumi.String("first sunday of quarter 00:00"),
+//				DestinationDatasetId: myDataset.DatasetId,
+//				Params: pulumi.StringMap{
+//					"destination_table_name_template": pulumi.String("my_table"),
+//					"write_disposition":               pulumi.String("WRITE_APPEND"),
+//					"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				permissions,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Config can be imported using any of these accepted formats
+// # Config can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
+//
+//	$ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
+//
 // ```
 type DataTransferConfig struct {
 	pulumi.CustomResourceState
@@ -462,7 +467,7 @@ func (i *DataTransferConfig) ToDataTransferConfigOutputWithContext(ctx context.C
 // DataTransferConfigArrayInput is an input type that accepts DataTransferConfigArray and DataTransferConfigArrayOutput values.
 // You can construct a concrete instance of `DataTransferConfigArrayInput` via:
 //
-//          DataTransferConfigArray{ DataTransferConfigArgs{...} }
+//	DataTransferConfigArray{ DataTransferConfigArgs{...} }
 type DataTransferConfigArrayInput interface {
 	pulumi.Input
 
@@ -487,7 +492,7 @@ func (i DataTransferConfigArray) ToDataTransferConfigArrayOutputWithContext(ctx 
 // DataTransferConfigMapInput is an input type that accepts DataTransferConfigMap and DataTransferConfigMapOutput values.
 // You can construct a concrete instance of `DataTransferConfigMapInput` via:
 //
-//          DataTransferConfigMap{ "key": DataTransferConfigArgs{...} }
+//	DataTransferConfigMap{ "key": DataTransferConfigArgs{...} }
 type DataTransferConfigMapInput interface {
 	pulumi.Input
 

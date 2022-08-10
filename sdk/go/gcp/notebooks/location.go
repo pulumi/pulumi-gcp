@@ -14,18 +14,24 @@ import (
 //
 // ## Import
 //
-// Location can be imported using any of these accepted formats
+// # Location can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
+//
+//	$ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:notebooks/location:Location default {{name}}
+//
+//	$ pulumi import gcp:notebooks/location:Location default {{name}}
+//
 // ```
 type Location struct {
 	pulumi.CustomResourceState
@@ -134,7 +140,7 @@ func (i *Location) ToLocationOutputWithContext(ctx context.Context) LocationOutp
 // LocationArrayInput is an input type that accepts LocationArray and LocationArrayOutput values.
 // You can construct a concrete instance of `LocationArrayInput` via:
 //
-//          LocationArray{ LocationArgs{...} }
+//	LocationArray{ LocationArgs{...} }
 type LocationArrayInput interface {
 	pulumi.Input
 
@@ -159,7 +165,7 @@ func (i LocationArray) ToLocationArrayOutputWithContext(ctx context.Context) Loc
 // LocationMapInput is an input type that accepts LocationMap and LocationMapOutput values.
 // You can construct a concrete instance of `LocationMapInput` via:
 //
-//          LocationMap{ "key": LocationArgs{...} }
+//	LocationMap{ "key": LocationArgs{...} }
 type LocationMapInput interface {
 	pulumi.Input
 

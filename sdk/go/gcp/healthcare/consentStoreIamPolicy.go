@@ -27,37 +27,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/viewer",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = healthcare.NewConsentStoreIamPolicy(ctx, "policy", &healthcare.ConsentStoreIamPolicyArgs{
-// 			Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
-// 			ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
-// 			PolicyData:     pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewConsentStoreIamPolicy(ctx, "policy", &healthcare.ConsentStoreIamPolicyArgs{
+//				Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
+//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
+//				PolicyData:     pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_healthcare\_consent\_store\_iam\_binding
@@ -66,26 +69,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := healthcare.NewConsentStoreIamBinding(ctx, "binding", &healthcare.ConsentStoreIamBindingArgs{
-// 			Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
-// 			ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
-// 			Role:           pulumi.String("roles/viewer"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewConsentStoreIamBinding(ctx, "binding", &healthcare.ConsentStoreIamBindingArgs{
+//				Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
+//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
+//				Role:           pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_healthcare\_consent\_store\_iam\_member
@@ -94,24 +100,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := healthcare.NewConsentStoreIamMember(ctx, "member", &healthcare.ConsentStoreIamMemberArgs{
-// 			Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
-// 			ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
-// 			Role:           pulumi.String("roles/viewer"),
-// 			Member:         pulumi.String("user:jane@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewConsentStoreIamMember(ctx, "member", &healthcare.ConsentStoreIamMemberArgs{
+//				Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
+//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
+//				Role:           pulumi.String("roles/viewer"),
+//				Member:         pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -119,22 +128,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* {{dataset}}/consentStores/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Healthcare consentstore IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor "{{dataset}}/consentStores/{{consent_store}} roles/viewer user:jane@example.com"
+//
+//	$ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor "{{dataset}}/consentStores/{{consent_store}} roles/viewer user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor "{{dataset}}/consentStores/{{consent_store}} roles/viewer"
+//
+//	$ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor "{{dataset}}/consentStores/{{consent_store}} roles/viewer"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor {{dataset}}/consentStores/{{consent_store}}
+//
+//	$ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor {{dataset}}/consentStores/{{consent_store}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ConsentStoreIamPolicy struct {
@@ -273,7 +288,7 @@ func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutputWithContext(ctx con
 // ConsentStoreIamPolicyArrayInput is an input type that accepts ConsentStoreIamPolicyArray and ConsentStoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `ConsentStoreIamPolicyArrayInput` via:
 //
-//          ConsentStoreIamPolicyArray{ ConsentStoreIamPolicyArgs{...} }
+//	ConsentStoreIamPolicyArray{ ConsentStoreIamPolicyArgs{...} }
 type ConsentStoreIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -298,7 +313,7 @@ func (i ConsentStoreIamPolicyArray) ToConsentStoreIamPolicyArrayOutputWithContex
 // ConsentStoreIamPolicyMapInput is an input type that accepts ConsentStoreIamPolicyMap and ConsentStoreIamPolicyMapOutput values.
 // You can construct a concrete instance of `ConsentStoreIamPolicyMapInput` via:
 //
-//          ConsentStoreIamPolicyMap{ "key": ConsentStoreIamPolicyArgs{...} }
+//	ConsentStoreIamPolicyMap{ "key": ConsentStoreIamPolicyArgs{...} }
 type ConsentStoreIamPolicyMapInput interface {
 	pulumi.Input
 

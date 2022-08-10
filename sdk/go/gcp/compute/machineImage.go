@@ -19,7 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
+//   - [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
 //
 // ## Example Usage
 // ### Machine Image Basic
@@ -28,37 +28,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("e2-medium"),
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String("debian-cloud/debian-9"),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
-// 			SourceInstance: vm.SelfLink,
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-9"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
+//				SourceInstance: vm.SelfLink,
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Compute Machine Image Kms
 //
@@ -66,87 +69,96 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("e2-medium"),
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String("debian-cloud/debian-9"),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
-// 			Location: pulumi.String("us"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
-// 			KeyRing: keyRing.ID(),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = projects.NewIAMMember(ctx, "kms-project-binding", &projects.IAMMemberArgs{
-// 			Project: pulumi.String(project.ProjectId),
-// 			Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-// 			Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@compute-system.iam.gserviceaccount.com", project.Number)),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
-// 			SourceInstance: vm.SelfLink,
-// 			MachineImageEncryptionKey: &compute.MachineImageMachineImageEncryptionKeyArgs{
-// 				KmsKeyName: cryptoKey.ID(),
-// 			},
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-// 			kms_project_binding,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-9"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//				Location: pulumi.String("us"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//				KeyRing: keyRing.ID(),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "kms-project-binding", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@compute-system.iam.gserviceaccount.com", project.Number)),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
+//				SourceInstance: vm.SelfLink,
+//				MachineImageEncryptionKey: &compute.MachineImageMachineImageEncryptionKeyArgs{
+//					KmsKeyName: cryptoKey.ID(),
+//				},
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				kms_project_binding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// MachineImage can be imported using any of these accepted formats
+// # MachineImage can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
+//
+//	$ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
+//
+//	$ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
+//
 // ```
 type MachineImage struct {
 	pulumi.CustomResourceState
@@ -329,7 +341,7 @@ func (i *MachineImage) ToMachineImageOutputWithContext(ctx context.Context) Mach
 // MachineImageArrayInput is an input type that accepts MachineImageArray and MachineImageArrayOutput values.
 // You can construct a concrete instance of `MachineImageArrayInput` via:
 //
-//          MachineImageArray{ MachineImageArgs{...} }
+//	MachineImageArray{ MachineImageArgs{...} }
 type MachineImageArrayInput interface {
 	pulumi.Input
 
@@ -354,7 +366,7 @@ func (i MachineImageArray) ToMachineImageArrayOutputWithContext(ctx context.Cont
 // MachineImageMapInput is an input type that accepts MachineImageMap and MachineImageMapOutput values.
 // You can construct a concrete instance of `MachineImageMapInput` via:
 //
-//          MachineImageMap{ "key": MachineImageArgs{...} }
+//	MachineImageMap{ "key": MachineImageArgs{...} }
 type MachineImageMapInput interface {
 	pulumi.Input
 

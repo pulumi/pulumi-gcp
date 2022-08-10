@@ -16,7 +16,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+//   - [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
 //
 // ## Example Usage
 // ### Network Basic
@@ -25,19 +25,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "vpcNetwork", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "vpcNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Network Custom Mtu
 //
@@ -45,39 +48,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "vpcNetwork", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(true),
-// 			Mtu:                   pulumi.Int(1460),
-// 			Project:               pulumi.String("my-project-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "vpcNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(true),
+//				Mtu:                   pulumi.Int(1460),
+//				Project:               pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Network can be imported using any of these accepted formats
+// # Network can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
+//
+//	$ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/network:Network default {{name}}
+//
+//	$ pulumi import gcp:compute/network:Network default {{name}}
+//
 // ```
 type Network struct {
 	pulumi.CustomResourceState
@@ -377,7 +389,7 @@ func (i *Network) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput 
 // NetworkArrayInput is an input type that accepts NetworkArray and NetworkArrayOutput values.
 // You can construct a concrete instance of `NetworkArrayInput` via:
 //
-//          NetworkArray{ NetworkArgs{...} }
+//	NetworkArray{ NetworkArgs{...} }
 type NetworkArrayInput interface {
 	pulumi.Input
 
@@ -402,7 +414,7 @@ func (i NetworkArray) ToNetworkArrayOutputWithContext(ctx context.Context) Netwo
 // NetworkMapInput is an input type that accepts NetworkMap and NetworkMapOutput values.
 // You can construct a concrete instance of `NetworkMapInput` via:
 //
-//          NetworkMap{ "key": NetworkArgs{...} }
+//	NetworkMap{ "key": NetworkArgs{...} }
 type NetworkMapInput interface {
 	pulumi.Input
 

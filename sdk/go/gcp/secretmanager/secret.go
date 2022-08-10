@@ -24,52 +24,61 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
-// 			Labels: pulumi.StringMap{
-// 				"label": pulumi.String("my-label"),
-// 			},
-// 			Replication: &secretmanager.SecretReplicationArgs{
-// 				UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
-// 					Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
-// 						&secretmanager.SecretReplicationUserManagedReplicaArgs{
-// 							Location: pulumi.String("us-central1"),
-// 						},
-// 						&secretmanager.SecretReplicationUserManagedReplicaArgs{
-// 							Location: pulumi.String("us-east1"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			SecretId: pulumi.String("secret"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("my-label"),
+//				},
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
+//						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-east1"),
+//							},
+//						},
+//					},
+//				},
+//				SecretId: pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Secret can be imported using any of these accepted formats
+// # Secret can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
+//
+//	$ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
+//
+//	$ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
+//
+//	$ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
+//
 // ```
 type Secret struct {
 	pulumi.CustomResourceState
@@ -318,7 +327,7 @@ func (i *Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 // SecretArrayInput is an input type that accepts SecretArray and SecretArrayOutput values.
 // You can construct a concrete instance of `SecretArrayInput` via:
 //
-//          SecretArray{ SecretArgs{...} }
+//	SecretArray{ SecretArgs{...} }
 type SecretArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +352,7 @@ func (i SecretArray) ToSecretArrayOutputWithContext(ctx context.Context) SecretA
 // SecretMapInput is an input type that accepts SecretMap and SecretMapOutput values.
 // You can construct a concrete instance of `SecretMapInput` via:
 //
-//          SecretMap{ "key": SecretArgs{...} }
+//	SecretMap{ "key": SecretArgs{...} }
 type SecretMapInput interface {
 	pulumi.Input
 

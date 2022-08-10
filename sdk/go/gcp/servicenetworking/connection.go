@@ -22,51 +22,58 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		peeringNetwork, err := compute.NewNetwork(ctx, "peeringNetwork", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
-// 			Purpose:      pulumi.String("VPC_PEERING"),
-// 			AddressType:  pulumi.String("INTERNAL"),
-// 			PrefixLength: pulumi.Int(16),
-// 			Network:      peeringNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = servicenetworking.NewConnection(ctx, "foobar", &servicenetworking.ConnectionArgs{
-// 			Network: peeringNetwork.ID(),
-// 			Service: pulumi.String("servicenetworking.googleapis.com"),
-// 			ReservedPeeringRanges: pulumi.StringArray{
-// 				privateIpAlloc.Name,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			peeringNetwork, err := compute.NewNetwork(ctx, "peeringNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      peeringNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicenetworking.NewConnection(ctx, "foobar", &servicenetworking.ConnectionArgs{
+//				Network: peeringNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// ServiceNetworkingConnection can be imported using any of these accepted formats
+// # ServiceNetworkingConnection can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:servicenetworking/connection:Connection peering_connection {{peering-network}}:{{service}}
+//
+//	$ pulumi import gcp:servicenetworking/connection:Connection peering_connection {{peering-network}}:{{service}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:servicenetworking/connection:Connection peering_connection /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
+//
+//	$ pulumi import gcp:servicenetworking/connection:Connection peering_connection /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
+//
 // ```
 type Connection struct {
 	pulumi.CustomResourceState
@@ -209,7 +216,7 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
-//          ConnectionArray{ ConnectionArgs{...} }
+//	ConnectionArray{ ConnectionArgs{...} }
 type ConnectionArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +241,7 @@ func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context)
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
 // You can construct a concrete instance of `ConnectionMapInput` via:
 //
-//          ConnectionMap{ "key": ConnectionArgs{...} }
+//	ConnectionMap{ "key": ConnectionArgs{...} }
 type ConnectionMapInput interface {
 	pulumi.Input
 

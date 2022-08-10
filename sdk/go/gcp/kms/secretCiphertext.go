@@ -22,7 +22,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
 // * How-to Guides
-//     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+//   - [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
 //
 // > **Warning:** All arguments including `plaintext` and `additionalAuthenticatedData` will be stored in the raw state as plain-text.
 //
@@ -33,59 +33,62 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-// 			Location: pulumi.String("global"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
-// 			KeyRing:        keyring.ID(),
-// 			RotationPeriod: pulumi.String("100000s"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myPassword, err := kms.NewSecretCiphertext(ctx, "myPassword", &kms.SecretCiphertextArgs{
-// 			CryptoKey: cryptokey.ID(),
-// 			Plaintext: pulumi.String("my-secret-password"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-// 			MachineType: pulumi.String("e2-medium"),
-// 			Zone:        pulumi.String("us-central1-a"),
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String("debian-cloud/debian-9"),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-// 						nil,
-// 					},
-// 				},
-// 			},
-// 			Metadata: pulumi.StringMap{
-// 				"password": myPassword.Ciphertext,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
+//				KeyRing:        keyring.ID(),
+//				RotationPeriod: pulumi.String("100000s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myPassword, err := kms.NewSecretCiphertext(ctx, "myPassword", &kms.SecretCiphertextArgs{
+//				CryptoKey: cryptokey.ID(),
+//				Plaintext: pulumi.String("my-secret-password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				Zone:        pulumi.String("us-central1-a"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-9"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//					},
+//				},
+//				Metadata: pulumi.StringMap{
+//					"password": myPassword.Ciphertext,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -224,7 +227,7 @@ func (i *SecretCiphertext) ToSecretCiphertextOutputWithContext(ctx context.Conte
 // SecretCiphertextArrayInput is an input type that accepts SecretCiphertextArray and SecretCiphertextArrayOutput values.
 // You can construct a concrete instance of `SecretCiphertextArrayInput` via:
 //
-//          SecretCiphertextArray{ SecretCiphertextArgs{...} }
+//	SecretCiphertextArray{ SecretCiphertextArgs{...} }
 type SecretCiphertextArrayInput interface {
 	pulumi.Input
 
@@ -249,7 +252,7 @@ func (i SecretCiphertextArray) ToSecretCiphertextArrayOutputWithContext(ctx cont
 // SecretCiphertextMapInput is an input type that accepts SecretCiphertextMap and SecretCiphertextMapOutput values.
 // You can construct a concrete instance of `SecretCiphertextMapInput` via:
 //
-//          SecretCiphertextMap{ "key": SecretCiphertextArgs{...} }
+//	SecretCiphertextMap{ "key": SecretCiphertextArgs{...} }
 type SecretCiphertextMapInput interface {
 	pulumi.Input
 

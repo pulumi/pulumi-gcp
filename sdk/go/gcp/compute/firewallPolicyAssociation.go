@@ -21,42 +21,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultFirewallPolicy, err := compute.NewFirewallPolicy(ctx, "defaultFirewallPolicy", &compute.FirewallPolicyArgs{
-// 			Parent:      pulumi.String("organizations/12345"),
-// 			ShortName:   pulumi.String("my-policy"),
-// 			Description: pulumi.String("Example Resource"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewFirewallPolicyAssociation(ctx, "defaultFirewallPolicyAssociation", &compute.FirewallPolicyAssociationArgs{
-// 			FirewallPolicy:   defaultFirewallPolicy.ID(),
-// 			AttachmentTarget: pulumi.Any(google_folder.Folder.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultFirewallPolicy, err := compute.NewFirewallPolicy(ctx, "defaultFirewallPolicy", &compute.FirewallPolicyArgs{
+//				Parent:      pulumi.String("organizations/12345"),
+//				ShortName:   pulumi.String("my-policy"),
+//				Description: pulumi.String("Example Resource"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewallPolicyAssociation(ctx, "defaultFirewallPolicyAssociation", &compute.FirewallPolicyAssociationArgs{
+//				FirewallPolicy:   defaultFirewallPolicy.ID(),
+//				AttachmentTarget: pulumi.Any(google_folder.Folder.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// FirewallPolicyAssociation can be imported using any of these accepted formats
+// # FirewallPolicyAssociation can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
+//
+//	$ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default {{firewall_policy}}/{{name}}
+//
+//	$ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default {{firewall_policy}}/{{name}}
+//
 // ```
 type FirewallPolicyAssociation struct {
 	pulumi.CustomResourceState
@@ -176,7 +183,7 @@ func (i *FirewallPolicyAssociation) ToFirewallPolicyAssociationOutputWithContext
 // FirewallPolicyAssociationArrayInput is an input type that accepts FirewallPolicyAssociationArray and FirewallPolicyAssociationArrayOutput values.
 // You can construct a concrete instance of `FirewallPolicyAssociationArrayInput` via:
 //
-//          FirewallPolicyAssociationArray{ FirewallPolicyAssociationArgs{...} }
+//	FirewallPolicyAssociationArray{ FirewallPolicyAssociationArgs{...} }
 type FirewallPolicyAssociationArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +208,7 @@ func (i FirewallPolicyAssociationArray) ToFirewallPolicyAssociationArrayOutputWi
 // FirewallPolicyAssociationMapInput is an input type that accepts FirewallPolicyAssociationMap and FirewallPolicyAssociationMapOutput values.
 // You can construct a concrete instance of `FirewallPolicyAssociationMapInput` via:
 //
-//          FirewallPolicyAssociationMap{ "key": FirewallPolicyAssociationArgs{...} }
+//	FirewallPolicyAssociationMap{ "key": FirewallPolicyAssociationArgs{...} }
 type FirewallPolicyAssociationMapInput interface {
 	pulumi.Input
 

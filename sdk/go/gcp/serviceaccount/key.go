@@ -18,29 +18,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("myaccount"),
-// 			DisplayName: pulumi.String("My Service Account"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
-// 			ServiceAccountId: myaccount.Name,
-// 			PublicKeyType:    pulumi.String("TYPE_X509_PEM_FILE"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("myaccount"),
+//				DisplayName: pulumi.String("My Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
+//				ServiceAccountId: myaccount.Name,
+//				PublicKeyType:    pulumi.String("TYPE_X509_PEM_FILE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -261,7 +264,7 @@ func (i *Key) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 // KeyArrayInput is an input type that accepts KeyArray and KeyArrayOutput values.
 // You can construct a concrete instance of `KeyArrayInput` via:
 //
-//          KeyArray{ KeyArgs{...} }
+//	KeyArray{ KeyArgs{...} }
 type KeyArrayInput interface {
 	pulumi.Input
 
@@ -286,7 +289,7 @@ func (i KeyArray) ToKeyArrayOutputWithContext(ctx context.Context) KeyArrayOutpu
 // KeyMapInput is an input type that accepts KeyMap and KeyMapOutput values.
 // You can construct a concrete instance of `KeyMapInput` via:
 //
-//          KeyMap{ "key": KeyArgs{...} }
+//	KeyMap{ "key": KeyArgs{...} }
 type KeyMapInput interface {
 	pulumi.Input
 

@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.GetActiveFolder(ctx, &organizations.GetActiveFolderArgs{
-// 			DisplayName: "Department 1",
-// 			Parent:      "organizations/1234567",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.GetActiveFolder(ctx, &organizations.GetActiveFolderArgs{
+//				DisplayName: "Department 1",
+//				Parent:      "organizations/1234567",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetActiveFolder(ctx *pulumi.Context, args *GetActiveFolderArgs, opts ...pulumi.InvokeOption) (*GetActiveFolderResult, error) {
 	var rv GetActiveFolderResult

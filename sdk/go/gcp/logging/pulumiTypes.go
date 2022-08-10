@@ -21,7 +21,7 @@ type BillingAccountSinkBigqueryOptions struct {
 // BillingAccountSinkBigqueryOptionsInput is an input type that accepts BillingAccountSinkBigqueryOptionsArgs and BillingAccountSinkBigqueryOptionsOutput values.
 // You can construct a concrete instance of `BillingAccountSinkBigqueryOptionsInput` via:
 //
-//          BillingAccountSinkBigqueryOptionsArgs{...}
+//	BillingAccountSinkBigqueryOptionsArgs{...}
 type BillingAccountSinkBigqueryOptionsInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i BillingAccountSinkBigqueryOptionsArgs) ToBillingAccountSinkBigqueryOptio
 // BillingAccountSinkBigqueryOptionsPtrInput is an input type that accepts BillingAccountSinkBigqueryOptionsArgs, BillingAccountSinkBigqueryOptionsPtr and BillingAccountSinkBigqueryOptionsPtrOutput values.
 // You can construct a concrete instance of `BillingAccountSinkBigqueryOptionsPtrInput` via:
 //
-//          BillingAccountSinkBigqueryOptionsArgs{...}
+//	        BillingAccountSinkBigqueryOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BillingAccountSinkBigqueryOptionsPtrInput interface {
 	pulumi.Input
 
@@ -174,7 +174,7 @@ type BillingAccountSinkExclusion struct {
 // BillingAccountSinkExclusionInput is an input type that accepts BillingAccountSinkExclusionArgs and BillingAccountSinkExclusionOutput values.
 // You can construct a concrete instance of `BillingAccountSinkExclusionInput` via:
 //
-//          BillingAccountSinkExclusionArgs{...}
+//	BillingAccountSinkExclusionArgs{...}
 type BillingAccountSinkExclusionInput interface {
 	pulumi.Input
 
@@ -209,7 +209,7 @@ func (i BillingAccountSinkExclusionArgs) ToBillingAccountSinkExclusionOutputWith
 // BillingAccountSinkExclusionArrayInput is an input type that accepts BillingAccountSinkExclusionArray and BillingAccountSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `BillingAccountSinkExclusionArrayInput` via:
 //
-//          BillingAccountSinkExclusionArray{ BillingAccountSinkExclusionArgs{...} }
+//	BillingAccountSinkExclusionArray{ BillingAccountSinkExclusionArgs{...} }
 type BillingAccountSinkExclusionArrayInput interface {
 	pulumi.Input
 
@@ -297,7 +297,7 @@ type FolderSinkBigqueryOptions struct {
 // FolderSinkBigqueryOptionsInput is an input type that accepts FolderSinkBigqueryOptionsArgs and FolderSinkBigqueryOptionsOutput values.
 // You can construct a concrete instance of `FolderSinkBigqueryOptionsInput` via:
 //
-//          FolderSinkBigqueryOptionsArgs{...}
+//	FolderSinkBigqueryOptionsArgs{...}
 type FolderSinkBigqueryOptionsInput interface {
 	pulumi.Input
 
@@ -336,11 +336,11 @@ func (i FolderSinkBigqueryOptionsArgs) ToFolderSinkBigqueryOptionsPtrOutputWithC
 // FolderSinkBigqueryOptionsPtrInput is an input type that accepts FolderSinkBigqueryOptionsArgs, FolderSinkBigqueryOptionsPtr and FolderSinkBigqueryOptionsPtrOutput values.
 // You can construct a concrete instance of `FolderSinkBigqueryOptionsPtrInput` via:
 //
-//          FolderSinkBigqueryOptionsArgs{...}
+//	        FolderSinkBigqueryOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FolderSinkBigqueryOptionsPtrInput interface {
 	pulumi.Input
 
@@ -450,7 +450,7 @@ type FolderSinkExclusion struct {
 // FolderSinkExclusionInput is an input type that accepts FolderSinkExclusionArgs and FolderSinkExclusionOutput values.
 // You can construct a concrete instance of `FolderSinkExclusionInput` via:
 //
-//          FolderSinkExclusionArgs{...}
+//	FolderSinkExclusionArgs{...}
 type FolderSinkExclusionInput interface {
 	pulumi.Input
 
@@ -485,7 +485,7 @@ func (i FolderSinkExclusionArgs) ToFolderSinkExclusionOutputWithContext(ctx cont
 // FolderSinkExclusionArrayInput is an input type that accepts FolderSinkExclusionArray and FolderSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `FolderSinkExclusionArrayInput` via:
 //
-//          FolderSinkExclusionArray{ FolderSinkExclusionArgs{...} }
+//	FolderSinkExclusionArray{ FolderSinkExclusionArgs{...} }
 type FolderSinkExclusionArrayInput interface {
 	pulumi.Input
 
@@ -579,7 +579,7 @@ type MetricBucketOptions struct {
 // MetricBucketOptionsInput is an input type that accepts MetricBucketOptionsArgs and MetricBucketOptionsOutput values.
 // You can construct a concrete instance of `MetricBucketOptionsInput` via:
 //
-//          MetricBucketOptionsArgs{...}
+//	MetricBucketOptionsArgs{...}
 type MetricBucketOptionsInput interface {
 	pulumi.Input
 
@@ -624,11 +624,11 @@ func (i MetricBucketOptionsArgs) ToMetricBucketOptionsPtrOutputWithContext(ctx c
 // MetricBucketOptionsPtrInput is an input type that accepts MetricBucketOptionsArgs, MetricBucketOptionsPtr and MetricBucketOptionsPtrOutput values.
 // You can construct a concrete instance of `MetricBucketOptionsPtrInput` via:
 //
-//          MetricBucketOptionsArgs{...}
+//	        MetricBucketOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricBucketOptionsPtrInput interface {
 	pulumi.Input
 
@@ -765,7 +765,7 @@ type MetricBucketOptionsExplicitBuckets struct {
 // MetricBucketOptionsExplicitBucketsInput is an input type that accepts MetricBucketOptionsExplicitBucketsArgs and MetricBucketOptionsExplicitBucketsOutput values.
 // You can construct a concrete instance of `MetricBucketOptionsExplicitBucketsInput` via:
 //
-//          MetricBucketOptionsExplicitBucketsArgs{...}
+//	MetricBucketOptionsExplicitBucketsArgs{...}
 type MetricBucketOptionsExplicitBucketsInput interface {
 	pulumi.Input
 
@@ -801,11 +801,11 @@ func (i MetricBucketOptionsExplicitBucketsArgs) ToMetricBucketOptionsExplicitBuc
 // MetricBucketOptionsExplicitBucketsPtrInput is an input type that accepts MetricBucketOptionsExplicitBucketsArgs, MetricBucketOptionsExplicitBucketsPtr and MetricBucketOptionsExplicitBucketsPtrOutput values.
 // You can construct a concrete instance of `MetricBucketOptionsExplicitBucketsPtrInput` via:
 //
-//          MetricBucketOptionsExplicitBucketsArgs{...}
+//	        MetricBucketOptionsExplicitBucketsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricBucketOptionsExplicitBucketsPtrInput interface {
 	pulumi.Input
 
@@ -906,7 +906,7 @@ type MetricBucketOptionsExponentialBuckets struct {
 // MetricBucketOptionsExponentialBucketsInput is an input type that accepts MetricBucketOptionsExponentialBucketsArgs and MetricBucketOptionsExponentialBucketsOutput values.
 // You can construct a concrete instance of `MetricBucketOptionsExponentialBucketsInput` via:
 //
-//          MetricBucketOptionsExponentialBucketsArgs{...}
+//	MetricBucketOptionsExponentialBucketsArgs{...}
 type MetricBucketOptionsExponentialBucketsInput interface {
 	pulumi.Input
 
@@ -946,11 +946,11 @@ func (i MetricBucketOptionsExponentialBucketsArgs) ToMetricBucketOptionsExponent
 // MetricBucketOptionsExponentialBucketsPtrInput is an input type that accepts MetricBucketOptionsExponentialBucketsArgs, MetricBucketOptionsExponentialBucketsPtr and MetricBucketOptionsExponentialBucketsPtrOutput values.
 // You can construct a concrete instance of `MetricBucketOptionsExponentialBucketsPtrInput` via:
 //
-//          MetricBucketOptionsExponentialBucketsArgs{...}
+//	        MetricBucketOptionsExponentialBucketsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricBucketOptionsExponentialBucketsPtrInput interface {
 	pulumi.Input
 
@@ -1081,7 +1081,7 @@ type MetricBucketOptionsLinearBuckets struct {
 // MetricBucketOptionsLinearBucketsInput is an input type that accepts MetricBucketOptionsLinearBucketsArgs and MetricBucketOptionsLinearBucketsOutput values.
 // You can construct a concrete instance of `MetricBucketOptionsLinearBucketsInput` via:
 //
-//          MetricBucketOptionsLinearBucketsArgs{...}
+//	MetricBucketOptionsLinearBucketsArgs{...}
 type MetricBucketOptionsLinearBucketsInput interface {
 	pulumi.Input
 
@@ -1121,11 +1121,11 @@ func (i MetricBucketOptionsLinearBucketsArgs) ToMetricBucketOptionsLinearBuckets
 // MetricBucketOptionsLinearBucketsPtrInput is an input type that accepts MetricBucketOptionsLinearBucketsArgs, MetricBucketOptionsLinearBucketsPtr and MetricBucketOptionsLinearBucketsPtrOutput values.
 // You can construct a concrete instance of `MetricBucketOptionsLinearBucketsPtrInput` via:
 //
-//          MetricBucketOptionsLinearBucketsArgs{...}
+//	        MetricBucketOptionsLinearBucketsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricBucketOptionsLinearBucketsPtrInput interface {
 	pulumi.Input
 
@@ -1273,7 +1273,7 @@ type MetricMetricDescriptor struct {
 // MetricMetricDescriptorInput is an input type that accepts MetricMetricDescriptorArgs and MetricMetricDescriptorOutput values.
 // You can construct a concrete instance of `MetricMetricDescriptorInput` via:
 //
-//          MetricMetricDescriptorArgs{...}
+//	MetricMetricDescriptorArgs{...}
 type MetricMetricDescriptorInput interface {
 	pulumi.Input
 
@@ -1330,11 +1330,11 @@ func (i MetricMetricDescriptorArgs) ToMetricMetricDescriptorPtrOutputWithContext
 // MetricMetricDescriptorPtrInput is an input type that accepts MetricMetricDescriptorArgs, MetricMetricDescriptorPtr and MetricMetricDescriptorPtrOutput values.
 // You can construct a concrete instance of `MetricMetricDescriptorPtrInput` via:
 //
-//          MetricMetricDescriptorArgs{...}
+//	        MetricMetricDescriptorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricMetricDescriptorPtrInput interface {
 	pulumi.Input
 
@@ -1524,7 +1524,7 @@ type MetricMetricDescriptorLabel struct {
 // MetricMetricDescriptorLabelInput is an input type that accepts MetricMetricDescriptorLabelArgs and MetricMetricDescriptorLabelOutput values.
 // You can construct a concrete instance of `MetricMetricDescriptorLabelInput` via:
 //
-//          MetricMetricDescriptorLabelArgs{...}
+//	MetricMetricDescriptorLabelArgs{...}
 type MetricMetricDescriptorLabelInput interface {
 	pulumi.Input
 
@@ -1559,7 +1559,7 @@ func (i MetricMetricDescriptorLabelArgs) ToMetricMetricDescriptorLabelOutputWith
 // MetricMetricDescriptorLabelArrayInput is an input type that accepts MetricMetricDescriptorLabelArray and MetricMetricDescriptorLabelArrayOutput values.
 // You can construct a concrete instance of `MetricMetricDescriptorLabelArrayInput` via:
 //
-//          MetricMetricDescriptorLabelArray{ MetricMetricDescriptorLabelArgs{...} }
+//	MetricMetricDescriptorLabelArray{ MetricMetricDescriptorLabelArgs{...} }
 type MetricMetricDescriptorLabelArrayInput interface {
 	pulumi.Input
 
@@ -1644,7 +1644,7 @@ type OrganizationSinkBigqueryOptions struct {
 // OrganizationSinkBigqueryOptionsInput is an input type that accepts OrganizationSinkBigqueryOptionsArgs and OrganizationSinkBigqueryOptionsOutput values.
 // You can construct a concrete instance of `OrganizationSinkBigqueryOptionsInput` via:
 //
-//          OrganizationSinkBigqueryOptionsArgs{...}
+//	OrganizationSinkBigqueryOptionsArgs{...}
 type OrganizationSinkBigqueryOptionsInput interface {
 	pulumi.Input
 
@@ -1683,11 +1683,11 @@ func (i OrganizationSinkBigqueryOptionsArgs) ToOrganizationSinkBigqueryOptionsPt
 // OrganizationSinkBigqueryOptionsPtrInput is an input type that accepts OrganizationSinkBigqueryOptionsArgs, OrganizationSinkBigqueryOptionsPtr and OrganizationSinkBigqueryOptionsPtrOutput values.
 // You can construct a concrete instance of `OrganizationSinkBigqueryOptionsPtrInput` via:
 //
-//          OrganizationSinkBigqueryOptionsArgs{...}
+//	        OrganizationSinkBigqueryOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OrganizationSinkBigqueryOptionsPtrInput interface {
 	pulumi.Input
 
@@ -1797,7 +1797,7 @@ type OrganizationSinkExclusion struct {
 // OrganizationSinkExclusionInput is an input type that accepts OrganizationSinkExclusionArgs and OrganizationSinkExclusionOutput values.
 // You can construct a concrete instance of `OrganizationSinkExclusionInput` via:
 //
-//          OrganizationSinkExclusionArgs{...}
+//	OrganizationSinkExclusionArgs{...}
 type OrganizationSinkExclusionInput interface {
 	pulumi.Input
 
@@ -1832,7 +1832,7 @@ func (i OrganizationSinkExclusionArgs) ToOrganizationSinkExclusionOutputWithCont
 // OrganizationSinkExclusionArrayInput is an input type that accepts OrganizationSinkExclusionArray and OrganizationSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `OrganizationSinkExclusionArrayInput` via:
 //
-//          OrganizationSinkExclusionArray{ OrganizationSinkExclusionArgs{...} }
+//	OrganizationSinkExclusionArray{ OrganizationSinkExclusionArgs{...} }
 type OrganizationSinkExclusionArrayInput interface {
 	pulumi.Input
 
@@ -1920,7 +1920,7 @@ type ProjectSinkBigqueryOptions struct {
 // ProjectSinkBigqueryOptionsInput is an input type that accepts ProjectSinkBigqueryOptionsArgs and ProjectSinkBigqueryOptionsOutput values.
 // You can construct a concrete instance of `ProjectSinkBigqueryOptionsInput` via:
 //
-//          ProjectSinkBigqueryOptionsArgs{...}
+//	ProjectSinkBigqueryOptionsArgs{...}
 type ProjectSinkBigqueryOptionsInput interface {
 	pulumi.Input
 
@@ -1959,11 +1959,11 @@ func (i ProjectSinkBigqueryOptionsArgs) ToProjectSinkBigqueryOptionsPtrOutputWit
 // ProjectSinkBigqueryOptionsPtrInput is an input type that accepts ProjectSinkBigqueryOptionsArgs, ProjectSinkBigqueryOptionsPtr and ProjectSinkBigqueryOptionsPtrOutput values.
 // You can construct a concrete instance of `ProjectSinkBigqueryOptionsPtrInput` via:
 //
-//          ProjectSinkBigqueryOptionsArgs{...}
+//	        ProjectSinkBigqueryOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ProjectSinkBigqueryOptionsPtrInput interface {
 	pulumi.Input
 
@@ -2073,7 +2073,7 @@ type ProjectSinkExclusion struct {
 // ProjectSinkExclusionInput is an input type that accepts ProjectSinkExclusionArgs and ProjectSinkExclusionOutput values.
 // You can construct a concrete instance of `ProjectSinkExclusionInput` via:
 //
-//          ProjectSinkExclusionArgs{...}
+//	ProjectSinkExclusionArgs{...}
 type ProjectSinkExclusionInput interface {
 	pulumi.Input
 
@@ -2108,7 +2108,7 @@ func (i ProjectSinkExclusionArgs) ToProjectSinkExclusionOutputWithContext(ctx co
 // ProjectSinkExclusionArrayInput is an input type that accepts ProjectSinkExclusionArray and ProjectSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `ProjectSinkExclusionArrayInput` via:
 //
-//          ProjectSinkExclusionArray{ ProjectSinkExclusionArgs{...} }
+//	ProjectSinkExclusionArray{ ProjectSinkExclusionArgs{...} }
 type ProjectSinkExclusionArrayInput interface {
 	pulumi.Input
 

@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
 // * How-to Guides
-//     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+//   - [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 //
 // ## Example Usage
 // ### Node Template Basic
@@ -27,22 +27,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
-// 			NodeType: pulumi.String("n1-node-96-624"),
-// 			Region:   pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
+//				NodeType: pulumi.String("n1-node-96-624"),
+//				Region:   pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Node Template Server Binding
 //
@@ -50,54 +53,65 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.GetNodeTypes(ctx, &compute.GetNodeTypesArgs{
-// 			Zone: pulumi.StringRef("us-central1-a"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
-// 			NodeAffinityLabels: pulumi.StringMap{
-// 				"foo": pulumi.String("baz"),
-// 			},
-// 			NodeType: pulumi.String("n1-node-96-624"),
-// 			Region:   pulumi.String("us-central1"),
-// 			ServerBinding: &compute.NodeTemplateServerBindingArgs{
-// 				Type: pulumi.String("RESTART_NODE_ON_MINIMAL_SERVERS"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetNodeTypes(ctx, &compute.GetNodeTypesArgs{
+//				Zone: pulumi.StringRef("us-central1-a"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
+//				NodeAffinityLabels: pulumi.StringMap{
+//					"foo": pulumi.String("baz"),
+//				},
+//				NodeType: pulumi.String("n1-node-96-624"),
+//				Region:   pulumi.String("us-central1"),
+//				ServerBinding: &compute.NodeTemplateServerBindingArgs{
+//					Type: pulumi.String("RESTART_NODE_ON_MINIMAL_SERVERS"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// NodeTemplate can be imported using any of these accepted formats
+// # NodeTemplate can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
+//
+//	$ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
+//
+//	$ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
+//
 // ```
 type NodeTemplate struct {
 	pulumi.CustomResourceState
@@ -337,7 +351,7 @@ func (i *NodeTemplate) ToNodeTemplateOutputWithContext(ctx context.Context) Node
 // NodeTemplateArrayInput is an input type that accepts NodeTemplateArray and NodeTemplateArrayOutput values.
 // You can construct a concrete instance of `NodeTemplateArrayInput` via:
 //
-//          NodeTemplateArray{ NodeTemplateArgs{...} }
+//	NodeTemplateArray{ NodeTemplateArgs{...} }
 type NodeTemplateArrayInput interface {
 	pulumi.Input
 
@@ -362,7 +376,7 @@ func (i NodeTemplateArray) ToNodeTemplateArrayOutputWithContext(ctx context.Cont
 // NodeTemplateMapInput is an input type that accepts NodeTemplateMap and NodeTemplateMapOutput values.
 // You can construct a concrete instance of `NodeTemplateMapInput` via:
 //
-//          NodeTemplateMap{ "key": NodeTemplateArgs{...} }
+//	NodeTemplateMap{ "key": NodeTemplateArgs{...} }
 type NodeTemplateMapInput interface {
 	pulumi.Input
 

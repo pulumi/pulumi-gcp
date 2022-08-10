@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.reservations)
 // * How-to Guides
-//     * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
+//   - [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 //
 // ## Example Usage
 // ### Pubsub Lite Reservation Basic
@@ -26,47 +26,58 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewLiteReservation(ctx, "example", &pubsub.LiteReservationArgs{
-// 			Project:            pulumi.String(project.Number),
-// 			ThroughputCapacity: pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewLiteReservation(ctx, "example", &pubsub.LiteReservationArgs{
+//				Project:            pulumi.String(project.Number),
+//				ThroughputCapacity: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Reservation can be imported using any of these accepted formats
+// # Reservation can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteReservation:LiteReservation default projects/{{project}}/locations/{{region}}/reservations/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteReservation:LiteReservation default projects/{{project}}/locations/{{region}}/reservations/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{name}}
+//
+//	$ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{name}}
+//
 // ```
 type LiteReservation struct {
 	pulumi.CustomResourceState
@@ -202,7 +213,7 @@ func (i *LiteReservation) ToLiteReservationOutputWithContext(ctx context.Context
 // LiteReservationArrayInput is an input type that accepts LiteReservationArray and LiteReservationArrayOutput values.
 // You can construct a concrete instance of `LiteReservationArrayInput` via:
 //
-//          LiteReservationArray{ LiteReservationArgs{...} }
+//	LiteReservationArray{ LiteReservationArgs{...} }
 type LiteReservationArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +238,7 @@ func (i LiteReservationArray) ToLiteReservationArrayOutputWithContext(ctx contex
 // LiteReservationMapInput is an input type that accepts LiteReservationMap and LiteReservationMapOutput values.
 // You can construct a concrete instance of `LiteReservationMapInput` via:
 //
-//          LiteReservationMap{ "key": LiteReservationArgs{...} }
+//	LiteReservationMap{ "key": LiteReservationArgs{...} }
 type LiteReservationMapInput interface {
 	pulumi.Input
 

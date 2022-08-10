@@ -26,49 +26,52 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tplInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "tplInstanceTemplate", &compute.InstanceTemplateArgs{
-// 			MachineType: pulumi.String("e2-medium"),
-// 			Disks: compute.InstanceTemplateDiskArray{
-// 				&compute.InstanceTemplateDiskArgs{
-// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
-// 					AutoDelete:  pulumi.Bool(true),
-// 					DiskSizeGb:  pulumi.Int(100),
-// 					Boot:        pulumi.Bool(true),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 			Metadata: pulumi.AnyMap{
-// 				"foo": pulumi.Any("bar"),
-// 			},
-// 			CanIpForward: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstanceFromTemplate(ctx, "tplInstanceFromTemplate", &compute.InstanceFromTemplateArgs{
-// 			Zone:                   pulumi.String("us-central1-a"),
-// 			SourceInstanceTemplate: tplInstanceTemplate.ID(),
-// 			CanIpForward:           pulumi.Bool(false),
-// 			Labels: pulumi.StringMap{
-// 				"my_key": pulumi.String("my_value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tplInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "tplInstanceTemplate", &compute.InstanceTemplateArgs{
+//				MachineType: pulumi.String("e2-medium"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("debian-cloud/debian-9"),
+//						AutoDelete:  pulumi.Bool(true),
+//						DiskSizeGb:  pulumi.Int(100),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Metadata: pulumi.AnyMap{
+//					"foo": pulumi.Any("bar"),
+//				},
+//				CanIpForward: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceFromTemplate(ctx, "tplInstanceFromTemplate", &compute.InstanceFromTemplateArgs{
+//				Zone:                   pulumi.String("us-central1-a"),
+//				SourceInstanceTemplate: tplInstanceTemplate.ID(),
+//				CanIpForward:           pulumi.Bool(false),
+//				Labels: pulumi.StringMap{
+//					"my_key": pulumi.String("my_value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -545,7 +548,7 @@ func (i *InstanceFromTemplate) ToInstanceFromTemplateOutputWithContext(ctx conte
 // InstanceFromTemplateArrayInput is an input type that accepts InstanceFromTemplateArray and InstanceFromTemplateArrayOutput values.
 // You can construct a concrete instance of `InstanceFromTemplateArrayInput` via:
 //
-//          InstanceFromTemplateArray{ InstanceFromTemplateArgs{...} }
+//	InstanceFromTemplateArray{ InstanceFromTemplateArgs{...} }
 type InstanceFromTemplateArrayInput interface {
 	pulumi.Input
 
@@ -570,7 +573,7 @@ func (i InstanceFromTemplateArray) ToInstanceFromTemplateArrayOutputWithContext(
 // InstanceFromTemplateMapInput is an input type that accepts InstanceFromTemplateMap and InstanceFromTemplateMapOutput values.
 // You can construct a concrete instance of `InstanceFromTemplateMapInput` via:
 //
-//          InstanceFromTemplateMap{ "key": InstanceFromTemplateArgs{...} }
+//	InstanceFromTemplateMap{ "key": InstanceFromTemplateArgs{...} }
 type InstanceFromTemplateMapInput interface {
 	pulumi.Input
 

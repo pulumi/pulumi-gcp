@@ -23,97 +23,104 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-9"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
-// 			MachineType:  pulumi.String("e2-medium"),
-// 			CanIpForward: pulumi.Bool(false),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 				pulumi.String("bar"),
-// 			},
-// 			Disks: compute.InstanceTemplateDiskArray{
-// 				&compute.InstanceTemplateDiskArgs{
-// 					SourceImage: pulumi.String(myImage.SelfLink),
-// 					AutoDelete:  pulumi.Bool(true),
-// 					Boot:        pulumi.Bool(true),
-// 				},
-// 			},
-// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 			Scheduling: &compute.InstanceTemplateSchedulingArgs{
-// 				Preemptible:      pulumi.Bool(false),
-// 				AutomaticRestart: pulumi.Bool(true),
-// 			},
-// 			Metadata: pulumi.AnyMap{
-// 				"gce-software-declaration": pulumi.Any(fmt.Sprintf(`{
-//   "softwareRecipes": [{
-//     "name": "install-gce-service-proxy-agent",
-//     "desired_state": "INSTALLED",
-//     "installSteps": [{
-//       "scriptRun": {
-//         "script": "#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
-//       }
-//     }]
-//   }]
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-9"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
+//				MachineType:  pulumi.String("e2-medium"),
+//				CanIpForward: pulumi.Bool(false),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String(myImage.SelfLink),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Scheduling: &compute.InstanceTemplateSchedulingArgs{
+//					Preemptible:      pulumi.Bool(false),
+//					AutomaticRestart: pulumi.Bool(true),
+//				},
+//				Metadata: pulumi.AnyMap{
+//					"gce-software-declaration": pulumi.Any(fmt.Sprintf(`{
+//	  "softwareRecipes": [{
+//	    "name": "install-gce-service-proxy-agent",
+//	    "desired_state": "INSTALLED",
+//	    "installSteps": [{
+//	      "scriptRun": {
+//	        "script": "#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
+//	      }
+//	    }]
+//	  }]
+//	}
+//
 // `)),
-// 				"gce-service-proxy": pulumi.Any(fmt.Sprintf(`{
-//   "api-version": "0.2",
-//   "proxy-spec": {
-//     "proxy-port": 15001,
-//     "network": "my-network",
-//     "tracing": "ON",
-//     "access-log": "/var/log/envoy/access.log"
-//   }
-//   "service": {
-//     "serving-ports": [80, 81]
-//   },
-//  "labels": {
-//    "app_name": "bookserver_app",
-//    "app_version": "STABLE"
-//   }
-// }
+//
+//					"gce-service-proxy": pulumi.Any(fmt.Sprintf(`{
+//	  "api-version": "0.2",
+//	  "proxy-spec": {
+//	    "proxy-port": 15001,
+//	    "network": "my-network",
+//	    "tracing": "ON",
+//	    "access-log": "/var/log/envoy/access.log"
+//	  }
+//	  "service": {
+//	    "serving-ports": [80, 81]
+//	  },
+//	 "labels": {
+//	   "app_name": "bookserver_app",
+//	   "app_version": "STABLE"
+//	  }
+//	}
+//
 // `)),
-// 				"enable-guest-attributes": pulumi.Any("true"),
-// 				"enable-osconfig":         pulumi.Any("true"),
-// 			},
-// 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
-// 				Email: pulumi.String(_default.Email),
-// 				Scopes: pulumi.StringArray{
-// 					pulumi.String("cloud-platform"),
-// 				},
-// 			},
-// 			Labels: pulumi.StringMap{
-// 				"gce-service-proxy": pulumi.String("on"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//					"enable-guest-attributes": pulumi.Any("true"),
+//					"enable-osconfig":         pulumi.Any("true"),
+//				},
+//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+//					Email: pulumi.String(_default.Email),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("cloud-platform"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"gce-service-proxy": pulumi.String("on"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Deploying the Latest Image
 //
@@ -136,35 +143,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-9"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
-// 			NamePrefix:  pulumi.String("instance-template-"),
-// 			MachineType: pulumi.String("e2-medium"),
-// 			Region:      pulumi.String("us-central1"),
-// 			Disks: compute.InstanceTemplateDiskArray{
-// 				&compute.InstanceTemplateDiskArgs{
-// 					SourceImage: pulumi.Any(google_compute_image.My_image.Self_link),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-9"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+//				NamePrefix:  pulumi.String("instance-template-"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Region:      pulumi.String("us-central1"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.Any(google_compute_image.My_image.Self_link),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // To have instances update to the latest on every scaling event or instance re-creation,
@@ -175,47 +185,56 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
-// 			Disks: compute.InstanceTemplateDiskArray{
-// 				&compute.InstanceTemplateDiskArgs{
-// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
-// 				},
-// 			},
-// 			MachineType: pulumi.String("e2-medium"),
-// 			NamePrefix:  pulumi.String("instance-template-"),
-// 			Region:      pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("debian-cloud/debian-9"),
+//					},
+//				},
+//				MachineType: pulumi.String("e2-medium"),
+//				NamePrefix:  pulumi.String("instance-template-"),
+//				Region:      pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Instance templates can be imported using any of these accepted formats
+// # Instance templates can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
+//
+//	$ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
+//
+//	$ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
+//
 // ```
 //
-//  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
+//	[custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
 type InstanceTemplate struct {
 	pulumi.CustomResourceState
 
@@ -701,7 +720,7 @@ func (i *InstanceTemplate) ToInstanceTemplateOutputWithContext(ctx context.Conte
 // InstanceTemplateArrayInput is an input type that accepts InstanceTemplateArray and InstanceTemplateArrayOutput values.
 // You can construct a concrete instance of `InstanceTemplateArrayInput` via:
 //
-//          InstanceTemplateArray{ InstanceTemplateArgs{...} }
+//	InstanceTemplateArray{ InstanceTemplateArgs{...} }
 type InstanceTemplateArrayInput interface {
 	pulumi.Input
 
@@ -726,7 +745,7 @@ func (i InstanceTemplateArray) ToInstanceTemplateArrayOutputWithContext(ctx cont
 // InstanceTemplateMapInput is an input type that accepts InstanceTemplateMap and InstanceTemplateMapOutput values.
 // You can construct a concrete instance of `InstanceTemplateMapInput` via:
 //
-//          InstanceTemplateMap{ "key": InstanceTemplateArgs{...} }
+//	InstanceTemplateMap{ "key": InstanceTemplateArgs{...} }
 type InstanceTemplateMapInput interface {
 	pulumi.Input
 

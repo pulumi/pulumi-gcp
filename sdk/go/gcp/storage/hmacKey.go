@@ -19,7 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
+//   - [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
 //
 // > **Warning:** All arguments including the `secret` value will be stored in the raw
 // state as plain-text. On import, the `secret` value will not be retrieved.
@@ -34,44 +34,53 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
-// 			AccountId: pulumi.String("my-svc-acc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewHmacKey(ctx, "key", &storage.HmacKeyArgs{
-// 			ServiceAccountEmail: serviceAccount.Email,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+//				AccountId: pulumi.String("my-svc-acc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewHmacKey(ctx, "key", &storage.HmacKeyArgs{
+//				ServiceAccountEmail: serviceAccount.Email,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// HmacKey can be imported using any of these accepted formats
+// # HmacKey can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
+//
+//	$ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:storage/hmacKey:HmacKey default {{project}}/{{access_id}}
+//
+//	$ pulumi import gcp:storage/hmacKey:HmacKey default {{project}}/{{access_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
+//
+//	$ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
+//
 // ```
 type HmacKey struct {
 	pulumi.CustomResourceState
@@ -221,7 +230,7 @@ func (i *HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput 
 // HmacKeyArrayInput is an input type that accepts HmacKeyArray and HmacKeyArrayOutput values.
 // You can construct a concrete instance of `HmacKeyArrayInput` via:
 //
-//          HmacKeyArray{ HmacKeyArgs{...} }
+//	HmacKeyArray{ HmacKeyArgs{...} }
 type HmacKeyArrayInput interface {
 	pulumi.Input
 
@@ -246,7 +255,7 @@ func (i HmacKeyArray) ToHmacKeyArrayOutputWithContext(ctx context.Context) HmacK
 // HmacKeyMapInput is an input type that accepts HmacKeyMap and HmacKeyMapOutput values.
 // You can construct a concrete instance of `HmacKeyMapInput` via:
 //
-//          HmacKeyMap{ "key": HmacKeyArgs{...} }
+//	HmacKeyMap{ "key": HmacKeyArgs{...} }
 type HmacKeyMapInput interface {
 	pulumi.Input
 

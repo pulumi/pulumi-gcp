@@ -18,25 +18,31 @@ import (
 // To get more information about ConsumerQuotaOverride, see:
 //
 // * How-to Guides
-//     * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
-//     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+//   - [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
+//   - [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// ConsumerQuotaOverride can be imported using any of these accepted formats
+// # ConsumerQuotaOverride can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+//
+//	$ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+//
+//	$ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
+//
+//	$ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
+//
 // ```
 type ConsumerQuotaOverride struct {
 	pulumi.CustomResourceState
@@ -212,7 +218,7 @@ func (i *ConsumerQuotaOverride) ToConsumerQuotaOverrideOutputWithContext(ctx con
 // ConsumerQuotaOverrideArrayInput is an input type that accepts ConsumerQuotaOverrideArray and ConsumerQuotaOverrideArrayOutput values.
 // You can construct a concrete instance of `ConsumerQuotaOverrideArrayInput` via:
 //
-//          ConsumerQuotaOverrideArray{ ConsumerQuotaOverrideArgs{...} }
+//	ConsumerQuotaOverrideArray{ ConsumerQuotaOverrideArgs{...} }
 type ConsumerQuotaOverrideArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +243,7 @@ func (i ConsumerQuotaOverrideArray) ToConsumerQuotaOverrideArrayOutputWithContex
 // ConsumerQuotaOverrideMapInput is an input type that accepts ConsumerQuotaOverrideMap and ConsumerQuotaOverrideMapOutput values.
 // You can construct a concrete instance of `ConsumerQuotaOverrideMapInput` via:
 //
-//          ConsumerQuotaOverrideMap{ "key": ConsumerQuotaOverrideArgs{...} }
+//	ConsumerQuotaOverrideMap{ "key": ConsumerQuotaOverrideArgs{...} }
 type ConsumerQuotaOverrideMapInput interface {
 	pulumi.Input
 

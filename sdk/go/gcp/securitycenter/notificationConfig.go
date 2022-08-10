@@ -23,7 +23,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.notificationConfigs)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
+//   - [Official Documentation](https://cloud.google.com/security-command-center/docs)
 //
 // ## Example Usage
 // ### Scc Notification Config Basic
@@ -32,44 +32,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/securitycenter"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/securitycenter"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sccNotification, err := pubsub.NewTopic(ctx, "sccNotification", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = securitycenter.NewNotificationConfig(ctx, "customNotificationConfig", &securitycenter.NotificationConfigArgs{
-// 			ConfigId:     pulumi.String("my-config"),
-// 			Organization: pulumi.String("123456789"),
-// 			Description:  pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-// 			PubsubTopic:  sccNotification.ID(),
-// 			StreamingConfig: &securitycenter.NotificationConfigStreamingConfigArgs{
-// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sccNotification, err := pubsub.NewTopic(ctx, "sccNotification", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securitycenter.NewNotificationConfig(ctx, "customNotificationConfig", &securitycenter.NotificationConfigArgs{
+//				ConfigId:     pulumi.String("my-config"),
+//				Organization: pulumi.String("123456789"),
+//				Description:  pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
+//				PubsubTopic:  sccNotification.ID(),
+//				StreamingConfig: &securitycenter.NotificationConfigStreamingConfigArgs{
+//					Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// NotificationConfig can be imported using any of these accepted formats
+// # NotificationConfig can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}
+//
+//	$ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default {{organization}}/{{name}}
+//
+//	$ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default {{organization}}/{{name}}
+//
 // ```
 type NotificationConfig struct {
 	pulumi.CustomResourceState
@@ -239,7 +246,7 @@ func (i *NotificationConfig) ToNotificationConfigOutputWithContext(ctx context.C
 // NotificationConfigArrayInput is an input type that accepts NotificationConfigArray and NotificationConfigArrayOutput values.
 // You can construct a concrete instance of `NotificationConfigArrayInput` via:
 //
-//          NotificationConfigArray{ NotificationConfigArgs{...} }
+//	NotificationConfigArray{ NotificationConfigArgs{...} }
 type NotificationConfigArrayInput interface {
 	pulumi.Input
 
@@ -264,7 +271,7 @@ func (i NotificationConfigArray) ToNotificationConfigArrayOutputWithContext(ctx 
 // NotificationConfigMapInput is an input type that accepts NotificationConfigMap and NotificationConfigMapOutput values.
 // You can construct a concrete instance of `NotificationConfigMapInput` via:
 //
-//          NotificationConfigMap{ "key": NotificationConfigArgs{...} }
+//	NotificationConfigMap{ "key": NotificationConfigArgs{...} }
 type NotificationConfigMapInput interface {
 	pulumi.Input
 

@@ -19,28 +19,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/runtimeconfig"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/runtimeconfig"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
-// 			Description: pulumi.String("Runtime configuration values for my service"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = runtimeconfig.NewVariable(ctx, "environment", &runtimeconfig.VariableArgs{
-// 			Parent: my_runtime_config.Name,
-// 			Text:   pulumi.String("example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
+//				Description: pulumi.String("Runtime configuration values for my service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = runtimeconfig.NewVariable(ctx, "environment", &runtimeconfig.VariableArgs{
+//				Parent: my_runtime_config.Name,
+//				Text:   pulumi.String("example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // You can also encode binary content using the `value` argument instead. The
@@ -52,39 +55,42 @@ import (
 // package main
 //
 // import (
-// 	"encoding/base64"
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/runtimeconfig"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/base64"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/runtimeconfig"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func filebase64OrPanic(path string) pulumi.StringPtrInput {
-// 	if fileData, err := ioutil.ReadFile(path); err == nil {
-// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
-// 	} else {
-// 		panic(err.Error())
-// 	}
-// }
+//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
+//		if fileData, err := ioutil.ReadFile(path); err == nil {
+//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+//		} else {
+//			panic(err.Error())
+//		}
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
-// 			Description: pulumi.String("Runtime configuration values for my service"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = runtimeconfig.NewVariable(ctx, "my-secret", &runtimeconfig.VariableArgs{
-// 			Parent: my_runtime_config.Name,
-// 			Value:  filebase64OrPanic("my-encrypted-secret.dat"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
+//				Description: pulumi.String("Runtime configuration values for my service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = runtimeconfig.NewVariable(ctx, "my-secret", &runtimeconfig.VariableArgs{
+//				Parent: my_runtime_config.Name,
+//				Value:  filebase64OrPanic("my-encrypted-secret.dat"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -92,14 +98,18 @@ import (
 // Runtime Config Variables can be imported using the `name` or full variable name, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
+//
+//	$ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+//
+//	$ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+//
 // ```
 //
-//  When importing using only the name, the provider project must be set.
+//	When importing using only the name, the provider project must be set.
 type Variable struct {
 	pulumi.CustomResourceState
 
@@ -266,7 +276,7 @@ func (i *Variable) ToVariableOutputWithContext(ctx context.Context) VariableOutp
 // VariableArrayInput is an input type that accepts VariableArray and VariableArrayOutput values.
 // You can construct a concrete instance of `VariableArrayInput` via:
 //
-//          VariableArray{ VariableArgs{...} }
+//	VariableArray{ VariableArgs{...} }
 type VariableArrayInput interface {
 	pulumi.Input
 
@@ -291,7 +301,7 @@ func (i VariableArray) ToVariableArrayOutputWithContext(ctx context.Context) Var
 // VariableMapInput is an input type that accepts VariableMap and VariableMapOutput values.
 // You can construct a concrete instance of `VariableMapInput` via:
 //
-//          VariableMap{ "key": VariableArgs{...} }
+//	VariableMap{ "key": VariableArgs{...} }
 type VariableMapInput interface {
 	pulumi.Input
 

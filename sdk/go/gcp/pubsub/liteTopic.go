@@ -16,7 +16,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.topics)
 // * How-to Guides
-//     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
+//   - [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
 //
 // ## Example Usage
 // ### Pubsub Lite Topic Basic
@@ -25,66 +25,77 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleLiteReservation, err := pubsub.NewLiteReservation(ctx, "exampleLiteReservation", &pubsub.LiteReservationArgs{
-// 			Project:            pulumi.String(project.Number),
-// 			ThroughputCapacity: pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
-// 			Project: pulumi.String(project.Number),
-// 			PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
-// 				Count: pulumi.Int(1),
-// 				Capacity: &pubsub.LiteTopicPartitionConfigCapacityArgs{
-// 					PublishMibPerSec:   pulumi.Int(4),
-// 					SubscribeMibPerSec: pulumi.Int(8),
-// 				},
-// 			},
-// 			RetentionConfig: &pubsub.LiteTopicRetentionConfigArgs{
-// 				PerPartitionBytes: pulumi.String("32212254720"),
-// 			},
-// 			ReservationConfig: &pubsub.LiteTopicReservationConfigArgs{
-// 				ThroughputReservation: exampleLiteReservation.Name,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleLiteReservation, err := pubsub.NewLiteReservation(ctx, "exampleLiteReservation", &pubsub.LiteReservationArgs{
+//				Project:            pulumi.String(project.Number),
+//				ThroughputCapacity: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
+//				Project: pulumi.String(project.Number),
+//				PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
+//					Count: pulumi.Int(1),
+//					Capacity: &pubsub.LiteTopicPartitionConfigCapacityArgs{
+//						PublishMibPerSec:   pulumi.Int(4),
+//						SubscribeMibPerSec: pulumi.Int(8),
+//					},
+//				},
+//				RetentionConfig: &pubsub.LiteTopicRetentionConfigArgs{
+//					PerPartitionBytes: pulumi.String("32212254720"),
+//				},
+//				ReservationConfig: &pubsub.LiteTopicReservationConfigArgs{
+//					ThroughputReservation: exampleLiteReservation.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Topic can be imported using any of these accepted formats
+// # Topic can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default projects/{{project}}/locations/{{zone}}/topics/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteTopic:LiteTopic default projects/{{project}}/locations/{{zone}}/topics/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{project}}/{{zone}}/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{project}}/{{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{zone}}/{{name}}
+//
+//	$ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{zone}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
+//
+//	$ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
+//
 // ```
 type LiteTopic struct {
 	pulumi.CustomResourceState
@@ -252,7 +263,7 @@ func (i *LiteTopic) ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicO
 // LiteTopicArrayInput is an input type that accepts LiteTopicArray and LiteTopicArrayOutput values.
 // You can construct a concrete instance of `LiteTopicArrayInput` via:
 //
-//          LiteTopicArray{ LiteTopicArgs{...} }
+//	LiteTopicArray{ LiteTopicArgs{...} }
 type LiteTopicArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +288,7 @@ func (i LiteTopicArray) ToLiteTopicArrayOutputWithContext(ctx context.Context) L
 // LiteTopicMapInput is an input type that accepts LiteTopicMap and LiteTopicMapOutput values.
 // You can construct a concrete instance of `LiteTopicMapInput` via:
 //
-//          LiteTopicMap{ "key": LiteTopicArgs{...} }
+//	LiteTopicMap{ "key": LiteTopicArgs{...} }
 type LiteTopicMapInput interface {
 	pulumi.Input
 

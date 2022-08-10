@@ -22,7 +22,7 @@ type DatabaseInstanceClone struct {
 // DatabaseInstanceCloneInput is an input type that accepts DatabaseInstanceCloneArgs and DatabaseInstanceCloneOutput values.
 // You can construct a concrete instance of `DatabaseInstanceCloneInput` via:
 //
-//          DatabaseInstanceCloneArgs{...}
+//	DatabaseInstanceCloneArgs{...}
 type DatabaseInstanceCloneInput interface {
 	pulumi.Input
 
@@ -62,11 +62,11 @@ func (i DatabaseInstanceCloneArgs) ToDatabaseInstanceClonePtrOutputWithContext(c
 // DatabaseInstanceClonePtrInput is an input type that accepts DatabaseInstanceCloneArgs, DatabaseInstanceClonePtr and DatabaseInstanceClonePtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceClonePtrInput` via:
 //
-//          DatabaseInstanceCloneArgs{...}
+//	        DatabaseInstanceCloneArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceClonePtrInput interface {
 	pulumi.Input
 
@@ -194,7 +194,7 @@ type DatabaseInstanceIpAddress struct {
 // DatabaseInstanceIpAddressInput is an input type that accepts DatabaseInstanceIpAddressArgs and DatabaseInstanceIpAddressOutput values.
 // You can construct a concrete instance of `DatabaseInstanceIpAddressInput` via:
 //
-//          DatabaseInstanceIpAddressArgs{...}
+//	DatabaseInstanceIpAddressArgs{...}
 type DatabaseInstanceIpAddressInput interface {
 	pulumi.Input
 
@@ -223,7 +223,7 @@ func (i DatabaseInstanceIpAddressArgs) ToDatabaseInstanceIpAddressOutputWithCont
 // DatabaseInstanceIpAddressArrayInput is an input type that accepts DatabaseInstanceIpAddressArray and DatabaseInstanceIpAddressArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceIpAddressArrayInput` via:
 //
-//          DatabaseInstanceIpAddressArray{ DatabaseInstanceIpAddressArgs{...} }
+//	DatabaseInstanceIpAddressArray{ DatabaseInstanceIpAddressArgs{...} }
 type DatabaseInstanceIpAddressArrayInput interface {
 	pulumi.Input
 
@@ -328,7 +328,7 @@ type DatabaseInstanceReplicaConfiguration struct {
 // DatabaseInstanceReplicaConfigurationInput is an input type that accepts DatabaseInstanceReplicaConfigurationArgs and DatabaseInstanceReplicaConfigurationOutput values.
 // You can construct a concrete instance of `DatabaseInstanceReplicaConfigurationInput` via:
 //
-//          DatabaseInstanceReplicaConfigurationArgs{...}
+//	DatabaseInstanceReplicaConfigurationArgs{...}
 type DatabaseInstanceReplicaConfigurationInput interface {
 	pulumi.Input
 
@@ -393,11 +393,11 @@ func (i DatabaseInstanceReplicaConfigurationArgs) ToDatabaseInstanceReplicaConfi
 // DatabaseInstanceReplicaConfigurationPtrInput is an input type that accepts DatabaseInstanceReplicaConfigurationArgs, DatabaseInstanceReplicaConfigurationPtr and DatabaseInstanceReplicaConfigurationPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceReplicaConfigurationPtrInput` via:
 //
-//          DatabaseInstanceReplicaConfigurationArgs{...}
+//	        DatabaseInstanceReplicaConfigurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceReplicaConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -667,7 +667,7 @@ type DatabaseInstanceRestoreBackupContext struct {
 // DatabaseInstanceRestoreBackupContextInput is an input type that accepts DatabaseInstanceRestoreBackupContextArgs and DatabaseInstanceRestoreBackupContextOutput values.
 // You can construct a concrete instance of `DatabaseInstanceRestoreBackupContextInput` via:
 //
-//          DatabaseInstanceRestoreBackupContextArgs{...}
+//	DatabaseInstanceRestoreBackupContextArgs{...}
 type DatabaseInstanceRestoreBackupContextInput interface {
 	pulumi.Input
 
@@ -708,11 +708,11 @@ func (i DatabaseInstanceRestoreBackupContextArgs) ToDatabaseInstanceRestoreBacku
 // DatabaseInstanceRestoreBackupContextPtrInput is an input type that accepts DatabaseInstanceRestoreBackupContextArgs, DatabaseInstanceRestoreBackupContextPtr and DatabaseInstanceRestoreBackupContextPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceRestoreBackupContextPtrInput` via:
 //
-//          DatabaseInstanceRestoreBackupContextArgs{...}
+//	        DatabaseInstanceRestoreBackupContextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceRestoreBackupContextPtrInput interface {
 	pulumi.Input
 
@@ -846,7 +846,7 @@ type DatabaseInstanceServerCaCert struct {
 // DatabaseInstanceServerCaCertInput is an input type that accepts DatabaseInstanceServerCaCertArgs and DatabaseInstanceServerCaCertOutput values.
 // You can construct a concrete instance of `DatabaseInstanceServerCaCertInput` via:
 //
-//          DatabaseInstanceServerCaCertArgs{...}
+//	DatabaseInstanceServerCaCertArgs{...}
 type DatabaseInstanceServerCaCertInput interface {
 	pulumi.Input
 
@@ -879,7 +879,7 @@ func (i DatabaseInstanceServerCaCertArgs) ToDatabaseInstanceServerCaCertOutputWi
 // DatabaseInstanceServerCaCertArrayInput is an input type that accepts DatabaseInstanceServerCaCertArray and DatabaseInstanceServerCaCertArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceServerCaCertArrayInput` via:
 //
-//          DatabaseInstanceServerCaCertArray{ DatabaseInstanceServerCaCertArgs{...} }
+//	DatabaseInstanceServerCaCertArray{ DatabaseInstanceServerCaCertArgs{...} }
 type DatabaseInstanceServerCaCertArrayInput interface {
 	pulumi.Input
 
@@ -999,7 +999,7 @@ type DatabaseInstanceSettings struct {
 // DatabaseInstanceSettingsInput is an input type that accepts DatabaseInstanceSettingsArgs and DatabaseInstanceSettingsOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsInput` via:
 //
-//          DatabaseInstanceSettingsArgs{...}
+//	DatabaseInstanceSettingsArgs{...}
 type DatabaseInstanceSettingsInput interface {
 	pulumi.Input
 
@@ -1069,11 +1069,11 @@ func (i DatabaseInstanceSettingsArgs) ToDatabaseInstanceSettingsPtrOutputWithCon
 // DatabaseInstanceSettingsPtrInput is an input type that accepts DatabaseInstanceSettingsArgs, DatabaseInstanceSettingsPtr and DatabaseInstanceSettingsPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsPtrInput` via:
 //
-//          DatabaseInstanceSettingsArgs{...}
+//	        DatabaseInstanceSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsPtrInput interface {
 	pulumi.Input
 
@@ -1447,7 +1447,7 @@ type DatabaseInstanceSettingsActiveDirectoryConfig struct {
 // DatabaseInstanceSettingsActiveDirectoryConfigInput is an input type that accepts DatabaseInstanceSettingsActiveDirectoryConfigArgs and DatabaseInstanceSettingsActiveDirectoryConfigOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsActiveDirectoryConfigInput` via:
 //
-//          DatabaseInstanceSettingsActiveDirectoryConfigArgs{...}
+//	DatabaseInstanceSettingsActiveDirectoryConfigArgs{...}
 type DatabaseInstanceSettingsActiveDirectoryConfigInput interface {
 	pulumi.Input
 
@@ -1484,11 +1484,11 @@ func (i DatabaseInstanceSettingsActiveDirectoryConfigArgs) ToDatabaseInstanceSet
 // DatabaseInstanceSettingsActiveDirectoryConfigPtrInput is an input type that accepts DatabaseInstanceSettingsActiveDirectoryConfigArgs, DatabaseInstanceSettingsActiveDirectoryConfigPtr and DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsActiveDirectoryConfigPtrInput` via:
 //
-//          DatabaseInstanceSettingsActiveDirectoryConfigArgs{...}
+//	        DatabaseInstanceSettingsActiveDirectoryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsActiveDirectoryConfigPtrInput interface {
 	pulumi.Input
 
@@ -1601,7 +1601,7 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 // DatabaseInstanceSettingsBackupConfigurationInput is an input type that accepts DatabaseInstanceSettingsBackupConfigurationArgs and DatabaseInstanceSettingsBackupConfigurationOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsBackupConfigurationInput` via:
 //
-//          DatabaseInstanceSettingsBackupConfigurationArgs{...}
+//	DatabaseInstanceSettingsBackupConfigurationArgs{...}
 type DatabaseInstanceSettingsBackupConfigurationInput interface {
 	pulumi.Input
 
@@ -1651,11 +1651,11 @@ func (i DatabaseInstanceSettingsBackupConfigurationArgs) ToDatabaseInstanceSetti
 // DatabaseInstanceSettingsBackupConfigurationPtrInput is an input type that accepts DatabaseInstanceSettingsBackupConfigurationArgs, DatabaseInstanceSettingsBackupConfigurationPtr and DatabaseInstanceSettingsBackupConfigurationPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsBackupConfigurationPtrInput` via:
 //
-//          DatabaseInstanceSettingsBackupConfigurationArgs{...}
+//	        DatabaseInstanceSettingsBackupConfigurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsBackupConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -1851,7 +1851,7 @@ type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings struct {
 // DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput is an input type that accepts DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs and DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput` via:
 //
-//          DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{...}
+//	DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{...}
 type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput interface {
 	pulumi.Input
 
@@ -1890,11 +1890,11 @@ func (i DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) 
 // DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput is an input type that accepts DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs, DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtr and DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput` via:
 //
-//          DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{...}
+//	        DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput interface {
 	pulumi.Input
 
@@ -2016,7 +2016,7 @@ type DatabaseInstanceSettingsDatabaseFlag struct {
 // DatabaseInstanceSettingsDatabaseFlagInput is an input type that accepts DatabaseInstanceSettingsDatabaseFlagArgs and DatabaseInstanceSettingsDatabaseFlagOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsDatabaseFlagInput` via:
 //
-//          DatabaseInstanceSettingsDatabaseFlagArgs{...}
+//	DatabaseInstanceSettingsDatabaseFlagArgs{...}
 type DatabaseInstanceSettingsDatabaseFlagInput interface {
 	pulumi.Input
 
@@ -2048,7 +2048,7 @@ func (i DatabaseInstanceSettingsDatabaseFlagArgs) ToDatabaseInstanceSettingsData
 // DatabaseInstanceSettingsDatabaseFlagArrayInput is an input type that accepts DatabaseInstanceSettingsDatabaseFlagArray and DatabaseInstanceSettingsDatabaseFlagArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsDatabaseFlagArrayInput` via:
 //
-//          DatabaseInstanceSettingsDatabaseFlagArray{ DatabaseInstanceSettingsDatabaseFlagArgs{...} }
+//	DatabaseInstanceSettingsDatabaseFlagArray{ DatabaseInstanceSettingsDatabaseFlagArgs{...} }
 type DatabaseInstanceSettingsDatabaseFlagArrayInput interface {
 	pulumi.Input
 
@@ -2130,7 +2130,7 @@ type DatabaseInstanceSettingsInsightsConfig struct {
 // DatabaseInstanceSettingsInsightsConfigInput is an input type that accepts DatabaseInstanceSettingsInsightsConfigArgs and DatabaseInstanceSettingsInsightsConfigOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsInsightsConfigInput` via:
 //
-//          DatabaseInstanceSettingsInsightsConfigArgs{...}
+//	DatabaseInstanceSettingsInsightsConfigArgs{...}
 type DatabaseInstanceSettingsInsightsConfigInput interface {
 	pulumi.Input
 
@@ -2172,11 +2172,11 @@ func (i DatabaseInstanceSettingsInsightsConfigArgs) ToDatabaseInstanceSettingsIn
 // DatabaseInstanceSettingsInsightsConfigPtrInput is an input type that accepts DatabaseInstanceSettingsInsightsConfigArgs, DatabaseInstanceSettingsInsightsConfigPtr and DatabaseInstanceSettingsInsightsConfigPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsInsightsConfigPtrInput` via:
 //
-//          DatabaseInstanceSettingsInsightsConfigArgs{...}
+//	        DatabaseInstanceSettingsInsightsConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsInsightsConfigPtrInput interface {
 	pulumi.Input
 
@@ -2331,7 +2331,7 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 // DatabaseInstanceSettingsIpConfigurationInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationArgs and DatabaseInstanceSettingsIpConfigurationOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationInput` via:
 //
-//          DatabaseInstanceSettingsIpConfigurationArgs{...}
+//	DatabaseInstanceSettingsIpConfigurationArgs{...}
 type DatabaseInstanceSettingsIpConfigurationInput interface {
 	pulumi.Input
 
@@ -2380,11 +2380,11 @@ func (i DatabaseInstanceSettingsIpConfigurationArgs) ToDatabaseInstanceSettingsI
 // DatabaseInstanceSettingsIpConfigurationPtrInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationArgs, DatabaseInstanceSettingsIpConfigurationPtr and DatabaseInstanceSettingsIpConfigurationPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationPtrInput` via:
 //
-//          DatabaseInstanceSettingsIpConfigurationArgs{...}
+//	        DatabaseInstanceSettingsIpConfigurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsIpConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -2560,7 +2560,7 @@ type DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork struct {
 // DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs and DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkInput` via:
 //
-//          DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{...}
+//	DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{...}
 type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkInput interface {
 	pulumi.Input
 
@@ -2595,7 +2595,7 @@ func (i DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs) ToDatabase
 // DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray and DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput` via:
 //
-//          DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{ DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{...} }
+//	DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{ DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{...} }
 type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput interface {
 	pulumi.Input
 
@@ -2683,7 +2683,7 @@ type DatabaseInstanceSettingsLocationPreference struct {
 // DatabaseInstanceSettingsLocationPreferenceInput is an input type that accepts DatabaseInstanceSettingsLocationPreferenceArgs and DatabaseInstanceSettingsLocationPreferenceOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsLocationPreferenceInput` via:
 //
-//          DatabaseInstanceSettingsLocationPreferenceArgs{...}
+//	DatabaseInstanceSettingsLocationPreferenceArgs{...}
 type DatabaseInstanceSettingsLocationPreferenceInput interface {
 	pulumi.Input
 
@@ -2725,11 +2725,11 @@ func (i DatabaseInstanceSettingsLocationPreferenceArgs) ToDatabaseInstanceSettin
 // DatabaseInstanceSettingsLocationPreferencePtrInput is an input type that accepts DatabaseInstanceSettingsLocationPreferenceArgs, DatabaseInstanceSettingsLocationPreferencePtr and DatabaseInstanceSettingsLocationPreferencePtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsLocationPreferencePtrInput` via:
 //
-//          DatabaseInstanceSettingsLocationPreferenceArgs{...}
+//	        DatabaseInstanceSettingsLocationPreferenceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsLocationPreferencePtrInput interface {
 	pulumi.Input
 
@@ -2865,7 +2865,7 @@ type DatabaseInstanceSettingsMaintenanceWindow struct {
 // DatabaseInstanceSettingsMaintenanceWindowInput is an input type that accepts DatabaseInstanceSettingsMaintenanceWindowArgs and DatabaseInstanceSettingsMaintenanceWindowOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsMaintenanceWindowInput` via:
 //
-//          DatabaseInstanceSettingsMaintenanceWindowArgs{...}
+//	DatabaseInstanceSettingsMaintenanceWindowArgs{...}
 type DatabaseInstanceSettingsMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -2906,11 +2906,11 @@ func (i DatabaseInstanceSettingsMaintenanceWindowArgs) ToDatabaseInstanceSetting
 // DatabaseInstanceSettingsMaintenanceWindowPtrInput is an input type that accepts DatabaseInstanceSettingsMaintenanceWindowArgs, DatabaseInstanceSettingsMaintenanceWindowPtr and DatabaseInstanceSettingsMaintenanceWindowPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsMaintenanceWindowPtrInput` via:
 //
-//          DatabaseInstanceSettingsMaintenanceWindowArgs{...}
+//	        DatabaseInstanceSettingsMaintenanceWindowArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsMaintenanceWindowPtrInput interface {
 	pulumi.Input
 
@@ -3043,7 +3043,7 @@ type DatabaseInstanceSettingsSqlServerAuditConfig struct {
 // DatabaseInstanceSettingsSqlServerAuditConfigInput is an input type that accepts DatabaseInstanceSettingsSqlServerAuditConfigArgs and DatabaseInstanceSettingsSqlServerAuditConfigOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsSqlServerAuditConfigInput` via:
 //
-//          DatabaseInstanceSettingsSqlServerAuditConfigArgs{...}
+//	DatabaseInstanceSettingsSqlServerAuditConfigArgs{...}
 type DatabaseInstanceSettingsSqlServerAuditConfigInput interface {
 	pulumi.Input
 
@@ -3083,11 +3083,11 @@ func (i DatabaseInstanceSettingsSqlServerAuditConfigArgs) ToDatabaseInstanceSett
 // DatabaseInstanceSettingsSqlServerAuditConfigPtrInput is an input type that accepts DatabaseInstanceSettingsSqlServerAuditConfigArgs, DatabaseInstanceSettingsSqlServerAuditConfigPtr and DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput values.
 // You can construct a concrete instance of `DatabaseInstanceSettingsSqlServerAuditConfigPtrInput` via:
 //
-//          DatabaseInstanceSettingsSqlServerAuditConfigArgs{...}
+//	        DatabaseInstanceSettingsSqlServerAuditConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseInstanceSettingsSqlServerAuditConfigPtrInput interface {
 	pulumi.Input
 
@@ -3214,7 +3214,7 @@ type UserSqlServerUserDetails struct {
 // UserSqlServerUserDetailsInput is an input type that accepts UserSqlServerUserDetailsArgs and UserSqlServerUserDetailsOutput values.
 // You can construct a concrete instance of `UserSqlServerUserDetailsInput` via:
 //
-//          UserSqlServerUserDetailsArgs{...}
+//	UserSqlServerUserDetailsArgs{...}
 type UserSqlServerUserDetailsInput interface {
 	pulumi.Input
 
@@ -3250,11 +3250,11 @@ func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsPtrOutputWithCon
 // UserSqlServerUserDetailsPtrInput is an input type that accepts UserSqlServerUserDetailsArgs, UserSqlServerUserDetailsPtr and UserSqlServerUserDetailsPtrOutput values.
 // You can construct a concrete instance of `UserSqlServerUserDetailsPtrInput` via:
 //
-//          UserSqlServerUserDetailsArgs{...}
+//	        UserSqlServerUserDetailsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UserSqlServerUserDetailsPtrInput interface {
 	pulumi.Input
 
@@ -3370,7 +3370,7 @@ type GetCaCertsCert struct {
 // GetCaCertsCertInput is an input type that accepts GetCaCertsCertArgs and GetCaCertsCertOutput values.
 // You can construct a concrete instance of `GetCaCertsCertInput` via:
 //
-//          GetCaCertsCertArgs{...}
+//	GetCaCertsCertArgs{...}
 type GetCaCertsCertInput interface {
 	pulumi.Input
 
@@ -3406,7 +3406,7 @@ func (i GetCaCertsCertArgs) ToGetCaCertsCertOutputWithContext(ctx context.Contex
 // GetCaCertsCertArrayInput is an input type that accepts GetCaCertsCertArray and GetCaCertsCertArrayOutput values.
 // You can construct a concrete instance of `GetCaCertsCertArrayInput` via:
 //
-//          GetCaCertsCertArray{ GetCaCertsCertArgs{...} }
+//	GetCaCertsCertArray{ GetCaCertsCertArgs{...} }
 type GetCaCertsCertArrayInput interface {
 	pulumi.Input
 
@@ -3496,7 +3496,7 @@ type GetDatabaseInstanceClone struct {
 // GetDatabaseInstanceCloneInput is an input type that accepts GetDatabaseInstanceCloneArgs and GetDatabaseInstanceCloneOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceCloneInput` via:
 //
-//          GetDatabaseInstanceCloneArgs{...}
+//	GetDatabaseInstanceCloneArgs{...}
 type GetDatabaseInstanceCloneInput interface {
 	pulumi.Input
 
@@ -3525,7 +3525,7 @@ func (i GetDatabaseInstanceCloneArgs) ToGetDatabaseInstanceCloneOutputWithContex
 // GetDatabaseInstanceCloneArrayInput is an input type that accepts GetDatabaseInstanceCloneArray and GetDatabaseInstanceCloneArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceCloneArrayInput` via:
 //
-//          GetDatabaseInstanceCloneArray{ GetDatabaseInstanceCloneArgs{...} }
+//	GetDatabaseInstanceCloneArray{ GetDatabaseInstanceCloneArgs{...} }
 type GetDatabaseInstanceCloneArrayInput interface {
 	pulumi.Input
 
@@ -3602,7 +3602,7 @@ type GetDatabaseInstanceIpAddress struct {
 // GetDatabaseInstanceIpAddressInput is an input type that accepts GetDatabaseInstanceIpAddressArgs and GetDatabaseInstanceIpAddressOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceIpAddressInput` via:
 //
-//          GetDatabaseInstanceIpAddressArgs{...}
+//	GetDatabaseInstanceIpAddressArgs{...}
 type GetDatabaseInstanceIpAddressInput interface {
 	pulumi.Input
 
@@ -3631,7 +3631,7 @@ func (i GetDatabaseInstanceIpAddressArgs) ToGetDatabaseInstanceIpAddressOutputWi
 // GetDatabaseInstanceIpAddressArrayInput is an input type that accepts GetDatabaseInstanceIpAddressArray and GetDatabaseInstanceIpAddressArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceIpAddressArrayInput` via:
 //
-//          GetDatabaseInstanceIpAddressArray{ GetDatabaseInstanceIpAddressArgs{...} }
+//	GetDatabaseInstanceIpAddressArray{ GetDatabaseInstanceIpAddressArgs{...} }
 type GetDatabaseInstanceIpAddressArrayInput interface {
 	pulumi.Input
 
@@ -3716,7 +3716,7 @@ type GetDatabaseInstanceReplicaConfiguration struct {
 // GetDatabaseInstanceReplicaConfigurationInput is an input type that accepts GetDatabaseInstanceReplicaConfigurationArgs and GetDatabaseInstanceReplicaConfigurationOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceReplicaConfigurationInput` via:
 //
-//          GetDatabaseInstanceReplicaConfigurationArgs{...}
+//	GetDatabaseInstanceReplicaConfigurationArgs{...}
 type GetDatabaseInstanceReplicaConfigurationInput interface {
 	pulumi.Input
 
@@ -3753,7 +3753,7 @@ func (i GetDatabaseInstanceReplicaConfigurationArgs) ToGetDatabaseInstanceReplic
 // GetDatabaseInstanceReplicaConfigurationArrayInput is an input type that accepts GetDatabaseInstanceReplicaConfigurationArray and GetDatabaseInstanceReplicaConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceReplicaConfigurationArrayInput` via:
 //
-//          GetDatabaseInstanceReplicaConfigurationArray{ GetDatabaseInstanceReplicaConfigurationArgs{...} }
+//	GetDatabaseInstanceReplicaConfigurationArray{ GetDatabaseInstanceReplicaConfigurationArgs{...} }
 type GetDatabaseInstanceReplicaConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -3863,7 +3863,7 @@ type GetDatabaseInstanceRestoreBackupContext struct {
 // GetDatabaseInstanceRestoreBackupContextInput is an input type that accepts GetDatabaseInstanceRestoreBackupContextArgs and GetDatabaseInstanceRestoreBackupContextOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceRestoreBackupContextInput` via:
 //
-//          GetDatabaseInstanceRestoreBackupContextArgs{...}
+//	GetDatabaseInstanceRestoreBackupContextArgs{...}
 type GetDatabaseInstanceRestoreBackupContextInput interface {
 	pulumi.Input
 
@@ -3893,7 +3893,7 @@ func (i GetDatabaseInstanceRestoreBackupContextArgs) ToGetDatabaseInstanceRestor
 // GetDatabaseInstanceRestoreBackupContextArrayInput is an input type that accepts GetDatabaseInstanceRestoreBackupContextArray and GetDatabaseInstanceRestoreBackupContextArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceRestoreBackupContextArrayInput` via:
 //
-//          GetDatabaseInstanceRestoreBackupContextArray{ GetDatabaseInstanceRestoreBackupContextArgs{...} }
+//	GetDatabaseInstanceRestoreBackupContextArray{ GetDatabaseInstanceRestoreBackupContextArgs{...} }
 type GetDatabaseInstanceRestoreBackupContextArrayInput interface {
 	pulumi.Input
 
@@ -3973,7 +3973,7 @@ type GetDatabaseInstanceServerCaCert struct {
 // GetDatabaseInstanceServerCaCertInput is an input type that accepts GetDatabaseInstanceServerCaCertArgs and GetDatabaseInstanceServerCaCertOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceServerCaCertInput` via:
 //
-//          GetDatabaseInstanceServerCaCertArgs{...}
+//	GetDatabaseInstanceServerCaCertArgs{...}
 type GetDatabaseInstanceServerCaCertInput interface {
 	pulumi.Input
 
@@ -4004,7 +4004,7 @@ func (i GetDatabaseInstanceServerCaCertArgs) ToGetDatabaseInstanceServerCaCertOu
 // GetDatabaseInstanceServerCaCertArrayInput is an input type that accepts GetDatabaseInstanceServerCaCertArray and GetDatabaseInstanceServerCaCertArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceServerCaCertArrayInput` via:
 //
-//          GetDatabaseInstanceServerCaCertArray{ GetDatabaseInstanceServerCaCertArgs{...} }
+//	GetDatabaseInstanceServerCaCertArray{ GetDatabaseInstanceServerCaCertArgs{...} }
 type GetDatabaseInstanceServerCaCertArrayInput interface {
 	pulumi.Input
 
@@ -4105,7 +4105,7 @@ type GetDatabaseInstanceSetting struct {
 // GetDatabaseInstanceSettingInput is an input type that accepts GetDatabaseInstanceSettingArgs and GetDatabaseInstanceSettingOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingInput` via:
 //
-//          GetDatabaseInstanceSettingArgs{...}
+//	GetDatabaseInstanceSettingArgs{...}
 type GetDatabaseInstanceSettingInput interface {
 	pulumi.Input
 
@@ -4150,7 +4150,7 @@ func (i GetDatabaseInstanceSettingArgs) ToGetDatabaseInstanceSettingOutputWithCo
 // GetDatabaseInstanceSettingArrayInput is an input type that accepts GetDatabaseInstanceSettingArray and GetDatabaseInstanceSettingArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingArrayInput` via:
 //
-//          GetDatabaseInstanceSettingArray{ GetDatabaseInstanceSettingArgs{...} }
+//	GetDatabaseInstanceSettingArray{ GetDatabaseInstanceSettingArgs{...} }
 type GetDatabaseInstanceSettingArrayInput interface {
 	pulumi.Input
 
@@ -4303,7 +4303,7 @@ type GetDatabaseInstanceSettingActiveDirectoryConfig struct {
 // GetDatabaseInstanceSettingActiveDirectoryConfigInput is an input type that accepts GetDatabaseInstanceSettingActiveDirectoryConfigArgs and GetDatabaseInstanceSettingActiveDirectoryConfigOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingActiveDirectoryConfigInput` via:
 //
-//          GetDatabaseInstanceSettingActiveDirectoryConfigArgs{...}
+//	GetDatabaseInstanceSettingActiveDirectoryConfigArgs{...}
 type GetDatabaseInstanceSettingActiveDirectoryConfigInput interface {
 	pulumi.Input
 
@@ -4330,7 +4330,7 @@ func (i GetDatabaseInstanceSettingActiveDirectoryConfigArgs) ToGetDatabaseInstan
 // GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingActiveDirectoryConfigArray and GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput` via:
 //
-//          GetDatabaseInstanceSettingActiveDirectoryConfigArray{ GetDatabaseInstanceSettingActiveDirectoryConfigArgs{...} }
+//	GetDatabaseInstanceSettingActiveDirectoryConfigArray{ GetDatabaseInstanceSettingActiveDirectoryConfigArgs{...} }
 type GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput interface {
 	pulumi.Input
 
@@ -4403,7 +4403,7 @@ type GetDatabaseInstanceSettingBackupConfiguration struct {
 // GetDatabaseInstanceSettingBackupConfigurationInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationArgs and GetDatabaseInstanceSettingBackupConfigurationOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingBackupConfigurationInput` via:
 //
-//          GetDatabaseInstanceSettingBackupConfigurationArgs{...}
+//	GetDatabaseInstanceSettingBackupConfigurationArgs{...}
 type GetDatabaseInstanceSettingBackupConfigurationInput interface {
 	pulumi.Input
 
@@ -4436,7 +4436,7 @@ func (i GetDatabaseInstanceSettingBackupConfigurationArgs) ToGetDatabaseInstance
 // GetDatabaseInstanceSettingBackupConfigurationArrayInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationArray and GetDatabaseInstanceSettingBackupConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingBackupConfigurationArrayInput` via:
 //
-//          GetDatabaseInstanceSettingBackupConfigurationArray{ GetDatabaseInstanceSettingBackupConfigurationArgs{...} }
+//	GetDatabaseInstanceSettingBackupConfigurationArray{ GetDatabaseInstanceSettingBackupConfigurationArgs{...} }
 type GetDatabaseInstanceSettingBackupConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -4530,7 +4530,7 @@ type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting struct 
 // GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs and GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput` via:
 //
-//          GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{...}
+//	GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{...}
 type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput interface {
 	pulumi.Input
 
@@ -4558,7 +4558,7 @@ func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs)
 // GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray and GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput` via:
 //
-//          GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray{ GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{...} }
+//	GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray{ GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{...} }
 type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput interface {
 	pulumi.Input
 
@@ -4635,7 +4635,7 @@ type GetDatabaseInstanceSettingDatabaseFlag struct {
 // GetDatabaseInstanceSettingDatabaseFlagInput is an input type that accepts GetDatabaseInstanceSettingDatabaseFlagArgs and GetDatabaseInstanceSettingDatabaseFlagOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingDatabaseFlagInput` via:
 //
-//          GetDatabaseInstanceSettingDatabaseFlagArgs{...}
+//	GetDatabaseInstanceSettingDatabaseFlagArgs{...}
 type GetDatabaseInstanceSettingDatabaseFlagInput interface {
 	pulumi.Input
 
@@ -4664,7 +4664,7 @@ func (i GetDatabaseInstanceSettingDatabaseFlagArgs) ToGetDatabaseInstanceSetting
 // GetDatabaseInstanceSettingDatabaseFlagArrayInput is an input type that accepts GetDatabaseInstanceSettingDatabaseFlagArray and GetDatabaseInstanceSettingDatabaseFlagArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingDatabaseFlagArrayInput` via:
 //
-//          GetDatabaseInstanceSettingDatabaseFlagArray{ GetDatabaseInstanceSettingDatabaseFlagArgs{...} }
+//	GetDatabaseInstanceSettingDatabaseFlagArray{ GetDatabaseInstanceSettingDatabaseFlagArgs{...} }
 type GetDatabaseInstanceSettingDatabaseFlagArrayInput interface {
 	pulumi.Input
 
@@ -4739,7 +4739,7 @@ type GetDatabaseInstanceSettingInsightsConfig struct {
 // GetDatabaseInstanceSettingInsightsConfigInput is an input type that accepts GetDatabaseInstanceSettingInsightsConfigArgs and GetDatabaseInstanceSettingInsightsConfigOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingInsightsConfigInput` via:
 //
-//          GetDatabaseInstanceSettingInsightsConfigArgs{...}
+//	GetDatabaseInstanceSettingInsightsConfigArgs{...}
 type GetDatabaseInstanceSettingInsightsConfigInput interface {
 	pulumi.Input
 
@@ -4769,7 +4769,7 @@ func (i GetDatabaseInstanceSettingInsightsConfigArgs) ToGetDatabaseInstanceSetti
 // GetDatabaseInstanceSettingInsightsConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingInsightsConfigArray and GetDatabaseInstanceSettingInsightsConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingInsightsConfigArrayInput` via:
 //
-//          GetDatabaseInstanceSettingInsightsConfigArray{ GetDatabaseInstanceSettingInsightsConfigArgs{...} }
+//	GetDatabaseInstanceSettingInsightsConfigArray{ GetDatabaseInstanceSettingInsightsConfigArgs{...} }
 type GetDatabaseInstanceSettingInsightsConfigArrayInput interface {
 	pulumi.Input
 
@@ -4852,7 +4852,7 @@ type GetDatabaseInstanceSettingIpConfiguration struct {
 // GetDatabaseInstanceSettingIpConfigurationInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationArgs and GetDatabaseInstanceSettingIpConfigurationOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationInput` via:
 //
-//          GetDatabaseInstanceSettingIpConfigurationArgs{...}
+//	GetDatabaseInstanceSettingIpConfigurationArgs{...}
 type GetDatabaseInstanceSettingIpConfigurationInput interface {
 	pulumi.Input
 
@@ -4883,7 +4883,7 @@ func (i GetDatabaseInstanceSettingIpConfigurationArgs) ToGetDatabaseInstanceSett
 // GetDatabaseInstanceSettingIpConfigurationArrayInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationArray and GetDatabaseInstanceSettingIpConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationArrayInput` via:
 //
-//          GetDatabaseInstanceSettingIpConfigurationArray{ GetDatabaseInstanceSettingIpConfigurationArgs{...} }
+//	GetDatabaseInstanceSettingIpConfigurationArray{ GetDatabaseInstanceSettingIpConfigurationArgs{...} }
 type GetDatabaseInstanceSettingIpConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -4971,7 +4971,7 @@ type GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork struct {
 // GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs and GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkInput` via:
 //
-//          GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs{...}
+//	GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs{...}
 type GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkInput interface {
 	pulumi.Input
 
@@ -5001,7 +5001,7 @@ func (i GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs) ToGetDat
 // GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArray and GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput` via:
 //
-//          GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArray{ GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs{...} }
+//	GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArray{ GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs{...} }
 type GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput interface {
 	pulumi.Input
 
@@ -5079,7 +5079,7 @@ type GetDatabaseInstanceSettingLocationPreference struct {
 // GetDatabaseInstanceSettingLocationPreferenceInput is an input type that accepts GetDatabaseInstanceSettingLocationPreferenceArgs and GetDatabaseInstanceSettingLocationPreferenceOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingLocationPreferenceInput` via:
 //
-//          GetDatabaseInstanceSettingLocationPreferenceArgs{...}
+//	GetDatabaseInstanceSettingLocationPreferenceArgs{...}
 type GetDatabaseInstanceSettingLocationPreferenceInput interface {
 	pulumi.Input
 
@@ -5108,7 +5108,7 @@ func (i GetDatabaseInstanceSettingLocationPreferenceArgs) ToGetDatabaseInstanceS
 // GetDatabaseInstanceSettingLocationPreferenceArrayInput is an input type that accepts GetDatabaseInstanceSettingLocationPreferenceArray and GetDatabaseInstanceSettingLocationPreferenceArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingLocationPreferenceArrayInput` via:
 //
-//          GetDatabaseInstanceSettingLocationPreferenceArray{ GetDatabaseInstanceSettingLocationPreferenceArgs{...} }
+//	GetDatabaseInstanceSettingLocationPreferenceArray{ GetDatabaseInstanceSettingLocationPreferenceArgs{...} }
 type GetDatabaseInstanceSettingLocationPreferenceArrayInput interface {
 	pulumi.Input
 
@@ -5185,7 +5185,7 @@ type GetDatabaseInstanceSettingMaintenanceWindow struct {
 // GetDatabaseInstanceSettingMaintenanceWindowInput is an input type that accepts GetDatabaseInstanceSettingMaintenanceWindowArgs and GetDatabaseInstanceSettingMaintenanceWindowOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingMaintenanceWindowInput` via:
 //
-//          GetDatabaseInstanceSettingMaintenanceWindowArgs{...}
+//	GetDatabaseInstanceSettingMaintenanceWindowArgs{...}
 type GetDatabaseInstanceSettingMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -5214,7 +5214,7 @@ func (i GetDatabaseInstanceSettingMaintenanceWindowArgs) ToGetDatabaseInstanceSe
 // GetDatabaseInstanceSettingMaintenanceWindowArrayInput is an input type that accepts GetDatabaseInstanceSettingMaintenanceWindowArray and GetDatabaseInstanceSettingMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingMaintenanceWindowArrayInput` via:
 //
-//          GetDatabaseInstanceSettingMaintenanceWindowArray{ GetDatabaseInstanceSettingMaintenanceWindowArgs{...} }
+//	GetDatabaseInstanceSettingMaintenanceWindowArray{ GetDatabaseInstanceSettingMaintenanceWindowArgs{...} }
 type GetDatabaseInstanceSettingMaintenanceWindowArrayInput interface {
 	pulumi.Input
 
@@ -5291,7 +5291,7 @@ type GetDatabaseInstanceSettingSqlServerAuditConfig struct {
 // GetDatabaseInstanceSettingSqlServerAuditConfigInput is an input type that accepts GetDatabaseInstanceSettingSqlServerAuditConfigArgs and GetDatabaseInstanceSettingSqlServerAuditConfigOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingSqlServerAuditConfigInput` via:
 //
-//          GetDatabaseInstanceSettingSqlServerAuditConfigArgs{...}
+//	GetDatabaseInstanceSettingSqlServerAuditConfigArgs{...}
 type GetDatabaseInstanceSettingSqlServerAuditConfigInput interface {
 	pulumi.Input
 
@@ -5320,7 +5320,7 @@ func (i GetDatabaseInstanceSettingSqlServerAuditConfigArgs) ToGetDatabaseInstanc
 // GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingSqlServerAuditConfigArray and GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput values.
 // You can construct a concrete instance of `GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput` via:
 //
-//          GetDatabaseInstanceSettingSqlServerAuditConfigArray{ GetDatabaseInstanceSettingSqlServerAuditConfigArgs{...} }
+//	GetDatabaseInstanceSettingSqlServerAuditConfigArray{ GetDatabaseInstanceSettingSqlServerAuditConfigArgs{...} }
 type GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput interface {
 	pulumi.Input
 

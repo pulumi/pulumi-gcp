@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
+//   - [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
 //
 // > **Warning:** This resource creates a Firestore Document on a project that already has
 // Firestore enabled. If you haven't already enabled it, you can create a
@@ -33,24 +33,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := firestore.NewDocument(ctx, "mydoc", &firestore.DocumentArgs{
-// 			Collection: pulumi.String("somenewcollection"),
-// 			DocumentId: pulumi.String("my-doc"),
-// 			Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
-// 			Project:    pulumi.String("my-project-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firestore.NewDocument(ctx, "mydoc", &firestore.DocumentArgs{
+//				Collection: pulumi.String("somenewcollection"),
+//				DocumentId: pulumi.String("my-doc"),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
+//				Project:    pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Firestore Document Nested Document
 //
@@ -58,56 +61,61 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		mydoc, err := firestore.NewDocument(ctx, "mydoc", &firestore.DocumentArgs{
-// 			Collection: pulumi.String("somenewcollection"),
-// 			DocumentId: pulumi.String("my-doc"),
-// 			Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
-// 			Project:    pulumi.String("my-project-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		subDocument, err := firestore.NewDocument(ctx, "subDocument", &firestore.DocumentArgs{
-// 			Collection: mydoc.Path.ApplyT(func(path string) (string, error) {
-// 				return fmt.Sprintf("%v/subdocs", path), nil
-// 			}).(pulumi.StringOutput),
-// 			DocumentId: pulumi.String("bitcoinkey"),
-// 			Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}"),
-// 			Project:    pulumi.String("my-project-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = firestore.NewDocument(ctx, "subSubDocument", &firestore.DocumentArgs{
-// 			Collection: subDocument.Path.ApplyT(func(path string) (string, error) {
-// 				return fmt.Sprintf("%v/subsubdocs", path), nil
-// 			}).(pulumi.StringOutput),
-// 			DocumentId: pulumi.String("asecret"),
-// 			Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}"),
-// 			Project:    pulumi.String("my-project-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mydoc, err := firestore.NewDocument(ctx, "mydoc", &firestore.DocumentArgs{
+//				Collection: pulumi.String("somenewcollection"),
+//				DocumentId: pulumi.String("my-doc"),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
+//				Project:    pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subDocument, err := firestore.NewDocument(ctx, "subDocument", &firestore.DocumentArgs{
+//				Collection: mydoc.Path.ApplyT(func(path string) (string, error) {
+//					return fmt.Sprintf("%v/subdocs", path), nil
+//				}).(pulumi.StringOutput),
+//				DocumentId: pulumi.String("bitcoinkey"),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}"),
+//				Project:    pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewDocument(ctx, "subSubDocument", &firestore.DocumentArgs{
+//				Collection: subDocument.Path.ApplyT(func(path string) (string, error) {
+//					return fmt.Sprintf("%v/subsubdocs", path), nil
+//				}).(pulumi.StringOutput),
+//				DocumentId: pulumi.String("asecret"),
+//				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}"),
+//				Project:    pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Document can be imported using any of these accepted formats
+// # Document can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:firestore/document:Document default {{name}}
+//
+//	$ pulumi import gcp:firestore/document:Document default {{name}}
+//
 // ```
 type Document struct {
 	pulumi.CustomResourceState
@@ -276,7 +284,7 @@ func (i *Document) ToDocumentOutputWithContext(ctx context.Context) DocumentOutp
 // DocumentArrayInput is an input type that accepts DocumentArray and DocumentArrayOutput values.
 // You can construct a concrete instance of `DocumentArrayInput` via:
 //
-//          DocumentArray{ DocumentArgs{...} }
+//	DocumentArray{ DocumentArgs{...} }
 type DocumentArrayInput interface {
 	pulumi.Input
 
@@ -301,7 +309,7 @@ func (i DocumentArray) ToDocumentArrayOutputWithContext(ctx context.Context) Doc
 // DocumentMapInput is an input type that accepts DocumentMap and DocumentMapOutput values.
 // You can construct a concrete instance of `DocumentMapInput` via:
 //
-//          DocumentMap{ "key": DocumentArgs{...} }
+//	DocumentMap{ "key": DocumentArgs{...} }
 type DocumentMapInput interface {
 	pulumi.Input
 

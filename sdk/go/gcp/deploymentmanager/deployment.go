@@ -32,57 +32,66 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/deploymentmanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/deploymentmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := deploymentmanager.NewDeployment(ctx, "deployment", &deploymentmanager.DeploymentArgs{
-// 			Target: &deploymentmanager.DeploymentTargetArgs{
-// 				Config: &deploymentmanager.DeploymentTargetConfigArgs{
-// 					Content: readFileOrPanic("path/to/config.yml"),
-// 				},
-// 			},
-// 			Labels: deploymentmanager.DeploymentLabelArray{
-// 				&deploymentmanager.DeploymentLabelArgs{
-// 					Key:   pulumi.String("foo"),
-// 					Value: pulumi.String("bar"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := deploymentmanager.NewDeployment(ctx, "deployment", &deploymentmanager.DeploymentArgs{
+//				Target: &deploymentmanager.DeploymentTargetArgs{
+//					Config: &deploymentmanager.DeploymentTargetConfigArgs{
+//						Content: readFileOrPanic("path/to/config.yml"),
+//					},
+//				},
+//				Labels: deploymentmanager.DeploymentLabelArray{
+//					&deploymentmanager.DeploymentLabelArgs{
+//						Key:   pulumi.String("foo"),
+//						Value: pulumi.String("bar"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Deployment can be imported using any of these accepted formats
+// # Deployment can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}
+//
+//	$ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
+//
+//	$ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
+//
 // ```
 type Deployment struct {
 	pulumi.CustomResourceState
@@ -386,7 +395,7 @@ func (i *Deployment) ToDeploymentOutputWithContext(ctx context.Context) Deployme
 // DeploymentArrayInput is an input type that accepts DeploymentArray and DeploymentArrayOutput values.
 // You can construct a concrete instance of `DeploymentArrayInput` via:
 //
-//          DeploymentArray{ DeploymentArgs{...} }
+//	DeploymentArray{ DeploymentArgs{...} }
 type DeploymentArrayInput interface {
 	pulumi.Input
 
@@ -411,7 +420,7 @@ func (i DeploymentArray) ToDeploymentArrayOutputWithContext(ctx context.Context)
 // DeploymentMapInput is an input type that accepts DeploymentMap and DeploymentMapOutput values.
 // You can construct a concrete instance of `DeploymentMapInput` via:
 //
-//          DeploymentMap{ "key": DeploymentArgs{...} }
+//	DeploymentMap{ "key": DeploymentArgs{...} }
 type DeploymentMapInput interface {
 	pulumi.Input
 

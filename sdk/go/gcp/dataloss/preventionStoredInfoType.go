@@ -17,7 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.storedInfoTypes)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
+//   - [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 //
 // ## Example Usage
 // ### Dlp Stored Info Type Basic
@@ -26,29 +26,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataloss.NewPreventionStoredInfoType(ctx, "basic", &dataloss.PreventionStoredInfoTypeArgs{
-// 			Description: pulumi.String("Description"),
-// 			DisplayName: pulumi.String("Displayname"),
-// 			Parent:      pulumi.String("projects/my-project-name"),
-// 			Regex: &dataloss.PreventionStoredInfoTypeRegexArgs{
-// 				GroupIndexes: pulumi.IntArray{
-// 					pulumi.Int(2),
-// 				},
-// 				Pattern: pulumi.String("patient"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionStoredInfoType(ctx, "basic", &dataloss.PreventionStoredInfoTypeArgs{
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Regex: &dataloss.PreventionStoredInfoTypeRegexArgs{
+//					GroupIndexes: pulumi.IntArray{
+//						pulumi.Int(2),
+//					},
+//					Pattern: pulumi.String("patient"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Dlp Stored Info Type Dictionary
 //
@@ -56,31 +59,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataloss.NewPreventionStoredInfoType(ctx, "dictionary", &dataloss.PreventionStoredInfoTypeArgs{
-// 			Description: pulumi.String("Description"),
-// 			Dictionary: &dataloss.PreventionStoredInfoTypeDictionaryArgs{
-// 				WordList: &dataloss.PreventionStoredInfoTypeDictionaryWordListArgs{
-// 					Words: pulumi.StringArray{
-// 						pulumi.String("word"),
-// 						pulumi.String("word2"),
-// 					},
-// 				},
-// 			},
-// 			DisplayName: pulumi.String("Displayname"),
-// 			Parent:      pulumi.String("projects/my-project-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionStoredInfoType(ctx, "dictionary", &dataloss.PreventionStoredInfoTypeArgs{
+//				Description: pulumi.String("Description"),
+//				Dictionary: &dataloss.PreventionStoredInfoTypeDictionaryArgs{
+//					WordList: &dataloss.PreventionStoredInfoTypeDictionaryWordListArgs{
+//						Words: pulumi.StringArray{
+//							pulumi.String("word"),
+//							pulumi.String("word2"),
+//						},
+//					},
+//				},
+//				DisplayName: pulumi.String("Displayname"),
+//				Parent:      pulumi.String("projects/my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Dlp Stored Info Type Large Custom Dictionary
 //
@@ -88,66 +94,73 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-// 			Location:     pulumi.String("US"),
-// 			ForceDestroy: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-// 			Bucket: bucket.Name,
-// 			Source: pulumi.NewFileAsset("./test-fixtures/dlp/words.txt"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dataloss.NewPreventionStoredInfoType(ctx, "large", &dataloss.PreventionStoredInfoTypeArgs{
-// 			Parent:      pulumi.String("projects/my-project-name"),
-// 			Description: pulumi.String("Description"),
-// 			DisplayName: pulumi.String("Displayname"),
-// 			LargeCustomDictionary: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArgs{
-// 				CloudStorageFileSet: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs{
-// 					Url: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
-// 						bucketName := _args[0].(string)
-// 						objectName := _args[1].(string)
-// 						return fmt.Sprintf("gs://%v/%v", bucketName, objectName), nil
-// 					}).(pulumi.StringOutput),
-// 				},
-// 				OutputPath: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{
-// 					Path: bucket.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("gs://%v/output/dictionary.txt", name), nil
-// 					}).(pulumi.StringOutput),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location:     pulumi.String("US"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./test-fixtures/dlp/words.txt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataloss.NewPreventionStoredInfoType(ctx, "large", &dataloss.PreventionStoredInfoTypeArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
+//				LargeCustomDictionary: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArgs{
+//					CloudStorageFileSet: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs{
+//						Url: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							bucketName := _args[0].(string)
+//							objectName := _args[1].(string)
+//							return fmt.Sprintf("gs://%v/%v", bucketName, objectName), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					OutputPath: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{
+//						Path: bucket.Name.ApplyT(func(name string) (string, error) {
+//							return fmt.Sprintf("gs://%v/output/dictionary.txt", name), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// StoredInfoType can be imported using any of these accepted formats
+// # StoredInfoType can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
+//
+//	$ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
+//
+//	$ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
+//
 // ```
 type PreventionStoredInfoType struct {
 	pulumi.CustomResourceState
@@ -329,7 +342,7 @@ func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypeOutputWithContext(c
 // PreventionStoredInfoTypeArrayInput is an input type that accepts PreventionStoredInfoTypeArray and PreventionStoredInfoTypeArrayOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeArrayInput` via:
 //
-//          PreventionStoredInfoTypeArray{ PreventionStoredInfoTypeArgs{...} }
+//	PreventionStoredInfoTypeArray{ PreventionStoredInfoTypeArgs{...} }
 type PreventionStoredInfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -354,7 +367,7 @@ func (i PreventionStoredInfoTypeArray) ToPreventionStoredInfoTypeArrayOutputWith
 // PreventionStoredInfoTypeMapInput is an input type that accepts PreventionStoredInfoTypeMap and PreventionStoredInfoTypeMapOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeMapInput` via:
 //
-//          PreventionStoredInfoTypeMap{ "key": PreventionStoredInfoTypeArgs{...} }
+//	PreventionStoredInfoTypeMap{ "key": PreventionStoredInfoTypeArgs{...} }
 type PreventionStoredInfoTypeMapInput interface {
 	pulumi.Input
 

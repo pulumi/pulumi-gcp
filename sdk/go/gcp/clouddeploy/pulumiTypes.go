@@ -18,7 +18,7 @@ type DeliveryPipelineCondition struct {
 // DeliveryPipelineConditionInput is an input type that accepts DeliveryPipelineConditionArgs and DeliveryPipelineConditionOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionInput` via:
 //
-//          DeliveryPipelineConditionArgs{...}
+//	DeliveryPipelineConditionArgs{...}
 type DeliveryPipelineConditionInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i DeliveryPipelineConditionArgs) ToDeliveryPipelineConditionOutputWithCont
 // DeliveryPipelineConditionArrayInput is an input type that accepts DeliveryPipelineConditionArray and DeliveryPipelineConditionArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionArrayInput` via:
 //
-//          DeliveryPipelineConditionArray{ DeliveryPipelineConditionArgs{...} }
+//	DeliveryPipelineConditionArray{ DeliveryPipelineConditionArgs{...} }
 type DeliveryPipelineConditionArrayInput interface {
 	pulumi.Input
 
@@ -122,7 +122,7 @@ type DeliveryPipelineConditionPipelineReadyCondition struct {
 // DeliveryPipelineConditionPipelineReadyConditionInput is an input type that accepts DeliveryPipelineConditionPipelineReadyConditionArgs and DeliveryPipelineConditionPipelineReadyConditionOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionPipelineReadyConditionInput` via:
 //
-//          DeliveryPipelineConditionPipelineReadyConditionArgs{...}
+//	DeliveryPipelineConditionPipelineReadyConditionArgs{...}
 type DeliveryPipelineConditionPipelineReadyConditionInput interface {
 	pulumi.Input
 
@@ -150,7 +150,7 @@ func (i DeliveryPipelineConditionPipelineReadyConditionArgs) ToDeliveryPipelineC
 // DeliveryPipelineConditionPipelineReadyConditionArrayInput is an input type that accepts DeliveryPipelineConditionPipelineReadyConditionArray and DeliveryPipelineConditionPipelineReadyConditionArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionPipelineReadyConditionArrayInput` via:
 //
-//          DeliveryPipelineConditionPipelineReadyConditionArray{ DeliveryPipelineConditionPipelineReadyConditionArgs{...} }
+//	DeliveryPipelineConditionPipelineReadyConditionArray{ DeliveryPipelineConditionPipelineReadyConditionArgs{...} }
 type DeliveryPipelineConditionPipelineReadyConditionArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +223,7 @@ type DeliveryPipelineConditionTargetsPresentCondition struct {
 // DeliveryPipelineConditionTargetsPresentConditionInput is an input type that accepts DeliveryPipelineConditionTargetsPresentConditionArgs and DeliveryPipelineConditionTargetsPresentConditionOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionTargetsPresentConditionInput` via:
 //
-//          DeliveryPipelineConditionTargetsPresentConditionArgs{...}
+//	DeliveryPipelineConditionTargetsPresentConditionArgs{...}
 type DeliveryPipelineConditionTargetsPresentConditionInput interface {
 	pulumi.Input
 
@@ -252,7 +252,7 @@ func (i DeliveryPipelineConditionTargetsPresentConditionArgs) ToDeliveryPipeline
 // DeliveryPipelineConditionTargetsPresentConditionArrayInput is an input type that accepts DeliveryPipelineConditionTargetsPresentConditionArray and DeliveryPipelineConditionTargetsPresentConditionArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineConditionTargetsPresentConditionArrayInput` via:
 //
-//          DeliveryPipelineConditionTargetsPresentConditionArray{ DeliveryPipelineConditionTargetsPresentConditionArgs{...} }
+//	DeliveryPipelineConditionTargetsPresentConditionArray{ DeliveryPipelineConditionTargetsPresentConditionArgs{...} }
 type DeliveryPipelineConditionTargetsPresentConditionArrayInput interface {
 	pulumi.Input
 
@@ -328,7 +328,7 @@ type DeliveryPipelineSerialPipeline struct {
 // DeliveryPipelineSerialPipelineInput is an input type that accepts DeliveryPipelineSerialPipelineArgs and DeliveryPipelineSerialPipelineOutput values.
 // You can construct a concrete instance of `DeliveryPipelineSerialPipelineInput` via:
 //
-//          DeliveryPipelineSerialPipelineArgs{...}
+//	DeliveryPipelineSerialPipelineArgs{...}
 type DeliveryPipelineSerialPipelineInput interface {
 	pulumi.Input
 
@@ -364,11 +364,11 @@ func (i DeliveryPipelineSerialPipelineArgs) ToDeliveryPipelineSerialPipelinePtrO
 // DeliveryPipelineSerialPipelinePtrInput is an input type that accepts DeliveryPipelineSerialPipelineArgs, DeliveryPipelineSerialPipelinePtr and DeliveryPipelineSerialPipelinePtrOutput values.
 // You can construct a concrete instance of `DeliveryPipelineSerialPipelinePtrInput` via:
 //
-//          DeliveryPipelineSerialPipelineArgs{...}
+//	        DeliveryPipelineSerialPipelineArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeliveryPipelineSerialPipelinePtrInput interface {
 	pulumi.Input
 
@@ -467,7 +467,7 @@ type DeliveryPipelineSerialPipelineStage struct {
 // DeliveryPipelineSerialPipelineStageInput is an input type that accepts DeliveryPipelineSerialPipelineStageArgs and DeliveryPipelineSerialPipelineStageOutput values.
 // You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageInput` via:
 //
-//          DeliveryPipelineSerialPipelineStageArgs{...}
+//	DeliveryPipelineSerialPipelineStageArgs{...}
 type DeliveryPipelineSerialPipelineStageInput interface {
 	pulumi.Input
 
@@ -497,7 +497,7 @@ func (i DeliveryPipelineSerialPipelineStageArgs) ToDeliveryPipelineSerialPipelin
 // DeliveryPipelineSerialPipelineStageArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageArray and DeliveryPipelineSerialPipelineStageArrayOutput values.
 // You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageArrayInput` via:
 //
-//          DeliveryPipelineSerialPipelineStageArray{ DeliveryPipelineSerialPipelineStageArgs{...} }
+//	DeliveryPipelineSerialPipelineStageArray{ DeliveryPipelineSerialPipelineStageArgs{...} }
 type DeliveryPipelineSerialPipelineStageArrayInput interface {
 	pulumi.Input
 
@@ -571,7 +571,7 @@ type TargetAnthosCluster struct {
 // TargetAnthosClusterInput is an input type that accepts TargetAnthosClusterArgs and TargetAnthosClusterOutput values.
 // You can construct a concrete instance of `TargetAnthosClusterInput` via:
 //
-//          TargetAnthosClusterArgs{...}
+//	TargetAnthosClusterArgs{...}
 type TargetAnthosClusterInput interface {
 	pulumi.Input
 
@@ -607,11 +607,11 @@ func (i TargetAnthosClusterArgs) ToTargetAnthosClusterPtrOutputWithContext(ctx c
 // TargetAnthosClusterPtrInput is an input type that accepts TargetAnthosClusterArgs, TargetAnthosClusterPtr and TargetAnthosClusterPtrOutput values.
 // You can construct a concrete instance of `TargetAnthosClusterPtrInput` via:
 //
-//          TargetAnthosClusterArgs{...}
+//	        TargetAnthosClusterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TargetAnthosClusterPtrInput interface {
 	pulumi.Input
 
@@ -714,7 +714,7 @@ type TargetExecutionConfig struct {
 // TargetExecutionConfigInput is an input type that accepts TargetExecutionConfigArgs and TargetExecutionConfigOutput values.
 // You can construct a concrete instance of `TargetExecutionConfigInput` via:
 //
-//          TargetExecutionConfigArgs{...}
+//	TargetExecutionConfigArgs{...}
 type TargetExecutionConfigInput interface {
 	pulumi.Input
 
@@ -748,7 +748,7 @@ func (i TargetExecutionConfigArgs) ToTargetExecutionConfigOutputWithContext(ctx 
 // TargetExecutionConfigArrayInput is an input type that accepts TargetExecutionConfigArray and TargetExecutionConfigArrayOutput values.
 // You can construct a concrete instance of `TargetExecutionConfigArrayInput` via:
 //
-//          TargetExecutionConfigArray{ TargetExecutionConfigArgs{...} }
+//	TargetExecutionConfigArray{ TargetExecutionConfigArgs{...} }
 type TargetExecutionConfigArrayInput interface {
 	pulumi.Input
 
@@ -834,7 +834,7 @@ type TargetGke struct {
 // TargetGkeInput is an input type that accepts TargetGkeArgs and TargetGkeOutput values.
 // You can construct a concrete instance of `TargetGkeInput` via:
 //
-//          TargetGkeArgs{...}
+//	TargetGkeArgs{...}
 type TargetGkeInput interface {
 	pulumi.Input
 
@@ -872,11 +872,11 @@ func (i TargetGkeArgs) ToTargetGkePtrOutputWithContext(ctx context.Context) Targ
 // TargetGkePtrInput is an input type that accepts TargetGkeArgs, TargetGkePtr and TargetGkePtrOutput values.
 // You can construct a concrete instance of `TargetGkePtrInput` via:
 //
-//          TargetGkeArgs{...}
+//	        TargetGkeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TargetGkePtrInput interface {
 	pulumi.Input
 

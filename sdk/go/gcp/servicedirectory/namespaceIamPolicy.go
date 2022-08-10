@@ -27,35 +27,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/viewer",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = servicedirectory.NewNamespaceIamPolicy(ctx, "policy", &servicedirectory.NamespaceIamPolicyArgs{
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicedirectory.NewNamespaceIamPolicy(ctx, "policy", &servicedirectory.NamespaceIamPolicyArgs{
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_service\_directory\_namespace\_iam\_binding
@@ -64,24 +67,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicedirectory.NewNamespaceIamBinding(ctx, "binding", &servicedirectory.NamespaceIamBindingArgs{
-// 			Role: pulumi.String("roles/viewer"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := servicedirectory.NewNamespaceIamBinding(ctx, "binding", &servicedirectory.NamespaceIamBindingArgs{
+//				Role: pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_service\_directory\_namespace\_iam\_member
@@ -90,22 +96,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicedirectory.NewNamespaceIamMember(ctx, "member", &servicedirectory.NamespaceIamMemberArgs{
-// 			Role:   pulumi.String("roles/viewer"),
-// 			Member: pulumi.String("user:jane@example.com"),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := servicedirectory.NewNamespaceIamMember(ctx, "member", &servicedirectory.NamespaceIamMemberArgs{
+//				Role:   pulumi.String("roles/viewer"),
+//				Member: pulumi.String("user:jane@example.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -113,22 +122,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} * {{project}}/{{location}}/{{namespace_id}} * {{location}}/{{namespace_id}} Any variables not passed in the import command will be taken from the provider configuration. Service Directory namespace IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} roles/viewer user:jane@example.com"
+//
+//	$ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} roles/viewer user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} roles/viewer"
+//
+//	$ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} roles/viewer"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
+//
+//	$ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type NamespaceIamPolicy struct {
@@ -241,7 +256,7 @@ func (i *NamespaceIamPolicy) ToNamespaceIamPolicyOutputWithContext(ctx context.C
 // NamespaceIamPolicyArrayInput is an input type that accepts NamespaceIamPolicyArray and NamespaceIamPolicyArrayOutput values.
 // You can construct a concrete instance of `NamespaceIamPolicyArrayInput` via:
 //
-//          NamespaceIamPolicyArray{ NamespaceIamPolicyArgs{...} }
+//	NamespaceIamPolicyArray{ NamespaceIamPolicyArgs{...} }
 type NamespaceIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -266,7 +281,7 @@ func (i NamespaceIamPolicyArray) ToNamespaceIamPolicyArrayOutputWithContext(ctx 
 // NamespaceIamPolicyMapInput is an input type that accepts NamespaceIamPolicyMap and NamespaceIamPolicyMapOutput values.
 // You can construct a concrete instance of `NamespaceIamPolicyMapInput` via:
 //
-//          NamespaceIamPolicyMap{ "key": NamespaceIamPolicyArgs{...} }
+//	NamespaceIamPolicyMap{ "key": NamespaceIamPolicyArgs{...} }
 type NamespaceIamPolicyMapInput interface {
 	pulumi.Input
 

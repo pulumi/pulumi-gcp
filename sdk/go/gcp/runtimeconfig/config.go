@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/runtimeconfig"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/runtimeconfig"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
-// 			Description: pulumi.String("Runtime configuration values for my service"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
+//				Description: pulumi.String("Runtime configuration values for my service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -40,14 +43,18 @@ import (
 // Runtime Configs can be imported using the `name` or full config name, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:runtimeconfig/config:Config myconfig myconfig
+//
+//	$ pulumi import gcp:runtimeconfig/config:Config myconfig myconfig
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:runtimeconfig/config:Config myconfig projects/my-gcp-project/configs/myconfig
+//
+//	$ pulumi import gcp:runtimeconfig/config:Config myconfig projects/my-gcp-project/configs/myconfig
+//
 // ```
 //
-//  When importing using only the name, the provider project must be set.
+//	When importing using only the name, the provider project must be set.
 type Config struct {
 	pulumi.CustomResourceState
 
@@ -164,7 +171,7 @@ func (i *Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 // ConfigArrayInput is an input type that accepts ConfigArray and ConfigArrayOutput values.
 // You can construct a concrete instance of `ConfigArrayInput` via:
 //
-//          ConfigArray{ ConfigArgs{...} }
+//	ConfigArray{ ConfigArgs{...} }
 type ConfigArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +196,7 @@ func (i ConfigArray) ToConfigArrayOutputWithContext(ctx context.Context) ConfigA
 // ConfigMapInput is an input type that accepts ConfigMap and ConfigMapOutput values.
 // You can construct a concrete instance of `ConfigMapInput` via:
 //
-//          ConfigMap{ "key": ConfigArgs{...} }
+//	ConfigMap{ "key": ConfigArgs{...} }
 type ConfigMapInput interface {
 	pulumi.Input
 

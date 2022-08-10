@@ -51,7 +51,7 @@ type DomainMappingMetadata struct {
 // DomainMappingMetadataInput is an input type that accepts DomainMappingMetadataArgs and DomainMappingMetadataOutput values.
 // You can construct a concrete instance of `DomainMappingMetadataInput` via:
 //
-//          DomainMappingMetadataArgs{...}
+//	DomainMappingMetadataArgs{...}
 type DomainMappingMetadataInput interface {
 	pulumi.Input
 
@@ -120,11 +120,11 @@ func (i DomainMappingMetadataArgs) ToDomainMappingMetadataPtrOutputWithContext(c
 // DomainMappingMetadataPtrInput is an input type that accepts DomainMappingMetadataArgs, DomainMappingMetadataPtr and DomainMappingMetadataPtrOutput values.
 // You can construct a concrete instance of `DomainMappingMetadataPtrInput` via:
 //
-//          DomainMappingMetadataArgs{...}
+//	        DomainMappingMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DomainMappingMetadataPtrInput interface {
 	pulumi.Input
 
@@ -363,7 +363,7 @@ type DomainMappingSpec struct {
 // DomainMappingSpecInput is an input type that accepts DomainMappingSpecArgs and DomainMappingSpecOutput values.
 // You can construct a concrete instance of `DomainMappingSpecInput` via:
 //
-//          DomainMappingSpecArgs{...}
+//	DomainMappingSpecArgs{...}
 type DomainMappingSpecInput interface {
 	pulumi.Input
 
@@ -409,11 +409,11 @@ func (i DomainMappingSpecArgs) ToDomainMappingSpecPtrOutputWithContext(ctx conte
 // DomainMappingSpecPtrInput is an input type that accepts DomainMappingSpecArgs, DomainMappingSpecPtr and DomainMappingSpecPtrOutput values.
 // You can construct a concrete instance of `DomainMappingSpecPtrInput` via:
 //
-//          DomainMappingSpecArgs{...}
+//	        DomainMappingSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DomainMappingSpecPtrInput interface {
 	pulumi.Input
 
@@ -554,7 +554,7 @@ type DomainMappingStatus struct {
 // DomainMappingStatusInput is an input type that accepts DomainMappingStatusArgs and DomainMappingStatusOutput values.
 // You can construct a concrete instance of `DomainMappingStatusInput` via:
 //
-//          DomainMappingStatusArgs{...}
+//	DomainMappingStatusArgs{...}
 type DomainMappingStatusInput interface {
 	pulumi.Input
 
@@ -584,7 +584,7 @@ func (i DomainMappingStatusArgs) ToDomainMappingStatusOutputWithContext(ctx cont
 // DomainMappingStatusArrayInput is an input type that accepts DomainMappingStatusArray and DomainMappingStatusArrayOutput values.
 // You can construct a concrete instance of `DomainMappingStatusArrayInput` via:
 //
-//          DomainMappingStatusArray{ DomainMappingStatusArgs{...} }
+//	DomainMappingStatusArray{ DomainMappingStatusArgs{...} }
 type DomainMappingStatusArrayInput interface {
 	pulumi.Input
 
@@ -666,7 +666,7 @@ type DomainMappingStatusCondition struct {
 // DomainMappingStatusConditionInput is an input type that accepts DomainMappingStatusConditionArgs and DomainMappingStatusConditionOutput values.
 // You can construct a concrete instance of `DomainMappingStatusConditionInput` via:
 //
-//          DomainMappingStatusConditionArgs{...}
+//	DomainMappingStatusConditionArgs{...}
 type DomainMappingStatusConditionInput interface {
 	pulumi.Input
 
@@ -696,7 +696,7 @@ func (i DomainMappingStatusConditionArgs) ToDomainMappingStatusConditionOutputWi
 // DomainMappingStatusConditionArrayInput is an input type that accepts DomainMappingStatusConditionArray and DomainMappingStatusConditionArrayOutput values.
 // You can construct a concrete instance of `DomainMappingStatusConditionArrayInput` via:
 //
-//          DomainMappingStatusConditionArray{ DomainMappingStatusConditionArgs{...} }
+//	DomainMappingStatusConditionArray{ DomainMappingStatusConditionArgs{...} }
 type DomainMappingStatusConditionArrayInput interface {
 	pulumi.Input
 
@@ -778,7 +778,7 @@ type DomainMappingStatusResourceRecord struct {
 // DomainMappingStatusResourceRecordInput is an input type that accepts DomainMappingStatusResourceRecordArgs and DomainMappingStatusResourceRecordOutput values.
 // You can construct a concrete instance of `DomainMappingStatusResourceRecordInput` via:
 //
-//          DomainMappingStatusResourceRecordArgs{...}
+//	DomainMappingStatusResourceRecordArgs{...}
 type DomainMappingStatusResourceRecordInput interface {
 	pulumi.Input
 
@@ -808,7 +808,7 @@ func (i DomainMappingStatusResourceRecordArgs) ToDomainMappingStatusResourceReco
 // DomainMappingStatusResourceRecordArrayInput is an input type that accepts DomainMappingStatusResourceRecordArray and DomainMappingStatusResourceRecordArrayOutput values.
 // You can construct a concrete instance of `DomainMappingStatusResourceRecordArrayInput` via:
 //
-//          DomainMappingStatusResourceRecordArray{ DomainMappingStatusResourceRecordArgs{...} }
+//	DomainMappingStatusResourceRecordArray{ DomainMappingStatusResourceRecordArgs{...} }
 type DomainMappingStatusResourceRecordArrayInput interface {
 	pulumi.Input
 
@@ -886,7 +886,7 @@ type IamBindingCondition struct {
 // IamBindingConditionInput is an input type that accepts IamBindingConditionArgs and IamBindingConditionOutput values.
 // You can construct a concrete instance of `IamBindingConditionInput` via:
 //
-//          IamBindingConditionArgs{...}
+//	IamBindingConditionArgs{...}
 type IamBindingConditionInput interface {
 	pulumi.Input
 
@@ -923,11 +923,11 @@ func (i IamBindingConditionArgs) ToIamBindingConditionPtrOutputWithContext(ctx c
 // IamBindingConditionPtrInput is an input type that accepts IamBindingConditionArgs, IamBindingConditionPtr and IamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `IamBindingConditionPtrInput` via:
 //
-//          IamBindingConditionArgs{...}
+//	        IamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1049,7 +1049,7 @@ type IamMemberCondition struct {
 // IamMemberConditionInput is an input type that accepts IamMemberConditionArgs and IamMemberConditionOutput values.
 // You can construct a concrete instance of `IamMemberConditionInput` via:
 //
-//          IamMemberConditionArgs{...}
+//	IamMemberConditionArgs{...}
 type IamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1086,11 +1086,11 @@ func (i IamMemberConditionArgs) ToIamMemberConditionPtrOutputWithContext(ctx con
 // IamMemberConditionPtrInput is an input type that accepts IamMemberConditionArgs, IamMemberConditionPtr and IamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `IamMemberConditionPtrInput` via:
 //
-//          IamMemberConditionArgs{...}
+//	        IamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1247,7 +1247,7 @@ type ServiceMetadata struct {
 // ServiceMetadataInput is an input type that accepts ServiceMetadataArgs and ServiceMetadataOutput values.
 // You can construct a concrete instance of `ServiceMetadataInput` via:
 //
-//          ServiceMetadataArgs{...}
+//	ServiceMetadataArgs{...}
 type ServiceMetadataInput interface {
 	pulumi.Input
 
@@ -1319,11 +1319,11 @@ func (i ServiceMetadataArgs) ToServiceMetadataPtrOutputWithContext(ctx context.C
 // ServiceMetadataPtrInput is an input type that accepts ServiceMetadataArgs, ServiceMetadataPtr and ServiceMetadataPtrOutput values.
 // You can construct a concrete instance of `ServiceMetadataPtrInput` via:
 //
-//          ServiceMetadataArgs{...}
+//	        ServiceMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceMetadataPtrInput interface {
 	pulumi.Input
 
@@ -1380,8 +1380,8 @@ func (o ServiceMetadataOutput) ToServiceMetadataPtrOutputWithContext(ctx context
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
-// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+//   - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -1463,8 +1463,8 @@ func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
-// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+//   - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
 		if v == nil {
@@ -1565,7 +1565,7 @@ type ServiceStatus struct {
 // ServiceStatusInput is an input type that accepts ServiceStatusArgs and ServiceStatusOutput values.
 // You can construct a concrete instance of `ServiceStatusInput` via:
 //
-//          ServiceStatusArgs{...}
+//	ServiceStatusArgs{...}
 type ServiceStatusInput interface {
 	pulumi.Input
 
@@ -1600,7 +1600,7 @@ func (i ServiceStatusArgs) ToServiceStatusOutputWithContext(ctx context.Context)
 // ServiceStatusArrayInput is an input type that accepts ServiceStatusArray and ServiceStatusArrayOutput values.
 // You can construct a concrete instance of `ServiceStatusArrayInput` via:
 //
-//          ServiceStatusArray{ ServiceStatusArgs{...} }
+//	ServiceStatusArray{ ServiceStatusArgs{...} }
 type ServiceStatusArrayInput interface {
 	pulumi.Input
 
@@ -1690,7 +1690,7 @@ type ServiceStatusCondition struct {
 // ServiceStatusConditionInput is an input type that accepts ServiceStatusConditionArgs and ServiceStatusConditionOutput values.
 // You can construct a concrete instance of `ServiceStatusConditionInput` via:
 //
-//          ServiceStatusConditionArgs{...}
+//	ServiceStatusConditionArgs{...}
 type ServiceStatusConditionInput interface {
 	pulumi.Input
 
@@ -1720,7 +1720,7 @@ func (i ServiceStatusConditionArgs) ToServiceStatusConditionOutputWithContext(ct
 // ServiceStatusConditionArrayInput is an input type that accepts ServiceStatusConditionArray and ServiceStatusConditionArrayOutput values.
 // You can construct a concrete instance of `ServiceStatusConditionArrayInput` via:
 //
-//          ServiceStatusConditionArray{ ServiceStatusConditionArgs{...} }
+//	ServiceStatusConditionArray{ ServiceStatusConditionArgs{...} }
 type ServiceStatusConditionArrayInput interface {
 	pulumi.Input
 
@@ -1805,7 +1805,7 @@ type ServiceTemplate struct {
 // ServiceTemplateInput is an input type that accepts ServiceTemplateArgs and ServiceTemplateOutput values.
 // You can construct a concrete instance of `ServiceTemplateInput` via:
 //
-//          ServiceTemplateArgs{...}
+//	ServiceTemplateArgs{...}
 type ServiceTemplateInput interface {
 	pulumi.Input
 
@@ -1846,11 +1846,11 @@ func (i ServiceTemplateArgs) ToServiceTemplatePtrOutputWithContext(ctx context.C
 // ServiceTemplatePtrInput is an input type that accepts ServiceTemplateArgs, ServiceTemplatePtr and ServiceTemplatePtrOutput values.
 // You can construct a concrete instance of `ServiceTemplatePtrInput` via:
 //
-//          ServiceTemplateArgs{...}
+//	        ServiceTemplateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplatePtrInput interface {
 	pulumi.Input
 
@@ -2006,7 +2006,7 @@ type ServiceTemplateMetadata struct {
 // ServiceTemplateMetadataInput is an input type that accepts ServiceTemplateMetadataArgs and ServiceTemplateMetadataOutput values.
 // You can construct a concrete instance of `ServiceTemplateMetadataInput` via:
 //
-//          ServiceTemplateMetadataArgs{...}
+//	ServiceTemplateMetadataArgs{...}
 type ServiceTemplateMetadataInput interface {
 	pulumi.Input
 
@@ -2080,11 +2080,11 @@ func (i ServiceTemplateMetadataArgs) ToServiceTemplateMetadataPtrOutputWithConte
 // ServiceTemplateMetadataPtrInput is an input type that accepts ServiceTemplateMetadataArgs, ServiceTemplateMetadataPtr and ServiceTemplateMetadataPtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateMetadataPtrInput` via:
 //
-//          ServiceTemplateMetadataArgs{...}
+//	        ServiceTemplateMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateMetadataPtrInput interface {
 	pulumi.Input
 
@@ -2141,8 +2141,8 @@ func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutputWithCon
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
-// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+//   - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2229,8 +2229,8 @@ func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
-// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+//   - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateMetadata) map[string]string {
 		if v == nil {
@@ -2361,7 +2361,7 @@ type ServiceTemplateSpec struct {
 // ServiceTemplateSpecInput is an input type that accepts ServiceTemplateSpecArgs and ServiceTemplateSpecOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecInput` via:
 //
-//          ServiceTemplateSpecArgs{...}
+//	ServiceTemplateSpecArgs{...}
 type ServiceTemplateSpecInput interface {
 	pulumi.Input
 
@@ -2424,11 +2424,11 @@ func (i ServiceTemplateSpecArgs) ToServiceTemplateSpecPtrOutputWithContext(ctx c
 // ServiceTemplateSpecPtrInput is an input type that accepts ServiceTemplateSpecArgs, ServiceTemplateSpecPtr and ServiceTemplateSpecPtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecPtrInput` via:
 //
-//          ServiceTemplateSpecArgs{...}
+//	        ServiceTemplateSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateSpecPtrInput interface {
 	pulumi.Input
 
@@ -2692,7 +2692,7 @@ type ServiceTemplateSpecContainer struct {
 // ServiceTemplateSpecContainerInput is an input type that accepts ServiceTemplateSpecContainerArgs and ServiceTemplateSpecContainerOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerInput` via:
 //
-//          ServiceTemplateSpecContainerArgs{...}
+//	ServiceTemplateSpecContainerArgs{...}
 type ServiceTemplateSpecContainerInput interface {
 	pulumi.Input
 
@@ -2778,7 +2778,7 @@ func (i ServiceTemplateSpecContainerArgs) ToServiceTemplateSpecContainerOutputWi
 // ServiceTemplateSpecContainerArrayInput is an input type that accepts ServiceTemplateSpecContainerArray and ServiceTemplateSpecContainerArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerArrayInput` via:
 //
-//          ServiceTemplateSpecContainerArray{ ServiceTemplateSpecContainerArgs{...} }
+//	ServiceTemplateSpecContainerArray{ ServiceTemplateSpecContainerArgs{...} }
 type ServiceTemplateSpecContainerArrayInput interface {
 	pulumi.Input
 
@@ -2941,7 +2941,7 @@ type ServiceTemplateSpecContainerEnv struct {
 // ServiceTemplateSpecContainerEnvInput is an input type that accepts ServiceTemplateSpecContainerEnvArgs and ServiceTemplateSpecContainerEnvOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvInput` via:
 //
-//          ServiceTemplateSpecContainerEnvArgs{...}
+//	ServiceTemplateSpecContainerEnvArgs{...}
 type ServiceTemplateSpecContainerEnvInput interface {
 	pulumi.Input
 
@@ -2981,7 +2981,7 @@ func (i ServiceTemplateSpecContainerEnvArgs) ToServiceTemplateSpecContainerEnvOu
 // ServiceTemplateSpecContainerEnvArrayInput is an input type that accepts ServiceTemplateSpecContainerEnvArray and ServiceTemplateSpecContainerEnvArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvArrayInput` via:
 //
-//          ServiceTemplateSpecContainerEnvArray{ ServiceTemplateSpecContainerEnvArgs{...} }
+//	ServiceTemplateSpecContainerEnvArray{ ServiceTemplateSpecContainerEnvArgs{...} }
 type ServiceTemplateSpecContainerEnvArrayInput interface {
 	pulumi.Input
 
@@ -3074,7 +3074,7 @@ type ServiceTemplateSpecContainerEnvFrom struct {
 // ServiceTemplateSpecContainerEnvFromInput is an input type that accepts ServiceTemplateSpecContainerEnvFromArgs and ServiceTemplateSpecContainerEnvFromOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromArgs{...}
+//	ServiceTemplateSpecContainerEnvFromArgs{...}
 type ServiceTemplateSpecContainerEnvFromInput interface {
 	pulumi.Input
 
@@ -3108,7 +3108,7 @@ func (i ServiceTemplateSpecContainerEnvFromArgs) ToServiceTemplateSpecContainerE
 // ServiceTemplateSpecContainerEnvFromArrayInput is an input type that accepts ServiceTemplateSpecContainerEnvFromArray and ServiceTemplateSpecContainerEnvFromArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromArrayInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromArray{ ServiceTemplateSpecContainerEnvFromArgs{...} }
+//	ServiceTemplateSpecContainerEnvFromArray{ ServiceTemplateSpecContainerEnvFromArgs{...} }
 type ServiceTemplateSpecContainerEnvFromArrayInput interface {
 	pulumi.Input
 
@@ -3196,7 +3196,7 @@ type ServiceTemplateSpecContainerEnvFromConfigMapRef struct {
 // ServiceTemplateSpecContainerEnvFromConfigMapRefInput is an input type that accepts ServiceTemplateSpecContainerEnvFromConfigMapRefArgs and ServiceTemplateSpecContainerEnvFromConfigMapRefOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromConfigMapRefInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromConfigMapRefArgs{...}
+//	ServiceTemplateSpecContainerEnvFromConfigMapRefArgs{...}
 type ServiceTemplateSpecContainerEnvFromConfigMapRefInput interface {
 	pulumi.Input
 
@@ -3235,11 +3235,11 @@ func (i ServiceTemplateSpecContainerEnvFromConfigMapRefArgs) ToServiceTemplateSp
 // ServiceTemplateSpecContainerEnvFromConfigMapRefPtrInput is an input type that accepts ServiceTemplateSpecContainerEnvFromConfigMapRefArgs, ServiceTemplateSpecContainerEnvFromConfigMapRefPtr and ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromConfigMapRefPtrInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromConfigMapRefArgs{...}
+//	        ServiceTemplateSpecContainerEnvFromConfigMapRefArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateSpecContainerEnvFromConfigMapRefPtrInput interface {
 	pulumi.Input
 
@@ -3355,7 +3355,7 @@ type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference struct 
 // ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceInput is an input type that accepts ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs and ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs{...}
+//	ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs{...}
 type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceInput interface {
 	pulumi.Input
 
@@ -3391,11 +3391,11 @@ func (i ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs)
 // ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrInput is an input type that accepts ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs, ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtr and ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs{...}
+//	        ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrInput interface {
 	pulumi.Input
 
@@ -3495,7 +3495,7 @@ type ServiceTemplateSpecContainerEnvFromSecretRef struct {
 // ServiceTemplateSpecContainerEnvFromSecretRefInput is an input type that accepts ServiceTemplateSpecContainerEnvFromSecretRefArgs and ServiceTemplateSpecContainerEnvFromSecretRefOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromSecretRefInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromSecretRefArgs{...}
+//	ServiceTemplateSpecContainerEnvFromSecretRefArgs{...}
 type ServiceTemplateSpecContainerEnvFromSecretRefInput interface {
 	pulumi.Input
 
@@ -3534,11 +3534,11 @@ func (i ServiceTemplateSpecContainerEnvFromSecretRefArgs) ToServiceTemplateSpecC
 // ServiceTemplateSpecContainerEnvFromSecretRefPtrInput is an input type that accepts ServiceTemplateSpecContainerEnvFromSecretRefArgs, ServiceTemplateSpecContainerEnvFromSecretRefPtr and ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromSecretRefPtrInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromSecretRefArgs{...}
+//	        ServiceTemplateSpecContainerEnvFromSecretRefArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateSpecContainerEnvFromSecretRefPtrInput interface {
 	pulumi.Input
 
@@ -3654,7 +3654,7 @@ type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference struct {
 // ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceInput is an input type that accepts ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs and ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs{...}
+//	ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs{...}
 type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceInput interface {
 	pulumi.Input
 
@@ -3690,11 +3690,11 @@ func (i ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs) To
 // ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrInput is an input type that accepts ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs, ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtr and ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrInput` via:
 //
-//          ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs{...}
+//	        ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrInput interface {
 	pulumi.Input
 
@@ -3792,7 +3792,7 @@ type ServiceTemplateSpecContainerEnvValueFrom struct {
 // ServiceTemplateSpecContainerEnvValueFromInput is an input type that accepts ServiceTemplateSpecContainerEnvValueFromArgs and ServiceTemplateSpecContainerEnvValueFromOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvValueFromInput` via:
 //
-//          ServiceTemplateSpecContainerEnvValueFromArgs{...}
+//	ServiceTemplateSpecContainerEnvValueFromArgs{...}
 type ServiceTemplateSpecContainerEnvValueFromInput interface {
 	pulumi.Input
 
@@ -3829,11 +3829,11 @@ func (i ServiceTemplateSpecContainerEnvValueFromArgs) ToServiceTemplateSpecConta
 // ServiceTemplateSpecContainerEnvValueFromPtrInput is an input type that accepts ServiceTemplateSpecContainerEnvValueFromArgs, ServiceTemplateSpecContainerEnvValueFromPtr and ServiceTemplateSpecContainerEnvValueFromPtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvValueFromPtrInput` via:
 //
-//          ServiceTemplateSpecContainerEnvValueFromArgs{...}
+//	        ServiceTemplateSpecContainerEnvValueFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateSpecContainerEnvValueFromPtrInput interface {
 	pulumi.Input
 
@@ -3937,7 +3937,7 @@ type ServiceTemplateSpecContainerEnvValueFromSecretKeyRef struct {
 // ServiceTemplateSpecContainerEnvValueFromSecretKeyRefInput is an input type that accepts ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs and ServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvValueFromSecretKeyRefInput` via:
 //
-//          ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
+//	ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
 type ServiceTemplateSpecContainerEnvValueFromSecretKeyRefInput interface {
 	pulumi.Input
 
@@ -3976,11 +3976,11 @@ func (i ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToServiceTempl
 // ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput is an input type that accepts ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs, ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtr and ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput` via:
 //
-//          ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
+//	        ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateSpecContainerEnvValueFromSecretKeyRefPtrInput interface {
 	pulumi.Input
 
@@ -4098,7 +4098,7 @@ type ServiceTemplateSpecContainerPort struct {
 // ServiceTemplateSpecContainerPortInput is an input type that accepts ServiceTemplateSpecContainerPortArgs and ServiceTemplateSpecContainerPortOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerPortInput` via:
 //
-//          ServiceTemplateSpecContainerPortArgs{...}
+//	ServiceTemplateSpecContainerPortArgs{...}
 type ServiceTemplateSpecContainerPortInput interface {
 	pulumi.Input
 
@@ -4130,7 +4130,7 @@ func (i ServiceTemplateSpecContainerPortArgs) ToServiceTemplateSpecContainerPort
 // ServiceTemplateSpecContainerPortArrayInput is an input type that accepts ServiceTemplateSpecContainerPortArray and ServiceTemplateSpecContainerPortArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerPortArrayInput` via:
 //
-//          ServiceTemplateSpecContainerPortArray{ ServiceTemplateSpecContainerPortArgs{...} }
+//	ServiceTemplateSpecContainerPortArray{ ServiceTemplateSpecContainerPortArgs{...} }
 type ServiceTemplateSpecContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -4217,7 +4217,7 @@ type ServiceTemplateSpecContainerResources struct {
 // ServiceTemplateSpecContainerResourcesInput is an input type that accepts ServiceTemplateSpecContainerResourcesArgs and ServiceTemplateSpecContainerResourcesOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerResourcesInput` via:
 //
-//          ServiceTemplateSpecContainerResourcesArgs{...}
+//	ServiceTemplateSpecContainerResourcesArgs{...}
 type ServiceTemplateSpecContainerResourcesInput interface {
 	pulumi.Input
 
@@ -4261,11 +4261,11 @@ func (i ServiceTemplateSpecContainerResourcesArgs) ToServiceTemplateSpecContaine
 // ServiceTemplateSpecContainerResourcesPtrInput is an input type that accepts ServiceTemplateSpecContainerResourcesArgs, ServiceTemplateSpecContainerResourcesPtr and ServiceTemplateSpecContainerResourcesPtrOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerResourcesPtrInput` via:
 //
-//          ServiceTemplateSpecContainerResourcesArgs{...}
+//	        ServiceTemplateSpecContainerResourcesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceTemplateSpecContainerResourcesPtrInput interface {
 	pulumi.Input
 
@@ -4392,7 +4392,7 @@ type ServiceTemplateSpecContainerVolumeMount struct {
 // ServiceTemplateSpecContainerVolumeMountInput is an input type that accepts ServiceTemplateSpecContainerVolumeMountArgs and ServiceTemplateSpecContainerVolumeMountOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerVolumeMountInput` via:
 //
-//          ServiceTemplateSpecContainerVolumeMountArgs{...}
+//	ServiceTemplateSpecContainerVolumeMountArgs{...}
 type ServiceTemplateSpecContainerVolumeMountInput interface {
 	pulumi.Input
 
@@ -4423,7 +4423,7 @@ func (i ServiceTemplateSpecContainerVolumeMountArgs) ToServiceTemplateSpecContai
 // ServiceTemplateSpecContainerVolumeMountArrayInput is an input type that accepts ServiceTemplateSpecContainerVolumeMountArray and ServiceTemplateSpecContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecContainerVolumeMountArrayInput` via:
 //
-//          ServiceTemplateSpecContainerVolumeMountArray{ ServiceTemplateSpecContainerVolumeMountArgs{...} }
+//	ServiceTemplateSpecContainerVolumeMountArray{ ServiceTemplateSpecContainerVolumeMountArgs{...} }
 type ServiceTemplateSpecContainerVolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -4503,7 +4503,7 @@ type ServiceTemplateSpecVolume struct {
 // ServiceTemplateSpecVolumeInput is an input type that accepts ServiceTemplateSpecVolumeArgs and ServiceTemplateSpecVolumeOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecVolumeInput` via:
 //
-//          ServiceTemplateSpecVolumeArgs{...}
+//	ServiceTemplateSpecVolumeArgs{...}
 type ServiceTemplateSpecVolumeInput interface {
 	pulumi.Input
 
@@ -4536,7 +4536,7 @@ func (i ServiceTemplateSpecVolumeArgs) ToServiceTemplateSpecVolumeOutputWithCont
 // ServiceTemplateSpecVolumeArrayInput is an input type that accepts ServiceTemplateSpecVolumeArray and ServiceTemplateSpecVolumeArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecVolumeArrayInput` via:
 //
-//          ServiceTemplateSpecVolumeArray{ ServiceTemplateSpecVolumeArgs{...} }
+//	ServiceTemplateSpecVolumeArray{ ServiceTemplateSpecVolumeArgs{...} }
 type ServiceTemplateSpecVolumeArrayInput interface {
 	pulumi.Input
 
@@ -4633,7 +4633,7 @@ type ServiceTemplateSpecVolumeSecret struct {
 // ServiceTemplateSpecVolumeSecretInput is an input type that accepts ServiceTemplateSpecVolumeSecretArgs and ServiceTemplateSpecVolumeSecretOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecVolumeSecretInput` via:
 //
-//          ServiceTemplateSpecVolumeSecretArgs{...}
+//	ServiceTemplateSpecVolumeSecretArgs{...}
 type ServiceTemplateSpecVolumeSecretInput interface {
 	pulumi.Input
 
@@ -4742,7 +4742,7 @@ type ServiceTemplateSpecVolumeSecretItem struct {
 // ServiceTemplateSpecVolumeSecretItemInput is an input type that accepts ServiceTemplateSpecVolumeSecretItemArgs and ServiceTemplateSpecVolumeSecretItemOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecVolumeSecretItemInput` via:
 //
-//          ServiceTemplateSpecVolumeSecretItemArgs{...}
+//	ServiceTemplateSpecVolumeSecretItemArgs{...}
 type ServiceTemplateSpecVolumeSecretItemInput interface {
 	pulumi.Input
 
@@ -4781,7 +4781,7 @@ func (i ServiceTemplateSpecVolumeSecretItemArgs) ToServiceTemplateSpecVolumeSecr
 // ServiceTemplateSpecVolumeSecretItemArrayInput is an input type that accepts ServiceTemplateSpecVolumeSecretItemArray and ServiceTemplateSpecVolumeSecretItemArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateSpecVolumeSecretItemArrayInput` via:
 //
-//          ServiceTemplateSpecVolumeSecretItemArray{ ServiceTemplateSpecVolumeSecretItemArgs{...} }
+//	ServiceTemplateSpecVolumeSecretItemArray{ ServiceTemplateSpecVolumeSecretItemArgs{...} }
 type ServiceTemplateSpecVolumeSecretItemArrayInput interface {
 	pulumi.Input
 
@@ -4881,7 +4881,7 @@ type ServiceTraffic struct {
 // ServiceTrafficInput is an input type that accepts ServiceTrafficArgs and ServiceTrafficOutput values.
 // You can construct a concrete instance of `ServiceTrafficInput` via:
 //
-//          ServiceTrafficArgs{...}
+//	ServiceTrafficArgs{...}
 type ServiceTrafficInput interface {
 	pulumi.Input
 
@@ -4923,7 +4923,7 @@ func (i ServiceTrafficArgs) ToServiceTrafficOutputWithContext(ctx context.Contex
 // ServiceTrafficArrayInput is an input type that accepts ServiceTrafficArray and ServiceTrafficArrayOutput values.
 // You can construct a concrete instance of `ServiceTrafficArrayInput` via:
 //
-//          ServiceTrafficArray{ ServiceTrafficArgs{...} }
+//	ServiceTrafficArray{ ServiceTrafficArgs{...} }
 type ServiceTrafficArrayInput interface {
 	pulumi.Input
 
@@ -5023,7 +5023,7 @@ type GetServiceMetadata struct {
 // GetServiceMetadataInput is an input type that accepts GetServiceMetadataArgs and GetServiceMetadataOutput values.
 // You can construct a concrete instance of `GetServiceMetadataInput` via:
 //
-//          GetServiceMetadataArgs{...}
+//	GetServiceMetadataArgs{...}
 type GetServiceMetadataInput interface {
 	pulumi.Input
 
@@ -5056,7 +5056,7 @@ func (i GetServiceMetadataArgs) ToGetServiceMetadataOutputWithContext(ctx contex
 // GetServiceMetadataArrayInput is an input type that accepts GetServiceMetadataArray and GetServiceMetadataArrayOutput values.
 // You can construct a concrete instance of `GetServiceMetadataArrayInput` via:
 //
-//          GetServiceMetadataArray{ GetServiceMetadataArgs{...} }
+//	GetServiceMetadataArray{ GetServiceMetadataArgs{...} }
 type GetServiceMetadataArrayInput interface {
 	pulumi.Input
 
@@ -5151,7 +5151,7 @@ type GetServiceStatus struct {
 // GetServiceStatusInput is an input type that accepts GetServiceStatusArgs and GetServiceStatusOutput values.
 // You can construct a concrete instance of `GetServiceStatusInput` via:
 //
-//          GetServiceStatusArgs{...}
+//	GetServiceStatusArgs{...}
 type GetServiceStatusInput interface {
 	pulumi.Input
 
@@ -5182,7 +5182,7 @@ func (i GetServiceStatusArgs) ToGetServiceStatusOutputWithContext(ctx context.Co
 // GetServiceStatusArrayInput is an input type that accepts GetServiceStatusArray and GetServiceStatusArrayOutput values.
 // You can construct a concrete instance of `GetServiceStatusArrayInput` via:
 //
-//          GetServiceStatusArray{ GetServiceStatusArgs{...} }
+//	GetServiceStatusArray{ GetServiceStatusArgs{...} }
 type GetServiceStatusArrayInput interface {
 	pulumi.Input
 
@@ -5268,7 +5268,7 @@ type GetServiceStatusCondition struct {
 // GetServiceStatusConditionInput is an input type that accepts GetServiceStatusConditionArgs and GetServiceStatusConditionOutput values.
 // You can construct a concrete instance of `GetServiceStatusConditionInput` via:
 //
-//          GetServiceStatusConditionArgs{...}
+//	GetServiceStatusConditionArgs{...}
 type GetServiceStatusConditionInput interface {
 	pulumi.Input
 
@@ -5298,7 +5298,7 @@ func (i GetServiceStatusConditionArgs) ToGetServiceStatusConditionOutputWithCont
 // GetServiceStatusConditionArrayInput is an input type that accepts GetServiceStatusConditionArray and GetServiceStatusConditionArrayOutput values.
 // You can construct a concrete instance of `GetServiceStatusConditionArrayInput` via:
 //
-//          GetServiceStatusConditionArray{ GetServiceStatusConditionArgs{...} }
+//	GetServiceStatusConditionArray{ GetServiceStatusConditionArgs{...} }
 type GetServiceStatusConditionArrayInput interface {
 	pulumi.Input
 
@@ -5378,7 +5378,7 @@ type GetServiceTemplate struct {
 // GetServiceTemplateInput is an input type that accepts GetServiceTemplateArgs and GetServiceTemplateOutput values.
 // You can construct a concrete instance of `GetServiceTemplateInput` via:
 //
-//          GetServiceTemplateArgs{...}
+//	GetServiceTemplateArgs{...}
 type GetServiceTemplateInput interface {
 	pulumi.Input
 
@@ -5406,7 +5406,7 @@ func (i GetServiceTemplateArgs) ToGetServiceTemplateOutputWithContext(ctx contex
 // GetServiceTemplateArrayInput is an input type that accepts GetServiceTemplateArray and GetServiceTemplateArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateArrayInput` via:
 //
-//          GetServiceTemplateArray{ GetServiceTemplateArgs{...} }
+//	GetServiceTemplateArray{ GetServiceTemplateArgs{...} }
 type GetServiceTemplateArrayInput interface {
 	pulumi.Input
 
@@ -5485,7 +5485,7 @@ type GetServiceTemplateMetadata struct {
 // GetServiceTemplateMetadataInput is an input type that accepts GetServiceTemplateMetadataArgs and GetServiceTemplateMetadataOutput values.
 // You can construct a concrete instance of `GetServiceTemplateMetadataInput` via:
 //
-//          GetServiceTemplateMetadataArgs{...}
+//	GetServiceTemplateMetadataArgs{...}
 type GetServiceTemplateMetadataInput interface {
 	pulumi.Input
 
@@ -5520,7 +5520,7 @@ func (i GetServiceTemplateMetadataArgs) ToGetServiceTemplateMetadataOutputWithCo
 // GetServiceTemplateMetadataArrayInput is an input type that accepts GetServiceTemplateMetadataArray and GetServiceTemplateMetadataArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateMetadataArrayInput` via:
 //
-//          GetServiceTemplateMetadataArray{ GetServiceTemplateMetadataArgs{...} }
+//	GetServiceTemplateMetadataArray{ GetServiceTemplateMetadataArgs{...} }
 type GetServiceTemplateMetadataArrayInput interface {
 	pulumi.Input
 
@@ -5621,7 +5621,7 @@ type GetServiceTemplateSpec struct {
 // GetServiceTemplateSpecInput is an input type that accepts GetServiceTemplateSpecArgs and GetServiceTemplateSpecOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecInput` via:
 //
-//          GetServiceTemplateSpecArgs{...}
+//	GetServiceTemplateSpecArgs{...}
 type GetServiceTemplateSpecInput interface {
 	pulumi.Input
 
@@ -5653,7 +5653,7 @@ func (i GetServiceTemplateSpecArgs) ToGetServiceTemplateSpecOutputWithContext(ct
 // GetServiceTemplateSpecArrayInput is an input type that accepts GetServiceTemplateSpecArray and GetServiceTemplateSpecArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecArrayInput` via:
 //
-//          GetServiceTemplateSpecArray{ GetServiceTemplateSpecArgs{...} }
+//	GetServiceTemplateSpecArray{ GetServiceTemplateSpecArgs{...} }
 type GetServiceTemplateSpecArrayInput interface {
 	pulumi.Input
 
@@ -5748,7 +5748,7 @@ type GetServiceTemplateSpecContainer struct {
 // GetServiceTemplateSpecContainerInput is an input type that accepts GetServiceTemplateSpecContainerArgs and GetServiceTemplateSpecContainerOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerInput` via:
 //
-//          GetServiceTemplateSpecContainerArgs{...}
+//	GetServiceTemplateSpecContainerArgs{...}
 type GetServiceTemplateSpecContainerInput interface {
 	pulumi.Input
 
@@ -5783,7 +5783,7 @@ func (i GetServiceTemplateSpecContainerArgs) ToGetServiceTemplateSpecContainerOu
 // GetServiceTemplateSpecContainerArrayInput is an input type that accepts GetServiceTemplateSpecContainerArray and GetServiceTemplateSpecContainerArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerArray{ GetServiceTemplateSpecContainerArgs{...} }
+//	GetServiceTemplateSpecContainerArray{ GetServiceTemplateSpecContainerArgs{...} }
 type GetServiceTemplateSpecContainerArrayInput interface {
 	pulumi.Input
 
@@ -5887,7 +5887,7 @@ type GetServiceTemplateSpecContainerEnv struct {
 // GetServiceTemplateSpecContainerEnvInput is an input type that accepts GetServiceTemplateSpecContainerEnvArgs and GetServiceTemplateSpecContainerEnvOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvArgs{...}
+//	GetServiceTemplateSpecContainerEnvArgs{...}
 type GetServiceTemplateSpecContainerEnvInput interface {
 	pulumi.Input
 
@@ -5917,7 +5917,7 @@ func (i GetServiceTemplateSpecContainerEnvArgs) ToGetServiceTemplateSpecContaine
 // GetServiceTemplateSpecContainerEnvArrayInput is an input type that accepts GetServiceTemplateSpecContainerEnvArray and GetServiceTemplateSpecContainerEnvArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvArray{ GetServiceTemplateSpecContainerEnvArgs{...} }
+//	GetServiceTemplateSpecContainerEnvArray{ GetServiceTemplateSpecContainerEnvArgs{...} }
 type GetServiceTemplateSpecContainerEnvArrayInput interface {
 	pulumi.Input
 
@@ -5997,7 +5997,7 @@ type GetServiceTemplateSpecContainerEnvFrom struct {
 // GetServiceTemplateSpecContainerEnvFromInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromArgs and GetServiceTemplateSpecContainerEnvFromOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromArgs{...}
+//	GetServiceTemplateSpecContainerEnvFromArgs{...}
 type GetServiceTemplateSpecContainerEnvFromInput interface {
 	pulumi.Input
 
@@ -6026,7 +6026,7 @@ func (i GetServiceTemplateSpecContainerEnvFromArgs) ToGetServiceTemplateSpecCont
 // GetServiceTemplateSpecContainerEnvFromArrayInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromArray and GetServiceTemplateSpecContainerEnvFromArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromArray{ GetServiceTemplateSpecContainerEnvFromArgs{...} }
+//	GetServiceTemplateSpecContainerEnvFromArray{ GetServiceTemplateSpecContainerEnvFromArgs{...} }
 type GetServiceTemplateSpecContainerEnvFromArrayInput interface {
 	pulumi.Input
 
@@ -6106,7 +6106,7 @@ type GetServiceTemplateSpecContainerEnvFromConfigMapRef struct {
 // GetServiceTemplateSpecContainerEnvFromConfigMapRefInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromConfigMapRefArgs and GetServiceTemplateSpecContainerEnvFromConfigMapRefOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromConfigMapRefInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromConfigMapRefArgs{...}
+//	GetServiceTemplateSpecContainerEnvFromConfigMapRefArgs{...}
 type GetServiceTemplateSpecContainerEnvFromConfigMapRefInput interface {
 	pulumi.Input
 
@@ -6134,7 +6134,7 @@ func (i GetServiceTemplateSpecContainerEnvFromConfigMapRefArgs) ToGetServiceTemp
 // GetServiceTemplateSpecContainerEnvFromConfigMapRefArrayInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromConfigMapRefArray and GetServiceTemplateSpecContainerEnvFromConfigMapRefArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromConfigMapRefArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromConfigMapRefArray{ GetServiceTemplateSpecContainerEnvFromConfigMapRefArgs{...} }
+//	GetServiceTemplateSpecContainerEnvFromConfigMapRefArray{ GetServiceTemplateSpecContainerEnvFromConfigMapRefArgs{...} }
 type GetServiceTemplateSpecContainerEnvFromConfigMapRefArrayInput interface {
 	pulumi.Input
 
@@ -6208,7 +6208,7 @@ type GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference stru
 // GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs and GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs{...}
+//	GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs{...}
 type GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceInput interface {
 	pulumi.Input
 
@@ -6236,7 +6236,7 @@ func (i GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceAr
 // GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrayInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArray and GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArray{ GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs{...} }
+//	GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArray{ GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs{...} }
 type GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrayInput interface {
 	pulumi.Input
 
@@ -6305,7 +6305,7 @@ type GetServiceTemplateSpecContainerEnvFromSecretRef struct {
 // GetServiceTemplateSpecContainerEnvFromSecretRefInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromSecretRefArgs and GetServiceTemplateSpecContainerEnvFromSecretRefOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromSecretRefInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromSecretRefArgs{...}
+//	GetServiceTemplateSpecContainerEnvFromSecretRefArgs{...}
 type GetServiceTemplateSpecContainerEnvFromSecretRefInput interface {
 	pulumi.Input
 
@@ -6333,7 +6333,7 @@ func (i GetServiceTemplateSpecContainerEnvFromSecretRefArgs) ToGetServiceTemplat
 // GetServiceTemplateSpecContainerEnvFromSecretRefArrayInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromSecretRefArray and GetServiceTemplateSpecContainerEnvFromSecretRefArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromSecretRefArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromSecretRefArray{ GetServiceTemplateSpecContainerEnvFromSecretRefArgs{...} }
+//	GetServiceTemplateSpecContainerEnvFromSecretRefArray{ GetServiceTemplateSpecContainerEnvFromSecretRefArgs{...} }
 type GetServiceTemplateSpecContainerEnvFromSecretRefArrayInput interface {
 	pulumi.Input
 
@@ -6407,7 +6407,7 @@ type GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference struct 
 // GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs and GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs{...}
+//	GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs{...}
 type GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceInput interface {
 	pulumi.Input
 
@@ -6435,7 +6435,7 @@ func (i GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs)
 // GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrayInput is an input type that accepts GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArray and GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArray{ GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs{...} }
+//	GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArray{ GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs{...} }
 type GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrayInput interface {
 	pulumi.Input
 
@@ -6503,7 +6503,7 @@ type GetServiceTemplateSpecContainerEnvValueFrom struct {
 // GetServiceTemplateSpecContainerEnvValueFromInput is an input type that accepts GetServiceTemplateSpecContainerEnvValueFromArgs and GetServiceTemplateSpecContainerEnvValueFromOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvValueFromInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvValueFromArgs{...}
+//	GetServiceTemplateSpecContainerEnvValueFromArgs{...}
 type GetServiceTemplateSpecContainerEnvValueFromInput interface {
 	pulumi.Input
 
@@ -6530,7 +6530,7 @@ func (i GetServiceTemplateSpecContainerEnvValueFromArgs) ToGetServiceTemplateSpe
 // GetServiceTemplateSpecContainerEnvValueFromArrayInput is an input type that accepts GetServiceTemplateSpecContainerEnvValueFromArray and GetServiceTemplateSpecContainerEnvValueFromArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvValueFromArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvValueFromArray{ GetServiceTemplateSpecContainerEnvValueFromArgs{...} }
+//	GetServiceTemplateSpecContainerEnvValueFromArray{ GetServiceTemplateSpecContainerEnvValueFromArgs{...} }
 type GetServiceTemplateSpecContainerEnvValueFromArrayInput interface {
 	pulumi.Input
 
@@ -6601,7 +6601,7 @@ type GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef struct {
 // GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefInput is an input type that accepts GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs and GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
+//	GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...}
 type GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefInput interface {
 	pulumi.Input
 
@@ -6630,7 +6630,7 @@ func (i GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs) ToGetServic
 // GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrayInput is an input type that accepts GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArray and GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArray{ GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...} }
+//	GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArray{ GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs{...} }
 type GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrayInput interface {
 	pulumi.Input
 
@@ -6705,7 +6705,7 @@ type GetServiceTemplateSpecContainerPort struct {
 // GetServiceTemplateSpecContainerPortInput is an input type that accepts GetServiceTemplateSpecContainerPortArgs and GetServiceTemplateSpecContainerPortOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerPortInput` via:
 //
-//          GetServiceTemplateSpecContainerPortArgs{...}
+//	GetServiceTemplateSpecContainerPortArgs{...}
 type GetServiceTemplateSpecContainerPortInput interface {
 	pulumi.Input
 
@@ -6735,7 +6735,7 @@ func (i GetServiceTemplateSpecContainerPortArgs) ToGetServiceTemplateSpecContain
 // GetServiceTemplateSpecContainerPortArrayInput is an input type that accepts GetServiceTemplateSpecContainerPortArray and GetServiceTemplateSpecContainerPortArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerPortArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerPortArray{ GetServiceTemplateSpecContainerPortArgs{...} }
+//	GetServiceTemplateSpecContainerPortArray{ GetServiceTemplateSpecContainerPortArgs{...} }
 type GetServiceTemplateSpecContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -6812,7 +6812,7 @@ type GetServiceTemplateSpecContainerResource struct {
 // GetServiceTemplateSpecContainerResourceInput is an input type that accepts GetServiceTemplateSpecContainerResourceArgs and GetServiceTemplateSpecContainerResourceOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerResourceInput` via:
 //
-//          GetServiceTemplateSpecContainerResourceArgs{...}
+//	GetServiceTemplateSpecContainerResourceArgs{...}
 type GetServiceTemplateSpecContainerResourceInput interface {
 	pulumi.Input
 
@@ -6840,7 +6840,7 @@ func (i GetServiceTemplateSpecContainerResourceArgs) ToGetServiceTemplateSpecCon
 // GetServiceTemplateSpecContainerResourceArrayInput is an input type that accepts GetServiceTemplateSpecContainerResourceArray and GetServiceTemplateSpecContainerResourceArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerResourceArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerResourceArray{ GetServiceTemplateSpecContainerResourceArgs{...} }
+//	GetServiceTemplateSpecContainerResourceArray{ GetServiceTemplateSpecContainerResourceArgs{...} }
 type GetServiceTemplateSpecContainerResourceArrayInput interface {
 	pulumi.Input
 
@@ -6913,7 +6913,7 @@ type GetServiceTemplateSpecContainerVolumeMount struct {
 // GetServiceTemplateSpecContainerVolumeMountInput is an input type that accepts GetServiceTemplateSpecContainerVolumeMountArgs and GetServiceTemplateSpecContainerVolumeMountOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerVolumeMountInput` via:
 //
-//          GetServiceTemplateSpecContainerVolumeMountArgs{...}
+//	GetServiceTemplateSpecContainerVolumeMountArgs{...}
 type GetServiceTemplateSpecContainerVolumeMountInput interface {
 	pulumi.Input
 
@@ -6942,7 +6942,7 @@ func (i GetServiceTemplateSpecContainerVolumeMountArgs) ToGetServiceTemplateSpec
 // GetServiceTemplateSpecContainerVolumeMountArrayInput is an input type that accepts GetServiceTemplateSpecContainerVolumeMountArray and GetServiceTemplateSpecContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecContainerVolumeMountArrayInput` via:
 //
-//          GetServiceTemplateSpecContainerVolumeMountArray{ GetServiceTemplateSpecContainerVolumeMountArgs{...} }
+//	GetServiceTemplateSpecContainerVolumeMountArray{ GetServiceTemplateSpecContainerVolumeMountArgs{...} }
 type GetServiceTemplateSpecContainerVolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -7016,7 +7016,7 @@ type GetServiceTemplateSpecVolume struct {
 // GetServiceTemplateSpecVolumeInput is an input type that accepts GetServiceTemplateSpecVolumeArgs and GetServiceTemplateSpecVolumeOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecVolumeInput` via:
 //
-//          GetServiceTemplateSpecVolumeArgs{...}
+//	GetServiceTemplateSpecVolumeArgs{...}
 type GetServiceTemplateSpecVolumeInput interface {
 	pulumi.Input
 
@@ -7045,7 +7045,7 @@ func (i GetServiceTemplateSpecVolumeArgs) ToGetServiceTemplateSpecVolumeOutputWi
 // GetServiceTemplateSpecVolumeArrayInput is an input type that accepts GetServiceTemplateSpecVolumeArray and GetServiceTemplateSpecVolumeArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecVolumeArrayInput` via:
 //
-//          GetServiceTemplateSpecVolumeArray{ GetServiceTemplateSpecVolumeArgs{...} }
+//	GetServiceTemplateSpecVolumeArray{ GetServiceTemplateSpecVolumeArgs{...} }
 type GetServiceTemplateSpecVolumeArrayInput interface {
 	pulumi.Input
 
@@ -7119,7 +7119,7 @@ type GetServiceTemplateSpecVolumeSecret struct {
 // GetServiceTemplateSpecVolumeSecretInput is an input type that accepts GetServiceTemplateSpecVolumeSecretArgs and GetServiceTemplateSpecVolumeSecretOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecVolumeSecretInput` via:
 //
-//          GetServiceTemplateSpecVolumeSecretArgs{...}
+//	GetServiceTemplateSpecVolumeSecretArgs{...}
 type GetServiceTemplateSpecVolumeSecretInput interface {
 	pulumi.Input
 
@@ -7148,7 +7148,7 @@ func (i GetServiceTemplateSpecVolumeSecretArgs) ToGetServiceTemplateSpecVolumeSe
 // GetServiceTemplateSpecVolumeSecretArrayInput is an input type that accepts GetServiceTemplateSpecVolumeSecretArray and GetServiceTemplateSpecVolumeSecretArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecVolumeSecretArrayInput` via:
 //
-//          GetServiceTemplateSpecVolumeSecretArray{ GetServiceTemplateSpecVolumeSecretArgs{...} }
+//	GetServiceTemplateSpecVolumeSecretArray{ GetServiceTemplateSpecVolumeSecretArgs{...} }
 type GetServiceTemplateSpecVolumeSecretArrayInput interface {
 	pulumi.Input
 
@@ -7225,7 +7225,7 @@ type GetServiceTemplateSpecVolumeSecretItem struct {
 // GetServiceTemplateSpecVolumeSecretItemInput is an input type that accepts GetServiceTemplateSpecVolumeSecretItemArgs and GetServiceTemplateSpecVolumeSecretItemOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecVolumeSecretItemInput` via:
 //
-//          GetServiceTemplateSpecVolumeSecretItemArgs{...}
+//	GetServiceTemplateSpecVolumeSecretItemArgs{...}
 type GetServiceTemplateSpecVolumeSecretItemInput interface {
 	pulumi.Input
 
@@ -7254,7 +7254,7 @@ func (i GetServiceTemplateSpecVolumeSecretItemArgs) ToGetServiceTemplateSpecVolu
 // GetServiceTemplateSpecVolumeSecretItemArrayInput is an input type that accepts GetServiceTemplateSpecVolumeSecretItemArray and GetServiceTemplateSpecVolumeSecretItemArrayOutput values.
 // You can construct a concrete instance of `GetServiceTemplateSpecVolumeSecretItemArrayInput` via:
 //
-//          GetServiceTemplateSpecVolumeSecretItemArray{ GetServiceTemplateSpecVolumeSecretItemArgs{...} }
+//	GetServiceTemplateSpecVolumeSecretItemArray{ GetServiceTemplateSpecVolumeSecretItemArgs{...} }
 type GetServiceTemplateSpecVolumeSecretItemArrayInput interface {
 	pulumi.Input
 
@@ -7333,7 +7333,7 @@ type GetServiceTraffic struct {
 // GetServiceTrafficInput is an input type that accepts GetServiceTrafficArgs and GetServiceTrafficOutput values.
 // You can construct a concrete instance of `GetServiceTrafficInput` via:
 //
-//          GetServiceTrafficArgs{...}
+//	GetServiceTrafficArgs{...}
 type GetServiceTrafficInput interface {
 	pulumi.Input
 
@@ -7364,7 +7364,7 @@ func (i GetServiceTrafficArgs) ToGetServiceTrafficOutputWithContext(ctx context.
 // GetServiceTrafficArrayInput is an input type that accepts GetServiceTrafficArray and GetServiceTrafficArrayOutput values.
 // You can construct a concrete instance of `GetServiceTrafficArrayInput` via:
 //
-//          GetServiceTrafficArray{ GetServiceTrafficArgs{...} }
+//	GetServiceTrafficArray{ GetServiceTrafficArgs{...} }
 type GetServiceTrafficArrayInput interface {
 	pulumi.Input
 

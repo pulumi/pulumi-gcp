@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
 // * How-to Guides
-//     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+//   - [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 //
 // > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
 // by using the `projects.ServiceIdentity` resource.
@@ -30,35 +30,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-// 			Topic:              exampleTopic.Name,
-// 			AckDeadlineSeconds: pulumi.Int(20),
-// 			Labels: pulumi.StringMap{
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 			PushConfig: &pubsub.SubscriptionPushConfigArgs{
-// 				PushEndpoint: pulumi.String("https://example.com/push"),
-// 				Attributes: pulumi.StringMap{
-// 					"x-goog-version": pulumi.String("v1"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Topic:              exampleTopic.Name,
+//				AckDeadlineSeconds: pulumi.Int(20),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				PushConfig: &pubsub.SubscriptionPushConfigArgs{
+//					PushEndpoint: pulumi.String("https://example.com/push"),
+//					Attributes: pulumi.StringMap{
+//						"x-goog-version": pulumi.String("v1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Pubsub Subscription Pull
 //
@@ -66,38 +69,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-// 			Topic: exampleTopic.Name,
-// 			Labels: pulumi.StringMap{
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 			MessageRetentionDuration: pulumi.String("1200s"),
-// 			RetainAckedMessages:      pulumi.Bool(true),
-// 			AckDeadlineSeconds:       pulumi.Int(20),
-// 			ExpirationPolicy: &pubsub.SubscriptionExpirationPolicyArgs{
-// 				Ttl: pulumi.String("300000.5s"),
-// 			},
-// 			RetryPolicy: &pubsub.SubscriptionRetryPolicyArgs{
-// 				MinimumBackoff: pulumi.String("10s"),
-// 			},
-// 			EnableMessageOrdering: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Topic: exampleTopic.Name,
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				MessageRetentionDuration: pulumi.String("1200s"),
+//				RetainAckedMessages:      pulumi.Bool(true),
+//				AckDeadlineSeconds:       pulumi.Int(20),
+//				ExpirationPolicy: &pubsub.SubscriptionExpirationPolicyArgs{
+//					Ttl: pulumi.String("300000.5s"),
+//				},
+//				RetryPolicy: &pubsub.SubscriptionRetryPolicyArgs{
+//					MinimumBackoff: pulumi.String("10s"),
+//				},
+//				EnableMessageOrdering: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Pubsub Subscription Different Project
 //
@@ -105,28 +111,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
-// 			Project: pulumi.String("topic-project"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-// 			Project: pulumi.String("subscription-project"),
-// 			Topic:   exampleTopic.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
+//				Project: pulumi.String("topic-project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Project: pulumi.String("subscription-project"),
+//				Topic:   exampleTopic.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Pubsub Subscription Dead Letter
 //
@@ -134,49 +143,58 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleDeadLetter, err := pubsub.NewTopic(ctx, "exampleDeadLetter", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-// 			Topic: exampleTopic.Name,
-// 			DeadLetterPolicy: &pubsub.SubscriptionDeadLetterPolicyArgs{
-// 				DeadLetterTopic:     exampleDeadLetter.ID(),
-// 				MaxDeliveryAttempts: pulumi.Int(10),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleDeadLetter, err := pubsub.NewTopic(ctx, "exampleDeadLetter", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Topic: exampleTopic.Name,
+//				DeadLetterPolicy: &pubsub.SubscriptionDeadLetterPolicyArgs{
+//					DeadLetterTopic:     exampleDeadLetter.ID(),
+//					MaxDeliveryAttempts: pulumi.Int(10),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Subscription can be imported using any of these accepted formats
+// # Subscription can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
+//
+//	$ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
+//
+//	$ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
+//
 // ```
 type Subscription struct {
 	pulumi.CustomResourceState
@@ -672,7 +690,7 @@ func (i *Subscription) ToSubscriptionOutputWithContext(ctx context.Context) Subs
 // SubscriptionArrayInput is an input type that accepts SubscriptionArray and SubscriptionArrayOutput values.
 // You can construct a concrete instance of `SubscriptionArrayInput` via:
 //
-//          SubscriptionArray{ SubscriptionArgs{...} }
+//	SubscriptionArray{ SubscriptionArgs{...} }
 type SubscriptionArrayInput interface {
 	pulumi.Input
 
@@ -697,7 +715,7 @@ func (i SubscriptionArray) ToSubscriptionArrayOutputWithContext(ctx context.Cont
 // SubscriptionMapInput is an input type that accepts SubscriptionMap and SubscriptionMapOutput values.
 // You can construct a concrete instance of `SubscriptionMapInput` via:
 //
-//          SubscriptionMap{ "key": SubscriptionArgs{...} }
+//	SubscriptionMap{ "key": SubscriptionArgs{...} }
 type SubscriptionMapInput interface {
 	pulumi.Input
 
@@ -766,10 +784,10 @@ func (o SubscriptionOutput) DeadLetterPolicy() SubscriptionDeadLetterPolicyPtrOu
 
 // If `true`, Pub/Sub provides the following guarantees for the delivery
 // of a message with a given value of messageId on this Subscriptions':
-// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
-// - An acknowledged message will not be resent to a subscriber.
-//   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
-//   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+//   - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
+//   - An acknowledged message will not be resent to a subscriber.
+//     Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+//     is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
 func (o SubscriptionOutput) EnableExactlyOnceDelivery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.BoolPtrOutput { return v.EnableExactlyOnceDelivery }).(pulumi.BoolPtrOutput)
 }

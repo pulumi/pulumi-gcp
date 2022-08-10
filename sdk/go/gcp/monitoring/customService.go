@@ -19,8 +19,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
 // * How-to Guides
-//     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-//     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+//   - [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+//   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
 // ### Monitoring Service Custom
@@ -29,37 +29,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := monitoring.NewCustomService(ctx, "custom", &monitoring.CustomServiceArgs{
-// 			DisplayName: pulumi.String("My Custom Service custom-srv"),
-// 			ServiceId:   pulumi.String("custom-srv"),
-// 			Telemetry: &monitoring.CustomServiceTelemetryArgs{
-// 				ResourceName: pulumi.String("//product.googleapis.com/foo/foo/services/test"),
-// 			},
-// 			UserLabels: pulumi.StringMap{
-// 				"my_key":       pulumi.String("my_value"),
-// 				"my_other_key": pulumi.String("my_other_value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := monitoring.NewCustomService(ctx, "custom", &monitoring.CustomServiceArgs{
+//				DisplayName: pulumi.String("My Custom Service custom-srv"),
+//				ServiceId:   pulumi.String("custom-srv"),
+//				Telemetry: &monitoring.CustomServiceTelemetryArgs{
+//					ResourceName: pulumi.String("//product.googleapis.com/foo/foo/services/test"),
+//				},
+//				UserLabels: pulumi.StringMap{
+//					"my_key":       pulumi.String("my_value"),
+//					"my_other_key": pulumi.String("my_other_value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Service can be imported using any of these accepted formats
+// # Service can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
+//
+//	$ pulumi import gcp:monitoring/customService:CustomService default {{name}}
+//
 // ```
 type CustomService struct {
 	pulumi.CustomResourceState
@@ -233,7 +238,7 @@ func (i *CustomService) ToCustomServiceOutputWithContext(ctx context.Context) Cu
 // CustomServiceArrayInput is an input type that accepts CustomServiceArray and CustomServiceArrayOutput values.
 // You can construct a concrete instance of `CustomServiceArrayInput` via:
 //
-//          CustomServiceArray{ CustomServiceArgs{...} }
+//	CustomServiceArray{ CustomServiceArgs{...} }
 type CustomServiceArrayInput interface {
 	pulumi.Input
 
@@ -258,7 +263,7 @@ func (i CustomServiceArray) ToCustomServiceArrayOutputWithContext(ctx context.Co
 // CustomServiceMapInput is an input type that accepts CustomServiceMap and CustomServiceMapOutput values.
 // You can construct a concrete instance of `CustomServiceMapInput` via:
 //
-//          CustomServiceMap{ "key": CustomServiceArgs{...} }
+//	CustomServiceMap{ "key": CustomServiceArgs{...} }
 type CustomServiceMapInput interface {
 	pulumi.Input
 

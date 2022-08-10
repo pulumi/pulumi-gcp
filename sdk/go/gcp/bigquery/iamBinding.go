@@ -27,38 +27,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/bigquery.dataOwner",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewIamPolicy(ctx, "policy", &bigquery.IamPolicyArgs{
-// 			Project:    pulumi.Any(google_bigquery_table.Test.Project),
-// 			DatasetId:  pulumi.Any(google_bigquery_table.Test.Dataset_id),
-// 			TableId:    pulumi.Any(google_bigquery_table.Test.Table_id),
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/bigquery.dataOwner",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewIamPolicy(ctx, "policy", &bigquery.IamPolicyArgs{
+//				Project:    pulumi.Any(google_bigquery_table.Test.Project),
+//				DatasetId:  pulumi.Any(google_bigquery_table.Test.Dataset_id),
+//				TableId:    pulumi.Any(google_bigquery_table.Test.Table_id),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -67,43 +70,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/bigquery.dataOwner",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 					Condition: organizations.GetIAMPolicyBindingCondition{
-// 						Title:       "expires_after_2019_12_31",
-// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewIamPolicy(ctx, "policy", &bigquery.IamPolicyArgs{
-// 			Project:    pulumi.Any(google_bigquery_table.Test.Project),
-// 			DatasetId:  pulumi.Any(google_bigquery_table.Test.Dataset_id),
-// 			TableId:    pulumi.Any(google_bigquery_table.Test.Table_id),
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/bigquery.dataOwner",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: organizations.GetIAMPolicyBindingCondition{
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewIamPolicy(ctx, "policy", &bigquery.IamPolicyArgs{
+//				Project:    pulumi.Any(google_bigquery_table.Test.Project),
+//				DatasetId:  pulumi.Any(google_bigquery_table.Test.Dataset_id),
+//				TableId:    pulumi.Any(google_bigquery_table.Test.Table_id),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## google\_bigquery\_table\_iam\_binding
 //
@@ -111,27 +117,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigquery.NewIamBinding(ctx, "binding", &bigquery.IamBindingArgs{
-// 			Project:   pulumi.Any(google_bigquery_table.Test.Project),
-// 			DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
-// 			TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
-// 			Role:      pulumi.String("roles/bigquery.dataOwner"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewIamBinding(ctx, "binding", &bigquery.IamBindingArgs{
+//				Project:   pulumi.Any(google_bigquery_table.Test.Project),
+//				DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
+//				TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Role:      pulumi.String("roles/bigquery.dataOwner"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -140,32 +149,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigquery.NewIamBinding(ctx, "binding", &bigquery.IamBindingArgs{
-// 			Project:   pulumi.Any(google_bigquery_table.Test.Project),
-// 			DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
-// 			TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
-// 			Role:      pulumi.String("roles/bigquery.dataOwner"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 			Condition: &bigquery.IamBindingConditionArgs{
-// 				Title:       pulumi.String("expires_after_2019_12_31"),
-// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewIamBinding(ctx, "binding", &bigquery.IamBindingArgs{
+//				Project:   pulumi.Any(google_bigquery_table.Test.Project),
+//				DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
+//				TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Role:      pulumi.String("roles/bigquery.dataOwner"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &bigquery.IamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## google\_bigquery\_table\_iam\_member
 //
@@ -173,25 +185,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigquery.NewIamMember(ctx, "member", &bigquery.IamMemberArgs{
-// 			Project:   pulumi.Any(google_bigquery_table.Test.Project),
-// 			DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
-// 			TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
-// 			Role:      pulumi.String("roles/bigquery.dataOwner"),
-// 			Member:    pulumi.String("user:jane@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewIamMember(ctx, "member", &bigquery.IamMemberArgs{
+//				Project:   pulumi.Any(google_bigquery_table.Test.Project),
+//				DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
+//				TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Role:      pulumi.String("roles/bigquery.dataOwner"),
+//				Member:    pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -200,30 +215,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigquery.NewIamMember(ctx, "member", &bigquery.IamMemberArgs{
-// 			Project:   pulumi.Any(google_bigquery_table.Test.Project),
-// 			DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
-// 			TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
-// 			Role:      pulumi.String("roles/bigquery.dataOwner"),
-// 			Member:    pulumi.String("user:jane@example.com"),
-// 			Condition: &bigquery.IamMemberConditionArgs{
-// 				Title:       pulumi.String("expires_after_2019_12_31"),
-// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewIamMember(ctx, "member", &bigquery.IamMemberArgs{
+//				Project:   pulumi.Any(google_bigquery_table.Test.Project),
+//				DatasetId: pulumi.Any(google_bigquery_table.Test.Dataset_id),
+//				TableId:   pulumi.Any(google_bigquery_table.Test.Table_id),
+//				Role:      pulumi.String("roles/bigquery.dataOwner"),
+//				Member:    pulumi.String("user:jane@example.com"),
+//				Condition: &bigquery.IamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -231,22 +249,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} * {{project}}/{{dataset_id}}/{{table_id}} * {{dataset_id}}/{{table_id}} * {{table_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery table IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/iamBinding:IamBinding editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner user:jane@example.com"
+//
+//	$ pulumi import gcp:bigquery/iamBinding:IamBinding editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/iamBinding:IamBinding editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner"
+//
+//	$ pulumi import gcp:bigquery/iamBinding:IamBinding editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/iamBinding:IamBinding editor projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
+//
+//	$ pulumi import gcp:bigquery/iamBinding:IamBinding editor projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IamBinding struct {
@@ -408,7 +432,7 @@ func (i *IamBinding) ToIamBindingOutputWithContext(ctx context.Context) IamBindi
 // IamBindingArrayInput is an input type that accepts IamBindingArray and IamBindingArrayOutput values.
 // You can construct a concrete instance of `IamBindingArrayInput` via:
 //
-//          IamBindingArray{ IamBindingArgs{...} }
+//	IamBindingArray{ IamBindingArgs{...} }
 type IamBindingArrayInput interface {
 	pulumi.Input
 
@@ -433,7 +457,7 @@ func (i IamBindingArray) ToIamBindingArrayOutputWithContext(ctx context.Context)
 // IamBindingMapInput is an input type that accepts IamBindingMap and IamBindingMapOutput values.
 // You can construct a concrete instance of `IamBindingMapInput` via:
 //
-//          IamBindingMap{ "key": IamBindingArgs{...} }
+//	IamBindingMap{ "key": IamBindingArgs{...} }
 type IamBindingMapInput interface {
 	pulumi.Input
 

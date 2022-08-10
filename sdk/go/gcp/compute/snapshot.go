@@ -28,7 +28,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+//   - [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 //
 // > **Warning:** All arguments including `snapshot_encryption_key.raw_key` and `source_disk_encryption_key.raw_key` will be stored in the raw
 // state as plain-text.
@@ -40,60 +40,69 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  pulumi.StringRef("debian-9"),
-// 			Project: pulumi.StringRef("debian-cloud"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
-// 			Image: pulumi.String(debian.SelfLink),
-// 			Size:  pulumi.Int(10),
-// 			Type:  pulumi.String("pd-ssd"),
-// 			Zone:  pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
-// 			SourceDisk: persistent.ID(),
-// 			Zone:       pulumi.String("us-central1-a"),
-// 			Labels: pulumi.StringMap{
-// 				"my_label": pulumi.String("value"),
-// 			},
-// 			StorageLocations: pulumi.StringArray{
-// 				pulumi.String("us-central1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-9"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Image: pulumi.String(debian.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
+//				SourceDisk: persistent.ID(),
+//				Zone:       pulumi.String("us-central1-a"),
+//				Labels: pulumi.StringMap{
+//					"my_label": pulumi.String("value"),
+//				},
+//				StorageLocations: pulumi.StringArray{
+//					pulumi.String("us-central1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Snapshot can be imported using any of these accepted formats
+// # Snapshot can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
+//
+//	$ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/snapshot:Snapshot default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:compute/snapshot:Snapshot default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
+//
+//	$ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
+//
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState
@@ -375,7 +384,7 @@ func (i *Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutp
 // SnapshotArrayInput is an input type that accepts SnapshotArray and SnapshotArrayOutput values.
 // You can construct a concrete instance of `SnapshotArrayInput` via:
 //
-//          SnapshotArray{ SnapshotArgs{...} }
+//	SnapshotArray{ SnapshotArgs{...} }
 type SnapshotArrayInput interface {
 	pulumi.Input
 
@@ -400,7 +409,7 @@ func (i SnapshotArray) ToSnapshotArrayOutputWithContext(ctx context.Context) Sna
 // SnapshotMapInput is an input type that accepts SnapshotMap and SnapshotMapOutput values.
 // You can construct a concrete instance of `SnapshotMapInput` via:
 //
-//          SnapshotMap{ "key": SnapshotArgs{...} }
+//	SnapshotMap{ "key": SnapshotArgs{...} }
 type SnapshotMapInput interface {
 	pulumi.Input
 

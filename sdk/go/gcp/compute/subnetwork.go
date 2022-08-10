@@ -38,8 +38,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
 // * How-to Guides
-//     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
-//     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+//   - [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
+//   - [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
 //
 // ## Example Usage
 // ### Subnetwork Basic
@@ -48,35 +48,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSubnetwork(ctx, "network-with-private-secondary-ip-ranges", &compute.SubnetworkArgs{
-// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
-// 			Region:      pulumi.String("us-central1"),
-// 			Network:     custom_test.ID(),
-// 			SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
-// 				&compute.SubnetworkSecondaryIpRangeArgs{
-// 					RangeName:   pulumi.String("tf-test-secondary-range-update1"),
-// 					IpCidrRange: pulumi.String("192.168.10.0/24"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "network-with-private-secondary-ip-ranges", &compute.SubnetworkArgs{
+//				IpCidrRange: pulumi.String("10.2.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     custom_test.ID(),
+//				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:   pulumi.String("tf-test-secondary-range-update1"),
+//						IpCidrRange: pulumi.String("192.168.10.0/24"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Subnetwork Logging Config
 //
@@ -84,34 +87,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSubnetwork(ctx, "subnet-with-logging", &compute.SubnetworkArgs{
-// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
-// 			Region:      pulumi.String("us-central1"),
-// 			Network:     custom_test.ID(),
-// 			LogConfig: &compute.SubnetworkLogConfigArgs{
-// 				AggregationInterval: pulumi.String("INTERVAL_10_MIN"),
-// 				FlowSampling:        pulumi.Float64(0.5),
-// 				Metadata:            pulumi.String("INCLUDE_ALL_METADATA"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnet-with-logging", &compute.SubnetworkArgs{
+//				IpCidrRange: pulumi.String("10.2.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     custom_test.ID(),
+//				LogConfig: &compute.SubnetworkLogConfigArgs{
+//					AggregationInterval: pulumi.String("INTERVAL_10_MIN"),
+//					FlowSampling:        pulumi.Float64(0.5),
+//					Metadata:            pulumi.String("INCLUDE_ALL_METADATA"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Subnetwork Internal L7lb
 //
@@ -119,31 +125,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSubnetwork(ctx, "network-for-l7lb", &compute.SubnetworkArgs{
-// 			IpCidrRange: pulumi.String("10.0.0.0/22"),
-// 			Region:      pulumi.String("us-central1"),
-// 			Purpose:     pulumi.String("INTERNAL_HTTPS_LOAD_BALANCER"),
-// 			Role:        pulumi.String("ACTIVE"),
-// 			Network:     custom_test.ID(),
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "network-for-l7lb", &compute.SubnetworkArgs{
+//				IpCidrRange: pulumi.String("10.0.0.0/22"),
+//				Region:      pulumi.String("us-central1"),
+//				Purpose:     pulumi.String("INTERNAL_HTTPS_LOAD_BALANCER"),
+//				Role:        pulumi.String("ACTIVE"),
+//				Network:     custom_test.ID(),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Subnetwork Ipv6
 //
@@ -151,31 +160,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSubnetwork(ctx, "subnetwork-ipv6", &compute.SubnetworkArgs{
-// 			IpCidrRange:    pulumi.String("10.0.0.0/22"),
-// 			Region:         pulumi.String("us-west2"),
-// 			StackType:      pulumi.String("IPV4_IPV6"),
-// 			Ipv6AccessType: pulumi.String("EXTERNAL"),
-// 			Network:        custom_test.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-ipv6", &compute.SubnetworkArgs{
+//				IpCidrRange:    pulumi.String("10.0.0.0/22"),
+//				Region:         pulumi.String("us-west2"),
+//				StackType:      pulumi.String("IPV4_IPV6"),
+//				Ipv6AccessType: pulumi.String("EXTERNAL"),
+//				Network:        custom_test.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Subnetwork Internal Ipv6
 //
@@ -183,52 +195,63 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 			EnableUlaInternalIpv6: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSubnetwork(ctx, "subnetwork-internal-ipv6", &compute.SubnetworkArgs{
-// 			IpCidrRange:    pulumi.String("10.0.0.0/22"),
-// 			Region:         pulumi.String("us-west2"),
-// 			StackType:      pulumi.String("IPV4_IPV6"),
-// 			Ipv6AccessType: pulumi.String("INTERNAL"),
-// 			Network:        custom_test.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "custom-test", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//				EnableUlaInternalIpv6: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-internal-ipv6", &compute.SubnetworkArgs{
+//				IpCidrRange:    pulumi.String("10.0.0.0/22"),
+//				Region:         pulumi.String("us-west2"),
+//				StackType:      pulumi.String("IPV4_IPV6"),
+//				Ipv6AccessType: pulumi.String("INTERNAL"),
+//				Network:        custom_test.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Subnetwork can be imported using any of these accepted formats
+// # Subnetwork can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
+//
+//	$ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/subnetwork:Subnetwork default {{project}}/{{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/subnetwork:Subnetwork default {{project}}/{{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/subnetwork:Subnetwork default {{region}}/{{name}}
+//
+//	$ pulumi import gcp:compute/subnetwork:Subnetwork default {{region}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
+//
+//	$ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
+//
 // ```
 type Subnetwork struct {
 	pulumi.CustomResourceState
@@ -664,7 +687,7 @@ func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) Subnetwo
 // SubnetworkArrayInput is an input type that accepts SubnetworkArray and SubnetworkArrayOutput values.
 // You can construct a concrete instance of `SubnetworkArrayInput` via:
 //
-//          SubnetworkArray{ SubnetworkArgs{...} }
+//	SubnetworkArray{ SubnetworkArgs{...} }
 type SubnetworkArrayInput interface {
 	pulumi.Input
 
@@ -689,7 +712,7 @@ func (i SubnetworkArray) ToSubnetworkArrayOutputWithContext(ctx context.Context)
 // SubnetworkMapInput is an input type that accepts SubnetworkMap and SubnetworkMapOutput values.
 // You can construct a concrete instance of `SubnetworkMapInput` via:
 //
-//          SubnetworkMap{ "key": SubnetworkArgs{...} }
+//	SubnetworkMap{ "key": SubnetworkArgs{...} }
 type SubnetworkMapInput interface {
 	pulumi.Input
 

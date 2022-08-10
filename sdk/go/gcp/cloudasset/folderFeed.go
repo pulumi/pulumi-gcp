@@ -17,20 +17,24 @@ import (
 //
 // * [API documentation](https://cloud.google.com/asset-inventory/docs/reference/rest/)
 // * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
+//   - [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 //
 // ## Example Usage
 //
 // ## Import
 //
-// FolderFeed can be imported using any of these accepted formats
+// # FolderFeed can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default folders/{{folder_id}}/feeds/{{name}}
+//
+//	$ pulumi import gcp:cloudasset/folderFeed:FolderFeed default folders/{{folder_id}}/feeds/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default {{folder_id}}/{{name}}
+//
+//	$ pulumi import gcp:cloudasset/folderFeed:FolderFeed default {{folder_id}}/{{name}}
+//
 // ```
 type FolderFeed struct {
 	pulumi.CustomResourceState
@@ -292,7 +296,7 @@ func (i *FolderFeed) ToFolderFeedOutputWithContext(ctx context.Context) FolderFe
 // FolderFeedArrayInput is an input type that accepts FolderFeedArray and FolderFeedArrayOutput values.
 // You can construct a concrete instance of `FolderFeedArrayInput` via:
 //
-//          FolderFeedArray{ FolderFeedArgs{...} }
+//	FolderFeedArray{ FolderFeedArgs{...} }
 type FolderFeedArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +321,7 @@ func (i FolderFeedArray) ToFolderFeedArrayOutputWithContext(ctx context.Context)
 // FolderFeedMapInput is an input type that accepts FolderFeedMap and FolderFeedMapOutput values.
 // You can construct a concrete instance of `FolderFeedMapInput` via:
 //
-//          FolderFeedMap{ "key": FolderFeedArgs{...} }
+//	FolderFeedMap{ "key": FolderFeedArgs{...} }
 type FolderFeedMapInput interface {
 	pulumi.Input
 

@@ -22,70 +22,73 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		mycluster, err := dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
-// 			Region: pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		spark, err := dataproc.NewJob(ctx, "spark", &dataproc.JobArgs{
-// 			Region:      mycluster.Region,
-// 			ForceDelete: pulumi.Bool(true),
-// 			Placement: &dataproc.JobPlacementArgs{
-// 				ClusterName: mycluster.Name,
-// 			},
-// 			SparkConfig: &dataproc.JobSparkConfigArgs{
-// 				MainClass: pulumi.String("org.apache.spark.examples.SparkPi"),
-// 				JarFileUris: pulumi.StringArray{
-// 					pulumi.String("file:///usr/lib/spark/examples/jars/spark-examples.jar"),
-// 				},
-// 				Args: pulumi.StringArray{
-// 					pulumi.String("1000"),
-// 				},
-// 				Properties: pulumi.StringMap{
-// 					"spark.logConf": pulumi.String("true"),
-// 				},
-// 				LoggingConfig: &dataproc.JobSparkConfigLoggingConfigArgs{
-// 					DriverLogLevels: pulumi.StringMap{
-// 						"root": pulumi.String("INFO"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		pyspark, err := dataproc.NewJob(ctx, "pyspark", &dataproc.JobArgs{
-// 			Region:      mycluster.Region,
-// 			ForceDelete: pulumi.Bool(true),
-// 			Placement: &dataproc.JobPlacementArgs{
-// 				ClusterName: mycluster.Name,
-// 			},
-// 			PysparkConfig: &dataproc.JobPysparkConfigArgs{
-// 				MainPythonFileUri: pulumi.String("gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py"),
-// 				Properties: pulumi.StringMap{
-// 					"spark.logConf": pulumi.String("true"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("sparkStatus", spark.Statuses.ApplyT(func(statuses []dataproc.JobStatus) (string, error) {
-// 			return statuses[0].State, nil
-// 		}).(pulumi.StringOutput))
-// 		ctx.Export("pysparkStatus", pyspark.Statuses.ApplyT(func(statuses []dataproc.JobStatus) (string, error) {
-// 			return statuses[0].State, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mycluster, err := dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
+//				Region: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			spark, err := dataproc.NewJob(ctx, "spark", &dataproc.JobArgs{
+//				Region:      mycluster.Region,
+//				ForceDelete: pulumi.Bool(true),
+//				Placement: &dataproc.JobPlacementArgs{
+//					ClusterName: mycluster.Name,
+//				},
+//				SparkConfig: &dataproc.JobSparkConfigArgs{
+//					MainClass: pulumi.String("org.apache.spark.examples.SparkPi"),
+//					JarFileUris: pulumi.StringArray{
+//						pulumi.String("file:///usr/lib/spark/examples/jars/spark-examples.jar"),
+//					},
+//					Args: pulumi.StringArray{
+//						pulumi.String("1000"),
+//					},
+//					Properties: pulumi.StringMap{
+//						"spark.logConf": pulumi.String("true"),
+//					},
+//					LoggingConfig: &dataproc.JobSparkConfigLoggingConfigArgs{
+//						DriverLogLevels: pulumi.StringMap{
+//							"root": pulumi.String("INFO"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pyspark, err := dataproc.NewJob(ctx, "pyspark", &dataproc.JobArgs{
+//				Region:      mycluster.Region,
+//				ForceDelete: pulumi.Bool(true),
+//				Placement: &dataproc.JobPlacementArgs{
+//					ClusterName: mycluster.Name,
+//				},
+//				PysparkConfig: &dataproc.JobPysparkConfigArgs{
+//					MainPythonFileUri: pulumi.String("gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py"),
+//					Properties: pulumi.StringMap{
+//						"spark.logConf": pulumi.String("true"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("sparkStatus", spark.Statuses.ApplyT(func(statuses []dataproc.JobStatus) (string, error) {
+//				return statuses[0].State, nil
+//			}).(pulumi.StringOutput))
+//			ctx.Export("pysparkStatus", pyspark.Statuses.ApplyT(func(statuses []dataproc.JobStatus) (string, error) {
+//				return statuses[0].State, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -348,7 +351,7 @@ func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 // JobArrayInput is an input type that accepts JobArray and JobArrayOutput values.
 // You can construct a concrete instance of `JobArrayInput` via:
 //
-//          JobArray{ JobArgs{...} }
+//	JobArray{ JobArgs{...} }
 type JobArrayInput interface {
 	pulumi.Input
 
@@ -373,7 +376,7 @@ func (i JobArray) ToJobArrayOutputWithContext(ctx context.Context) JobArrayOutpu
 // JobMapInput is an input type that accepts JobMap and JobMapOutput values.
 // You can construct a concrete instance of `JobMapInput` via:
 //
-//          JobMap{ "key": JobArgs{...} }
+//	JobMap{ "key": JobArgs{...} }
 type JobMapInput interface {
 	pulumi.Input
 

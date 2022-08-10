@@ -27,37 +27,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/iap.httpsResourceAccessor",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
-// 			Project:    pulumi.Any(google_app_engine_application.App.Project),
-// 			AppId:      pulumi.Any(google_app_engine_application.App.App_id),
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/iap.httpsResourceAccessor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
+//				Project:    pulumi.Any(google_app_engine_application.App.Project),
+//				AppId:      pulumi.Any(google_app_engine_application.App.App_id),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -66,42 +69,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/iap.httpsResourceAccessor",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 					Condition: organizations.GetIAMPolicyBindingCondition{
-// 						Title:       "expires_after_2019_12_31",
-// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
-// 			Project:    pulumi.Any(google_app_engine_application.App.Project),
-// 			AppId:      pulumi.Any(google_app_engine_application.App.App_id),
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/iap.httpsResourceAccessor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: organizations.GetIAMPolicyBindingCondition{
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
+//				Project:    pulumi.Any(google_app_engine_application.App.Project),
+//				AppId:      pulumi.Any(google_app_engine_application.App.App_id),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## google\_iap\_web\_type\_app\_engine\_iam\_binding
 //
@@ -109,26 +115,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iap.NewWebTypeAppEngingIamBinding(ctx, "binding", &iap.WebTypeAppEngingIamBindingArgs{
-// 			Project: pulumi.Any(google_app_engine_application.App.Project),
-// 			AppId:   pulumi.Any(google_app_engine_application.App.App_id),
-// 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.NewWebTypeAppEngingIamBinding(ctx, "binding", &iap.WebTypeAppEngingIamBindingArgs{
+//				Project: pulumi.Any(google_app_engine_application.App.Project),
+//				AppId:   pulumi.Any(google_app_engine_application.App.App_id),
+//				Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -137,31 +146,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iap.NewWebTypeAppEngingIamBinding(ctx, "binding", &iap.WebTypeAppEngingIamBindingArgs{
-// 			Project: pulumi.Any(google_app_engine_application.App.Project),
-// 			AppId:   pulumi.Any(google_app_engine_application.App.App_id),
-// 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 			Condition: &iap.WebTypeAppEngingIamBindingConditionArgs{
-// 				Title:       pulumi.String("expires_after_2019_12_31"),
-// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.NewWebTypeAppEngingIamBinding(ctx, "binding", &iap.WebTypeAppEngingIamBindingArgs{
+//				Project: pulumi.Any(google_app_engine_application.App.Project),
+//				AppId:   pulumi.Any(google_app_engine_application.App.App_id),
+//				Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &iap.WebTypeAppEngingIamBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## google\_iap\_web\_type\_app\_engine\_iam\_member
 //
@@ -169,24 +181,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iap.NewWebTypeAppEngingIamMember(ctx, "member", &iap.WebTypeAppEngingIamMemberArgs{
-// 			Project: pulumi.Any(google_app_engine_application.App.Project),
-// 			AppId:   pulumi.Any(google_app_engine_application.App.App_id),
-// 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
-// 			Member:  pulumi.String("user:jane@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.NewWebTypeAppEngingIamMember(ctx, "member", &iap.WebTypeAppEngingIamMemberArgs{
+//				Project: pulumi.Any(google_app_engine_application.App.Project),
+//				AppId:   pulumi.Any(google_app_engine_application.App.App_id),
+//				Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // With IAM Conditions:
@@ -195,29 +210,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iap.NewWebTypeAppEngingIamMember(ctx, "member", &iap.WebTypeAppEngingIamMemberArgs{
-// 			Project: pulumi.Any(google_app_engine_application.App.Project),
-// 			AppId:   pulumi.Any(google_app_engine_application.App.App_id),
-// 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
-// 			Member:  pulumi.String("user:jane@example.com"),
-// 			Condition: &iap.WebTypeAppEngingIamMemberConditionArgs{
-// 				Title:       pulumi.String("expires_after_2019_12_31"),
-// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := iap.NewWebTypeAppEngingIamMember(ctx, "member", &iap.WebTypeAppEngingIamMemberArgs{
+//				Project: pulumi.Any(google_app_engine_application.App.Project),
+//				AppId:   pulumi.Any(google_app_engine_application.App.App_id),
+//				Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//				Condition: &iap.WebTypeAppEngingIamMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -225,22 +243,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/appengine-{{appId}} * {{project}}/{{appId}} * {{appId}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy webtypeappengine IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor "projects/{{project}}/iap_web/appengine-{{appId}} roles/iap.httpsResourceAccessor user:jane@example.com"
+//
+//	$ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor "projects/{{project}}/iap_web/appengine-{{appId}} roles/iap.httpsResourceAccessor user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor "projects/{{project}}/iap_web/appengine-{{appId}} roles/iap.httpsResourceAccessor"
+//
+//	$ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor "projects/{{project}}/iap_web/appengine-{{appId}} roles/iap.httpsResourceAccessor"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor projects/{{project}}/iap_web/appengine-{{appId}}
+//
+//	$ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor projects/{{project}}/iap_web/appengine-{{appId}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type WebTypeAppEngingIamMember struct {
@@ -399,7 +423,7 @@ func (i *WebTypeAppEngingIamMember) ToWebTypeAppEngingIamMemberOutputWithContext
 // WebTypeAppEngingIamMemberArrayInput is an input type that accepts WebTypeAppEngingIamMemberArray and WebTypeAppEngingIamMemberArrayOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamMemberArrayInput` via:
 //
-//          WebTypeAppEngingIamMemberArray{ WebTypeAppEngingIamMemberArgs{...} }
+//	WebTypeAppEngingIamMemberArray{ WebTypeAppEngingIamMemberArgs{...} }
 type WebTypeAppEngingIamMemberArrayInput interface {
 	pulumi.Input
 
@@ -424,7 +448,7 @@ func (i WebTypeAppEngingIamMemberArray) ToWebTypeAppEngingIamMemberArrayOutputWi
 // WebTypeAppEngingIamMemberMapInput is an input type that accepts WebTypeAppEngingIamMemberMap and WebTypeAppEngingIamMemberMapOutput values.
 // You can construct a concrete instance of `WebTypeAppEngingIamMemberMapInput` via:
 //
-//          WebTypeAppEngingIamMemberMap{ "key": WebTypeAppEngingIamMemberArgs{...} }
+//	WebTypeAppEngingIamMemberMap{ "key": WebTypeAppEngingIamMemberArgs{...} }
 type WebTypeAppEngingIamMemberMapInput interface {
 	pulumi.Input
 

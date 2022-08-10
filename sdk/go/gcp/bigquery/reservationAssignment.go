@@ -19,48 +19,57 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basic, err := bigquery.NewReservation(ctx, "basic", &bigquery.ReservationArgs{
-// 			Project:         pulumi.String("my-project-name"),
-// 			Location:        pulumi.String("us-central1"),
-// 			SlotCapacity:    pulumi.Int(0),
-// 			IgnoreIdleSlots: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewReservationAssignment(ctx, "primary", &bigquery.ReservationAssignmentArgs{
-// 			Assignee:    pulumi.String("projects/my-project-name"),
-// 			JobType:     pulumi.String("PIPELINE"),
-// 			Reservation: basic.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := bigquery.NewReservation(ctx, "basic", &bigquery.ReservationArgs{
+//				Project:         pulumi.String("my-project-name"),
+//				Location:        pulumi.String("us-central1"),
+//				SlotCapacity:    pulumi.Int(0),
+//				IgnoreIdleSlots: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewReservationAssignment(ctx, "primary", &bigquery.ReservationAssignmentArgs{
+//				Assignee:    pulumi.String("projects/my-project-name"),
+//				JobType:     pulumi.String("PIPELINE"),
+//				Reservation: basic.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Assignment can be imported using any of these accepted formats
+// # Assignment can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
+//
+//	$ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{project}}/{{location}}/{{reservation}}/{{name}}
+//
+//	$ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{project}}/{{location}}/{{reservation}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{location}}/{{reservation}}/{{name}}
+//
+//	$ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default {{location}}/{{reservation}}/{{name}}
+//
 // ```
 type ReservationAssignment struct {
 	pulumi.CustomResourceState
@@ -212,7 +221,7 @@ func (i *ReservationAssignment) ToReservationAssignmentOutputWithContext(ctx con
 // ReservationAssignmentArrayInput is an input type that accepts ReservationAssignmentArray and ReservationAssignmentArrayOutput values.
 // You can construct a concrete instance of `ReservationAssignmentArrayInput` via:
 //
-//          ReservationAssignmentArray{ ReservationAssignmentArgs{...} }
+//	ReservationAssignmentArray{ ReservationAssignmentArgs{...} }
 type ReservationAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +246,7 @@ func (i ReservationAssignmentArray) ToReservationAssignmentArrayOutputWithContex
 // ReservationAssignmentMapInput is an input type that accepts ReservationAssignmentMap and ReservationAssignmentMapOutput values.
 // You can construct a concrete instance of `ReservationAssignmentMapInput` via:
 //
-//          ReservationAssignmentMap{ "key": ReservationAssignmentArgs{...} }
+//	ReservationAssignmentMap{ "key": ReservationAssignmentArgs{...} }
 type ReservationAssignmentMapInput interface {
 	pulumi.Input
 

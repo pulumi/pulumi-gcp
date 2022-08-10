@@ -27,7 +27,7 @@ type AccessLevelBasic struct {
 // AccessLevelBasicInput is an input type that accepts AccessLevelBasicArgs and AccessLevelBasicOutput values.
 // You can construct a concrete instance of `AccessLevelBasicInput` via:
 //
-//          AccessLevelBasicArgs{...}
+//	AccessLevelBasicArgs{...}
 type AccessLevelBasicInput interface {
 	pulumi.Input
 
@@ -72,11 +72,11 @@ func (i AccessLevelBasicArgs) ToAccessLevelBasicPtrOutputWithContext(ctx context
 // AccessLevelBasicPtrInput is an input type that accepts AccessLevelBasicArgs, AccessLevelBasicPtr and AccessLevelBasicPtrOutput values.
 // You can construct a concrete instance of `AccessLevelBasicPtrInput` via:
 //
-//          AccessLevelBasicArgs{...}
+//	        AccessLevelBasicArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelBasicPtrInput interface {
 	pulumi.Input
 
@@ -238,7 +238,7 @@ type AccessLevelBasicCondition struct {
 // AccessLevelBasicConditionInput is an input type that accepts AccessLevelBasicConditionArgs and AccessLevelBasicConditionOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionInput` via:
 //
-//          AccessLevelBasicConditionArgs{...}
+//	AccessLevelBasicConditionArgs{...}
 type AccessLevelBasicConditionInput interface {
 	pulumi.Input
 
@@ -302,7 +302,7 @@ func (i AccessLevelBasicConditionArgs) ToAccessLevelBasicConditionOutputWithCont
 // AccessLevelBasicConditionArrayInput is an input type that accepts AccessLevelBasicConditionArray and AccessLevelBasicConditionArrayOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionArrayInput` via:
 //
-//          AccessLevelBasicConditionArray{ AccessLevelBasicConditionArgs{...} }
+//	AccessLevelBasicConditionArray{ AccessLevelBasicConditionArgs{...} }
 type AccessLevelBasicConditionArrayInput interface {
 	pulumi.Input
 
@@ -439,7 +439,7 @@ type AccessLevelBasicConditionDevicePolicy struct {
 // AccessLevelBasicConditionDevicePolicyInput is an input type that accepts AccessLevelBasicConditionDevicePolicyArgs and AccessLevelBasicConditionDevicePolicyOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyInput` via:
 //
-//          AccessLevelBasicConditionDevicePolicyArgs{...}
+//	AccessLevelBasicConditionDevicePolicyArgs{...}
 type AccessLevelBasicConditionDevicePolicyInput interface {
 	pulumi.Input
 
@@ -492,11 +492,11 @@ func (i AccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelBasicConditionDe
 // AccessLevelBasicConditionDevicePolicyPtrInput is an input type that accepts AccessLevelBasicConditionDevicePolicyArgs, AccessLevelBasicConditionDevicePolicyPtr and AccessLevelBasicConditionDevicePolicyPtrOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyPtrInput` via:
 //
-//          AccessLevelBasicConditionDevicePolicyArgs{...}
+//	        AccessLevelBasicConditionDevicePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelBasicConditionDevicePolicyPtrInput interface {
 	pulumi.Input
 
@@ -691,7 +691,7 @@ type AccessLevelBasicConditionDevicePolicyOsConstraint struct {
 // AccessLevelBasicConditionDevicePolicyOsConstraintInput is an input type that accepts AccessLevelBasicConditionDevicePolicyOsConstraintArgs and AccessLevelBasicConditionDevicePolicyOsConstraintOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyOsConstraintInput` via:
 //
-//          AccessLevelBasicConditionDevicePolicyOsConstraintArgs{...}
+//	AccessLevelBasicConditionDevicePolicyOsConstraintArgs{...}
 type AccessLevelBasicConditionDevicePolicyOsConstraintInput interface {
 	pulumi.Input
 
@@ -726,7 +726,7 @@ func (i AccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToAccessLevelBasi
 // AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput is an input type that accepts AccessLevelBasicConditionDevicePolicyOsConstraintArray and AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput` via:
 //
-//          AccessLevelBasicConditionDevicePolicyOsConstraintArray{ AccessLevelBasicConditionDevicePolicyOsConstraintArgs{...} }
+//	AccessLevelBasicConditionDevicePolicyOsConstraintArray{ AccessLevelBasicConditionDevicePolicyOsConstraintArgs{...} }
 type AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput interface {
 	pulumi.Input
 
@@ -825,7 +825,7 @@ type AccessLevelConditionDevicePolicy struct {
 // AccessLevelConditionDevicePolicyInput is an input type that accepts AccessLevelConditionDevicePolicyArgs and AccessLevelConditionDevicePolicyOutput values.
 // You can construct a concrete instance of `AccessLevelConditionDevicePolicyInput` via:
 //
-//          AccessLevelConditionDevicePolicyArgs{...}
+//	AccessLevelConditionDevicePolicyArgs{...}
 type AccessLevelConditionDevicePolicyInput interface {
 	pulumi.Input
 
@@ -878,11 +878,11 @@ func (i AccessLevelConditionDevicePolicyArgs) ToAccessLevelConditionDevicePolicy
 // AccessLevelConditionDevicePolicyPtrInput is an input type that accepts AccessLevelConditionDevicePolicyArgs, AccessLevelConditionDevicePolicyPtr and AccessLevelConditionDevicePolicyPtrOutput values.
 // You can construct a concrete instance of `AccessLevelConditionDevicePolicyPtrInput` via:
 //
-//          AccessLevelConditionDevicePolicyArgs{...}
+//	        AccessLevelConditionDevicePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelConditionDevicePolicyPtrInput interface {
 	pulumi.Input
 
@@ -1075,7 +1075,7 @@ type AccessLevelConditionDevicePolicyOsConstraint struct {
 // AccessLevelConditionDevicePolicyOsConstraintInput is an input type that accepts AccessLevelConditionDevicePolicyOsConstraintArgs and AccessLevelConditionDevicePolicyOsConstraintOutput values.
 // You can construct a concrete instance of `AccessLevelConditionDevicePolicyOsConstraintInput` via:
 //
-//          AccessLevelConditionDevicePolicyOsConstraintArgs{...}
+//	AccessLevelConditionDevicePolicyOsConstraintArgs{...}
 type AccessLevelConditionDevicePolicyOsConstraintInput interface {
 	pulumi.Input
 
@@ -1108,7 +1108,7 @@ func (i AccessLevelConditionDevicePolicyOsConstraintArgs) ToAccessLevelCondition
 // AccessLevelConditionDevicePolicyOsConstraintArrayInput is an input type that accepts AccessLevelConditionDevicePolicyOsConstraintArray and AccessLevelConditionDevicePolicyOsConstraintArrayOutput values.
 // You can construct a concrete instance of `AccessLevelConditionDevicePolicyOsConstraintArrayInput` via:
 //
-//          AccessLevelConditionDevicePolicyOsConstraintArray{ AccessLevelConditionDevicePolicyOsConstraintArgs{...} }
+//	AccessLevelConditionDevicePolicyOsConstraintArray{ AccessLevelConditionDevicePolicyOsConstraintArgs{...} }
 type AccessLevelConditionDevicePolicyOsConstraintArrayInput interface {
 	pulumi.Input
 
@@ -1188,7 +1188,7 @@ type AccessLevelCustom struct {
 // AccessLevelCustomInput is an input type that accepts AccessLevelCustomArgs and AccessLevelCustomOutput values.
 // You can construct a concrete instance of `AccessLevelCustomInput` via:
 //
-//          AccessLevelCustomArgs{...}
+//	AccessLevelCustomArgs{...}
 type AccessLevelCustomInput interface {
 	pulumi.Input
 
@@ -1227,11 +1227,11 @@ func (i AccessLevelCustomArgs) ToAccessLevelCustomPtrOutputWithContext(ctx conte
 // AccessLevelCustomPtrInput is an input type that accepts AccessLevelCustomArgs, AccessLevelCustomPtr and AccessLevelCustomPtrOutput values.
 // You can construct a concrete instance of `AccessLevelCustomPtrInput` via:
 //
-//          AccessLevelCustomArgs{...}
+//	        AccessLevelCustomArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelCustomPtrInput interface {
 	pulumi.Input
 
@@ -1340,7 +1340,7 @@ type AccessLevelCustomExpr struct {
 // AccessLevelCustomExprInput is an input type that accepts AccessLevelCustomExprArgs and AccessLevelCustomExprOutput values.
 // You can construct a concrete instance of `AccessLevelCustomExprInput` via:
 //
-//          AccessLevelCustomExprArgs{...}
+//	AccessLevelCustomExprArgs{...}
 type AccessLevelCustomExprInput interface {
 	pulumi.Input
 
@@ -1382,11 +1382,11 @@ func (i AccessLevelCustomExprArgs) ToAccessLevelCustomExprPtrOutputWithContext(c
 // AccessLevelCustomExprPtrInput is an input type that accepts AccessLevelCustomExprArgs, AccessLevelCustomExprPtr and AccessLevelCustomExprPtrOutput values.
 // You can construct a concrete instance of `AccessLevelCustomExprPtrInput` via:
 //
-//          AccessLevelCustomExprArgs{...}
+//	        AccessLevelCustomExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelCustomExprPtrInput interface {
 	pulumi.Input
 
@@ -1541,7 +1541,7 @@ type AccessLevelsAccessLevel struct {
 // AccessLevelsAccessLevelInput is an input type that accepts AccessLevelsAccessLevelArgs and AccessLevelsAccessLevelOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelInput` via:
 //
-//          AccessLevelsAccessLevelArgs{...}
+//	AccessLevelsAccessLevelArgs{...}
 type AccessLevelsAccessLevelInput interface {
 	pulumi.Input
 
@@ -1582,7 +1582,7 @@ func (i AccessLevelsAccessLevelArgs) ToAccessLevelsAccessLevelOutputWithContext(
 // AccessLevelsAccessLevelArrayInput is an input type that accepts AccessLevelsAccessLevelArray and AccessLevelsAccessLevelArrayOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelArrayInput` via:
 //
-//          AccessLevelsAccessLevelArray{ AccessLevelsAccessLevelArgs{...} }
+//	AccessLevelsAccessLevelArray{ AccessLevelsAccessLevelArgs{...} }
 type AccessLevelsAccessLevelArrayInput interface {
 	pulumi.Input
 
@@ -1685,7 +1685,7 @@ type AccessLevelsAccessLevelBasic struct {
 // AccessLevelsAccessLevelBasicInput is an input type that accepts AccessLevelsAccessLevelBasicArgs and AccessLevelsAccessLevelBasicOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicInput` via:
 //
-//          AccessLevelsAccessLevelBasicArgs{...}
+//	AccessLevelsAccessLevelBasicArgs{...}
 type AccessLevelsAccessLevelBasicInput interface {
 	pulumi.Input
 
@@ -1730,11 +1730,11 @@ func (i AccessLevelsAccessLevelBasicArgs) ToAccessLevelsAccessLevelBasicPtrOutpu
 // AccessLevelsAccessLevelBasicPtrInput is an input type that accepts AccessLevelsAccessLevelBasicArgs, AccessLevelsAccessLevelBasicPtr and AccessLevelsAccessLevelBasicPtrOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicPtrInput` via:
 //
-//          AccessLevelsAccessLevelBasicArgs{...}
+//	        AccessLevelsAccessLevelBasicArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelsAccessLevelBasicPtrInput interface {
 	pulumi.Input
 
@@ -1896,7 +1896,7 @@ type AccessLevelsAccessLevelBasicCondition struct {
 // AccessLevelsAccessLevelBasicConditionInput is an input type that accepts AccessLevelsAccessLevelBasicConditionArgs and AccessLevelsAccessLevelBasicConditionOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionInput` via:
 //
-//          AccessLevelsAccessLevelBasicConditionArgs{...}
+//	AccessLevelsAccessLevelBasicConditionArgs{...}
 type AccessLevelsAccessLevelBasicConditionInput interface {
 	pulumi.Input
 
@@ -1960,7 +1960,7 @@ func (i AccessLevelsAccessLevelBasicConditionArgs) ToAccessLevelsAccessLevelBasi
 // AccessLevelsAccessLevelBasicConditionArrayInput is an input type that accepts AccessLevelsAccessLevelBasicConditionArray and AccessLevelsAccessLevelBasicConditionArrayOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionArrayInput` via:
 //
-//          AccessLevelsAccessLevelBasicConditionArray{ AccessLevelsAccessLevelBasicConditionArgs{...} }
+//	AccessLevelsAccessLevelBasicConditionArray{ AccessLevelsAccessLevelBasicConditionArgs{...} }
 type AccessLevelsAccessLevelBasicConditionArrayInput interface {
 	pulumi.Input
 
@@ -2099,7 +2099,7 @@ type AccessLevelsAccessLevelBasicConditionDevicePolicy struct {
 // AccessLevelsAccessLevelBasicConditionDevicePolicyInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyArgs and AccessLevelsAccessLevelBasicConditionDevicePolicyOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyInput` via:
 //
-//          AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{...}
+//	AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{...}
 type AccessLevelsAccessLevelBasicConditionDevicePolicyInput interface {
 	pulumi.Input
 
@@ -2152,11 +2152,11 @@ func (i AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelsAcc
 // AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyArgs, AccessLevelsAccessLevelBasicConditionDevicePolicyPtr and AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput` via:
 //
-//          AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{...}
+//	        AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput interface {
 	pulumi.Input
 
@@ -2351,7 +2351,7 @@ type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint struct {
 // AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs and AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintInput` via:
 //
-//          AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{...}
+//	AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{...}
 type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintInput interface {
 	pulumi.Input
 
@@ -2384,7 +2384,7 @@ func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToAcc
 // AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray and AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput` via:
 //
-//          AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray{ AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{...} }
+//	AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray{ AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{...} }
 type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput interface {
 	pulumi.Input
 
@@ -2464,7 +2464,7 @@ type AccessLevelsAccessLevelCustom struct {
 // AccessLevelsAccessLevelCustomInput is an input type that accepts AccessLevelsAccessLevelCustomArgs and AccessLevelsAccessLevelCustomOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelCustomInput` via:
 //
-//          AccessLevelsAccessLevelCustomArgs{...}
+//	AccessLevelsAccessLevelCustomArgs{...}
 type AccessLevelsAccessLevelCustomInput interface {
 	pulumi.Input
 
@@ -2503,11 +2503,11 @@ func (i AccessLevelsAccessLevelCustomArgs) ToAccessLevelsAccessLevelCustomPtrOut
 // AccessLevelsAccessLevelCustomPtrInput is an input type that accepts AccessLevelsAccessLevelCustomArgs, AccessLevelsAccessLevelCustomPtr and AccessLevelsAccessLevelCustomPtrOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelCustomPtrInput` via:
 //
-//          AccessLevelsAccessLevelCustomArgs{...}
+//	        AccessLevelsAccessLevelCustomArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelsAccessLevelCustomPtrInput interface {
 	pulumi.Input
 
@@ -2616,7 +2616,7 @@ type AccessLevelsAccessLevelCustomExpr struct {
 // AccessLevelsAccessLevelCustomExprInput is an input type that accepts AccessLevelsAccessLevelCustomExprArgs and AccessLevelsAccessLevelCustomExprOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelCustomExprInput` via:
 //
-//          AccessLevelsAccessLevelCustomExprArgs{...}
+//	AccessLevelsAccessLevelCustomExprArgs{...}
 type AccessLevelsAccessLevelCustomExprInput interface {
 	pulumi.Input
 
@@ -2658,11 +2658,11 @@ func (i AccessLevelsAccessLevelCustomExprArgs) ToAccessLevelsAccessLevelCustomEx
 // AccessLevelsAccessLevelCustomExprPtrInput is an input type that accepts AccessLevelsAccessLevelCustomExprArgs, AccessLevelsAccessLevelCustomExprPtr and AccessLevelsAccessLevelCustomExprPtrOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelCustomExprPtrInput` via:
 //
-//          AccessLevelsAccessLevelCustomExprArgs{...}
+//	        AccessLevelsAccessLevelCustomExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessLevelsAccessLevelCustomExprPtrInput interface {
 	pulumi.Input
 
@@ -2805,7 +2805,7 @@ type AccessPolicyIamBindingCondition struct {
 // AccessPolicyIamBindingConditionInput is an input type that accepts AccessPolicyIamBindingConditionArgs and AccessPolicyIamBindingConditionOutput values.
 // You can construct a concrete instance of `AccessPolicyIamBindingConditionInput` via:
 //
-//          AccessPolicyIamBindingConditionArgs{...}
+//	AccessPolicyIamBindingConditionArgs{...}
 type AccessPolicyIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -2842,11 +2842,11 @@ func (i AccessPolicyIamBindingConditionArgs) ToAccessPolicyIamBindingConditionPt
 // AccessPolicyIamBindingConditionPtrInput is an input type that accepts AccessPolicyIamBindingConditionArgs, AccessPolicyIamBindingConditionPtr and AccessPolicyIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `AccessPolicyIamBindingConditionPtrInput` via:
 //
-//          AccessPolicyIamBindingConditionArgs{...}
+//	        AccessPolicyIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessPolicyIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -2968,7 +2968,7 @@ type AccessPolicyIamMemberCondition struct {
 // AccessPolicyIamMemberConditionInput is an input type that accepts AccessPolicyIamMemberConditionArgs and AccessPolicyIamMemberConditionOutput values.
 // You can construct a concrete instance of `AccessPolicyIamMemberConditionInput` via:
 //
-//          AccessPolicyIamMemberConditionArgs{...}
+//	AccessPolicyIamMemberConditionArgs{...}
 type AccessPolicyIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -3005,11 +3005,11 @@ func (i AccessPolicyIamMemberConditionArgs) ToAccessPolicyIamMemberConditionPtrO
 // AccessPolicyIamMemberConditionPtrInput is an input type that accepts AccessPolicyIamMemberConditionArgs, AccessPolicyIamMemberConditionPtr and AccessPolicyIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `AccessPolicyIamMemberConditionPtrInput` via:
 //
-//          AccessPolicyIamMemberConditionArgs{...}
+//	        AccessPolicyIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessPolicyIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -3166,7 +3166,7 @@ type ServicePerimeterSpec struct {
 // ServicePerimeterSpecInput is an input type that accepts ServicePerimeterSpecArgs and ServicePerimeterSpecOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecInput` via:
 //
-//          ServicePerimeterSpecArgs{...}
+//	ServicePerimeterSpecArgs{...}
 type ServicePerimeterSpecInput interface {
 	pulumi.Input
 
@@ -3238,11 +3238,11 @@ func (i ServicePerimeterSpecArgs) ToServicePerimeterSpecPtrOutputWithContext(ctx
 // ServicePerimeterSpecPtrInput is an input type that accepts ServicePerimeterSpecArgs, ServicePerimeterSpecPtr and ServicePerimeterSpecPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecPtrInput` via:
 //
-//          ServicePerimeterSpecArgs{...}
+//	        ServicePerimeterSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterSpecPtrInput interface {
 	pulumi.Input
 
@@ -3473,7 +3473,7 @@ type ServicePerimeterSpecEgressPolicy struct {
 // ServicePerimeterSpecEgressPolicyInput is an input type that accepts ServicePerimeterSpecEgressPolicyArgs and ServicePerimeterSpecEgressPolicyOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyArgs{...}
+//	ServicePerimeterSpecEgressPolicyArgs{...}
 type ServicePerimeterSpecEgressPolicyInput interface {
 	pulumi.Input
 
@@ -3506,7 +3506,7 @@ func (i ServicePerimeterSpecEgressPolicyArgs) ToServicePerimeterSpecEgressPolicy
 // ServicePerimeterSpecEgressPolicyArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyArray and ServicePerimeterSpecEgressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyArrayInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyArray{ ServicePerimeterSpecEgressPolicyArgs{...} }
+//	ServicePerimeterSpecEgressPolicyArray{ ServicePerimeterSpecEgressPolicyArgs{...} }
 type ServicePerimeterSpecEgressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -3592,7 +3592,7 @@ type ServicePerimeterSpecEgressPolicyEgressFrom struct {
 // ServicePerimeterSpecEgressPolicyEgressFromInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromArgs and ServicePerimeterSpecEgressPolicyEgressFromOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressFromInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyEgressFromArgs{...}
+//	ServicePerimeterSpecEgressPolicyEgressFromArgs{...}
 type ServicePerimeterSpecEgressPolicyEgressFromInput interface {
 	pulumi.Input
 
@@ -3635,11 +3635,11 @@ func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimeterSpecEg
 // ServicePerimeterSpecEgressPolicyEgressFromPtrInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromArgs, ServicePerimeterSpecEgressPolicyEgressFromPtr and ServicePerimeterSpecEgressPolicyEgressFromPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressFromPtrInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyEgressFromArgs{...}
+//	        ServicePerimeterSpecEgressPolicyEgressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterSpecEgressPolicyEgressFromPtrInput interface {
 	pulumi.Input
 
@@ -3773,7 +3773,7 @@ type ServicePerimeterSpecEgressPolicyEgressTo struct {
 // ServicePerimeterSpecEgressPolicyEgressToInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToArgs and ServicePerimeterSpecEgressPolicyEgressToOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyEgressToArgs{...}
+//	ServicePerimeterSpecEgressPolicyEgressToArgs{...}
 type ServicePerimeterSpecEgressPolicyEgressToInput interface {
 	pulumi.Input
 
@@ -3821,11 +3821,11 @@ func (i ServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimeterSpecEgre
 // ServicePerimeterSpecEgressPolicyEgressToPtrInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToArgs, ServicePerimeterSpecEgressPolicyEgressToPtr and ServicePerimeterSpecEgressPolicyEgressToPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToPtrInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyEgressToArgs{...}
+//	        ServicePerimeterSpecEgressPolicyEgressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterSpecEgressPolicyEgressToPtrInput interface {
 	pulumi.Input
 
@@ -3978,7 +3978,7 @@ type ServicePerimeterSpecEgressPolicyEgressToOperation struct {
 // ServicePerimeterSpecEgressPolicyEgressToOperationInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationArgs and ServicePerimeterSpecEgressPolicyEgressToOperationOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyEgressToOperationArgs{...}
+//	ServicePerimeterSpecEgressPolicyEgressToOperationArgs{...}
 type ServicePerimeterSpecEgressPolicyEgressToOperationInput interface {
 	pulumi.Input
 
@@ -4014,7 +4014,7 @@ func (i ServicePerimeterSpecEgressPolicyEgressToOperationArgs) ToServicePerimete
 // ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationArray and ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyEgressToOperationArray{ ServicePerimeterSpecEgressPolicyEgressToOperationArgs{...} }
+//	ServicePerimeterSpecEgressPolicyEgressToOperationArray{ ServicePerimeterSpecEgressPolicyEgressToOperationArgs{...} }
 type ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput interface {
 	pulumi.Input
 
@@ -4101,7 +4101,7 @@ type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector struct {
 // ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs and ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...}
+//	ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...}
 type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput interface {
 	pulumi.Input
 
@@ -4134,7 +4134,7 @@ func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ToS
 // ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
-//          ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...} }
+//	ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...} }
 type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -4217,7 +4217,7 @@ type ServicePerimeterSpecIngressPolicy struct {
 // ServicePerimeterSpecIngressPolicyInput is an input type that accepts ServicePerimeterSpecIngressPolicyArgs and ServicePerimeterSpecIngressPolicyOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyArgs{...}
+//	ServicePerimeterSpecIngressPolicyArgs{...}
 type ServicePerimeterSpecIngressPolicyInput interface {
 	pulumi.Input
 
@@ -4251,7 +4251,7 @@ func (i ServicePerimeterSpecIngressPolicyArgs) ToServicePerimeterSpecIngressPoli
 // ServicePerimeterSpecIngressPolicyArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyArray and ServicePerimeterSpecIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyArrayInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyArray{ ServicePerimeterSpecIngressPolicyArgs{...} }
+//	ServicePerimeterSpecIngressPolicyArray{ ServicePerimeterSpecIngressPolicyArgs{...} }
 type ServicePerimeterSpecIngressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -4343,7 +4343,7 @@ type ServicePerimeterSpecIngressPolicyIngressFrom struct {
 // ServicePerimeterSpecIngressPolicyIngressFromInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromArgs and ServicePerimeterSpecIngressPolicyIngressFromOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressFromArgs{...}
+//	ServicePerimeterSpecIngressPolicyIngressFromArgs{...}
 type ServicePerimeterSpecIngressPolicyIngressFromInput interface {
 	pulumi.Input
 
@@ -4389,11 +4389,11 @@ func (i ServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimeterSpec
 // ServicePerimeterSpecIngressPolicyIngressFromPtrInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromArgs, ServicePerimeterSpecIngressPolicyIngressFromPtr and ServicePerimeterSpecIngressPolicyIngressFromPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromPtrInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressFromArgs{...}
+//	        ServicePerimeterSpecIngressPolicyIngressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterSpecIngressPolicyIngressFromPtrInput interface {
 	pulumi.Input
 
@@ -4548,7 +4548,7 @@ type ServicePerimeterSpecIngressPolicyIngressFromSource struct {
 // ServicePerimeterSpecIngressPolicyIngressFromSourceInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromSourceArgs and ServicePerimeterSpecIngressPolicyIngressFromSourceOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromSourceInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...}
+//	ServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...}
 type ServicePerimeterSpecIngressPolicyIngressFromSourceInput interface {
 	pulumi.Input
 
@@ -4590,7 +4590,7 @@ func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToServicePerimet
 // ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromSourceArray and ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressFromSourceArray{ ServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...} }
+//	ServicePerimeterSpecIngressPolicyIngressFromSourceArray{ ServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...} }
 type ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput interface {
 	pulumi.Input
 
@@ -4684,7 +4684,7 @@ type ServicePerimeterSpecIngressPolicyIngressTo struct {
 // ServicePerimeterSpecIngressPolicyIngressToInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToArgs and ServicePerimeterSpecIngressPolicyIngressToOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressToArgs{...}
+//	ServicePerimeterSpecIngressPolicyIngressToArgs{...}
 type ServicePerimeterSpecIngressPolicyIngressToInput interface {
 	pulumi.Input
 
@@ -4728,11 +4728,11 @@ func (i ServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimeterSpecIn
 // ServicePerimeterSpecIngressPolicyIngressToPtrInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToArgs, ServicePerimeterSpecIngressPolicyIngressToPtr and ServicePerimeterSpecIngressPolicyIngressToPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToPtrInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressToArgs{...}
+//	        ServicePerimeterSpecIngressPolicyIngressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterSpecIngressPolicyIngressToPtrInput interface {
 	pulumi.Input
 
@@ -4866,7 +4866,7 @@ type ServicePerimeterSpecIngressPolicyIngressToOperation struct {
 // ServicePerimeterSpecIngressPolicyIngressToOperationInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationArgs and ServicePerimeterSpecIngressPolicyIngressToOperationOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressToOperationArgs{...}
+//	ServicePerimeterSpecIngressPolicyIngressToOperationArgs{...}
 type ServicePerimeterSpecIngressPolicyIngressToOperationInput interface {
 	pulumi.Input
 
@@ -4902,7 +4902,7 @@ func (i ServicePerimeterSpecIngressPolicyIngressToOperationArgs) ToServicePerime
 // ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationArray and ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressToOperationArray{ ServicePerimeterSpecIngressPolicyIngressToOperationArgs{...} }
+//	ServicePerimeterSpecIngressPolicyIngressToOperationArray{ ServicePerimeterSpecIngressPolicyIngressToOperationArgs{...} }
 type ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput interface {
 	pulumi.Input
 
@@ -4989,7 +4989,7 @@ type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector struct {
 // ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs and ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...}
+//	ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...}
 type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput interface {
 	pulumi.Input
 
@@ -5022,7 +5022,7 @@ func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) T
 // ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
-//          ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...} }
+//	ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...} }
 type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -5103,7 +5103,7 @@ type ServicePerimeterSpecVpcAccessibleServices struct {
 // ServicePerimeterSpecVpcAccessibleServicesInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesArgs and ServicePerimeterSpecVpcAccessibleServicesOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesInput` via:
 //
-//          ServicePerimeterSpecVpcAccessibleServicesArgs{...}
+//	ServicePerimeterSpecVpcAccessibleServicesArgs{...}
 type ServicePerimeterSpecVpcAccessibleServicesInput interface {
 	pulumi.Input
 
@@ -5143,11 +5143,11 @@ func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimeterSpecVpc
 // ServicePerimeterSpecVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesArgs, ServicePerimeterSpecVpcAccessibleServicesPtr and ServicePerimeterSpecVpcAccessibleServicesPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesPtrInput` via:
 //
-//          ServicePerimeterSpecVpcAccessibleServicesArgs{...}
+//	        ServicePerimeterSpecVpcAccessibleServicesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterSpecVpcAccessibleServicesPtrInput interface {
 	pulumi.Input
 
@@ -5299,7 +5299,7 @@ type ServicePerimeterStatus struct {
 // ServicePerimeterStatusInput is an input type that accepts ServicePerimeterStatusArgs and ServicePerimeterStatusOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusInput` via:
 //
-//          ServicePerimeterStatusArgs{...}
+//	ServicePerimeterStatusArgs{...}
 type ServicePerimeterStatusInput interface {
 	pulumi.Input
 
@@ -5371,11 +5371,11 @@ func (i ServicePerimeterStatusArgs) ToServicePerimeterStatusPtrOutputWithContext
 // ServicePerimeterStatusPtrInput is an input type that accepts ServicePerimeterStatusArgs, ServicePerimeterStatusPtr and ServicePerimeterStatusPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusPtrInput` via:
 //
-//          ServicePerimeterStatusArgs{...}
+//	        ServicePerimeterStatusArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterStatusPtrInput interface {
 	pulumi.Input
 
@@ -5606,7 +5606,7 @@ type ServicePerimeterStatusEgressPolicy struct {
 // ServicePerimeterStatusEgressPolicyInput is an input type that accepts ServicePerimeterStatusEgressPolicyArgs and ServicePerimeterStatusEgressPolicyOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyArgs{...}
+//	ServicePerimeterStatusEgressPolicyArgs{...}
 type ServicePerimeterStatusEgressPolicyInput interface {
 	pulumi.Input
 
@@ -5639,7 +5639,7 @@ func (i ServicePerimeterStatusEgressPolicyArgs) ToServicePerimeterStatusEgressPo
 // ServicePerimeterStatusEgressPolicyArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyArray and ServicePerimeterStatusEgressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyArrayInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyArray{ ServicePerimeterStatusEgressPolicyArgs{...} }
+//	ServicePerimeterStatusEgressPolicyArray{ ServicePerimeterStatusEgressPolicyArgs{...} }
 type ServicePerimeterStatusEgressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -5727,7 +5727,7 @@ type ServicePerimeterStatusEgressPolicyEgressFrom struct {
 // ServicePerimeterStatusEgressPolicyEgressFromInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromArgs and ServicePerimeterStatusEgressPolicyEgressFromOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressFromInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyEgressFromArgs{...}
+//	ServicePerimeterStatusEgressPolicyEgressFromArgs{...}
 type ServicePerimeterStatusEgressPolicyEgressFromInput interface {
 	pulumi.Input
 
@@ -5770,11 +5770,11 @@ func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimeterStat
 // ServicePerimeterStatusEgressPolicyEgressFromPtrInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromArgs, ServicePerimeterStatusEgressPolicyEgressFromPtr and ServicePerimeterStatusEgressPolicyEgressFromPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressFromPtrInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyEgressFromArgs{...}
+//	        ServicePerimeterStatusEgressPolicyEgressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterStatusEgressPolicyEgressFromPtrInput interface {
 	pulumi.Input
 
@@ -5908,7 +5908,7 @@ type ServicePerimeterStatusEgressPolicyEgressTo struct {
 // ServicePerimeterStatusEgressPolicyEgressToInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToArgs and ServicePerimeterStatusEgressPolicyEgressToOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyEgressToArgs{...}
+//	ServicePerimeterStatusEgressPolicyEgressToArgs{...}
 type ServicePerimeterStatusEgressPolicyEgressToInput interface {
 	pulumi.Input
 
@@ -5956,11 +5956,11 @@ func (i ServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimeterStatus
 // ServicePerimeterStatusEgressPolicyEgressToPtrInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToArgs, ServicePerimeterStatusEgressPolicyEgressToPtr and ServicePerimeterStatusEgressPolicyEgressToPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToPtrInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyEgressToArgs{...}
+//	        ServicePerimeterStatusEgressPolicyEgressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterStatusEgressPolicyEgressToPtrInput interface {
 	pulumi.Input
 
@@ -6113,7 +6113,7 @@ type ServicePerimeterStatusEgressPolicyEgressToOperation struct {
 // ServicePerimeterStatusEgressPolicyEgressToOperationInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationArgs and ServicePerimeterStatusEgressPolicyEgressToOperationOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyEgressToOperationArgs{...}
+//	ServicePerimeterStatusEgressPolicyEgressToOperationArgs{...}
 type ServicePerimeterStatusEgressPolicyEgressToOperationInput interface {
 	pulumi.Input
 
@@ -6149,7 +6149,7 @@ func (i ServicePerimeterStatusEgressPolicyEgressToOperationArgs) ToServicePerime
 // ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationArray and ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyEgressToOperationArray{ ServicePerimeterStatusEgressPolicyEgressToOperationArgs{...} }
+//	ServicePerimeterStatusEgressPolicyEgressToOperationArray{ ServicePerimeterStatusEgressPolicyEgressToOperationArgs{...} }
 type ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput interface {
 	pulumi.Input
 
@@ -6236,7 +6236,7 @@ type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector struct {
 // ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs and ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...}
+//	ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...}
 type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput interface {
 	pulumi.Input
 
@@ -6269,7 +6269,7 @@ func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) T
 // ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
-//          ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...} }
+//	ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...} }
 type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -6352,7 +6352,7 @@ type ServicePerimeterStatusIngressPolicy struct {
 // ServicePerimeterStatusIngressPolicyInput is an input type that accepts ServicePerimeterStatusIngressPolicyArgs and ServicePerimeterStatusIngressPolicyOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyArgs{...}
+//	ServicePerimeterStatusIngressPolicyArgs{...}
 type ServicePerimeterStatusIngressPolicyInput interface {
 	pulumi.Input
 
@@ -6386,7 +6386,7 @@ func (i ServicePerimeterStatusIngressPolicyArgs) ToServicePerimeterStatusIngress
 // ServicePerimeterStatusIngressPolicyArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyArray and ServicePerimeterStatusIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyArrayInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyArray{ ServicePerimeterStatusIngressPolicyArgs{...} }
+//	ServicePerimeterStatusIngressPolicyArray{ ServicePerimeterStatusIngressPolicyArgs{...} }
 type ServicePerimeterStatusIngressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -6478,7 +6478,7 @@ type ServicePerimeterStatusIngressPolicyIngressFrom struct {
 // ServicePerimeterStatusIngressPolicyIngressFromInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromArgs and ServicePerimeterStatusIngressPolicyIngressFromOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressFromArgs{...}
+//	ServicePerimeterStatusIngressPolicyIngressFromArgs{...}
 type ServicePerimeterStatusIngressPolicyIngressFromInput interface {
 	pulumi.Input
 
@@ -6524,11 +6524,11 @@ func (i ServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimeterSt
 // ServicePerimeterStatusIngressPolicyIngressFromPtrInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromArgs, ServicePerimeterStatusIngressPolicyIngressFromPtr and ServicePerimeterStatusIngressPolicyIngressFromPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromPtrInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressFromArgs{...}
+//	        ServicePerimeterStatusIngressPolicyIngressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterStatusIngressPolicyIngressFromPtrInput interface {
 	pulumi.Input
 
@@ -6683,7 +6683,7 @@ type ServicePerimeterStatusIngressPolicyIngressFromSource struct {
 // ServicePerimeterStatusIngressPolicyIngressFromSourceInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromSourceArgs and ServicePerimeterStatusIngressPolicyIngressFromSourceOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromSourceInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...}
+//	ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...}
 type ServicePerimeterStatusIngressPolicyIngressFromSourceInput interface {
 	pulumi.Input
 
@@ -6725,7 +6725,7 @@ func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToServicePerim
 // ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromSourceArray and ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressFromSourceArray{ ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...} }
+//	ServicePerimeterStatusIngressPolicyIngressFromSourceArray{ ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...} }
 type ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput interface {
 	pulumi.Input
 
@@ -6819,7 +6819,7 @@ type ServicePerimeterStatusIngressPolicyIngressTo struct {
 // ServicePerimeterStatusIngressPolicyIngressToInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToArgs and ServicePerimeterStatusIngressPolicyIngressToOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressToArgs{...}
+//	ServicePerimeterStatusIngressPolicyIngressToArgs{...}
 type ServicePerimeterStatusIngressPolicyIngressToInput interface {
 	pulumi.Input
 
@@ -6863,11 +6863,11 @@ func (i ServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimeterStat
 // ServicePerimeterStatusIngressPolicyIngressToPtrInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToArgs, ServicePerimeterStatusIngressPolicyIngressToPtr and ServicePerimeterStatusIngressPolicyIngressToPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToPtrInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressToArgs{...}
+//	        ServicePerimeterStatusIngressPolicyIngressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterStatusIngressPolicyIngressToPtrInput interface {
 	pulumi.Input
 
@@ -7001,7 +7001,7 @@ type ServicePerimeterStatusIngressPolicyIngressToOperation struct {
 // ServicePerimeterStatusIngressPolicyIngressToOperationInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationArgs and ServicePerimeterStatusIngressPolicyIngressToOperationOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressToOperationArgs{...}
+//	ServicePerimeterStatusIngressPolicyIngressToOperationArgs{...}
 type ServicePerimeterStatusIngressPolicyIngressToOperationInput interface {
 	pulumi.Input
 
@@ -7037,7 +7037,7 @@ func (i ServicePerimeterStatusIngressPolicyIngressToOperationArgs) ToServicePeri
 // ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationArray and ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressToOperationArray{ ServicePerimeterStatusIngressPolicyIngressToOperationArgs{...} }
+//	ServicePerimeterStatusIngressPolicyIngressToOperationArray{ ServicePerimeterStatusIngressPolicyIngressToOperationArgs{...} }
 type ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput interface {
 	pulumi.Input
 
@@ -7124,7 +7124,7 @@ type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector struct 
 // ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs and ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...}
+//	ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...}
 type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput interface {
 	pulumi.Input
 
@@ -7157,7 +7157,7 @@ func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs)
 // ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
-//          ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...} }
+//	ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...} }
 type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -7240,7 +7240,7 @@ type ServicePerimeterStatusVpcAccessibleServices struct {
 // ServicePerimeterStatusVpcAccessibleServicesInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesArgs and ServicePerimeterStatusVpcAccessibleServicesOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesInput` via:
 //
-//          ServicePerimeterStatusVpcAccessibleServicesArgs{...}
+//	ServicePerimeterStatusVpcAccessibleServicesArgs{...}
 type ServicePerimeterStatusVpcAccessibleServicesInput interface {
 	pulumi.Input
 
@@ -7280,11 +7280,11 @@ func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimeterStatu
 // ServicePerimeterStatusVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesArgs, ServicePerimeterStatusVpcAccessibleServicesPtr and ServicePerimeterStatusVpcAccessibleServicesPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesPtrInput` via:
 //
-//          ServicePerimeterStatusVpcAccessibleServicesArgs{...}
+//	        ServicePerimeterStatusVpcAccessibleServicesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterStatusVpcAccessibleServicesPtrInput interface {
 	pulumi.Input
 
@@ -7451,7 +7451,7 @@ type ServicePerimetersServicePerimeter struct {
 // ServicePerimetersServicePerimeterInput is an input type that accepts ServicePerimetersServicePerimeterArgs and ServicePerimetersServicePerimeterOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterInput` via:
 //
-//          ServicePerimetersServicePerimeterArgs{...}
+//	ServicePerimetersServicePerimeterArgs{...}
 type ServicePerimetersServicePerimeterInput interface {
 	pulumi.Input
 
@@ -7530,7 +7530,7 @@ func (i ServicePerimetersServicePerimeterArgs) ToServicePerimetersServicePerimet
 // ServicePerimetersServicePerimeterArrayInput is an input type that accepts ServicePerimetersServicePerimeterArray and ServicePerimetersServicePerimeterArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterArray{ ServicePerimetersServicePerimeterArgs{...} }
+//	ServicePerimetersServicePerimeterArray{ ServicePerimetersServicePerimeterArgs{...} }
 type ServicePerimetersServicePerimeterArrayInput interface {
 	pulumi.Input
 
@@ -7710,7 +7710,7 @@ type ServicePerimetersServicePerimeterSpec struct {
 // ServicePerimetersServicePerimeterSpecInput is an input type that accepts ServicePerimetersServicePerimeterSpecArgs and ServicePerimetersServicePerimeterSpecOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecArgs{...}
+//	ServicePerimetersServicePerimeterSpecArgs{...}
 type ServicePerimetersServicePerimeterSpecInput interface {
 	pulumi.Input
 
@@ -7782,11 +7782,11 @@ func (i ServicePerimetersServicePerimeterSpecArgs) ToServicePerimetersServicePer
 // ServicePerimetersServicePerimeterSpecPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecArgs, ServicePerimetersServicePerimeterSpecPtr and ServicePerimetersServicePerimeterSpecPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecArgs{...}
+//	        ServicePerimetersServicePerimeterSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterSpecPtrInput interface {
 	pulumi.Input
 
@@ -8021,7 +8021,7 @@ type ServicePerimetersServicePerimeterSpecEgressPolicy struct {
 // ServicePerimetersServicePerimeterSpecEgressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyArgs and ServicePerimetersServicePerimeterSpecEgressPolicyOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyArgs{...}
+//	ServicePerimetersServicePerimeterSpecEgressPolicyArgs{...}
 type ServicePerimetersServicePerimeterSpecEgressPolicyInput interface {
 	pulumi.Input
 
@@ -8054,7 +8054,7 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyArgs) ToServicePerimete
 // ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyArray and ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyArray{ ServicePerimetersServicePerimeterSpecEgressPolicyArgs{...} }
+//	ServicePerimetersServicePerimeterSpecEgressPolicyArray{ ServicePerimetersServicePerimeterSpecEgressPolicyArgs{...} }
 type ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -8142,7 +8142,7 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom struct {
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{...}
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{...}
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput interface {
 	pulumi.Input
 
@@ -8185,11 +8185,11 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToServi
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs, ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtr and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{...}
+//	        ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput interface {
 	pulumi.Input
 
@@ -8323,7 +8323,7 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo struct {
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{...}
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{...}
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput interface {
 	pulumi.Input
 
@@ -8371,11 +8371,11 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ToService
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs, ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtr and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{...}
+//	        ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput interface {
 	pulumi.Input
 
@@ -8528,7 +8528,7 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation struct {
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs{...}
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs{...}
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput interface {
 	pulumi.Input
 
@@ -8564,7 +8564,7 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs) 
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray{ ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs{...} }
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray{ ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs{...} }
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput interface {
 	pulumi.Input
 
@@ -8653,7 +8653,7 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSel
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...}
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...}
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput interface {
 	pulumi.Input
 
@@ -8686,7 +8686,7 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethod
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...} }
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...} }
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -8773,7 +8773,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicy struct {
 // ServicePerimetersServicePerimeterSpecIngressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyArgs and ServicePerimetersServicePerimeterSpecIngressPolicyOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyArgs{...}
+//	ServicePerimetersServicePerimeterSpecIngressPolicyArgs{...}
 type ServicePerimetersServicePerimeterSpecIngressPolicyInput interface {
 	pulumi.Input
 
@@ -8807,7 +8807,7 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyArgs) ToServicePerimet
 // ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyArray and ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyArray{ ServicePerimetersServicePerimeterSpecIngressPolicyArgs{...} }
+//	ServicePerimetersServicePerimeterSpecIngressPolicyArray{ ServicePerimetersServicePerimeterSpecIngressPolicyArgs{...} }
 type ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -8899,7 +8899,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom struct {
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs{...}
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs{...}
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromInput interface {
 	pulumi.Input
 
@@ -8945,11 +8945,11 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ToSer
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs, ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtr and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs{...}
+//	        ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput interface {
 	pulumi.Input
 
@@ -9104,7 +9104,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource struct 
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...}
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...}
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput interface {
 	pulumi.Input
 
@@ -9146,7 +9146,7 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs)
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...} }
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...} }
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput interface {
 	pulumi.Input
 
@@ -9242,7 +9242,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo struct {
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs{...}
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs{...}
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput interface {
 	pulumi.Input
 
@@ -9286,11 +9286,11 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ToServi
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs, ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtr and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs{...}
+//	        ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput interface {
 	pulumi.Input
 
@@ -9424,7 +9424,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation struct
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs{...}
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs{...}
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput interface {
 	pulumi.Input
 
@@ -9460,7 +9460,7 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs{...} }
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs{...} }
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput interface {
 	pulumi.Input
 
@@ -9549,7 +9549,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodS
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...}
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...}
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput interface {
 	pulumi.Input
 
@@ -9582,7 +9582,7 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMeth
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...} }
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...} }
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -9667,7 +9667,7 @@ type ServicePerimetersServicePerimeterSpecVpcAccessibleServices struct {
 // ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs{...}
+//	ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs{...}
 type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput interface {
 	pulumi.Input
 
@@ -9707,11 +9707,11 @@ func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ToServic
 // ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs, ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtr and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs{...}
+//	        ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput interface {
 	pulumi.Input
 
@@ -9863,7 +9863,7 @@ type ServicePerimetersServicePerimeterStatus struct {
 // ServicePerimetersServicePerimeterStatusInput is an input type that accepts ServicePerimetersServicePerimeterStatusArgs and ServicePerimetersServicePerimeterStatusOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusArgs{...}
+//	ServicePerimetersServicePerimeterStatusArgs{...}
 type ServicePerimetersServicePerimeterStatusInput interface {
 	pulumi.Input
 
@@ -9935,11 +9935,11 @@ func (i ServicePerimetersServicePerimeterStatusArgs) ToServicePerimetersServiceP
 // ServicePerimetersServicePerimeterStatusPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusArgs, ServicePerimetersServicePerimeterStatusPtr and ServicePerimetersServicePerimeterStatusPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusArgs{...}
+//	        ServicePerimetersServicePerimeterStatusArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterStatusPtrInput interface {
 	pulumi.Input
 
@@ -10174,7 +10174,7 @@ type ServicePerimetersServicePerimeterStatusEgressPolicy struct {
 // ServicePerimetersServicePerimeterStatusEgressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyArgs and ServicePerimetersServicePerimeterStatusEgressPolicyOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyArgs{...}
+//	ServicePerimetersServicePerimeterStatusEgressPolicyArgs{...}
 type ServicePerimetersServicePerimeterStatusEgressPolicyInput interface {
 	pulumi.Input
 
@@ -10207,7 +10207,7 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyArgs) ToServicePerime
 // ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyArray and ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyArray{ ServicePerimetersServicePerimeterStatusEgressPolicyArgs{...} }
+//	ServicePerimetersServicePerimeterStatusEgressPolicyArray{ ServicePerimetersServicePerimeterStatusEgressPolicyArgs{...} }
 type ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -10295,7 +10295,7 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom struct {
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{...}
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{...}
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput interface {
 	pulumi.Input
 
@@ -10338,11 +10338,11 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToSer
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs, ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtr and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{...}
+//	        ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput interface {
 	pulumi.Input
 
@@ -10476,7 +10476,7 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo struct {
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{...}
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{...}
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput interface {
 	pulumi.Input
 
@@ -10524,11 +10524,11 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ToServi
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs, ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtr and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{...}
+//	        ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput interface {
 	pulumi.Input
 
@@ -10683,7 +10683,7 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation struct
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs{...}
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs{...}
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput interface {
 	pulumi.Input
 
@@ -10719,7 +10719,7 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray{ ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs{...} }
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray{ ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs{...} }
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput interface {
 	pulumi.Input
 
@@ -10808,7 +10808,7 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodS
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...}
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...}
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput interface {
 	pulumi.Input
 
@@ -10841,7 +10841,7 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMeth
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...} }
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...} }
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -10928,7 +10928,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicy struct {
 // ServicePerimetersServicePerimeterStatusIngressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyArgs and ServicePerimetersServicePerimeterStatusIngressPolicyOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyArgs{...}
+//	ServicePerimetersServicePerimeterStatusIngressPolicyArgs{...}
 type ServicePerimetersServicePerimeterStatusIngressPolicyInput interface {
 	pulumi.Input
 
@@ -10962,7 +10962,7 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyArgs) ToServicePerim
 // ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyArray and ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyArray{ ServicePerimetersServicePerimeterStatusIngressPolicyArgs{...} }
+//	ServicePerimetersServicePerimeterStatusIngressPolicyArray{ ServicePerimetersServicePerimeterStatusIngressPolicyArgs{...} }
 type ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -11054,7 +11054,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom struct {
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs{...}
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs{...}
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromInput interface {
 	pulumi.Input
 
@@ -11100,11 +11100,11 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ToS
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs, ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtr and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs{...}
+//	        ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput interface {
 	pulumi.Input
 
@@ -11259,7 +11259,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource struc
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...}
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...}
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput interface {
 	pulumi.Input
 
@@ -11301,7 +11301,7 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArg
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...} }
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...} }
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput interface {
 	pulumi.Input
 
@@ -11399,7 +11399,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo struct {
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs{...}
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs{...}
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput interface {
 	pulumi.Input
 
@@ -11443,11 +11443,11 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ToSer
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs, ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtr and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs{...}
+//	        ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput interface {
 	pulumi.Input
 
@@ -11581,7 +11581,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation stru
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs{...}
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs{...}
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput interface {
 	pulumi.Input
 
@@ -11617,7 +11617,7 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationAr
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs{...} }
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs{...} }
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput interface {
 	pulumi.Input
 
@@ -11706,7 +11706,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMetho
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...}
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...}
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput interface {
 	pulumi.Input
 
@@ -11739,7 +11739,7 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMe
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...} }
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...} }
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -11824,7 +11824,7 @@ type ServicePerimetersServicePerimeterStatusVpcAccessibleServices struct {
 // ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{...}
+//	ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{...}
 type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput interface {
 	pulumi.Input
 
@@ -11864,11 +11864,11 @@ func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ToServ
 // ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs, ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtr and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput` via:
 //
-//          ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{...}
+//	        ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput interface {
 	pulumi.Input
 

@@ -21,24 +21,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicenetworking.NewPeeredDnsDomain(ctx, "name", &servicenetworking.PeeredDnsDomainArgs{
-// 			DnsSuffix: pulumi.String("example.com."),
-// 			Network:   pulumi.String("default"),
-// 			Project:   pulumi.String("10000000"),
-// 			Service:   pulumi.String("peering-service"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := servicenetworking.NewPeeredDnsDomain(ctx, "name", &servicenetworking.PeeredDnsDomainArgs{
+//				DnsSuffix: pulumi.String("example.com."),
+//				Network:   pulumi.String("default"),
+//				Project:   pulumi.String("10000000"),
+//				Service:   pulumi.String("peering-service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,10 +49,12 @@ import (
 // Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain my_domain services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
+//
+//	$ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain my_domain services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
+//
 // ```
 //
-//  Where- `service` is the service connection, defaults to `servicenetworking.googleapis.com`. - `project` is the producer project name. - `network` is the consumer network name. - `name` is the name of your peered DNS domain.
+//	Where- `service` is the service connection, defaults to `servicenetworking.googleapis.com`. - `project` is the producer project name. - `network` is the consumer network name. - `name` is the name of your peered DNS domain.
 type PeeredDnsDomain struct {
 	pulumi.CustomResourceState
 
@@ -188,7 +193,7 @@ func (i *PeeredDnsDomain) ToPeeredDnsDomainOutputWithContext(ctx context.Context
 // PeeredDnsDomainArrayInput is an input type that accepts PeeredDnsDomainArray and PeeredDnsDomainArrayOutput values.
 // You can construct a concrete instance of `PeeredDnsDomainArrayInput` via:
 //
-//          PeeredDnsDomainArray{ PeeredDnsDomainArgs{...} }
+//	PeeredDnsDomainArray{ PeeredDnsDomainArgs{...} }
 type PeeredDnsDomainArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +218,7 @@ func (i PeeredDnsDomainArray) ToPeeredDnsDomainArrayOutputWithContext(ctx contex
 // PeeredDnsDomainMapInput is an input type that accepts PeeredDnsDomainMap and PeeredDnsDomainMapOutput values.
 // You can construct a concrete instance of `PeeredDnsDomainMapInput` via:
 //
-//          PeeredDnsDomainMap{ "key": PeeredDnsDomainArgs{...} }
+//	PeeredDnsDomainMap{ "key": PeeredDnsDomainArgs{...} }
 type PeeredDnsDomainMapInput interface {
 	pulumi.Input
 

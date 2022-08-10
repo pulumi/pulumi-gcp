@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
 // * How-to Guides
-//     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
+//   - [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 //
 // ## Example Usage
 // ### Service Directory Namespace Basic
@@ -27,42 +27,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicedirectory.NewNamespace(ctx, "example", &servicedirectory.NamespaceArgs{
-// 			NamespaceId: pulumi.String("example-namespace"),
-// 			Location:    pulumi.String("us-central1"),
-// 			Labels: pulumi.StringMap{
-// 				"key": pulumi.String("value"),
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 		}, pulumi.Provider(google_beta))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := servicedirectory.NewNamespace(ctx, "example", &servicedirectory.NamespaceArgs{
+//				NamespaceId: pulumi.String("example-namespace"),
+//				Location:    pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//					"foo": pulumi.String("bar"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Namespace can be imported using any of these accepted formats
+// # Namespace can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:servicedirectory/namespace:Namespace default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
+//
+//	$ pulumi import gcp:servicedirectory/namespace:Namespace default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:servicedirectory/namespace:Namespace default {{project}}/{{location}}/{{namespace_id}}
+//
+//	$ pulumi import gcp:servicedirectory/namespace:Namespace default {{project}}/{{location}}/{{namespace_id}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
+//
+//	$ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
+//
 // ```
 type Namespace struct {
 	pulumi.CustomResourceState
@@ -222,7 +231,7 @@ func (i *Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceO
 // NamespaceArrayInput is an input type that accepts NamespaceArray and NamespaceArrayOutput values.
 // You can construct a concrete instance of `NamespaceArrayInput` via:
 //
-//          NamespaceArray{ NamespaceArgs{...} }
+//	NamespaceArray{ NamespaceArgs{...} }
 type NamespaceArrayInput interface {
 	pulumi.Input
 
@@ -247,7 +256,7 @@ func (i NamespaceArray) ToNamespaceArrayOutputWithContext(ctx context.Context) N
 // NamespaceMapInput is an input type that accepts NamespaceMap and NamespaceMapOutput values.
 // You can construct a concrete instance of `NamespaceMapInput` via:
 //
-//          NamespaceMap{ "key": NamespaceArgs{...} }
+//	NamespaceMap{ "key": NamespaceArgs{...} }
 type NamespaceMapInput interface {
 	pulumi.Input
 

@@ -20,31 +20,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebaserules"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebaserules"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := firebaserules.NewRuleset(ctx, "primary", &firebaserules.RulesetArgs{
-// 			Project: pulumi.String("my-project-name"),
-// 			Source: &firebaserules.RulesetSourceArgs{
-// 				Files: firebaserules.RulesetSourceFileArray{
-// 					&firebaserules.RulesetSourceFileArgs{
-// 						Content:     pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
-// 						Fingerprint: pulumi.String(""),
-// 						Name:        pulumi.String("firestore.rules"),
-// 					},
-// 				},
-// 				Language: pulumi.String(""),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebaserules.NewRuleset(ctx, "primary", &firebaserules.RulesetArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Source: &firebaserules.RulesetSourceArgs{
+//					Files: firebaserules.RulesetSourceFileArray{
+//						&firebaserules.RulesetSourceFileArgs{
+//							Content:     pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
+//							Fingerprint: pulumi.String(""),
+//							Name:        pulumi.String("firestore.rules"),
+//						},
+//					},
+//					Language: pulumi.String(""),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Minimal_ruleset
 // Creates a minimal Firestore ruleset
@@ -52,45 +55,54 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebaserules"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebaserules"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := firebaserules.NewRuleset(ctx, "primary", &firebaserules.RulesetArgs{
-// 			Project: pulumi.String("my-project-name"),
-// 			Source: &firebaserules.RulesetSourceArgs{
-// 				Files: firebaserules.RulesetSourceFileArray{
-// 					&firebaserules.RulesetSourceFileArgs{
-// 						Content: pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
-// 						Name:    pulumi.String("firestore.rules"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebaserules.NewRuleset(ctx, "primary", &firebaserules.RulesetArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Source: &firebaserules.RulesetSourceArgs{
+//					Files: firebaserules.RulesetSourceFileArray{
+//						&firebaserules.RulesetSourceFileArgs{
+//							Content: pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
+//							Name:    pulumi.String("firestore.rules"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Ruleset can be imported using any of these accepted formats
+// # Ruleset can be imported using any of these accepted formats
 //
 // ```sh
-//  $ pulumi import gcp:firebaserules/ruleset:Ruleset default projects/{{project}}/rulesets/{{name}}
+//
+//	$ pulumi import gcp:firebaserules/ruleset:Ruleset default projects/{{project}}/rulesets/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:firebaserules/ruleset:Ruleset default {{project}}/{{name}}
+//
+//	$ pulumi import gcp:firebaserules/ruleset:Ruleset default {{project}}/{{name}}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:firebaserules/ruleset:Ruleset default {{name}}
+//
+//	$ pulumi import gcp:firebaserules/ruleset:Ruleset default {{name}}
+//
 // ```
 type Ruleset struct {
 	pulumi.CustomResourceState
@@ -209,7 +221,7 @@ func (i *Ruleset) ToRulesetOutputWithContext(ctx context.Context) RulesetOutput 
 // RulesetArrayInput is an input type that accepts RulesetArray and RulesetArrayOutput values.
 // You can construct a concrete instance of `RulesetArrayInput` via:
 //
-//          RulesetArray{ RulesetArgs{...} }
+//	RulesetArray{ RulesetArgs{...} }
 type RulesetArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +246,7 @@ func (i RulesetArray) ToRulesetArrayOutputWithContext(ctx context.Context) Rules
 // RulesetMapInput is an input type that accepts RulesetMap and RulesetMapOutput values.
 // You can construct a concrete instance of `RulesetMapInput` via:
 //
-//          RulesetMap{ "key": RulesetArgs{...} }
+//	RulesetMap{ "key": RulesetArgs{...} }
 type RulesetMapInput interface {
 	pulumi.Input
 

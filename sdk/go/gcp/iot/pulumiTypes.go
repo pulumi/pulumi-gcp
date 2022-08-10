@@ -20,7 +20,7 @@ type DeviceConfig struct {
 // DeviceConfigInput is an input type that accepts DeviceConfigArgs and DeviceConfigOutput values.
 // You can construct a concrete instance of `DeviceConfigInput` via:
 //
-//          DeviceConfigArgs{...}
+//	DeviceConfigArgs{...}
 type DeviceConfigInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i DeviceConfigArgs) ToDeviceConfigOutputWithContext(ctx context.Context) D
 // DeviceConfigArrayInput is an input type that accepts DeviceConfigArray and DeviceConfigArrayOutput values.
 // You can construct a concrete instance of `DeviceConfigArrayInput` via:
 //
-//          DeviceConfigArray{ DeviceConfigArgs{...} }
+//	DeviceConfigArray{ DeviceConfigArgs{...} }
 type DeviceConfigArrayInput interface {
 	pulumi.Input
 
@@ -133,7 +133,7 @@ type DeviceCredential struct {
 // DeviceCredentialInput is an input type that accepts DeviceCredentialArgs and DeviceCredentialOutput values.
 // You can construct a concrete instance of `DeviceCredentialInput` via:
 //
-//          DeviceCredentialArgs{...}
+//	DeviceCredentialArgs{...}
 type DeviceCredentialInput interface {
 	pulumi.Input
 
@@ -164,7 +164,7 @@ func (i DeviceCredentialArgs) ToDeviceCredentialOutputWithContext(ctx context.Co
 // DeviceCredentialArrayInput is an input type that accepts DeviceCredentialArray and DeviceCredentialArrayOutput values.
 // You can construct a concrete instance of `DeviceCredentialArrayInput` via:
 //
-//          DeviceCredentialArray{ DeviceCredentialArgs{...} }
+//	DeviceCredentialArray{ DeviceCredentialArgs{...} }
 type DeviceCredentialArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +242,7 @@ type DeviceCredentialPublicKey struct {
 // DeviceCredentialPublicKeyInput is an input type that accepts DeviceCredentialPublicKeyArgs and DeviceCredentialPublicKeyOutput values.
 // You can construct a concrete instance of `DeviceCredentialPublicKeyInput` via:
 //
-//          DeviceCredentialPublicKeyArgs{...}
+//	DeviceCredentialPublicKeyArgs{...}
 type DeviceCredentialPublicKeyInput interface {
 	pulumi.Input
 
@@ -314,7 +314,7 @@ type DeviceGatewayConfig struct {
 // DeviceGatewayConfigInput is an input type that accepts DeviceGatewayConfigArgs and DeviceGatewayConfigOutput values.
 // You can construct a concrete instance of `DeviceGatewayConfigInput` via:
 //
-//          DeviceGatewayConfigArgs{...}
+//	DeviceGatewayConfigArgs{...}
 type DeviceGatewayConfigInput interface {
 	pulumi.Input
 
@@ -361,11 +361,11 @@ func (i DeviceGatewayConfigArgs) ToDeviceGatewayConfigPtrOutputWithContext(ctx c
 // DeviceGatewayConfigPtrInput is an input type that accepts DeviceGatewayConfigArgs, DeviceGatewayConfigPtr and DeviceGatewayConfigPtrOutput values.
 // You can construct a concrete instance of `DeviceGatewayConfigPtrInput` via:
 //
-//          DeviceGatewayConfigArgs{...}
+//	        DeviceGatewayConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeviceGatewayConfigPtrInput interface {
 	pulumi.Input
 
@@ -518,7 +518,7 @@ type DeviceLastErrorStatus struct {
 // DeviceLastErrorStatusInput is an input type that accepts DeviceLastErrorStatusArgs and DeviceLastErrorStatusOutput values.
 // You can construct a concrete instance of `DeviceLastErrorStatusInput` via:
 //
-//          DeviceLastErrorStatusArgs{...}
+//	DeviceLastErrorStatusArgs{...}
 type DeviceLastErrorStatusInput interface {
 	pulumi.Input
 
@@ -547,7 +547,7 @@ func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusOutputWithContext(ctx 
 // DeviceLastErrorStatusArrayInput is an input type that accepts DeviceLastErrorStatusArray and DeviceLastErrorStatusArrayOutput values.
 // You can construct a concrete instance of `DeviceLastErrorStatusArrayInput` via:
 //
-//          DeviceLastErrorStatusArray{ DeviceLastErrorStatusArgs{...} }
+//	DeviceLastErrorStatusArray{ DeviceLastErrorStatusArgs{...} }
 type DeviceLastErrorStatusArrayInput interface {
 	pulumi.Input
 
@@ -623,7 +623,7 @@ type DeviceStateType struct {
 // DeviceStateTypeInput is an input type that accepts DeviceStateTypeArgs and DeviceStateTypeOutput values.
 // You can construct a concrete instance of `DeviceStateTypeInput` via:
 //
-//          DeviceStateTypeArgs{...}
+//	DeviceStateTypeArgs{...}
 type DeviceStateTypeInput interface {
 	pulumi.Input
 
@@ -651,7 +651,7 @@ func (i DeviceStateTypeArgs) ToDeviceStateTypeOutputWithContext(ctx context.Cont
 // DeviceStateTypeArrayInput is an input type that accepts DeviceStateTypeArray and DeviceStateTypeArrayOutput values.
 // You can construct a concrete instance of `DeviceStateTypeArrayInput` via:
 //
-//          DeviceStateTypeArray{ DeviceStateTypeArgs{...} }
+//	DeviceStateTypeArray{ DeviceStateTypeArgs{...} }
 type DeviceStateTypeArrayInput interface {
 	pulumi.Input
 
@@ -723,7 +723,7 @@ type RegistryCredential struct {
 // RegistryCredentialInput is an input type that accepts RegistryCredentialArgs and RegistryCredentialOutput values.
 // You can construct a concrete instance of `RegistryCredentialInput` via:
 //
-//          RegistryCredentialArgs{...}
+//	RegistryCredentialArgs{...}
 type RegistryCredentialInput interface {
 	pulumi.Input
 
@@ -751,7 +751,7 @@ func (i RegistryCredentialArgs) ToRegistryCredentialOutputWithContext(ctx contex
 // RegistryCredentialArrayInput is an input type that accepts RegistryCredentialArray and RegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `RegistryCredentialArrayInput` via:
 //
-//          RegistryCredentialArray{ RegistryCredentialArgs{...} }
+//	RegistryCredentialArray{ RegistryCredentialArgs{...} }
 type RegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -826,7 +826,7 @@ type RegistryEventNotificationConfigItem struct {
 // RegistryEventNotificationConfigItemInput is an input type that accepts RegistryEventNotificationConfigItemArgs and RegistryEventNotificationConfigItemOutput values.
 // You can construct a concrete instance of `RegistryEventNotificationConfigItemInput` via:
 //
-//          RegistryEventNotificationConfigItemArgs{...}
+//	RegistryEventNotificationConfigItemArgs{...}
 type RegistryEventNotificationConfigItemInput interface {
 	pulumi.Input
 
@@ -860,7 +860,7 @@ func (i RegistryEventNotificationConfigItemArgs) ToRegistryEventNotificationConf
 // RegistryEventNotificationConfigItemArrayInput is an input type that accepts RegistryEventNotificationConfigItemArray and RegistryEventNotificationConfigItemArrayOutput values.
 // You can construct a concrete instance of `RegistryEventNotificationConfigItemArrayInput` via:
 //
-//          RegistryEventNotificationConfigItemArray{ RegistryEventNotificationConfigItemArgs{...} }
+//	RegistryEventNotificationConfigItemArray{ RegistryEventNotificationConfigItemArgs{...} }
 type RegistryEventNotificationConfigItemArrayInput interface {
 	pulumi.Input
 
@@ -939,7 +939,7 @@ type RegistryIamBindingCondition struct {
 // RegistryIamBindingConditionInput is an input type that accepts RegistryIamBindingConditionArgs and RegistryIamBindingConditionOutput values.
 // You can construct a concrete instance of `RegistryIamBindingConditionInput` via:
 //
-//          RegistryIamBindingConditionArgs{...}
+//	RegistryIamBindingConditionArgs{...}
 type RegistryIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -976,11 +976,11 @@ func (i RegistryIamBindingConditionArgs) ToRegistryIamBindingConditionPtrOutputW
 // RegistryIamBindingConditionPtrInput is an input type that accepts RegistryIamBindingConditionArgs, RegistryIamBindingConditionPtr and RegistryIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `RegistryIamBindingConditionPtrInput` via:
 //
-//          RegistryIamBindingConditionArgs{...}
+//	        RegistryIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RegistryIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1102,7 +1102,7 @@ type RegistryIamMemberCondition struct {
 // RegistryIamMemberConditionInput is an input type that accepts RegistryIamMemberConditionArgs and RegistryIamMemberConditionOutput values.
 // You can construct a concrete instance of `RegistryIamMemberConditionInput` via:
 //
-//          RegistryIamMemberConditionArgs{...}
+//	RegistryIamMemberConditionArgs{...}
 type RegistryIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1139,11 +1139,11 @@ func (i RegistryIamMemberConditionArgs) ToRegistryIamMemberConditionPtrOutputWit
 // RegistryIamMemberConditionPtrInput is an input type that accepts RegistryIamMemberConditionArgs, RegistryIamMemberConditionPtr and RegistryIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `RegistryIamMemberConditionPtrInput` via:
 //
-//          RegistryIamMemberConditionArgs{...}
+//	        RegistryIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RegistryIamMemberConditionPtrInput interface {
 	pulumi.Input
 

@@ -31,29 +31,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-// 			DisplayName: pulumi.String("Department 1"),
-// 			Parent:      pulumi.String("organizations/1234567"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = organizations.NewFolder(ctx, "team-abc", &organizations.FolderArgs{
-// 			DisplayName: pulumi.String("Team ABC"),
-// 			Parent:      department1.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
+//				DisplayName: pulumi.String("Department 1"),
+//				Parent:      pulumi.String("organizations/1234567"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewFolder(ctx, "team-abc", &organizations.FolderArgs{
+//				DisplayName: pulumi.String("Team ABC"),
+//				Parent:      department1.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -61,11 +64,15 @@ import (
 // Folders can be imported using the folder's id, e.g. # Both syntaxes are valid
 //
 // ```sh
-//  $ pulumi import gcp:organizations/folder:Folder department1 1234567
+//
+//	$ pulumi import gcp:organizations/folder:Folder department1 1234567
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:organizations/folder:Folder department1 folders/1234567
+//
+//	$ pulumi import gcp:organizations/folder:Folder department1 folders/1234567
+//
 // ```
 type Folder struct {
 	pulumi.CustomResourceState
@@ -206,7 +213,7 @@ func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 // FolderArrayInput is an input type that accepts FolderArray and FolderArrayOutput values.
 // You can construct a concrete instance of `FolderArrayInput` via:
 //
-//          FolderArray{ FolderArgs{...} }
+//	FolderArray{ FolderArgs{...} }
 type FolderArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +238,7 @@ func (i FolderArray) ToFolderArrayOutputWithContext(ctx context.Context) FolderA
 // FolderMapInput is an input type that accepts FolderMap and FolderMapOutput values.
 // You can construct a concrete instance of `FolderMapInput` via:
 //
-//          FolderMap{ "key": FolderArgs{...} }
+//	FolderMap{ "key": FolderArgs{...} }
 type FolderMapInput interface {
 	pulumi.Input
 

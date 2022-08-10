@@ -27,36 +27,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/editor",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = pubsub.NewSubscriptionIAMPolicy(ctx, "editor", &pubsub.SubscriptionIAMPolicyArgs{
-// 			Subscription: pulumi.String("your-subscription-name"),
-// 			PolicyData:   pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscriptionIAMPolicy(ctx, "editor", &pubsub.SubscriptionIAMPolicyArgs{
+//				Subscription: pulumi.String("your-subscription-name"),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_pubsub\_subscription\_iam\_binding
@@ -65,25 +68,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := pubsub.NewSubscriptionIAMBinding(ctx, "editor", &pubsub.SubscriptionIAMBindingArgs{
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 			Role:         pulumi.String("roles/editor"),
-// 			Subscription: pulumi.String("your-subscription-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewSubscriptionIAMBinding(ctx, "editor", &pubsub.SubscriptionIAMBindingArgs{
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Role:         pulumi.String("roles/editor"),
+//				Subscription: pulumi.String("your-subscription-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_pubsub\_subscription\_iam\_member
@@ -92,23 +98,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := pubsub.NewSubscriptionIAMMember(ctx, "editor", &pubsub.SubscriptionIAMMemberArgs{
-// 			Member:       pulumi.String("user:jane@example.com"),
-// 			Role:         pulumi.String("roles/editor"),
-// 			Subscription: pulumi.String("your-subscription-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewSubscriptionIAMMember(ctx, "editor", &pubsub.SubscriptionIAMMemberArgs{
+//				Member:       pulumi.String("user:jane@example.com"),
+//				Role:         pulumi.String("roles/editor"),
+//				Subscription: pulumi.String("your-subscription-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -116,18 +125,24 @@ import (
 // Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+//
+//	$ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+//
+//	$ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+//
 // ```
 //
 // ```sh
-//  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+//
+//	$ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type SubscriptionIAMMember struct {
@@ -276,7 +291,7 @@ func (i *SubscriptionIAMMember) ToSubscriptionIAMMemberOutputWithContext(ctx con
 // SubscriptionIAMMemberArrayInput is an input type that accepts SubscriptionIAMMemberArray and SubscriptionIAMMemberArrayOutput values.
 // You can construct a concrete instance of `SubscriptionIAMMemberArrayInput` via:
 //
-//          SubscriptionIAMMemberArray{ SubscriptionIAMMemberArgs{...} }
+//	SubscriptionIAMMemberArray{ SubscriptionIAMMemberArgs{...} }
 type SubscriptionIAMMemberArrayInput interface {
 	pulumi.Input
 
@@ -301,7 +316,7 @@ func (i SubscriptionIAMMemberArray) ToSubscriptionIAMMemberArrayOutputWithContex
 // SubscriptionIAMMemberMapInput is an input type that accepts SubscriptionIAMMemberMap and SubscriptionIAMMemberMapOutput values.
 // You can construct a concrete instance of `SubscriptionIAMMemberMapInput` via:
 //
-//          SubscriptionIAMMemberMap{ "key": SubscriptionIAMMemberArgs{...} }
+//	SubscriptionIAMMemberMap{ "key": SubscriptionIAMMemberArgs{...} }
 type SubscriptionIAMMemberMapInput interface {
 	pulumi.Input
 

@@ -1498,7 +1498,6 @@ export namespace accesscontextmanager {
          */
         enableRestriction?: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace apigateway {
@@ -2438,7 +2437,6 @@ export namespace appengine {
          */
         name: pulumi.Input<string>;
     }
-
 }
 
 export namespace artifactregistry {
@@ -18445,7 +18443,6 @@ export namespace container {
          */
         maxUnavailable: pulumi.Input<number>;
     }
-
 }
 
 export namespace containeranalysis {
@@ -19864,7 +19861,6 @@ export namespace dataloss {
          */
         pattern: pulumi.Input<string>;
     }
-
 }
 
 export namespace dataplex {
@@ -22544,7 +22540,6 @@ export namespace diagflow {
          */
         parentFollowupIntentName?: pulumi.Input<string>;
     }
-
 }
 
 export namespace dns {
@@ -25940,7 +25935,6 @@ export namespace monitoring {
          */
         port: pulumi.Input<number>;
     }
-
 }
 
 export namespace networkconnectivity {
@@ -26607,7 +26601,6 @@ export namespace networkservices {
          */
         stripQuery?: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace notebooks {
@@ -27115,7 +27108,6 @@ export namespace notebooks {
          */
         enableVtpm?: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace organizations {
@@ -27164,17 +27156,6 @@ export namespace organizations {
         service: pulumi.Input<string>;
     }
 
-    export interface GetIAMPolicyAuditConfigAuditLogConfigArgs {
-        /**
-         * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
-         */
-        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-         */
-        logType: pulumi.Input<string>;
-    }
-
     export interface GetIAMPolicyAuditConfigAuditLogConfig {
         /**
          * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
@@ -27186,28 +27167,15 @@ export namespace organizations {
         logType: string;
     }
 
-    export interface GetIAMPolicyBindingArgs {
+    export interface GetIAMPolicyAuditConfigAuditLogConfigArgs {
         /**
-         * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+         * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
          */
-        condition?: pulumi.Input<inputs.organizations.GetIAMPolicyBindingConditionArgs>;
+        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-         * Each entry can have one of the following values:
-         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
-         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
          */
-        members: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The role/permission that will be granted to the members.
-         * See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
-         * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
-         */
-        role: pulumi.Input<string>;
+        logType: pulumi.Input<string>;
     }
 
     export interface GetIAMPolicyBinding {
@@ -27232,6 +27200,30 @@ export namespace organizations {
          * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
          */
         role: string;
+    }
+
+    export interface GetIAMPolicyBindingArgs {
+        /**
+         * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+         */
+        condition?: pulumi.Input<inputs.organizations.GetIAMPolicyBindingConditionArgs>;
+        /**
+         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         */
+        members: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The role/permission that will be granted to the members.
+         * See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
+         * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         */
+        role: pulumi.Input<string>;
     }
 
     export interface GetIAMPolicyBindingCondition {
@@ -29581,6 +29573,7 @@ export namespace pubsub {
          */
         schema: pulumi.Input<string>;
     }
+
 }
 
 export namespace recaptcha {
@@ -30775,6 +30768,7 @@ export namespace storage {
          */
         overwriteObjectsAlreadyExistingInSink?: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace tags {

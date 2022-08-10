@@ -22,7 +22,7 @@ type DenyPolicyRule struct {
 // DenyPolicyRuleInput is an input type that accepts DenyPolicyRuleArgs and DenyPolicyRuleOutput values.
 // You can construct a concrete instance of `DenyPolicyRuleInput` via:
 //
-//          DenyPolicyRuleArgs{...}
+//	DenyPolicyRuleArgs{...}
 type DenyPolicyRuleInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i DenyPolicyRuleArgs) ToDenyPolicyRuleOutputWithContext(ctx context.Contex
 // DenyPolicyRuleArrayInput is an input type that accepts DenyPolicyRuleArray and DenyPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `DenyPolicyRuleArrayInput` via:
 //
-//          DenyPolicyRuleArray{ DenyPolicyRuleArgs{...} }
+//	DenyPolicyRuleArray{ DenyPolicyRuleArgs{...} }
 type DenyPolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -143,7 +143,7 @@ type DenyPolicyRuleDenyRule struct {
 // DenyPolicyRuleDenyRuleInput is an input type that accepts DenyPolicyRuleDenyRuleArgs and DenyPolicyRuleDenyRuleOutput values.
 // You can construct a concrete instance of `DenyPolicyRuleDenyRuleInput` via:
 //
-//          DenyPolicyRuleDenyRuleArgs{...}
+//	DenyPolicyRuleDenyRuleArgs{...}
 type DenyPolicyRuleDenyRuleInput interface {
 	pulumi.Input
 
@@ -192,11 +192,11 @@ func (i DenyPolicyRuleDenyRuleArgs) ToDenyPolicyRuleDenyRulePtrOutputWithContext
 // DenyPolicyRuleDenyRulePtrInput is an input type that accepts DenyPolicyRuleDenyRuleArgs, DenyPolicyRuleDenyRulePtr and DenyPolicyRuleDenyRulePtrOutput values.
 // You can construct a concrete instance of `DenyPolicyRuleDenyRulePtrInput` via:
 //
-//          DenyPolicyRuleDenyRuleArgs{...}
+//	        DenyPolicyRuleDenyRuleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DenyPolicyRuleDenyRulePtrInput interface {
 	pulumi.Input
 
@@ -372,7 +372,7 @@ type DenyPolicyRuleDenyRuleDenialCondition struct {
 // DenyPolicyRuleDenyRuleDenialConditionInput is an input type that accepts DenyPolicyRuleDenyRuleDenialConditionArgs and DenyPolicyRuleDenyRuleDenialConditionOutput values.
 // You can construct a concrete instance of `DenyPolicyRuleDenyRuleDenialConditionInput` via:
 //
-//          DenyPolicyRuleDenyRuleDenialConditionArgs{...}
+//	DenyPolicyRuleDenyRuleDenialConditionArgs{...}
 type DenyPolicyRuleDenyRuleDenialConditionInput interface {
 	pulumi.Input
 
@@ -417,11 +417,11 @@ func (i DenyPolicyRuleDenyRuleDenialConditionArgs) ToDenyPolicyRuleDenyRuleDenia
 // DenyPolicyRuleDenyRuleDenialConditionPtrInput is an input type that accepts DenyPolicyRuleDenyRuleDenialConditionArgs, DenyPolicyRuleDenyRuleDenialConditionPtr and DenyPolicyRuleDenyRuleDenialConditionPtrOutput values.
 // You can construct a concrete instance of `DenyPolicyRuleDenyRuleDenialConditionPtrInput` via:
 //
-//          DenyPolicyRuleDenyRuleDenialConditionArgs{...}
+//	        DenyPolicyRuleDenyRuleDenialConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DenyPolicyRuleDenyRuleDenialConditionPtrInput interface {
 	pulumi.Input
 
@@ -569,7 +569,7 @@ type WorkloadIdentityPoolProviderAws struct {
 // WorkloadIdentityPoolProviderAwsInput is an input type that accepts WorkloadIdentityPoolProviderAwsArgs and WorkloadIdentityPoolProviderAwsOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolProviderAwsInput` via:
 //
-//          WorkloadIdentityPoolProviderAwsArgs{...}
+//	WorkloadIdentityPoolProviderAwsArgs{...}
 type WorkloadIdentityPoolProviderAwsInput interface {
 	pulumi.Input
 
@@ -605,11 +605,11 @@ func (i WorkloadIdentityPoolProviderAwsArgs) ToWorkloadIdentityPoolProviderAwsPt
 // WorkloadIdentityPoolProviderAwsPtrInput is an input type that accepts WorkloadIdentityPoolProviderAwsArgs, WorkloadIdentityPoolProviderAwsPtr and WorkloadIdentityPoolProviderAwsPtrOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolProviderAwsPtrInput` via:
 //
-//          WorkloadIdentityPoolProviderAwsArgs{...}
+//	        WorkloadIdentityPoolProviderAwsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WorkloadIdentityPoolProviderAwsPtrInput interface {
 	pulumi.Input
 
@@ -727,7 +727,7 @@ type WorkloadIdentityPoolProviderOidc struct {
 // WorkloadIdentityPoolProviderOidcInput is an input type that accepts WorkloadIdentityPoolProviderOidcArgs and WorkloadIdentityPoolProviderOidcOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolProviderOidcInput` via:
 //
-//          WorkloadIdentityPoolProviderOidcArgs{...}
+//	WorkloadIdentityPoolProviderOidcArgs{...}
 type WorkloadIdentityPoolProviderOidcInput interface {
 	pulumi.Input
 
@@ -784,11 +784,11 @@ func (i WorkloadIdentityPoolProviderOidcArgs) ToWorkloadIdentityPoolProviderOidc
 // WorkloadIdentityPoolProviderOidcPtrInput is an input type that accepts WorkloadIdentityPoolProviderOidcArgs, WorkloadIdentityPoolProviderOidcPtr and WorkloadIdentityPoolProviderOidcPtrOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolProviderOidcPtrInput` via:
 //
-//          WorkloadIdentityPoolProviderOidcArgs{...}
+//	        WorkloadIdentityPoolProviderOidcArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WorkloadIdentityPoolProviderOidcPtrInput interface {
 	pulumi.Input
 
@@ -849,14 +849,17 @@ func (o WorkloadIdentityPoolProviderOidcOutput) ToWorkloadIdentityPoolProviderOi
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 func (o WorkloadIdentityPoolProviderOidcOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
@@ -902,14 +905,17 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) Elem() WorkloadIdentityPoolPr
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 func (o WorkloadIdentityPoolProviderOidcPtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) []string {
@@ -946,7 +952,7 @@ type GetTestablePermissionsPermission struct {
 // GetTestablePermissionsPermissionInput is an input type that accepts GetTestablePermissionsPermissionArgs and GetTestablePermissionsPermissionOutput values.
 // You can construct a concrete instance of `GetTestablePermissionsPermissionInput` via:
 //
-//          GetTestablePermissionsPermissionArgs{...}
+//	GetTestablePermissionsPermissionArgs{...}
 type GetTestablePermissionsPermissionInput interface {
 	pulumi.Input
 
@@ -982,7 +988,7 @@ func (i GetTestablePermissionsPermissionArgs) ToGetTestablePermissionsPermission
 // GetTestablePermissionsPermissionArrayInput is an input type that accepts GetTestablePermissionsPermissionArray and GetTestablePermissionsPermissionArrayOutput values.
 // You can construct a concrete instance of `GetTestablePermissionsPermissionArrayInput` via:
 //
-//          GetTestablePermissionsPermissionArray{ GetTestablePermissionsPermissionArgs{...} }
+//	GetTestablePermissionsPermissionArray{ GetTestablePermissionsPermissionArgs{...} }
 type GetTestablePermissionsPermissionArrayInput interface {
 	pulumi.Input
 
@@ -1070,7 +1076,7 @@ type GetWorkloadIdentityPoolProviderAw struct {
 // GetWorkloadIdentityPoolProviderAwInput is an input type that accepts GetWorkloadIdentityPoolProviderAwArgs and GetWorkloadIdentityPoolProviderAwOutput values.
 // You can construct a concrete instance of `GetWorkloadIdentityPoolProviderAwInput` via:
 //
-//          GetWorkloadIdentityPoolProviderAwArgs{...}
+//	GetWorkloadIdentityPoolProviderAwArgs{...}
 type GetWorkloadIdentityPoolProviderAwInput interface {
 	pulumi.Input
 
@@ -1097,7 +1103,7 @@ func (i GetWorkloadIdentityPoolProviderAwArgs) ToGetWorkloadIdentityPoolProvider
 // GetWorkloadIdentityPoolProviderAwArrayInput is an input type that accepts GetWorkloadIdentityPoolProviderAwArray and GetWorkloadIdentityPoolProviderAwArrayOutput values.
 // You can construct a concrete instance of `GetWorkloadIdentityPoolProviderAwArrayInput` via:
 //
-//          GetWorkloadIdentityPoolProviderAwArray{ GetWorkloadIdentityPoolProviderAwArgs{...} }
+//	GetWorkloadIdentityPoolProviderAwArray{ GetWorkloadIdentityPoolProviderAwArgs{...} }
 type GetWorkloadIdentityPoolProviderAwArrayInput interface {
 	pulumi.Input
 
@@ -1165,7 +1171,7 @@ type GetWorkloadIdentityPoolProviderOidc struct {
 // GetWorkloadIdentityPoolProviderOidcInput is an input type that accepts GetWorkloadIdentityPoolProviderOidcArgs and GetWorkloadIdentityPoolProviderOidcOutput values.
 // You can construct a concrete instance of `GetWorkloadIdentityPoolProviderOidcInput` via:
 //
-//          GetWorkloadIdentityPoolProviderOidcArgs{...}
+//	GetWorkloadIdentityPoolProviderOidcArgs{...}
 type GetWorkloadIdentityPoolProviderOidcInput interface {
 	pulumi.Input
 
@@ -1193,7 +1199,7 @@ func (i GetWorkloadIdentityPoolProviderOidcArgs) ToGetWorkloadIdentityPoolProvid
 // GetWorkloadIdentityPoolProviderOidcArrayInput is an input type that accepts GetWorkloadIdentityPoolProviderOidcArray and GetWorkloadIdentityPoolProviderOidcArrayOutput values.
 // You can construct a concrete instance of `GetWorkloadIdentityPoolProviderOidcArrayInput` via:
 //
-//          GetWorkloadIdentityPoolProviderOidcArray{ GetWorkloadIdentityPoolProviderOidcArgs{...} }
+//	GetWorkloadIdentityPoolProviderOidcArray{ GetWorkloadIdentityPoolProviderOidcArgs{...} }
 type GetWorkloadIdentityPoolProviderOidcArrayInput interface {
 	pulumi.Input
 

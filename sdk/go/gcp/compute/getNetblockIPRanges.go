@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		netblock, err := compute.GetNetblockIPRanges(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cidrBlocks", netblock.CidrBlocks)
-// 		ctx.Export("cidrBlocksIpv4", netblock.CidrBlocksIpv4s)
-// 		ctx.Export("cidrBlocksIpv6", netblock.CidrBlocksIpv6s)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			netblock, err := compute.GetNetblockIPRanges(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cidrBlocks", netblock.CidrBlocks)
+//			ctx.Export("cidrBlocksIpv4", netblock.CidrBlocksIpv4s)
+//			ctx.Export("cidrBlocksIpv6", netblock.CidrBlocksIpv6s)
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Allow Health Checks
 //
@@ -42,40 +45,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		legacy_hcs, err := compute.GetNetblockIPRanges(ctx, &compute.GetNetblockIPRangesArgs{
-// 			RangeType: pulumi.StringRef("legacy-health-checkers"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewNetwork(ctx, "default", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewFirewall(ctx, "allow-hcs", &compute.FirewallArgs{
-// 			Network: _default.Name,
-// 			Allows: compute.FirewallAllowArray{
-// 				&compute.FirewallAllowArgs{
-// 					Protocol: pulumi.String("tcp"),
-// 					Ports: pulumi.StringArray{
-// 						pulumi.String("80"),
-// 					},
-// 				},
-// 			},
-// 			SourceRanges: interface{}(legacy_hcs.CidrBlocksIpv4s),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			legacy_hcs, err := compute.GetNetblockIPRanges(ctx, &compute.GetNetblockIPRangesArgs{
+//				RangeType: pulumi.StringRef("legacy-health-checkers"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetwork(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewall(ctx, "allow-hcs", &compute.FirewallArgs{
+//				Network: _default.Name,
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("80"),
+//						},
+//					},
+//				},
+//				SourceRanges: interface{}(legacy_hcs.CidrBlocksIpv4s),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNetblockIPRanges(ctx *pulumi.Context, args *GetNetblockIPRangesArgs, opts ...pulumi.InvokeOption) (*GetNetblockIPRangesResult, error) {
 	var rv GetNetblockIPRangesResult

@@ -44,7 +44,7 @@ type AttestorAttestationAuthorityNote struct {
 // AttestorAttestationAuthorityNoteInput is an input type that accepts AttestorAttestationAuthorityNoteArgs and AttestorAttestationAuthorityNoteOutput values.
 // You can construct a concrete instance of `AttestorAttestationAuthorityNoteInput` via:
 //
-//          AttestorAttestationAuthorityNoteArgs{...}
+//	AttestorAttestationAuthorityNoteArgs{...}
 type AttestorAttestationAuthorityNoteInput interface {
 	pulumi.Input
 
@@ -106,11 +106,11 @@ func (i AttestorAttestationAuthorityNoteArgs) ToAttestorAttestationAuthorityNote
 // AttestorAttestationAuthorityNotePtrInput is an input type that accepts AttestorAttestationAuthorityNoteArgs, AttestorAttestationAuthorityNotePtr and AttestorAttestationAuthorityNotePtrOutput values.
 // You can construct a concrete instance of `AttestorAttestationAuthorityNotePtrInput` via:
 //
-//          AttestorAttestationAuthorityNoteArgs{...}
+//	        AttestorAttestationAuthorityNoteArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AttestorAttestationAuthorityNotePtrInput interface {
 	pulumi.Input
 
@@ -307,7 +307,7 @@ type AttestorAttestationAuthorityNotePublicKey struct {
 // AttestorAttestationAuthorityNotePublicKeyInput is an input type that accepts AttestorAttestationAuthorityNotePublicKeyArgs and AttestorAttestationAuthorityNotePublicKeyOutput values.
 // You can construct a concrete instance of `AttestorAttestationAuthorityNotePublicKeyInput` via:
 //
-//          AttestorAttestationAuthorityNotePublicKeyArgs{...}
+//	AttestorAttestationAuthorityNotePublicKeyArgs{...}
 type AttestorAttestationAuthorityNotePublicKeyInput interface {
 	pulumi.Input
 
@@ -359,7 +359,7 @@ func (i AttestorAttestationAuthorityNotePublicKeyArgs) ToAttestorAttestationAuth
 // AttestorAttestationAuthorityNotePublicKeyArrayInput is an input type that accepts AttestorAttestationAuthorityNotePublicKeyArray and AttestorAttestationAuthorityNotePublicKeyArrayOutput values.
 // You can construct a concrete instance of `AttestorAttestationAuthorityNotePublicKeyArrayInput` via:
 //
-//          AttestorAttestationAuthorityNotePublicKeyArray{ AttestorAttestationAuthorityNotePublicKeyArgs{...} }
+//	AttestorAttestationAuthorityNotePublicKeyArray{ AttestorAttestationAuthorityNotePublicKeyArgs{...} }
 type AttestorAttestationAuthorityNotePublicKeyArrayInput interface {
 	pulumi.Input
 
@@ -470,7 +470,7 @@ type AttestorAttestationAuthorityNotePublicKeyPkixPublicKey struct {
 // AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyInput is an input type that accepts AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs and AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput values.
 // You can construct a concrete instance of `AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyInput` via:
 //
-//          AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{...}
+//	AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{...}
 type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyInput interface {
 	pulumi.Input
 
@@ -513,11 +513,11 @@ func (i AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs) ToAttestorAt
 // AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput is an input type that accepts AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs, AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtr and AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput values.
 // You can construct a concrete instance of `AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput` via:
 //
-//          AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{...}
+//	        AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput interface {
 	pulumi.Input
 
@@ -640,7 +640,7 @@ type AttestorIamBindingCondition struct {
 // AttestorIamBindingConditionInput is an input type that accepts AttestorIamBindingConditionArgs and AttestorIamBindingConditionOutput values.
 // You can construct a concrete instance of `AttestorIamBindingConditionInput` via:
 //
-//          AttestorIamBindingConditionArgs{...}
+//	AttestorIamBindingConditionArgs{...}
 type AttestorIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -677,11 +677,11 @@ func (i AttestorIamBindingConditionArgs) ToAttestorIamBindingConditionPtrOutputW
 // AttestorIamBindingConditionPtrInput is an input type that accepts AttestorIamBindingConditionArgs, AttestorIamBindingConditionPtr and AttestorIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `AttestorIamBindingConditionPtrInput` via:
 //
-//          AttestorIamBindingConditionArgs{...}
+//	        AttestorIamBindingConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AttestorIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -803,7 +803,7 @@ type AttestorIamMemberCondition struct {
 // AttestorIamMemberConditionInput is an input type that accepts AttestorIamMemberConditionArgs and AttestorIamMemberConditionOutput values.
 // You can construct a concrete instance of `AttestorIamMemberConditionInput` via:
 //
-//          AttestorIamMemberConditionArgs{...}
+//	AttestorIamMemberConditionArgs{...}
 type AttestorIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -840,11 +840,11 @@ func (i AttestorIamMemberConditionArgs) ToAttestorIamMemberConditionPtrOutputWit
 // AttestorIamMemberConditionPtrInput is an input type that accepts AttestorIamMemberConditionArgs, AttestorIamMemberConditionPtr and AttestorIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `AttestorIamMemberConditionPtrInput` via:
 //
-//          AttestorIamMemberConditionArgs{...}
+//	        AttestorIamMemberConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AttestorIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -968,7 +968,7 @@ type PolicyAdmissionWhitelistPattern struct {
 // PolicyAdmissionWhitelistPatternInput is an input type that accepts PolicyAdmissionWhitelistPatternArgs and PolicyAdmissionWhitelistPatternOutput values.
 // You can construct a concrete instance of `PolicyAdmissionWhitelistPatternInput` via:
 //
-//          PolicyAdmissionWhitelistPatternArgs{...}
+//	PolicyAdmissionWhitelistPatternArgs{...}
 type PolicyAdmissionWhitelistPatternInput interface {
 	pulumi.Input
 
@@ -999,7 +999,7 @@ func (i PolicyAdmissionWhitelistPatternArgs) ToPolicyAdmissionWhitelistPatternOu
 // PolicyAdmissionWhitelistPatternArrayInput is an input type that accepts PolicyAdmissionWhitelistPatternArray and PolicyAdmissionWhitelistPatternArrayOutput values.
 // You can construct a concrete instance of `PolicyAdmissionWhitelistPatternArrayInput` via:
 //
-//          PolicyAdmissionWhitelistPatternArray{ PolicyAdmissionWhitelistPatternArgs{...} }
+//	PolicyAdmissionWhitelistPatternArray{ PolicyAdmissionWhitelistPatternArgs{...} }
 type PolicyAdmissionWhitelistPatternArrayInput interface {
 	pulumi.Input
 
@@ -1086,7 +1086,7 @@ type PolicyClusterAdmissionRule struct {
 // PolicyClusterAdmissionRuleInput is an input type that accepts PolicyClusterAdmissionRuleArgs and PolicyClusterAdmissionRuleOutput values.
 // You can construct a concrete instance of `PolicyClusterAdmissionRuleInput` via:
 //
-//          PolicyClusterAdmissionRuleArgs{...}
+//	PolicyClusterAdmissionRuleArgs{...}
 type PolicyClusterAdmissionRuleInput interface {
 	pulumi.Input
 
@@ -1129,7 +1129,7 @@ func (i PolicyClusterAdmissionRuleArgs) ToPolicyClusterAdmissionRuleOutputWithCo
 // PolicyClusterAdmissionRuleArrayInput is an input type that accepts PolicyClusterAdmissionRuleArray and PolicyClusterAdmissionRuleArrayOutput values.
 // You can construct a concrete instance of `PolicyClusterAdmissionRuleArrayInput` via:
 //
-//          PolicyClusterAdmissionRuleArray{ PolicyClusterAdmissionRuleArgs{...} }
+//	PolicyClusterAdmissionRuleArray{ PolicyClusterAdmissionRuleArgs{...} }
 type PolicyClusterAdmissionRuleArrayInput interface {
 	pulumi.Input
 
@@ -1235,7 +1235,7 @@ type PolicyDefaultAdmissionRule struct {
 // PolicyDefaultAdmissionRuleInput is an input type that accepts PolicyDefaultAdmissionRuleArgs and PolicyDefaultAdmissionRuleOutput values.
 // You can construct a concrete instance of `PolicyDefaultAdmissionRuleInput` via:
 //
-//          PolicyDefaultAdmissionRuleArgs{...}
+//	PolicyDefaultAdmissionRuleArgs{...}
 type PolicyDefaultAdmissionRuleInput interface {
 	pulumi.Input
 
@@ -1284,11 +1284,11 @@ func (i PolicyDefaultAdmissionRuleArgs) ToPolicyDefaultAdmissionRulePtrOutputWit
 // PolicyDefaultAdmissionRulePtrInput is an input type that accepts PolicyDefaultAdmissionRuleArgs, PolicyDefaultAdmissionRulePtr and PolicyDefaultAdmissionRulePtrOutput values.
 // You can construct a concrete instance of `PolicyDefaultAdmissionRulePtrInput` via:
 //
-//          PolicyDefaultAdmissionRuleArgs{...}
+//	        PolicyDefaultAdmissionRuleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PolicyDefaultAdmissionRulePtrInput interface {
 	pulumi.Input
 

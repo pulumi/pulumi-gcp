@@ -27,37 +27,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Bindings: []organizations.GetIAMPolicyBinding{
-// 				organizations.GetIAMPolicyBinding{
-// 					Role: "roles/viewer",
-// 					Members: []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudtasks.NewQueueIamPolicy(ctx, "policy", &cloudtasks.QueueIamPolicyArgs{
-// 			Project:    pulumi.Any(google_cloud_tasks_queue.Default.Project),
-// 			Location:   pulumi.Any(google_cloud_tasks_queue.Default.Location),
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudtasks.NewQueueIamPolicy(ctx, "policy", &cloudtasks.QueueIamPolicyArgs{
+//				Project:    pulumi.Any(google_cloud_tasks_queue.Default.Project),
+//				Location:   pulumi.Any(google_cloud_tasks_queue.Default.Location),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_cloud\_tasks\_queue\_iam\_binding
@@ -66,26 +69,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudtasks.NewQueueIamBinding(ctx, "binding", &cloudtasks.QueueIamBindingArgs{
-// 			Project:  pulumi.Any(google_cloud_tasks_queue.Default.Project),
-// 			Location: pulumi.Any(google_cloud_tasks_queue.Default.Location),
-// 			Role:     pulumi.String("roles/viewer"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("user:jane@example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudtasks.NewQueueIamBinding(ctx, "binding", &cloudtasks.QueueIamBindingArgs{
+//				Project:  pulumi.Any(google_cloud_tasks_queue.Default.Project),
+//				Location: pulumi.Any(google_cloud_tasks_queue.Default.Location),
+//				Role:     pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## google\_cloud\_tasks\_queue\_iam\_member
@@ -94,24 +100,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudtasks.NewQueueIamMember(ctx, "member", &cloudtasks.QueueIamMemberArgs{
-// 			Project:  pulumi.Any(google_cloud_tasks_queue.Default.Project),
-// 			Location: pulumi.Any(google_cloud_tasks_queue.Default.Location),
-// 			Role:     pulumi.String("roles/viewer"),
-// 			Member:   pulumi.String("user:jane@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudtasks.NewQueueIamMember(ctx, "member", &cloudtasks.QueueIamMemberArgs{
+//				Project:  pulumi.Any(google_cloud_tasks_queue.Default.Project),
+//				Location: pulumi.Any(google_cloud_tasks_queue.Default.Location),
+//				Role:     pulumi.String("roles/viewer"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -119,22 +128,28 @@ import (
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/queues/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Tasks queue IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:cloudtasks/queueIamPolicy:QueueIamPolicy editor "projects/{{project}}/locations/{{location}}/queues/{{queue}} roles/viewer user:jane@example.com"
+//
+//	$ pulumi import gcp:cloudtasks/queueIamPolicy:QueueIamPolicy editor "projects/{{project}}/locations/{{location}}/queues/{{queue}} roles/viewer user:jane@example.com"
+//
 // ```
 //
-//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:cloudtasks/queueIamPolicy:QueueIamPolicy editor "projects/{{project}}/locations/{{location}}/queues/{{queue}} roles/viewer"
+//
+//	$ pulumi import gcp:cloudtasks/queueIamPolicy:QueueIamPolicy editor "projects/{{project}}/locations/{{location}}/queues/{{queue}} roles/viewer"
+//
 // ```
 //
-//  IAM policy imports use the identifier of the resource in question, e.g.
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//  $ pulumi import gcp:cloudtasks/queueIamPolicy:QueueIamPolicy editor projects/{{project}}/locations/{{location}}/queues/{{queue}}
+//
+//	$ pulumi import gcp:cloudtasks/queueIamPolicy:QueueIamPolicy editor projects/{{project}}/locations/{{location}}/queues/{{queue}}
+//
 // ```
 //
-//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type QueueIamPolicy struct {
@@ -272,7 +287,7 @@ func (i *QueueIamPolicy) ToQueueIamPolicyOutputWithContext(ctx context.Context) 
 // QueueIamPolicyArrayInput is an input type that accepts QueueIamPolicyArray and QueueIamPolicyArrayOutput values.
 // You can construct a concrete instance of `QueueIamPolicyArrayInput` via:
 //
-//          QueueIamPolicyArray{ QueueIamPolicyArgs{...} }
+//	QueueIamPolicyArray{ QueueIamPolicyArgs{...} }
 type QueueIamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -297,7 +312,7 @@ func (i QueueIamPolicyArray) ToQueueIamPolicyArrayOutputWithContext(ctx context.
 // QueueIamPolicyMapInput is an input type that accepts QueueIamPolicyMap and QueueIamPolicyMapOutput values.
 // You can construct a concrete instance of `QueueIamPolicyMapInput` via:
 //
-//          QueueIamPolicyMap{ "key": QueueIamPolicyArgs{...} }
+//	QueueIamPolicyMap{ "key": QueueIamPolicyArgs{...} }
 type QueueIamPolicyMapInput interface {
 	pulumi.Input
 

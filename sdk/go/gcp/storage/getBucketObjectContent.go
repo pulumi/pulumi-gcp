@@ -25,23 +25,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		key, err := storage.GetBucketObjectContent(ctx, &storage.GetBucketObjectContentArgs{
-// 			Name:   "encryptedkey",
-// 			Bucket: "keystore",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("encrypted", key.Content)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			key, err := storage.GetBucketObjectContent(ctx, &storage.GetBucketObjectContentArgs{
+//				Name:   "encryptedkey",
+//				Bucket: "keystore",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("encrypted", key.Content)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetBucketObjectContent(ctx *pulumi.Context, args *GetBucketObjectContentArgs, opts ...pulumi.InvokeOption) (*GetBucketObjectContentResult, error) {
 	var rv GetBucketObjectContentResult
